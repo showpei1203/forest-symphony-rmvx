@@ -1,10 +1,10 @@
-# FS Tree Standard Broadleaf 01 — Asset / Semantic Depth Spec v0.2
+# FS Tree Standard Broadleaf 01 — Asset / Semantic Depth Spec v0.3
 
 - Project: Forest Symphony
 - Asset ID: `FS_Tree_Standard_Broadleaf_01`
 - Family: `standard_broadleaf`
 - Category: `tree`
-- Status: `PROVISIONAL PASS / PIPELINE BENCHMARK`
+- Status: `REGENERATION REQUIRED / PIPELINE BENCHMARK`
 - Authority date: 2026-08-18
 - Related Linear: `SHO-34 | FS Parallax Master Object Benchmark I`
 
@@ -12,99 +12,112 @@
 
 本資產是 Forest Symphony 第一個正式「標準森林闊葉樹」量產原型，同時作為以下流程的基準樣本：
 
-1. PixelLab Master Object generation
-2. Aseprite final cleanup / semantic-mask authoring
-3. D1 / D3 / D4 semantic depth planning
-4. Python Asset Validator
-5. Render Policy
-6. FS single-object Compiler Prototype
-7. 後續 standard broadleaf variants 的風格與工程基準
+1. Game Asset Forge / PixelLab original Master Object generation
+2. Forest Symphony Style DNA visual acceptance
+3. Aseprite final cleanup / semantic-mask authoring
+4. D1 / D3 / D4 semantic depth planning
+5. Python Asset Validator
+6. Render Policy
+7. FS single-object Compiler Prototype
+8. 後續 standard broadleaf variants 的風格與工程基準
 
-本規格遵循 **Master Object First**：完整 Master Object 是唯一美術主體；D1 / D3 / D4 描述物件的世界語意；Ground / Par 則由 Render Policy 派生。禁止把 Ground 與 Par 當成兩張彼此獨立生成、獨立維護的美術圖。
+本規格遵循 **Master Object First**：完整 Master Object 是唯一美術主體；D1 / D3 / D4 描述物件的世界語意；Ground / Par 則由 Render Policy 派生。
 
-## 2. Reference Direction
+## 2. Current benchmark decision
 
-Primary family direction:
-- FS 原始 `tree variation.png` 類型：輪廓清楚、樹冠集中、主幹與樹根明確，適合量產與重複排列。
+先前生成的 standard broadleaf 候選樹已由使用者判定 **不通過視覺驗收**。
 
-Secondary reference:
-- FS 原始 `Trees1.png`：提供葉叢層次、樹幹質感與大型闊葉樹語言參考。
+因此撤回任何 `PROVISIONAL PASS` 解讀。現在必須重新生成新的 Master Object。
 
-Excluded as primary direction:
-- `Hanzo-VSTrees03.png` 類針葉林輪廓，不屬於本 asset family。
+失敗的重要教訓：
 
-## 3. Master Object Authority
+- 舊 FS 樹圖是用來分析 Forest Symphony 的風格家族與地圖使用方式。
+- 不應把單棵舊樹直接當成新樹的形狀答案。
+- 若生成 prompt 要求過度貼近 canopy structure / trunk proportion / branch layout，模型會產生近似複製。
+- 下一輪生成改採 **Style DNA first / reference images for acceptance** 策略。
 
-正式美術 Authority 永遠是：
+## 3. Style Authority
+
+正式 standard broadleaf Style DNA：
+
+`docs/asset_pipeline/FS_STANDARD_BROADLEAF_STYLE_DNA_V1.md`
+
+Game Asset Forge 下一輪正式 Prompt：
+
+`docs/asset_pipeline/GAME_ASSET_FORGE_FS_STANDARD_BROADLEAF_PROMPT_V1.md`
+
+核心生成原則：
+
+> Learn the family DNA. Do not copy the individual.
+
+第一輪 originality benchmark 不應提供單棵 legacy tree sprite 作為主要 image-conditioning reference。
+
+可使用：
+- Style DNA 文字
+- FS 整體 map screenshot 作低權重世界 / 比例 context
+- 從 FS 資產抽出的 palette swatch
+
+Legacy tree sprites 主要用在生成後 acceptance comparison。
+
+## 4. Family Evidence
+
+Family 規則目前根據已上傳並實際檢查的 FS 素材建立，包括：
+
+- `tree variation.png`：standard / production broadleaf 最重要分析來源
+- `Trees1.png`：葉叢、樹皮與 legacy broadleaf 語言分析來源
+- `Hanzo-VSTrees03.png`：conifer 對照來源，排除其輪廓
+- `SCENE21` 與多組 `groundXX / parXX`：實際 map scale、重複配置、Ground/Par 遮擋行為分析
+
+這些來源的任務是幫助建立規則，不是要求生成器重畫其中任一棵樹。
+
+## 5. Master Object Authority
+
+當新的候選通過視覺驗收後，正式美術 Authority 才會成為：
 
 `FS_Tree_Standard_Broadleaf_01_Master.png`
 
+在通過前，任何失敗候選都不得升為 production Master。
+
 D1 / D3 / D4 為工程 semantic masks，不是三份獨立美術資產。
 
-任何美術修正應優先修改 Master，再重新產生 / 修正 masks 與 compiler outputs，避免 Ground / Par 發生版本漂移。
-
-## 4. Semantic Depth Definitions
+## 6. Semantic Depth Definitions
 
 ### D1 — Ground Contact / Placement Semantics
 
 用途：
-- 定義根部、接地關係與 placement 語意
-- 支援 anchor、未來 collision/passability 與 map compiler reasoning
+- 根部 / 接地關係
+- anchor
+- 未來 collision / passability / placement reasoning
 
-應包含：
-- 最低位樹根
-- 接地陰影
-- 根部貼地小草 / 苔蘚 / 低位裝飾
-- 必要的低位外擴根鬚
+應包含：最低位樹根、接地陰影、貼地草 / 苔蘚 / 低位裝飾。
 
-不應包含：
-- 大片樹冠
-- 與接地無關的高位枝葉
-
-判定原則：以「是否屬於接地與放置關係」判定，不以固定高度水平切割。
-
-**v0.2 注意：D1 不再等同 Ground 輸出範圍。**
+**D1 不等同 Ground output。**
 
 ### D3 — Primary Occluder
 
 用途：定義角色位於樹後方時，主要應顯示於角色前方的實體遮擋區。
 
-應包含：
-- 主幹
-- 中下段粗枝
-- 與主幹連續並具遮擋意義的枝體
-- 必要的少量中位葉叢
-
-判定原則：問「角色位於此物件後方時，這個區域是否應顯示在角色前面？」
+應包含：主幹、中下段粗枝、具主要遮擋意義的結構。
 
 ### D4 — Canopy / High Foliage
 
 用途：定義高位枝葉與樹冠的遮擋語意。
 
-應包含：
-- 大部分樹冠
-- 高位葉叢
-- 上方 / 外側延伸枝葉
-- 垂落但仍屬高位覆蓋的葉片
+應包含：大部分樹冠、高位葉叢、外側延伸枝葉。
 
-不應包含：
-- 接地陰影
-- 樹根
-
-## 5. Semantic Relationship Rules
+## 7. Semantic Relationship Rules
 
 1. 禁止以水平高度硬切 D1 / D3 / D4。
 2. Depth assignment 以 gameplay / occlusion / placement function 為優先。
 3. D3 與 D4 邊界允許不規則輪廓。
 4. Semantic masks 不是 Ground / Par 的互斥 destination map。
-5. Mask overlap 可存在，Validator 會量測，但不因 overlap 本身判 FAIL。
-6. v0.2 不導入 D2、runtime dynamic sorting 或多 Par layer。
+5. Mask overlap 可存在，Validator 會量測，但 overlap 本身不直接判 FAIL。
 
-## 6. Forest Symphony Render Policy Authority
+## 8. Forest Symphony Render Policy Authority
 
-實際檢查既有 FS `groundXX / parXX` reference 後，確認舊 FS 使用 **Base + Occlusion Overlay** 類型行為：完整物件可存在 Ground，同一物件的遮擋區再重複存在 Par。
+實際檢查既有 FS `groundXX / parXX` reference 後，確認舊 FS 使用 **Base + Occlusion Overlay** 類型行為。
 
-因此目前 FS profile：
+Profile：
 
 `fs_legacy_parallax_vx`
 
@@ -115,31 +128,15 @@ Ground = full Master Object
 Par    = Master Object masked by D3 + D4
 ```
 
-Ground / Par pixel overlap 是預期結果，不是錯誤。
+Ground / Par pixel overlap 是預期結果。
 
-完整定義見：
+完整定義：
 
 `docs/asset_pipeline/FS_RENDER_POLICY_V0_2.md`
 
-## 7. Aseprite Authoring Layout
+## 9. File Naming
 
-建議 layer：
-
-- `MASTER`
-- `MASK_D1`
-- `MASK_D3`
-- `MASK_D4`
-- `GUIDE_ANCHOR`
-- `GUIDE_NOTES`
-
-Mask 規則：
-- selected pixels: opaque white `#FFFFFF`
-- unselected pixels: fully transparent
-- 不允許 anti-aliasing
-- 不允許模糊
-- 不允許非必要半透明
-
-## 8. File Naming
+候選通過後使用：
 
 ```text
 FS_Tree_Standard_Broadleaf_01_Master.png
@@ -149,13 +146,11 @@ FS_Tree_Standard_Broadleaf_01_D4.png
 FS_Tree_Standard_Broadleaf_01.meta.json
 ```
 
-所有 masks 必須與 Master 完全同尺寸、同 canvas origin，不得另行 trim / crop。
+所有 masks 必須與 Master 完全同尺寸、同 canvas origin。
 
-## 9. Anchor Authority
+## 10. Anchor Authority
 
-Anchor 語義：樹木實際放置到地圖時的接地基準點。
-
-建議：
+Anchor：
 - X = trunk center
 - Y = root bottom contact
 
@@ -169,52 +164,38 @@ Normalized baseline：
 }
 ```
 
-## 10. Metadata Baseline v0.2
+## 11. Visual Acceptance Gate — BEFORE mask authoring
 
-```json
-{
-  "asset_id": "FS_Tree_Standard_Broadleaf_01",
-  "family": "standard_broadleaf",
-  "category": "tree",
-  "variant": "base",
-  "status": "provisional_pass",
-  "source_master": "FS_Tree_Standard_Broadleaf_01_Master.png",
-  "masks": {
-    "D1": "FS_Tree_Standard_Broadleaf_01_D1.png",
-    "D3": "FS_Tree_Standard_Broadleaf_01_D3.png",
-    "D4": "FS_Tree_Standard_Broadleaf_01_D4.png"
-  },
-  "anchor": {
-    "mode": "normalized",
-    "x": 0.50,
-    "y": 0.95
-  },
-  "render_policy": {
-    "profile": "fs_legacy_parallax_vx",
-    "ground": {
-      "source": "master"
-    },
-    "par": {
-      "source": "master",
-      "mask_union": ["D3", "D4"]
-    }
-  }
-}
-```
+新的候選 Master 必須先通過以下視覺檢查，才值得製作 D1 / D3 / D4：
 
-## 11. Acceptance Criteria
+1. 看起來屬於 Forest Symphony 世界。
+2. 明確屬於 standard broadleaf，而非 landmark / conifer / fantasy hero tree。
+3. 輪廓與任何 legacy source tree 都有實質差異。
+4. 樹冠、主幹、枝條、根部不是舊樹的近似重畫。
+5. 作為普通森林樹可以重複使用，不會過度搶戲。
+6. 能合理衍生至少 2 個不同 sibling variants。
+7. 在實際 RMVX map scale 下仍可讀。
+8. 結構天然適合後續 D1 / D3 / D4 authoring。
 
-本資產只有在以下條件成立時才能從 `PROVISIONAL PASS` 升為正式 production reference：
+若 Visual Acceptance FAIL：
 
-- Master 視覺符合 FS standard broadleaf family
-- D1 / D3 / D4 可由人工合理理解並穩定重製
-- Validator v0.2 無 blocking FAIL
-- Compiler v0.2 可依 `fs_legacy_parallax_vx` 產生非空 Ground / Par
-- Ground 為完整 Master，Par 為 D3+D4 occlusion overlay
-- 實際 FS map/runtime 測試維持正確接地與角色遮擋感
-- 後續至少 2 個同 family variant 能沿用同一 semantic + render policy，不必重新發明 depth rules
+> 直接重新生成，不進 Mask / Validator / Compiler。
 
-## 12. Scope Boundary
+避免對失敗美術投入後段工程成本。
+
+## 12. Engineering Acceptance — AFTER visual pass
+
+視覺通過後才進入：
+
+- D1 / D3 / D4 authoring
+- Validator v0.2
+- Compiler v0.2
+- `fs_legacy_parallax_vx` Ground / Par output
+- RMVX runtime visual acceptance
+
+只有全部通過，才可升為正式 production reference。
+
+## 13. Scope Boundary
 
 尚未納入：
 
@@ -226,4 +207,4 @@ Normalized baseline：
 - whole-map compiler
 - dynamic runtime occlusion
 
-這些功能必須在真實 Benchmark 02 完成並通過 runtime acceptance 後再擴張。
+這些功能必須在新的真實 Benchmark 02 通過 visual + runtime acceptance 後再擴張。
