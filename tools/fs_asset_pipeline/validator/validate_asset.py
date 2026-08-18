@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Forest Symphony Asset Validator v0.1.
+"""Forest Symphony Asset Validator v0.2.
 
-Validates a Master Object + D1/D3/D4 masks + metadata bundle.
+Validates a Master Object + D1/D3/D4 semantic masks + metadata bundle.
+
+v0.2 separates:
+- semantic depth: D1 / D3 / D4
+- render policy: how Master + masks become engine outputs
+
+Backward compatibility:
+- v0.1 export_rules are accepted with a warning.
+
 Exit codes:
   0 = PASS / PASS_WITH_WARNINGS
   2 = FAIL
@@ -12,29 +20,32 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from PIL import Image
 
 
 def _pixels(image: Image.Image):
-    """Pillow-compatible pixel iterator without relying on a single API generation."""
     getter = getattr(image, "get_flattened_data", None)
     return getter() if getter is not None else image.getdata()
+
 
 STATUS_PASS = "PASS"
 STATUS_WARN = "PASS_WITH_WARNINGS"
 STATUS_FAIL = "FAIL"
+VALIDATOR_VERSION = "0.2"
 
-REQUIRED_META_FIELDS = (
+COMMON_REQUIRED_META_FIELDS = (
     "asset_id",
     "family",
     "category",
     "source_master",
     "masks",
     "anchor",
-    "export_rules",
 )
+
+ALLOWED_DEPTH_LAYERS = {"D1", "D3", "D4"}
+SUPPORTED_RENDER_PROFILES = {"fs_legacy_parallax_vx", "custom_v0_2"}
 
 
 def _issue(code: str, message: str, **details: Any) -> Dict[str, Any]:
@@ -45,7 +56,6 @@ def _issue(code: str, message: str, **details: Any) -> Dict[str, Any]:
 
 
 def _visible_mask_pixels(image: Image.Image) -> Tuple[bytes, int, int]:
-    """Return boolean membership bytes, visible count, partial-alpha count."""
     rgba = image.convert("RGBA")
     data = list(_pixels(rgba))
     membership = bytearray(len(data))
@@ -61,7 +71,7 @@ def _visible_mask_pixels(image: Image.Image) -> Tuple[bytes, int, int]:
 
 
 def _bbox_from_membership(bits: bytes, size: Tuple[int, int]) -> Optional[List[int]]:
-    width, height = size
+    width, _height = size
     xs: List[int] = []
     ys: List[int] = []
     for idx, value in enumerate(bits):
@@ -99,11 +109,7 @@ def _load_png(path: Path, label: str, failures: List[Dict[str, Any]]) -> Optiona
     return img.convert("RGBA")
 
 
-def _validate_binary_mask(
-    image: Image.Image,
-    label: str,
-    failures: List[Dict[str, Any]],
-) -> None:
+def _validate_binary_mask(image: Image.Image, label: str, failures: List[Dict[str, Any]]) -> None:
     partial_alpha = 0
     invalid_visible_color = 0
     for r, g, b, a in _pixels(image):
@@ -115,6 +121,116 @@ def _validate_binary_mask(
         failures.append(_issue("FAIL_MASK_HAS_PARTIAL_ALPHA", f"{label} has partial alpha pixels", count=partial_alpha))
     if invalid_visible_color:
         failures.append(_issue("FAIL_MASK_HAS_INVALID_VISIBLE_COLOR", f"{label} visible pixels must be opaque white", count=invalid_visible_color))
+
+
+def _validate_layer_list(
+    layers: Any,
+    label: str,
+    failures: List[Dict[str, Any]],
+    allow_empty: bool = False,
+) -> None:
+    if not isinstance(layers, list) or (not layers and not allow_empty):
+        failures.append(_issue("FAIL_RENDER_POLICY_INVALID", f"{label} must be a non-empty list"))
+        return
+    unknown = [x for x in layers if x not in ALLOWED_DEPTH_LAYERS]
+    if unknown:
+        failures.append(_issue("FAIL_RENDER_POLICY_UNKNOWN_DEPTH_LAYER", f"{label} contains unknown depth layer", layers=unknown))
+    if len(layers) != len(set(layers)):
+        failures.append(_issue("FAIL_RENDER_POLICY_DUPLICATE_DEPTH_LAYER", f"{label} contains duplicate depth layer", layers=layers))
+
+
+def _validate_render_target(
+    target: Any,
+    target_name: str,
+    failures: List[Dict[str, Any]],
+) -> None:
+    if not isinstance(target, dict):
+        failures.append(_issue("FAIL_RENDER_POLICY_INVALID", f"render_policy.{target_name} must be an object"))
+        return
+
+    source = target.get("source")
+    if source != "master":
+        failures.append(_issue(
+            "FAIL_RENDER_POLICY_SOURCE_UNSUPPORTED",
+            f"render_policy.{target_name}.source must be 'master' in v0.2",
+            source=source,
+        ))
+
+    if "mask_union" in target:
+        _validate_layer_list(target.get("mask_union"), f"render_policy.{target_name}.mask_union", failures)
+
+
+def _validate_render_policy(
+    meta: Dict[str, Any],
+    failures: List[Dict[str, Any]],
+    warnings: List[Dict[str, Any]],
+    info: List[Dict[str, Any]],
+) -> None:
+    render_policy = meta.get("render_policy")
+    export_rules = meta.get("export_rules")
+
+    if render_policy is None:
+        if isinstance(export_rules, dict):
+            warnings.append(_issue(
+                "WARN_LEGACY_EXPORT_RULES_V0_1",
+                "Metadata uses legacy v0.1 export_rules; compiler will translate them to a masked-master render policy",
+            ))
+            ground_layers = export_rules.get("ground_layers")
+            par_layers = export_rules.get("par_layers")
+            _validate_layer_list(ground_layers, "export_rules.ground_layers", failures)
+            _validate_layer_list(par_layers, "export_rules.par_layers", failures)
+            return
+
+        failures.append(_issue(
+            "FAIL_RENDER_POLICY_MISSING",
+            "Metadata must define render_policy (v0.2) or legacy export_rules (v0.1 compatibility)",
+        ))
+        return
+
+    if not isinstance(render_policy, dict):
+        failures.append(_issue("FAIL_RENDER_POLICY_INVALID", "render_policy must be an object"))
+        return
+
+    profile = render_policy.get("profile")
+    if profile not in SUPPORTED_RENDER_PROFILES:
+        failures.append(_issue(
+            "FAIL_RENDER_PROFILE_UNSUPPORTED",
+            "Unsupported render_policy.profile",
+            profile=profile,
+            supported=sorted(SUPPORTED_RENDER_PROFILES),
+        ))
+
+    _validate_render_target(render_policy.get("ground"), "ground", failures)
+    _validate_render_target(render_policy.get("par"), "par", failures)
+
+    if export_rules is not None:
+        warnings.append(_issue(
+            "WARN_LEGACY_EXPORT_RULES_IGNORED",
+            "Both render_policy and export_rules are present; v0.2 render_policy takes precedence",
+        ))
+
+    if profile == "fs_legacy_parallax_vx":
+        ground = render_policy.get("ground") if isinstance(render_policy.get("ground"), dict) else {}
+        par = render_policy.get("par") if isinstance(render_policy.get("par"), dict) else {}
+
+        if "mask_union" in ground:
+            failures.append(_issue(
+                "FAIL_FS_LEGACY_GROUND_MUST_BE_FULL_MASTER",
+                "fs_legacy_parallax_vx requires Ground to use the full Master with no mask_union",
+            ))
+
+        par_union = par.get("mask_union")
+        if not isinstance(par_union, list) or set(par_union) != {"D3", "D4"} or len(par_union) != 2:
+            failures.append(_issue(
+                "FAIL_FS_LEGACY_PAR_MASK_UNION_INVALID",
+                "fs_legacy_parallax_vx requires Par mask_union to be exactly D3 + D4",
+                actual=par_union,
+            ))
+
+        info.append(_issue(
+            "INFO_FS_LEGACY_PARALLAX_POLICY",
+            "FS legacy parallax policy: Ground = full Master; Par = Master masked by D3 + D4",
+        ))
 
 
 def validate_asset_bundle(asset_dir: Path | str, meta_path: Path | str | None = None) -> Dict[str, Any]:
@@ -142,7 +258,7 @@ def validate_asset_bundle(asset_dir: Path | str, meta_path: Path | str | None = 
 
     asset_id = str(meta.get("asset_id") or "UNKNOWN")
 
-    for field in REQUIRED_META_FIELDS:
+    for field in COMMON_REQUIRED_META_FIELDS:
         if field not in meta:
             failures.append(_issue("FAIL_META_REQUIRED_FIELD_MISSING", f"Metadata missing required field: {field}", field=field))
 
@@ -187,20 +303,28 @@ def validate_asset_bundle(asset_dir: Path | str, meta_path: Path | str | None = 
         partial_ratio = partial_count / max(1, len(alpha_values))
         if partial_ratio > 0.05:
             warnings.append(_issue("WARN_MASTER_HIGH_PARTIAL_ALPHA_RATIO", "Master has a high partial-alpha ratio", ratio=partial_ratio))
-        info.append(_issue("INFO_MASTER_METRICS", "Master metrics", width=master.width, height=master.height, visible_pixels=visible_count, transparent_pixels=transparent_count, partial_alpha_pixels=partial_count))
+        info.append(_issue(
+            "INFO_MASTER_METRICS",
+            "Master metrics",
+            width=master.width,
+            height=master.height,
+            visible_pixels=visible_count,
+            transparent_pixels=transparent_count,
+            partial_alpha_pixels=partial_count,
+        ))
 
         for layer, img in mask_images.items():
             if img.size != master.size:
                 failures.append(_issue(f"FAIL_MASK_SIZE_MISMATCH_{layer}", f"{layer} size does not match Master", master_size=list(master.size), mask_size=list(img.size)))
 
     memberships: Dict[str, bytes] = {}
-    metrics: Dict[str, Any] = {}
+    metrics: Dict[str, Any] = {"validator_version": VALIDATOR_VERSION}
     if master is not None and len(mask_images) == 3 and all(img.size == master.size for img in mask_images.values()):
         master_bits, master_visible, _ = _visible_mask_pixels(master)
         metrics["master_visible_pixels"] = master_visible
 
         for layer in ("D1", "D3", "D4"):
-            bits, visible, partial = _visible_mask_pixels(mask_images[layer])
+            bits, visible, _partial = _visible_mask_pixels(mask_images[layer])
             memberships[layer] = bits
             metrics[f"{layer.lower()}_pixels"] = visible
             metrics[f"{layer.lower()}_bbox"] = _bbox_from_membership(bits, master.size)
@@ -237,41 +361,33 @@ def validate_asset_bundle(asset_dir: Path | str, meta_path: Path | str | None = 
     else:
         mode = anchor.get("mode")
         if mode != "normalized":
-            failures.append(_issue("FAIL_ANCHOR_MODE_UNSUPPORTED", "v0.1 supports only normalized anchor", mode=mode))
+            failures.append(_issue("FAIL_ANCHOR_MODE_UNSUPPORTED", "v0.2 supports only normalized anchor", mode=mode))
         try:
             x = float(anchor.get("x"))
             y = float(anchor.get("y"))
             if not (0.0 <= x <= 1.0 and 0.0 <= y <= 1.0):
                 failures.append(_issue("FAIL_ANCHOR_OUT_OF_BOUNDS", "Normalized anchor must be within [0,1]", x=x, y=y))
-            else:
-                if y < 0.70:
-                    warnings.append(_issue("WARN_ANCHOR_VERTICAL_POSITION_SUSPECT", "Tree anchor is unusually high", y=y))
+            elif y < 0.70:
+                warnings.append(_issue("WARN_ANCHOR_VERTICAL_POSITION_SUSPECT", "Tree anchor is unusually high", y=y))
         except (TypeError, ValueError):
             failures.append(_issue("FAIL_ANCHOR_OUT_OF_BOUNDS", "Anchor x/y must be numeric"))
 
-    export_rules = meta.get("export_rules")
-    if not isinstance(export_rules, dict):
-        failures.append(_issue("FAIL_EXPORT_RULE_INVALID", "export_rules must be an object"))
-    else:
-        ground_layers = export_rules.get("ground_layers")
-        par_layers = export_rules.get("par_layers")
-        allowed = {"D1", "D3", "D4"}
-        if not isinstance(ground_layers, list) or not ground_layers:
-            failures.append(_issue("FAIL_GROUND_EXPORT_HAS_NO_SOURCE_LAYER", "ground_layers must be a non-empty list"))
-        if not isinstance(par_layers, list) or not par_layers:
-            failures.append(_issue("FAIL_PAR_EXPORT_HAS_NO_SOURCE_LAYER", "par_layers must be a non-empty list"))
-        if isinstance(ground_layers, list) and any(x not in allowed for x in ground_layers):
-            failures.append(_issue("FAIL_EXPORT_RULE_INVALID", "ground_layers contains unknown depth layer", layers=ground_layers))
-        if isinstance(par_layers, list) and any(x not in allowed for x in par_layers):
-            failures.append(_issue("FAIL_EXPORT_RULE_INVALID", "par_layers contains unknown depth layer", layers=par_layers))
+    _validate_render_policy(meta, failures, warnings, info)
 
     return _finalize(asset_id, failures, warnings, info, metrics)
 
 
-def _finalize(asset_id: str, failures: List[Dict[str, Any]], warnings: List[Dict[str, Any]], info: List[Dict[str, Any]], metrics: Dict[str, Any]) -> Dict[str, Any]:
+def _finalize(
+    asset_id: str,
+    failures: List[Dict[str, Any]],
+    warnings: List[Dict[str, Any]],
+    info: List[Dict[str, Any]],
+    metrics: Dict[str, Any],
+) -> Dict[str, Any]:
     status = STATUS_FAIL if failures else (STATUS_WARN if warnings else STATUS_PASS)
     return {
         "asset_id": asset_id,
+        "validator_version": VALIDATOR_VERSION,
         "status": status,
         "fail_count": len(failures),
         "warn_count": len(warnings),
