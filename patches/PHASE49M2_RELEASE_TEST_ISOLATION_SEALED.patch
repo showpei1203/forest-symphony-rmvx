@@ -1,0 +1,85 @@
+--- PAGE480_K5_SEALED.rb
++++ PAGE480_PHASE49M2.rb
+@@ -409,8 +409,10 @@
+ #         learned skill。最後再正式卸裝，技能仍必須存在，證明 ownership 已從 equipment-temporary 轉為 natural。
+ #         暫時 Note、Party inventory、NEW flag、正式 $game_actors 與 detached Actor baseline 全部精確還原；不修改正式 Runtime。
+ 
++if $TEST
+ $imported = {} if $imported == nil
+ $imported["FS BattleRegression ResidualDrainFixtures"] = "1.0a"
++end
+ 
+ module FS_TEST_HARNESS
+   RESIDUAL_FIXTURE_VERSION = "0.8b"
+@@ -10798,7 +10800,7 @@
+ #   0 修改。所有 alias 僅存在 AutoRegression TEST page480。
+ #==============================================================================
+ 
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   class << self
+     def p45b1_subject_scope?(battler)
+@@ -11972,7 +11974,7 @@
+ # 【資產】無。
+ # 【授權】TEST harness 擴充；原作者／原授權資訊均保留於各 Formal script。
+ #==============================================================================
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   P45E_SKILL_ID = 100 unless const_defined?(:P45E_SKILL_ID)
+ 
+@@ -12234,7 +12236,7 @@
+ #         Field state/source 與 synthetic Skill slot 亦在 Fixture 後立即恢復，Battle Snapshot 再做第二層保護。
+ # 【Formal Runtime】0 修改；所有 Formal Skill Effect / Character / SoulMark / Field pages byte-exact。
+ #==============================================================================
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   P45F_FIELD_SKILL_SLOT = 1 unless const_defined?(:P45F_FIELD_SKILL_SLOT)
+   P45F_FIELD_STATE_ID = 153 unless const_defined?(:P45F_FIELD_STATE_ID)
+@@ -12822,7 +12824,7 @@
+ # 【隔離】detached battler 不加入 Party/Troop；temporary context、Skill slot 1、RNG、ivar 均 immediate restore。
+ # 【Formal Runtime】0 修改；所有 Formal pages byte-exact。
+ #==============================================================================
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   P45G_SKILL_SLOT = 1 unless const_defined?(:P45G_SKILL_SLOT)
+   P45G_STATE_ID = 40 unless const_defined?(:P45G_STATE_ID)
+@@ -15581,7 +15583,7 @@
+ #      啟動值、OD、action-duration lifecycle。
+ # consume_stored_cover 的完整 Scene_Battle 成功/失敗 gate 留 Phase46B1。
+ #==============================================================================
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   class << self
+     def p46b_native_popup_rollback_contract
+@@ -18194,7 +18196,7 @@
+ # Phase47A1：實機已證明正式 <law_cycle_interval:3> 曾被舊 parser 誤讀為 1；
+ # 本候選 Formal parser 已以 interval 為 Authority 並保留 actions alias，Live fixture 鎖定 3 次才換律。
+ #==============================================================================
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   P47A_BACKGROUND_JOBS_PER_FRAME = 2 unless const_defined?("P47A_BACKGROUND_JOBS_PER_FRAME")
+ 
+@@ -18719,7 +18721,7 @@
+ #
+ # 不新增 Scene_Battle session、不建立 Ruby Thread、不修改正式 Enemy/Troop Data。
+ #==============================================================================
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   class << self
+     def p47b_action_signature(enemy)
+@@ -19054,7 +19056,7 @@
+ #
+ # 永久規則：Fixture failure 只改 TEST；沒有實機證據不得修改 Formal Runtime。
+ #==============================================================================
+-if defined?(FS_TEST_HARNESS)
++if $TEST && defined?(FS_TEST_HARNESS)
+ module FS_TEST_HARNESS
+   @p48a_ai_edge_ran = false
+   @p48a_ai_edge_ready = false
