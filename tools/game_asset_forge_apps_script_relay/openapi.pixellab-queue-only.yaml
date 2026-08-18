@@ -1,12 +1,15 @@
 openapi: 3.1.0
 info:
   title: Game Asset Forge PixelLab Queue API
-  version: "1.0.0"
+  version: "1.0.1"
   description: PixelLab actions that return small payloads only.
+
 servers:
   - url: https://api.pixellab.ai/v2
+
 security:
   - bearerAuth: []
+
 paths:
   /balance:
     get:
@@ -19,8 +22,14 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                $ref: "#/components/schemas/BalanceResponse"
+        "401":
+          description: Invalid API token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
   /create-image-pixflux-background:
     post:
       operationId: queuePixelArtImage
@@ -31,66 +40,161 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required: [description, image_size]
-              properties:
-                description:
-                  type: string
-                image_size:
-                  type: object
-                  required: [width, height]
-                  properties:
-                    width:
-                      type: integer
-                      minimum: 32
-                      maximum: 400
-                    height:
-                      type: integer
-                      minimum: 32
-                      maximum: 400
-                  additionalProperties: false
-                no_background:
-                  type: boolean
-                  default: false
-                seed:
-                  type: integer
-                  minimum: 0
-                isometric:
-                  type: boolean
-                  default: false
-                outline:
-                  type: string
-                shading:
-                  type: string
-                detail:
-                  type: string
-                view:
-                  type: string
-                direction:
-                  type: string
-                text_guidance_scale:
-                  type: number
-                  minimum: 1
-                  maximum: 20
-              additionalProperties: false
+              $ref: "#/components/schemas/PixfluxQueueRequest"
       responses:
         "202":
-          description: Job accepted.
+          description: Job accepted and processing.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  background_job_id:
-                    type: string
-                  status:
-                    type: string
-                  usage:
-                    type: object
-                    additionalProperties: true
-                additionalProperties: true
+                $ref: "#/components/schemas/QueueResponse"
+        "401":
+          description: Invalid API token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "402":
+          description: Insufficient credits.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
+          description: Invalid generation parameters.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Too many concurrent jobs.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
+      bearerFormat: API Token
+
+  schemas:
+    BalanceResponse:
+      type: object
+      properties:
+        credits:
+          type: object
+          properties:
+            type:
+              type: string
+            usd:
+              type: number
+          additionalProperties: true
+        subscription:
+          type: object
+          properties:
+            type:
+              type: string
+            status:
+              type: string
+            plan:
+              type: string
+            generations:
+              type: number
+            total:
+              type: number
+          additionalProperties: true
+      additionalProperties: true
+
+    PixfluxQueueRequest:
+      type: object
+      required:
+        - description
+        - image_size
+      properties:
+        description:
+          type: string
+          minLength: 1
+          description: Text description of the image to generate.
+        image_size:
+          $ref: "#/components/schemas/ImageSize"
+        no_background:
+          type: boolean
+          default: false
+        seed:
+          type: integer
+          minimum: 0
+        isometric:
+          type: boolean
+          default: false
+        outline:
+          type: string
+        shading:
+          type: string
+        detail:
+          type: string
+        view:
+          type: string
+        direction:
+          type: string
+        text_guidance_scale:
+          type: number
+          minimum: 1
+          maximum: 20
+      additionalProperties: false
+
+    ImageSize:
+      type: object
+      required:
+        - width
+        - height
+      properties:
+        width:
+          type: integer
+          minimum: 32
+          maximum: 400
+        height:
+          type: integer
+          minimum: 32
+          maximum: 400
+      additionalProperties: false
+
+    QueueResponse:
+      type: object
+      required:
+        - background_job_id
+        - status
+      properties:
+        background_job_id:
+          type: string
+        status:
+          type: string
+          enum:
+            - processing
+            - completed
+            - failed
+        usage:
+          $ref: "#/components/schemas/Usage"
+      additionalProperties: true
+
+    Usage:
+      type: object
+      properties:
+        type:
+          type: string
+        usd:
+          type: number
+      additionalProperties: true
+
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+        description:
+          type: string
+        message:
+          type: string
+      additionalProperties: true
