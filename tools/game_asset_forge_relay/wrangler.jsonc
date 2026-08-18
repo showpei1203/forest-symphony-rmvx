@@ -6,12 +6,6 @@
   "vars": {
     "PIXELLAB_API_BASE": "https://api.pixellab.ai/v2"
   },
-  "secrets": {
-    "required": [
-      "PIXELLAB_API_TOKEN",
-      "RELAY_API_KEY"
-    ]
-  },
   "r2_buckets": [
     {
       "binding": "ASSETS",
