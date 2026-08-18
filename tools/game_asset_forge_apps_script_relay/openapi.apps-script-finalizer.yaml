@@ -1,10 +1,12 @@
 openapi: 3.1.0
 info:
   title: Game Asset Forge Apps Script Finalizer
-  version: "1.0.0"
+  version: "1.0.1"
   description: Finalizes completed PixelLab jobs into Google Drive PNG files.
+
 servers:
   - url: https://script.google.com/macros/s/REPLACE_DEPLOYMENT_ID/exec
+
 paths:
   /health:
     get:
@@ -17,8 +19,8 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                additionalProperties: true
+                $ref: "#/components/schemas/HealthResponse"
+
   /finalize:
     post:
       operationId: finalizePixelLabImageJob
@@ -29,46 +31,74 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              required: [job_id, asset_id]
-              properties:
-                job_id:
-                  type: string
-                  minLength: 1
-                asset_id:
-                  type: string
-                  minLength: 1
-                destination:
-                  type: string
-                  enum: [fs_map_candidates]
-                  default: fs_map_candidates
-              additionalProperties: false
+              $ref: "#/components/schemas/FinalizeRequest"
       responses:
         "200":
           description: Processing, completed, or failed status.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  ok:
-                    type: boolean
-                  status:
-                    type: string
-                  job_id:
-                    type: string
-                  asset_id:
-                    type: string
-                  filename:
-                    type: string
-                  drive_file_id:
-                    type: string
-                  image_url:
-                    type: string
-                  download_url:
-                    type: string
-                  drive_view_url:
-                    type: string
-                  error:
-                    type: string
-                additionalProperties: true
+                $ref: "#/components/schemas/FinalizeResponse"
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        service:
+          type: string
+        version:
+          type: string
+      additionalProperties: true
+
+    FinalizeRequest:
+      type: object
+      required:
+        - job_id
+        - asset_id
+      properties:
+        job_id:
+          type: string
+          minLength: 1
+        asset_id:
+          type: string
+          minLength: 1
+        destination:
+          type: string
+          enum:
+            - fs_map_candidates
+          default: fs_map_candidates
+      additionalProperties: false
+
+    FinalizeResponse:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        status:
+          type: string
+          enum:
+            - processing
+            - completed
+            - failed
+        job_id:
+          type: string
+        asset_id:
+          type: string
+        filename:
+          type: string
+        drive_file_id:
+          type: string
+        image_url:
+          type: string
+        download_url:
+          type: string
+        drive_view_url:
+          type: string
+        error:
+          type: string
+        message:
+          type: string
+      additionalProperties: true
