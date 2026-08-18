@@ -1,0 +1,39 @@
+{
+  "asset_id": "FS_Tree_Standard_Broadleaf_01",
+  "family": "standard_broadleaf",
+  "category": "tree",
+  "variant": "base",
+  "status": "provisional_pass",
+  "source_master": "FS_Tree_Standard_Broadleaf_01_Master.png",
+  "masks": {
+    "D1": "FS_Tree_Standard_Broadleaf_01_D1.png",
+    "D3": "FS_Tree_Standard_Broadleaf_01_D3.png",
+    "D4": "FS_Tree_Standard_Broadleaf_01_D4.png"
+  },
+  "anchor": {
+    "mode": "normalized",
+    "x": 0.5,
+    "y": 0.95,
+    "description": "trunk center / root bottom contact"
+  },
+  "export_rules": {
+    "ground_layers": ["D1"],
+    "par_layers": ["D3", "D4"]
+  },
+  "style_reference": {
+    "primary_reference_family": "FS standard broadleaf",
+    "reference_notes": [
+      "Use tree variation.png as the main family direction",
+      "Use Trees1.png as a secondary foliage-density reference",
+      "Do not drift into conifer silhouette"
+    ]
+  },
+  "validator_expectations": {
+    "require_rgba": true,
+    "require_transparent_background": true,
+    "allow_antialias_on_master": true,
+    "allow_antialias_on_masks": false,
+    "require_mask_same_size_as_master": true,
+    "require_nonempty_masks": true
+  }
+}
