@@ -1,4 +1,4 @@
-# Forest Symphony Standard Broadleaf — Style DNA v1
+# Forest Symphony Standard Broadleaf — Style DNA v1.1
 
 - Project: Forest Symphony
 - Asset family: `standard_broadleaf`
@@ -15,6 +15,12 @@ The generation pipeline must learn the family-level visual language from existin
 Core rule:
 
 > Learn the family DNA. Do not copy the individual.
+
+A second core rule was added after the first text-only generation failed by drifting into a fantasy / landmark tree:
+
+> Standard trees must be visually ordinary enough to repeat across a forest.
+
+Originality is required, but **originality must not be achieved by increasing spectacle, fantasy, root drama, trunk twisting, or decorative complexity**.
 
 ## 2. Evidence used to derive the family
 
@@ -36,11 +42,35 @@ It is NOT:
 - a sacred / ancient landmark tree
 - a boss-arena centerpiece
 - a cinematic hero tree
+- a quest tree
+- a visually unique story prop
 - a conifer
 - a dead tree
 - a seasonal special variant
 
 The family must tolerate repeated placement across forest maps without every tree demanding visual attention.
+
+### Visual salience authority
+
+A standard tree should feel like **environmental vocabulary**, not a visual exclamation mark.
+
+Preferred:
+
+- low-to-moderate visual salience
+- ordinary believable forest-tree anatomy
+- restrained asymmetry
+- restrained bark drama
+- restrained root spread
+- restrained base decoration
+- enough individuality to avoid cloning, but not enough to imply special gameplay significance
+
+Avoid:
+
+- tree that appears sacred, magical, ancient, unique, named, quest-relevant, boss-related, or cinematic
+- elaborate trunk twists that become the visual focus
+- giant roots that dominate the lower third
+- vine / moss / leaf ornaments climbing the trunk unless extremely subtle
+- intentionally theatrical branch gestures
 
 ## 4. Silhouette DNA
 
@@ -54,6 +84,7 @@ Target silhouette:
 - moderate width; avoid huge horizontal spread
 - one cohesive canopy mass rather than many disconnected floating puff clusters
 - trunk must remain visually discoverable
+- silhouette should look plausible for a normal reusable forest tree
 
 Avoid:
 
@@ -63,6 +94,7 @@ Avoid:
 - highly theatrical S-curve trunk
 - extreme leaning composition
 - oversized roots dominating the sprite
+- deliberately iconic / emblematic silhouette
 
 ## 5. Foliage DNA
 
@@ -71,12 +103,13 @@ Foliage should read as grouped pixel masses, not individual-leaf noise.
 Preferred:
 
 - chunky cluster grouping
-- 3–5 major canopy masses at a macro level
+- approximately 3–5 major canopy masses at a macro level
 - secondary breakup inside those masses
 - dark interior pockets to create depth
 - clear highlight groups rather than evenly distributed sparkle
 - restrained edge protrusions
 - good readability at RPG Maker VX map scale
+- canopy remains visually dominant over trunk ornamentation
 
 Avoid:
 
@@ -85,6 +118,7 @@ Avoid:
 - excessive micro-noise
 - cloud-puff repetition where every cluster has the same round shape
 - neon highlight coverage over the entire crown
+- unusually dramatic isolated crown lobes that make the tree look designed as a centerpiece
 
 ## 6. Value / palette DNA
 
@@ -129,6 +163,7 @@ Trunk:
 - naturally tapered
 - modest organic variation
 - should remain partly visible beneath / through the lower canopy
+- should support the canopy rather than become the main decorative subject
 
 Branches:
 
@@ -136,12 +171,15 @@ Branches:
 - approximately 3–5 readable primary branch directions is a useful baseline
 - branches can disappear into foliage, but the structural logic should remain understandable
 - avoid tangled branch webs
+- avoid decorative symmetrical forks
+- avoid sweeping heroic branch gestures
 
 Bark texture:
 
 - pixel-clustered grooves / planes
 - enough texture to read as FS-style bark
 - not ornate enough to become a landmark asset
+- avoid glowing strips, strong spiral bands, braided / twisted rope-like bark, or exaggerated carved appearance
 
 ## 9. Root / ground-contact DNA
 
@@ -154,6 +192,7 @@ Preferred:
 - slightly irregular spread
 - limited integrated grass / moss / low foliage if needed
 - clear anchor area at trunk center / bottom contact
+- roots remain subordinate to the overall tree silhouette
 
 Avoid:
 
@@ -161,6 +200,8 @@ Avoid:
 - large root tentacles
 - root system wider than the normal canopy logic requires
 - decorative base becoming a separate scene
+- roots that occupy a large fraction of the sprite height
+- roots crossing / braiding into a dramatic emblem
 
 ## 10. Pixel language
 
@@ -198,8 +239,11 @@ while retaining:
 - visual scale
 - grounding logic
 - RMVX readability
+- low-to-moderate visual salience
 
 If every sibling looks like the same tree with recolored leaves, the family generation process has failed.
+
+If every sibling looks like a different legendary tree, the family generation process has also failed.
 
 ## 12. Depth-planning compatibility
 
@@ -210,6 +254,8 @@ The Master Object must remain suitable for semantic depth planning:
 - D4: canopy / high foliage visually coherent
 
 This does NOT mean the generator should draw three artificial horizontal bands. It means the natural structure should make later mask authoring practical.
+
+Engineering readability is secondary to correct family role. A visibly wrong landmark tree does not become acceptable merely because its masks would be easy to draw.
 
 ## 13. Reference-use policy
 
@@ -244,11 +290,33 @@ A generated tree passes the Style DNA benchmark only when:
 2. It is recognizably a `standard_broadleaf` family member.
 3. It is clearly a NEW individual rather than a near-copy of a legacy tree.
 4. It is repeatable / production-friendly rather than a showcase illustration.
-5. Trunk, roots, and canopy remain readable enough for D1/D3/D4 planning.
-6. It can plausibly produce multiple sibling variants without silhouette cloning.
+5. It has low-to-moderate visual salience and does not imply special gameplay significance.
+6. Trunk, roots, and canopy remain readable enough for D1/D3/D4 planning.
+7. It can plausibly produce multiple sibling variants without silhouette cloning.
+8. Its roots, trunk twisting, foliage ornamentation, and base detail remain restrained enough for ordinary forest repetition.
 
-## 15. Current generation strategy
+## 15. Failure learned from Generation v1
 
-For the next benchmark, do **not** use a legacy tree sprite as the primary conditioning image.
+The first Style-DNA-only candidate was visually rejected because it drifted too far from the standard production role:
 
-Generate from this Style DNA first. After an original candidate exists, compare the result against legacy FS references as an acceptance step rather than using them as the answer key during generation.
+- trunk became highly twisted / decorative
+- exposed roots became too large and theatrical
+- foliage / trunk relationship felt like a special fantasy tree
+- base vegetation and trunk greenery increased story / landmark salience
+- overall asset read as a unique tree rather than normal reusable map vocabulary
+
+This is classified as:
+
+`FAIL_FAMILY_ROLE_MISMATCH / FAIL_EXCESSIVE_VISUAL_SALIENCE`
+
+The correction is NOT to copy legacy geometry more closely. The correction is to tighten the standard-production role constraints.
+
+## 16. Current generation strategy
+
+For the next benchmark:
+
+1. Do **not** use a legacy tree sprite as the primary conditioning image.
+2. Generate from Style DNA + Standard Production Constraints.
+3. Favor ordinary, restrained, reusable anatomy over expressive originality.
+4. If world context is needed, use a full-map FS screenshot at low influence rather than a single-tree reference.
+5. After an original candidate exists, compare against legacy FS references as an acceptance step rather than using them as the answer key during generation.
