@@ -1,0 +1,9 @@
+# Binary authority belongs in Google Drive
+*.rvdata
+*.zip
+Game.exe
+Audio/
+Graphics/
+Save*.rvdata
+*.log
+.tmp/

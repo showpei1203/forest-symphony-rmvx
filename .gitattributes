@@ -1,0 +1,6 @@
+exported_scripts/** -text
+tests/*.rb -text
+tools/rmvx_embedded_export_tool_page483.rb -text
+*.md text eol=lf
+*.json text eol=lf
+*.tsv text eol=lf
