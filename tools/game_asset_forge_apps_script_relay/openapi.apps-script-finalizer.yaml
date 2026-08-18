@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: Game Asset Forge Apps Script Finalizer
+  version: "1.0.0"
+  description: Finalizes completed PixelLab jobs into Google Drive PNG files.
+servers:
+  - url: https://script.google.com/macros/s/REPLACE_DEPLOYMENT_ID/exec
+paths:
+  /health:
+    get:
+      operationId: getAssetFinalizerHealth
+      summary: Check finalizer health
+      description: Verify the Apps Script finalizer is reachable.
+      responses:
+        "200":
+          description: Health result.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /finalize:
+    post:
+      operationId: finalizePixelLabImageJob
+      summary: Finalize PixelLab job
+      description: Check a PixelLab job. If complete, save its PNG to Drive and return small image URLs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [job_id, asset_id]
+              properties:
+                job_id:
+                  type: string
+                  minLength: 1
+                asset_id:
+                  type: string
+                  minLength: 1
+                destination:
+                  type: string
+                  enum: [fs_map_candidates]
+                  default: fs_map_candidates
+              additionalProperties: false
+      responses:
+        "200":
+          description: Processing, completed, or failed status.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                  status:
+                    type: string
+                  job_id:
+                    type: string
+                  asset_id:
+                    type: string
+                  filename:
+                    type: string
+                  drive_file_id:
+                    type: string
+                  image_url:
+                    type: string
+                  download_url:
+                    type: string
+                  drive_view_url:
+                    type: string
+                  error:
+                    type: string
+                additionalProperties: true
