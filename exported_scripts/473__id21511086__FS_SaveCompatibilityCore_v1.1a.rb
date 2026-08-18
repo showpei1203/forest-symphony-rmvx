@@ -1,8 +1,8 @@
 #==============================================================================
 # 【Forest Symphony｜繁體中文維護說明】
 #------------------------------------------------------------------------------
-# 腳本：FS_SaveCompatibilityCore v1.1a
-# 【用途】Forest Symphony 相容／修正頁「FS_SaveCompatibilityCore v1.1a」，針對既有系統補正專案需要的行為。
+# 腳本：FS_SaveCompatibilityCore v1.2
+# 【用途】Forest Symphony 相容／修正頁「FS_SaveCompatibilityCore v1.2」，針對既有系統補正專案需要的行為。
 # 【主要機制】統一 Save Extension、舊存檔相容與 Runtime object audit；Phase 29 起在新遊戲及每次讀檔後都執行 ArmorMapping normalization，確保舊 Mapping 真正完成遷移。
 # 【主要影響】Scene_File、Scene_Title、Game_Battler、FS_SAVE_COMPAT
 # 【設定／可調參數】優先調整本頁明確的設定常數／設定區，例如：MAGIC、LOG_FILE。核心方法除非已確認依賴鏈，不建議直接覆寫。
@@ -19,7 +19,7 @@
 # 4. Alias／Compatibility／Authority Chain 搬動前，先查 LoadOrder Guide／Authority Map。
 #==============================================================================
 #==============================================================================
-# ■ FS_SaveCompatibilityCore v1.1a
+# ■ FS_SaveCompatibilityCore v1.2
 #------------------------------------------------------------------------------
 # RPG Maker VX / RGSS2
 #
@@ -45,7 +45,7 @@
 #==============================================================================
 
 $imported = {} if $imported == nil
-$imported["FS Save Compatibility Core"] = 1.11
+$imported["FS Save Compatibility Core"] = 1.20
 
 module FS_SAVE_COMPAT
   VERSION = 1
@@ -212,6 +212,35 @@ module FS_SAVE_COMPAT
   end
 
   #--------------------------------------------------------------------------
+  # ● Phase49N1：Neo Save 損壞／截斷存檔核心驗證
+  #--------------------------------------------------------------------------
+  # Neo Save 的存檔預覽視窗會直接 Marshal.load 前 13 個物件。只要檔案被
+  # 截斷或內容損壞，玩家甚至還沒按下「讀取」就可能在預覽階段崩潰。
+  # 這裡先只讀取 VX 正式核心 14 物件，確認至少具備完整 core graph。
+  # Extension tail 仍交由 read_extension 的既有 new/legacy/base-only/recovered
+  # Authority 處理，因此不會把可相容的舊格式誤判成壞檔。
+  CORE_OBJECT_COUNT = 14
+
+  def self.valid_core_save_file?(file_name)
+    return false if file_name == nil
+    return false unless FileTest.exist?(file_name)
+    file = nil
+    begin
+      file = File.open(file_name, "rb")
+      CORE_OBJECT_COUNT.times { Marshal.load(file) }
+      return true
+    rescue Exception => error
+      log("Invalid core save rejected: #{file_name}: #{error.class}: #{error.message}")
+      return false
+    ensure
+      begin
+        file.close if file != nil && !file.closed?
+      rescue
+      end
+    end
+  end
+
+  #--------------------------------------------------------------------------
   # ● 新遊戲／讀檔後全域物件稽核
   #--------------------------------------------------------------------------
   def self.audit_runtime_objects(source = :unknown)
@@ -346,6 +375,55 @@ if defined?(Scene_File)
       end
       Graphics.frame_reset
       FS_SAVE_COMPAT.audit_runtime_objects("load/#{format}")
+    end
+  end
+end
+
+#==============================================================================
+# ■ Phase49N1：Neo Save 損壞／截斷存檔 UI 安全拒絕
+#------------------------------------------------------------------------------
+# Window_NSS_SlotDetail 原版只用 FileTest.exist? 判定存檔存在，並在預覽時
+# 直接 Marshal.load。Phase49N1 將「存在」收斂成「存在且 core 14 物件可讀」。
+# 壞檔保留在磁碟上、不偷偷刪除，但 UI 視為空槽；玩家可直接覆寫該槽。
+#==============================================================================
+
+if defined?(Window_NSS_SlotDetail)
+  class Window_NSS_SlotDetail < Window_Base
+    unless method_defined?(:fs_save_compat_safe_load_save_data)
+      alias fs_save_compat_safe_load_save_data load_save_data
+    end
+
+    def file_exist?(slot_id)
+      cached = @exist_list[slot_id]
+      return cached if cached != nil
+      file_name = make_filename(slot_id)
+      @exist_list[slot_id] =
+        FileTest.exist?(file_name) && FS_SAVE_COMPAT.valid_core_save_file?(file_name)
+      return @exist_list[slot_id]
+    rescue Exception => error
+      FS_SAVE_COMPAT.log("Neo Save slot probe failed: #{slot_id}: #{error.class}: #{error.message}")
+      @exist_list[slot_id] = false
+      return false
+    end
+
+    def load_save_data(slot_id)
+      file_name = make_filename(slot_id)
+      if FileTest.exist?(file_name) &&
+         !FS_SAVE_COMPAT.valid_core_save_file?(file_name)
+        @exist_list[slot_id] = false
+        @data[slot_id] = -1
+        FS_SAVE_COMPAT.log("Neo Save preview rejected invalid slot: #{slot_id} / #{file_name}")
+        return
+      end
+
+      fs_save_compat_safe_load_save_data(slot_id)
+    rescue Exception => error
+      # 即使第三方 preview code 因舊圖像／物件資料異常拋例外，也不能讓
+      # Save/Load UI 直接終止整個 RGSS2 process。
+      FS_SAVE_COMPAT.log("Neo Save preview failed safely: #{slot_id}: #{error.class}: #{error.message}")
+      @exist_list[slot_id] = false
+      @data[slot_id] = -1
+      return
     end
   end
 end
