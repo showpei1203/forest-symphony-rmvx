@@ -1,0 +1,27 @@
+# Forest Symphony Phase49N2
+# Status: CANDIDATE / Runtime UNVERIFIED
+# Base binary: Phase49M2 Scripts SHA-256 fd20ede256e17b43e4b610b349ecc64889652726c1ba2851fdcfa994202aff67
+# Base page480 source SHA-256 b65445f68d896daec7014c659a4653219bf9babf9d89854c12aef59a06d27e92
+# N2 page480 source SHA-256 1f54287d2c1708a11095a98da96db82cc42a77fb15113dfb1b292a98a790f028
+# N2 Scripts SHA-256 25ed18381a60f0725bbbba1db22cf2f5042a0e001418c4e21a35ca3476841c41
+#
+# Runtime evidence that triggered this correction:
+# direct ordinary battle under $TEST=false raised
+# NoMethodError: undefined method `p45b1_subject_scope?` for FS_TEST_HARNESS:Module
+# from the Phase45B1 Game_Battler#overdrive= TEST wrapper.
+#
+# Apply to exported page480 AFTER the canonical Phase49M2 patch.
+# Only the two TEST-only wrapper installation guards change.
+
+--- a/exported_scripts/480__id99918663__FS_BattleRegression_AIEdgeI_v1.0.rb
++++ b/exported_scripts/480__id99918663__FS_BattleRegression_AIEdgeI_v1.0.rb
+@@
+ # TEST-only：追蹤本次 fixture subject 的所有 overdrive= 寫入。
+-if defined?(Game_Battler)
++if $TEST && defined?(Game_Battler)
+ class Game_Battler
+@@
+ # TEST-only：直接包住 KGC Scene_Battle#consume_od_gauge，確認其當下 Skill 與 OD cost。
+-if defined?(Scene_Battle)
++if $TEST && defined?(Scene_Battle)
+ class Scene_Battle < Scene_Base
