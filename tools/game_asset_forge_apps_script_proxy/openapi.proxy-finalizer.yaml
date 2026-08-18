@@ -1,0 +1,109 @@
+openapi: 3.1.0
+
+info:
+  title: Game Asset Forge Finalizer Proxy API
+  version: "1.0.0"
+  description: Small JSON proxy for the Apps Script PixelLab finalizer.
+
+servers:
+  - url: https://REPLACE_WITH_WORKER.workers.dev
+
+paths:
+
+  /health:
+    get:
+      operationId: getAssetFinalizerHealth
+      summary: Check finalizer health
+      description: Check the Apps Script finalizer through the redirect-safe proxy.
+      responses:
+        "200":
+          description: Health check result.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /finalize:
+    post:
+      operationId: finalizePixelLabImageJob
+      summary: Finalize PixelLab image job
+      description: Finalize a PixelLab job through Apps Script and return small Drive URLs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FinalizeRequest"
+      responses:
+        "200":
+          description: Finalization result.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinalizeResponse"
+
+components:
+  schemas:
+
+    HealthResponse:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        service:
+          type: string
+        version:
+          type: string
+        error:
+          type: string
+      additionalProperties: true
+
+    FinalizeRequest:
+      type: object
+      required:
+        - job_id
+        - asset_id
+      properties:
+        job_id:
+          type: string
+          minLength: 1
+        asset_id:
+          type: string
+          minLength: 1
+        destination:
+          type: string
+          enum:
+            - fs_map_candidates
+          default: fs_map_candidates
+      additionalProperties: false
+
+    FinalizeResponse:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        status:
+          type: string
+        job_id:
+          type: string
+        asset_id:
+          type: string
+        filename:
+          type: string
+        drive_file_id:
+          type: string
+        image_url:
+          type: string
+        download_url:
+          type: string
+        drive_view_url:
+          type: string
+        cached:
+          type: boolean
+        public_share_enabled:
+          type: boolean
+        error:
+          type: string
+        message:
+          type: string
+      additionalProperties: true
