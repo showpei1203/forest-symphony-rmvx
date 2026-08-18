@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "game-asset-forge-relay",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-18",
+  "vars": {
+    "PIXELLAB_API_BASE": "https://api.pixellab.ai/v2"
+  },
+  "secrets": {
+    "required": [
+      "PIXELLAB_API_TOKEN",
+      "RELAY_API_KEY"
+    ]
+  },
+  "r2_buckets": [
+    {
+      "binding": "ASSETS",
+      "bucket_name": "game-asset-forge-assets"
+    }
+  ]
+}
