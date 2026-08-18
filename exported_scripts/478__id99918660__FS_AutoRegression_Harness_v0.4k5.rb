@@ -1,7 +1,7 @@
 #==============================================================================
 # 【Forest Symphony｜繁體中文維護說明】
 #------------------------------------------------------------------------------
-# 腳本：FS_AutoRegression_Harness v0.4i2
+# 腳本：FS_AutoRegression_Harness v0.4k2
 # 【用途】Forest Symphony 測試專用自動回歸入口。只在 RPG Maker VX 的 $TEST 模式
 #         生效，提供地圖快捷鍵、統一 LOG、ASSERT、例外捕捉，以及可回復的戰鬥 Smoke
 #         Fixture。正式遊戲完全不啟用。
@@ -9,6 +9,9 @@
 #         Shift + F9：執行非戰鬥回歸，整合 FS_NonBattleValidation 與 Harness self-check。
 #         Ctrl  + F9：執行戰鬥 Smoke Regression，自動建立暫時 Fixture、進入戰鬥、
 #                    做基本 ASSERT、短暫跑數十幀後自動退出並還原測試前遊戲狀態。
+#         Ctrl+Shift+F9：Phase49K1 跨 Suite Soak；單輪 Nonbattle Core → Battle Smoke →
+#                    反向 Nonbattle Core，全程同一份 LOG／同一組 counters；避免把已封版
+#                    Phase49J 411-pass repeatability 再巢狀塞入 PRE/POST 耗盡 RGSS2 資源。
 #         F9：維持 RPG Maker VX 原生 Debug，不被本頁取代。
 # 【LOG】FS_AutoRegression_LATEST.log
 #         主要標籤：[SUITE] [FIXTURE] [ASSERT] [VALIDATION] [RNG] [BATTLE]
@@ -28,7 +31,18 @@
 #   6. Snapshot restore 後、Summary 前呼叫 after_battle_snapshot_restore，供 Fixture 驗證
 #      測試裝備／物品已確實還原。
 #   7. AI Decision RNG 在 Battle Smoke 中固定 seed=12345，正式遊戲仍使用原 Kernel.rand。
-# 【目前範圍】v0.4i2 保留 Phase49B～49H SEALED semantic；Phase49I2 為 TEST-only lifecycle expectation fix。實機 0.4i1 已證明 Map/Ring/SoulBook/Menu 兩輪建立、重建與 terminate cleanup 全部正常，僅 hide 後 TEST 錯把 Normal Minimap 的正式 refresh_interval=4 視為單幀 immediate bitmap dispose。本版在 hide 後先驗 visible flag 即時 OFF 與 player marker 單幀清除，再於正式 refresh interval 內 bounded update 驗 minimap bitmap 清除；不修改任何 Formal Runtime。
+# 【目前範圍】v0.4k2 保留 Phase49B～49J SEALED semantic；修正 Phase49K TEST orchestration。
+#         v0.4k1 已證明 231-pass PRE_BATTLE 可穩定完成，但 cross-suite semantic guard 誤呼叫
+#         不存在的 p49c_ivar_present?；v0.4k2 改回已實機使用的 Ruby 1.8-safe
+#         p49c_ivar_defined?。此修正只影響 TEST guard，不變更任何 Formal Runtime。
+#         v0.4k 實機在 PRE_BATTLE 內巢狀執行完整 411-pass（其本身含 Phase49J 反向重跑），
+#         尚未進 Battle 即於第二次 Save/Load 中發生無 Ruby exception／無 Summary 的 process
+#         hard-exit，分類為 TEST resource-pressure defect。v0.4k2 的 Ctrl+Shift+F9 改為：
+#         Nonbattle Core 231（B→I，排除 J）→ SEALED Battle Smoke 1388 → Nonbattle Core 231
+#         （I→B），並在各 major fixture 間 TEST-only GC.start。Phase49J 411 repeatability 證據
+#         仍由已 SEALED Phase49J 獨立保留，不在 Cross-Suite 內重複巢狀。跨 suite semantic
+#         guard 仍驗 Map/Player/Gold/Graphics/Minimap/Temp transfer flags/AI+Combat RNG。
+#         Shift+F9 仍完整 411；Ctrl+F9、F9 行為不變；Formal Runtime delta=0。
 #         Shift+F9 Nonbattle Runtime Semantic II：Ring Menu、Quest、Enemy Book、Normal
 #         Minimap、Random Dungeon facade；Phase49C2 只修 TEST cleanup，使用 Ruby 1.8-safe
 #         private remove_instance_variable 呼叫，確保原本不存在的 Game_Temp / module cache
@@ -48,10 +62,10 @@
 #==============================================================================
 
 $imported = {} if $imported == nil
-$imported["FS AutoRegression Harness"] = "0.4i2"
+$imported["FS AutoRegression Harness"] = "0.4k5"
 
 module FS_TEST_HARNESS
-  VERSION = "0.4j"
+  VERSION = "0.4k5"
   LOG_FILE = "FS_AutoRegression_LATEST.log"
   BATTLE_SMOKE_FRAMES = 360
   ACTION_QUEUE_FRAME = 2
@@ -78,6 +92,12 @@ module FS_TEST_HARNESS
   @battle_combat_rng_count = 0
   @battle_combat_rng_trace = []
   @battle_exit_requested_by_harness = false
+  @phase49k_cross_active = false
+  @phase49k_battle_restored = false
+  @phase49k_finalizing = false
+  @phase49k_guard = nil
+  @phase49k_battle_fail_before = 0
+  @phase49k_battle_pass_before = 0
   @battle_exit_in_progress = false
   @battle_transition_pending = false
   @battle_transition_wait_total = 0
@@ -272,7 +292,9 @@ module FS_TEST_HARNESS
     return true if @hotkey_latched
     @hotkey_latched = true
 
-    if ctrl
+    if ctrl && shift
+      run_phase49k_cross_suite_soak_x
+    elsif ctrl
       run_battle_smoke
     else
       run_nonbattle
@@ -4292,11 +4314,16 @@ module FS_TEST_HARNESS
   end
 
   #--------------------------------------------------------------------------
-  # ● Shift+F9：非戰鬥回歸
+  # ● Nonbattle semantic pass（可嵌入既有 suite，不 reset LOG/counters）
   #--------------------------------------------------------------------------
-  def self.run_nonbattle
+  # Standalone Shift+F9 仍使用本完整 pass，保留 Phase49J 反向 replay，因此維持
+  # 已封版的 411 assertions。Phase49K1 Cross-Suite 改走下方 231-pass core helper。
+  def self.run_nonbattle_semantic_pass(label = "PRIMARY")
     return false unless test_mode?
-    begin_suite("NONBATTLE")
+    pass_fail_before = @fail_count.to_i
+    pass_count_before = @pass_count.to_i
+    log("[NONBATTLE_PASS_BEGIN] label=#{label} pass_before=#{pass_count_before} fail_before=#{pass_fail_before}")
+
     assert("TEST mode", test_mode?)
     idle = true
     begin
@@ -4306,9 +4333,7 @@ module FS_TEST_HARNESS
     end
     assert("Map interpreter idle", idle,
            idle ? nil : "請在事件未執行時啟動測試")
-    unless idle
-      return finish_suite("FAIL")
-    end
+    return false unless idle
 
     if defined?(FS_AI_RANDOM)
       assert("AI deterministic RNG self-test", FS_AI_RANDOM.self_test)
@@ -4366,9 +4391,361 @@ module FS_TEST_HARNESS
       assert("FS_NonBattleValidation exists", false)
     end
 
+    ready = @fail_count.to_i == pass_fail_before
+    log("[NONBATTLE_PASS_END] label=#{label} pass_delta=#{@pass_count.to_i - pass_count_before} fail_delta=#{@fail_count.to_i - pass_fail_before} ready=#{ready}")
+    return ready
+  rescue Exception => e
+    exception(e, "run_nonbattle_semantic_pass:#{label}")
+    return false
+  end
+
+  #--------------------------------------------------------------------------
+  # ● Shift+F9：非戰鬥回歸（既有行為維持）
+  #--------------------------------------------------------------------------
+  def self.run_nonbattle
+    return false unless test_mode?
+    begin_suite("NONBATTLE")
+    run_nonbattle_semantic_pass("PRIMARY")
     return finish_suite
   rescue Exception => e
     exception(e, "run_nonbattle")
+    return finish_suite("FAIL")
+  end
+
+  #--------------------------------------------------------------------------
+  # ● Phase49K1：Cross-Suite 專用單輪 Nonbattle Core（不巢狀 Phase49J）
+  #--------------------------------------------------------------------------
+  # Phase49J 已獨立以 411/0/0 證明 B→I + I→B repeatability。Cross-Suite 若再把
+  # run_nonbattle_semantic_pass（內含 Phase49J）放在 Battle 前後，等於在 32-bit
+  # RGSS2 process 中重複建立/銷毀 Scene、Bitmap、Dungeon Table 與三種 Save graph，
+  # v0.4k 實機已證明會在尚未進 Battle 前造成 process hard-exit。
+  #
+  # 本 helper 保留 Phase49I2 的完整 231 assertions，但排除 Phase49J；PRE 使用 B→I，
+  # POST 使用 I→B，以跨順序驗證 Battle 前後污染。各 major fixture 後只在 TEST Harness
+  # 呼叫 GC.start，Formal Runtime 完全不修改。
+  def self.p49k_gc_checkpoint(label)
+    begin
+      GC.start
+      log("[PHASE49K_GC] label=#{label}")
+      return true
+    rescue Exception => e
+      log("[PHASE49K_GC] label=#{label} skipped=#{e.class}:#{e.message}")
+      return false
+    end
+  end
+
+  def self.run_nonbattle_core_pass(label = "CORE", reverse = false)
+    return false unless test_mode?
+    fail_before = @fail_count.to_i
+    pass_before = @pass_count.to_i
+    order = reverse ? "I,H,G,F,E,D,C,B" : "B,C,D,E,F,G,H,I"
+    log("[NONBATTLE_CORE_BEGIN] label=#{label} order=#{order} pass_before=#{pass_before} fail_before=#{fail_before}")
+
+    assert("TEST mode", test_mode?)
+    idle = true
+    begin
+      idle = !$game_map.interpreter.running?
+    rescue
+      idle = true
+    end
+    assert("Map interpreter idle", idle,
+           idle ? nil : "請在事件未執行時啟動測試")
+    return false unless idle
+
+    if defined?(FS_AI_RANDOM)
+      assert("AI deterministic RNG self-test", FS_AI_RANDOM.self_test)
+      assert("AI deterministic RNG default OFF", !FS_AI_RANDOM.enabled?)
+    else
+      assert("AI deterministic RNG exists", false)
+    end
+
+    run_authority_fixtures
+
+    phase49b_ready = false
+    phase49c_ready = false
+    phase49d_ready = false
+    phase49e_ready = false
+    phase49f_ready = false
+    phase49g_ready = false
+    phase49h_ready = false
+    phase49i_ready = false
+
+    if reverse
+      phase49i_ready = run_phase49i_scene_ui_lifecycle_soak_viii
+      p49k_gc_checkpoint("#{label}_I")
+      phase49h_ready = run_phase49h_map_event_runtime_semantic_vii
+      p49k_gc_checkpoint("#{label}_H")
+      phase49g_ready = run_phase49g_economy_shop_craft_runtime_semantic_vi
+      p49k_gc_checkpoint("#{label}_G")
+      phase49f_ready = run_phase49f_save_load_runtime_semantic_v
+      p49k_gc_checkpoint("#{label}_F")
+      phase49e_ready = run_phase49e_real_transfer_lifecycle_iv
+      p49k_gc_checkpoint("#{label}_E")
+      phase49d_ready = run_phase49d_random_dungeon_map_event_semantic_iii
+      p49k_gc_checkpoint("#{label}_D")
+      phase49c_ready = run_phase49c_nonbattle_runtime_semantic_ii
+      p49k_gc_checkpoint("#{label}_C")
+      phase49b_ready = run_phase49b_vehicle_overlay_semantic
+      p49k_gc_checkpoint("#{label}_B")
+    else
+      phase49b_ready = run_phase49b_vehicle_overlay_semantic
+      p49k_gc_checkpoint("#{label}_B")
+      phase49c_ready = run_phase49c_nonbattle_runtime_semantic_ii
+      p49k_gc_checkpoint("#{label}_C")
+      phase49d_ready = run_phase49d_random_dungeon_map_event_semantic_iii
+      p49k_gc_checkpoint("#{label}_D")
+      phase49e_ready = run_phase49e_real_transfer_lifecycle_iv
+      p49k_gc_checkpoint("#{label}_E")
+      phase49f_ready = run_phase49f_save_load_runtime_semantic_v
+      p49k_gc_checkpoint("#{label}_F")
+      phase49g_ready = run_phase49g_economy_shop_craft_runtime_semantic_vi
+      p49k_gc_checkpoint("#{label}_G")
+      phase49h_ready = run_phase49h_map_event_runtime_semantic_vii
+      p49k_gc_checkpoint("#{label}_H")
+      phase49i_ready = run_phase49i_scene_ui_lifecycle_soak_viii
+      p49k_gc_checkpoint("#{label}_I")
+    end
+
+    if defined?(FS_NONBATTLE_VALIDATION)
+      lines = FS_NONBATTLE_VALIDATION.run
+      warn_count = 0
+      ok_count = 0
+      unexpected = []
+      advisory_prefixes = [
+        "WARN Vehicle script also writes switches 202, 203, 204"
+      ]
+      for line in lines
+        text = line.to_s
+        if text.index("OK   ") == 0
+          ok_count += 1
+        elsif text.index("INFO Shop price audit skipped") == 0
+          if phase49g_ready
+            log("[VALIDATION_RESOLVED] Shop price audit skipped | Phase49G current Shop/Economy Authority runtime semantic PASS")
+          end
+        elsif text.index("WARN ") == 0
+          warn_count += 1
+          advisory = advisory_prefixes.any? { |prefix| text.index(prefix) == 0 }
+          if advisory
+            if phase49b_ready
+              log("[VALIDATION_RESOLVED] #{text.sub(/^WARN\s+/, "")} | Phase49B runtime semantic PASS")
+            else
+              warn("Validation advisory", text.sub(/^WARN\s+/, ""))
+            end
+          else
+            unexpected << text
+          end
+        end
+        log("[VALIDATION] #{text}")
+      end
+      assert("FS_NonBattleValidation returned lines", lines.size > 0, lines.size)
+      assert("FS_NonBattleValidation unexpected warnings = 0", unexpected.empty?,
+             unexpected.empty? ? "ok=#{ok_count} advisory=#{warn_count}" : unexpected[0, 8].join(" || "))
+    else
+      assert("FS_NonBattleValidation exists", false)
+    end
+
+    ready = @fail_count.to_i == fail_before
+    log("[NONBATTLE_CORE_END] label=#{label} order=#{order} pass_delta=#{@pass_count.to_i - pass_before} fail_delta=#{@fail_count.to_i - fail_before} ready=#{ready}")
+    return ready
+  rescue Exception => e
+    exception(e, "run_nonbattle_core_pass:#{label}")
+    return false
+  end
+
+  #--------------------------------------------------------------------------
+  # ● Phase49K：跨 Suite semantic guard
+  #--------------------------------------------------------------------------
+  # Battle Smoke 的正式 snapshot 會以 Marshal clone 重建部分 $game_* root，因此
+  # Phase49K1 不使用 root identity 當 correctness；改驗真正 gameplay semantic state、
+  # Temp transfer flags、Graphics 與 RNG。Battle 後再以反向 231-pass Nonbattle Core
+  # 做跨 suite 污染探測；411-pass repeatability 由 SEALED Phase49J 獨立負責。
+  def self.p49k_semantic_guard
+    temp = {}
+    names = [:@next_scene, :@common_event_id, :@in_battle,
+      :@fs_rd_pending_key, :@fs_rd_pending_floor, :@fs_rd_place_mode,
+      :@fs_rd_force_setup, :@fs_rd_suppress_exit_reset]
+    if $game_temp != nil
+      names.each do |name|
+        present = p49c_ivar_defined?($game_temp, name)
+        value = nil
+        value = $game_temp.instance_variable_get(name) if present
+        temp[name] = [present, value]
+      end
+    end
+    return {
+      :frame => Graphics.frame_count.to_i,
+      :brightness => Graphics.brightness.to_i,
+      :map_id => ($game_map == nil ? nil : $game_map.map_id.to_i),
+      :player => ($game_player == nil ? nil : [$game_player.x.to_i, $game_player.y.to_i, $game_player.direction.to_i]),
+      :gold => ($game_party == nil ? nil : $game_party.gold.to_i),
+      :fog_transition => (defined?($fog_transition) ? $fog_transition : nil),
+      :minimap_visible => (defined?(FS_NORMAL_MINIMAP) != nil ? FS_NORMAL_MINIMAP.visible? : nil),
+      :minimap_full => (defined?(FS_NORMAL_MINIMAP) != nil ? FS_NORMAL_MINIMAP.fullmap_visible? : nil),
+      :ai_rng => (defined?(FS_AI_RANDOM) != nil ? FS_AI_RANDOM.enabled? : nil),
+      :combat_rng => (defined?(FS_COMBAT_RANDOM) != nil ? FS_COMBAT_RANDOM.enabled? : nil),
+      :scene_class => ($scene == nil ? nil : $scene.class.to_s),
+      :ring_count => (defined?($game_ring_cm) && $game_ring_cm != nil ? $game_ring_cm.size : nil),
+      :temp => temp
+    }
+  rescue Exception => e
+    exception(e, "p49k_semantic_guard")
+    return nil
+  end
+
+  def self.p49k_guard_keys
+    return [:brightness, :map_id, :player, :gold, :fog_transition,
+      :minimap_visible, :minimap_full, :ai_rng, :combat_rng, :scene_class,
+      :ring_count, :temp]
+  end
+
+  def self.p49k_guard_diff(expected, actual)
+    return [[:guard, expected, actual]] if expected == nil || actual == nil
+    rows = []
+    for key in p49k_guard_keys
+      next if expected[key] == actual[key]
+      rows << [key, expected[key], actual[key]]
+    end
+    expected_frame = expected[:frame].to_i
+    actual_frame = actual[:frame].to_i
+    if actual_frame < expected_frame
+      rows << [:frame_regressed, expected_frame, actual_frame]
+    end
+    return rows
+  rescue Exception => e
+    return [[:exception, e.class.to_s, e.message.to_s]]
+  end
+
+  def self.p49k_log_frame_guard(stage, expected, actual)
+    return if expected == nil || actual == nil
+    expected_frame = expected[:frame].to_i
+    actual_frame = actual[:frame].to_i
+    delta = actual_frame - expected_frame
+    monotonic = actual_frame >= expected_frame
+    log("[PHASE49K_FRAME] stage=#{stage} expected=#{expected_frame} actual=#{actual_frame} delta=#{delta} monotonic=#{monotonic}")
+  rescue Exception => e
+    log("[PHASE49K_FRAME] stage=#{stage} error=#{e.class}: #{e.message}")
+  end
+
+  def self.p49k_guard_equal?(expected, actual)
+    return p49k_guard_diff(expected, actual).empty?
+  rescue
+    return false
+  end
+
+  #--------------------------------------------------------------------------
+  # ● Ctrl+Shift+F9：Phase49K1 Battle ↔ Nonbattle Cross-Suite Soak X
+  #--------------------------------------------------------------------------
+  def self.run_phase49k_cross_suite_soak_x
+    return false unless test_mode?
+    return false if @battle_active || @phase49k_cross_active
+    begin_suite("CROSS_SUITE")
+    @phase49k_cross_active = true
+    @phase49k_battle_restored = false
+    @phase49k_finalizing = false
+    @phase49k_guard = nil
+
+    log("[FIXTURE] PHASE49K-BATTLE-NONBATTLE-CROSS-SUITE-X")
+    pre_pass_before = @pass_count.to_i
+    pre_fail_before = @fail_count.to_i
+    p49k_gc_checkpoint("PRE_BEGIN")
+    pre_ready = run_nonbattle_core_pass("PRE_BATTLE", false)
+    pre_delta = @pass_count.to_i - pre_pass_before
+    pre_clean = pre_ready && @fail_count.to_i == pre_fail_before && pre_delta == 231
+    @phase49k_guard = p49k_semantic_guard
+    assert("Phase49K pre-battle Nonbattle Core is exact 231/0 and establishes semantic guard",
+           pre_clean && @phase49k_guard != nil,
+           "pass_delta=#{pre_delta} fail_delta=#{@fail_count.to_i - pre_fail_before}")
+    unless pre_clean && @phase49k_guard != nil
+      @phase49k_cross_active = false
+      return finish_suite("FAIL")
+    end
+
+    p49k_gc_checkpoint("PRE_COMPLETE")
+    @phase49k_battle_pass_before = @pass_count.to_i
+    @phase49k_battle_fail_before = @fail_count.to_i
+    log("[PHASE49K_BATTLE_BEGIN] pass_before=#{@phase49k_battle_pass_before} fail_before=#{@phase49k_battle_fail_before}")
+    # page479 會把 final run_battle_smoke 覆寫成零參數 wrapper。
+    # Cross-Suite 必須走 final wrapper，不能傳 embedded 參數繞過 Core Fixture 鏈。
+    @phase49k_embedded_battle = true
+    started = false
+    begin
+      started = run_battle_smoke
+    ensure
+      @phase49k_embedded_battle = false
+    end
+    unless started
+      # 若前置階段已同步 restore，仍直接以 FAIL 結束；正常成功路徑由 Map update 接手。
+      @phase49k_cross_active = false
+      @phase49k_battle_restored = false
+      return finish_suite("FAIL")
+    end
+    return true
+  rescue Exception => e
+    exception(e, "run_phase49k_cross_suite_soak_x")
+    @phase49k_cross_active = false
+    @phase49k_battle_restored = false
+    return finish_suite("FAIL")
+  end
+
+  # Battle snapshot restore + page480 各 Phase cleanup 都完成後，下一個 Scene_Map update
+  # 才進入這裡，避免在 page480 的 restore wrapper 尚未收尾時提早啟動第二輪 Nonbattle。
+  def self.update_phase49k_cross_suite(scene)
+    return false unless @phase49k_cross_active
+    return false unless @phase49k_battle_restored
+    return false if @phase49k_finalizing
+    return false unless scene.is_a?(Scene_Map)
+    @phase49k_finalizing = true
+    @phase49k_battle_restored = false
+
+    p49k_gc_checkpoint("BATTLE_RESTORED")
+    battle_pass_delta = @pass_count.to_i - @phase49k_battle_pass_before.to_i
+    battle_fail_delta = @fail_count.to_i - @phase49k_battle_fail_before.to_i
+    guard_after_battle = p49k_semantic_guard
+    p49k_log_frame_guard("BATTLE", @phase49k_guard, guard_after_battle)
+    battle_guard_diff = p49k_guard_diff(@phase49k_guard, guard_after_battle)
+    battle_guard_ready = battle_guard_diff.empty?
+    log("[PHASE49K_GUARD_DIFF] stage=BATTLE rows=#{battle_guard_diff.inspect}")
+    battle_ready = battle_fail_delta == 0 && battle_pass_delta == 1388 && battle_guard_ready
+    log("[PHASE49K_BATTLE_RESULT] pass_delta=#{battle_pass_delta} fail_delta=#{battle_fail_delta} guard=#{battle_guard_ready}")
+    assert("Phase49K SEALED Battle Smoke is exact 1388/0 and restores pre-battle semantic guard",
+           battle_ready,
+           "pass_delta=#{battle_pass_delta} fail_delta=#{battle_fail_delta} guard=#{battle_guard_ready}")
+
+    post_pass_before = @pass_count.to_i
+    post_fail_before = @fail_count.to_i
+    p49k_gc_checkpoint("POST_BEGIN")
+    post_ready = run_nonbattle_core_pass("POST_BATTLE", true)
+    post_delta = @pass_count.to_i - post_pass_before
+    p49k_gc_checkpoint("POST_COMPLETE")
+    final_guard = p49k_semantic_guard
+    p49k_log_frame_guard("POST", @phase49k_guard, final_guard)
+    final_guard_diff = p49k_guard_diff(@phase49k_guard, final_guard)
+    final_guard_ready = final_guard_diff.empty?
+    log("[PHASE49K_GUARD_DIFF] stage=POST rows=#{final_guard_diff.inspect}")
+    post_clean = post_ready && @fail_count.to_i == post_fail_before &&
+      post_delta == 231 && final_guard_ready
+    assert("Phase49K post-battle reverse Nonbattle Core is exact 231/0 with final semantic guard intact",
+           post_clean,
+           "pass_delta=#{post_delta} fail_delta=#{@fail_count.to_i - post_fail_before} guard=#{final_guard_ready}")
+
+    ready = battle_ready && post_clean && @fail_count.to_i == 0
+    log("[PHASE49K_RUNTIME_X] pre=true battle=#{battle_ready} post=#{post_clean} restore=#{final_guard_ready} ready=#{ready}")
+    assert("Phase49K Battle <-> Nonbattle Cross-Suite Stability Soak X completed",
+           ready,
+           "expected_total_pass=1854 current_pass=#{@pass_count.to_i} fail=#{@fail_count.to_i}")
+
+    @phase49k_cross_active = false
+    @phase49k_finalizing = false
+    @phase49k_guard = nil
+    @phase49k_battle_pass_before = 0
+    @phase49k_battle_fail_before = 0
+    return finish_suite(ready ? "PASS" : "FAIL")
+  rescue Exception => e
+    exception(e, "update_phase49k_cross_suite")
+    @phase49k_cross_active = false
+    @phase49k_battle_restored = false
+    @phase49k_finalizing = false
+    @phase49k_guard = nil
     return finish_suite("FAIL")
   end
 
@@ -4631,10 +5008,13 @@ module FS_TEST_HARNESS
     end
   end
 
-  def self.run_battle_smoke
+  def self.run_battle_smoke(embedded = false)
+    # page479 final zero-arg wrapper 會 alias 到此 base。Cross-Suite 透過旗標要求
+    # 此 base 保留 CROSS_SUITE 的 suite/counter，而 standalone Ctrl+F9 完全不變。
+    embedded = true if @phase49k_embedded_battle == true
     return false unless test_mode?
     return false if @battle_active
-    begin_suite("BATTLE_SMOKE")
+    begin_suite("BATTLE_SMOKE") unless embedded
     assert("TEST mode", test_mode?)
 
     idle = true
@@ -4646,7 +5026,7 @@ module FS_TEST_HARNESS
     assert("Map interpreter idle", idle,
            idle ? nil : "請在事件未執行時啟動測試")
     unless idle
-      return finish_suite("FAIL")
+      return embedded ? false : finish_suite("FAIL")
     end
 
     @battle_snapshot = make_snapshot
@@ -4992,8 +5372,13 @@ module FS_TEST_HARNESS
       assert("Post-restore fixture verification completed", false, e.message)
     end
 
-    status = @fail_count.to_i == 0 ? "PASS" : "FAIL"
-    finish_suite(status)
+    if @phase49k_cross_active
+      @phase49k_battle_restored = true
+      log("[PHASE49K_BATTLE_RESTORED] deferred_cross_continuation=true pass=#{@pass_count} fail=#{@fail_count}")
+    else
+      status = @fail_count.to_i == 0 ? "PASS" : "FAIL"
+      finish_suite(status)
+    end
     return true
   end
 end
@@ -5009,6 +5394,7 @@ if defined?(Scene_Map)
       alias fs_test_harness_map_update_pre_hotkey update
     end
     def update
+      FS_TEST_HARNESS.update_phase49k_cross_suite(self)
       FS_TEST_HARNESS.pre_map_update_hotkey(self)
       FS_TEST_HARNESS.update_prebattle_transition(self)
       fs_test_harness_map_update_pre_hotkey
