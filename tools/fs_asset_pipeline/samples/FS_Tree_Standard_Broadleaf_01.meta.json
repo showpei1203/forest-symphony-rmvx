@@ -16,9 +16,18 @@
     "y": 0.95,
     "description": "trunk center / root bottom contact"
   },
-  "export_rules": {
-    "ground_layers": ["D1"],
-    "par_layers": ["D3", "D4"]
+  "render_policy": {
+    "profile": "fs_legacy_parallax_vx",
+    "ground": {
+      "source": "master"
+    },
+    "par": {
+      "source": "master",
+      "mask_union": [
+        "D3",
+        "D4"
+      ]
+    }
   },
   "style_reference": {
     "primary_reference_family": "FS standard broadleaf",
