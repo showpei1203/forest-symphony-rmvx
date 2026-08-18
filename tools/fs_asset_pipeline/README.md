@@ -97,6 +97,20 @@ Outputs:
 
 The compiler refuses to run on Validator blocking FAIL.
 
+## Regression Test
+
+Run the deterministic v0.2 regression suite:
+
+```bash
+python tools/fs_asset_pipeline/tests/test_pipeline_v02.py
+```
+
+The suite currently locks three behaviors:
+
+1. `fs_legacy_parallax_vx` Ground is the full Master while Par is the D3+D4 occlusion overlay.
+2. v0.1 `export_rules` remain compilable but return a compatibility warning.
+3. An invalid FS Par semantic union is rejected by Validator.
+
 ## Mask Rules
 
 Visible mask pixels must be opaque white:
