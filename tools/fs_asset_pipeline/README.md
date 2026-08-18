@@ -1,14 +1,31 @@
 # Forest Symphony Asset Pipeline Tools
 
-Prototype tools for the Master Object -> Depth Masks -> Ground / Par pipeline.
+Prototype tools for the shared **Master Object -> Semantic Depth -> Render Policy -> Engine Output** pipeline.
 
-## v0.1 Scope
+Current implementation: **v0.2**
 
 Initial benchmark:
 
 `FS_Tree_Standard_Broadleaf_01`
 
-Inputs:
+## v0.2 Core Model
+
+Semantic depth and engine output are separate authorities:
+
+```text
+Master Object
+├─ D1 = Ground Contact / placement semantics
+├─ D3 = Primary Occluder
+└─ D4 = Canopy / High Foliage
+
+Render Policy: fs_legacy_parallax_vx
+├─ Ground = full Master
+└─ Par    = Master masked by D3 + D4
+```
+
+This matches the observed legacy Forest Symphony parallax asset behavior where the same object may exist in both Ground and Par. D1/D3/D4 describe world meaning; they are not mutually exclusive output destinations.
+
+## Inputs
 
 ```text
 {asset_id}_Master.png
@@ -18,12 +35,19 @@ Inputs:
 {asset_id}.meta.json
 ```
 
-Authority export rule:
+Preferred v0.2 metadata:
 
-```text
-Ground = D1
-Par    = D3 + D4
+```json
+{
+  "render_policy": {
+    "profile": "fs_legacy_parallax_vx",
+    "ground": {"source": "master"},
+    "par": {"source": "master", "mask_union": ["D3", "D4"]}
+  }
+}
 ```
+
+v0.1 `export_rules` metadata remains accepted as a compatibility mode and returns a warning.
 
 ## Install
 
@@ -31,13 +55,13 @@ Par    = D3 + D4
 python -m pip install -r tools/fs_asset_pipeline/requirements.txt
 ```
 
-## Validate an asset bundle
+## Validate
 
 ```bash
 python tools/fs_asset_pipeline/validator/validate_asset.py PATH_TO_ASSET_BUNDLE
 ```
 
-Optional JSON report:
+Optional report:
 
 ```bash
 python tools/fs_asset_pipeline/validator/validate_asset.py PATH_TO_ASSET_BUNDLE \
@@ -49,7 +73,7 @@ Exit codes:
 - `0`: PASS or PASS_WITH_WARNINGS
 - `2`: FAIL
 
-## Compile a Master Object
+## Compile
 
 ```bash
 python tools/fs_asset_pipeline/compiler/compile_master_object.py PATH_TO_ASSET_BUNDLE
@@ -62,7 +86,7 @@ python tools/fs_asset_pipeline/compiler/compile_master_object.py PATH_TO_ASSET_B
   --output PATH_TO_OUTPUT
 ```
 
-Expected outputs:
+Outputs:
 
 ```text
 {asset_id}_ground.png
@@ -71,26 +95,27 @@ Expected outputs:
 {asset_id}_report.json
 ```
 
-The compiler refuses to run when Validator returns blocking FAIL.
+The compiler refuses to run on Validator blocking FAIL.
 
-## Mask Rules v0.1
+## Mask Rules
 
-Visible mask pixels:
+Visible mask pixels must be opaque white:
 
 ```text
 RGBA = 255,255,255,255
 ```
 
-Unselected pixels must be fully transparent.
+Unselected pixels must be fully transparent. Mask anti-aliasing and partial alpha are rejected.
 
-Mask anti-aliasing and partial alpha are rejected.
-
-## Reference Documents
+## Current Authority Documents
 
 - `docs/asset_pipeline/FS_TREE_STANDARD_BROADLEAF_01_SPEC.md`
-- `docs/asset_pipeline/FS_ASSET_VALIDATOR_RULES_V0_1.md`
-- `docs/asset_pipeline/FS_MAP_COMPILER_PROTOTYPE_V0_1.md`
+- `docs/asset_pipeline/FS_RENDER_POLICY_V0_2.md`
+- `docs/asset_pipeline/FS_ASSET_VALIDATOR_RULES_V0_2.md`
+- `docs/asset_pipeline/FS_MAP_COMPILER_PROTOTYPE_V0_2.md`
+
+The v0.1 documents are retained as historical prototype records and are superseded where they conflict with v0.2.
 
 ## Prototype Boundary
 
-v0.1 does not modify RPG Maker VX map data and does not compile a whole map. It only proves deterministic single-object Ground / Par export before the project expands to map-level composition.
+v0.2 still compiles a **single Master Object**, not a whole RPG Maker VX map. It does not modify `MapXXX.rvdata`, collision, passability, or runtime scripts. Whole-map composition starts only after the real Benchmark 02 asset passes visual/runtime acceptance.
