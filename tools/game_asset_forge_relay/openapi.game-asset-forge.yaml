@@ -1,0 +1,209 @@
+openapi: 3.1.0
+info:
+  title: Game Asset Forge Relay API
+  version: "1.0.0"
+  description: Small-response relay for PixelLab generation. Large image base64 is stored in R2 and returned as an HTTPS image URL.
+servers:
+  - url: https://REPLACE-WITH-YOUR-WORKER.workers.dev
+security:
+  - bearerAuth: []
+paths:
+  /v1/balance:
+    get:
+      operationId: getPixelLabBalanceViaRelay
+      summary: Get PixelLab balance
+      description: Read PixelLab balance through the relay without exposing the PixelLab API token to the GPT.
+      responses:
+        "200":
+          description: Balance returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /v1/pixflux/jobs:
+    post:
+      operationId: startPixelLabImageJob
+      summary: Start PixelLab image job
+      description: Start a Pixflux background job. Returns a small job response. Poll getPixelLabImageJob until status is completed or failed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RelayPixfluxRequest"
+      responses:
+        "202":
+          description: Job accepted.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RelayJobStartResponse"
+        "400":
+          description: Invalid request.
+        "401":
+          description: Invalid relay API key.
+        "402":
+          description: PixelLab credits unavailable.
+        "422":
+          description: PixelLab rejected parameters.
+        "429":
+          description: Too many jobs.
+  /v1/pixflux/jobs/{job_id}:
+    get:
+      operationId: getPixelLabImageJob
+      summary: Get PixelLab image job
+      description: Poll a relay job. On completion the relay stores the image in R2 and returns image_url, download_url and image_markdown instead of base64.
+      parameters:
+        - name: job_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Current job state or completed image metadata.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RelayJobResponse"
+        "401":
+          description: Invalid relay API key.
+        "404":
+          description: Relay job not found.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    ImageSize:
+      type: object
+      required: [width, height]
+      properties:
+        width:
+          type: integer
+          minimum: 32
+          maximum: 400
+        height:
+          type: integer
+          minimum: 32
+          maximum: 400
+      additionalProperties: false
+    Base64Image:
+      type: object
+      required: [base64]
+      properties:
+        type:
+          type: string
+          enum: [base64]
+        base64:
+          type: string
+      additionalProperties: true
+    RelayPixfluxRequest:
+      type: object
+      required: [asset_id, description, image_size]
+      properties:
+        asset_id:
+          type: string
+          description: Stable candidate or asset ID used for R2 storage.
+        candidate_name:
+          type: string
+        description:
+          type: string
+        image_size:
+          $ref: "#/components/schemas/ImageSize"
+        text_guidance_scale:
+          type: number
+          minimum: 1
+          maximum: 20
+        outline:
+          type: string
+          enum: [single color black outline, single color outline, selective outline, lineless]
+        shading:
+          type: string
+        detail:
+          type: string
+          enum: [low detail, medium detail, highly detailed]
+        view:
+          type: string
+          enum: [side, low top-down, high top-down]
+        direction:
+          type: string
+          enum: [north, north-east, east, south-east, south, south-west, west, north-west]
+        isometric:
+          type: boolean
+        no_background:
+          type: boolean
+        background_removal_task:
+          type: string
+          enum: [remove_simple_background, remove_complex_background]
+        init_image:
+          $ref: "#/components/schemas/Base64Image"
+        init_image_strength:
+          type: integer
+          minimum: 1
+          maximum: 999
+        color_image:
+          $ref: "#/components/schemas/Base64Image"
+        seed:
+          type: integer
+          minimum: 0
+      additionalProperties: false
+    RelayJobStartResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        background_job_id:
+          type: string
+        asset_id:
+          type: string
+        candidate_name:
+          type: [string, "null"]
+        poll_url:
+          type: string
+          format: uri
+        usage:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+    RelayJobResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [processing, completed, failed]
+        background_job_id:
+          type: string
+        asset_id:
+          type: string
+        candidate_name:
+          type: [string, "null"]
+        width:
+          type: [integer, "null"]
+        height:
+          type: [integer, "null"]
+        seed:
+          type: [integer, "null"]
+        mime_type:
+          type: string
+        bytes:
+          type: integer
+        image_url:
+          type: string
+          format: uri
+        download_url:
+          type: string
+          format: uri
+        image_markdown:
+          type: string
+          description: Markdown image syntax ready to display after completion.
+        error:
+          type: string
+        detail:
+          description: Error details when failed.
+        usage:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
