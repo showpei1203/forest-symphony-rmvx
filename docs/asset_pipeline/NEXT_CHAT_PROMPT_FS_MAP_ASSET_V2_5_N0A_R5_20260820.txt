@@ -1,0 +1,61 @@
+請接續 Forest Symphony MAP / Game Asset Pipeline，不要從零開始，也不要重新討論 PixelLab API、Cloudflare transport、Grounding DINO threshold 歷史或前面的失敗全圖 PAR。
+
+請先依序讀：
+1. Google Drive `Forest Symphony/00_Project_Authority/MASTER_PROJECT_STATE.md`
+2. Google Drive `Forest Symphony/05_Handoff/CURRENT_HANDOFF.md`
+3. Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`
+4. Google Drive `Forest Symphony/00_Project_Authority/ASSET_GENERATION_PRECHECK_FS`
+5. GitHub `MAP_DUAL_OUTPUT_AUTHORITY_V2_5.md`
+6. Linear `SHO-39 | FS Map Style DNA + Forest Clearing Benchmark I`
+7. Google Drive `Forest Symphony/05_Handoff/FS_MAP_ASSET_HANDOFF_20260820_V2_5_N0A_EXTRACTION.md`
+8. `FS_MAP_ASSET_HANDOFF_MANIFEST_20260820.json`
+
+目前正式地圖 Authority：
+- `GROUND = true ground/terrain + floor/road/plaza/terrain tiles + grass + flowers + water surfaces`
+- `PAR = EVERYTHING ELSE`
+- occlusion 不是 PAR membership 判定
+- `MASTER ≈ GROUND + COMPLETE PAR` 仍是完整度 Authority
+- SAM2 / Guided SAM2 只作 QA evidence
+- Current pipeline = **v2.5 SOURCE-ASSET + DETERMINISTIC ASSEMBLY**
+
+不要再讓 image generation 負責 final canvas / exact workcell / final coordinates。已實證 N0A 要求 220×275 時，生成器仍回傳 1491×1055，partial-alpha 36.76%，fit scale 約 15.7%，因此 prompt-only precise placement 正式判定不可靠。
+
+目前 Castle Town：
+- Master = `FS_CASTLE_TOWN_MASTER_REFERENCE_1448x1086.png`
+- Working Ground = `FS_CASTLE_TOWN_GROUND_WORKING_1448x1086.png`
+- 兩者都尚未 Runtime Approved
+- NORTH anchors / deterministic assembly plan 已建立
+- 不要再生成 full NORTH PAR
+
+目前進度：**N0A-R4 deterministic extraction candidate COMPLETE**
+
+N0A：
+- global bbox = `[600,30,820,305]`
+- workcell = `220×275`
+- extracted directly from Master
+- no redraw / no resize
+- exact placement = `(600,30)`
+- opaque RGB = Master exact
+- alpha only `{0,255}`
+- partial alpha = 0
+- opaque pixels = 39,235
+- 尚未 Formal PASS
+
+下一個唯一合法步驟：**N0A-R5 Mask Completeness + Ground-Leak QA**
+
+請先驗：
+- `FS_CASTLE_TOWN_N0A_EXTRACTED_PAR_220x275.png`
+- `FS_CASTLE_TOWN_N0A_BINARY_MASK_220x275.png`
+- `FS_CASTLE_TOWN_N0A_ON_GROUND_CLEAN_1448x1086.png`
+- `FS_CASTLE_TOWN_N0A_R4_EXTRACTION_REPORT.json`
+
+N0A-R5：
+1. 檢查所有 castle 非 Ground 結構是否完整；
+2. 檢查草／道路／地表等 Ground 是否被 mask 誤吃；
+3. stairs / castle / roof / tower / flag / banner 等是否截斷；
+4. opaque RGB 保持 Master 原像素；
+5. alpha 維持 0/255；
+6. 不縮放、不移動 workcell；
+7. 固定放回 `(600,30)`。
+
+N0A 沒 PASS 就不准進 N0B。N0A PASS 後才依相同 deterministic extraction 方法進 N0B。不要跳步驟。
