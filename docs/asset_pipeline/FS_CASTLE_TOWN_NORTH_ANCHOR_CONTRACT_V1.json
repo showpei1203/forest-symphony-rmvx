@@ -1,0 +1,42 @@
+{
+  "schema": "fs_castle_town_north_anchor_contract_v1",
+  "project": "Forest Symphony",
+  "asset_id": "FS_CastleTown",
+  "date": "2026-08-19",
+  "canvas": [1448, 1086],
+  "authority_version": "MAP_DUAL_OUTPUT_AUTHORITY_V2_4",
+  "workflow_step": 3,
+  "group": "NORTH",
+  "status": "NORTH_INDIVIDUAL_ANCHORS_LOCKED_PENDING_VISUAL_QA",
+  "ground_authority": "top_down_pixel_art_fantasy_map_rpg_overworld_sce_1.png",
+  "par_generation_allowed": false,
+  "anchors": [
+    {"id":"N0A","name":"Main Castle Compound","bbox":[600,30,820,305],"type":"major_building","relation":"Centered on north-south main road axis; entrance faces south.","tolerance_px":10},
+    {"id":"N0B","name":"Main Castle Front Stair / Entry","bbox":[664,224,751,305],"type":"structural_entry","relation":"Must terminate on central north-south road; no lateral drift.","tolerance_px":6},
+    {"id":"N1A","name":"NW Chapel","bbox":[322,154,423,310],"type":"major_building","relation":"Must stay on NW chapel plot, west of N2A.","tolerance_px":8},
+    {"id":"N1B","name":"NW Chapel Prop Cluster","bbox":[422,213,470,307],"type":"prop_cluster","relation":"Props remain immediately east/southeast of chapel; may not migrate into N2A footprint.","tolerance_px":10},
+    {"id":"N2A","name":"North-left House","bbox":[451,161,565,313],"type":"major_building","relation":"Specific plot east of chapel; front edge meets lower local path.","tolerance_px":8},
+    {"id":"N3A","name":"North-right House","bbox":[867,164,1020,312],"type":"major_building","relation":"Specific upper-right house plot; must not exchange with N2A or N4C.","tolerance_px":8},
+    {"id":"N3B","name":"North-right Stall / Trellis Cluster","bbox":[831,169,879,231],"type":"market_prop_cluster","relation":"Immediately west/northwest of N3A, adjacent to local path.","tolerance_px":8},
+    {"id":"N4A","name":"NE Inner Wall Tower / Stair Tower","bbox":[1017,64,1076,280],"type":"tower","relation":"Fixed on north-east inner wall access line.","tolerance_px":6},
+    {"id":"N4B","name":"NE Garden Structural Props","bbox":[1062,176,1176,307],"type":"garden_structure_cluster","relation":"Only non-Ground structures inside NE garden plot; flowers/grass remain Ground.","tolerance_px":10},
+    {"id":"N4C","name":"NE Small Tower House","bbox":[1174,229,1238,333],"type":"major_building","relation":"Fixed far-right inner plot; must not drift west into garden or road.","tolerance_px":8},
+    {"id":"NP0","name":"NW Perimeter Tower","bbox":[267,59,317,246],"type":"perimeter_tower","relation":"Fixed northwest wall corner.","tolerance_px":5},
+    {"id":"NP1","name":"North-west Wall Segment","bbox":[285,99,608,166],"type":"perimeter_wall","relation":"Continuous wall between NW tower and main-castle west zone.","tolerance_px":5},
+    {"id":"NP2","name":"North-east Wall Segment","bbox":[805,99,1217,166],"type":"perimeter_wall","relation":"Continuous wall between main-castle east zone and NE tower.","tolerance_px":5},
+    {"id":"NP3","name":"NE Perimeter Tower","bbox":[1185,57,1242,247],"type":"perimeter_tower","relation":"Fixed northeast wall corner.","tolerance_px":5}
+  ],
+  "hard_gates": {
+    "wrong_plot_is_fail": true,
+    "object_swap_is_fail": true,
+    "major_object_center_must_lie_inside_anchor": true,
+    "major_object_footprint_must_materially_overlap_anchor": true,
+    "entrance_relationship_must_match": true,
+    "north_perimeter_wall_must_follow_np1_np2": true,
+    "central_c1_no_build_intrusion_is_fail": true,
+    "pixel_crisp_gate_required_after_generation": true,
+    "par_purity_gate_required_after_generation": true
+  },
+  "next_action_if_visual_qa_passes": "STEP_3B_GENERATE_NORTH_REGION_PAR_ONLY",
+  "next_action_if_visual_qa_fails": "ADJUST_NORTH_ANCHORS_BEFORE_ANY_PAR_GENERATION"
+}
