@@ -1,0 +1,20 @@
+{
+  "step": "N0A-R4 deterministic extraction candidate",
+  "result": "CANDIDATE_READY_FOR_VISUAL_MASK_QA",
+  "source_workcell": [220,275],
+  "global_target_bbox": [600,30,820,305],
+  "global_integer_placement": [600,30],
+  "resize_applied": false,
+  "redraw_applied": false,
+  "source_rgb_exact_master_on_opaque_pixels": true,
+  "alpha_unique_values": [0,255],
+  "opaque_pixels": 39235,
+  "transparent_pixels": 21265,
+  "partial_alpha_pixels": 0,
+  "partial_alpha_ratio": 0.0,
+  "alpha_bbox_local": [13,8,209,274],
+  "pixel_crisp_alpha_gate": true,
+  "placement_gate": "PASS_BY_CONSTRUCTION",
+  "next_gate": "VISUAL_MASK_COMPLETENESS_AND_GROUND_LEAK_QA",
+  "note": "Extraction candidate only; not formal PASS. Inspect whether the binary mask includes all N0A structure and excludes Ground-class grass/path."
+}
