@@ -41,6 +41,16 @@ A map split is still **DRAFT** unless all checks pass:
 - Local SAM2 workers should follow Background Execution Authority: run on demand, process jobs in the background, and release VRAM after completion rather than permanently occupying the GPU.
 - **Dense-map refinement:** bbox filtering alone is insufficient. Add post-SAM mask-canvas coverage sanity limits, and use overlapping tiled detection + global-coordinate remap + concept-level NMS for local objects when full-scene recall is weak or masks are implausibly broad.
 
+## Guided SAM2 checkpoint — 2026-08-19
+- Grounding DINO v1-v4 is considered sufficient as an optional discovery layer; do not keep tuning it as if it were formal object inventory authority.
+- Castle v5.1 uses **Guided SAM2**: ChatGPT visually identifies high-risk objects and writes bbox manifest coordinates; local SAM2.1 Hiera Small performs segmentation.
+- v5.1 successfully produced masks for 16 high-risk objects after correcting K08/K12/K13/K14/K16 boxes. Representative targets include the main castle, south gatehouse, central goddess statue, fountains, windmill and perimeter towers.
+- Guided masks are **QA evidence**, not PAR membership truth.
+- **Do NOT use a hard rule such as `80% of the whole SAM2 object mask must be present in PAR`.** Fountain/landmark masks can legitimately include water, floor, flowers or grass, which belong to Ground under the Binary Authority.
+- The preferred next completeness method is **Witness-Point / Core-Structure QA**: define coordinates guaranteed to lie on non-Ground structure (statue body/pedestal, fountain stone basin rather than water, tower roof/wall, castle surface, windmill body/blade) and verify PAR exists around those witnesses.
+- The primary completeness authority remains `MASTER ≈ GROUND + COMPLETE PAR`; witness-point checks add high-risk omission evidence without forcing legal Ground pixels into PAR.
+- Any earlier full-mask-overlap PAR validator concept is superseded before formal adoption.
+
 ## Binary split override
 This rule supersedes older wording that treated PAR as only actor-occluding material:
 `GROUND = true ground/terrain surfaces + floor/terrain tiles + flowers + grass`
