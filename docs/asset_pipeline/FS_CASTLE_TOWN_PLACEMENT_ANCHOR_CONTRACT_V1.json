@@ -1,0 +1,54 @@
+{
+  "schema": "fs_map_placement_anchor_contract_v1",
+  "project": "Forest Symphony",
+  "asset_id": "FS_CastleTown",
+  "date": "2026-08-19",
+  "canvas": [1448, 1086],
+  "authority_version": "MAP_DUAL_OUTPUT_AUTHORITY_V2_4",
+  "workflow_step": 2,
+  "status": "MACRO_ANCHORS_LOCKED_SUBANCHORS_PENDING",
+  "rules": {
+    "ground_first": true,
+    "par_generation_allowed_now": false,
+    "major_object_wrong_plot_is_fail": true,
+    "similar_plots_may_not_exchange_objects": true,
+    "central_circulation_no_build": true,
+    "grouped_multi_building_regions_require_subanchors": true,
+    "par_purity_required": true,
+    "pixel_crisp_required": true
+  },
+  "anchors": [
+    {"id":"N0","group":"NORTH","name":"Main Castle Footprint","bbox":[640,79,824,291],"owner":"PAR","relation":"centered on north main axis; entrance/stairs align to central north-south road","subanchors_required":false},
+    {"id":"N1","group":"NORTH","name":"NW Chapel Plot","bbox":[310,164,440,315],"owner":"PAR","relation":"upper-left inner plot; west of N2","subanchors_required":false},
+    {"id":"N2","group":"NORTH","name":"North-left House Plot","bbox":[443,164,578,315],"owner":"PAR","relation":"specific plot immediately east of N1; must not exchange with N1/N3","subanchors_required":false},
+    {"id":"N3","group":"NORTH","name":"North-right House/Garden Plot","bbox":[858,154,1018,316],"owner":"PAR","relation":"specific upper-right plot east of main castle axis; must not exchange with N2/N4","subanchors_required":false},
+    {"id":"N4","group":"NORTH","name":"NE Tower House/Garden Plot","bbox":[1042,154,1223,316],"owner":"PAR","relation":"far upper-right inner plot; local access connects to east path network","subanchors_required":true,"subanchor_note":"separate tower-house and garden/secondary structures before generation"},
+    {"id":"W1","group":"WEST","name":"West Bridge Anchor","bbox":[73,470,164,600],"owner":"PAR","relation":"bridge spans this west river crossing only; underlay water/bank remains Ground","subanchors_required":false},
+    {"id":"W2","group":"WEST","name":"West Fountain Plaza","bbox":[324,508,450,677],"owner":"PAR","relation":"stone fountain structure wraps Ground water; water remains Ground","subanchors_required":false},
+    {"id":"W3","group":"WEST","name":"West Residential Block","bbox":[288,361,548,557],"owner":"PAR","relation":"multi-building west block tied to local roads","subanchors_required":true,"subanchor_note":"split every house/shop into unique W3-* footprints"},
+    {"id":"C0","group":"CENTER","name":"Central Statue Plaza","bbox":[654,515,782,629],"owner":"PAR","relation":"statue/pedestal centered on small Ground basin; water remains Ground","subanchors_required":false},
+    {"id":"C1","group":"CENTER","name":"Central Main Plaza No-Build Circulation","owner":"GROUND_NO_BUILD","regions":[[653,292,747,743],[556,398,841,668]],"allow_inside":["C0"],"relation":"no building footprint may intrude except C0","subanchors_required":false},
+    {"id":"E1","group":"EAST","name":"East Residential Block","bbox":[840,344,1152,518],"owner":"PAR","relation":"multi-building east residential block tied to roads/gardens","subanchors_required":true,"subanchor_note":"split every house into unique E1-* footprints"},
+    {"id":"E2","group":"EAST","name":"East Market/Stall Block","bbox":[841,523,1061,688],"owner":"PAR","relation":"market/shop cluster aligned to plaza-facing access","subanchors_required":true,"subanchor_note":"split permanent buildings and stalls into unique E2-* anchors"},
+    {"id":"E3","group":"EAST","name":"East Windmill Plot","bbox":[1271,470,1375,649],"owner":"PAR","relation":"windmill belongs only to this far-east plot","subanchors_required":true,"subanchor_note":"split windmill body/sails and attached secondary structure if needed"},
+    {"id":"S0","group":"SOUTH","name":"South Gatehouse Footprint","bbox":[610,765,767,936],"owner":"PAR","relation":"align exactly to south entrance axis and external dirt path","subanchors_required":false},
+    {"id":"S1","group":"SOUTH","name":"Southwest Residential Plot","bbox":[325,691,565,842],"owner":"PAR","relation":"southwest multi-building area","subanchors_required":true,"subanchor_note":"split every building into unique S1-* footprints"},
+    {"id":"S2","group":"SOUTH","name":"South-central Small Buildings Plot","bbox":[783,695,966,835],"owner":"PAR","relation":"preserve local road clearance","subanchors_required":true,"subanchor_note":"split small buildings/props into unique S2-* anchors"},
+    {"id":"S3","group":"SOUTH","name":"Southeast Residential Plot","bbox":[967,696,1152,835],"owner":"PAR","relation":"southeast multi-building area","subanchors_required":true,"subanchor_note":"split every building into unique S3-* footprints"}
+  ],
+  "regional_generation_order": [
+    {"step":3,"group":"NORTH","prerequisite":"refine N0-N4 into final object anchors; N4 requires subanchors"},
+    {"step":4,"group":"WEST","prerequisite":"create W3 individual building subanchors"},
+    {"step":5,"group":"CENTER","prerequisite":"C0 locked; enforce C1 no-build zone"},
+    {"step":6,"group":"EAST","prerequisite":"create E1/E2/E3 individual structure subanchors"},
+    {"step":7,"group":"SOUTH","prerequisite":"create S1/S2/S3 individual building subanchors"},
+    {"step":8,"group":"ASSEMBLY","prerequisite":"all regional outputs placement-pass individually"}
+  ],
+  "acceptance": {
+    "macro_anchor_contract_complete": true,
+    "par_generation_global": false,
+    "next_step": "STEP_3_REFINE_NORTH_INDIVIDUAL_ANCHORS",
+    "fail_if_major_object_outside_anchor": true,
+    "fail_if_major_object_swaps_plot": true
+  }
+}
