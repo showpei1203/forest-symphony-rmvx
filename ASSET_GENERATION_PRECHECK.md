@@ -6,7 +6,7 @@
 2. Read the Forest Symphony Drive authority file `ASSET_GENERATION_PRECHECK_FS` in `Forest Symphony/00_Project_Authority`.
 3. Identify asset mode: Runtime Asset vs Master Scene / Parallax Concept.
 4. Apply the latest FS Style DNA / accepted benchmark / sealed visual decisions before generating.
-5. **If the request is any layered map/parallax/environment generation or edit, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_2.md` before generating and explicitly use `COUPLED DUAL OUTPUT + OBJECT OWNERSHIP` mode.**
+5. **If the request is any layered map/parallax/environment generation or edit, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_3.md` before generating and explicitly use `GROUND-FIRST + OBJECT OWNERSHIP + PIXEL-CRISP` mode.**
 
 ## Inherited rules
 - Runtime isolated assets: prefer chroma-key `#FF00FF` or `#00FF00`.
@@ -22,15 +22,18 @@
 - Semantic depth remains useful only as metadata; it must never remove a non-Ground object from PAR.
 - Derived map split layers should use true PNG alpha after cleanup. Chroma key is primarily for isolated generated source assets, not a substitute for final transparency.
 
-## Coupled dual-output map generation — v2.2
-- Do not generate a complete Master first and later ask a generation model to independently redraw a PAR interpretation.
-- For new layered FS maps, Ground and Complete PAR must be sibling outputs from one shared layout/geometry authority and one object-ownership plan.
-- Object ownership is exclusive by **visible structure**, not by raw alpha coordinates. Ground may contain reconstructed water/terrain/floor beneath a PAR object, but must not visibly duplicate that object.
-- Ground ownership includes true terrain/floor/road/plaza tiles, flowers, grass and water surfaces.
+## Ground-first + coupled map generation — v2.3
+- Generate `GROUND` first; do not generate Ground/PAR simultaneously when registration matters.
+- Validate Ground geometry/layout anchors before PAR generation.
+- Generate `COMPLETE PAR` only after Ground is accepted, using Master + accepted Ground as references.
+- Object ownership is exclusive by visible structure, not raw alpha coordinates.
+- Ground may contain reconstructed base terrain/water/floor under PAR objects, but may not visibly duplicate the PAR structure.
 - Bridge structure = PAR-only; under-bridge water/terrain/bank = Ground-only.
 - Fountain stone structure = PAR; fountain water = Ground.
 - Ambiguous/discrete placed objects default to PAR.
-- Candidate remains DRAFT until registration, duplicate-structure, recomposition, witness and normal FS visual Layer-Split QA pass.
+- Runtime map layers must be pixel-crisp: hard pixel edges, no AA, no blur, no feather halos, no sub-pixel shifts, and avoid broad partial-alpha edges.
+- Inspect crispness at 100% and integer zoom. Nearest Neighbor only for pixel-art resize/downsample.
+- A spatially aligned but blurry layer remains DRAFT.
 
 ## Layer-Split Quality Gate
 A map split is still **DRAFT** unless all checks pass:
@@ -41,6 +44,7 @@ A map split is still **DRAFT** unless all checks pass:
 5. **Recomposition authority: `MASTER ≈ GROUND + COMPLETE PAR`.** Missing/extra objects must become immediately detectable.
 6. Structural correctness alone is insufficient; visually dirty splits cannot be called Approved or Runtime-ready.
 7. **PAR-owned structures must not be visibly duplicated in Ground.** Raw alpha-coordinate overlap is allowed when Ground contains reconstructed base terrain beneath a PAR object.
+8. **Pixel-crisp gate:** at 100%/200%/400%, structure edges must remain materially as crisp as the approved Master/style authority. Broad feathering, blur or smeared pixel detail = FAIL.
 
 ## Grounded SAM2 semantic audit authority
 - Grounded SAM2 is a **QA / missing-object / candidate-mask assistant**, not final art or layer authority. A raw union mask must never be accepted as `Ground`, `PAR`, `Collision`, or Runtime truth by itself.
@@ -70,6 +74,6 @@ This rule supersedes older wording that treated PAR as only actor-occluding mate
 Do not use perceived height, collision, occlusion, landmark importance, or SAM2 class as a reason to omit a non-Ground object from PAR.
 
 ## Required read order
-`Shared Authority -> FS Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_2 when mapping -> latest FS visual/asset benchmark -> confirm 32px world scale + required canvas -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate`
+`Shared Authority -> FS Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_3 when mapping -> latest FS visual/asset benchmark -> ownership/anchor lock -> generate Ground only -> Ground geometry QA -> generate PAR from Master + accepted Ground -> pixel-crisp QA -> optional SAM2 semantic audit -> Layer-Split Quality Gate`
 
-Version: 2026-08-19 v2.2
+Version: 2026-08-19 v2.3
