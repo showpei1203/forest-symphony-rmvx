@@ -1,0 +1,27 @@
+{
+  "schema": "fs_castle_town_north_generation_guide_v1",
+  "canvas": [1448, 1086],
+  "authority": "MAP_DUAL_OUTPUT_AUTHORITY_V2_4",
+  "workflow_step": "3B-R2",
+  "status": "GUIDE_READY_NO_PAR_GENERATED",
+  "allowed_y_range": [0, 420],
+  "forbidden_y_range": [421, 1085],
+  "allowed_anchor_ids": [
+    "N0A", "N0B", "N1A", "N1B", "N2A", "N3A", "N3B", "N4A", "N4B", "N4C", "NP0", "NP1", "NP2", "NP3"
+  ],
+  "hard_generation_constraints": {
+    "full_canvas_output_required": true,
+    "output_size": [1448, 1086],
+    "background": "true transparent alpha",
+    "south_of_y_420": "alpha=0 only",
+    "no_text": true,
+    "no_infographic_panels": true,
+    "no_black_background": true,
+    "no_ground_surface_texture": true,
+    "no_building_outside_declared_anchor": true,
+    "no_plot_swap": true,
+    "pixel_crisp": true,
+    "prefer_alpha_0_255": true
+  },
+  "next_step": "STEP_3B_R3_GENERATE_NORTH_PAR_USING_THIS_GUIDE"
+}
