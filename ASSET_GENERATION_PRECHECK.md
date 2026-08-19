@@ -39,6 +39,7 @@ A map split is still **DRAFT** unless all checks pass:
 - Compare SAM2 detections/per-class masks against both the Master Scene and the manually/compiler-produced exhaustive All Non-Ground layer to find probable omissions or false positives. A SAM2 miss does not authorize deleting an object; a SAM2 hit does not authorize putting it in a final layer without normal QA.
 - SAM2-assisted outputs remain **DRAFT** until the normal Layer-Split Quality Gate and visual acceptance pass.
 - Local SAM2 workers should follow Background Execution Authority: run on demand, process jobs in the background, and release VRAM after completion rather than permanently occupying the GPU.
+- **Dense-map refinement:** bbox filtering alone is insufficient. Add post-SAM mask-canvas coverage sanity limits, and use overlapping tiled detection + global-coordinate remap + concept-level NMS for local gates/towers/buildings/roofs/statues/fountains/props when full-scene recall is weak or masks are implausibly broad. Prefer full-scene detection for macro structures. Per-class bbox and mask-coverage limits are benchmark profiles, not universal constants.
 
 ## Required read order
 `Shared Authority -> FS Precheck -> latest FS visual/asset benchmark -> confirm 32px world scale + required canvas -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate`
