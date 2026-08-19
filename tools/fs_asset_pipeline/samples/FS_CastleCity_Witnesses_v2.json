@@ -1,0 +1,223 @@
+{
+  "schema": "fs_map_par_witness_v2",
+  "asset_id": "FS_CastleCity",
+  "source_audit": "FS_CastleCity_GuidedAudit_v5_1",
+  "canvas": [1448, 1086],
+  "authority": {
+    "ground": "true ground/terrain surfaces + floor/terrain tiles + flowers + grass",
+    "par": "EVERYTHING ELSE",
+    "occlusion_rule": "actor occlusion is not a PAR classification criterion",
+    "completeness": "MASTER ≈ GROUND + COMPLETE PAR"
+  },
+  "status": "CANDIDATE_COORDINATES_REQUIRE_MASTER_VISUAL_CONFIRMATION",
+  "defaults": {
+    "radius": 4,
+    "min_par_alpha": 1,
+    "min_coverage_ratio": 0.08,
+    "max_nearest_distance": 3.0,
+    "require_visual_confirmation": true
+  },
+  "thresholds": {
+    "recomposition_delta": 24,
+    "recomposition_bad_ratio_max": 0.02,
+    "recomposition_mean_abs_rgb_max": 4.0,
+    "par_source_delta": 24,
+    "par_source_bad_ratio_max": 0.02
+  },
+  "objects": [
+    {
+      "id": "K01",
+      "name": "main_castle",
+      "label": "Main Castle",
+      "source_box": [585, 35, 815, 315],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 700, "y": 105, "role": "upper castle roof/body core", "required": true, "visual_confirmed": false},
+        {"x": 660, "y": 190, "role": "west castle masonry core", "required": true, "visual_confirmed": false},
+        {"x": 745, "y": 220, "role": "east castle masonry core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K02",
+      "name": "nw_round_chapel",
+      "label": "NW Round Chapel",
+      "source_box": [330, 175, 425, 320],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 378, "y": 215, "role": "chapel roof core", "required": true, "visual_confirmed": false},
+        {"x": 378, "y": 270, "role": "chapel wall core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K03",
+      "name": "northwest_wall_tower",
+      "label": "NW Wall Tower",
+      "source_box": [265, 75, 315, 165],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 290, "y": 100, "role": "tower roof core", "required": true, "visual_confirmed": false},
+        {"x": 290, "y": 135, "role": "tower wall core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K04",
+      "name": "northeast_wall_tower",
+      "label": "NE Wall Tower",
+      "source_box": [1180, 75, 1230, 165],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 1205, "y": 100, "role": "tower roof core", "required": true, "visual_confirmed": false},
+        {"x": 1205, "y": 135, "role": "tower wall core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K05",
+      "name": "west_mid_wall_tower",
+      "label": "W Mid Wall Tower",
+      "source_box": [160, 310, 215, 405],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 188, "y": 335, "role": "tower roof core", "required": true, "visual_confirmed": false},
+        {"x": 188, "y": 370, "role": "tower wall core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K06",
+      "name": "east_mid_wall_tower",
+      "label": "E Mid Wall Tower",
+      "source_box": [1320, 305, 1380, 405],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 1350, "y": 335, "role": "tower roof core", "required": true, "visual_confirmed": false},
+        {"x": 1350, "y": 370, "role": "tower wall core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K07",
+      "name": "southwest_wall_tower",
+      "label": "SW Wall Tower",
+      "source_box": [215, 625, 280, 735],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 248, "y": 655, "role": "tower roof core", "required": true, "visual_confirmed": false},
+        {"x": 248, "y": 695, "role": "tower wall core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K08",
+      "name": "southeast_wall_tower",
+      "label": "SE Wall Tower",
+      "source_box": [1270, 610, 1340, 745],
+      "visual_confirmed": false,
+      "confirmation_note": "v5.1 corrected bbox. Candidate points require Castle Master visual confirmation.",
+      "witnesses": [
+        {"x": 1305, "y": 645, "role": "tower roof core", "required": true, "visual_confirmed": false},
+        {"x": 1305, "y": 695, "role": "tower wall core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K09",
+      "name": "south_gatehouse",
+      "label": "South Gatehouse",
+      "source_box": [600, 690, 805, 885],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 703, "y": 735, "role": "gatehouse upper structure core", "required": true, "visual_confirmed": false},
+        {"x": 655, "y": 790, "role": "gatehouse west masonry core", "required": true, "visual_confirmed": false},
+        {"x": 750, "y": 790, "role": "gatehouse east masonry core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K10",
+      "name": "central_goddess_statue",
+      "label": "Central Goddess Statue",
+      "source_box": [665, 425, 745, 555],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate points derived from v5.1 bbox/object identity only. Confirm on castle Master before Formal Gate.",
+      "witnesses": [
+        {"x": 705, "y": 465, "role": "statue upper body core", "required": true, "visual_confirmed": false},
+        {"x": 705, "y": 505, "role": "statue body/pedestal core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K11",
+      "name": "west_plaza_fountain",
+      "label": "West Plaza Fountain",
+      "source_box": [340, 485, 425, 590],
+      "visual_confirmed": false,
+      "confirmation_note": "Stone-rim candidates only; avoid fountain water because water may legally remain Ground.",
+      "witnesses": [
+        {"x": 355, "y": 555, "role": "fountain west stone rim core", "required": true, "visual_confirmed": false},
+        {"x": 410, "y": 555, "role": "fountain east stone rim core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K12",
+      "name": "east_garden_fountain",
+      "label": "East Garden Fountain",
+      "source_box": [1110, 395, 1148, 452],
+      "visual_confirmed": false,
+      "confirmation_note": "v5.1 corrected bbox. Stone-rim candidates only; avoid water/flowers/grass/floor.",
+      "witnesses": [
+        {"x": 1117, "y": 438, "role": "fountain west stone rim core", "required": true, "visual_confirmed": false},
+        {"x": 1141, "y": 438, "role": "fountain east stone rim core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K13",
+      "name": "north_east_garden_fountain_a",
+      "label": "NE Garden Fountain A",
+      "source_box": [1087, 242, 1122, 292],
+      "visual_confirmed": false,
+      "confirmation_note": "v5.1 corrected bbox. Stone-rim candidates only; avoid water/flowers/grass/floor.",
+      "witnesses": [
+        {"x": 1093, "y": 280, "role": "fountain west stone rim core", "required": true, "visual_confirmed": false},
+        {"x": 1116, "y": 280, "role": "fountain east stone rim core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K14",
+      "name": "north_east_garden_fountain_b",
+      "label": "NE Garden Fountain B",
+      "source_box": [1152, 263, 1190, 315],
+      "visual_confirmed": false,
+      "confirmation_note": "v5.1 corrected bbox. Stone-rim candidates only; avoid water/flowers/grass/floor.",
+      "witnesses": [
+        {"x": 1159, "y": 303, "role": "fountain west stone rim core", "required": true, "visual_confirmed": false},
+        {"x": 1183, "y": 303, "role": "fountain east stone rim core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K15",
+      "name": "east_windmill",
+      "label": "East Windmill",
+      "source_box": [1180, 345, 1300, 510],
+      "visual_confirmed": false,
+      "confirmation_note": "Candidate structural points require Castle Master visual confirmation.",
+      "witnesses": [
+        {"x": 1240, "y": 405, "role": "windmill hub/building core", "required": true, "visual_confirmed": false},
+        {"x": 1240, "y": 455, "role": "windmill body core", "required": true, "visual_confirmed": false}
+      ]
+    },
+    {
+      "id": "K16",
+      "name": "north_east_small_tower_house",
+      "label": "NE Small Tower House",
+      "source_box": [1174, 232, 1228, 338],
+      "visual_confirmed": false,
+      "confirmation_note": "v5.1 corrected bbox. Candidate structural points require Castle Master visual confirmation.",
+      "witnesses": [
+        {"x": 1201, "y": 260, "role": "tower-house roof core", "required": true, "visual_confirmed": false},
+        {"x": 1201, "y": 305, "role": "tower-house wall core", "required": true, "visual_confirmed": false}
+      ]
+    }
+  ]
+}
