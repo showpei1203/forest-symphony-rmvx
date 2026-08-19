@@ -6,6 +6,7 @@
 2. Read the Forest Symphony Drive authority file `ASSET_GENERATION_PRECHECK_FS` in `Forest Symphony/00_Project_Authority`.
 3. Identify asset mode: Runtime Asset vs Master Scene / Parallax Concept.
 4. Apply the latest FS Style DNA / accepted benchmark / sealed visual decisions before generating.
+5. **If the request is any layered map/parallax/environment generation or edit, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_2.md` before generating and explicitly use `COUPLED DUAL OUTPUT + OBJECT OWNERSHIP` mode.**
 
 ## Inherited rules
 - Runtime isolated assets: prefer chroma-key `#FF00FF` or `#00FF00`.
@@ -21,6 +22,16 @@
 - Semantic depth remains useful only as metadata; it must never remove a non-Ground object from PAR.
 - Derived map split layers should use true PNG alpha after cleanup. Chroma key is primarily for isolated generated source assets, not a substitute for final transparency.
 
+## Coupled dual-output map generation — v2.2
+- Do not generate a complete Master first and later ask a generation model to independently redraw a PAR interpretation.
+- For new layered FS maps, Ground and Complete PAR must be sibling outputs from one shared layout/geometry authority and one object-ownership plan.
+- Object ownership is exclusive by **visible structure**, not by raw alpha coordinates. Ground may contain reconstructed water/terrain/floor beneath a PAR object, but must not visibly duplicate that object.
+- Ground ownership includes true terrain/floor/road/plaza tiles, flowers, grass and water surfaces.
+- Bridge structure = PAR-only; under-bridge water/terrain/bank = Ground-only.
+- Fountain stone structure = PAR; fountain water = Ground.
+- Ambiguous/discrete placed objects default to PAR.
+- Candidate remains DRAFT until registration, duplicate-structure, recomposition, witness and normal FS visual Layer-Split QA pass.
+
 ## Layer-Split Quality Gate
 A map split is still **DRAFT** unless all checks pass:
 1. Master, Ground and PAR have identical dimensions and exact pixel registration.
@@ -29,6 +40,7 @@ A map split is still **DRAFT** unless all checks pass:
 4. Opaque objects have no accidental black holes, clipped chunks, broken alpha, chroma-key residue, colored fringe artifacts or unrelated ground fragments.
 5. **Recomposition authority: `MASTER ≈ GROUND + COMPLETE PAR`.** Missing/extra objects must become immediately detectable.
 6. Structural correctness alone is insufficient; visually dirty splits cannot be called Approved or Runtime-ready.
+7. **PAR-owned structures must not be visibly duplicated in Ground.** Raw alpha-coordinate overlap is allowed when Ground contains reconstructed base terrain beneath a PAR object.
 
 ## Grounded SAM2 semantic audit authority
 - Grounded SAM2 is a **QA / missing-object / candidate-mask assistant**, not final art or layer authority. A raw union mask must never be accepted as `Ground`, `PAR`, `Collision`, or Runtime truth by itself.
@@ -58,6 +70,6 @@ This rule supersedes older wording that treated PAR as only actor-occluding mate
 Do not use perceived height, collision, occlusion, landmark importance, or SAM2 class as a reason to omit a non-Ground object from PAR.
 
 ## Required read order
-`Shared Authority -> FS Precheck -> latest FS visual/asset benchmark -> confirm 32px world scale + required canvas -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate`
+`Shared Authority -> FS Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_2 when mapping -> latest FS visual/asset benchmark -> confirm 32px world scale + required canvas -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate`
 
-Version: 2026-08-19
+Version: 2026-08-19 v2.2
