@@ -1,0 +1,62 @@
+請接續 Forest Symphony MAP / Game Asset Pipeline，不要從零開始，也不要重新討論 PixelLab API。
+
+請先依序讀：
+1. Google Drive `Forest Symphony/00_Project_Authority/MASTER_PROJECT_STATE`
+2. Google Drive `Forest Symphony/05_Handoff/CURRENT_HANDOFF.md`
+3. Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`
+4. FS `ASSET_GENERATION_PRECHECK_FS`
+5. Linear `SHO-39 | FS Map Style DNA + Forest Clearing Benchmark I`
+6. 最新 `FS_MAP_ASSET_HANDOFF_20260819_SAM2_BINARY_PAR`
+
+【目前最重要 Authority】
+GROUND = 真正 ground/terrain surface + floor/terrain tiles + 花 + 草。
+PAR = EVERYTHING ELSE。
+房屋、城堡、城牆、城門、塔、屋頂、樹、灌木、岩石、女神像、噴泉、柵欄、花圃結構、招牌、攤位、橋、結構型樓梯/台階、路燈、箱桶與所有其他非 Ground 物件全部進 PAR。
+「會不會遮人物」不是 PAR 判定條件。
+使用者會自行用 Photoshop 從完整 PAR 切 actor-covering 部分。
+正式完整度公式：MASTER ≈ GROUND + COMPLETE PAR。
+
+【尺寸】
+32×32 是 RMVX world-scale reference，不是畫布上限。
+544×416 只是 viewport 參考。
+目前 Castle benchmark Master = 1448×1086。
+
+【SAM2 本機環境已完成】
+WSL2 Ubuntu：PASS
+GTX 1660 6GB：PASS
+PyTorch 2.13.0+cu126
+Torch CUDA 12.6
+SAM2.1 Hiera Small：CUDA PASS
+Grounding DINO Tiny：PASS
+本機工作目錄：C:\SAM2_Work
+
+【SAM2 結論】
+v1 mixed prompts：market stall 巨型 false positive。
+v2 batch + oversized bbox：Landmark 大框可成功 reject，但 castle wall 仍污染。
+v3 tiled：recall 大增但 precision 爆掉。
+v4 alias consensus：Architecture 收斂到 gate 5 / tower 11 / building 6；Landmarks statue 7 / fountain 2，但仍不適合作正式 inventory。
+v5 起改成 Guided SAM2：ChatGPT 看 Master Scene 定 bbox，SAM2 負責精準 mask。
+v5.1 已修正 K08/K12/K13/K14/K16 bbox，全 16 個 Guided object masks 成功輸出。K10 中央女神像等重要物件 QA 可用。
+
+【非常重要的新結論】
+不要使用「整張 SAM2 mask 有 80% 必須出現在 PAR」當硬 Gate。
+原因：噴泉等 SAM2 mask 可能包含水、花、草、地板，而這些依 Binary Authority 可以合法留在 Ground。
+舊的 full-mask 80% overlap validator idea 已被 supersede。
+
+【下一步】
+直接做 Witness-Point / Core-Structure `PAR Completeness Validator v2`：
+1. Master/Ground/PAR canvas + registration gate
+2. MASTER ≈ GROUND + COMPLETE PAR recomposition/diff
+3. 對 v5.1 的 16 個高風險物件建立「確定是非 Ground 結構」的 witness points
+4. 驗證每個 witness point 小範圍內 PAR 是否存在
+5. SAM2 mask 只作視覺證據，不直接決定 layer membership
+6. 等實際 Ground + Complete PAR 出現後跑 validator
+7. 修漏件/污染後再做 Collision / Exit / RMVX actor-scale test
+
+目前 v5.1 證據：
+- guided_audit(1).json
+- guided_contact_sheet(1).png
+- guided_overlay(1).png
+- object_masks.zip
+
+不要再無限調 Grounding DINO threshold。現在 SAM2 已足以當 QA 工具，重點應回到真正 Ground/PAR 分層與 Completeness Validator。
