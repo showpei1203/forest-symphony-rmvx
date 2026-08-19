@@ -30,7 +30,17 @@ A map split is still **DRAFT** unless all checks pass:
 5. Recombining Ground-Only + All Non-Ground Objects closely reconstructs the Master Scene and exposes missing/extra objects immediately.
 6. Structural correctness alone is insufficient; visually dirty splits cannot be called Approved or Runtime-ready.
 
+## Grounded SAM2 semantic audit authority
+- Grounded SAM2 is a **QA / missing-object / candidate-mask assistant**, not final art or layer authority. A raw union mask must never be accepted as `Ground`, `All Non-Ground Objects`, `Par`, `Collision`, or Runtime truth by itself.
+- Prefer **category batches** instead of one large mixed prompt. Default FS batches: Architecture = castle/building/wall/gate/tower/roof; Landmarks = statue/fountain/monument; Nature = tree/bush/flower bed/rock; Small Props = sign/lamp/crate/barrel/market stall/windmill.
+- Thresholds are tunable benchmark profiles, not universal constants. Initial guidance: Architecture box≈0.28/text≈0.25; Landmarks box≈0.22/text≈0.22; Small Props box≈0.35/text≈0.28.
+- Apply an **oversized-bbox sanity filter** before unioning masks. Normally localized classes such as statue, fountain, sign, lamp, crate, barrel and market stall covering roughly >20–25% of the whole canvas are suspicious by default and should be excluded/flagged unless human review accepts them.
+- Use semantic aliases when recall is weak: `statue / monument / sculpture`, `gate / gatehouse / city gate / castle gate`, `building / house / shop / town building`.
+- Compare SAM2 detections/per-class masks against both the Master Scene and the manually/compiler-produced exhaustive All Non-Ground layer to find probable omissions or false positives. A SAM2 miss does not authorize deleting an object; a SAM2 hit does not authorize putting it in a final layer without normal QA.
+- SAM2-assisted outputs remain **DRAFT** until the normal Layer-Split Quality Gate and visual acceptance pass.
+- Local SAM2 workers should follow Background Execution Authority: run on demand, process jobs in the background, and release VRAM after completion rather than permanently occupying the GPU.
+
 ## Required read order
-`Shared Authority -> FS Precheck -> latest FS visual/asset benchmark -> confirm 32px world scale + required canvas -> generate/edit -> Layer-Split Quality Gate`
+`Shared Authority -> FS Precheck -> latest FS visual/asset benchmark -> confirm 32px world scale + required canvas -> generate/edit -> optional SAM2 semantic audit -> Layer-Split Quality Gate`
 
 Version: 2026-08-19
