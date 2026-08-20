@@ -11,17 +11,19 @@ Original bbox: `[451,161,565,313]`
 Original workcell: `114×152`
 
 ## Boundary Continuity Audit
-Result: **ORIGINAL GEOMETRY FAIL**
+Result: **ORIGINAL GEOMETRY FAIL -> CORRECTED PASS**
 
-Master inspection showed the visible front porch/step structure continues below the original bottom boundary. Structural pixels remain visible through approximately global `y=322`.
+Master inspection showed the visible front porch/step structure continues below the original bottom boundary. Structural pixels remain visible through global `y=322`.
 
 Corrected bbox: `[451,161,565,323]`
 Corrected workcell: `114×162`
 Placement remains `(451,161)`.
 No resize, redraw or Ground movement was used.
 
+Outside-edge inspection confirms that the structure terminates by `y=322`; pixels from `y=323` onward return to Ground/path relation. The v2.6 Boundary Continuity warning is therefore cleared.
+
 ## N2A-R1B extraction
-Result: **CANDIDATE_READY_FOR_FORMAL_VISUAL_QA**
+Result: **FORMAL VISUAL PASS**
 
 Method:
 - Master-exact source pixels;
@@ -41,18 +43,18 @@ Mechanical gates:
 - no redraw: PASS
 - integer placement: PASS
 
-Visual QA observed:
-- main roof included;
-- full house body included;
-- front door included;
-- front porch/step included through corrected global y=322;
-- left tree cluster excluded;
-- left prop cluster excluded;
-- right grass strip excluded;
-- upper-left tree wedge removed in R1B;
-- no broad Ground-class leak observed.
+Visual QA:
+- main roof: PASS
+- full house body: PASS
+- front door: PASS
+- front porch/step through global y=322: PASS
+- left tree cluster excluded: PASS
+- left prop cluster excluded: PASS
+- right grass strip excluded: PASS
+- upper-left tree wedge removed: PASS
+- broad Ground-class leak: not observed
 
-## Persistent local candidate files
+## Persistent files
 - `FS_CASTLE_TOWN_N2A_R1B_BINARY_MASK_114x162.png`
 - `FS_CASTLE_TOWN_N2A_R1B_EXTRACTED_PAR_114x162.png`
 - `FS_CASTLE_TOWN_N2A_R1B_CHECKER.png`
@@ -66,4 +68,4 @@ Visual QA observed:
 - recomposition: `2044c21dff03ac144da88e93e2734f81ca7394d56dfbc5a78f7c44f4b278ac89`
 
 ## Next legal action
-Run final visual acceptance on N2A-R1B. If accepted, lock corrected N2A bbox and proceed to N3A under v2.6 Boundary Continuity Audit first.
+N2A is locked at corrected bbox `[451,161,565,323]`. Proceed to N3A under v2.6 Boundary Continuity Audit.
