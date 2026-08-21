@@ -26,14 +26,16 @@ Reuse items must pass 32x32-world readability, pixel-crisp/no-resample rules, cl
 ## Lane B — New generation
 
 ### `TERRAIN-WATER-STREAM-A`
-- 3 pilot candidates.
+- 3 animation-family pilot candidates.
+- Each candidate contains one coherent 3-phase loop: A -> B -> C -> A.
 - Restrained outdoor blue-green seamless stream material.
-- Must pass 3x3 repeat with no seam, central stamp, embedded object or excessive micro-noise.
+- Every phase must pass spatial repeat QA; the full sequence must pass temporal-loop QA.
+- AI generates the animated source family; final RMVX A1-compatible packing is deterministic postprocess, not an image-model responsibility.
 
 ### `TRANS-GRASS-WATER-BANK-A`
-- Dependency: accepted water direction/material family.
+- Dependency: accepted animated-water direction/material family.
 - Pilot modules: straight, inner corner, outer corner, end/cap or equivalent soft termination.
-- Must connect reused grass to new water without bank-thickness or scale drift.
+- Must connect reused grass to animated water without bank-thickness or scale drift.
 
 ### Elf Treehouse Modular Pilot
 Primary families:
@@ -67,7 +69,7 @@ Hero is deferred until ordinary family scale/pixel language passes.
 ## Diagnostic witness composition
 After individual QA, assemble a small non-authoritative witness containing:
 - reused grass + dirt;
-- new water + bank;
+- new animated water + bank;
 - at least one reused broadleaf tree;
 - one reused ordinary house;
 - one new treehouse body;
@@ -80,8 +82,10 @@ This witness tests mixed pixel density, house/tree/treehouse scale, shoreline co
 
 ### Terrain
 - reused grass/dirt crisp and compatible;
-- water 3x3 repeat PASS;
-- bank fits both grass and water;
+- every water phase passes spatial repeat QA;
+- A -> B -> C -> A passes temporal-loop QA without flicker;
+- accepted water family can be deterministically packed into an RMVX A1-style animated-water witness;
+- bank fits both grass and moving water;
 - no seam/stamp contamination.
 
 ### Architecture
@@ -107,6 +111,17 @@ Create generative Prompt Contracts only for:
 4. `PC-ARCH-TREE-PLATFORM-A` with compatible `ARCH-RAILING-ORGANIC-A` treatment
 
 Reuse items get deterministic extraction/normalization QA instructions, not generative prompts.
+
+## Water Animation Override — 2026-08-22
+This section supersedes any earlier wording that described the stream as a single static seamless texture.
+
+- Water must follow the example-pattern logic of FS/RPG Maker VX A1-style animated water.
+- Generate source animation phases, not a final encoded VX autotile sheet.
+- Minimum animation source: 3 coherent phases A/B/C forming A -> B -> C -> A.
+- Each phase must tile seamlessly on all four edges.
+- Phase changes must create subtle flowing motion, not unrelated-image flicker.
+- Final A1-compatible quadrant/sheet packing is deterministic postprocess after QA.
+- The riverbank family must be validated against the accepted animated-water source.
 
 Stage 6 result: **PASS**.
 
