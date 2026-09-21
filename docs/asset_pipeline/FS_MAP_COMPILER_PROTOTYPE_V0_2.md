@@ -1,3 +1,6 @@
+> **SUPERSEDED FOR NEW WHOLE-MAP PRODUCTION — 2026-09-21**  
+> Use `FS_MAP_COMPILER_AUTHORITY_V1.md`. This v0.2 document remains historical single-object/legacy-parallax prototype evidence.
+
 # Forest Symphony Map Compiler Prototype v0.2
 
 - Component: single Master Object compiler
