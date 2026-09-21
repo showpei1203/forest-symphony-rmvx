@@ -1,3 +1,6 @@
+> **VALIDATION REQUIREMENT — 2026-09-21**  
+> Compiler output is only a `COMPILED CANDIDATE` until all applicable `FS_MAP_VALIDATION_GATE_V1.md` gates pass. A PNG pair is not an Engine Test Build.
+
 # FS Map Compiler Authority v1
 
 Date: 2026-09-21  
