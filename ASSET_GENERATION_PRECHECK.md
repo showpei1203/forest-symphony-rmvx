@@ -1,84 +1,122 @@
 # Forest Symphony — Asset Generation Precheck
 
-**Mandatory before every FS image-generation, image-edit, or map-composition task.**
+Version: **2026-09-21 v3.2**  
+Status: **CURRENT / MANDATORY**
 
-## Current new-map authority — v3.1
+## Read first
 
-Read in this order:
+1. shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`
+2. `FS_MAP_ASSET_PRODUCTION_AUTHORITY_V3_2.md`
+3. `FS_MAP_ASSET_PROMPT_WORKFLOW_V3.md`
+4. `FS_MAP_VALIDATION_GATE_V1.md`
+5. `FS_MAP_COMPILER_AUTHORITY_V1.md`
+6. current FS Style DNA / benchmark / validator rules
 
-1. Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`.
-2. Drive `Forest Symphony/00_Project_Authority/ASSET_GENERATION_PRECHECK_FS`.
-3. `docs/asset_pipeline/FS_MAP_ASSET_PRODUCTION_AUTHORITY_V3_1.md`.
-4. `docs/asset_pipeline/FS_MAP_ASSET_PROMPT_WORKFLOW_V2.md`.
-5. `docs/asset_pipeline/FS_MAP_COMPILER_AUTHORITY_V1.md`.
-6. current FS Style DNA / benchmark / validator rules.
+## Prime directive
 
-## Default architecture
+> **GENERATE ASSETS. COMPILE MAPS. VERIFY BEFORE DELIVERY.**
 
-`FS References -> Style DNA -> Map Intent -> Asset Inventory -> Prompt Contracts -> Accepted Asset Kit -> Scene Blueprint -> Scene Manifest -> Deterministic Compiler -> Runtime Derivatives -> Visual/Runtime QA -> RMVX Acceptance`
+## New-map hard rules
 
-Short form:
+- Never generate final Ground and PAR/Occlusion as independent image-model outputs.
+- Never ask for “same map without foreground” plus “foreground only” as final runtime layers.
+- Never crop engine layers from an infographic/mockup.
+- Visual similarity is not registration proof.
+- Checkerboard pixels are not proof of alpha.
+- Scene Manifest is canonical geometry authority.
+- Compiler owns final sibling-layer pixels.
+- VX/Godot adapters consume the canonical scene data.
+- Any required validation-gate failure = FAIL-CLOSED.
+- A PNG pair is not an Engine Test Build.
 
-> **Generate Assets, Compile Map.**
+## Status vocabulary
 
-## Hard rules
+Use only:
 
-- Image generation is **source-art authority only**, not final-canvas coordinate authority.
-- Scene Manifest is the canonical geometry / placement / z-order / semantic authority.
-- Ground, PAR/occlusion, collision, events, shadows and lights must derive from the same canonical placement records.
-- Do **not** independently redraw or regenerate Ground and PAR for a new map.
-- Use integer coordinates and deterministic composition.
-- No sub-pixel shifts or smoothing.
-- Nearest Neighbor only for approved pixel-art resizing.
-- Prefer explicit per-asset `base_mask`, `occlusion_mask`, `collision_mask/polygon` over whole-object PAR classification or crude horizontal bands.
-- Fix the smallest responsible artifact: placement -> manifest; occlusion -> mask; collision -> metadata; source-art defect -> source asset.
-- Whole-map regeneration is a last resort.
-- Manual mapping remains allowed, but stable placement must be captured into the Scene Manifest before final derivatives.
-- Authorized AI-agent placement is allowed when it edits deterministic scene data rather than silently repainting the final canvas.
-- The workflow is **model-agnostic**. GPT-6 Astra is optional, not a project dependency.
+`CONCEPT`  
+`SOURCE ASSET`  
+`DRAFT`  
+`COMPILED CANDIDATE`  
+`ENGINE TEST BUILD / UNVERIFIED`  
+`ENGINE TEST BUILD PASS`  
+`FAIL`  
+`FORMAL PASS`
 
-## FS scale / style inheritance
+## Minimum first benchmark
 
-- 32x32 is the RMVX world-scale player/tile readability reference, not the total map-canvas limit.
-- 544x416 is a viewport reference only.
-- Large villages, castles, dungeons and parallax scenes may exceed it while preserving the 32px world-scale relationship.
-- High top-down / three-quarter FS projection remains mandatory unless a later explicit authority changes it.
-- Pixel-crisp rendering remains mandatory.
+Unless explicitly overridden:
 
-## Concept / Master policy
+- 544x416;
+- simple grass;
+- one dirt path;
+- 3 trees;
+- 2 rocks;
+- 1 sign;
+- one spawn;
+- only tree base/occlusion/collision depth is under test.
 
-For NEW maps, a generated full-scene Master/Concept is optional mood/composition reference only.
+No house/bridge/water/landmark until this passes.
 
-It is not:
-- exact geometry authority;
-- Ground authority;
-- PAR authority;
-- a mandatory decomposition source.
+## Legal image-generation targets
 
-## Legacy Reconstruction Mode
+- seamless terrain source;
+- isolated reusable asset;
+- optional concept reference;
+- localized source-art edit;
+- mask assistance.
 
-Use historical `MAP_DUAL_OUTPUT_AUTHORITY_V2_9.md` and inherited v2.x extraction rules only when explicitly preserving/recovering an already-existing flattened Master.
+## Illegal final image-generation targets
 
-Existing Castle Town reverse-extraction assets and QA reports remain valid historical/recovery evidence. Do not delete or silently rewrite them.
+- `Ground.png`
+- `Par.png` / `Occlusion.png`
+- sibling copies of an already placed object
+- final collision data
+- final engine-ready map package
 
-## SAM2 / segmentation policy
+## One-source-object rule
 
-SAM2 / Guided SAM2 remains optional QA/omission evidence.
+`Tree_01.png + base_mask + occlusion_mask + collision + one Scene Manifest placement -> all runtime derivatives`
 
-It is not final Ground/PAR/Collision authority. For new maps, source semantic masks + Scene Manifest + deterministic compiler are preferred.
+Do not generate another Tree_01 for another layer.
 
-## Runtime gate
+## Mandatory gates
 
-A map is not accepted until actual-scale RMVX checks pass:
+A. Canvas  
+B. Manifest  
+C. Registration  
+D. Recomposite / Visual  
+E. Semantic / Collision  
+F. Engine Import
 
-1. world scale;
-2. traversal/routes/exits;
-3. door/stair/bridge alignment;
-4. collision/passability;
-5. actor occlusion;
-6. no duplicate/ghost Ground-PAR objects;
-7. no seams/sub-pixel drift;
-8. stable scene reload/return behavior.
+See `FS_MAP_VALIDATION_GATE_V1.md`.
 
-Version: **2026-09-21 v3.1**  
-Seal: `FS_ASSET_GENERATION_PRECHECK_V3_1_SCENE_MANIFEST_COMPILER`
+## Claim rule
+
+Never claim pixel-perfect, aligned, compiled, engine-ready, VX-ready, Godot-ready, successful or PASS without matching evidence.
+
+## Engine request rule
+
+If the user requests VX and Godot, both adapters/test builds are mandatory.
+
+## Repair rule
+
+Patch the smallest responsible artifact:
+
+- art -> source asset
+- position -> manifest
+- occlusion -> mask
+- collision -> metadata
+- export -> compiler
+- engine behavior -> adapter/runtime integration
+
+Do not regenerate the whole map for a local deterministic defect.
+
+## Model policy
+
+The pipeline is model-agnostic. GPT-6 Astra is optional.
+
+## Legacy
+
+Historical flattened-Master extraction is Legacy Reconstruction Mode only.
+
+**SEAL:** `FS_ASSET_GENERATION_PRECHECK_V3_2_FAIL_CLOSED_20260921`
