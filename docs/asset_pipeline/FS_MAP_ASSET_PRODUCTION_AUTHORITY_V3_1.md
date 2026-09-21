@@ -1,3 +1,6 @@
+> **SUPERSEDED FOR NEW MAPS — 2026-09-21**  
+> Use `FS_MAP_ASSET_PRODUCTION_AUTHORITY_V3_2.md`. v3.1 remains historical evidence.
+
 # FS Map Asset Production Authority v3.1
 
 Date: 2026-09-21  
