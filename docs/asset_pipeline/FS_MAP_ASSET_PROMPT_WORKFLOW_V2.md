@@ -1,3 +1,6 @@
+> **SUPERSEDED FOR NEW MAPS — 2026-09-21**  
+> Use `FS_MAP_ASSET_PROMPT_WORKFLOW_V3.md`. v2 remains historical evidence.
+
 # FS Map Asset Prompt Workflow v2
 
 Date: 2026-09-21  
