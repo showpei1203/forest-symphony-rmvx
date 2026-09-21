@@ -1,55 +1,84 @@
 # Forest Symphony — Asset Generation Precheck
 
-**Mandatory before every image generation or image edit.**
+**Mandatory before every FS image-generation, image-edit, or map-composition task.**
 
-1. Read Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`.
-2. Read Drive `Forest Symphony/00_Project_Authority/ASSET_GENERATION_PRECHECK_FS`.
-3. Apply the latest FS Style DNA / accepted benchmark / sealed visual authority.
-4. For any layered map/parallax/environment work, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_5.md` before generation or extraction.
+## Current new-map authority — v3.1
 
-## Current layered-map mode — v2.5
-Use:
-`GROUND-FIRST + PLACEMENT ANCHORS + SOURCE-ASSET/EXTRACTION + DETERMINISTIC ASSEMBLY + PAR PURITY + PIXEL-CRISP`
+Read in this order:
 
-- `GROUND = true ground/terrain + floor/road/plaza/terrain tiles + grass + flowers + water surfaces`.
-- `PAR = EVERYTHING ELSE`.
-- Occlusion is not PAR membership authority.
-- Ground is generated/accepted first and becomes the base geometry authority.
-- Major structures require unique Placement Anchor Contracts.
-- Image generation is source-art authority only; it is **not** final canvas, exact workcell, scale or coordinate authority.
-- Prefer Master/existing-art extraction when exact source pixels already exist.
-- Final PAR placement uses deterministic integer coordinates on the unchanged Ground canvas.
-- Default source-to-target viability profile is `0.75–1.25`; outside this range is Source Scale FAIL unless a later explicit authority approves an exception.
-- Pixel-art resize/downsample, if approved, uses Nearest Neighbor only.
-- Normal structural alpha should prefer `0/255`; broad partial-alpha haze/feather/AA is DRAFT/FAIL evidence.
-- Validate every object/group before proceeding to the next.
-- Primary completeness authority remains `MASTER ≈ GROUND + COMPLETE PAR`.
+1. Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`.
+2. Drive `Forest Symphony/00_Project_Authority/ASSET_GENERATION_PRECHECK_FS`.
+3. `docs/asset_pipeline/FS_MAP_ASSET_PRODUCTION_AUTHORITY_V3_1.md`.
+4. `docs/asset_pipeline/FS_MAP_ASSET_PROMPT_WORKFLOW_V2.md`.
+5. `docs/asset_pipeline/FS_MAP_COMPILER_AUTHORITY_V1.md`.
+6. current FS Style DNA / benchmark / validator rules.
+
+## Default architecture
+
+`FS References -> Style DNA -> Map Intent -> Asset Inventory -> Prompt Contracts -> Accepted Asset Kit -> Scene Blueprint -> Scene Manifest -> Deterministic Compiler -> Runtime Derivatives -> Visual/Runtime QA -> RMVX Acceptance`
+
+Short form:
+
+> **Generate Assets, Compile Map.**
+
+## Hard rules
+
+- Image generation is **source-art authority only**, not final-canvas coordinate authority.
+- Scene Manifest is the canonical geometry / placement / z-order / semantic authority.
+- Ground, PAR/occlusion, collision, events, shadows and lights must derive from the same canonical placement records.
+- Do **not** independently redraw or regenerate Ground and PAR for a new map.
+- Use integer coordinates and deterministic composition.
+- No sub-pixel shifts or smoothing.
+- Nearest Neighbor only for approved pixel-art resizing.
+- Prefer explicit per-asset `base_mask`, `occlusion_mask`, `collision_mask/polygon` over whole-object PAR classification or crude horizontal bands.
+- Fix the smallest responsible artifact: placement -> manifest; occlusion -> mask; collision -> metadata; source-art defect -> source asset.
+- Whole-map regeneration is a last resort.
+- Manual mapping remains allowed, but stable placement must be captured into the Scene Manifest before final derivatives.
+- Authorized AI-agent placement is allowed when it edits deterministic scene data rather than silently repainting the final canvas.
+- The workflow is **model-agnostic**. GPT-6 Astra is optional, not a project dependency.
 
 ## FS scale / style inheritance
-- 32×32 is the RMVX world-scale player/tile reference, not a total map-canvas limit.
-- 544×416 is a viewport reference only.
-- Large villages/castles/dungeons/parallax scenes may be larger while preserving 32px world scale.
-- Monsters are not limited to 32×32.
-- Runtime isolated pixel assets should use crisp edges, no AA, approved palette, and chroma key only when appropriate for reusable source assets.
 
-## SAM2 authority
-- SAM2 / Guided SAM2 is semantic QA / omission evidence only.
-- Never accept a raw union mask as Ground/PAR/Collision truth.
-- Do not use a universal whole-mask overlap percentage as a formal PAR gate.
-- Prefer witness/core-structure QA for important objects.
+- 32x32 is the RMVX world-scale player/tile readability reference, not the total map-canvas limit.
+- 544x416 is a viewport reference only.
+- Large villages, castles, dungeons and parallax scenes may exceed it while preserving the 32px world-scale relationship.
+- High top-down / three-quarter FS projection remains mandatory unless a later explicit authority changes it.
+- Pixel-crisp rendering remains mandatory.
 
-## Layer-Split Quality Gate
-A candidate remains **DRAFT** unless applicable checks pass:
-1. exact canvas/registration authority;
-2. no visible PAR structure duplicated in Ground;
-3. exhaustive PAR ownership;
-4. clean alpha / no Ground leakage;
-5. per-anchor placement correctness;
-6. pixel-crisp edges at integer zoom;
-7. `MASTER ≈ GROUND + COMPLETE PAR` recomposition;
-8. witness/high-risk omission QA.
+## Concept / Master policy
 
-## Required read order
-`Shared Authority -> FS Drive Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_5 -> latest FS benchmark/handoff -> Ground -> Ground QA -> anchors -> source/extraction -> deterministic assembly -> per-object QA -> recomposition/witness QA`
+For NEW maps, a generated full-scene Master/Concept is optional mood/composition reference only.
 
-Version: 2026-08-20 v2.5
+It is not:
+- exact geometry authority;
+- Ground authority;
+- PAR authority;
+- a mandatory decomposition source.
+
+## Legacy Reconstruction Mode
+
+Use historical `MAP_DUAL_OUTPUT_AUTHORITY_V2_9.md` and inherited v2.x extraction rules only when explicitly preserving/recovering an already-existing flattened Master.
+
+Existing Castle Town reverse-extraction assets and QA reports remain valid historical/recovery evidence. Do not delete or silently rewrite them.
+
+## SAM2 / segmentation policy
+
+SAM2 / Guided SAM2 remains optional QA/omission evidence.
+
+It is not final Ground/PAR/Collision authority. For new maps, source semantic masks + Scene Manifest + deterministic compiler are preferred.
+
+## Runtime gate
+
+A map is not accepted until actual-scale RMVX checks pass:
+
+1. world scale;
+2. traversal/routes/exits;
+3. door/stair/bridge alignment;
+4. collision/passability;
+5. actor occlusion;
+6. no duplicate/ghost Ground-PAR objects;
+7. no seams/sub-pixel drift;
+8. stable scene reload/return behavior.
+
+Version: **2026-09-21 v3.1**  
+Seal: `FS_ASSET_GENERATION_PRECHECK_V3_1_SCENE_MANIFEST_COMPILER`
