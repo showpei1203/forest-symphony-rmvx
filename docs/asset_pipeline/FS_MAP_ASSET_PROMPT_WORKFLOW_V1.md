@@ -1,3 +1,6 @@
+> **SUPERSEDED FOR NEW MAPS — 2026-09-21**  
+> Use `FS_MAP_ASSET_PROMPT_WORKFLOW_V2.md` with `FS_MAP_ASSET_PRODUCTION_AUTHORITY_V3_1.md`. This v1 file is retained as historical workflow evidence.
+
 # FS Map Asset Prompt Workflow v1
 
 Date: 2026-08-21
