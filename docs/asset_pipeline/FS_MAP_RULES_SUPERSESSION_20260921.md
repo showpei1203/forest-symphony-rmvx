@@ -1,3 +1,6 @@
+> **HISTORICAL — SUPERSEDED BY R2**  
+> Current index: `FS_MAP_RULES_SUPERSESSION_20260921_R2.md`.
+
 # FS Map Rules Supersession — 2026-09-21
 
 Project: Forest Symphony / RPG Maker VX  
