@@ -1,3 +1,6 @@
+> **HISTORICAL — SUPERSEDED 2026-09-21**  
+> Current index: `FS_MAP_RULES_SUPERSESSION_20260921.md`. This 2026-08-21 record is retained for audit/history only.
+
 # FS Map Rules Supersession — 2026-08-21
 
 Project: Forest Symphony / RPG Maker VX
