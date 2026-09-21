@@ -1,3 +1,6 @@
+> **SUPERSEDED FOR NEW MAPS — 2026-09-21**  
+> Use `FS_MAP_ASSET_PRODUCTION_AUTHORITY_V3_1.md`. This v3.0 file remains historical/compatibility evidence and is authoritative only where it does not conflict with v3.1 or when referenced by Legacy Reconstruction context.
+
 # FS Map Asset Production Authority v3.0
 
 Date: 2026-08-21
