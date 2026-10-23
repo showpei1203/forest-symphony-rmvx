@@ -38,3 +38,19 @@
 2. Identify the original accepted VX runtime map adapter; create a standalone test build without touching SEALED Scripts or altering live `MapXXX.rvdata`.
 3. Promote actual production tree family only after Style DNA and source license checks; benchmark remains intentionally limited to the one-path/tree mechanism.
 4. Legacy flattened masters: validate witness structure, true alpha, source-pixel fidelity and recomposition; do **not** revive separate layer-generation calls or entire SAM2 union threshold shortcuts.
+
+## VX native standalone runtime verification addendum (2026-10-23)
+
+The early sections above describe the initial Godot-only candidate. The following is the latest evidence.
+
+- Native **RPG Maker VX RGSS2 Game.exe** started in a newly copied independent `Project1` test project. SEALED Forest Symphony `.rvdata`, main runtime, and accepted assets were not altered.
+- `FS_TEST_SCRIPT_LOADED`, `VX_TEST_BOOT`, `VX_LAYERS_CREATED`, `VX_RUNTIME_FRAME_100`, `VX_GATE_F_LOGIC_PASS`, `VX_MOVEMENT_GATES_PASS` observed from real RGSS2 execution.
+- Player `move_up` advanced on valid road tile and remained blocked at collision tile. Three individual canopy sprites switched render order by player position; full Ground and Par Base loaded from compiler exports.
+- Native `Game.exe` window captured via Win32 `PrintWindow` at 550×445. Actual 544×416 client canvas starts at window coordinate (3,26). Excluding player image rectangle, frame RGB equals compiler Master with **0 different pixels**.
+- Root cause discovered by real visual QA: the stock VX Tilemap z=0 occluded an incorrectly assigned Ground Sprite z=-10, giving a false blue-water floor despite complete Python/Tiled/Godot success. Correction: Ground z=10 / Base z=80 / Player z=100 / Canopy z=70 or 200; repeat capture confirmed exact background.
+- Cross-language trap: Python `repr` of tuples produced a syntax-invalid Ruby coordinate list; use JSON array literals for RGSS2 script injection instead. Test-only VX passability must follow Manifest CollisionMask blocked tiles, not the blank template's tile flags.
+- Full 2-engine one-click harness `RUN_DUAL_ENGINE.cmd`: deterministic compilation, Tiled independent raster, Gate A–E 50 checks, 9 failure injections, Godot headless, native VX executable, screenshot RGB audit.
+- All test-only scripts in `tools/fs_map_v32_forest_smoke/` and subfolder `vx_test/`; no PNG, Game.exe, or `.rvdata` pushed to the public GitHub repo.
+- Private complete 141-file test ZIP: https://drive.google.com/file/d/1L1P2PslPL4s0wEHxxV4nTG-MqJCGJ3LB/view
+- Comprehensive tool operation manual (Sprite Normals, Laigter, Pixelorama, LibreSprite, Tiled, SpriteLab, Godot and prior Ground/PAR failures): https://docs.google.com/document/d/1lx8pbTkwetZFowHWqLI9r4NtXb7WUxFswSq450Vrln4/edit
+- Formal acceptance **still pending** the user's interactive visual walk-through and compatibility adapter to SEALED real Forest Symphony VX runtime. **Candidate only; no FORMAL PASS.**
