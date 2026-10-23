@@ -1,0 +1,45 @@
+from pathlib import Path
+import json,hashlib
+root=Path(r"E:\GameAssetToolLab_20261023\FS_ForestSplit_v3_2")
+assets=json.loads((root/"logs"/"source_provenance.json").read_text(encoding="utf8"))
+spec={
+ "tree_A":{"par":True,"canopy_y_lt":43,"collision_local":[24,48,40,64],"anchor":"top_left"},
+ "tree_B":{"par":True,"canopy_y_lt":43,"collision_local":[22,48,38,64],"anchor":"top_left"},
+ "rock_A":{"par":True,"canopy_y_lt":0,"collision_local":[5,19,29,35],"anchor":"top_left"},
+ "rock_B":{"par":True,"canopy_y_lt":0,"collision_local":[4,20,30,33],"anchor":"top_left"},
+ "sign_A":{"par":True,"canopy_y_lt":0,"collision_local":[10,38,18,48],"anchor":"top_left"}
+}
+instances=[
+ ("tree_01","tree_A",80,70,10),
+ ("tree_02","tree_B",385,82,11),
+ ("tree_03","tree_A",92,284,12),
+ ("rock_01","rock_A",142,194,20),
+ ("rock_02","rock_B",366,310,21),
+ ("sign_01","sign_A",192,222,30)
+]
+objects=[]
+for iid,name,x,y,z in instances:
+    ref=name+".png";asset=assets[ref]
+    objects.append({
+      "instance_id":iid,"asset_id":name,"source_file":"sources/"+ref,
+      "source_sha256":asset["sha256"],"source_dimensions":asset["dimensions"],
+      "x":x,"y":y,"anchor":"top_left","z_order":z,
+      "transform":{"rotation":0,"flip_x":False,"flip_y":False,"scale":1},
+      "par_mask_ref":"generated:/asset_alpha","base_mask_ref":"generated:/asset_alpha_below_canopy_threshold",
+      "occlusion_mask_ref":"generated:/asset_alpha_above_canopy_threshold",
+      "collision_ref":"asset_spec:"+name,
+      "event_metadata":None
+    })
+manifest={
+ "schema":"FS_MAP_MANIFEST_V3_2_OPEN_SOURCE_BENCH",
+ "status":"COMPILE_INPUT_NOT_FORMAL_PASS",
+ "source_authority":"Drive:FS_MAP_ASSET_PRODUCTION_AUTHORITY_V3_2",
+ "canvas":{"width":544,"height":416,"tile":32},
+ "ground":{"grass":"sources/grass_tile.png","path":"sources/path_tile.png","path_control_points":[[264,0],[264,128],[270,256],[270,416]],"path_half_width":46},
+ "asset_specs":spec,
+ "instances":objects,
+ "spawn":{"instance_id":"spawn_01","x":272,"y":366,"actor_foot_radius":9},
+ "export_semantics":{"Ground":"terrain_only","Par":"all_non_ground","Occlusion":"optional_tree_canopy_subset","ParBase":"all_non_ground_except_tree_canopy","collision":"footprints_not_alpha"}
+}
+(root/"scene_manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf8")
+print("MANIFEST_CREATED",len(objects),"objects",manifest["canvas"])
