@@ -1,0 +1,13 @@
+config_version=5
+[application]
+config/name="FS_T17D2_LPC_128_24"
+run/main_scene="res://Main.tscn"
+[display]
+window/size/viewport_width=160
+window/size/viewport_height=160
+window/size/window_width_override=160
+window/size/window_height_override=160
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
