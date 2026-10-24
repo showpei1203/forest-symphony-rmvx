@@ -1,0 +1,186 @@
+{
+  "status": "T17B_LPC_DAGGER_TWO_DEPTH_24FRAME_STRUCTURAL_PASS",
+  "source_repository": "https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator",
+  "source_commit": "9bf06be193b053db256b2536824af426de046aa2",
+  "asset_sha256": {
+    "body": "a191beb7cf21dfb2ccaaba0865d9095196b98729cb4c07ddac2fd81f30138624",
+    "pants": "86c242e53611511a6b18ec0f791db345d2265c158e7923fb922f46b31cbe0a6e",
+    "dagger_front": "238792746ed9d90148ac9a85c88d224f1ea81ea2376fcb85228b26fdf1159cd1",
+    "dagger_behind": "328b5818b9d379e77b6ec51edbf0de49dc987e41db252841c16a7dfcc978fbc0",
+    "LPC_original_zip": "69efec8a26ef20b26cfd7a8de370e87d0e667136eba2d00392dde13d2ac52465",
+    "CREDITS_csv": "9bc3c6fc660946a8f36cefe8df8196884ac0309869cdcf3a8741f40577eb8c50"
+  },
+  "selected_credit_rows": [
+    {
+      "filename": "weapon/sword/dagger/slash.png",
+      "notes": " ",
+      "authors": "bluecarrot16,Johannes Sjölund (wulax),Matthew Krohn (makrohn) ",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 ",
+      "urls": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-extended-weapon-animations "
+    },
+    {
+      "filename": "weapon/sword/dagger/behind/slash.png",
+      "notes": " ",
+      "authors": "bluecarrot16,Johannes Sjölund (wulax),Matthew Krohn (makrohn) ",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 ",
+      "urls": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-extended-weapon-animations "
+    }
+  ],
+  "selected_license_choice": "OGA-BY 3.0, retain required author credits",
+  "sprite_dimensions": [
+    384,
+    256
+  ],
+  "grid_dimensions": [
+    64,
+    64
+  ],
+  "frame_count": 24,
+  "directions": [
+    "up",
+    "left",
+    "down",
+    "right"
+  ],
+  "compositing_order": [
+    "weapon_behind",
+    "body",
+    "pants",
+    "weapon_front"
+  ],
+  "perframe_vs_full_rgba_exact": true,
+  "weapon_visible_frames": 20,
+  "per_frame_weapon_pixels": [
+    {
+      "direction": "up",
+      "frame": 0,
+      "weapon_nontransparent_pixels": 0
+    },
+    {
+      "direction": "up",
+      "frame": 1,
+      "weapon_nontransparent_pixels": 0
+    },
+    {
+      "direction": "up",
+      "frame": 2,
+      "weapon_nontransparent_pixels": 0
+    },
+    {
+      "direction": "up",
+      "frame": 3,
+      "weapon_nontransparent_pixels": 0
+    },
+    {
+      "direction": "up",
+      "frame": 4,
+      "weapon_nontransparent_pixels": 177
+    },
+    {
+      "direction": "up",
+      "frame": 5,
+      "weapon_nontransparent_pixels": 46
+    },
+    {
+      "direction": "left",
+      "frame": 0,
+      "weapon_nontransparent_pixels": 52
+    },
+    {
+      "direction": "left",
+      "frame": 1,
+      "weapon_nontransparent_pixels": 46
+    },
+    {
+      "direction": "left",
+      "frame": 2,
+      "weapon_nontransparent_pixels": 46
+    },
+    {
+      "direction": "left",
+      "frame": 3,
+      "weapon_nontransparent_pixels": 121
+    },
+    {
+      "direction": "left",
+      "frame": 4,
+      "weapon_nontransparent_pixels": 143
+    },
+    {
+      "direction": "left",
+      "frame": 5,
+      "weapon_nontransparent_pixels": 46
+    },
+    {
+      "direction": "down",
+      "frame": 0,
+      "weapon_nontransparent_pixels": 52
+    },
+    {
+      "direction": "down",
+      "frame": 1,
+      "weapon_nontransparent_pixels": 52
+    },
+    {
+      "direction": "down",
+      "frame": 2,
+      "weapon_nontransparent_pixels": 46
+    },
+    {
+      "direction": "down",
+      "frame": 3,
+      "weapon_nontransparent_pixels": 52
+    },
+    {
+      "direction": "down",
+      "frame": 4,
+      "weapon_nontransparent_pixels": 121
+    },
+    {
+      "direction": "down",
+      "frame": 5,
+      "weapon_nontransparent_pixels": 48
+    },
+    {
+      "direction": "right",
+      "frame": 0,
+      "weapon_nontransparent_pixels": 52
+    },
+    {
+      "direction": "right",
+      "frame": 1,
+      "weapon_nontransparent_pixels": 46
+    },
+    {
+      "direction": "right",
+      "frame": 2,
+      "weapon_nontransparent_pixels": 46
+    },
+    {
+      "direction": "right",
+      "frame": 3,
+      "weapon_nontransparent_pixels": 121
+    },
+    {
+      "direction": "right",
+      "frame": 4,
+      "weapon_nontransparent_pixels": 143
+    },
+    {
+      "direction": "right",
+      "frame": 5,
+      "weapon_nontransparent_pixels": 46
+    }
+  ],
+  "negative_1px_shift_diff_pixels": 978,
+  "negative_swapped_left_down_diff_pixels": 1630,
+  "negative_reverse_layer_order_diff_pixels": 64,
+  "negative_omit_behind_diff_pixels": 159,
+  "limits": [
+    "No semantic animation grip-point human visual acceptance",
+    "No VX SBS runtime adapter yet",
+    "No licensed PMD rights verification",
+    "No FS Human Gate F",
+    "Mixed old base vs current weapon art styles need human check"
+  ]
+}
