@@ -29,3 +29,7 @@ Reproducible source-only tools: `tools/style_first/fs_v22_sacred_source_compiler
 
 ## Do not overclaim
 New Sacred Grove still needs **user Human Visual acceptance**. Full complex Elf Village and Castle Town visual benchmark and V8 height-aware bridge Level0/2 / treehouse Level1 integration on this new Ground remain untested. Forest Symphony SEALED Runtime remains preserved and untested for this version. Next stage: enhance matching architecture/riverbank components, integrate V8 height schema into new source pipeline, re-run all real VX gates without inheriting unrelated old-scene PASS.
+
+
+## Post-Cloud verified local cleanup
+After official Google Drive listing identified the final private ZIP, local E:/G: SHA256+CRC matched, and five independent cold-extraction rebuild gates passed, deleted **only** redundant `FS_STYLE_FIRST_V22_COLD_EXTRACT_20261024` (252 duplicate files, **20.37 MiB** freed). Local audit `E:\GameAssetToolLab_20261023\logs\V22_SAFE_CLEANUP_20261024.json`. Current V22 source/real Game.exe/final ZIP, V21 user-accepted well project, V1 accepted art direction, and sealed FS runtime preserved. No final ZIP mutation after verification.
