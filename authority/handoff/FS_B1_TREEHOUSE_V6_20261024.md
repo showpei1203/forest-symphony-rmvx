@@ -26,3 +26,7 @@ Google Drive cloud-verified V6 private ZIP: https://drive.google.com/file/d/1wvy
 ZIP bytes: 15,291,896; 431 entries; SHA256: ed40eded22f17611a1227a311a47a4711256c14fedc7124c7b2a4421f84d203b.
 Full extract rerun PASS: 429 SHA checked, generate/owner/tiled/negative source checks PASS, isolated VX 6 original window screenshots PASS. FS sealed runtime NOT TESTED; B1 reference visual NOT PASS; human gate F NOT RUN.
 Drive Handoff: https://docs.google.com/document/d/1zKF-oi2VvTB9lJZfmdhwNMTF0UicGNj-qWK1P0Cium0/edit
+
+
+## Second verified local cleanup (2026-10-24)
+V5 source workspace, the local V5 ZIP, and the V6 extracted smoke-test duplicate were deleted only after Drive connector verified private V5 and V6 cloud archives and the full V6 release-extraction test passed. Second cleanup saved **43.51 MiB**; total first+second cleanup saved **127.42 MiB**. Audit file: E:\GameAssetToolLab_20261023\logs\CLEANUP_20261024_SECOND_AUDIT.json. Cloud archives, current V6 source/Game.exe/ZIP, sealed FS runtime, accepted Forest FINAL and source/tool libraries were preserved.
