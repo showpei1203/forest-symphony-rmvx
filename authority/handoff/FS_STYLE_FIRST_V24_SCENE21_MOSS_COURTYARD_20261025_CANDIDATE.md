@@ -21,5 +21,8 @@ User-provided private `SCENE21(1).png`: mossy stone pointed-roof chapel, olive d
 ## Authority and handoff
 Previous sealed and isolated baselines preserved. V2.1 well human PASS, v2.2 sacred tree user OK; v2.3.3 baseline separate isolated native tech PASS / human pending, stored on private Drive.
 Drive v2.4 candidate handoff: https://docs.google.com/document/d/1yZ7JKd_wIXzahs6DF1FwpsKPqXGlh-jOe78KpQ-Z-O0/edit
-Private candidate local package SHA256: `a14c87d183e45e36059ef17798a9a894825edf2785b96ead8ab37861479d53cf`. Cloud ZIP upload **not yet verified**, do not mark cloud backup PASS.
+Private candidate local package SHA256: `f748edc33adbb0f4c070c8e3a6e8c01641c3d48a9a1ce690e13660cb0cc8c942`. Cloud ZIP upload **not yet verified**, do not mark cloud backup PASS.
 Next: Windows cold extract, true VX screenshot/8-direction actor+collision tests, source silhouette QA, human style QA. Then expand modular stone perimeter/stairs/river bridge Level0/2/treehouse Level1 and 864x640 town candidate. SHO-39 Modular Asset Kit and user geometry authority remain in force.
+
+## Final cold-extract portable audit
+Final candidate 109-entry ZIP, 11,087,096 bytes, SHA256 `f748edc33adbb0f4c070c8e3a6e8c01641c3d48a9a1ce690e13660cb0cc8c942`. Independent unzip and `python scripts/rebuild_v24_from_package.py` using only bundled source and Pillow => `COLD_EXTRACT_STATIC_RECOMPILE_PASS`. This verifies Ground/PAR/semantic mask/pixelowner/collision/occlusion/navigation pixel parity, not native VX gameplay. Generated package remains privately downloadable in ChatGPT; Drive cloud ZIP verification pending.
