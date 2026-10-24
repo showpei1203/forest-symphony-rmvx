@@ -35,3 +35,7 @@ File: FS_B1_BRIDGE_DUAL_LEVEL_V8_20261024_PRIVATE_VX.zip；17,095,059 bytes；45
 自已封裝 ZIP 獨立解壓：449 項來源檔逐檔 SHA PASS；Source Generator、Visible Owner、Level1 Mask、v8 River-aware Tiled Master、v8 bridge negative tests 共五項 PASS；再由解壓檔啟動真正 VX Game.exe，十三張原生截圖與橋17+樹屋8共25個互動 Gate PASS。正式 SEALED FS 尚未測，不可標記 FORMAL PASS。
 Docs Handoff：https://docs.google.com/document/d/18XZqneH0Wwt0TRDmn5XadbtgML7KUgvSLEt-1E5CJXM/edit
 公開 GitHub 不含任何未核准 PNG/Sprites/ZIP。
+
+
+## Fourth cloud-verified local cleanup (2026-10-24)
+Both v7/v8 PRIVATE ZIP archives exist in Google Drive and pass E:\ / G:\ SHA256+ZIP CRC verification. Following v8 native VX 13-screenshot/25-interaction and extracted source Gate PASS, obsolete v7 expanded workspace, local v7 ZIP, and extracted v8 regression duplicate were deleted from local Windows. Fourth cleanup freed 50.13 MiB; total four stages **227.11 MiB**. Audit `E:\GameAssetToolLab_20261023\logs\CLEANUP_20261024_FOURTH_AUDIT.json`. Current playable v8 Game.exe/ZIP, original source assets, tools, accepted Forest FINAL, sealed FS runtime, and both private cloud archives are preserved. Cloud v8: https://drive.google.com/file/d/1XHBeza2Bp09Hq-68XvzEFRmhPL7qzJPx/view .
