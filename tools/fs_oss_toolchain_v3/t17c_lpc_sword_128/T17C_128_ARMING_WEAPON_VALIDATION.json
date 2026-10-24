@@ -1,0 +1,84 @@
+{
+  "status": "T17C_128_CELL_WEAPON_24_FRAME_STRUCTURAL_PASS_HUMAN_PENDING",
+  "source_commit": "9bf06be193b053db256b2536824af426de046aa2",
+  "sources": {
+    "body_slash_64.png": 4465,
+    "steel_behind_128.png": 2684,
+    "steel_front_128.png": 6486
+  },
+  "source_credits": [
+    {
+      "filename": "body/bodies/male/slash.png",
+      "notes": "see details at https://opengameart.org/content/lpc-character-bases; 'Thick' Male Revised Run/Climb by JaidynReiman (based on ElizaWy's LPC Revised) ",
+      "authors": "bluecarrot16,JaidynReiman,Benjamin K. Smith (BenCreating),Evert,Eliza Wyatt (ElizaWy),TheraHedwig,MuffinElZangano,Durrani,Johannes Sjölund (wulax),Stephen Challener (Redshrike) ",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0 ",
+      "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-male-jumping-animation-by-durrani,https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle,https://opengameart.org/content/lpc-revised-character-basics,https://opengameart.org/content/lpc-be-seated,https://opengameart.org/content/lpc-runcycle-for-male-muscular-and-pregnant-character-bases-with-modular-heads,https://opengameart.org/content/lpc-jump-expanded,https://opengameart.org/content/lpc-character-bases "
+    },
+    {
+      "filename": "weapon/sword/arming/attack_slash/bg/slash_128.png",
+      "notes": " ",
+      "authors": "ElizaWy; walk and down by JaidynReiman ",
+      "licenses": "OGA-BY 3.0 ",
+      "urls": "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Sword%2001%20-%20Arming%20Sword,https://opengameart.org/content/lpc-expanded-sit-run-jump-more "
+    },
+    {
+      "filename": "weapon/sword/arming/attack_slash/fg/slash_128.png",
+      "notes": " ",
+      "authors": "ElizaWy; walk and down by JaidynReiman ",
+      "licenses": "OGA-BY 3.0 ",
+      "urls": "https://github.com/ElizaWy/LPC/tree/main/Characters/Props/Sword%2001%20-%20Arming%20Sword,https://opengameart.org/content/lpc-expanded-sit-run-jump-more "
+    }
+  ],
+  "cell_size": [
+    128,
+    128
+  ],
+  "body_native_cell_size": [
+    64,
+    64
+  ],
+  "body_embedding_offset": [
+    32,
+    32
+  ],
+  "render_scale": 1,
+  "frame_grid": [
+    6,
+    4
+  ],
+  "total_frames": 24,
+  "directions": [
+    "up",
+    "left",
+    "down",
+    "right"
+  ],
+  "layer_order": [
+    "steel_behind_128",
+    "body_64_in_128",
+    "steel_front_128"
+  ],
+  "cell_vs_sheet_rgba_identical": true,
+  "body_extract_rgba_identical": true,
+  "weapon_visible_frames": 24,
+  "weapon_edge_alpha_frame_count": 0,
+  "weapon_edge_alpha_pixels_total": 0,
+  "negative_tests": {
+    "body_offset_x_plus1_diff": 7865,
+    "front_shift_x_plus1_diff": 1822,
+    "reversed_z_diff": 644,
+    "missing_behind_diff": 645
+  },
+  "engine_origin_candidate": [
+    64,
+    96
+  ],
+  "engine_origin_gate": "CANDIDATE ONLY, not verified on Godot/VX runtime; do not assume ground foot registration",
+  "visual_gate": "HUMAN_PENDING: modular LPC body has no head/hair and weapon hand-grip needs human approval",
+  "style_gate": "PENDING; character base and 128 weapon source render aesthetics need artist review",
+  "limits": [
+    "64px original body inserted at x32 y32 native resolution, NOT 2x upscaled",
+    "Cannot derive VX/SBS hit timing from still PNG",
+    "Original 128 weapon pixels near tile edge must be documented; no fail if source touches edge"
+  ]
+}
