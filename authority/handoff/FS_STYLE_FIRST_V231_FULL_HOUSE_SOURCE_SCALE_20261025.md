@@ -36,3 +36,7 @@ https://docs.google.com/document/d/1t0KNS8HRg6cVGNylqdgbZEwz9jXIodPfD2t__HyhHeE/
 
 ## Fail-closed scope
 User Human Visual for V231 is PENDING. Neither rich reference-village completeness, Castle Town, old V8 height-aware Level0/1/2 bridge/treehouse integration nor the formal Forest Symphony SEALED Runtime is passed by this isolated test. Previously accepted V21 well, V22 sacred grove and V1 art direction remain preserved. Publish source-only Python programs and Authority to this public repository; preserve original AI master, source PNGs and Windows Game.exe/ZIP only on the user's private Drive.
+
+
+## 2026-10-25 Post-Drive verified cleanup
+After Drive cloud metadata confirmed the private ZIP, E:/G: SHA256 plus ZIP CRC matched, and six independent native cold-extraction gate stages passed, removed ONLY the redundant V231 cold-extracted smoke-test directory (237 files; 20.73 MiB). Original V23 negative source, accepted V21/V22, current V231 source/Game.exe/ZIP and all formal FS sealed baselines remain unchanged. Local audit: E:\GameAssetToolLab_20261023\logs\V231_SAFE_CLEANUP_20261025.json. The delivered private ZIP hash remains 1476fc9b34cf844ccf44d774891fe2a44d360262b9e6478c47e57032a2fb0b61.
