@@ -31,3 +31,11 @@ v2.1 使用已核對的 Source ROI (1030,816)–(1185,997)、保留 18,193px 完
 
 ## Cloud-verified local cleanup (2026-10-24)
 After Google Drive cloud file metadata, local/mounted SHA256, CRC and independent extracted native VX test were all verified, only the redundant `FS_STYLE_FIRST_V21_RELEASE_COLD_EXTRACT_20261024` cold-test duplicate was removed (257 files, **35.37 MiB** freed). Cleanup audit: `E:\GameAssetToolLab_20261023\logs\STYLE_V21_SAFE_CLEANUP_20261024.json`. Preserved V2.1 source, latest runnable Game.exe, latest private ZIP, original failed V2 artifact, accepted V1 art baseline, SEALED FS runtime and Forest FINAL.
+
+
+## 2026-10-24 | USER HUMAN ACCEPTANCE PASS (WELL FIX ONLY)
+The user directly tested the supplied playable v2.1 Windows VX build and replied **「成功！」**. Record **STYLE_FIRST_V21_WELL_CROP_COLLISION_USER_HUMAN_PASS**. This closes the user-reported v2 well-crop/ground-contact-collision issue for the isolated 17×13 forest pilot and confirms the v2.1 remedial result in actual play. The older v2 defect remains recorded as FAIL, not retroactively passed.
+
+Evidence tied to this user acceptance: full source crop and original-image provenance (73×85, 4,016 visible pixels), separated ring/bucket physical masks, 19 real native VX screenshots (0 background registration/illegal foreground mismatches), 8 real walking directions and 4 blocked penetration attempts, strict negative tampering gates, and independent ZIP extraction/rebuild. Private [v2.1 playable ZIP](https://drive.google.com/file/d/1iYUM7Ct3S6Ddee6ewUWc6C1oo_a2qIG_/view).
+
+**Scope control:** User PASS applies to this specific **well rendering and collision/passage fix**. It does not confer Human Gate F acceptance of an entire rich Elf Village, integration of B1 v8 Level0/1/2 bridges/treehouses, or formal SEALED Forest Symphony runtime. Preserve existing baseline and use the validated compound-sprite pipeline for the next new assets.
