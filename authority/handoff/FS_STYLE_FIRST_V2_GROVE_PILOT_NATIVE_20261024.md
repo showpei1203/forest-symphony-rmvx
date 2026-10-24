@@ -34,3 +34,7 @@ Public GitHub includes **source code and authority only**, never privately licen
 
 ## Post-backup local cleanup (2026-10-24)
 Only the redundant V2 cold-extracted smoke-test directory was removed **after** Drive cloud metadata verification, E:/G: ZIP SHA256+CRC validation, and real native VX cold-extraction rerun PASS. Removed 242 duplicate files, freed **29.74 MiB**. Local audit: `E:\GameAssetToolLab_20261023\logs\STYLE_FIRST_V2_SAFE_CLEANUP_20261024.json`. Current V2 playable Game.exe/source/ZIP, approved v1 Style DNA baseline, sealed FS runtime and prior Forest FINAL are preserved.
+
+
+## USER-REPORTED V2 WELL REGRESSION | 2026-10-24 | FAIL
+The user tested the real playable native VX V2 ZIP and provided a screenshot showing **well sprite cropped on the left and wrong passage/collision**. Previous static 0px Ground/PAR mismatch tests only proved that the engine drew the *already-invalid asset* faithfully; they did not validate the asset's semantic completeness or usable collision. **V2 WELL CROP/COLLISION = FAIL; superseded by v2.1 source-level correction.** Preserve original V2 zip for reproducibility. The corrected release must use a full well source crop, explicit stone-ring and barrel collision, native eight-direction reachability and four invalid entry tests, screenshot proof and independent zip reconstruction. Full elf village and formal FS runtime remain unverified.
