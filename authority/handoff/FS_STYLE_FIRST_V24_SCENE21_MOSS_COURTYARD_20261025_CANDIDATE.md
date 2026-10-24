@@ -1,3 +1,5 @@
+> **SUPERSEDED VISUAL STATUS (2026-10-25): VISUAL FAIL / NOT PROMOTABLE.** User's true v2.4 screenshot shows clipped trees/chapel and rectangular Ground-decal contamination. Native 0-diff is not an art-quality validation; 5 source approvals and 8 object approvals were still PENDING. The v2.4 candidate must be retained as a *negative regression witness*, not extended or passed. See [new failure authority](../FS_V24_SCENE21_VISUAL_FAIL_SOURCE_GATE_V5_20261025.md) and [Drive forensics](https://docs.google.com/document/d/10YAjj5nPNUwZxWz-9GOWxF3K-4ZEuM6kV3bH21e602M/edit). v2.3.3 window title in the v2.4 Game.ini was inherited incorrectly; screenshot map 99.705% identical to v2.4 Master, remaining differences are actor pixels.
+
 # FS Style-first v2.4 SCENE21 Moss Courtyard - ISOLATED CANDIDATE (2026-10-25)
 
 ## Status
