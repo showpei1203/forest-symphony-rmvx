@@ -28,3 +28,6 @@ v2.1 使用已核對的 Source ROI (1030,816)–(1185,997)、保留 18,193px 完
 [Google Drive 完整 CURRENT_HANDOFF](https://docs.google.com/document/d/12bXpvOudvXauguHTZzOgSJUcqarMhZTdK0l9-Wp4yWU/edit) 已放回 FS Handoff 目錄。公開 GitHub 只保存 Authority 與程式，圖片／Game.exe 僅於用戶私人 Drive。
 
 **不可宣稱：** 使用者尚未重新人眼驗 v2.1 版本；新 Ground 仍未整合舊 v8 樹屋 Level1／橋下 Level0／橋上 Level2；完整精靈村參考級美術與正式 SEALED FS Runtime 均未通過。
+
+## Cloud-verified local cleanup (2026-10-24)
+After Google Drive cloud file metadata, local/mounted SHA256, CRC and independent extracted native VX test were all verified, only the redundant `FS_STYLE_FIRST_V21_RELEASE_COLD_EXTRACT_20261024` cold-test duplicate was removed (257 files, **35.37 MiB** freed). Cleanup audit: `E:\GameAssetToolLab_20261023\logs\STYLE_V21_SAFE_CLEANUP_20261024.json`. Preserved V2.1 source, latest runnable Game.exe, latest private ZIP, original failed V2 artifact, accepted V1 art baseline, SEALED FS runtime and Forest FINAL.
