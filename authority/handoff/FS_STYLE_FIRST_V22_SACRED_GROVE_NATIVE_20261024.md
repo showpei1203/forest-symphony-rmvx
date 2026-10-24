@@ -33,3 +33,7 @@ New Sacred Grove still needs **user Human Visual acceptance**. Full complex Elf 
 
 ## Post-Cloud verified local cleanup
 After official Google Drive listing identified the final private ZIP, local E:/G: SHA256+CRC matched, and five independent cold-extraction rebuild gates passed, deleted **only** redundant `FS_STYLE_FIRST_V22_COLD_EXTRACT_20261024` (252 duplicate files, **20.37 MiB** freed). Local audit `E:\GameAssetToolLab_20261023\logs\V22_SAFE_CLEANUP_20261024.json`. Current V22 source/real Game.exe/final ZIP, V21 user-accepted well project, V1 accepted art direction, and sealed FS runtime preserved. No final ZIP mutation after verification.
+
+
+## 2026-10-24 User actual playtest OK (scoped)
+After receiving the full playable V22 Sacred Grove ZIP the user said **「測試ok，繼續推進」**. Record `V22_SACRED_GROVE_USER_SMOKE_ACCEPTED`: the delivered isolated native VX test and source-backed sacred-tree scene were tested successfully by the user and may be used as the next Style-first baseline. This does **not** retroactively confer formal acceptance on the complete rich Elf Village / Castle Town, prior v8 Level0/1/2 height mechanics ported to V22, or Forest Symphony sealed runtime. Previous V21 well human PASS remains preserved. Next milestone: painterly style-matched architectural components and a richer village scene, with 8-way walkability, source-layer provenance, and actual VX ZIP regression.
