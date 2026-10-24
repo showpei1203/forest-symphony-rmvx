@@ -1,0 +1,45 @@
+{
+  "status": "T17D1_T17D2_REAL_GPU_5_OF_5_PASS",
+  "stages": [
+    {
+      "stage": "T17D1_build",
+      "exit": 0,
+      "pass": true,
+      "seconds": 0.52,
+      "log": "T17D1_build.log"
+    },
+    {
+      "stage": "T17D2_prepare",
+      "exit": 0,
+      "pass": true,
+      "seconds": 0.08,
+      "log": "T17D2_prepare.log"
+    },
+    {
+      "stage": "T17D2_import",
+      "exit": 0,
+      "pass": true,
+      "seconds": 3.22,
+      "log": "T17D2_import.log"
+    },
+    {
+      "stage": "T17D2_real_gpu",
+      "exit": 0,
+      "pass": true,
+      "seconds": 1.01,
+      "log": "T17D2_real_gpu.log"
+    },
+    {
+      "stage": "T17D2_audit",
+      "exit": 0,
+      "pass": true,
+      "seconds": 0.93,
+      "log": "T17D2_audit.log"
+    }
+  ],
+  "sealed_scripts_unchanged": true,
+  "sealed_scripts_sha256": "3271f5653a7f53cb55c0762d3b047e2300fbb6d6547257bef1fb2328be2b3ea9",
+  "FS_MAP": "PAUSED N5 B0 HUMAN GATE F PENDING",
+  "TANKENTAI_SBS": "NOT TESTED/SEALED",
+  "HUMAN_ART": "PENDING"
+}
