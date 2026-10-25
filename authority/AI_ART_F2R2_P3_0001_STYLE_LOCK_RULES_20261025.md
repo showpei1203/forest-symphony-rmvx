@@ -1,0 +1,22 @@
+# Style-locked F2R2 and PMD 0001 Derivative Authority (2026-10-25)
+
+User explicitly rejected the preceding geometric F2 cottage and P2R1 monsters: `F2_FAIL_STYLE_MISMATCH`, `F2_FAIL_DOOR_COLLISION_LOGIC`, `P2_FAIL_NON_PMD_GEOMETRIC_LOOK`. Their "TECH PASS" reports are technical only and MUST NOT be treated as usable art. Accepted F1R1 A04 remains frozen SHA-256 `0a407d9dce66183703fe957193a396cc59648d3b4502cd0c83e4f83e3035272b`.
+
+## Rules, enforced immediately
+1. New map architecture, timber, roof, texture, color and details must be sourced from the **actual user-supplied Forest Symphony style references**; do not synthesize generic polygon houses and pretend hue matching establishes style. Source imagery that touches its top edge has **possible pre-crop risk**; locate a complete original before declaring roof uncut.
+2. Ground defaults walkable except separately classified water/holes. Contact collision belongs to solid props. The closed house door tile MUST block; its immediately frontal tile MUST be walkable. This requires real VX footstep testing before collision acceptance.
+3. Style visual review precedes expensive engine compilation; human review is required to declare any new artwork PASS. Do not relabel technical parity as visual usability.
+4. PMD 0001: use authentic existing PMD source assets under their actual permission/attribution limits; preserve entire native sprite atlas, action and frame layout, alpha occupancy and pivot. Determine which file is canonical; inspect associated XML and all offset references before claiming XML compatibility. Failure to locate XML = NOT VERIFIED. The user says PMD sprite allows derivative modification; verify license conditions separately for any distribution.
+5. Use ZIP, source, verification logs, CURRENT_HANDOFF, Drive, GitHub, Linear for every revision; no overwrite of sealed accepted baseline or ongoing parallel P1G.
+
+## Actual new isolated static source work
+- Native FS B1 house source: `E:/GameAssetToolLab_20261023/FS_B1_BRIDGE_DUAL_LEVEL_V8_20261024/source/clean/house_A.png`, dimensions 96×160, SHA-256 `fc8e591e16bec46b10edd6bf0da52dff9eaf893efa2fd587a189b6e31a605353`. Not newly painted; directly reused to avoid style invention. Composite atop approved F1R1 Ground at (215,64). **House alpha touches top border**: potential pre-crop warning. Door tile (8,6) blocked in isolated contact mask; front tile (8,7) walkable. This is STATIC CANDIDATE ONLY, no VX game test or human pass yet.
+- PMD 0001 source: `E:/CG_Pet_Battle/Graphics/Characters/CG_PMD_0001_NativeA_0.png`, 864×1920 PNG, SHA-256 `71ce5f5e5dbabaa280fff47576f28601200611ac3ea66b2c8d71614cecb20984`. Created a real palette derivative of existing full sprite sheet changing 13,464 RGB pixels but **preserving exact entire alpha layer, image dimensions, sprite coordinates**. This is a *minimal technical proof of safe modification*, not a new species, final art, or confirmed PMD original canonical sheet.
+- Original PMD XML not found during initial scan of E:/CG_Pet_Battle, so XML compatibility **UNKNOWN / NOT PASS**. Do not imply XML files were edited or verified.
+- Actual isolated private ZIP at [Drive](https://drive.google.com/file/d/1esoMLVWe0Xgwb1EuEG4OSM1lk2HqVenN/view?usp=drivesdk), SHA-256 `6e47d961a41e4b3bb27dc022b10778f6c39b00878574ee7dbcea02db4f7f643d`, 643,654 bytes. ZIP CRC PASS, local and Drive mirror SHA equal; basic static mask + no-displacement checks PASS. Contains original/reference, modified sheet, preview, door mask, QA CMD and handoff.
+- [House static preview](https://drive.google.com/file/d/1-7zMHOh7Q4JsAVPVYyN8DNSV6W5_tagx/view?usp=drivesdk), [house individual](https://drive.google.com/file/d/1KbLQ19IGF8DADo2mu4O6grNOE9XspzqX/view?usp=drivesdk), [PMD 0001 derivative](https://drive.google.com/file/d/12grzx3YqQquKIroXD47YO8dd91AZV7s6/view?usp=drivesdk).
+
+## Next targeted tests
+- Replace potentially pre-cropped house with user-provided **fully intact same-style house source** or construct from legally available genuine matched pieces. Do not mark style PASS until human review. Make closed door genuinely solid in isolated VX Game.exe, validate front tile and roof occlusion.
+- Locate PMD source canonical sheet **plus original XML** (Drive or PMD source repositories where authorized), parse every action/frame reference; emit original-vs-modified atlas grid and per-action alpha masks. Only then can we certify zero XML changes.
+- No paid image generators authorized. Keep previously rejected F2/P2 art as FAIL and preserve accepted F1R1.
