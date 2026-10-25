@@ -1,3 +1,5 @@
+> **2026-10-25 Native Collision and Final ZIP Update:** True Windows Game.exe was executed on an isolated copy of v3.0 visual engine with v3.1's 14 blocked tile logic. Logs: V31_DOOR_WALK_PASS=true, V31_WALL_BLOCK_PASS=true, V31_NATIVE_COLLISION_GATE_PASS. This proves native collision behavior only, NOT full v3.1 4-PAR artwork or human visual approval. Final conversation ZIP includes the native LOG: 112 entries, 15,778,345 bytes, SHA256 746194458a19eca065df21acfa3a841e7786ce186cacc9393ef1eca89ab0d9b1. Earlier ZIP hash is superseded. Full art G2/G3/G8 remains blocked. Google Drive ZIP binary readback is not confirmed.
+
 # FS v3.1 | Issue Taxonomy and Collision Repair
 Date: 2026-10-25. Status: isolated technical candidate; visual FAIL/PENDING; native NOT RUN; release BLOCKED.
 Drive full handoff: https://docs.google.com/document/d/14UdQ7mkzwS_Sf0Ue8HKDzfok2snKmLxGB5CvmEmILo4/edit
