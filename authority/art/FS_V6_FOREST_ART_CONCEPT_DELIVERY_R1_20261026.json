@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-26",
+  "deliverable": "FS_V6_FOREST_MASTER_CONCEPT_QA_R1_20261026.zip",
+  "size_bytes": 13991496,
+  "sha256": "266df3e2606b830b9e6b67d18426bc4a188e19212746bac30c4a3c7a58f0e243",
+  "entries": 14,
+  "art_status": "MASTER_ONLY_GROUND_ART_FAIL",
+  "technical_status": "SHA_AND_EXACT_CROP_QA_PASS",
+  "includes": [
+    "new AI source raster 1435x1096",
+    "world concept 1280x928",
+    "ground scene crop 544x416",
+    "SCENE21 visual comparison",
+    "water colorscreen preliminary",
+    "32px world grid",
+    "manifest+SHA",
+    "RUN_QA.py",
+    "RUN_QA.cmd",
+    "QA_RUN.log",
+    "CURRENT_HANDOFF.md"
+  ],
+  "where": "Current ChatGPT conversation artifact, not copied to remote Windows or uploaded as raw ZIP to Google Drive",
+  "image_drive_document": "https://docs.google.com/document/d/1l2R_9AZFWEPtM-QaYOXXmP1N7_d7hfHns9TYZ2tzt6g/edit",
+  "authorization": "private QA, reference images remain private; do not copy into sealed game."
+}
