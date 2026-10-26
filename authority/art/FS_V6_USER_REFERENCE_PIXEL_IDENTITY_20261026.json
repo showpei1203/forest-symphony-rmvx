@@ -1,0 +1,64 @@
+{
+  "schema": "FS_V6_USER_REFERENCE_TO_NATIVE_IMAGE_PIXEL_IDENTITY",
+  "date": "2026-10-26",
+  "source": "User supplied screenshots vs user's FS sealed isolated reference (read-only)",
+  "mode": "SHA256 of decoded RGBA raw pixels; raw PNG SHA differs because encoding",
+  "all_6_pixel_matches": true,
+  "images": [
+    {
+      "user": "ground3(1).png",
+      "fs": "ground3.png",
+      "size": [
+        1280,
+        928
+      ],
+      "rgba_pixel_sha256": "a6f49abe478b94d2fad0e65806475b1ac72ed227198d1806079a0ac9183a7c1f"
+    },
+    {
+      "user": "ground10(2).png",
+      "fs": "ground10.png",
+      "size": [
+        960,
+        1280
+      ],
+      "rgba_pixel_sha256": "02d3c2b911fbf087e48e77816f1af7c9fba9f1d37d6bb168f036a5d2a2ab8ec4"
+    },
+    {
+      "user": "ground10_1.png",
+      "fs": "ground10_1.png",
+      "size": [
+        960,
+        1280
+      ],
+      "rgba_pixel_sha256": "d8009e3c3281bb47d7f91b71e576e485606cedf4408ef84d9839dc0a7ed83a70"
+    },
+    {
+      "user": "ground10_2.png",
+      "fs": "ground10_2.png",
+      "size": [
+        960,
+        1280
+      ],
+      "rgba_pixel_sha256": "ce8b03025bcc621fc38742f3c4939af80bab8873d2af68bf424c88de7679a56b"
+    },
+    {
+      "user": "ground10_3.png",
+      "fs": "ground10_3.png",
+      "size": [
+        960,
+        1280
+      ],
+      "rgba_pixel_sha256": "344917a123ab689c98e6a4c24c92c10a79f1dbd487cd58577c4eb18ecd6e4e34"
+    },
+    {
+      "user": "ground10_4.png",
+      "fs": "ground10_4.png",
+      "size": [
+        960,
+        1280
+      ],
+      "rgba_pixel_sha256": "ce8b03025bcc621fc38742f3c4939af80bab8873d2af68bf424c88de7679a56b"
+    }
+  ],
+  "note": "ground10_2 and ground10_4 are pixel identical but may differ at PNG byte representation in native FS folder. No raw licensed reference PNG in Github."
+}
