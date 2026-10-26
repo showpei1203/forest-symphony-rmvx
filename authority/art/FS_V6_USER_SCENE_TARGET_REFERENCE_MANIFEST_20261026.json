@@ -1,0 +1,116 @@
+{
+  "status": "USER_UPLOADED_REFERENCE_HASHES_RECORDED",
+  "date": "2026-10-26",
+  "context": "The user explicitly designated these 12 images as target quality/size references. Hash is raw upload SHA256, not necessarily FS container PNG SHA; matching ground3/ground10 also verified by decoded RGBA separately.",
+  "private_raw_sources_not_in_public_repo": true,
+  "reference": [
+    {
+      "file": "SCENE001(2).png",
+      "size": [
+        544,
+        416
+      ],
+      "uploaded_png_sha256": "c915409aac0491636b7e6d88a26a4b6815a4643fb7334aaa1d6dc479822dcd48",
+      "role": "woodland_village"
+    },
+    {
+      "file": "SCENE05.png",
+      "size": [
+        544,
+        418
+      ],
+      "uploaded_png_sha256": "7326fdb2cefcd736dc36837a6c78c5ac419f385f9cbb2becd0b2c7c40158eaa9",
+      "role": "arid_boundary"
+    },
+    {
+      "file": "SCENE06.png",
+      "size": [
+        544,
+        416
+      ],
+      "uploaded_png_sha256": "82d9a8dfa475db9cf60f38987f528e49f469f2ca64e0f5df8278f2f73f04e321",
+      "role": "forest_cave"
+    },
+    {
+      "file": "SCENE14.png",
+      "size": [
+        544,
+        416
+      ],
+      "uploaded_png_sha256": "b69951a76dbbd85f6c3e44d6ad906e4f2e0c349d311db5c06a46d394145291c4",
+      "role": "multi_level_cliffs"
+    },
+    {
+      "file": "SCENE18.png",
+      "size": [
+        544,
+        416
+      ],
+      "uploaded_png_sha256": "ab867d89d99672eeef12757455e2b76ec3a46b811146be164d31abb1b2ef01c2",
+      "role": "crystal_dungeon"
+    },
+    {
+      "file": "SCENE21(3).png",
+      "size": [
+        544,
+        416
+      ],
+      "uploaded_png_sha256": "4414db2f8d0be840a336679b44d74e5a549c0ad693d1e165250cc0d2f660e730",
+      "role": "sacred_grove"
+    },
+    {
+      "file": "ground3(1).png",
+      "size": [
+        1280,
+        928
+      ],
+      "uploaded_png_sha256": "e09b05ecd45b86419326569b32b3ac6329eededd98119d10065bea83706eab01",
+      "role": "large_village_world"
+    },
+    {
+      "file": "ground10(2).png",
+      "size": [
+        960,
+        1280
+      ],
+      "uploaded_png_sha256": "d4eeb407fa382ed067a72f0e21262c5bcfd173ce5f4478ec4d239e78b446e6d0",
+      "role": "ground_motion_static_reference"
+    },
+    {
+      "file": "ground10_1.png",
+      "size": [
+        960,
+        1280
+      ],
+      "uploaded_png_sha256": "a3fa9ecabed07e3b37a7ee9c3d1c95ed7f11e3e034521d8b113a6862598202b1",
+      "role": "water_motion_frame_1"
+    },
+    {
+      "file": "ground10_2.png",
+      "size": [
+        960,
+        1280
+      ],
+      "uploaded_png_sha256": "1b5c5cf931267438f485f4b9a5b54548e6cd7fc6beaba02469ab341815bbe8e2",
+      "role": "water_motion_frame_2"
+    },
+    {
+      "file": "ground10_3.png",
+      "size": [
+        960,
+        1280
+      ],
+      "uploaded_png_sha256": "cf020e3b44ecaf6c4b7bbece328151da5dfc9b530f6e4e51d24f1fed1122a325",
+      "role": "water_motion_frame_3"
+    },
+    {
+      "file": "ground10_4.png",
+      "size": [
+        960,
+        1280
+      ],
+      "uploaded_png_sha256": "1b5c5cf931267438f485f4b9a5b54548e6cd7fc6beaba02469ab341815bbe8e2",
+      "role": "water_motion_frame_4_pixel_duplicate_2"
+    }
+  ]
+}
