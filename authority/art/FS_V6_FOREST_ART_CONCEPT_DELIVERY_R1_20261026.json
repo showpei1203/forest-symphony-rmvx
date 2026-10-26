@@ -19,7 +19,10 @@
     "QA_RUN.log",
     "CURRENT_HANDOFF.md"
   ],
-  "where": "Current ChatGPT conversation artifact, not copied to remote Windows or uploaded as raw ZIP to Google Drive",
+  "where": "Verified raw ZIP is now stored in Google Drive FS_GameAsset_Backups/FS_V6_PILOTS_20261026. It has NOT been imported into the Windows runtime or sealed game.",
   "image_drive_document": "https://docs.google.com/document/d/1l2R_9AZFWEPtM-QaYOXXmP1N7_d7hfHns9TYZ2tzt6g/edit",
-  "authorization": "private QA, reference images remain private; do not copy into sealed game."
+  "authorization": "private QA, reference images remain private; do not copy into sealed game.",
+  "drive_zip_url": "https://drive.google.com/file/d/1cLLgWWNzKja2A-pMPpjuXnscfhErOp4d/view",
+  "drive_backup_folder_url": "https://drive.google.com/drive/folders/1AzXJTnXptl6hS7PDyNPoAfhBejCdFOcK",
+  "drive_readback": "PASS: downloaded exact 13,991,496 bytes from connected Drive; SHA256 266df3e2606b830b9e6b67d18426bc4a188e19212746bac30c4a3c7a58f0e243; cmp exact binary match"
 }
