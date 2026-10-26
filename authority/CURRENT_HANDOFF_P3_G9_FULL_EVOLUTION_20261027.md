@@ -1,0 +1,10 @@
+# CURRENT_HANDOFF P3_G9_FULL_EVOLUTION_CHAIN_0001_0003 — 2026-10-27
+User explicitly authorized full PMD 0001–0003 derivative sheet production after visual acceptance of 0001 G3R1, 0002 G8R4 and 0003 G8R5 Idle Back stray rock removal. Assistant actually built all three per-species original PMD atlas sets in isolated E:\GameAssetToolLab_20261023\TOOLCHAIN_PILOT_20261025\outputs\P3_G9_FULL_0001_0002_0003_EVOLUTION_20261027. NO ImageGen concept charts.
+Output includes:
+- 0001 EXACT accepted G3R1 image actions 34 / 1123 original source XML animation cell positions, no changed accepted pixels.
+- 0002 12 actual native action PNG sheets 682 frames, of which 12 user-reviewed keyframes exact G8R4 and 670 newly made G9 full evolution volcano frames.
+- 0003 12 actual native action sheets 698 frames, of which 12 exact G8R5 user-reviewed keyframes incl Idle Back F1 surgical black stray fix, 686 newly made G9 frames.
+Overall 58 action atlases and 2,503 original XML-defined cells. All per-species original XML, Offsets, Shadow unchanged byte-for-byte; action cell sizes varied by source 24..80 rather than forcing 32x32. Source-blue body anchor governs rock movement, not flower tracking. Real rock/fire with multi-tones and hot crater bright orange/yellow. AI illustration assets do not enter actual PMD source.
+Source per-cell QA all 0001/2/3 PASS, exception on 0003 Idle Back F1 original color detector wrongly calls two removed petal pixels body (approved exact G8R5), true torso unaffected. Godot native XML/GPU both 0002+0003 PASS; 0001 previously verified, release freshly retest.
+IMPORTANT HUMAN ART STATUS: 0001 accepted baseline, prior 0002/0003 12 samples each accepted, **new 1356 G9 full-action frames require human art acceptance**. Technical full atlas completion is NOT final formal art PASS. Original PMD game and VX Tankentai SBS target runtime NOT tested. User explicitly paused maps; no map changes.
+Next: review all genuine action preview panels/GIFs and report pose defects, fix original PMD cells with source geometry, then seal after human art acceptance. Every later iteration must upload ZIP+RUN CMD+LOG+Handoff to Drive/GitHub/Linear.
