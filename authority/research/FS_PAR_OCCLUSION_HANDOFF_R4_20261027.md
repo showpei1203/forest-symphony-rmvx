@@ -1,0 +1,9 @@
+# FS Parallax R4 CURRENT HANDOFF | 2026-10-27
+Authority research stage: REAL VX multi-actor tech PASS (isolated B1 template), semantic PAR ART HOLD, formal FS 505-script runtime NOT TESTED. Do not change sealed project or other V6 map branch.
+Base directory: E:\GameAssetToolLab_20261023\FS_MasterSplit_Research_20261027.
+Pipeline: SCENE21 complete Ground, same-source upper-occluding alpha-only PAR, test-only 2 variants STATIC z=900 vs DEPTH per-object y. Player + actual Game_Event NPC ($002) use per-actor foot SpriteZ. 10 actual native Game.exe screenshots, 5 poses.
+Measured pixel differences STATIC vs DEPTH player front/npc back 140 (all player pixels), player back/npc front 23 (all NPC), both front 191 (140 player/52 NPC overlap ROIs), both back 0, clear 0. Outside two-actor ROIs and backdrop vs original full scene 0 mismatched pixels in every pair. Native screen audit R4_MULTI_ACTOR_NATIVE_PIXEL_AUDIT.json.
+Four-direction $001 footprint scan of 17x13 (test-only 3 blocked,218 assumed walkable): 2 cells behind-to-front depth risk, 43 cells full-32x32-tile nonobject overdraw risk. Not official ParaPassa passability.
+R4 error: initial real NPC missing Graphics/Characters/$002.png caused scene load stall; copy the private source sprite into each isolated test build then rerun PASS. Earlier R3 errors preserved.
+Next R5: validate official HK-UOM separate Viewport z & ISS ParaPassa on actual 505-script isolated copy, refine SAM2 semantic incomplete/full PAR coverage, true passability and moving two-actor Gate. R4 only pass tech, not formal art.
+Files: build_native_multi_actor_r4.py, verify_native_multi_actor_r4.py, analyze_native_multi_actor_r4.py, scan_reachable_occlusion_r4.py, make_native_multi_actor_r4_contact.py, RUN_R4_TEST.cmd, R4_NATIVE_VX/, R4_NATIVE_SCREENSHOTS/, R4_WALKABLE_GRID_OCCLUSION_SCAN/, RESEARCH_REPORT_R4.md.
