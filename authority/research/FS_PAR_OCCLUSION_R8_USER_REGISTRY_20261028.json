@@ -1,0 +1,459 @@
+{
+  "schema": "fs.par.occluder.registry.r8",
+  "version": "R8.0-annotated",
+  "art_authority": "User red/blue annotated 548x400 image, 2026-10-27; ROI approximate source 544x416, require registration QA",
+  "master": {
+    "file": "SCENE21_GUIDED_SAM2_CANDIDATE/MASTER_RGBA.png",
+    "width": 544,
+    "height": 416
+  },
+  "priority": [
+    "user_exclude_blue",
+    "user_include_red",
+    "scene_source_pixels_only",
+    "depth_foot_anchor",
+    "model_score"
+  ],
+  "coordinate_system": {
+    "annotation": [
+      548,
+      400
+    ],
+    "source": [
+      544,
+      416
+    ],
+    "mapping": "initial approximate coordinates only; image geometric registration pending",
+    "tile": 32
+  },
+  "rules": [
+    {
+      "id": "R8-001",
+      "text": "Ground remains full original beautiful master. PAR RGB must be copied from same source at exactly aligned coordinates."
+    },
+    {
+      "id": "R8-002",
+      "text": "Every user RED ring is a mandatory occluder instance, including small independent bushes, plants, rocks. Absence of coverage => FAIL."
+    },
+    {
+      "id": "R8-003",
+      "text": "User BLUE ring is ground / stairs, explicitly excluded. Any PAR alpha in the actual step surface => FAIL."
+    },
+    {
+      "id": "R8-004",
+      "text": "32px tile grid is a selection guide; mixed cells require alpha masks, not full opaque 32px tiles."
+    },
+    {
+      "id": "R8-005",
+      "text": "No minimum area filter for micro objects. Evaluate individual ID, source mask ownership, contact depth and four actor directions."
+    },
+    {
+      "id": "R8-006",
+      "text": "Mask complement cannot prove missing-area correctness; only independent visual annotation and native VX play can pass Art Gate F."
+    },
+    {
+      "id": "R8-007",
+      "text": "Static objects may use HK PAR; dynamic depth objects require per-player/NPC order; collision limits unreachable positions."
+    },
+    {
+      "id": "R8-008",
+      "text": "Use exact original Master visibility; no repainting Ground. Unknown object and source overlaps are reported, not silently erased."
+    }
+  ],
+  "user_red": [
+    {
+      "id": "RED_R01",
+      "name": "conifer_right_of_house",
+      "kind": "major_tree",
+      "annotated_bounds": [
+        388,
+        56,
+        450,
+        184
+      ],
+      "box": [
+        395,
+        59,
+        449,
+        183
+      ],
+      "positives": [
+        [
+          416,
+          95
+        ],
+        [
+          418,
+          125
+        ]
+      ],
+      "negatives": [
+        [
+          448,
+          154
+        ],
+        [
+          394,
+          145
+        ]
+      ],
+      "foot": [
+        420,
+        174
+      ],
+      "priority": "MUST_INCLUDE"
+    },
+    {
+      "id": "RED_R02",
+      "name": "far_right_conifer",
+      "kind": "major_tree",
+      "annotated_bounds": [
+        470,
+        159,
+        533,
+        247
+      ],
+      "box": [
+        476,
+        162,
+        532,
+        247
+      ],
+      "positives": [
+        [
+          503,
+          192
+        ],
+        [
+          505,
+          214
+        ]
+      ],
+      "negatives": [
+        [
+          474,
+          213
+        ],
+        [
+          528,
+          240
+        ]
+      ],
+      "foot": [
+        509,
+        241
+      ],
+      "priority": "MUST_INCLUDE"
+    },
+    {
+      "id": "RED_R03",
+      "name": "left_lower_outer_bush",
+      "kind": "micro_flower_bush",
+      "annotated_bounds": [
+        11,
+        240,
+        82,
+        297
+      ],
+      "box": [
+        13,
+        234,
+        81,
+        297
+      ],
+      "positives": [
+        [
+          37,
+          262
+        ],
+        [
+          40,
+          273
+        ]
+      ],
+      "negatives": [
+        [
+          74,
+          282
+        ]
+      ],
+      "foot": [
+        41,
+        289
+      ],
+      "priority": "MUST_INCLUDE"
+    },
+    {
+      "id": "RED_R04",
+      "name": "left_lower_inner_shrub",
+      "kind": "micro_shrub",
+      "annotated_bounds": [
+        69,
+        240,
+        132,
+        297
+      ],
+      "box": [
+        69,
+        229,
+        131,
+        297
+      ],
+      "positives": [
+        [
+          94,
+          267
+        ]
+      ],
+      "negatives": [
+        [
+          73,
+          267
+        ],
+        [
+          118,
+          291
+        ]
+      ],
+      "foot": [
+        96,
+        286
+      ],
+      "priority": "MUST_INCLUDE"
+    },
+    {
+      "id": "RED_R05",
+      "name": "bottom_left_tiny_shrub",
+      "kind": "micro_shrub",
+      "annotated_bounds": [
+        157,
+        297,
+        194,
+        318
+      ],
+      "box": [
+        157,
+        293,
+        193,
+        322
+      ],
+      "positives": [
+        [
+          176,
+          307
+        ]
+      ],
+      "negatives": [
+        [
+          166,
+          317
+        ]
+      ],
+      "foot": [
+        177,
+        314
+      ],
+      "priority": "MUST_INCLUDE"
+    },
+    {
+      "id": "RED_R06",
+      "name": "bottom_mid_right_tiny_patch",
+      "kind": "micro_plant",
+      "annotated_bounds": [
+        334,
+        307,
+        373,
+        341
+      ],
+      "box": [
+        333,
+        294,
+        375,
+        344
+      ],
+      "positives": [
+        [
+          352,
+          321
+        ]
+      ],
+      "negatives": [
+        [
+          364,
+          338
+        ]
+      ],
+      "foot": [
+        353,
+        328
+      ],
+      "priority": "MUST_INCLUDE"
+    },
+    {
+      "id": "RED_R07",
+      "name": "bottom_mid_right_green_bush",
+      "kind": "micro_bush",
+      "annotated_bounds": [
+        370,
+        296,
+        416,
+        345
+      ],
+      "box": [
+        366,
+        295,
+        417,
+        349
+      ],
+      "positives": [
+        [
+          392,
+          316
+        ],
+        [
+          392,
+          327
+        ]
+      ],
+      "negatives": [
+        [
+          363,
+          342
+        ],
+        [
+          418,
+          348
+        ]
+      ],
+      "foot": [
+        390,
+        334
+      ],
+      "priority": "MUST_INCLUDE"
+    },
+    {
+      "id": "RED_R08",
+      "name": "right_lower_small_plant",
+      "kind": "micro_plant",
+      "annotated_bounds": [
+        436,
+        273,
+        483,
+        305
+      ],
+      "box": [
+        436,
+        266,
+        485,
+        309
+      ],
+      "positives": [
+        [
+          461,
+          285
+        ]
+      ],
+      "negatives": [
+        [
+          473,
+          299
+        ]
+      ],
+      "foot": [
+        459,
+        296
+      ],
+      "priority": "MUST_INCLUDE"
+    }
+  ],
+  "user_blue": [
+    {
+      "id": "BLUE_B01",
+      "name": "house_front_stone_steps",
+      "kind": "ground_stairs",
+      "annotated_bounds": [
+        271,
+        179,
+        324,
+        217
+      ],
+      "box": [
+        271,
+        179,
+        324,
+        217
+      ],
+      "core": [
+        281,
+        186,
+        315,
+        211
+      ],
+      "positives": [
+        [
+          297,
+          198
+        ]
+      ],
+      "priority": "MUST_EXCLUDE"
+    }
+  ],
+  "test_points": [
+    {
+      "name": "right_house_conifer_front",
+      "foot_tile": [
+        13,
+        6
+      ],
+      "target": "RED_R01"
+    },
+    {
+      "name": "far_right_conifer_front",
+      "foot_tile": [
+        15,
+        7
+      ],
+      "target": "RED_R02"
+    },
+    {
+      "name": "left_micro_bush_back",
+      "foot_tile": [
+        1,
+        7
+      ],
+      "target": "RED_R03"
+    },
+    {
+      "name": "bottom_micro_green_front",
+      "foot_tile": [
+        12,
+        10
+      ],
+      "target": "RED_R07"
+    },
+    {
+      "name": "steps_blue_exclusion",
+      "foot_tile": [
+        9,
+        6
+      ],
+      "target": "BLUE_B01"
+    },
+    {
+      "name": "clear_area",
+      "foot_tile": [
+        8,
+        9
+      ],
+      "target": "NONE"
+    }
+  ],
+  "gates": {
+    "source_exact": true,
+    "red_coverage": true,
+    "blue_exclusion": true,
+    "semantic_independent": false,
+    "art_gate_f": false,
+    "actual_formal_map_passa": false
+  }
+}
