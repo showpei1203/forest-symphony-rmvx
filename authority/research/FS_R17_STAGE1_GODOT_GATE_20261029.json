@@ -1,0 +1,48 @@
+{
+  "status": "R17_STAGE1_BC_NATIVE_GODOT_COMPARISON_TECH_PASS_ALL_ART_GATES_HOLD",
+  "A": "NOT_RUN_no_genuine_image_pair_model",
+  "B": {
+    "method": "B_MASTER_FIRST",
+    "godot_actual_GPU_4_7_2_rendered": true,
+    "actor_BACK_changed_px_vs_FULL": 0,
+    "actor_FRONT_changed_px_vs_FULL": 271,
+    "actor_occlusion_back_vs_front_effect": true,
+    "FULL_vs_author_export_GROUND_FULL_different_pixels": 0,
+    "PLATE_vs_authored_platethumb_pixel_diff": 0,
+    "PAR_vs_author_exact_RGBA_diff_bbox": null,
+    "original_R12_rich_reference_vs_final_FULL_pixel_difference": 0,
+    "registered_opaque_Alpha_px": 53064,
+    "art_gate": "HOLD",
+    "mask_user_gate": "HOLD",
+    "double_output_tech_gate": true
+  },
+  "C": {
+    "method": "C_OBJECT_FIRST_CONTINUOUS_PLATE",
+    "godot_actual_GPU_4_7_2_rendered": true,
+    "actor_BACK_changed_px_vs_FULL": 0,
+    "actor_FRONT_changed_px_vs_FULL": 271,
+    "actor_occlusion_back_vs_front_effect": true,
+    "FULL_vs_author_export_GROUND_FULL_different_pixels": 0,
+    "PLATE_vs_authored_platethumb_pixel_diff": 0,
+    "PAR_vs_author_exact_RGBA_diff_bbox": null,
+    "original_R12_rich_reference_vs_final_FULL_pixel_difference": 12026,
+    "registered_opaque_Alpha_px": 53064,
+    "art_gate": "HOLD",
+    "mask_user_gate": "HOLD",
+    "double_output_tech_gate": true
+  },
+  "art_85_point_score": "NOT_ASSIGNED_NO_HUMAN_GOLD",
+  "full_required_spec": [
+    "house",
+    "three_full_trees",
+    "lamp",
+    "railing",
+    "curved_path",
+    "props"
+  ],
+  "benchmark_coverage_limit": "R12 crop lacks three complete trees and verified railing, sample not representative enough for full Art Gate",
+  "user_par_review": "PENDING",
+  "formal_FS_K4_unchanged": true,
+  "real_RPG_MAKER_VX_GameExe": "NOT_RUN_ART_GATE_NOT_PASSED",
+  "Godot_window_544x416_native": true
+}
