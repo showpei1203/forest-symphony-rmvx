@@ -1,0 +1,19 @@
+{
+  "status": "R17_STAGE2_PAIR_OUTPUT_ALPHA_GATE_FAIL",
+  "source": "R17_STAGE2_GENERATED_ILLUSTRATION_BOARD_NOT_REAL_LAYERS.png",
+  "actual_image_mode": "RGB",
+  "actual_image_dimensions": [
+    1434,
+    1097
+  ],
+  "transparent_alpha_zero_pixels": 0,
+  "alpha_minmax": [
+    255,
+    255
+  ],
+  "claimed_visual_checkerboard_is_actual_transparency": false,
+  "generated_ground_PAR_are_only_illustrations": true,
+  "A_true_alpha_pair_generation": "FAIL_NOT_REAL_OUTPUT",
+  "sha256": "24176a4a11401b87413c4acf6d569c7c89e236d8edfd1b0ce4d2d5c9f337e969",
+  "do_not_use_as_Fs_PAR": true
+}
