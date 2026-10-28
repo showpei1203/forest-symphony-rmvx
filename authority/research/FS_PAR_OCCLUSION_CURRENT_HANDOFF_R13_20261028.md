@@ -1,0 +1,7 @@
+# CURRENT_HANDOFF_R13｜FS 32px Tile-first PAR (2026-10-28)
+R13規則 Authority新檔：`R13_PAR_OCCLUSION_TILE_RULES_20261028.md`已上傳GitHub+Drive；樹整顆應入PAR只排地面接地樹幹底格，路燈/欄杆/柵欄/橋扶手/招牌/高灌木都入PAR，Ground完整原圖，Collision獨立。
+新村莊R12 Master 1280×928不改；R12原14 alpha 233875不改。R13以14原物件+38新增樹/路燈/欄杆/小物=52張 source exact透明PAR；843個32格含遮擋候選；PAR Alpha684860，較R12新增453725，另外排除2740（樹根及台階，待視覺核對）。9新樹+原3樹根格計12個Alpha hard-exclude；SAM2沒切完整的樹以32格補漏。過度納入地面/錯誤多邊形仍有ART風險，USER Gate F HOLD。
+52全幅sprite浪費資源，依alpha bbox crop+world origin補償，texture virtual px減98.14%。已R13原生FS隔離Native 2獨立Windows Game.exe，每輪14/14 real movement/NPC/橋/碰撞，同源Master Cache來源像素與52個sprite坐標補償、每件RGB source一致；28張native screen。R13_FINAL_GATE.json嚴格通過。真正感官PAR和完整景深A/B/A跨camera仍未完全驗證。
+產物目錄 `R13_TILE_OCCLUSION_PAR_20261028`：PAR_R13_GRID_FIRST_SOURCE_CANDIDATE.png；R13_MASTER_PINK_PAR_COVERAGE.png；R13_32PX_OCCLUSION_GRID_QA.png；R13_GRID_PAR_CANDIDATE_REGISTRY.json；52 fullsize *_PAR.png；52 bbox R13_CROP_*.png；R13_OPTIMIZED_SPRITE_MANIFEST.json；R13_NEW_ELF_VILLAGE_NATIVE/R13_FINAL_GATE.json與兩輪各14截圖；r13_build_tile_first_par.py、r13_optimize_par_crop.py、build_r13_native_par.py、capture_r13_native_par.py、r13_final_gate.py。
+Formal K4 Scripts505 SHA 5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa，Map003 SHA118c6563ea89e4f644bad6e38ca01542ad4955cd4c24a7435a01409686ac1bf4 不變，正式原25事件未驗收，Test Adapter舊#480啟動問題隔離停用，原504源tuple byte exact。
+下一次先解決 R13 tile rescue 過遮地面，再依使用者逐格標示修PAR，新增遺漏小物和完整樹，測多NPC＋actor前後A/B/A及動畫/光影，不能提前ART PASS/Seal。
