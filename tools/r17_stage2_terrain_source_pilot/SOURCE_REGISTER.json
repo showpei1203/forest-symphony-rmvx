@@ -1,0 +1,62 @@
+[
+  {
+    "id": "P01",
+    "path": "sources/TERRAIN_SOURCE_RAW.png",
+    "sha256": "fbe099596a9648bc13e2560190a5fff2aaefc333d7a0ed4ad81d35148edff3e4",
+    "size": [
+      1434,
+      1097
+    ],
+    "mode": "RGB",
+    "unique_rgb": 483970,
+    "alpha_min_max": [
+      255,
+      255
+    ],
+    "diagnostic_crop_xywh": [
+      400,
+      210,
+      544,
+      416
+    ],
+    "crop_rgb_equal_source": true,
+    "source_modified": false,
+    "hypothetical_whole_source_fit": 0.37921604375569734,
+    "whole_source_resize_applied": false,
+    "drive_file_id": "1VoRGhwvqwnNjEwyCGYyEC3oCzblnUprN",
+    "drive_parent_id": "1TUYoNuuEUiqqZ4vR0KPdu7RaGFt3Q1bH",
+    "generation": "OpenAI built-in imagegen; fresh generation; prompt saved",
+    "rights": "New AI-generated research source; no legacy image attached; not a legal license determination",
+    "status": "SOURCE_ASSET_REJECTED_FOR_PROMOTION"
+  },
+  {
+    "id": "P02",
+    "path": "sources/TERRAIN_SOURCE_P02_RAW.png",
+    "sha256": "13e040f293e6e132fd4e79c38cf763a661155be305efcbf2af2a5689af4625a6",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "unique_rgb": 211518,
+    "alpha_min_max": [
+      255,
+      255
+    ],
+    "diagnostic_crop_xywh": [
+      496,
+      290,
+      544,
+      416
+    ],
+    "crop_rgb_equal_source": true,
+    "source_modified": false,
+    "hypothetical_whole_source_fit": 0.3541666666666667,
+    "whole_source_resize_applied": false,
+    "drive_file_id": "12ykf-WzFp56x1IZj_JPg05yshY_V6Ybs",
+    "drive_parent_id": "1TUYoNuuEUiqqZ4vR0KPdu7RaGFt3Q1bH",
+    "generation": "OpenAI built-in imagegen; fresh generation; prompt saved",
+    "rights": "New AI-generated research source; no legacy image attached; not a legal license determination",
+    "status": "SOURCE_ASSET_REJECTED_FOR_PROMOTION"
+  }
+]

@@ -1,3 +1,35 @@
+# CURRENT_HANDOFF_R17_STAGE2｜2026-10-29
+
+STATUS: Stage2地面來源試作P01/P02已執行，均未通過來源初審。Stage2未完成。A=NOT_RUN；新B/C場景比較=NOT_RUN；Godot/VX本輪=NOT_RUN；Art=FAIL_AGENT_PRECHECK；User Art=HOLD；PAR=HOLD；Final Seal=NO。
+
+完整報告：FS_R17_STAGE2_TERRAIN_SOURCE_PILOT_20261029.md。
+Drive：https://drive.google.com/drive/folders/1TUYoNuuEUiqqZ4vR0KPdu7RaGFt3Q1bH
+
+FILES:
+- sources/TERRAIN_SOURCE_RAW.png：1434×1097，P01，SHA fbe099596a9648bc13e2560190a5fff2aaefc333d7a0ed4ad81d35148edff3e4
+- sources/TERRAIN_SOURCE_P02_RAW.png：1536×1024，P02，SHA 13e040f293e6e132fd4e79c38cf763a661155be305efcbf2af2a5689af4625a6
+- PROMPTS.json：實際兩次內建imagegen提示詞
+- SOURCE_REGISTER.json：來源、Drive IDs、SHA、角色與狀態
+- reports/SOURCE_AUDIT.json：實際測量
+- qa/R17_STAGE2_NATIVE_QA.png：1×及3×nearest局部證據
+- audit_sources.py：離線重驗
+
+KNOWN_FAIL:
+P01未遵守544×416輸出要求，1×草葉偏密偏軟；P02未達要求的原生像素密度和16色；兩者整圖fit約0.38/0.35，沒有套用。SOURCE大尺寸不是自動失敗，但不能在沒有尺度／幾何檢查下升級。色值數量不是通用藝術門檻。
+
+NEXT_COMMAND:
+先讀Stage2報告。改變來源製作能力，使用原生尺寸像素編修／可控制原生密度的流程建立完整544×416連續地面；不重複提示詞尺寸實驗，不強縮P01/P02，不以少量tile重複或從舊Master事後補地。地面初審過關後再逐件做房屋、三樹、燈、欄杆的真正RGBA源圖。尚無物件可供本輪引擎驗證。
+
+NAMING:
+TERRAIN_PLATE=純地面；OBJECTS_COMPLETE=作者完整物件；GROUND_FULL=R17完整場景；PAR_TRANSPARENT=R17角色遮擋衍生。作者完整樹與排除最底接地格的runtime遮擋不得混同。
+
+PRESERVE:
+R17 Stage1報告/結果與正式FS均保留。本輪未碰任何正式二進位、未重驗正式SHA。不得宣稱整套Stage2完成或封版。
+
+---
+
+## Stage1歷史快照（以下舊 NEXT 被上方Stage2命令取代）
+
 # CURRENT_HANDOFF_R17｜Forest Symphony｜2026-10-29
 
 **R17 Stage1 已實作，A Pair Generation NOT_RUN；B Master-first / C Continuous-plate reconstruction各自真 Windows Godot4.7.2 GPU五種模式，10張原生544×416 PNG，雙方TECH PASS但美術/Mask ART HOLD。正式K4封版、R12–R16沒有任何覆寫。**
