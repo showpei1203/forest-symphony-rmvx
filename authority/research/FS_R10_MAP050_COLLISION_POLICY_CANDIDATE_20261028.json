@@ -1,0 +1,500 @@
+{
+  "status": "R10_AUTO_COLLISION_CANDIDATE_SEMANTIC_FOOTPRINT_APPROVAL_HOLD",
+  "map050_formal_sha256": "55bed528d21644de4d840949614163b35a21b9b39fba7e85951b862b84693c26",
+  "map050_original_source_byte_unmodified": true,
+  "test_candidate_map_sha256": "e557c4044ebda778fbc80da97576ecdcd27d862e1d1cd46bc5d53de12a5f7810",
+  "source_visual_unchanged": true,
+  "ground_default_walkable_769_count": 204,
+  "candidate_blocked_768_count": 17,
+  "separate_PARA_occlusion_from_collision_policy": true,
+  "auto_generated_from_20_source_object_foot_anchors": true,
+  "blocking_candidate_cells": [
+    {
+      "tile": [
+        1,
+        7
+      ],
+      "owners": [
+        "left_front_bush"
+      ]
+    },
+    {
+      "tile": [
+        1,
+        9
+      ],
+      "owners": [
+        "RED_R03"
+      ]
+    },
+    {
+      "tile": [
+        2,
+        6
+      ],
+      "owners": [
+        "left_conifer"
+      ]
+    },
+    {
+      "tile": [
+        3,
+        8
+      ],
+      "owners": [
+        "left_shrine",
+        "RED_R04"
+      ]
+    },
+    {
+      "tile": [
+        3,
+        11
+      ],
+      "owners": [
+        "front_edge_bush"
+      ]
+    },
+    {
+      "tile": [
+        4,
+        6
+      ],
+      "owners": [
+        "left_deciduous"
+      ]
+    },
+    {
+      "tile": [
+        5,
+        9
+      ],
+      "owners": [
+        "RED_R05"
+      ]
+    },
+    {
+      "tile": [
+        7,
+        5
+      ],
+      "owners": [
+        "mid_conifer_A"
+      ]
+    },
+    {
+      "tile": [
+        8,
+        5
+      ],
+      "owners": [
+        "mid_conifer_B"
+      ]
+    },
+    {
+      "tile": [
+        10,
+        6
+      ],
+      "owners": [
+        "house"
+      ]
+    },
+    {
+      "tile": [
+        11,
+        4
+      ],
+      "owners": [
+        "upper_right_conifer"
+      ]
+    },
+    {
+      "tile": [
+        12,
+        7
+      ],
+      "owners": [
+        "right_marker"
+      ]
+    },
+    {
+      "tile": [
+        12,
+        10
+      ],
+      "owners": [
+        "RED_R07"
+      ]
+    },
+    {
+      "tile": [
+        13,
+        5
+      ],
+      "owners": [
+        "RED_R01"
+      ]
+    },
+    {
+      "tile": [
+        14,
+        7
+      ],
+      "owners": [
+        "right_deciduous"
+      ]
+    },
+    {
+      "tile": [
+        15,
+        7
+      ],
+      "owners": [
+        "RED_R02"
+      ]
+    },
+    {
+      "tile": [
+        15,
+        9
+      ],
+      "owners": [
+        "right_flower_bush"
+      ]
+    }
+  ],
+  "blue_steps_tile_walkable": [
+    [
+      9,
+      6
+    ]
+  ],
+  "blue_foot_collision_conflict_owners_removed": [],
+  "objects": [
+    {
+      "id": "house",
+      "kind": "building",
+      "origin": "R7",
+      "foot": [
+        340,
+        223
+      ],
+      "cell": [
+        10,
+        6
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "left_deciduous",
+      "kind": "tree",
+      "origin": "R7",
+      "foot": [
+        151,
+        194
+      ],
+      "cell": [
+        4,
+        6
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "right_deciduous",
+      "kind": "tree",
+      "origin": "R7",
+      "foot": [
+        474,
+        240
+      ],
+      "cell": [
+        14,
+        7
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "mid_conifer_A",
+      "kind": "tree",
+      "origin": "R7",
+      "foot": [
+        232,
+        161
+      ],
+      "cell": [
+        7,
+        5
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "mid_conifer_B",
+      "kind": "tree",
+      "origin": "R7",
+      "foot": [
+        267,
+        162
+      ],
+      "cell": [
+        8,
+        5
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "upper_right_conifer",
+      "kind": "tree",
+      "origin": "R7",
+      "foot": [
+        380,
+        159
+      ],
+      "cell": [
+        11,
+        4
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "left_conifer",
+      "kind": "tree",
+      "origin": "R7",
+      "foot": [
+        95,
+        206
+      ],
+      "cell": [
+        2,
+        6
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "left_front_bush",
+      "kind": "bush",
+      "origin": "R7",
+      "foot": [
+        48,
+        238
+      ],
+      "cell": [
+        1,
+        7
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "left_shrine",
+      "kind": "structure",
+      "origin": "R7",
+      "foot": [
+        113,
+        257
+      ],
+      "cell": [
+        3,
+        8
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "right_marker",
+      "kind": "stone",
+      "origin": "R7",
+      "foot": [
+        393,
+        241
+      ],
+      "cell": [
+        12,
+        7
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "right_flower_bush",
+      "kind": "bush",
+      "origin": "R7",
+      "foot": [
+        505,
+        288
+      ],
+      "cell": [
+        15,
+        9
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "front_edge_bush",
+      "kind": "bush",
+      "origin": "R7",
+      "foot": [
+        126,
+        357
+      ],
+      "cell": [
+        3,
+        11
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R01",
+      "kind": "major_tree",
+      "origin": "USER_RED_R8",
+      "foot": [
+        420,
+        174
+      ],
+      "cell": [
+        13,
+        5
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R02",
+      "kind": "major_tree",
+      "origin": "USER_RED_R8",
+      "foot": [
+        509,
+        241
+      ],
+      "cell": [
+        15,
+        7
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R03",
+      "kind": "micro_flower_bush",
+      "origin": "USER_RED_R8",
+      "foot": [
+        41,
+        289
+      ],
+      "cell": [
+        1,
+        9
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R04",
+      "kind": "micro_shrub",
+      "origin": "USER_RED_R8",
+      "foot": [
+        96,
+        286
+      ],
+      "cell": [
+        3,
+        8
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R05",
+      "kind": "micro_shrub",
+      "origin": "USER_RED_R8",
+      "foot": [
+        177,
+        314
+      ],
+      "cell": [
+        5,
+        9
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R06",
+      "kind": "micro_plant",
+      "origin": "USER_RED_R8",
+      "foot": [
+        353,
+        328
+      ],
+      "cell": [
+        11,
+        10
+      ],
+      "collision_policy": "PASSABLE_CANDIDATE_REVIEW",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R07",
+      "kind": "micro_bush",
+      "origin": "USER_RED_R8",
+      "foot": [
+        390,
+        334
+      ],
+      "cell": [
+        12,
+        10
+      ],
+      "collision_policy": "BLOCK_CANDIDATE",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    },
+    {
+      "id": "RED_R08",
+      "kind": "micro_plant",
+      "origin": "USER_RED_R8",
+      "foot": [
+        459,
+        296
+      ],
+      "cell": [
+        14,
+        9
+      ],
+      "collision_policy": "PASSABLE_CANDIDATE_REVIEW",
+      "par_occlusion": true,
+      "needs_user_footprint_approval": true
+    }
+  ],
+  "original_3_Map050_events_preserved_in_candidate_file": true,
+  "candidate_collision_accuracy_fully_verified": false,
+  "warning": "Only object foot CELL candidates; not full house geometry, passability routes or human-verified depth anchors.",
+  "formal_project_edit": false
+}
