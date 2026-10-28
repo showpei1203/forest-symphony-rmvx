@@ -1,0 +1,33 @@
+{
+  "project": "NEW_ELF_VILLAGE_001",
+  "phase": "R12_P0_MASTER_ART_CANDIDATE_PENDING",
+  "objective": "Truly new beautiful native pixel-crisp 1280x928 original village equivalent to ground3 quality; all PAR sourced from same master.",
+  "image_dimensions": [
+    1280,
+    928
+  ],
+  "tile_dimensions": [
+    40,
+    29
+  ],
+  "source_reference": "K4 Graphics/Parallaxes/ground3.png",
+  "ground3_sha256": "unknown intentionally retain official reference",
+  "new_master_exists": false,
+  "new_par_exists": false,
+  "new_native_test_exists": false,
+  "quality_gate_A": "NOT_STARTED",
+  "source_gate_C": "NOT_STARTED",
+  "native_gate_E": "NOT_STARTED",
+  "human_visual_gate_F": "HOLD",
+  "formal_seal": false,
+  "dependencies": [
+    "R11 40x29 technical native size and camera PASS",
+    "R10 collision compiler concept",
+    "R8 red blue visual occluder rules"
+  ],
+  "protected": [
+    "Formal FS 505 scripts",
+    "Formal Map003 ground3 existing",
+    "Other concurrent dialogue map development"
+  ]
+}
