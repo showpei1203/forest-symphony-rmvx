@@ -1,6 +1,6 @@
 {
   "project": "NEW_ELF_VILLAGE_001",
-  "phase": "R12_P0_MASTER_ART_CANDIDATE_PENDING",
+  "phase": "R12_P4_NATIVE_CANDIDATE_TECH_PASS_ART_HOLD",
   "objective": "Truly new beautiful native pixel-crisp 1280x928 original village equivalent to ground3 quality; all PAR sourced from same master.",
   "image_dimensions": [
     1280,
@@ -12,13 +12,13 @@
   ],
   "source_reference": "K4 Graphics/Parallaxes/ground3.png",
   "ground3_sha256": "unknown intentionally retain official reference",
-  "new_master_exists": false,
-  "new_par_exists": false,
-  "new_native_test_exists": false,
-  "quality_gate_A": "NOT_STARTED",
-  "source_gate_C": "NOT_STARTED",
-  "native_gate_E": "NOT_STARTED",
-  "human_visual_gate_F": "HOLD",
+  "new_master_exists": true,
+  "new_par_exists": true,
+  "new_native_test_exists": true,
+  "quality_gate_A": "HOLD_HUMAN_ART",
+  "source_gate_C": "TECH_RGB_PASS_SEMANTIC_HOLD",
+  "native_gate_E": "ISOLATED_14_ACTIONS_2_RUNS_PASS_BUT_FULL_EVENTS_HOLD",
+  "human_visual_gate_F": "PENDING_USER_REVIEW_LATER",
   "formal_seal": false,
   "dependencies": [
     "R11 40x29 technical native size and camera PASS",
@@ -29,5 +29,14 @@
     "Formal FS 505 scripts",
     "Formal Map003 ground3 existing",
     "Other concurrent dialogue map development"
-  ]
+  ],
+  "new_master_sha256": "eda8fa28b537d9a96ee839f8c5c667c466bd55102731d41a7a9e560362854c80",
+  "new_par_selected_objects": 14,
+  "new_par_source_exact_alpha_pixels": 233875,
+  "native_independent_runs": 2,
+  "native_screenshots": 28,
+  "collision_grid_walkable": 686,
+  "collision_grid_blocked": 474,
+  "ground3_test_only_alias": true,
+  "original_image_in_game_actual_source_pixel_verified": true
 }
