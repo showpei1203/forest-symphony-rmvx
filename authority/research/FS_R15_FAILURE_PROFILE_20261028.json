@@ -1,0 +1,99 @@
+{
+  "status": "R15_FAILURE_PROFILING_COMPLETE_NOT_NEW_PAR_ART_PASS",
+  "source_master_px": [
+    1280,
+    928
+  ],
+  "R12_PAR_alpha_px": 233875,
+  "R13_PAR_alpha_px": 684860,
+  "R12_PAR_coverage_of_canvas_pct": 19.69,
+  "R13_PAR_coverage_of_canvas_pct": 57.66,
+  "known_ground_exclusion_semantic_polygons_count": 9,
+  "R12_alpha_overlap_with_ground_exclusions_px": 5967,
+  "R13_alpha_overlap_with_ground_exclusions_px": 43437,
+  "R13_floor_exclusions_total_pixels": 81061,
+  "ground_semantics": "Based on unapproved R12 authored collision manifest, not user-gold. A hit indicates conflict against the project's own prior ground-only labels.",
+  "exclusions": [
+    {
+      "id": "chapel_stairs",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 9332,
+      "r12_PAR_overlap": 2225,
+      "r13_PAR_overlap": 3625,
+      "r13_PAR_overlap_pct": 38.84
+    },
+    {
+      "id": "middle_terrace_stairs",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 5648,
+      "r12_PAR_overlap": 0,
+      "r13_PAR_overlap": 3922,
+      "r13_PAR_overlap_pct": 69.44
+    },
+    {
+      "id": "right_terrace_stairs",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 9380,
+      "r12_PAR_overlap": 1715,
+      "r13_PAR_overlap": 2806,
+      "r13_PAR_overlap_pct": 29.91
+    },
+    {
+      "id": "left_middle_access",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 9489,
+      "r12_PAR_overlap": 0,
+      "r13_PAR_overlap": 4599,
+      "r13_PAR_overlap_pct": 48.47
+    },
+    {
+      "id": "central_bridge",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 12241,
+      "r12_PAR_overlap": 0,
+      "r13_PAR_overlap": 3490,
+      "r13_PAR_overlap_pct": 28.51
+    },
+    {
+      "id": "right_wood_bridge",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 15480,
+      "r12_PAR_overlap": 0,
+      "r13_PAR_overlap": 10000,
+      "r13_PAR_overlap_pct": 64.6
+    },
+    {
+      "id": "right_dock",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 15214,
+      "r12_PAR_overlap": 0,
+      "r13_PAR_overlap": 11164,
+      "r13_PAR_overlap_pct": 73.38
+    },
+    {
+      "id": "south_cottage_steps",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 2135,
+      "r12_PAR_overlap": 1645,
+      "r13_PAR_overlap": 2135,
+      "r13_PAR_overlap_pct": 100.0
+    },
+    {
+      "id": "south_east_steps",
+      "floor_semantics": "R12 explicitly ground-only candidate",
+      "pixels": 2142,
+      "r12_PAR_overlap": 382,
+      "r13_PAR_overlap": 1696,
+      "r13_PAR_overlap_pct": 79.18
+    }
+  ],
+  "Godot_R14_floor_tile_total_nodes": 221,
+  "Godot_R14_floor_unique_tile_graphic_count": 2,
+  "Godot_R14_floor_unique_tile_assets": [
+    "grass",
+    "path"
+  ],
+  "conclusion": "R13 whole-tile rescue introduces false-positive PAR over ground while R14 repetition is structurally unavoidable with two 32px source tiles, neither meets dual gate.",
+  "recommendation": "Master-first beauty; dedicated new-layer decomposition proposal via QwenImageLayered+SAM3, high-resolution ROI SAM2 presently available; only use predicted alpha over exact immutable master RGB, no 32x32 blanket PAR, art human review.",
+  "both_formal_FS_and_R12_R13_R14_unmodified": true
+}
