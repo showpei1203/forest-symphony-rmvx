@@ -1,0 +1,11 @@
+# CURRENT_HANDOFF_R11 | FS large ground3 & Village Readiness 2026-10-28
+**R11 ISOLATED TECH PASS; ART FULL VILLAGE + NEW MASTER NOT DONE; Gate F HOLD.**
+
+Original K4 Map003=ground3 40x29 / 1280x928. Map003 SHA256 118c6563ea89e4f644bad6e38ca01542ad4955cd4c24a7435a01409686ac1bf4, original Map003 25 Events. Original K4 Scripts SHA256 5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa unchanged. Isolated Test Adapter suppresses legacy #480 error, 504 others byte-exact, adds one TEST page; original formal 505 BOOT still HOLD. R11 test removes real 25 events and adds NPC900 for safety, not full event validation.
+
+Two independent original-Map003 40x29 VX sessions: each 10/10 move/scroll and 10 screenshots. Additional 5 original-source SAM2 PAR objects (four houses + tree), source opaque RGB pixel-exact, 5/5 prompt consistency, union 275,834 alpha px: two independent Game.exe sessions each 10/10, 10 screenshots. 4 independent process runs/40 original 544x416 native screenshots with camera x/y scroll compensation verified at max map display [5888,4096] -> (-736,-512) sprite x/y.
+
+R11 measured exact original Map003 data, true native but **not** a fresh-generated village or completed foreground ART. Only 5 objects, no 40x29 full semantic PAR coverage; the FS HUD/portrait overlays obscure native screenshots. No full original event gameplay/untouched 505 boot / long-run FPS/animated Ground Light-Shadow. Old R10 Map050 compiler 204 walk / 17 blocked tech PASS, but house full-footprint/blue user original reference geometry art still HOLD.
+
+R11 report `RESEARCH_REPORT_R11.md` and `R11_VILLAGE_SIZE_TECH/R11_FINAL_GATE.json`.
+Next authorized P0 candidate: **NEW_ELF_VILLAGE_001** 1280x928 separate from ground3 and other dialogue V6 map. Produce ONE truly new full Master, pixel-crisp at 1×, artistic richness matching ground3. Run source-based SAME-image PAR, full object semantic coverage, collision polygons/blocked rules, large native VX A/B/A camera and NPC, Ground loop/Light Shadow then Human Visual Gate F. No generated map or formal PASS yet; read R12_NEW_VILLAGE_001_PRODUCTION_GATES.md.
