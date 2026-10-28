@@ -1,0 +1,52 @@
+{
+  "status": "R17_STAGE2_NEW_ART_GODOT_11OBJECT_TECH_PASS_ART_HOLD",
+  "real_Godot_4_7_2_GPU": true,
+  "art_master_path": "MASTER_STAGE2_NEW_GENERATED.png",
+  "art_master_origin": "Generated illustration board; cropped its master panel at 544x416, NOT original R12 art",
+  "new_master_sha256": "0a4d77cf98a1e4d33f3eb045c486c46da7fe71755751cc86fd7cbdd2857b2863",
+  "canvas": [
+    544,
+    416
+  ],
+  "registered_objects": 11,
+  "PAR_alpha_opaque_pixels": 85530,
+  "PAR_rgb_exact_from_master": true,
+  "Godot_MASTER_vs_new_MASTER_RBG_difference_count": 0,
+  "Godot_FULL_vs_new_MASTER_RGB_difference_count": 0,
+  "Godot_PAR_vs_selected_RGBA_pixel_difference": 0,
+  "actor_back_delta_pixels": 0,
+  "actor_front_delta_pixels": 271,
+  "SAM2_prompt_seeds_pass_count": 9,
+  "SAM2_prompt_seeds_candidate_count": 11,
+  "ground_only_negative_ROI_overlap": [
+    {
+      "ground_only_candidate": "CLEAR_CENTER_ROAD",
+      "PAR_alpha_overlap_px": 81
+    },
+    {
+      "ground_only_candidate": "BOTTOM_STEPS",
+      "PAR_alpha_overlap_px": 0
+    },
+    {
+      "ground_only_candidate": "CLEAR_UPPER_PATH",
+      "PAR_alpha_overlap_px": 0
+    }
+  ],
+  "all_3_distinct_trees_complete_in_frame": false,
+  "house_full_building_unclipped": false,
+  "source_master_art_at_pixel_native_scale_approved": false,
+  "candidate_alpha_all_objects_complete": false,
+  "artist_par_pixel_edges_human_approved": false,
+  "R17_hard_art_gate": "HOLD",
+  "R17_hard_PAR_semantic_gate": "HOLD",
+  "FS_VX_original_native_test_done": false,
+  "formal_Seal": false,
+  "known_limitations": [
+    "Generated collage panel was converted into a standalone 544x416 Master candidate, not an approved pixel-art asset",
+    "Two thin fence candidates have missed positive seeds and their contours may overlap floor",
+    "Complete house and all three trees are cropped by frame; must regenerate camera composition",
+    "Godot compositing 0px alone cannot validate ground-contamination or object coverage",
+    "Missing non-registered foliage, rail segments, tiny light posts, and environmental details"
+  ],
+  "original_FS_K4_untouched": true
+}
