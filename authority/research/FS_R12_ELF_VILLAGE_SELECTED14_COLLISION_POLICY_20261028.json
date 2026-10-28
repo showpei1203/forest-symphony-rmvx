@@ -1,0 +1,1000 @@
+{
+  "status": "R12_SOURCE_PAR_14_SELECTED_COLLISION_40x29_CANDIDATE_HUMAN_ART_HOLD",
+  "master_sha256": "eda8fa28b537d9a96ee839f8c5c667c466bd55102731d41a7a9e560362854c80",
+  "source_exact_selected14_rgb": true,
+  "generated_new_master": true,
+  "candidate_source_objects": 14,
+  "rejected_prompt_or_overlap": [
+    {
+      "id": "A11_SE_TREES",
+      "reason": "PROMPT_FAIL",
+      "overlap_ratio": 0.9106
+    },
+    {
+      "id": "A14_NORTH_EAST_TREE",
+      "reason": "PROMPT_FAIL",
+      "overlap_ratio": 0.0
+    },
+    {
+      "id": "A15_SOUTH_GARDEN_BUSH",
+      "reason": "PROMPT_FAIL",
+      "overlap_ratio": 0.0
+    },
+    {
+      "id": "A17_MILL_SHRUB",
+      "reason": "OVERLAP_GT_35PCT",
+      "overlap_ratio": 0.9966
+    }
+  ],
+  "selected_objects": [
+    {
+      "id": "A01_CHAPEL",
+      "kind": "major_house",
+      "bbox": [
+        80,
+        0,
+        350,
+        230
+      ],
+      "positive_points": [
+        [
+          226,
+          70
+        ],
+        [
+          210,
+          145
+        ]
+      ],
+      "negative_points": [
+        [
+          367,
+          272
+        ],
+        [
+          64,
+          249
+        ]
+      ],
+      "foot_anchor": [
+        224,
+        201
+      ],
+      "source_alpha_pixels": 20203,
+      "confidence": 0.8866132497787476,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A01_CHAPEL_PAR.png"
+    },
+    {
+      "id": "A02_TOP_RED_HOUSE",
+      "kind": "major_house",
+      "bbox": [
+        402,
+        8,
+        641,
+        180
+      ],
+      "positive_points": [
+        [
+          512,
+          70
+        ],
+        [
+          516,
+          124
+        ]
+      ],
+      "negative_points": [
+        [
+          650,
+          200
+        ],
+        [
+          395,
+          187
+        ]
+      ],
+      "foot_anchor": [
+        519,
+        160
+      ],
+      "source_alpha_pixels": 15711,
+      "confidence": 0.9029425382614136,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A02_TOP_RED_HOUSE_PAR.png"
+    },
+    {
+      "id": "A03_NE_WORKSHOP",
+      "kind": "major_house",
+      "bbox": [
+        679,
+        42,
+        918,
+        280
+      ],
+      "positive_points": [
+        [
+          796,
+          115
+        ],
+        [
+          808,
+          201
+        ]
+      ],
+      "negative_points": [
+        [
+          657,
+          274
+        ],
+        [
+          921,
+          280
+        ]
+      ],
+      "foot_anchor": [
+        800,
+        248
+      ],
+      "source_alpha_pixels": 17848,
+      "confidence": 0.8833470344543457,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A03_NE_WORKSHOP_PAR.png"
+    },
+    {
+      "id": "A04_CENTER_BLUE_INN",
+      "kind": "major_house",
+      "bbox": [
+        400,
+        188,
+        664,
+        426
+      ],
+      "positive_points": [
+        [
+          506,
+          273
+        ],
+        [
+          530,
+          346
+        ]
+      ],
+      "negative_points": [
+        [
+          394,
+          428
+        ],
+        [
+          679,
+          439
+        ]
+      ],
+      "foot_anchor": [
+        527,
+        405
+      ],
+      "source_alpha_pixels": 18334,
+      "confidence": 0.8437467813491821,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A04_CENTER_BLUE_INN_PAR.png"
+    },
+    {
+      "id": "A05_RED_CAFE",
+      "kind": "major_house",
+      "bbox": [
+        661,
+        275,
+        898,
+        530
+      ],
+      "positive_points": [
+        [
+          769,
+          340
+        ],
+        [
+          792,
+          431
+        ]
+      ],
+      "negative_points": [
+        [
+          659,
+          528
+        ],
+        [
+          897,
+          533
+        ]
+      ],
+      "foot_anchor": [
+        775,
+        492
+      ],
+      "source_alpha_pixels": 18288,
+      "confidence": 0.8771992325782776,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A05_RED_CAFE_PAR.png"
+    },
+    {
+      "id": "A06_LEFT_ROUND_HOUSE",
+      "kind": "major_house",
+      "bbox": [
+        0,
+        296,
+        249,
+        547
+      ],
+      "positive_points": [
+        [
+          118,
+          390
+        ],
+        [
+          120,
+          465
+        ]
+      ],
+      "negative_points": [
+        [
+          259,
+          548
+        ],
+        [
+          2,
+          557
+        ]
+      ],
+      "foot_anchor": [
+        117,
+        505
+      ],
+      "source_alpha_pixels": 16663,
+      "confidence": 0.8874529600143433,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A06_LEFT_ROUND_HOUSE_PAR.png"
+    },
+    {
+      "id": "A07_WATERMILL",
+      "kind": "major_house",
+      "bbox": [
+        1056,
+        335,
+        1279,
+        645
+      ],
+      "positive_points": [
+        [
+          1167,
+          442
+        ],
+        [
+          1191,
+          549
+        ]
+      ],
+      "negative_points": [
+        [
+          1036,
+          647
+        ],
+        [
+          1258,
+          672
+        ]
+      ],
+      "foot_anchor": [
+        1190,
+        613
+      ],
+      "source_alpha_pixels": 37844,
+      "confidence": 0.7462198734283447,
+      "mask_variant": 2,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.00732,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A07_WATERMILL_PAR.png"
+    },
+    {
+      "id": "A08_SW_COTTAGE",
+      "kind": "major_house",
+      "bbox": [
+        112,
+        625,
+        361,
+        823
+      ],
+      "positive_points": [
+        [
+          228,
+          687
+        ],
+        [
+          226,
+          751
+        ]
+      ],
+      "negative_points": [
+        [
+          379,
+          837
+        ],
+        [
+          105,
+          822
+        ]
+      ],
+      "foot_anchor": [
+        230,
+        796
+      ],
+      "source_alpha_pixels": 13232,
+      "confidence": 0.8171259164810181,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A08_SW_COTTAGE_PAR.png"
+    },
+    {
+      "id": "A09_SE_COTTAGE",
+      "kind": "major_house",
+      "bbox": [
+        892,
+        558,
+        1150,
+        804
+      ],
+      "positive_points": [
+        [
+          1015,
+          632
+        ],
+        [
+          1012,
+          727
+        ]
+      ],
+      "negative_points": [
+        [
+          1150,
+          807
+        ],
+        [
+          877,
+          811
+        ]
+      ],
+      "foot_anchor": [
+        1020,
+        774
+      ],
+      "source_alpha_pixels": 16269,
+      "confidence": 0.8604157567024231,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A09_SE_COTTAGE_PAR.png"
+    },
+    {
+      "id": "A10_LARGE_LEFT_TREE",
+      "kind": "major_tree",
+      "bbox": [
+        173,
+        318,
+        440,
+        570
+      ],
+      "positive_points": [
+        [
+          283,
+          383
+        ],
+        [
+          289,
+          474
+        ]
+      ],
+      "negative_points": [
+        [
+          155,
+          581
+        ],
+        [
+          452,
+          585
+        ]
+      ],
+      "foot_anchor": [
+        289,
+        532
+      ],
+      "source_alpha_pixels": 19462,
+      "confidence": 0.9282476305961609,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A10_LARGE_LEFT_TREE_PAR.png"
+    },
+    {
+      "id": "A12_FOUNTAIN_STATUE",
+      "kind": "stone_prop",
+      "bbox": [
+        470,
+        452,
+        639,
+        623
+      ],
+      "positive_points": [
+        [
+          544,
+          496
+        ],
+        [
+          539,
+          530
+        ]
+      ],
+      "negative_points": [
+        [
+          463,
+          625
+        ],
+        [
+          658,
+          631
+        ]
+      ],
+      "foot_anchor": [
+        548,
+        594
+      ],
+      "source_alpha_pixels": 10683,
+      "confidence": 0.7976040840148926,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.00496,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A12_FOUNTAIN_STATUE_PAR.png"
+    },
+    {
+      "id": "A13_NORTH_MID_TREE",
+      "kind": "major_tree",
+      "bbox": [
+        320,
+        0,
+        498,
+        174
+      ],
+      "positive_points": [
+        [
+          393,
+          54
+        ],
+        [
+          401,
+          102
+        ]
+      ],
+      "negative_points": [
+        [
+          500,
+          183
+        ],
+        [
+          308,
+          172
+        ]
+      ],
+      "foot_anchor": [
+        401,
+        155
+      ],
+      "source_alpha_pixels": 10264,
+      "confidence": 0.6977970600128174,
+      "mask_variant": 2,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A13_NORTH_MID_TREE_PAR.png"
+    },
+    {
+      "id": "A16_LEFT_GARDEN",
+      "kind": "micro_bush",
+      "bbox": [
+        64,
+        480,
+        204,
+        634
+      ],
+      "positive_points": [
+        [
+          129,
+          538
+        ],
+        [
+          120,
+          560
+        ]
+      ],
+      "negative_points": [
+        [
+          207,
+          650
+        ],
+        [
+          59,
+          642
+        ]
+      ],
+      "foot_anchor": [
+        133,
+        592
+      ],
+      "source_alpha_pixels": 6976,
+      "confidence": 0.8314893841743469,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A16_LEFT_GARDEN_PAR.png"
+    },
+    {
+      "id": "A18_SW_BORDER_TREE",
+      "kind": "major_tree",
+      "bbox": [
+        0,
+        785,
+        239,
+        927
+      ],
+      "positive_points": [
+        [
+          116,
+          856
+        ],
+        [
+          123,
+          897
+        ]
+      ],
+      "negative_points": [
+        [
+          247,
+          920
+        ],
+        [
+          226,
+          788
+        ]
+      ],
+      "foot_anchor": [
+        120,
+        915
+      ],
+      "source_alpha_pixels": 12098,
+      "confidence": 0.846435010433197,
+      "mask_variant": 1,
+      "missing_positive": 0,
+      "negative_hits": 0,
+      "box_escape_frac": 0.0,
+      "prompt_gate": true,
+      "overlap_owner_conflict_pixels": 0,
+      "PAR_required": true,
+      "collision_footprint_verified": false,
+      "semantic_art_human_approved": false,
+      "provisional_file": "A18_SW_BORDER_TREE_PAR.png"
+    }
+  ],
+  "PAR_alpha_opaque_pixels": 233875,
+  "passable_769_tile_count": 686,
+  "blocked_768_tile_count": 474,
+  "passable_connected_component_sizes_desc": [
+    653,
+    18,
+    15
+  ],
+  "collision_geometry_source": "MANUAL_BBOX_POLYGONS_AND_WATER_ZONES_CANDIDATE_NOT_APPROVED",
+  "solid_geometry_polygons": [
+    [
+      "chapel_body",
+      [
+        [
+          139,
+          16
+        ],
+        [
+          305,
+          16
+        ],
+        [
+          305,
+          139
+        ],
+        [
+          288,
+          160
+        ],
+        [
+          155,
+          154
+        ]
+      ]
+    ],
+    [
+      "top_red_cottage",
+      [
+        [
+          426,
+          31
+        ],
+        [
+          609,
+          31
+        ],
+        [
+          609,
+          128
+        ],
+        [
+          432,
+          129
+        ]
+      ]
+    ],
+    [
+      "ne_workshop",
+      [
+        [
+          715,
+          66
+        ],
+        [
+          879,
+          74
+        ],
+        [
+          876,
+          223
+        ],
+        [
+          718,
+          226
+        ]
+      ]
+    ],
+    [
+      "blue_inn",
+      [
+        [
+          448,
+          213
+        ],
+        [
+          604,
+          216
+        ],
+        [
+          605,
+          363
+        ],
+        [
+          450,
+          362
+        ]
+      ]
+    ],
+    [
+      "red_cafe",
+      [
+        [
+          702,
+          297
+        ],
+        [
+          853,
+          300
+        ],
+        [
+          854,
+          453
+        ],
+        [
+          705,
+          449
+        ]
+      ]
+    ],
+    [
+      "left_round_house",
+      [
+        [
+          6,
+          327
+        ],
+        [
+          194,
+          327
+        ],
+        [
+          190,
+          458
+        ],
+        [
+          7,
+          456
+        ]
+      ]
+    ],
+    [
+      "mill",
+      [
+        [
+          1116,
+          388
+        ],
+        [
+          1276,
+          385
+        ],
+        [
+          1276,
+          593
+        ],
+        [
+          1145,
+          612
+        ]
+      ]
+    ],
+    [
+      "sw_house",
+      [
+        [
+          161,
+          659
+        ],
+        [
+          330,
+          656
+        ],
+        [
+          330,
+          754
+        ],
+        [
+          164,
+          754
+        ]
+      ]
+    ],
+    [
+      "se_house",
+      [
+        [
+          914,
+          579
+        ],
+        [
+          1090,
+          574
+        ],
+        [
+          1086,
+          738
+        ],
+        [
+          921,
+          735
+        ]
+      ]
+    ],
+    [
+      "left_big_tree_trunk",
+      [
+        [
+          261,
+          473
+        ],
+        [
+          320,
+          466
+        ],
+        [
+          325,
+          530
+        ],
+        [
+          259,
+          528
+        ]
+      ]
+    ],
+    [
+      "se_tree_trunk",
+      [
+        [
+          1163,
+          684
+        ],
+        [
+          1222,
+          686
+        ],
+        [
+          1222,
+          736
+        ],
+        [
+          1166,
+          735
+        ]
+      ]
+    ],
+    [
+      "fountain_base",
+      [
+        [
+          484,
+          519
+        ],
+        [
+          612,
+          517
+        ],
+        [
+          621,
+          580
+        ],
+        [
+          498,
+          593
+        ]
+      ]
+    ]
+  ],
+  "water_polygons": [
+    [
+      "east_waterfall_and_lake",
+      [
+        [
+          1072,
+          0
+        ],
+        [
+          1279,
+          0
+        ],
+        [
+          1279,
+          426
+        ],
+        [
+          1047,
+          439
+        ],
+        [
+          1045,
+          342
+        ],
+        [
+          1003,
+          310
+        ],
+        [
+          1004,
+          166
+        ],
+        [
+          1073,
+          151
+        ]
+      ]
+    ],
+    [
+      "central_canal",
+      [
+        [
+          677,
+          608
+        ],
+        [
+          822,
+          605
+        ],
+        [
+          829,
+          752
+        ],
+        [
+          792,
+          927
+        ],
+        [
+          622,
