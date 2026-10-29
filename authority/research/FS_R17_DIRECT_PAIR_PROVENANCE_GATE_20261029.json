@@ -1,0 +1,71 @@
+{
+  "authority": "R17_DIRECT_GROUND_PAR_AUTHORITY.md",
+  "status": "R17_USER_DIRECT_DUAL_OUTPUT_RULE_VERIFIED_ON_TWO_HISTORICAL_BASELINES",
+  "ground_Pair_art_pass_count": 0,
+  "R14_structural_technical_pass_R17_prebaked_provenance_fail": true,
+  "only_required_outputs": [
+    "GROUND.png",
+    "PAR.png"
+  ],
+  "user_merges_into_new_ground_themselves": true,
+  "user_sets_collision_in_FS_by_self": true,
+  "model_SAM_par_cutting_is_not_default_production": true,
+  "Godot_and_VX_actor_tests_are_not_required_by_user": true,
+  "note": "Historical test inputs; no claim new high quality image pair has been generated.",
+  "cases": [
+    {
+      "id": "R14_GENUINE_LAYERED_SOURCE_TECH_BASELINE",
+      "ground_file_original": "R14_GODOT_LAYER_AUTHORING_20261028\\godot_project\\exported\\GODOT_BASE.png",
+      "par_file_original": "R14_GODOT_LAYER_AUTHORING_20261028\\godot_project\\exported\\GODOT_PAR.png",
+      "both_width_height": [
+        544,
+        416
+      ],
+      "PAR_true_RGBA_alpha0_pixels": 173519,
+      "PAR_alpha_nonzero_pixels": 52785,
+      "PAR_only_illustration_checkerboard": false,
+      "composite_preview_vs_existing_complete_RGB_different_pixels": 0,
+      "independent_layer_provenance_verified": true,
+      "ground_prebaked_with_raised_objects": false,
+      "floor_only_5_sample_par_alpha_px": {
+        "0,0": 0,
+        "8,12": 0,
+        "9,12": 0,
+        "16,12": 0,
+        "14,0": 0
+      },
+      "floor_only_samples_zero": true,
+      "dual_layer_technical_pass": true,
+      "art_quality_pass": false,
+      "final_pair_user_accepted": false,
+      "status": "DIRECT_LAYER_TECH_PASS_ART_FAIL",
+      "note": "Composite 0px is NOT enough: BAKED master+PAR can also return 0px because identical source art. Require separate Ground source and PAR source provenance.",
+      "source_method": "Godot original layer source sprites",
+      "art_status": "FAIL_221_FLOOR_TILES_ONLY_2_UNIQUE_ASSETS"
+    },
+    {
+      "id": "R17_STAGE2_BAKED_MASTER_NOT_ACCEPTABLE_AS_GROUND",
+      "ground_file_original": "R17_STAGE2_NEW_ART_20261029\\MASTER_STAGE2_NEW_GENERATED.png",
+      "par_file_original": "R17_STAGE2_NEW_ART_20261029\\R17_STAGE2_PAR_11_OBJECT_SOURCE_CANDIDATE.png",
+      "both_width_height": [
+        544,
+        416
+      ],
+      "PAR_true_RGBA_alpha0_pixels": 140774,
+      "PAR_alpha_nonzero_pixels": 85530,
+      "PAR_only_illustration_checkerboard": false,
+      "composite_preview_vs_existing_complete_RGB_different_pixels": 0,
+      "independent_layer_provenance_verified": false,
+      "ground_prebaked_with_raised_objects": true,
+      "floor_only_5_sample_par_alpha_px": {},
+      "floor_only_samples_zero": true,
+      "dual_layer_technical_pass": false,
+      "art_quality_pass": false,
+      "final_pair_user_accepted": false,
+      "status": "DIRECT_LAYER_PROVENANCE_FAIL",
+      "note": "Composite 0px is NOT enough: BAKED master+PAR can also return 0px because identical source art. Require separate Ground source and PAR source provenance.",
+      "source_method": "Art Master already contains all raised objects + SAM2 segmented partial PAR",
+      "art_status": "HOLD_ILLUSTRATION_CROPPED_BUILDING_AND_TREES"
+    }
+  ]
+}
