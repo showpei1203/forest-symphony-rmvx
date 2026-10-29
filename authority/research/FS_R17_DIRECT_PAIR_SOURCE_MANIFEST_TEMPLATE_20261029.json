@@ -1,0 +1,26 @@
+{
+  "_comment": "TEMPLATE_ONLY. Replace every PLACEHOLDER; declarations do NOT independently prove true creative provenance.",
+  "source_mode": "independent_direct_layers",
+  "ground": {
+    "source_artifact_id": "REPLACE_WITH_INDEPENDENT_GROUND_SOURCE_ID",
+    "creation_method": "direct_ground",
+    "scene_blueprint_id": "REPLACE_WITH_SCENE_BLUEPRINT_ID",
+    "style_lock_id": "REPLACE_WITH_STYLE_LOCK_ID",
+    "world_origin_xy": [
+      0,
+      0
+    ],
+    "sha256": "REPLACE_WITH_64_CHAR_GROUND_SHA256"
+  },
+  "par": {
+    "source_artifact_id": "REPLACE_WITH_INDEPENDENT_PAR_SOURCE_ID",
+    "creation_method": "direct_par",
+    "scene_blueprint_id": "REPLACE_WITH_SCENE_BLUEPRINT_ID",
+    "style_lock_id": "REPLACE_WITH_STYLE_LOCK_ID",
+    "world_origin_xy": [
+      0,
+      0
+    ],
+    "sha256": "REPLACE_WITH_64_CHAR_PAR_SHA256"
+  }
+}
