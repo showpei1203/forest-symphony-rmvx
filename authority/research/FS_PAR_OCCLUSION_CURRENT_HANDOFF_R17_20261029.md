@@ -63,3 +63,18 @@ Formal Seal=NO（尚未有合格的真分層雙圖藝術產物）。
 - **實際美術改進：**不再使用 Stage3 的程序地面，原生 Ground B 道路、植栽、藍屋、神聖樹的質感更接近指定風格。但場景美術密度仍低於 R17 Stage2、Ground B 的歷史續測不代表新場景獲使用者批准，**GROUND_LAYER=HUMAN_HOLD／PAR_LAYER=HUMAN_HOLD／PAIR_ALIGNMENT=TECH_PASS_VISUAL_HOLD／Formal Seal NO**。
 - 完整保留 R17 Stage2 baked master、Stage3 V2 地面噪點、V29/30 moss cottage turf 失敗負例。K4、Scripts、Map、通行度不動。
 - 下一步：以 1x 原圖及合成 QA 視覺審核配對（尤其屋前接地、樹根下方），再擴充高品質獨立素材，不從完整 Master 逆切，暫不推進大世界與 Collision。
+
+
+## R17 Stage5 Latest Generated Pair｜2026-10-29 FAIL-CLOSED
+
+**New model-generated original images have actually been audited; DO NOT classify them as source-first production.** User's latest Ground `像素風草原岔路地景.png` is 1434x1097 RGB; latest PAR `精緻像素風精靈村落角落.png` is 1448x1086 RGBA. Width mismatch +14px; height mismatch -11px. Neither is native 544x416 or 1280x928 nor divisible by 32 on both sides. Ground SHA256 `1b03b0907e0c0e45534e5d7b8fcbc1f038a19a76a2fafb57733515dd5fc85ae3`; PAR SHA256 `f44b7c11c7b5bbf345f4c5b8a7821d297fc8dd6c52166cb160bf6cc83ae7eb2d`.
+
+PAR native alpha0=597822, alpha1..254=974430, alpha255=276. Border alpha leakage top29/bottom114/left118/right69. Ground content rich, PAR contains two houses, large tree, fence, lamps and other structures and offers better **concept-level** density, but no shared origin/scene manifest, ground tree-contact source, or formal native image alignment. No independent original layer pair has been validated. Do NOT crop to match, resample to 544x416, or reverse-cut completed Master. 
+
+**Real Windows G: cloud-synced image gate run** on `DESKTOP-90VT437`: latest returns exit2 `FAIL_CLOSED_TECH`; historical 544x416 Stage4 V1 technical positive control returns exit0 `TECH_CANDIDATE_ONLY_ART_HOLD`; cropping 1px off the historical PAR returns exit2. New `tools/r17_pair_alpha_canvas_gate_v2.py` is published and reproducible. Added actual PAR checker and invalid top-left diagnostic overlay **explicitly QA ONLY**.
+
+- [Google Drive Stage5 originals, strict gate JSON and diagnostic images](https://drive.google.com/drive/folders/1IAX5lVbQdu3sejy_pqpH-nEptEDrmnSM)
+- [GitHub detailed measured report](FS_R17_STAGE5_LATEST_IMAGEGEN_PAIR_FAIL_CLOSED_AUDIT_20261029.md)
+- [Native alpha/canvas fail-closed gate](../../tools/r17_pair_alpha_canvas_gate_v2.py)
+
+Statuses: `GROUND_LAYER=FAIL_SIZE`, `PAR_LAYER=FAIL_SIZE_ALPHA_CLEANLINESS`, `PAIR_ALIGNMENT=FAIL`, `SOURCE_PROVENANCE=NOT_VERIFIED`, `VISUAL_DENSITY=PROMISING_NOT_APPROVED`, `FORMAL_SEAL=NO`. Preserve all sealed FS/K4 binaries and user's personal collision setup. Next: build a common **544x416 world blueprint** and regenerate actual native pixel-crisp **source-first** matching Ground+PAR at identical origins. GROUND trees' foot contact from original source stage, not detached trunk stump.
