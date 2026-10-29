@@ -25,3 +25,11 @@
 ## 下一輪工作指令
 **R18（可稱R17 Direct Layer Stage3）：一開始就分開生成GROUND與PAR兩張，兩者同構圖高細節、全房屋+3完整樹+燈/欄杆全部在畫框內。不可先生成MASTER再切PAR。** 用Godot/Tiled作來源層編輯與驗證可以，但不能用R14兩塊地磚拼滿充數；Ground Art 與PAR Art及Alignment三個Gate需全部人眼接受。不執行碰撞設置，僅交兩張正確PNG。每階段同步Drive/GitHub/Linear。
 Formal Seal=NO（尚未有合格的真分層雙圖藝術產物）。
+
+## 2026-10-29｜Source validator / budget rebaseline sync audit
+- Direct-layer source validator (new, fail-closed): [tools/r17_direct_ground_par_source_validator.py](../../tools/r17_direct_ground_par_source_validator.py). It checks PNG/size/alpha/hash/declared source lineage, never grants artistic or formal PASS.
+- Manifest template: [FS_R17_DIRECT_PAIR_SOURCE_MANIFEST_TEMPLATE_20261029.json](FS_R17_DIRECT_PAIR_SOURCE_MANIFEST_TEMPLATE_20261029.json).
+- Sync and research budget reset audit: [FS_R17_GITHUB_SYNC_BUDGET_RESET_AUDIT_20261029.md](FS_R17_GITHUB_SYNC_BUDGET_RESET_AUDIT_20261029.md).
+- The new R17 Direct Stage3 research ledger starts at zero *stage-local tracked spend*, with spend cap unspecified. GitHub/AI provider quota or billing reset is NOT VERIFIED / NOT PERFORMED.
+- Existing Authority, handoff, and provenance JSON paths were read back from GitHub main. Previous 404 could not be reproduced on those exact paths; no blanket promise about other URLs.
+- Gate state unchanged: `GROUND_LAYER=HOLD`, `PAR_LAYER=HOLD`, `PAIR_ALIGNMENT=HOLD`, `FORMAL_SEAL=NO`. No new approved PNG pair; sealed K4/VX untouched.
