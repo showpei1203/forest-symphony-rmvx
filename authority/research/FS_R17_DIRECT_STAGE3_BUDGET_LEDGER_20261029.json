@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "phase": "R17_DIRECT_STAGE3",
+  "phase_budget_reset": {
+    "stage_local_baseline": 0,
+    "provider_quota_reset_performed": false,
+    "provider_quota_reset_verified": false,
+    "spending_cap": "UNSPECIFIED",
+    "actual_paid_usage_or_cost": "UNKNOWN"
+  },
+  "observed_activity_this_phase": {
+    "image_generation_calls": 1,
+    "image_generation_useful_ground_or_par_outputs": 0,
+    "discarded_image_generation_status_infographic": 1,
+    "source_first_art_iterations": 2,
+    "source_first_executable_runs": 3,
+    "validator_execution_positive_candidate_exits": 3,
+    "validator_failure_reproduction": 0,
+    "visual_accepted_pairs": 0,
+    "private_cloud_zip_files": 1,
+    "private_zip_total_bytes": 636298
+  },
+  "final_cloud_verification": {
+    "ground_sha256": "afe788742140344bcefe3c3f03dd28d7c9e80d86465ea31799846a259314b875",
+    "par_sha256": "e9b48d895bfffc6b9818a30dbf20b3a4a103528dd415db105325e2a52b74ee8b",
+    "zip_sha256": "75c5c315426649c9ae8a88f9f242178bacee31022aa7711ab2cd16ae0fb4afbc",
+    "matches_local_e_and_g": true,
+    "zip_crc_pass": true
+  },
+  "status": {
+    "technical_layer_pair": "PASS_CANDIDATE",
+    "human_art": "FAIL",
+    "formal_seal": "NO"
+  },
+  "note": "Measured local/run counters only; this is not provider billing, API credit or compute quota information."
+}
