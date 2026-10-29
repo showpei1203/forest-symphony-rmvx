@@ -49,3 +49,17 @@ Formal Seal=NO（尚未有合格的真分層雙圖藝術產物）。
 - E:/G: 來源雙圖與 ZIP SHA 相同；Drive 雲端 Ground/PAR/ZIP 已另外重新下載至工作容器並做 SHA256 比對：三者與 E:/G: 完全相同；ZIP 22 項 CRC 正常。**雲端內容完整性已驗證，但美術仍 FAIL，Final Seal 仍 NO。**
 - 接續方向：**提高原生獨立地面和前景素材的藝術完成度**，以 R17 Stage2 優秀完整圖當視覺品質參照但絕不可把其 Master 當新的 Ground 或反切 PAR。不得覆寫 K4 Scripts、Map003 或替使用者設定 Collision。
 - 狀態：`GROUND_LAYER=ART_FAIL`；`PAR_LAYER=ART_FAIL`；`PAIR_ALIGNMENT=TECH_CANDIDATE_VISUAL_HOLD`；`FINAL_SEAL=NO`。
+
+
+## R17 Direct Stage4 V1｜高品質原生雙來源（2026-10-29）
+
+**Latest authority handoff: SOURCE-FIRST TECH PASS CANDIDATE / VISUAL HOLD / FINAL SEAL NO.** Stage4 已實際從 V6 原生完整 Ground B（自然草路與花草）及 V23 透明藍屋、V6 神聖樹原始 Sprite，在來源作者階段直接組合出兩份獨立 PNG，不是 Stage2 已烘焙 MASTER 逆切 PAR。
+
+- 正式兩圖：`GROUND.png` 544x416 RGB，SHA256 `41911e461f4f74b95d382ce7fa0a3b880a34ba63958c1028310b035231d64c8e`；`PAR.png` 544x416 RGBA，SHA256 `99215dbb6ea68fab27aaf18d2b5188426e0d748cf5451bd1a2e5a01460605271`。
+- 場景：藍房 XY(329,126)，神聖樹 XY(19,135)，1x 原生不縮放。樹作者階段「最低中央32x32」接地點歸Ground，其他樹枝/樹冠與整間房歸PAR。GROUND 僅這個32x32區域不同於原本 V6 Ground B，像素差BBox [109,327,141,357]。
+- PAR Alpha=0 有185,503px、可見40,801px；預先獨立樹來源二分重組回原始 Sprite 逐位一致。Official validator exit0；冷解壓後自帶原始圖與生成程式重跑，Ground、PAR、QA 3張 SHA 完全一致。
+- 私人ZIP 2,801,358bytes／18 entries／CRC PASS；SHA `e5219f29963b51c2815e7fdd671ecada48b4d11436c809f816bd136c9c0ce7e7`；E/G 掛載與雲端重新下載 SHA 3方一致。
+- [Google Drive Stage4 V1 私人交付](https://drive.google.com/drive/folders/1tx5JIwoVZm-1Hmx9LudYq0kuOE-DAm5X)：雙PNG、QA、sources、manifest、validator、zip。 [GitHub完整紀錄](FS_R17_DIRECT_STAGE4_V1_SOURCE_FIRST_VISUAL_CANDIDATE_20261029.md)／[可重現程式](../../tools/r17_direct_stage4/build_stage4_v1.py)。
+- **實際美術改進：**不再使用 Stage3 的程序地面，原生 Ground B 道路、植栽、藍屋、神聖樹的質感更接近指定風格。但場景美術密度仍低於 R17 Stage2、Ground B 的歷史續測不代表新場景獲使用者批准，**GROUND_LAYER=HUMAN_HOLD／PAR_LAYER=HUMAN_HOLD／PAIR_ALIGNMENT=TECH_PASS_VISUAL_HOLD／Formal Seal NO**。
+- 完整保留 R17 Stage2 baked master、Stage3 V2 地面噪點、V29/30 moss cottage turf 失敗負例。K4、Scripts、Map、通行度不動。
+- 下一步：以 1x 原圖及合成 QA 視覺審核配對（尤其屋前接地、樹根下方），再擴充高品質獨立素材，不從完整 Master 逆切，暫不推進大世界與 Collision。
