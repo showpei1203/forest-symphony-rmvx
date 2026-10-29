@@ -46,6 +46,6 @@ Formal Seal=NO（尚未有合格的真分層雙圖藝術產物）。
 - 視覺判斷：目前 Ground 石路/草仍顯人工程序痕跡，房屋和新樹的美術風格／細節落差仍大；兩個藝術 Gate 明確 FAIL，不能進 Formal Seal。
 - GitHub [完整研究報告](FS_R17_DIRECT_STAGE3_V2_SOURCE_FIRST_ART_FAIL_20261029.md)、[來源生成腳本](../../tools/r17_direct_stage3/build_r17_stage3_source_first_v2.py)
 - [Google Drive V2 研究包及雙圖](https://drive.google.com/drive/folders/1DDs8NPle60OAYFTUs-kgRwZdBOUrMTNJ)；[GROUND.png](https://drive.google.com/file/d/1aCbJVpmx_gQO2e9cm3qO75arzX8MO2mp/view)、[PAR.png](https://drive.google.com/file/d/13LafoTIDMdLB6X6idFvF_qAoVG_7Co72/view)、[私人可重現 ZIP](https://drive.google.com/file/d/1TzoHecVGEj6iKeb2hRvFJ3DhV0FcNPM4/view)。
-- E:/G: 來源雙圖與 ZIP SHA 相同；Drive 雲端檔案清單及大小回讀成功，但未從雲端重新下載逐位比對；不假裝有雲端位元組 Seal。
+- E:/G: 來源雙圖與 ZIP SHA 相同；Drive 雲端 Ground/PAR/ZIP 已另外重新下載至工作容器並做 SHA256 比對：三者與 E:/G: 完全相同；ZIP 22 項 CRC 正常。**雲端內容完整性已驗證，但美術仍 FAIL，Final Seal 仍 NO。**
 - 接續方向：**提高原生獨立地面和前景素材的藝術完成度**，以 R17 Stage2 優秀完整圖當視覺品質參照但絕不可把其 Master 當新的 Ground 或反切 PAR。不得覆寫 K4 Scripts、Map003 或替使用者設定 Collision。
 - 狀態：`GROUND_LAYER=ART_FAIL`；`PAR_LAYER=ART_FAIL`；`PAIR_ALIGNMENT=TECH_CANDIDATE_VISUAL_HOLD`；`FINAL_SEAL=NO`。
