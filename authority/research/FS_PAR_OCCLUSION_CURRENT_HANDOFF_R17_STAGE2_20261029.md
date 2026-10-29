@@ -1,3 +1,9 @@
+# SUPERSEDED｜2026-10-29 使用者改定直接生成兩張圖
+
+**最新規則與Handoff**： [直接Ground+PAR Authority](./FS_R17_DIRECT_GROUND_PAR_SOURCE_FIRST_AUTHORITY_20261029.md)； [CURRENT_HANDOFF_R17_DIRECT](./FS_PAR_OCCLUSION_CURRENT_HANDOFF_R17_DIRECT_20261029.md)。以下為Stage2歷史實驗，不可當成下一輪施工指令。
+
+---
+
 # CURRENT_HANDOFF_R17｜Stage 2｜Forest Symphony 2026-10-29
 
 **最新Authority：`R17_STAGE2_RESEARCH_REPORT.md`，並沿用R17 Stage1 `R17_GROUND_PAR_DUAL_GATE_AUTHORITY.md`。本輪真正新生成544×416新精靈村Master（非R12裁片）＋11個Source-locked前景候選，Godot4.7.2真GPU TECH PASS，ART F / PAR語義HOLD，Formal Seal NO。**
