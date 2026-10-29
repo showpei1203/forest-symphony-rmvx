@@ -1,3 +1,9 @@
+# 2026-10-29 USER CORRECTION: THIS PRODUCTION ORDER IS OVERRIDDEN
+
+**目前正式 Authority**：[直接生成 GROUND + 真透明 PAR 雙輸出](./FS_R17_DIRECT_GROUND_PAR_SOURCE_FIRST_AUTHORITY_20261029.md)。用戶自行合成新Ground、套PAR、用FS既有腳本設通行度。**不可再將「完整Master後切PAR」、Collision編譯、原生VX角色走動當成必要交付**。下文歷史R17測試標準只保留不衝突的美術/Alpha/世界座標要求。
+
+---
+
 # FS R17｜高密度精靈村 Ground+PAR 雙目標 Benchmark Authority v1.0
 更新：2026-10-29｜開發線 R17 獨立候選，正式 FS、K4、R12–R16 全保留
 STATUS: 研究規則已建立，**沒有任何藝術 Gate F 被批准。**
