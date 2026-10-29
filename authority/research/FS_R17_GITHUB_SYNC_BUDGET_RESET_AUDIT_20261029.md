@@ -37,3 +37,9 @@ FORMAL_SEAL = NO
 3. Human review at 1x: ground density, object completeness, PAR fringes/1px details, tree contact foot, shared coordinates.
 4. Deliver only original GROUND.png + PAR.png; user handles composite and VX collision. Expand to 1280x928 only after all three visual gates pass.
 5. Sync result to GitHub/Drive/Linear; do not overwrite SEALED files.
+
+## 2026-10-29 validator smoke test (Windows Desktop Commander)
+- Downloaded the published main-branch validator into Windows TEMP (7803 bytes); Python + Pillow available.
+- Synthetic 544x416 independent Ground RGB + PAR RGBA with correct manifest/SHA256: process exit 0, status `TECH_CANDIDATE_ONLY_NO_ART_PASS`.
+- Altered `ground.creation_method` to `master_first_segmentation`: process exit 2, both `UNACCEPTABLE_CREATION_METHOD` and `REVERSE_SPLIT_LINEAGE` flagged.
+- Synthetic PNGs and manifest deleted from TEMP after the test. The validator file remains in TEMP. This is **functional smoke testing only**, not validation of new R17 village art, real provenance or visual Gate F.
