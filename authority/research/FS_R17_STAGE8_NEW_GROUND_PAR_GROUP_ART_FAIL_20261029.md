@@ -41,3 +41,12 @@
 
 ## 下一步
 不再重做已通過的 Alpha 與尺寸測試；**製作與 Stage7 高豐富度 PAR 同藝術水準的原生可編輯材質來源**。優先利用可授權原始 Tileset/花草/石路素材重新建 Ground（不是直接修舊 Ground），同步推進 PAR 雙屋+花飾群組更細的語義拆分與接地驗收。每階段維持 `FINAL_SEAL=NO` 直到使用者視覺確認。
+
+
+## 追加回歸：Windows PAR 群組來源與跨平台 PNG bytes（2026-10-29）
+
+已在授權 Windows 原機重新由同步的 Ground.png + PAR.png 生成 QA 合成與 **4 個原生 RGBA Alpha 連通群組來源**，並逐像素重組驗證原 PAR 完全相同；保存於 [Drive Stage8 PAR_GROUPS](https://drive.google.com/drive/folders/1t0YmWzJopJP2zV8JXz41GQA4QgZ1tmEA)。[Stage8 Windows 交付 ZIP](https://drive.google.com/file/d/1L1GIuS_5JAXbmJWxOmyiqbmdHMr9tHdr/view) 包含 Ground、PAR、QA、Group PNG/Registry 與 Windows Gate JSON（10 files，1,470,784 bytes；SHA256 `a23bc1de662628f190360e1e76c87fc6c7b1fb01780db55285a2a08f1a79cec9`，CRC PASS）。
+
+注意 Windows Pillow 與隔離環境產生的**PNG 檔案位元組**可能不同，即使畫面所有 RGB pixel 相同。本輪最初不恰當地拿跨平台 PNG SHA 作為 QA Gate，誤報 FAIL；已改成**原始 RGB 像素緩衝 SHA** `df667b4fabcbda6a78e8e6f3ad771a77574f7753e871c37a86530a2a5719f704`，Windows 重建通過。Windows QA PNG 自身 SHA256 `421d693a068934b78a8016bb96108ea6a11057b9f1c1b2bb8ed26ba212205ebb`，與本地 JPEG/PNG 編碼不同不代表畫面不同。從正式 Ground+PAR 重組的 RAW RGB 像素相同才是真正的配對驗證；不能把檔案編碼差異當世界錯位。
+
+這份 Windows ZIP 是**交付圖層／Group 與 Gate 的技術備份**，而完整從零生成 Ground 的 Python 腳本及全部來源所組成的 1,852,207-byte 冷重建 ZIP 仍在本對話 sandbox；不可把它誤述成已全部同步雲端。正式美術仍為 Ground FAIL、PAR art/source-editability HOLD，Formal Seal NO。
