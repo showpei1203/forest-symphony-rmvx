@@ -39,7 +39,7 @@ Status: **TECH CANDIDATE / VISUAL ART FAIL / FORMAL SEAL NO**.
 - [Human visual gate](https://drive.google.com/file/d/13g4fwwou8ghnTxVdJ0IGi04sBeZ1WqCN/view)
 - [Machine technical gate](https://drive.google.com/file/d/1v3V7M6TjIHor-5BO4pOvv9IoJJIg20Xj/view)
 
-E: authoritative local candidate and G: Drive sync folder show **byte-identical SHA256 for Ground, PAR and ZIP**. Google Drive cloud listing and file sizes were read back; cloud re-download bytes SHA confirmation is separately pending. Do not call this a cloud ZIP SHA verified seal. All assets remain under private Drive; GitHub contains source, status, documents, hashes, not private FS PNGs.
+E: authoritative local candidate and G: Drive sync folder show **byte-identical SHA256 for Ground, PAR and ZIP**. Google Drive cloud files were **re-downloaded** and SHA-256 hashed independently in the working container: Ground=afe788742140344bcefe3c3f03dd28d7c9e80d86465ea31799846a259314b875, PAR=e9b48d895bfffc6b9818a30dbf20b3a4a103528dd415db105325e2a52b74ee8b, ZIP=75c5c315426649c9ae8a88f9f242178bacee31022aa7711ab2cd16ae0fb4afbc. All match E/G originals. ZIP CRC check returned no errors and contained 22 members. **Cloud content integrity verified; this does NOT elevate visual Art FAIL or formal Seal.** All assets remain under private Drive; GitHub contains source, status, documents, hashes, not private FS PNGs.
 
 ## Findings requiring further work
 1. **Quality gap:** Ground is recognizably procedural, no natural cobblestone/grass material richness comparable to the user-approved reference; don't increase random grass density as a substitute for coherent art.
