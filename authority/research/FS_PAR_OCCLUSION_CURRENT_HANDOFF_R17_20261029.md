@@ -33,3 +33,19 @@ Formal Seal=NO（尚未有合格的真分層雙圖藝術產物）。
 - The new R17 Direct Stage3 research ledger starts at zero *stage-local tracked spend*, with spend cap unspecified. GitHub/AI provider quota or billing reset is NOT VERIFIED / NOT PERFORMED.
 - Existing Authority, handoff, and provenance JSON paths were read back from GitHub main. Previous 404 could not be reproduced on those exact paths; no blanket promise about other URLs.
 - Gate state unchanged: `GROUND_LAYER=HOLD`, `PAR_LAYER=HOLD`, `PAIR_ALIGNMENT=HOLD`, `FORMAL_SEAL=NO`. No new approved PNG pair; sealed K4/VX untouched.
+
+
+## R17 Direct Stage3 V2｜實際雙來源候選，2026-10-29
+
+**最新狀態：來源直接雙圖已實際生成且技術 Gate 通過，但美術初審 FAIL；Final Seal = NO。** 不是只有文件同步了。使用者要求的正式 Ground/PAR 純美術標準未達成。
+
+- 真正產出：544x416 `GROUND.png`（獨立地面，未使用已烘焙 Master）及 `PAR.png`（原生 RGBA 透明立體物件），每份都有 SHA-256 和來源生成腳本。
+- V1 過度碎紋、樹底方形塊與攤位風格混亂，修成 V2：較少噪點、三種樹從創作階段拆為 Ground 接地／PAR 樹冠，取消攤位；原生 1x 同座標。
+- V2 SHA-256 Ground `afe788742140344bcefe3c3f03dd28d7c9e80d86465ea31799846a259314b875`；PAR `e9b48d895bfffc6b9818a30dbf20b3a4a103528dd415db105325e2a52b74ee8b`；PAR 真透明 Alpha0 = 194111px。
+- `r17_direct_ground_par_source_validator.py` 確認 544x416、Alpha、來源宣告、SHA 正確並退出碼 0；只代表 TECH CANDIDATE，**不代表 Ground3 等級 ART**。
+- 視覺判斷：目前 Ground 石路/草仍顯人工程序痕跡，房屋和新樹的美術風格／細節落差仍大；兩個藝術 Gate 明確 FAIL，不能進 Formal Seal。
+- GitHub [完整研究報告](FS_R17_DIRECT_STAGE3_V2_SOURCE_FIRST_ART_FAIL_20261029.md)、[來源生成腳本](../../tools/r17_direct_stage3/build_r17_stage3_source_first_v2.py)
+- [Google Drive V2 研究包及雙圖](https://drive.google.com/drive/folders/1DDs8NPle60OAYFTUs-kgRwZdBOUrMTNJ)；[GROUND.png](https://drive.google.com/file/d/1aCbJVpmx_gQO2e9cm3qO75arzX8MO2mp/view)、[PAR.png](https://drive.google.com/file/d/13LafoTIDMdLB6X6idFvF_qAoVG_7Co72/view)、[私人可重現 ZIP](https://drive.google.com/file/d/1TzoHecVGEj6iKeb2hRvFJ3DhV0FcNPM4/view)。
+- E:/G: 來源雙圖與 ZIP SHA 相同；Drive 雲端檔案清單及大小回讀成功，但未從雲端重新下載逐位比對；不假裝有雲端位元組 Seal。
+- 接續方向：**提高原生獨立地面和前景素材的藝術完成度**，以 R17 Stage2 優秀完整圖當視覺品質參照但絕不可把其 Master 當新的 Ground 或反切 PAR。不得覆寫 K4 Scripts、Map003 或替使用者設定 Collision。
+- 狀態：`GROUND_LAYER=ART_FAIL`；`PAR_LAYER=ART_FAIL`；`PAIR_ALIGNMENT=TECH_CANDIDATE_VISUAL_HOLD`；`FINAL_SEAL=NO`。
