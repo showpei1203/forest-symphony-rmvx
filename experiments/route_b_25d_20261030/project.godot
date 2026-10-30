@@ -2,7 +2,6 @@ config_version=5
 
 [application]
 config/name="FS Route B / 2.5D Source-layer Experiment"
-run/main_scene="res://main.tscn"
 
 [rendering]
 renderer/rendering_method="gl_compatibility"
