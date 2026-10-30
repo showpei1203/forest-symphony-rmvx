@@ -1,0 +1,109 @@
+{
+  "scope": "Conditional asset coverage ONLY for $actor01; table includes many actors and these actions MAY NOT be invoked by this actor",
+  "matched_poses": 230,
+  "conditional_missing": 9,
+  "source_scripts_sha256": "c3753236f67039aaf8bd6d854de6de92098531be79c3fc26eaed7709e2198726",
+  "not_proven": "This cannot establish that every named actor action is used by $actor01. Only inspecting actual actor action sequence, battle runtime and 1:1 VX screenshots can do that.",
+  "risk_items": [
+    {
+      "name": "泰勒消去姿勢",
+      "file_no": 8,
+      "row": 2,
+      "fixed": -1,
+      "missing_columns": [
+        0,
+        1,
+        2
+      ],
+      "reason": "absent numbered sheet"
+    },
+    {
+      "name": "泰勒連續攻擊姿勢2",
+      "file_no": 5,
+      "row": 2,
+      "fixed": -1,
+      "missing_columns": [
+        0,
+        2
+      ],
+      "reason": "missing required cells in existing numbered sheet"
+    },
+    {
+      "name": "泰勒連續攻擊姿勢3",
+      "file_no": 5,
+      "row": 3,
+      "fixed": -1,
+      "missing_columns": [
+        0,
+        1,
+        2
+      ],
+      "reason": "missing required cells in existing numbered sheet"
+    },
+    {
+      "name": "泰勒空中停止姿勢",
+      "file_no": 7,
+      "row": 3,
+      "fixed": -1,
+      "missing_columns": [
+        0,
+        1,
+        2
+      ],
+      "reason": "missing required cells in existing numbered sheet"
+    },
+    {
+      "name": "泰勒升龍尾招姿勢3",
+      "file_no": 8,
+      "row": 0,
+      "fixed": 1,
+      "missing_columns": [
+        1
+      ],
+      "reason": "absent numbered sheet"
+    },
+    {
+      "name": "泰勒升龍尾招姿勢2",
+      "file_no": 8,
+      "row": 0,
+      "fixed": 2,
+      "missing_columns": [
+        2
+      ],
+      "reason": "absent numbered sheet"
+    },
+    {
+      "name": "泰勒升龍尾招姿勢1",
+      "file_no": 8,
+      "row": 0,
+      "fixed": 0,
+      "missing_columns": [
+        0
+      ],
+      "reason": "absent numbered sheet"
+    },
+    {
+      "name": "泰勒升龍姿勢",
+      "file_no": 8,
+      "row": 0,
+      "fixed": -1,
+      "missing_columns": [
+        0,
+        1,
+        2
+      ],
+      "reason": "absent numbered sheet"
+    },
+    {
+      "name": "泰勒氣功姿勢",
+      "file_no": 5,
+      "row": 1,
+      "fixed": -1,
+      "missing_columns": [
+        0,
+        2
+      ],
+      "reason": "missing required cells in existing numbered sheet"
+    }
+  ]
+}
