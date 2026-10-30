@@ -1,3 +1,5 @@
+> **ART STATUS OVERRIDDEN 2026-10-30: USER FORMALLY REJECTED Stage12 C GROUND and GROUND/PAR visual pairing. Ground Art=FAIL; Pair Visual=FAIL; Art Candidate=REVOKED; Formal Seal=NO. This file is a historical technical trial only. [New user-authoritative rejection report](FS_R17_STAGE12_USER_GROUND_AND_PAIR_VISUAL_REJECTION_20261030.md).**
+
 # FS R17 Stage12｜原始高細節材質重新創作 Ground（2026-10-30）
 
 **Status: Ground/PAR native-container TECH PASS / ART CANDIDATE, USER HOLD / TREE-FOOT & PAR-EDITABILITY HOLD / Formal Seal NO.**
