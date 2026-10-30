@@ -1,0 +1,102 @@
+{
+  "source": "https://kenney.nl/assets/fantasy-town-kit",
+  "licence": "CC0",
+  "models": {
+    "roof-high": {
+      "name": "ft_roof-high.glb",
+      "bytes": 8088
+    },
+    "roof-high-gable": {
+      "name": "ft_roof-high-gable.glb",
+      "bytes": 7456
+    },
+    "roof-gable": {
+      "name": "ft_roof-gable.glb",
+      "bytes": 7632
+    },
+    "roof-window": {
+      "name": "ft_roof-window.glb",
+      "bytes": 15524
+    },
+    "roof-high-left": {
+      "name": "ft_roof-high-left.glb",
+      "bytes": 11376
+    },
+    "roof-high-right": {
+      "name": "ft_roof-high-right.glb",
+      "bytes": 10996
+    },
+    "roof-high-window": {
+      "name": "ft_roof-high-window.glb",
+      "bytes": 20732
+    },
+    "roof-high-gable-top": {
+      "name": "ft_roof-high-gable-top.glb",
+      "bytes": 6568
+    },
+    "wall-wood-door": {
+      "name": "ft_wall-wood-door.glb",
+      "bytes": 30744
+    },
+    "wall-wood-window-shutters": {
+      "name": "ft_wall-wood-window-shutters.glb",
+      "bytes": 10612
+    },
+    "wall-wood-window-small": {
+      "name": "ft_wall-wood-window-small.glb",
+      "bytes": 11808
+    },
+    "wall-wood-corner": {
+      "name": "ft_wall-wood-corner.glb",
+      "bytes": 6804
+    },
+    "wall-wood-block": {
+      "name": "ft_wall-wood-block.glb",
+      "bytes": 8548
+    },
+    "overhang": {
+      "name": "ft_overhang.glb",
+      "bytes": 7648
+    },
+    "tree-high-round": {
+      "name": "ft_tree-high-round.glb",
+      "bytes": 13176
+    },
+    "tree-crooked": {
+      "name": "ft_tree-crooked.glb",
+      "bytes": 19252
+    },
+    "lantern": {
+      "name": "ft_lantern.glb",
+      "bytes": 14984
+    },
+    "hedge": {
+      "name": "ft_hedge.glb",
+      "bytes": 6524
+    },
+    "fountain-round-detail": {
+      "name": "ft_fountain-round-detail.glb",
+      "bytes": 136888
+    },
+    "stall-green": {
+      "name": "ft_stall-green.glb",
+      "bytes": 27120
+    },
+    "pillar-wood": {
+      "name": "ft_pillar-wood.glb",
+      "bytes": 5312
+    },
+    "wall-door": {
+      "name": "ft_wall-door.glb",
+      "bytes": 29276
+    },
+    "roof": {
+      "name": "ft_roof.glb",
+      "bytes": 9324
+    },
+    "roof-gable-detail": {
+      "name": "ft_roof-gable-detail.glb",
+      "bytes": 12028
+    }
+  }
+}
