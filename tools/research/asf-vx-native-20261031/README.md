@@ -36,3 +36,18 @@
 ## Handoff / next task
 
 Match numbered `$actor01_1...` to actual Tankentai action rules from Script Authority, reject incomplete directions on _5/_7, then build a **separate** native VX battle preview with original sealed source and exact body/weapon pivot. Only after parity at runtime, test ASF-assisted **new** FS-style animation as a fresh candidate, with human visual approval and exact RGBA/weapon identity across all actions. Keep all work under the isolated lab and collect paired screenshots as evidence.
+
+## A09-1 Follow-on: conditional Tankentai action-pose coverage audit
+
+An independent read-only scan of the actual `K4_BASELINE/All_Scripts_Export.txt` **Tankentai ANIME Key / FileNo / Row / Fixed** table parsed **230** pose definitions. These keys are shared by multiple actors, so **a named pose referencing FileNo n is NOT proof that this particular `$actor01` actor executes it**.
+
+Cross-comparing each table entry *conditionally* to this one actor's actual numbered sprite inventory yielded **9 potentially incomplete usages**, notably:
+- FileNo 8: no `$actor01_8.png` available, therefore any corresponding actions for this actor cannot be rendered from its current source.
+- FileNo 5, row 2: only the center column is present, so any full three-frame sequence would reference two empty frames.
+- FileNo 5, row 3: all three source columns are empty.
+- FileNo 7, row 3: all three source columns are empty.
+- Other FileNo 5 rows may require missing columns when the pose is not fixed to the existing center column.
+
+This is a **conditional source-integrity diagnostic only**, not a runtime defect accusation, and not proof any of these nine references is exercised by this actor. `scripts/audit_tankentai_poses.py` contains the regex extractor and source hash capture; `data/tankentai_pose_coverage_risks_only.json` records the exact nine action names and coordinates. Actual actor-action binding analysis and isolated VX native battle screenshots are mandatory before declaring any action broken.
+
+**Gate policy:** for each intended combat motion, resolve actual actor identity → action sequence → pose key → `FileNo/Row/Fixed` → required columns. If requested pixels do not exist, emit FAIL_SOURCE_MISSING, never fabricate a blank/duplicated fourth facing or substitute a recolor as anatomical progress.
