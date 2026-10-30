@@ -23,7 +23,7 @@
 | Environment | Windows device online; Python 3.11, Pillow 12.3, NumPy 2.4.6; FFmpeg 9.0.2 | READY for offline branches |
 | AI media generation | forge_doctor: no image/video API key, Codex CLI or Grok CLI configured in this Windows environment | **NOT AVAILABLE**. No charged API calls were made |
 | Code-drawn actor | `render_pixelspec.py`, 3 variants forest/crimson/sky, 12 frame names each; strict QC no failed checks | **PASS WITH WARN**: half-cycle duplicates on walk_down/up/right, some IoU 0.99–1.0 |
-| Animation clips / engine export | 4 walk direction clips, 12 unique frames total, Aseprite JSON + Godot SpriteFrames / Sprite3D Atlas emitted and parse-verified | **EXPORT PASS; native runtime verification PENDING** |
+| Animation clips / engine export | 4 walk direction clips, 12 unique frames total, Aseprite JSON + Godot SpriteFrames / Sprite3D Atlas emitted and parse-verified | **EXPORT PASS; Godot 4.7.2 editor import and headless scene load PASS; motion visual review PENDING** |
 | Playable map | `layout_build.py` produced 640×400 map, 123 objects, 104 solids, 41 collision rectangles, 3 exits, initial 6/6 navigation targets reachable | **TECH PASS; ART FAIL against FS style** |
 | Navigation / collision | `map_bundle.py validate`: 0 errors/warnings. `map_nav.py check`: no unreachable targets or thin gaps, 10 unreachable walkable pockets (18 cells), reciprocal exit links skipped | **WARN / NOT FORMAL PASS** |
 | Tiled | `export_tiled.py` generated TMJ layers ground,props,collision,interactions; exporter self-test pixel diff 0 | **EXPORT PASS** |
