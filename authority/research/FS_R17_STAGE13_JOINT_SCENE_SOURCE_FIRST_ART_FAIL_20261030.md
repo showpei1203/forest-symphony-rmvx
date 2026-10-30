@@ -22,3 +22,8 @@ PAR alpha0=162544, alpha255=63760, partial=0, border leakage=0。正式 Ground+P
 
 Drive Handoff: https://docs.google.com/document/d/1hqB4Y4U5FKhLftgPUl1gQV7w9FFeR59AHbjnZd6FALA/edit
 Drive Stage13 folder: https://drive.google.com/drive/folders/15Nfq3AFIOw25o1DCN-f1r2b84vuOEgMw
+
+
+## STAGE13 V2 CLOUD IMAGE READBACK (2026-10-30)
+
+The new GROUND, PAR, composite QA and CORE-vs-RICH QA PNG files were uploaded and read back in Drive Stage13 folder. Image references: [GROUND](https://drive.google.com/file/d/1hb8GTrxYGAaO23DFOeObUQaKqoBOK2G1/view), [PAR](https://drive.google.com/file/d/1sKDM0zX2FVADpXJHDf520onLvvPVdqnf/view), [Composite](https://drive.google.com/file/d/1rrJxkJU3pAUSI3I9q7Q5Fo-K0cEY9CPZ/view), [Core vs Rich](https://drive.google.com/file/d/1BZcuzSbl4HzbwO2EHD0Xs5axkuR71rz8/view). This is a file-presence readback; original-byte cloud redownload SHA not separately rerun. Full ZIP remains only in chat and is NOT claimed Drive-synced. Ground Art FAIL / PAR Art FAIL / Integration FAIL / Final Seal NO.
