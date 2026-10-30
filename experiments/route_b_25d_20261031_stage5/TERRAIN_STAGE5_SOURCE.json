@@ -1,0 +1,20 @@
+{
+  "type": "native_terrain_texture",
+  "seed": 31012026,
+  "world_extent_meters": [
+    18,
+    18
+  ],
+  "size_px": [
+    1024,
+    1024
+  ],
+  "layers": [
+    "base biomes with coarse+medium noise",
+    "curved mask-authored dirt path",
+    "wildflower clusters",
+    "leaf/grass strokes",
+    "ground-only cottage tree contact shadows"
+  ],
+  "not": "a master-scene extraction"
+}
