@@ -16,7 +16,7 @@ Test whether a single 3D scene with a fixed orthographic camera can produce a ma
 
 ## Actual results
 - Ground and PAR are each native 544x416 outputs of the same 3D world/camera, using per-mesh render layer masks 1 and 2.
-- Ground opaque; PAR 178,389 transparent pixels, 47,915 nonzero alpha pixels; transparent border zero.
+- Ground is native RGB (fully opaque); PAR is native RGBA with 178,389 transparent pixels, 47,915 nonzero alpha pixels; transparent border zero.
 - Alpha composite vs separately rendered full scene differs at 259 of 226,304 pixels (~0.114%) / RGB MAE 0.02685. This is NOT pixel-exact.
 - Camera initialization issue, transparent-background color mismatch and edge leakage were found and corrected during real Godot execution.
 - Geometry includes 2 cottages, 4 trees, cobble paths, fence, lamps, small plants and coordinated object footprints.
