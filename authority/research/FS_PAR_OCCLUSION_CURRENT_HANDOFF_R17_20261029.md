@@ -159,3 +159,18 @@ Latest native-source material experiment: **TECH CANDIDATE / GROUND ART FAIL / P
 - [Drive Stage12](https://drive.google.com/drive/folders/1c6w2ffUrA_jA349VlUXpYZkXm13twx4g) | [GitHub detailed audit](FS_R17_STAGE12_SOURCE_QUILT_ART_CANDIDATE_20261030.md) | [reproducible candidate source](../../tools/r17_direct_stage12/build_stage12_a2_quilt_v2.py) | [testing source](../../tools/r17_direct_stage12/validate_and_package_stage12.py).
 - **Art is not signed off:** Ground's paved roads are visibly better, but flora distribution and detail still below ground3. Stage7 transparent PAR still one precomposed source, not native 1x editable per object, and includes grounding/flowerbed semantics requiring acceptance. Latest Ground contains no isolated tree bark; original lowest-32px contact expectation remains open. No sealed FS binary, Map.rvdata, Scripts.rvdata, collision or passability changes.
 - Next work: judge C at 1x; develop true high-fidelity low-plant clusters and independent PAR sources. Do not repeat a faux `PASS` ImageGen QA board, and do not attribute formal pass to machine-only SHA equality.
+
+
+## R17 Stage12 USER ART REJECTION｜2026-10-30（LATEST）
+
+**AUTHORITATIVE USER ACCEPTANCE: Ground standalone ART FAIL AND Ground/PAR visual-integrated ART FAIL. Prior Stage12 C human HOLD / visual-candidate wording is REVOKED. TECH-only PNG/Alpha/source evidence preserved, Formal Seal NO.** The user explicitly rejected both the Ground's individual artistic quality and its actual integration with the PAR. Original art and actual composite re-reviewed; this is not a user request for another random procedural-art variant.
+
+Evidence: original ground is low-detail/too uniform with sparse small dots; the cobble path has hard edges and too consistent pattern; stand-alone richly detailed transparent PAR (two cottages, giant tree, high contrast garden) looks like a different picture and its doors/roots/fence/flowerbeds were **never jointly authored with** this Ground's roads, material transitions, contact shadows and soil. A same-size canvas, valid true alpha, shared *declared* blueprint string and 0px re-composition diff are technical facts only. They do not indicate pairing acceptance.
+
+**Final Stage12 disposition**: `GROUND_ART=FAIL`, `GROUND_PAR_VISUAL_INTEGRATION=FAIL`, `OBJECT_CONTACT_STYLE=FAIL`, `ART_CANDIDATE=REVOKED`, `TECH_CANVAS_ALPHA_SOURCE=PASS_PREVIOUS`, `FORMAL_SEAL=NO`. Do not reuse Stage12 C as Ground art baseline or Stage7 precomposed PAR as matching authoritative pair. Keep artwork and source hashes only as negative witnesses.
+
+**Stage13 fail-closed direction**: start from one truly joint semantic scene blueprint (house doors/footprints, tree base, road route/width, flowerbed/rail contact, ground shadow, character scale). Create **new** full-detail independent native Ground and separately original rich PAR source family from that same layout, not retro-fit old Ground with unchanged Stage7 PAR, not generate a Master and reverse-split, not isolated tree stump. First manually review Ground alone, PAR alone, and one true 1x composite BEFORE repetitive technical tests. Stop on either art failure. Technical source/alpha/hash gates only afterward. No K4 Scripts/Map/Collision/passability edits.
+
+- [Formal user-rejection report](FS_R17_STAGE12_USER_GROUND_AND_PAIR_VISUAL_REJECTION_20261030.md)
+- [Private Drive rejected-art audit and annotations](https://drive.google.com/drive/folders/12Zr1hr0isHHYz3_mjHAk8Ylgkj7VPlpZ)
+- [Archived Stage12 original source and proof](https://drive.google.com/drive/folders/1c6w2ffUrA_jA349VlUXpYZkXm13twx4g)
