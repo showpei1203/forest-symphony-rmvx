@@ -1,0 +1,10 @@
+{
+  "authoring": "deterministic source texture, no finished 2D map reverse crop",
+  "size": [
+    512,
+    512
+  ],
+  "seed": 70931,
+  "license": "original authored in this Stage7 test",
+  "sha256": "1d28f693db82621ba130066cd5b852b746411e2141ec4a5c91d8f2f1c7804b39"
+}
