@@ -174,3 +174,11 @@ Evidence: original ground is low-detail/too uniform with sparse small dots; the 
 - [Formal user-rejection report](FS_R17_STAGE12_USER_GROUND_AND_PAIR_VISUAL_REJECTION_20261030.md)
 - [Private Drive rejected-art audit and annotations](https://drive.google.com/drive/folders/12Zr1hr0isHHYz3_mjHAk8Ylgkj7VPlpZ)
 - [Archived Stage12 original source and proof](https://drive.google.com/drive/folders/1c6w2ffUrA_jA349VlUXpYZkXm13twx4g)
+
+## R17 Stage13 joint-source visual FAIL | 2026-10-30
+**Newest result: technical source-first candidate but Ground ART FAIL, PAR ART FAIL, combined visual FAIL; formal seal NO.**
+Ground and PAR were generated from one shared scene blueprint, rather than a prior precomposed PAR with unrelated Ground. Native 544x416 RGB Ground and RGBA PAR with 22 individual source objects; blue house door (350,284), ochre door (443,124), tree contact (119,279). V1 contact alignment failed; V2 corrected it. Blue-house displacement +16px is caught by semantic source anchor gate. No completed Master was split.
+Ground SHA d732ef75a6086fb60856de470f96a5b02f05b88c80f3fe2557b250354c996a89; PAR SHA ce4ff94433f24d234f65edbfb05efb0a5e03a5d070c569f499772a2bf3b86c82. PAR 162544 transparent / 63760 opaque / 0 partial pixels; clean borders; cold rebuilt seven files SHA identical.
+Visual self-rejection: crude procedural terrain and low-detail props do not match original rich cottages/tree; both core-only sparse and decorated stylization fail. Ground tree bark contact vs no isolated stump semantic HOLD. An image generation infographic with printed PASS is ignored as invalid artifact.
+ZIP 2,837,194 bytes / 48 files / SHA 71c068fe2ea245ced592df7845b3ae32f0609db0117168c236d5e24ac2fce9af is available in current chat; Google Drive binary upload NOT verified.
+[Stage13 research report](FS_R17_STAGE13_JOINT_SCENE_SOURCE_FIRST_ART_FAIL_20261030.md) and [Drive text handoff](https://docs.google.com/document/d/1hqB4Y4U5FKhLftgPUl1gQV7w9FFeR59AHbjnZd6FALA/edit). No sealed FS Map/Scripts/Collision changed.
