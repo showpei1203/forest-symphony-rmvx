@@ -1,0 +1,31 @@
+{
+  "test": "FS Route B / Godot 4.7.2 2.5D identical world coordinates",
+  "size": [
+    544,
+    416
+  ],
+  "ground_mode": "RGB",
+  "par_mode": "RGBA",
+  "ground_alpha_all_opaque": true,
+  "par_alpha_zero_pixels": 176398,
+  "par_alpha_nonzero_pixels": 49906,
+  "par_alpha_0_ratio": 0.7794736283936652,
+  "par_border_nonzero": 0,
+  "full_vs_alpha_composite_rgb_mae": 0.05396281108597285,
+  "full_vs_alpha_composite_rgb_max_error": 65,
+  "full_vs_alpha_composite_differing_pixel_count": 2667,
+  "ground_unique_rgb": 3057,
+  "par_unique_rgba": 37,
+  "hashes_sha256": {
+    "COMPOSITE_PREVIEW.png": "d1cc51fd18c10d75156db125e6bf4055b78bcf42b940f715c84bfa8b14064c16",
+    "CONTACT_32_GRID_AUDIT.png": "52ca6c175f0d0fec3b10dba7f8eec44fb325f4183581658ddcba7dc18de0577b",
+    "GROUND.png": "5241236e76bbcc2df2ee8f14e0bebb427058db8975307c1e00dcad0859941452",
+    "PAR.png": "be97dbc9c7d3f2a04464376498d059fd288791068521fcb579139136a4b01d30",
+    "QA_4PANEL.png": "89cc6dd8f98cef6cb7e4009c32e0a8009226e2f1c580c385730e317ef074ff85",
+    "SCENE_FULL.png": "2f3135872a38fb4982e3bc466bc503c92838ea82c930adbfef0c723b3aa1678a",
+    "STAGE5A_DENSE_COMPOSITE.png": "ea84b45783939c677620e02fa875d17adaee6b527bd109a9704d67c4239fa1aa",
+    "TREE_CONTACT_MASK.png": "868d46f1b25d42dfbc11698bc66d0bae42c69853fcabec4be85284c97c074c2f"
+  },
+  "visual_result": "HOLD_LOW_POLY_EXPERIMENT_NOT_PIXEL_ART_PASS",
+  "formal_seal": false
+}
