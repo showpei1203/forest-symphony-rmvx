@@ -1,0 +1,41 @@
+{
+  "native_res": [
+    544,
+    416
+  ],
+  "stage7_composite_sha256": "09575cf8d2d5d5f47a5581dff7906a2a80f6ceec72a3633c4e389ae621388f48",
+  "stage8_composite_sha256": "995dc871fbec7123d662d6b21f3cfc7fe83c421275fee4feeb8d2dd7023aadd4",
+  "region_comparison": [
+    {
+      "region": "WEST_TREE_ZONE",
+      "pixels": 22800,
+      "changed": 7017,
+      "change_ratio": 0.307763
+    },
+    {
+      "region": "EAST_TREE_ZONE",
+      "pixels": 22200,
+      "changed": 3732,
+      "change_ratio": 0.168108
+    },
+    {
+      "region": "COTTAGE_CORE",
+      "pixels": 35875,
+      "changed": 0,
+      "change_ratio": 0.0
+    },
+    {
+      "region": "GROUND_PATH",
+      "pixels": 13334,
+      "changed": 0,
+      "change_ratio": 0.0
+    }
+  ],
+  "image_paths": [
+    "out/STAGE8_TREE_ABC_1X.png",
+    "out/STAGE8_LEFT_CROWN_3X_DIAGNOSTIC.png",
+    "out/STAGE8_CHANGED_PIXEL_MAP.png"
+  ],
+  "critical_caveat": "Only a visual and pixel-difference probe. Difference density is not a quality score. FS artwork remains not approved.",
+  "formal_seal": false
+}
