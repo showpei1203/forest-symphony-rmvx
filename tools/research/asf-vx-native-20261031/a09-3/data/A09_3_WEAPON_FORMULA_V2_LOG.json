@@ -1,0 +1,138 @@
+{
+  "draw_ok": true,
+  "samples": [
+    {
+      "Godot_rotation": 202.999984741211,
+      "front": true,
+      "mirror": false,
+      "offset_delta_x": -2.30000305175781,
+      "offset_delta_y": 0.0,
+      "pivot_x": 24.0,
+      "pivot_y": 24.0,
+      "pose": "p01",
+      "tick": 0
+    },
+    {
+      "Godot_rotation": 100.999992370605,
+      "front": true,
+      "mirror": false,
+      "offset_delta_x": -6.89999389648438,
+      "offset_delta_y": 0.0,
+      "pivot_x": 24.0,
+      "pivot_y": 24.0,
+      "pose": "p01",
+      "tick": 1
+    },
+    {
+      "Godot_rotation": -0.999999940395355,
+      "front": true,
+      "mirror": false,
+      "offset_delta_x": -11.5,
+      "offset_delta_y": 0.0,
+      "pivot_x": 24.0,
+      "pivot_y": 24.0,
+      "pose": "p01",
+      "tick": 2
+    },
+    {
+      "Godot_rotation": -102.999992370605,
+      "front": true,
+      "mirror": false,
+      "offset_delta_x": -16.0999755859375,
+      "offset_delta_y": 0.0,
+      "pivot_x": 24.0,
+      "pivot_y": 24.0,
+      "pose": "p01",
+      "tick": 3
+    },
+    {
+      "Godot_rotation": -205.999984741211,
+      "front": false,
+      "mirror": true,
+      "offset_delta_x": -2.30000305175781,
+      "offset_delta_y": 0.0,
+      "pivot_x": 0.0,
+      "pivot_y": 24.0,
+      "pose": "p03",
+      "tick": 0
+    },
+    {
+      "Godot_rotation": -156.999984741211,
+      "front": false,
+      "mirror": true,
+      "offset_delta_x": 0.0,
+      "offset_delta_y": -2.30000305175781,
+      "pivot_x": 0.0,
+      "pivot_y": 24.0,
+      "pose": "p03",
+      "tick": 1
+    },
+    {
+      "Godot_rotation": -107.999992370605,
+      "front": false,
+      "mirror": true,
+      "offset_delta_x": 2.29998779296875,
+      "offset_delta_y": -4.60000610351563,
+      "pivot_x": 0.0,
+      "pivot_y": 24.0,
+      "pose": "p03",
+      "tick": 2
+    },
+    {
+      "Godot_rotation": -58.9999961853027,
+      "front": false,
+      "mirror": true,
+      "offset_delta_x": 4.5999755859375,
+      "offset_delta_y": -6.89999389648438,
+      "pivot_x": 0.0,
+      "pivot_y": 24.0,
+      "pose": "p03",
+      "tick": 3
+    },
+    {
+      "Godot_rotation": -65.0,
+      "front": false,
+      "mirror": false,
+      "offset_delta_x": -41.3999977111816,
+      "offset_delta_y": 4.60000610351563,
+      "pivot_x": 12.0,
+      "pivot_y": 12.0,
+      "pose": "p05",
+      "tick": 0
+    },
+    {
+      "Godot_rotation": -65.0,
+      "front": false,
+      "mirror": false,
+      "offset_delta_x": -41.3999938964844,
+      "offset_delta_y": 4.60000610351563,
+      "pivot_x": 12.0,
+      "pivot_y": 12.0,
+      "pose": "p05",
+      "tick": 1
+    },
+    {
+      "Godot_rotation": -65.0,
+      "front": false,
+      "mirror": false,
+      "offset_delta_x": -41.4000244140625,
+      "offset_delta_y": 4.60000610351563,
+      "pivot_x": 12.0,
+      "pivot_y": 12.0,
+      "pose": "p05",
+      "tick": 2
+    },
+    {
+      "Godot_rotation": -65.0,
+      "front": false,
+      "mirror": false,
+      "offset_delta_x": -41.4000244140625,
+      "offset_delta_y": 4.60000610351563,
+      "pivot_x": 12.0,
+      "pivot_y": 12.0,
+      "pose": "p05",
+      "tick": 3
+    }
+  ],
+  "status": "candidate_not_VX_parity"
+}

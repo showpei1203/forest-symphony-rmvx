@@ -1,0 +1,157 @@
+{
+  "capture_ok": true,
+  "engine": "4.7.2-stable (official)",
+  "samples": [
+    {
+      "angle_expected": 205.0,
+      "angle_rendered": 204.999984741211,
+      "front": true,
+      "mirrored": false,
+      "t": 0.0,
+      "weapon": "喬伊普攻武器",
+      "x_expected": 55.0,
+      "x_rendered": 55.0
+    },
+    {
+      "angle_expected": 102.5,
+      "angle_rendered": 102.499992370605,
+      "front": true,
+      "mirrored": false,
+      "t": 0.25,
+      "weapon": "喬伊普攻武器",
+      "x_expected": 245.0,
+      "x_rendered": 245.0
+    },
+    {
+      "angle_expected": 0.0,
+      "angle_rendered": 0.0,
+      "front": true,
+      "mirrored": false,
+      "t": 0.5,
+      "weapon": "喬伊普攻武器",
+      "x_expected": 435.0,
+      "x_rendered": 435.0
+    },
+    {
+      "angle_expected": -102.5,
+      "angle_rendered": -102.499992370605,
+      "front": true,
+      "mirrored": false,
+      "t": 0.75,
+      "weapon": "喬伊普攻武器",
+      "x_expected": 625.0,
+      "x_rendered": 625.0
+    },
+    {
+      "angle_expected": -205.0,
+      "angle_rendered": -204.999984741211,
+      "front": true,
+      "mirrored": false,
+      "t": 1.0,
+      "weapon": "喬伊普攻武器",
+      "x_expected": 815.0,
+      "x_rendered": 815.0
+    },
+    {
+      "angle_expected": -205.0,
+      "angle_rendered": -204.999984741211,
+      "front": false,
+      "mirrored": true,
+      "t": 0.0,
+      "weapon": "喬伊普攻武器2",
+      "x_expected": 90.0,
+      "x_rendered": 90.0
+    },
+    {
+      "angle_expected": -156.25,
+      "angle_rendered": -156.25,
+      "front": false,
+      "mirrored": true,
+      "t": 0.25,
+      "weapon": "喬伊普攻武器2",
+      "x_expected": 280.0,
+      "x_rendered": 280.0
+    },
+    {
+      "angle_expected": -107.5,
+      "angle_rendered": -107.499992370605,
+      "front": false,
+      "mirrored": true,
+      "t": 0.5,
+      "weapon": "喬伊普攻武器2",
+      "x_expected": 470.0,
+      "x_rendered": 470.0
+    },
+    {
+      "angle_expected": -58.75,
+      "angle_rendered": -58.75,
+      "front": false,
+      "mirrored": true,
+      "t": 0.75,
+      "weapon": "喬伊普攻武器2",
+      "x_expected": 660.0,
+      "x_rendered": 660.0
+    },
+    {
+      "angle_expected": -10.0,
+      "angle_rendered": -9.99999904632568,
+      "front": false,
+      "mirrored": true,
+      "t": 1.0,
+      "weapon": "喬伊普攻武器2",
+      "x_expected": 850.0,
+      "x_rendered": 850.0
+    },
+    {
+      "angle_expected": -65.0,
+      "angle_rendered": -65.0,
+      "front": false,
+      "mirrored": false,
+      "t": 0.0,
+      "weapon": "正常武器待機",
+      "x_expected": 37.5,
+      "x_rendered": 37.5
+    },
+    {
+      "angle_expected": -65.0,
+      "angle_rendered": -65.0,
+      "front": false,
+      "mirrored": false,
+      "t": 0.25,
+      "weapon": "正常武器待機",
+      "x_expected": 227.5,
+      "x_rendered": 227.5
+    },
+    {
+      "angle_expected": -65.0,
+      "angle_rendered": -65.0,
+      "front": false,
+      "mirrored": false,
+      "t": 0.5,
+      "weapon": "正常武器待機",
+      "x_expected": 417.5,
+      "x_rendered": 417.5
+    },
+    {
+      "angle_expected": -65.0,
+      "angle_rendered": -65.0,
+      "front": false,
+      "mirrored": false,
+      "t": 0.75,
+      "weapon": "正常武器待機",
+      "x_expected": 607.5,
+      "x_rendered": 607.5
+    },
+    {
+      "angle_expected": -65.0,
+      "angle_rendered": -65.0,
+      "front": false,
+      "mirrored": false,
+      "t": 1.0,
+      "weapon": "正常武器待機",
+      "x_expected": 797.5,
+      "x_rendered": 797.5
+    }
+  ],
+  "tested": 15
+}

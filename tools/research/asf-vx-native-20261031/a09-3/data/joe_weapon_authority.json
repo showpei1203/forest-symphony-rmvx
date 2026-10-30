@@ -1,0 +1,182 @@
+{
+  "origin": "K4 original compressed Scripts.rvdata entry 225 SBS Battler Configuration (K), not a generated config",
+  "source_script_sha256": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa",
+  "script_entry_name": "SBS Battler Configuration (K)",
+  "weapon_fields": [
+    "Xa",
+    "Ya",
+    "Za",
+    "A1",
+    "A2",
+    "Or",
+    "Inv",
+    "Xs",
+    "Ys",
+    "Xp",
+    "Yp",
+    "Weapon2"
+  ],
+  "weapon_table": {
+    "喬伊普攻武器": {
+      "xa": -7,
+      "ya": 2,
+      "za_front": true,
+      "angle_start_rgss": -205,
+      "angle_end_rgss": 205,
+      "origin_id": 4,
+      "invert_horizontal": false,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "pos_offset_x": -1,
+      "pos_offset_y": 0,
+      "weapon2": false,
+      "line": 472
+    },
+    "喬伊普攻武器2": {
+      "xa": 7,
+      "ya": -2,
+      "za_front": false,
+      "angle_start_rgss": 205,
+      "angle_end_rgss": 10,
+      "origin_id": 4,
+      "invert_horizontal": true,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "pos_offset_x": -1,
+      "pos_offset_y": 0,
+      "weapon2": false,
+      "line": 473
+    },
+    "正常武器待機": {
+      "xa": 3,
+      "ya": 3,
+      "za_front": false,
+      "angle_start_rgss": 65,
+      "angle_end_rgss": 65,
+      "origin_id": 0,
+      "invert_horizontal": false,
+      "scale_x": 1.0,
+      "scale_y": 1.0,
+      "pos_offset_x": -18,
+      "pos_offset_y": 2,
+      "weapon2": false,
+      "line": 483
+    }
+  },
+  "poses": [
+    {
+      "pose_key": "喬伊防禦姿勢",
+      "clip_id": "p00",
+      "file_no": 7,
+      "row": 0,
+      "fixed": -1,
+      "weapon_key": "",
+      "weapon_defined": true,
+      "weapon_data": null
+    },
+    {
+      "pose_key": "喬伊普攻姿勢",
+      "clip_id": "p01",
+      "file_no": 2,
+      "row": 2,
+      "fixed": -1,
+      "weapon_key": "喬伊普攻武器",
+      "weapon_defined": true,
+      "weapon_data": {
+        "xa": -7,
+        "ya": 2,
+        "za_front": true,
+        "angle_start_rgss": -205,
+        "angle_end_rgss": 205,
+        "origin_id": 4,
+        "invert_horizontal": false,
+        "scale_x": 1.0,
+        "scale_y": 1.0,
+        "pos_offset_x": -1,
+        "pos_offset_y": 0,
+        "weapon2": false,
+        "line": 472
+      }
+    },
+    {
+      "pose_key": "喬伊召喚物姿勢",
+      "clip_id": "p02",
+      "file_no": 2,
+      "row": 0,
+      "fixed": 2,
+      "weapon_key": "",
+      "weapon_defined": true,
+      "weapon_data": null
+    },
+    {
+      "pose_key": "喬伊普攻姿勢2",
+      "clip_id": "p03",
+      "file_no": 7,
+      "row": 1,
+      "fixed": -1,
+      "weapon_key": "喬伊普攻武器2",
+      "weapon_defined": true,
+      "weapon_data": {
+        "xa": 7,
+        "ya": -2,
+        "za_front": false,
+        "angle_start_rgss": 205,
+        "angle_end_rgss": 10,
+        "origin_id": 4,
+        "invert_horizontal": true,
+        "scale_x": 1.0,
+        "scale_y": 1.0,
+        "pos_offset_x": -1,
+        "pos_offset_y": 0,
+        "weapon2": false,
+        "line": 473
+      }
+    },
+    {
+      "pose_key": "喬伊發動姿勢",
+      "clip_id": "p04",
+      "file_no": 7,
+      "row": 0,
+      "fixed": -1,
+      "weapon_key": "",
+      "weapon_defined": true,
+      "weapon_data": null
+    },
+    {
+      "pose_key": "喬伊等待姿勢",
+      "clip_id": "p05",
+      "file_no": 1,
+      "row": 0,
+      "fixed": -1,
+      "weapon_key": "正常武器待機",
+      "weapon_defined": true,
+      "weapon_data": {
+        "xa": 3,
+        "ya": 3,
+        "za_front": false,
+        "angle_start_rgss": 65,
+        "angle_end_rgss": 65,
+        "origin_id": 0,
+        "invert_horizontal": false,
+        "scale_x": 1.0,
+        "scale_y": 1.0,
+        "pos_offset_x": -18,
+        "pos_offset_y": 2,
+        "weapon2": false,
+        "line": 483
+      }
+    },
+    {
+      "pose_key": "喬伊普攻前進姿勢",
+      "clip_id": "p06",
+      "file_no": 1,
+      "row": 3,
+      "fixed": -1,
+      "weapon_key": "",
+      "weapon_defined": true,
+      "weapon_data": null
+    }
+  ],
+  "validated": true,
+  "limits": "This maps exact Tankentai source definition values only. Time interpolation and dynamic runtime actor equipment, mirroring/position math are NOT independently verified by VX Game.exe."
+}

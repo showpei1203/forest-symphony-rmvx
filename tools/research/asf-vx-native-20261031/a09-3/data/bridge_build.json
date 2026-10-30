@@ -1,0 +1,10 @@
+{
+  "status": "TEST_ONLY_NATIVE_ADAPTER_INSERTED_505_ORIGINAL_UNCHANGED",
+  "index": 482,
+  "scripts_original_entries": 505,
+  "scripts_candidate_entries": 506,
+  "baseline_sha256": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa",
+  "candidate_sha256": "b9b5d64dba82eaeb5e06935a0737be606d270e3f675b2df27d5d8c54c76a67a2",
+  "adapter_sha256": "19c9e82f6adc2f30f336c94566322a964cc3d4a0b7472f15d367b007da28cdd9",
+  "bin_original_unchanged": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa"
+}

@@ -1,0 +1,63 @@
+{
+  "status": "A09_3_GODOT_WEAPON_FORMULA_CANDIDATE_RENDERED_VX_NATIVE_NOT_VALIDATED",
+  "source_pose_binding_keys": 7,
+  "bound_weapon_keys": 3,
+  "original_swing_keys": 2,
+  "Godot_v2_sample_count": 12,
+  "native_battler_weapon_pivot": {
+    "normal_attack_1": [
+      24,
+      24
+    ],
+    "normal_attack_2_mirrored": [
+      0,
+      24
+    ],
+    "standby": [
+      12,
+      12
+    ]
+  },
+  "native_swing_effects_parsed": [
+    "Xa",
+    "Ya",
+    "Za",
+    "A1",
+    "A2",
+    "Or",
+    "Inv",
+    "Xs",
+    "Ys",
+    "Xp",
+    "Yp",
+    "Weapon2"
+  ],
+  "v1_failure_categories": [
+    "APPLIED_FULL_SWING_XA_AT_T0",
+    "MISSED_MIRROR_PIVOT_4_TO_3",
+    "SIMPLIFIED_LINEAR_ANGLE_INTERPOLATION",
+    "NO_NATIVE_ORIGINAL_VX_CAPTURE"
+  ],
+  "v2_changes": [
+    "SOURCE_DEFINED_4_TICK_DIVISION_FORMULAS",
+    "MIRROR_PIVOT_SWAP",
+    "MOVE_STEP_PER_TICK",
+    "SCENE_FRONT_BACK_Z",
+    "PRESERVED_OFFSETS"
+  ],
+  "actual_native_VX_test": {
+    "clone_505_core_unchanged": true,
+    "instrumented_506_scripts": true,
+    "Game_exe_launched_prior": true,
+    "adapter_evaluated": false,
+    "in_game_pixels_captured": false,
+    "reason": "No adapter log even when invoked at toplevel before Main; window capture black and foreground browser. Cause unresolved."
+  },
+  "Godot_file_shas": {
+    "A09_3_WEAPON_AUTHORITY_CANDIDATE.png": "37be5c3e2855b92ea1981856d64f04aa33f8785f4c5de5e04961a11883efdde9",
+    "A09_3_WEAPON_FORMULA_V2_CANDIDATE.png": "62ac99c9deae179efe89819fc531da5485beae23a6435905826c64ba5a14daf7"
+  },
+  "user_visual_quality": "CANDIDATE_IMPROVED_NO_HUMAN_APPROVAL",
+  "no_original_art_published": true,
+  "formal_pass": false
+}

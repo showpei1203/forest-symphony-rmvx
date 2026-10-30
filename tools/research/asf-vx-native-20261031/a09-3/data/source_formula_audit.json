@@ -1,0 +1,236 @@
+{
+  "stage": "A09_3_WEAPON_RUNTIME_CODE_AUTHORITY",
+  "status": "SOURCE_AND_FORMULA_AUDITED",
+  "source_sha256": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa",
+  "runtime_source": "Scripts.rvdata[227] Sideview 2 (3.4d) Sprite_Weapon#weapon_action and Sprite_Weapon#update",
+  "unsafe_assumption_previous": "A08 G0-1B generic VERT_SWING angle sequence is not Joe's specific Normal Attack weapon authority",
+  "frame_time": {
+    "ANIME_PATTERN": 3,
+    "per_weapon_action_update_denominator": 4,
+    "fps_reference": 60
+  },
+  "weapon_results": [
+    {
+      "weapon": "喬伊普攻武器",
+      "native_values": {
+        "xa": -7,
+        "ya": 2,
+        "za_front": true,
+        "angle_start_rgss": -205,
+        "angle_end_rgss": 205,
+        "origin_id": 4,
+        "invert_horizontal": false,
+        "scale_x": 1.0,
+        "scale_y": 1.0,
+        "pos_offset_x": -1,
+        "pos_offset_y": 0,
+        "weapon2": false,
+        "line": 472
+      },
+      "base_mirror": false,
+      "actual_mirror_when_base_unmirrored": false,
+      "effective_origin_id": 4,
+      "effective_pivot_24x24": [
+        24,
+        24
+      ],
+      "battler_root_relative_position_update": "x=battler.position_x+move_x+Xp, y=battler.position_y+move_y+Yp",
+      "actual_swing_is_incremental_not_full_Xa_at_start": true,
+      "angle_division_Ruby_Fixnum": {
+        "per_tick": 102,
+        "remainder": 2
+      },
+      "motion_division_Ruby_Fixnum": {
+        "x_per_tick": -2,
+        "y_per_tick": 0
+      },
+      "4_tick_inferred_samples": [
+        {
+          "tick": 0,
+          "angle_rgss_inferred": -203,
+          "angle_godot_candidate": 203,
+          "move_x_inferred": 0,
+          "move_y_inferred": 0,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        },
+        {
+          "tick": 1,
+          "angle_rgss_inferred": -101,
+          "angle_godot_candidate": 101,
+          "move_x_inferred": -2,
+          "move_y_inferred": 0,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        },
+        {
+          "tick": 2,
+          "angle_rgss_inferred": 1,
+          "angle_godot_candidate": -1,
+          "move_x_inferred": -4,
+          "move_y_inferred": 0,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        },
+        {
+          "tick": 3,
+          "angle_rgss_inferred": 103,
+          "angle_godot_candidate": -103,
+          "move_x_inferred": -6,
+          "move_y_inferred": 0,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        }
+      ],
+      "source_runtime_reference": "Sideview 2: weapon_action lines 1548..1666, action lines 1710..1725, update lines 1729..1739"
+    },
+    {
+      "weapon": "喬伊普攻武器2",
+      "native_values": {
+        "xa": 7,
+        "ya": -2,
+        "za_front": false,
+        "angle_start_rgss": 205,
+        "angle_end_rgss": 10,
+        "origin_id": 4,
+        "invert_horizontal": true,
+        "scale_x": 1.0,
+        "scale_y": 1.0,
+        "pos_offset_x": -1,
+        "pos_offset_y": 0,
+        "weapon2": false,
+        "line": 473
+      },
+      "base_mirror": false,
+      "actual_mirror_when_base_unmirrored": true,
+      "effective_origin_id": 3,
+      "effective_pivot_24x24": [
+        0,
+        24
+      ],
+      "battler_root_relative_position_update": "x=battler.position_x+move_x+Xp, y=battler.position_y+move_y+Yp",
+      "actual_swing_is_incremental_not_full_Xa_at_start": true,
+      "angle_division_Ruby_Fixnum": {
+        "per_tick": -49,
+        "remainder": 1
+      },
+      "motion_division_Ruby_Fixnum": {
+        "x_per_tick": 1,
+        "y_per_tick": -1
+      },
+      "4_tick_inferred_samples": [
+        {
+          "tick": 0,
+          "angle_rgss_inferred": 206,
+          "angle_godot_candidate": -206,
+          "move_x_inferred": 0,
+          "move_y_inferred": 0,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        },
+        {
+          "tick": 1,
+          "angle_rgss_inferred": 157,
+          "angle_godot_candidate": -157,
+          "move_x_inferred": 1,
+          "move_y_inferred": -1,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        },
+        {
+          "tick": 2,
+          "angle_rgss_inferred": 108,
+          "angle_godot_candidate": -108,
+          "move_x_inferred": 2,
+          "move_y_inferred": -2,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        },
+        {
+          "tick": 3,
+          "angle_rgss_inferred": 59,
+          "angle_godot_candidate": -59,
+          "move_x_inferred": 3,
+          "move_y_inferred": -3,
+          "pose_offset_x": -1,
+          "pose_offset_y": 0
+        }
+      ],
+      "source_runtime_reference": "Sideview 2: weapon_action lines 1548..1666, action lines 1710..1725, update lines 1729..1739"
+    },
+    {
+      "weapon": "正常武器待機",
+      "native_values": {
+        "xa": 3,
+        "ya": 3,
+        "za_front": false,
+        "angle_start_rgss": 65,
+        "angle_end_rgss": 65,
+        "origin_id": 0,
+        "invert_horizontal": false,
+        "scale_x": 1.0,
+        "scale_y": 1.0,
+        "pos_offset_x": -18,
+        "pos_offset_y": 2,
+        "weapon2": false,
+        "line": 483
+      },
+      "base_mirror": false,
+      "actual_mirror_when_base_unmirrored": false,
+      "effective_origin_id": 0,
+      "effective_pivot_24x24": [
+        12,
+        12
+      ],
+      "battler_root_relative_position_update": "x=battler.position_x+move_x+Xp, y=battler.position_y+move_y+Yp",
+      "actual_swing_is_incremental_not_full_Xa_at_start": true,
+      "angle_division_Ruby_Fixnum": {
+        "per_tick": 0,
+        "remainder": 0
+      },
+      "motion_division_Ruby_Fixnum": {
+        "x_per_tick": 0,
+        "y_per_tick": 0
+      },
+      "4_tick_inferred_samples": [
+        {
+          "tick": 0,
+          "angle_rgss_inferred": 65,
+          "angle_godot_candidate": -65,
+          "move_x_inferred": 0,
+          "move_y_inferred": 0,
+          "pose_offset_x": -18,
+          "pose_offset_y": 2
+        },
+        {
+          "tick": 1,
+          "angle_rgss_inferred": 65,
+          "angle_godot_candidate": -65,
+          "move_x_inferred": 0,
+          "move_y_inferred": 0,
+          "pose_offset_x": -18,
+          "pose_offset_y": 2
+        },
+        {
+          "tick": 2,
+          "angle_rgss_inferred": 65,
+          "angle_godot_candidate": -65,
+          "move_x_inferred": 0,
+          "move_y_inferred": 0,
+          "pose_offset_x": -18,
+          "pose_offset_y": 2
+        },
+        {
+          "tick": 3,
+          "angle_rgss_inferred": 65,
+          "angle_godot_candidate": -65,
+          "move_x_inferred": 0,
+          "move_y_inferred": 0,
+          "pose_offset_x": -18,
+          "pose_offset_y": 2
+        }
+      ],
+      "source_runtime_reference": "Sideview 2: weapon_action lines 1548..1666, action lines 1710..1725, update lines 1729..1739"
+    }
+  ]
+}
