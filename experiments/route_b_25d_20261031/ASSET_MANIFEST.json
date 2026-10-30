@@ -1,0 +1,232 @@
+{
+  "source_repository": "https://github.com/Hidencod/tge-assets",
+  "original_author": "Kenney",
+  "license": "CC0-1.0",
+  "verified_source": "https://kenney.nl/assets/nature-kit",
+  "assets": [
+    {
+      "name": "tree-oak",
+      "pack": "nature-kit",
+      "bytes": 14644,
+      "sha256": "d7fd8773674928c50c11b66d12c636d49bdcc15a8b1c7fbb98e6f63a3439a3f3",
+      "status": "downloaded"
+    },
+    {
+      "name": "tree-oak-dark",
+      "pack": "nature-kit",
+      "bytes": 14648,
+      "sha256": "f2c455bb433fe98522d1b9391d5b587e7324176ecaee29ceefe55350a7e3fd47",
+      "status": "downloaded"
+    },
+    {
+      "name": "tree-detailed",
+      "pack": "nature-kit",
+      "bytes": 31412,
+      "sha256": "c041daf2f0fb1d49e4325227cbcd58667adbe51e9b55e8c1f0a94b74cc521b3b",
+      "status": "downloaded"
+    },
+    {
+      "name": "tree-default",
+      "pack": "nature-kit",
+      "bytes": 9428,
+      "sha256": "562d29638c902de3c7bee465d3a53bb77117efbc392ae04ed894faf6b5dc691d",
+      "status": "downloaded"
+    },
+    {
+      "name": "tree-fat",
+      "pack": "nature-kit",
+      "bytes": 5576,
+      "sha256": "84b262c5dda3a91ac6c95f9d8b23a0ebbb1951d678c0e1375d3e32623cc43ee2",
+      "status": "downloaded"
+    },
+    {
+      "name": "tree-cone",
+      "pack": "nature-kit",
+      "bytes": 10924,
+      "sha256": "90be4d214ee2cbf79d317677cb87fc11dac9873b73e446b75e8c12825a374272",
+      "status": "downloaded"
+    },
+    {
+      "name": "flower-purplea",
+      "pack": "nature-kit",
+      "bytes": 7112,
+      "sha256": "f6fc34c96a03420a74fe36d4c2d0ec88f15204fcad99cd1416c3c4ecb22e48c4",
+      "status": "downloaded"
+    },
+    {
+      "name": "flower-purpleb",
+      "pack": "nature-kit",
+      "bytes": 8084,
+      "sha256": "2afb10cd68a9a7b185fc46110be0da550ea2aef86ef9ac6b7339f217eb4b636a",
+      "status": "downloaded"
+    },
+    {
+      "name": "flower-yellowa",
+      "pack": "nature-kit",
+      "bytes": 7120,
+      "sha256": "8a3b08cd2ca411c21f9c581d5bda651d78b13c50cba45ad8fa0389398ead6d1d",
+      "status": "downloaded"
+    },
+    {
+      "name": "flower-yellowb",
+      "pack": "nature-kit",
+      "bytes": 11256,
+      "sha256": "aaa8707779a5de59f881f80185bc507b35ec3fd5f23a39d6447ef61141dcd4f5",
+      "status": "downloaded"
+    },
+    {
+      "name": "flower-redb",
+      "pack": "nature-kit",
+      "bytes": 8080,
+      "sha256": "1ed430a4ee2be9e86649e1ce22ec23162814a3f8c2ad133117315db19293fc16",
+      "status": "downloaded"
+    },
+    {
+      "name": "grass",
+      "pack": "nature-kit",
+      "bytes": 11496,
+      "sha256": "260e41d3e5f2472492ed7b475c5b92a30b13ce2bad408535b5ff50574d4575e7",
+      "status": "downloaded"
+    },
+    {
+      "name": "grass-large",
+      "pack": "nature-kit",
+      "bytes": 18504,
+      "sha256": "af49a595624abca7249824eeefb944d4baf974abeeb5b16110d175da3563d6cd",
+      "status": "downloaded"
+    },
+    {
+      "name": "grass-leafs",
+      "pack": "nature-kit",
+      "bytes": 4608,
+      "sha256": "8bc4c0b17c2e64c34e1acbf7c4a2fd8c04cfcd7155328e61767887b2ced112c7",
+      "status": "downloaded"
+    },
+    {
+      "name": "grass-leafslarge",
+      "pack": "nature-kit",
+      "bytes": 13988,
+      "sha256": "a68b9b3d9639afaeb4ace840d5a8e3f21ffc4e8afc1eab15566500fbb2bee3e3",
+      "status": "downloaded"
+    },
+    {
+      "name": "plant-bush",
+      "pack": "nature-kit",
+      "bytes": 4396,
+      "sha256": "ae7b1beb39e242b13f5f29e3ec23ef21034b814f82297b8aa00a9bf4e1b09590",
+      "status": "downloaded"
+    },
+    {
+      "name": "plant-bushdetailed",
+      "pack": "nature-kit",
+      "bytes": 10172,
+      "sha256": "2e0487020d68ccf664435db9d829c78ae00e6d2785ee3ec10b9f89cc70a10406",
+      "status": "downloaded"
+    },
+    {
+      "name": "plant-bushlarge",
+      "pack": "nature-kit",
+      "bytes": 6436,
+      "sha256": "10e1d9fbf29d96d1d1a56fb2ce25ae66537505101759229afe01ae22c6c45e02",
+      "status": "downloaded"
+    },
+    {
+      "name": "plant-bushsmall",
+      "pack": "nature-kit",
+      "bytes": 3212,
+      "sha256": "a9620a7d1fb165ae68d323676f80dbb2a9e3aafb21110d18d18d90b07026b91d",
+      "status": "downloaded"
+    },
+    {
+      "name": "mushroom-redgroup",
+      "pack": "nature-kit",
+      "bytes": 14960,
+      "sha256": "29f02df0589dd2b09e8d2aff6a4662394dac5cfcf1fec701640dcbd6127e0802",
+      "status": "downloaded"
+    },
+    {
+      "name": "mushroom-tangroup",
+      "pack": "nature-kit",
+      "bytes": 14956,
+      "sha256": "2dc979485f164d7dce34329096271f44e0c9ea329c104251d94bcfbc8f8fe05e",
+      "status": "downloaded"
+    },
+    {
+      "name": "rock-largea",
+      "pack": "nature-kit",
+      "bytes": 7552,
+      "sha256": "6dd15390fd96501dcd1454765a17ba61dbbd8d47705dfe5149c8dd92b353ce25",
+      "status": "downloaded"
+    },
+    {
+      "name": "rock-largeb",
+      "pack": "nature-kit",
+      "bytes": 8560,
+      "sha256": "caa8b025833d4dabf6d98fe2e96cf2fbd886693ac990df0db75f9d827194374b",
+      "status": "downloaded"
+    },
+    {
+      "name": "rock-smallb",
+      "pack": "nature-kit",
+      "bytes": 3528,
+      "sha256": "11b26bc0a12e971a3b69df1401e530e24432d528c262df94b99c412e7f372763",
+      "status": "downloaded"
+    },
+    {
+      "name": "rock-smallflata",
+      "pack": "nature-kit",
+      "bytes": 3300,
+      "sha256": "40ceafacfaabb0f04f93688fd8696c1464c65512bef219e1459c1f238cbbbe21",
+      "status": "downloaded"
+    },
+    {
+      "name": "fence-simple",
+      "pack": "nature-kit",
+      "bytes": 5712,
+      "sha256": "ecaf6c29532aa9fd305a8ef71df769d60748bd797f2eb1c63bdefc4edb8062a7",
+      "status": "downloaded"
+    },
+    {
+      "name": "fence-simplehigh",
+      "pack": "nature-kit",
+      "bytes": 4300,
+      "sha256": "12fec55c302bdcfc7d67946e8c4bed8d96bcb2a8d42817c3021cc94b7272891e",
+      "status": "downloaded"
+    },
+    {
+      "name": "fence-gate",
+      "pack": "nature-kit",
+      "bytes": 27652,
+      "sha256": "34d10d5620179b8a211a01eea837caa828c0782422f0b408e1a5838788888436",
+      "status": "downloaded"
+    },
+    {
+      "name": "fence-planks",
+      "pack": "nature-kit",
+      "bytes": 7720,
+      "sha256": "2db68f60d24443dbeab05dedd92fcc665d0e21bd261c6a668ea9022a732a06a9",
+      "status": "downloaded"
+    },
+    {
+      "name": "ground-pathrocks",
+      "pack": "nature-kit",
+      "bytes": 8036,
+      "sha256": "2447aca8c95d4d3583111e696056b024cb42c43290f8b0e7731b6486fc85f234",
+      "status": "downloaded"
+    },
+    {
+      "name": "tower-hexagon-roof",
+      "pack": "castle-kit",
+      "bytes": 15960,
+      "sha256": "c10dc05430e216064b5ea717f3ed8dcc78961593ff3c444e5caa620e26369884",
+      "status": "downloaded"
+    },
+    {
+      "name": "wall-narrow-wood-fence",
+      "pack": "castle-kit",
+      "bytes": 40540,
+      "sha256": "e39a1c94df125e612a33b62f408d823b7fb777554fc729dab6fc8eaa2debb155",
+      "status": "downloaded"
+    }
+  ]
+}
