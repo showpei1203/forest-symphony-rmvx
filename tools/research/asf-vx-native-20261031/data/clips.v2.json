@@ -1,0 +1,136 @@
+{
+  "schema": "generate2dsprite.animation_clips.v2",
+  "frames": [
+    {
+      "name": "down-0",
+      "file": "frames/down-0.png"
+    },
+    {
+      "name": "down-1",
+      "file": "frames/down-1.png"
+    },
+    {
+      "name": "down-2",
+      "file": "frames/down-2.png"
+    },
+    {
+      "name": "left-0",
+      "file": "frames/left-0.png"
+    },
+    {
+      "name": "left-1",
+      "file": "frames/left-1.png"
+    },
+    {
+      "name": "left-2",
+      "file": "frames/left-2.png"
+    },
+    {
+      "name": "right-0",
+      "file": "frames/right-0.png"
+    },
+    {
+      "name": "right-1",
+      "file": "frames/right-1.png"
+    },
+    {
+      "name": "right-2",
+      "file": "frames/right-2.png"
+    },
+    {
+      "name": "up-0",
+      "file": "frames/up-0.png"
+    },
+    {
+      "name": "up-1",
+      "file": "frames/up-1.png"
+    },
+    {
+      "name": "up-2",
+      "file": "frames/up-2.png"
+    }
+  ],
+  "anchor_px": [
+    16,
+    21
+  ],
+  "clips": {
+    "idle_down": {
+      "frames": [
+        1
+      ],
+      "duration_ms": 400,
+      "loop": true
+    },
+    "walk_down": {
+      "frames": [
+        1,
+        0,
+        1,
+        2
+      ],
+      "duration_ms": 150,
+      "loop": true
+    },
+    "idle_left": {
+      "frames": [
+        4
+      ],
+      "duration_ms": 400,
+      "loop": true
+    },
+    "walk_left": {
+      "frames": [
+        4,
+        3,
+        4,
+        5
+      ],
+      "duration_ms": 150,
+      "loop": true
+    },
+    "idle_right": {
+      "frames": [
+        7
+      ],
+      "duration_ms": 400,
+      "loop": true
+    },
+    "walk_right": {
+      "frames": [
+        7,
+        6,
+        7,
+        8
+      ],
+      "duration_ms": 150,
+      "loop": true
+    },
+    "idle_up": {
+      "frames": [
+        10
+      ],
+      "duration_ms": 400,
+      "loop": true
+    },
+    "walk_up": {
+      "frames": [
+        10,
+        9,
+        10,
+        11
+      ],
+      "duration_ms": 150,
+      "loop": true
+    }
+  },
+  "states": {
+    "idle": "idle_down",
+    "moving": "walk_down"
+  },
+  "sampling": "nearest",
+  "pixel_art": true,
+  "art_source": "existing",
+  "placeholder": false,
+  "role": "player"
+}

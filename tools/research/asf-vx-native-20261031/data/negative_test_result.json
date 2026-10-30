@@ -1,0 +1,8 @@
+{
+  "exit_code": 1,
+  "published": false,
+  "missing_frame": "down-0.png",
+  "frame_sources_present": 11,
+  "stderr": "error: [Errno 2] No such file or directory: 'E:\\\\GameAssetToolLab_20261023\\\\ASF_Test_20261031\\\\vx_real_actor_20261031\\\\neg_missing_frame_specific\\\\frames\\\\down-0.png'\n",
+  "expected": "non-zero exit, 11/12 source frames present, no output"
+}

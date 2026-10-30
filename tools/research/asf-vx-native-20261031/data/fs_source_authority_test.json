@@ -1,0 +1,159 @@
+{
+  "source_asset": "K4_BASELINE/Graphics/Characters/$actor01.png",
+  "source_sha256": "df6abaa888dc4ffcaf5351daf26d678bace121e277f21b4651eb69884591a2a5",
+  "icon_sha256": "8273bc643025f92496a7471cf080cd6a87d0a762fc04731c7f016e00f0c0bb2c",
+  "actual_body_size": [
+    96,
+    128
+  ],
+  "frame_size": [
+    32,
+    32
+  ],
+  "direction_row_order": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "anchor_px": [
+    16,
+    21
+  ],
+  "weapon_icon": 2,
+  "weapon_crop_px": [
+    48,
+    0,
+    24,
+    24
+  ],
+  "rgss_angle_sequence_visible": [
+    -75,
+    -15,
+    45
+  ],
+  "godot_rotation_expected": [
+    75,
+    15,
+    -45
+  ],
+  "no_custom_weapon_xy_offsets": true,
+  "frames": [
+    {
+      "id": "down-0",
+      "rgba_sha256": "031b6d354194dcfdb12b731e79e7d40fe4995e54502063b143a7f7c73a4fd731",
+      "alpha_nonzero": 594
+    },
+    {
+      "id": "down-1",
+      "rgba_sha256": "6059adc0967f9f6545ac92a7aac710179073adf2288867ce3af3aa55c03801b3",
+      "alpha_nonzero": 627
+    },
+    {
+      "id": "down-2",
+      "rgba_sha256": "e7062eff57545df010f68d342c631120289606c341db0cbb305e6cce2d196cfc",
+      "alpha_nonzero": 593
+    },
+    {
+      "id": "left-0",
+      "rgba_sha256": "0ec2e9b3a30f1dccb6ad303fe7f667a3ab5c6cad0d6daf679327cf563a89b453",
+      "alpha_nonzero": 485
+    },
+    {
+      "id": "left-1",
+      "rgba_sha256": "602eda32fbdc35ed1d52a89c53e35998d457f1b500d01a564abc9e6ce583cf6e",
+      "alpha_nonzero": 495
+    },
+    {
+      "id": "left-2",
+      "rgba_sha256": "73d9f5e7da7d3d770c994f754606121704dd3b127368769a0437f105d5d86594",
+      "alpha_nonzero": 498
+    },
+    {
+      "id": "right-0",
+      "rgba_sha256": "b439da6310a8e9e81dbb0551f7b4669106ea576b2bfd5431d67e8b621191a00a",
+      "alpha_nonzero": 485
+    },
+    {
+      "id": "right-1",
+      "rgba_sha256": "bb6db248afc8f194ac8d8e137870dde80cf96ab8be3bc4d91e20b4f01b8f40c2",
+      "alpha_nonzero": 495
+    },
+    {
+      "id": "right-2",
+      "rgba_sha256": "f7b29deae4f6742d1a4a036bfab4d86c8bc169f3823952d534849c3b4877b4fa",
+      "alpha_nonzero": 498
+    },
+    {
+      "id": "up-0",
+      "rgba_sha256": "19d1df148a3814945871cc071d6b4bfe4dfc03ebebbb728229b73da991c01dcb",
+      "alpha_nonzero": 611
+    },
+    {
+      "id": "up-1",
+      "rgba_sha256": "9b89bd8a5f51caf9fcbbe23803ae582117cda0b74ef55e95213afbb4f3543df4",
+      "alpha_nonzero": 632
+    },
+    {
+      "id": "up-2",
+      "rgba_sha256": "adb7b35dc262b23578d269593691b7bd8d9e688f3f39c2755d0a291fa5168af8",
+      "alpha_nonzero": 608
+    }
+  ],
+  "sparse_numbered_sources": {
+    "actor01_5": {
+      "coverage": 5,
+      "cells": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "grid": "3x4",
+      "safe_all_direction": false
+    },
+    "actor01_7": {
+      "coverage": 6,
+      "cells": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "grid": "3x4",
+      "safe_all_direction": false
+    }
+  }
+}

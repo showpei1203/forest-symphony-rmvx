@@ -1,0 +1,212 @@
+{
+  "captures": {
+    "A": [
+      {
+        "direction": "down",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 35.5400390625,
+            "worst": 246,
+            "diff_rgb_px": 461
+          },
+          {
+            "source_col": 1,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          },
+          {
+            "source_col": 2,
+            "mae": 35.810872395833336,
+            "worst": 246,
+            "diff_rgb_px": 471
+          }
+        ],
+        "best": 1
+      },
+      {
+        "direction": "left",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 25.298177083333332,
+            "worst": 246,
+            "diff_rgb_px": 350
+          },
+          {
+            "source_col": 1,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          },
+          {
+            "source_col": 2,
+            "mae": 28.790364583333332,
+            "worst": 246,
+            "diff_rgb_px": 384
+          }
+        ],
+        "best": 1
+      },
+      {
+        "direction": "right",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 25.298177083333332,
+            "worst": 246,
+            "diff_rgb_px": 350
+          },
+          {
+            "source_col": 1,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          },
+          {
+            "source_col": 2,
+            "mae": 28.790364583333332,
+            "worst": 246,
+            "diff_rgb_px": 384
+          }
+        ],
+        "best": 1
+      },
+      {
+        "direction": "up",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 22.827473958333332,
+            "worst": 246,
+            "diff_rgb_px": 368
+          },
+          {
+            "source_col": 1,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          },
+          {
+            "source_col": 2,
+            "mae": 23.0185546875,
+            "worst": 246,
+            "diff_rgb_px": 370
+          }
+        ],
+        "best": 1
+      }
+    ],
+    "B": [
+      {
+        "direction": "down",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 14.639973958333334,
+            "worst": 246,
+            "diff_rgb_px": 215
+          },
+          {
+            "source_col": 1,
+            "mae": 35.810872395833336,
+            "worst": 246,
+            "diff_rgb_px": 471
+          },
+          {
+            "source_col": 2,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          }
+        ],
+        "best": 2
+      },
+      {
+        "direction": "left",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 8.643229166666666,
+            "worst": 246,
+            "diff_rgb_px": 101
+          },
+          {
+            "source_col": 1,
+            "mae": 28.790364583333332,
+            "worst": 246,
+            "diff_rgb_px": 384
+          },
+          {
+            "source_col": 2,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          }
+        ],
+        "best": 2
+      },
+      {
+        "direction": "right",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 8.643229166666666,
+            "worst": 246,
+            "diff_rgb_px": 101
+          },
+          {
+            "source_col": 1,
+            "mae": 28.790364583333332,
+            "worst": 246,
+            "diff_rgb_px": 384
+          },
+          {
+            "source_col": 2,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          }
+        ],
+        "best": 2
+      },
+      {
+        "direction": "up",
+        "scores": [
+          {
+            "source_col": 0,
+            "mae": 9.970377604166666,
+            "worst": 246,
+            "diff_rgb_px": 179
+          },
+          {
+            "source_col": 1,
+            "mae": 23.0185546875,
+            "worst": 246,
+            "diff_rgb_px": 370
+          },
+          {
+            "source_col": 2,
+            "mae": 0.0,
+            "worst": 0,
+            "diff_rgb_px": 0
+          }
+        ],
+        "best": 2
+      }
+    ]
+  },
+  "background": [
+    237,
+    242,
+    246
+  ],
+  "method": "source 3x4 RGBA frame over pixel background compared with native Godot screenshot crop at exact 1x frame bounds",
+  "temporal_changes": {
+    "down": 471,
+    "left": 384,
+    "right": 384,
+    "up": 370
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "status": "TECH_PASS_WITH_LIMITATIONS",
+  "sources": [
+    "$actor01.png",
+    "IconSet.png"
+  ],
+  "source_sha256_unchanged": true,
+  "16x21_origin_correct": true,
+  "per_frame_32x32": true,
+  "rgba_source_12_frame_checks": 12,
+  "native_godot_two_captures_8_direction_samples_zero_diff": true,
+  "rgba_render_roi_avg_mae": 0,
+  "actual_temporal_pixel_change": {
+    "down": 471,
+    "left": 384,
+    "right": 384,
+    "up": 370
+  },
+  "source_grid_5_7_incomplete": {
+    "_5": 5,
+    "_7": 6
+  },
+  "intentional_missing_frame_fail_closed": true,
+  "aseprite_8clips_export": "PASS_PARSE_LEVEL",
+  "godot_8clips_editor_render": "PASS_NATIVE_GPU",
+  "weapon_rotations": {
+    "rgss_visible": [
+      -75,
+      -15,
+      45
+    ],
+    "godot_rendered": [
+      75,
+      15,
+      -45
+    ],
+    "pivot": "bottom-right, 24x24 icon ID 2",
+    "semantic_match": "MATCHES G0-1B AUTHORITY, not a new native VX parity run"
+  },
+  "vx_native_runtime_of_this_adapter": "NOT_RUN",
+  "six_new_fs_style_motions": "NOT_CREATED",
+  "facing_plus_missing_numbered_sources": "FAIL_CLOSED",
+  "art_license": "local-only original source PNG and GPU screenshots; code/QA only for Github"
+}
