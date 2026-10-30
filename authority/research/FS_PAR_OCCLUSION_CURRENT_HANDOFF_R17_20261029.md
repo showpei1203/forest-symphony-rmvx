@@ -145,3 +145,17 @@ Latest native-source material experiment: **TECH CANDIDATE / GROUND ART FAIL / P
 - Imagegen generated another pre-labeled PASS QA panel rather than a true editable source, **quarantined** and never promoted to technical evidence. Do not repeat this failure as a real test.
 - **Next** invest in a true original artist-grade ground material kit and individual original PAR sprite sources; STOP repeating procedural grass/stone parameter tweaking. Never touch sealed FS/K4, Map.rvdata, Scripts.rvdata or user's collision/passability.
 
+
+
+## R17 Stage12｜2026-10-30 Artist Source Quilt Ground C
+
+**CURRENT: GROUND/PAR 544x416 TECH PASS, Ground artisanal C candidate (HUMAN HOLD), PAR SOURCE-EDITABILITY HOLD, TREE-CONTACT SEMANTIC HOLD, FORMAL SEAL NO.** Actual new Ground was created in Windows Python from original hand-painted `A2_VSCliff.png` art atlas + old 32px `grass_tile.png` source and quilted stone/grass patches; NO previous Ground image or completed Master was opened. This is the first test moving beyond trivial random grass/pebble parameter tuning.
+
+- Three variants: A soft source art but bland; B rich tall-grass source wrongly appears as huge GROUND vegetation (VISUAL FAIL); C combines 86% source flat grass +14% artist green microtexture, with beige hand-painted stone patch quilting and tiny 6x6px flowers. C is **candidate only**, not art-approved ground3 richness.
+- A new cubic-Bezier bug was caught visually: the original formula omitted the `t` multiplier on control point `b`, resulting in disconnected paths. Fixed before candidate C export and preserved in failure record.
+- Real Ground SHA256 `1e3e97fc1ec9288f78eabd42c351b694f5aa55e8123bd1e8d7a8acf556911363`; unchanged true RGBA PAR SHA256 `e5c33ddd1ca4ffb00eb89306c57fbd60f3ed2c5bf4e83992f2124a47d07ef3e9`. Native 544x416; actual ground+par composite 0 RGB diff. Official source + strict native alpha gates exit0, **technical only**.
+- Isolated recompile from source 3 images + generator reproduces 7 expected PNGs byte-identically. Three negative mutations (width -1px, dirty-alpha border 1px, forged Ground source SHA) each exit2.
+- Private ZIP 5,685,497 bytes/21 entries CRC PASS SHA `9f8cb4d5eda0814015dacef9861a353568ae9212934524d8f0d5821e4210e93e`; Windows E:/G: and Google Drive re-downloaded Ground/PAR/ZIP SHA equal.
+- [Drive Stage12](https://drive.google.com/drive/folders/1c6w2ffUrA_jA349VlUXpYZkXm13twx4g) | [GitHub detailed audit](FS_R17_STAGE12_SOURCE_QUILT_ART_CANDIDATE_20261030.md) | [reproducible candidate source](../../tools/r17_direct_stage12/build_stage12_a2_quilt_v2.py) | [testing source](../../tools/r17_direct_stage12/validate_and_package_stage12.py).
+- **Art is not signed off:** Ground's paved roads are visibly better, but flora distribution and detail still below ground3. Stage7 transparent PAR still one precomposed source, not native 1x editable per object, and includes grounding/flowerbed semantics requiring acceptance. Latest Ground contains no isolated tree bark; original lowest-32px contact expectation remains open. No sealed FS binary, Map.rvdata, Scripts.rvdata, collision or passability changes.
+- Next work: judge C at 1x; develop true high-fidelity low-plant clusters and independent PAR sources. Do not repeat a faux `PASS` ImageGen QA board, and do not attribute formal pass to machine-only SHA equality.
