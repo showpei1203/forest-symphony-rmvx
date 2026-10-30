@@ -1,0 +1,48 @@
+{
+  "contact_image_mode": "RGBA",
+  "alpha_zero": 226051,
+  "source_is_separate_layer": true,
+  "cut_world_y": 0.56,
+  "trees": [
+    {
+      "name": "WEST",
+      "rect": [
+        78,
+        136,
+        92,
+        159
+      ],
+      "width_px": 15,
+      "height_px": 24,
+      "opaque_pixel_count": 155,
+      "tiles_x": [
+        2
+      ],
+      "tiles_y": [
+        4
+      ],
+      "within_one_32px_tile": true
+    },
+    {
+      "name": "EAST",
+      "rect": [
+        460,
+        132,
+        470,
+        153
+      ],
+      "width_px": 11,
+      "height_px": 22,
+      "opaque_pixel_count": 98,
+      "tiles_x": [
+        14
+      ],
+      "tiles_y": [
+        4
+      ],
+      "within_one_32px_tile": true
+    }
+  ],
+  "one_tile_pass": true,
+  "formal_seal": false
+}
