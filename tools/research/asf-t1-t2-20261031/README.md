@@ -29,7 +29,7 @@ G1 single source master, G2 same identity, G3 *real* motion from the same master
 
 ## Files and evidence
 
-Current chat downloadable private ZIP: `T1_T2_ACTUAL_TEST_CANDIDATE_20261031.zip`, **83 files**, **3,566,385 bytes**, ZIP CRC PASS; SHA256 `e89b3fafb502f3f700b4e748aef057f343a2883e8d9791c6e3f27cfc694ad7fe`. Contents include the exact AI composite used as a source, two Python reproduction scripts, T1/T2 frames, sheets, GIFs, candidate masters, manifests, QA JSON, small unexecuted Godot previews and formal Markdown spec/report.
+Current chat downloadable private ZIP: `T1_T2_ACTUAL_TEST_CANDIDATE_20261031.zip`, **83 files**, **3,566,406 bytes**, ZIP CRC PASS; SHA256 `5128faeeea3da6d4785270a6e818a9589a4b776049e07ad267cc4bad53118cfd`. Contents include the exact AI composite used as a source, two Python reproduction scripts, T1/T2 frames, sheets, GIFs, candidate masters, manifests, QA JSON, small unexecuted Godot previews and formal Markdown spec/report.
 
 **Cloud binary limitation:** This ZIP was created in the ChatGPT conversation sandbox, not uploaded as a binary to Google Drive/GitHub. This GitHub branch contains the textual specification/handoff only.
 
