@@ -15,7 +15,7 @@ tot=a.size
 report={
   "test":"FS Route B / Godot 4.7.2 2.5D identical world coordinates",
   "size":list(g.size),
-  "ground_mode":g.mode,"par_mode":o.mode,
+  "ground_mode":Image.open(out/'GROUND.png').mode,"par_mode":Image.open(out/'PAR.png').mode,
   "ground_alpha_all_opaque":bool(np.all(np.asarray(g.getchannel('A'))==255)),
   "par_alpha_zero_pixels":int(np.sum(a==0)),
   "par_alpha_nonzero_pixels":int(np.sum(a>0)),
