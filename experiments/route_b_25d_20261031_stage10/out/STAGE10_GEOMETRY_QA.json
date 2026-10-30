@@ -1,0 +1,65 @@
+{
+  "variants": [
+    {
+      "version": "STAGE 9 BASELINE",
+      "diff_3d_vs_2layer": 431,
+      "par_alpha_changed": 0,
+      "added_par_pixels": 0,
+      "lost_par_pixels": 0,
+      "ground_rgb_changed": 0,
+      "tree_zone_changed_pixels": {
+        "WEST": 0,
+        "EAST": 0
+      },
+      "par_border": 0
+    },
+    {
+      "version": "A / ELLIPSOID LOBES",
+      "diff_3d_vs_2layer": 417,
+      "par_alpha_changed": 1628,
+      "added_par_pixels": 1628,
+      "lost_par_pixels": 0,
+      "ground_rgb_changed": 0,
+      "tree_zone_changed_pixels": {
+        "WEST": 3818,
+        "EAST": 3021
+      },
+      "par_border": 0
+    },
+    {
+      "version": "B / SCATTERED LEAF FANS",
+      "diff_3d_vs_2layer": 1355,
+      "par_alpha_changed": 3542,
+      "added_par_pixels": 3542,
+      "lost_par_pixels": 0,
+      "ground_rgb_changed": 0,
+      "tree_zone_changed_pixels": {
+        "WEST": 3677,
+        "EAST": 3111
+      },
+      "par_border": 0
+    },
+    {
+      "version": "C / WOVEN LEAF ROSETTES",
+      "diff_3d_vs_2layer": 903,
+      "par_alpha_changed": 1494,
+      "added_par_pixels": 1494,
+      "lost_par_pixels": 0,
+      "ground_rgb_changed": 0,
+      "tree_zone_changed_pixels": {
+        "WEST": 2080,
+        "EAST": 2297
+      },
+      "par_border": 0
+    }
+  ],
+  "native_render_resolution": [
+    544,
+    416
+  ],
+  "source_first_3d_geometry": true,
+  "source_reference": "Stage9 CC0 oak GLB",
+  "ground_unchanged_for_all_variants": true,
+  "art_pass": false,
+  "formal_seal": false
+}
