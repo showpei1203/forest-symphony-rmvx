@@ -1,0 +1,34 @@
+{
+  "pid": 29100,
+  "comparisons": [
+    {
+      "mode": "window",
+      "size": [
+        544,
+        416
+      ],
+      "nonblack": 0,
+      "fraction": 0.0,
+      "file": "VX_A09_focus_window.png"
+    },
+    {
+      "mode": "screen_bbox",
+      "size": [
+        550,
+        445
+      ],
+      "nonblack": 236880,
+      "fraction": 0.96784,
+      "file": "VX_A09_focus_screen_bbox.png"
+    }
+  ],
+  "bbox": [
+    685,
+    317,
+    1235,
+    762
+  ],
+  "iconic": false,
+  "foreground_ok": false,
+  "exit_before_termination": null
+}

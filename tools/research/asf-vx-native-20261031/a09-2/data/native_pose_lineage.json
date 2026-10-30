@@ -1,0 +1,136 @@
+[
+  {
+    "clip_id": "p00",
+    "pose_key": "喬伊防禦姿勢",
+    "filename": "$actor01_7.png",
+    "file_no": 7,
+    "row": 0,
+    "fixed": -1,
+    "speed": 15,
+    "tick_hz": 60,
+    "ticks_per_cell": 16,
+    "loop": 0,
+    "clip_frames": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "original_image_sha256": "974c659dcb6ea13046e558dc30bb1d1e2e3d699d8c760cf7e54727c58374878c",
+    "no_regeneration": true
+  },
+  {
+    "clip_id": "p01",
+    "pose_key": "喬伊普攻姿勢",
+    "filename": "$actor01_2.png",
+    "file_no": 2,
+    "row": 2,
+    "fixed": -1,
+    "speed": 3,
+    "tick_hz": 60,
+    "ticks_per_cell": 4,
+    "loop": 2,
+    "clip_frames": [
+      3,
+      4,
+      5
+    ],
+    "original_image_sha256": "daa27d8a65dff9afeafd87c9f83884217661e58aaa97f39e730683a1b196a3bf",
+    "no_regeneration": true
+  },
+  {
+    "clip_id": "p02",
+    "pose_key": "喬伊召喚物姿勢",
+    "filename": "$actor01_2.png",
+    "file_no": 2,
+    "row": 0,
+    "fixed": 2,
+    "speed": 3,
+    "tick_hz": 60,
+    "ticks_per_cell": 4,
+    "loop": 2,
+    "clip_frames": [
+      6
+    ],
+    "original_image_sha256": "daa27d8a65dff9afeafd87c9f83884217661e58aaa97f39e730683a1b196a3bf",
+    "no_regeneration": true
+  },
+  {
+    "clip_id": "p03",
+    "pose_key": "喬伊普攻姿勢2",
+    "filename": "$actor01_7.png",
+    "file_no": 7,
+    "row": 1,
+    "fixed": -1,
+    "speed": 3,
+    "tick_hz": 60,
+    "ticks_per_cell": 4,
+    "loop": 2,
+    "clip_frames": [
+      7,
+      8,
+      9
+    ],
+    "original_image_sha256": "974c659dcb6ea13046e558dc30bb1d1e2e3d699d8c760cf7e54727c58374878c",
+    "no_regeneration": true
+  },
+  {
+    "clip_id": "p04",
+    "pose_key": "喬伊發動姿勢",
+    "filename": "$actor01_7.png",
+    "file_no": 7,
+    "row": 0,
+    "fixed": -1,
+    "speed": 3,
+    "tick_hz": 60,
+    "ticks_per_cell": 4,
+    "loop": 2,
+    "clip_frames": [
+      10,
+      11,
+      12
+    ],
+    "original_image_sha256": "974c659dcb6ea13046e558dc30bb1d1e2e3d699d8c760cf7e54727c58374878c",
+    "no_regeneration": true
+  },
+  {
+    "clip_id": "p05",
+    "pose_key": "喬伊等待姿勢",
+    "filename": "$actor01_1.png",
+    "file_no": 1,
+    "row": 0,
+    "fixed": -1,
+    "speed": 15,
+    "tick_hz": 60,
+    "ticks_per_cell": 16,
+    "loop": 0,
+    "clip_frames": [
+      13,
+      14,
+      15,
+      14
+    ],
+    "original_image_sha256": "e8ab0c26e4a08bc70034c9e706d1b1e8d0b729b49d94a35097eadf7c05da3485",
+    "no_regeneration": true
+  },
+  {
+    "clip_id": "p06",
+    "pose_key": "喬伊普攻前進姿勢",
+    "filename": "$actor01_1.png",
+    "file_no": 1,
+    "row": 3,
+    "fixed": -1,
+    "speed": 15,
+    "tick_hz": 60,
+    "ticks_per_cell": 16,
+    "loop": 0,
+    "clip_frames": [
+      16,
+      17,
+      18,
+      17
+    ],
+    "original_image_sha256": "e8ab0c26e4a08bc70034c9e706d1b1e8d0b729b49d94a35097eadf7c05da3485",
+    "no_regeneration": true
+  }
+]

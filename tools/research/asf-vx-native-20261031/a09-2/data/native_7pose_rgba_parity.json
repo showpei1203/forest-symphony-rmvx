@@ -1,0 +1,161 @@
+{
+  "version": "A09-2",
+  "source": "FS-K4-SEALED-CLONE",
+  "native_renderer": "Godot 4.7.2 Radeon RX6700XT OpenGL",
+  "background_rgb": [
+    238,
+    242,
+    245
+  ],
+  "poses": [
+    {
+      "clip_id": "p00",
+      "pose_key": "喬伊防禦姿勢",
+      "file": "$actor01_7.png",
+      "row": 0,
+      "fixed": -1,
+      "ticks_per_cell": 16,
+      "matches": {
+        "A": {
+          "column": 0,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        },
+        "B": {
+          "column": 1,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        }
+      },
+      "changed_rgb_pixels": 305
+    },
+    {
+      "clip_id": "p01",
+      "pose_key": "喬伊普攻姿勢",
+      "file": "$actor01_2.png",
+      "row": 2,
+      "fixed": -1,
+      "ticks_per_cell": 4,
+      "matches": {
+        "A": {
+          "column": 1,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        },
+        "B": {
+          "column": 2,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        }
+      },
+      "changed_rgb_pixels": 570
+    },
+    {
+      "clip_id": "p02",
+      "pose_key": "喬伊召喚物姿勢",
+      "file": "$actor01_2.png",
+      "row": 0,
+      "fixed": 2,
+      "ticks_per_cell": 4,
+      "matches": {
+        "A": {
+          "column": 2,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        },
+        "B": {
+          "column": 2,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        }
+      },
+      "changed_rgb_pixels": 0
+    },
+    {
+      "clip_id": "p03",
+      "pose_key": "喬伊普攻姿勢2",
+      "file": "$actor01_7.png",
+      "row": 1,
+      "fixed": -1,
+      "ticks_per_cell": 4,
+      "matches": {
+        "A": {
+          "column": 1,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        },
+        "B": {
+          "column": 2,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        }
+      },
+      "changed_rgb_pixels": 588
+    },
+    {
+      "clip_id": "p04",
+      "pose_key": "喬伊發動姿勢",
+      "file": "$actor01_7.png",
+      "row": 0,
+      "fixed": -1,
+      "ticks_per_cell": 4,
+      "matches": {
+        "A": {
+          "column": 1,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        },
+        "B": {
+          "column": 2,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        }
+      },
+      "changed_rgb_pixels": 304
+    },
+    {
+      "clip_id": "p05",
+      "pose_key": "喬伊等待姿勢",
+      "file": "$actor01_1.png",
+      "row": 0,
+      "fixed": -1,
+      "ticks_per_cell": 16,
+      "matches": {
+        "A": {
+          "column": 0,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        },
+        "B": {
+          "column": 1,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        }
+      },
+      "changed_rgb_pixels": 433
+    },
+    {
+      "clip_id": "p06",
+      "pose_key": "喬伊普攻前進姿勢",
+      "file": "$actor01_1.png",
+      "row": 3,
+      "fixed": -1,
+      "ticks_per_cell": 16,
+      "matches": {
+        "A": {
+          "column": 0,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        },
+        "B": {
+          "column": 1,
+          "max_channel_delta": 0,
+          "mean_delta": 0.0
+        }
+      },
+      "changed_rgb_pixels": 429
+    }
+  ],
+  "all_source_rgba_native_matches_zero_delta": true,
+  "no_visual_change_expected_for_single_fixed_frame": true
+}

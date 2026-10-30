@@ -1,0 +1,134 @@
+{
+  "actor1": {
+    "name": "喬伊",
+    "filename": "$actor01",
+    "weapon_id": 2,
+    "id": 1
+  },
+  "actors_preview": [
+    {
+      "name": "喬伊",
+      "filename": "$actor01",
+      "weapon_id": 2,
+      "id": 1
+    },
+    {
+      "name": "米亞",
+      "filename": "$Actor5",
+      "weapon_id": 32,
+      "id": 2
+    },
+    {
+      "name": "艾卓",
+      "filename": "$actor03",
+      "weapon_id": 33,
+      "id": 3
+    },
+    {
+      "name": "維娜",
+      "filename": "$Verna",
+      "weapon_id": 30,
+      "id": 4
+    },
+    {
+      "name": "艾薇",
+      "filename": "$Actor6",
+      "weapon_id": 41,
+      "id": 5
+    },
+    {
+      "name": "泰勒",
+      "filename": "$Actor40",
+      "weapon_id": 0,
+      "id": 6
+    },
+    {
+      "name": "小拉達",
+      "filename": "$019",
+      "weapon_id": 11,
+      "id": 7
+    },
+    {
+      "name": "水箭龜",
+      "filename": "$009",
+      "weapon_id": 11,
+      "id": 8
+    },
+    {
+      "name": "妙蛙花",
+      "filename": "$003",
+      "weapon_id": 11,
+      "id": 9
+    }
+  ],
+  "risk_statement_revision": "The 9 previous risks are conditional for an arbitrary $actor01 image; all named keys are Taylor's, not actor #1 Joe. This does not prove actual runtime dispatch is absent.",
+  "all_9_risk_labels_are_other_actor": true,
+  "actor_specific_pose_defs": 7,
+  "actor_specific_pose_cell_risks": 0,
+  "actor_specific_pose_details": [
+    {
+      "name": "喬伊防禦姿勢",
+      "file_no": 7,
+      "row": 0,
+      "fixed": -1,
+      "missing_columns": [],
+      "literal_occurrences": 2,
+      "snippet": "\"Afterimage OFF\",\"16\",\"JUMP_BACK\",\"FLEE_RESET\"],\n\n  \"艾薇待機\" =>[\"艾薇待機姿勢\"],\n\n  \n\n  \"喬伊防禦\" =>[\"喬伊防禦姿勢\"],\n\n  \"艾薇防禦\" =>[\"艾薇防禦姿勢\"],\n\n  \"艾卓防禦\" =>[\"艾卓防禦姿勢\"],\n\n  \n\n  \"里歐突襲\" =>[\"pop text\",\n\n           "
+    },
+    {
+      "name": "喬伊普攻姿勢",
+      "file_no": 2,
+      "row": 2,
+      "fixed": -1,
+      "missing_columns": [],
+      "literal_occurrences": 7,
+      "snippet": "             \"Afterimage ON\",\"SKILL_POSE\",\n\n                    \"血狼技能發動\",\"24\",\"血狼出現\",\"12\",\"喬伊普攻姿勢\",\n\n                    \"6\",\"REAL_TARGET\",\"狼魂前進\", \"12\",\"DAMAGE_ANIM_WAIT\",\n\n                 "
+    },
+    {
+      "name": "喬伊召喚物姿勢",
+      "file_no": 2,
+      "row": 0,
+      "fixed": 2,
+      "missing_columns": [],
+      "literal_occurrences": 7,
+      "snippet": "升\",\"5\",\n\n                     \"督2\",\"10\",\"DAMAGE\",\"30\",\"FLEE_RESET\",\n\n                     \"喬伊召喚物姿勢\",\"怒意上升\",\"5\",\n\n                     \"督3\",\"10\",\"DAMAGE\",\"30\",\"FLEE_RESET\"\n\n                  "
+    },
+    {
+      "name": "喬伊普攻姿勢2",
+      "file_no": 7,
+      "row": 1,
+      "fixed": -1,
+      "missing_columns": [],
+      "literal_occurrences": 2,
+      "snippet": "-10,  8,  -1,  -3,  \"喬伊普攻姿勢\"],\n\n  \"喬伊普攻2\"               => [  5,  34, -10,  7,  -1,  -2,  \"喬伊普攻姿勢2\"],\n\n  \"NO_MOVE\"                 => [  0,   0,   0,  1,   0,   0,  \"STAND_POSE\"],\n\n  \"BATTLE"
+    },
+    {
+      "name": "喬伊發動姿勢",
+      "file_no": 7,
+      "row": 0,
+      "fixed": -1,
+      "missing_columns": [],
+      "literal_occurrences": 13,
+      "snippet": "   \"DAMAGE_ANIM_WAIT\",\n\n      \"FORCE_KNOCKBACK\",\n\n\n\n      # 使用原本漂亮的爪擊收尾姿勢定格，再後跳回位。\n\n      \"喬伊發動姿勢\",\n\n      \"7\",\n\n      \"喬伊狼後跳\",\n\n      \"8\",\n\n\n\n      \"Afterimage OFF\",\n\n      \"Can Collapse\",\n"
+    },
+    {
+      "name": "喬伊等待姿勢",
+      "file_no": 1,
+      "row": 0,
+      "fixed": -1,
+      "missing_columns": [],
+      "literal_occurrences": 2,
+      "snippet": "            => [\"STANDBY_POSE\"],\n\n  \"泰勒待機\"          => [\"泰勒待機姿勢\"],\n\n  \"喬伊等待\"          => [\"喬伊等待姿勢\"],\n\n  \"召喚\"              => [\"START_POSITION3\",\"COORD_RESET\",\"召喚\",\"22\",\"STANDBY_POSE\",\"RESET\""
+    },
+    {
+      "name": "喬伊普攻前進姿勢",
+      "file_no": 1,
+      "row": 3,
+      "fixed": -1,
+      "missing_columns": [],
+      "literal_occurrences": 7,
+      "snippet": "y          Type   Time Accel Jump   Pose Key\n\n  \"喬伊 回歸\"      => [\"reset\", 16,  0,     0,  \"喬伊普攻前進姿勢\"],\n\n\n\n  #--------------------------------------------------------------------------\n\n\n\n #-"
+    }
+  ],
+  "unresolved": "Need inspect actual action sequence dispatch and runtime. A name heuristic is not dynamic call proof."
+}

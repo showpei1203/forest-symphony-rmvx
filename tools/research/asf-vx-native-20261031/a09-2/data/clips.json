@@ -1,0 +1,196 @@
+{
+  "schema": "generate2dsprite.animation_clips.v2",
+  "frames": [
+    {
+      "name": "p00c0",
+      "file": "frames/pose00-f0.png"
+    },
+    {
+      "name": "p00c1",
+      "file": "frames/pose00-f1.png"
+    },
+    {
+      "name": "p00c2",
+      "file": "frames/pose00-f2.png"
+    },
+    {
+      "name": "p01c0",
+      "file": "frames/pose01-f0.png"
+    },
+    {
+      "name": "p01c1",
+      "file": "frames/pose01-f1.png"
+    },
+    {
+      "name": "p01c2",
+      "file": "frames/pose01-f2.png"
+    },
+    {
+      "name": "p02c2",
+      "file": "frames/pose02-f2.png"
+    },
+    {
+      "name": "p03c0",
+      "file": "frames/pose03-f0.png"
+    },
+    {
+      "name": "p03c1",
+      "file": "frames/pose03-f1.png"
+    },
+    {
+      "name": "p03c2",
+      "file": "frames/pose03-f2.png"
+    },
+    {
+      "name": "p04c0",
+      "file": "frames/pose04-f0.png"
+    },
+    {
+      "name": "p04c1",
+      "file": "frames/pose04-f1.png"
+    },
+    {
+      "name": "p04c2",
+      "file": "frames/pose04-f2.png"
+    },
+    {
+      "name": "p05c0",
+      "file": "frames/pose05-f0.png"
+    },
+    {
+      "name": "p05c1",
+      "file": "frames/pose05-f1.png"
+    },
+    {
+      "name": "p05c2",
+      "file": "frames/pose05-f2.png"
+    },
+    {
+      "name": "p06c0",
+      "file": "frames/pose06-f0.png"
+    },
+    {
+      "name": "p06c1",
+      "file": "frames/pose06-f1.png"
+    },
+    {
+      "name": "p06c2",
+      "file": "frames/pose06-f2.png"
+    }
+  ],
+  "anchor_px": [
+    16,
+    21
+  ],
+  "clips": {
+    "p00": {
+      "frames": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "ticks": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "loop_policy": "cycle",
+      "role": "player"
+    },
+    "p01": {
+      "frames": [
+        3,
+        4,
+        5
+      ],
+      "ticks": [
+        4,
+        4,
+        4
+      ],
+      "loop_policy": "oneshot",
+      "role": "player"
+    },
+    "p02": {
+      "frames": [
+        6
+      ],
+      "ticks": [
+        4
+      ],
+      "loop_policy": "oneshot",
+      "role": "player"
+    },
+    "p03": {
+      "frames": [
+        7,
+        8,
+        9
+      ],
+      "ticks": [
+        4,
+        4,
+        4
+      ],
+      "loop_policy": "oneshot",
+      "role": "player"
+    },
+    "p04": {
+      "frames": [
+        10,
+        11,
+        12
+      ],
+      "ticks": [
+        4,
+        4,
+        4
+      ],
+      "loop_policy": "oneshot",
+      "role": "player"
+    },
+    "p05": {
+      "frames": [
+        13,
+        14,
+        15,
+        14
+      ],
+      "ticks": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "loop_policy": "cycle",
+      "role": "player"
+    },
+    "p06": {
+      "frames": [
+        16,
+        17,
+        18,
+        17
+      ],
+      "ticks": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "loop_policy": "cycle",
+      "role": "player"
+    }
+  },
+  "states": {
+    "idle": "p05",
+    "attacking": "p01"
+  },
+  "sampling": "nearest",
+  "pixel_art": true,
+  "art_source": "existing",
+  "placeholder": false,
+  "role": "player"
+}
