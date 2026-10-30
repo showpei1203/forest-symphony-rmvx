@@ -170,6 +170,8 @@ func _capture(name: String, mask: int, transparent: bool) -> Image:
     for i in range(4):
         await RenderingServer.frame_post_draw
     var img: Image = vp.get_texture().get_image()
+    if name != "PAR":
+        img.convert(Image.FORMAT_RGB8)
     var path: String = "res://out/" + name + ".png"
     var err: Error = img.save_png(path)
     print("CAPTURE ",name," ",img.get_width(),"x",img.get_height()," ",err," alpha0=",img.get_pixel(0,0).a)
