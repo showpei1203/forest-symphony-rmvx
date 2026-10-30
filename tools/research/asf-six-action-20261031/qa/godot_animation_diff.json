@@ -1,0 +1,31 @@
+{
+  "native_image_A": [
+    900,
+    260
+  ],
+  "native_image_B": [
+    900,
+    260
+  ],
+  "per_action_changes": {
+    "idle": {
+      "changed_rgb_pixels": 460
+    },
+    "walk": {
+      "changed_rgb_pixels": 1034
+    },
+    "run": {
+      "changed_rgb_pixels": 1247
+    },
+    "attack": {
+      "changed_rgb_pixels": 653
+    },
+    "jump": {
+      "changed_rgb_pixels": 1236
+    },
+    "hurt": {
+      "changed_rgb_pixels": 1217
+    }
+  },
+  "all_actions_animation_evidenced": true
+}

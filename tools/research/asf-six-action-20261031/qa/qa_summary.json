@@ -1,0 +1,114 @@
+{
+  "seedling": {
+    "size": [
+      32,
+      32
+    ],
+    "bbox": [
+      10,
+      4,
+      26,
+      31
+    ],
+    "opaque_pixels": 277,
+    "sha256": "267113e173084aebf52ac082730535de4244d25f6559725bfbc21b4723e598c1"
+  },
+  "guardian": {
+    "size": [
+      32,
+      32
+    ],
+    "bbox": [
+      1,
+      1,
+      31,
+      31
+    ],
+    "opaque_pixels": 537,
+    "sha256": "7af0500bef7a50a31a120ba74d293653d781f9b98e71a9772166b7fd258f24d9"
+  },
+  "evolution": {
+    "silhouette_iou": 0.4614,
+    "visible_area_ratio": 1.9386,
+    "structural_changes": [
+      "branched antlers",
+      "larger trunk torso",
+      "two clawed arms",
+      "longer legs",
+      "leaf tail"
+    ]
+  },
+  "hero": {
+    "frame_size": [
+      64,
+      64
+    ],
+    "anchor": [
+      32.0,
+      59.0
+    ],
+    "rendered_distinct_frames": 37,
+    "checks": [
+      {
+        "id": "partial_alpha",
+        "status": "pass",
+        "value": 0
+      },
+      {
+        "id": "off_palette",
+        "status": "pass",
+        "value": 0
+      },
+      {
+        "id": "outline_gaps",
+        "status": "pass",
+        "value": 0
+      },
+      {
+        "id": "l_corners",
+        "status": "pass",
+        "value": 10
+      },
+      {
+        "id": "seam:walk",
+        "status": "pass",
+        "value": 0.9761
+      },
+      {
+        "id": "seam:idle",
+        "status": "pass",
+        "value": 1.0018
+      },
+      {
+        "id": "seam:run",
+        "status": "pass",
+        "value": 0.9311
+      },
+      {
+        "id": "ik_foot_drift",
+        "status": "pass",
+        "value": 0.0
+      },
+      {
+        "id": "ik_clamp",
+        "status": "pass",
+        "value": 0
+      },
+      {
+        "id": "ground_row",
+        "status": "pass",
+        "value": 0
+      },
+      {
+        "id": "margins",
+        "status": "pass",
+        "value": 0
+      },
+      {
+        "id": "build_clips",
+        "status": "pass",
+        "value": 0
+      }
+    ]
+  }
+}
