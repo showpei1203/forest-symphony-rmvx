@@ -1,0 +1,523 @@
+{
+  "sample_count": 70,
+  "horizontal_offsets_px": [
+    -24,
+    -12,
+    0,
+    12,
+    24
+  ],
+  "vertical_offsets_px": [
+    -48,
+    -32,
+    -16,
+    0,
+    16,
+    32,
+    48
+  ],
+  "front_20_tests": 20,
+  "front_nonzero": 0,
+  "front_max_occluded_pct": 0.0,
+  "front_disagreements": [],
+  "rear_20_tests": 20,
+  "rear_max_occluded_pct": 99.6,
+  "tests": [
+    {
+      "tree": "WEST",
+      "x_delta": -24,
+      "y_delta": -48,
+      "actor_covered_pct": 99.8,
+      "occluded_px": 505
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -12,
+      "y_delta": -48,
+      "actor_covered_pct": 100.0,
+      "occluded_px": 506
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 0,
+      "y_delta": -48,
+      "actor_covered_pct": 99.8,
+      "occluded_px": 505
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 12,
+      "y_delta": -48,
+      "actor_covered_pct": 99.8,
+      "occluded_px": 505
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 24,
+      "y_delta": -48,
+      "actor_covered_pct": 99.21,
+      "occluded_px": 502
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -24,
+      "y_delta": -32,
+      "actor_covered_pct": 89.92,
+      "occluded_px": 455
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -12,
+      "y_delta": -32,
+      "actor_covered_pct": 92.89,
+      "occluded_px": 470
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 0,
+      "y_delta": -32,
+      "actor_covered_pct": 95.45,
+      "occluded_px": 483
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 12,
+      "y_delta": -32,
+      "actor_covered_pct": 99.6,
+      "occluded_px": 504
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 24,
+      "y_delta": -32,
+      "actor_covered_pct": 97.23,
+      "occluded_px": 492
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -24,
+      "y_delta": -16,
+      "actor_covered_pct": 56.32,
+      "occluded_px": 285
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -12,
+      "y_delta": -16,
+      "actor_covered_pct": 84.78,
+      "occluded_px": 429
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 0,
+      "y_delta": -16,
+      "actor_covered_pct": 84.19,
+      "occluded_px": 426
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 12,
+      "y_delta": -16,
+      "actor_covered_pct": 67.19,
+      "occluded_px": 340
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 24,
+      "y_delta": -16,
+      "actor_covered_pct": 57.11,
+      "occluded_px": 289
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -24,
+      "y_delta": 0,
+      "actor_covered_pct": 16.8,
+      "occluded_px": 85
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -12,
+      "y_delta": 0,
+      "actor_covered_pct": 40.51,
+      "occluded_px": 205
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 0,
+      "y_delta": 0,
+      "actor_covered_pct": 38.54,
+      "occluded_px": 195
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 12,
+      "y_delta": 0,
+      "actor_covered_pct": 11.07,
+      "occluded_px": 56
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 24,
+      "y_delta": 0,
+      "actor_covered_pct": 2.77,
+      "occluded_px": 14
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -24,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -12,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 0,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 12,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 24,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -24,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -12,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 0,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 12,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 24,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -24,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": -12,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 0,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 12,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "WEST",
+      "x_delta": 24,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -24,
+      "y_delta": -48,
+      "actor_covered_pct": 98.22,
+      "occluded_px": 497
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -12,
+      "y_delta": -48,
+      "actor_covered_pct": 99.41,
+      "occluded_px": 503
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 0,
+      "y_delta": -48,
+      "actor_covered_pct": 99.8,
+      "occluded_px": 505
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 12,
+      "y_delta": -48,
+      "actor_covered_pct": 99.8,
+      "occluded_px": 505
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 24,
+      "y_delta": -48,
+      "actor_covered_pct": 73.52,
+      "occluded_px": 372
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -24,
+      "y_delta": -32,
+      "actor_covered_pct": 93.08,
+      "occluded_px": 471
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -12,
+      "y_delta": -32,
+      "actor_covered_pct": 96.44,
+      "occluded_px": 488
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 0,
+      "y_delta": -32,
+      "actor_covered_pct": 96.05,
+      "occluded_px": 486
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 12,
+      "y_delta": -32,
+      "actor_covered_pct": 99.01,
+      "occluded_px": 501
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 24,
+      "y_delta": -32,
+      "actor_covered_pct": 78.46,
+      "occluded_px": 397
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -24,
+      "y_delta": -16,
+      "actor_covered_pct": 52.37,
+      "occluded_px": 265
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -12,
+      "y_delta": -16,
+      "actor_covered_pct": 66.4,
+      "occluded_px": 336
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 0,
+      "y_delta": -16,
+      "actor_covered_pct": 87.35,
+      "occluded_px": 442
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 12,
+      "y_delta": -16,
+      "actor_covered_pct": 83.0,
+      "occluded_px": 420
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 24,
+      "y_delta": -16,
+      "actor_covered_pct": 46.84,
+      "occluded_px": 237
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -24,
+      "y_delta": 0,
+      "actor_covered_pct": 1.98,
+      "occluded_px": 10
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -12,
+      "y_delta": 0,
+      "actor_covered_pct": 12.45,
+      "occluded_px": 63
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 0,
+      "y_delta": 0,
+      "actor_covered_pct": 36.56,
+      "occluded_px": 185
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 12,
+      "y_delta": 0,
+      "actor_covered_pct": 34.39,
+      "occluded_px": 174
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 24,
+      "y_delta": 0,
+      "actor_covered_pct": 2.77,
+      "occluded_px": 14
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -24,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -12,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 0,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 12,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 24,
+      "y_delta": 16,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -24,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -12,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 0,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 12,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 24,
+      "y_delta": 32,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -24,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": -12,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 0,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 12,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    },
+    {
+      "tree": "EAST",
+      "x_delta": 24,
+      "y_delta": 48,
+      "actor_covered_pct": 0.0,
+      "occluded_px": 0
+    }
+  ],
+  "limitations": [
+    "No true RPG Maker VX runtime movement or depth-sort",
+    "Static actor layering with fixed PAR",
+    "Tree contacts from exact Stage10 rendered 544x416 screen coordinates"
+  ],
+  "formal_seal": false
+}
