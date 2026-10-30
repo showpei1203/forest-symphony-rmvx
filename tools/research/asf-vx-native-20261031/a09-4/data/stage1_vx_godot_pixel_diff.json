@@ -1,0 +1,129 @@
+{
+  "render": "Godot 4.7.2 GPU A094_GODOT_12_TILES_NATIVE_VALUES.png",
+  "native": "Actual VX Sprite_Weapon frame snapshots at N5 stage1",
+  "stats": [
+    {
+      "profile": 0,
+      "tick": 0,
+      "mae_rgb": 0.4915,
+      "diff_pixels": 104,
+      "max_color_delta": 149,
+      "native_foreground": 701,
+      "godot_foreground": 698,
+      "occupancy_iou": 0.9844
+    },
+    {
+      "profile": 0,
+      "tick": 1,
+      "mae_rgb": 0.54427,
+      "diff_pixels": 107,
+      "max_color_delta": 215,
+      "native_foreground": 615,
+      "godot_foreground": 616,
+      "occupancy_iou": 0.99514
+    },
+    {
+      "profile": 0,
+      "tick": 2,
+      "mae_rgb": 0.59711,
+      "diff_pixels": 109,
+      "max_color_delta": 227,
+      "native_foreground": 721,
+      "godot_foreground": 722,
+      "occupancy_iou": 0.97942
+    },
+    {
+      "profile": 0,
+      "tick": 3,
+      "mae_rgb": 0.44945,
+      "diff_pixels": 103,
+      "max_color_delta": 198,
+      "native_foreground": 614,
+      "godot_foreground": 613,
+      "occupancy_iou": 0.99837
+    },
+    {
+      "profile": 1,
+      "tick": 0,
+      "mae_rgb": 0.62508,
+      "diff_pixels": 78,
+      "max_color_delta": 212,
+      "native_foreground": 675,
+      "godot_foreground": 676,
+      "occupancy_iou": 0.96652
+    },
+    {
+      "profile": 1,
+      "tick": 1,
+      "mae_rgb": 0.66226,
+      "diff_pixels": 108,
+      "max_color_delta": 227,
+      "native_foreground": 695,
+      "godot_foreground": 712,
+      "occupancy_iou": 0.96234
+    },
+    {
+      "profile": 1,
+      "tick": 2,
+      "mae_rgb": 0.03101,
+      "diff_pixels": 3,
+      "max_color_delta": 132,
+      "native_foreground": 609,
+      "godot_foreground": 612,
+      "occupancy_iou": 0.9951
+    },
+    {
+      "profile": 1,
+      "tick": 3,
+      "mae_rgb": 0.44515,
+      "diff_pixels": 77,
+      "max_color_delta": 194,
+      "native_foreground": 679,
+      "godot_foreground": 685,
+      "occupancy_iou": 0.97681
+    },
+    {
+      "profile": 2,
+      "tick": 0,
+      "mae_rgb": 0.44169,
+      "diff_pixels": 77,
+      "max_color_delta": 205,
+      "native_foreground": 664,
+      "godot_foreground": 669,
+      "occupancy_iou": 0.98363
+    },
+    {
+      "profile": 2,
+      "tick": 1,
+      "mae_rgb": 0.41425,
+      "diff_pixels": 67,
+      "max_color_delta": 205,
+      "native_foreground": 652,
+      "godot_foreground": 657,
+      "occupancy_iou": 0.98333
+    },
+    {
+      "profile": 2,
+      "tick": 2,
+      "mae_rgb": 0.36646,
+      "diff_pixels": 59,
+      "max_color_delta": 205,
+      "native_foreground": 641,
+      "godot_foreground": 646,
+      "occupancy_iou": 0.98305
+    },
+    {
+      "profile": 2,
+      "tick": 3,
+      "mae_rgb": 0.31654,
+      "diff_pixels": 51,
+      "max_color_delta": 205,
+      "native_foreground": 634,
+      "godot_foreground": 637,
+      "occupancy_iou": 0.98594
+    }
+  ],
+  "mean_mae": 0.44873083333333336,
+  "mean_iou": 0.9828375,
+  "all_exact": false
+}

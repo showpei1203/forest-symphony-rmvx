@@ -1,0 +1,83 @@
+{
+  "status": "A09_4_REAL_NATIVE_SPRITE_WEAPON_PASS_GODOT_NEAR_MATCH_NOT_FORMAL",
+  "baseline": {
+    "K4_SHA256": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa",
+    "N5_SEALED_SHA256": "3271f5653a7f53cb55c0762d3b047e2300fbb6d6547257bef1fb2328be2b3ea9",
+    "N5_B0_CONTROL_SHA256": "26f85ad278b6e08cc8634e3f9dc8b4ba15539888bf2920567d12244e328fa03c",
+    "A094_TEST_RUNTIME_SHA256": "0f97f8dc2bd3c2cbcadb1afc14ab2641090aa7c75e40d161299bccc24dc42d55",
+    "original_entry_unchanged": true
+  },
+  "stage0": {
+    "ruby_hook_loaded": true,
+    "title_update_called": true,
+    "map_frame_35_reached": true,
+    "screen_544x416_nonblack_fraction": 0.9998
+  },
+  "stage1": {
+    "native_Sprite_Weapon_profiles": 3,
+    "native_dynamic_samples": 12,
+    "native_ppm_captures": 12,
+    "weapon_id": 2,
+    "weapon_icon_index": 548,
+    "iconset_crop_xywh": [
+      96,
+      816,
+      24,
+      24
+    ],
+    "native_angle_sequences": {
+      "0": [
+        -203,
+        -67,
+        69,
+        205
+      ],
+      "1": [
+        205,
+        140,
+        75,
+        10
+      ],
+      "2": [
+        65,
+        65,
+        65,
+        65
+      ]
+    },
+    "mirrored_weapon_origin": [
+      0,
+      24
+    ],
+    "unmirrored_origin": [
+      24,
+      24
+    ]
+  },
+  "cross_engine": {
+    "engine": "Godot 4.7.2 Radeon RX6700XT OpenGL",
+    "Godot_rendered_samples": 12,
+    "nearest_mean_occupancy_iou": 0.98284,
+    "nearest_diff_rgb_pixels": 943,
+    "nearest_mean_abs_rgb_delta": 0.44873,
+    "linear_mean_occupancy_iou": 0.97386,
+    "linear_diff_rgb_pixels": 1172,
+    "source_rgb_pixel_exact": false,
+    "visual_gate_F": "PENDING"
+  },
+  "error_corrections": [
+    "ERROR_SOURCE_ASSET: weapon_id2 is NOT icon_index2; Weapon2.icon_index=548",
+    "ERROR_TIMING_DENOMINATOR: ANIME_PATTERN=3 is used for @moving_x and @angling; @time starts ANIME_PATTERN+1=4",
+    "ERROR_MAPPING: mirrored weapon origin Or4 swaps to Or3",
+    "ERROR_XA: incremental integer movement not full Xa at t0",
+    "ERROR_NATIVE_ENVIRONMENT: the prior K4 start path did not produce valid capture, while sealed N5+B0 control does; root cause of K4 not established"
+  ],
+  "scope": {
+    "original_Source_Art_unchanged": true,
+    "N5_map_is_control_not_full_joe_Scene_Battle": true,
+    "real_attack_dispatch_in_Actual_Scene_Battle": false,
+    "pixel_exact_comparison_PASSED": false,
+    "model_generated_new_action": false,
+    "formal_seal": false
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "pid": 31736,
+  "status": "CAPTURE_DONE_MARKER",
+  "log": "A094_SCRIPT_EVALUATED\nA094_TITLE_UPDATE_ENTERED\nA094_SOURCE_ICON=548 profile=p01\nA094_SOURCE_ICON=548 profile=p03\nA094_SOURCE_ICON=548 profile=p05\nA094_SPRITES_CREATED count=3\nA094_MAP_FRAME_35\nA094_WPN i=0 tick=0 angle=-203.0 x=89 y=145 z=2999 ox=24 oy=24 mirror=false icon=96,816\nA094_WPN i=1 tick=0 angle=205.0 x=269 y=145 z=1999 ox=0 oy=24 mirror=true icon=96,816\nA094_WPN i=2 tick=0 angle=65.0 x=432 y=147 z=1999 ox=12 oy=12 mirror=false icon=96,816\nPNG_EQUIV_PPM=weapon_0_tick_0.ppm\nPNG_EQUIV_PPM=weapon_1_tick_0.ppm\nPNG_EQUIV_PPM=weapon_2_tick_0.ppm\nA094_WPN i=0 tick=1 angle=-67.0 x=86 y=145 z=2999 ox=24 oy=24 mirror=false icon=96,816\nA094_WPN i=1 tick=1 angle=140.0 x=271 y=144 z=1999 ox=0 oy=24 mirror=true icon=96,816\nA094_WPN i=2 tick=1 angle=65.0 x=433 y=148 z=1999 ox=12 oy=12 mirror=false icon=96,816\nPNG_EQUIV_PPM=weapon_0_tick_1.ppm\nPNG_EQUIV_PPM=weapon_1_tick_1.ppm\nPNG_EQUIV_PPM=weapon_2_tick_1.ppm\nA094_WPN i=0 tick=2 angle=69.0 x=83 y=145 z=2999 ox=24 oy=24 mirror=false icon=96,816\nA094_WPN i=1 tick=2 angle=75.0 x=273 y=143 z=1999 ox=0 oy=24 mirror=true icon=96,816\nA094_WPN i=2 tick=2 angle=65.0 x=434 y=149 z=1999 ox=12 oy=12 mirror=false icon=96,816\nPNG_EQUIV_PPM=weapon_0_tick_2.ppm\nPNG_EQUIV_PPM=weapon_1_tick_2.ppm\nPNG_EQUIV_PPM=weapon_2_tick_2.ppm\nA094_WPN i=0 tick=3 angle=205.0 x=80 y=145 z=2999 ox=24 oy=24 mirror=false icon=96,816\nA094_WPN i=1 tick=3 angle=10.0 x=275 y=142 z=1999 ox=0 oy=24 mirror=true icon=96,816\nA094_WPN i=2 tick=3 angle=65.0 x=435 y=150 z=1999 ox=12 oy=12 mirror=false icon=96,816\nPNG_EQUIV_PPM=weapon_0_tick_3.ppm\nPNG_EQUIV_PPM=weapon_1_tick_3.ppm\nPNG_EQUIV_PPM=weapon_2_tick_3.ppm\nA094_CAPTURE_DONE\n",
+  "ppm_files": [
+    {
+      "name": "weapon_0_tick_0.ppm",
+      "bytes": 28364,
+      "sha": "be35c755a2c0bf2acc27c631f32e4277bdacf4b2fc5b5cd353f894b396684ade"
+    },
+    {
+      "name": "weapon_0_tick_1.ppm",
+      "bytes": 28364,
+      "sha": "5329e651ed970bab039da1a1d60d859a3925537a7e714cf3f36148a733070e8e"
+    },
+    {
+      "name": "weapon_0_tick_2.ppm",
+      "bytes": 28364,
+      "sha": "74cae02132d09fb113e8f8e6492b252bf3d527f232263f1d1586f40655eb85e3"
+    },
+    {
+      "name": "weapon_0_tick_3.ppm",
+      "bytes": 28364,
+      "sha": "daaa107b9a3681c91e2efee95f4b18e88fe329237e360ce81980428b88ce67f7"
+    },
+    {
+      "name": "weapon_1_tick_0.ppm",
+      "bytes": 28364,
+      "sha": "63b3b279cb2b7a7c48ea283419e9a1b6578888dc7d180865ee4720634b97d115"
+    },
+    {
+      "name": "weapon_1_tick_1.ppm",
+      "bytes": 28364,
+      "sha": "be2f9ce79aae22ff12b7c32ddd2c3b5f6233ba5f03e832f3464770873a41cc91"
+    },
+    {
+      "name": "weapon_1_tick_2.ppm",
+      "bytes": 28364,
+      "sha": "1bc3674d0b35d8b09995466e54673e8b9178a70cd2e62eeb418c9f6fc23ad4b3"
+    },
+    {
+      "name": "weapon_1_tick_3.ppm",
+      "bytes": 28364,
+      "sha": "36d31cfdbbca9ec6048576d2cca1d34eab8447d9cca5d24e567741574a242895"
+    },
+    {
+      "name": "weapon_2_tick_0.ppm",
+      "bytes": 28364,
+      "sha": "d682e87ff4f5ee42d1800041a0546f480418165d2f1a21ad0644f877dd6a5688"
+    },
+    {
+      "name": "weapon_2_tick_1.ppm",
+      "bytes": 28364,
+      "sha": "9cd6cecb180be576d46a94b98c6c894c414573d1b8e8ce8e780e52d18c0dda01"
+    },
+    {
+      "name": "weapon_2_tick_2.ppm",
+      "bytes": 28364,
+      "sha": "7c1e28b0582a66e75d035f3dbeb8b41811ec02aea2ffa420bb6842f0e58c07a7"
+    },
+    {
+      "name": "weapon_2_tick_3.ppm",
+      "bytes": 28364,
+      "sha": "1b933d1686b51d5055a78f8e77fa1a89540e243ece7c66bf513cf3770c46d030"
+    }
+  ],
+  "screen": {
+    "size": [
+      544,
+      416
+    ],
+    "sha256": "f991d2c69488c9204e0a491561c6e8cd90204c9609befa6fbf3963060dae6d68"
+  },
+  "elapsed_sec": 8.41
+}

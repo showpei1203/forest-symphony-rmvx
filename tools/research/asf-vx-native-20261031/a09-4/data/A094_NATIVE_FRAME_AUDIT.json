@@ -1,0 +1,122 @@
+[
+  {
+    "profile": "p01 attack1",
+    "tick": 0,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "c6034059f688a4e127caef4fe79d7369cbfc4144189d7e21fbcb79ab4227a437",
+    "non_background": 701
+  },
+  {
+    "profile": "p01 attack1",
+    "tick": 1,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "0a74da0a10763244be390a06d40ae095574b14554372b71eb54b6763c42ab240",
+    "non_background": 615
+  },
+  {
+    "profile": "p01 attack1",
+    "tick": 2,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "937d5acdbd49b55ff1db676ccfe4c968a97e3f33e4d8197328796ad795d42b4c",
+    "non_background": 721
+  },
+  {
+    "profile": "p01 attack1",
+    "tick": 3,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "121c59e95dc10a1182a35024a1ee87c6f1051ecee6232e721b1b348f7caa7146",
+    "non_background": 614
+  },
+  {
+    "profile": "p03 attack2",
+    "tick": 0,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "cd058fce75d87cf0f75e96590c077441f1a8130f1a4e6673cd87305b2af4a834",
+    "non_background": 675
+  },
+  {
+    "profile": "p03 attack2",
+    "tick": 1,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "6491a3a19fe16a5501fe1c554cb13d9646881b8ca54e9bfae62e059a01811352",
+    "non_background": 695
+  },
+  {
+    "profile": "p03 attack2",
+    "tick": 2,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "a3f6668541437cdced6cd0cc1f694ccbeb0a48a768513345b18b2bde39e9078b",
+    "non_background": 609
+  },
+  {
+    "profile": "p03 attack2",
+    "tick": 3,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "437cfea2d9c26f2278767893adbcaaba9adc7fc99bead9c6b8fd5181f7275c94",
+    "non_background": 679
+  },
+  {
+    "profile": "p05 standby",
+    "tick": 0,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "dfc31093c1cd1ed71820e20264e0887ca97b68e1cfef5e58c5c693a1692b3937",
+    "non_background": 664
+  },
+  {
+    "profile": "p05 standby",
+    "tick": 1,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "1b1fd95bee2e7774ae36675e9635f0cb8f74efa2638f30b7ca88a6d02fca5b58",
+    "non_background": 652
+  },
+  {
+    "profile": "p05 standby",
+    "tick": 2,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "49b9ef5e9f2c2bf91ea5c25fe14e1029c2de5c6a94e29ad97b7bd5cedeeb91d0",
+    "non_background": 641
+  },
+  {
+    "profile": "p05 standby",
+    "tick": 3,
+    "size": [
+      90,
+      105
+    ],
+    "sha256_rgb": "a823528109679600e1769defe61c9f3b087bcdcf3b18ecd962c0d4528e0db1fb",
+    "non_background": 634
+  }
+]

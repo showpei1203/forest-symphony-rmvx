@@ -1,0 +1,208 @@
+{
+  "characters": [
+    "p01",
+    "p03",
+    "p05"
+  ],
+  "origin_x": [
+    90,
+    270,
+    450
+  ],
+  "origin_y": 145,
+  "native_source": "RGSS2 Sprite_Weapon dynamic trace on isolated N5 507-script runtime",
+  "icon": {
+    "weapon_id": 2,
+    "icon_index": 548,
+    "crop": [
+      96,
+      816,
+      24,
+      24
+    ],
+    "atlas_sha256": "8273bc643025f92496a7471cf080cd6a87d0a762fc04731c7f016e00f0c0bb2c",
+    "crop_sha256": "ab6bbeda952a4ccbce3f2b86f0405955905a95450b9aa8800d41d6d1ca06be53"
+  },
+  "samples": [
+    {
+      "profile": 0,
+      "tick": 0,
+      "angle_rgss": -203.0,
+      "x": 89.0,
+      "y": 145.0,
+      "z": 2999.0,
+      "ox": 24.0,
+      "oy": 24.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 1,
+      "tick": 0,
+      "angle_rgss": 205.0,
+      "x": 269.0,
+      "y": 145.0,
+      "z": 1999.0,
+      "ox": 0.0,
+      "oy": 24.0,
+      "flip": true,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 2,
+      "tick": 0,
+      "angle_rgss": 65.0,
+      "x": 432.0,
+      "y": 147.0,
+      "z": 1999.0,
+      "ox": 12.0,
+      "oy": 12.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 0,
+      "tick": 1,
+      "angle_rgss": -67.0,
+      "x": 86.0,
+      "y": 145.0,
+      "z": 2999.0,
+      "ox": 24.0,
+      "oy": 24.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 1,
+      "tick": 1,
+      "angle_rgss": 140.0,
+      "x": 271.0,
+      "y": 144.0,
+      "z": 1999.0,
+      "ox": 0.0,
+      "oy": 24.0,
+      "flip": true,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 2,
+      "tick": 1,
+      "angle_rgss": 65.0,
+      "x": 433.0,
+      "y": 148.0,
+      "z": 1999.0,
+      "ox": 12.0,
+      "oy": 12.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 0,
+      "tick": 2,
+      "angle_rgss": 69.0,
+      "x": 83.0,
+      "y": 145.0,
+      "z": 2999.0,
+      "ox": 24.0,
+      "oy": 24.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 1,
+      "tick": 2,
+      "angle_rgss": 75.0,
+      "x": 273.0,
+      "y": 143.0,
+      "z": 1999.0,
+      "ox": 0.0,
+      "oy": 24.0,
+      "flip": true,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 2,
+      "tick": 2,
+      "angle_rgss": 65.0,
+      "x": 434.0,
+      "y": 149.0,
+      "z": 1999.0,
+      "ox": 12.0,
+      "oy": 12.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 0,
+      "tick": 3,
+      "angle_rgss": 205.0,
+      "x": 80.0,
+      "y": 145.0,
+      "z": 2999.0,
+      "ox": 24.0,
+      "oy": 24.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 1,
+      "tick": 3,
+      "angle_rgss": 10.0,
+      "x": 275.0,
+      "y": 142.0,
+      "z": 1999.0,
+      "ox": 0.0,
+      "oy": 24.0,
+      "flip": true,
+      "icon": [
+        96,
+        816
+      ]
+    },
+    {
+      "profile": 2,
+      "tick": 3,
+      "angle_rgss": 65.0,
+      "x": 435.0,
+      "y": 150.0,
+      "z": 1999.0,
+      "ox": 12.0,
+      "oy": 12.0,
+      "flip": false,
+      "icon": [
+        96,
+        816
+      ]
+    }
+  ]
+}

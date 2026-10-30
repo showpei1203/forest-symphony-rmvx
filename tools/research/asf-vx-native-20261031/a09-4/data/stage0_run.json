@@ -1,0 +1,16 @@
+{
+  "pid": 26800,
+  "found_log": true,
+  "frame_test": true,
+  "log": "A094_SCRIPT_EVALUATED\nA094_TITLE_UPDATE_ENTERED\nA094_MAP_FRAME_35\n",
+  "screenshot": {
+    "size": [
+      544,
+      416
+    ],
+    "nonblack_fraction": 0.9998,
+    "sha256": "364393f0e8066fec8595e8946c66dd0128f1ff17d35a2fefc51d956102866404"
+  },
+  "process_exit_before_terminate": null,
+  "seconds": 7.62
+}

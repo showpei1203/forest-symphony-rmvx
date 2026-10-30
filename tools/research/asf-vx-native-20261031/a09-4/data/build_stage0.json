@@ -1,0 +1,8 @@
+{
+  "baseline_sha": "26f85ad278b6e08cc8634e3f9dc8b4ba15539888bf2920567d12244e328fa03c",
+  "candidate_sha": "9428126853054198a35e9a77fdabfdb5810abb08570b078e6a21b6b9b84a0e1d",
+  "source_entries": 506,
+  "test_entries": 507,
+  "unchanged": true,
+  "marker_position": 483
+}

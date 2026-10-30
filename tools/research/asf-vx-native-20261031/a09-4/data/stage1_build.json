@@ -1,0 +1,7 @@
+{
+  "stage": "A094_1",
+  "original_505_N5_and_B0_script_untouched": true,
+  "test_script_index": 483,
+  "baseline": "9428126853054198a35e9a77fdabfdb5810abb08570b078e6a21b6b9b84a0e1d",
+  "candidate": "0f97f8dc2bd3c2cbcadb1afc14ab2641090aa7c75e40d161299bccc24dc42d55"
+}
