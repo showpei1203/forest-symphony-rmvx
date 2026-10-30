@@ -25,3 +25,6 @@
 
 ## Private binary package
 `FS_GROUND_ONLY_V2_STAGE1_R4_R11_ART_FAIL_20261030.zip`: 46,153,654 bytes, 66 files, SHA256 `ac8549f05385251e3d356743b85d9b96bb1634cc49bab7a6d55d9b194ef20a66`; CRC PASS. Package is available as conversation download; **not verified uploaded to Drive**. References are PRIVATE and must not be copied to public GitHub.
+
+## Cloud binary upload verified (later than initial handoff)
+Private ZIP is now uploaded to Google Drive FS_GameAsset_Backups: https://drive.google.com/file/d/1mqt45WXc4ha4kS3WdXQqSAKLl7TFtzfS/view . Google Drive metadata size 46,153,654 bytes. Downloaded file again; SHA256 `ac8549f05385251e3d356743b85d9b96bb1634cc49bab7a6d55d9b194ef20a66` equals original and ZIP CRC PASS. This supersedes the historical 'not uploaded yet' line above. Ground ART FAIL remains.
