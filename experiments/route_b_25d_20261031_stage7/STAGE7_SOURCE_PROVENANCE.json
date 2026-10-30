@@ -1,0 +1,46 @@
+{
+  "medieval_timber_small": {
+    "cdn": "https://cdn.3dassets.dev/assets/28757/v1/model.glb",
+    "source_page": "https://3dassets.dev/assets/medieval-mmo-starter-realm-timber-house-small-25223f49",
+    "license": "CC0 1.0 Universal",
+    "bytes": 132796,
+    "sha256": "1bf4e6292bc0524f0e686abc78897898a56e289ddf369d92f9b653d9f909354e",
+    "glb_version": 2,
+    "mesh_count": 9,
+    "material_count": 7,
+    "texture_count": 0,
+    "extensions": [
+      "KHR_mesh_quantization"
+    ]
+  },
+  "medieval_thatch_cottage": {
+    "cdn": "https://cdn.3dassets.dev/assets/28762/v1/model.glb",
+    "source_page": "https://3dassets.dev/assets/medieval-mmo-starter-realm-thatched-cottage-3921d162",
+    "license": "CC0 1.0 Universal",
+    "bytes": 116276,
+    "sha256": "2d1ed30eab7339ce06b8376521fa83f77d77d2d7ec372f9fc31fdda536a5eee8",
+    "glb_version": 2,
+    "mesh_count": 9,
+    "material_count": 6,
+    "texture_count": 0,
+    "extensions": [
+      "KHR_mesh_quantization"
+    ]
+  },
+  "witch_cottage": {
+    "cdn": "https://cdn.3dassets.dev/assets/32485/v1/model.glb",
+    "source_page": "https://3dassets.dev/assets/witch-cottage-and-apothecary-hedge-witch-25562947-starter-scene",
+    "license": "CC0 1.0 Universal",
+    "bytes": 2744952,
+    "sha256": "6cbe3ccc7256d496ac80ef5905824119d2cca1d0501f38bcb89b4ba5c6b12146",
+    "glb_version": 2,
+    "mesh_count": 179,
+    "material_count": 12,
+    "texture_count": 3,
+    "extensions": [
+      "EXT_texture_webp",
+      "KHR_materials_transmission",
+      "KHR_mesh_quantization"
+    ]
+  }
+}
