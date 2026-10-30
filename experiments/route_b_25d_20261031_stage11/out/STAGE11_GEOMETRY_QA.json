@@ -1,0 +1,70 @@
+{
+  "stage": "STAGE11",
+  "resolution": [
+    544,
+    416
+  ],
+  "authority": "One source 3D scene + native separately rendered Ground/PAR, geometry authored in Stage11",
+  "candidates": [
+    {
+      "label": "STAGE10 C (SOURCE)",
+      "par_new_opaque": 0,
+      "par_lost_opaque": 0,
+      "par_alpha_changed": 0,
+      "ground_changed_pixels": 0,
+      "full_vs_2layers_diff": 903,
+      "par_border_violations": 0,
+      "regions_changed": {
+        "WEST": 0,
+        "EAST": 0,
+        "HOUSE": 0
+      }
+    },
+    {
+      "label": "STAGE11 A (BROAD)",
+      "par_new_opaque": 329,
+      "par_lost_opaque": 0,
+      "par_alpha_changed": 329,
+      "ground_changed_pixels": 0,
+      "full_vs_2layers_diff": 1263,
+      "par_border_violations": 0,
+      "regions_changed": {
+        "WEST": 1558,
+        "EAST": 1628,
+        "HOUSE": 0
+      }
+    },
+    {
+      "label": "STAGE11 B (FINE)",
+      "par_new_opaque": 254,
+      "par_lost_opaque": 0,
+      "par_alpha_changed": 254,
+      "ground_changed_pixels": 0,
+      "full_vs_2layers_diff": 1167,
+      "par_border_violations": 0,
+      "regions_changed": {
+        "WEST": 1233,
+        "EAST": 1246,
+        "HOUSE": 0
+      }
+    },
+    {
+      "label": "STAGE11 C (PRUNED)",
+      "par_new_opaque": 243,
+      "par_lost_opaque": 0,
+      "par_alpha_changed": 243,
+      "ground_changed_pixels": 0,
+      "full_vs_2layers_diff": 1127,
+      "par_border_violations": 0,
+      "regions_changed": {
+        "WEST": 1108,
+        "EAST": 1118,
+        "HOUSE": 0
+      }
+    }
+  ],
+  "selected_candidate": "C_PRUNED_RESEARCH_ONLY",
+  "visual_reference_pass": false,
+  "formal_seal": false,
+  "caveat": "Pixel change is not an aesthetic score, reference Ground3 is higher fidelity."
+}
