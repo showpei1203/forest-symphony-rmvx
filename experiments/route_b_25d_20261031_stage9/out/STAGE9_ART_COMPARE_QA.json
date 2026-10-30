@@ -1,0 +1,56 @@
+{
+  "source": "Native Godot 544x416 same world/camera, self-authored 3D shader on CC0 model, no reverse-cut or full-image blur",
+  "images": {
+    "main": "out/STAGE9_STYLE_ABC_1X.png",
+    "diagnostic": "out/STAGE9_CROWN_DETAIL_4WAY.png"
+  },
+  "results": [
+    {
+      "version": "S8 baseline",
+      "par_border": 0,
+      "ground_mode": "RGB",
+      "par_mode": "RGBA",
+      "full_diff": 406,
+      "mean_zone_luma": 131.923,
+      "zone_dark_pct": 1.5,
+      "tree_alpha_nonzero": 10294
+    },
+    {
+      "version": "S9 bands",
+      "par_border": 0,
+      "ground_mode": "RGB",
+      "par_mode": "RGBA",
+      "full_diff": 464,
+      "mean_zone_luma": 115.883,
+      "zone_dark_pct": 22.99,
+      "tree_alpha_nonzero": 10294,
+      "par_alpha_changed_vs_stage8": 0
+    },
+    {
+      "version": "S9 clusters",
+      "par_border": 0,
+      "ground_mode": "RGB",
+      "par_mode": "RGBA",
+      "full_diff": 431,
+      "mean_zone_luma": 115.706,
+      "zone_dark_pct": 18.01,
+      "tree_alpha_nonzero": 10294,
+      "par_alpha_changed_vs_stage8": 0
+    },
+    {
+      "version": "S9 too bright (fail)",
+      "par_border": 0,
+      "ground_mode": "RGB",
+      "par_mode": "RGBA",
+      "full_diff": 437,
+      "mean_zone_luma": 131.137,
+      "zone_dark_pct": 1.62,
+      "tree_alpha_nonzero": 10294,
+      "par_alpha_changed_vs_stage8": 0
+    }
+  ],
+  "alpha_preserved_exact": true,
+  "selected": "clusters",
+  "selection_note": "relative color harmony and leaf clump depth improvement, still requires human art review",
+  "formal_seal": false
+}
