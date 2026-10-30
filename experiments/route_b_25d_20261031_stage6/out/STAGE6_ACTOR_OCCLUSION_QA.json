@@ -1,0 +1,143 @@
+{
+  "authority": "R17 direct native ground+transparent PAR, prototype actor between Ground and PAR",
+  "fixed_render_order": "GROUND -> 32x32 ACTOR -> PAR",
+  "actor_is_original_generated_test_sprite": true,
+  "actor_movement_offsets_px_from_contact_ymax": {
+    "behind": -16,
+    "at_base": 0,
+    "front": 16
+  },
+  "tree_mask_from": "CONTACT_32_GRID_AUDIT.json",
+  "scenario_rows": [
+    {
+      "tree": "WEST",
+      "state": "BEHIND",
+      "actor_foot_xy": [
+        85,
+        142
+      ],
+      "actor_canvas_xy": [
+        69,
+        110
+      ],
+      "actor_opaque_px": 506,
+      "occluded_actor_px": 392,
+      "actor_coverage_occluded_pct": 77.47,
+      "head_opaque_px": 210,
+      "head_occluded_px": 210,
+      "head_occluded_pct": 100.0,
+      "actor_visible_pct": 22.53,
+      "rendered_file": "ACTOR_WEST_BEHIND.png"
+    },
+    {
+      "tree": "WEST",
+      "state": "AT_BASE",
+      "actor_foot_xy": [
+        85,
+        158
+      ],
+      "actor_canvas_xy": [
+        69,
+        126
+      ],
+      "actor_opaque_px": 506,
+      "occluded_actor_px": 131,
+      "actor_coverage_occluded_pct": 25.889,
+      "head_opaque_px": 210,
+      "head_occluded_px": 130,
+      "head_occluded_pct": 61.905,
+      "actor_visible_pct": 74.111,
+      "rendered_file": "ACTOR_WEST_AT_BASE.png"
+    },
+    {
+      "tree": "WEST",
+      "state": "FRONT",
+      "actor_foot_xy": [
+        85,
+        174
+      ],
+      "actor_canvas_xy": [
+        69,
+        142
+      ],
+      "actor_opaque_px": 506,
+      "occluded_actor_px": 0,
+      "actor_coverage_occluded_pct": 0.0,
+      "head_opaque_px": 210,
+      "head_occluded_px": 0,
+      "head_occluded_pct": 0.0,
+      "actor_visible_pct": 100.0,
+      "rendered_file": "ACTOR_WEST_FRONT.png"
+    },
+    {
+      "tree": "EAST",
+      "state": "BEHIND",
+      "actor_foot_xy": [
+        463,
+        143
+      ],
+      "actor_canvas_xy": [
+        447,
+        111
+      ],
+      "actor_opaque_px": 506,
+      "occluded_actor_px": 374,
+      "actor_coverage_occluded_pct": 73.913,
+      "head_opaque_px": 210,
+      "head_occluded_px": 210,
+      "head_occluded_pct": 100.0,
+      "actor_visible_pct": 26.087,
+      "rendered_file": "ACTOR_EAST_BEHIND.png"
+    },
+    {
+      "tree": "EAST",
+      "state": "AT_BASE",
+      "actor_foot_xy": [
+        463,
+        159
+      ],
+      "actor_canvas_xy": [
+        447,
+        127
+      ],
+      "actor_opaque_px": 506,
+      "occluded_actor_px": 81,
+      "actor_coverage_occluded_pct": 16.008,
+      "head_opaque_px": 210,
+      "head_occluded_px": 81,
+      "head_occluded_pct": 38.571,
+      "actor_visible_pct": 83.992,
+      "rendered_file": "ACTOR_EAST_AT_BASE.png"
+    },
+    {
+      "tree": "EAST",
+      "state": "FRONT",
+      "actor_foot_xy": [
+        463,
+        175
+      ],
+      "actor_canvas_xy": [
+        447,
+        143
+      ],
+      "actor_opaque_px": 506,
+      "occluded_actor_px": 0,
+      "actor_coverage_occluded_pct": 0.0,
+      "head_opaque_px": 210,
+      "head_occluded_px": 0,
+      "head_occluded_pct": 0.0,
+      "actor_visible_pct": 100.0,
+      "rendered_file": "ACTOR_EAST_FRONT.png"
+    }
+  ],
+  "gate_behind_head_occluded_gt_80pct": true,
+  "gate_front_actor_occluded_eq_0pct": true,
+  "gate_at_base_transition_range": true,
+  "scope_limits": [
+    "Two tree locations and one 32x32 actor silhouette only",
+    "No executable RPG Maker VX integration",
+    "Character draw order may require separate depth logic in production",
+    "Art reference still FAIL"
+  ],
+  "formal_seal": false
+}
