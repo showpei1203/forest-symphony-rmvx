@@ -1,0 +1,9 @@
+{
+  "missing": "attack_02.png",
+  "files_present": 23,
+  "files_required": 24,
+  "code": 1,
+  "published": false,
+  "error_excerpt": "error: [Errno 2] No such file or directory: 'E:\\\\GameAssetToolLab_20261023\\\\ASF_Test_20261031\\\\T1T2_NEW_PIPELINE\\\\NEGATIVE_MISSING_FRAME\\\\frames\\\\attack_02.png'\n",
+  "PASS_FAILCLOSED": true
+}

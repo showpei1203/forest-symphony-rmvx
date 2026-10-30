@@ -1,0 +1,41 @@
+{
+  "status": "R2_POSTPROCESS_ASF_NATIVE_GODOT_PASS_MASTER_TO_VIDEO_BLOCKED",
+  "source_original": "AI previously painted multi-frame informational poster; extracted existing frames; quantization=32 colors per action; no independent master image-to-video",
+  "strict_qa": {
+    "T1_hero": {
+      "actions": 6,
+      "frames": 24,
+      "compiled": "ASF STRICT 0 WARNINGS",
+      "export": "all: Aseprite+Godot SpriteFrames+Sprite3D"
+    },
+    "T2_monster": {
+      "actions": 5,
+      "frames": 20,
+      "compiled": "ASF STRICT 0 WARNINGS",
+      "export": "all: Aseprite+Godot SpriteFrames+Sprite3D"
+    }
+  },
+  "godot": {
+    "engine": "4.7.2-stable (official)",
+    "clips": 11,
+    "frames_compared": 22,
+    "pixel_exact": true,
+    "clips_timeline_changes": 11
+  },
+  "negative_test": {
+    "T1_missing_attack_02": true,
+    "published_on_missing_input": false
+  },
+  "failures": [
+    "G1_IMAGEGEN_STANDALONE_MASTER_FAIL_OUTPUT_POSTER",
+    "G3_AI_VIDEO_ROUTE_NOT_CONFIGURED",
+    "G7_T1_ATTACK_NOT_SWORD_SWING",
+    "G7_T1_JUMP_NOT_OBVIOUSLY_AIRBORNE"
+  ],
+  "scope": {
+    "ASF_codegen_motion": false,
+    "FS_style_human_acceptance": false,
+    "VX_import_on_these_candidates": false,
+    "source_sealed_unchanged": true
+  }
+}

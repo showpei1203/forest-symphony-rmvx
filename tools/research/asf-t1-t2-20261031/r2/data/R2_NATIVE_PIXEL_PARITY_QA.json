@@ -1,0 +1,219 @@
+{
+  "pairs": 22,
+  "actions": 11,
+  "pixel_exact_count": 22,
+  "all_pixel_exact": true,
+  "native_godot": "4.7.2 OpenGL Radeon RX 6700 XT",
+  "known_limitation": "palette32 frames extracted from previously AI-painted poster, NOT AI video generation, human FS art approval missing",
+  "details": [
+    {
+      "case": "T1_hero",
+      "action": "idle",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 839
+    },
+    {
+      "case": "T1_hero",
+      "action": "idle",
+      "capture": "B",
+      "source_frame": 2,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T1_hero",
+      "action": "walk",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 850
+    },
+    {
+      "case": "T1_hero",
+      "action": "walk",
+      "capture": "B",
+      "source_frame": 2,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T1_hero",
+      "action": "run",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 851
+    },
+    {
+      "case": "T1_hero",
+      "action": "run",
+      "capture": "B",
+      "source_frame": 2,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T1_hero",
+      "action": "attack",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 1125
+    },
+    {
+      "case": "T1_hero",
+      "action": "attack",
+      "capture": "B",
+      "source_frame": 3,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T1_hero",
+      "action": "hurt",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 946
+    },
+    {
+      "case": "T1_hero",
+      "action": "hurt",
+      "capture": "B",
+      "source_frame": 3,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T1_hero",
+      "action": "jump",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 1047
+    },
+    {
+      "case": "T1_hero",
+      "action": "jump",
+      "capture": "B",
+      "source_frame": 3,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T2_monster",
+      "action": "idle",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 853
+    },
+    {
+      "case": "T2_monster",
+      "action": "idle",
+      "capture": "B",
+      "source_frame": 2,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T2_monster",
+      "action": "walk",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 783
+    },
+    {
+      "case": "T2_monster",
+      "action": "walk",
+      "capture": "B",
+      "source_frame": 2,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T2_monster",
+      "action": "attack",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 856
+    },
+    {
+      "case": "T2_monster",
+      "action": "attack",
+      "capture": "B",
+      "source_frame": 3,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T2_monster",
+      "action": "hurt",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 843
+    },
+    {
+      "case": "T2_monster",
+      "action": "hurt",
+      "capture": "B",
+      "source_frame": 3,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    },
+    {
+      "case": "T2_monster",
+      "action": "faint",
+      "capture": "A",
+      "source_frame": 0,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0,
+      "temporal_changes_to_B": 1074
+    },
+    {
+      "case": "T2_monster",
+      "action": "faint",
+      "capture": "B",
+      "source_frame": 3,
+      "mae_rgb": 0.0,
+      "max_delta": 0,
+      "changed_pixels": 0
+    }
+  ]
+}

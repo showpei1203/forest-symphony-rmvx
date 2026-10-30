@@ -1,0 +1,212 @@
+{
+  "schema": "generate2dsprite.animation_clips.v2",
+  "frames": [
+    {
+      "name": "idle-0",
+      "file": "frames/idle_00.png"
+    },
+    {
+      "name": "idle-1",
+      "file": "frames/idle_01.png"
+    },
+    {
+      "name": "idle-2",
+      "file": "frames/idle_02.png"
+    },
+    {
+      "name": "idle-3",
+      "file": "frames/idle_03.png"
+    },
+    {
+      "name": "walk-0",
+      "file": "frames/walk_00.png"
+    },
+    {
+      "name": "walk-1",
+      "file": "frames/walk_01.png"
+    },
+    {
+      "name": "walk-2",
+      "file": "frames/walk_02.png"
+    },
+    {
+      "name": "walk-3",
+      "file": "frames/walk_03.png"
+    },
+    {
+      "name": "run-0",
+      "file": "frames/run_00.png"
+    },
+    {
+      "name": "run-1",
+      "file": "frames/run_01.png"
+    },
+    {
+      "name": "run-2",
+      "file": "frames/run_02.png"
+    },
+    {
+      "name": "run-3",
+      "file": "frames/run_03.png"
+    },
+    {
+      "name": "attack-0",
+      "file": "frames/attack_00.png"
+    },
+    {
+      "name": "attack-1",
+      "file": "frames/attack_01.png"
+    },
+    {
+      "name": "attack-2",
+      "file": "frames/attack_02.png"
+    },
+    {
+      "name": "attack-3",
+      "file": "frames/attack_03.png"
+    },
+    {
+      "name": "hurt-0",
+      "file": "frames/hurt_00.png"
+    },
+    {
+      "name": "hurt-1",
+      "file": "frames/hurt_01.png"
+    },
+    {
+      "name": "hurt-2",
+      "file": "frames/hurt_02.png"
+    },
+    {
+      "name": "hurt-3",
+      "file": "frames/hurt_03.png"
+    },
+    {
+      "name": "jump-0",
+      "file": "frames/jump_00.png"
+    },
+    {
+      "name": "jump-1",
+      "file": "frames/jump_01.png"
+    },
+    {
+      "name": "jump-2",
+      "file": "frames/jump_02.png"
+    },
+    {
+      "name": "jump-3",
+      "file": "frames/jump_03.png"
+    }
+  ],
+  "anchor_px": [
+    24,
+    61
+  ],
+  "clips": {
+    "idle": {
+      "frames": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ticks": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "loop_policy": "cycle",
+      "role": "player"
+    },
+    "walk": {
+      "frames": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "ticks": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "loop_policy": "cycle",
+      "role": "player"
+    },
+    "run": {
+      "frames": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "ticks": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "loop_policy": "cycle",
+      "role": "player"
+    },
+    "attack": {
+      "frames": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "ticks": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "loop_policy": "oneshot",
+      "role": "player"
+    },
+    "hurt": {
+      "frames": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "ticks": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "loop_policy": "oneshot",
+      "role": "player"
+    },
+    "jump": {
+      "frames": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "ticks": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "loop_policy": "oneshot",
+      "role": "player"
+    }
+  },
+  "states": {
+    "idle": "idle",
+    "moving": "walk",
+    "attacking": "attack"
+  },
+  "sampling": "nearest",
+  "pixel_art": true,
+  "art_source": "existing",
+  "placeholder": false
+}
