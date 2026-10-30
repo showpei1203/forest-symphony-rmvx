@@ -40,3 +40,17 @@ Status: **ADOPTED IN ISOLATED TOOL LAB; LOCAL CODE ART SMOKE PASS; IMAGE-TO-VIDE
 
 ## Handoff / next action
 Begin with A04 and A05 in the isolated lab; do not displace existing R17 Ground-first development. For maps, use ASF as an alternate candidate art/prop maker, not a replacement for R17 authority. Record inputs, scripts, command lines, output hashes, failure categories and human screenshots. If any gate fails, classify FAIL and revise only the isolated source artifacts. Tool adoption must not be confused with art acceptance.
+
+
+## 2026-10-30 Full functional trial (independent of initial install smoke)
+
+**Evidence**: https://github.com/showpei1203/forest-symphony-rmvx/blob/test/asf-functional-20261030/tools/research/asf-functional-20261030/README.md (four actual screenshots, source and QA notes; report and images verified through GitHub readback).
+
+Windows environment `E:\GameAssetToolLab_20261023\ASF_Test_20261030`. `forge_doctor.py` found no OpenAI/Gemini/xAI/ARK/fal API keys and no Codex/Grok CLI in remote Windows. Consequently this round proves OFFLINE `codeart2d` and downstream processing/export, **not** AI image or AI image-to-video generation. Never equate code-drawn test imagery with model-generated art.
+
+- Animated actor: `walker16x24.pixelspec.json` generated 3 forest/crimson/sky variants, 12 distinct frame names/variant, four walking directions; zero strict-QC failures, **WARN** `half_cycle_duplicates` walk_down/up/right (silhouette IoU 0.99–1.00). `generate2dsprite/export_engine.py` created Aseprite JSON and Godot SpriteFrames/Sprite3D outputs, 4 clips/12 frame names/1 atlas. Godot 4.7.2 actual editor import and headless project scene startup exited zero. Native **animation visual review pending**.
+- Map: `meadow-layout.json` made 640×400 simple code-drawn village (40×25 ×16px), 123 scene objects, 104 solid objects, 41 collision rectangles, 3 portals. Bundle validate PASS errors=0/warnings=0. Navigation **WARN**: 6/6 target reachability, 10 disconnected small walkable pockets (18 cells), external portal reciprocal links skipped. Exported Tiled TMJ (ground,props,collision,interactions, internal diff=0), Godot scene with 123 objects; Godot 4.7.2 editor import and headless scene start succeeded. This is NOT an artistic or FS Ground/PAR acceptance. Browser preview.html emitted, Playwright verification SKIPPED due package unavailable.
+- Video: a **synthetic non-AI** magenta-background MP4 produced with Pillow/FFmpeg from upstream walker frames. `video2dsprite.py process` decoded 16, chroma-keyed 16 and sampled 8 images, produced GIF; **WARN**: soft matte can remove near-key character colours. Real one-master multi-action AI video generation NOT RUN.
+- No sealed FS/PMD/LPC/CG files modified. Main development is unchanged. Full upstream pytest unavailable in current Python, not run.
+
+**Updated decision**: ASF is technically useful as a candidate animation packaging and Godot/Tiled export adapter; no grounds to use it as a shortcut to polished FS scene art. Before formal adoption run a model-backed master still with six actions, PMD visible anatomy difference, and high-detail Ground + complete PAR sharing an R17 canonical manifest, with engine capture and human art verification. A functional test is not FORMAL PASS.
