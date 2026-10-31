@@ -1,0 +1,31 @@
+{
+  "stage": "Stage12",
+  "scenes": {
+    "A_BLUE_COTTAGE": {
+      "gpu_source_pixel_exact": true,
+      "front_static_points_zero": 10,
+      "tree_core_single_tile": true,
+      "full_rgb_unique_colors": 148084,
+      "full_horizontal_abs_delta": 18.23
+    },
+    "B_OCHRE_GROVE": {
+      "gpu_source_pixel_exact": true,
+      "front_static_points_zero": 10,
+      "tree_core_single_tile": true,
+      "full_rgb_unique_colors": 119036,
+      "full_horizontal_abs_delta": 16.434
+    }
+  },
+  "source_sprite_count": 10,
+  "test_static_actor_points": 70,
+  "front_zero_count": 20,
+  "Godot_4_7_2_real_GPU": true,
+  "negative_par_shift_pixel_diff": 61519,
+  "art_visual": "CANDIDATE_BETTER_THAN_STAGE11_BUT_USER_GATE_NOT_PASSED",
+  "limitations": [
+    "Ground crops come from previously generated Style-first private source, no new ground original generation in this phase",
+    "2D static actor tests not original VX Game.exe",
+    "Commercial rights of some legacy source not independently cleared"
+  ],
+  "formal_seal": false
+}
