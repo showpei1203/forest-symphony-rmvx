@@ -1,0 +1,126 @@
+{
+  "purpose": "Verify actual A13 final RGBA output pixels, not only semantic JSON foot targets",
+  "tests": [
+    {
+      "leg": "front_near",
+      "frame": 0,
+      "target": [
+        43,
+        75
+      ],
+      "real_pixel_count": 24,
+      "matching": 24,
+      "ratio": 1.0
+    },
+    {
+      "leg": "front_near",
+      "frame": 1,
+      "target": [
+        43,
+        75
+      ],
+      "real_pixel_count": 24,
+      "matching": 24,
+      "ratio": 1.0
+    },
+    {
+      "leg": "front_near",
+      "frame": 2,
+      "target": [
+        43,
+        75
+      ],
+      "real_pixel_count": 24,
+      "matching": 24,
+      "ratio": 1.0
+    },
+    {
+      "leg": "front_near",
+      "frame": 4,
+      "target": [
+        35,
+        75
+      ],
+      "real_pixel_count": 24,
+      "matching": 24,
+      "ratio": 1.0
+    },
+    {
+      "leg": "front_near",
+      "frame": 5,
+      "target": [
+        35,
+        75
+      ],
+      "real_pixel_count": 24,
+      "matching": 24,
+      "ratio": 1.0
+    },
+    {
+      "leg": "front_near",
+      "frame": 7,
+      "target": [
+        43,
+        75
+      ],
+      "real_pixel_count": 24,
+      "matching": 24,
+      "ratio": 1.0
+    },
+    {
+      "leg": "back_near",
+      "frame": 0,
+      "target": [
+        67,
+        75
+      ],
+      "real_pixel_count": 17,
+      "matching": 17,
+      "ratio": 1.0
+    },
+    {
+      "leg": "back_near",
+      "frame": 1,
+      "target": [
+        67,
+        75
+      ],
+      "real_pixel_count": 17,
+      "matching": 17,
+      "ratio": 1.0
+    },
+    {
+      "leg": "back_near",
+      "frame": 2,
+      "target": [
+        67,
+        75
+      ],
+      "real_pixel_count": 17,
+      "matching": 17,
+      "ratio": 1.0
+    },
+    {
+      "leg": "back_near",
+      "frame": 6,
+      "target": [
+        67,
+        75
+      ],
+      "real_pixel_count": 17,
+      "matching": 17,
+      "ratio": 1.0
+    },
+    {
+      "leg": "back_near",
+      "frame": 7,
+      "target": [
+        67,
+        75
+      ],
+      "real_pixel_count": 17,
+      "matching": 17,
+      "ratio": 1.0
+    }
+  ]
+}
