@@ -1,0 +1,118 @@
+{
+  "stage": "A24",
+  "qa_geometry": "PASS",
+  "qa_unmodified_original_sha256": "PASS",
+  "qa_source_based": "PASS, all designs are pixel edits from exact A23 source",
+  "qa_visual": "VISUAL CANDIDATE, AWAITING USER, NOT FORMAL G7 PASS",
+  "qa_frame_animation": "NOT GENERATED: FS walk is a redressed native 3x4 existing animation; PMD is one edited idle reference only",
+  "qa_pmd_34_actions": "NOT UPDATED: A24 design changes must be propagated after user approves concept",
+  "qa_pmd_xml": "UNCHANGED IN A23, not modified A24",
+  "qa_skeleton_rotated_45": "NOT TESTED",
+  "qa_pixelLab": "ZERO CALLS; blocked until user approves",
+  "qa_quota_used": 0,
+  "source_hashes": {
+    "pmd": "af1657376947910a2378dcf0b10bb54452ca114eccfa470dbd1a54b7fee95806",
+    "fs": "df6abaa888dc4ffcaf5351daf26d678bace121e277f21b4651eb69884591a2a5"
+  },
+  "outputs": [
+    {
+      "file": "A24_FS_ACTOR01_AETHER_BATTLE_SOURCE_64.png",
+      "dim": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "sha256": "8baba465b2a7e23d5bca883a3bc9128e62503b616a0ab3df4dd3e2ce1d157703"
+    },
+    {
+      "file": "A24_FS_ACTOR01_AETHER_NATIVE_WALK_96x128.png",
+      "dim": [
+        96,
+        128
+      ],
+      "mode": "RGBA",
+      "sha256": "e66ef83c1bdc4ca0a6fdfc4f8d3f11b97095251194da70bbf8026837539eb259"
+    },
+    {
+      "file": "A24_FS_ACTOR01_EMBER_BATTLE_SOURCE_64.png",
+      "dim": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "sha256": "e2d828703f0af477abf04c98923442e60cbc7e923117f0d17ce5f4fc8f3ea606"
+    },
+    {
+      "file": "A24_FS_ACTOR01_EMBER_NATIVE_WALK_96x128.png",
+      "dim": [
+        96,
+        128
+      ],
+      "mode": "RGBA",
+      "sha256": "55945d9da58ac65f30e4b03520557f3a3f743ee8fb530cf6cc7a4c2831ec07bd"
+    },
+    {
+      "file": "A24_FS_FULL_3x4_STYLE_COMPARISON.png",
+      "dim": [
+        1110,
+        610
+      ],
+      "mode": "RGB",
+      "sha256": "85f6cda8919e1111604a553a7fdf7658e21c7f695417ff9f5749b24dd7d2b9fe"
+    },
+    {
+      "file": "A24_PMD0001_A_NATIVE_IDLE_32x40.png",
+      "dim": [
+        32,
+        40
+      ],
+      "mode": "RGBA",
+      "sha256": "c550ade2c993d699b1258e839d04187424a25cf6a42eb198556f952bef2bf596"
+    },
+    {
+      "file": "A24_PMD0001_B_NATIVE_IDLE_32x40.png",
+      "dim": [
+        32,
+        40
+      ],
+      "mode": "RGBA",
+      "sha256": "50784f5f6cf270b9a9d4519cdf80195d32f2878ece28a80b7957d363c2d47bc6"
+    },
+    {
+      "file": "A24_PMD0001_HORNED_LAVAFROG_B_64.png",
+      "dim": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "sha256": "4f9e7a14f4f7040cd2b3593ad76d80368e0b28313a1b7c581eb7871e4a49ef7c"
+    },
+    {
+      "file": "A24_PMD0001_VOLCANIC_TOAD_A_64.png",
+      "dim": [
+        64,
+        64
+      ],
+      "mode": "RGBA",
+      "sha256": "85d9c1242f8ca8f95c74e8fb7d78e9447afb36e55c4a74e813830748d4815948"
+    },
+    {
+      "file": "A24_SOURCE_INSPECTION.png",
+      "dim": [
+        900,
+        700
+      ],
+      "mode": "RGB",
+      "sha256": "b84cd076958b2f88d0f3166ad78771c06420e65814ee6f843d4f30e936c6338e"
+    },
+    {
+      "file": "A24_TWO_CHARACTERS_ART_APPROVAL_CONTACT.png",
+      "dim": [
+        1200,
+        790
+      ],
+      "mode": "RGB",
+      "sha256": "f74f3b19f394a170885d0b61e6eef60544872e7fd16d8eca3db1de1e43edab70"
+    }
+  ]
+}
