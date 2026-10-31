@@ -1,0 +1,49 @@
+{
+  "source": "derived from old Style-first independent Ground; no new AI source image",
+  "engine": "Godot 4.7.2 Compatibility, not VX",
+  "input_size": [
+    544,
+    576
+  ],
+  "render_size": [
+    544,
+    416
+  ],
+  "scenes": {
+    "A_BLUE_COTTAGE": {
+      "ground": 0,
+      "par": 0,
+      "full": 0
+    },
+    "B_OCHRE_GROVE": {
+      "ground": 0,
+      "par": 0,
+      "full": 0
+    }
+  },
+  "border_alpha": {
+    "A_BLUE_COTTAGE": 0,
+    "B_OCHRE_GROVE": 0
+  },
+  "contacts_single_tile": {
+    "A_BLUE_COTTAGE": true,
+    "B_OCHRE_GROVE": true
+  },
+  "actor_static_positions": 70,
+  "front_zero_positions": 20,
+  "front_errors": 0,
+  "negative_one_pixel_shift_diff": 61519,
+  "descriptive_color_gradient_not_quality_score": {
+    "STAGE14 B | HARD QUILT": {
+      "luma_hard_edges_gt50_percent": 6.432,
+      "rgb_unique": 55860
+    },
+    "STAGE15 | MIN-ERROR SEAMS": {
+      "luma_hard_edges_gt50_percent": 3.79,
+      "rgb_unique": 55371
+    }
+  },
+  "art_gate": "FAIL_PENDING_GROUND3_QUALITY",
+  "vx_gate": "NOT_RUN",
+  "formal_seal": false
+}
