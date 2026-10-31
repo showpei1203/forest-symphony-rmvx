@@ -1,0 +1,28 @@
+{
+  "stage": "A10_TRUE_AI_MASTER_TO_RIG_MOTION_TO_ASF_TO_GODOT",
+  "source_masters": {
+    "T1": "Original independently generated AI still; keyed/32-colour/64x80",
+    "T2": "Original independently generated AI still; keyed/32-colour/64x64"
+  },
+  "motion_method": "DETERMINISTIC_PIXEL_RIG_FROM_ONE_MASTER_NOT_I2V",
+  "input_stills": 2,
+  "source_motion_frames": 84,
+  "published_motion_frames": 82,
+  "ASF_clips": 11,
+  "ASF_strict_initial": "FAIL due to T1 attack near-duplicate [1,2] and T2 faint [6,7]",
+  "ASF_strict_after_repair": "PASS 0 WARNINGS; combined near-duplicates preserve clip total ticks",
+  "ASF_engine_outputs": [
+    "Aseprite JSON",
+    "Godot SpriteFrames",
+    "Godot Sprite3D"
+  ],
+  "real_GPU_engine": "Godot 4.7.2 AMD Radeon RX 6700 XT OpenGL",
+  "real_GPU_captures": 2,
+  "ROI_pixel_exact": 22,
+  "ROI_pixel_total": 22,
+  "AI_video_route": "NOT CONFIGURED_NOT_TESTED",
+  "model_generated_attack_pose": "A separate prompt-only test image exists in conversation; not used in production sprite frames, not identity-locked",
+  "formal_visual_gate": "FAIL/PENDING: T1 attack is not clearly a sword swing; leg animation is subtle; T2 faint physically rotates but may not meet intended style",
+  "official_FS_asset_seal": false,
+  "sealed_game_sources_touched": false
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "case": "T1_forest_scout",
+    "clip": "attack",
+    "before": 8,
+    "after": 7,
+    "original_ticks": 48,
+    "new_ticks": 48,
+    "removed_clip_position": 2
+  },
+  {
+    "case": "T2_moss_antler",
+    "clip": "faint",
+    "before": 8,
+    "after": 7,
+    "original_ticks": 48,
+    "new_ticks": 48,
+    "removed_clip_position": 7
+  }
+]
