@@ -1,0 +1,18 @@
+{
+  "stage": "A23",
+  "archive": "FS_STAGE16_A23_SCENE_MATERIAL_SPLIT_PRIVATE_20261101.zip",
+  "bytes": 898773,
+  "zip_sha256": "023bb07a38bbce4afe9185771cd42187ed11cee3533d74d7e63129e46108a884",
+  "archive_entries": 45,
+  "hashes_match_after_unpack": 44,
+  "cold_rebuild_scripts": 4,
+  "all_cold_rebuilt_png_sha_match": true,
+  "CRC": "PASS",
+  "pixelLab_paid_POST_in_A23": 0,
+  "account_balance_last_verified_A22": 1970,
+  "art_full_ground3": "NOT_FORMALLY_ACCEPTED",
+  "game_544x416": "NOT_RUN",
+  "Godot": "NOT_RUN",
+  "VX": "NOT_RUN",
+  "Formal_Seal": "NO"
+}
