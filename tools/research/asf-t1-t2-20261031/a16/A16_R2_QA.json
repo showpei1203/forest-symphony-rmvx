@@ -1,0 +1,46 @@
+{
+  "T1_DRAW": {
+    "width": 96,
+    "height": 112,
+    "changed_rgba_pixels": 56,
+    "alpha_changes": 19,
+    "protected_head_drift": 0,
+    "outside_anatomy_roi_changes": 0,
+    "sha256": "a8f9b5f2337308d6a765a2cd9c220def2c16aaaeef227422dc87401a2521c1de",
+    "G7_ART": "PENDING HUMAN VISUAL",
+    "G5_G6_G8": "NOT RUN"
+  },
+  "T1_STRIKE": {
+    "width": 96,
+    "height": 112,
+    "changed_rgba_pixels": 67,
+    "alpha_changes": 9,
+    "protected_head_drift": 0,
+    "outside_anatomy_roi_changes": 0,
+    "sha256": "797ef7da60e8d53e5815da9e11805bd236bed779cb11ce5174152e2f3246a787",
+    "G7_ART": "PENDING HUMAN VISUAL",
+    "G5_G6_G8": "NOT RUN"
+  },
+  "T2_FLIGHT": {
+    "width": 96,
+    "height": 96,
+    "changed_rgba_pixels": 156,
+    "alpha_changes": 82,
+    "protected_head_drift": 0,
+    "outside_anatomy_roi_changes": 0,
+    "sha256": "ceb3fabfec71e48873fe6261cf00ecc9ab86a8722bfdc4cf13e74552a244f056",
+    "G7_ART": "PENDING HUMAN VISUAL",
+    "G5_G6_G8": "NOT RUN"
+  },
+  "T2_LANDING": {
+    "width": 96,
+    "height": 96,
+    "changed_rgba_pixels": 201,
+    "alpha_changes": 73,
+    "protected_head_drift": 0,
+    "outside_anatomy_roi_changes": 0,
+    "sha256": "fe110d63f66d9d6caa8f1b77629dc924af45a88080191e998e6c7a51bd78588b",
+    "G7_ART": "PENDING HUMAN VISUAL",
+    "G5_G6_G8": "NOT RUN"
+  }
+}
