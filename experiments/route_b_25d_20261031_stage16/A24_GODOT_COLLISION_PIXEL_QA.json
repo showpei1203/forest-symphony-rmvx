@@ -1,0 +1,40 @@
+{
+  "stage": "A24",
+  "date": "2026-11-01",
+  "ground_px": [
+    544,
+    416
+  ],
+  "par_px": [
+    544,
+    416
+  ],
+  "original_ground3_texture": "AUTHENTIC_PRIVATE_SOURCE_RGB_PIXELS",
+  "godot": "ACTUAL_GODOT_4_7_2_GL_COMPATIBILITY_OPENGL_RX6700XT",
+  "actual_engine_renders": 4,
+  "native_screenshots_SHA256": {
+    "A24_GODOT_ACTOR_BEHIND_LAMP.png": "0a60212757c7643cd27c6065b52491d982c6c3a128bcc1d9f2dddf19c0b2be79",
+    "A24_GODOT_ACTOR_IN_FRONT_OF_LAMP.png": "4a354cddc6637f44f641a98bb4956b2d5471c4c9454d4d9c9c2ca929debedda0",
+    "A24_GODOT_ACTOR_ON_ROAD.png": "c17586bc073317bbc60e6f38d4c7d7f088fad07acaac90bcded95c9aa2b3b0ed",
+    "A24_GODOT_NATIVE_SCENE_NO_ACTOR.png": "8c5b50e945eb5db185e91643897e9a58a66256602db379af9841f6300c4d636d"
+  },
+  "PIL_composite_vs_Godot_diff_pixels": 641,
+  "PIL_composite_vs_Godot_mean_abs_RGB": 0.0010266,
+  "dynamic_y_sort_behind_front_actor_changed_pixels": {
+    "behind": 247,
+    "front": 398,
+    "road": 398
+  },
+  "ground_default_passable": true,
+  "par_blocked_tiles": 34,
+  "walkable_tile_count": 187,
+  "actor_reachable_cells": 187,
+  "top_to_bottom_route_through_open_grid": "PASS",
+  "forest_complete_tree_occlusion": "NOT_TESTED",
+  "PAR_occlusion_dynamic_lamp": "VISUAL_VERIFIED_TWO_CASES",
+  "native_VX": "NOT_RUN",
+  "FS_full_Ground3_art": "FAIL_NOT_USER_APPROVED",
+  "PixelLab_full_544_GENERATION": "NOT_RUN",
+  "new_api_generations": 0,
+  "Formal_Seal": "NO"
+}
