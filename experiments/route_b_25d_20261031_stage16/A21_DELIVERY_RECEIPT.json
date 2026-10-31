@@ -1,0 +1,15 @@
+{
+  "stage": "A21",
+  "archive": "FS_STAGE16_A21_PURE_FS_STYLE_REFERENCE_PRIVATE_20261101.zip",
+  "archive_bytes": 2505386,
+  "archive_sha256": "54be3d868bebc1258555ba89803db491811bb0f14875eba6db33fd3c25264bda",
+  "source_entries": 20,
+  "archive_entries": 21,
+  "source_sha256_verified": 20,
+  "crc": "PASS",
+  "cold_reference_source_pixel_test": "PASS",
+  "recorded_paid_posts": 0,
+  "actual_A21_model_generation": "NOT_RUN",
+  "full_Ground3_art": "NOT_TESTED",
+  "formal_seal": "NO"
+}
