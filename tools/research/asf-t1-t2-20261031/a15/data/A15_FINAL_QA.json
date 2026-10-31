@@ -1,0 +1,107 @@
+{
+  "status": "A15_REAL_PIXEL_ART_REPAIR_TECH_PASS_ART_REVIEW_PENDING",
+  "date": "2026-10-31",
+  "lineage": {
+    "T1": "A10 single forest scout Master plus procedural sword already introduced A13; no generative video",
+    "T2": "A10 single moss-antler Master; source-pixel leg masks; limited dust effects on collision frames"
+  },
+  "changes": {
+    "T1": {
+      "exact_source_hilt_pixels_replaced": 24,
+      "frames_modified": [
+        "attack_02.png",
+        "attack_03.png",
+        "attack_04.png",
+        "attack_05.png",
+        "attack_06.png",
+        "attack_07.png"
+      ],
+      "removed_effect": "Broad cyan sweep across actor face rejected; final has no sweep arc"
+    },
+    "T2": {
+      "new_leg_mask": "organic source-color filtered lower leg regions excluding light belly duplicate",
+      "frame_changes": [
+        "attack_01.png",
+        "attack_02.png",
+        "attack_03.png",
+        "attack_04.png",
+        "attack_05.png",
+        "attack_06.png"
+      ],
+      "head_antlers_matched_source_pixels": 10160,
+      "head_antlers_mismatches": 0,
+      "contact_dust_frames": [
+        4,
+        5
+      ]
+    }
+  },
+  "actual_tools": {
+    "ASF_strict": {
+      "T1": {
+        "clips": 6,
+        "input_frames": 46,
+        "warnings": 0
+      },
+      "T2": {
+        "clips": 5,
+        "input_frames": 38,
+        "export_frames": 37,
+        "warnings": 0
+      },
+      "all_targets": [
+        "aseprite-json",
+        "godot-spriteframes",
+        "godot-sprite3d"
+      ]
+    },
+    "Godot": {
+      "version": "4.7.2 stable",
+      "renderer": "RX 6700 XT OpenGL3.3",
+      "clips_played": 11,
+      "captures": 2,
+      "matched_source_ROIs": 22,
+      "exact_rgb": 22
+    }
+  },
+  "scope": {
+    "G1_master": "A10 pass prior",
+    "G2_source_identity": "T2 head/antlers pixel-exact; T1 original actor source preserved except targeted hilt pixels",
+    "G3_procedural_keyposes": "tech candidates",
+    "G3_image_to_video": "NOT_RUN",
+    "G4_transparency": "PASS",
+    "G5_ASF": "PASS",
+    "G6_Godot": "PASS",
+    "G7_art": "PARTIAL_IMPROVEMENT_NOT_FORMALLY_ACCEPTED",
+    "G8_native_VX_new_art": "NOT_RUN",
+    "FS_SEALED_unchanged": true
+  },
+  "known_faults": [
+    "T1 shoulder wrist motion still stiff; hand-on-hilt shape requires art retouch",
+    "T2 middle frames still limited authentic four-leg biomechanical weight transfer",
+    "Tiny impact dust embellishment does not prove correct attack anatomy"
+  ],
+  "rejections": [
+    "ImageGen unexpectedly rendered comprehensive infographic, not clean single sprite keyframe; not used",
+    "A15 R2 long slash arc crossed near face; rejected",
+    "Unmatched source-pixel masks are fail-closed and cannot be force-painted"
+  ],
+  "sealed_scripts_hashes": {
+    "K4": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa",
+    "N5": "3271f5653a7f53cb55c0762d3b047e2300fbb6d6547257bef1fb2328be2b3ea9"
+  },
+  "previews": {
+    "T1_forest_scout": {
+      "path": "T1_forest_scout_A15_attack_preview.gif",
+      "frames": 8,
+      "width": 384,
+      "height": 448
+    },
+    "T2_moss_antler": {
+      "path": "T2_moss_antler_A15_attack_preview.gif",
+      "frames": 8,
+      "width": 384,
+      "height": 384
+    }
+  }
+}
