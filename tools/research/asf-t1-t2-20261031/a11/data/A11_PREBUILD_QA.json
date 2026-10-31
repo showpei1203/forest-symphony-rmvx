@@ -1,0 +1,29 @@
+{
+  "T1_forest_scout": {
+    "input_frames": 8,
+    "input_pixelsha_all_match": true,
+    "manifest_source_count": 46,
+    "manifest_playback_attack": 8,
+    "all_other_actions_preserved": [
+      "hurt",
+      "idle",
+      "jump",
+      "run",
+      "walk"
+    ],
+    "source_reference": "E:\\GameAssetToolLab_20261023\\ASF_Test_20261031\\A10_ONE_MASTER_RIG\\T1_forest_scout\\rig\\clips_nodup.json"
+  },
+  "T2_moss_antler": {
+    "input_frames": 8,
+    "input_pixelsha_all_match": true,
+    "manifest_source_count": 38,
+    "manifest_playback_attack": 8,
+    "all_other_actions_preserved": [
+      "faint",
+      "hurt",
+      "idle",
+      "walk"
+    ],
+    "source_reference": "E:\\GameAssetToolLab_20261023\\ASF_Test_20261031\\A10_ONE_MASTER_RIG\\T2_moss_antler\\rig\\clips_nodup.json"
+  }
+}

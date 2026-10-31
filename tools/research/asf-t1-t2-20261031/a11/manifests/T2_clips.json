@@ -1,0 +1,286 @@
+{
+  "schema": "generate2dsprite.animation_clips.v2",
+  "frames": [
+    {
+      "name": "idle_00",
+      "file": "frames/idle_00.png"
+    },
+    {
+      "name": "idle_01",
+      "file": "frames/idle_01.png"
+    },
+    {
+      "name": "idle_02",
+      "file": "frames/idle_02.png"
+    },
+    {
+      "name": "idle_03",
+      "file": "frames/idle_03.png"
+    },
+    {
+      "name": "idle_04",
+      "file": "frames/idle_04.png"
+    },
+    {
+      "name": "idle_05",
+      "file": "frames/idle_05.png"
+    },
+    {
+      "name": "idle_06",
+      "file": "frames/idle_06.png"
+    },
+    {
+      "name": "idle_07",
+      "file": "frames/idle_07.png"
+    },
+    {
+      "name": "walk_00",
+      "file": "frames/walk_00.png"
+    },
+    {
+      "name": "walk_01",
+      "file": "frames/walk_01.png"
+    },
+    {
+      "name": "walk_02",
+      "file": "frames/walk_02.png"
+    },
+    {
+      "name": "walk_03",
+      "file": "frames/walk_03.png"
+    },
+    {
+      "name": "walk_04",
+      "file": "frames/walk_04.png"
+    },
+    {
+      "name": "walk_05",
+      "file": "frames/walk_05.png"
+    },
+    {
+      "name": "walk_06",
+      "file": "frames/walk_06.png"
+    },
+    {
+      "name": "walk_07",
+      "file": "frames/walk_07.png"
+    },
+    {
+      "name": "attack_00",
+      "file": "frames/attack_00.png"
+    },
+    {
+      "name": "attack_01",
+      "file": "frames/attack_01.png"
+    },
+    {
+      "name": "attack_02",
+      "file": "frames/attack_02.png"
+    },
+    {
+      "name": "attack_03",
+      "file": "frames/attack_03.png"
+    },
+    {
+      "name": "attack_04",
+      "file": "frames/attack_04.png"
+    },
+    {
+      "name": "attack_05",
+      "file": "frames/attack_05.png"
+    },
+    {
+      "name": "attack_06",
+      "file": "frames/attack_06.png"
+    },
+    {
+      "name": "attack_07",
+      "file": "frames/attack_07.png"
+    },
+    {
+      "name": "hurt_00",
+      "file": "frames/hurt_00.png"
+    },
+    {
+      "name": "hurt_01",
+      "file": "frames/hurt_01.png"
+    },
+    {
+      "name": "hurt_02",
+      "file": "frames/hurt_02.png"
+    },
+    {
+      "name": "hurt_03",
+      "file": "frames/hurt_03.png"
+    },
+    {
+      "name": "hurt_04",
+      "file": "frames/hurt_04.png"
+    },
+    {
+      "name": "hurt_05",
+      "file": "frames/hurt_05.png"
+    },
+    {
+      "name": "faint_00",
+      "file": "frames/faint_00.png"
+    },
+    {
+      "name": "faint_01",
+      "file": "frames/faint_01.png"
+    },
+    {
+      "name": "faint_02",
+      "file": "frames/faint_02.png"
+    },
+    {
+      "name": "faint_03",
+      "file": "frames/faint_03.png"
+    },
+    {
+      "name": "faint_04",
+      "file": "frames/faint_04.png"
+    },
+    {
+      "name": "faint_05",
+      "file": "frames/faint_05.png"
+    },
+    {
+      "name": "faint_06",
+      "file": "frames/faint_06.png"
+    },
+    {
+      "name": "faint_07",
+      "file": "frames/faint_07.png"
+    }
+  ],
+  "anchor_px": [
+    48,
+    88
+  ],
+  "clips": {
+    "idle": {
+      "frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "ticks": [
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "loop_policy": "cycle",
+      "role": "enemy"
+    },
+    "walk": {
+      "frames": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ticks": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "loop_policy": "cycle",
+      "role": "enemy"
+    },
+    "attack": {
+      "frames": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "ticks": [
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "loop_policy": "oneshot",
+      "role": "enemy"
+    },
+    "hurt": {
+      "frames": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "ticks": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "loop_policy": "oneshot",
+      "role": "enemy"
+    },
+    "faint": {
+      "frames": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "ticks": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        12
+      ],
+      "loop_policy": "oneshot",
+      "role": "enemy"
+    }
+  },
+  "states": {
+    "idle": "idle",
+    "moving": "walk",
+    "attacking": "attack"
+  },
+  "sampling": "nearest",
+  "pixel_art": true,
+  "art_source": "existing",
+  "placeholder": false
+}

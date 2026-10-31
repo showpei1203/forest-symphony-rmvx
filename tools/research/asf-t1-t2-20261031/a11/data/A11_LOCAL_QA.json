@@ -1,0 +1,52 @@
+{
+  "T1_forest_scout": {
+    "frame_count": 8,
+    "size": [
+      96,
+      112
+    ],
+    "unique_frame_sha256": 8,
+    "mean_changed_rgba_pixels_A11": 1561.0,
+    "mean_changed_rgba_pixels_A10": 1082.75,
+    "new_vs_prior_pose_diff_pixels": [
+      1374,
+      1713,
+      1667,
+      1743,
+      1842,
+      1919,
+      1638,
+      322
+    ],
+    "alpha_binary": true,
+    "frame_border_transparency": true,
+    "source_lineage": "T1: single master body plus independently generated sword accessory",
+    "human_visual": "T1 clear visible sword arc, limb motion still stiff: CANDIDATE / NEEDS HUMAN GATE",
+    "all_nonblank": true
+  },
+  "T2_moss_antler": {
+    "frame_count": 8,
+    "size": [
+      96,
+      96
+    ],
+    "unique_frame_sha256": 7,
+    "mean_changed_rgba_pixels_A11": 1547.88,
+    "mean_changed_rgba_pixels_A10": 1277.88,
+    "new_vs_prior_pose_diff_pixels": [
+      0,
+      1537,
+      1696,
+      1940,
+      2148,
+      2162,
+      2100,
+      0
+    ],
+    "alpha_binary": true,
+    "frame_border_transparency": true,
+    "source_lineage": "T2: single master only, rigid rotation/translation/squash",
+    "human_visual": "T2 antlers no floating fragments, attack still a stiff charge: CANDIDATE / NEEDS HUMAN GATE",
+    "all_nonblank": true
+  }
+}

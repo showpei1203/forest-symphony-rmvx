@@ -1,0 +1,62 @@
+{
+  "test": "A11 selective upgrade of 2 attack animations, 9 remaining action clips unchanged from A10",
+  "status": "ASF_GODOT_TECH_PASS_ART_PENDING_I2V_NOT_RUN",
+  "source_lineage": {
+    "T1": "One A10 actor master body; extra independent AI-generated sword accessory from earlier attack reference",
+    "T2": "One A10 moss-antler creature master only; coherent full-body lunge/tilt; segmented head test discarded due floating fragments"
+  },
+  "rig": {
+    "T1": "manual right arm alpha mask, shoulder pivot rotation, separate sword around inferred wrist; not model-synthesized pose",
+    "T2": "rigid coherent lunge, no independent antlers to avoid detached source-pixel fragments"
+  },
+  "cases": {
+    "T1_forest_scout": {
+      "clips": 6,
+      "source_frames": 46,
+      "attack_playback_frames": 8,
+      "exported_frames": null,
+      "atlas_pages": null,
+      "strict_warnings": 0,
+      "original_master_sha256": "43cf8d9b9562c8de63cccf224774c2e3f318b1f4ed4046151fd52cd001e84f72",
+      "a10_original_master_untouched": true
+    },
+    "T2_moss_antler": {
+      "clips": 5,
+      "source_frames": 38,
+      "attack_playback_frames": 8,
+      "exported_frames": null,
+      "atlas_pages": null,
+      "strict_warnings": 0,
+      "original_master_sha256": "74230347769421cface62e97ddaa146cc657177a5fa9c539f3961f50ce6c31bc",
+      "a10_original_master_untouched": true
+    }
+  },
+  "native_Godot": {
+    "engine": "4.7.2 OpenGL RX6700XT",
+    "clips": 11,
+    "captures": 2,
+    "matched_source_ROIs": 22,
+    "exact_RGB_pairs": 22
+  },
+  "negative": {
+    "test": "delete original T1 attack_03.png then --strict",
+    "exit_code": 1,
+    "published_directory": false,
+    "pass": true
+  },
+  "constraints": {
+    "human_art_gate_F": "PENDING",
+    "Full_I2V_from_master": "NOT_RUN",
+    "VX_new_assets": "NOT_RUN",
+    "sealed_FS_R17_LPC_PMD_unchanged": true
+  },
+  "known_visual_faults": [
+    "T1 arm/hand remains stiff; drawn scabbard is still visible while sword equipped in hand",
+    "T2 is coherent charge but lacks articulated paw cycle"
+  ],
+  "qa_categories": [
+    "A11_T2_HEAD_ROTATION_FLOATING_PIXELS_FAIL_DISCARDED",
+    "A11_T1_SWORD_INDEPENDENT_ACCESSORY_REQUIRED",
+    "A11_NO_EXACT_MATCH_OF_BATTLE_SCENE_YET"
+  ]
+}

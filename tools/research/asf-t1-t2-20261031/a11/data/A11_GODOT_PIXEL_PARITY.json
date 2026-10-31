@@ -1,0 +1,184 @@
+{
+  "status": "TECH_PASS",
+  "samples": 22,
+  "exact_pixels": 22,
+  "source": "A11 layered attack source frames vs real Godot GPU screenshot, 1x",
+  "details": [
+    {
+      "case": "T1",
+      "action": "idle",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 0,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "walk",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "run",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "attack",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "hurt",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "jump",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "idle",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 0,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "walk",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "attack",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "hurt",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "faint",
+      "capture": "res://A11_NATIVE_GPU_A.png",
+      "frame": 1,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "idle",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 2,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "walk",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 4,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "run",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 4,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "attack",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 4,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "hurt",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 5,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T1",
+      "action": "jump",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 5,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "idle",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 2,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "walk",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 4,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "attack",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 4,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "hurt",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 5,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    },
+    {
+      "case": "T2",
+      "action": "faint",
+      "capture": "res://A11_NATIVE_GPU_B.png",
+      "frame": 5,
+      "max_RGB_delta": 0,
+      "different_pixels": 0
+    }
+  ]
+}
