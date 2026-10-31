@@ -1,0 +1,25 @@
+{
+  "stage": "13",
+  "author": "deterministic new procedural Ground ONLY, not generative image model",
+  "source": "author_stage13_ground.py",
+  "seed": 130042,
+  "dimensions": [
+    544,
+    576
+  ],
+  "classes": [
+    "grass",
+    "walkable_earthen_path",
+    "ground_level_flowers",
+    "ground_level_weeds",
+    "embedded_pebbles"
+  ],
+  "forbidden_high_objects_zero_by_authoring": true,
+  "original_image_copied": false,
+  "path_pct": 15.78,
+  "path_count": 49444,
+  "walkable_pct": 100.0,
+  "source_sha256": "8d3d13a67844bad457476682db5861c93dc043c9161ae03a0b8d869fa7ad7689",
+  "style_gate": "NOT_APPROVED",
+  "note": "New Ground is algorithmic art used to validate generation-from-zero. Not a new AI-painted high-fidelity ground3 equivalent."
+}
