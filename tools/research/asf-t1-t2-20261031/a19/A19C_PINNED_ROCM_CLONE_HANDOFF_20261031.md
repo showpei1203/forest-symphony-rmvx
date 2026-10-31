@@ -1,0 +1,9 @@
+# A19C isolated ROCm clone and GPU dispatch test (2026-10-31)
+
+User A19B results: Python 3.12.10, torch 2.9.1+rocm7.2.1, HIP 7.2.53211. Torch import succeeded, checkpoint stalled at CUDA_HIP_CHECK_BEGIN, no GPU visibility result, real matmul NOT PASSED. Child exit code is 0, so A19B's NATIVE_CRASH diagnosis is unconfirmed. Classify as GPU runtime initialization incomplete. Analogous RDNA2/torch 2.9.1 crashes documented in ComfyUI #14931 and desktop #1745.
+
+Only RX6700XT-targeted community reference with directly matching hardware is eviscerations/comfyui-rinsei. Author tested Windows10 22H2 / Python3.12.10 / torch 2.10.0+rocm7.14.0a20260603 / gfx103X ROCm wheels. Driver differs from user's; success not guaranteed.
+
+Prepared local downloadable ZIP: A19C_RX6700XT_PINNED_CLONE_GPU_TEST_20261031.zip, 7 files, 9223 bytes, CRC PASS, SHA256 0917486fb83eab0a973c44829d2dfb95b8bf6a7b1b32add3439e02db8b705aa6. Original Portable is never modified. Requires typed CLONE_AND_INSTALL to create a brand-new clone under E:\GameAssetToolLab_20261023\A19_COMFYUI_GPU_PILOT\A19C_RINSEI_CANDIDATE, install exact pinned ROCm versions only within cloned Python, remove cloned comfy_kitchen and retain comfy-aimdo, then execute a genuine GPU 64x64 matmul. No GPU drivers, system Python, global PATH, game source or model changes. This downloads large experimental packages and must be explicitly authorized by the user.
+
+Offline validation: Python syntax PASS, CPU rejection branch PASS, mocked success and exception branches PASS, package integrity PASS; Windows PowerShell and actual GPU inference NOT RUN. Requires A19C_RESULT.json and A19C_GPU_CHILD_PROGRESS.json from real Windows run; G7 ART NOT TESTED. If pinned clone fails, STOP repeating Windows ROCm version installs and evaluate alternative backend.
