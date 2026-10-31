@@ -1,0 +1,30 @@
+{
+  "artifact": "stage15 independent ground from Stage12 private source texture, original road geometry",
+  "source_type": "DERIVED_FROM_USER_PRIVATE_2D_SOURCE_NOT_NEW_AI_IMAGE",
+  "source_sha256": "735fea2aa38cdb73c07cd3ffa7382662d256c8f6f3aec0d27b6343b22f5a2020",
+  "output_sha256": "de68613e6762b80a55081a736387e2d7fbd430c2b57069237272f2f5ab5ead4c",
+  "source_size": [
+    544,
+    576
+  ],
+  "patch_size": 80,
+  "stride": 56,
+  "overlap": 24,
+  "quilt": "min-error dynamic-programmed left/top overlap cuts; candidate selection balances color seam and donor repetition",
+  "donor_candidates": {
+    "grass": 1028,
+    "earth": 84
+  },
+  "placements": {
+    "grass": 110,
+    "earth": 110
+  },
+  "path_pct": 15.972,
+  "visual": "RESEARCH CANDIDATE - repetitive object-free texture under inspection",
+  "high_objects": 0,
+  "tree_trunks": 0,
+  "houses": 0,
+  "full_scene_reverse_crops": 0,
+  "formal_seal": false,
+  "license": "Private R&D only"
+}
