@@ -1,0 +1,70 @@
+{
+  "stage": "A14_OCCLUSION_RIG_R4",
+  "status": "TECH_PASS_ART_FAIL_PENDING",
+  "improvements": {
+    "T2_source_master_rest_pose_bytes_exact": [
+      0,
+      7
+    ],
+    "T2_non_attack_frames_unchanged": true,
+    "T2_near_contact_ROIs_measured": 11,
+    "T2_contact_source_rgb_pixels_matched": 229,
+    "T2_contact_source_rgb_pixels_tested": 229,
+    "T1_scabbard_replacement_attempt": "FAIL_CLOSED, 0 matching source pixels, no T1 image modifications",
+    "frame_differences_to_A13": {
+      "T1_forest_scout": [],
+      "T2_moss_antler": [
+        "attack_00.png",
+        "attack_07.png"
+      ]
+    }
+  },
+  "exports": {
+    "T1_forest_scout": {
+      "export_formats": [
+        "aseprite-json",
+        "godot-spriteframes",
+        "godot-sprite3d"
+      ],
+      "actions": 6,
+      "source_frames": 46
+    },
+    "T2_moss_antler": {
+      "export_formats": [
+        "aseprite-json",
+        "godot-spriteframes",
+        "godot-sprite3d"
+      ],
+      "actions": 5,
+      "source_frames": 38
+    }
+  },
+  "godot": {
+    "engine": "4.7.2 Radeon RX 6700 XT OpenGL 3.3",
+    "live_animated_clips": 11,
+    "captured_screenshots": 2,
+    "matched_source_roi": 22,
+    "exact_rgb_count": 22
+  },
+  "strict_afs_warnings": 0,
+  "gate": {
+    "G1_single_master": "Prior A10 pass",
+    "G2_pixel_identity": "T2 two resting frames exact original master; other poses not human-approved",
+    "G3_procedural_motion": "CANDIDATE, no I2V",
+    "G4_alpha": "PASS",
+    "G5_real_ASF": "PASS",
+    "G6_real_Godot": "PASS",
+    "G7_visual_art": "FAIL/PENDING",
+    "G8_new_VX": "NOT_RUN"
+  },
+  "known_failures": [
+    "T1 scabbard source region guess did not match actual visible weapon: 0 safe replacements, no destructive edit",
+    "T2 generated anatomy still has seams during action, though resting pose is original master",
+    "2 near paws' pixel match does not prove global anatomical correctness or foot velocity",
+    "No model-generated I2V actions, only programmed rigid transformations"
+  ],
+  "source_sealed_scripts_unchanged": {
+    "K4": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa",
+    "N5": "3271f5653a7f53cb55c0762d3b047e2300fbb6d6547257bef1fb2328be2b3ea9"
+  }
+}
