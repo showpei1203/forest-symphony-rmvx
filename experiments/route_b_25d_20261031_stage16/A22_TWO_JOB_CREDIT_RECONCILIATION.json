@@ -1,0 +1,32 @@
+{
+  "stage": "A22 cross-run reconciliation",
+  "A20_reference": "4 authentic variants, seed 161902, old reference crops",
+  "A22_other_trial": {
+    "job_id": "d1d7e89d-571f-41a2-ac79-286171edced2",
+    "seed": 161902,
+    "balance_before": 1980,
+    "balance_after": 1970,
+    "reported_usage": 10,
+    "official_inference": "same prompt and style description as A20 with cleaner A21 reference files"
+  },
+  "A22_this_trial": {
+    "job_id": "5d982789-69a5-41aa-ab7c-1d6c45b26712",
+    "seed": 162101,
+    "balance_before": 1980.0,
+    "balance_after": 1960.0,
+    "reported_usage": 10.0,
+    "inference": "used A21 spec changed both reference set and description+seed"
+  },
+  "confirmed_unique_paid_jobs": 2,
+  "combined_reported_generations_used": 20,
+  "observed_subscription_balance_net_change_from_1980_to_1960": 20,
+  "conclusion": "The 10-generation account delta mismatch in one overlapping read can be explained by a second separate accepted generation job; cannot establish exact ledger timing without invoice/account event logs.",
+  "L1_neighbor_means": {
+    "A20": 13.467,
+    "A22_other_controlled": 9.103,
+    "A22_this_spec": 6.157
+  },
+  "art_comparison": "Both cleaner A21 reference trials less visually rich than A20. The A22 other controlled trial preserves more road forms than A22 changed-seed trial. No ground3 full art pass.",
+  "resolution": "No additional paid calls; maintain separate job/seed/input lineage for these distinct A22 sources.",
+  "formal_seal": "NO"
+}
