@@ -1,0 +1,759 @@
+{
+  "revision": "A15_R1_ANATOMICAL_PART_SOURCE",
+  "T1": {
+    "source_hilt_pixels_exact": {},
+    "removal_candidates": [
+      {
+        "frame": 2,
+        "src": [
+          40,
+          63
+        ],
+        "dst": [
+          55,
+          79
+        ],
+        "old": [
+          219,
+          149,
+          53,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 2,
+        "src": [
+          40,
+          64
+        ],
+        "dst": [
+          55,
+          80
+        ],
+        "old": [
+          151,
+          131,
+          58,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 2,
+        "src": [
+          41,
+          63
+        ],
+        "dst": [
+          56,
+          79
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 2,
+        "src": [
+          41,
+          64
+        ],
+        "dst": [
+          56,
+          80
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 3,
+        "src": [
+          40,
+          63
+        ],
+        "dst": [
+          56,
+          79
+        ],
+        "old": [
+          219,
+          149,
+          53,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 3,
+        "src": [
+          40,
+          64
+        ],
+        "dst": [
+          56,
+          80
+        ],
+        "old": [
+          151,
+          131,
+          58,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 3,
+        "src": [
+          41,
+          63
+        ],
+        "dst": [
+          57,
+          79
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 3,
+        "src": [
+          41,
+          64
+        ],
+        "dst": [
+          57,
+          80
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 4,
+        "src": [
+          40,
+          63
+        ],
+        "dst": [
+          57,
+          79
+        ],
+        "old": [
+          219,
+          149,
+          53,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 4,
+        "src": [
+          40,
+          64
+        ],
+        "dst": [
+          57,
+          80
+        ],
+        "old": [
+          151,
+          131,
+          58,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 4,
+        "src": [
+          41,
+          63
+        ],
+        "dst": [
+          58,
+          79
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 4,
+        "src": [
+          41,
+          64
+        ],
+        "dst": [
+          58,
+          80
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 5,
+        "src": [
+          40,
+          63
+        ],
+        "dst": [
+          57,
+          79
+        ],
+        "old": [
+          219,
+          149,
+          53,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 5,
+        "src": [
+          40,
+          64
+        ],
+        "dst": [
+          57,
+          80
+        ],
+        "old": [
+          151,
+          131,
+          58,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 5,
+        "src": [
+          41,
+          63
+        ],
+        "dst": [
+          58,
+          79
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 5,
+        "src": [
+          41,
+          64
+        ],
+        "dst": [
+          58,
+          80
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 6,
+        "src": [
+          40,
+          63
+        ],
+        "dst": [
+          56,
+          79
+        ],
+        "old": [
+          219,
+          149,
+          53,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 6,
+        "src": [
+          40,
+          64
+        ],
+        "dst": [
+          56,
+          80
+        ],
+        "old": [
+          151,
+          131,
+          58,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 6,
+        "src": [
+          41,
+          63
+        ],
+        "dst": [
+          57,
+          79
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 6,
+        "src": [
+          41,
+          64
+        ],
+        "dst": [
+          57,
+          80
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 7,
+        "src": [
+          40,
+          63
+        ],
+        "dst": [
+          56,
+          79
+        ],
+        "old": [
+          219,
+          149,
+          53,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 7,
+        "src": [
+          40,
+          64
+        ],
+        "dst": [
+          56,
+          80
+        ],
+        "old": [
+          151,
+          131,
+          58,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 7,
+        "src": [
+          41,
+          63
+        ],
+        "dst": [
+          57,
+          79
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      },
+      {
+        "frame": 7,
+        "src": [
+          41,
+          64
+        ],
+        "dst": [
+          57,
+          80
+        ],
+        "old": [
+          99,
+          84,
+          44,
+          255
+        ],
+        "new": [
+          37,
+          27,
+          33,
+          255
+        ]
+      }
+    ]
+  },
+  "T2": {
+    "leg_source_polygons": {
+      "front_far": {
+        "vertices": [
+          [
+            15,
+            53
+          ],
+          [
+            19,
+            52
+          ],
+          [
+            24,
+            54
+          ],
+          [
+            25,
+            58
+          ],
+          [
+            23,
+            61
+          ],
+          [
+            17,
+            61
+          ],
+          [
+            14,
+            58
+          ]
+        ],
+        "source_opaque": 50
+      },
+      "front_near": {
+        "vertices": [
+          [
+            23,
+            53
+          ],
+          [
+            29,
+            52
+          ],
+          [
+            34,
+            55
+          ],
+          [
+            34,
+            61
+          ],
+          [
+            28,
+            63
+          ],
+          [
+            23,
+            59
+          ]
+        ],
+        "source_opaque": 51
+      },
+      "back_far": {
+        "vertices": [
+          [
+            39,
+            53
+          ],
+          [
+            45,
+            53
+          ],
+          [
+            49,
+            56
+          ],
+          [
+            48,
+            61
+          ],
+          [
+            42,
+            62
+          ],
+          [
+            37,
+            58
+          ]
+        ],
+        "source_opaque": 25
+      },
+      "back_near": {
+        "vertices": [
+          [
+            49,
+            52
+          ],
+          [
+            55,
+            53
+          ],
+          [
+            60,
+            55
+          ],
+          [
+            60,
+            61
+          ],
+          [
+            53,
+            62
+          ],
+          [
+            47,
+            57
+          ]
+        ],
+        "source_opaque": 37
+      }
+    },
+    "frames": [
+      {
+        "frame": 1,
+        "root_offset": [
+          0,
+          2
+        ],
+        "source": "single Master segmented organic brown-leg pixels and preserved belly"
+      },
+      {
+        "frame": 2,
+        "root_offset": [
+          -2,
+          -2
+        ],
+        "source": "single Master segmented organic brown-leg pixels and preserved belly"
+      },
+      {
+        "frame": 3,
+        "root_offset": [
+          -5,
+          -4
+        ],
+        "source": "single Master segmented organic brown-leg pixels and preserved belly"
+      },
+      {
+        "frame": 4,
+        "root_offset": [
+          -7,
+          0
+        ],
+        "source": "single Master segmented organic brown-leg pixels and preserved belly"
+      },
+      {
+        "frame": 5,
+        "root_offset": [
+          -5,
+          2
+        ],
+        "source": "single Master segmented organic brown-leg pixels and preserved belly"
+      },
+      {
+        "frame": 6,
+        "root_offset": [
+          -2,
+          0
+        ],
+        "source": "single Master segmented organic brown-leg pixels and preserved belly"
+      }
+    ]
+  },
+  "T1_forest_scout": {
+    "unique_attack_frames": 8,
+    "nonattack_byte_identical": true,
+    "changed_attack_frames": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "T2_moss_antler": {
+    "unique_attack_frames": 7,
+    "nonattack_byte_identical": true,
+    "changed_attack_frames": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "status": "A15_R1_RENDER_READY_G7_NOT_PASSED"
+}
