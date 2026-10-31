@@ -1,0 +1,9 @@
+# Stage16 A22 Failure Register — 2026-11-01
+- F22-01 Reference pack cleanliness did NOT automatically improve FS Ground3 art. Four A22 originals have lower grass texture complexity and fewer rich plant motifs than A20; still no 544×416 Ground.
+- F22-02 The changed independent variable is the three supplied images **plus their sizes** (A20 128/128/128 to A22 96/128/64), rather than only the semantic contamination level. Never claim to have independently established what tree/cliff contamination caused.
+- F22-03 The seed, prompt SHA256, style_description SHA256 and endpoint were kept identical to A20, but deterministic service output cannot be guaranteed across model versions. Interpret this as evidence from one paired four-variant batch, not general proof.
+- F22-04 Unique RGB count and neighbor RGB L1 are descriptive only. High variation can reflect ugly noisy pixels and low variation can be visually appealing, so demand original 1×/32px art evaluation.
+- F22-05 Only one authenticated POST accepted; 4 images for 10 subscription generations; balance 1980→1970; USD credits 0. No free/paid extra repeated POST was run. Existing state prevents duplicate submits after ambiguous outcomes.
+- F22-06 The full original Ground3 remains user-private. Small direct A21 source crops may be included in private Drive ZIP but NEVER GitHub public code. API key not saved or shared in artifacts.
+- F22-07 No Ground3 full art approval, no final full 544x416 generation, no PAR/collision/Godot/VX rendering. No Formal Seal. Do not conflate style-conditioned original native image with finished FS game map.
+- A23 stop/learning: One clean source-only style pack is insufficient. Separate botanical shape/layout references from literal texture palette, and test texture fidelity without another paid request before any further subscription consumption.
