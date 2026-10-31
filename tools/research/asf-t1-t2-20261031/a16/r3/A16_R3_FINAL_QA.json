@@ -1,0 +1,31 @@
+{
+  "T1_forest_scout": {
+    "A15_zip_frame_parity": 8,
+    "8_frames": 8,
+    "3_layers": 3,
+    "cels": 18,
+    "live_libresprite_sheet_pixel_diff": 0,
+    "live_reference_layer_pixel_diff": 0,
+    "native_sha256": "e6dfe2a94bdea6fdc51da58147b6a7a925edf1caefef8fe78ae8494630f96828",
+    "layer_list_cli_ok": true
+  },
+  "T2_moss_antler": {
+    "A15_zip_frame_parity": 8,
+    "8_frames": 8,
+    "3_layers": 3,
+    "cels": 18,
+    "live_libresprite_sheet_pixel_diff": 0,
+    "live_reference_layer_pixel_diff": 0,
+    "native_sha256": "79302653bf93d7a917a5524ef6617024bff1da5381dc83603dcb0be9f21f8c50",
+    "layer_list_cli_ok": true
+  },
+  "smoke_editor": {
+    "changed_pixels": 1,
+    "modified_frame": 2,
+    "modified_pixel_xy": [
+      1,
+      1
+    ],
+    "original_native_preserved": true
+  }
+}
