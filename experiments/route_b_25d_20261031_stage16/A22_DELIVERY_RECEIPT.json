@@ -1,0 +1,15 @@
+{
+  "stage": "A22",
+  "archive": "FS_STAGE16_A22_CLEAN_REFERENCE_AB_PRIVATE_20261101.zip",
+  "bytes": 561282,
+  "archive_sha256": "40b92536b2ca6fe77e3c40e295286fa8002007a17141eeb8bc2900c8bda601e2",
+  "entries": 22,
+  "source_sha_verified": 21,
+  "CRC": "PASS",
+  "cold_image_source_qa": "PASS",
+  "paid_requests": 1,
+  "actual_generations_spent": 10,
+  "subscription_balance_remaining": 1970,
+  "formal_seal": "NO",
+  "full_ground3_art": "FAIL"
+}
