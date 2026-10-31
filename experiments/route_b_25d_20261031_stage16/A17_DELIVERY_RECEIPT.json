@@ -1,0 +1,14 @@
+{
+  "stage": "A17",
+  "archive": "FS_STAGE16_A17_NATIVE_SPECIALIST_PRIVATE_20261031.zip",
+  "size_bytes": 1864432,
+  "sha256": "519783452350cd9b105550f7a398bf18670442c000057721c38bae629158b3bb",
+  "entries": 30,
+  "source_hashes_verified": 29,
+  "crc": "PASS",
+  "cold_model_regeneration": "PASS",
+  "log": "A17_COLD_MODEL_REPLAY_PASS two real native16 sprites exact RGBA pixels, flower intent unsupported\nA17_GATE native_model_PASS / Ground3_ART_FAIL / 544x416_NOT_RUN / Godot_NOT_RUN / VX_NOT_RUN / Formal_Seal_NO",
+  "art": "FAIL",
+  "full_map": "NOT_RUN",
+  "formal_seal": "NO"
+}
