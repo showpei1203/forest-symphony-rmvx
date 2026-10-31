@@ -1,0 +1,83 @@
+{
+  "stage": "A21",
+  "date": "2026-11-01",
+  "source_original_sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+  "reference_count": 3,
+  "original_source_crops_only": true,
+  "source_crops": [
+    {
+      "category": "GROUND_GRASS",
+      "name": "A21_FS_PURE_GROUND_GRASS_NATIVE96.png",
+      "xy": [
+        288,
+        564
+      ],
+      "size": 96,
+      "manual_review": "Direct crop: fine grass natural variation, one small ground herb at top edge; no tree/cliff/roof visible.",
+      "source_ground3_sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+      "file_sha256": "1ad9b9e1f583f731a86aa4feb2f8096fe778cab663226a4fad0ee462769bf473",
+      "source_is_exact_native_crop": true,
+      "metrics": {
+        "unique_rgb": 6933,
+        "mean_neighbor_L1": 12.65
+      },
+      "pixel_size": [
+        96,
+        96
+      ]
+    },
+    {
+      "category": "GROUND_SAND",
+      "name": "A21_FS_PURE_GROUND_SAND_NATIVE128.png",
+      "xy": [
+        948,
+        264
+      ],
+      "size": 128,
+      "manual_review": "Direct crop: broad pale sand with green grass, curved organic edge, no tall objects in visual audit.",
+      "source_ground3_sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+      "file_sha256": "358cf7c92214b2001179b3e004c16458d121e74fb857c38fe605bda0ac44517d",
+      "source_is_exact_native_crop": true,
+      "metrics": {
+        "unique_rgb": 6150,
+        "mean_neighbor_L1": 13.106
+      },
+      "pixel_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "category": "GROUND_FLORA",
+      "name": "A21_FS_PURE_GROUND_FLORA_NATIVE64.png",
+      "xy": [
+        164,
+        636
+      ],
+      "size": 64,
+      "manual_review": "Direct crop: white/yellow flower group and surrounding ground grass. Flower depth/occlusion classification still needs game semantics.",
+      "source_ground3_sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+      "file_sha256": "f3f9742625b47c39f2710e090663a9a50606fb0bbb96b1dbb4c46be17ede284a",
+      "source_is_exact_native_crop": true,
+      "metrics": {
+        "unique_rgb": 3668,
+        "mean_neighbor_L1": 16.782
+      },
+      "pixel_size": [
+        64,
+        64
+      ]
+    }
+  ],
+  "A20_contamination": "A20 source ground reference crops included trees and cliffs at edges; A21 uses smaller clean crops.",
+  "gate": {
+    "valid_native_source_pixels": "PASS",
+    "geometry": "PASS",
+    "ground3_style_reference_preflight": "PASS",
+    "full_544x416_art": "NOT_RUN",
+    "A21_paid_generation": 0,
+    "godot": "NOT_RUN",
+    "vx": "NOT_RUN",
+    "formal_seal": "NO"
+  }
+}
