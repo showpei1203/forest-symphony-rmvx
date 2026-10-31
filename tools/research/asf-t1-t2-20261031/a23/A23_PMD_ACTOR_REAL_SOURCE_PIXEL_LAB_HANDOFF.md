@@ -28,3 +28,18 @@ Walk, Idle, Attack, Cast, Hurt, Death. PMD legacy XML names Walk/Idle/Attack/Cha
 
 ## Previous mistakes not to repeat
 No prompt-only concept art. Do not ask for already-accessible source files. Do not conflate unrelated RPG character examples with Forest Symphony. No 32x32 forced PMD atlas cuts. No fabricated complete sprite sheets from a single still. No model usage before per-asset permission and hard budget cap.
+
+## POST-PREFLIGHT REAL A23 RESULTS 2026-11-01
+PixelLab T1 paid API authenticated via existing authorized local token, with safe sanitized balance and no credential disclosure.
+
+**PMD0001 Lava Frog Idle**: one accepted POST /animate-with-text-v3, job ID `7ba06998-bff4-4e75-be90-08ca60e63c19`. PixelLab returned FIVE 64x64 PNGs, frame0 exactly matches input. Per-frame pixel RGBA differences versus input: [0,73,191,259,271]. Balance 1960 -> 1959: **1 generation**. Human art review: original orange-gray lava frog remains recognizable; subtle motion but a few pale yellow stray trailing pixels. Candidate only, NOT sealed.
+
+**FS actual $actor01 Sword Attack**: one accepted POST job ID `ff02f858-08bd-4969-8e78-2b430fb01264`. FIVE 64x64 PNGs, exact original first frame. Differences [0,633,627,548,431]. Balance 1959 -> 1958: **1 generation**. Original white hair, leather outfit and right-facing body readable, action shows sword swing. But sword duplicates/ghosts in some frames, vanishes in another; **G7 FAIL for formal game use**. Source seed is real Forest Symphony $actor01.png right-facing center frame plus explicitly identified 78-pixel hand-drawn sword attachment, source actor unchanged.
+
+**Actual native PMD XML atlas round-trip**: generated frames indices [0,2,4] were placed into the 45° provisional row1 of a full 96x320 original Idle-Anim.png. First frame RGBA changed 0 pixels. The other seven original direction rows are byte pixel-identical. `AnimData.xml`, `Idle-Offsets.png`, `Idle-Shadow.png` hashes remain identical. Other 33 action atlases and all PMD original metadata are present in candidate folder, copied byte-identically. This proves native geometry and XML structural compatibility for this candidate, NOT full PMD in-game animation or visual acceptance.
+
+**Actual private Windows deliverable**: `E:\GameAssetToolLab_20261023\A23_PMD_ACTOR_PIXELLAB_SOURCEFIRST\A23_REAL_PIXEL_LAB_TWO_ACTIONS_AND_XML_PRIVATE.zip`
+346 unique files, 997,693 bytes, CRC PASS, SHA256 `88bb074b74617f4e5153bd1300b58c1a59812f82935d5e2ac8c8c186480191a9`.
+Includes full native PMD 34-action 8-direction source, unchanged XML/Offsets/Shadow, real FS actor01 original 4 native sheets, transparently modified sword seed, both REAL PixelLab five-frame output sets, actual provider sprite sheets, GIFs, 5X comparisons, rebuilt native PMD Idle atlas, QA and source scripts. **Private image ZIP resides on user's Windows; not uploaded to GitHub/Drive.**
+
+Budget used **2 of 2000 generation units** in this experiment. Final two-test budget stopped. Walking, casting, hurt and death for both, and PMD attack/FS idle are **NOT YET GENERATED**: action prompts and real reference inputs prepared, but no additional quota spent pending G7 fixes. Do not assert six complete sprite sheets or true 45° Actor01 view. 0001 PMD row1 southeast classification is provisionally based on original 8-row layout, not confirmed by actual loader direction semantics.
