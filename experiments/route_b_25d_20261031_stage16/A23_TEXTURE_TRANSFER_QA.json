@@ -1,0 +1,144 @@
+{
+  "stage": "A23",
+  "date": "2026-11-01",
+  "subject": "diagnostic source texture quilting applied to PixelLab scene masks, NOT direct AI full art",
+  "FS_source_grass_sha256": "b185fbbccd5f84a58f12144b906d7a5fe71809b59a8f75ac385c92b2c5543407",
+  "FS_source_sand_sha256": "ca7c4ea242a9b81ab39113acdad1de47ed193117d1f5db6c6d2dea5383548adb",
+  "generations_used": 0,
+  "variants": [
+    {
+      "variant": 1,
+      "road_fraction": 0.216,
+      "original_grass_L1": 6.675,
+      "original_road_L1": 8.408,
+      "periodic_grass_L1": 12.594,
+      "periodic_road_L1": 12.427,
+      "quilt_grass_L1": 12.799,
+      "quilt_road_L1": 12.598,
+      "source_color_provenance": "ALL_BG_PIXELS_FROM_VERIFIED_FS_SOURCE_RGB",
+      "flora_pixels": 513,
+      "petals_and_plants": {
+        "petal_pixels": 395,
+        "preserved_plant_pixels": 118
+      },
+      "quilt_methods": {
+        "grass": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        },
+        "sand": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        }
+      },
+      "output_SHA256": {
+        "PERIODIC_BASELINE": "ee2f8e33c68e5be6be38d23d3d7cd76b20c5e7a85eca8e97f04dec6175096e97",
+        "QUILTED_GROUND": "673364e21c4be826c21056ca1d582d00e7ba389b7d5e11bfc51d280988e13919",
+        "QUILT_PLUS_SAVED_BOTANICALS": "dc213d992bcd8288b86efc20fb88f5f2275be4f8c667819f03438baf8db08c06"
+      }
+    },
+    {
+      "variant": 2,
+      "road_fraction": 0.2568,
+      "original_grass_L1": 11.399,
+      "original_road_L1": 8.141,
+      "periodic_grass_L1": 12.695,
+      "periodic_road_L1": 12.351,
+      "quilt_grass_L1": 12.594,
+      "quilt_road_L1": 12.195,
+      "source_color_provenance": "ALL_BG_PIXELS_FROM_VERIFIED_FS_SOURCE_RGB",
+      "flora_pixels": 814,
+      "petals_and_plants": {
+        "petal_pixels": 415,
+        "preserved_plant_pixels": 399
+      },
+      "quilt_methods": {
+        "grass": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        },
+        "sand": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        }
+      },
+      "output_SHA256": {
+        "PERIODIC_BASELINE": "bf64e790dbfafab9a78b9f9f715df13dd62434105da821e05e376ae165ae77cc",
+        "QUILTED_GROUND": "02820ebb7f91b4d7a7ecd6f98cdda1bab121ae6d855717a5b9ce5430246d989e",
+        "QUILT_PLUS_SAVED_BOTANICALS": "f88afe39b4acfa50c92dd5851464c49e599f663379b8a2c764afcafd24b1fddd"
+      }
+    },
+    {
+      "variant": 3,
+      "road_fraction": 0.2136,
+      "original_grass_L1": 11.454,
+      "original_road_L1": 9.121,
+      "periodic_grass_L1": 12.577,
+      "periodic_road_L1": 12.286,
+      "quilt_grass_L1": 12.404,
+      "quilt_road_L1": 12.178,
+      "source_color_provenance": "ALL_BG_PIXELS_FROM_VERIFIED_FS_SOURCE_RGB",
+      "flora_pixels": 875,
+      "petals_and_plants": {
+        "petal_pixels": 409,
+        "preserved_plant_pixels": 466
+      },
+      "quilt_methods": {
+        "grass": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        },
+        "sand": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        }
+      },
+      "output_SHA256": {
+        "PERIODIC_BASELINE": "5a4920c69c3f70ae4d8c41463fa7c161d3803609850caec8fd3d111db52f72ce",
+        "QUILTED_GROUND": "9b57170035011acf395f54db87c0c119ad722c231e1f1dc05d24a1a5c4713789",
+        "QUILT_PLUS_SAVED_BOTANICALS": "308f6515935e0ef2341d00e4046a89d2b6922a58a811315c5082d568f146bdef"
+      }
+    },
+    {
+      "variant": 4,
+      "road_fraction": 0.2037,
+      "original_grass_L1": 5.494,
+      "original_road_L1": 8.677,
+      "periodic_grass_L1": 12.633,
+      "periodic_road_L1": 12.344,
+      "quilt_grass_L1": 12.53,
+      "quilt_road_L1": 12.48,
+      "source_color_provenance": "ALL_BG_PIXELS_FROM_VERIFIED_FS_SOURCE_RGB",
+      "flora_pixels": 431,
+      "petals_and_plants": {
+        "petal_pixels": 347,
+        "preserved_plant_pixels": 84
+      },
+      "quilt_methods": {
+        "grass": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        },
+        "sand": {
+          "trials": 0,
+          "matched_seams": 96,
+          "patches": 64
+        }
+      },
+      "output_SHA256": {
+        "PERIODIC_BASELINE": "b2db799dbfb16cae9b59151acc2669fad82c8a03040ee8e8c9ba5d3ee9ed5cb5",
+        "QUILTED_GROUND": "2d205839e732b6c184e152d8c583f5b93304d7a99dc671d2f463a32f02e70190",
+        "QUILT_PLUS_SAVED_BOTANICALS": "83489936c1fe012fee6544f894943b0ecce16fd57b0efb56c8cb68a44a107c63"
+      }
+    }
+  ],
+  "art": "PENDING_VISUAL_AUDIT",
+  "formal_seal": "NO"
+}
