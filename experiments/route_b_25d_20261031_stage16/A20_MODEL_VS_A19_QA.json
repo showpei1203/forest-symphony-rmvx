@@ -1,0 +1,76 @@
+{
+  "stage": "A20",
+  "method": "ACTUAL_PIXEL_LAB_GENERATE_WITH_STYLE_V2",
+  "charged_post_count": 1,
+  "source_reference_count": 3,
+  "source_reference_native_pixels": true,
+  "provider_outputs": 4,
+  "A19_baseline": {
+    "colors": 34,
+    "neighbor_L1": 5.166,
+    "RGB_mean": [
+      142.61,
+      160.3,
+      60.64
+    ]
+  },
+  "variants": [
+    {
+      "variant": 1,
+      "file": "A20_FS_STYLE_MODEL_NATIVE128_VARIANT_01.png",
+      "sha256": "504b4ed270caea6acfeacff9505485d17a33ced2817cdffd36776c1025e6275d",
+      "colors": 43,
+      "neighbor_L1": 10.062,
+      "RGB_mean": [
+        132.28,
+        154.52,
+        51.89
+      ]
+    },
+    {
+      "variant": 2,
+      "file": "A20_FS_STYLE_MODEL_NATIVE128_VARIANT_02.png",
+      "sha256": "aca57c23905a1f8b1493c2f074681c004b969241d291eda1c891cfe9b096d2b1",
+      "colors": 36,
+      "neighbor_L1": 15.183,
+      "RGB_mean": [
+        125.7,
+        146.11,
+        48.21
+      ]
+    },
+    {
+      "variant": 3,
+      "file": "A20_FS_STYLE_MODEL_NATIVE128_VARIANT_03.png",
+      "sha256": "3319acdd86f68a60dc184b367ad97ad195fba4400a18cdcafffc99535825cce8",
+      "colors": 42,
+      "neighbor_L1": 13.811,
+      "RGB_mean": [
+        128.66,
+        150.0,
+        46.96
+      ]
+    },
+    {
+      "variant": 4,
+      "file": "A20_FS_STYLE_MODEL_NATIVE128_VARIANT_04.png",
+      "sha256": "c658c8058ace3969cf6325fc02e22b7bd9595be558facaad7464c506823fd0a0",
+      "colors": 41,
+      "neighbor_L1": 14.812,
+      "RGB_mean": [
+        123.68,
+        148.07,
+        45.28
+      ]
+    }
+  ],
+  "formal_seal": "NO",
+  "ground3_art": "PENDING_VISUAL_REVIEW",
+  "game_544x416": "NOT_RUN",
+  "godot": "NOT_RUN",
+  "vx": "NOT_RUN",
+  "measured_generations_spent": 10.0,
+  "balance_before": 1990.0,
+  "balance_after": 1980.0,
+  "usd_credits_delta": 0.0
+}
