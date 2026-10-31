@@ -1,6 +1,6 @@
 # Stage16 A25 — Native PixelLab Ground 544×416 + FS Transparent PAR (2026-11-01)
 
-**Status: PixelLab original image created and dimensions verified. Composite preview created. Full Ground3 art FAIL. Godot A25 execution IN PROGRESS / not yet verified here. Native VX NOT RUN. Formal Seal NO.**
+**Status: PixelLab full original image 544×416 PASS. Actual Godot 4.7.2 four-scene native renderer PASS. Ground3 visual quality FAIL. Full tree occlusion NOT TESTED. Native VX NOT RUN. Formal Seal NO.**
 
 ## Authoritative continuity
 - A24 baseline: `STAGE16_A24_HANDOFF_20261101.md` (original reconstructed FS material + existing FS transparent PAR; Godot four-case renderer PASS).
@@ -31,7 +31,7 @@
 | Provider balance, cost and one-charge audit | **PASS, 25 generations** |
 | Transparent FS PAR same-canvas composite | **PASS** |
 | Original full tree canopy and body passability | **NOT TESTED** |
-| Godot new A25 native rendering and dynamic occlusion | **PENDING VALIDATION** |
+| Godot A25 native 4-screen rendering with placeholder actor and FS lamp y-sort | **PASS** |
 | RPG Maker VX Game.exe ground/PAR/passability | **NOT RUN** |
 | Full FS Ground3 aesthetic quality | **FAIL** |
 | Formal Seal | **NO** |
@@ -41,5 +41,22 @@
 ## Portable paths
 - `a25_readonly_preflight.py` / `A25_READONLY_CAPABILITY_AND_BALANCE.json`
 - `a25_one_pro_full_ground.py` / `A25_SINGLE_PRO_JOB_STATE.json`
-- `a25_compose_and_run_godot.py` (isolated scene and QA script, results must be checked)
-- `GODOT_A25_ISOLATED_NATIVE_RENDER` (never confuse staged copies of A24 screenshots with A25 actual screenshots)
+- `a25_compose_and_run_godot.py` (isolated scene and QA script, **verified actual GL render**; inspect `A25_RENDER_QA.json`)
+- `GODOT_A25_ISOLATED_NATIVE_RENDER` (actual A25 native screenshot names begin with `A25_GODOT_`; A24 copies do **not** count)
+
+## A25 real-engine QA: completed
+- An initial run used Godot `--headless` and timed out after 95 seconds, generating **no** new A25 native renderer proof. This was an **execution-mode failure**; do not erase from failure record. Corrected by removing `--headless` and explicitly using `--rendering-method gl_compatibility` with Windows' actual Godot 4.7.2 console executable.
+- Successful rerun: `A25_NATIVE_GROUND_PLUS_REAL_GODOT_RENDER_PASS`.
+- Real source: A25 PixelLab original 544×416 PNG; original A24 private FS real transparent PAR/individual FS source props; 10 source-bound sprite objects; no fake tree test.
+- Four **new** real Godot screenshots (not copied from A24): `A25_GODOT_NATIVE_SCENE_NO_ACTOR.png`, `A25_GODOT_ACTOR_BEHIND_LAMP.png`, `A25_GODOT_ACTOR_IN_FRONT_OF_LAMP.png`, `A25_GODOT_ACTOR_ON_ROAD.png`. Combined private preview: `A25_ACTUAL_GODOT_4PANEL_SCREENSHOTS.png`.
+- Independent Pillow composite vs actual Godot screenshot: 689 differing RGB pixels / 226,304 (0.304458%); mean absolute RGB error 0.001095871 / 255, **not** a misleading claim of 0 differences.
+- Grid-model collision: 17×13=221 tiles; 34 blocked via real FS PAR object footprints; 187 walkable; BFS from diagnostic actor reaches all 187. Ground is passable by default. This does **not** prove native VX passage logic.
+- Stand-in actor and lamp front/back two Y-sort situations were visibly present in actual snapshots. Full FS `$ACTOR01` and complete tree crown-vs-trunk collision/occlusion are not exercised.
+- Real native output pixel crisp and no rescaling. Overall full Ground3 aesthetic still **FAIL**, Formal Seal **NO**.
+
+## A25 prevention and next required gates
+1. Engine test must not use `--headless` for GPU viewport proof; require new stage-prefixed screenshot outputs.
+2. Never call a provisional collision BFS model a native RPG Maker VX test.
+3. Preserve generated Ground raw SHA and original FS component source hashes.
+4. Next unpaid art iteration: diagnose/reference microscopic grass and flower scale and how to make the new model Ground less flat. Do not burn more provider generations automatically.
+5. Next engineering iteration: real FS tree crown+trunk canopy occlusion, dynamic character footpoint, native VX runtime collision and 32px PAR tile masking.
