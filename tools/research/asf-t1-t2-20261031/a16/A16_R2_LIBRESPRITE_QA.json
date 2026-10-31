@@ -1,0 +1,38 @@
+{
+  "T1_forest_scout_attack_02": {
+    "original_exists": true,
+    "native_exists": true,
+    "native_bytes": 2570,
+    "roundtrip_exists": true,
+    "rgba_pixel_diff": 0,
+    "pixel_parity_pass": true,
+    "native_sha256": "1b753dcfd401bc8d1ab4acb600e2b2dff6eae6434e41f077573a8b85556cac18"
+  },
+  "T1_forest_scout_attack_05": {
+    "original_exists": true,
+    "native_exists": true,
+    "native_bytes": 2431,
+    "roundtrip_exists": true,
+    "rgba_pixel_diff": 0,
+    "pixel_parity_pass": true,
+    "native_sha256": "7b2a69e3ec4172a71ed84e9dfd70828ccfa5decd32e6fd0a4d7579a49993ffe9"
+  },
+  "T2_moss_antler_attack_03": {
+    "original_exists": true,
+    "native_exists": true,
+    "native_bytes": 2302,
+    "roundtrip_exists": true,
+    "rgba_pixel_diff": 0,
+    "pixel_parity_pass": true,
+    "native_sha256": "35c160b17a2bdc8174bda27de672283e6be02134bd820e2c7628c5936841f68f"
+  },
+  "T2_moss_antler_attack_05": {
+    "original_exists": true,
+    "native_exists": true,
+    "native_bytes": 2350,
+    "roundtrip_exists": true,
+    "rgba_pixel_diff": 0,
+    "pixel_parity_pass": true,
+    "native_sha256": "32b68f56c4e62c8088bf279ac5486c6e0d93e74c83ce657196e4676f0fa62196"
+  }
+}
