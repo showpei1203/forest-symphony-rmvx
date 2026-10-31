@@ -1,0 +1,8 @@
+# A07 ControlNet Segmentation Failures and Corrections (2026-10-31)
+F-A07-01 - Mask geometry alone previously did not force material identity. A07 true ADE20K ControlNet advanced conditioning corrected road color semantics, compared to A05 R3. Do not say 96.29% sand-like proxy = 96.29% classifier or artistic quality.
+F-A07-02 - Actual A07 visual FAIL. The path becomes a flat dark-brown strip with two unexplained white rocks, unacceptable for ground-only soft pixel-texture original Ground3. Do not add these rocks to Ground or PAR by accidental conversion.
+F-A07-03 - Programmatic mask returns road changed 28,818 pixels and outside changed 0, valid technical isolation only. Edges are too sharp and natural transitions absent.
+F-A07-04 - Training segmentation classes derive from ADE20K/COCO and their color palettes. Palette labels and correct class IDs are mandatory, not arbitrary black-white mask. Only the class91 dirt-track color candidate has a model-run PASS; classes46 sand/52 path have been generated as images but NOT tested by model.
+F-A07-05 - Private ControlNet file is real safetensors from ComfyUI author, SHA256 acd4dd3df2da2f1f2b9dd00f4504cc0d98b20afb608e25f1789a95c0ccdba14a, but source weight + SD1.5 checkpoint excluded from GitHub/ZIP. No unsupported AMD-DirectML IPAdapter success claim: all A07 model tests CPU FP32.
+F-A07-06 - A07 384x384 tile is not a 544x416/1280x928 game-ready map, no realistic continuity test or VX in-game confirmation. Formal Seal NO.
+Decision: A08 may combine segmentation geometry with independent material-style conditioning for a single controlled run, no more unbounded prompt tweaks.
