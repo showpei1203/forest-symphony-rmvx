@@ -1,0 +1,69 @@
+{
+  "stage": "A12_ANIMATION_KNOWLEDGE",
+  "date": "2026-10-31",
+  "status": "RESEARCH_AND_SOURCE_TEST_DONE_ART_NOT_PASSED",
+  "upstream": {
+    "repo": "https://github.com/JatCool/AI-Sprite-Animation",
+    "sha": "174fc878a8387de1419a6876af1c7dffe79df366",
+    "license": "MIT",
+    "original_unity_tested": "6000.6.0f1",
+    "local_coremodule": "6000.0.41f1",
+    "test_status": {
+      "compiled": true,
+      "errors": 0,
+      "warnings": 1,
+      "pass": 159,
+      "fail": 14,
+      "process_exit": 14,
+      "original_fixture_invalid_dimensions": [
+        0,
+        0
+      ],
+      "source_test_input": "A10 T1_forest_scout master 64x80",
+      "fully_validated_for_FS": false
+    },
+    "notes": "Unit expectations designed for side-view humanoid; test outcome cannot imply FS art quality. Local-only patch to csproj and fixed test output path."
+  },
+  "motion_diagnostic": {
+    "T1": {
+      "A10_mean_changed": 1082.75,
+      "A11_mean_changed": 1561,
+      "A10_max_centroid_shift": 3.271,
+      "A11_max_centroid_shift": 6.05,
+      "unique_frames": [
+        6,
+        8
+      ]
+    },
+    "T2": {
+      "A10_mean_changed": 1277.875,
+      "A11_mean_changed": 1547.875,
+      "A10_max_centroid_shift": 2.601,
+      "A11_max_centroid_shift": 9.373,
+      "unique_frames": [
+        7,
+        7
+      ]
+    },
+    "all_canvas_edge_contacts": 0,
+    "semantic_art_evaluated": false
+  },
+  "resources": {
+    "disney": "https://www.disneyanimation.com/process/animation/",
+    "pixelover": "https://docs.pixelover.io/tutorials/bones_animation/",
+    "pixelover_eula": "https://docs.pixelover.io/manual/licenses/",
+    "rigby2d": "https://rigby2d.com/docs/",
+    "rigby_repo": "https://github.com/jaisurya-dev-art/rigby2d",
+    "art_lessons": "https://pixelart.school/learn",
+    "quadruped": "https://www.gamedeveloper.com/art/animating-four-legged-beasts",
+    "opensource_pixelorama": "https://pixelorama.org/introduction/"
+  },
+  "immutable": {
+    "FS_SEALED_untouched": true,
+    "A11_formal_art_GATE": "NOT_PASSED",
+    "image_to_video_tested": false,
+    "third_party_model_downloaded": false,
+    "display_driver_changed": false
+  },
+  "next": "A13 T1 wrist-weapon IK and scabbard state / T2 four-foot contact table / visible key poses / ASF+Godot+human acceptance"
+}
