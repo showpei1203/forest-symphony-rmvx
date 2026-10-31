@@ -1,0 +1,18 @@
+{
+  "stage": "A15",
+  "archive": "FS_STAGE16_A15_PIXEL_GRID_RECOVERY_PRIVATE_20261031.zip",
+  "size_bytes": 13675000,
+  "zip_sha256": "52323bad2192f5a0f3b189ff0b6a248ba1f0228e5f156992deb6605a2b5155fc",
+  "files_with_manifest": 25,
+  "source_sha256_verified": 24,
+  "CRC": "PASS",
+  "cold_reexecution": "PASS",
+  "cold_output": "A15_COLD_PASS: A14 original authentic SHA, independent four fixed-grid outputs exactly regenerated, real upstream outputs SHA-verified\nA15_FAIL_CLOSED: source lattice NOT_DETECTED, upstream manual grid CONTRACT_FAIL, target ART_FAIL, Godot/VX NOT_RUN, Formal Seal NO",
+  "source_original_generation": "A14 real AI source",
+  "upstream_core": "REAL_EXECUTED_TARGET_GRID_FAIL",
+  "pixelpipeline_node": "NOT_RUN",
+  "visual_art": "FAIL",
+  "godot": "NOT_RUN",
+  "vx": "NOT_RUN",
+  "formal_seal": "NO"
+}
