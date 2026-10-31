@@ -1,0 +1,11 @@
+# Stage 16 A10 Failure and Technical Findings Register
+
+- A10-01 / AUTHENTIC SOURCE: 12 candidate grass crops shortlisted by green-pixel heuristic, many were contaminated by shrubs/props; manual review selected 64x64 Ground3 pure ground (752,282). Color statistic alone cannot detect grounded/standing objects.
+- A10-02 / METHOD DISTINCT: Pixel-space Fourier-magnitude random-phase synthesis plus color-rank matching uses original source image color statistics, but **does not** run neural image models or copy source spatial patches. Label as statistical procedural generation, not SD/IPAdapter or new model training success.
+- A10-03 / ART LIMITATION: Even though native 1px/2px gradients resemble authentic Ground3, whole output still looks uniformly speckled with insufficient plant density variation, dirt/grass micro patches or scene composition. No user art signoff; Ground3 ART FAIL.
+- A10-04 / METRIC MISINTERPRETATION: RGB moments/frequency-gradient matching are useful engineering diagnostics but not an artistic similarity percentage. Spectral accuracy cannot guarantee meaningful ecology or gameplay immersion.
+- A10-05 / BORDER GEOMETRY: Original road-only hard isolation created a visible edge; changed rule to 4px *allowed outer transition band* to reduce immediate RGB seam from 20.23 to 11.41. Outside that declared band all protected pixels must remain identical. Road interior identical between R1/R2. Old blanket "zero outside road" is not optimal if natural transitions are required.
+- A10-06 / SCENE SCALING: A fresh native 544x416 benchmark was generated, not simply enlarged. Its road is continuous and no standing objects are deliberately composited, but it is still too monotonous to be a final Ground3-class village or landscape.
+- A10-07 / GAME GATES: No Godot GPU and no native RPG Maker VX walk/occlusion/collision, because art has not passed. Formal Seal NO. Do not replace production maps.
+- A10-08 / PATCH HALLUCINATION: Current approach is not a texture-donor quilt; frequency magnitude and histograms are derived from private original small crops and independent random phases. Never describe crop references as generated assets.
+- A10-09 / NEXT: A11 should test controlled ecological ground variation while keeping successful fine-grain scale and bounded road edge; do not return to 10-stage prompt loops.
