@@ -1,0 +1,101 @@
+{
+  "stage": "A24 SOURCE FIRST - ART CONCEPT, NOT ANIMATED, NOT YET APPROVED",
+  "source_paths": {
+    "pmd": "E:\\GameAssetToolLab_20261023\\A23_PMD_ACTOR_PIXELLAB_SOURCEFIRST\\PIXELLAB_INPUTS\\PMD0001_LAVAFROG_MASTER_SE45_64.png",
+    "fs": "E:\\GameAssetToolLab_20261023\\A23_PMD_ACTOR_PIXELLAB_SOURCEFIRST\\FS_ACTOR01_NATIVE\\$actor01.png"
+  },
+  "source_sha256": {
+    "pmd": "af1657376947910a2378dcf0b10bb54452ca114eccfa470dbd1a54b7fee95806",
+    "fs": "df6abaa888dc4ffcaf5351daf26d678bace121e277f21b4651eb69884591a2a5"
+  },
+  "native_geometry": {
+    "pmd_idle": [
+      32,
+      40
+    ],
+    "fs_actor_walk_sheet": [
+      96,
+      128
+    ],
+    "fs_frames": [
+      32,
+      32
+    ]
+  },
+  "source_compatibility": {
+    "pmd_xml": "not modified",
+    "pmd_offsets": "not modified",
+    "pmd_shadow": "not modified",
+    "fs_originals": "not modified",
+    "fs_action_1_2_3": "not modified, must be reworked only after visual approval"
+  },
+  "angle_status": "FS battle is original right-facing row2 with painted costume and sword; 45-degree southeastern NOT APPROVED",
+  "status": {
+    "concept": "READY FOR USER VISUAL REVIEW",
+    "pixelLab": "BLOCKED UNTIL EXPLICIT USER APPROVAL",
+    "credits_spent_this_stage": 0,
+    "game_integration": "NOT STARTED"
+  },
+  "changed_pixels": {
+    "pmd_A": {
+      "changed_pixels": 326,
+      "total_pixels": 4096,
+      "changed_pct": 7.96,
+      "source_opaque": 306,
+      "new_opaque": 505,
+      "bbox": [
+        19,
+        13,
+        45,
+        45
+      ]
+    },
+    "pmd_B": {
+      "changed_pixels": 312,
+      "total_pixels": 4096,
+      "changed_pct": 7.62,
+      "source_opaque": 306,
+      "new_opaque": 463,
+      "bbox": [
+        18,
+        16,
+        47,
+        44
+      ]
+    },
+    "fs_aether": {
+      "changed_pixels": 11199,
+      "total_pixels": 12288,
+      "changed_pct": 91.14,
+      "source_opaque": 6621,
+      "new_opaque": 7006,
+      "bbox": [
+        3,
+        0,
+        93,
+        128
+      ]
+    },
+    "fs_ember": {
+      "changed_pixels": 11199,
+      "total_pixels": 12288,
+      "changed_pct": 91.14,
+      "source_opaque": 6621,
+      "new_opaque": 7006,
+      "bbox": [
+        3,
+        0,
+        93,
+        128
+      ]
+    }
+  },
+  "revised_design_rules": [
+    "Original sprite must remain provable source",
+    "Silhouette changes required for PMD; no palette-only variants",
+    "FS complete equipment/hair/cape/weapon redesign in full 3x4 walk sheet",
+    "Never submit unapproved art to PixelLab",
+    "Never claim 45 degree correct before review",
+    "PMD XML and offset shadow geometry remain unchanged"
+  ]
+}
