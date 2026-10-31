@@ -1,0 +1,30 @@
+{
+  "stage": "A25",
+  "date": "2026-11-01",
+  "mode": "UNEXECUTED_ZERO_CHARGE_PREFLIGHT",
+  "proposed_GROUND_owner": "PixelLab direct source-native 544x416 if selected endpoint and subscription permit",
+  "proposed_PAR_owner": "assistant independent transparent alpha objects, exact same canvas, shared 32px scene blueprint, depth and collision",
+  "provider": "PixelLab v2 official",
+  "primary_provider_options": [
+    "create-image-pixen (docs up to 768 px; quality/model needs validation)",
+    "generate-image-v2 (Pro quality; plan-specific size limit MUST be checked)",
+    "generate-with-style-v2 (in previous A20/A22 square output dictated by reference max, not arbitrary 544x416)"
+  ],
+  "account_auth": "already authorized on Windows; do not store API key in handoff",
+  "required_preflight": [
+    "balance read-only",
+    "endpoint supported image_size 544x416 on this subscription",
+    "single-request cost/credit allowance",
+    "style sources native and clean",
+    "prompt excludes trees/houses/vertical PAR items",
+    "original provider PNG dimensions exact, no resizing"
+  ],
+  "template_prompt": "High-quality native 544x416 top-down FS-style original pixel Ground ONLY: continuous fine grass, pale sand pathway, tiny ground flowers, 1px hand-pixelled granularity, no trees, houses, rocks, cliffs, standing plants, fences, vertical objects, text, frames or character shadows.",
+  "charge_limit": "ONE new POST only after verified capability and user budget, no speculative auto submit",
+  "planned_ground_passability": "all grass/dirt/ground flowers walkable; only semantic hazards water and chasms block",
+  "planned_par": "source-bound original style matched alpha object asset sprites + scene manifest + 32px collision + Godot front/back and VX native test",
+  "api_post_count_in_A24": 0,
+  "last_confirmed_balance_generations": 1970,
+  "stage_A24_source_is_not_model_native_544x416": true,
+  "formal_seal": "NO"
+}
