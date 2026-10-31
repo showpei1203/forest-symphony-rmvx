@@ -1,0 +1,100 @@
+{
+  "new_ground_sha256": "8d3d13a67844bad457476682db5861c93dc043c9161ae03a0b8d869fa7ad7689",
+  "old_ground_sha256": "735fea2aa38cdb73c07cd3ffa7382662d256c8f6f3aec0d27b6343b22f5a2020",
+  "new_and_old_distinct": true,
+  "qa": {
+    "A_BLUE_COTTAGE": {
+      "ground": {
+        "different_pixels": 0,
+        "max_channel_delta": 0,
+        "mae": 0.0
+      },
+      "par": {
+        "different_pixels": 0,
+        "max_channel_delta": 0,
+        "mae": 0.0
+      },
+      "full": {
+        "different_pixels": 0,
+        "max_channel_delta": 0,
+        "mae": 0.0
+      },
+      "gpu_par_border_nonzero": 0,
+      "par_alpha_exact": true,
+      "transparent_gpu_pixels": 166066,
+      "layers_size_ok": true,
+      "gpu_file_sha256": {
+        "GROUND_GPU.png": "41b2130cd951b79d0e3324788245656fb7ed3a0ebfd8efa1e1d66c1626ccb01c",
+        "PAR_GPU.png": "e3e085208ed13c1b76672eadcb1d24a92b0798f527d38017cb8c8388de22718e",
+        "FULL_GPU.png": "023c47f7217034684dee88849689d30b8ef5e1972c4e30bd3180ca6160452630"
+      },
+      "trees": [
+        {
+          "name": "tree_moss",
+          "allocated_rect": [
+            384,
+            128,
+            416,
+            160
+          ],
+          "actual_opaque_bbox": [
+            384,
+            128,
+            415,
+            159
+          ],
+          "base_32tile_pass": true,
+          "base_pixel_count": 743
+        }
+      ]
+    },
+    "B_OCHRE_GROVE": {
+      "ground": {
+        "different_pixels": 0,
+        "max_channel_delta": 0,
+        "mae": 0.0
+      },
+      "par": {
+        "different_pixels": 0,
+        "max_channel_delta": 0,
+        "mae": 0.0
+      },
+      "full": {
+        "different_pixels": 0,
+        "max_channel_delta": 0,
+        "mae": 0.0
+      },
+      "gpu_par_border_nonzero": 0,
+      "par_alpha_exact": true,
+      "transparent_gpu_pixels": 156721,
+      "layers_size_ok": true,
+      "gpu_file_sha256": {
+        "GROUND_GPU.png": "317fa7716d56236cc305ac9bb1bef38d243c632768efdba50c0d142d029f04e9",
+        "PAR_GPU.png": "ba2db2e18b487955ea8a2626e507201522854675a7930485db59289d7039886a",
+        "FULL_GPU.png": "839ead46f6133b39152ffce7acb71a9eb0c4c4af617998af8e1d97a1665ac3f0"
+      },
+      "trees": [
+        {
+          "name": "sacred_tree",
+          "allocated_rect": [
+            384,
+            224,
+            416,
+            256
+          ],
+          "actual_opaque_bbox": [
+            384,
+            224,
+            415,
+            253
+          ],
+          "base_32tile_pass": true,
+          "base_pixel_count": 787
+        }
+      ]
+    }
+  },
+  "art_pass": false,
+  "vx_runtime_pass": false,
+  "formal_seal": false
+}
