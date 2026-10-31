@@ -60,3 +60,11 @@
 3. Preserve generated Ground raw SHA and original FS component source hashes.
 4. Next unpaid art iteration: diagnose/reference microscopic grass and flower scale and how to make the new model Ground less flat. Do not burn more provider generations automatically.
 5. Next engineering iteration: real FS tree crown+trunk canopy occlusion, dynamic character footpoint, native VX runtime collision and 32px PAR tile masking.
+
+## Private A25 delivery and cold ZIP verification
+- Local handoff mirror: `STAGE16_A25_ACTUAL_PIXELLAB_GROUND_20261101.md`.
+- A25 private deliverable: `E:\FS_ROUTE_B_STAGE16_A25_PIXELLAB_FULL_GROUND_20261101\FS_STAGE16_A25_PIXELLAB_GROUND_PAR_GODOT_PRIVATE_20261101.zip`.
+- ZIP bytes: **1,701,509**; SHA256 **`31e28a4a6fac544a00cd316d9463634884bb659889c2ad410f5fc4291ef6a47a`**.
+- 30 members including raw PixelLab model PNG, transparent real FS PAR, actual 4 A25 Godot screenshots, scene/asset metadata, QA script, job/credit proof, manifest, and failure record.
+- ZIP archive `testzip()` PASS, every manifest file extracted from the archive and SHA256 readback matched, 544×416 raw model input validated, 4 engine screenshots present. Formal Seal remains NO due art and native VX gates.
+- Google Drive A25 upload not verified. Do not claim synchronization to Drive until an authenticated upload and readback has completed.
