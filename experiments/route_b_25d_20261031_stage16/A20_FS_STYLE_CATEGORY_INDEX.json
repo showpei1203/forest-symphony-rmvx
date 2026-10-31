@@ -1,0 +1,37 @@
+{
+  "version": "A20_20261031",
+  "preferred_per_call_styles": 3,
+  "rules": [
+    "Original FS native pixel crops only",
+    "Do not mix tall PAR references into ground",
+    "Keep all private source crops off public GitHub",
+    "Source evidence + new model output separate",
+    "One budgeted POST per test"
+  ],
+  "classes": {
+    "GROUND_GRASS": {
+      "status": "READY_PRIVATE_NATIVE",
+      "file": "A20_FS_STYLE_GROUND_GRASS_NATIVE128.png"
+    },
+    "GROUND_SAND": {
+      "status": "READY_PRIVATE_NATIVE",
+      "file": "A20_FS_STYLE_GROUND_SAND_NATIVE128.png"
+    },
+    "GROUND_FLORA": {
+      "status": "READY_PRIVATE_NATIVE",
+      "file": "A20_FS_STYLE_GROUND_FLORA_NATIVE128.png"
+    },
+    "BUILDING_WOOD": {
+      "status": "NOT_PREPARED"
+    },
+    "BUILDING_STONE": {
+      "status": "NOT_PREPARED"
+    },
+    "TREE_CANOPY": {
+      "status": "NOT_PREPARED"
+    },
+    "WATER": {
+      "status": "NOT_PREPARED"
+    }
+  }
+}
