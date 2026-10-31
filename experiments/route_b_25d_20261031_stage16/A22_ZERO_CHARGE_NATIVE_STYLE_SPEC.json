@@ -1,0 +1,43 @@
+{
+  "stage": "A21->A22",
+  "endpoint": "/v2/generate-with-style-v2",
+  "mode": "DRY_RUN_NO_NETWORK_NO_CHARGE",
+  "style_images": [
+    {
+      "filename": "A21_FS_PURE_GROUND_GRASS_NATIVE96.png",
+      "sha256": "1ad9b9e1f583f731a86aa4feb2f8096fe778cab663226a4fad0ee462769bf473",
+      "width": 96,
+      "height": 96,
+      "category": "GROUND_GRASS"
+    },
+    {
+      "filename": "A21_FS_PURE_GROUND_SAND_NATIVE128.png",
+      "sha256": "358cf7c92214b2001179b3e004c16458d121e74fb857c38fe605bda0ac44517d",
+      "width": 128,
+      "height": 128,
+      "category": "GROUND_SAND"
+    },
+    {
+      "filename": "A21_FS_PURE_GROUND_FLORA_NATIVE64.png",
+      "sha256": "f3f9742625b47c39f2710e090663a9a50606fb0bbb96b1dbb4c46be17ede284a",
+      "width": 64,
+      "height": 64,
+      "category": "GROUND_FLORA"
+    }
+  ],
+  "inferred_output_size": [
+    128,
+    128
+  ],
+  "expected_variants_according_to_API_docs": 4,
+  "description": "FS handcrafted pixel-art top down walkable meadow ground, gentle warm sand path, subtle grain-level green grass, small ground-only flowers. Reproduce style reference pixel scale and very fine grass/sand texture; no trees/rock/cliff/house/fence, no tall plant, no border, no blur.",
+  "style_description": "Source ground style from authentic Forest Symphony native pixel crops. Colors subtle; precise and natural 1px leaf and 1px soil grain, no oversized stylized outlines.",
+  "seed": 162101,
+  "no_background": false,
+  "estimated_spend_max_generations_not_guaranteed": 10,
+  "max_paid_POSTs_after_separate_check": 1,
+  "credential_saved": false,
+  "any_paid_call_executed": false,
+  "art_gate": "NOT_TESTED",
+  "formal_seal": "NO"
+}
