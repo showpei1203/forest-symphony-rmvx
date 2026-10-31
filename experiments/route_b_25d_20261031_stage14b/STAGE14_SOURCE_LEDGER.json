@@ -1,0 +1,22 @@
+{
+  "source_type": "DERIVED_FROM_PRIVATE_STAGE12_INDEPENDENT_GROUND_WITH_NEW_ROAD_LAYOUT",
+  "not_ai_new_art": true,
+  "author_script": "author_ground14.py",
+  "source_sha256": "735fea2aa38cdb73c07cd3ffa7382662d256c8f6f3aec0d27b6343b22f5a2020",
+  "output_sha256": "a6d781d6ab1fd9c4a7fb4f9d9f1c9ba12fa93fdb2444316152879932c1130ec6",
+  "new_geometry_road": true,
+  "resolution": [
+    544,
+    576
+  ],
+  "native_pixel_art": true,
+  "semantic_masks_authored": true,
+  "path_ratio": 15.93,
+  "donor_patches": {
+    "grass": 2820,
+    "earth": 251
+  },
+  "copyright": "user-private source, no public raw PNG distribution",
+  "art_gate": "AWAITING_USER_ACCEPTANCE",
+  "formal_seal": "NO"
+}
