@@ -1,0 +1,17 @@
+{
+  "stage": "A24",
+  "archive": "FS_STAGE16_A24_GROUND_PAR_GODOT_PRIVATE_20261101.zip",
+  "bytes": 6484494,
+  "sha256": "d20eacdfc3910a21d99ce81761f438075bdd5f63a6dbec56634388509b1da933",
+  "entry_count": 63,
+  "source_sha_verified": 62,
+  "cold_python_rebuild": "PASS",
+  "cold_actual_godot_4_7_2_replay": "PASS",
+  "cold_all_output_hashes_equal": true,
+  "CRC": "PASS",
+  "new_pixelLab_API_calls": 0,
+  "last_known_balance": 1970,
+  "native_VX": "NOT_RUN",
+  "full_Ground3_art": "FAIL",
+  "Formal_Seal": "NO"
+}
