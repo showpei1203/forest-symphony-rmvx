@@ -16,7 +16,7 @@ A10-A16 repeatedly passed ASF/Godot pixel-parity but failed on believable redraw
 - Two separate masks: protected head (no editing), and editable sword/arm/shoulder ROI.
 - First cut of masks overlapped by 287 pixels: REJECTED. Subtracting the protection region yields **0 mask overlap** with source-pixel identity preserved. The masks are guides; no real inpainting call has yet been executed.
 - Package has 12 local files including raw generated image, clean native candidate, A15 source, source-pad and masks, visual comparison, source code, QA and handoff.
-- **Exact private/local download ZIP:** A16_T1_CONTROLLED_ART_METHOD_TEST_20261031.zip (12 files, 657222 bytes, CRC PASS, SHA256 f7aa7801db8ba4c12461daa02ec1dfff7dd7d8e0612366ad266f9be8f3ea7131). NOT uploaded to Google Drive/GitHub, because it contains private sprite images.
+- **Exact private/local download ZIP:** A16_T1_CONTROLLED_ART_METHOD_TEST_20261031.zip (12 files, 657209 bytes, CRC PASS, SHA256 668740650885628612dd9435b316297cd143ee9bb1f559d0667e062398289618). NOT uploaded to Google Drive/GitHub, because it contains private sprite images.
 
 ## Compared routes (claims versus execution)
 1. **ComfyUI-Rinsei**: Community repo claims Windows **RX 6700 XT gfx1031 12GB** workable with ROCm custom nightly/SD1.5/SDXL and Wan2.2. Directly relevant to target GPU; not installed or verified in this project. Do not change drivers or large model stack without compatibility and isolated environment test. https://github.com/eviscerations/comfyui-rinsei
@@ -30,3 +30,5 @@ A10-A16 repeatedly passed ASF/Godot pixel-parity but failed on believable redraw
 - A15 baseline, A16 R3 editable asset, FS SEALED stay unchanged.
 
 Artifacts were generated in ChatGPT local runtime, not on authorized Windows host (Remote Desktop access quota unavailable). No ComfyUI runtime tests or native Windows GPU actions were performed here.
+
+Portable reproducibility: the bundled Python script references only sibling PNGs; extracted-to-temporary-folder offline replay exited 0, and independently reproduced 38-source-color palette and zero head/redraw mask overlap. No Windows GPU/art-generator call occurred.
