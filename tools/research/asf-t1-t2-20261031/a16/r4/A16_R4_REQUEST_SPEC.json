@@ -1,0 +1,30 @@
+{
+  "endpoint": "https://api.pixellab.ai/v2/animate-with-text-v3",
+  "frame_count": 4,
+  "no_background": true,
+  "seed": 16031,
+  "action": "The SAME brown-haired young forest scout in green cape and brown leather armor, same pixel art viewpoint and proportions, performs ONE short sword attack: raise the existing sword by bending the elbow and shoulder, swing the sword from right to left across the body, then follow through. Keep the original hair, face, clothing, hands, cape, feet and sword design. No redesign, no extra arms or weapons, no camera rotation, no effects or background.",
+  "source_file": "E:\\GameAssetToolLab_20261023\\ASF_Test_20261031\\A16_R4_PIXELLAB_PROOF\\T1_A15_attack_02_SOURCE.png",
+  "source_sha256": "88fede86b74ab7bfbf303df0ca7631ed77c7ccc5862ed7187915702ceb0ce60f",
+  "source_size": [
+    96,
+    112
+  ],
+  "pixel_budget": 43008,
+  "cost_budget": "one 4-frame API call only; no automatic retries",
+  "visual_gate": [
+    "identity and clothing conserved",
+    "sword remains in one hand",
+    "meaningful shoulder-elbow-wrist changes",
+    "pixel-crisp native RGBA",
+    "believable 4-frame silhouette progression"
+  ],
+  "technical_gate": [
+    "four separate RGBA PNG at source 96x112",
+    "first frame identical",
+    "alpha transparency",
+    "no ghost objects or extra limbs"
+  ],
+  "max_candidates": 3,
+  "run_state": "NOT_RUN"
+}
