@@ -1,0 +1,15 @@
+{
+  "zip": "FS_STAGE16_A20_FS_STYLE_REFERENCE_PRIVATE_20261031.zip",
+  "sha256": "592fd7982e4bf58aaf9379679dd47397e7dc38325517d7b697f460312d667c19",
+  "bytes": 583640,
+  "entries": 21,
+  "verified_source_files": 20,
+  "zip_crc": "PASS",
+  "cold_source_sha256": "PASS",
+  "cold_original_png_size": "PASS",
+  "paid_request_count": 1,
+  "subscription_generations_spent": 10,
+  "balance_after": 1980,
+  "original_images": 4,
+  "formal_seal": "NO"
+}
