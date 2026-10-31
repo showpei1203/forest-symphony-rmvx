@@ -1,0 +1,12 @@
+{
+  "stage": "A16_R4",
+  "state": "BLOCKED_NO_PIXEL_LAB_API_KEY",
+  "source_sha256": "88fede86b74ab7bfbf303df0ca7631ed77c7ccc5862ed7187915702ceb0ce60f",
+  "reference_png_verified": true,
+  "frame_count": 4,
+  "official_FS_unchanged": true,
+  "g7_art": "NOT_TESTED",
+  "timestamp_local": "2026-10-31 12:14:07",
+  "network_request_sent": false,
+  "spent_credits": false
+}
