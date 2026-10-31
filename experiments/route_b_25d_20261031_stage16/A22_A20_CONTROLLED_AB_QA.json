@@ -1,0 +1,128 @@
+{
+  "stage": "A22",
+  "date": "2026-11-01",
+  "AB_controls": "A20 endpoint, seed, descriptions and output canvas unchanged; style references and original pixel dimensions are different",
+  "single_paid_POST": 1,
+  "old_variants": [
+    {
+      "id": 1,
+      "distinct_RGB": 43,
+      "neighbor_L1": 10.062,
+      "mean_RGB": [
+        132.28,
+        154.52,
+        51.89
+      ]
+    },
+    {
+      "id": 2,
+      "distinct_RGB": 36,
+      "neighbor_L1": 15.183,
+      "mean_RGB": [
+        125.7,
+        146.11,
+        48.21
+      ]
+    },
+    {
+      "id": 3,
+      "distinct_RGB": 42,
+      "neighbor_L1": 13.811,
+      "mean_RGB": [
+        128.66,
+        150.0,
+        46.96
+      ]
+    },
+    {
+      "id": 4,
+      "distinct_RGB": 41,
+      "neighbor_L1": 14.812,
+      "mean_RGB": [
+        123.68,
+        148.07,
+        45.28
+      ]
+    }
+  ],
+  "new_variants": [
+    {
+      "id": 1,
+      "distinct_RGB": 33,
+      "neighbor_L1": 7.484,
+      "mean_RGB": [
+        128.68,
+        160.63,
+        41.5
+      ],
+      "sha256": "b0338b6f1949be1066f30719ebca3d891a620e74b02f38e4a9f449ea93c32248"
+    },
+    {
+      "id": 2,
+      "distinct_RGB": 38,
+      "neighbor_L1": 11.025,
+      "mean_RGB": [
+        131.6,
+        157.61,
+        46.04
+      ],
+      "sha256": "2de1a37dff0c42a76ab1dc1a09d01b09f42d663b1527b6f8e043931d73c467ec"
+    },
+    {
+      "id": 3,
+      "distinct_RGB": 35,
+      "neighbor_L1": 11.26,
+      "mean_RGB": [
+        126.1,
+        157.86,
+        40.99
+      ],
+      "sha256": "58155bb1bd6578a6b264767be3b1de9f886b7840a9ba9eb8c29ea4eb65686067"
+    },
+    {
+      "id": 4,
+      "distinct_RGB": 35,
+      "neighbor_L1": 6.642,
+      "mean_RGB": [
+        124.5,
+        160.26,
+        38.96
+      ],
+      "sha256": "afa37a231d1c8727f0136dcbe24228c46952a2504e25af188aff591b83485e2c"
+    }
+  ],
+  "original_new_png_provenance": "AUTHENTIC_API_BYTES_NOT_RESIZED",
+  "native_canvas": [
+    128,
+    128
+  ],
+  "old_job_id": "f70e6051-83d3-453e-97fa-9de33c7f0362",
+  "new_job_id": "d1d7e89d-571f-41a2-ac79-286171edced2",
+  "source_crops_exact": "A21 SHA256 VERIFIED",
+  "art_acceptance": "PENDING_HUMAN_FULL_GROUND3_BENCHMARK",
+  "Godot": "NOT_RUN",
+  "VX": "NOT_RUN",
+  "Formal_Seal": "NO",
+  "balance_before": {
+    "plan": "Tier 1: Pixel Apprentice",
+    "status": "active",
+    "generations": 1980.0,
+    "total_generations": null,
+    "usd_credits": 0.0
+  },
+  "balance_after": {
+    "plan": "Tier 1: Pixel Apprentice",
+    "status": "active",
+    "generations": 1970.0,
+    "total_generations": null,
+    "usd_credits": 0.0
+  },
+  "generations_spent": 10.0,
+  "USD_additional_charge": 0.0,
+  "delta_neighbor_L1_same_position": [
+    -2.578,
+    -4.158,
+    -2.551,
+    -8.17
+  ]
+}
