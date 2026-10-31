@@ -1,0 +1,70 @@
+{
+  "stage": "A13_KEYPOSE_R3",
+  "timestamp": "2026-10-31",
+  "status": "ASF_GODOT_TECH_PASS_ART_FAIL_PENDING",
+  "inputs": {
+    "T1": "A10 single forest scout master 64x80 + procedural sword",
+    "T2": "A10 single moss antler master 64x64 with source-pixel leg patches"
+  },
+  "case_counts": {
+    "T1": {
+      "clips": 6,
+      "source_frames": 46,
+      "attack_frames": 8,
+      "unique_attack_frames": 8,
+      "ASF_strict_warnings": 0,
+      "grip_offset_model_px": 0,
+      "G7": "PENDING/FAIL"
+    },
+    "T2": {
+      "clips": 5,
+      "source_frames": 38,
+      "export_frames": 37,
+      "attack_frames": 8,
+      "unique_attack_frames": 7,
+      "ASF_strict_warnings": 0,
+      "locked_consecutive_contacts_drift_px": 0,
+      "G7": "PENDING/FAIL"
+    }
+  },
+  "real_native_godot": {
+    "engine": "4.7.2-stable",
+    "GPU": "Radeon RX 6700 XT",
+    "renderer": "OpenGL3.3",
+    "actual_clips": 11,
+    "screenshots": 2,
+    "exact_source_image_comparisons": 22,
+    "rgb_pixel_errors": 0
+  },
+  "strict_negative": {
+    "source": "T2 attack_04.png removed",
+    "exit_code": 1,
+    "invalid_output_published": false,
+    "passed": true
+  },
+  "source_hashes": {
+    "A10_T1_master": "43cf8d9b9562c8de63cccf224774c2e3f318b1f4ed4046151fd52cd001e84f72",
+    "A10_T2_master": "74230347769421cface62e97ddaa146cc657177a5fa9c539f3961f50ce6c31bc",
+    "FS_K4_scripts": "5a728530764e61d22d8c6927367d983c14e36ee37e777508d154a04a2ee7acaa",
+    "FS_N5_scripts": "3271f5653a7f53cb55c0762d3b047e2300fbb6d6547257bef1fb2328be2b3ea9"
+  },
+  "failures": [
+    "R1_T2_synthetic_leg_posts",
+    "R2_T2_stance_contact_table_slip",
+    "R3_T2_visual_paw_seams_remain",
+    "T1_visual_grip_and_scabbard_not_approved"
+  ],
+  "limits": {
+    "model_generated_video": false,
+    "native_VX_import_for_this_candidate": false,
+    "human_art_sealed": false,
+    "archive_backed_up_to_cloud": false
+  },
+  "local_private_archive": {
+    "filename": "A13_KEYPOSE_R3_FULL_PRIVATE_20261031.zip",
+    "file_count": 1091,
+    "bytes": 4838637,
+    "sha256": "ffddcf79663563c76468d0f391d0abb6795fb564db605565ea5c38a8c7ec2024",
+    "crc": "PASS"
+  }
+}
