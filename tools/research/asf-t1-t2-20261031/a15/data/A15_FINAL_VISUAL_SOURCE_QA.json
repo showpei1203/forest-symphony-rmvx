@@ -1,0 +1,79 @@
+{
+  "T1_forest_scout": {
+    "changed_attack_frames": [
+      "attack_02.png",
+      "attack_03.png",
+      "attack_04.png",
+      "attack_05.png",
+      "attack_06.png",
+      "attack_07.png"
+    ],
+    "other_actions_byte_identical": true,
+    "source_master_sha256": "43cf8d9b9562c8de63cccf224774c2e3f318b1f4ed4046151fd52cd001e84f72",
+    "verified_hilt_source_replacements": 24,
+    "rejected_effect": "R2 broad cyan arc over face, not accepted"
+  },
+  "T2_moss_antler": {
+    "changed_attack_frames": [
+      "attack_01.png",
+      "attack_02.png",
+      "attack_03.png",
+      "attack_04.png",
+      "attack_05.png",
+      "attack_06.png"
+    ],
+    "other_actions_byte_identical": true,
+    "source_master_sha256": "74230347769421cface62e97ddaa146cc657177a5fa9c539f3961f50ce6c31bc",
+    "head_antler_source_match": [
+      {
+        "frame": 0,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      },
+      {
+        "frame": 1,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      },
+      {
+        "frame": 2,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      },
+      {
+        "frame": 3,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      },
+      {
+        "frame": 4,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      },
+      {
+        "frame": 5,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      },
+      {
+        "frame": 6,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      },
+      {
+        "frame": 7,
+        "source_head_pixels": 1270,
+        "mismatches": 0
+      }
+    ],
+    "dust_frames": [
+      4,
+      5
+    ],
+    "rejected": [
+      "R1 crude 4-pillar synthetic legs",
+      "R2 broad left belly duplication from rectangular patches",
+      "R2 dust at launch/recovery frames"
+    ]
+  }
+}
