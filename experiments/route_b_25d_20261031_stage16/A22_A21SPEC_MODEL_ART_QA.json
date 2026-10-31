@@ -1,0 +1,114 @@
+{
+  "stage": "A22",
+  "model": "Actual authenticated PixelLab generate-with-style-v2",
+  "generations_before": 1980.0,
+  "generations_after": 1960.0,
+  "server_usage": {
+    "type": "generations",
+    "generations": 10.0
+  },
+  "submit_attempts": 1,
+  "reference_provenance": "A21 exact native FS 96,128,64 crops, no resampling",
+  "reference_shas": [
+    "1ad9b9e1f583f731a86aa4feb2f8096fe778cab663226a4fad0ee462769bf473",
+    "358cf7c92214b2001179b3e004c16458d121e74fb857c38fe605bda0ac44517d",
+    "f3f9742625b47c39f2710e090663a9a50606fb0bbb96b1dbb4c46be17ede284a"
+  ],
+  "references_vs_prior": "A20 older 128x128 reference crop included vertical vegetation or cliff at edges; A21 source selection uses smaller cleaner crops.",
+  "native_128_model": "PASS",
+  "source_file_hashed": true,
+  "full_ground3_style": "PENDING_HUMAN_ART_REVIEW",
+  "godot": "NOT_RUN",
+  "vx": "NOT_RUN",
+  "formal_seal": "NO",
+  "variants": [
+    {
+      "variant": 1,
+      "a20_baseline": {
+        "colors": 43,
+        "neighbor_RGB_L1": 10.062,
+        "mean_RGB": [
+          132.28,
+          154.52,
+          51.89
+        ]
+      },
+      "a22_new": {
+        "colors": 34,
+        "neighbor_RGB_L1": 3.409,
+        "mean_RGB": [
+          103.32,
+          152.83,
+          19.04
+        ]
+      },
+      "a22_source_sha256": "091c03d5df32edbf105ad2e7644bb2d326307cbb942751f21b7139245aca6d46"
+    },
+    {
+      "variant": 2,
+      "a20_baseline": {
+        "colors": 36,
+        "neighbor_RGB_L1": 15.183,
+        "mean_RGB": [
+          125.7,
+          146.11,
+          48.21
+        ]
+      },
+      "a22_new": {
+        "colors": 33,
+        "neighbor_RGB_L1": 6.45,
+        "mean_RGB": [
+          155.19,
+          166.26,
+          58.97
+        ]
+      },
+      "a22_source_sha256": "27773ef8fcd48a89022803b5aee59b8ff7d30785ea560f22b43cf8050d0a7c1f"
+    },
+    {
+      "variant": 3,
+      "a20_baseline": {
+        "colors": 42,
+        "neighbor_RGB_L1": 13.811,
+        "mean_RGB": [
+          128.66,
+          150.0,
+          46.96
+        ]
+      },
+      "a22_new": {
+        "colors": 42,
+        "neighbor_RGB_L1": 7.009,
+        "mean_RGB": [
+          141.44,
+          163.78,
+          49.13
+        ]
+      },
+      "a22_source_sha256": "35520fa473b2fb73e36edcb3049152ec069769fe71aaffe97bfdb8826ebc83a9"
+    },
+    {
+      "variant": 4,
+      "a20_baseline": {
+        "colors": 41,
+        "neighbor_RGB_L1": 14.812,
+        "mean_RGB": [
+          123.68,
+          148.07,
+          45.28
+        ]
+      },
+      "a22_new": {
+        "colors": 38,
+        "neighbor_RGB_L1": 7.761,
+        "mean_RGB": [
+          98.06,
+          145.49,
+          18.91
+        ]
+      },
+      "a22_source_sha256": "fb8a80c8f3a0185aeb16c1c8dbbfc6ecaa8d435fefd8bf3e3e441eeed228b275"
+    }
+  ]
+}
