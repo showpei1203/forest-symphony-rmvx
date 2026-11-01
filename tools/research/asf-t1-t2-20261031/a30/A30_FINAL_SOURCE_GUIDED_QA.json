@@ -1,0 +1,74 @@
+{
+  "stage": "A30",
+  "date": "2026-11-01",
+  "approved_source": "A26 1:1 FS actor01 user PASS; A29 45degree unarmed visual candidate",
+  "original_source_hashes": {
+    "$actor01.png": "df6abaa888dc4ffcaf5351daf26d678bace121e277f21b4651eb69884591a2a5",
+    "$actor01_1.png": "e8ab0c26e4a08bc70034c9e706d1b1e8d0b729b49d94a35097eadf7c05da3485",
+    "$actor01_2.png": "daa27d8a65dff9afeafd87c9f83884217661e58aaa97f39e730683a1b196a3bf",
+    "$actor01_3.png": "94763a478df3a72a465b0d5f08d6f9eb912a9fb9491ed20e2d9c66862192da3b"
+  },
+  "native_motion_analysis": {
+    "base_native_right_row2": "3-phase walk: r2 c0 / r2 c1 / r2 c2",
+    "idle": "r2,c1 full bbox bottom y32 constant, head top 0",
+    "walk": "r2 c0,c1,c2 foot-bottom always 32, hair top 1/0/1, leg steps short",
+    "skeleton": "Original PNG files contain no joint skeleton; 18-joint PixelLab estimated on unarmed A29 sprite and motion constraints inferred from original silhouettes."
+  },
+  "real_pixelLab_jobs": {
+    "IDLE": {
+      "job_id": "a87553bc-85b1-4386-9baa-7d923f711a8f",
+      "provider_usage": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 3
+      }
+    },
+    "WALK": {
+      "job_id": "0e04939c-0c2e-4b1e-9032-a4c6ebea31e1",
+      "provider_usage": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 3
+      }
+    }
+  },
+  "pixelLab_budget": {
+    "previous_A29": 1838.9,
+    "A30_skeleton_estimate": 0.1,
+    "A30_idle_skeleton_v3": 3.0,
+    "A30_walk_skeleton_v3": 3.0,
+    "A30_total": 6.1,
+    "live_end_balance": 1832.8,
+    "plan_total": 2000
+  },
+  "stage_gates": {
+    "native_source_sha": "PASS",
+    "user_approved_character_preserved_source": "PASS, original source untouched",
+    "new_actions_provider_pngs": "PASS 6 RAW frames per action",
+    "idle_vertical_stability": "PASS foot bottom [38]*6 head top [4]*6",
+    "walk_floor_stability": "PASS foot bottom [38]*6 head top [4]*6",
+    "loop_seam": "PASS final F_last to F0 1pixel for both",
+    "true_45degree": "PENDING USER ART REVIEW - A29 chosen SE candidate not formally passed",
+    "natural_step_appearance": "PENDING USER VISUAL REVIEW",
+    "SBS_engine_visual_integration": "NOT DONE",
+    "weapon_paper_doll_compatibility": "Character unarmed; separate weapon composite not tested"
+  },
+  "raw_metrics_file": "A30_RAW_LOOP_QA.json",
+  "final_selected_frames": {
+    "IDLE": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "WALK": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "all_raw_provider_frames_kept": true,
+  "original_$actor01_and_SBS_untouched": true
+}
