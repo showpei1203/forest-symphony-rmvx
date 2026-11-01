@@ -1,3 +1,5 @@
+> **SUPERSEDED BY A32 (2026-11-01):** latest authoritative [A32 CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A32_20261101.md); A32 upper-two-tree alpha contours repaired and real VX/cold QA verified. Mandatory next stage [A33 Ground edge rework](STAGE16_A33_GROUND_PIXEL_EDGE_REWORK_KICKOFF_20261101.md). Original A31 frozen. Formal Seal NO.
+
 # CURRENT_HANDOFF Stage16 A31: two upper-tree PAR separation 2026-11-01
 
 **Stage A31 native VX map engineering PASS; tree-color aesthetic candidate PENDING user review; Formal Seal NO.**
