@@ -11,3 +11,22 @@
 8. **Production scope limit:** isolated map-only VX script harness bypasses prior legacy BattleRegression alias failures. A33 does not repair sealed game battle startup. Keep Formal Seal NO.
 9. **Do not move PAR work backward:** A32B art explicitly user approved. Twelve sprites, two upper tree leaf texture, alpha, foot collision, light/shadow separation all immutable for A33.
 10. **Repro/return:** preserve source crops, mask, all candidate PNGs, true native screenshots, Godot GPU 8 frames, SHA manifest, and visual before/after. New generation must not falsely claim PixelLab AI produced R5: A33 R5 is deterministic compositing/retexturing from true Ground3 samples, not a new PixelLab paid generation.
+
+
+## Verified A33 private Drive delivery (2026-11-01, Drive metadata readback)
+- **Native VX before/after A32B vs A33 R5**, with four material closeup pairs, 544px wide: https://drive.google.com/file/d/1xwPnopLWYSnNL8V-rounh-AHCuQWPpzc/view
+- **Actual new Ground R5**, opaque 544×416 native PNG (new source SHA `ec06a5c01d292beba7dbb042be844dc95b59e5e127f293767d7ea86c11d287c0`): https://drive.google.com/file/d/1z7jfhzecS_UvVCuRnDDj5ANzNI7g9a5b/view
+- **Original Ground vs seamless R4/R5/R6**, composited over exact A32B approved PAR: https://drive.google.com/file/d/1l_5hXmkKKop6S38sIyH7sVgiQSpvWeAO/view
+- **Material road/grass pixel edge zooms**: https://drive.google.com/file/d/1egH9YusS0lTlBx5fLiXFE_4QKBv3RwtQ/view
+- **Rejected R1/R2/R3 grid-error comparison**, do not promote: https://drive.google.com/file/d/1WLleb9Ae5CVVv8LEVhua7L-gDdRRnMjs/view
+- **Full A33 private ZIP**, 105 members, 20,551,494 bytes; local ZIP CRC, each SHA256 and independent re-extraction PASS; Drive metadata title/size readback, not remote download SHA validation: https://drive.google.com/file/d/1MhJQfl7AIaevSwhRyxonpSYrppElPWWI/view
+- A33 real VX/Godot QA: https://drive.google.com/file/d/1yI5_5mPgG695P7sPJiPZ2bz7a_UOXBwf/view
+- Godot RX6700XT native pixel round-off QA: https://drive.google.com/file/d/17PNYpDOrUrrAAnAI5uy62A55xNVJa_bJ/view
+- VX fresh 3395-file cold QA: https://drive.google.com/file/d/1xpuiy5EvE_56Jkom77_kKLI4n2aV9dZK/view
+- New permanent true Ground3 source rules: https://drive.google.com/file/d/1yapdD2Tsi9TIIx45QF73CXu-VIkmvDhb/view
+- A33 failure register: https://drive.google.com/file/d/1vjsgnxqcTUDHyC4StONAtQYK-k2dhQ_u/view
+- Detailed A33 Handoff: https://drive.google.com/file/d/11PXNXpkAUASzJI4X1S7-rz2XMP8XYmu0/view
+- Latest A33 CURRENT_HANDOFF: https://drive.google.com/file/d/1TlZO05p4N5rKHaZ3eOExu7EfnadYCtCD/view
+- A33 folder: https://drive.google.com/drive/folders/15ev-Hx6yxtgSeVCuZo8NgLI5IU2Kufap
+
+**A33 native engineering PASS / Ground art review pending / Formal Seal NO.** Do not promote the isolated Map50 test app to sealed production.
