@@ -1,0 +1,149 @@
+{
+  "source": [
+    {
+      "bbox": [
+        6,
+        6,
+        34,
+        38
+      ],
+      "center": [
+        20.15,
+        23.52
+      ],
+      "n_alpha": 560,
+      "low_center": 18.52,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        5,
+        6,
+        35,
+        38
+      ],
+      "center": [
+        19.12,
+        23.92
+      ],
+      "n_alpha": 553,
+      "low_center": 17.27,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        8,
+        6,
+        36,
+        38
+      ],
+      "center": [
+        20.95,
+        21.88
+      ],
+      "n_alpha": 589,
+      "low_center": 21.22,
+      "bottom_edge": 0
+    }
+  ],
+  "B": [
+    {
+      "bbox": [
+        6,
+        11,
+        34,
+        38
+      ],
+      "center": [
+        19.68,
+        24.06
+      ],
+      "n_alpha": 504,
+      "low_center": 17.56,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        6,
+        11,
+        35,
+        38
+      ],
+      "center": [
+        19.27,
+        25.56
+      ],
+      "n_alpha": 485,
+      "low_center": 17.78,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        10,
+        9,
+        33,
+        38
+      ],
+      "center": [
+        20.72,
+        23.26
+      ],
+      "n_alpha": 523,
+      "low_center": 21.26,
+      "bottom_edge": 0
+    }
+  ],
+  "C": [
+    {
+      "bbox": [
+        6,
+        11,
+        34,
+        38
+      ],
+      "center": [
+        19.68,
+        24.06
+      ],
+      "n_alpha": 504,
+      "low_center": 17.56,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        6,
+        11,
+        35,
+        38
+      ],
+      "center": [
+        19.34,
+        25.68
+      ],
+      "n_alpha": 481,
+      "low_center": 17.74,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        10,
+        9,
+        32,
+        38
+      ],
+      "center": [
+        20.83,
+        22.97
+      ],
+      "n_alpha": 501,
+      "low_center": 21.48,
+      "bottom_edge": 0
+    }
+  ],
+  "source_real": "from user screenshot indexed palette 32x32 exact RGB/alpha, padded x4/y6",
+  "one_shot": "three distinct positions, not a seamless GIF",
+  "status": "CANDIDATE_USER_ART_REVIEW",
+  "angle_45": "needs visual review",
+  "no_weapons": "needs visual review",
+  "original_role_both": "FS A26-approved 1:1 appearance; A31 source, no sealed files touched"
+}
