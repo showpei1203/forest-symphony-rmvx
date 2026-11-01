@@ -1,0 +1,24 @@
+{
+  "stage": "A28_Faint_pixel_compact",
+  "source_frame_bbox": [
+    15,
+    24,
+    48,
+    46
+  ],
+  "changed_source_pixels": 1,
+  "removed_pixel_coordinate": [
+    15,
+    43
+  ],
+  "new_bbox": [
+    16,
+    24,
+    48,
+    46
+  ],
+  "native_clipped_pixels": 0,
+  "native_atlas_changes_vs_A27": 0,
+  "seven_unedited_rows_sha_equivalent": true,
+  "status": "TECHNICAL native geometry candidate; user art review still pending"
+}
