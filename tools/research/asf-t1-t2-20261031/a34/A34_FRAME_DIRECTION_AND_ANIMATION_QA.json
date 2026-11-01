@@ -1,0 +1,124 @@
+{
+  "source": {
+    "native_ref_sha": "1b5ab759d45c79e3282514e767d1934847b742d0b634b008b904eabbcb253d4f",
+    "corrected_new_2frame_native_master_sha": "7228c43ac8123d7f53c9213ca70c3a4e959a85f18f28a88a524c717d2a69a5cb"
+  },
+  "old_A33": [
+    {
+      "bbox": [
+        6,
+        11,
+        34,
+        38
+      ],
+      "alpha": 504,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        6,
+        11,
+        35,
+        38
+      ],
+      "alpha": 485,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        10,
+        9,
+        33,
+        38
+      ],
+      "alpha": 523,
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "new_B2_raw": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha": 556,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        7,
+        11,
+        35,
+        38
+      ],
+      "alpha": 489,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha": 556,
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "candidate_view_locked": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha": 556,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        7,
+        11,
+        35,
+        38
+      ],
+      "alpha": 489,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha": 556,
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "raw_source_first_match_diff": 527,
+  "F1_crouch_raw_vs_bad_A33_diff": 529,
+  "assembled_F0_master_identical": true,
+  "assembled_F2_master_identical": true,
+  "assembled_F0_to_F2_identity": 0,
+  "raw_F0_face_style": "VISUAL REVIEW",
+  "first_frame_angle_assessment": "NEW FIRST FRAME follows actual FS battle-view source; differs from OLD A33 side profile. Human artistic 45-degree approval PENDING.",
+  "individual_frame_angle_gate": "F0 provisional; F1 provisional; F2 provisional. No formal PASS.",
+  "Dodge_action": "F0 ready -> F1 crouch -> F2 ready, source driven. One-shot not a loop",
+  "one_shot_gif": "no infinite loop; last frame hold",
+  "SBS_overlay": "NOT TESTED",
+  "source_edit": "Original pose data preserved; cleaned 44-pixel disconnected prior-row debris in a COPY only",
+  "original_game_files_untouched": true
+}
