@@ -1,3 +1,5 @@
+> **UPDATED USER ORDER 2026-11-01:** A32 technical boundary work was visually rejected. A32B upper-leaf structural sprite revision is now the immediate active work. **A33 Ground editing MUST NOT start until A32B tree art is visually accepted by user.** Existing A33 source audit is read-only and may be retained; no user permission to promote A33 Ground candidate before A32B visual signoff. Latest [A32B CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A32B_20261101.md). This note supersedes any older language suggesting an immediate A33 start when A32 only reached engineering PASS. Formal Seal NO.
+
 # Forest Symphony Stage16 A33 — Ground pixel-edge style repair NEXT, not A32 PAR
 
 Date: 2026-11-01 Asia/Taipei. User instruction: **after A32's upper-two-tree PAR crisp-edge engineering is done, next task must start correcting the PixelLab-generated Ground, especially too blurry boundaries relative to supplied example art.**
