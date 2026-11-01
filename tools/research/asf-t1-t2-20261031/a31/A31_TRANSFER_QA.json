@@ -1,0 +1,125 @@
+{
+  "stage": "A31",
+  "transferred_raw": [
+    {
+      "bbox": [
+        8,
+        7,
+        31,
+        38
+      ],
+      "alpha_px": 481,
+      "foot_contact_36_38": 20
+    },
+    {
+      "bbox": [
+        9,
+        6,
+        32,
+        38
+      ],
+      "alpha_px": 493,
+      "foot_contact_36_38": 19
+    },
+    {
+      "bbox": [
+        8,
+        7,
+        32,
+        38
+      ],
+      "alpha_px": 502,
+      "foot_contact_36_38": 25
+    },
+    {
+      "bbox": [
+        9,
+        6,
+        32,
+        38
+      ],
+      "alpha_px": 495,
+      "foot_contact_36_38": 15
+    }
+  ],
+  "original_bboxes": [
+    [
+      8,
+      7,
+      31,
+      38
+    ],
+    [
+      8,
+      6,
+      32,
+      38
+    ],
+    [
+      8,
+      7,
+      32,
+      38
+    ],
+    [
+      8,
+      6,
+      32,
+      38
+    ]
+  ],
+  "source_diffs": [
+    350,
+    384,
+    384
+  ],
+  "provider_original_frame_diffs": [
+    369,
+    396,
+    400
+  ],
+  "provider_neutral_repeat_difference": 92,
+  "pixel_only_alignment_shift_xy": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "normalization": "Translation only; no re-render/repaint",
+  "final_cycle_indices": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "final_frame_diffs": [
+    369,
+    396,
+    396
+  ],
+  "final_loop_seam": 369,
+  "floor_bottoms": [
+    38,
+    38,
+    38,
+    38
+  ],
+  "native_motion_sequence": "source right facing row2: c0-c1-c2-c1",
+  "idle_policy": "STATIC source neutral pose transferred to outfit, no invented breath",
+  "visual_gate": "USER_REVIEW_PENDING; transfer output may alter style",
+  "true_45degree_gate": "NOT YET PASSED; original source r2 right-facing",
+  "SBS_engine": "NOT TESTED",
+  "footline_gate": "PASS"
+}
