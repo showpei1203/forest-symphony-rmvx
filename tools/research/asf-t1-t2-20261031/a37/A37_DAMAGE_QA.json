@@ -1,0 +1,130 @@
+{
+  "stage": "A37_DAMAGE",
+  "action": "Damage",
+  "requirement": "EXACTLY 3 source frames per action; FS 45deg SE, 1:1 chibi, no weapons",
+  "new_provider": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha_pixels": 556,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        8,
+        10,
+        32,
+        38
+      ],
+      "alpha_pixels": 522,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha_pixels": 555,
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "input": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha_pixels": 556,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        8,
+        10,
+        32,
+        38
+      ],
+      "alpha_pixels": 523,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha_pixels": 556,
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "previous_A33": [
+    {
+      "bbox": [
+        6,
+        8,
+        31,
+        38
+      ],
+      "alpha_pixels": 554,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        8,
+        10,
+        32,
+        38
+      ],
+      "alpha_pixels": 523,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        8,
+        10,
+        31,
+        38
+      ],
+      "alpha_pixels": 473,
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "source_vs_result_changed_pixels": [
+    534,
+    523,
+    535
+  ],
+  "result_adjacent_changed_pixels": [
+    607,
+    603
+  ],
+  "provider_frame0_to_frame2_diff": 70,
+  "start_direction_camera_gate": "USER VISUAL REVIEW PENDING: must compare face/head/shoulders/hips with true FS actor01_1 reference",
+  "F1_recoil_action_gate": "USER VISUAL REVIEW PENDING: distinguish damage recoil from ordinary walk/idle",
+  "F2_recovery_camera_gate": "USER VISUAL REVIEW PENDING",
+  "weapon_paper_doll_gate": "VISUAL REVIEW/NO SBS ENGINE TEST",
+  "phase_count_gate": "PASS exactly 3 provider frames",
+  "source_40px_geometry_gate": "PASS",
+  "cropping_gate": "PASS",
+  "original_fs_untouched": true,
+  "formal_art_pass": false,
+  "full_sprite_sheet_sha256": "ac7b5362faabebbaee6a671c17fd04b0c23b99c0c784acbff5619c6138902a1a"
+}
