@@ -1,4 +1,4 @@
-# CURRENT_HANDOFF FS Stage16 A34 (2026-11-01)
+> **SUPERSEDED BY A35 (2026-11-02):** latest [A35 CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A35_20261102.md) uses the **user-approved directly generated lush grass, dirt tracks, cliff plateau & shore source art** as actual 1280x928 Ground instead of A34 tiled material quilting. 217 independent RGBA cliff PAR masks, native VX11 cases/22 frames (last9 0 RGB), Godot6 full/6 crops 0 RGB, cold 3844/3844 source SHA. A35 746 passable of 1160, largest component only695; stair, elevation and 32px topology still provisional, not Formal Seal. Do NOT revert to A34 noisy grass Ground as aesthetic base.\n\n# CURRENT_HANDOFF FS Stage16 A34 (2026-11-01)
 LATEST active work: **A34 full map 1280x928 (40x29 VX tiles) actual engineering PASS**. Forest landscape with 104 independent tree sprites + 96 shrubs + 10 route props = 210 full separate alpha PAR sources, true full opaque Ground, road/habitat mask and source provenance. Not final large village.
 Remote DESKTOP-90VT437 online and working, prior conversation halted after actual visual screenshot side-by-side and before GitHub/Drive handoff sync.
 
