@@ -1,0 +1,51 @@
+{
+  "version": "A36",
+  "date": "2026-11-01",
+  "rule": "Exactly 3 native frames in each and every combat action spritesheet",
+  "action_dimensions": "3×40px = 120x40 PNG, 3 columns x 1 row",
+  "source": "A34 native FS 45° battle F0/F2 and selected genuine A35 interpolation PNG B3",
+  "candidate": "A36_DODGING_FORMAL_3FRAME_CANDIDATE.png",
+  "dodging_frames": [
+    {
+      "idx": 0,
+      "motion": "Guard F0 with native 45° battle view",
+      "source": "A34 true native 45° PixelLab white haired unarmed master"
+    },
+    {
+      "idx": 1,
+      "motion": "Crouch / lower hitbox / evade",
+      "source": "A35 genuine PixelLab interpolation B03, not manually repainted"
+    },
+    {
+      "idx": 2,
+      "motion": "Recovery; exact same pixel art as native F0",
+      "source": "A34 true native 45° PixelLab white haired unarmed master"
+    }
+  ],
+  "walk": "3 UNIQUE source A31 frames c0 c1 c2; 4-phase playback c0,c1,c2,c1 uses center frame twice with script, NOT 4 sprite columns",
+  "waiting": "3 identical real approved center images, no shoulder wiggle",
+  "nothing": "3 transparent frames, no PixelLab fees",
+  "GIF": "one shot no repeat extension; 3 frames",
+  "pixel_lab": {
+    "new_paid_generations": 0,
+    "only_selected_from_existing_genuine_A34_A35_assets": true
+  },
+  "fullQA": {
+    "exactly_three_frames": "PASS",
+    "native40px_each": "PASS",
+    "alpha_channel": "PASS",
+    "F0_F2_visual_lock_same_file": "PASS",
+    "per-frame_45degree": "ART REVIEW PENDING",
+    "action_dodge_naturalness": "ART REVIEW PENDING",
+    "Tankentai_sbs_paper_doll_test": "NOT DONE",
+    "engine_formal_pass": "NOT DONE"
+  },
+  "alternative_three_frame_dodge_variants": [
+    "T1_READY_TUCK_RECOVER",
+    "T2_READY_MIDROLL_RECOVER",
+    "T3_READY_LOW_EVADE_RECOVER",
+    "T4_ANTICIPATE_ROLL_LAND"
+  ],
+  "no_project_assets_overwritten": true,
+  "sha256": "e586853a7d3ef8b5e6bebd015be8c0ac88d0aabe114334f97900c043593a067a"
+}
