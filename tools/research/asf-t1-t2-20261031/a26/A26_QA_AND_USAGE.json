@@ -1,0 +1,83 @@
+{
+  "stage": "A26",
+  "date": "2026-11-01",
+  "pmd": "user approved A25 volcanic creature, full native 6-action generation not complete",
+  "pmd_actual_pixelLab_actions": [
+    "Idle",
+    "Walk"
+  ],
+  "pmd_art_gate": {
+    "Idle": "RAW FAIL: spurious tail & black dots, processed clean candidate not yet human-approved",
+    "Walk": "CANDIDATE, details vary, user review pending"
+  },
+  "pmd_native_cell_sheets": {
+    "Idle": "32x40 5F",
+    "Walk": "40x40 5F"
+  },
+  "pmd_xml_native_integration": "NOT DONE, 8-direction species consistent reconstruction required",
+  "fs_first_64x64_reference_based_fix": "FAIL: still 45px high and touches bottom",
+  "fs_native_40x40_pixen": "CANDIDATE: 1:1 chibi head-to-body emphasis, 34px bbox high in padded 40x40, no bottom clipping; user review",
+  "other_pmd_actions": "Attack, Charge, Hurt, Faint NOT YET SUBMITTED",
+  "pixellab_job_usage": {
+    "PMD_IDLE": {
+      "job_id": "3ff47218-0458-42e6-8f0d-e107b783a1b1",
+      "status": "completed",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "billing_usage": {
+        "type": "generations",
+        "generations": 1.0
+      }
+    },
+    "PMD_WALK": {
+      "job_id": "c624f782-760a-42ac-9202-eb49f09e2f44",
+      "status": "completed",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "billing_usage": {
+        "type": "generations",
+        "generations": 1.0
+      }
+    },
+    "FS_EDIT_REFERENCE": {
+      "job_id": "f40e6fc4-5be0-4848-9a83-52c700309716",
+      "status": "completed",
+      "usage": {
+        "type": "generations",
+        "generations": 10.0
+      },
+      "billing_usage": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      }
+    },
+    "FS_NATIVE_PIXEN": {
+      "job_id": "0dec7a58-fcbc-44a2-a826-46a751a75daf",
+      "status": "completed",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "billing_usage": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 1
+      }
+    }
+  },
+  "post_read_balance": {
+    "plan": "Tier 1: Pixel Apprentice",
+    "status": "active",
+    "generations": 1860.0,
+    "total": 2000.0
+  },
+  "approved_source_sha": "22a85187ddfdd5357c06ecb6e77b5277c4c6dec5ac44ba2747720a926ff884ce",
+  "fs_original_source_sha": "ccd1ee538c37a07a8d4d1d648738e32ce9dfc8a997123ebc088cb01eea3d7299",
+  "contact_sha": "e8cc030d6b2658d8a04b9daec37b4fdc35409db5bfba90d8c5f923dffddcce94",
+  "no_original_assets_overwritten": true
+}
