@@ -1,0 +1,45 @@
+{
+  "source_bboxes": [
+    [
+      6,
+      6,
+      30,
+      38
+    ],
+    [
+      8,
+      6,
+      32,
+      38
+    ],
+    [
+      7,
+      6,
+      36,
+      38
+    ]
+  ],
+  "provider_bboxes": [
+    [
+      6,
+      8,
+      31,
+      38
+    ],
+    [
+      8,
+      10,
+      32,
+      38
+    ],
+    [
+      8,
+      10,
+      31,
+      38
+    ]
+  ],
+  "art_status": "PENDING_USER; inspect recoil/pose clarity",
+  "weapon_layer": "not integrated",
+  "one_shot": true
+}
