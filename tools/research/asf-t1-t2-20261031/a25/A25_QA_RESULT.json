@@ -1,0 +1,61 @@
+{
+  "stage": "A25 T1 sourced concept visual gate",
+  "date": "2026-11-01",
+  "total_generation_cost": 20.0,
+  "pixelLab_account_balance_before": 1933.0,
+  "pixelLab_account_balance_after_expected": 1913.0,
+  "original_game_files_modified": false,
+  "pmd_xml_modified": false,
+  "no_six_action_sheets_claimed": true,
+  "no_formal_45deg_acceptance": true,
+  "results": {
+    "PMD0001": {
+      "job_id": "da094117-dfae-4f7f-a066-d4e4ad4a6d19",
+      "provider": "REAL_PIXEL_LAB_EDIT_IMAGES_V2_PRO",
+      "source_sha256": "af1657376947910a2378dcf0b10bb54452ca114eccfa470dbd1a54b7fee95806",
+      "output_sha256": "22a85187ddfdd5357c06ecb6e77b5277c4c6dec5ac44ba2747720a926ff884ce",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_bbox": [
+        20,
+        22,
+        47,
+        46
+      ],
+      "opaque_pixels": 446,
+      "bottom_edge_alpha_count": 0,
+      "generation_cost": 10.0,
+      "pixel_changes": 473,
+      "art_gate": "PENDING USER REVIEW",
+      "integration": "NOT DONE"
+    },
+    "FS_ACTOR01": {
+      "job_id": "9ecd4cda-2ba9-424a-bfce-7870c83d6085",
+      "provider": "REAL_PIXEL_LAB_EDIT_IMAGES_V2_PRO",
+      "source_sha256": "ccd1ee538c37a07a8d4d1d648738e32ce9dfc8a997123ebc088cb01eea3d7299",
+      "output_sha256": "7ee17ee93b6cb60c0356dce6dbdd51956b178de0f4c2258c8de8986094b6b661",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_bbox": [
+        20,
+        19,
+        48,
+        64
+      ],
+      "opaque_pixels": 758,
+      "bottom_edge_alpha_count": 4,
+      "generation_cost": 10.0,
+      "pixel_changes": 870,
+      "art_gate": "PENDING USER REVIEW",
+      "integration": "NOT DONE"
+    }
+  },
+  "visual_observations": {
+    "PMD0001": "Cleaner connected horns and rock plates than A24, recognizable orange squat creature, apparent species change but molten fissure detail limited. User art gate pending.",
+    "FS_ACTOR01": "Improved multilayer shoulder/torso armor compared with A24 block overlay; source white hair recognizable. Character image reaches bottom edge with non-transparent boot pixels; possible clipping, NOT final usable battle sprite. Sword grip and true 45-degree angle need human review."
+  }
+}
