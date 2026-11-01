@@ -25,3 +25,21 @@ At A31 upper trees were too similar in hue/texture to grassy Ground. A32 cleaned
 
 ## Rejected prototype image files
 Private stage has `A32B_PROTOTYPES_TREE_DETAIL.png`, `A32B_V2_REAL_REFERENCE_LEAF_STRUCTURE_COMPARISON.png`, `A32B_V3_SHELVED_LEAF_GROUP_COMPARE.png`, `A32B_V4_HYBRID_REAL_LEAVES_COMPARE.png`, associated candidate RGBA and generator scripts. Keep these FAIL variants for future learning; do not promote to active scene.
+
+
+## A32B verified private Drive deliverables (2026-11-01)
+- **Native VX before/after mobile comparison**, 544×2164, A32 vs A32B full-scene and upper-tree close-ups: https://drive.google.com/file/d/1gmS8iLlEKXx59gBKMkbONYZvPfoosGSP/view
+- Independent upper left original sprite reworked RGBA: https://drive.google.com/file/d/1GdnzL6lzk5rfaIn8zru49zrKHqYy95VF/view
+- Independent upper right original sprite reworked RGBA: https://drive.google.com/file/d/1FoPtoHwTqQbsLGaPJADI24wAgIeDMbJZ/view
+- **Recompiled PAR50 transparent 544×416**, exact 12 sprite composite: https://drive.google.com/file/d/1S8NCAVbx2rqVFLdCyouFCuImxfb8lU3W/view
+- Selected first morphology prototype vs A32 zoom, plus discarded alternatives retained in evidence: https://drive.google.com/file/d/1vhjYwn717DWKLf5m_yiy_eRS9AkD3nEa/view
+- **Complete private evidence ZIP**, 81 entries, 10,366,572 bytes (local CRC, individual SHA256 and independent extract all PASS; Drive metadata/title/size confirmed, but no remote full ZIP SHA claimed): https://drive.google.com/file/d/15_JDEYBjdtYPp5Ce0vZTwAlsP27MfbWf/view
+- A32B native VX QA: https://drive.google.com/file/d/16TzIRfBpx5KCAUgX5PTshhJoMG36lmFO/view
+- A32B independent cold QA: https://drive.google.com/file/d/1Ep0VPG6XZKXFdn7nilzj2Jxr57D07O_d/view
+- A32B detailed Handoff: https://drive.google.com/file/d/1JlMi251_J-WnU4BXRbmsVR6ee0GxOAL-/view
+- A32B specific **failure register**: https://drive.google.com/file/d/1nb0QVuEe8ZIDUuNdk0WJ0MhCdwpYHOJ7/view
+- A32B **permanent leaf-structure QA**: https://drive.google.com/file/d/199Vk1JLY7hoJcapVgk9CsXNWfLRoVS6z/view
+- A32B **CURRENT_HANDOFF**: https://drive.google.com/file/d/1H0evpqJX92M1JToC8eXnFlWFcW3p9VJ5/view
+- A32B private Drive folder: https://drive.google.com/drive/folders/1ZCl8pwvwTKlZXxOwGuVyd15Z-eSx4UjG
+
+**Status stays ART PENDING, Formal Seal NO. A33 Ground editing waits for user's A32B visual approval.**
