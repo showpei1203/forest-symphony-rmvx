@@ -1,0 +1,68 @@
+{
+  "stage": "A37",
+  "date": "2026-11-01",
+  "user_selection": "Dodging T4 option fourth, correct authoritative action variant",
+  "dodging": {
+    "3frame_sheet": "A37_DODGING_T4_USER_SELECTED_3FRAME_120x40.png",
+    "source_sha": "bfc51f2656690f56b59a944620b9432883d959e3894bc301057605d5770f112a",
+    "artifact_sha": "bfc51f2656690f56b59a944620b9432883d959e3894bc301057605d5770f112a",
+    "pose_sources": [
+      "A35 genuine PixelLab interpolation frame segment A02",
+      "A35 genuine PixelLab interpolation frame segment A06",
+      "A35 genuine PixelLab interpolation frame segment B07"
+    ],
+    "frame_count": 3,
+    "technical_3frame": "PASS",
+    "user_variant_selection": "PASS / USER CHOSE T4",
+    "exact_45_per_frame": "NOT FORMALLY PASSED",
+    "engine_sbs": "NOT TESTED"
+  },
+  "damage": {
+    "first_pass": {
+      "job_id": "fe856ee1-582f-4588-ae5d-a752867ccc2a",
+      "billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "three_frames": "PASS",
+      "motion_recoil": "ART FAIL: weak, looks like bowed idle",
+      "camera_f1": "FAIL: old side-view risk"
+    },
+    "second_pass": {
+      "job_id": "9bdfcd3b-fed5-4ece-a1bf-d2e31514e0ae",
+      "billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "three_frames": "PASS",
+      "recoil": "Clearer lean-back, improvement",
+      "camera_F1": "FAIL: side-facing 90deg recurs, not a proper 45deg battle view",
+      "camera_F0_F2": "Changed from native battle master and needs angle review"
+    },
+    "composite_candidate": "A37_DAMAGE_COMPOSITE_3FRAME_CANDIDATE.png, keeps B F0/F2 with C F1",
+    "composite_camera_gate": "FAIL F1; not a formal damage action",
+    "user_art_gate": "NOT PASSED",
+    "sbs_import": "BLOCKED BY ART GATE"
+  },
+  "pixelLab_budget": {
+    "before_A37": 1741.8,
+    "spent": 20.0,
+    "balance_after": 1721.8,
+    "total": 2000
+  },
+  "native_pixel_size": [
+    40,
+    40
+  ],
+  "sheet_size": [
+    120,
+    40
+  ],
+  "forbidden": "Never use 18/28 frames officially; every action exactly 3",
+  "zero_duplicate_jobs": "locked before each call",
+  "private_files": "Original FS, A31, A33, A34, A35, A36 and SBS untouched",
+  "next_gate": "Do not repeat vague 45 prompt. Next Damage trial needs true pose-conditioned native $actor01_1/_2/_3 battle camera control on EVERY frame or explicit controlled source selection. User may review C recoil but F1 90° FAIL.",
+  "visual_proof": "A37_DAMAGE_B_VS_C_VS_CAMERA_LOCK_REVIEW.png and A37_T4_DODGE_AND_DAMAGE_SOURCE_VS_RESULT_3FRAME.png"
+}
