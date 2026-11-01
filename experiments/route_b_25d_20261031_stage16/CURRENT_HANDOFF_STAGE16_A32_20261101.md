@@ -1,3 +1,5 @@
+> **SUPERSEDED BY A32B 2026-11-01:** User rejected A32 visuals despite VX engineering PASS. Latest [A32B CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A32B_20261101.md), with mandatory upper-canopy internal leaf morphology and failure register. A33 Ground work is on HOLD until A32B receives user visual acceptance. Formal Seal NO.
+
 # CURRENT_HANDOFF Stage16 A32 — Upper-tree crisp alpha PAR verified / A33 GROUND NEXT
 
 2026-11-01. Status: **A32 isolated engineering PASS, visual user review PENDING, Formal Seal NO.**
