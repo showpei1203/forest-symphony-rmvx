@@ -1,0 +1,205 @@
+{
+  "stage": "A31",
+  "orig": {
+    "boxes": [
+      [
+        8,
+        7,
+        31,
+        38
+      ],
+      [
+        8,
+        6,
+        32,
+        38
+      ],
+      [
+        8,
+        7,
+        32,
+        38
+      ],
+      [
+        8,
+        6,
+        32,
+        38
+      ]
+    ],
+    "bottoms": [
+      38,
+      38,
+      38,
+      38
+    ],
+    "tops": [
+      7,
+      6,
+      7,
+      6
+    ],
+    "neutral_duplicate_delta": 0,
+    "adjacent_deltas": [
+      350,
+      384,
+      384
+    ],
+    "loop_closure_delta": 350,
+    "first_and_third_pose_delta": 101
+  },
+  "outfit_only": {
+    "boxes": [
+      [
+        8,
+        7,
+        31,
+        38
+      ],
+      [
+        9,
+        6,
+        32,
+        38
+      ],
+      [
+        8,
+        7,
+        32,
+        38
+      ],
+      [
+        9,
+        6,
+        32,
+        38
+      ]
+    ],
+    "bottoms": [
+      38,
+      38,
+      38,
+      38
+    ],
+    "tops": [
+      7,
+      6,
+      7,
+      6
+    ],
+    "neutral_duplicate_delta": 92,
+    "adjacent_deltas": [
+      369,
+      396,
+      400
+    ],
+    "loop_closure_delta": 353,
+    "first_and_third_pose_delta": 176
+  },
+  "se_edit": {
+    "boxes": [
+      [
+        8,
+        7,
+        31,
+        38
+      ],
+      [
+        9,
+        6,
+        32,
+        38
+      ],
+      [
+        8,
+        7,
+        32,
+        38
+      ],
+      [
+        9,
+        6,
+        32,
+        38
+      ]
+    ],
+    "bottoms": [
+      38,
+      38,
+      38,
+      38
+    ],
+    "tops": [
+      7,
+      6,
+      7,
+      6
+    ],
+    "neutral_duplicate_delta": 116,
+    "adjacent_deltas": [
+      426,
+      420,
+      428
+    ],
+    "loop_closure_delta": 430,
+    "first_and_third_pose_delta": 218
+  },
+  "true_original_motion": "r2,c0-c1-c2-c1 (neutral repeated exactly)",
+  "art_gate": "UNREVIEWED",
+  "rotation_intent": "EAST to SOUTH-EAST 45 deg, visual inspection required",
+  "second_pass_cycle_translations_y": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "second_pass_final_cycle": {
+    "boxes": [
+      [
+        8,
+        7,
+        31,
+        38
+      ],
+      [
+        9,
+        6,
+        32,
+        38
+      ],
+      [
+        8,
+        7,
+        32,
+        38
+      ],
+      [
+        9,
+        6,
+        32,
+        38
+      ]
+    ],
+    "bottoms": [
+      38,
+      38,
+      38,
+      38
+    ],
+    "tops": [
+      7,
+      6,
+      7,
+      6
+    ],
+    "neutral_duplicate_delta": 0,
+    "adjacent_deltas": [
+      426,
+      420,
+      420
+    ],
+    "loop_closure_delta": 426,
+    "first_and_third_pose_delta": 218
+  },
+  "second_pass_final_footline_pass": true
+}
