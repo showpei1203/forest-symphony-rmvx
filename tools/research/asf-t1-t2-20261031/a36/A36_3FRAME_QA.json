@@ -1,0 +1,194 @@
+{
+  "stage": "A36",
+  "rule": "ALL ACTION SPRITES ARE EXACTLY 3 FRAMES, never 18/28",
+  "native_size": [
+    40,
+    40
+  ],
+  "sprite_sheet_dimensions": [
+    120,
+    40
+  ],
+  "candidates": {
+    "T1_READY_TUCK_RECOVER": {
+      "pose_source_labels": [
+        "NATIVE_F0",
+        "PIXELLAB_A04",
+        "NATIVE_F2"
+      ],
+      "size": [
+        120,
+        40
+      ],
+      "frame_bboxes": [
+        [
+          11,
+          7,
+          35,
+          38
+        ],
+        [
+          5,
+          12,
+          36,
+          38
+        ],
+        [
+          11,
+          7,
+          35,
+          38
+        ]
+      ],
+      "transition_changed_pixels": [
+        723,
+        723
+      ],
+      "first_and_last_identical": true,
+      "sha256": "c1789c4ac6c019be2d703832ed392887d9a70ecd6d2fd92d580c35c304bd7dfb",
+      "angle_camera": "USER REVIEW REQUIRED PER FRAME",
+      "art_status": "CANDIDATE NOT PASS"
+    },
+    "T2_READY_MIDROLL_RECOVER": {
+      "pose_source_labels": [
+        "NATIVE_F0",
+        "PIXELLAB_A06",
+        "NATIVE_F2"
+      ],
+      "size": [
+        120,
+        40
+      ],
+      "frame_bboxes": [
+        [
+          11,
+          7,
+          35,
+          38
+        ],
+        [
+          6,
+          9,
+          36,
+          38
+        ],
+        [
+          11,
+          7,
+          35,
+          38
+        ]
+      ],
+      "transition_changed_pixels": [
+        665,
+        665
+      ],
+      "first_and_last_identical": true,
+      "sha256": "2ffca189ce379f16df1dbd21205d86bbb9a476b98ac8c190996a44b0988ae898",
+      "angle_camera": "USER REVIEW REQUIRED PER FRAME",
+      "art_status": "CANDIDATE NOT PASS"
+    },
+    "T3_READY_LOW_EVADE_RECOVER": {
+      "pose_source_labels": [
+        "NATIVE_F0",
+        "PIXELLAB_B03",
+        "NATIVE_F2"
+      ],
+      "size": [
+        120,
+        40
+      ],
+      "frame_bboxes": [
+        [
+          11,
+          7,
+          35,
+          38
+        ],
+        [
+          7,
+          15,
+          34,
+          38
+        ],
+        [
+          11,
+          7,
+          35,
+          38
+        ]
+      ],
+      "transition_changed_pixels": [
+        660,
+        660
+      ],
+      "first_and_last_identical": true,
+      "sha256": "e586853a7d3ef8b5e6bebd015be8c0ac88d0aabe114334f97900c043593a067a",
+      "angle_camera": "USER REVIEW REQUIRED PER FRAME",
+      "art_status": "CANDIDATE NOT PASS"
+    },
+    "T4_ANTICIPATE_ROLL_LAND": {
+      "pose_source_labels": [
+        "PIXELLAB_A02",
+        "PIXELLAB_A06",
+        "PIXELLAB_B07"
+      ],
+      "size": [
+        120,
+        40
+      ],
+      "frame_bboxes": [
+        [
+          6,
+          10,
+          35,
+          38
+        ],
+        [
+          6,
+          9,
+          36,
+          38
+        ],
+        [
+          11,
+          7,
+          35,
+          38
+        ]
+      ],
+      "transition_changed_pixels": [
+        653,
+        677
+      ],
+      "first_and_last_identical": false,
+      "sha256": "bfc51f2656690f56b59a944620b9432883d959e3894bc301057605d5770f112a",
+      "angle_camera": "USER REVIEW REQUIRED PER FRAME",
+      "art_status": "CANDIDATE NOT PASS"
+    }
+  },
+  "actual_provider_source": "A35 /interpolation-v2 real source images + A34 native battle view master",
+  "no_manual_redraw": true,
+  "walk": {
+    "sheet": "A36_WALK_3FRAME_APPROVED_A31.png",
+    "source": "A31 approved 4-phase c0,c1,c2,c1",
+    "source_c1_eq_c3": true,
+    "playback_sequence": [
+      0,
+      1,
+      2,
+      1
+    ],
+    "actual_sheet_frames": 3,
+    "formal_engine_test": "NOT EXECUTED"
+  },
+  "waiting": {
+    "sheet": "A36_WAITING_3FRAME_STATIC_REPEATED.png",
+    "all_three_identical": true,
+    "no_paid_regeneration": true
+  },
+  "nothing": {
+    "sheet": "A36_NOTHING_3FRAME_TRANSPARENT.png",
+    "blank": true
+  }
+}
