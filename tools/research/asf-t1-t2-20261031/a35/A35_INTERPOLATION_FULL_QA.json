@@ -1,0 +1,86 @@
+{
+  "stage": "A35",
+  "source": "A34 true FS battle-view F0/F2 and reference-driven provider F1",
+  "true_provider_frames_A": 14,
+  "true_provider_frames_B": 14,
+  "dense_frames": 31,
+  "sparse_frames": 17,
+  "deltas_sparse": [
+    602,
+    602,
+    702,
+    576,
+    552,
+    461,
+    394,
+    558,
+    528,
+    503,
+    518,
+    656,
+    492,
+    484,
+    101,
+    550
+  ],
+  "deltas_dense": [
+    602,
+    471,
+    538,
+    578,
+    625,
+    580,
+    508,
+    492,
+    550,
+    473,
+    498,
+    392,
+    383,
+    219,
+    558,
+    528,
+    242,
+    439,
+    348,
+    495,
+    592,
+    663,
+    497,
+    222,
+    437,
+    177,
+    481,
+    89,
+    77,
+    550
+  ],
+  "boundaries": [
+    {
+      "name": "master to first A",
+      "change": 602
+    },
+    {
+      "name": "last A to exact inverted",
+      "change": 558
+    },
+    {
+      "name": "inverted to first B",
+      "change": 528
+    },
+    {
+      "name": "last B to exact master",
+      "change": 550
+    }
+  ],
+  "master_first_last_identical": true,
+  "native_40x40_full_shape": true,
+  "border_clip_count": 0,
+  "all_frames_painted_by_pixelLab_or_exact_sources": true,
+  "provider_outputs_raw_preserved": true,
+  "no_manual_raster_paint": true,
+  "animation_semantics": "ONE_SHOT forward roll, not loop; two segment motion sequence",
+  "camera_gate": "Requires per-frame viewing; do not claim 45deg approved",
+  "SBS_engine_gate": "NOT TESTED",
+  "visual_motion_gate": "HUMAN REVIEW PENDING"
+}
