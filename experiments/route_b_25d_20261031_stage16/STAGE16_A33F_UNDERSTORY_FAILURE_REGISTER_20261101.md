@@ -19,3 +19,8 @@ Original road actor and full tree cover tests still PASS. At one behind-tree/und
 ### F-06 Godot GPU tolerance not exact zero
 20 actual Godot GPU outputs passed, actual frame vs independent layered source has 3765 positions with only max 1 channel RGB difference, 0 positions exceed1. Do not report an exact zero-difference GPU match.
 Native VX 18 cases/36 actual screenshots, road and 5 original/new tree-root movement tests, zero modal; independent cold 3415/3415 file SHA + actual startup/32 objects. User art review PENDING; Formal Seal NO.
+
+
+### F-07 R1 and R2 standalone source filename collision caught by ZIP fail-closed
+In first A33F generator, R1 and R2 used the same `A33F_a33e_shrub_XX_*.png` output filenames, so generating R2 silently overwrote R1 **standalone sprite source**, although already-composed R1 PNG appeared correct. The private package demanded `18` independent R1+R2 sources, and failed instead of accepting only 9.
+**Fix:** R1 files now have distinct `A33F_R1_a33e_shrub_XX_*.png` names, while selected R2 retains its previous exact filenames and SHA values; generator rerun creates 18 unique RGBA sprites and complete R1/R2 manifests. ZIP packaging glob updated to include both source families. Rebuilt ZIP CRC, every member SHA and independent extract compare are mandatory PASS. Prevent any future overwrite by checking **unique variant source paths** before secondary variant generation, and assert source count in deliverable (9 per variant, 18 total). R2 native VX/Godot output remained byte-identical; rejected alternative remains reproducible.
