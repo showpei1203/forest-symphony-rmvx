@@ -33,3 +33,18 @@ Required review assets:
 Per explicit user instruction, as soon as A32 concluded, next stage starts **PixelLab GROUND edge/style improvement**. Current Ground is too soft at boundaries versus sample FS style Ground3 (old reference image 1280x928). Compare actual A27 original 544x416 vs Ground3 reference, isolate grass/dirt/flower texture and path borders, remove bilinear/soft-edge characteristics while matching approved original style. Keep A32 original Ground byte locked; create independent A33 Ground candidate with NEW hash, not silent overwrite; maintain A32 independent PAR and separate SHADOW/LIGHT layers unchanged. Use true Ground+PAR composite and VX native movement/occlusion, with fresh Godot native rendering and cold QA. Do not keep optimizing tree PAR once A32 done. Ground3 target eventual village-sized maps follow after 544x416 technical benchmark and art approval.
 
 **A32 Formal Seal NO; A33 Ground-first is NEXT.** Private Drive folder/link and final package to be appended after confirmed sync, never infer.
+
+
+## A32 verified Google Drive deliverables
+- Real native VX A31 vs A32 mobile 544×2962 before/after comparison: https://drive.google.com/file/d/1kvDk1kHyB16mIr951KLFtAyOSE-ESXRP/view
+- Four-way enlarged tree contour comparison: https://drive.google.com/file/d/1IBvlsXLKsmPGptffh4vpg2QkTdSrjQIx/view
+- Selected A32 cleaned WEST tree transparent PNG: https://drive.google.com/file/d/1bu4aEO-SSkwHqZmosMS6P8Z0WDRllusj/view
+- Selected A32 cleaned EAST tree transparent PNG: https://drive.google.com/file/d/1TS6u_0BgYUjT3uxPHEpQWWcRl-yTGY4p/view
+- Full recompiled A32 transparent PAR50 (544×416): https://drive.google.com/file/d/18JBDCkEhGIixKWlftnPv2YmIqv6ZJq0K/view
+- Full private A32 layered resources, 24 actual native screenshots, scripts, QA, and Handoff ZIP. 72 members, 9,594,523 bytes. Local CRC/individual SHA and independent extract PASS; Drive metadata and size read back (not claimed remote ZIP hash): https://drive.google.com/file/d/1rjk4g0RRNB_xRWlfg5UEkadkc1yeG7sA/view
+- A32 detailed Handoff: https://drive.google.com/file/d/1oSZ0UJHBdmF0UAcavHy8dA2Z0bab_hCg/view
+- Latest A32 Current Handoff: https://drive.google.com/file/d/1Mw_JcMXzBBWl-ldsNmsE0WZY1LEevAcI/view
+- A33 mandated GROUND rework kickoff (first read next round): https://drive.google.com/file/d/14aOFeHe52SUHY9cQZOd55MYPxfU32p31/view
+- A33 read-only audit of original Ground and Ground3 (NO edit yet): https://drive.google.com/file/d/15OVSacm84wbnq5s0rudw3v3A0haTnqlo/view
+- Stage Drive folder: https://drive.google.com/drive/folders/1wwcT5uOzh49oHo3ahOgtyoIoo36GdSaK
+
