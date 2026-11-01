@@ -1,0 +1,20 @@
+{
+  "stage": "A29",
+  "selected_output": "E:\\GameAssetToolLab_20261023\\A29_FS45_UNARMED_PIXELLAB_LOOP_20261101\\PIXELLAB_8_DIRECTIONS_V3\\00_SOUTH_64.png",
+  "provider_file_label": "index0 from V3, directional nomenclature uncertain; VISUAL selection only",
+  "selected_for": "southeast visual 3/4 candidate, unarmed",
+  "unaltered_pixel_art": "YES only lossless crop (12,12..52,52)",
+  "selected_bbox": [
+    9,
+    4,
+    32,
+    38
+  ],
+  "source_approved": "A26 approval, A29 Pixen edit via source and 8-dir preview",
+  "formal_art_acceptance": "PENDING USER",
+  "SBS_weapon_layer": "KEEP EMPTY, paper-doll separate",
+  "loops_to_test": [
+    "IDLE",
+    "WALK"
+  ]
+}
