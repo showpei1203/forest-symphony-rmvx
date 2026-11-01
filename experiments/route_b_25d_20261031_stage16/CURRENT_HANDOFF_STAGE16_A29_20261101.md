@@ -1,3 +1,13 @@
+## VERIFIED MOBILE PREVIEW & DETAILED HANDOFF
+
+- **A28 → A29 vertical 544×934 mobile PNG:** https://drive.google.com/file/d/1X_vUXPvVrs4rIkNi6jSy-8BdcblmT3nr/view
+- **Detailed source-first A29 → A30 handoff:** https://drive.google.com/file/d/1yMZS6zdYazsMTXaZT60GTwovGfG41Fc3/view
+- **A29 full stage private folder:** https://drive.google.com/drive/folders/1Rqdo_qw1Vdvpfcx2a5iOf7joH83ncVtT
+- **A29 private Godot native archive (84 files):** https://drive.google.com/file/d/1ZmHaqNYfV2qvQKKi0dLEsQeH7kJYEpTN/view
+- **A29 mini visual evidence + handoff ZIP:** https://drive.google.com/file/d/1b219Y9__M5uZj77TudQmG3Vr0rncO0kR/view
+
+Do not claim A29 original map passed VX because its isolated Game.exe reached a script `NameError`. Godot cold 8/8 PASS; visual pending; Formal Seal NO.
+
 # A29 DETAILED HANDOFF OVERRIDE / NEXT-CHAT ENTRY
 
 The authoritative **detailed** continuation file (newer and more complete than the brief handoff below) is:
