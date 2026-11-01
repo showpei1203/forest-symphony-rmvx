@@ -1,0 +1,11 @@
+# Stage16 A35C R1 / R2 failure register
+2026-11-02, executed on remote DESKTOP-90VT437.
+
+F01 A35 mistakenly converted ALL 217 cliff-color masked chunks into PAR, falsely occluding valid legal actors. A35B removed them all temporarily but that was not the final rule; user clarified 1-2 tile cliff TOP rear-edge cover depending on cliff height.
+F02 A35C R1 four explicit ledges were correctly anchored and six dynamic source-alpha depth sprites produced, but R1 20px mask made actor behind rim show only ~223-228/627 pixels. Real VX screenshot showed detached/floating head, so FAIL. Kept R1 independent failed clone and 22 native frames.
+F03 A35C R2 lip thickness reduced to 9px for each eligible depth tile, original A35 Ground RGB SHA identical. 5 late-game back positions hide 154-159 of 627; four front / unrelated locations have ZERO changed pixels. Runtime overdraw only when actor FOOT tile in allowlist. Source static Ground and no-actor full composite unaffected.
+F04 Initial no-PAR reference screenshot runner replaced A35C_ globally including literal disk paths: FileNotFoundError. Fixed exact file paths. Reference game log had double A35C_REF_REF prefix, so first numeric QA exact-string assert failed. Fixed assertion to check true MAP_OBJECTS count=0 instead; retained original logs.
+F05 Native screen first two cases have title fade, exclude them from strict face comparison; 5 positive/4 negative supported, NOT claim all 6 behind strict.
+F06 Height tiers use handpicked four zones and a provisional original 40x29 collision map. Only 695/746 legal candidates connected; steps/cave not solved, all cliff boundaries not covered.
+F07 Original art was direct generated at 1473x1068 and resampled NEAREST to 1280x928, not authored tile-by-tile. Top-edge masks are 9px approximations with small contour variation, not a complete hand-approved cliff architecture. Four curated zones only.
+F08 Test-only script483 dynamic $game_player-dependent visibility; NPC/followers and production BattleRegression not verified. SHADOW/LIGHT separate. Formal Seal NO.
