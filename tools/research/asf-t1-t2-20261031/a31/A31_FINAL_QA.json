@@ -1,0 +1,81 @@
+{
+  "stage": "A31",
+  "date": "2026-11-01",
+  "source_hashes": {
+    "$actor01.png": "df6abaa888dc4ffcaf5351daf26d678bace121e277f21b4651eb69884591a2a5",
+    "$actor01_1.png": "e8ab0c26e4a08bc70034c9e706d1b1e8d0b729b49d94a35097eadf7c05da3485",
+    "$actor01_2.png": "daa27d8a65dff9afeafd87c9f83884217661e58aaa97f39e730683a1b196a3bf",
+    "$actor01_3.png": "94763a478df3a72a465b0d5f08d6f9eb912a9fb9491ed20e2d9c66862192da3b"
+  },
+  "source_motion_geometry": "true original 32x32 FS row2 c0-c1-c2-c1; original idle static c1",
+  "why_A30_failed": "A30 estimated 18 joint poses replacing actual original full-body pixel motion; Idle generated unnecessary shoulder jitter and Walk looked stiff",
+  "method": "4 exact original FS walk pose pixel refs -> PixelLab transfer-outfit-v2 with A29 approved 40x40 unarmed teal reference -> edit-animation-v2 coherent southeast view edit",
+  "provider_jobs": [
+    {
+      "stage": "outfit_transfer",
+      "job_id": "233bd78d-4395-41c3-ac5c-c38bcaa39ec5",
+      "billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "status": "ACTUAL_OUTFIT_TRANSFER_COMPLETE_AWAITING_ART_QA",
+      "source_sha256": "df6abaa888dc4ffcaf5351daf26d678bace121e277f21b4651eb69884591a2a5"
+    },
+    {
+      "stage": "direction_edit",
+      "job_id": "eb3a30f9-6f4d-4bbb-b8bc-a6ad31c23167",
+      "billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "status": "SECOND_PASS_REAL_FRAMES_READY_ART_REVIEW",
+      "source_sha256": "1715cdad276410837f355ad120bf4ebcfe0e107fa360166a5b2468b11ea7b2ca"
+    }
+  ],
+  "native_walk_source_diffs": [
+    350,
+    384,
+    384
+  ],
+  "after_transfer_diffs": [
+    369,
+    396,
+    400
+  ],
+  "se45_final_diffs": [
+    426,
+    420,
+    420
+  ],
+  "se45_loop_seam": 426,
+  "se45_floor_line": [
+    38,
+    38,
+    38,
+    38
+  ],
+  "se45_head_top": [
+    7,
+    6,
+    7,
+    6
+  ],
+  "neutral_center_identical": true,
+  "source_visual_gate": "USER REVIEW PENDING, do not claim exact 45-degree pass",
+  "unarmed_visual_gate": "USER REVIEW PENDING",
+  "natural_motion_gate": "Exact poses originated from source; user needs final visual approval",
+  "original_$actor01_and_all_SBS_unchanged": true,
+  "formal_engine_test": "NOT RUN",
+  "pixelLab_balance": {
+    "prior_A30": 1832.8,
+    "used_A31": 20.0,
+    "end": 1812.8
+  },
+  "file_montage": "A31_THREE_WALK_METHODS_NATIVE_VS_OUTFIT_VS_45.png",
+  "file_gif_source_vs_45": "A31_NATIVE_ORIGINAL_VS_GENERATED_WALK.gif",
+  "file_gif_A30_vs_A31": "A31_A30_FAILURE_VS_REAL_ORIGINAL_WALK.gif",
+  "file_idle": "A31_SE45_ORIGINAL_POLICY_STATIC_IDLE.png",
+  "file_walk": "A31_SE45_NATIVE_MOTION_WALK_LOOP.gif"
+}
