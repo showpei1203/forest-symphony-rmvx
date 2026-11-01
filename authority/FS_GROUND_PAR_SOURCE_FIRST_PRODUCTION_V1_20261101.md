@@ -44,3 +44,8 @@ Keep `GROUND_ORIGINAL.png`, `PAR_BASE_RGBA.png`, `PAR_TONE_RGBA.png` or `PAR_REN
 ## Handoff provenance
 Previous: `experiments/route_b_25d_20261031_stage16/STAGE16_A27_DRIVE_SOURCE_FIRST_PIXELLAB_GROUND_PAR_HANDOFF_20261101.md`
 Next: `experiments/route_b_25d_20261031_stage16/STAGE16_A28_PAR_TONE_RENDER_HANDOFF_20261101.md` when results exist.
+
+## 2026-11-01 User-approved extension — semantic original PAR generation (A30+)
+The source-first rule is an evidence, style and provenance rule, **not** a prohibition on new original PAR art. Once the target style has been established, the generator MAY create full, independent transparent RGBA PAR objects to fit scene descriptions and semantics without being restricted to exact objects from the Drive asset catalog. Preserve source_type/provenance as DRIVE_SOURCE vs AI_GENERATED/PIXELLAB_NATIVE/PROGRAMMATIC, style reference and rights status. This does not permit full-scene flattening, clipping, Ground corruption, wrong collision/foot, unreversible alpha/tone changes, or passing a test without actual engine screenshots. Original A27 Ground remains SHA-locked, and A29 remains Visual PENDING / native VX BLOCKED / FormalSeal NO.
+
+Binding detailed authority: [FS_PAR_SEMANTIC_ORIGINAL_OBJECT_GENERATION_V1_20261101.md](FS_PAR_SEMANTIC_ORIGINAL_OBJECT_GENERATION_V1_20261101.md).
