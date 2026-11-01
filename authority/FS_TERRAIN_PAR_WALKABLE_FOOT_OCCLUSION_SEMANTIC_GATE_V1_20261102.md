@@ -1,3 +1,5 @@
+> **SUPERSEDED in part by height-aware top cliff ledges (2026-11-02):** The A35B zero-terrain-PAR rule was an emergency fail-closed intermediate. A35C R2 now verifies legal 1-2 tile cliff-top foreground strips, conditionally shown on behind-foot tiles, with five positive Game.exe actor tests and four front-negative controls. See [FS_TERRAIN_PAR_TOP_EDGE_HEIGHT_FOOT_GATE_V2_20261102.md](FS_TERRAIN_PAR_TOP_EDGE_HEIGHT_FOOT_GATE_V2_20261102.md). The original rejection of 217 cliff-face color outlines remains authoritative. No production seal.
+
 # Forest Symphony | Terrain PAR Walkable-Foot / Occlusion Semantic Gate v1.0
 Date 2026-11-02. **ACTIVE / overruling terrain pixel-class masks as PAR.**
 
