@@ -37,3 +37,11 @@ A30 must resolve isolated VX script startup, then map test; this authorization d
 
 ## Principle
 The reference asset library constrains the **style**, not the **set of imaginable objects**. Pixel-art approval comes from complete, authentic layers and tested engine behavior, never from an attractive but flattened screenshot.
+
+
+## A32 user mandate — dedicated SHADOW / LIGHT ownership and crisp PAR silhouettes (2026-11-01)
+Scene/environmental cast shadow, area shadow, bloom, lamp glow, day-night light and global light modulation MUST be separate SHADOW and LIGHT layers. They MUST NOT be baked into PAR as a false fix for alpha edge blur, nor merged into Ground. PAR exclusively owns object-intrinsic painted pixels, alpha geometry, Y-sorted occlusion and foot/collision metadata; intrinsic sprite texture color/shading (part of the artwork rather than an added scene light layer) must be distinguished from separable environmental illumination. Ground only owns continuous terrain and truly flush terrain textures. The engine compositor and manifest must assign every rendered effect to the right layer explicitly.
+
+For original or source-derived PAR, especially FS A32 top two broadleaf canopies: use lower object trees as a pixel-step contour reference; trim soft alpha fringe and low-opacity stray leaves in isolated RGBA, maintain full tree canvas, crown/trunk/root, foot, 32px collision and native front/behind visual QA. Alpha changes are allowed solely when visually justified by edge cleanup; do NOT claim alpha-identical when it was intentionally sharpened. Never use Gaussian blur / generic full-scene sharpening / fake dark outside silhouette or shadow to hide an unclear tree outline.
+
+**NEXT USER-ORDERED STAGE AFTER A32: A33 must work on the too-soft native PixelLab GROUND edges vs reference Ground3, not keep polishing PAR.** Original A27 Ground SHA256 35c454c82d4f32906de39702a8463ca72316b14e157239604c18971bd67d00ce stays locked in A32; A33 Ground candidate receives separate new filename and digest, with fresh native VX / Godot revalidation. Reference [A32 detailed Handoff](../experiments/route_b_25d_20261031_stage16/STAGE16_A32_PAR_TREE_CANOPY_PIXEL_EDGE_NATIVE_VX_HANDOFF_20261101.md) and [A33 Ground kickoff](../experiments/route_b_25d_20261031_stage16/STAGE16_A33_GROUND_PIXEL_EDGE_REWORK_KICKOFF_20261101.md). Formal Seal NO.
