@@ -1,0 +1,154 @@
+{
+  "stage": "A33_R1_B_DODGING",
+  "status": "TECHNICAL_RETURNED_ART_PENDING",
+  "source_user_poses": [
+    {
+      "bbox": [
+        6,
+        6,
+        34,
+        38
+      ],
+      "center": [
+        20.15,
+        23.52
+      ],
+      "alpha_pixels": 560,
+      "head_region_pixels": 216,
+      "foot_bottom": 38,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        5,
+        6,
+        35,
+        38
+      ],
+      "center": [
+        19.12,
+        23.92
+      ],
+      "alpha_pixels": 553,
+      "head_region_pixels": 207,
+      "foot_bottom": 38,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        8,
+        6,
+        36,
+        38
+      ],
+      "center": [
+        20.95,
+        21.88
+      ],
+      "alpha_pixels": 589,
+      "head_region_pixels": 285,
+      "foot_bottom": 38,
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "pixelLab_outfit_transfer": [
+    {
+      "bbox": [
+        6,
+        11,
+        34,
+        38
+      ],
+      "center": [
+        19.68,
+        24.06
+      ],
+      "alpha_pixels": 504,
+      "head_region_pixels": 195,
+      "foot_bottom": 38,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        6,
+        11,
+        35,
+        38
+      ],
+      "center": [
+        19.27,
+        25.56
+      ],
+      "alpha_pixels": 485,
+      "head_region_pixels": 151,
+      "foot_bottom": 38,
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        10,
+        9,
+        33,
+        38
+      ],
+      "center": [
+        20.72,
+        23.26
+      ],
+      "alpha_pixels": 523,
+      "head_region_pixels": 234,
+      "foot_bottom": 38,
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "raw_delta": [
+    543,
+    629
+  ],
+  "source_delta": [
+    586,
+    623
+  ],
+  "center_motion": {
+    "source": [
+      [
+        20.15,
+        23.52
+      ],
+      [
+        19.12,
+        23.92
+      ],
+      [
+        20.95,
+        21.88
+      ]
+    ],
+    "provider": [
+      [
+        19.68,
+        24.06
+      ],
+      [
+        19.27,
+        25.56
+      ],
+      [
+        20.72,
+        23.26
+      ]
+    ]
+  },
+  "no_40px_cutoff": true,
+  "one_shot_not_seamless_loop": true,
+  "user_art_approval": "PENDING",
+  "view_angle_gate": "PENDING, non-front and 3/4 right facing must be inspected",
+  "no_weapons_gate": "VISUAL_PEND",
+  "SBS_overlay": "NOT_TESTED"
+}
