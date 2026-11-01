@@ -1,0 +1,54 @@
+{
+  "IDLE": {
+    "nframes": 5,
+    "native_cell": [
+      32,
+      40
+    ],
+    "generated_extra_opaque_pixels_outside_approved_dilation": [
+      0,
+      32,
+      22,
+      16,
+      13
+    ],
+    "cleaned_extra_opaque_pixels_outside_approved_dilation": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "raw_sheet": "PIXELLAB_SPRITESHEET_64x5.png",
+    "source_locked_clean_sheet": "IDLE_SOURCE_LOCKED_CLEAN_64x5.png",
+    "native_candidate_sheet": "IDLE_NATIVE_32x40_5F_CANDIDATE.png",
+    "visual_status": "CANDIDATE_PRESERVED_NOT_APPROVED",
+    "method": "Idle uses source alpha silhouette dilated 2 pixels; Walk raw frames unchanged"
+  },
+  "WALK": {
+    "nframes": 5,
+    "native_cell": [
+      40,
+      40
+    ],
+    "generated_extra_opaque_pixels_outside_approved_dilation": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "cleaned_extra_opaque_pixels_outside_approved_dilation": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "raw_sheet": "PIXELLAB_SPRITESHEET_64x5.png",
+    "source_locked_clean_sheet": "WALK_SOURCE_LOCKED_CLEAN_64x5.png",
+    "native_candidate_sheet": "WALK_NATIVE_40x40_5F_CANDIDATE.png",
+    "visual_status": "CANDIDATE_PRESERVED_NOT_APPROVED",
+    "method": "Idle uses source alpha silhouette dilated 2 pixels; Walk raw frames unchanged"
+  }
+}
