@@ -39,3 +39,26 @@ Separate cold VX clone `E:\FS_STAGE16_A33D_FOREST_VX_COLD_20261101` **3404/3404 
 
 ## Repro file location
 `E:\FS_STAGE16_A33D_FOREST_20261101`, files `a33d_generate_forest_ground_and_trees.py`, `a33d_build_vx_native_21_tree_objects.py`, `a33d_capture_native_16_cases.py`, `a33d_build_godot_21_objects.py`, `a33d_godot_pixel_target_QA.py`, `a33d_cold_native_vx_verify.py`, plus all 9 tree PNGs, Ground, Par50, previews, QA and local zip. Final verified Drive file links to be appended when synced.
+
+
+## Verified Google Drive A33D deliverables (2026-11-01)
+All file IDs below were actually returned by connected Google Drive folder listing. Private art is NOT published on public GitHub.
+- Actual RPG Maker VX original forest **before/after 544px wide**, full scene and 4 regional crops: https://drive.google.com/file/d/1yQ-SmvuXalx4l6I97o7VArFCqS8mvFrE/view
+- **Forest 4 trees vs 10 trees vs 13 trees**, truly layered Ground+PAR 3-way: https://drive.google.com/file/d/1IQs-i6n_EBPJd2akbKxWtFyNsMvIdUjt/view
+- **Final standalone Ground opaque 544x416** `A33D_GROUND_FOREST_FLOOR_544x416.png`: https://drive.google.com/file/d/1HF6FzWd-DDvJD1nkrpDuZTMzZc8Cp9eG/view
+- **Rebuilt 21-object transparent PAR50**: https://drive.google.com/file/d/1nEmQ0f9sNqwof5BuKFCgzSkQUfv9-X1F/view
+- Actual 21-layer **Ground+PAR full render**: https://drive.google.com/file/d/163V6Y3a9BtxvnaWWTlb8XtG3eCmEm4NX/view
+- **9 new transparent individual tree PNGs** preview: https://drive.google.com/file/d/1ZHSCSkAXV3JdE_1zD3XZeXa5xDvj6PGt/view
+- Actual native VX forest quadrant zooms: https://drive.google.com/file/d/1XzcXV8Yb4BC2gRIFV3vT0hnFFJpZqKEv/view
+- Habitat mask Ground ecology: https://drive.google.com/file/d/1HX6agBF7b9ekkDxW08nZMGiui65gRcO0/view
+- Source and 9 object IDs/foot positions/alpha SHA in Manifest: https://drive.google.com/file/d/13hiH_p_1HAddkyUQA6yl1JzDPCjWJxKB/view
+- **Complete private evidence ZIP**, 138 items 32,666,026 bytes, local ZIP CRC, all member SHA256 and cold extraction PASS; Google Drive title/size readback confirmed (no independent remote ZIP-content SHA claimed): https://drive.google.com/file/d/19qB0o7j8sVAOsy4lfLBYu8k-LaVUrifh/view
+- Native VX 16 cases/32-frame verification: https://drive.google.com/file/d/1xtAT2dEqSmNJVQx0To1XQLpwJIfx10T8/view
+- Fresh native 3404-file cold verification: https://drive.google.com/file/d/1RnOcX5A5qgDQNJiBwnGKGXmykrq9Cy2i/view
+- Godot GPU actual 12-frame numeric QA: https://drive.google.com/file/d/1q5wwKlr43V117ekCA5dXu5SitHrRz5A6/view
+- A33D Failure Register: https://drive.google.com/file/d/1F-pZ_t8Eod-HhMLjZlAhw8hHOf0iNLnI/view
+- A33D detailed Handoff: https://drive.google.com/file/d/1evJHqFSzEMzl0GuJD7dvAQX526hkNviN/view
+- A33D CURRENT_HANDOFF: https://drive.google.com/file/d/1m1THx2XEzZQlXB11iOGPcXZIbgwmdSry/view
+- Private stage folder: https://drive.google.com/drive/folders/12cp_UCd2JvJw3zRZnHdyUhuyyvNgKI0z
+
+**A33D engineering native dual engine/cold PASS, user forest ART approval PENDING, full production regression Formal Seal NO.**
