@@ -1,3 +1,5 @@
+> **SUPERSEDED BY A33F R2 (2026-11-01):** Latest [A33F CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A33F_20261101.md) contains true Ground and 9 newly rebuilt larger independent bush/fern/flower shrub PNGs, 15 trees, 32 Par50 sources, native VX 18 cases/36 screenshots, Godot GPU20 and separate cold3415/3415 sha. Original A33E forest source remains untouched; art user signoff PENDING; Formal Seal NO.
+
 # CURRENT_HANDOFF Stage16 A33E (2026-11-01 Asia/Taipei)
 **LATEST verified work:** A33E forest source diversity ACTUALLY built with Remote Desktop Commander to DESKTOP-90VT437. 15 trees (two source conifer species newly introduced), 9 new nonblocking independent shrub PNGs, total **32 separate PAR objects**. Ground+PAR native 544x416, 18 actual VX cases/36 frames, Godot 16 GPU frames, fresh cold VX 3415/3415 SHA. Engineering PASS, user ART PENDING, **Formal Seal NO**.
 
