@@ -1,0 +1,29 @@
+{
+  "source_path": "E:\\RPG MAKER\\260724桌面\\rpg maker 2024\\RPG MAKER\\綠曲-V2.9\\Graphics\\Characters\\$actor01.png",
+  "source_sha256": "df6abaa888dc4ffcaf5351daf26d678bace121e277f21b4651eb69884591a2a5",
+  "outfit_reference_sha256": "0fb62fb179d9f1412a919700f29c271c664e4b52f537191ee4d9211c2870fe1c",
+  "original_direction": "right row2",
+  "native_walk_cycle_columns": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "native_idle_center_column": 1,
+  "pads": {
+    "left": 4,
+    "top": 6
+  },
+  "frame_size": [
+    40,
+    40
+  ],
+  "original_walk_motion": "EXACT 32x32 source pixels, zero edits, four phases A-neutral-B-neutral",
+  "original_idle_motion": "STATIC neutral center frame, NOT a breathing/shoulder movement animation",
+  "frame_hashes": [
+    "aea976f0f15edce6bb9374e95c6e71c55f131fd2f0047b8114a88e13f4ef93c0",
+    "0d58b4af036b5a3ac2550111b49c73b197a9d00ce37b55f617ebda90090e97df",
+    "5a6c0a61cd49efcfbca5846131d3f9be06cf1c4ec6e02145813bb59e013e0eef",
+    "0d58b4af036b5a3ac2550111b49c73b197a9d00ce37b55f617ebda90090e97df"
+  ]
+}
