@@ -1,0 +1,143 @@
+{
+  "stage": "A29",
+  "user_requirements": {
+    "view": "45-degree southeast visually provisional, NOT ACCEPTED",
+    "weapons": "EMPTY fists, separate SBS paper-doll",
+    "native_chibi_ratio": "1:1",
+    "loop": "actual GIF playback + quantitative seam comparison"
+  },
+  "source": "A26 approved 40px -> A29 Pixen -> PixelLab 8 rotations v3 -> visually selected 40px lossless crop",
+  "source_visual_approval": "PENDING",
+  "sbs_engine_test": "NOT DONE",
+  "no_official_FS_file_overwrite": true,
+  "jobs": {
+    "IDLE": {
+      "job_id": "da38d44f-c8a5-4b3c-867b-6004664356ef",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "metrics": {
+        "frame_count": 5,
+        "source_frame0_exact": true,
+        "pair_diffs": [
+          384,
+          298,
+          360,
+          351
+        ],
+        "last_to_first_diff": 158,
+        "seam_to_median_ratio": 0.444,
+        "original_loop_seam_threshold": 2.0,
+        "seam_gate": "PASS",
+        "bboxes": [
+          [
+            9,
+            4,
+            32,
+            38
+          ],
+          [
+            8,
+            3,
+            31,
+            37
+          ],
+          [
+            8,
+            2,
+            31,
+            36
+          ],
+          [
+            7,
+            2,
+            31,
+            38
+          ],
+          [
+            8,
+            3,
+            31,
+            38
+          ]
+        ],
+        "bottom_edge_opaque": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bottom_gate": "PASS",
+        "pingpong_loop": "FOR_DIAGNOSTICS_NOT_A_PROOF_OF_NATIVE_CYCLE",
+        "orientation_45": "NEEDS_ART_REVIEW",
+        "unarmed_consistency": "NEEDS_ART_REVIEW"
+      }
+    },
+    "WALK": {
+      "job_id": "556da59c-3dce-4ce1-9e46-795111006b21",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "metrics": {
+        "frame_count": 5,
+        "source_frame0_exact": true,
+        "pair_diffs": [
+          417,
+          401,
+          378,
+          401
+        ],
+        "last_to_first_diff": 218,
+        "seam_to_median_ratio": 0.544,
+        "original_loop_seam_threshold": 2.0,
+        "seam_gate": "PASS",
+        "bboxes": [
+          [
+            9,
+            4,
+            32,
+            38
+          ],
+          [
+            9,
+            3,
+            32,
+            38
+          ],
+          [
+            8,
+            2,
+            32,
+            38
+          ],
+          [
+            7,
+            3,
+            32,
+            37
+          ],
+          [
+            7,
+            4,
+            32,
+            38
+          ]
+        ],
+        "bottom_edge_opaque": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "bottom_gate": "PASS",
+        "pingpong_loop": "FOR_DIAGNOSTICS_NOT_A_PROOF_OF_NATIVE_CYCLE",
+        "orientation_45": "NEEDS_ART_REVIEW",
+        "unarmed_consistency": "NEEDS_ART_REVIEW"
+      }
+    }
+  }
+}
