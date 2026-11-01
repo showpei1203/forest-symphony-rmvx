@@ -26,3 +26,16 @@ User sees both upper left and upper right PAR trees blend into the grassy Ground
 A30 Ground source, true VX depth and ISS ParaPassa authority unchanged; new aesthetic improvement candidate engineering PASS with true per-layer assets. User visual acceptance is PENDING. Any future A32 sharpening should start from A31 balanced only AFTER user judges tree-vs-Ground integration. Do not add entirely new colored rim/ground shadow as a silent substitute for this visual request. Pixel-perfect studio-grade art remains unsealed.
 Private binary art can be placed in user's Drive or private ZIP only, not public GitHub (uncertain source licenses).
 **Formal Seal NO.**
+
+
+## Verified private A31 Drive files (readback 2026-11-01)
+- Actual native Game.exe before/after mobile comparison, 544×2730 (upper west/east crop): https://drive.google.com/file/d/1SzJCDGBIih701eKb5n4HH-ucLCDkkX-0/view
+- 4-way upper-tree comparison (original/subtle/balanced/strong): https://drive.google.com/file/d/1fw_N4WaIaZbuGlELvxFz3-jBV9qOaJ6s/view
+- BALANCED complete transparent PAR50 544×416: https://drive.google.com/file/d/17nkoSRczPVJijlT8FbfiYkdhpS2499GL/view
+- BALANCED independent upper WEST tree RGBA: https://drive.google.com/file/d/1OkLyJdJCIQ320uAi1QcsJwXwWl8D2q_V/view
+- BALANCED independent upper EAST tree RGBA: https://drive.google.com/file/d/1XZ9nZ9upiFSFt8NTjOKjrfZRrXCAjABk/view
+- Actual cold-native VX 544×416 screenshot: https://drive.google.com/file/d/13PQ5Jkbamcq34r2z661W5nAC4QMGFmM3/view
+- Full private A31 ZIP, 74 members, 10,312,776 bytes. Local ZIP CRC+all SHA256+independent extraction PASS; Google Drive size readback verified, but no remote byte-for-byte ZIP hash claim: https://drive.google.com/file/d/1d-FL2zQZkFuW6w2I9Owq6KBD5WuaDIql/view
+- Native A31 Handoff: https://drive.google.com/file/d/18cdnt0-K081Tk0fwSO_bedgsnbe9hIca/view
+- Latest CURRENT_HANDOFF A31: https://drive.google.com/file/d/15R8uzpknr-CIELcz2f8dJOfXCJMrJg0M/view
+- Folder: https://drive.google.com/drive/folders/1gMUxU_2ZV3b655LJerpyg1L-zjW9N8O1
