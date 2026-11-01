@@ -1,0 +1,80 @@
+{
+  "stage": "A43",
+  "date": "2026-11-01",
+  "action": "Moving to Close Attack",
+  "source": "A31 accepted source motion, 3 genuinely existing PixelLab-derived sprite art frames",
+  "source_a31_path": "E:\\GameAssetToolLab_20261023\\A31_FS_ORIGINAL_MOTION_TRANSFER_20261101\\A31_SE45_NATIVE_4FRAME_CYCLE_CANDIDATE.png",
+  "source_a31_sha": "e8c05efd5072820cf82d945af7e6f74546ccc74c4d2419880c7ca178e2c1a44b",
+  "source_column_to_output": [
+    1,
+    0,
+    2
+  ],
+  "source_phase_1_equals_3": true,
+  "stored_frames": 3,
+  "source_sheet_size": [
+    160,
+    40
+  ],
+  "output_sheet_size": [
+    120,
+    40
+  ],
+  "each_frame": [
+    40,
+    40
+  ],
+  "output_sha": "c856ea202e6c3419f0c2093bdd2d1c69306318230f6980201a06ec0bc0acef65",
+  "loop_sequence": [
+    0,
+    1,
+    0,
+    2
+  ],
+  "gif_loop_enabled": true,
+  "individual_frames": [
+    {
+      "bbox": [
+        9,
+        6,
+        32,
+        38
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0
+    },
+    {
+      "bbox": [
+        8,
+        7,
+        31,
+        38
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0
+    },
+    {
+      "bbox": [
+        8,
+        7,
+        32,
+        38
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0
+    }
+  ],
+  "changed_pixels_neutral_to_left": 426,
+  "changed_pixels_neutral_to_right": 420,
+  "changed_pixels_left_to_right": 218,
+  "extra_pixels_hand_painted": 0,
+  "new_pixelLab_api_calls": 0,
+  "visual_art_gate": "Candidate source based on A31 approved motion, user has NOT separately approved A43 running speed or 45° camera",
+  "sbs_worldspace": "SBS movement should control travel; runtime NOT EXECUTED",
+  "strict_3_frame_gate": "PASS",
+  "semantic_run_cycle": "SOURCE LEGS ALTERNATE YES; gif [0,1,0,2] ACTUAL GENERATED",
+  "formal_integration_pass": false,
+  "original_files_unchanged": true,
+  "A37_dodging_T4_unchanged": true,
+  "A42_fail_preserved": true
+}
