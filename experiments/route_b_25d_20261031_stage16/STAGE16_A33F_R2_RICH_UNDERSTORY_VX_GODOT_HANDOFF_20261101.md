@@ -25,3 +25,27 @@ New independent Godot project `E:\FS_STAGE16_A33F_UNDERSTORY_20261101\GODOT_A33F
 Separate source clone `E:\FS_STAGE16_A33F_UNDERSTORY_VX_COLD_20261101` exact **3415 / 3415** per-file SHA matched, independent actual cold Game.exe launched Map50 loaded 32 sources, no RGSS modal and 544×416 native screenshot. This is not 36/36 deterministic replay, and main FS production battle-regression bypass remains unresolved.
 ## Review and archive
 Local source folder `E:\FS_STAGE16_A33F_UNDERSTORY_20261101` containing `a33f_generate_botanical_shrubs_and_floor.py`, `a33f_build_native_VX.py`, `a33f_capture_native_18_cases.py`, `a33f_build_godot_R2.py`, `a33f_godot_real_gpu_QA.py`, `a33f_native_cold_verify.py`, true PNGs, QA and native screen source. User source art private, no public sprite uploads to GitHub, full ZIP in Google Drive after SHA verification. User aesthetic pending. Full 1280×928 reference scene size and production shadow/light rendering are separate future milestones. Formal Seal NO.
+
+
+## Verified A33F Private Google Drive delivery — 2026-11-01
+All exact IDs below were returned by Drive folder listing, including ZIP name/37,958,085 bytes. Local CRC, all member SHA256 and independent reextract verified PASS; remote full ZIP SHA **not separately downloaded/rehashed**.
+- **Actual native VX R2 before/after**, 544px-wide true Game.exe screenshot, 4 region zooms: https://drive.google.com/file/d/1L2BiREFKbdeA5BC22ESYRExfPsbwgHGc/view
+- **Three-way full separately layered Ground+PAR comparison A33E / A33F R1 / R2**: https://drive.google.com/file/d/1mKk0d0cmFPC7QQsZsOcst3Z1tCP4zMBm/view
+- **A33F new Ground 544×416** SHA `39d9b1163eb44ed46a614c5d93029300f7a99df47e079cf905620905009b5e72`: https://drive.google.com/file/d/1IwpkaZZBwsZJG_ag9LoyGex1wfvIqrMw/view
+- **A33F R2 complete transparent Par50 32 individually sourced objects** SHA `05a8f5e1e2253c7fe7c547c8e904c548b2f367b0b5ca18de341ad25913cd0626`: https://drive.google.com/file/d/1QCsm_ebd6TwQA17vV_LUcWdYXg92_cN9/view
+- **True complete layered Ground+PAR R2 composition**: https://drive.google.com/file/d/1OLGI2XxxX-rvqZsfh1X9dji8csTXE8Rt/view
+- R1 alternative independent PAR50: https://drive.google.com/file/d/11DT1ohFF0gjM2XN2MEtj3kRfOQpyiRUk/view
+- R2 9 independently owned RGBA shrubs + 9 R1 separate-source variants: files in private stage folder/ZIP.
+- **Complete A33F private evidence ZIP 148 items 37,958,085 bytes**, real VX 36 screenshot frames, actual GPU20 frames, 18 independent shrub sprites, all 32 scene sprites, test-only map Data and source code. ZIP CRC, member SHA256 and cold extract PASS: https://drive.google.com/file/d/1LgspeeFQ9Y6LgNct7Lbw_ppWfzcG8uCY/view
+- A33F source scene and R2 nine-shrub manifest: https://drive.google.com/file/d/1Z4ocj-YHjoXZ1msjHFeXwslgjBH8QsXt/view
+- A33F source generation QA: https://drive.google.com/file/d/1yqkOOEYRR_jd8YrOSPmbBWaDJMpNfNTC/view
+- Actual native VX 18-case / 36-frame actor movement and occlusion QA: https://drive.google.com/file/d/1uKnYUVTsgVHsBwrJ7yE1C3vr1-xZHdHg/view
+- Actual Godot 20 GPU frames numeric tolerance1 pixel QA: https://drive.google.com/file/d/1JtN4C5v7wmaQHvClHV3jNhudxyAqBGTv/view
+- Native separate cold 3415/3415 SHA QA: https://drive.google.com/file/d/1T3iPzRAttigNm-Ox9086FEpR3aR6O4dW/view
+- Full permanent understory QA visual rules: https://drive.google.com/file/d/1nz2um6vEVa8IW0Grp6u-EML6f2GVMg4V/view
+- Failure Register including fixed **R1 source overwrite bug**: https://drive.google.com/file/d/1hKmmIfBPyB_is1Y3EDr36WFB8yZ3sYwG/view
+- A33F detailed handoff: https://drive.google.com/file/d/1vOyRkwRdU1xg7hZrAY9pzWZ7NfLStV1b/view
+- Latest CURRENT_HANDOFF: https://drive.google.com/file/d/1GYVXhGZ_SixxdS0Hzus0uW7rGTAR8_Rv/view
+- Private stage folder: https://drive.google.com/drive/folders/1qT2tLHC69CE2phoKdmtMJ9ORAvFJ1zoZ
+
+A33F engineering VX/Godot/cold PASS; A33F user aesthetics pending; Formal Seal NO.
