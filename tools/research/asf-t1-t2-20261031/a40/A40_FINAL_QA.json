@@ -1,0 +1,58 @@
+{
+  "version": "A40",
+  "date": "2026-11-01",
+  "action": "Critic Damaged (severe damage)",
+  "source_baseline": "Real original FS actor01_1 native battle view -> A34 true provider art 40px",
+  "source_first_frame_sha256": "12103ee22b68ef4ad7f45b3927c594f062093b02d6ffab706173acbc83603dd0",
+  "estimate_skeleton": {
+    "real_api": "/estimate-skeleton",
+    "count": 18,
+    "cost_generations": 0.1,
+    "first_rejected": "HTTP422 data URL instead of raw base64, not billed",
+    "result_file": "A40_ESTIMATED_NATIVE_BATTLE_SKELETON.json"
+  },
+  "animation": {
+    "real_api": "/animate-with-skeleton-v3",
+    "job_id": "c0f23f1e-15a0-419a-a819-cb7a2c94cda6",
+    "real_provider_billing": {
+      "usd": 0.0,
+      "type": "generations",
+      "generations": 2
+    },
+    "requested_3_skeletons": true,
+    "real_generated_frame_count": 3,
+    "raw_frames": [
+      "A40_REAL_SKELETON_V3_FRAME_00.png",
+      "A40_REAL_SKELETON_V3_FRAME_01.png",
+      "A40_REAL_SKELETON_V3_FRAME_02.png"
+    ],
+    "raw_sheet": "A40_RAW_REAL_PIXELLAB_3FRAME_120x40.png",
+    "selected_sheet": "A40_CRITICAL_SOURCE_ANCHORED_3FRAME_CANDIDATE.png",
+    "selected_source": "A34 original battle-view F0 followed by actual PixelLab skeleton F1/F2, no raster repaint",
+    "cost_generations": 2
+  },
+  "quota": {
+    "before": 1701.8,
+    "after": 1699.7,
+    "spent": 2.1
+  },
+  "motion_and_camera_gates": {
+    "exact_three_frames": "PASS",
+    "native_40x40_rgba": "PASS",
+    "width_120x40": "PASS",
+    "no_border_clipping": "PASS",
+    "stronger_body_stagger_vs_A39": "VISIBLE: head sinks, torso rotates, hips/knees actually move",
+    "severe_hit_semantic": "PROVISIONAL CANDIDATE, visually improved, final user art acceptance PENDING",
+    "45_degree_every_frame": "PENDING artist review, no 90deg side-facing guaranteed",
+    "no_embedded_weapons": "VISUAL PROVISIONAL; actual Tankentai paper doll not tested",
+    "same_identity_all_frames": "PENDING, frame2 head and clothing need scrutiny",
+    "VX_SBS_integrated": "NOT TESTED",
+    "formal_game_pass": false
+  },
+  "pose_source_and_QA": "A40_CRITICAL_3POSE_18JOINT_CONTROL.json, A40_ACTUAL_18JOINT_CRITICAL_POSE_QA.png",
+  "visual_comparison": "A40_NATIVE_VS_NORMAL_VS_CRITICAL_SKELETON_COMPARISON.png",
+  "single_shot_3frame_GIF": "A40_CRITICAL_ANCHORED_3FRAME_ONESHOT.gif",
+  "unmodified_project_assets": true,
+  "prior_user_approved_T4": "A37 Dodging fourth variant retained untouched",
+  "test_controls": "18 labeled joints, critical F2 torso lean, neck descent, hip lowering, knee spread, grounded feet, explicit direction south-east"
+}
