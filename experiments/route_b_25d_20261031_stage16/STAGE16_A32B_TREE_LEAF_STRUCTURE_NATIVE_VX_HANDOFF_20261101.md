@@ -40,3 +40,21 @@ A32 was REJECTED artistically despite technically crisp outer alpha: the upper t
 - Deliver private source two independent transparent sprites `A32B_FINAL_drive_broadleaf_west_RGBA.png`, `A32B_FINAL_drive_broadleaf_east_RGBA.png`, full `A32B_FINAL_PAR50_RGBA_544x416.png`, mobile true native comparisons, failures and SHA ZIP. No legacy asset binary in public GitHub.
 - **Only after user explicitly accepts A32B artistic quality** is A33 authorized to modify Ground: repair PixelLab-generated Ground's soft/buzzy grass, road and terrain boundary compared to Ground3, in a new A33 isolated Ground source; preserve A32B as immutable prior evidence. Existing A33 input audit does not constitute a Ground edit.
 - `Formal Seal = NO`. Do not confuse native VX engineering success with acceptance.
+
+
+## A32B verified private Drive deliverables (2026-11-01)
+- **Native VX before/after mobile comparison**, 544×2164, A32 vs A32B full-scene and upper-tree close-ups: https://drive.google.com/file/d/1gmS8iLlEKXx59gBKMkbONYZvPfoosGSP/view
+- Independent upper left original sprite reworked RGBA: https://drive.google.com/file/d/1GdnzL6lzk5rfaIn8zru49zrKHqYy95VF/view
+- Independent upper right original sprite reworked RGBA: https://drive.google.com/file/d/1FoPtoHwTqQbsLGaPJADI24wAgIeDMbJZ/view
+- **Recompiled PAR50 transparent 544×416**, exact 12 sprite composite: https://drive.google.com/file/d/1S8NCAVbx2rqVFLdCyouFCuImxfb8lU3W/view
+- Selected first morphology prototype vs A32 zoom, plus discarded alternatives retained in evidence: https://drive.google.com/file/d/1vhjYwn717DWKLf5m_yiy_eRS9AkD3nEa/view
+- **Complete private evidence ZIP**, 81 entries, 10,366,572 bytes (local CRC, individual SHA256 and independent extract all PASS; Drive metadata/title/size confirmed, but no remote full ZIP SHA claimed): https://drive.google.com/file/d/15_JDEYBjdtYPp5Ce0vZTwAlsP27MfbWf/view
+- A32B native VX QA: https://drive.google.com/file/d/16TzIRfBpx5KCAUgX5PTshhJoMG36lmFO/view
+- A32B independent cold QA: https://drive.google.com/file/d/1Ep0VPG6XZKXFdn7nilzj2Jxr57D07O_d/view
+- A32B detailed Handoff: https://drive.google.com/file/d/1JlMi251_J-WnU4BXRbmsVR6ee0GxOAL-/view
+- A32B specific **failure register**: https://drive.google.com/file/d/1nb0QVuEe8ZIDUuNdk0WJ0MhCdwpYHOJ7/view
+- A32B **permanent leaf-structure QA**: https://drive.google.com/file/d/199Vk1JLY7hoJcapVgk9CsXNWfLRoVS6z/view
+- A32B **CURRENT_HANDOFF**: https://drive.google.com/file/d/1H0evpqJX92M1JToC8eXnFlWFcW3p9VJ5/view
+- A32B private Drive folder: https://drive.google.com/drive/folders/1ZCl8pwvwTKlZXxOwGuVyd15Z-eSx4UjG
+
+**Status stays ART PENDING, Formal Seal NO. A33 Ground editing waits for user's A32B visual approval.**
