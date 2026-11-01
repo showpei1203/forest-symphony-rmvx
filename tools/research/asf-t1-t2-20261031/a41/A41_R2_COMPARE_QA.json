@@ -1,0 +1,82 @@
+{
+  "stage": "A41-R2",
+  "generated_provider_real_frames": 3,
+  "native_40x40": true,
+  "source_anchored_120x40": true,
+  "R1_F1_bad_arms": "clear sideways stretched arm, motion semantic FAIL",
+  "R1_to_R2_midpose_changes": 267,
+  "R2_to_critical_F2_changes": 469,
+  "R2_midpose_vs_original_changes": 465,
+  "R2_raw": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        9,
+        8,
+        32,
+        38
+      ],
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "R2_candidate": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        9,
+        8,
+        32,
+        38
+      ],
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "no_border_clip": true,
+  "native_F0_F2_exact": true,
+  "art_camera_gate": "NEEDS VISUAL QA ALL THREE FRAMES, especially F1 head/eyes/armor",
+  "normal_damage_motion": "NEEDS VISUAL QA, could look like attack/cast",
+  "weapon_overlay": "NOT TESTED, source intended unarmed",
+  "Vx_sbs": "NOT TESTED",
+  "R2_sheet_sha256": "180171021786100f47f5cd960bfe0054c4c398d25662e3fef7c5a671a4217e40",
+  "original_game_files_untouched": true
+}
