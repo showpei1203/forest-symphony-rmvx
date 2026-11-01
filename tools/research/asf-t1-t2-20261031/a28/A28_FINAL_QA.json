@@ -1,0 +1,102 @@
+{
+  "project": "Forest Symphony A28",
+  "date": "2026-11-01",
+  "approved_character_art": {
+    "PMD0001_A25": "USER PASS",
+    "PMD_Idle_Walk_A26": "USER PASS",
+    "FS_actor01_A26_1to1": "USER PASS"
+  },
+  "new_art_status": {
+    "PMD_Attack_Cast_Hurt_Death": "A27 candidates, USER REVIEW PENDING",
+    "FS_Idle": "A27 candidate USER REVIEW PENDING",
+    "FS_Walk_Cast_Hurt_Death": "A28 candidates USER REVIEW PENDING",
+    "FS_Attack": "A28 skeleton 64px padded candidate, visible sword slash, no canvas-edge contact, USER REVIEW PENDING",
+    "FS_skeleton40_failed": "A28 stage raw pose-driven 40px touches right edge; 64px padded improved and should be user review candidate"
+  },
+  "source_sha256": {
+    "FS_approved": "8d2e7de00c06d7572ba68f38a7e5b9faa9572010d5b9f1e6b07cefaa0442da48"
+  },
+  "job_logs": {
+    "FS_SKELETON40": {
+      "job_id": "81c4a263-5e0f-45cc-b5e8-a6c446ed6116",
+      "usage": {
+        "type": "generations",
+        "generations": 3.0
+      },
+      "local_status": "PROVIDER_IMAGES_RECOVERED_WITHOUT_REPOST",
+      "source_sha256": "8d2e7de00c06d7572ba68f38a7e5b9faa9572010d5b9f1e6b07cefaa0442da48"
+    },
+    "FS_SKELETON64": {
+      "job_id": "39464b94-de99-4232-827b-163ca4c382ec",
+      "usage": {
+        "type": "generations",
+        "generations": 3.0
+      },
+      "local_status": "REAL_64_PADDED_SWORD_FRAMES",
+      "source_sha256": "8d2e7de00c06d7572ba68f38a7e5b9faa9572010d5b9f1e6b07cefaa0442da48"
+    },
+    "FS_WALK": {
+      "job_id": "27125a7b-1821-40d8-b63e-6b6da6791e9a",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "local_status": "RENDERED_ART_REVIEW_PENDING",
+      "source_sha256": "8d2e7de00c06d7572ba68f38a7e5b9faa9572010d5b9f1e6b07cefaa0442da48"
+    },
+    "FS_CAST": {
+      "job_id": "ef24d67a-5eac-4539-a01b-88761bd08269",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "local_status": "RENDERED_ART_REVIEW_PENDING",
+      "source_sha256": "8d2e7de00c06d7572ba68f38a7e5b9faa9572010d5b9f1e6b07cefaa0442da48"
+    },
+    "FS_HURT": {
+      "job_id": "79446ea9-4f2c-4cc8-854e-8aa621d2553c",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "local_status": "RENDERED_ART_REVIEW_PENDING",
+      "source_sha256": "8d2e7de00c06d7572ba68f38a7e5b9faa9572010d5b9f1e6b07cefaa0442da48"
+    },
+    "FS_DEATH": {
+      "job_id": "95d1969f-5f73-4146-ab47-480affa2b4e1",
+      "usage": {
+        "type": "generations",
+        "generations": 1.0
+      },
+      "local_status": "RENDERED_ART_REVIEW_PENDING",
+      "source_sha256": "8d2e7de00c06d7572ba68f38a7e5b9faa9572010d5b9f1e6b07cefaa0442da48"
+    }
+  },
+  "quota": {
+    "before": 1854.0,
+    "after": 1843.9,
+    "gen_spent_this_round": 10.1,
+    "estimate_skeleton_approx": 0.1,
+    "skeleton40_approx": 3,
+    "skeleton64_approx": 3,
+    "four_animations_approx": 4
+  },
+  "technical_gates": {
+    "FS_1_to_1_artwork": "source approved and unresized",
+    "FS_Idle_Walk_Attack_Cast_Hurt_Death_frames": "YES",
+    "FS_64pad_attack_clipping": "ZERO boundary pixels",
+    "FS_native_32x32_compatible": "NOT PROVEN for dynamic attack full range. SBS needs variable frame/camera offsets",
+    "PMD_SE_6_actions": "YES, A27 finished",
+    "PMD_eight_facings": "FAIL/UNFINISHED, only SE row updated",
+    "PMD_faint_1px": "A28 fixed 1 tail-tip pixel in a COPY, native 32x24 fits; user art approval pending",
+    "original_PMD_XML_offsets_shadow": "UNCHANGED",
+    "original_FS_files": "UNCHANGED",
+    "visual_pass": "NOT CLAIMED; user requested batch approval"
+  },
+  "previews": {
+    "full": "A28_PMD_AND_FS_ALL_ACTIONS_COMBINED.png",
+    "PMD": "A28_PMD_SIX_ACTIONS_MOBILE.png",
+    "FS": "A28_FS_SIX_ACTIONS_MOBILE.png",
+    "compact": "A28_PREVIEW_LL.webp"
+  }
+}
