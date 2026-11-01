@@ -5,10 +5,11 @@
 ## Mandatory read in order
 1. authority/FS_GROUND_PAR_SOURCE_FIRST_PRODUCTION_V1_20261101.md
 2. authority/FS_PAR_SEMANTIC_ORIGINAL_OBJECT_GENERATION_V1_20261101.md
-3. experiments/route_b_25d_20261031_stage16/STAGE16_A30_TRUE_NATIVE_VX_GROUND_PAR_HANDOFF_20261101.md (THIS TURN: authoritative actual Map50 evidence)
-4. experiments/route_b_25d_20261031_stage16/STAGE16_A30_SEMANTIC_PAR_VX_BOOT_DIAGNOSTIC_HANDOFF_20261101.md (HISTORICAL earlier bootstrap, now superseded for native map status)
-5. experiments/route_b_25d_20261031_stage16/STAGE16_A29_DETAILED_HANDOFF_A30_TEST_PLAN_20261101.md
-6. Drive FS_SOURCE_ASSET_LOCATION_REGISTRY_V1_20261023 and A29 scene/source manifest.
+3. authority/FS_NATIVE_VX_DYNAMIC_PAR_OCCLUSION_PASSAGE_V1_20261101.md (new permanent native depth, ParaPassa E layer, screenshot gates)
+4. experiments/route_b_25d_20261031_stage16/STAGE16_A30_TRUE_NATIVE_VX_GROUND_PAR_HANDOFF_20261101.md (THIS TURN: authoritative actual Map50 evidence)
+5. experiments/route_b_25d_20261031_stage16/STAGE16_A30_SEMANTIC_PAR_VX_BOOT_DIAGNOSTIC_HANDOFF_20261101.md (HISTORICAL earlier bootstrap, now superseded for native map status)
+6. experiments/route_b_25d_20261031_stage16/STAGE16_A29_DETAILED_HANDOFF_A30_TEST_PLAN_20261101.md
+7. Drive FS_SOURCE_ASSET_LOCATION_REGISTRY_V1_20261023 and A29 scene/source manifest.
 
 ## Locked baseline
 A27 PixelLab model native 544x416 opaque Ground SHA256 35c454c82d4f32906de39702a8463ca72316b14e157239604c18971bd67d00ce, unchanged. A29 12 separate PAR objects, 3 original Drive-derived trees and one PixelLab existing, original Godot GPU 8/8 cold PASS and BFS 209/209. No extra PixelLab generations in A30. Never patch sealed FS or original A27/A28/A29 art.
