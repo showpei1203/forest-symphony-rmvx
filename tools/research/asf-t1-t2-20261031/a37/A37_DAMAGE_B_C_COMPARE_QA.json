@@ -1,0 +1,123 @@
+{
+  "stage": "A37",
+  "source": "three genuine PixelLab B/C frames only",
+  "B_bbox": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        8,
+        10,
+        32,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "C_bbox": [
+    {
+      "bbox": [
+        10,
+        7,
+        35,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        12,
+        6,
+        36,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        9,
+        9,
+        33,
+        39
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "camera_locked_mix_bbox": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        12,
+        6,
+        36,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "right_edge": 0,
+      "bottom_edge": 0
+    }
+  ],
+  "B_C_per_frame_changed_pixels": [
+    533,
+    627,
+    591
+  ],
+  "B_adjacent_diffs": [
+    607,
+    603
+  ],
+  "C_adjacent_diffs": [
+    548,
+    566
+  ],
+  "composite_adjacent_diffs": [
+    597,
+    597
+  ],
+  "max_candidates": 3,
+  "all_120x40": true,
+  "last_gate": "NOT FORMAL ART PASS; user visual review of Damage action and per-frame 45-degree",
+  "source_raw_untouched": true,
+  "sbs_engine": "NOT TESTED",
+  "output_sha256": "40b4ae2b4bbff68c2811fec41033238754eabeb35816fc95520f2b171373952b"
+}
