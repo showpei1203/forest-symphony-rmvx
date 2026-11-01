@@ -1,0 +1,52 @@
+{
+  "stage": "A37",
+  "action": "Dodging",
+  "user_selection": "T4 fourth alternative user selected",
+  "status": "USER CHOSE T4, INTEGRATION AND 45DEG PER-FRAME GATE NOT YET TESTED",
+  "source_path": "E:\\GameAssetToolLab_20261023\\A36_FS_ACTION_3FRAME_FORMAL_20261101\\T4_ANTICIPATE_ROLL_LAND_3FRAME_40.png",
+  "source_sha": "bfc51f2656690f56b59a944620b9432883d959e3894bc301057605d5770f112a",
+  "output_sha": "bfc51f2656690f56b59a944620b9432883d959e3894bc301057605d5770f112a",
+  "frame_source": [
+    "A35 genuine PixelLab interpolation frame segment A02",
+    "A35 genuine PixelLab interpolation frame segment A06",
+    "A35 genuine PixelLab interpolation frame segment B07"
+  ],
+  "native_size": [
+    40,
+    40
+  ],
+  "sheet_size": [
+    120,
+    40
+  ],
+  "frame_count": 3,
+  "frame_bbox": [
+    [
+      6,
+      10,
+      35,
+      38
+    ],
+    [
+      6,
+      9,
+      36,
+      38
+    ],
+    [
+      11,
+      7,
+      35,
+      38
+    ]
+  ],
+  "f0_to_f1_changed_pixels": 653,
+  "f1_to_f2_changed_pixels": 677,
+  "one_shot_gif_nframes": 3,
+  "no_extra_art_generation": true,
+  "new_PixelLab_generation": 0,
+  "per_frame_cam_art": "User selected the T4 composition; formal each-frame exact 45° QA still pending",
+  "weapon_paper_doll": "All actor sprites must be unarmed; SBS overlay test pending",
+  "source_authority": "A35 PixelLab raw frame sources unchanged; A36 variant T4 unchanged",
+  "other_FS_action": "Walk/Waiting are not altered; all source files and SBS code unchanged"
+}
