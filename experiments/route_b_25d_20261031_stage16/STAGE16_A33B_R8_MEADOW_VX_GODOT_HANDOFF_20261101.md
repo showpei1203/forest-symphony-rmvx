@@ -31,3 +31,24 @@ Fresh independent native VX clone `E:\FS_STAGE16_A33B_GROUND_R8_VX_COLD_20261101
 Engineering layer separation, VX actor/collision, 8/8 Godot, 3395-file cold SHA: PASS. A32B tree visual: USER APPROVED unchanged. A33B R8 macro ecology, road material appearance, landscape richness vs Ground3: ART USER REVIEW PENDING. The full 1280x928 village-scale Ground3 final size, separate SHADOW/LIGHT engine pipeline and original sealed FS production battle harness remain pending. Formal Seal NO.
 
 Next: user reviews R8 screenshot and R7/R9 alternatives. If grass still feels periodic or ecology too sparse, adjust only A33B Ground morphology and density, not A32B trees. Source R5 and A27 Ground must remain untouched. Full private PNGs/ZIP in Drive only because original art licensing unresolved; public GitHub documents and non-binary QA/repro instructions.
+
+
+## Verified A33B private Google Drive delivery (2026-11-01, metadata readback)
+- **Native RPG Maker VX R5 vs R8 actual before/after 544×2950**, includes four 2x material-edge comparisons: https://drive.google.com/file/d/1NwNvc9D7rxksKuYsDCL33u0zn3N96-Pl/view
+- **New A33B R8 Meadow opaque Ground PNG 544×416**, SHA256 `dba346a620a15d7ddd9995273bac55c977c5e179c0bbcb8f9f986dd23e1c84fe`: https://drive.google.com/file/d/1VLtESxsUX6MX_KUmuPwLGUF6JIfDA1Zc/view
+- **Four-way real Ground+original A32B PAR composite** R5/R7/R8/R9: https://drive.google.com/file/d/1I8krkesxZiSihGPoFt3anVGNNQtYj37q/view
+- **Enlarged material edge comparisons**: https://drive.google.com/file/d/17DsaU7ypIIowW6l2mqyMJ94O97iPfQnb/view
+- Alternative ground R7 original pixel source: https://drive.google.com/file/d/1nEns5BU2m4xJteofz8zgOT2BMn2-IDmY/view
+- Alternative R9 stronger meadow: https://drive.google.com/file/d/11GUMSGblYMOY8G6cfzOOPn6sk1W0qfwd/view
+- Ground3 historical reference overview (image kept PRIVATE): https://drive.google.com/file/d/17rVkH9bgjB_QqOHOjFJKy8EGLnwvV-WP/view
+- **A33B private ZIP**, 100 entries, 24,868,685 bytes; local ZIP CRC, every member SHA256 and separate cold extraction SHA verified PASS; Drive filename and byte size metadata read back. Remote ZIP SHA download NOT additionally claimed: https://drive.google.com/file/d/1_iZeDj64FWu6WgfPSfcni4ZDZOUkpXDg/view
+- Actual native VX QA: https://drive.google.com/file/d/1SMFeGeziOF5FC6fLDD3ir-tDJH9-cNmN/view
+- Actual GPU pixel QA (2946 coords diff maximum RGB1): https://drive.google.com/file/d/1nSWwzan7mW3I2AE6ZB5cM7M-PYlS0P7H/view
+- Native cold 3395 SHA file and startup QA: https://drive.google.com/file/d/1TwT48eO00Gu0ifiZ13RzxpRsLcLHew17/view
+- Permanent native Ground terrain naturalness gate: https://drive.google.com/file/d/11b826lJSIGEVv4LQhUJGTrLY0LB7VIwj/view
+- A33B failure register: https://drive.google.com/file/d/1IuKCughUMI0eLYjuEyuTX5-WOtf5ZdAU/view
+- A33B detailed Handoff: https://drive.google.com/file/d/1rETS6bVxVF-3B9waB4ggYNXP7LyALGAo/view
+- Latest A33B CURRENT_HANDOFF: https://drive.google.com/file/d/1XLVtiYnpZNtXpGgjGjcXD34Bb7MY95rE/view
+- Private stage folder: https://drive.google.com/drive/folders/1J5Z8wwV5lCHxS9r8MJlUT1orXo0Ps_6V
+
+**A32B art approved, A33B R8 engineering PASS but Ground art user signoff PENDING; Formal Seal NO.**
