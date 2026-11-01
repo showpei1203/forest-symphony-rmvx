@@ -1,0 +1,54 @@
+{
+  "stage": "A38",
+  "date": "2026-11-01",
+  "method": "PixelLab true /edit-images-v2 from native battle-facing 40px art, then exact F0+F1+F2 assembly",
+  "source_f0_sha": "12103ee22b68ef4ad7f45b3927c594f062093b02d6ffab706173acbc83603dd0",
+  "provider_f1_sha": "cce8fccb2e72eb38b6af87226b248fb11237a2733c6d9575f967703b3da8e6ff",
+  "final_sheet_sha": "85533b46563c413704fb929d2f0a0784f9a26010455649758357faf7493ce988",
+  "native40x40": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha": 556,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        36,
+        38
+      ],
+      "alpha": 568,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "alpha": 556,
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "all_frames_exactly_three": true,
+  "all_120x40_transparent": true,
+  "source_battle_F0_and_F2_pixel_identical": true,
+  "new_F1_changed_vs_guard": 606,
+  "new_F1_changed_vs_old_A37_C": 591,
+  "one_shot_gif_framecount": 3,
+  "art_camera_gate": "NEEDS HUMAN INSPECTION (F1 frontal + side planes, shoulders/hips, no 90deg)",
+  "hit_recoil_semantics": "NEEDS HUMAN INSPECTION",
+  "weaponless_SBS": "NEEDS HUMAN INSPECTION",
+  "formal_approval": "CANDIDATE ONLY",
+  "game_project_unchanged": true
+}
