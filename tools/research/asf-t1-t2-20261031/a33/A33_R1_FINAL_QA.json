@@ -1,0 +1,69 @@
+{
+  "project": "FS A33 16 human action direct reference pose research",
+  "date": "2026-11-01",
+  "approval_baseline": {
+    "A26_character": "user PASS; unarmed FS white-haired teal 1:1",
+    "A31_walk": "user PASS; real actor01 original walk steps",
+    "A32_dodge_text": "FAIL - insufficient lateral evasion",
+    "A32_reference_16": "reference taxonomy only, no exact rig"
+  },
+  "phases": {
+    "Waiting": "STATIC SOURCE BASELINE, no paid provider (avoids arbitrary shoulder tremor)",
+    "Dodging A": "A32 text FAIL, NOT RESUBMITTED",
+    "Dodging B": "3 user screenshots actual 32x32 pixels first → real PixelLab transfer-outfit-v2 →3 real 40x40 frames, readable crouch/recovery, user art review pending",
+    "Dodging C": "Same 3 B frames → edit-animation-v2, small appearance changes but 45° not proven improved; do not claim C PASS, no retry",
+    "Damage B": "3 user screenshots actual 32x32 pixels → real transfer-outfit-v2 →3 real 40x40 frames, head/shoulders reaction recognizable, user art review pending",
+    "Damage C": "NOT RUN: Dodge C showed little 45° improvement and would spend extra 10 generations without clear reason"
+  },
+  "verified_jobs": {
+    "Dodge_B": {
+      "job_id": "9b24c4b7-17de-4f98-a3a0-538356202384",
+      "charge": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "status": "THREE_REAL_FRAMES_RECEIVED_AWAITING_VISUAL_GATES",
+      "sha256": "d00595152dcfb64ca5cbf9db3be650fafbdc969fde5c7c3724d2ad6551a5338d"
+    },
+    "Dodge_C": {
+      "job_id": "0e30620e-df8d-445b-914c-2da293cacba5",
+      "charge": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "status": "PROVIDER_REAL_C_FRAMES_ART_GATE_PENDING",
+      "sha256": "9c73cb5957c032044feac446a6d4618314f2be9dc8a5895fbf14f0a87d6b6f16"
+    },
+    "Damage_B": {
+      "job_id": "e51526e0-9904-4f24-88ad-add0c2120d05",
+      "charge": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "status": "THREE_REAL_FRAMES_RECEIVED_AWAITING_VISUAL_GATES",
+      "sha256": "ce67249e3f3b95defaafa05f4a67a9806bec54e06f3c7b7d2080d84d96ad4836"
+    }
+  },
+  "before_quota": 1811.8,
+  "after_quota": 1781.8,
+  "actual_generations_spent": 30.0,
+  "all_output_sources": "user screenshot pose pixels directly provided as each frame; ONLY 40x40 padding, no resized poses",
+  "new_actions_full_engine_gate": "NOT PASSED: No Tankentai SBS imported, no paper doll anchor tested, no full 45° accepted",
+  "source_files_untouched": "true; original FS and PMD game files not overwritten",
+  "paid_safe_limit": "all jobs locked before API submission, 1 provider job per group, 3 groups total",
+  "best_current_candidates": {
+    "Dodge": "B raw (C only marginal visual changes)",
+    "Damage": "B raw",
+    "Waiting": "A31 original static neutral"
+  },
+  "next": "A33-R2 after user art review, use direct pose control for Critic Damaged and Jump; fix viewing angle by requiring real FS $actor01_1/_2/_3 view-reference pixels, not text-only C redo",
+  "files": {
+    "rules": "A33_TEST_RULES_AND_STEPS.md",
+    "comparison_dodge": "A33_POSE_SOURCE_B_VS_C_LARGE.png",
+    "comparison_damage": "A33_B_DAMAGE_USER_POSES_VS_PIXEL_LAB.png",
+    "character_wait": "A33_WAITING_STATIC_BASELINE/FS_WAITING_NATIVE_40.png"
+  }
+}
