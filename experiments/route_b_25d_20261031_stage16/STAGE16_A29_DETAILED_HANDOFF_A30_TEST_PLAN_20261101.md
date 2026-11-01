@@ -133,7 +133,7 @@ Next VX plan: in a **new sandbox copy**, locate a known reliably booting minimal
 **A29 actual Godot native 8-case contact sheet:** https://drive.google.com/file/d/1xUsht3VmU1yFzB7ugW2UHlsIG3jycc2h/view  
 **A28 vs A29 two-column raw comparison:** https://drive.google.com/file/d/179qcXUYP561jHHKh0o9HerA0kPSZGI0o/view
 
-**Mobile preview correction:** \`A28_A29_MOBILE_VERTICAL_COMPARE_544x934.png\` is generated from exact A28/A29 source halves, labels and layout only. New private Drive link must be obtained by Drive folder readback and recorded in latest current handoff. Don't invent an ID.
+**Mobile preview correction:** \`A28_A29_MOBILE_VERTICAL_COMPARE_544x934.png\` is generated from exact A28/A29 source halves, labels and layout only. Verified private Drive file ID `1X_vUXPvVrs4rIkNi6jSy-8BdcblmT3nr`: https://drive.google.com/file/d/1X_vUXPvVrs4rIkNi6jSy-8BdcblmT3nr/view . Source PNG 1088×416 unchanged; 544×934 mobile layout adds labels without modifying embedded scene pixels.
 
 **Debug/QA files:**
 \`A29_SOURCE_DIVERSITY_SCENE_MANIFEST.json\`,
@@ -185,3 +185,13 @@ Private full-stage ZIP retains per-object art and isolated Godot project. **Larg
 ---
 
 **Last confirmed result:** A29 Godot / separate Ground+PAR / SHA cold rebuild **PASS**. User aesthetic approval **PENDING**. Native VX actual map **BLOCKED**. **Formal Seal = NO**.
+
+## 10. Verified A29 current delivery links (authenticated Drive readback)
+
+- Detailed A29 Handoff (this file, private Drive copy): https://drive.google.com/file/d/1yMZS6zdYazsMTXaZT60GTwovGfG41Fc3/view
+- Revised CURRENT_HANDOFF (latest entry point): https://drive.google.com/file/d/1B-Lh39rEuqk_1zM-SM8-Ku3-I-aEZpAk/view
+- **Mobile vertical 544px-wide A28→A29 comparison**: https://drive.google.com/file/d/1X_vUXPvVrs4rIkNi6jSy-8BdcblmT3nr/view
+- Handoff + visual QA evidence mini ZIP: https://drive.google.com/file/d/1b219Y9__M5uZj77TudQmG3Vr0rncO0kR/view
+- Private A29 stage folder: https://drive.google.com/drive/folders/1Rqdo_qw1Vdvpfcx2a5iOf7joH83ncVtT
+
+This subsection was added *after* authenticated Drive readback verified exact file IDs and file sizes. The authoritative full private Godot ZIP remains separate (84 files; SHA in §4). Any later mini ZIP repackage must be hashed again and its manifest refreshed.
