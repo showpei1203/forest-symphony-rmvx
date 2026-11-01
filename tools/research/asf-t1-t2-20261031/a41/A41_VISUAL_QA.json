@@ -1,0 +1,99 @@
+{
+  "stage": "A41",
+  "native_frame_size": [
+    40,
+    40
+  ],
+  "strict_sheet_size": [
+    120,
+    40
+  ],
+  "exactly_three_frames": true,
+  "PixelLab_source": "A34 45-degree native battle-facing white-haired unarmed master, reuse actual A40 18-joint PixelLab skeleton",
+  "A41_raw_frame_metrics": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "opaque": 553,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        3,
+        8,
+        34,
+        38
+      ],
+      "opaque": 585,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "opaque": 552,
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "A41_source_anchored_metrics": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "opaque": 556,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        3,
+        8,
+        34,
+        38
+      ],
+      "opaque": 585,
+      "touch_right": 0,
+      "touch_bottom": 0
+    },
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "opaque": 556,
+      "touch_right": 0,
+      "touch_bottom": 0
+    }
+  ],
+  "alpha_no_right_bottom_clip": true,
+  "source_F0_equals_F2": true,
+  "old_normal_to_new_normal_F1_changes": 675,
+  "new_normal_F1_to_critical_F1_changes": 456,
+  "new_normal_F1_to_critical_F2_changes": 509,
+  "A41_selected_adjacent_pixel_changes": [
+    547,
+    547
+  ],
+  "camera_45_each": "NEEDS HUMAN IMAGE REVIEW, compare face planes/shoulders/hips in each frame",
+  "normal_hit_semantic": "NEEDS HUMAN IMAGE REVIEW, must read as moderate recoil not deep critical",
+  "paper_doll_unarmed": "VISUAL CHECK, engine not run",
+  "SBS_VX_engine": "NOT TESTED",
+  "formal_art_pass": false,
+  "no_game_project_changes": true,
+  "new_sheet_sha256": "39292d759b7f33fa1110e7dfc6b1e8625d9d43eceb08543ddc716130e4d9940d"
+}
