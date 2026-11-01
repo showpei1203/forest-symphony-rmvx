@@ -1,3 +1,5 @@
+> **SUPERSEDED BY A33C R13 on 2026-11-01:** User rejected A33B black-looking curves / insufficient macro vegetation. Latest [A33C CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A33C_20261101.md) implements actual new Ground PNG, 8084 dark-source band target pixel repairs, 11 vegetative habitat zones and real VX/Godot/cold QA. A33B R8 source unchanged as immutable reference. A32B approved PAR SHA preserved. A33C art still PENDING; Formal Seal NO.
+
 # CURRENT_HANDOFF Forest Symphony Stage16 A33B — 2026-11-01
 
 **LATEST: A32B TREE ART APPROVED and locked. A33B R8 natural meadow Ground source-first candidate BUILT and engineering VX/Godot/cold PASS, ART PENDING, Formal Seal NO.**
