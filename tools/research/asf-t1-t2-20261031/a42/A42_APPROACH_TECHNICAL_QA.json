@@ -1,0 +1,101 @@
+{
+  "stage": "A42",
+  "action": "Moving to Close Attack",
+  "strict_3_frame": true,
+  "native_sprite": [
+    40,
+    40
+  ],
+  "sheet_size": [
+    120,
+    40
+  ],
+  "pixelLab_raw_bboxes": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0,
+      "alpha_pixels": 546
+    },
+    {
+      "bbox": [
+        13,
+        8,
+        36,
+        37
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0,
+      "alpha_pixels": 484
+    },
+    {
+      "bbox": [
+        12,
+        8,
+        36,
+        38
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0,
+      "alpha_pixels": 499
+    }
+  ],
+  "selected_source_anchored_bboxes": [
+    {
+      "bbox": [
+        11,
+        7,
+        35,
+        38
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0,
+      "alpha_pixels": 556
+    },
+    {
+      "bbox": [
+        13,
+        8,
+        36,
+        37
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0,
+      "alpha_pixels": 484
+    },
+    {
+      "bbox": [
+        12,
+        8,
+        36,
+        38
+      ],
+      "right_touch": 0,
+      "bottom_touch": 0,
+      "alpha_pixels": 499
+    }
+  ],
+  "no_edge_clip": true,
+  "one_shot_gif_frames": 3,
+  "changed_pixels_raw_neighbor": [
+    445,
+    158
+  ],
+  "changed_pixels_selected_neighbor": [
+    464,
+    158
+  ],
+  "anchor_F0_matches_native": true,
+  "facing_45_each_frame": "PENDING human art visual gate",
+  "animation_step_naturalness": "PENDING user art",
+  "weaponlessness": "PENDING human art, SBS overlay not tested",
+  "sbs_owns_move": "WORLDSPACE movement script is required and not implemented; this is in-place pose ONLY",
+  "formal_art_pass": false,
+  "original_FS_and_T4_unchanged": true,
+  "output_sha256": "190d383a862c2395f8606ad0feac7394219d2228e6ba68b1efaaed41bd368393"
+}
