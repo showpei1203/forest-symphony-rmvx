@@ -1,3 +1,5 @@
+> **SUPERSEDED BY A35C R2 (2026-11-02):** The A35B 0 terrain-PAR baseline was only temporary to remove 217 incorrect cliff-outline masks. User requires 1-2 tile cliff-top upper-rim actor occlusion depending on height. [A35C R2 CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A35C_20261102.md) provides four curated front edges / six depth sprites with real Game.exe actor 5 behind positives vs 4 front negatives, Godot 19 GPU frames and cold 3635 SHA PASS. Original A35 Ground unchanged. A35B 0-PAR blanket rule must NOT be carried forward. Formal Seal NO.
+
 # FS CURRENT_HANDOFF Stage16 A35B, 2026-11-02
 Latest branch = **A35B semantic redefinition of terrain PAR, not visual cliff outline**.
 
