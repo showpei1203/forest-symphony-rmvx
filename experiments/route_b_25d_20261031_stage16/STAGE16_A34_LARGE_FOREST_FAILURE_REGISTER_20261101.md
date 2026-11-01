@@ -1,0 +1,11 @@
+# A34 Failure Register, 2026-11-01
+A34 actual native large forest scene, engineering PASS / art PENDING / Formal Seal NO.
+
+F01 Unbounded broad recursive E drive search for ground3 failed on nonexistent emulator subdir. Correct source E:/FS_STAGE16_A33F_UNDERSTORY_VX_20261101/Graphics/Parallaxes/ground3.png (RGB 1280x928, SHA ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13). Use indexed precise source path.
+F02 Initial Ground generation failed because SciPy not installed. Changed trail smoothing to deterministic pure-Python Catmull-Rom, produced five connected trails. Inspect remote dependencies first.
+F03 Godot first native 1280 render failed a JSON Variant array literal size assertion. Normalize integer width and height, rerun with new log after killing only leftover A34 Godot processes.
+F04 Native VX y-sort was initially coarse quantization by (foot_y-dy)/18*3, resulting many PAR overlap mismatches at camera edges. Fixed by pre-sorting individual source objects (foot_y, id) and exact sprite.z=100+foot_y-dy; native 11 cases repeated. The later 9 cases are max RGB delta3; FIRST two still have title-fade overlay and MUST NOT be advertised as pixel-perfect.
+F05 A34 is physically large, but visual Ground3 source has wooden buildings, terraces, cliffs and much richer landmark diversity. A34 lacks buildings/cliffs/terrain height. Do not misstate this as completed large village or Ground3-quality.
+F06 Forest flora 104 trees/96 shrubs are source-derived from already approved private A33F art. Increasing count without biological diversity still risks repeated texture. Material-quilting regularity/road width need actual human review at native 1x and 1280px.
+F07 Distinct SHADOW/LIGHT future, never bake cast shadow/light into PAR. Original production BattleRegression blocked, Map50 uses test-only script483; formal seal NO.
+F08 Preserve original immutable A33F and A32B branches, new A34 separate. 210 standalone source PNGs and 40x29 semantic collision are mandatory for reproduction, not flattened composite alone.
