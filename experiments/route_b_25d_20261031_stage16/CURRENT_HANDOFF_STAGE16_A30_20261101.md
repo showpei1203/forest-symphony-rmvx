@@ -1,3 +1,5 @@
+> **SUPERSEDED FOR TREE VISUAL WORK 2026-11-01:** Latest CURRENT_HANDOFF is [Stage16 A31](CURRENT_HANDOFF_STAGE16_A31_20261101.md). A30 engineering baseline remains authoritative and untouched; A31 modifies only two upper PAR tree foliage RGB, original Ground unchanged, true VX native 24 screenshots and 3395-file cold check PASS, Formal Seal NO.
+
 # CURRENT_HANDOFF — Forest Symphony Stage16 A30 true native VX Map50 (2026-11-01)
 
 **LATEST state: native isolated VX Game.exe Map50 true Ground/PAR, occlusion and passage VERIFIED PASS at engineering benchmark scope; cold native startup and SHA copy VERIFIED; user art signoff PENDING, sealed FS original combat regression script unresolved, pixel-perfect cold-frame parity not proved. Formal Seal NO.**
