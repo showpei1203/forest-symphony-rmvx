@@ -1,3 +1,12 @@
+# A29 DETAILED HANDOFF OVERRIDE / NEXT-CHAT ENTRY
+
+The authoritative **detailed** continuation file (newer and more complete than the brief handoff below) is:
+`experiments/route_b_25d_20261031_stage16/STAGE16_A29_DETAILED_HANDOFF_A30_TEST_PLAN_20261101.md`
+
+Read this first, then `authority/FS_GROUND_PAR_SOURCE_FIRST_PRODUCTION_V1_20261101.md` and A29 QA/source manifest. Mobile A28/A29 comparison is available under the private A29 Google Drive folder as `A28_A29_MOBILE_VERTICAL_COMPARE_544x934.png`, created using exact source image halves without resizing the 544×416 scenes. The GitHub detailed handoff explains all known failures and A30 hard gates. **VX actual map NOT TESTED; A29 Godot 8/8 cold PASS; Formal Seal NO**.
+
+---
+
 # CURRENT_HANDOFF — Stage16 A29 SOURCE-FIRST TREE / VX BOOT (2026-11-01)
 
 ## Must-read authority, in order
