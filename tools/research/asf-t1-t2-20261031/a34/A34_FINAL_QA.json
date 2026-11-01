@@ -1,0 +1,70 @@
+{
+  "stage": "A34",
+  "date": "2026-11-01",
+  "user_feedback": "A33 Dodging F0 wrong facing: HARD CAMERA FAIL",
+  "source_inspection": {
+    "DODGE_F0": "input source is side-oriented; NOT used as F0 in A34",
+    "DODGE_F1": "44 disconnected pixels from previous action row; removed only in CLEAN COPY",
+    "DODGE_F2": "32-pixel vertical line contamination; NOT used as recovery frame",
+    "original_actor": "source $actor01_1 r1c1 and r2c1 true pixels in 40x40 padded; battle view is art authority"
+  },
+  "API_limits": {
+    "transfer_outfit_v2_min_2_frames": "confirmed HTTP 422, no generation charged"
+  },
+  "real_jobs": {
+    "two_native_battle_view_master": {
+      "job_id": "264f8c8b-ea74-430a-9228-991f5ff53796",
+      "provider_billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "status": "completed",
+      "output_status": "REAL_PIXELLAB_BATTLE_MASTERS_ART_REVIEW_PENDING"
+    },
+    "F0_correct_Dodging_B2": {
+      "job_id": "0a60516c-98cc-4dd2-b8f1-4d833c0dffd8",
+      "provider_billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "status": "completed",
+      "output_status": "B2_REAL_THREE_FRAMES_RETURNED_QA_PENDING"
+    }
+  },
+  "quota": {
+    "start": 1781.8,
+    "end": 1761.8,
+    "spent": 20.0
+  },
+  "technical_gates": {
+    "g0_sources_sha": "PASS source pixel hashes stored in each lock",
+    "g1_first_frame_source_direction": "New first frame anchored to real FS _1 battle view; USER ART REVIEW PENDING",
+    "g2_actor_ratio": "1:1 source-preserving, USER ART REVIEW PENDING",
+    "g3_unarmed": "VISUAL REVIEW PENDING, no independent paper-doll weapons embedded intentionally",
+    "g4_native_px": "40x40 transparent true pixel art, all frames no canvas right/bottom collision",
+    "g5_dodge_action": "FIRST and LAST guard pose from true native view, middle crouch comes from real user reference and new provider frame; motion naturalness NOT PASSED",
+    "g6_camera_each_frame": "F0 provisional; F1 downward tumble pose; F2 provisional, full 45-degree artistic validation PENDING",
+    "g7_sbs_test": "NOT RUN; no engine/weapon overlay pass"
+  },
+  "source_visual_notes": "A33 old F0 has a one-sided side profile; A34 new F0 displays both face planes using a real FS battle sprite as camera source. Middle crouch still has feet in air/top and abrupt 3-keyframe transition.",
+  "candidate_source": {
+    "F0": "A34 master PixelLab API output, copied exact, not manual repaint",
+    "F1": "A34 B2 real PixelLab reference-controlled output",
+    "F2": "exact same A34 master source pixel as F0"
+  },
+  "raw_provider_vs_assembly": "DISTINCT outputs clearly labeled; both preserved",
+  "files": {
+    "wrong_direction_old": "A34_F0_FAILURE_VS_REAL_NATIVE_VIEW.png",
+    "original_battle_view_grid": "A34_NATIVE_BATTLE_DIRECTIONS_ALL_ROWS_8X.png",
+    "same_eye_native_comparison": "A34_FIRST_FRAME_DIRECTION_GATE_REVIEW.png",
+    "old_vs_new_vs_exact_anchor": "A34_A33_VS_NEW_RAW_VS_F0_LOCK_REVIEW.png",
+    "real_provider_3frame": "B2_DODGE_NATIVE_VIEW_POSES/A34_B2_REAL_PIXELLAB_3FRAMES.png",
+    "exact_f0_anchor_3frame": "A34_NATIVE_F0_EXACT_VIEW_LOCK_CANDIDATE_3FRAMES.png",
+    "raw_gif": "A34_B2_PROVIDER_RAW_ONE_SHOT.gif",
+    "anchored_gif": "A34_VIEW_LOCK_ASSEMBLY_ONE_SHOT.gif"
+  },
+  "original_FS_PM_SBS_files": "UNCHANGED",
+  "formal_art_pass": false
+}
