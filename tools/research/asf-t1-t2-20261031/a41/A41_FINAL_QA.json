@@ -1,0 +1,49 @@
+{
+  "stage": "A41",
+  "date": "2026-11-01",
+  "action": "Damage normal 3-frame 18-joint",
+  "rule": "3 frames ONLY. F0 and F2 from exact real FS battle-view source; F1 actual PixelLab skeleton-controlled image",
+  "user_selected_dodging_T4": "UNTOUCHED",
+  "jobs": [
+    {
+      "name": "R1",
+      "job_id": "d6c10beb-bf89-42b0-a01d-cff847ff9cf2",
+      "generations": 2,
+      "status": "completed"
+    },
+    {
+      "name": "R2",
+      "job_id": "dd62eb1a-85b3-49da-9f8d-b01bd4a0cb32",
+      "generations": 2,
+      "status": "completed"
+    }
+  ],
+  "budget": {
+    "before": 1699.7,
+    "after": 1695.7,
+    "spent": 4.0
+  },
+  "R1_visual": "FAIL, F1 arms outstretched left and right, reads attack not hit",
+  "R2_visual": "IMPROVED arm close to torso, short hit flinch with chin/shoulder sinking, visibly distinct from A40 terminal critical collapse",
+  "R2_source_sheet": "A41_R2_NORMAL_DAMAGE_NATIVE_SOURCE_ANCHORED_3F.png",
+  "R2_visual_preview": "A41_R1_FAIL_R2_VS_A40_CRITICAL_COMPARISON.png",
+  "raw_provider_frames": "R1 raw files + R2_HANDS_IN_GUARD/PIXELLAB_R2_DAMAGE_F0..F2",
+  "raw_vs_selected": "Raw provider retains 3 returned PixelLab images. Selected candidate uses unchanged native F0/F2 with actual PixelLab R2 F1. Not falsely called raw provider sheet.",
+  "technical": {
+    "40px_native": "PASS",
+    "120x40_sheet": "PASS",
+    "exact_three_frame": "PASS",
+    "right_bottom_clip": "PASS",
+    "F0_eq_F2": "PASS",
+    "provider_jobs": 2
+  },
+  "art": {
+    "natural_hit": "VISUAL CANDIDATE, user formal art review pending",
+    "true_45_all_frames": "PENDING human view gate",
+    "character_consistency": "PENDING human art",
+    "no_embedded_weapon": "PENDING art; source unarmed",
+    "SBS_engine": "NOT RUN",
+    "formal_pass": false
+  },
+  "source_originals_FS_PM_T4_untouched": true
+}
