@@ -1,0 +1,60 @@
+{
+  "stage": "A35",
+  "date": "2026-11-01",
+  "source": "A34 true native FS $actor01_1 battle-view PixelLab teal unarmed master F0/F2 and exact screenshot-driven PixelLab dodge F1",
+  "goal": "Physical/pose continuity instead of 3-to-3 abrupt frame flip",
+  "first_rejected_http422": "action exceeded PixelLab maximum 500 char string; rejected by schema, no accepted job",
+  "real_paid_jobs": {
+    "guard_to_roll": {
+      "job_id": "4456a6dd-00a5-4351-9452-df69b50a414d",
+      "billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "frame_count": 14,
+      "raw_sha256": "606c340b4259941c6acd3ff0bc81f3fc4460566ef1cc22acdb529dfa216a22b5"
+    },
+    "roll_to_guard": {
+      "job_id": "790d9b6f-37ad-46be-8758-b261640e5f06",
+      "billing": {
+        "usd": 0.0,
+        "type": "generations",
+        "generations": 10
+      },
+      "frame_count": 14,
+      "raw_sha256": "b85d6ab7463c84c315a05a6d4e398177e77c0b940677fc7330c81a625b2c0f26"
+    }
+  },
+  "generation_budget": {
+    "before": 1761.8,
+    "spent": 20.0,
+    "after": 1741.8,
+    "plan": 2000
+  },
+  "provider_raw_frames": 28,
+  "candidate_assemblies": {
+    "dense": "31 frames: original F0 + provider14 + exact F1 + provider14 + exact F2",
+    "sparse": "17 frames: original F0 + 7x providerA + exact F1 + 7x providerB + exact F2",
+    "semantic": "18 frames: exact F0, 8 source-derived A progression, exact real F1, 7 source-derived B progression, exact F2"
+  },
+  "verifications": {
+    "raw_40x40_transparent": "PASS",
+    "no_right_bottom_clipping": "PASS",
+    "original_key_F0_F2_pixel_identical": "PASS",
+    "human_motion_naturalness": "PENDING",
+    "per_frame_45degree": "PENDING",
+    "paper_doll_sbs_overlay": "NOT TESTED",
+    "full_vx_godot_engine": "NOT TESTED",
+    "art_status": "CANDIDATE, not formal PASS"
+  },
+  "technical_issues": {
+    "AI_interpolated_endpoints_not_pixel_identical": "Start↔providerA[0] diff602, providerA[-1]↔key F1 diff558, providerB[-1]↔exact F2 diff550",
+    "nonmonotonic_A": "Frames A8-A13 show prone pause after upside-down goal; omit from semantic candidate",
+    "nonmonotonic_B": "B5-B6 briefly flip upside down after recovery posture achieved; omit from semantic candidate",
+    "seam_discontinuity": "Curated candidate max adjacent pixel difference648; requires visual timing review"
+  },
+  "all_orig_file_unmodified": true,
+  "raw_outputs_preserved": true,
+  "next": "Visual art review of 18-frame real-source one-shot, confirm 45degree for every frame and weapon separation, adjust semantic frame selection / timing without paid calls; then if needed battle animation normalization, no blind rerolls."
+}
