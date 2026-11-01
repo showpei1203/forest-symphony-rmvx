@@ -45,3 +45,9 @@ Date: 2026-11-01
 - Separate approved art process: obtain larger, real high-detail 2D isolated FS-quality canopy/trunk with proven alpha and 1x matching; use source-owned pixels or clearly identify newly created art. Add multiple tree shapes before village scale.
 - Build an **isolated** VX test harness using copied Game.exe and cloned Data (never alter sealed production) and formal 32px passability / fore-aft occlusion checks in RGSS2. Until a new native VX screenshot is observed, keep VX NOT RUN.
 - Integrate fully reproducible A26 private package, cold re-render 7 screens, verify hashes. Mirror handoff to GitHub and Drive when upload has been independently verified.
+
+## A26 cold-rebuild proof
+- Isolated private ZIP: 5,755,136 bytes; SHA256 f673b02bad2b0a3ecd6c108ce22ba622f1b25e68b5923c99968c32cda819647b; 59 members with SHA checks.
+- Independent fresh extraction and new Godot 4.7.2 execution: 7/7 screenshot SHA256 exact matches, exit code 0. `A26_COLD_VERIFY.json` and `A26_BUNDLE_MANIFEST.json` retain evidence.
+- Drive text handoff placed in the private Stage16 folder. Binary ZIP remains local; Drive binary upload not confirmed.
+- Art FAIL, native VX NOT RUN, formal seal NO.
