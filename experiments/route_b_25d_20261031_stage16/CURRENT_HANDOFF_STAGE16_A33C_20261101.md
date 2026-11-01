@@ -1,3 +1,5 @@
+> **SUPERSEDED BY A33D REAL FOREST CANDIDATE (2026-11-01):** Current official [A33D CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A33D_20261101.md). Original A33C R13 Ground retained unchanged, A32B approved 12 PAR RGBA unchanged, A33D adds 9 new independent source-derived trees and actual E-layer collision, native VX 16/16 cases/32 actual frames, 12 Godot GPU images, cold 3404/3404 files. **A33D ART PENDING; Formal Seal NO.**
+
 # CURRENT_HANDOFF Forest Symphony Stage16 A33C — 2026-11-01
 **LATEST A33C R13 Ground candidate BUILT, real native VX/Godot/cold engineering PASS, Ground ART USER APPROVAL PENDING; Formal Seal NO.**
 
