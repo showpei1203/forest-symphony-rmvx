@@ -1,0 +1,87 @@
+{
+  "frame_count": 5,
+  "frames_px": [
+    40,
+    40
+  ],
+  "bboxes": [
+    [
+      9,
+      6,
+      32,
+      38
+    ],
+    [
+      9,
+      4,
+      31,
+      38
+    ],
+    [
+      8,
+      2,
+      30,
+      38
+    ],
+    [
+      8,
+      3,
+      31,
+      37
+    ],
+    [
+      9,
+      4,
+      31,
+      38
+    ]
+  ],
+  "body_alpha_centroids": [
+    [
+      19.79,
+      20.02
+    ],
+    [
+      19.39,
+      18.92
+    ],
+    [
+      19.26,
+      17.75
+    ],
+    [
+      19.54,
+      18.45
+    ],
+    [
+      20.13,
+      19.86
+    ]
+  ],
+  "head_top_y": [
+    6,
+    4,
+    2,
+    3,
+    4
+  ],
+  "foot_bottom_y": [
+    38,
+    38,
+    38,
+    37,
+    38
+  ],
+  "consecutive_pixel_diff": [
+    1483,
+    537,
+    452,
+    490
+  ],
+  "source_frame0_exact": true,
+  "source_image_to_provider": "A31 unarmed 40x40; three screenshot poses translated to semantics, screenshot pixels NOT supplied directly to provider",
+  "semantic_gate": "FAIL/NOT_PROVEN: visible mass shifts only subtly and no clear crouch+side evade+recover; screen-right face remains angle candidate",
+  "user_approval": "PENDING",
+  "SBS_paper_doll": "NOT TESTED",
+  "loop_policy": "ONE SHOT; GIF demo should stop/hold last frame, not loop indefinitely"
+}
