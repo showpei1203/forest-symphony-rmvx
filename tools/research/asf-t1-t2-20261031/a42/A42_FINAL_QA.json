@@ -1,0 +1,142 @@
+{
+  "stage": "A42",
+  "date": "2026-11-01",
+  "action": "Moving to Close Attack",
+  "strictly_3_frames": "PASS",
+  "purpose": "SBS actor approaches enemy: sprite run-in-place only, actual world-space displacement later by Tankentai SBS engine",
+  "source": "A34 FS original actor01_1 45-degree battle sprite derived real PixelLab master, A40 real 18-joint skeleton",
+  "real_PixelLab_job": "7aaaa250-1076-41e6-86f1-e3f05e7054e5",
+  "provider_billing": {
+    "usd": 0.0,
+    "type": "generations",
+    "generations": 2
+  },
+  "quota": {
+    "before": 1695.7,
+    "after": 1693.7,
+    "spent": 2
+  },
+  "three_phase_definition": [
+    "ready guard in-place",
+    "lead leg step and torso lean",
+    "landing foot/ready close-range"
+  ],
+  "raw_provider_sheet": "A42_PROVIDER_REAL_3F_APPROACH_120x40.png",
+  "source_F0_anchored_sheet": "A42_SOURCE_ANCHORED_APPROACH_3F_CANDIDATE.png",
+  "preview": "A42_APPROACH_ALL_FRAMES_LARGE_PREVIEW.png",
+  "GIF": "A42_APPROACH_3FRAME_ONESHOT.gif",
+  "QA": {
+    "stage": "A42",
+    "action": "Moving to Close Attack",
+    "strict_3_frame": true,
+    "native_sprite": [
+      40,
+      40
+    ],
+    "sheet_size": [
+      120,
+      40
+    ],
+    "pixelLab_raw_bboxes": [
+      {
+        "bbox": [
+          11,
+          7,
+          35,
+          38
+        ],
+        "right_touch": 0,
+        "bottom_touch": 0,
+        "alpha_pixels": 546
+      },
+      {
+        "bbox": [
+          13,
+          8,
+          36,
+          37
+        ],
+        "right_touch": 0,
+        "bottom_touch": 0,
+        "alpha_pixels": 484
+      },
+      {
+        "bbox": [
+          12,
+          8,
+          36,
+          38
+        ],
+        "right_touch": 0,
+        "bottom_touch": 0,
+        "alpha_pixels": 499
+      }
+    ],
+    "selected_source_anchored_bboxes": [
+      {
+        "bbox": [
+          11,
+          7,
+          35,
+          38
+        ],
+        "right_touch": 0,
+        "bottom_touch": 0,
+        "alpha_pixels": 556
+      },
+      {
+        "bbox": [
+          13,
+          8,
+          36,
+          37
+        ],
+        "right_touch": 0,
+        "bottom_touch": 0,
+        "alpha_pixels": 484
+      },
+      {
+        "bbox": [
+          12,
+          8,
+          36,
+          38
+        ],
+        "right_touch": 0,
+        "bottom_touch": 0,
+        "alpha_pixels": 499
+      }
+    ],
+    "no_edge_clip": true,
+    "one_shot_gif_frames": 3,
+    "changed_pixels_raw_neighbor": [
+      445,
+      158
+    ],
+    "changed_pixels_selected_neighbor": [
+      464,
+      158
+    ],
+    "anchor_F0_matches_native": true,
+    "facing_45_each_frame": "PENDING human art visual gate",
+    "animation_step_naturalness": "PENDING user art",
+    "weaponlessness": "PENDING human art, SBS overlay not tested",
+    "sbs_owns_move": "WORLDSPACE movement script is required and not implemented; this is in-place pose ONLY",
+    "formal_art_pass": false,
+    "original_FS_and_T4_unchanged": true,
+    "output_sha256": "190d383a862c2395f8606ad0feac7394219d2228e6ba68b1efaaed41bd368393"
+  },
+  "visual_observation": "The last two frames show slight staggered boots and lowered center, but overall movement amplitude is SMALL. Could be read as in-place shifting rather than sprint; user art review needed.",
+  "gates": {
+    "source_SHA": "PASS",
+    "pixel_40x40": "PASS",
+    "120x40_3_frame": "PASS",
+    "no_border_clipping": "PASS",
+    "south_east_45_frame_angles": "PENDING human",
+    "semantic_moving_to_close_attack": "CANDIDATE, modest stride; not user approved",
+    "no_weapon": "PENDING visual",
+    "Tankentai_movement": "NOT IMPLEMENTED",
+    "game_formal_pass": false
+  },
+  "original_FS_PM_SBS_A37_T4_UNTOUCHED": true
+}
