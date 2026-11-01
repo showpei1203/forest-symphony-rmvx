@@ -33,3 +33,15 @@ Critical failure prevention: desktop bbox screenshot can capture wrong foregroun
 - Archive private only: binary sprites, 500MB VX clone and original legacy assets may NOT be committed to public GitHub.
 
 **Formal Seal NO.** Do not confuse isolated VX Map50 verified engineering PASS with user art quality seal or finished sealed game.
+
+## VERIFIED A30 private Google Drive delivery links (readback 2026-11-01)
+
+- Mobile true RGSS Player 544px-wide labeled seven-case vertical preview (544×3122): https://drive.google.com/file/d/1_1LgD1UKQ12KHJbFZiBSu9EI6ScZRDW4/view
+- Actual independently cold-booted VX 544×416 game screenshot: https://drive.google.com/file/d/1YDJBTNccUw0NTfDomqbL09_ynwhGx4OA/view
+- PRIVATE A30 native map QA complete ZIP (92 entries, 9,314,909 bytes, ZIP CRC + per-file SHA + independent extraction PASS, SHA256 c8a7cb9655cec25d7c67e70633b16857a4ec8155bb71c08bcf2ef7bd757ad4c5): https://drive.google.com/file/d/1qa9vyl2HS9ESmzjxVllkJzWqH96ZX9gV/view
+- Stage full detail: https://drive.google.com/file/d/1sDVp79McmN0f_OI5qX8ZemZ72B6lOmam/view
+- Latest A30 current entry: https://drive.google.com/file/d/1w-ZtFMSTPR9_hxBzkdyXYhL2BwguEc_g/view
+- A30 permanent native VX engine rules: https://drive.google.com/file/d/1F-RVxIEK2nRYaMvn3hXRbm2PBoArxN4q/view
+- Drive stage folder: https://drive.google.com/drive/folders/1D_CJM5BQpMTkzWz3zzkh-oP3tNdLgwIe
+
+Cloud metadata readback confirms exact files and sizes. Zip CRC, member SHA256, and independent extract validation are local, not an additional claimed remote full ZIP hash readback.
