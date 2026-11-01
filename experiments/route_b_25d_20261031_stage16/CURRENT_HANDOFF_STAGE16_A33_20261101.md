@@ -1,3 +1,5 @@
+> **SUPERSEDED BY A33B R8 GROUND ENGINEERING CANDIDATE 2026-11-01:** latest [A33B CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A33B_20261101.md). R5 is preserved as immutable comparison; A33B changes only new isolated Ground R8, all user-approved A32B PAR sources identical. VX 24/24 native cases, Godot 8/8 tolerance1, cold 3395/3395 verified. **A33B Ground ART NOT USER-APPROVED and Formal Seal NO**. Read new naturalness/failure authority before further art work.
+
 # CURRENT_HANDOFF — Forest Symphony Stage16 A33, 2026-11-01
 
 **Latest active: A32B foliage ART USER APPROVED. A33 REAL Ground3 reference-source Ground R5 candidate built and verified in native VX/Godot. A33 engineering PASS; A33 ART REVIEW PENDING; Formal Seal NO.**
