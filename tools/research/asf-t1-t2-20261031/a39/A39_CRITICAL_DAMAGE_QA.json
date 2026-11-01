@@ -1,0 +1,53 @@
+{
+  "stage": "A39",
+  "action": "Critic Damaged",
+  "source_pixels": "A34 genuine 45-degree FS native-battle master + actual A39 /edit-images-v2 result",
+  "frame_count": 3,
+  "sheet_size": [
+    120,
+    40
+  ],
+  "F0": {
+    "bbox": [
+      11,
+      7,
+      35,
+      38
+    ],
+    "alpha_coverage": 556,
+    "right_touch": 0,
+    "bottom_touch": 0
+  },
+  "A38_normal_F1": {
+    "bbox": [
+      11,
+      7,
+      36,
+      38
+    ],
+    "alpha_coverage": 568,
+    "right_touch": 0,
+    "bottom_touch": 0
+  },
+  "A39_critical_F1": {
+    "bbox": [
+      11,
+      7,
+      36,
+      38
+    ],
+    "alpha_coverage": 569,
+    "right_touch": 0,
+    "bottom_touch": 0
+  },
+  "normal_to_critical_pixel_changes": 579,
+  "ready_to_normal_pixel_changes": 606,
+  "ready_to_critical_pixel_changes": 598,
+  "F0_equals_F2": true,
+  "technical_three_frame_pass": true,
+  "camera_angle": "User art approval pending; reference native 45-derived, critical retains both face planes",
+  "critically_damaged_semantics": "User art approval pending: must exhibit larger hit recoil than A38 normal Damage",
+  "SBS_weapon_overlay": "NOT TESTED",
+  "formal_art_pass": false,
+  "sha256": "7a37b126633836a4c7ea15ea419a723fcaf0ac19f38e1ecf61c3ab6191c0ae6c"
+}
