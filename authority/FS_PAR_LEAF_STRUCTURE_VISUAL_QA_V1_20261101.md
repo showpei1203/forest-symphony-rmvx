@@ -31,3 +31,7 @@ Reference hierarchy: use the REAL lower two independent tree sprites `A30_OBJ_pi
 
 ## Next-stage constraint
 User explicitly ordered: only after A32B visual acceptance, A33 work must start on PixelLab Ground vs Ground3 reference, especially edge softness. A33 source audit is prepared but Ground MUST remain unchanged during A32B. No Ground auto-edit triggered by A32B engineering PASS.
+
+
+## Priority override after user's A32 art rejection (2026-11-01)
+A32's native engine/silhouette checks passing does not authorize automatic move to Ground. The user rejects A32 upper tree art for lacking visible internal leaf shapes; Stage A32B must first produce the upper-two-tree rework for **user visual acceptance**. Only after the user approves A32B, begin A33 Ground material-edge style changes. Retain immutable A27 Ground and A32B PAR sources until user signs off. Never infer "user accepted" from an algorithmic descriptor, native VX 24-screen result, or the assistant's own preference. Relevant [A32B latest handoff](../experiments/route_b_25d_20261031_stage16/CURRENT_HANDOFF_STAGE16_A32B_20261101.md).
