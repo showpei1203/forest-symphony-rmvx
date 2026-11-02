@@ -1,0 +1,257 @@
+{
+  "stage": "A63-W3B",
+  "action": "Waiting",
+  "class": "loop",
+  "approved_character_source": "A62 USER APPROVED exact first frame, unchanged RGBA pixels",
+  "approved_source_png_sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+  "method": "integer per-scanline source pixel shift, no generative model, no interpolation/blur",
+  "frame_size": [
+    48,
+    48
+  ],
+  "store_frames": 3,
+  "playback": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "waveform": "original left-mid-right-mid",
+  "scanline_dx_pixels": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "semantic_regions": {
+    "head_and_shoulder_shift_right_px": [
+      0,
+      1,
+      2
+    ],
+    "feet_horizontal_shift_px": [
+      0,
+      0,
+      0
+    ]
+  },
+  "original_FS_authority": "$actor01_1 first Waiting row, 3 authentic frames",
+  "three_frame_checks": {
+    "head_centroid_offsets_xy": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        2.0,
+        0.0
+      ]
+    ],
+    "torso_centroid_offsets_xy": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        1.801,
+        0.0
+      ]
+    ],
+    "feet_centroid_offsets_xy": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "visible_ROI_changes": {
+      "head": {
+        "F0F1": 193,
+        "F0F2": 269,
+        "F1F2": 193
+      },
+      "shoulder_torso": {
+        "F0F1": 206,
+        "F0F2": 253,
+        "F1F2": 160
+      },
+      "hip_legs": {
+        "F0F1": 0,
+        "F0F2": 0,
+        "F1F2": 0
+      },
+      "feet_only": {
+        "F0F1": 0,
+        "F0F2": 0,
+        "F1F2": 0
+      }
+    },
+    "all_source_colors_and_alpha_preserved": true,
+    "all_foot_pixels_identical": true,
+    "all_frames_uncropped": true
+  },
+  "art_user_approval": "PENDING; engineering metrics pass, user must judge whether horizontal sway looks natural",
+  "reusability": "Apply scanline pattern proportional to chibi silhouette height to the new actor F0; no need to reprocess A57 source action or pay AI; verify torso seam and original camera for each actor.",
+  "notes": "Original appears shifted HEAD/SHOULDER/UPPER BODY while feet remain nearly anchored; deterministic silhouette is a motion prototype until approved."
+}
