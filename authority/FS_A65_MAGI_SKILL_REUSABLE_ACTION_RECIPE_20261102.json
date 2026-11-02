@@ -1,0 +1,80 @@
+{
+  "stage": "A65",
+  "action": "Magi Skill Use",
+  "reference": "FS native original action 3x32x32",
+  "FS_original_png_sha256": "992f32546a4f2806cb241efc0aab7fe0e71ca8c6561af99297e8635bcea3e515",
+  "actor_identity_approved_A62_F0_sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+  "loop": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "duration_ms": [
+    175,
+    175,
+    175,
+    175
+  ],
+  "motions": "grounded standing with subtle head/hair shoulder movement, legs rooted; no huge casting throw",
+  "original_changed_pixels_by_region": {
+    "head": [
+      70,
+      53
+    ],
+    "shoulder": [
+      78,
+      43
+    ],
+    "feet": [
+      4,
+      1
+    ]
+  },
+  "separate_FX": true,
+  "fx_source_colors_rgb": [
+    [
+      235,
+      97,
+      0
+    ],
+    [
+      208,
+      132,
+      1
+    ],
+    [
+      216,
+      184,
+      4
+    ],
+    [
+      254,
+      255,
+      0
+    ]
+  ],
+  "fx_original_roi": [
+    7,
+    17,
+    14,
+    24
+  ],
+  "fx_translate_to_approved_48": [
+    7,
+    6
+  ],
+  "body_method": "A62 user approved F0 exact; integer scanline motion F1 head+shoulder 1px right, F2 hair crown 1px left; legs y>=31 fixed",
+  "preserve_character_raw_rgb": true,
+  "candidates": [
+    "C2 preferred",
+    "C3 slightly stronger shoulder motion alternative"
+  ],
+  "A65_C2_art_user_approved": false,
+  "source_folders": {
+    "original": "https://drive.google.com/drive/folders/1JZL1RLbWECyZP_ddn-TSFjpCaw5C8jtr",
+    "motion": "https://drive.google.com/drive/folders/1vhcZhifp-9NWN2zwN3jPGOwzg9vPupTe"
+  },
+  "family_index": "https://github.com/showpei1203/forest-symphony-rmvx/blob/main/authority/FS_CHARACTER_MOTION_LIBRARY_MANIFEST_20261102.json",
+  "other_character_use": "reuse source original action and extracted FX; substitute new character approved F0; recenter FX per individual shoulder geometry, never clone actor01 RGB for new identity"
+}
