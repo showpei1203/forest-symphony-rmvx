@@ -49,3 +49,18 @@
 - `a36f_validate_native_gpu.py` verifies exact GPU source and VX passability.
 - `a36f_native_cold_verify.py` clones and reboots native VX with SHA check.
 - `a36f_package_private.py` archives source/QA, CRC + member-SHA + independent ZIP extract.
+
+
+## Verified A36F Cloud Deliverables | 2026-11-03
+- **Google Drive A36F folder:** https://drive.google.com/drive/folders/1iEJ6YMeJR5cBZabvJ_CwfQDmlnK0X_8o
+- **Actual A36E→A36F side-by-side Ground+PAR:** https://drive.google.com/file/d/1IdmdWI7nb1GMEf09gOEpCrxGL0h8Ddlu/view
+- **A36F 1280×928 actual Ground+PAR:** https://drive.google.com/file/d/1Ch8W_TAS2M2KHk4dIPOG8ZsipwFo-oYU/view
+- **A36F Ground only:** https://drive.google.com/file/d/14F0yLL1B2BnC3uD1nL6KD4uK43j10LO-/view
+- **A36F independent PAR layer:** https://drive.google.com/file/d/1U9jsvaGF9N6tW5bQjTc0NvcL65sQG1Bz/view
+- **Actual native VX nine-region montage:** https://drive.google.com/file/d/1sWefh4Ysd1rWgA0dW5g8dtaT9TNMbsnf/view
+- **A36F complete ZIP (52,390,472 bytes, 573 members):** https://drive.google.com/file/d/1LKg_Xnxl-KImk20_HnGMPKZvqVA9Wjy_/view
+- **QA CRC/SHA256/independent archive extraction:** https://drive.google.com/file/d/1vDIz0llpwOvIukaFVzIhIM41WRUAdKDC/view
+- **GPU and VX pass QA:** https://drive.google.com/file/d/1Xb1UQWOuYbGc-l7731S6ZQPA20onGzNc/view
+- **Separate VX cold clone SHA3875 runtime QA:** https://drive.google.com/file/d/1gQU0F5KdqmbyH4Uy3ucfDgPVMKCFpVn1/view
+
+Local archive SHA256: `e116bcd0e3da99b2a6304cfee332ae672d8bfe7e1539a957be94a3ba5638ec32`. Google Drive listing confirmed the archive size; the ZIP has not been re-downloaded from cloud for an independent cloud-byte hash. Engineering PASS; visual art sign-off still PENDING.
