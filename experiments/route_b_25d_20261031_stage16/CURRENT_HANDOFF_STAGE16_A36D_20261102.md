@@ -46,3 +46,17 @@
 - The existing first cottage stays original; the second now uses true Hanzo sheet. Preserve these distinct designs as reference, not mandatory final models.
 - Original source scripts Ground/PAR/Parallaxes mountainous/terrain lip audit **still deferred**, do not reintroduce cliffs in A36E flat-forest milestone.
 - **Formal Seal NO / user art review PENDING**. Actual GPU/native engineering PASS is not art signoff.
+
+## Verified Google Drive source, R2 proof and archive (read back 2026-11-02)
+- Stage folder: https://drive.google.com/drive/folders/16GWArWzfn0G388FmvqdTIL2Z7fyPWzUO
+- **Actual A36C vs A36D R2 Ground+PAR before/after:** https://drive.google.com/file/d/1HciDWl0a0MJbNvJ12ZrYrFoP_NxOEOTi/view
+- **Actual A36D R2 full Ground+PAR 1280x928:** https://drive.google.com/file/d/1zYy4ksDhbbeTPtGupnXAsASeU61CX838/view
+- **Actual native VX nine-region montage:** https://drive.google.com/file/d/1iydjkCptjM0TzVjduOAitT3wLkJd-vdU/view
+- **Complete private ZIP (52,659,501 bytes, 477 entries):** https://drive.google.com/file/d/1BXwLn2xMAE1wlwEDJGXXfmgzFDqsIxEI/view
+- A36D Ground: https://drive.google.com/file/d/1uggMSLNBZ05WshgeUezzcWRzfwH0wQ7n/view
+- Transparent alpha PAR: https://drive.google.com/file/d/1s0O_UtoLlW4C_45AJjeImJl1cnOW35kV/view
+- R1 neon roof witness: https://drive.google.com/file/d/1JstjYyOQJLQwLV7U3NQCpxdpl0Ng5GbW/view
+- VX cold QA: https://drive.google.com/file/d/1uxyXMY-0JdRWl6CfHHcctmPHTSCNcpEK/view
+- Engine all-gates QA: https://drive.google.com/file/d/1IxAn1fsVf0QcWuR9XdD_pog1u74xQ_dF/view
+- Source package CRC / ZIP member SHA / independent unzip SHA: https://drive.google.com/file/d/1THscOz-gVuuzF-zhud-6DVf8RTTjujsx/view
+- Google Drive uploaded ZIP byte length verified from actual Drive readback; private local archive ZIP SHA256: `b8a609d1860f2269f966156c5940b38d7b2e19b35edf473751de34f7e7d3be65`. The entire cloud ZIP was **not** re-downloaded to independently rehash.
