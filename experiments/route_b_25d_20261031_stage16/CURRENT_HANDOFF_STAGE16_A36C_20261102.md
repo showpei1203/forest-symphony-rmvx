@@ -64,3 +64,20 @@ The user's latest visual direction is **a screen full of interlocking forest can
 - Full source package and SHA/CRC independent extract: `a36c_package_private.py`
 
 The builder refuses to overwrite an already produced candidate; to reproduce, clone baseline into a **new** stage directory rather than deleting the validated A36C.
+
+
+## Verified A36C Google Drive source and visual evidence (post-packaging, 2026-11-02)
+These links were read back from the actual connected Google Drive folder after remote sync; no URL has been guessed.
+- **Drive A36C stage folder:** https://drive.google.com/drive/folders/1y4L8cHwF2gd49SlCZHbrEpF1-p3sWNMt
+- **Full private ZIP 53,016,955 bytes / 431 members:** https://drive.google.com/file/d/1tNx5FtiSfPjk-evYC9LVu_Y48VfCSCP3/view
+- **Actual A36B vs A36C full Ground+PAR before/after:** https://drive.google.com/file/d/1builvGSnCMVIEnArbjoKXw8m9LKBmy9S/view
+- **A36C full 1280x928 Ground+PAR:** https://drive.google.com/file/d/1UbU_R1vVNKEpAhKt6LS9-bLa6_riPf67/view
+- **Actual RPG Maker VX nine-region montage:** https://drive.google.com/file/d/1h9YiVzJXMhvp-dFfvKdmgoM0I5cr21Ij/view
+- **A36C Ground only:** https://drive.google.com/file/d/1H8UbMW1Qk9pvHqzCiKE7nS9G6A4lA-aB/view
+- **A36C transparent PAR only:** https://drive.google.com/file/d/1oJqY0YQ_MGvKqWkCJDnLT44cGv6w2PL0/view
+- **Canopy alpha mask:** https://drive.google.com/file/d/1EZeGvLp2ZJJz1__aOOqPtDiHM4MsQbUq/view
+- **Cold VX QA:** https://drive.google.com/file/d/1KuaVr5J-QgyLH8S2z1lMm2mG9tsChxRz/view
+- **Stage gate QA:** https://drive.google.com/file/d/158buJS2Hn6uT_Zt-y_rsfCj8ZW8J9IP0/view
+- **Archive CRC/SHA/extract QA:** https://drive.google.com/file/d/1Adm5qBldU460_371spvBjS_Ct5bdOnkI/view
+
+Local archive SHA256: `c2b9caa44541c0295fea6bbf6099dff2de37e77e10808b69be0a96a64d695d36`. Google Drive lists matching uploaded ZIP byte size, but the synced cloud object's downloaded bytes have **not** been independently rehashed. Engine PASS, art still PENDING, Formal Seal NO.
