@@ -31,7 +31,7 @@ def retarget(action,first_frame,landmarks):
  physical_h=bbox[3]-bbox[1]
  if physical_h<18:raise ValueError("Reference figure too small to retarget")
  if any(p["label"]not in ALL_JOINTS for p in landmarks):raise ValueError("Invalid landmarks")
- recipefile=HERE/("A62_APPROVED_RUN_MOTION_RECIPE.json"if action=="run"else"A63_WAITING_BREATH_MOTION_RECIPE.json")
+ recipefile=HERE/("A62_APPROVED_RUN_MOTION_RECIPE.json"if action=="run"else"A63_WAITING_SIDE_SWAY_MOTION_RECIPE.json")
  recipe=json.loads(recipefile.read_text("utf8"))
  deltas=recipe["three_pose_joint_offset_recipes"]if action=="run"else recipe["height_normalized_pose_deltas"]
  target0={x["label"]:x for x in landmarks}
