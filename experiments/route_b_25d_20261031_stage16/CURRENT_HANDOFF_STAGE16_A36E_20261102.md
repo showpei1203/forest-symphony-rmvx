@@ -1,3 +1,5 @@
+**SUPERSEDED FOR ACTIVE MAP DEVELOPMENT: A36F R1**. Continue in [A36F CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A36F_20261103.md). This A36E R2 file is a preserved read-only verified baseline; A36F art user signoff remains pending.
+
 # Forest Symphony | Stage16 A36E R2 | 2026-11-02
 
 **CURRENT ACTIVE FLAT-FOREST MAP VISUAL CANDIDATE: A36E R2. Native VX/Godot/independent cold PASS; visual approval pending; Formal Seal NO.** Original Forest Symphony VX project and A36/A36B/A36C/A36D baselines remain untouched.
