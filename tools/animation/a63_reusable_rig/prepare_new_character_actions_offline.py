@@ -35,7 +35,7 @@ if reg.exists():
 template_dir=Path(__file__).resolve().parent
 recipe_hashes={action:H(template_dir/filename)for action,filename in {
  "run":"A62_APPROVED_RUN_MOTION_RECIPE.json",
- "waiting":"A63_WAITING_BREATH_MOTION_RECIPE.json"}.items()}
+ "waiting":"A63_WAITING_SIDE_SWAY_MOTION_RECIPE.json"}.items()}
 tasks=[]
 for act in("run","waiting"):
  spec=retarget(act,args.target_png,pts)
@@ -61,5 +61,24 @@ registry={"character_id":args.character_id,"reference_png":str(args.target_png),
  "pixelLab_original_reference_bone_reanalysis_required":False,
  "pixelLab_new_character_one_time_18joint_estimate_required_if_not_provided":True,
  "pixelLab_animation_generation_for_new_actor_not_yet_submitted":True}
+# Waiting is now a reusable, pixel-perfect original-action lateral cycle:
+# generate finished transparent GIF immediately without any new paid model call.
+from retarget_waiting_pixels_offline import make_waiting
+from PIL import Image
+raw_actor=Image.open(args.target_png).convert("RGBA")
+waiting_images,waiting_checks=make_waiting(raw_actor)
+for i,im in enumerate(waiting_images):
+ filename=db/f"{args.character_id}_WAITING_F{i}.png"
+ im.save(filename)
+gif=db/f"{args.character_id}_WAITING_LEFT_MID_RIGHT_MID.gif"
+waiting_seq=[waiting_images[i]for i in (0,1,2,1)]
+waiting_seq[0].save(gif,save_all=True,append_images=waiting_seq[1:],
+  duration=[175]*4,loop=0,disposal=2,optimize=False)
+registry["waiting_pixel_motion"]={
+ "mode":"A63 W3B ORIGINAL FS left-mid-right-mid source-pixel animation",
+ "gif_filename":gif.name,"frames":[f"{args.character_id}_WAITING_F{i}.png"for i in range(3)],
+ "dimensions":raw_actor.size,"pixels_per_phase":waiting_checks,
+ "source_identity_preserved":True,"ai_generation_required":False,
+ "human_art_review_still_required":True}
 reg.write_text(json.dumps(registry,ensure_ascii=False,indent=2),encoding="utf8")
 print("REGISTERED_REUSABLE_CHARACTER_ONCE",args.character_id,len(tasks),"actions","API_CALLS=0",flush=True)
