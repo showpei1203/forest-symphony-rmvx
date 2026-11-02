@@ -1,3 +1,15 @@
+# 2026-11-02 ACTUAL TEST RESULTS (supersede original prepay-only state)
+
+A65-V1 REAL PIXELLAB: F0/F1=312 changed pixels, F0/F2=1; provider F2 collapsed and visual/technical motion FAIL. See [V1 failure handoff](./FS_A65_V1_REAL_PIXELLAB_F2_COLLAPSE_FAILURE_HANDOFF_20261102.md).
+
+A65-V2 REAL PIXELLAB: Reused A57 already-saved genuine PixelLab estimate-skeleton on ACTUAL FS native Magi 32px three-frame sprite, retargeted relative displacements to approved A62 48px F0, rather than the manually conjectured V1 motion. F0/F1=30, F0/F2=45, F1/F2=40 changed pixels; THREE DISTINCT FRAMES technical PASS, but full-body artwork and animation naturalness USER ART PENDING. See [V2 latest full handoff](./FS_A65_V2_ACTUAL_ORIGINAL_ACTOR_SKELETON_PIXELLAB_RESULTS_HANDOFF_20261102.md).
+
+Google Drive [A65-V2 full archive and actual GIFs](https://drive.google.com/drive/folders/1FKOnHUdTX1wqb7E-jPU7iTvj2vQskcbh).
+
+Actual original three-frame ACTION IMAGE is **not** a second direct image input to v3; it contributed the A57 actual source-estimated 18-joint poses. A62 user-accepted F0 was the single visual identity input to PixelLab. Both A62 sealed and native FS original untouched. Do not describe these V2 results as formal art PASS or native VX tested.
+
+---
+
 # FS A65-V1 FORMAL PixelLab Action Specification (2026-11-02)
 
 ## STATUS / AUTHORITY
