@@ -1,3 +1,5 @@
+**SUPERSEDED FOR ACTIVE MAP DEVELOPMENT: A36C verified branch**. Continue at [A36C CURRENT_HANDOFF](CURRENT_HANDOFF_STAGE16_A36C_20261102.md). A36B remains a read-only engineering baseline and must not be mistaken for the latest dense-forest candidate.
+
 # Forest Symphony | Stage16 A36B Handoff | 2026-11-02
 
 ## Scope and authority
