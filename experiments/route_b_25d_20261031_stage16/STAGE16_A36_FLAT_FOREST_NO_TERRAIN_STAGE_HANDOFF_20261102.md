@@ -1,0 +1,25 @@
+# Forest Symphony Stage16 A36 | Flat forest 1280×928 Ground+PAR, actual FS source comparison
+Date: 2026-11-02 Asia/Taipei. Remote Desktop Commander DESKTOP-90VT437 remains online after chat transmission timeout. This is a real constructed and test-run map, not a plan.
+
+## User override
+Pause A35C guessed cliff top occlusion. Mandatory future compare original FS `Ground / PAR / Paraxell` triplets and scripts; see new authority `FS_TERRAIN_PAR_LEGACY_TRIPLET_AUDIT_DEFERRED_V1_20261102.md`. Resume **flat forest / elf village first**, long term full large map and approved style. Terrain PAR/elevation DISABLED, not falsely declared solved.
+
+## Actual local construction
+`E:/FS_STAGE16_A36_FLAT_FOREST_ELF_VILLAGE_20261102/`. Image Ground `A36_FLAT_FOREST_GROUND_1280x928.png` SHAcb3ff437ed0d72eedbb092b707cc921681fdec2433714c63c5f2b312eb61ede9; directly derived from visually promising A35 grass/dirt pixel material (A35 source SHA478b3f40367cb449721a9216c28c3906557cbb292ffcc6702984ec0d90559f00), original Ground untouched, NO PixelLab consumption. The A36 texture rebuild uses irregular seams but **visual quality pending**: some regularity, repetitive grains and radiating roads remain; no art seal.
+
+True 1280×928 40×29 **flat**, no cliff, water, terrain PAR, or height transition. Six paths, dense forest: 64 independent tree source PNGs, 62 shrubs and 5 landmarks, 131 isolated alpha sprites, all original A34 source SHA verified (from A32B/A33F source lineage); no clipped treetops. Static Par50 `A36_FLAT_FOREST_PAR50_RGBA_1280x928.png` SHAc23fedc63d683730ad1193332c831c27a3ac171357d08bc8e57563100a268d0a; scene RGB composite SHA5ad9d048d4edaeca98a0100c4a213c613d88a558afc3f46bd6407ead00983774. Collision: only tree-root 64 blocked unique tile feet, **1096/1096 free tiles connected** via BFS; all other Ground defaults walkable. Spawn tile20,14. Landmarks nonblocking.
+
+## Real FS original source—not speculation
+Opened `E:/遊戲專案開發/三大項目現行專案/FS project`, **matched 14 original `groundN`/ `parN`** pairs, four-column source contact sheet created. `Graphics/Parallaxes/ground3.png` (1280×928) is visible authentic village base, `Overlays/par3.png` alpha13.856% and matches base RGB97.568%; `Overlays/ground3.png` a visually different effects-like layer, only ~1.5% RGB matches par3. For `ground8` PAR alpha24.286%, exactly100% RGB matched true Parallaxes ground8 and ~0.3% matched Overlays ground8. Created `A36_FS_REAL_GROUND_PAR_PARALLAXES_SOURCE_DIFFERENCE_CONTACT.png`, `A36_FS_GROUND_PAR_PARALLAXES_PAIRING_QA.json`. This only establishes correct matching reference layers; original game-foot/occlusion behavior remains pending. User says `Paraxell` and that exact folder has not been confirmed; original `Parallaxes` exists.
+
+## Actual engine QA
+- Isolated native `E:/FS_STAGE16_A36_FLAT_FOREST_VX_NATIVE_20261102`, test-only RGSS script483, native Map050 40×29, 131 individually loaded sprite RGBA, 11 cases/22 *actual RGSS Game.exe captured screenshots*, no modal; wall/tree root test before13,6 after13,6; dirt road movement before26,8 after27,8.
+- Independent cold clone `E:/FS_STAGE16_A36_FLAT_FOREST_VX_COLD_20261102`: **3548/3548 files per-file SHA identical**, actual Game.exe native screen Map050 loaded131 sprites, 0 modal, 55,566 real RGB colors.
+- Godot 4.7.2 RX6700XT actual native GPU source `GODOT_A36_FLAT_FOREST_FULL_40x29`: 6 real full1280×928 and 6 native544×416 crop PNGs, 131 images loaded. CPU original composite vs real GPU max RGB delta1 and pixels RGB delta>1 = 0; 16,454 pixels delta1 from GPU blending. Initially a 170 RGB mismatch arose from sorting objects with exactly same footY by name rather than original stable insertion; recorded and fixed, no original Ground changed.
+- Native VX screen snapshot source auditing: after title fade static 9 ROI cases report **max RGB delta2** against source composite, with changed pixels in each due to pixel/alpha blend/RGSS different graphics implementation. This is not RGB0 strict pass; preserve numeric report and investigate alpha/z on production. First 2 intro cases excluded for fade.
+- Gameplay occlusion beyond 11 screen positions (especially scene10 actor only57 visible pixels behind thick canopy), original map-level player-oriented shadow/lighting, NPC multi-actor not sealed.
+
+## Completion/follow-up
+**A36 engineering prototype: true build, native VX/real GPU/cold QA PASS with listed tolerances; VISUAL ART FAIL/PENDING, especially source/road regularity and not yet true elf village buildings; production formal seal NO.** Priority A36B: restructure foliage community, organic road width, original tree silhouette detail, meaningful empty-space/habitat clearings; then village houses from original native FS woodhouse lineage with correct alpha, source SHA, foot and collision. Reference `Graphics/Parallaxes/ground3` (elf village) vs ground8 (terrain source) but do NOT reuse old cliff PAR in flat map. Always before/after source+native screenshot+Failure Register+Handoff.
+
+No main FS project overwritten. Test-only map clone scripts contain isolated historical battle regression bypass, DO NOT DEPLOY as official production.
