@@ -1,3 +1,5 @@
+**SUPERSEDED FOR ACTIVE MAP DEVELOPMENT: A36E R2**. Continue from [the A36E current Handoff](CURRENT_HANDOFF_STAGE16_A36E_20261102.md). This A36D R2 archive remains read-only, not the active visual candidate.
+
 # Forest Symphony | Stage16 A36D R2 | 2026-11-02
 
 **ACTIVE MAP VISUAL CANDIDATE A36D R2. Engine QA PASS; user art signoff PENDING; Formal Seal NO.** This is an actual native Ground / alpha PAR implementation, not an AI concept image. Never overwrite A36C, the original FS project, or the user-provided master asset folders.
