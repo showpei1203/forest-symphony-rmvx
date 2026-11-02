@@ -48,3 +48,8 @@ Source original artwork first, then match character palette and identity, then a
 6. Never replace user-approved art or sealed FS source; preserve the original Drive folder links, source permissions, local source hash when materialized, code and handoff; do not claim full library analysis complete until performed.
 
 **Implementation state:** Both folders and example names verified live on Google Drive on 2026-11-02. This section registers the persistent authority and required selection process, not a claim that each sprite has already been studied.
+
+### 2026-11-02 reference-library metadata inventory milestone
+Completed a paginated Google Drive **PNG filename + file-ID inventory** of the registered battle-motion template folder: **364 unique PNG names**, **4 pages**, **122 filename-family groups** under simple suffix grouping. **Action interpretation, exact sprite-sheet slicing, individual perspective and visual quality are NOT yet proven**. The older statement about the full catalog being pending now refers specifically to **visual/semantic cataloging**, not to PNG-name enumeration.
+- [Full 364-PNG Drive-ID manifest](https://github.com/showpei1203/forest-symphony-rmvx/blob/main/authority/FS_CHARACTER_MOTION_LIBRARY_MANIFEST_20261102.json)
+- [Filename-family selector and source-first workflow](https://github.com/showpei1203/forest-symphony-rmvx/blob/main/authority/FS_CHARACTER_MOTION_LIBRARY_INDEX_20261102.md)
