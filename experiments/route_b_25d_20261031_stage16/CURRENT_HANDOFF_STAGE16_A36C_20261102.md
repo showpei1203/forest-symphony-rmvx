@@ -1,3 +1,5 @@
+**SUPERSEDED FOR ACTIVE MAP DEVELOPMENT: A36D R2**. Follow [A36D latest Handoff](CURRENT_HANDOFF_STAGE16_A36D_20261102.md). A36C remains read-only baseline for 222-tree dense forest, not the current visual art candidate.
+
 # Forest Symphony | Stage16 A36C Dense Forest Handoff | 2026-11-02
 
 **LATEST MAP BRANCH: A36C DENSE FLAT FOREST, ENGINE TEST PASS, ART NOT SEALED.**
