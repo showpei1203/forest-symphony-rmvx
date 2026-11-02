@@ -1,3 +1,5 @@
+> **SUPERSEDED FOR ACTIVE DEVELOPMENT BY A36 (2026-11-02).** User paused speculative cliff PAR. Original FS Ground/PAR/Paraxell/script comparison is mandatory future research before terrain work. Active branch now flat forest/elf village: [CURRENT_HANDOFF_STAGE16_A36_20261102.md](CURRENT_HANDOFF_STAGE16_A36_20261102.md). Keep A35C evidence only; no production terrain PAR seal.
+
 # CURRENT_HANDOFF FS Stage16 A35C R2 (2026-11-02)
 Latest tested candidate: User-corrected 1-2 tile-depth front top cliff occlusion on large A35 1280x928 Ground. NO return to old 217 cliff-color-outline PAR, NO remaining all-empty terrain PAR.
 
