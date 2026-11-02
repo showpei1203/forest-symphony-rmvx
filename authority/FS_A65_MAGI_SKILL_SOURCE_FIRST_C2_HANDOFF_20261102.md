@@ -1,3 +1,9 @@
+# SUPERSEDED: A65-C2/C3 USER ART FAIL / superseded by A65-V1 (2026-11-02)
+
+The user explicitly rejected C2/C3 as stiff whole-torso cut-line jitter. Any "technical PASS" below means frame format only, not valid action animation. **DO NOT reuse C2/C3 scanline body shift as an accepted action method.** New source-first full 18-joint pose rig and formal PixelLab Prompt v1: [FS A65-V1 authority](./FS_A65_V1_ORIGINAL_FULLBODY_PIXEL_LAB_FORMAL_PROMPT_HANDOFF_20261102.md). Actual new PixelLab generation and user art PASS are still pending. A62 Moving to Close Attack remains USER PASS.
+
+---
+
 # Forest Symphony A65 Magi Skill Use | 2026-11-02
 
 ## Stage and sources
