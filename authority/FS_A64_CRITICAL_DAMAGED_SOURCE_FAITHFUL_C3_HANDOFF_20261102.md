@@ -32,3 +32,19 @@ Do not make C3 official without human GIF approval. If face/body seam ugly, fix 
 
 ## Permanent rules
 Source original artwork first, then match character palette and identity, then animate with 3 stored poses and an action-defined playback; preserve original rather than demand artificial movement. Always keep first approved actor identity and native authority distinct. A64 original F0/F2 nearly identical proves third-pose distinct is not universal.
+
+## 2026-11-02 NEW PERMANENT REFERENCE AUTHORITY: user-designated original asset libraries
+
+- **FS permanent original/reference root**: [00_Reference_Original](https://drive.google.com/drive/folders/1JZL1RLbWECyZP_ddn-TSFjpCaw5C8jtr) (Google Drive folder ID `1JZL1RLbWECyZP_ddn-TSFjpCaw5C8jtr`).
+- **FS priority battle-character motion template library**: [人物戰鬥動作範本](https://drive.google.com/drive/folders/1vhcZhifp-9NWN2zwN3jPGOwzg9vPupTe) (folder ID `1vhcZhifp-9NWN2zwN3jPGOwzg9vPupTe`), a verified direct child of the above reference root.
+- Direct folder inspection verified multiple `Kaduki*.png` and `Actor*.png` sprite families, with repeated numbered variants `_1/_2/_3`. More than 100 direct items are present; **full catalog, anatomy interpretation, and action compatibility have not yet been verified**. Treat file names as indexed candidates, not proof of an action's meaning.
+
+### Mandatory actor animation workflow (source-first; avoid wasted PixelLab credits)
+1. **Before devising any new action or prompt**, inspect the corresponding original `$actor01_1/_2/_3` action frames plus these reference-library sprite sheets. Identify suitable families and action poses; inventory contact sheets, frame counts, directions, perspective, source dimensions, actual root/feet, head/shoulder/chest/hip/arm/knee/boot movement, frame order, and FX layers. Use direct source images to constrain the motion, not generic descriptions ("breathing", "running", "damage").
+2. Group same-character files and variants; do not assume `Actor###_1/_2/_3` means left/middle/right poses or the same action until reviewed. Build an annotated **reference selector**: original file ID/path, actor family, verified frame layout, camera, action semantic, recommended adaptation mode.
+3. Reuse an already accepted motion rig/recipe first (A62 run USER PASS, A63 Waiting only technical, A64 Critical only candidate). For new actions, select one or more close examples from the library and use them as a visual template for PixelLab when suitable; alternatively retarget/edit/process the user-supplied original PNG locally. Maintain an exact named provenance link to the image used.
+4. Preserve FS fixed **45° southeast battle perspective**, anatomical left/right, three stored frames per action (loop order defined *per action*), complete full-body motion, identity/wardrobe, alpha, fixed foot anchors when appropriate, and independent weapons/FX.
+5. Make source-data and skeleton/action-semantic gates **before spending PixelLab units**. Prefer the source PNG + concrete pose references to repeatedly blind prompting. Deliver original-vs-candidate frame contact and animated GIF for human approval; no VX until explicitly requested. Record failures and successful reusable recipes so other characters do not repeat A43–A62.
+6. Never replace user-approved art or sealed FS source; preserve the original Drive folder links, source permissions, local source hash when materialized, code and handoff; do not claim full library analysis complete until performed.
+
+**Implementation state:** Both folders and example names verified live on Google Drive on 2026-11-02. This section registers the persistent authority and required selection process, not a claim that each sprite has already been studied.
