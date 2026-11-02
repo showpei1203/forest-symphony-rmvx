@@ -1,0 +1,39 @@
+{
+  "action": "Critical Damaged",
+  "source": "original FS $actor01_1 Critical Damaged, 3 native frames",
+  "frame_semantics": "low huddled wounded/sitting body, tiny F1 head and torso tremble, nearly identical F0/F2",
+  "original_F0F1_rgba_pixel_difference": 350,
+  "original_F0F2_rgba_pixel_difference": 1,
+  "loop": [
+    0,
+    1,
+    2,
+    1
+  ],
+  "duration_ms": [
+    170,
+    170,
+    170,
+    170
+  ],
+  "separate_FX": "blue icons F0/F2, removed from character sheet",
+  "A64_actor_style": "A62 USER-APPROVED head/hair/face exact pixels + original Critical crouch torso recolored to A62 teal-green",
+  "transfer_head_source_Y": [
+    7,
+    29
+  ],
+  "transfer_head_dest_Y_F0_F2": [
+    10,
+    32
+  ],
+  "transfer_head_dest_Y_F1": [
+    11,
+    33
+  ],
+  "torso_original_pose_keep_min_Y": 29,
+  "further_actors": "native pose/FX only need analyzing once; new actor head and palette need actor-specific transfer and visual QA",
+  "avoid": "A57 automatic landmarks NOSE y18 while original head center y8; do not blindly use this skeleton",
+  "status": "C3 technical candidate, NOT human art accepted",
+  "vx": "not tested",
+  "PixelLab_paid_A64": false
+}
