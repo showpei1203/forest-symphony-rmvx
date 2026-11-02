@@ -1,0 +1,258 @@
+{
+  "baseline_status": "A62 USER VISUAL PASS (user approval, not certification of new actors)",
+  "baseline_file": "A62_PROVIDER_RAW_F0.png",
+  "baseline_sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+  "baseline_accepted_gif_sha256": "8705bf69948636ad0a42c2e531ffea56c1bde591c09fecd1267f0afe7dc1a3b3",
+  "baseline_48px_silhouette_bbox": [
+    13,
+    7,
+    36,
+    42
+  ],
+  "baseline_silhouette_height": 35,
+  "rig_type": "FS human/chibi biped 18 joints",
+  "view": "low top-down / character southeast three-quarter angle",
+  "anatomical_screen_map": "character left boot appears on screen right in this particular approved SE facing",
+  "file_format": "3 images 48x48 RGBA test, native FS 32x32 must be retargeted and visually approved",
+  "normalization": "motion displacement delta per actor silhouette height, applied to new target first-frame joint locations",
+  "motion_mode": "in-place, movement is handled by Tankentai SBS, no baked weapons or FX",
+  "accepted_action": "Moving to Close Attack",
+  "playback": [
+    0,
+    1,
+    0,
+    2
+  ],
+  "three_pose_joint_offset_recipes": [
+    {
+      "NOSE": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT EYE": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT EYE": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT EAR": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT EAR": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT SHOULDER": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT SHOULDER": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT ELBOW": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT ELBOW": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT ARM": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT ARM": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT HIP": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT HIP": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT KNEE": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT KNEE": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "LEFT LEG": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "RIGHT LEG": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      },
+      "NECK": {
+        "dx_relative_to_height": 0.0,
+        "dy_relative_to_height": 0.0
+      }
+    },
+    {
+      "NOSE": {
+        "dx_relative_to_height": -0.014999,
+        "dy_relative_to_height": -0.021429
+      },
+      "LEFT EYE": {
+        "dx_relative_to_height": -0.014999,
+        "dy_relative_to_height": -0.021429
+      },
+      "RIGHT EYE": {
+        "dx_relative_to_height": -0.014999,
+        "dy_relative_to_height": -0.021429
+      },
+      "LEFT EAR": {
+        "dx_relative_to_height": -0.014999,
+        "dy_relative_to_height": -0.021429
+      },
+      "RIGHT EAR": {
+        "dx_relative_to_height": -0.014999,
+        "dy_relative_to_height": -0.021429
+      },
+      "LEFT SHOULDER": {
+        "dx_relative_to_height": -0.019658,
+        "dy_relative_to_height": -0.014743
+      },
+      "RIGHT SHOULDER": {
+        "dx_relative_to_height": 0.012287,
+        "dy_relative_to_height": 0.004915
+      },
+      "LEFT ELBOW": {
+        "dx_relative_to_height": -0.036571,
+        "dy_relative_to_height": -0.025144
+      },
+      "RIGHT ELBOW": {
+        "dx_relative_to_height": 0.027429,
+        "dy_relative_to_height": 0.029713
+      },
+      "LEFT ARM": {
+        "dx_relative_to_height": -0.028971,
+        "dy_relative_to_height": -0.0468
+      },
+      "RIGHT ARM": {
+        "dx_relative_to_height": 0.026743,
+        "dy_relative_to_height": 0.042343
+      },
+      "LEFT HIP": {
+        "dx_relative_to_height": 0.002628,
+        "dy_relative_to_height": 0.018399
+      },
+      "RIGHT HIP": {
+        "dx_relative_to_height": 0.007886,
+        "dy_relative_to_height": -0.002628
+      },
+      "LEFT KNEE": {
+        "dx_relative_to_height": 0.011314,
+        "dy_relative_to_height": 0.0396
+      },
+      "RIGHT KNEE": {
+        "dx_relative_to_height": -0.001886,
+        "dy_relative_to_height": -0.022629
+      },
+      "LEFT LEG": {
+        "dx_relative_to_height": 0.020743,
+        "dy_relative_to_height": 0.064114
+      },
+      "RIGHT LEG": {
+        "dx_relative_to_height": -0.005657,
+        "dy_relative_to_height": -0.060343
+      },
+      "NECK": {
+        "dx_relative_to_height": -0.011143,
+        "dy_relative_to_height": -0.013371
+      }
+    },
+    {
+      "NOSE": {
+        "dx_relative_to_height": 0.014999,
+        "dy_relative_to_height": -0.017143
+      },
+      "LEFT EYE": {
+        "dx_relative_to_height": 0.014999,
+        "dy_relative_to_height": -0.017143
+      },
+      "RIGHT EYE": {
+        "dx_relative_to_height": 0.014999,
+        "dy_relative_to_height": -0.017143
+      },
+      "LEFT EAR": {
+        "dx_relative_to_height": 0.014999,
+        "dy_relative_to_height": -0.017143
+      },
+      "RIGHT EAR": {
+        "dx_relative_to_height": 0.014999,
+        "dy_relative_to_height": -0.017143
+      },
+      "LEFT SHOULDER": {
+        "dx_relative_to_height": 0.012287,
+        "dy_relative_to_height": 0.004915
+      },
+      "RIGHT SHOULDER": {
+        "dx_relative_to_height": -0.019658,
+        "dy_relative_to_height": -0.014743
+      },
+      "LEFT ELBOW": {
+        "dx_relative_to_height": 0.027429,
+        "dy_relative_to_height": 0.025144
+      },
+      "RIGHT ELBOW": {
+        "dx_relative_to_height": -0.032001,
+        "dy_relative_to_height": -0.022856
+      },
+      "LEFT ARM": {
+        "dx_relative_to_height": 0.0312,
+        "dy_relative_to_height": 0.037886
+      },
+      "RIGHT ARM": {
+        "dx_relative_to_height": -0.028971,
+        "dy_relative_to_height": -0.042343
+      },
+      "LEFT HIP": {
+        "dx_relative_to_height": 0.007886,
+        "dy_relative_to_height": -0.005258
+      },
+      "RIGHT HIP": {
+        "dx_relative_to_height": -0.005258,
+        "dy_relative_to_height": 0.015771
+      },
+      "LEFT KNEE": {
+        "dx_relative_to_height": -0.001285,
+        "dy_relative_to_height": -0.016714
+      },
+      "RIGHT KNEE": {
+        "dx_relative_to_height": -0.007714,
+        "dy_relative_to_height": 0.027001
+      },
+      "LEFT LEG": {
+        "dx_relative_to_height": -0.002571,
+        "dy_relative_to_height": -0.036
+      },
+      "RIGHT LEG": {
+        "dx_relative_to_height": -0.014144,
+        "dy_relative_to_height": 0.033429
+      },
+      "NECK": {
+        "dx_relative_to_height": 0.011143,
+        "dy_relative_to_height": -0.011143
+      }
+    }
+  ],
+  "action_semantics": {
+    "F0": "passing phase",
+    "F1": "character LEFT front, character RIGHT arm forward",
+    "F2": "character RIGHT front, character LEFT arm forward"
+  },
+  "critical_gate": "positive LEFT- minus RIGHT-front foot screen depth at F1, negative at F2; for other view use view-specific landmark map",
+  "identity_reference_rule": "new character provides its own F0 PNG and once-estimated 18-joint skeleton, DO NOT use actor01 pixels as other characters",
+  "applicability": "only humanoid 2-leg chibi actor; monsters/quadrupeds require different topology and cannot use these joints blindly"
+}
