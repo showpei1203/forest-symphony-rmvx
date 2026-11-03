@@ -1,0 +1,67 @@
+{
+  "stage": "A36G_PIXELLAB_HOUSE_R2_WEST_FOREST_R3B_CANDIDATE",
+  "base_authority": "A36F_R1; baseline never modified",
+  "baseline_manifest_sha256": "1c1742f8316a9fff62077df23504c9de444a1aa19b53afd3e716cfdd91f2aa52",
+  "source_house_sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+  "source_house_size_px": [
+    284,
+    259
+  ],
+  "source_house_alpha_bbox": [
+    12,
+    6,
+    271,
+    244
+  ],
+  "source_forest_sha256": "0e697ccc2df1f6303089d412aa81369eed62c0ed44c609b32cd249c5a22350aa",
+  "source_forest_size_px": [
+    464,
+    576
+  ],
+  "source_forest_alpha_bbox": [
+    0,
+    0,
+    446,
+    561
+  ],
+  "compiled_forest_sha256": "78aa165b84effbcb9a5c6c3aa57fe7f428eab26b0f4f75308200fb03cb480946",
+  "offscreen_group_origin": [
+    -112,
+    -110
+  ],
+  "reused_A36F_standalone_sprites_outside_group": 7,
+  "scene_objects": 418,
+  "native_forest_depth_strips": 6,
+  "native_VX_544x416_screens": 22,
+  "native_VX_test_cases": 11,
+  "native_VX_map050_entered": true,
+  "native_VX_actual_418_loaded": true,
+  "native_VX_RGSS_modal_count": 0,
+  "native_VX_blocked_log": "A36G_BLOCK before=11,11 after=11,11",
+  "native_VX_road_walk_log": "A36G_ROAD before=11,8 after=12,8",
+  "native_VX_actor_visible_house_front_diff": 38,
+  "native_VX_actor_hidden_behind_house_diff": 0,
+  "godot_native_GPU_1280_frames": 6,
+  "godot_native_GPU_544_crops": 6,
+  "godot_R_G_B_channel_max_delta": 1,
+  "godot_pixels_gt_RGB_delta1": 0,
+  "godot_pixels_nonzero_delta": 22453,
+  "tile_grid": [
+    40,
+    29
+  ],
+  "blocked_cells": 241,
+  "free_cells": 919,
+  "free_reachable": 919,
+  "old_road_ground_sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "new_ground_sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "new_PAR_sha256": "68b44987960c72804699487a3588ebd0579a15fb33e190a362b71cd31000bf12",
+  "true_composite_sha256": "0efe160e8aed36b92be1fe244b3afdf4c2c5c99123b452e7597e0fe8be702cbd",
+  "art_house": "SIGNIFICANTLY_IMPROVED_PENDING_USER_REVIEW",
+  "art_forest": "WEST_FIRST_GROUP_VISUAL_IMPROVED_FULL_MAP_STILL_INCOMPLETE",
+  "native_actor_occlusion_complete_QA": "DEFER_FULL_SCENE_COVERAGE",
+  "full_west_root_collision_QA": "DEFER_PER_ROOT_MAP",
+  "cold_rebuild_full_archive": "NOT_RUN",
+  "formal_seal": "NO",
+  "ENGINE_SMOKE_PASS": true
+}

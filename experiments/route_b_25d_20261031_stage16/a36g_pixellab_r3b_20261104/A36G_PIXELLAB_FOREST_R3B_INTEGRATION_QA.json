@@ -1,0 +1,39 @@
+{
+  "stage": "A36G_PIXELLAB_HOUSE_R2_WEST_FOREST_R3B_CANDIDATE",
+  "native_pixellab_png_sha256": "0e697ccc2df1f6303089d412aa81369eed62c0ed44c609b32cd249c5a22350aa",
+  "native_pixellab_dim": [
+    464,
+    576
+  ],
+  "native_pixellab_alpha_bbox": [
+    0,
+    0,
+    446,
+    561
+  ],
+  "compiled_alpha_sha256": "78aa165b84effbcb9a5c6c3aa57fe7f428eab26b0f4f75308200fb03cb480946",
+  "compiled_source_dim": [
+    464,
+    576
+  ],
+  "offscreen_origin": [
+    -112,
+    -110
+  ],
+  "road_pixels_protected": 14351,
+  "alpha_area_pixels": 190015,
+  "connected_component_count": 21,
+  "largest_connected_fraction": 0.9997,
+  "restored_old_sprites": 7,
+  "actually_removed_old_sprites": 56,
+  "roots_inside_source": 29,
+  "scene_objects": 418,
+  "forest_depth_slices": 6,
+  "ground_sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "par_sha256": "68b44987960c72804699487a3588ebd0579a15fb33e190a362b71cd31000bf12",
+  "composite_sha256": "0efe160e8aed36b92be1fe244b3afdf4c2c5c99123b452e7597e0fe8be702cbd",
+  "art_gate": "PENDING_REVIEW",
+  "vx_gate": "NOT_YET_REBUILT",
+  "godot_gate": "NOT_YET_REBUILT",
+  "formal_seal": "NO"
+}

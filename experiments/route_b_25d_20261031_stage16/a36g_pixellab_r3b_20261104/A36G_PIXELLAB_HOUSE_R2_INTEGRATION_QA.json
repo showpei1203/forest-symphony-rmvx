@@ -1,0 +1,39 @@
+{
+  "stage": "A36G_PIXELLAB_HOUSE_R2_WEST_FOREST_R2_CANDIDATE",
+  "house_source": "A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png",
+  "source_sha": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+  "source_size": [
+    284,
+    259
+  ],
+  "original_reference_sha": "876b2b83ce730a2eb4ecb110642a4dd924db0ceb5124c34d3cdacdb38525ac1b",
+  "house_origin": [
+    353,
+    209
+  ],
+  "house_foot": [
+    563,
+    458
+  ],
+  "source_alpha_bbox": [
+    12,
+    6,
+    271,
+    244
+  ],
+  "source_corners_alpha": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "objects": 411,
+  "collision_blocked": 241,
+  "free": 919,
+  "reachable": 919,
+  "static_collision_gate": "STATIC_BFS_PASS",
+  "native_vx": "PENDING",
+  "godot": "PENDING",
+  "art_gate": "PENDING",
+  "formal_seal": "NO"
+}
