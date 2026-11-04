@@ -1,0 +1,20 @@
+from pathlib import Path
+R=Path(r"E:\FS_STAGE16_A36G_R4_ALL_REGION_FORESTS_20261104")
+F=Path(r"E:\FS_STAGE16_A36F_ELF_FOREST_REWORK_20261103")
+s=(F/"a36f_native_cold_verify.py").read_text("utf8")
+repl={
+ r"E:\FS_STAGE16_A36F_ELF_FOREST_REWORK_20261103":str(R),
+ r"E:\FS_STAGE16_A36F_ELF_FOREST_VX_NATIVE_20261103":r"E:\FS_STAGE16_A36G_R4_R3_VX_NATIVE_20261104",
+ r"E:\FS_STAGE16_A36F_ELF_FOREST_VX_COLD_20261103":r"E:\FS_STAGE16_A36G_R4_R3_VX_COLD_20261104",
+ "A36F_VX_ACTUAL_FULL_MAP.log":"A36G_VX_ACTUAL_FULL_MAP.log",
+ "A36F_ENTER":"A36G_ENTER",
+ "A36F_MAP_OBJECTS count=468":"A36G_MAP_OBJECTS count=192",
+ "A36F_NATIVE_INDEPENDENT_COLD_544x416.png":"A36G_R4_R3_NATIVE_INDEPENDENT_COLD_544x416.png",
+ "A36F_NATIVE_VX_COLD_REBUILD_QA.json":"A36G_R4_R3_NATIVE_VX_COLD_REBUILD_QA.json",
+ "objects_468_loaded":"objects_192_loaded",
+ '"stage":"A36E"':'"stage":"A36G_R4_R3"'}
+for a,b in repl.items():
+ assert a in s,a
+ s=s.replace(a,b)
+(R/"r4_r3_native_cold_verify.py").write_text(s,"utf8")
+print("COLD_SCRIPT_PREPARED")

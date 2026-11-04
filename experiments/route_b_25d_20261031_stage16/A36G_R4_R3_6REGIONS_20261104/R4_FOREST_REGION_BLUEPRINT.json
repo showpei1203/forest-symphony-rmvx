@@ -1,0 +1,65 @@
+{
+  "stage": "A36G_R4_SOURCE_FIRST",
+  "canvas": [
+    1280,
+    928
+  ],
+  "tile": 32,
+  "regions": [
+    {
+      "id": "NORTH_WEST",
+      "x": 310,
+      "y": -145,
+      "w": 464,
+      "h": 432,
+      "description": "North edge deep green woodland curtain. Irregular lower border descending into northwest corner; west edge crowns overlap an existing forest. Trunks visible at the south fringe."
+    },
+    {
+      "id": "NORTH_EAST",
+      "x": 714,
+      "y": -140,
+      "w": 464,
+      "h": 432,
+      "description": "North-eastern deep woods continuous canopy, dense varied leaf clusters, subtle old conifers among oaks, irregular south fringe."
+    },
+    {
+      "id": "EAST",
+      "x": 976,
+      "y": 260,
+      "w": 464,
+      "h": 564,
+      "description": "Tall vertical eastern woodland; foliage continues off right edge; ragged WEST margin showing many distinct crowns and trunks near clearing, irregular bottom."
+    },
+    {
+      "id": "SOUTH_WEST",
+      "x": -86,
+      "y": 435,
+      "w": 464,
+      "h": 552,
+      "description": "Deep southwest forest and lower map edge, abundant layered crowns of oak and narrow conifer, ragged northeast edge, roots near the border."
+    },
+    {
+      "id": "SOUTH_CENTRE",
+      "x": 322,
+      "y": 535,
+      "w": 464,
+      "h": 552,
+      "description": "Dense deep southern woods spanning bottom edge, irregular upper border opening to village clearing. Rich natural overlapping 3/4 tree crowns, trunks toward clearings."
+    },
+    {
+      "id": "SOUTH_EAST",
+      "x": 754,
+      "y": 545,
+      "w": 464,
+      "h": 552,
+      "description": "Dense south east forest and bottom-right edge, contiguous mature trees with tall conifers and hardwoods, staggered upper border, sunlit leafy fringes."
+    }
+  ],
+  "immutable_source_paths": [
+    "E:\\FS_STAGE16_A36G_INTEGRATED_REGIONS_20261104",
+    "E:\\FS_STAGE16_A36F_ELF_FOREST_REWORK_20261103"
+  ],
+  "rule": "one provider-source independent RGBA per region; road and house cutouts; never conflate art and engine QA",
+  "art_gate": "PENDING",
+  "seal": "NO"
+}

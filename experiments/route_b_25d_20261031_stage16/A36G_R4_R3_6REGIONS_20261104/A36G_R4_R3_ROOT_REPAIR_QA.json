@@ -1,0 +1,15 @@
+{
+  "stage": "A36G_R4_6REGIONS_R3_ROOT_ART_FIX_ENGINE_CANDIDATE",
+  "restored_source_ids": [
+    "a36c_dense_tree_048",
+    "a36c_dense_tree_059",
+    "a36c_dense_tree_094"
+  ],
+  "total_sprites": 192,
+  "par_sha256": "d5f7604aa051e67c91eb58fcdd524631cac4b09c3c175d54836886e11ff2b628",
+  "composite_sha256": "feb0b783e24bb2c845a1f6473d1ecf06cfd599a47f903f3284c2cf80106a590e",
+  "native_engine": "REBUILD_REQUIRED",
+  "full_collision_semantic": "PENDING",
+  "art_gate": "PENDING",
+  "formal_seal": "NO"
+}

@@ -1,0 +1,337 @@
+{
+  "stage": "A36G",
+  "native_exec": "RGSS Player",
+  "client_size": [
+    544,
+    416
+  ],
+  "actual_runtime_scenario_lines": [
+    "A36G_AUTO_NEW_GAME",
+    "A36G_MAP_OBJECTS count=192",
+    "A36G_ENTER id=50 size=40x29",
+    "CASE 0 northwest phase=hidden tile=4,6 display=0,0",
+    "CASE 0 northwest phase=actor tile=4,6 display=0,0 screen=144,220",
+    "CASE 1 north_forest phase=hidden tile=20,6 display=3072,0",
+    "CASE 1 north_forest phase=actor tile=20,6 display=3072,0 screen=272,220",
+    "CASE 2 northeast phase=hidden tile=35,6 display=5888,0",
+    "CASE 2 northeast phase=actor tile=35,6 display=5888,0 screen=400,220",
+    "CASE 3 west_forest phase=hidden tile=5,17 display=0,2816",
+    "CASE 3 west_forest phase=actor tile=5,17 display=0,2816 screen=176,220",
+    "CASE 4 house1_behind phase=hidden tile=17,9 display=2304,768",
+    "CASE 4 house1_behind phase=actor tile=17,9 display=2304,768 screen=272,220",
+    "CASE 5 house1_front phase=hidden tile=17,15 display=2304,2304",
+    "CASE 5 house1_front phase=actor tile=17,15 display=2304,2304 screen=272,220",
+    "CASE 6 house2_behind phase=hidden tile=27,13 display=4864,1792",
+    "CASE 6 house2_behind phase=actor tile=27,13 display=4864,1792 screen=272,220",
+    "CASE 7 house2_front phase=hidden tile=27,20 display=4864,3584",
+    "CASE 7 house2_front phase=actor tile=27,20 display=4864,3584 screen=272,220",
+    "CASE 8 southeast phase=hidden tile=35,24 display=5888,4096",
+    "CASE 8 southeast phase=actor tile=35,24 display=5888,4096 screen=400,284",
+    "CASE 9 tree_block_attempt phase=hidden tile=11,11 display=768,1280",
+    "CASE 9 tree_block_attempt phase=actor tile=11,11 display=768,1280 screen=272,220",
+    "A36G_BLOCK before=11,11 after=11,11",
+    "CASE 10 legal_road_move phase=hidden tile=11,8 display=768,512",
+    "CASE 10 legal_road_move phase=actor tile=11,8 display=768,512 screen=272,220",
+    "A36G_ROAD before=11,8 after=12,8"
+  ],
+  "screenshot_frames": {
+    "00_northwest_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_00_northwest_hidden.png",
+      "sha256": "fddaacb2c506e73a6b74522424cd6ef83e0c948ef2f786ade106303d8188dfcc",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "00_northwest_actor": {
+      "file": "A36G_VX_NATIVE_CASE_00_northwest_actor.png",
+      "sha256": "6584aa8fd9e447efb6d82132786ded4908474bceb9fb74da16ba9bade9c9138f",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "01_north_forest_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_01_north_forest_hidden.png",
+      "sha256": "20b598a74eaab7b0450726cb4e80fc13e2f9f6cf7a19e8164cb886e4fe7a67cc",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "01_north_forest_actor": {
+      "file": "A36G_VX_NATIVE_CASE_01_north_forest_actor.png",
+      "sha256": "3cbe22cf2fa4856e02c8adb7f9342bdb07e23b33255cc1ce1b732882eca7589f",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "02_northeast_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_02_northeast_hidden.png",
+      "sha256": "502c7e80dbc838f49435f1f47d1b3a0122c1e522899a02f812b16a0d869fb68a",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "02_northeast_actor": {
+      "file": "A36G_VX_NATIVE_CASE_02_northeast_actor.png",
+      "sha256": "17d70fd9e35326a7cb17e797d89ccc796f9b6df131860c146de760924021e41e",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "03_west_forest_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_03_west_forest_hidden.png",
+      "sha256": "58b44738f5b4793015a564775f85271207fd3dc3973d5c61776759eb590b8ea7",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "03_west_forest_actor": {
+      "file": "A36G_VX_NATIVE_CASE_03_west_forest_actor.png",
+      "sha256": "e71ea1281c2bbfd517e14289f2e431b03cfe24484c415e82788102c275873ee6",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "04_house1_behind_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_04_house1_behind_hidden.png",
+      "sha256": "bede93c56e3eff7c9dca7326f55a7dfdfb72f448cd619c15670c7987fb8ebbcc",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "04_house1_behind_actor": {
+      "file": "A36G_VX_NATIVE_CASE_04_house1_behind_actor.png",
+      "sha256": "bede93c56e3eff7c9dca7326f55a7dfdfb72f448cd619c15670c7987fb8ebbcc",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "05_house1_front_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_05_house1_front_hidden.png",
+      "sha256": "e90c0903c1a0f7847cd9260c55e576916178e5f2e5d1d6d923a1e8a36580c48c",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "05_house1_front_actor": {
+      "file": "A36G_VX_NATIVE_CASE_05_house1_front_actor.png",
+      "sha256": "43e340f20c116cfee02cc898c71ce6d2ceada182341358f7863b489ff5fd1298",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "06_house2_behind_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_06_house2_behind_hidden.png",
+      "sha256": "6223dfc163b5101186257738027e20d519ff64df762ed67113be61a0ab47b67c",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "06_house2_behind_actor": {
+      "file": "A36G_VX_NATIVE_CASE_06_house2_behind_actor.png",
+      "sha256": "6223dfc163b5101186257738027e20d519ff64df762ed67113be61a0ab47b67c",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "07_house2_front_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_07_house2_front_hidden.png",
+      "sha256": "974fe1a5b812b4e724be1f17e3ccb0d6196a1f0e78755db9781cbc2962ef4354",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "07_house2_front_actor": {
+      "file": "A36G_VX_NATIVE_CASE_07_house2_front_actor.png",
+      "sha256": "0b72fd6179ac899f4046e1f9978ac36002ff8d24fc49ffccf214bd3852826b9c",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "08_southeast_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_08_southeast_hidden.png",
+      "sha256": "35d16c60d954598709824c94de40192b69b6c69ba62e1326c8ad00c1b2f87d14",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "08_southeast_actor": {
+      "file": "A36G_VX_NATIVE_CASE_08_southeast_actor.png",
+      "sha256": "f5974ecf5d61ab165f672c29b384cf6d7fa3bae2d471ffbc4303b83b59219cb6",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "09_tree_block_attempt_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_09_tree_block_attempt_hidden.png",
+      "sha256": "e68148db76a4bee10dfd92b2df69dc6d95b2c40eecb77e1138cf7908d9906132",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "09_tree_block_attempt_actor": {
+      "file": "A36G_VX_NATIVE_CASE_09_tree_block_attempt_actor.png",
+      "sha256": "3eff9397fffac2feedd412290006b119e2f200915e477da7067697f2ab996bef",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "10_legal_road_move_hidden": {
+      "file": "A36G_VX_NATIVE_CASE_10_legal_road_move_hidden.png",
+      "sha256": "3c962702fe6ac70e655145c117e713644ffcf6651bbbe493ee1ac24bac832638",
+      "size": [
+        544,
+        416
+      ]
+    },
+    "10_legal_road_move_actor": {
+      "file": "A36G_VX_NATIVE_CASE_10_legal_road_move_actor.png",
+      "sha256": "3364e6097d93c0f87e511e78e183dd5ed29d19b7e23fb1931d0e8d0fa14c0f50",
+      "size": [
+        544,
+        416
+      ]
+    }
+  },
+  "paired_differences": {
+    "0": {
+      "actor": "A36G_VX_NATIVE_CASE_00_northwest_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_00_northwest_hidden.png",
+      "rgb_changed_coordinates": 9412,
+      "difference_bounds": [
+        0,
+        29,
+        234,
+        72
+      ]
+    },
+    "1": {
+      "actor": "A36G_VX_NATIVE_CASE_01_north_forest_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_01_north_forest_hidden.png",
+      "rgb_changed_coordinates": 9164,
+      "difference_bounds": [
+        28,
+        29,
+        286,
+        220
+      ]
+    },
+    "2": {
+      "actor": "A36G_VX_NATIVE_CASE_02_northeast_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_02_northeast_hidden.png",
+      "rgb_changed_coordinates": 84,
+      "difference_bounds": [
+        398,
+        194,
+        413,
+        214
+      ]
+    },
+    "3": {
+      "actor": "A36G_VX_NATIVE_CASE_03_west_forest_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_03_west_forest_hidden.png",
+      "rgb_changed_coordinates": 76,
+      "difference_bounds": [
+        174,
+        211,
+        188,
+        220
+      ]
+    },
+    "4": {
+      "actor": "A36G_VX_NATIVE_CASE_04_house1_behind_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_04_house1_behind_hidden.png",
+      "rgb_changed_coordinates": 0,
+      "difference_bounds": null
+    },
+    "5": {
+      "actor": "A36G_VX_NATIVE_CASE_05_house1_front_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_05_house1_front_hidden.png",
+      "rgb_changed_coordinates": 38,
+      "difference_bounds": [
+        272,
+        188,
+        286,
+        200
+      ]
+    },
+    "6": {
+      "actor": "A36G_VX_NATIVE_CASE_06_house2_behind_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_06_house2_behind_hidden.png",
+      "rgb_changed_coordinates": 0,
+      "difference_bounds": null
+    },
+    "7": {
+      "actor": "A36G_VX_NATIVE_CASE_07_house2_front_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_07_house2_front_hidden.png",
+      "rgb_changed_coordinates": 297,
+      "difference_bounds": [
+        261,
+        188,
+        286,
+        204
+      ]
+    },
+    "8": {
+      "actor": "A36G_VX_NATIVE_CASE_08_southeast_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_08_southeast_hidden.png",
+      "rgb_changed_coordinates": 3,
+      "difference_bounds": [
+        405,
+        280,
+        406,
+        283
+      ]
+    },
+    "9": {
+      "actor": "A36G_VX_NATIVE_CASE_09_tree_block_attempt_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_09_tree_block_attempt_hidden.png",
+      "rgb_changed_coordinates": 19,
+      "difference_bounds": [
+        269,
+        191,
+        282,
+        206
+      ]
+    },
+    "10": {
+      "actor": "A36G_VX_NATIVE_CASE_10_legal_road_move_actor.png",
+      "hidden": "A36G_VX_NATIVE_CASE_10_legal_road_move_hidden.png",
+      "rgb_changed_coordinates": 627,
+      "difference_bounds": [
+        261,
+        188,
+        286,
+        220
+      ]
+    }
+  },
+  "modal_windows": [],
+  "unique_capture_count": 22,
+  "actor_test_count": 11,
+  "move_blocked_log": "A36G_BLOCK before=11,11 after=11,11",
+  "move_road_log": "A36G_ROAD before=11,8 after=12,8",
+  "runtime_map_enter": true,
+  "runtime_obj_loaded": true,
+  "source": "Pillow window=actual RGSS Player hwnd, not desktop foreground",
+  "formal_seal": "NO"
+}

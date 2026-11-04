@@ -1,0 +1,90 @@
+{
+  "stage": "A36G_R4_6REGIONS_SEAM_R2_ENGINE_CANDIDATE",
+  "region_count": 6,
+  "seams": [
+    {
+      "id": "NORTH_WEST",
+      "source_compiled_R1_sha": "6699b446e4c331f2c295d9351627a52b6baa14ecef4fe6f3b3b20b29e688e35c",
+      "source_compiled_R2_sha": "d537b52436b43b4d13f9c0a000a3df65a2f4874c1c02573f3c1fcf327717eaf0",
+      "adjusted_edges": [
+        "left",
+        "right",
+        "bottom"
+      ],
+      "alpha_pixels_before": 140052,
+      "alpha_pixels_after": 127270,
+      "depth_strips": 5
+    },
+    {
+      "id": "NORTH_EAST",
+      "source_compiled_R1_sha": "ffee482ec9d1527bb1a066aad76d321e1469c8f8d829c927244fde40a7a72ab5",
+      "source_compiled_R2_sha": "5894bc635299f47f2660634ea6184e75e1d2b58c6e256f43417b7716f47091c1",
+      "adjusted_edges": [
+        "left",
+        "right",
+        "bottom"
+      ],
+      "alpha_pixels_before": 184120,
+      "alpha_pixels_after": 161570,
+      "depth_strips": 5
+    },
+    {
+      "id": "EAST",
+      "source_compiled_R1_sha": "b8acdb453ff4f0068624d8060167705d84f0eb1dc3d7cf7ac9e6eaaffc36f338",
+      "source_compiled_R2_sha": "4613ad8aa66dec2edd20dae1e5398003c13477b2dc1993ae1b1ea3fbf7ae8bcf",
+      "adjusted_edges": [
+        "left",
+        "top",
+        "bottom"
+      ],
+      "alpha_pixels_before": 164293,
+      "alpha_pixels_after": 155991,
+      "depth_strips": 7
+    },
+    {
+      "id": "SOUTH_WEST",
+      "source_compiled_R1_sha": "becbf8f83d0395350f4bb59e1f9a8f769afbcf2f8d70c898a52f8d5af8fde751",
+      "source_compiled_R2_sha": "f4315d944239110ec6a513dcf61b81dc578164b146251a7693dfece32bd7b210",
+      "adjusted_edges": [
+        "right",
+        "top"
+      ],
+      "alpha_pixels_before": 169821,
+      "alpha_pixels_after": 159484,
+      "depth_strips": 7
+    },
+    {
+      "id": "SOUTH_CENTRE",
+      "source_compiled_R1_sha": "909a79b5cb06222f708c792b1b9cf0a9ade2ad182c2ddbf8ec60473b2b992628",
+      "source_compiled_R2_sha": "e3128a424465ef79e34a319a548e2e84eb8a91d666ad393396ffa70913b5f97c",
+      "adjusted_edges": [
+        "left",
+        "right",
+        "top"
+      ],
+      "alpha_pixels_before": 169884,
+      "alpha_pixels_after": 145168,
+      "depth_strips": 7
+    },
+    {
+      "id": "SOUTH_EAST",
+      "source_compiled_R1_sha": "a58c26872143464d2daafab710802b04afdef18a21d2edc5fafc6aab50d5eea8",
+      "source_compiled_R2_sha": "d5ec391028bbc69b5c2afc0cb5a757485d598d6eb0765503ea3842970aea1c1b",
+      "adjusted_edges": [
+        "left",
+        "right",
+        "top"
+      ],
+      "alpha_pixels_before": 156774,
+      "alpha_pixels_after": 145878,
+      "depth_strips": 7
+    }
+  ],
+  "par_sha": "67c418ebfcb85d9400a2d3b14499275f899d043d571bb5cf02902b9bfcdc92a1",
+  "composite_sha": "de0d598fab7c014bb4249fb358bd8cc5c587d1dfb523694e315e0ca17419ff05",
+  "native_vx": "NOT_RUN",
+  "godot": "NOT_RUN",
+  "root_art_collision": "PENDING",
+  "art_gate": "PENDING",
+  "formal_seal": "NO"
+}

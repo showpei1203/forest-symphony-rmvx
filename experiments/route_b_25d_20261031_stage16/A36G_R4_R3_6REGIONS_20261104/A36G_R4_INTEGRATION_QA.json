@@ -1,0 +1,29 @@
+{
+  "stage": "A36G_R4_FOREST_6REGIONS_ENGINE_CANDIDATE",
+  "region_count": 6,
+  "regions": [
+    "NORTH_WEST",
+    "NORTH_EAST",
+    "EAST",
+    "SOUTH_WEST",
+    "SOUTH_CENTRE",
+    "SOUTH_EAST"
+  ],
+  "source_full_region_pngs": 6,
+  "source_objects": 189,
+  "source_roots_replaced": 267,
+  "root_blocks_requiring_visual_audit": 137,
+  "forest_depth_strip_count_new": 38,
+  "blocked": 241,
+  "free": 919,
+  "reachable": 919,
+  "ground_sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "par_sha256": "5bbce95f2785bbf073403db0d732d7a464b9ab53cd5202c2942ac8294be64a65",
+  "composite_sha256": "f93011b6850ee3e071b337300c01792b2e59a9e3a6e2f6206a225b812728747a",
+  "A36F_immutable_sha256": "1c1742f8316a9fff62077df23504c9de444a1aa19b53afd3e716cfdd91f2aa52",
+  "R3B_immutable_sha256": "631074ea146152da0358bbf2e29919b976a21ae49090c630120233d7757f7c83",
+  "art_gate": "PENDING",
+  "native_vx": "NOT_TESTED",
+  "godot": "NOT_TESTED",
+  "formal_seal": "NO"
+}

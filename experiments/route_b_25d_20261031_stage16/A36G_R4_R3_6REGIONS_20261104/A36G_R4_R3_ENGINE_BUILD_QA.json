@@ -1,0 +1,15 @@
+{
+  "stage": "A36G_R4_6REGIONS_R3_ROOT_ART_FIX_ENGINE_CANDIDATE",
+  "scene_objects": 192,
+  "trees": 59,
+  "roots_in_region": 0,
+  "block_count": 241,
+  "free": 919,
+  "free_reachable": 919,
+  "engine_dir": "E:\\FS_STAGE16_A36G_R4_R3_VX_NATIVE_20261104",
+  "godot_dir": "E:\\FS_STAGE16_A36G_R4_ALL_REGION_FORESTS_20261104\\GODOT_A36G_R4_R3_40x29",
+  "engine_status": "BUILD_ONLY_NOT_TESTED",
+  "forest_art_status": "FAIL_R1_R2",
+  "house_art_status": "PENDING_ART",
+  "formal_seal": "NO"
+}

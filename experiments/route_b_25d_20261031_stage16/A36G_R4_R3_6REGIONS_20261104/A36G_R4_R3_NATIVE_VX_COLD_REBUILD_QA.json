@@ -1,0 +1,20 @@
+{
+  "stage": "A36G_R4_R3",
+  "cold_cloned": "E:\\FS_STAGE16_A36G_R4_R3_VX_COLD_20261104",
+  "source_file_count": 3600,
+  "matching_SHA256": 3600,
+  "mismatches": 0,
+  "RGSS_game_window": true,
+  "has_modal_error": false,
+  "native_544x416_saved": true,
+  "objects_192_loaded": true,
+  "Map050_entered": true,
+  "first_runtime_logs": [
+    "A36G_AUTO_NEW_GAME",
+    "A36G_MAP_OBJECTS count=192",
+    "A36G_ENTER id=50 size=40x29",
+    "CASE 0 northwest phase=hidden tile=4,6 display=0,0"
+  ],
+  "elapsed_sec": 8.68,
+  "formal_seal": "NO"
+}

@@ -1,0 +1,1833 @@
+{
+  "source_stage": "A36G_PIXELLAB_HOUSE_R2_WEST_FOREST_R3B_CANDIDATE",
+  "r4_stage": "A36G_R4_6REGIONS_SEAM_R2_ENGINE_CANDIDATE",
+  "removed_root_anchors": 137,
+  "potential_invisible_root_blockers": 3,
+  "bad_cases": [
+    {
+      "id": "a36c_dense_tree_094",
+      "foot": [
+        74,
+        462
+      ],
+      "tile": [
+        2,
+        14
+      ],
+      "center_alpha": 68,
+      "tile_alpha_fraction": 0.382
+    },
+    {
+      "id": "a36c_dense_tree_059",
+      "foot": [
+        767,
+        743
+      ],
+      "tile": [
+        23,
+        23
+      ],
+      "center_alpha": 39,
+      "tile_alpha_fraction": 0.59
+    },
+    {
+      "id": "a36c_dense_tree_048",
+      "foot": [
+        354,
+        772
+      ],
+      "tile": [
+        11,
+        24
+      ],
+      "center_alpha": 51,
+      "tile_alpha_fraction": 0.593
+    }
+  ],
+  "all": [
+    {
+      "id": "a36c_dense_tree_107",
+      "foot": [
+        893,
+        97
+      ],
+      "tile": [
+        27,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_042",
+      "foot": [
+        1069,
+        97
+      ],
+      "tile": [
+        33,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_079",
+      "foot": [
+        381,
+        100
+      ],
+      "tile": [
+        11,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.747
+    },
+    {
+      "id": "a36c_dense_tree_093",
+      "foot": [
+        671,
+        101
+      ],
+      "tile": [
+        20,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_130",
+      "foot": [
+        592,
+        105
+      ],
+      "tile": [
+        18,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_062",
+      "foot": [
+        522,
+        109
+      ],
+      "tile": [
+        16,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_088",
+      "foot": [
+        849,
+        115
+      ],
+      "tile": [
+        26,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_163",
+      "foot": [
+        1012,
+        119
+      ],
+      "tile": [
+        31,
+        3
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_082",
+      "foot": [
+        1078,
+        131
+      ],
+      "tile": [
+        33,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_025",
+      "foot": [
+        562,
+        132
+      ],
+      "tile": [
+        17,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_140",
+      "foot": [
+        472,
+        136
+      ],
+      "tile": [
+        14,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_031",
+      "foot": [
+        985,
+        137
+      ],
+      "tile": [
+        30,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_047",
+      "foot": [
+        617,
+        141
+      ],
+      "tile": [
+        19,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_045",
+      "foot": [
+        761,
+        144
+      ],
+      "tile": [
+        23,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.998
+    },
+    {
+      "id": "a36c_dense_tree_008",
+      "foot": [
+        872,
+        149
+      ],
+      "tile": [
+        27,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_120",
+      "foot": [
+        1019,
+        150
+      ],
+      "tile": [
+        31,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_012",
+      "foot": [
+        402,
+        151
+      ],
+      "tile": [
+        12,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_051",
+      "foot": [
+        1052,
+        156
+      ],
+      "tile": [
+        32,
+        4
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.992
+    },
+    {
+      "id": "a36c_dense_tree_026",
+      "foot": [
+        1142,
+        160
+      ],
+      "tile": [
+        35,
+        5
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_122",
+      "foot": [
+        733,
+        164
+      ],
+      "tile": [
+        22,
+        5
+      ],
+      "center_alpha": 245,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_087",
+      "foot": [
+        657,
+        175
+      ],
+      "tile": [
+        20,
+        5
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.927
+    },
+    {
+      "id": "a36c_dense_tree_058",
+      "foot": [
+        789,
+        178
+      ],
+      "tile": [
+        24,
+        5
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_029",
+      "foot": [
+        932,
+        185
+      ],
+      "tile": [
+        29,
+        5
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_056",
+      "foot": [
+        976,
+        187
+      ],
+      "tile": [
+        30,
+        5
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_069",
+      "foot": [
+        1103,
+        188
+      ],
+      "tile": [
+        34,
+        5
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.938
+    },
+    {
+      "id": "a36c_dense_tree_042",
+      "foot": [
+        906,
+        204
+      ],
+      "tile": [
+        28,
+        6
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_141",
+      "foot": [
+        1007,
+        206
+      ],
+      "tile": [
+        31,
+        6
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_151",
+      "foot": [
+        1049,
+        207
+      ],
+      "tile": [
+        32,
+        6
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_055",
+      "foot": [
+        712,
+        214
+      ],
+      "tile": [
+        22,
+        6
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_069",
+      "foot": [
+        829,
+        219
+      ],
+      "tile": [
+        25,
+        6
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_026",
+      "foot": [
+        1080,
+        239
+      ],
+      "tile": [
+        33,
+        7
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_152",
+      "foot": [
+        906,
+        246
+      ],
+      "tile": [
+        28,
+        7
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.999
+    },
+    {
+      "id": "a36c_dense_tree_054",
+      "foot": [
+        1046,
+        247
+      ],
+      "tile": [
+        32,
+        7
+      ],
+      "center_alpha": 107,
+      "tile_alpha_fraction": 0.695
+    },
+    {
+      "id": "tree_057",
+      "foot": [
+        1000,
+        264
+      ],
+      "tile": [
+        31,
+        8
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_027",
+      "foot": [
+        881,
+        270
+      ],
+      "tile": [
+        27,
+        8
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.84
+    },
+    {
+      "id": "a36c_dense_tree_104",
+      "foot": [
+        963,
+        283
+      ],
+      "tile": [
+        30,
+        8
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.693
+    },
+    {
+      "id": "a36c_dense_tree_162",
+      "foot": [
+        1091,
+        337
+      ],
+      "tile": [
+        34,
+        10
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.834
+    },
+    {
+      "id": "a36c_dense_tree_031",
+      "foot": [
+        1133,
+        354
+      ],
+      "tile": [
+        35,
+        11
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_053",
+      "foot": [
+        1184,
+        367
+      ],
+      "tile": [
+        37,
+        11
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_006",
+      "foot": [
+        1103,
+        395
+      ],
+      "tile": [
+        34,
+        12
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_164",
+      "foot": [
+        1141,
+        403
+      ],
+      "tile": [
+        35,
+        12
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_155",
+      "foot": [
+        1116,
+        430
+      ],
+      "tile": [
+        34,
+        13
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_094",
+      "foot": [
+        74,
+        462
+      ],
+      "tile": [
+        2,
+        14
+      ],
+      "center_alpha": 68,
+      "tile_alpha_fraction": 0.382
+    },
+    {
+      "id": "a36c_dense_tree_131",
+      "foot": [
+        1101,
+        462
+      ],
+      "tile": [
+        34,
+        14
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_160",
+      "foot": [
+        1161,
+        465
+      ],
+      "tile": [
+        36,
+        14
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_134",
+      "foot": [
+        1063,
+        472
+      ],
+      "tile": [
+        33,
+        14
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_076",
+      "foot": [
+        167,
+        485
+      ],
+      "tile": [
+        5,
+        15
+      ],
+      "center_alpha": 123,
+      "tile_alpha_fraction": 0.64
+    },
+    {
+      "id": "tree_033",
+      "foot": [
+        1174,
+        495
+      ],
+      "tile": [
+        36,
+        15
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_086",
+      "foot": [
+        132,
+        507
+      ],
+      "tile": [
+        4,
+        15
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_102",
+      "foot": [
+        1061,
+        513
+      ],
+      "tile": [
+        33,
+        16
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_090",
+      "foot": [
+        246,
+        524
+      ],
+      "tile": [
+        7,
+        16
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.711
+    },
+    {
+      "id": "a36c_dense_tree_128",
+      "foot": [
+        214,
+        525
+      ],
+      "tile": [
+        6,
+        16
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.92
+    },
+    {
+      "id": "a36c_dense_tree_029",
+      "foot": [
+        1133,
+        530
+      ],
+      "tile": [
+        35,
+        16
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_020",
+      "foot": [
+        99,
+        541
+      ],
+      "tile": [
+        3,
+        16
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_068",
+      "foot": [
+        127,
+        555
+      ],
+      "tile": [
+        3,
+        17
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.997
+    },
+    {
+      "id": "a36c_dense_tree_115",
+      "foot": [
+        73,
+        565
+      ],
+      "tile": [
+        2,
+        17
+      ],
+      "center_alpha": 213,
+      "tile_alpha_fraction": 0.585
+    },
+    {
+      "id": "a36c_dense_tree_095",
+      "foot": [
+        1061,
+        584
+      ],
+      "tile": [
+        33,
+        18
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.995
+    },
+    {
+      "id": "a36c_dense_tree_125",
+      "foot": [
+        1194,
+        596
+      ],
+      "tile": [
+        37,
+        18
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_023",
+      "foot": [
+        448,
+        625
+      ],
+      "tile": [
+        14,
+        19
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.959
+    },
+    {
+      "id": "tree_022",
+      "foot": [
+        299,
+        631
+      ],
+      "tile": [
+        9,
+        19
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.646
+    },
+    {
+      "id": "a36c_dense_tree_021",
+      "foot": [
+        204,
+        649
+      ],
+      "tile": [
+        6,
+        20
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.738
+    },
+    {
+      "id": "a36c_dense_tree_053",
+      "foot": [
+        443,
+        660
+      ],
+      "tile": [
+        13,
+        20
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.926
+    },
+    {
+      "id": "a36c_dense_tree_010",
+      "foot": [
+        305,
+        663
+      ],
+      "tile": [
+        9,
+        20
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.761
+    },
+    {
+      "id": "a36c_dense_tree_024",
+      "foot": [
+        70,
+        669
+      ],
+      "tile": [
+        2,
+        20
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_108",
+      "foot": [
+        386,
+        671
+      ],
+      "tile": [
+        12,
+        20
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_137",
+      "foot": [
+        112,
+        680
+      ],
+      "tile": [
+        3,
+        21
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_033",
+      "foot": [
+        208,
+        685
+      ],
+      "tile": [
+        6,
+        21
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_091",
+      "foot": [
+        708,
+        694
+      ],
+      "tile": [
+        22,
+        21
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.644
+    },
+    {
+      "id": "tree_067",
+      "foot": [
+        1094,
+        694
+      ],
+      "tile": [
+        34,
+        21
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.883
+    },
+    {
+      "id": "a36c_dense_tree_129",
+      "foot": [
+        837,
+        696
+      ],
+      "tile": [
+        26,
+        21
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_112",
+      "foot": [
+        248,
+        699
+      ],
+      "tile": [
+        7,
+        21
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_150",
+      "foot": [
+        361,
+        703
+      ],
+      "tile": [
+        11,
+        21
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.951
+    },
+    {
+      "id": "a36c_dense_tree_132",
+      "foot": [
+        1020,
+        704
+      ],
+      "tile": [
+        31,
+        22
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_039",
+      "foot": [
+        311,
+        706
+      ],
+      "tile": [
+        9,
+        22
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.903
+    },
+    {
+      "id": "a36c_dense_tree_135",
+      "foot": [
+        749,
+        711
+      ],
+      "tile": [
+        23,
+        22
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.985
+    },
+    {
+      "id": "tree_060",
+      "foot": [
+        155,
+        717
+      ],
+      "tile": [
+        4,
+        22
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_077",
+      "foot": [
+        1159,
+        719
+      ],
+      "tile": [
+        36,
+        22
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_046",
+      "foot": [
+        864,
+        734
+      ],
+      "tile": [
+        27,
+        22
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_121",
+      "foot": [
+        468,
+        734
+      ],
+      "tile": [
+        14,
+        22
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.999
+    },
+    {
+      "id": "tree_104",
+      "foot": [
+        940,
+        737
+      ],
+      "tile": [
+        29,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_113",
+      "foot": [
+        227,
+        740
+      ],
+      "tile": [
+        7,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_068",
+      "foot": [
+        270,
+        741
+      ],
+      "tile": [
+        8,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_072",
+      "foot": [
+        403,
+        742
+      ],
+      "tile": [
+        12,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.99
+    },
+    {
+      "id": "a36c_dense_tree_059",
+      "foot": [
+        767,
+        743
+      ],
+      "tile": [
+        23,
+        23
+      ],
+      "center_alpha": 39,
+      "tile_alpha_fraction": 0.59
+    },
+    {
+      "id": "a36c_dense_tree_078",
+      "foot": [
+        1215,
+        745
+      ],
+      "tile": [
+        37,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_058",
+      "foot": [
+        800,
+        746
+      ],
+      "tile": [
+        25,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_016",
+      "foot": [
+        87,
+        749
+      ],
+      "tile": [
+        2,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_007",
+      "foot": [
+        1019,
+        754
+      ],
+      "tile": [
+        31,
+        23
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_100",
+      "foot": [
+        896,
+        768
+      ],
+      "tile": [
+        28,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_148",
+      "foot": [
+        602,
+        768
+      ],
+      "tile": [
+        18,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.843
+    },
+    {
+      "id": "a36c_dense_tree_032",
+      "foot": [
+        207,
+        770
+      ],
+      "tile": [
+        6,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_019",
+      "foot": [
+        730,
+        771
+      ],
+      "tile": [
+        22,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.974
+    },
+    {
+      "id": "a36c_dense_tree_048",
+      "foot": [
+        354,
+        772
+      ],
+      "tile": [
+        11,
+        24
+      ],
+      "center_alpha": 51,
+      "tile_alpha_fraction": 0.593
+    },
+    {
+      "id": "a36c_dense_tree_144",
+      "foot": [
+        46,
+        776
+      ],
+      "tile": [
+        1,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_099",
+      "foot": [
+        153,
+        778
+      ],
+      "tile": [
+        4,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_123",
+      "foot": [
+        306,
+        782
+      ],
+      "tile": [
+        9,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_052",
+      "foot": [
+        270,
+        786
+      ],
+      "tile": [
+        8,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_018",
+      "foot": [
+        856,
+        794
+      ],
+      "tile": [
+        26,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.985
+    },
+    {
+      "id": "a36c_dense_tree_119",
+      "foot": [
+        403,
+        794
+      ],
+      "tile": [
+        12,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_044",
+      "foot": [
+        930,
+        798
+      ],
+      "tile": [
+        29,
+        24
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_084",
+      "foot": [
+        745,
+        800
+      ],
+      "tile": [
+        23,
+        25
+      ],
+      "center_alpha": 119,
+      "tile_alpha_fraction": 0.595
+    },
+    {
+      "id": "a36c_dense_tree_138",
+      "foot": [
+        1037,
+        800
+      ],
+      "tile": [
+        32,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_166",
+      "foot": [
+        463,
+        802
+      ],
+      "tile": [
+        14,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_003",
+      "foot": [
+        609,
+        807
+      ],
+      "tile": [
+        19,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.674
+    },
+    {
+      "id": "a36c_dense_tree_065",
+      "foot": [
+        787,
+        808
+      ],
+      "tile": [
+        24,
+        25
+      ],
+      "center_alpha": 122,
+      "tile_alpha_fraction": 0.593
+    },
+    {
+      "id": "a36c_dense_tree_103",
+      "foot": [
+        1089,
+        812
+      ],
+      "tile": [
+        34,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_005",
+      "foot": [
+        350,
+        812
+      ],
+      "tile": [
+        10,
+        25
+      ],
+      "center_alpha": 187,
+      "tile_alpha_fraction": 0.95
+    },
+    {
+      "id": "tree_087",
+      "foot": [
+        893,
+        813
+      ],
+      "tile": [
+        27,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_015",
+      "foot": [
+        984,
+        814
+      ],
+      "tile": [
+        30,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_005",
+      "foot": [
+        567,
+        816
+      ],
+      "tile": [
+        17,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_145",
+      "foot": [
+        835,
+        820
+      ],
+      "tile": [
+        26,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_014",
+      "foot": [
+        158,
+        831
+      ],
+      "tile": [
+        4,
+        25
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_168",
+      "foot": [
+        1021,
+        833
+      ],
+      "tile": [
+        31,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_153",
+      "foot": [
+        111,
+        836
+      ],
+      "tile": [
+        3,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_105",
+      "foot": [
+        797,
+        838
+      ],
+      "tile": [
+        24,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.997
+    },
+    {
+      "id": "tree_008",
+      "foot": [
+        77,
+        842
+      ],
+      "tile": [
+        2,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_035",
+      "foot": [
+        734,
+        844
+      ],
+      "tile": [
+        22,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_049",
+      "foot": [
+        575,
+        850
+      ],
+      "tile": [
+        17,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_036",
+      "foot": [
+        305,
+        851
+      ],
+      "tile": [
+        9,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_015",
+      "foot": [
+        506,
+        855
+      ],
+      "tile": [
+        15,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_034",
+      "foot": [
+        393,
+        855
+      ],
+      "tile": [
+        12,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_009",
+      "foot": [
+        1138,
+        859
+      ],
+      "tile": [
+        35,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 0.953
+    },
+    {
+      "id": "a36c_dense_tree_045",
+      "foot": [
+        904,
+        860
+      ],
+      "tile": [
+        28,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_117",
+      "foot": [
+        862,
+        861
+      ],
+      "tile": [
+        26,
+        26
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_167",
+      "foot": [
+        1103,
+        865
+      ],
+      "tile": [
+        34,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_109",
+      "foot": [
+        76,
+        874
+      ],
+      "tile": [
+        2,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_038",
+      "foot": [
+        267,
+        876
+      ],
+      "tile": [
+        8,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_159",
+      "foot": [
+        452,
+        881
+      ],
+      "tile": [
+        14,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_061",
+      "foot": [
+        999,
+        882
+      ],
+      "tile": [
+        31,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_039",
+      "foot": [
+        1048,
+        883
+      ],
+      "tile": [
+        32,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_092",
+      "foot": [
+        812,
+        888
+      ],
+      "tile": [
+        25,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_011",
+      "foot": [
+        962,
+        889
+      ],
+      "tile": [
+        30,
+        27
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "tree_073",
+      "foot": [
+        113,
+        896
+      ],
+      "tile": [
+        3,
+        28
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_019",
+      "foot": [
+        577,
+        900
+      ],
+      "tile": [
+        18,
+        28
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_136",
+      "foot": [
+        694,
+        903
+      ],
+      "tile": [
+        21,
+        28
+      ],
+      "center_alpha": 226,
+      "tile_alpha_fraction": 0.662
+    },
+    {
+      "id": "a36c_dense_tree_057",
+      "foot": [
+        282,
+        905
+      ],
+      "tile": [
+        8,
+        28
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    },
+    {
+      "id": "a36c_dense_tree_002",
+      "foot": [
+        1017,
+        908
+      ],
+      "tile": [
+        31,
+        28
+      ],
+      "center_alpha": 255,
+      "tile_alpha_fraction": 1.0
+    }
+  ],
+  "diagnostic_caveat": "Alpha coverage is necessary but insufficient: actual trunk/root geometry still needs visual QA",
+  "action": "RESTORE_OR_REFINE",
+  "formal_seal": "NO"
+}
