@@ -1,0 +1,131 @@
+{
+  "FS_original_Ground3": {
+    "path": "E:\\遊戲專案開發\\三大項目現行專案\\FS project\\Graphics\\Parallaxes\\ground3.png",
+    "sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+    "size": [
+      1280,
+      928
+    ],
+    "mode": "RGB",
+    "alpha_nonzero_ratio": 1.0,
+    "alpha_full_ratio": 1.0,
+    "alpha_colors": [
+      255,
+      255
+    ]
+  },
+  "FS_original_PAR3": {
+    "path": "E:\\遊戲專案開發\\三大項目現行專案\\FS project\\Overlays\\par3.png",
+    "sha256": "dde64967b623c6da26e1f1afbd0ea5603532bfbd882b283ea7a2df66aa0fcada",
+    "size": [
+      1280,
+      928
+    ],
+    "mode": "RGBA",
+    "alpha_nonzero_ratio": 0.138563,
+    "alpha_full_ratio": 0.136511,
+    "alpha_colors": [
+      0,
+      255
+    ]
+  },
+  "FS_effect_not_Ground3": {
+    "path": "E:\\遊戲專案開發\\三大項目現行專案\\FS project\\Overlays\\ground3.png",
+    "sha256": "a96efa5afdc01363050a542d600bbac5daf6c9d5d7d2816b1be9242ae23f236c",
+    "size": [
+      1280,
+      928
+    ],
+    "mode": "RGB",
+    "alpha_nonzero_ratio": 1.0,
+    "alpha_full_ratio": 1.0,
+    "alpha_colors": [
+      255,
+      255
+    ]
+  },
+  "R5_ground": {
+    "path": "E:\\FS_STAGE16_A36G_R5_HOUSE_STYLE_UNIFICATION_20261104\\A36G_R5_GROUND_1280x928.png",
+    "sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+    "size": [
+      1280,
+      928
+    ],
+    "mode": "RGB",
+    "alpha_nonzero_ratio": 1.0,
+    "alpha_full_ratio": 1.0,
+    "alpha_colors": [
+      255,
+      255
+    ]
+  },
+  "R5_PAR": {
+    "path": "E:\\FS_STAGE16_A36G_R5_HOUSE_STYLE_UNIFICATION_20261104\\A36G_R5_PAR50_RGBA_1280x928.png",
+    "sha256": "9079fecdf2d0301817a3e06854a3ab1ffec691de6dac29f28102d9e4833bbe6d",
+    "size": [
+      1280,
+      928
+    ],
+    "mode": "RGBA",
+    "alpha_nonzero_ratio": 0.76509,
+    "alpha_full_ratio": 0.697752,
+    "alpha_colors": [
+      0,
+      255
+    ]
+  },
+  "R5_composite": {
+    "path": "E:\\FS_STAGE16_A36G_R5_HOUSE_STYLE_UNIFICATION_20261104\\A36G_R5_TRUE_GROUND_PLUS_PAR_1280x928.png",
+    "sha256": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db",
+    "size": [
+      1280,
+      928
+    ],
+    "mode": "RGB",
+    "alpha_nonzero_ratio": 1.0,
+    "alpha_full_ratio": 1.0,
+    "alpha_colors": [
+      255,
+      255
+    ]
+  },
+  "RELATION_FS_original_Ground3_FS_original_PAR3": {
+    "alpha_gt200_px": 163436,
+    "same_RGB_px": 159462,
+    "match_pct": 97.5685
+  },
+  "RELATION_FS_effect_not_Ground3_FS_original_PAR3": {
+    "alpha_gt200_px": 163436,
+    "same_RGB_px": 2453,
+    "match_pct": 1.5009
+  },
+  "RELATION_R5_ground_R5_PAR": {
+    "alpha_gt200_px": 853057,
+    "same_RGB_px": 279,
+    "match_pct": 0.0327
+  },
+  "RELATION_R5_composite_R5_PAR": {
+    "alpha_gt200_px": 853057,
+    "same_RGB_px": 831218,
+    "match_pct": 97.4399
+  },
+  "R5_ground_vs_full_scene": {
+    "changed_pixels": 907701,
+    "changed_pct": 76.4161,
+    "unchanged_pct": 23.5839,
+    "left_house_changed_pct": 62.026,
+    "right_house_changed_pct": 39.848,
+    "west_forest_changed_pct": 81.995
+  },
+  "R5_SceneManifest": {
+    "stage": "A36G_R5_R2_BOTH_HOUSES_STYLE_UNIFIED_ENGINE_CANDIDATE",
+    "object_count": 192,
+    "sprite_category_counts": {
+      "forest_group": 44,
+      "house": 2,
+      "landmark": 4,
+      "shrub": 83,
+      "tree": 59
+    }
+  }
+}

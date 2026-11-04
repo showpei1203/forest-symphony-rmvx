@@ -1,3 +1,6 @@
+# 2026-11-04 CRITICAL ERRATUM: TRUE FS GROUND/PAR LAYER FAIL
+Old ENGINE_SMOKE_PASS is ONLY independent object-sprite rendering/collision. Actual ParSwitch 203 was FALSE in native VX and the true Par50 front mask was not displayed. Legacy ground3/par3 overlay methodology does not match R5 layer ownership: R5 Par50 alpha coverage 76.509%, matched Ground on 0.0327% of opaque pixels; original par3 13.8563% with 97.5685% match on fully opaque. ART FAIL per user. Formal Seal NO. See A36G_R5_R2_GROUND_PAR_CORE_CORRECTION_AUDIT_20261104.md. Do not continue PixelLab art generation.
+
 # Forest Symphony | A36G R5 R2 | 統一兩棟精靈村房屋風格 | 2026-11-04
 
 **狀態：實際 Ground／PAR 工程已修改；VX+Godot ENGINE_SMOKE_PASS；美術簽核 PENDING；正式封版 NO。**
