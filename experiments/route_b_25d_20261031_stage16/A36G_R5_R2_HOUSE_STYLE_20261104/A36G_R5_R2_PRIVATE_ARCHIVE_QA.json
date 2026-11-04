@@ -1,0 +1,15 @@
+{
+  "stage": "A36G_R5_R2",
+  "archive": "E:\\FS_STAGE16_A36G_R5_HOUSE_STYLE_UNIFICATION_20261104\\FS_A36G_R5_R2_HOUSE_STYLE_TRUE_GROUND_PAR_VX_GODOT_20261104.zip",
+  "archive_bytes": 564183985,
+  "archive_sha256": "6b61c4a763df83042c278c2d8081508c0c6c79f8a1c6b1e788f049a5bf120599",
+  "members": 4068,
+  "source_files_sha256_verified": 4067,
+  "mismatch_count": 0,
+  "zip_crc": "PASS",
+  "cold_extracted": "E:\\FS_STAGE16_A36G_R5_R2_ARCHIVE_COLD_20261104",
+  "cold_extract_sha256": "PASS",
+  "native_vx_smoke": "PASS",
+  "formal_seal": "NO",
+  "cloud_zip_upload": "NOT_ATTEMPTED"
+}
