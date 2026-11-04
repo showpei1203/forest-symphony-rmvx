@@ -1,0 +1,30 @@
+{
+  "source_stage": "A36G_R4_6REGIONS_R3_ROOT_ART_FIX_ENGINE_CANDIDATE",
+  "base_scene_manifest_sha256": "4f30983eeb27d2ae43ddcace39ac2304eaa96e7ac3734411ccf309aa3d210a07",
+  "house_A_left": {
+    "id": "A36G_ELF_HOUSE_AND_WORKSHOP",
+    "sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+    "native_png": "A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png",
+    "status": "LOCKED_STABLE_REFERENCE"
+  },
+  "house_B_right": {
+    "id": "A36F_ELF_COTTAGE_B",
+    "old_sha256": "110471397ccf079b1ed4367bf840335498bd60c3ac58b20cf2cf9b7f07723fb5",
+    "geometry": [
+      770,
+      360,
+      198,
+      236
+    ],
+    "foot": [
+      869,
+      596
+    ],
+    "status": "REPLACE_WHOLE_ONE_PIECE_RGBA"
+  },
+  "requested_unification": "same three-quarter view, mossy golden olive thatch textured roof, warm timber frame and sandstone foundation, detailed pixel clusters, architecture unity; preserve door entry relative to ground path",
+  "scope": "right house source replacement only. No generated concept accepted as finished. Ground and forest layers locked.",
+  "engine_gate": "NOT_RUN",
+  "art_gate": "PENDING",
+  "formal_seal": "NO"
+}

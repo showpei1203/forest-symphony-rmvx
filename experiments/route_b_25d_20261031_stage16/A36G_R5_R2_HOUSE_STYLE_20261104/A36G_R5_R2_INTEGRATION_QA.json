@@ -1,0 +1,51 @@
+{
+  "stage": "A36G_R5_R2_BOTH_HOUSES_STYLE_UNIFIED_ENGINE_CANDIDATE",
+  "source_objects": 192,
+  "right_new_full_sprite_rgba_sha256": "4794a89cb06029112e6581c85a47bdcf6a84b7f636e05755825a989793585206",
+  "right_new_source_size": [
+    256,
+    272
+  ],
+  "right_source_rgba_bbox": [
+    21,
+    23,
+    188,
+    220
+  ],
+  "right_truly_uncropped": true,
+  "original_left_house_sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+  "left_unchanged": true,
+  "old_right_house_sha256": "110471397ccf079b1ed4367bf840335498bd60c3ac58b20cf2cf9b7f07723fb5",
+  "right_origin": [
+    743,
+    376
+  ],
+  "right_foot": [
+    869,
+    596
+  ],
+  "actual_right_world_alpha_bbox": [
+    764,
+    399,
+    931,
+    596
+  ],
+  "right_new_blocking_footprint_px": [
+    778,
+    535,
+    921,
+    588
+  ],
+  "collision_blocked": 241,
+  "collision_walkable": 919,
+  "collision_reachable": 919,
+  "ground_sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "ground_unchanged": true,
+  "par_sha256": "9079fecdf2d0301817a3e06854a3ab1ffec691de6dac29f28102d9e4833bbe6d",
+  "composite_sha256": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db",
+  "forest_source_unchanged": true,
+  "native_vx": "NOT_RUN",
+  "godot": "NOT_RUN",
+  "art_gate": "PENDING_USER",
+  "formal_seal": "NO"
+}

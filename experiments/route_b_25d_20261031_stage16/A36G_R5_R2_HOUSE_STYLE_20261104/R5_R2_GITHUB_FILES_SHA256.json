@@ -1,0 +1,310 @@
+{
+  "stage": "A36G_R5_R2_BOTH_HOUSES_STYLE_UNIFIED_ENGINE_CANDIDATE",
+  "files": [
+    {
+      "name": "A36G_R4_GROUND_1280x928.png",
+      "size": 2180081,
+      "sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371"
+    },
+    {
+      "name": "A36G_R4_VS_R5_FULL_MAP_TRUE_GROUND_PAR.png",
+      "size": 727277,
+      "sha256": "98dc2878640cf8ef979dc5cf9abb4f6651a53165f584d8b8395bebb936513955"
+    },
+    {
+      "name": "A36G_R4_VS_R5_RIGHT_HOUSE_1X_BEFORE_AFTER.png",
+      "size": 258154,
+      "sha256": "986dd591e433b9411bdc466d1236172301d83fa0f43643e1f77bbcfcb447dca9"
+    },
+    {
+      "name": "A36G_R5_ENGINE_BUILD_QA.json",
+      "size": 506,
+      "sha256": "710797858a20ccc3649626623c3c04fdf1b1c35cc512cbf866edbe97ca615d28"
+    },
+    {
+      "name": "A36G_R5_GROUND_1280x928.png",
+      "size": 2180081,
+      "sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371"
+    },
+    {
+      "name": "A36G_R5_NATIVE_INDEPENDENT_COLD_544x416.png",
+      "size": 414462,
+      "sha256": "2e6a831034f1865e93b7faa739c9de8d71aa3936a32f1b978e61550818744892"
+    },
+    {
+      "name": "A36G_R5_NATIVE_VX_COLD_REBUILD_QA.json",
+      "size": 551,
+      "sha256": "f3299e4269fe18865be1617995371c79875da6874671a80e64eda6c39fecdd03"
+    },
+    {
+      "name": "A36G_R5_PAR50_RGBA_1280x928.png",
+      "size": 1724899,
+      "sha256": "9079fecdf2d0301817a3e06854a3ab1ffec691de6dac29f28102d9e4833bbe6d"
+    },
+    {
+      "name": "A36G_R5_PREVIEW_640.png",
+      "size": 688722,
+      "sha256": "8e51298c3e449247b3dd97e2cd9ec6b7e765d2ad52c5a8de9327ee5e61ee5a21"
+    },
+    {
+      "name": "A36G_R5_R2_INTEGRATION_QA.json",
+      "size": 1376,
+      "sha256": "357402d94ff640074a3fe5f7e481ba4cc351f8d14da8ad20fdf723490743ac6a"
+    },
+    {
+      "name": "A36G_R5_R2_NATIVE_GPU_SCENE_QA.json",
+      "size": 1680,
+      "sha256": "3df461a17cc2b788760df93cde9239366f0cc3b9e9945033eb3f814a236452b2"
+    },
+    {
+      "name": "A36G_R5_R2_VX_9_NATIVE_SCENE_CONTACT.png",
+      "size": 2372792,
+      "sha256": "e2e17afacb98e144e3bcd110b1400ae47c6656df9ceb4822937860407c7b57bc"
+    },
+    {
+      "name": "A36G_R5_SCENE_MANIFEST.json",
+      "size": 151200,
+      "sha256": "4c24008804df2dedda8deaf5290742580715da68b73de1b3ed69613283671153"
+    },
+    {
+      "name": "A36G_R5_TRUE_GROUND_PLUS_PAR_1280x928.png",
+      "size": 2340727,
+      "sha256": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db"
+    },
+    {
+      "name": "A36G_R5_TWO_ACTUAL_RGBA_HOUSE_SOURCES.png",
+      "size": 86235,
+      "sha256": "2900e6bd7104668eaff6a55d143e544922ecff99009882f1020c49ae78fa2f53"
+    },
+    {
+      "name": "CURRENT_HANDOFF_STAGE16_A36G_R5_R2_HOUSE_STYLE_20261104.md",
+      "size": 5674,
+      "sha256": "3946a09bc11f77372b2cebee6f44514431eaf8333b7371c00966cef4121fcad6"
+    },
+    {
+      "name": "FAILED_CANDIDATES/A36G_R5_PIXELLAB_RIGHT_HOUSE_UNIFIED_R1_RGBA.png",
+      "size": 44647,
+      "sha256": "09b55decb6d3cdc5ea6c2b0d171a62f0158ddb81d410694eb2804f7bca2d8ba5"
+    },
+    {
+      "name": "GODOT_R5_NATIVE/a36g_r5_godot_native_render.gd",
+      "size": 4380,
+      "sha256": "a1d8554fbf2958c84017ffb12c85d88abc5c04b63e34e5219e1a723cc5ed34dc"
+    },
+    {
+      "name": "GODOT_R5_NATIVE/out/A36G_R5_GODOT_FULL_MAP_RENDER_QA.json",
+      "size": 1179,
+      "sha256": "042bcfccad7f47d43d56cb8722cf4e16f4641829a873464e3df8aae6df0c4069"
+    },
+    {
+      "name": "GODOT_R5_NATIVE/project.godot",
+      "size": 270,
+      "sha256": "43510e686be4ae2eaa8345d66f37fb85cb22649a7c7630cc77924eb2bbf0077b"
+    },
+    {
+      "name": "R5_BASE_R4_SCENE_MANIFEST.json",
+      "size": 150407,
+      "sha256": "4f30983eeb27d2ae43ddcace39ac2304eaa96e7ac3734411ccf309aa3d210a07"
+    },
+    {
+      "name": "r5_build_native_engines.py",
+      "size": 5875,
+      "sha256": "2277ddf6867670d021ff8523aa4c7f210004a366442192b8782fa309bc354cb9"
+    },
+    {
+      "name": "r5_capture_native.py",
+      "size": 3918,
+      "sha256": "cf37367af59ce76850e341cac1e1ae0a0df241bb32da3c4d3015c76d2354a0f6"
+    },
+    {
+      "name": "r5_cold_verify.py",
+      "size": 2643,
+      "sha256": "4eb2a8d61ccf0c89d249179fe3709b33c4c7955552d8875bdb1831f871ee2a2e"
+    },
+    {
+      "name": "R5_HOUSE_STYLE_BLUEPRINT.json",
+      "size": 1185,
+      "sha256": "00574db121ed838a3cca73ffea710b5bab6844bc1dc838b5b35017742d2df748"
+    },
+    {
+      "name": "r5_integrate_house.py",
+      "size": 5796,
+      "sha256": "6baece3f70bec00aacac8e0edc070bc88f40ddcdcb7e2c68c7653fcfd7e55d34"
+    },
+    {
+      "name": "r5_native_validate.py",
+      "size": 4956,
+      "sha256": "73f53a9ef71e72e9253cae06e2bf69003e8bda4783d569733c09b2cfec1155c7"
+    },
+    {
+      "name": "r5_pixellab_right_house.py",
+      "size": 7180,
+      "sha256": "5a3b8899417e002626fe0d5af7e4358ab7806f0aabe5379d0a2339091d29f201"
+    },
+    {
+      "name": "r5_pixellab_right_house_r2.py",
+      "size": 7234,
+      "sha256": "9ac0e6f84d2bbfda2c2012623332d028f79a17c323a0cc63284a6908dce6c366"
+    },
+    {
+      "name": "r5_prepare.py",
+      "size": 2406,
+      "sha256": "2346d906f68e8f2181a329c09e101a43648dbc4e00dc788a1e589f7fa5fe9975"
+    },
+    {
+      "name": "r5_prepare_builders.py",
+      "size": 2363,
+      "sha256": "44a6d1f25857715ffa70ffee8ff9720e80368d0ddb9b221d5388884489c0921d"
+    },
+    {
+      "name": "r5_prepare_pixellab_right_r2.py",
+      "size": 4271,
+      "sha256": "2553239fc3dd9955ce6906b424a84229c614a3e39d7d4dd64c1bf49448e51d81"
+    },
+    {
+      "name": "r5_r2_integrate_house.py",
+      "size": 6540,
+      "sha256": "c62c1f525937b2ff7c9df08efd1a9f71dad2857001754d7ad83e1b957dcaaaf8"
+    },
+    {
+      "name": "r5_stage_github.py",
+      "size": 2700,
+      "sha256": "91f17597a826798ed0e23200ea6a10de1750a7606b2cfd5fabd8eafea29e2c92"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_11_CASES_SCREEN_QA.json",
+      "size": 10815,
+      "sha256": "a8337e565379b2f320be732c5b1ee7830ce562db00d1d81e3f1a47cbeca9c16d"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_00_northwest_actor.png",
+      "size": 422688,
+      "sha256": "afdedf872fc7865b69696397c5fcdd76c4ddd14b23f53f32b3495a7fe48fe0e9"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_00_northwest_hidden.png",
+      "size": 413574,
+      "sha256": "840ff0ecf1bb069bdc451c8e78f58613d0376282c309ce5c834cebc7f0b7db61"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_01_north_forest_actor.png",
+      "size": 418105,
+      "sha256": "7cc2d5a5037472b0a101f58bc68fe876b9cf6a65ecded91b21f61e683248860f"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_01_north_forest_hidden.png",
+      "size": 418378,
+      "sha256": "0e48917ca2c825c658bd360b6c528211b2446dabc74d73d728b3042ae08bde85"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_02_northeast_actor.png",
+      "size": 395776,
+      "sha256": "b290e5ecce9ddf9ed5d546b8c9d90c7b4a7d04bd3916a9fd916d5560a86ca775"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_02_northeast_hidden.png",
+      "size": 395714,
+      "sha256": "b4bbbee17cd1fcc96d35c759f922f0a28b58038dcdfbf2d96e3c020e4c150250"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_03_west_forest_actor.png",
+      "size": 414819,
+      "sha256": "e71ea1281c2bbfd517e14289f2e431b03cfe24484c415e82788102c275873ee6"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_03_west_forest_hidden.png",
+      "size": 414777,
+      "sha256": "58b44738f5b4793015a564775f85271207fd3dc3973d5c61776759eb590b8ea7"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_04_house1_behind_actor.png",
+      "size": 447997,
+      "sha256": "72f2adbad09993275a428812697da07ba672047e755cd08dfe97e989872a7f70"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_04_house1_behind_hidden.png",
+      "size": 447997,
+      "sha256": "72f2adbad09993275a428812697da07ba672047e755cd08dfe97e989872a7f70"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_05_house1_front_actor.png",
+      "size": 442949,
+      "sha256": "3ef363030098d63c8b637826e98e2345a0295fd45d4c0464c5bb9b437d66d2b8"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_05_house1_front_hidden.png",
+      "size": 442910,
+      "sha256": "df7f3f5ff9cd3cbda34b788234c188510d264d9a26ece6537e1285d807670e4d"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_06_house2_behind_actor.png",
+      "size": 437166,
+      "sha256": "3086b1ecb3b51f5443e03fa7a4f32b9ccf0eff62209acf40643fbfc4ab20e952"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_06_house2_behind_hidden.png",
+      "size": 437165,
+      "sha256": "6d11685310e7b6fa4d3095519891a096919fe6e83a687845527d616cf0665483"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_07_house2_front_actor.png",
+      "size": 394627,
+      "sha256": "28865e0b9ed10f0eaa6afcfe47a97d03924408f174595bdfaae6808db9bdc23f"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_07_house2_front_hidden.png",
+      "size": 394615,
+      "sha256": "24c665487010e21de222cdd7751ec31c5c5efae08cdd20fa3d77043c12dc9a0b"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_08_southeast_actor.png",
+      "size": 370151,
+      "sha256": "6396de3909ac5432b1d832255d01f7b327b69d8193362efa3b84ef14e3deef39"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_08_southeast_hidden.png",
+      "size": 370146,
+      "sha256": "bcea7644c55e59a1c9ca7dbfb44eaf718abc8b423b565d2e04f44919e85bf12d"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_09_tree_block_attempt_actor.png",
+      "size": 445051,
+      "sha256": "3eff9397fffac2feedd412290006b119e2f200915e477da7067697f2ab996bef"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_09_tree_block_attempt_hidden.png",
+      "size": 445032,
+      "sha256": "e68148db76a4bee10dfd92b2df69dc6d95b2c40eecb77e1138cf7908d9906132"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_10_legal_road_move_actor.png",
+      "size": 435560,
+      "sha256": "3364e6097d93c0f87e511e78e183dd5ed29d19b7e23fb1931d0e8d0fa14c0f50"
+    },
+    {
+      "name": "R5_VX_CAPTURES/A36G_VX_NATIVE_CASE_10_legal_road_move_hidden.png",
+      "size": 435666,
+      "sha256": "3c962702fe6ac70e655145c117e713644ffcf6651bbbe493ee1ac24bac832638"
+    },
+    {
+      "name": "SOURCE_INDEPENDENT_RGBA/A36F_ELF_COTTAGE_B_MOSS_ROOF_RGBA.png",
+      "size": 50848,
+      "sha256": "110471397ccf079b1ed4367bf840335498bd60c3ac58b20cf2cf9b7f07723fb5"
+    },
+    {
+      "name": "SOURCE_INDEPENDENT_RGBA/A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png",
+      "size": 56582,
+      "sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699"
+    },
+    {
+      "name": "SOURCE_INDEPENDENT_RGBA/A36G_R5_LEFT_HOUSE_MATERIAL_STYLE_PATCH_RGBA.png",
+      "size": 25650,
+      "sha256": "a76a316e6d73063068e49cc4f7bbd280b39d7f713be41e0b026bc39ffec76088"
+    },
+    {
+      "name": "SOURCE_INDEPENDENT_RGBA/A36G_R5_PIXELLAB_RIGHT_HOUSE_SINGLE_GABLE_R2_RGBA.png",
+      "size": 33149,
+      "sha256": "4794a89cb06029112e6581c85a47bdcf6a84b7f636e05755825a989793585206"
+    }
+  ]
+}

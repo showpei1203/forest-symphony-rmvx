@@ -1,0 +1,6383 @@
+{
+  "stage": "A36G_R5_R2_BOTH_HOUSES_STYLE_UNIFIED_ENGINE_CANDIDATE",
+  "source_stage": "A36G_R4_6REGIONS_R3_ROOT_ART_FIX_ENGINE_CANDIDATE",
+  "canvas": [
+    1280,
+    928
+  ],
+  "grid": [
+    40,
+    29
+  ],
+  "objects": [
+    {
+      "id": "a36g_r4_north_west_depth_01",
+      "type": "forest_group",
+      "x": 310,
+      "y": -145,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        542,
+        -54
+      ],
+      "filename": "A36G_R4_NORTH_WEST_R2_DEPTH_01_RGBA.png",
+      "sha256": "d07e6735071c81f054df9f38e3b832481fc000cdf60bc82727d609823480deca",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_WEST",
+      "depth_interval": [
+        -145,
+        -54
+      ]
+    },
+    {
+      "id": "a36g_r4_north_east_depth_01",
+      "type": "forest_group",
+      "x": 714,
+      "y": -140,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        946,
+        -49
+      ],
+      "filename": "A36G_R4_NORTH_EAST_R2_DEPTH_01_RGBA.png",
+      "sha256": "6942d6b8b944ffd50f08039ca0f4575d7f60e379eea4b16634863fe99869f2a3",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_EAST",
+      "depth_interval": [
+        -140,
+        -49
+      ]
+    },
+    {
+      "id": "a36g_pixellab_west_depth_01",
+      "type": "forest_group",
+      "x": -112,
+      "y": -110,
+      "w": 464,
+      "h": 110,
+      "foot": [
+        120,
+        0
+      ],
+      "filename": "A36G_PIXELLAB_FOREST_WEST_DEPTH_01_RGBA.png",
+      "sha256": "9eadb9a2a81df31ebc1d696378ff71d102aabefd601c4059cce1a003bc7fda3f",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png",
+      "native_provider_source": "A36G_PIXELLAB_WEST_FOREST_CONTIGUOUS_FULL_R3B_RGBA.png",
+      "depth_interval": [
+        -110,
+        0
+      ]
+    },
+    {
+      "id": "a36g_r4_north_west_depth_02",
+      "type": "forest_group",
+      "x": 310,
+      "y": -54,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        542,
+        37
+      ],
+      "filename": "A36G_R4_NORTH_WEST_R2_DEPTH_02_RGBA.png",
+      "sha256": "0655c1ca5e6b0ffe866f3ad7688c360da1c6790db32f7afa0a142a2728df7cf3",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_WEST",
+      "depth_interval": [
+        -54,
+        37
+      ]
+    },
+    {
+      "id": "a36g_r4_north_east_depth_02",
+      "type": "forest_group",
+      "x": 714,
+      "y": -49,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        946,
+        42
+      ],
+      "filename": "A36G_R4_NORTH_EAST_R2_DEPTH_02_RGBA.png",
+      "sha256": "801982d2b32218e7d36030e3fd3561ec483e431ee3732574ec0d4263f0b9bd23",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_EAST",
+      "depth_interval": [
+        -49,
+        42
+      ]
+    },
+    {
+      "id": "a36g_pixellab_west_depth_02",
+      "type": "forest_group",
+      "x": -112,
+      "y": 0,
+      "w": 464,
+      "h": 75,
+      "foot": [
+        120,
+        75
+      ],
+      "filename": "A36G_PIXELLAB_FOREST_WEST_DEPTH_02_RGBA.png",
+      "sha256": "8870b7718f7fa94b842757172d711c9a8290876804026321a50f6dc377eba8f8",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png",
+      "native_provider_source": "A36G_PIXELLAB_WEST_FOREST_CONTIGUOUS_FULL_R3B_RGBA.png",
+      "depth_interval": [
+        0,
+        75
+      ]
+    },
+    {
+      "id": "tree_003",
+      "type": "tree",
+      "x": 676,
+      "y": 24,
+      "foot": [
+        713,
+        100
+      ],
+      "w": 74,
+      "h": 81,
+      "filename": "A36F_tree_003_ORIGINAL_RGBA.png",
+      "sha256": "85ae0a70f8b10c7eb22cd95fba69cba0be7c3de3aa95a3a7e96b3dc241b24b36",
+      "source_A34_RGBA": "A34_TREE_003_RGBA.png",
+      "source_A34_SHA": "85ae0a70f8b10c7eb22cd95fba69cba0be7c3de3aa95a3a7e96b3dc241b24b36",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_003_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36g_r4_north_west_depth_03",
+      "type": "forest_group",
+      "x": 310,
+      "y": 37,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        542,
+        128
+      ],
+      "filename": "A36G_R4_NORTH_WEST_R2_DEPTH_03_RGBA.png",
+      "sha256": "5c390ff40fdeeadc8c792555a874740446037a8d34899480836714295af4d4c4",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_WEST",
+      "depth_interval": [
+        37,
+        128
+      ]
+    },
+    {
+      "id": "a36g_r4_north_east_depth_03",
+      "type": "forest_group",
+      "x": 714,
+      "y": 42,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        946,
+        133
+      ],
+      "filename": "A36G_R4_NORTH_EAST_R2_DEPTH_03_RGBA.png",
+      "sha256": "7b8a9b6c5810324485ba02ecf5574999b4273ec0aef7c7fb216637e44cd01745",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_EAST",
+      "depth_interval": [
+        42,
+        133
+      ]
+    },
+    {
+      "id": "a36c_understory_043",
+      "type": "shrub",
+      "x": 1157,
+      "y": 110,
+      "w": 63,
+      "h": 38,
+      "foot": [
+        1188,
+        143
+      ],
+      "filename": "A36F_UNDERSTORY_043_RGBA.png",
+      "sha256": "7f01c7d6adf5ebfe1f844556fde9e230244fb30240e7ea4ce831686b7b97e06c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_013_RGBA.png",
+      "source_A34_sha": "7f01c7d6adf5ebfe1f844556fde9e230244fb30240e7ea4ce831686b7b97e06c"
+    },
+    {
+      "id": "tree_062",
+      "type": "tree",
+      "x": 1158,
+      "y": 36,
+      "foot": [
+        1207,
+        149
+      ],
+      "w": 98,
+      "h": 118,
+      "filename": "A36F_tree_062_ORIGINAL_RGBA.png",
+      "sha256": "c84efe25e5f9f65fb1bca9acfb58b40610a4265ef665e915c681e568fad46294",
+      "source_A34_RGBA": "A34_TREE_062_RGBA.png",
+      "source_A34_SHA": "c84efe25e5f9f65fb1bca9acfb58b40610a4265ef665e915c681e568fad46294",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_062_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36g_pixellab_west_depth_03",
+      "type": "forest_group",
+      "x": -112,
+      "y": 75,
+      "w": 464,
+      "h": 80,
+      "foot": [
+        120,
+        155
+      ],
+      "filename": "A36G_PIXELLAB_FOREST_WEST_DEPTH_03_RGBA.png",
+      "sha256": "3dfb5702ebbdf88919313c913b4ff7d098bcdcea0b47bf2102ae7eec2c011bd5",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png",
+      "native_provider_source": "A36G_PIXELLAB_WEST_FOREST_CONTIGUOUS_FULL_R3B_RGBA.png",
+      "depth_interval": [
+        75,
+        155
+      ]
+    },
+    {
+      "id": "tree_086",
+      "type": "tree",
+      "x": 652,
+      "y": 63,
+      "foot": [
+        695,
+        165
+      ],
+      "w": 87,
+      "h": 107,
+      "filename": "A36F_tree_086_ORIGINAL_RGBA.png",
+      "sha256": "a3176ad5c0ab8e842c01d206fa0cede27591437ad8b8af73aafc691f31470e05",
+      "source_A34_RGBA": "A34_TREE_086_RGBA.png",
+      "source_A34_SHA": "a3176ad5c0ab8e842c01d206fa0cede27591437ad8b8af73aafc691f31470e05",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_086_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_035",
+      "type": "tree",
+      "x": 1187,
+      "y": 71,
+      "w": 87,
+      "h": 107,
+      "foot": [
+        1230,
+        173
+      ],
+      "filename": "A36F_DENSE_TREE_035_RGBA.png",
+      "sha256": "a3176ad5c0ab8e842c01d206fa0cede27591437ad8b8af73aafc691f31470e05",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_086_RGBA.png",
+      "source_A34_sha": "a3176ad5c0ab8e842c01d206fa0cede27591437ad8b8af73aafc691f31470e05",
+      "mirror_x": false
+    },
+    {
+      "id": "tree_084",
+      "type": "tree",
+      "x": 419,
+      "y": 88,
+      "foot": [
+        462,
+        177
+      ],
+      "w": 86,
+      "h": 94,
+      "filename": "A36F_tree_084_ORIGINAL_RGBA.png",
+      "sha256": "e28283fdbc74ed14b2a7b9842b2218fb6f6a5b84f5ef385b8397823d3ac1cf2c",
+      "source_A34_RGBA": "A34_TREE_084_RGBA.png",
+      "source_A34_SHA": "e28283fdbc74ed14b2a7b9842b2218fb6f6a5b84f5ef385b8397823d3ac1cf2c",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_084_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_understory_046",
+      "type": "shrub",
+      "x": 407,
+      "y": 145,
+      "w": 73,
+      "h": 40,
+      "foot": [
+        443,
+        180
+      ],
+      "filename": "A36F_UNDERSTORY_046_RGBA.png",
+      "sha256": "e161f61b0cf80b9ea3abb5cdcca4c4d83f2e0bf5cf6bfd5671f420c96af2b4d8",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_004_RGBA.png",
+      "source_A34_sha": "e161f61b0cf80b9ea3abb5cdcca4c4d83f2e0bf5cf6bfd5671f420c96af2b4d8"
+    },
+    {
+      "id": "a36c_understory_040",
+      "type": "shrub",
+      "x": 577,
+      "y": 158,
+      "w": 68,
+      "h": 36,
+      "foot": [
+        611,
+        189
+      ],
+      "filename": "A36F_UNDERSTORY_040_RGBA.png",
+      "sha256": "8b983c137c078c96dd2da5eeac147c0c3c8dc248a55128f76347879a5659259c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_064_RGBA.png",
+      "source_A34_sha": "8b983c137c078c96dd2da5eeac147c0c3c8dc248a55128f76347879a5659259c"
+    },
+    {
+      "id": "a36c_dense_tree_074",
+      "type": "tree",
+      "x": 1116,
+      "y": 33,
+      "w": 139,
+      "h": 166,
+      "foot": [
+        1185,
+        194
+      ],
+      "filename": "A36F_DENSE_TREE_074_RGBA.png",
+      "sha256": "1ae378e646496bb1e09e6c67010de0b501e44c78818ef4247f38b3b1addceb28",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_082_RGBA.png",
+      "source_A34_sha": "aee27251efed231ba2a2b873828005fb884b702bab5e19bbfabbe1e16574044d",
+      "mirror_x": true
+    },
+    {
+      "id": "shrub_011",
+      "type": "shrub",
+      "x": 440,
+      "y": 148,
+      "foot": [
+        480,
+        195
+      ],
+      "w": 81,
+      "h": 52,
+      "filename": "A36F_shrub_011_ORIGINAL_RGBA.png",
+      "sha256": "799d50563b693ef6e263c4b2bd1fa4caad0b35efcebd725140ec6021f39153b8",
+      "source_A34_RGBA": "A34_SHRUB_011_RGBA.png",
+      "source_A34_SHA": "799d50563b693ef6e263c4b2bd1fa4caad0b35efcebd725140ec6021f39153b8",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_011_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_016",
+      "type": "tree",
+      "x": 533,
+      "y": 119,
+      "w": 91,
+      "h": 85,
+      "foot": [
+        578,
+        199
+      ],
+      "filename": "A36F_DENSE_TREE_016_RGBA.png",
+      "sha256": "abe2d993b8b1707dd00e391804ec50b83f63ace3af12c69efbfcb6e1cf832fe8",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_102_RGBA.png",
+      "source_A34_sha": "abe2d993b8b1707dd00e391804ec50b83f63ace3af12c69efbfcb6e1cf832fe8",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_dense_tree_142",
+      "type": "tree",
+      "x": 467,
+      "y": 106,
+      "w": 90,
+      "h": 99,
+      "foot": [
+        512,
+        200
+      ],
+      "filename": "A36F_DENSE_TREE_142_RGBA.png",
+      "sha256": "5e08c5b3af04b7b278e9d8c7708b95a1d3e4724c23b02b9a17d3e19f297d4218",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_008_RGBA.png",
+      "source_A34_sha": "5e08c5b3af04b7b278e9d8c7708b95a1d3e4724c23b02b9a17d3e19f297d4218",
+      "mirror_x": false
+    },
+    {
+      "id": "shrub_075",
+      "type": "shrub",
+      "x": 589,
+      "y": 166,
+      "foot": [
+        624,
+        200
+      ],
+      "w": 71,
+      "h": 39,
+      "filename": "A36F_shrub_075_ORIGINAL_RGBA.png",
+      "sha256": "bfb54c7e53e2acbb90608d0653763bf51c9daef888ae527a1e8d50b2d222eeab",
+      "source_A34_RGBA": "A34_SHRUB_075_RGBA.png",
+      "source_A34_SHA": "bfb54c7e53e2acbb90608d0653763bf51c9daef888ae527a1e8d50b2d222eeab",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_075_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_understory_066",
+      "type": "shrub",
+      "x": 1171,
+      "y": 173,
+      "w": 64,
+      "h": 34,
+      "foot": [
+        1203,
+        202
+      ],
+      "filename": "A36F_UNDERSTORY_066_RGBA.png",
+      "sha256": "814c882eca1abee83a73b27eddc91d05583d1fa455e7f4791a8892ab010c38de",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_094_RGBA.png",
+      "source_A34_sha": "814c882eca1abee83a73b27eddc91d05583d1fa455e7f4791a8892ab010c38de"
+    },
+    {
+      "id": "a36c_dense_tree_070",
+      "type": "tree",
+      "x": 377,
+      "y": 140,
+      "w": 72,
+      "h": 68,
+      "foot": [
+        413,
+        203
+      ],
+      "filename": "A36F_DENSE_TREE_070_RGBA.png",
+      "sha256": "5b226ffce0f1968ea1a2327100a0f26382058a5a100de241377ec8c7098e5876",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_064_RGBA.png",
+      "source_A34_sha": "5b226ffce0f1968ea1a2327100a0f26382058a5a100de241377ec8c7098e5876",
+      "mirror_x": false
+    },
+    {
+      "id": "tree_047",
+      "type": "tree",
+      "x": 1208,
+      "y": 87,
+      "foot": [
+        1242,
+        203
+      ],
+      "w": 68,
+      "h": 121,
+      "filename": "A36F_tree_047_ORIGINAL_RGBA.png",
+      "sha256": "ad94ac8bcf5e589bfc221f20edf2acab6d10c7ea71a9c2d7120845efcfc3fc4e",
+      "source_A34_RGBA": "A34_TREE_047_RGBA.png",
+      "source_A34_SHA": "ad94ac8bcf5e589bfc221f20edf2acab6d10c7ea71a9c2d7120845efcfc3fc4e",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_047_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36f_understory_046",
+      "type": "shrub",
+      "x": 603,
+      "y": 164,
+      "w": 77,
+      "h": 49,
+      "foot": [
+        641,
+        208
+      ],
+      "filename": "A36F_EXTRA_LAYER_046_RGBA.png",
+      "sha256": "2b8df2c3d7e31e94feb0c6b0019ebfe8cb4471506c904bd49f4153143cef3461",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "2b8df2c3d7e31e94feb0c6b0019ebfe8cb4471506c904bd49f4153143cef3461"
+    },
+    {
+      "id": "a36c_understory_051",
+      "type": "shrub",
+      "x": 536,
+      "y": 173,
+      "w": 72,
+      "h": 42,
+      "foot": [
+        572,
+        210
+      ],
+      "filename": "A36F_UNDERSTORY_051_RGBA.png",
+      "sha256": "e215c413f225d10dad1eb06805999411670c4185aaba1cb7dabafe6a21d25101",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_001_RGBA.png",
+      "source_A34_sha": "e215c413f225d10dad1eb06805999411670c4185aaba1cb7dabafe6a21d25101"
+    },
+    {
+      "id": "a36g_r4_north_west_depth_04",
+      "type": "forest_group",
+      "x": 310,
+      "y": 128,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        542,
+        219
+      ],
+      "filename": "A36G_R4_NORTH_WEST_R2_DEPTH_04_RGBA.png",
+      "sha256": "24fb950dbdffdf8ccc87e5f26a643a2a56c3bfb8d6958b4b74014363bb563ed2",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_WEST",
+      "depth_interval": [
+        128,
+        219
+      ]
+    },
+    {
+      "id": "a36g_r4_north_east_depth_04",
+      "type": "forest_group",
+      "x": 714,
+      "y": 133,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        946,
+        224
+      ],
+      "filename": "A36G_R4_NORTH_EAST_R2_DEPTH_04_RGBA.png",
+      "sha256": "26fd1df3d52366b28ca566437950ea13e86d85ceab08c05666319a749c2c2bab",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_EAST",
+      "depth_interval": [
+        133,
+        224
+      ]
+    },
+    {
+      "id": "a36c_dense_tree_147",
+      "type": "tree",
+      "x": 1151,
+      "y": 107,
+      "w": 117,
+      "h": 129,
+      "foot": [
+        1209,
+        231
+      ],
+      "filename": "A36F_DENSE_TREE_147_RGBA.png",
+      "sha256": "2144e2885699ff6672bededb341a9a4b93ccc248bc2787fbb5642656d706f9c7",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_087_RGBA.png",
+      "source_A34_sha": "2144e2885699ff6672bededb341a9a4b93ccc248bc2787fbb5642656d706f9c7",
+      "mirror_x": false
+    },
+    {
+      "id": "tree_063",
+      "type": "tree",
+      "x": 571,
+      "y": 140,
+      "foot": [
+        611,
+        232
+      ],
+      "w": 81,
+      "h": 97,
+      "filename": "A36F_tree_063_ORIGINAL_RGBA.png",
+      "sha256": "f0a6861e95b4c0de648cae7ac9df5f33ec54e44b5e75cc1dd50784c22117c3b4",
+      "source_A34_RGBA": "A34_TREE_063_RGBA.png",
+      "source_A34_SHA": "f0a6861e95b4c0de648cae7ac9df5f33ec54e44b5e75cc1dd50784c22117c3b4",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_063_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_143",
+      "type": "tree",
+      "x": 348,
+      "y": 140,
+      "w": 106,
+      "h": 99,
+      "foot": [
+        400,
+        234
+      ],
+      "filename": "A36F_DENSE_TREE_143_RGBA.png",
+      "sha256": "554384498a59b404dbad73a8dc6dcb20600390879b55e2fc39cb83f8c02ff545",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_023_RGBA.png",
+      "source_A34_sha": "77b38e07cb1644724e3867128a3325c49a3e9914601f6c2b12634a006d0cc597",
+      "mirror_x": true
+    },
+    {
+      "id": "a36d_botanical_031",
+      "type": "shrub",
+      "x": 388,
+      "y": 195,
+      "w": 57,
+      "h": 45,
+      "foot": [
+        416,
+        235
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_031_RGBA.png",
+      "sha256": "e868ec857e6fe274d36104475a369692cd7895db0ea3d60ebe2448ab812d4bb2",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_084_RGBA.png",
+      "source_A34_sha": "e868ec857e6fe274d36104475a369692cd7895db0ea3d60ebe2448ab812d4bb2",
+      "alpha_isolated": true
+    },
+    {
+      "id": "tree_020",
+      "type": "tree",
+      "x": 1090,
+      "y": 47,
+      "foot": [
+        1171,
+        236
+      ],
+      "w": 162,
+      "h": 194,
+      "filename": "A36F_tree_020_ORIGINAL_RGBA.png",
+      "sha256": "b33580ecd2e88a570af439c135ad2dcc13cb4a9b82fec7bac0ab7ecdfdb932a2",
+      "source_A34_RGBA": "A34_TREE_020_RGBA.png",
+      "source_A34_SHA": "b33580ecd2e88a570af439c135ad2dcc13cb4a9b82fec7bac0ab7ecdfdb932a2",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_020_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36g_pixellab_west_depth_04",
+      "type": "forest_group",
+      "x": -112,
+      "y": 155,
+      "w": 464,
+      "h": 85,
+      "foot": [
+        120,
+        240
+      ],
+      "filename": "A36G_PIXELLAB_FOREST_WEST_DEPTH_04_RGBA.png",
+      "sha256": "edb1f79e14a74b4eebe7242555f28c2c0cd2b4ef21d122dad93fbdde0fb62497",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png",
+      "native_provider_source": "A36G_PIXELLAB_WEST_FOREST_CONTIGUOUS_FULL_R3B_RGBA.png",
+      "depth_interval": [
+        155,
+        240
+      ]
+    },
+    {
+      "id": "shrub_092",
+      "type": "shrub",
+      "x": 369,
+      "y": 206,
+      "foot": [
+        395,
+        242
+      ],
+      "w": 52,
+      "h": 41,
+      "filename": "A36F_shrub_092_ORIGINAL_RGBA.png",
+      "sha256": "3ca527782d2ae5554a1fd38fb82f81516ce92580edf97e0f181c50f26c05cbb7",
+      "source_A34_RGBA": "A34_SHRUB_092_RGBA.png",
+      "source_A34_SHA": "3ca527782d2ae5554a1fd38fb82f81516ce92580edf97e0f181c50f26c05cbb7",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_092_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_understory_010",
+      "type": "shrub",
+      "x": 685,
+      "y": 203,
+      "w": 57,
+      "h": 45,
+      "foot": [
+        713,
+        243
+      ],
+      "filename": "A36F_UNDERSTORY_010_RGBA.png",
+      "sha256": "e868ec857e6fe274d36104475a369692cd7895db0ea3d60ebe2448ab812d4bb2",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_084_RGBA.png",
+      "source_A34_sha": "e868ec857e6fe274d36104475a369692cd7895db0ea3d60ebe2448ab812d4bb2"
+    },
+    {
+      "id": "a36c_understory_067",
+      "type": "shrub",
+      "x": 499,
+      "y": 196,
+      "w": 68,
+      "h": 54,
+      "foot": [
+        533,
+        245
+      ],
+      "filename": "A36F_UNDERSTORY_067_RGBA.png",
+      "sha256": "f68cee8377ff93cde1fcaa95e599f4007c996d0065cded93487bba7ec395d048",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_028_RGBA.png",
+      "source_A34_sha": "f68cee8377ff93cde1fcaa95e599f4007c996d0065cded93487bba7ec395d048"
+    },
+    {
+      "id": "shrub_041",
+      "type": "shrub",
+      "x": 1194,
+      "y": 213,
+      "foot": [
+        1223,
+        246
+      ],
+      "w": 59,
+      "h": 38,
+      "filename": "A36F_shrub_041_ORIGINAL_RGBA.png",
+      "sha256": "e54fe0fe10111bfa77256304e72fb1c7133dbd49de52324cdd9c4dd56319c5e5",
+      "source_A34_RGBA": "A34_SHRUB_041_RGBA.png",
+      "source_A34_SHA": "e54fe0fe10111bfa77256304e72fb1c7133dbd49de52324cdd9c4dd56319c5e5",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_041_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "tree_093",
+      "type": "tree",
+      "x": 365,
+      "y": 88,
+      "foot": [
+        436,
+        254
+      ],
+      "w": 143,
+      "h": 171,
+      "filename": "A36F_tree_093_ORIGINAL_RGBA.png",
+      "sha256": "c744d84a3bf7d6972bf9767448a6d7b94bc6d9d3e290f8f72279e50fe1984e88",
+      "source_A34_RGBA": "A34_TREE_093_RGBA.png",
+      "source_A34_SHA": "c744d84a3bf7d6972bf9767448a6d7b94bc6d9d3e290f8f72279e50fe1984e88",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_093_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_041",
+      "type": "tree",
+      "x": 261,
+      "y": 156,
+      "w": 88,
+      "h": 109,
+      "foot": [
+        305,
+        260
+      ],
+      "filename": "A36F_DENSE_TREE_041_RGBA.png",
+      "sha256": "cc44053f95a290737e23af09c370b665a46c8fa7291d6c9e8fc844c85816f5a6",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_050_RGBA.png",
+      "source_A34_sha": "cc44053f95a290737e23af09c370b665a46c8fa7291d6c9e8fc844c85816f5a6",
+      "mirror_x": false
+    },
+    {
+      "id": "a36d_botanical_022",
+      "type": "shrub",
+      "x": 625,
+      "y": 240,
+      "w": 75,
+      "h": 41,
+      "foot": [
+        662,
+        276
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_022_RGBA.png",
+      "sha256": "36907ddced48f38048a01ab15316a98b6a1a8b5bf76f8149c0bb194f8e70eae9",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_016_RGBA.png",
+      "source_A34_sha": "36907ddced48f38048a01ab15316a98b6a1a8b5bf76f8149c0bb194f8e70eae9",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36f_understory_017",
+      "type": "shrub",
+      "x": 711,
+      "y": 240,
+      "w": 78,
+      "h": 43,
+      "foot": [
+        750,
+        278
+      ],
+      "filename": "A36F_EXTRA_LAYER_017_RGBA.png",
+      "sha256": "bb98ce3c3a889107d4734caf7fa240e2df5e70cdb5f7c1b6872b8d29a4af7539",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "bb98ce3c3a889107d4734caf7fa240e2df5e70cdb5f7c1b6872b8d29a4af7539"
+    },
+    {
+      "id": "a36f_understory_044",
+      "type": "shrub",
+      "x": 253,
+      "y": 251,
+      "w": 62,
+      "h": 34,
+      "foot": [
+        284,
+        280
+      ],
+      "filename": "A36F_EXTRA_LAYER_044_RGBA.png",
+      "sha256": "71f5e685cc9bd04c9a6c5042c03bc3889dbbdb2ee4a32ddca9d0c6ff5ee59627",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "71f5e685cc9bd04c9a6c5042c03bc3889dbbdb2ee4a32ddca9d0c6ff5ee59627"
+    },
+    {
+      "id": "a36c_dense_tree_149",
+      "type": "tree",
+      "x": 227,
+      "y": 188,
+      "w": 85,
+      "h": 104,
+      "foot": [
+        269,
+        287
+      ],
+      "filename": "A36F_DENSE_TREE_149_RGBA.png",
+      "sha256": "1b13b1840f75162ecbf8ff46fa74906ef287a5e323dbe558fab9ea2246a6562c",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_071_RGBA.png",
+      "source_A34_sha": "1b13b1840f75162ecbf8ff46fa74906ef287a5e323dbe558fab9ea2246a6562c",
+      "mirror_x": false
+    },
+    {
+      "id": "a36g_r4_north_west_depth_05",
+      "type": "forest_group",
+      "x": 310,
+      "y": 219,
+      "w": 464,
+      "h": 68,
+      "foot": [
+        542,
+        287
+      ],
+      "filename": "A36G_R4_NORTH_WEST_R2_DEPTH_05_RGBA.png",
+      "sha256": "e06e553d8083b4e19e4a397597e04b3207ca8fb80246953aa0eeadb990c4d8d7",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_WEST",
+      "depth_interval": [
+        219,
+        287
+      ]
+    },
+    {
+      "id": "a36c_dense_tree_146",
+      "type": "tree",
+      "x": 649,
+      "y": 172,
+      "w": 130,
+      "h": 122,
+      "foot": [
+        714,
+        289
+      ],
+      "filename": "A36F_DENSE_TREE_146_RGBA.png",
+      "sha256": "cfcf05774b0d0e9548582038e61634e96e6f9d1c770da33f32664c3576cfcf43",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_048_RGBA.png",
+      "source_A34_sha": "cfcf05774b0d0e9548582038e61634e96e6f9d1c770da33f32664c3576cfcf43",
+      "mirror_x": false
+    },
+    {
+      "id": "a36d_botanical_025",
+      "type": "shrub",
+      "x": 295,
+      "y": 254,
+      "w": 74,
+      "h": 40,
+      "foot": [
+        332,
+        289
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_025_RGBA.png",
+      "sha256": "3c23c9c54dea47f56789feecca3d31dd668f46cd105658db3e2ce5d99034c981",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_008_RGBA.png",
+      "source_A34_sha": "3c23c9c54dea47f56789feecca3d31dd668f46cd105658db3e2ce5d99034c981",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36g_r4_north_east_depth_05",
+      "type": "forest_group",
+      "x": 714,
+      "y": 224,
+      "w": 464,
+      "h": 68,
+      "foot": [
+        946,
+        292
+      ],
+      "filename": "A36G_R4_NORTH_EAST_R2_DEPTH_05_RGBA.png",
+      "sha256": "27e20574033837a71919880f13f3279df7ac51e98cdfbd7e41f00b4eb6c21d4c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_NORTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_NORTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "NORTH_EAST",
+      "depth_interval": [
+        224,
+        292
+      ]
+    },
+    {
+      "id": "shrub_040",
+      "type": "shrub",
+      "x": 931,
+      "y": 265,
+      "foot": [
+        963,
+        301
+      ],
+      "w": 64,
+      "h": 41,
+      "filename": "A36F_shrub_040_ORIGINAL_RGBA.png",
+      "sha256": "a7c6b6033e267ed50540a085ad3fcfd97a29d447d0257d3b36d6d4c25beff722",
+      "source_A34_RGBA": "A34_SHRUB_040_RGBA.png",
+      "source_A34_SHA": "a7c6b6033e267ed50540a085ad3fcfd97a29d447d0257d3b36d6d4c25beff722",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_040_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36d_botanical_003",
+      "type": "shrub",
+      "x": 701,
+      "y": 264,
+      "w": 55,
+      "h": 43,
+      "foot": [
+        728,
+        302
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_003_RGBA.png",
+      "sha256": "53b22396c0c5d76794313f3107b99cd2e50d5c63874e5cd3cbf487f909760044",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_056_RGBA.png",
+      "source_A34_sha": "53b22396c0c5d76794313f3107b99cd2e50d5c63874e5cd3cbf487f909760044",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_028",
+      "type": "tree",
+      "x": 765,
+      "y": 175,
+      "w": 109,
+      "h": 135,
+      "foot": [
+        819,
+        305
+      ],
+      "filename": "A36F_DENSE_TREE_028_RGBA.png",
+      "sha256": "36e076f01cadad3bf13523bcca715f036d3222ddd82eb9fdd9fceed332924955",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_076_RGBA.png",
+      "source_A34_sha": "36e076f01cadad3bf13523bcca715f036d3222ddd82eb9fdd9fceed332924955",
+      "mirror_x": false
+    },
+    {
+      "id": "a36f_understory_026",
+      "type": "shrub",
+      "x": 646,
+      "y": 262,
+      "w": 85,
+      "h": 48,
+      "foot": [
+        688,
+        305
+      ],
+      "filename": "A36F_EXTRA_LAYER_026_RGBA.png",
+      "sha256": "0c9ba0e3b4d003119d621b76517ae6203e26a413499a31356ef1a6fa89530fe6",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "0c9ba0e3b4d003119d621b76517ae6203e26a413499a31356ef1a6fa89530fe6"
+    },
+    {
+      "id": "shrub_016",
+      "type": "shrub",
+      "x": 1099,
+      "y": 271,
+      "foot": [
+        1136,
+        307
+      ],
+      "w": 75,
+      "h": 41,
+      "filename": "A36F_shrub_016_ORIGINAL_RGBA.png",
+      "sha256": "36907ddced48f38048a01ab15316a98b6a1a8b5bf76f8149c0bb194f8e70eae9",
+      "source_A34_RGBA": "A34_SHRUB_016_RGBA.png",
+      "source_A34_SHA": "36907ddced48f38048a01ab15316a98b6a1a8b5bf76f8149c0bb194f8e70eae9",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_016_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36f_understory_006",
+      "type": "shrub",
+      "x": 231,
+      "y": 272,
+      "w": 55,
+      "h": 43,
+      "foot": [
+        258,
+        310
+      ],
+      "filename": "A36F_EXTRA_LAYER_006_RGBA.png",
+      "sha256": "53b22396c0c5d76794313f3107b99cd2e50d5c63874e5cd3cbf487f909760044",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "53b22396c0c5d76794313f3107b99cd2e50d5c63874e5cd3cbf487f909760044"
+    },
+    {
+      "id": "tree_010",
+      "type": "tree",
+      "x": 807,
+      "y": 154,
+      "foot": [
+        882,
+        316
+      ],
+      "w": 151,
+      "h": 167,
+      "filename": "A36F_tree_010_ORIGINAL_RGBA.png",
+      "sha256": "6364a13dd821644f33cd075cf937a7a5aa652f59cf1b0a155544f709ddd849be",
+      "source_A34_RGBA": "A34_TREE_010_RGBA.png",
+      "source_A34_SHA": "6364a13dd821644f33cd075cf937a7a5aa652f59cf1b0a155544f709ddd849be",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_010_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36f_understory_031",
+      "type": "shrub",
+      "x": 1155,
+      "y": 269,
+      "w": 71,
+      "h": 56,
+      "foot": [
+        1190,
+        320
+      ],
+      "filename": "A36F_EXTRA_LAYER_031_RGBA.png",
+      "sha256": "88eb639731b3ede4e617a53365241d3e0cd8277b4903f69169f92f85af05904e",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "88eb639731b3ede4e617a53365241d3e0cd8277b4903f69169f92f85af05904e"
+    },
+    {
+      "id": "a36c_understory_062",
+      "type": "shrub",
+      "x": 744,
+      "y": 289,
+      "w": 63,
+      "h": 37,
+      "foot": [
+        775,
+        321
+      ],
+      "filename": "A36F_UNDERSTORY_062_RGBA.png",
+      "sha256": "19485e800f101b4f388867ec992c5ff361e6811ad0719f5e3d85876e0a400e6f",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_080_RGBA.png",
+      "source_A34_sha": "19485e800f101b4f388867ec992c5ff361e6811ad0719f5e3d85876e0a400e6f"
+    },
+    {
+      "id": "a36c_dense_tree_101",
+      "type": "tree",
+      "x": 1075,
+      "y": 199,
+      "w": 117,
+      "h": 129,
+      "foot": [
+        1133,
+        323
+      ],
+      "filename": "A36F_DENSE_TREE_101_RGBA.png",
+      "sha256": "8fab6212f72dc4ee0988d1d11d86aa5a93f0a338baacf441a66439d120a211cb",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_087_RGBA.png",
+      "source_A34_sha": "2144e2885699ff6672bededb341a9a4b93ccc248bc2787fbb5642656d706f9c7",
+      "mirror_x": true
+    },
+    {
+      "id": "a36c_dense_tree_073",
+      "type": "tree",
+      "x": 202,
+      "y": 168,
+      "w": 148,
+      "h": 163,
+      "foot": [
+        276,
+        326
+      ],
+      "filename": "A36F_DENSE_TREE_073_RGBA.png",
+      "sha256": "f1a3b1a72d9f24890613c0e806c0824caba0d5a905457986316113d03f4e31be",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_073_RGBA.png",
+      "source_A34_sha": "f1a3b1a72d9f24890613c0e806c0824caba0d5a905457986316113d03f4e31be",
+      "mirror_x": false
+    },
+    {
+      "id": "a36g_pixellab_west_depth_05",
+      "type": "forest_group",
+      "x": -112,
+      "y": 240,
+      "w": 464,
+      "h": 90,
+      "foot": [
+        120,
+        330
+      ],
+      "filename": "A36G_PIXELLAB_FOREST_WEST_DEPTH_05_RGBA.png",
+      "sha256": "3f344516ffd27ef8817bde699f82fdaafbc6d533d5bf4fe46615a5d7a9695bdc",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png",
+      "native_provider_source": "A36G_PIXELLAB_WEST_FOREST_CONTIGUOUS_FULL_R3B_RGBA.png",
+      "depth_interval": [
+        240,
+        330
+      ]
+    },
+    {
+      "id": "a36d_botanical_030",
+      "type": "shrub",
+      "x": 296,
+      "y": 293,
+      "w": 83,
+      "h": 53,
+      "foot": [
+        337,
+        341
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_030_RGBA.png",
+      "sha256": "f1b8d5ef3eb804cae9d252c7265716fc97ea800ac16f47f44efeeeaa095a66c1",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_037_RGBA.png",
+      "source_A34_sha": "f1b8d5ef3eb804cae9d252c7265716fc97ea800ac16f47f44efeeeaa095a66c1",
+      "alpha_isolated": true
+    },
+    {
+      "id": "tree_094",
+      "type": "tree",
+      "x": 959,
+      "y": 232,
+      "foot": [
+        1008,
+        344
+      ],
+      "w": 98,
+      "h": 117,
+      "filename": "A36F_tree_094_ORIGINAL_RGBA.png",
+      "sha256": "a74b0006547d01753238fd52b31b14ec176588b5ee10e103f16830c392fec70c",
+      "source_A34_RGBA": "A34_TREE_094_RGBA.png",
+      "source_A34_SHA": "a74b0006547d01753238fd52b31b14ec176588b5ee10e103f16830c392fec70c",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_094_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_understory_025",
+      "type": "shrub",
+      "x": 265,
+      "y": 312,
+      "w": 59,
+      "h": 38,
+      "foot": [
+        294,
+        345
+      ],
+      "filename": "A36F_UNDERSTORY_025_RGBA.png",
+      "sha256": "e54fe0fe10111bfa77256304e72fb1c7133dbd49de52324cdd9c4dd56319c5e5",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_042_RGBA.png",
+      "source_A34_sha": "e54fe0fe10111bfa77256304e72fb1c7133dbd49de52324cdd9c4dd56319c5e5"
+    },
+    {
+      "id": "a36d_botanical_044",
+      "type": "shrub",
+      "x": 765,
+      "y": 311,
+      "w": 44,
+      "h": 39,
+      "foot": [
+        787,
+        345
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_044_RGBA.png",
+      "sha256": "bb63e9623a0a32f5afd2c8064b6bd8f68d34a0636b0239a551b510420d167d04",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_003_RGBA.png",
+      "source_A34_sha": "bb63e9623a0a32f5afd2c8064b6bd8f68d34a0636b0239a551b510420d167d04",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36d_botanical_043",
+      "type": "shrub",
+      "x": 961,
+      "y": 312,
+      "w": 76,
+      "h": 41,
+      "foot": [
+        999,
+        348
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_043_RGBA.png",
+      "sha256": "d0b67ed8d86207756114aa5d5c75f53a049396a4086097b3daeaebfb10dd2374",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_095_RGBA.png",
+      "source_A34_sha": "d0b67ed8d86207756114aa5d5c75f53a049396a4086097b3daeaebfb10dd2374",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36f_understory_034",
+      "type": "shrub",
+      "x": 216,
+      "y": 316,
+      "w": 63,
+      "h": 38,
+      "foot": [
+        247,
+        349
+      ],
+      "filename": "A36F_EXTRA_LAYER_034_RGBA.png",
+      "sha256": "7f01c7d6adf5ebfe1f844556fde9e230244fb30240e7ea4ce831686b7b97e06c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "7f01c7d6adf5ebfe1f844556fde9e230244fb30240e7ea4ce831686b7b97e06c"
+    },
+    {
+      "id": "a36g_r4_east_depth_01",
+      "type": "forest_group",
+      "x": 976,
+      "y": 260,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        1208,
+        351
+      ],
+      "filename": "A36G_R4_EAST_R2_DEPTH_01_RGBA.png",
+      "sha256": "202259c81836243912e4f28862234d2a601a3b908cb59e0cb175cacf5695799c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "EAST",
+      "depth_interval": [
+        260,
+        351
+      ]
+    },
+    {
+      "id": "tree_102",
+      "type": "tree",
+      "x": 251,
+      "y": 271,
+      "foot": [
+        296,
+        351
+      ],
+      "w": 91,
+      "h": 85,
+      "filename": "A36F_tree_102_ORIGINAL_RGBA.png",
+      "sha256": "abe2d993b8b1707dd00e391804ec50b83f63ace3af12c69efbfcb6e1cf832fe8",
+      "source_A34_RGBA": "A34_TREE_102_RGBA.png",
+      "source_A34_SHA": "abe2d993b8b1707dd00e391804ec50b83f63ace3af12c69efbfcb6e1cf832fe8",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_102_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36d_botanical_037",
+      "type": "shrub",
+      "x": 722,
+      "y": 315,
+      "w": 83,
+      "h": 45,
+      "foot": [
+        763,
+        355
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_037_RGBA.png",
+      "sha256": "3ed8425e5f8ece0cdbece7dc3582f3519982248864cf767decfda9ad7b9ca870",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_086_RGBA.png",
+      "source_A34_sha": "3ed8425e5f8ece0cdbece7dc3582f3519982248864cf767decfda9ad7b9ca870",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36d_botanical_042",
+      "type": "shrub",
+      "x": 888,
+      "y": 318,
+      "w": 68,
+      "h": 43,
+      "foot": [
+        922,
+        356
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_042_RGBA.png",
+      "sha256": "ab3e4f4fc48b8e32ea0a0aa31c66ecee54e7be603e5561618edd7dedc85f85d7",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_069_RGBA.png",
+      "source_A34_sha": "ab3e4f4fc48b8e32ea0a0aa31c66ecee54e7be603e5561618edd7dedc85f85d7",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36d_botanical_008",
+      "type": "shrub",
+      "x": 925,
+      "y": 316,
+      "w": 88,
+      "h": 50,
+      "foot": [
+        969,
+        361
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_008_RGBA.png",
+      "sha256": "b64fd4154a8ae3314ac7e038eebc1c3b6309eb412f698ca951468d2901ff0827",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_015_RGBA.png",
+      "source_A34_sha": "b64fd4154a8ae3314ac7e038eebc1c3b6309eb412f698ca951468d2901ff0827",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36d_botanical_036",
+      "type": "shrub",
+      "x": 332,
+      "y": 333,
+      "w": 61,
+      "h": 37,
+      "foot": [
+        362,
+        365
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_036_RGBA.png",
+      "sha256": "219f48daf2880771bfb27dfe05569ae9cc4fd0b571a890c3f1938a7b5d195294",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_068_RGBA.png",
+      "source_A34_sha": "219f48daf2880771bfb27dfe05569ae9cc4fd0b571a890c3f1938a7b5d195294",
+      "alpha_isolated": true
+    },
+    {
+      "id": "shrub_084",
+      "type": "shrub",
+      "x": 971,
+      "y": 332,
+      "foot": [
+        999,
+        372
+      ],
+      "w": 57,
+      "h": 45,
+      "filename": "A36F_shrub_084_ORIGINAL_RGBA.png",
+      "sha256": "e868ec857e6fe274d36104475a369692cd7895db0ea3d60ebe2448ab812d4bb2",
+      "source_A34_RGBA": "A34_SHRUB_084_RGBA.png",
+      "source_A34_SHA": "e868ec857e6fe274d36104475a369692cd7895db0ea3d60ebe2448ab812d4bb2",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_084_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_127",
+      "type": "tree",
+      "x": 879,
+      "y": 291,
+      "w": 73,
+      "h": 89,
+      "foot": [
+        915,
+        375
+      ],
+      "filename": "A36F_DENSE_TREE_127_RGBA.png",
+      "sha256": "93d80b2660573ecec519d7cfa23ac085469c3a6f556e9d9fe1d052b653328208",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_042_RGBA.png",
+      "source_A34_sha": "93d80b2660573ecec519d7cfa23ac085469c3a6f556e9d9fe1d052b653328208",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_dense_tree_126",
+      "type": "tree",
+      "x": 219,
+      "y": 257,
+      "w": 74,
+      "h": 127,
+      "foot": [
+        256,
+        379
+      ],
+      "filename": "A36F_DENSE_TREE_126_RGBA.png",
+      "sha256": "4562d3e2c0b7e992121fda8e15f75b07606b5ee33601cbf185b9037c7149c761",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_039_RGBA.png",
+      "source_A34_sha": "4562d3e2c0b7e992121fda8e15f75b07606b5ee33601cbf185b9037c7149c761",
+      "mirror_x": false
+    },
+    {
+      "id": "a36f_understory_008",
+      "type": "shrub",
+      "x": 388,
+      "y": 346,
+      "w": 52,
+      "h": 41,
+      "foot": [
+        414,
+        382
+      ],
+      "filename": "A36F_EXTRA_LAYER_008_RGBA.png",
+      "sha256": "3ca527782d2ae5554a1fd38fb82f81516ce92580edf97e0f181c50f26c05cbb7",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "3ca527782d2ae5554a1fd38fb82f81516ce92580edf97e0f181c50f26c05cbb7"
+    },
+    {
+      "id": "a36c_dense_tree_063",
+      "type": "tree",
+      "x": 318,
+      "y": 300,
+      "w": 73,
+      "h": 89,
+      "foot": [
+        354,
+        384
+      ],
+      "filename": "A36F_DENSE_TREE_063_RGBA.png",
+      "sha256": "93d80b2660573ecec519d7cfa23ac085469c3a6f556e9d9fe1d052b653328208",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_042_RGBA.png",
+      "source_A34_sha": "93d80b2660573ecec519d7cfa23ac085469c3a6f556e9d9fe1d052b653328208",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_understory_002",
+      "type": "shrub",
+      "x": 325,
+      "y": 356,
+      "w": 79,
+      "h": 46,
+      "foot": [
+        364,
+        397
+      ],
+      "filename": "A36F_UNDERSTORY_002_RGBA.png",
+      "sha256": "3744111c0f8e47ddab4a516babb5add7cdc618efe6b434d63bbc9e5eeb5dc1bc",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_047_RGBA.png",
+      "source_A34_sha": "3744111c0f8e47ddab4a516babb5add7cdc618efe6b434d63bbc9e5eeb5dc1bc"
+    },
+    {
+      "id": "a36c_dense_tree_158",
+      "type": "tree",
+      "x": 238,
+      "y": 307,
+      "w": 87,
+      "h": 107,
+      "foot": [
+        281,
+        409
+      ],
+      "filename": "A36F_DENSE_TREE_158_RGBA.png",
+      "sha256": "a3176ad5c0ab8e842c01d206fa0cede27591437ad8b8af73aafc691f31470e05",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_086_RGBA.png",
+      "source_A34_sha": "a3176ad5c0ab8e842c01d206fa0cede27591437ad8b8af73aafc691f31470e05",
+      "mirror_x": false
+    },
+    {
+      "id": "a36f_understory_050",
+      "type": "shrub",
+      "x": 312,
+      "y": 379,
+      "w": 52,
+      "h": 41,
+      "foot": [
+        338,
+        415
+      ],
+      "filename": "A36F_EXTRA_LAYER_050_RGBA.png",
+      "sha256": "3ca527782d2ae5554a1fd38fb82f81516ce92580edf97e0f181c50f26c05cbb7",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "3ca527782d2ae5554a1fd38fb82f81516ce92580edf97e0f181c50f26c05cbb7"
+    },
+    {
+      "id": "shrub_068",
+      "type": "shrub",
+      "x": 749,
+      "y": 384,
+      "foot": [
+        779,
+        416
+      ],
+      "w": 61,
+      "h": 37,
+      "filename": "A36F_shrub_068_ORIGINAL_RGBA.png",
+      "sha256": "219f48daf2880771bfb27dfe05569ae9cc4fd0b571a890c3f1938a7b5d195294",
+      "source_A34_RGBA": "A34_SHRUB_068_RGBA.png",
+      "source_A34_SHA": "219f48daf2880771bfb27dfe05569ae9cc4fd0b571a890c3f1938a7b5d195294",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_068_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36d_botanical_028",
+      "type": "shrub",
+      "x": 719,
+      "y": 383,
+      "w": 62,
+      "h": 40,
+      "foot": [
+        750,
+        418
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_028_RGBA.png",
+      "sha256": "d9e28b014f61d083562f37e9913251b453f128364ec1051b66d22519a6ea2a3b",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_061_RGBA.png",
+      "source_A34_sha": "d9e28b014f61d083562f37e9913251b453f128364ec1051b66d22519a6ea2a3b",
+      "alpha_isolated": true
+    },
+    {
+      "id": "tree_051",
+      "type": "tree",
+      "x": 881,
+      "y": 292,
+      "foot": [
+        919,
+        418
+      ],
+      "w": 76,
+      "h": 131,
+      "filename": "A36F_tree_051_ORIGINAL_RGBA.png",
+      "sha256": "a498084df89aef1931b17e843058e1a9ae0398fdc7d00cde44a787c4ab3093c5",
+      "source_A34_RGBA": "A34_TREE_051_RGBA.png",
+      "source_A34_SHA": "a498084df89aef1931b17e843058e1a9ae0398fdc7d00cde44a787c4ab3093c5",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_051_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "shrub_080",
+      "type": "shrub",
+      "x": 302,
+      "y": 388,
+      "foot": [
+        333,
+        420
+      ],
+      "w": 63,
+      "h": 37,
+      "filename": "A36F_shrub_080_ORIGINAL_RGBA.png",
+      "sha256": "19485e800f101b4f388867ec992c5ff361e6811ad0719f5e3d85876e0a400e6f",
+      "source_A34_RGBA": "A34_SHRUB_080_RGBA.png",
+      "source_A34_SHA": "19485e800f101b4f388867ec992c5ff361e6811ad0719f5e3d85876e0a400e6f",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_080_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "north_rock",
+      "type": "landmark",
+      "x": 188,
+      "y": 390,
+      "foot": [
+        207,
+        423
+      ],
+      "w": 38,
+      "h": 38,
+      "filename": "A36F_north_rock_ORIGINAL_RGBA.png",
+      "sha256": "2ce0711ec9774a2fea2c995534b0401e836646b634ea3b9a945d986d4eb03cbe",
+      "source_A34_RGBA": "A34_north_rock.png",
+      "source_A34_SHA": "2ce0711ec9774a2fea2c995534b0401e836646b634ea3b9a945d986d4eb03cbe",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_north_rock_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36f_understory_001",
+      "type": "shrub",
+      "x": 245,
+      "y": 389,
+      "w": 46,
+      "h": 41,
+      "foot": [
+        268,
+        425
+      ],
+      "filename": "A36F_EXTRA_LAYER_001_RGBA.png",
+      "sha256": "f065859cd7c7ca02584b75e17a2252d4b2fef4d27dd71f3b7f0cca4b7c3a90ff",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "f065859cd7c7ca02584b75e17a2252d4b2fef4d27dd71f3b7f0cca4b7c3a90ff"
+    },
+    {
+      "id": "a36c_dense_tree_013",
+      "type": "tree",
+      "x": 280,
+      "y": 334,
+      "w": 85,
+      "h": 104,
+      "foot": [
+        322,
+        433
+      ],
+      "filename": "A36F_DENSE_TREE_013_RGBA.png",
+      "sha256": "1b13b1840f75162ecbf8ff46fa74906ef287a5e323dbe558fab9ea2246a6562c",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_071_RGBA.png",
+      "source_A34_sha": "1b13b1840f75162ecbf8ff46fa74906ef287a5e323dbe558fab9ea2246a6562c",
+      "mirror_x": false
+    },
+    {
+      "id": "shrub_052",
+      "type": "shrub",
+      "x": 307,
+      "y": 388,
+      "foot": [
+        348,
+        433
+      ],
+      "w": 83,
+      "h": 50,
+      "filename": "A36F_shrub_052_ORIGINAL_RGBA.png",
+      "sha256": "eee36b70327b9175e2f4b3b57f88de1ca579e958dffe10c88c4a3a20ed348b8d",
+      "source_A34_RGBA": "A34_SHRUB_052_RGBA.png",
+      "source_A34_SHA": "eee36b70327b9175e2f4b3b57f88de1ca579e958dffe10c88c4a3a20ed348b8d",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_052_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "tree_046",
+      "type": "tree",
+      "x": 37,
+      "y": 271,
+      "foot": [
+        105,
+        434
+      ],
+      "w": 136,
+      "h": 168,
+      "filename": "A36F_tree_046_ORIGINAL_RGBA.png",
+      "sha256": "c024e0dfe2b2ca9ac2195a00316a40a0c2719de22236a27edf9b1bb173d3927d",
+      "source_A34_RGBA": "A34_TREE_046_RGBA.png",
+      "source_A34_SHA": "c024e0dfe2b2ca9ac2195a00316a40a0c2719de22236a27edf9b1bb173d3927d",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_046_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_understory_015",
+      "type": "shrub",
+      "x": 314,
+      "y": 402,
+      "w": 77,
+      "h": 41,
+      "foot": [
+        352,
+        438
+      ],
+      "filename": "A36F_UNDERSTORY_015_RGBA.png",
+      "sha256": "cf613382dd95570ab1dc8cb379e5c63ff520b49ccf62d5f5eae8d3d5a918d8c4",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_067_RGBA.png",
+      "source_A34_sha": "cf613382dd95570ab1dc8cb379e5c63ff520b49ccf62d5f5eae8d3d5a918d8c4"
+    },
+    {
+      "id": "a36g_r4_east_depth_02",
+      "type": "forest_group",
+      "x": 976,
+      "y": 351,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        1208,
+        442
+      ],
+      "filename": "A36G_R4_EAST_R2_DEPTH_02_RGBA.png",
+      "sha256": "18d95a0520c96e0156261f2d2001cac45553459e542101fc0da909d982116c2f",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "EAST",
+      "depth_interval": [
+        351,
+        442
+      ]
+    },
+    {
+      "id": "tree_081",
+      "type": "tree",
+      "x": 172,
+      "y": 348,
+      "foot": [
+        222,
+        452
+      ],
+      "w": 100,
+      "h": 109,
+      "filename": "A36F_tree_081_ORIGINAL_RGBA.png",
+      "sha256": "902d29f424fb026e8ef31804e445c0a660ca5a9493117766c86e27dbf01f2229",
+      "source_A34_RGBA": "A34_TREE_081_RGBA.png",
+      "source_A34_SHA": "902d29f424fb026e8ef31804e445c0a660ca5a9493117766c86e27dbf01f2229",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_081_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36f_understory_058",
+      "type": "shrub",
+      "x": 249,
+      "y": 415,
+      "w": 74,
+      "h": 47,
+      "foot": [
+        286,
+        457
+      ],
+      "filename": "A36F_EXTRA_LAYER_058_RGBA.png",
+      "sha256": "f5c594a5879f35961ab4b248497873bead6c7432deec0b8d0437382fe5447a73",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "f5c594a5879f35961ab4b248497873bead6c7432deec0b8d0437382fe5447a73"
+    },
+    {
+      "id": "A36G_ELF_HOUSE_AND_WORKSHOP",
+      "type": "house",
+      "x": 353,
+      "y": 209,
+      "w": 284,
+      "h": 259,
+      "foot": [
+        563,
+        458
+      ],
+      "filename": "A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png",
+      "sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+      "blocking": true,
+      "alpha_isolated": true,
+      "blocking_footprint_px": [
+        379,
+        389,
+        618,
+        454
+      ],
+      "source_parent": "ORIGINAL_A36F_HOUSE_STYLE_REFERENCE_PIXEL_LAB_SINGLE_NATIVE_FULL_BUILDING",
+      "design_variation": "ONE_COMPLETELY_GENERATED_INTEGRATED_GABLED_COTTAGE_LEFT_WORKSHOP"
+    },
+    {
+      "id": "a36c_dense_tree_156",
+      "type": "tree",
+      "x": 297,
+      "y": 347,
+      "w": 98,
+      "h": 117,
+      "foot": [
+        346,
+        459
+      ],
+      "filename": "A36F_DENSE_TREE_156_RGBA.png",
+      "sha256": "b6a45abc21b3630f8f699b759351257caa4394ee92aa9059ca02c18f4d3c7015",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_068_RGBA.png",
+      "source_A34_sha": "b6a45abc21b3630f8f699b759351257caa4394ee92aa9059ca02c18f4d3c7015",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_dense_tree_094",
+      "type": "tree",
+      "x": 23,
+      "y": 344,
+      "w": 103,
+      "h": 123,
+      "foot": [
+        74,
+        462
+      ],
+      "filename": "A36F_DENSE_TREE_094_RGBA.png",
+      "sha256": "19256defa27eae00282cdad2d509e5bd7800d5594b10a2c5ef9ae7e2aaacd28d",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_060_RGBA.png",
+      "source_A34_sha": "19256defa27eae00282cdad2d509e5bd7800d5594b10a2c5ef9ae7e2aaacd28d",
+      "mirror_x": false
+    },
+    {
+      "id": "a36g_pixellab_west_depth_06",
+      "type": "forest_group",
+      "x": -112,
+      "y": 330,
+      "w": 464,
+      "h": 136,
+      "foot": [
+        120,
+        466
+      ],
+      "filename": "A36G_PIXELLAB_FOREST_WEST_DEPTH_06_RGBA.png",
+      "sha256": "72bca7853ca284cd393bfb302f2f0963bd85166e98209212dd0ec7a35e650e14",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png",
+      "native_provider_source": "A36G_PIXELLAB_WEST_FOREST_CONTIGUOUS_FULL_R3B_RGBA.png",
+      "depth_interval": [
+        330,
+        466
+      ]
+    },
+    {
+      "id": "a36d_botanical_029",
+      "type": "shrub",
+      "x": 290,
+      "y": 428,
+      "w": 85,
+      "h": 49,
+      "foot": [
+        332,
+        472
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_029_RGBA.png",
+      "sha256": "28e7af0298e0aad83f1ae3fddc86bca29112d67bbe1ca997cf116941d697c402",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_045_RGBA.png",
+      "source_A34_sha": "28e7af0298e0aad83f1ae3fddc86bca29112d67bbe1ca997cf116941d697c402",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_040",
+      "type": "tree",
+      "x": 209,
+      "y": 318,
+      "w": 134,
+      "h": 160,
+      "foot": [
+        276,
+        473
+      ],
+      "filename": "A36F_DENSE_TREE_040_RGBA.png",
+      "sha256": "f57387e6ef5e25d475c5ff8c1898b8367da67789239ef388c19df7e546a80513",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_009_RGBA.png",
+      "source_A34_sha": "f57387e6ef5e25d475c5ff8c1898b8367da67789239ef388c19df7e546a80513",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_dense_tree_116",
+      "type": "tree",
+      "x": 200,
+      "y": 385,
+      "w": 90,
+      "h": 99,
+      "foot": [
+        244,
+        479
+      ],
+      "filename": "A36F_DENSE_TREE_116_RGBA.png",
+      "sha256": "d6481c08feba981c9903f40eacf76ebdfbf2705dc2b9b11fb778940fc2d12e1d",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_008_RGBA.png",
+      "source_A34_sha": "5e08c5b3af04b7b278e9d8c7708b95a1d3e4724c23b02b9a17d3e19f297d4218",
+      "mirror_x": true
+    },
+    {
+      "id": "a36d_botanical_011",
+      "type": "shrub",
+      "x": 316,
+      "y": 437,
+      "w": 79,
+      "h": 48,
+      "foot": [
+        355,
+        480
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_011_RGBA.png",
+      "sha256": "c4180703ed1137c8baa6e481a9eb17bceb0db74d27b5c8aae8fd1aebaaad1bcb",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_049_RGBA.png",
+      "source_A34_sha": "c4180703ed1137c8baa6e481a9eb17bceb0db74d27b5c8aae8fd1aebaaad1bcb",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_111",
+      "type": "tree",
+      "x": 274,
+      "y": 417,
+      "w": 74,
+      "h": 69,
+      "foot": [
+        310,
+        481
+      ],
+      "filename": "A36F_DENSE_TREE_111_RGBA.png",
+      "sha256": "6b3f3a29b23e024d24ec94ca67f94cec1922a52a4de462ba48fee6669e6ecfa5",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_041_RGBA.png",
+      "source_A34_sha": "038907fcbb2f910b9d5aa886f4d691bec99066094ecc8c186cf24758d7acbb5e",
+      "mirror_x": true
+    },
+    {
+      "id": "a36c_understory_022",
+      "type": "shrub",
+      "x": 254,
+      "y": 451,
+      "w": 72,
+      "h": 39,
+      "foot": [
+        290,
+        485
+      ],
+      "filename": "A36F_UNDERSTORY_022_RGBA.png",
+      "sha256": "e7c3f4888e7f1a34ff81a0ec0ff6708f85a97f3f2927a4a5ca8ba71a77992ae6",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_006_RGBA.png",
+      "source_A34_sha": "e7c3f4888e7f1a34ff81a0ec0ff6708f85a97f3f2927a4a5ca8ba71a77992ae6"
+    },
+    {
+      "id": "a36d_botanical_024",
+      "type": "shrub",
+      "x": 682,
+      "y": 462,
+      "w": 40,
+      "h": 36,
+      "foot": [
+        702,
+        493
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_024_RGBA.png",
+      "sha256": "f8e89606e0acf2f6895eab42748b218327f4b2730fa23c283b5fff7ad6c2ef81",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_073_RGBA.png",
+      "source_A34_sha": "f8e89606e0acf2f6895eab42748b218327f4b2730fa23c283b5fff7ad6c2ef81",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_understory_069",
+      "type": "shrub",
+      "x": 286,
+      "y": 455,
+      "w": 81,
+      "h": 52,
+      "foot": [
+        326,
+        502
+      ],
+      "filename": "A36F_UNDERSTORY_069_RGBA.png",
+      "sha256": "799d50563b693ef6e263c4b2bd1fa4caad0b35efcebd725140ec6021f39153b8",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_011_RGBA.png",
+      "source_A34_sha": "799d50563b693ef6e263c4b2bd1fa4caad0b35efcebd725140ec6021f39153b8"
+    },
+    {
+      "id": "a36d_botanical_039",
+      "type": "shrub",
+      "x": 356,
+      "y": 475,
+      "w": 68,
+      "h": 37,
+      "foot": [
+        390,
+        507
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_039_RGBA.png",
+      "sha256": "ef67dac90ea6128062e31f1972fcdc0a0b9634d0326976e3f65dcb64f7c123cd",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_032_RGBA.png",
+      "source_A34_sha": "ef67dac90ea6128062e31f1972fcdc0a0b9634d0326976e3f65dcb64f7c123cd",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_007",
+      "type": "tree",
+      "x": 239,
+      "y": 389,
+      "w": 117,
+      "h": 129,
+      "foot": [
+        297,
+        513
+      ],
+      "filename": "A36F_DENSE_TREE_007_RGBA.png",
+      "sha256": "2144e2885699ff6672bededb341a9a4b93ccc248bc2787fbb5642656d706f9c7",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_087_RGBA.png",
+      "source_A34_sha": "2144e2885699ff6672bededb341a9a4b93ccc248bc2787fbb5642656d706f9c7",
+      "mirror_x": false
+    },
+    {
+      "id": "west_waymarker",
+      "type": "landmark",
+      "x": 311,
+      "y": 450,
+      "foot": [
+        330,
+        515
+      ],
+      "w": 38,
+      "h": 70,
+      "filename": "A36F_west_waymarker_ORIGINAL_RGBA.png",
+      "sha256": "92e087ab43f2171f185bf1364c4edde6890e96d7b674b212947e3ff1eb093da7",
+      "source_A34_RGBA": "A34_west_waymarker.png",
+      "source_A34_SHA": "92e087ab43f2171f185bf1364c4edde6890e96d7b674b212947e3ff1eb093da7",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_west_waymarker_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36d_botanical_045",
+      "type": "shrub",
+      "x": 383,
+      "y": 475,
+      "w": 68,
+      "h": 54,
+      "foot": [
+        417,
+        524
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_045_RGBA.png",
+      "sha256": "f68cee8377ff93cde1fcaa95e599f4007c996d0065cded93487bba7ec395d048",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_028_RGBA.png",
+      "source_A34_sha": "f68cee8377ff93cde1fcaa95e599f4007c996d0065cded93487bba7ec395d048",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36g_r4_south_west_depth_01",
+      "type": "forest_group",
+      "x": -86,
+      "y": 435,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        146,
+        526
+      ],
+      "filename": "A36G_R4_SOUTH_WEST_R2_DEPTH_01_RGBA.png",
+      "sha256": "bcc41fff2d73ac11a71dd3bbf86d4eba1e40528c33f1e813c0a408d9402b2871",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_WEST",
+      "depth_interval": [
+        435,
+        526
+      ]
+    },
+    {
+      "id": "a36d_botanical_021",
+      "type": "shrub",
+      "x": 247,
+      "y": 498,
+      "w": 71,
+      "h": 39,
+      "foot": [
+        282,
+        532
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_021_RGBA.png",
+      "sha256": "367217c2b5a184dc2333e9f094bfb8689d11281c65fe4c95cfe6f25d937c9130",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_035_RGBA.png",
+      "source_A34_sha": "367217c2b5a184dc2333e9f094bfb8689d11281c65fe4c95cfe6f25d937c9130",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36g_r4_east_depth_03",
+      "type": "forest_group",
+      "x": 976,
+      "y": 442,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        1208,
+        533
+      ],
+      "filename": "A36G_R4_EAST_R2_DEPTH_03_RGBA.png",
+      "sha256": "619edd5e21a68f67a6918cfb1fb8784bdc8ad3a0ba94cf675645904b93a5c925",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "EAST",
+      "depth_interval": [
+        442,
+        533
+      ]
+    },
+    {
+      "id": "a36d_botanical_035",
+      "type": "shrub",
+      "x": 971,
+      "y": 488,
+      "w": 85,
+      "h": 54,
+      "foot": [
+        1013,
+        537
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_035_RGBA.png",
+      "sha256": "63c30644046bdd7259f49c80c0278348be479cb7e88fb820979a60085a7deb77",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_071_RGBA.png",
+      "source_A34_sha": "63c30644046bdd7259f49c80c0278348be479cb7e88fb820979a60085a7deb77",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36d_botanical_020",
+      "type": "shrub",
+      "x": 313,
+      "y": 509,
+      "w": 46,
+      "h": 41,
+      "foot": [
+        336,
+        545
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_020_RGBA.png",
+      "sha256": "f065859cd7c7ca02584b75e17a2252d4b2fef4d27dd71f3b7f0cca4b7c3a90ff",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_014_RGBA.png",
+      "source_A34_sha": "f065859cd7c7ca02584b75e17a2252d4b2fef4d27dd71f3b7f0cca4b7c3a90ff",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_understory_045",
+      "type": "shrub",
+      "x": 236,
+      "y": 516,
+      "w": 62,
+      "h": 36,
+      "foot": [
+        267,
+        547
+      ],
+      "filename": "A36F_UNDERSTORY_045_RGBA.png",
+      "sha256": "3b6bbf1c549acf6dc98f8ebc40a0b67cb955c5af8ca6fb0758c677b51b40a70c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_076_RGBA.png",
+      "source_A34_sha": "3b6bbf1c549acf6dc98f8ebc40a0b67cb955c5af8ca6fb0758c677b51b40a70c"
+    },
+    {
+      "id": "a36c_dense_tree_098",
+      "type": "tree",
+      "x": 513,
+      "y": 464,
+      "w": 86,
+      "h": 102,
+      "foot": [
+        555,
+        561
+      ],
+      "filename": "A36F_DENSE_TREE_098_RGBA.png",
+      "sha256": "e9c818a30cdc8b0a8bbe381896dd6891383959f0cae17333735a28e82cfc94a8",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_018_RGBA.png",
+      "source_A34_sha": "bfd7cde1c7890e60f81f00125da115877c0c91ebacae2d810f554fdf137a32f6",
+      "mirror_x": true
+    },
+    {
+      "id": "shrub_081",
+      "type": "shrub",
+      "x": 113,
+      "y": 533,
+      "foot": [
+        148,
+        571
+      ],
+      "w": 71,
+      "h": 43,
+      "filename": "A36F_shrub_081_ORIGINAL_RGBA.png",
+      "sha256": "abe766aa47d4271ff0f758b38e21ff0cd8052e51c3dee994070f0d3153c2fc57",
+      "source_A34_RGBA": "A34_SHRUB_081_RGBA.png",
+      "source_A34_SHA": "abe766aa47d4271ff0f758b38e21ff0cd8052e51c3dee994070f0d3153c2fc57",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_081_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36f_understory_063",
+      "type": "shrub",
+      "x": 102,
+      "y": 541,
+      "w": 83,
+      "h": 44,
+      "foot": [
+        143,
+        580
+      ],
+      "filename": "A36F_EXTRA_LAYER_063_RGBA.png",
+      "sha256": "3eac1d8e30af95bdc449aa58d86df5b920b12b8bd1d4d6affe12a21c974cba01",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "3eac1d8e30af95bdc449aa58d86df5b920b12b8bd1d4d6affe12a21c974cba01"
+    },
+    {
+      "id": "a36d_botanical_040",
+      "type": "shrub",
+      "x": 961,
+      "y": 539,
+      "w": 61,
+      "h": 48,
+      "foot": [
+        991,
+        582
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_040_RGBA.png",
+      "sha256": "732b3fc31dafe6bfb571038de72ae85b456a3158879a4f4e99024327a274771d",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_082_RGBA.png",
+      "source_A34_sha": "732b3fc31dafe6bfb571038de72ae85b456a3158879a4f4e99024327a274771d",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_022",
+      "type": "tree",
+      "x": 522,
+      "y": 499,
+      "w": 102,
+      "h": 95,
+      "foot": [
+        573,
+        589
+      ],
+      "filename": "A36F_DENSE_TREE_022_RGBA.png",
+      "sha256": "fa74b00bfbf41f9a7b95ba261a247486e6b2bbe01a33a4621d7085289123c56f",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_079_RGBA.png",
+      "source_A34_sha": "fa74b00bfbf41f9a7b95ba261a247486e6b2bbe01a33a4621d7085289123c56f",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_dense_tree_066",
+      "type": "tree",
+      "x": 502,
+      "y": 487,
+      "w": 61,
+      "h": 108,
+      "foot": [
+        532,
+        590
+      ],
+      "filename": "A36F_DENSE_TREE_066_RGBA.png",
+      "sha256": "70af6bdb2701f1bd4e6542755f7d107011b6146f8c907d82f9340a75a4731e5d",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_017_RGBA.png",
+      "source_A34_sha": "70af6bdb2701f1bd4e6542755f7d107011b6146f8c907d82f9340a75a4731e5d",
+      "mirror_x": false
+    },
+    {
+      "id": "a36f_understory_029",
+      "type": "shrub",
+      "x": 561,
+      "y": 554,
+      "w": 77,
+      "h": 41,
+      "foot": [
+        599,
+        590
+      ],
+      "filename": "A36F_EXTRA_LAYER_029_RGBA.png",
+      "sha256": "cf613382dd95570ab1dc8cb379e5c63ff520b49ccf62d5f5eae8d3d5a918d8c4",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "cf613382dd95570ab1dc8cb379e5c63ff520b49ccf62d5f5eae8d3d5a918d8c4"
+    },
+    {
+      "id": "a36d_botanical_034",
+      "type": "shrub",
+      "x": 387,
+      "y": 554,
+      "w": 81,
+      "h": 43,
+      "foot": [
+        427,
+        592
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_034_RGBA.png",
+      "sha256": "427cab0ac7d938280ad6836d8ce809ad4e80b10cd9f0b1f799a3b36bcd6c1b05",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_025_RGBA.png",
+      "source_A34_sha": "427cab0ac7d938280ad6836d8ce809ad4e80b10cd9f0b1f799a3b36bcd6c1b05",
+      "alpha_isolated": true
+    },
+    {
+      "id": "A36G_R5_COTTAGE_B_SINGLE_ROOF",
+      "type": "house",
+      "x": 743,
+      "y": 376,
+      "w": 256,
+      "h": 272,
+      "foot": [
+        869,
+        596
+      ],
+      "filename": "A36G_R5_PIXELLAB_RIGHT_HOUSE_SINGLE_GABLE_R2_RGBA.png",
+      "sha256": "4794a89cb06029112e6581c85a47bdcf6a84b7f636e05755825a989793585206",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source": "USER_CANONICAL_HANZO_TOWNSET03_DRIVE",
+      "source_atlas_SHA": "8a1da7ffe2db8361c68fb2a2874fa0868a313aca9861bba4a07f95d4c455063c",
+      "source_atlas_url": "https://drive.google.com/file/d/1OmAF2slFsRwTsaXDjQn4QWgfz57CdHCo/view",
+      "source_geometry": "rooftop sheet [45,50:243,286] native + original gate [395,381:505,481] nearest to 50x47",
+      "blocking_footprint_px": [
+        778,
+        535,
+        921,
+        588
+      ],
+      "tone_revision": "R2_PALETTE_MATCH_GREEN_SATURATION_REDUCTION",
+      "prior_R1_SHA256": "ee9289750cf6368a7e40018f091e6d8f8944b529e190c49f2819bdf0e1565ed5",
+      "source_stage": "A36D_R2_SOURCE",
+      "roof_refinement": "upper_169px_to_143px_at_y26_nearest; lower_67px_native; green_olive_palette",
+      "source_parent": "STYLE_CROP_FROM_APPROVED_LEFT_HOUSE_WITH_OLD_B_LAYOUT",
+      "design_variation": "NEW_COHERENT_UNIQUE_SINGLE_GABLE_RIGHT_HOUSE_NO_ATTACHED_WORKSHOP",
+      "art_gate": "PENDING_NATIVE_RENDER_REVIEW"
+    },
+    {
+      "id": "a36d_botanical_005",
+      "type": "shrub",
+      "x": 975,
+      "y": 557,
+      "w": 88,
+      "h": 47,
+      "foot": [
+        1019,
+        599
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_005_RGBA.png",
+      "sha256": "1deb05a6dd6e0c7ff8f7ddf6242965332e874bf90742b09d1e64661a2c2f04ee",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_083_RGBA.png",
+      "source_A34_sha": "1deb05a6dd6e0c7ff8f7ddf6242965332e874bf90742b09d1e64661a2c2f04ee",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_133",
+      "type": "tree",
+      "x": 1015,
+      "y": 412,
+      "w": 162,
+      "h": 194,
+      "foot": [
+        1095,
+        601
+      ],
+      "filename": "A36F_DENSE_TREE_133_RGBA.png",
+      "sha256": "1e406a43468905bc48fcefeaf197124f693c543ccded0c9d0da2847ba6b478f7",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_020_RGBA.png",
+      "source_A34_sha": "b33580ecd2e88a570af439c135ad2dcc13cb4a9b82fec7bac0ab7ecdfdb932a2",
+      "mirror_x": true
+    },
+    {
+      "id": "a36f_understory_002",
+      "type": "shrub",
+      "x": 510,
+      "y": 572,
+      "w": 83,
+      "h": 44,
+      "foot": [
+        551,
+        611
+      ],
+      "filename": "A36F_EXTRA_LAYER_002_RGBA.png",
+      "sha256": "3eac1d8e30af95bdc449aa58d86df5b920b12b8bd1d4d6affe12a21c974cba01",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "3eac1d8e30af95bdc449aa58d86df5b920b12b8bd1d4d6affe12a21c974cba01"
+    },
+    {
+      "id": "a36d_botanical_033",
+      "type": "shrub",
+      "x": 689,
+      "y": 581,
+      "w": 64,
+      "h": 41,
+      "foot": [
+        721,
+        617
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_033_RGBA.png",
+      "sha256": "a7c6b6033e267ed50540a085ad3fcfd97a29d447d0257d3b36d6d4c25beff722",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_040_RGBA.png",
+      "source_A34_sha": "a7c6b6033e267ed50540a085ad3fcfd97a29d447d0257d3b36d6d4c25beff722",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36g_r4_south_west_depth_02",
+      "type": "forest_group",
+      "x": -86,
+      "y": 526,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        146,
+        617
+      ],
+      "filename": "A36G_R4_SOUTH_WEST_R2_DEPTH_02_RGBA.png",
+      "sha256": "4dec2e313ccb59db0527fb1abe0e80a1a9fef209fcdf96bbb100623d681d0af9",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_WEST",
+      "depth_interval": [
+        526,
+        617
+      ]
+    },
+    {
+      "id": "shrub_024",
+      "type": "shrub",
+      "x": 236,
+      "y": 585,
+      "foot": [
+        265,
+        618
+      ],
+      "w": 58,
+      "h": 38,
+      "filename": "A36F_shrub_024_ORIGINAL_RGBA.png",
+      "sha256": "1c85bf1e112f67fdff31525dfd10794866d5db0e8362ee2e5c4e9aee006932aa",
+      "source_A34_RGBA": "A34_SHRUB_024_RGBA.png",
+      "source_A34_SHA": "1c85bf1e112f67fdff31525dfd10794866d5db0e8362ee2e5c4e9aee006932aa",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_024_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "entrance_lamp",
+      "type": "landmark",
+      "x": 598,
+      "y": 554,
+      "foot": [
+        617,
+        619
+      ],
+      "w": 38,
+      "h": 70,
+      "filename": "A36F_entrance_lamp_ORIGINAL_RGBA.png",
+      "sha256": "92e087ab43f2171f185bf1364c4edde6890e96d7b674b212947e3ff1eb093da7",
+      "source_A34_RGBA": "A34_entrance_lamp.png",
+      "source_A34_SHA": "92e087ab43f2171f185bf1364c4edde6890e96d7b674b212947e3ff1eb093da7",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_entrance_lamp_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_050",
+      "type": "tree",
+      "x": 305,
+      "y": 523,
+      "w": 87,
+      "h": 104,
+      "foot": [
+        348,
+        622
+      ],
+      "filename": "A36F_DENSE_TREE_050_RGBA.png",
+      "sha256": "ec0ebbaea1a275a8d6fa7a0e7aafe50b727186373c1d72659d59b20d0bf51179",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_066_RGBA.png",
+      "source_A34_sha": "8b675a9444d99dfaed8fd140785cc7bb644580067914d67a84bff76272255dc3",
+      "mirror_x": true
+    },
+    {
+      "id": "a36d_botanical_016",
+      "type": "shrub",
+      "x": 769,
+      "y": 588,
+      "w": 77,
+      "h": 41,
+      "foot": [
+        807,
+        624
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_016_RGBA.png",
+      "sha256": "cf613382dd95570ab1dc8cb379e5c63ff520b49ccf62d5f5eae8d3d5a918d8c4",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_067_RGBA.png",
+      "source_A34_sha": "cf613382dd95570ab1dc8cb379e5c63ff520b49ccf62d5f5eae8d3d5a918d8c4",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36g_r4_east_depth_04",
+      "type": "forest_group",
+      "x": 976,
+      "y": 533,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        1208,
+        624
+      ],
+      "filename": "A36G_R4_EAST_R2_DEPTH_04_RGBA.png",
+      "sha256": "bc1748aab37c7806c6d5038d91977ea71ed84277108efed75b92cf32f68a9b8e",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "EAST",
+      "depth_interval": [
+        533,
+        624
+      ]
+    },
+    {
+      "id": "a36g_r4_south_centre_depth_01",
+      "type": "forest_group",
+      "x": 322,
+      "y": 535,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        554,
+        626
+      ],
+      "filename": "A36G_R4_SOUTH_CENTRE_R2_DEPTH_01_RGBA.png",
+      "sha256": "4658d062b89e14254dbd6f81643716d682fe44556e7ee5308d4ac5fb51a94a5a",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_CENTRE_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_CENTRE",
+      "depth_interval": [
+        535,
+        626
+      ]
+    },
+    {
+      "id": "a36d_botanical_032",
+      "type": "shrub",
+      "x": 1129,
+      "y": 589,
+      "w": 68,
+      "h": 43,
+      "foot": [
+        1163,
+        627
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_032_RGBA.png",
+      "sha256": "ab3e4f4fc48b8e32ea0a0aa31c66ecee54e7be603e5561618edd7dedc85f85d7",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_055_RGBA.png",
+      "source_A34_sha": "ab3e4f4fc48b8e32ea0a0aa31c66ecee54e7be603e5561618edd7dedc85f85d7",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_110",
+      "type": "tree",
+      "x": 447,
+      "y": 531,
+      "w": 96,
+      "h": 105,
+      "foot": [
+        494,
+        631
+      ],
+      "filename": "A36F_DENSE_TREE_110_RGBA.png",
+      "sha256": "18df52a50b32bd3d1f6f3e2ada9b34fff57d1242598243c8ff0f710436522d88",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_052_RGBA.png",
+      "source_A34_sha": "6d2695e8d8b5fc99ceaaa09f142d7dfef43beb6f1f4f1f6520470c1ae2875a7d",
+      "mirror_x": true
+    },
+    {
+      "id": "a36d_botanical_014",
+      "type": "shrub",
+      "x": 147,
+      "y": 588,
+      "w": 67,
+      "h": 52,
+      "foot": [
+        180,
+        635
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_014_RGBA.png",
+      "sha256": "b9265b20eb095bce930f6e6b43c0c880d46c9166a89f18d857345b6a9feec7e6",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_031_RGBA.png",
+      "source_A34_sha": "b9265b20eb095bce930f6e6b43c0c880d46c9166a89f18d857345b6a9feec7e6",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36f_understory_018",
+      "type": "shrub",
+      "x": 1109,
+      "y": 590,
+      "w": 79,
+      "h": 50,
+      "foot": [
+        1148,
+        635
+      ],
+      "filename": "A36F_EXTRA_LAYER_018_RGBA.png",
+      "sha256": "b0a589ec99b68e3629450407ed03ab5e783f69087bde8cb4e590bf2a99787036",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "b0a589ec99b68e3629450407ed03ab5e783f69087bde8cb4e590bf2a99787036"
+    },
+    {
+      "id": "a36g_r4_south_east_depth_01",
+      "type": "forest_group",
+      "x": 754,
+      "y": 545,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        986,
+        636
+      ],
+      "filename": "A36G_R4_SOUTH_EAST_R2_DEPTH_01_RGBA.png",
+      "sha256": "0b5fe0461d72dc4b668d8a19352eba60e23f8f4276eede621c86d7ebd094b214",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_EAST",
+      "depth_interval": [
+        545,
+        636
+      ]
+    },
+    {
+      "id": "a36f_understory_035",
+      "type": "shrub",
+      "x": 123,
+      "y": 607,
+      "w": 65,
+      "h": 36,
+      "foot": [
+        155,
+        638
+      ],
+      "filename": "A36F_EXTRA_LAYER_035_RGBA.png",
+      "sha256": "279ac6527299a04740239b30e92e0bb458c4e4c64f65927a34f29877f2ecab09",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "279ac6527299a04740239b30e92e0bb458c4e4c64f65927a34f29877f2ecab09"
+    },
+    {
+      "id": "a36c_dense_tree_004",
+      "type": "tree",
+      "x": 109,
+      "y": 544,
+      "w": 86,
+      "h": 102,
+      "foot": [
+        152,
+        641
+      ],
+      "filename": "A36F_DENSE_TREE_004_RGBA.png",
+      "sha256": "bfd7cde1c7890e60f81f00125da115877c0c91ebacae2d810f554fdf137a32f6",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_018_RGBA.png",
+      "source_A34_sha": "bfd7cde1c7890e60f81f00125da115877c0c91ebacae2d810f554fdf137a32f6",
+      "mirror_x": false
+    },
+    {
+      "id": "shrub_036",
+      "type": "shrub",
+      "x": 6,
+      "y": 609,
+      "foot": [
+        44,
+        648
+      ],
+      "w": 76,
+      "h": 44,
+      "filename": "A36F_shrub_036_ORIGINAL_RGBA.png",
+      "sha256": "531b19bab7ae26345abf383cec0cc0f08a8457cdb40581287eb684e3b842166f",
+      "source_A34_RGBA": "A34_SHRUB_036_RGBA.png",
+      "source_A34_SHA": "531b19bab7ae26345abf383cec0cc0f08a8457cdb40581287eb684e3b842166f",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_036_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_081",
+      "type": "tree",
+      "x": 493,
+      "y": 543,
+      "w": 63,
+      "h": 111,
+      "foot": [
+        524,
+        649
+      ],
+      "filename": "A36F_DENSE_TREE_081_RGBA.png",
+      "sha256": "14d8498454e607b7b2defc67b7b4abd995ca63e9eeb2fe436847434bf367cf64",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_034_RGBA.png",
+      "source_A34_sha": "14d8498454e607b7b2defc67b7b4abd995ca63e9eeb2fe436847434bf367cf64",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_dense_tree_154",
+      "type": "tree",
+      "x": 550,
+      "y": 558,
+      "w": 106,
+      "h": 99,
+      "foot": [
+        603,
+        652
+      ],
+      "filename": "A36F_DENSE_TREE_154_RGBA.png",
+      "sha256": "7b7aa8009918e9c5b3f40ec8d2f1bf94a3c9a563ef7f5db76f8df779b3fedf67",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_057_RGBA.png",
+      "source_A34_sha": "7b7aa8009918e9c5b3f40ec8d2f1bf94a3c9a563ef7f5db76f8df779b3fedf67",
+      "mirror_x": false
+    },
+    {
+      "id": "a36f_understory_003",
+      "type": "shrub",
+      "x": 551,
+      "y": 618,
+      "w": 71,
+      "h": 39,
+      "foot": [
+        586,
+        652
+      ],
+      "filename": "A36F_EXTRA_LAYER_003_RGBA.png",
+      "sha256": "367217c2b5a184dc2333e9f094bfb8689d11281c65fe4c95cfe6f25d937c9130",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "367217c2b5a184dc2333e9f094bfb8689d11281c65fe4c95cfe6f25d937c9130"
+    },
+    {
+      "id": "a36c_understory_019",
+      "type": "shrub",
+      "x": 484,
+      "y": 625,
+      "w": 44,
+      "h": 39,
+      "foot": [
+        506,
+        659
+      ],
+      "filename": "A36F_UNDERSTORY_019_RGBA.png",
+      "sha256": "bb63e9623a0a32f5afd2c8064b6bd8f68d34a0636b0239a551b510420d167d04",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_062_RGBA.png",
+      "source_A34_sha": "bb63e9623a0a32f5afd2c8064b6bd8f68d34a0636b0239a551b510420d167d04"
+    },
+    {
+      "id": "a36d_botanical_017",
+      "type": "shrub",
+      "x": 984,
+      "y": 630,
+      "w": 72,
+      "h": 39,
+      "foot": [
+        1020,
+        664
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_017_RGBA.png",
+      "sha256": "e7c3f4888e7f1a34ff81a0ec0ff6708f85a97f3f2927a4a5ca8ba71a77992ae6",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_006_RGBA.png",
+      "source_A34_sha": "e7c3f4888e7f1a34ff81a0ec0ff6708f85a97f3f2927a4a5ca8ba71a77992ae6",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_understory_028",
+      "type": "shrub",
+      "x": 563,
+      "y": 627,
+      "w": 83,
+      "h": 50,
+      "foot": [
+        604,
+        672
+      ],
+      "filename": "A36F_UNDERSTORY_028_RGBA.png",
+      "sha256": "eee36b70327b9175e2f4b3b57f88de1ca579e958dffe10c88c4a3a20ed348b8d",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_052_RGBA.png",
+      "source_A34_sha": "eee36b70327b9175e2f4b3b57f88de1ca579e958dffe10c88c4a3a20ed348b8d"
+    },
+    {
+      "id": "a36d_botanical_012",
+      "type": "shrub",
+      "x": 1054,
+      "y": 634,
+      "w": 85,
+      "h": 48,
+      "foot": [
+        1096,
+        677
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_012_RGBA.png",
+      "sha256": "0c9ba0e3b4d003119d621b76517ae6203e26a413499a31356ef1a6fa89530fe6",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_046_RGBA.png",
+      "source_A34_sha": "0c9ba0e3b4d003119d621b76517ae6203e26a413499a31356ef1a6fa89530fe6",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_understory_014",
+      "type": "shrub",
+      "x": 596,
+      "y": 640,
+      "w": 68,
+      "h": 43,
+      "foot": [
+        630,
+        678
+      ],
+      "filename": "A36F_UNDERSTORY_014_RGBA.png",
+      "sha256": "ab3e4f4fc48b8e32ea0a0aa31c66ecee54e7be603e5561618edd7dedc85f85d7",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_055_RGBA.png",
+      "source_A34_sha": "ab3e4f4fc48b8e32ea0a0aa31c66ecee54e7be603e5561618edd7dedc85f85d7"
+    },
+    {
+      "id": "a36d_botanical_027",
+      "type": "shrub",
+      "x": 1133,
+      "y": 648,
+      "w": 69,
+      "h": 38,
+      "foot": [
+        1167,
+        681
+      ],
+      "filename": "A36F_VILLAGE_BOTANICAL_027_RGBA.png",
+      "sha256": "32236f83c62d6229a7eb0ead1c17bb83fdd7402114be8fefef57b9c6c150f3f0",
+      "blocking": false,
+      "source_A34": "A34_SHRUB_053_RGBA.png",
+      "source_A34_sha": "32236f83c62d6229a7eb0ead1c17bb83fdd7402114be8fefef57b9c6c150f3f0",
+      "alpha_isolated": true
+    },
+    {
+      "id": "a36c_dense_tree_124",
+      "type": "tree",
+      "x": 521,
+      "y": 559,
+      "w": 107,
+      "h": 129,
+      "foot": [
+        574,
+        683
+      ],
+      "filename": "A36F_DENSE_TREE_124_RGBA.png",
+      "sha256": "83c4c5633b890e1bc0f5fd3c00e213f3651c2570341afb9274261a903b65cac9",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_070_RGBA.png",
+      "source_A34_sha": "c0977ab91b3cf3916f47e128d2fafae186dcd10f32b3b07ed4ca8ad0c2cfb7cd",
+      "mirror_x": true
+    },
+    {
+      "id": "a36f_understory_027",
+      "type": "shrub",
+      "x": 572,
+      "y": 672,
+      "w": 69,
+      "h": 38,
+      "foot": [
+        606,
+        705
+      ],
+      "filename": "A36F_EXTRA_LAYER_027_RGBA.png",
+      "sha256": "32236f83c62d6229a7eb0ead1c17bb83fdd7402114be8fefef57b9c6c150f3f0",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "32236f83c62d6229a7eb0ead1c17bb83fdd7402114be8fefef57b9c6c150f3f0"
+    },
+    {
+      "id": "a36c_dense_tree_043",
+      "type": "tree",
+      "x": 559,
+      "y": 585,
+      "w": 74,
+      "h": 127,
+      "foot": [
+        596,
+        707
+      ],
+      "filename": "A36F_DENSE_TREE_043_RGBA.png",
+      "sha256": "e87f1549edc75d741bd8837203f6a3205c718ed3bdf0d6ebb790105b42e8a1cf",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_012_RGBA.png",
+      "source_A34_sha": "e87f1549edc75d741bd8837203f6a3205c718ed3bdf0d6ebb790105b42e8a1cf",
+      "mirror_x": false
+    },
+    {
+      "id": "a36g_r4_south_west_depth_03",
+      "type": "forest_group",
+      "x": -86,
+      "y": 617,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        146,
+        708
+      ],
+      "filename": "A36G_R4_SOUTH_WEST_R2_DEPTH_03_RGBA.png",
+      "sha256": "33df8af81d637e2427e283454fa37da5547c2d1168e7cd0ab1fc8dded1bf6d1b",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_WEST",
+      "depth_interval": [
+        617,
+        708
+      ]
+    },
+    {
+      "id": "a36f_understory_036",
+      "type": "shrub",
+      "x": 523,
+      "y": 673,
+      "w": 53,
+      "h": 47,
+      "foot": [
+        549,
+        715
+      ],
+      "filename": "A36F_EXTRA_LAYER_036_RGBA.png",
+      "sha256": "001c26f841fcc6e06beefc64a9274ececc15ad1132dd96377232716e705407d8",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "001c26f841fcc6e06beefc64a9274ececc15ad1132dd96377232716e705407d8"
+    },
+    {
+      "id": "a36g_r4_east_depth_05",
+      "type": "forest_group",
+      "x": 976,
+      "y": 624,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        1208,
+        715
+      ],
+      "filename": "A36G_R4_EAST_R2_DEPTH_05_RGBA.png",
+      "sha256": "55ea263f4c4e8254faf089ababf26414f0e37f00e6b84bf036f94b9504f5b67a",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "EAST",
+      "depth_interval": [
+        624,
+        715
+      ]
+    },
+    {
+      "id": "a36g_r4_south_centre_depth_02",
+      "type": "forest_group",
+      "x": 322,
+      "y": 626,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        554,
+        717
+      ],
+      "filename": "A36G_R4_SOUTH_CENTRE_R2_DEPTH_02_RGBA.png",
+      "sha256": "be6a4a1e26067e0b12fa95adbb4cd67da023036cfb25f0be6cb2d56efe26e9bb",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_CENTRE_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_CENTRE",
+      "depth_interval": [
+        626,
+        717
+      ]
+    },
+    {
+      "id": "a36c_dense_tree_114",
+      "type": "tree",
+      "x": 499,
+      "y": 631,
+      "w": 81,
+      "h": 97,
+      "foot": [
+        539,
+        723
+      ],
+      "filename": "A36F_DENSE_TREE_114_RGBA.png",
+      "sha256": "f0a6861e95b4c0de648cae7ac9df5f33ec54e44b5e75cc1dd50784c22117c3b4",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_063_RGBA.png",
+      "source_A34_sha": "f0a6861e95b4c0de648cae7ac9df5f33ec54e44b5e75cc1dd50784c22117c3b4",
+      "mirror_x": false
+    },
+    {
+      "id": "a36g_r4_south_east_depth_02",
+      "type": "forest_group",
+      "x": 754,
+      "y": 636,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        986,
+        727
+      ],
+      "filename": "A36G_R4_SOUTH_EAST_R2_DEPTH_02_RGBA.png",
+      "sha256": "561e0eabf73d7cff077f31fcb86a865bcda50c5e5ad2de3cd28f9b0118a7c2ef",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_EAST",
+      "depth_interval": [
+        636,
+        727
+      ]
+    },
+    {
+      "id": "a36c_dense_tree_037",
+      "type": "tree",
+      "x": 545,
+      "y": 640,
+      "w": 84,
+      "h": 104,
+      "foot": [
+        587,
+        739
+      ],
+      "filename": "A36F_DENSE_TREE_037_RGBA.png",
+      "sha256": "2c030f76f029e4a10d4038428bc64105ad4eacb1b23b4b1ae9550686d9ec5b27",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_080_RGBA.png",
+      "source_A34_sha": "2c030f76f029e4a10d4038428bc64105ad4eacb1b23b4b1ae9550686d9ec5b27",
+      "mirror_x": false
+    },
+    {
+      "id": "a36c_dense_tree_059",
+      "type": "tree",
+      "x": 734,
+      "y": 632,
+      "w": 66,
+      "h": 116,
+      "foot": [
+        767,
+        743
+      ],
+      "filename": "A36F_DENSE_TREE_059_RGBA.png",
+      "sha256": "732d5fa51567457b94dfc8e0944658bf341c19b6492b1f6fe76ee39bbf266c5c",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_027_RGBA.png",
+      "source_A34_sha": "732d5fa51567457b94dfc8e0944658bf341c19b6492b1f6fe76ee39bbf266c5c",
+      "mirror_x": false
+    },
+    {
+      "id": "camp_barrel_2",
+      "type": "landmark",
+      "x": 723,
+      "y": 714,
+      "foot": [
+        742,
+        747
+      ],
+      "w": 38,
+      "h": 38,
+      "filename": "A36F_camp_barrel_2_ORIGINAL_RGBA.png",
+      "sha256": "78a9a50d62ea7cb1b12c2a4ed13ed2ba6aa7059d3a260369726955cbf3d5860d",
+      "source_A34_RGBA": "A34_camp_barrel_2.png",
+      "source_A34_SHA": "78a9a50d62ea7cb1b12c2a4ed13ed2ba6aa7059d3a260369726955cbf3d5860d",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_camp_barrel_2_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36c_dense_tree_048",
+      "type": "tree",
+      "x": 303,
+      "y": 654,
+      "w": 103,
+      "h": 123,
+      "foot": [
+        354,
+        772
+      ],
+      "filename": "A36F_DENSE_TREE_048_RGBA.png",
+      "sha256": "19256defa27eae00282cdad2d509e5bd7800d5594b10a2c5ef9ae7e2aaacd28d",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_060_RGBA.png",
+      "source_A34_sha": "19256defa27eae00282cdad2d509e5bd7800d5594b10a2c5ef9ae7e2aaacd28d",
+      "mirror_x": false
+    },
+    {
+      "id": "a36g_r4_south_west_depth_04",
+      "type": "forest_group",
+      "x": -86,
+      "y": 708,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        146,
+        799
+      ],
+      "filename": "A36G_R4_SOUTH_WEST_R2_DEPTH_04_RGBA.png",
+      "sha256": "92ff021ecee477a1a77ddaa14ee0f509a8143f10d6b7ebf556f1858b04d894f8",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_WEST",
+      "depth_interval": [
+        708,
+        799
+      ]
+    },
+    {
+      "id": "shrub_028",
+      "type": "shrub",
+      "x": 1129,
+      "y": 751,
+      "foot": [
+        1163,
+        800
+      ],
+      "w": 68,
+      "h": 54,
+      "filename": "A36F_shrub_028_ORIGINAL_RGBA.png",
+      "sha256": "f68cee8377ff93cde1fcaa95e599f4007c996d0065cded93487bba7ec395d048",
+      "source_A34_RGBA": "A34_SHRUB_028_RGBA.png",
+      "source_A34_SHA": "f68cee8377ff93cde1fcaa95e599f4007c996d0065cded93487bba7ec395d048",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": false,
+      "original_name": "A36_shrub_028_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "tree_056",
+      "type": "tree",
+      "x": 1109,
+      "y": 706,
+      "foot": [
+        1156,
+        804
+      ],
+      "w": 94,
+      "h": 103,
+      "filename": "A36F_tree_056_ORIGINAL_RGBA.png",
+      "sha256": "4d0de22f9c0487a7e6283bcec88ab69d7b947a0759f671345aef06607defe012",
+      "source_A34_RGBA": "A34_TREE_056_RGBA.png",
+      "source_A34_SHA": "4d0de22f9c0487a7e6283bcec88ab69d7b947a0759f671345aef06607defe012",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_056_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36f_understory_019",
+      "type": "shrub",
+      "x": 1142,
+      "y": 770,
+      "w": 62,
+      "h": 40,
+      "foot": [
+        1173,
+        805
+      ],
+      "filename": "A36F_EXTRA_LAYER_019_RGBA.png",
+      "sha256": "515eaae804e364423dccd08b49a3593d1b85aa91cdba1ff1ace78c4e8a3411df",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "515eaae804e364423dccd08b49a3593d1b85aa91cdba1ff1ace78c4e8a3411df"
+    },
+    {
+      "id": "a36g_r4_east_depth_06",
+      "type": "forest_group",
+      "x": 976,
+      "y": 715,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        1208,
+        806
+      ],
+      "filename": "A36G_R4_EAST_R2_DEPTH_06_RGBA.png",
+      "sha256": "432e594cdbcbb7537b6f7cb039ba1407654b0f49bb2b2459850e39f6d3451d99",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "EAST",
+      "depth_interval": [
+        715,
+        806
+      ]
+    },
+    {
+      "id": "a36g_r4_south_centre_depth_03",
+      "type": "forest_group",
+      "x": 322,
+      "y": 717,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        554,
+        808
+      ],
+      "filename": "A36G_R4_SOUTH_CENTRE_R2_DEPTH_03_RGBA.png",
+      "sha256": "9d9d6a6a3c661735a35e2ef3e4d20b7a942df0aafcdd4413123f117449894ab4",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_CENTRE_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_CENTRE",
+      "depth_interval": [
+        717,
+        808
+      ]
+    },
+    {
+      "id": "tree_024",
+      "type": "tree",
+      "x": 1196,
+      "y": 726,
+      "foot": [
+        1235,
+        817
+      ],
+      "w": 78,
+      "h": 96,
+      "filename": "A36F_tree_024_ORIGINAL_RGBA.png",
+      "sha256": "bb27940a433f83722cdfbfd0b664692d536aa610dd3d523f16f4898fcee37bf1",
+      "source_A34_RGBA": "A34_TREE_024_RGBA.png",
+      "source_A34_SHA": "bb27940a433f83722cdfbfd0b664692d536aa610dd3d523f16f4898fcee37bf1",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_024_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36g_r4_south_east_depth_03",
+      "type": "forest_group",
+      "x": 754,
+      "y": 727,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        986,
+        818
+      ],
+      "filename": "A36G_R4_SOUTH_EAST_R2_DEPTH_03_RGBA.png",
+      "sha256": "2457df80b1c5b1c9dfe47447ce169c01d3bd5c7261f3b3cdc356c77fb05ab0a7",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_EAST",
+      "depth_interval": [
+        727,
+        818
+      ]
+    },
+    {
+      "id": "a36c_dense_tree_139",
+      "type": "tree",
+      "x": 1155,
+      "y": 730,
+      "w": 81,
+      "h": 97,
+      "foot": [
+        1195,
+        822
+      ],
+      "filename": "A36F_DENSE_TREE_139_RGBA.png",
+      "sha256": "7ddeb11174a9f29195e84fe63294f6bc113e8e336c196cf79500fa184e077621",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_100_RGBA.png",
+      "source_A34_sha": "bc448326988f80eab52674c6e107d57cd58c5b6588371492eb65f1733b591379",
+      "mirror_x": true
+    },
+    {
+      "id": "a36g_r4_east_depth_07",
+      "type": "forest_group",
+      "x": 976,
+      "y": 806,
+      "w": 464,
+      "h": 18,
+      "foot": [
+        1208,
+        824
+      ],
+      "filename": "A36G_R4_EAST_R2_DEPTH_07_RGBA.png",
+      "sha256": "d470c19b4bdb760affc792b84643ec875a599c4e0cec11b4e74de4bdcc4f4fe5",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "EAST",
+      "depth_interval": [
+        806,
+        824
+      ]
+    },
+    {
+      "id": "a36c_dense_tree_071",
+      "type": "tree",
+      "x": 1199,
+      "y": 771,
+      "w": 67,
+      "h": 115,
+      "foot": [
+        1232,
+        881
+      ],
+      "filename": "A36F_DENSE_TREE_071_RGBA.png",
+      "sha256": "84027ef86214b005f9b5d43c0b9b68c9a38b92e8f2cd42641ed249320a9b6d5e",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_104_RGBA.png",
+      "source_A34_sha": "77d1ab8b24f553d54bc1ee5ce6904a326ac5f8635f0478d8969650d294618139",
+      "mirror_x": true
+    },
+    {
+      "id": "a36g_r4_south_west_depth_05",
+      "type": "forest_group",
+      "x": -86,
+      "y": 799,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        146,
+        890
+      ],
+      "filename": "A36G_R4_SOUTH_WEST_R2_DEPTH_05_RGBA.png",
+      "sha256": "b87c9c73359b6075ee8f081b1fba108bfe9f94bef599eda87f6da153275d063d",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_WEST",
+      "depth_interval": [
+        799,
+        890
+      ]
+    },
+    {
+      "id": "a36c_dense_tree_006",
+      "type": "tree",
+      "x": 1138,
+      "y": 767,
+      "w": 107,
+      "h": 129,
+      "foot": [
+        1191,
+        891
+      ],
+      "filename": "A36F_DENSE_TREE_006_RGBA.png",
+      "sha256": "c0977ab91b3cf3916f47e128d2fafae186dcd10f32b3b07ed4ca8ad0c2cfb7cd",
+      "blocking": true,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_TREE_070_RGBA.png",
+      "source_A34_sha": "c0977ab91b3cf3916f47e128d2fafae186dcd10f32b3b07ed4ca8ad0c2cfb7cd",
+      "mirror_x": false
+    },
+    {
+      "id": "a36f_understory_065",
+      "type": "shrub",
+      "x": 1158,
+      "y": 848,
+      "w": 79,
+      "h": 48,
+      "foot": [
+        1197,
+        891
+      ],
+      "filename": "A36F_EXTRA_LAYER_065_RGBA.png",
+      "sha256": "c4180703ed1137c8baa6e481a9eb17bceb0db74d27b5c8aae8fd1aebaaad1bcb",
+      "blocking": false,
+      "alpha_isolated": true,
+      "source_A34_sha": "c4180703ed1137c8baa6e481a9eb17bceb0db74d27b5c8aae8fd1aebaaad1bcb"
+    },
+    {
+      "id": "a36g_r4_south_centre_depth_04",
+      "type": "forest_group",
+      "x": 322,
+      "y": 808,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        554,
+        899
+      ],
+      "filename": "A36G_R4_SOUTH_CENTRE_R2_DEPTH_04_RGBA.png",
+      "sha256": "e8f4157fce3242d8f7f4421e39f7045b00d41c7b1b5febf05199d7181804a23d",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_CENTRE_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_CENTRE",
+      "depth_interval": [
+        808,
+        899
+      ]
+    },
+    {
+      "id": "tree_043",
+      "type": "tree",
+      "x": 1079,
+      "y": 802,
+      "foot": [
+        1123,
+        903
+      ],
+      "w": 89,
+      "h": 106,
+      "filename": "A36F_tree_043_ORIGINAL_RGBA.png",
+      "sha256": "8382db18fc75934f9136b310aea0609932f6b7f28d63958e62c14f0d401fb457",
+      "source_A34_RGBA": "A34_TREE_043_RGBA.png",
+      "source_A34_SHA": "8382db18fc75934f9136b310aea0609932f6b7f28d63958e62c14f0d401fb457",
+      "ground_elevation": 0,
+      "alpha_isolated": true,
+      "blocking": true,
+      "original_name": "A36_tree_043_ORIGINAL_RGBA.png"
+    },
+    {
+      "id": "a36g_r4_south_east_depth_04",
+      "type": "forest_group",
+      "x": 754,
+      "y": 818,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        986,
+        909
+      ],
+      "filename": "A36G_R4_SOUTH_EAST_R2_DEPTH_04_RGBA.png",
+      "sha256": "d768ae02ca2b8263d2564d28ffc7e9af1f58156b7cdd63367e56b189d99ed2f3",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_EAST",
+      "depth_interval": [
+        818,
+        909
+      ]
+    },
+    {
+      "id": "a36c_understory_001",
+      "type": "shrub",
+      "x": 1221,
+      "y": 881,
+      "w": 44,
+      "h": 39,
+      "foot": [
+        1243,
+        915
+      ],
+      "filename": "A36F_UNDERSTORY_001_RGBA.png",
+      "sha256": "bb63e9623a0a32f5afd2c8064b6bd8f68d34a0636b0239a551b510420d167d04",
+      "blocking": false,
+      "alpha_isolated": true,
+      "ground_elevation": 0,
+      "source_A34": "A34_SHRUB_003_RGBA.png",
+      "source_A34_sha": "bb63e9623a0a32f5afd2c8064b6bd8f68d34a0636b0239a551b510420d167d04"
+    },
+    {
+      "id": "a36g_r4_south_west_depth_06",
+      "type": "forest_group",
+      "x": -86,
+      "y": 890,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        146,
+        981
+      ],
+      "filename": "A36G_R4_SOUTH_WEST_R2_DEPTH_06_RGBA.png",
+      "sha256": "6c4ddd8c272b197d08953c858c53da767ab5cad09c2eec393e12c73cd2deb56e",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_WEST",
+      "depth_interval": [
+        890,
+        981
+      ]
+    },
+    {
+      "id": "a36g_r4_south_west_depth_07",
+      "type": "forest_group",
+      "x": -86,
+      "y": 981,
+      "w": 464,
+      "h": 6,
+      "foot": [
+        146,
+        987
+      ],
+      "filename": "A36G_R4_SOUTH_WEST_R2_DEPTH_07_RGBA.png",
+      "sha256": "f9fb07f60b1a6c806f15988209ea96b4e14324f34b7b85fa3bb35c34db1366a3",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_WEST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_WEST",
+      "depth_interval": [
+        981,
+        987
+      ]
+    },
+    {
+      "id": "a36g_r4_south_centre_depth_05",
+      "type": "forest_group",
+      "x": 322,
+      "y": 899,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        554,
+        990
+      ],
+      "filename": "A36G_R4_SOUTH_CENTRE_R2_DEPTH_05_RGBA.png",
+      "sha256": "2dfaf3801f8298c56178e4ec7df4b22e8fd9e284c4a31702e6f7d960ae85290c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_CENTRE_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_CENTRE",
+      "depth_interval": [
+        899,
+        990
+      ]
+    },
+    {
+      "id": "a36g_r4_south_east_depth_05",
+      "type": "forest_group",
+      "x": 754,
+      "y": 909,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        986,
+        1000
+      ],
+      "filename": "A36G_R4_SOUTH_EAST_R2_DEPTH_05_RGBA.png",
+      "sha256": "89d90559f773f9cb4c80731d830550379d43a0e203a317503482cdd890f75b54",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_EAST",
+      "depth_interval": [
+        909,
+        1000
+      ]
+    },
+    {
+      "id": "a36g_r4_south_centre_depth_06",
+      "type": "forest_group",
+      "x": 322,
+      "y": 990,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        554,
+        1081
+      ],
+      "filename": "A36G_R4_SOUTH_CENTRE_R2_DEPTH_06_RGBA.png",
+      "sha256": "33dc4b080ad0d541d202c818748d3c8b5a5cf397461f655f72b08408cd299611",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_CENTRE_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_CENTRE",
+      "depth_interval": [
+        990,
+        1081
+      ]
+    },
+    {
+      "id": "a36g_r4_south_centre_depth_07",
+      "type": "forest_group",
+      "x": 322,
+      "y": 1081,
+      "w": 464,
+      "h": 6,
+      "foot": [
+        554,
+        1087
+      ],
+      "filename": "A36G_R4_SOUTH_CENTRE_R2_DEPTH_07_RGBA.png",
+      "sha256": "4cf82c4dc74a31a4abaeb22b5bf9c72ab8150595ea47edba72055cf8fb67203c",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_CENTRE_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_CENTRE",
+      "depth_interval": [
+        1081,
+        1087
+      ]
+    },
+    {
+      "id": "a36g_r4_south_east_depth_06",
+      "type": "forest_group",
+      "x": 754,
+      "y": 1000,
+      "w": 464,
+      "h": 91,
+      "foot": [
+        986,
+        1091
+      ],
+      "filename": "A36G_R4_SOUTH_EAST_R2_DEPTH_06_RGBA.png",
+      "sha256": "d29787f64d2ebd17a245650d333e665a71ac4ad84327646513c70c0bad1496d8",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_EAST",
+      "depth_interval": [
+        1000,
+        1091
+      ]
+    },
+    {
+      "id": "a36g_r4_south_east_depth_07",
+      "type": "forest_group",
+      "x": 754,
+      "y": 1091,
+      "w": 464,
+      "h": 6,
+      "foot": [
+        986,
+        1097
+      ],
+      "filename": "A36G_R4_SOUTH_EAST_R2_DEPTH_07_RGBA.png",
+      "sha256": "84897bd13c6aa180d8a21c19c551a6752889442859979afd9fc2c52e3e3bf29a",
+      "blocking": false,
+      "alpha_isolated": true,
+      "continuous_source": "A36G_R4_SOUTH_EAST_PIXELLAB_CONTIGUOUS_RGBA.png",
+      "compiled_source": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "region_id": "SOUTH_EAST",
+      "depth_interval": [
+        1091,
+        1097
+      ]
+    }
+  ],
+  "collision_map_29x40": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "blocked_cells": 241,
+  "free_cells": 919,
+  "free_reachable_cells": 919,
+  "spawn_tile": [
+    20,
+    14
+  ],
+  "house_count": 2,
+  "tree_count": 222,
+  "shrub_count": 240,
+  "ground_sha": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "par_sha": "c5dbfa7888fd77316a70b2c5caea35cf828e8f37c8b3dbce59f1482eccbf8788",
+  "composite_sha": "8f6051ebaab501ded2bacec54668d7e4718ba62abcbab322e2eea8af08006b74",
+  "grass_tufts": 1450,
+  "flowers": 175,
+  "road_modified_pixels": 33859,
+  "native_understory_added": 65,
+  "houses_from_right_mother": true,
+  "formal_seal": "NO",
+  "house_art_gate": "PIXELLAB_GENERATED_PENDING_VISUAL_REVIEW",
+  "forest_art_gate": "CANDIDATE_UNREVIEWED",
+  "collision_gate": "STATIC_BFS_PASS_NEW_HOUSE_B_FOOTPRINT",
+  "forest_removed_individual_ids": [
+    "a36c_understory_070",
+    "tree_064",
+    "a36c_dense_tree_080",
+    "shrub_038",
+    "a36c_dense_tree_067",
+    "a36f_understory_059",
+    "a36c_dense_tree_157",
+    "a36c_dense_tree_017",
+    "a36c_dense_tree_161",
+    "a36f_understory_015",
+    "shrub_091",
+    "tree_050",
+    "a36c_dense_tree_097",
+    "shrub_022",
+    "a36c_understory_053",
+    "tree_090",
+    "a36c_understory_021",
+    "a36c_dense_tree_030",
+    "a36f_understory_051",
+    "tree_092",
+    "a36f_understory_016",
+    "a36c_dense_tree_075",
+    "a36c_dense_tree_064",
+    "tree_017",
+    "a36f_understory_038",
+    "a36c_dense_tree_060",
+    "tree_089",
+    "shrub_031",
+    "shrub_033",
+    "a36f_understory_009",
+    "a36c_understory_056",
+    "a36f_understory_049",
+    "a36c_dense_tree_165",
+    "a36c_understory_016",
+    "tree_055",
+    "a36c_dense_tree_118",
+    "a36f_understory_062",
+    "a36c_understory_042",
+    "a36c_dense_tree_001",
+    "shrub_035",
+    "a36c_dense_tree_106",
+    "tree_037",
+    "shrub_079",
+    "shrub_006",
+    "a36c_dense_tree_096",
+    "tree_103",
+    "a36f_understory_007",
+    "a36f_understory_013",
+    "a36c_dense_tree_089",
+    "a36c_dense_tree_085",
+    "a36c_understory_013",
+    "a36c_dense_tree_083",
+    "a36c_dense_tree_088",
+    "shrub_021",
+    "a36f_understory_056",
+    "tree_076"
+  ],
+  "forest_region_blueprint": {
+    "id": "A36G_PIXELLAB_WEST_FOREST_R3B",
+    "kind": "one_native_provider_contiguous_woodland_source",
+    "bbox": [
+      -112,
+      -110,
+      352,
+      466
+    ],
+    "source_file": "A36G_PIXELLAB_WEST_FOREST_CONTIGUOUS_FULL_R3B_RGBA.png",
+    "source_SHA256": "0e697ccc2df1f6303089d412aa81369eed62c0ed44c609b32cd249c5a22350aa",
+    "compiled_alpha_file": "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png",
+    "compiled_SHA256": "78aa165b84effbcb9a5c6c3aa57fe7f428eab26b0f4f75308200fb03cb480946",
+    "depth_strips": [
+      [
+        -110,
+        0
+      ],
+      [
+        0,
+        75
+      ],
+      [
+        75,
+        155
+      ],
+      [
+        155,
+        240
+      ],
+      [
+        240,
+        330
+      ],
+      [
+        330,
+        466
+      ]
+    ],
+    "source_original_A36F_reference": "A36G_PIXEL_STYLE_WEST_FOREST_A36F_REFERENCE.png",
+    "road_clearance_px": 21,
+    "root_anchors": [
+      [
+        45,
+        68
+      ],
+      [
+        147,
+        83
+      ],
+      [
+        250,
+        94
+      ],
+      [
+        66,
+        112
+      ],
+      [
+        129,
+        123
+      ],
+      [
+        211,
+        124
+      ],
+      [
+        82,
+        140
+      ],
+      [
+        186,
+        155
+      ],
+      [
+        247,
+        170
+      ],
+      [
+        110,
+        175
+      ],
+      [
+        160,
+        178
+      ],
+      [
+        80,
+        217
+      ],
+      [
+        161,
+        220
+      ],
+      [
+        114,
+        222
+      ],
+      [
+        213,
+        226
+      ],
+      [
+        279,
+        229
+      ],
+      [
+        164,
+        253
+      ],
+      [
+        206,
+        257
+      ],
+      [
+        51,
+        267
+      ],
+      [
+        109,
+        275
+      ],
+      [
+        230,
+        296
+      ],
+      [
+        138,
+        296
+      ],
+      [
+        142,
+        337
+      ],
+      [
+        218,
+        337
+      ],
+      [
+        99,
+        361
+      ],
+      [
+        161,
+        370
+      ],
+      [
+        68,
+        377
+      ],
+      [
+        196,
+        380
+      ],
+      [
+        167,
+        414
+      ]
+    ],
+    "restored_A36F_sprites_outside_region": 7,
+    "omitted_A36F_sprites_under_forest": 56,
+    "original_r2_blueprint": {
+      "id": "A36G_WEST_CONTIGUOUS_R2",
+      "polygon": [
+        [
+          -112,
+          -110
+        ],
+        [
+          305,
+          -110
+        ],
+        [
+          300,
+          3
+        ],
+        [
+          297,
+          75
+        ],
+        [
+          303,
+          139
+        ],
+        [
+          310,
+          218
+        ],
+        [
+          278,
+          281
+        ],
+        [
+          253,
+          335
+        ],
+        [
+          245,
+          396
+        ],
+        [
+          208,
+          469
+        ],
+        [
+          144,
+          511
+        ],
+        [
+          -112,
+          535
+        ]
+      ],
+      "bbox": [
+        -112,
+        -110,
+        398,
+        520
+      ],
+      "source_file": "A36G_FOREST_WEST_CONTIGUOUS_R2_FULL_RGBA.png",
+      "source_sha": "de612eb947e45b1e3acdddd8795e2989babe57aa63d968f089a2ef7b0eedf61b",
+      "visible_roots": [],
+      "collision_root_anchors": [
+        [
+          45,
+          68
+        ],
+        [
+          147,
+          83
+        ],
+        [
+          250,
+          94
+        ],
+        [
+          66,
+          112
+        ],
+        [
+          129,
+          123
+        ],
+        [
+          211,
+          124
+        ],
+        [
+          82,
+          140
+        ],
+        [
+          186,
+          155
+        ],
+        [
+          247,
+          170
+        ],
+        [
+          110,
+          175
+        ],
+        [
+          160,
+          178
+        ],
+        [
+          80,
+          217
+        ],
+        [
+          161,
+          220
+        ],
+        [
+          114,
+          222
+        ],
+        [
+          213,
+          226
+        ],
+        [
+          279,
+          229
+        ],
+        [
+          164,
+          253
+        ],
+        [
+          206,
+          257
+        ],
+        [
+          51,
+          267
+        ],
+        [
+          109,
+          275
+        ],
+        [
+          230,
+          296
+        ],
+        [
+          138,
+          296
+        ],
+        [
+          142,
+          337
+        ],
+        [
+          218,
+          337
+        ],
+        [
+          99,
+          361
+        ],
+        [
+          161,
+          370
+        ],
+        [
+          68,
+          377
+        ],
+        [
+          196,
+          380
+        ],
+        [
+          167,
+          414
+        ],
+        [
+          105,
+          434
+        ],
+        [
+          74,
+          462
+        ],
+        [
+          132,
+          507
+        ]
+      ],
+      "road_clearance": 21,
+      "depth_slices": [
+        [
+          -110,
+          64
+        ],
+        [
+          64,
+          146
+        ],
+        [
+          146,
+          230
+        ],
+        [
+          230,
+          318
+        ],
+        [
+          318,
+          426
+        ],
+        [
+          426,
+          520
+        ]
+      ],
+      "method": "unified volumetric canopy shader plus native sprite root geometry"
+    }
+  },
+  "collision_geometry_gate": "BFS_PASS",
+  "source_art_approval": "PENDING",
+  "house_source_bbox": [
+    12,
+    6,
+    271,
+    244
+  ],
+  "house_source_sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+  "house_origin_old_bbox": [
+    393,
+    209,
+    677,
+    468
+  ],
+  "house_origin_new_bbox": [
+    353,
+    209,
+    637,
+    468
+  ],
+  "forest_regions_R4": [
+    {
+      "id": "NORTH_WEST",
+      "world_bbox": [
+        310,
+        -145,
+        774,
+        287
+      ],
+      "source_size": [
+        464,
+        432
+      ],
+      "pixel_source_sha256": "7f1705229921f924b6fb4707147c4cadaf532e04bfc4a0daec00fe5be793719b",
+      "compiled_source_sha256": "d537b52436b43b4d13f9c0a000a3df65a2f4874c1c02573f3c1fcf327717eaf0",
+      "source_bbox_alpha": [
+        0,
+        0,
+        464,
+        432
+      ],
+      "source_alpha_pixels": 186872,
+      "compiled_alpha_pixels": 140052,
+      "connected_component_count": 11,
+      "largest_component_fraction": 0.99964,
+      "former_sprite_objects_removed": 29,
+      "former_blocking_tree_roots": 11,
+      "old_removed_root_anchors": [
+        [
+          381,
+          100
+        ],
+        [
+          671,
+          101
+        ],
+        [
+          592,
+          105
+        ],
+        [
+          522,
+          109
+        ],
+        [
+          562,
+          132
+        ],
+        [
+          472,
+          136
+        ],
+        [
+          617,
+          141
+        ],
+        [
+          402,
+          151
+        ],
+        [
+          733,
+          164
+        ],
+        [
+          657,
+          175
+        ],
+        [
+          712,
+          214
+        ]
+      ],
+      "new_depth_strips": 5,
+      "source_sha256": "7f1705229921f924b6fb4707147c4cadaf532e04bfc4a0daec00fe5be793719b",
+      "compiled_sha256": "6699b446e4c331f2c295d9351627a52b6baa14ecef4fe6f3b3b20b29e688e35c",
+      "source_format": "single_contiguous_native_provider_RGBA",
+      "art_gate": "PENDING_USER_REVIEW",
+      "compiled_alpha_pixels_R2": 127270,
+      "edge_taper_R2": [
+        "left",
+        "right",
+        "bottom"
+      ],
+      "edge_taper_method": "irregular smoothstep alpha only, RGB untouched; no full-image cut",
+      "compiled_source_R2": "A36G_R4_NORTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "depth_files_R2": 5
+    },
+    {
+      "id": "NORTH_EAST",
+      "world_bbox": [
+        714,
+        -140,
+        1178,
+        292
+      ],
+      "source_size": [
+        464,
+        432
+      ],
+      "pixel_source_sha256": "3f639733957fa2c0e39de91318b48f5777205d04a8c2d86b9e622eb4afe35454",
+      "compiled_source_sha256": "5894bc635299f47f2660634ea6184e75e1d2b58c6e256f43417b7716f47091c1",
+      "source_bbox_alpha": [
+        0,
+        0,
+        464,
+        432
+      ],
+      "source_alpha_pixels": 187125,
+      "compiled_alpha_pixels": 184120,
+      "connected_component_count": 4,
+      "largest_component_fraction": 0.99996,
+      "former_sprite_objects_removed": 44,
+      "former_blocking_tree_roots": 25,
+      "old_removed_root_anchors": [
+        [
+          893,
+          97
+        ],
+        [
+          1069,
+          97
+        ],
+        [
+          849,
+          115
+        ],
+        [
+          1012,
+          119
+        ],
+        [
+          1078,
+          131
+        ],
+        [
+          985,
+          137
+        ],
+        [
+          761,
+          144
+        ],
+        [
+          872,
+          149
+        ],
+        [
+          1019,
+          150
+        ],
+        [
+          1052,
+          156
+        ],
+        [
+          1142,
+          160
+        ],
+        [
+          789,
+          178
+        ],
+        [
+          932,
+          185
+        ],
+        [
+          976,
+          187
+        ],
+        [
+          1103,
+          188
+        ],
+        [
+          906,
+          204
+        ],
+        [
+          1007,
+          206
+        ],
+        [
+          1049,
+          207
+        ],
+        [
+          829,
+          219
+        ],
+        [
+          1080,
+          239
+        ],
+        [
+          906,
+          246
+        ],
+        [
+          1046,
+          247
+        ],
+        [
+          1000,
+          264
+        ],
+        [
+          881,
+          270
+        ],
+        [
+          963,
+          283
+        ]
+      ],
+      "new_depth_strips": 5,
+      "source_sha256": "3f639733957fa2c0e39de91318b48f5777205d04a8c2d86b9e622eb4afe35454",
+      "compiled_sha256": "ffee482ec9d1527bb1a066aad76d321e1469c8f8d829c927244fde40a7a72ab5",
+      "source_format": "single_contiguous_native_provider_RGBA",
+      "art_gate": "PENDING_USER_REVIEW",
+      "compiled_alpha_pixels_R2": 161570,
+      "edge_taper_R2": [
+        "left",
+        "right",
+        "bottom"
+      ],
+      "edge_taper_method": "irregular smoothstep alpha only, RGB untouched; no full-image cut",
+      "compiled_source_R2": "A36G_R4_NORTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "depth_files_R2": 5
+    },
+    {
+      "id": "EAST",
+      "world_bbox": [
+        976,
+        260,
+        1440,
+        824
+      ],
+      "source_size": [
+        464,
+        564
+      ],
+      "pixel_source_sha256": "23bb04c3c53929ac058de1c588879433bed6269b4f7397735a46ee3c96ee8beb",
+      "compiled_source_sha256": "4613ad8aa66dec2edd20dae1e5398003c13477b2dc1993ae1b1ea3fbf7ae8bcf",
+      "source_bbox_alpha": [
+        1,
+        0,
+        445,
+        559
+      ],
+      "source_alpha_pixels": 207119,
+      "compiled_alpha_pixels": 164293,
+      "connected_component_count": 25,
+      "largest_component_fraction": 0.99124,
+      "former_sprite_objects_removed": 37,
+      "former_blocking_tree_roots": 18,
+      "old_removed_root_anchors": [
+        [
+          1091,
+          337
+        ],
+        [
+          1133,
+          354
+        ],
+        [
+          1184,
+          367
+        ],
+        [
+          1103,
+          395
+        ],
+        [
+          1141,
+          403
+        ],
+        [
+          1116,
+          430
+        ],
+        [
+          1101,
+          462
+        ],
+        [
+          1161,
+          465
+        ],
+        [
+          1063,
+          472
+        ],
+        [
+          1174,
+          495
+        ],
+        [
+          1061,
+          513
+        ],
+        [
+          1133,
+          530
+        ],
+        [
+          1061,
+          584
+        ],
+        [
+          1194,
+          596
+        ],
+        [
+          1094,
+          694
+        ],
+        [
+          1020,
+          704
+        ],
+        [
+          1159,
+          719
+        ],
+        [
+          1215,
+          745
+        ]
+      ],
+      "new_depth_strips": 7,
+      "source_sha256": "23bb04c3c53929ac058de1c588879433bed6269b4f7397735a46ee3c96ee8beb",
+      "compiled_sha256": "b8acdb453ff4f0068624d8060167705d84f0eb1dc3d7cf7ac9e6eaaffc36f338",
+      "source_format": "single_contiguous_native_provider_RGBA",
+      "art_gate": "PENDING_USER_REVIEW",
+      "compiled_alpha_pixels_R2": 155991,
+      "edge_taper_R2": [
+        "left",
+        "top",
+        "bottom"
+      ],
+      "edge_taper_method": "irregular smoothstep alpha only, RGB untouched; no full-image cut",
+      "compiled_source_R2": "A36G_R4_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "depth_files_R2": 7
+    },
+    {
+      "id": "SOUTH_WEST",
+      "world_bbox": [
+        -86,
+        435,
+        378,
+        987
+      ],
+      "source_size": [
+        464,
+        552
+      ],
+      "pixel_source_sha256": "670f530b411e1dfeb7de312ba0e7200eac3d90e38171b5f7b38f0868bd91e4f6",
+      "compiled_source_sha256": "f4315d944239110ec6a513dcf61b81dc578164b146251a7693dfece32bd7b210",
+      "source_bbox_alpha": [
+        0,
+        0,
+        448,
+        549
+      ],
+      "source_alpha_pixels": 192675,
+      "compiled_alpha_pixels": 169821,
+      "connected_component_count": 24,
+      "largest_component_fraction": 0.99955,
+      "former_sprite_objects_removed": 65,
+      "former_blocking_tree_roots": 34,
+      "old_removed_root_anchors": [
+        [
+          74,
+          462
+        ],
+        [
+          167,
+          485
+        ],
+        [
+          132,
+          507
+        ],
+        [
+          246,
+          524
+        ],
+        [
+          214,
+          525
+        ],
+        [
+          99,
+          541
+        ],
+        [
+          127,
+          555
+        ],
+        [
+          73,
+          565
+        ],
+        [
+          299,
+          631
+        ],
+        [
+          204,
+          649
+        ],
+        [
+          305,
+          663
+        ],
+        [
+          70,
+          669
+        ],
+        [
+          112,
+          680
+        ],
+        [
+          208,
+          685
+        ],
+        [
+          248,
+          699
+        ],
+        [
+          311,
+          706
+        ],
+        [
+          155,
+          717
+        ],
+        [
+          227,
+          740
+        ],
+        [
+          270,
+          741
+        ],
+        [
+          87,
+          749
+        ],
+        [
+          207,
+          770
+        ],
+        [
+          46,
+          776
+        ],
+        [
+          153,
+          778
+        ],
+        [
+          306,
+          782
+        ],
+        [
+          270,
+          786
+        ],
+        [
+          350,
+          812
+        ],
+        [
+          158,
+          831
+        ],
+        [
+          111,
+          836
+        ],
+        [
+          77,
+          842
+        ],
+        [
+          305,
+          851
+        ],
+        [
+          76,
+          874
+        ],
+        [
+          267,
+          876
+        ],
+        [
+          113,
+          896
+        ],
+        [
+          282,
+          905
+        ]
+      ],
+      "new_depth_strips": 7,
+      "source_sha256": "670f530b411e1dfeb7de312ba0e7200eac3d90e38171b5f7b38f0868bd91e4f6",
+      "compiled_sha256": "becbf8f83d0395350f4bb59e1f9a8f769afbcf2f8d70c898a52f8d5af8fde751",
+      "source_format": "single_contiguous_native_provider_RGBA",
+      "art_gate": "PENDING_USER_REVIEW",
+      "compiled_alpha_pixels_R2": 159484,
+      "edge_taper_R2": [
+        "right",
+        "top"
+      ],
+      "edge_taper_method": "irregular smoothstep alpha only, RGB untouched; no full-image cut",
+      "compiled_source_R2": "A36G_R4_SOUTH_WEST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "depth_files_R2": 7
+    },
+    {
+      "id": "SOUTH_CENTRE",
+      "world_bbox": [
+        322,
+        535,
+        786,
+        1087
+      ],
+      "source_size": [
+        464,
+        552
+      ],
+      "pixel_source_sha256": "53c5d824e423400b75ad94bdc53ba3dd02e4bac179c935b8a72dd60d106baa21",
+      "compiled_source_sha256": "e3128a424465ef79e34a319a548e2e84eb8a91d666ad393396ffa70913b5f97c",
+      "source_bbox_alpha": [
+        0,
+        4,
+        464,
+        552
+      ],
+      "source_alpha_pixels": 202537,
+      "compiled_alpha_pixels": 169884,
+      "connected_component_count": 21,
+      "largest_component_fraction": 0.99953,
+      "former_sprite_objects_removed": 36,
+      "former_blocking_tree_roots": 24,
+      "old_removed_root_anchors": [
+        [
+          448,
+          625
+        ],
+        [
+          443,
+          660
+        ],
+        [
+          386,
+          671
+        ],
+        [
+          708,
+          694
+        ],
+        [
+          361,
+          703
+        ],
+        [
+          749,
+          711
+        ],
+        [
+          468,
+          734
+        ],
+        [
+          403,
+          742
+        ],
+        [
+          767,
+          743
+        ],
+        [
+          602,
+          768
+        ],
+        [
+          730,
+          771
+        ],
+        [
+          354,
+          772
+        ],
+        [
+          403,
+          794
+        ],
+        [
+          745,
+          800
+        ],
+        [
+          463,
+          802
+        ],
+        [
+          609,
+          807
+        ],
+        [
+          567,
+          816
+        ],
+        [
+          734,
+          844
+        ],
+        [
+          575,
+          850
+        ],
+        [
+          506,
+          855
+        ],
+        [
+          393,
+          855
+        ],
+        [
+          452,
+          881
+        ],
+        [
+          577,
+          900
+        ],
+        [
+          694,
+          903
+        ]
+      ],
+      "new_depth_strips": 7,
+      "source_sha256": "53c5d824e423400b75ad94bdc53ba3dd02e4bac179c935b8a72dd60d106baa21",
+      "compiled_sha256": "909a79b5cb06222f708c792b1b9cf0a9ade2ad182c2ddbf8ec60473b2b992628",
+      "source_format": "single_contiguous_native_provider_RGBA",
+      "art_gate": "PENDING_USER_REVIEW",
+      "compiled_alpha_pixels_R2": 145168,
+      "edge_taper_R2": [
+        "left",
+        "right",
+        "top"
+      ],
+      "edge_taper_method": "irregular smoothstep alpha only, RGB untouched; no full-image cut",
+      "compiled_source_R2": "A36G_R4_SOUTH_CENTRE_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "depth_files_R2": 7
+    },
+    {
+      "id": "SOUTH_EAST",
+      "world_bbox": [
+        754,
+        545,
+        1218,
+        1097
+      ],
+      "source_size": [
+        464,
+        552
+      ],
+      "pixel_source_sha256": "4f929433506044150c313af8ebbeb8a42e58d5b7f1bccf7d18c244bed8b8ee6e",
+      "compiled_source_sha256": "d5ec391028bbc69b5c2afc0cb5a757485d598d6eb0765503ea3842970aea1c1b",
+      "source_bbox_alpha": [
+        0,
+        0,
+        446,
+        549
+      ],
+      "source_alpha_pixels": 187958,
+      "compiled_alpha_pixels": 156774,
+      "connected_component_count": 29,
+      "largest_component_fraction": 0.98012,
+      "former_sprite_objects_removed": 56,
+      "former_blocking_tree_roots": 25,
+      "old_removed_root_anchors": [
+        [
+          837,
+          696
+        ],
+        [
+          864,
+          734
+        ],
+        [
+          940,
+          737
+        ],
+        [
+          800,
+          746
+        ],
+        [
+          1019,
+          754
+        ],
+        [
+          896,
+          768
+        ],
+        [
+          856,
+          794
+        ],
+        [
+          930,
+          798
+        ],
+        [
+          1037,
+          800
+        ],
+        [
+          787,
+          808
+        ],
+        [
+          1089,
+          812
+        ],
+        [
+          893,
+          813
+        ],
+        [
+          984,
+          814
+        ],
+        [
+          835,
+          820
+        ],
+        [
+          1021,
+          833
+        ],
+        [
+          797,
+          838
+        ],
+        [
+          1138,
+          859
+        ],
+        [
+          904,
+          860
+        ],
+        [
+          862,
+          861
+        ],
+        [
+          1103,
+          865
+        ],
+        [
+          999,
+          882
+        ],
+        [
+          1048,
+          883
+        ],
+        [
+          812,
+          888
+        ],
+        [
+          962,
+          889
+        ],
+        [
+          1017,
+          908
+        ]
+      ],
+      "new_depth_strips": 7,
+      "source_sha256": "4f929433506044150c313af8ebbeb8a42e58d5b7f1bccf7d18c244bed8b8ee6e",
+      "compiled_sha256": "a58c26872143464d2daafab710802b04afdef18a21d2edc5fafc6aab50d5eea8",
+      "source_format": "single_contiguous_native_provider_RGBA",
+      "art_gate": "PENDING_USER_REVIEW",
+      "compiled_alpha_pixels_R2": 145878,
+      "edge_taper_R2": [
+        "left",
+        "right",
+        "top"
+      ],
+      "edge_taper_method": "irregular smoothstep alpha only, RGB untouched; no full-image cut",
+      "compiled_source_R2": "A36G_R4_SOUTH_EAST_COMPILED_SEAM_TAPER_R2_RGBA.png",
+      "depth_files_R2": 7
+    }
+  ],
+  "forest_group_source_count_R4": 6,
+  "ground_sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "par_sha256": "9079fecdf2d0301817a3e06854a3ab1ffec691de6dac29f28102d9e4833bbe6d",
+  "composite_sha256": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db",
+  "restored_legacy_tree_ids_after_seam_audit": [
+    "a36c_dense_tree_048",
+    "a36c_dense_tree_059",
+    "a36c_dense_tree_094"
+  ],
+  "root_coverage_stage": "restored 3 original root-anchored tree sources visible at former alpha gaps",
+  "source_R4_manifest_sha256": "4f30983eeb27d2ae43ddcace39ac2304eaa96e7ac3734411ccf309aa3d210a07",
+  "house_left_locked_sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+  "house_right_new_sha256": "4794a89cb06029112e6581c85a47bdcf6a84b7f636e05755825a989793585206",
+  "house_right_old_sha256": "110471397ccf079b1ed4367bf840335498bd60c3ac58b20cf2cf9b7f07723fb5",
+  "original_ground_sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371",
+  "art_gate": "CANDIDATE_PENDING_USER_SIGNOFF"
+}
