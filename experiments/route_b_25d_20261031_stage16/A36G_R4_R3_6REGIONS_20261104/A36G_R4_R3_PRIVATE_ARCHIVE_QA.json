@@ -1,0 +1,13 @@
+{
+  "stage": "A36G_R4_R3",
+  "archive": "E:\\FS_STAGE16_A36G_R4_ALL_REGION_FORESTS_20261104\\FS_A36G_R4_R3_6REGIONS_TRUE_GROUND_PAR_VX_GODOT_20261104.zip",
+  "archive_bytes": 583873396,
+  "archive_sha256": "0654baa69afd2f6909dd3f04fe6f120700acfba63009bf19c8b6e0aa1b5272b1",
+  "members": 4409,
+  "source_file_sha_verified": 4408,
+  "mismatch_count": 0,
+  "zip_crc": "PASS",
+  "cold_extracted": "E:\\FS_STAGE16_A36G_R4_R3_ARCHIVE_COLD_EXTRACT_20261104",
+  "cold_extract_manifest_match": true,
+  "formal_seal": "NO"
+}
