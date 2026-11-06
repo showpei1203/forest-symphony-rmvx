@@ -1,0 +1,780 @@
+{
+  "G23_baseline": {
+    "PMD0001": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "58766290c59e59daa017b7cc6a74b19ed89b749bb72ee86fa8d0a5024cc44e3c",
+        "01b915424e4e677130c854611f0e58f236ebb51e79704d3ad3401a92f9896c2b",
+        "64b7d8c32670028e729b06646b93fdc51c269e2984d9afc22962b573cbedae92"
+      ],
+      "alpha_bboxes": [
+        [
+          26,
+          54,
+          101,
+          119
+        ],
+        [
+          26,
+          53,
+          101,
+          116
+        ],
+        [
+          21,
+          54,
+          104,
+          122
+        ]
+      ],
+      "alpha_bottombounds": [
+        119,
+        116,
+        122
+      ],
+      "foot_bbox_jitter": 6,
+      "nonzero_alpha_pixel_counts": [
+        3420,
+        3396,
+        3633
+      ],
+      "palette_color_counts": [
+        63,
+        68,
+        70
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        16.522,
+        19.33,
+        12.158
+      ],
+      "lower_region_delta_pct": [
+        30.059,
+        38.145,
+        31.504
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          872,
+          647
+        ],
+        [
+          721,
+          682
+        ],
+        [
+          1066,
+          674
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true
+    },
+    "PMD0002": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "1064101c8151123e46d7bbd6e6262ee1c770fdaba216a1f9d9aa6627584bfe27",
+        "f32dd11113e7dcb314930c3bab50e2c82ae13e7a659c2976fd60b96c22953b8d",
+        "82ace96837d451c5cf1fe22c6e319c746f2a3e098508c6a69847c069a2a71082"
+      ],
+      "alpha_bboxes": [
+        [
+          15,
+          29,
+          114,
+          118
+        ],
+        [
+          17,
+          28,
+          114,
+          114
+        ],
+        [
+          9,
+          29,
+          120,
+          120
+        ]
+      ],
+      "alpha_bottombounds": [
+        118,
+        114,
+        120
+      ],
+      "foot_bbox_jitter": 6,
+      "nonzero_alpha_pixel_counts": [
+        6075,
+        5894,
+        6285
+      ],
+      "palette_color_counts": [
+        58,
+        61,
+        62
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        22.375,
+        26.324,
+        19.257
+      ],
+      "lower_region_delta_pct": [
+        39.16,
+        48.379,
+        43.047
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          931,
+          842
+        ],
+        [
+          722,
+          831
+        ],
+        [
+          1221,
+          626
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true
+    },
+    "PMD0003": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "69ee707932cd288cc0d5d1811e33e1e2124e902be5d579aff26576214c84db18",
+        "1040c0fd6fe215c81bd3ccae8ff64ad3d0f19e794372ffe398c4d8826b3dac35",
+        "1ca04121c3b5ee53d58d1bf5ece0ad69a675abd77455847f035b121fa14f993d"
+      ],
+      "alpha_bboxes": [
+        [
+          10,
+          17,
+          125,
+          119
+        ],
+        [
+          11,
+          16,
+          123,
+          115
+        ],
+        [
+          3,
+          18,
+          126,
+          123
+        ]
+      ],
+      "alpha_bottombounds": [
+        119,
+        115,
+        123
+      ],
+      "foot_bbox_jitter": 8,
+      "nonzero_alpha_pixel_counts": [
+        8321,
+        7934,
+        8408
+      ],
+      "palette_color_counts": [
+        62,
+        67,
+        68
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        30.621,
+        36.377,
+        29.437
+      ],
+      "lower_region_delta_pct": [
+        48.809,
+        57.832,
+        52.129
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          1055,
+          1163
+        ],
+        [
+          739,
+          1093
+        ],
+        [
+          1285,
+          935
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true
+    }
+  },
+  "R1_footlock": {
+    "PMD0001": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "58766290c59e59daa017b7cc6a74b19ed89b749bb72ee86fa8d0a5024cc44e3c",
+        "a86c89fc273a48341162ebdf1f1dc58b07958a51980b5c1288eac8e17d5a522b",
+        "e8cf4ea9f017dcc67015a9bbde4cded846939aeab66d1b2b3a71335c4cdf895f"
+      ],
+      "alpha_bboxes": [
+        [
+          26,
+          54,
+          101,
+          119
+        ],
+        [
+          26,
+          56,
+          101,
+          119
+        ],
+        [
+          21,
+          51,
+          104,
+          119
+        ]
+      ],
+      "alpha_bottombounds": [
+        119,
+        119,
+        119
+      ],
+      "foot_bbox_jitter": 0,
+      "nonzero_alpha_pixel_counts": [
+        3420,
+        3396,
+        3633
+      ],
+      "palette_color_counts": [
+        63,
+        68,
+        70
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        20.172,
+        24.054,
+        21.954
+      ],
+      "lower_region_delta_pct": [
+        35.117,
+        39.902,
+        35.391
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          872,
+          647
+        ],
+        [
+          831,
+          784
+        ],
+        [
+          949,
+          578
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true,
+      "frame1_vs_G23_same_sha": true
+    },
+    "PMD0002": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "1064101c8151123e46d7bbd6e6262ee1c770fdaba216a1f9d9aa6627584bfe27",
+        "0908ec9820277b63d697387b025ebcc7be659214013a29d9b463a0f458fe01ed",
+        "482eab75c72ed7e17be2e3d89408b909974eba5ba1ed0b7882baa1f4991ce588"
+      ],
+      "alpha_bboxes": [
+        [
+          15,
+          29,
+          114,
+          118
+        ],
+        [
+          17,
+          32,
+          114,
+          118
+        ],
+        [
+          9,
+          27,
+          120,
+          118
+        ]
+      ],
+      "alpha_bottombounds": [
+        118,
+        118,
+        118
+      ],
+      "foot_bbox_jitter": 0,
+      "nonzero_alpha_pixel_counts": [
+        6075,
+        5894,
+        6285
+      ],
+      "palette_color_counts": [
+        58,
+        61,
+        62
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        36.469,
+        41.449,
+        35.767
+      ],
+      "lower_region_delta_pct": [
+        44.16,
+        50.684,
+        44.277
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          931,
+          842
+        ],
+        [
+          908,
+          974
+        ],
+        [
+          1119,
+          529
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true,
+      "frame1_vs_G23_same_sha": true
+    },
+    "PMD0003": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "69ee707932cd288cc0d5d1811e33e1e2124e902be5d579aff26576214c84db18",
+        "ae394611fe032fe61421abb1f9ab7de9efa3d3803990439bb1ce9a0fdc9ffc62",
+        "6d03325aa0a20135bc3691891c244cb4764fcd088154b8155c31b39728f30187"
+      ],
+      "alpha_bboxes": [
+        [
+          10,
+          17,
+          125,
+          119
+        ],
+        [
+          11,
+          20,
+          123,
+          119
+        ],
+        [
+          3,
+          14,
+          126,
+          119
+        ]
+      ],
+      "alpha_bottombounds": [
+        119,
+        119,
+        119
+      ],
+      "foot_bbox_jitter": 0,
+      "nonzero_alpha_pixel_counts": [
+        8321,
+        7934,
+        8408
+      ],
+      "palette_color_counts": [
+        62,
+        67,
+        68
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        49.06,
+        55.762,
+        51.508
+      ],
+      "lower_region_delta_pct": [
+        53.262,
+        57.852,
+        51.152
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          1055,
+          1163
+        ],
+        [
+          934,
+          1279
+        ],
+        [
+          1057,
+          734
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true,
+      "frame1_vs_G23_same_sha": true
+    }
+  },
+  "R2_pareto": {
+    "PMD0001": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "58766290c59e59daa017b7cc6a74b19ed89b749bb72ee86fa8d0a5024cc44e3c",
+        "a86c89fc273a48341162ebdf1f1dc58b07958a51980b5c1288eac8e17d5a522b",
+        "64b7d8c32670028e729b06646b93fdc51c269e2984d9afc22962b573cbedae92"
+      ],
+      "alpha_bboxes": [
+        [
+          26,
+          54,
+          101,
+          119
+        ],
+        [
+          26,
+          56,
+          101,
+          119
+        ],
+        [
+          21,
+          54,
+          104,
+          122
+        ]
+      ],
+      "alpha_bottombounds": [
+        119,
+        119,
+        122
+      ],
+      "foot_bbox_jitter": 3,
+      "nonzero_alpha_pixel_counts": [
+        3420,
+        3396,
+        3633
+      ],
+      "palette_color_counts": [
+        63,
+        68,
+        70
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        20.172,
+        21.735,
+        12.158
+      ],
+      "lower_region_delta_pct": [
+        35.117,
+        40.723,
+        31.504
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          872,
+          647
+        ],
+        [
+          831,
+          784
+        ],
+        [
+          1066,
+          674
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true,
+      "frame1_vs_G23_same_sha": true
+    },
+    "PMD0002": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "1064101c8151123e46d7bbd6e6262ee1c770fdaba216a1f9d9aa6627584bfe27",
+        "e89fc85fbb1c3a4938d2f648fa983220af9161f623d4808c1a8cb88f5cb5cfec",
+        "82ace96837d451c5cf1fe22c6e319c746f2a3e098508c6a69847c069a2a71082"
+      ],
+      "alpha_bboxes": [
+        [
+          15,
+          29,
+          114,
+          118
+        ],
+        [
+          17,
+          29,
+          114,
+          115
+        ],
+        [
+          9,
+          29,
+          120,
+          120
+        ]
+      ],
+      "alpha_bottombounds": [
+        118,
+        115,
+        120
+      ],
+      "foot_bbox_jitter": 5,
+      "nonzero_alpha_pixel_counts": [
+        6075,
+        5894,
+        6285
+      ],
+      "palette_color_counts": [
+        58,
+        61,
+        62
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        25.58,
+        29.529,
+        19.257
+      ],
+      "lower_region_delta_pct": [
+        40.215,
+        49.941,
+        43.047
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          931,
+          842
+        ],
+        [
+          768,
+          868
+        ],
+        [
+          1221,
+          626
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true,
+      "frame1_vs_G23_same_sha": true
+    },
+    "PMD0003": {
+      "size": [
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          128,
+          128
+        ]
+      ],
+      "sha": [
+        "69ee707932cd288cc0d5d1811e33e1e2124e902be5d579aff26576214c84db18",
+        "827a0b3a03e34123329e9037317d435f52ac7b5de119de9a33274c722665ae11",
+        "1ca04121c3b5ee53d58d1bf5ece0ad69a675abd77455847f035b121fa14f993d"
+      ],
+      "alpha_bboxes": [
+        [
+          10,
+          17,
+          125,
+          119
+        ],
+        [
+          11,
+          17,
+          123,
+          116
+        ],
+        [
+          3,
+          18,
+          126,
+          123
+        ]
+      ],
+      "alpha_bottombounds": [
+        119,
+        116,
+        123
+      ],
+      "foot_bbox_jitter": 7,
+      "nonzero_alpha_pixel_counts": [
+        8321,
+        7934,
+        8408
+      ],
+      "palette_color_counts": [
+        62,
+        67,
+        68
+      ],
+      "full_frame_delta_pct_F1F2_F2F3_F3F1": [
+        33.075,
+        41.504,
+        29.437
+      ],
+      "lower_region_delta_pct": [
+        49.355,
+        58.34,
+        52.129
+      ],
+      "bottom_LR_occupancy_pairs": [
+        [
+          1055,
+          1163
+        ],
+        [
+          788,
+          1141
+        ],
+        [
+          1285,
+          935
+        ]
+      ],
+      "all_unique_frame_sha": true,
+      "lower_region_changes": true,
+      "all_128x128": true,
+      "frame1_vs_G23_same_sha": true
+    }
+  },
+  "interpretation": {
+    "negative_control_identical_frame_detected": true,
+    "geometry_checks_do_not_prove_foot_alternation": true,
+    "visual_45_degree_facing_verified": false,
+    "leg_alternation_verified": false,
+    "in_game_pmd_animation_retested": false,
+    "sprite_source_modified": false,
+    "art_gate": "PENDING_OR_FAIL_UNTIL_VISUAL_REVIEW",
+    "formal_seal": "NO"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "stage": "FS_AGENT_SKILLS_V5_NATIVE_SWITCH203_LOCKED_CASES",
+  "cases": {
+    "4": {
+      "controls": {
+        "OFF": {
+          "frame": 58,
+          "sprite_present": true,
+          "par_visible": false,
+          "bitmap": "1280",
+          "captured": true,
+          "sha256": "fd3046027323f51ff82d92f541a300b9223481aa626df7cf007995414e105f47",
+          "path": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\validation_v2\\VX203_LOCKED_CASE_4_OFF.png"
+        },
+        "ON": {
+          "frame": 86,
+          "sprite_present": true,
+          "par_visible": true,
+          "bitmap": "1280",
+          "captured": true,
+          "sha256": "f544aebdc32832e527c7a861b1296a6a6be02f1dc7b9f03c26a3495df1b06170",
+          "path": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\validation_v2\\VX203_LOCKED_CASE_4_ON.png"
+        }
+      },
+      "difference": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "errors": [],
+      "events": [
+        "CASE 4 house1_behind phase=hidden tile=17,9 display=2304,768",
+        "CASE 4 house1_behind phase=actor tile=17,9 display=2304,768 screen=272,220",
+        "R2_CASE 4 STATE=OFF",
+        "R2_RUNTIME_PAR case=4 frame=58 sprite_present=true visible=false bitmap=1280",
+        "R2_CASE 4 STATE=ON",
+        "R2_RUNTIME_PAR case=4 frame=86 sprite_present=true visible=true bitmap=1280"
+      ],
+      "gate": "PASS"
+    },
+    "6": {
+      "controls": {
+        "OFF": {
+          "frame": 58,
+          "sprite_present": true,
+          "par_visible": false,
+          "bitmap": "1280",
+          "captured": true,
+          "sha256": "adb4dc47ae3152fb750f6897453f80d44bd215ec793a7b90aebe32f7bdc8c227",
+          "path": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\validation_v2\\VX203_LOCKED_CASE_6_OFF.png"
+        },
+        "ON": {
+          "frame": 86,
+          "sprite_present": true,
+          "par_visible": true,
+          "bitmap": "1280",
+          "captured": true,
+          "sha256": "6023e35074e4e57b2895419db919b8c96da7e4b5f5f447ff61bfdcdbe7703eb8",
+          "path": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\validation_v2\\VX203_LOCKED_CASE_6_ON.png"
+        }
+      },
+      "difference": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "errors": [],
+      "events": [
+        "CASE 6 house2_behind phase=hidden tile=27,13 display=4864,1792",
+        "CASE 6 house2_behind phase=actor tile=27,13 display=4864,1792 screen=272,220",
+        "R2_CASE 6 STATE=OFF",
+        "R2_RUNTIME_PAR case=6 frame=58 sprite_present=true visible=false bitmap=1280",
+        "R2_CASE 6 STATE=ON",
+        "R2_RUNTIME_PAR case=6 frame=86 sprite_present=true visible=true bitmap=1280"
+      ],
+      "gate": "PASS"
+    },
+    "8": {
+      "controls": {
+        "OFF": {
+          "frame": 58,
+          "sprite_present": true,
+          "par_visible": false,
+          "bitmap": "1280",
+          "captured": true,
+          "sha256": "518b8db26621072f323df59b3fa1d5ffa307c0f2851d37f8c947b585f5e98b3e",
+          "path": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\validation_v2\\VX203_LOCKED_CASE_8_OFF.png"
+        },
+        "ON": {
+          "frame": 86,
+          "sprite_present": true,
+          "par_visible": true,
+          "bitmap": "1280",
+          "captured": true,
+          "sha256": "55f3f5d1beeb9306437f640a65dec2f1915aca41f671703531da0af27e091e90",
+          "path": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\validation_v2\\VX203_LOCKED_CASE_8_ON.png"
+        }
+      },
+      "difference": {
+        "changed_pixels": 471,
+        "bbox": [
+          389,
+          254,
+          412,
+          284
+        ],
+        "within_actor_region": true
+      },
+      "errors": [],
+      "events": [
+        "CASE 8 southeast phase=hidden tile=35,24 display=5888,4096",
+        "CASE 8 southeast phase=actor tile=35,24 display=5888,4096 screen=400,284",
+        "R2_CASE 8 STATE=OFF",
+        "R2_RUNTIME_PAR case=8 frame=58 sprite_present=true visible=false bitmap=1280",
+        "R2_CASE 8 STATE=ON",
+        "R2_RUNTIME_PAR case=8 frame=86 sprite_present=true visible=true bitmap=1280"
+      ],
+      "gate": "PASS"
+    }
+  },
+  "original_sources_SHA_unchanged": true,
+  "source_sha256": {
+    "Data/Scripts.rvdata": "fbb13d0ba06fd83e579ad1d0be49fabd9634734b53220a4518ae038d7c8d8adf",
+    "Data/Map050.rvdata": "e917358c703befad7dbc0eb5ab766a08b903cca5df86905a019affe383f88e99",
+    "Overlays/Par50.png": "4226cf795dc4761ac643060897d4fbb88c008756ec5fa28e63fdb346cd90a92f",
+    "Overlays/ground50.png": "048020526b85dc1061a78da6d210a7925f13b11a40f96429294be5fd4bb11ab3"
+  },
+  "primary_engine": "RPG Maker VX RGSS2 native Game.exe",
+  "candidate": "A36F_R2_CONSERVATIVE_PAR",
+  "mode": "one locked actor/camera position per process; actual switch203 OFF/ON",
+  "art_gate": "UNVERIFIED",
+  "formal_seal": "NO",
+  "native_gate": "PASS"
+}
