@@ -1,0 +1,273 @@
+{
+  "stage": "FS_CANONICAL_FS_GROUND3_PAR3_PER_SOURCE_OCCLUDER_WITNESSES_V5",
+  "original_ground_sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+  "original_par_sha256": "dde64967b623c6da26e1f1afbd0ea5603532bfbd882b283ea7a2df66aa0fcada",
+  "source_regions": {
+    "NW_HOUSE_ROOF": {
+      "bbox": [
+        170,
+        104,
+        358,
+        295
+      ],
+      "source_original_alpha_pixels": 13686,
+      "opaque_original_rgb_same_ground": 0.951483,
+      "top_sample_candidates": [
+        {
+          "tile": [
+            8,
+            4
+          ],
+          "foot": [
+            272,
+            160
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            7,
+            5
+          ],
+          "foot": [
+            240,
+            192
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            8,
+            5
+          ],
+          "foot": [
+            272,
+            192
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            9,
+            5
+          ],
+          "foot": [
+            304,
+            192
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            9,
+            6
+          ],
+          "foot": [
+            304,
+            224
+          ],
+          "alpha_actor_body_overlap": 0.9193
+        },
+        {
+          "tile": [
+            7,
+            6
+          ],
+          "foot": [
+            240,
+            224
+          ],
+          "alpha_actor_body_overlap": 0.9141
+        },
+        {
+          "tile": [
+            7,
+            4
+          ],
+          "foot": [
+            240,
+            160
+          ],
+          "alpha_actor_body_overlap": 0.6706
+        },
+        {
+          "tile": [
+            9,
+            4
+          ],
+          "foot": [
+            304,
+            160
+          ],
+          "alpha_actor_body_overlap": 0.6706
+        },
+        {
+          "tile": [
+            10,
+            6
+          ],
+          "foot": [
+            336,
+            224
+          ],
+          "alpha_actor_body_overlap": 0.625
+        }
+      ]
+    },
+    "EAST_TREE_CANOPY": {
+      "bbox": [
+        390,
+        0,
+        575,
+        200
+      ],
+      "source_original_alpha_pixels": 19640,
+      "opaque_original_rgb_same_ground": 0.99944,
+      "top_sample_candidates": [
+        {
+          "tile": [
+            14,
+            1
+          ],
+          "foot": [
+            464,
+            64
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            15,
+            1
+          ],
+          "foot": [
+            496,
+            64
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            16,
+            1
+          ],
+          "foot": [
+            528,
+            64
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            14,
+            2
+          ],
+          "foot": [
+            464,
+            96
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            15,
+            2
+          ],
+          "foot": [
+            496,
+            96
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            16,
+            2
+          ],
+          "foot": [
+            528,
+            96
+          ],
+          "alpha_actor_body_overlap": 1.0
+        },
+        {
+          "tile": [
+            15,
+            4
+          ],
+          "foot": [
+            496,
+            160
+          ],
+          "alpha_actor_body_overlap": 0.9935
+        },
+        {
+          "tile": [
+            13,
+            1
+          ],
+          "foot": [
+            432,
+            64
+          ],
+          "alpha_actor_body_overlap": 0.944
+        },
+        {
+          "tile": [
+            14,
+            3
+          ],
+          "foot": [
+            464,
+            128
+          ],
+          "alpha_actor_body_overlap": 0.8438
+        }
+      ]
+    }
+  },
+  "samples": {
+    "ROOF_OCCLUSION": {
+      "tile": [
+        8,
+        4
+      ],
+      "foot": [
+        272,
+        160
+      ],
+      "alpha_actor_body_overlap": 1.0
+    },
+    "TREE_OCCLUSION": {
+      "tile": [
+        14,
+        1
+      ],
+      "foot": [
+        464,
+        64
+      ],
+      "alpha_actor_body_overlap": 1.0
+    },
+    "CLEAR_NEGATIVE_CONTROL": {
+      "tile": [
+        11,
+        10
+      ],
+      "foot": [
+        368,
+        352
+      ],
+      "alpha_actor_body_overlap": 0.0
+    }
+  },
+  "total_runtime_par_opaque_pixels": 33326,
+  "total_alpha_coverage": 0.028056,
+  "source_par_witness_exact": true,
+  "normalized_opaque_rgb_equal_original_ground": true,
+  "runtime_master_equal_under_normalized_par": true,
+  "source_modified": false,
+  "restriction": "Canonical extraction/reference only; two manually defined ROI masks do not constitute standalone extracted building or whole-tree art assets.",
+  "native_gameexe": "NOT_YET_RUN",
+  "formal_seal": "NO"
+}

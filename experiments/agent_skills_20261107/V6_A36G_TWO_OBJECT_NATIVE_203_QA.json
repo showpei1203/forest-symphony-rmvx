@@ -1,0 +1,194 @@
+{
+  "stage": "A36G_V6_C2_TWO_SOURCE_ASSETS_NATIVE_SEMANTIC_203",
+  "source_r5_master_full_scene": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\A36G_V6_C2_REFINED_ROOF_MASK_20261107\\RUNTIME_FULL_SCENE_GROUND50.png",
+  "source_two_object_roof_and_tree_mask": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\A36G_V6_C2_REFINED_ROOF_MASK_20261107\\RUNTIME_PAR50_ROOF_TREE_ONLY.png",
+  "source_r5_master_sha": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db",
+  "source_legacy_map50_collision_warning": "Map50 collision remains A36F, while scene is A36G R5; do NOT claim correct collisions; this is ONLY a stationary switch203 occlusion test.",
+  "no_source_files_modified": true,
+  "cases": {
+    "A36G_ELF_HOUSE_AND_WORKSHOP": {
+      "sample": {
+        "tile": [
+          15,
+          10
+        ],
+        "actor_mask_overlap": 1.0
+      },
+      "shots": {
+        "OFF": {
+          "actor_tile": [
+            15,
+            10
+          ],
+          "display_raw": [
+            1792,
+            1024
+          ],
+          "par_visible": false,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V6_OBJECT_A36G_ELF_HOUSE_AND_WORKSHOP_OFF.png",
+          "sha256": "581095f83055bc1bd759da987de4634096d90761dadcff1569d1c998768dda6d"
+        },
+        "ON": {
+          "actor_tile": [
+            15,
+            10
+          ],
+          "display_raw": [
+            1792,
+            1024
+          ],
+          "par_visible": true,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V6_OBJECT_A36G_ELF_HOUSE_AND_WORKSHOP_ON.png",
+          "sha256": "63d6788e1bf44c3f30c447b603992072e3c31d3fcf2b6357f017e4c7ded2d85f"
+        }
+      },
+      "delta": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "actor_local_bbox": true
+      },
+      "raw_events": [
+        "V6_OBJECT_INIT case=A36G_ELF_HOUSE_AND_WORKSHOP actor=15,10",
+        "V6_OBJECT_SHOT case=A36G_ELF_HOUSE_AND_WORKSHOP state=OFF pos=15,10 display=1792,1024 par_visible=false sprite_present=true par_bitmap=1280",
+        "V6_OBJECT_TOGGLE case=A36G_ELF_HOUSE_AND_WORKSHOP switch203=true",
+        "V6_OBJECT_SHOT case=A36G_ELF_HOUSE_AND_WORKSHOP state=ON pos=15,10 display=1792,1024 par_visible=true sprite_present=true par_bitmap=1280"
+      ],
+      "errors": [],
+      "native_gate": "PASS"
+    },
+    "tree_003": {
+      "sample": {
+        "tile": [
+          22,
+          1
+        ],
+        "actor_mask_overlap": 0.80599
+      },
+      "shots": {
+        "OFF": {
+          "actor_tile": [
+            22,
+            1
+          ],
+          "display_raw": [
+            3584,
+            0
+          ],
+          "par_visible": false,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V6_OBJECT_tree_003_OFF.png",
+          "sha256": "804211d7f96a8639cbff2c97e4fd7a47dbefb3d0efecec1d4aa64281ca9c0d66"
+        },
+        "ON": {
+          "actor_tile": [
+            22,
+            1
+          ],
+          "display_raw": [
+            3584,
+            0
+          ],
+          "par_visible": true,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V6_OBJECT_tree_003_ON.png",
+          "sha256": "64a0f66acc3428d90c75337a0ea057e796926346abc379b336d0fa642c1c7736"
+        }
+      },
+      "delta": {
+        "changed_pixels": 434,
+        "bbox": [
+          261,
+          31,
+          284,
+          60
+        ],
+        "actor_local_bbox": true
+      },
+      "raw_events": [
+        "V6_OBJECT_INIT case=tree_003 actor=22,1",
+        "V6_OBJECT_SHOT case=tree_003 state=OFF pos=22,1 display=3584,0 par_visible=false sprite_present=true par_bitmap=1280",
+        "V6_OBJECT_TOGGLE case=tree_003 switch203=true",
+        "V6_OBJECT_SHOT case=tree_003 state=ON pos=22,1 display=3584,0 par_visible=true sprite_present=true par_bitmap=1280"
+      ],
+      "errors": [],
+      "native_gate": "PASS"
+    },
+    "CLEAR_NEGATIVE_CONTROL": {
+      "sample": {
+        "tile": [
+          20,
+          14
+        ],
+        "actor_mask_overlap": 0.0
+      },
+      "shots": {
+        "OFF": {
+          "actor_tile": [
+            20,
+            14
+          ],
+          "display_raw": [
+            3072,
+            2048
+          ],
+          "par_visible": false,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V6_OBJECT_CLEAR_NEGATIVE_CONTROL_OFF.png",
+          "sha256": "e4be73b85ab3e56c2fe8bcbb7b89087b6b8e7eb022c7c2c370a440233d496870"
+        },
+        "ON": {
+          "actor_tile": [
+            20,
+            14
+          ],
+          "display_raw": [
+            3072,
+            2048
+          ],
+          "par_visible": true,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V6_OBJECT_CLEAR_NEGATIVE_CONTROL_ON.png",
+          "sha256": "e4be73b85ab3e56c2fe8bcbb7b89087b6b8e7eb022c7c2c370a440233d496870"
+        }
+      },
+      "delta": {
+        "changed_pixels": 0,
+        "bbox": null,
+        "actor_local_bbox": false
+      },
+      "raw_events": [
+        "V6_OBJECT_INIT case=CLEAR_NEGATIVE_CONTROL actor=20,14",
+        "V6_OBJECT_SHOT case=CLEAR_NEGATIVE_CONTROL state=OFF pos=20,14 display=3072,2048 par_visible=false sprite_present=true par_bitmap=1280",
+        "V6_OBJECT_TOGGLE case=CLEAR_NEGATIVE_CONTROL switch203=true",
+        "V6_OBJECT_SHOT case=CLEAR_NEGATIVE_CONTROL state=ON pos=20,14 display=3072,2048 par_visible=true sprite_present=true par_bitmap=1280"
+      ],
+      "errors": [],
+      "native_gate": "PASS"
+    }
+  },
+  "all_native_cases_pass": true,
+  "art_status": "A36G R5 ART FAIL; V6 per-source roof polygon art DRAFT",
+  "new_art_generated": false,
+  "source_rgb_registration_verified": true,
+  "full_map_pathfinding_validated": false,
+  "formal_seal": "NO"
+}

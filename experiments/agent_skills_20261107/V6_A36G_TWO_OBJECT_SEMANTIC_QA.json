@@ -1,0 +1,73 @@
+{
+  "stage": "A36G_V6_C2_ROOF_AND_TREE_SOURCE_SEMANTIC_DRAFT",
+  "source_r5_manifest_sha256": "4c24008804df2dedda8deaf5290742580715da68b73de1b3ed69613283671153",
+  "source_r5_master_sha256": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db",
+  "selected_objects": {
+    "A36G_ELF_HOUSE_AND_WORKSHOP": {
+      "id": "A36G_ELF_HOUSE_AND_WORKSHOP",
+      "type": "house",
+      "source_file": "A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png",
+      "source_sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+      "source_canvas": [
+        284,
+        259
+      ],
+      "world_xy": [
+        353,
+        209
+      ],
+      "original_source_nonzero_alpha": 37231,
+      "selected_semantic_alpha_pixels": 16185,
+      "fraction_of_source": 0.43472,
+      "extraction": "roof surfaces of coherent house/workshop, not walls/windows",
+      "mask_annotated_by": "per-asset polygons",
+      "human_art_acceptance": "UNVERIFIED"
+    },
+    "tree_003": {
+      "id": "tree_003",
+      "type": "tree",
+      "source_file": "A36F_tree_003_ORIGINAL_RGBA.png",
+      "source_sha256": "85ae0a70f8b10c7eb22cd95fba69cba0be7c3de3aa95a3a7e96b3dc241b24b36",
+      "source_canvas": [
+        74,
+        81
+      ],
+      "world_xy": [
+        676,
+        24
+      ],
+      "original_source_nonzero_alpha": 2499,
+      "selected_semantic_alpha_pixels": 2326,
+      "fraction_of_source": 0.93077,
+      "extraction": "leaf-canopy based on HSV green chroma + source alpha, not trunk",
+      "mask_annotated_by": "per-asset HSV foliage region",
+      "human_art_acceptance": "UNVERIFIED"
+    }
+  },
+  "actor_test_targets": {
+    "A36G_ELF_HOUSE_AND_WORKSHOP": {
+      "tile": [
+        15,
+        10
+      ],
+      "actor_mask_overlap": 1.0
+    },
+    "tree_003": {
+      "tile": [
+        22,
+        1
+      ],
+      "actor_mask_overlap": 0.80599
+    }
+  },
+  "full_scene_pixel_registration": true,
+  "runtime_overlay_opaque_pixel_count": 18511,
+  "runtime_overlay_canvas_fraction": 0.015584,
+  "authoring_complete_par_preserved": true,
+  "runtime_rgb_exact_source": true,
+  "new_art_generated": false,
+  "forest_group_heuristics_used": false,
+  "native_VX_verified": false,
+  "user_art_approved": false,
+  "formal_seal": "NO"
+}

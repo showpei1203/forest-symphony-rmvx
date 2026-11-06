@@ -1,0 +1,206 @@
+{
+  "stage": "FS_CANONICAL_ORIGINAL_STYLE_NATIVE_SEMANTIC_203_V5",
+  "source_original_ground": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\FS_CANONICAL_OCCLUDER_WITNESSES_V5_20261107\\RUNTIME_FULL_SCENE_GROUND_FROM_ORIGINAL_GROUND3.png",
+  "source_normalized_par": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\FS_CANONICAL_OCCLUDER_WITNESSES_V5_20261107\\PAR50_2CANONICAL_WITNESSES_REGISTERED.png",
+  "source_original_par3": "dde64967b623c6da26e1f1afbd0ea5603532bfbd882b283ea7a2df66aa0fcada",
+  "source_legacy_map50_collision_warning": "Map50 collision is A36F, not original ground3; these are stationary 203 actor-occlusion samples only.",
+  "no_source_files_modified": true,
+  "cases": {
+    "ROOF_OCCLUSION": {
+      "sample": {
+        "tile": [
+          8,
+          4
+        ],
+        "foot": [
+          272,
+          160
+        ],
+        "alpha_actor_body_overlap": 1.0
+      },
+      "shots": {
+        "OFF": {
+          "actor_tile": [
+            8,
+            4
+          ],
+          "display_raw": [
+            0,
+            0
+          ],
+          "par_visible": false,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V5_ORIGINAL_ROOF_OCCLUSION_OFF.png",
+          "sha256": "410080cf7dac891a51aaed2590e236f83ce2b3751e290499e7e74e677fa2e7ba"
+        },
+        "ON": {
+          "actor_tile": [
+            8,
+            4
+          ],
+          "display_raw": [
+            0,
+            0
+          ],
+          "par_visible": true,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V5_ORIGINAL_ROOF_OCCLUSION_ON.png",
+          "sha256": "0a719114d6662efa53e70fc5a8f880ca0822aaeaefab4c80fb173b904add0a50"
+        }
+      },
+      "delta": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          124,
+          286,
+          156
+        ],
+        "actor_local_bbox": true
+      },
+      "raw_events": [
+        "V5_ORIGINAL_INIT case=ROOF_OCCLUSION actor=8,4",
+        "V5_ORIGINAL_SHOT case=ROOF_OCCLUSION state=OFF pos=8,4 display=0,0 par_visible=false sprite_present=true par_bitmap=1280",
+        "V5_ORIGINAL_TOGGLE case=ROOF_OCCLUSION switch203=true",
+        "V5_ORIGINAL_SHOT case=ROOF_OCCLUSION state=ON pos=8,4 display=0,0 par_visible=true sprite_present=true par_bitmap=1280"
+      ],
+      "errors": [],
+      "native_gate": "PASS"
+    },
+    "TREE_OCCLUSION": {
+      "sample": {
+        "tile": [
+          14,
+          1
+        ],
+        "foot": [
+          464,
+          64
+        ],
+        "alpha_actor_body_overlap": 1.0
+      },
+      "shots": {
+        "OFF": {
+          "actor_tile": [
+            14,
+            1
+          ],
+          "display_raw": [
+            1536,
+            0
+          ],
+          "par_visible": false,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V5_ORIGINAL_TREE_OCCLUSION_OFF.png",
+          "sha256": "948c50d0dfaff04223b5e3f639bfa10a7a2749130a074a59e1c7de3be5e3cbee"
+        },
+        "ON": {
+          "actor_tile": [
+            14,
+            1
+          ],
+          "display_raw": [
+            1536,
+            0
+          ],
+          "par_visible": true,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V5_ORIGINAL_TREE_OCCLUSION_ON.png",
+          "sha256": "a99815914ff387a5e1c62204771f6e18ea5dfcea2edb39f360d4a33a96f97ef0"
+        }
+      },
+      "delta": {
+        "changed_pixels": 625,
+        "bbox": [
+          261,
+          28,
+          286,
+          60
+        ],
+        "actor_local_bbox": true
+      },
+      "raw_events": [
+        "V5_ORIGINAL_INIT case=TREE_OCCLUSION actor=14,1",
+        "V5_ORIGINAL_SHOT case=TREE_OCCLUSION state=OFF pos=14,1 display=1536,0 par_visible=false sprite_present=true par_bitmap=1280",
+        "V5_ORIGINAL_TOGGLE case=TREE_OCCLUSION switch203=true",
+        "V5_ORIGINAL_SHOT case=TREE_OCCLUSION state=ON pos=14,1 display=1536,0 par_visible=true sprite_present=true par_bitmap=1280"
+      ],
+      "errors": [],
+      "native_gate": "PASS"
+    },
+    "CLEAR_NEGATIVE_CONTROL": {
+      "sample": {
+        "tile": [
+          11,
+          10
+        ],
+        "foot": [
+          368,
+          352
+        ],
+        "alpha_actor_body_overlap": 0.0
+      },
+      "shots": {
+        "OFF": {
+          "actor_tile": [
+            11,
+            10
+          ],
+          "display_raw": [
+            768,
+            1024
+          ],
+          "par_visible": false,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V5_ORIGINAL_CLEAR_NEGATIVE_CONTROL_OFF.png",
+          "sha256": "b4596e37dcf8f07aa9c28d7f9e960154a203b0716019beafbc8d78a5540f5c6d"
+        },
+        "ON": {
+          "actor_tile": [
+            11,
+            10
+          ],
+          "display_raw": [
+            768,
+            1024
+          ],
+          "par_visible": true,
+          "sprite_present": true,
+          "par_bitmap": "1280",
+          "captured": true,
+          "image": "V5_ORIGINAL_CLEAR_NEGATIVE_CONTROL_ON.png",
+          "sha256": "b4596e37dcf8f07aa9c28d7f9e960154a203b0716019beafbc8d78a5540f5c6d"
+        }
+      },
+      "delta": {
+        "changed_pixels": 0,
+        "bbox": null,
+        "actor_local_bbox": false
+      },
+      "raw_events": [
+        "V5_ORIGINAL_INIT case=CLEAR_NEGATIVE_CONTROL actor=11,10",
+        "V5_ORIGINAL_SHOT case=CLEAR_NEGATIVE_CONTROL state=OFF pos=11,10 display=768,1024 par_visible=false sprite_present=true par_bitmap=1280",
+        "V5_ORIGINAL_TOGGLE case=CLEAR_NEGATIVE_CONTROL switch203=true",
+        "V5_ORIGINAL_SHOT case=CLEAR_NEGATIVE_CONTROL state=ON pos=11,10 display=768,1024 par_visible=true sprite_present=true par_bitmap=1280"
+      ],
+      "errors": [],
+      "native_gate": "PASS"
+    }
+  },
+  "all_native_cases_pass": true,
+  "art_status": "REFERENCE ONLY; A36G R5 ART FAIL",
+  "new_master_map_or_building_generated": false,
+  "original_FSRGB_recomposition_valid": true,
+  "full_map_pathfinding_validated": false,
+  "formal_seal": "NO"
+}
