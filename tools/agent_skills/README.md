@@ -32,3 +32,11 @@ Requirements: git, Python 3.11+ and Pillow 10+.
 - New map work follows Drive FS Precheck **v3.2** and the shared game-asset authority before generic skills.
 - Skill QA is only metadata/read-only baseline QA. No artistic or in-engine PASS is implied.
 - Rollbacks are isolated: removing the `E:\FS_AGENT_SKILLS_PILOT_20261106` pilot does not touch the FS source projects, GitHub main or canonical archives.
+
+## 2026-11-06 follow-up: actual FS runtime PAR contract
+
+Read [V2 validation handoff](../../experiments/agent_skills_20261106/VALIDATION_V2_HANDOFF.md) before claiming that Ground/PAR is engine-ready. The original RMVX Hanzo overlay uses full-scene `Graphics/Parallaxes/ground3.png` plus a smaller duplicate-pixel occlusion `Overlays/par3.png` controlled by `$game_switches[203]`. Authoring Ground-only + Complete PAR is a separate, valid source/manifest contract, **not** a drop-in native overlay. A36F R1 and A36G R5 failed this *runtime* contract even though their full scene pixel recomposition passed.
+
+The read-only `fs_runtime_contract_v2.py` measured five source pairs and identified the false positives. The isolated `fs_vx203_locked_cases_v5.py` used real Game.exe and locked camera/actor positions; cases 4, 6 and 8 each passed OFF/ON actor occlusion, with source hashes unchanged. The `fs_pmd_motion_v2.py` report found foot-lock vs loop-motion tradeoffs; **PMD art, step alternation, full VX coverage and Formal Seal are not approved**.
+
+Use named verdicts: `AUTHORING_PAR`, `NATIVE_203_ACTOR`, `COLLISION/TRAVERSAL`, `GODOT_SUPPLEMENT` and `ART_REVIEW`. A passing pixel comparison never upgrades another gate automatically. V2 screenshot/QA evidence and reproducible scripts are in the isolated Google Drive validation package.
