@@ -66,3 +66,13 @@ The actual reusable deliverable is a **4-view exact-source 544×416 Ground3/Par3
 Google Drive original reference kit, V4 ZIP, screenshot and SHA manifest: https://drive.google.com/drive/folders/1RoEMM8zihWvYhwf6tdM6rnpOsShkYgRt
 
 **Do not re-enable PixelLab style-reference chains or automatic forest_group footprint-only occlusion** without per-tree/per-roof source semantic masks, 1× art confirmation, and original HK-UOM switch203 proof. Current R5 art = FAIL. Formal Seal = NO.
+
+## V5/V6 true original roof/tree witnesses + A36G per-object native switch203 (2026-11-07)
+
+The canonical original `ground3.png/par3.png` was used to extract *two narrow native occlusion witness ROIs* (house roof and tree crown), preserving original RGBA alpha, original exact witness pixels, and a separate same-source Ground-RGB-normalized test overlay. On **actual RPG Maker VX Game.exe**, fixed view, and genuine HK UOM ParSwitch203, roof (8,4) changed **627 actor pixels**, tree (14,1) **625**, and clear negative control (11,10) **0**: **3/3 sampled native PASS**.
+
+The same per-asset method was applied to genuine independent A36G R5 sources: **one integrated left house/workshop PNG** and **one source tree_003 PNG**, with source-specific roof polygon/HSV masking and tree crown/HSV alpha semantics, no 32px walkable-actor grid lattice, no forest_group footpoint-derived mask. Preserve Authoring GroundOnly/CompletePAR while making `RUNTIME_FULL_SCENE_GROUND50` + `RUNTIME_PAR50_ROOF_TREE_ONLY` from exact same-scene RGB. Native house (15,10) changed **627**, tree (22,1) **434** (partial concealment), clear control (20,14) **0**: **3/3 sampled native PASS**. Candidate combined mask coverage **1.5584%** pertains to **only those two objects**, not whole map.
+
+**Limits:** original witness ROIs are not whole isolated art assets. A36G V6 C1 roof polygon was incomplete; revised C2 mask remains ART UNVERIFIED. The 203 tests use a Map50 cloned from A36F with **A36F collision metadata**, not A36G R5's 241-blocked-cells manifest, so no A36G movement/collision Gate is proven. Historical R5 rejected-house style is still **ART FAIL** compared to approved FS Ground3. No Godot rebuild this round, no paid image generation, Formal Seal **NO**.
+
+All reproducible scripts, JSON QA, real OFF/ON screenshots, exact source-masks, separately preserved Authoring/Runtime layer PNGs, full SHA manifest and failure history are in [Drive V5/V6 complete package](https://drive.google.com/drive/folders/1icyJePPf_nglB6ZUfJqrB4NE2tIzpeqa) and [V5/V6 Handoff](../../experiments/agent_skills_20261107/VALIDATION_V5_V6_PER_OBJECT_NATIVE_203_HANDOFF.md). Avoid scaling to all 192 objects until per-source semantic QA is approved and collision data is built for the matching scene.
