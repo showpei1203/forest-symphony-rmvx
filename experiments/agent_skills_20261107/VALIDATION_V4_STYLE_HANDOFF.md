@@ -33,7 +33,7 @@
 - 4 張前景選區著色 witness 圖，顯示屋頂／林冠在原版是怎麼局部遮擋。
 - `ORIGINAL_FS_4_REGISTERED_VIEWS_AND_PAR_WITNESSES.png` 四組並排 1× 實際像素。
 - `REFERENCE_MANIFEST.json`，含裁切起點、每對 Ground/PAR 的 SHA256、遮擋率、對位率與相對 RGB 差異。
-- 完整 ZIP：`FS_CANONICAL_GROUND3_PAR3_4VIEW_REFERENCE_V4_20261107.zip`，6.30 MB，13 entries，ZIP CRC PASS。
+- 完整 ZIP：`FS_CANONICAL_GROUND3_PAR3_4VIEW_REFERENCE_V4_20261107.zip`，6.30 MB，14 entries，ZIP CRC PASS。
 - 四個區域：NW_COTTAGE_AND_TREES 起點 (0,0)、CENTER_MAIN_HOUSE (352,192)、EAST_HOUSES_CANOPY (736,0)、WEST_FOREST_CLIFF (0,448)。所有尺寸 544×416，像素完全來自原版，無新生成。
 
 | 區域 | PAR alpha>0 | 高透明度區域 RGB 與 Ground 精確相同 |
@@ -62,3 +62,6 @@
 - R5 Art/Style：FAIL（使用者原判）
 - PMD：本輪未動，仍 PENDING
 - **FORMAL SEAL：NO**
+
+## V4 archive count erratum（2026-11-07）
+實際 ZIP 已重新用 Python `zipfile` 實測：**14 members、`testzip() is None`**。原交接文的「13 entries」是人工誤植；未修改原版 Ground3/Par3、未重打包已核對 SHA 的 ZIP。正式 GitHub Handoff 已更正為 14，Drive 內原始 ZIP 保持不變。
