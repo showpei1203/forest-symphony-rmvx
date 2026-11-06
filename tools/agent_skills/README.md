@@ -42,3 +42,15 @@ The read-only `fs_runtime_contract_v2.py` measured five source pairs and identif
 Use named verdicts: `AUTHORING_PAR`, `NATIVE_203_ACTOR`, `COLLISION/TRAVERSAL`, `GODOT_SUPPLEMENT` and `ART_REVIEW`. A passing pixel comparison never upgrades another gate automatically. V2 screenshot/QA evidence and reproducible scripts are in the isolated Google Drive validation package.
 
 V2 evidence folder (actual native screenshots, 22-member ZIP, SHA manifest and full QA): https://drive.google.com/drive/folders/1DWzNW1DPTeGzpoHtsgCFtdF3ySImiALV
+
+## V3 native RPG Maker VX movement and full-grid verification (2026-11-07)
+
+The next isolated run tested **real** RGSS2 `Game.exe` movement, not only the composite PNG. Native `move_*` sampled 12/12 passable/blocked cases with switch203 toggles. Four canopy exits received native start/end OFF/ON screenshots, with changed pixels W 625→119, S 368→0, N 627→232, E 454→1. The north exit remains partially occluded, so these results are **sample engineering gates**, not final art approval.
+
+A new 40×29 exhaustive native `Game_Player#passable?(x,y)` grid audit matched **1160/1160 cells** (927 free, 233 blocked); `move_passable?(xo,yo,xt,yt)` matched **3576/3576 valid directed edges**. A first V10 scan had a false-negative at player spawn (20,14) caused by self-collision; in V11 the actor was temporarily parked at known blocked (3,6) inside a fresh isolated copy. The V6 script also failed with a three-argument `passable?` call because FS inherits `ISS - ParaPassa`; this was corrected in V7. A place-name HUD animation polluted early screenshots until V8 introduced a 280-frame warmup. **Preserve these failure logs as part of the test specification.**
+
+- [V3 Handoff](../../experiments/agent_skills_20261107/VALIDATION_V3_HANDOFF.md)
+- [Native grid QA evidence](../../experiments/agent_skills_20261107/FS_V11_NATIVE_COLLISION_FULL_GRID_QA.json)
+- [Full Drive archive, screenshot contact sheets and SHA manifest](https://drive.google.com/drive/folders/1LMcN1IhvvhcY09i2IWUFJuDdE6eyHlWF)
+
+A36F/A36G visual acceptance, full semantic occlusion signoff, PMD motion art and Formal Seal remain **NO**. Do not use any V3 results to approve A36G R5 or any newly generated art.
