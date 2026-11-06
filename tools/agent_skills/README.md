@@ -40,3 +40,5 @@ Read [V2 validation handoff](../../experiments/agent_skills_20261106/VALIDATION_
 The read-only `fs_runtime_contract_v2.py` measured five source pairs and identified the false positives. The isolated `fs_vx203_locked_cases_v5.py` used real Game.exe and locked camera/actor positions; cases 4, 6 and 8 each passed OFF/ON actor occlusion, with source hashes unchanged. The `fs_pmd_motion_v2.py` report found foot-lock vs loop-motion tradeoffs; **PMD art, step alternation, full VX coverage and Formal Seal are not approved**.
 
 Use named verdicts: `AUTHORING_PAR`, `NATIVE_203_ACTOR`, `COLLISION/TRAVERSAL`, `GODOT_SUPPLEMENT` and `ART_REVIEW`. A passing pixel comparison never upgrades another gate automatically. V2 screenshot/QA evidence and reproducible scripts are in the isolated Google Drive validation package.
+
+V2 evidence folder (actual native screenshots, 22-member ZIP, SHA manifest and full QA): https://drive.google.com/drive/folders/1DWzNW1DPTeGzpoHtsgCFtdF3ySImiALV
