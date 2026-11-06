@@ -1,0 +1,75 @@
+{
+  "name": "FS_CANONICAL_GROUND3_PAR3_REGISTERED_544x416_BENCHMARK_V4",
+  "status": "REFERENCE_ONLY_NOT_NEW_RUNTIME_MAP",
+  "source_ground": "Graphics/Parallaxes/ground3.png",
+  "source_par": "Overlays/par3.png",
+  "source_ground_sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+  "source_par_sha256": "dde64967b623c6da26e1f1afbd0ea5603532bfbd882b283ea7a2df66aa0fcada",
+  "pixel_grid": 32,
+  "viewport": [
+    544,
+    416
+  ],
+  "regions": [
+    {
+      "region": "NW_COTTAGE_AND_TREES",
+      "source_crop_origin": [
+        0,
+        0
+      ],
+      "ground_sha256": "0a719114d6662efa53e70fc5a8f880ca0822aaeaefab4c80fb173b904add0a50",
+      "par_sha256": "971f9004e349f1e2b84a57f850446c216782435a3cbf5cae2b146ed09f40359c",
+      "alpha_coverage": 0.204292,
+      "opaque_par_ground_rgb_agreement": 0.973586,
+      "opaque_par_pixels": 45809,
+      "rgb_changed_pixels_on_recomposition": 1629,
+      "registration_verified_by_same_source_crop": true
+    },
+    {
+      "region": "CENTER_MAIN_HOUSE",
+      "source_crop_origin": [
+        352,
+        192
+      ],
+      "ground_sha256": "81a863a2589b03643afd6e25cae52526bf2fb0c04e72993bd1605229ce6d759e",
+      "par_sha256": "9c00b76e595f71033aacc54ebf664fbc4379194ff1073186c679357604e41281",
+      "alpha_coverage": 0.125464,
+      "opaque_par_ground_rgb_agreement": 0.984244,
+      "opaque_par_pixels": 28306,
+      "rgb_changed_pixels_on_recomposition": 527,
+      "registration_verified_by_same_source_crop": true
+    },
+    {
+      "region": "EAST_HOUSES_CANOPY",
+      "source_crop_origin": [
+        736,
+        0
+      ],
+      "ground_sha256": "1b0f8815637c5a172bb27b8fa6e4f7d1316813c6d3dd849be59122eecc90c218",
+      "par_sha256": "df31436ed0cbc66e5e22fadef12ad4b502d36b6eb5bcc231d7dbe697039f7a4d",
+      "alpha_coverage": 0.125795,
+      "opaque_par_ground_rgb_agreement": 0.976716,
+      "opaque_par_pixels": 28260,
+      "rgb_changed_pixels_on_recomposition": 752,
+      "registration_verified_by_same_source_crop": true
+    },
+    {
+      "region": "WEST_FOREST_CLIFF",
+      "source_crop_origin": [
+        0,
+        448
+      ],
+      "ground_sha256": "3c8f8b20d10b5ed27f6ba70d0144eb3c3dcee48c4cd3e95abb5b6e776697db9e",
+      "par_sha256": "b6e89d9c1e480c79d52857f8ca70d1daa5c920b7e83b9972be58d58a77e145c5",
+      "alpha_coverage": 0.119697,
+      "opaque_par_ground_rgb_agreement": 0.961642,
+      "opaque_par_pixels": 27035,
+      "rgb_changed_pixels_on_recomposition": 1090,
+      "registration_verified_by_same_source_crop": true
+    }
+  ],
+  "why": "Original art and real HK UOM source 203 overlay benchmark. Require every new source/occlusion pipeline to compare against these paired screenshots, not last generated version.",
+  "runtime_VX_import_executed_in_this_reference_export": false,
+  "source_modified": false,
+  "formal_seal": "NO"
+}
