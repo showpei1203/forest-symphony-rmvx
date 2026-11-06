@@ -1,0 +1,89 @@
+{
+  "stage": "FS_AGENT_SKILLS_V10_NATIVE_COLLISION_GRID",
+  "source_map": "A36F_R1_collision_manifest_40x29",
+  "actual_engine": "RPG Maker VX Game.exe RGSS2 + ISS - ParaPassa",
+  "runtime_completed": true,
+  "source_files_unchanged": true,
+  "runtime_row_counts": {
+    "tiles": 29,
+    "edges": 29
+  },
+  "counts": {
+    "tile_checked": 1160,
+    "tile_runtime_passable": 926,
+    "edge_checked": 3576,
+    "edge_runtime_passable": 2860,
+    "blocked_cells_manifest": 233
+  },
+  "tile_mismatch_count": 1,
+  "tile_mismatches": [
+    {
+      "x": 20,
+      "y": 14,
+      "manifest_passable": true,
+      "engine_passable": false
+    }
+  ],
+  "edge_mismatch_count": 4,
+  "edge_mismatches": [
+    {
+      "from": [
+        20,
+        13
+      ],
+      "to": [
+        20,
+        14
+      ],
+      "direction": 2,
+      "manifest_expect_move": true,
+      "engine_move_passable": false
+    },
+    {
+      "from": [
+        19,
+        14
+      ],
+      "to": [
+        20,
+        14
+      ],
+      "direction": 6,
+      "manifest_expect_move": true,
+      "engine_move_passable": false
+    },
+    {
+      "from": [
+        21,
+        14
+      ],
+      "to": [
+        20,
+        14
+      ],
+      "direction": 4,
+      "manifest_expect_move": true,
+      "engine_move_passable": false
+    },
+    {
+      "from": [
+        20,
+        15
+      ],
+      "to": [
+        20,
+        14
+      ],
+      "direction": 8,
+      "manifest_expect_move": true,
+      "engine_move_passable": false
+    }
+  ],
+  "runtime_errors": [],
+  "manifest_free_cells": 927,
+  "manifest_blocked_cells": 233,
+  "art_approval": "UNVERIFIED",
+  "formal_seal": "NO",
+  "tile_gate": "FAIL",
+  "directional_gate": "FAIL"
+}

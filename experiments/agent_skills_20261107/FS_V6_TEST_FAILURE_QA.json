@@ -1,0 +1,351 @@
+{
+  "test": "A36F R2 conservative native RPG VX movement + switch203",
+  "status": "PARTIAL",
+  "completed_all": false,
+  "source_hashes_unchanged": true,
+  "native_game_exe_started": true,
+  "cases": {
+    "ROAD_FREE": {
+      "plan": {
+        "start": [
+          20,
+          14
+        ],
+        "direction": 6,
+        "dest": [
+          21,
+          14
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V6_SHOT case=ROAD_FREE state=OFF pos=20,14 par_visible=false display=3072,2048",
+          "actor_tile": [
+            20,
+            14
+          ],
+          "par_visible": false,
+          "display": [
+            3072,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V6_ROAD_FREE_OFF.png",
+          "sha256": "fc491fa257ec3a626f696daecbbc2650b41e7ffcc4d443fbf3a8887131e83dc4"
+        },
+        "ON": {
+          "source_log": "V6_SHOT case=ROAD_FREE state=ON pos=20,14 par_visible=true display=3072,2048",
+          "actor_tile": [
+            20,
+            14
+          ],
+          "par_visible": true,
+          "display": [
+            3072,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V6_ROAD_FREE_ON.png",
+          "sha256": "46bc6d18a3bfa3dfc814c7aba9826643276f052895eaff0c0167be51d0eea1d9"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 9875,
+        "diff_bbox": [
+          0,
+          29,
+          234,
+          72
+        ],
+        "within_actor_region": false
+      },
+      "snapshot_camera_stable": true
+    },
+    "HOUSE_A_WALL": {
+      "plan": {
+        "start": [
+          17,
+          14
+        ],
+        "direction": 8,
+        "dest": [
+          17,
+          13
+        ],
+        "manifest_destination_blocked": true,
+        "expected_movement": false,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "HOUSE_A_PATH": {
+      "plan": {
+        "start": [
+          17,
+          15
+        ],
+        "direction": 8,
+        "dest": [
+          17,
+          14
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.5677,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "HOUSE_B_WALL": {
+      "plan": {
+        "start": [
+          27,
+          18
+        ],
+        "direction": 8,
+        "dest": [
+          27,
+          17
+        ],
+        "manifest_destination_blocked": true,
+        "expected_movement": false,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "HOUSE_B_PATH": {
+      "plan": {
+        "start": [
+          27,
+          19
+        ],
+        "direction": 8,
+        "dest": [
+          27,
+          18
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "FOREST_TREE_BLOCK": {
+      "plan": {
+        "start": [
+          4,
+          6
+        ],
+        "direction": 4,
+        "dest": [
+          3,
+          6
+        ],
+        "manifest_destination_blocked": true,
+        "expected_movement": false,
+        "start_actor_mask_overlap": 0.7695,
+        "end_actor_mask_overlap": 0.9753
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "FOREST_WALK": {
+      "plan": {
+        "start": [
+          4,
+          6
+        ],
+        "direction": 2,
+        "dest": [
+          4,
+          7
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.7695,
+        "end_actor_mask_overlap": 0.9727
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "FOREST_CANOPY_EXIT_W": {
+      "plan": {
+        "start": [
+          8,
+          6
+        ],
+        "direction": 4,
+        "dest": [
+          7,
+          6
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.957,
+        "end_actor_mask_overlap": 0.0091
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "FOREST_CANOPY_EXIT_S": {
+      "plan": {
+        "start": [
+          25,
+          7
+        ],
+        "direction": 2,
+        "dest": [
+          25,
+          8
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9987,
+        "end_actor_mask_overlap": 0.0508
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "FOREST_CANOPY_EXIT_N": {
+      "plan": {
+        "start": [
+          10,
+          17
+        ],
+        "direction": 8,
+        "dest": [
+          10,
+          16
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9544,
+        "end_actor_mask_overlap": 0.0273
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "FOREST_CANOPY_EXIT_E": {
+      "plan": {
+        "start": [
+          29,
+          15
+        ],
+        "direction": 6,
+        "dest": [
+          30,
+          15
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9974,
+        "end_actor_mask_overlap": 0.0312
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    },
+    "HOUSE_A_BACK_MOVE": {
+      "plan": {
+        "start": [
+          17,
+          9
+        ],
+        "direction": 6,
+        "dest": [
+          18,
+          9
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 1.0,
+        "end_actor_mask_overlap": 0.6042
+      },
+      "native_move": {},
+      "movement_matches_manifest": false,
+      "state_203_transition": false,
+      "screens": {},
+      "off_on_diff": {},
+      "snapshot_camera_stable": false
+    }
+  },
+  "errors": [
+    [
+      39979738,
+      "#32770"
+    ],
+    [
+      6292078,
+      "RGSS Player"
+    ]
+  ],
+  "raw_runtime_events": [
+    "V6_BEGIN case=ROAD_FREE at=20,14 dir=6",
+    "V6_SHOT case=ROAD_FREE state=OFF pos=20,14 par_visible=false display=3072,2048",
+    "V6_SHOT case=ROAD_FREE state=ON pos=20,14 par_visible=true display=3072,2048"
+  ],
+  "limitations": [
+    "manifest collision expected behavior may be inconsistent with runtime, no assumptions of PASS",
+    "screenshots are timed external grabs; camera comparisons must be stable to count",
+    "art quality / user acceptance not tested"
+  ],
+  "formal_seal": "NO",
+  "movement_cases_match": 0,
+  "movement_total": 12,
+  "camera_stable_OFF_ON": 1,
+  "switch_203_transitions": 1,
+  "status_gate": "FAIL"
+}
