@@ -54,3 +54,15 @@ A new 40×29 exhaustive native `Game_Player#passable?(x,y)` grid audit matched *
 - [Full Drive archive, screenshot contact sheets and SHA manifest](https://drive.google.com/drive/folders/1LMcN1IhvvhcY09i2IWUFJuDdE6eyHlWF)
 
 A36F/A36G visual acceptance, full semantic occlusion signoff, PMD motion art and Formal Seal remain **NO**. Do not use any V3 results to approve A36G R5 or any newly generated art.
+
+## V4 canonical visual/style benchmark and negative occlusion gates (2026-11-07)
+
+After V3 native movement/collision PASS, the next focus was A36G art and PAR semantic quality. The true canonical **`FS project/Graphics/Parallaxes/ground3.png`** is the visual authority; `Overlays/par3.png` is the same-coordinate original HK-UOM actor occlusion, and **`Overlays/ground3.png` is not the visual master**. R5's thatched cottages and dark/dense forest have **not** passed user art acceptance. No new PixelLab generation was performed.
+
+Two isolated A36G R6 technical derivatives were generated from **192 source object PNGs** and same-source full-scene RGB without mutating R5: C1 had a severe 32px pixel lattice and 34.419% occlusion coverage; C2 smoothed sampled actor foot rectangles but grew to 52.761% with blocky regions. Both are **FAIL** on mask semantics despite exact source registration. They were **not engine-tested** under fail-closed gates.
+
+The actual reusable deliverable is a **4-view exact-source 544×416 Ground3/Par3 registered reference kit**, cropped on 32px boundaries, with original Ground + Alpha PAR, witness visualizations, per-pair SHAs, and diagnostic coverage. Read [V4 Handoff](../../experiments/agent_skills_20261107/VALIDATION_V4_STYLE_HANDOFF.md) and [C1/C2 artifact gate](../../experiments/agent_skills_20261107/R6_C1_C2_MASK_ARTIFACT_GATE.json).
+
+Google Drive original reference kit, V4 ZIP, screenshot and SHA manifest: https://drive.google.com/drive/folders/1RoEMM8zihWvYhwf6tdM6rnpOsShkYgRt
+
+**Do not re-enable PixelLab style-reference chains or automatic forest_group footprint-only occlusion** without per-tree/per-roof source semantic masks, 1× art confirmation, and original HK-UOM switch203 proof. Current R5 art = FAIL. Formal Seal = NO.
