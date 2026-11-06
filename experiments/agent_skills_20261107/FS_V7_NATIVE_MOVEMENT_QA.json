@@ -1,0 +1,1000 @@
+{
+  "test": "A36F R2 conservative native RPG VX movement + switch203",
+  "status": "COMPLETE",
+  "completed_all": true,
+  "source_hashes_unchanged": true,
+  "native_game_exe_started": true,
+  "cases": {
+    "ROAD_FREE": {
+      "plan": {
+        "start": [
+          20,
+          14
+        ],
+        "direction": 6,
+        "dest": [
+          21,
+          14
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {
+        "before": [
+          20,
+          14
+        ],
+        "after": [
+          21,
+          14
+        ],
+        "runtime_passable": true,
+        "dir": 6
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=ROAD_FREE state=OFF pos=20,14 par_visible=false display=3072,2048",
+          "actor_tile": [
+            20,
+            14
+          ],
+          "par_visible": false,
+          "display": [
+            3072,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V7_ROAD_FREE_OFF.png",
+          "sha256": "e935381b4cc6b7d29989df43891e57baae725c5042c81d7956a154779c49693b"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=ROAD_FREE state=ON pos=20,14 par_visible=true display=3072,2048",
+          "actor_tile": [
+            20,
+            14
+          ],
+          "par_visible": true,
+          "display": [
+            3072,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V7_ROAD_FREE_ON.png",
+          "sha256": "46bc6d18a3bfa3dfc814c7aba9826643276f052895eaff0c0167be51d0eea1d9"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=ROAD_FREE state=AFTER pos=21,14 par_visible=true display=3328,2048",
+          "actor_tile": [
+            21,
+            14
+          ],
+          "par_visible": true,
+          "display": [
+            3328,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V7_ROAD_FREE_AFTER.png",
+          "sha256": "bea3bb0266869621737b805f715e32b6fc236ebd5a046c4c09e585a10533c915"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 9819,
+        "diff_bbox": [
+          0,
+          29,
+          234,
+          72
+        ],
+        "within_actor_region": false
+      },
+      "snapshot_camera_stable": true
+    },
+    "HOUSE_A_WALL": {
+      "plan": {
+        "start": [
+          17,
+          14
+        ],
+        "direction": 8,
+        "dest": [
+          17,
+          13
+        ],
+        "manifest_destination_blocked": true,
+        "expected_movement": false,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {
+        "before": [
+          17,
+          14
+        ],
+        "after": [
+          17,
+          14
+        ],
+        "runtime_passable": false,
+        "dir": 8
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=HOUSE_A_WALL state=OFF pos=17,14 par_visible=false display=2304,2048",
+          "actor_tile": [
+            17,
+            14
+          ],
+          "par_visible": false,
+          "display": [
+            2304,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_A_WALL_OFF.png",
+          "sha256": "e13a155fdea701d94b18d043b5f322bc7dfde961eaf4fb3dab4688d7f69efe92"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=HOUSE_A_WALL state=ON pos=17,14 par_visible=true display=2304,2048",
+          "actor_tile": [
+            17,
+            14
+          ],
+          "par_visible": true,
+          "display": [
+            2304,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_A_WALL_ON.png",
+          "sha256": "24bac8e0baa89918e964524c6bf359964671739cd93abc296b0a1c22fbe2ee01"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=HOUSE_A_WALL state=AFTER pos=17,14 par_visible=true display=2304,2048",
+          "actor_tile": [
+            17,
+            14
+          ],
+          "par_visible": true,
+          "display": [
+            2304,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_A_WALL_AFTER.png",
+          "sha256": "e62ec3255eb5d0ab373bb2aeea7bc66a9ed40d55c43b7e95ad6b5add706c5bea"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 8819,
+        "diff_bbox": [
+          28,
+          29,
+          269,
+          220
+        ],
+        "within_actor_region": false
+      },
+      "snapshot_camera_stable": true
+    },
+    "HOUSE_A_PATH": {
+      "plan": {
+        "start": [
+          17,
+          15
+        ],
+        "direction": 8,
+        "dest": [
+          17,
+          14
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.5677,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {
+        "before": [
+          17,
+          15
+        ],
+        "after": [
+          17,
+          14
+        ],
+        "runtime_passable": true,
+        "dir": 8
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=HOUSE_A_PATH state=OFF pos=17,15 par_visible=false display=2304,2304",
+          "actor_tile": [
+            17,
+            15
+          ],
+          "par_visible": false,
+          "display": [
+            2304,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_A_PATH_OFF.png",
+          "sha256": "79bedb6b966ae1a79597715c2cfb106befe3a4eac42c598daa114d69cc89ee2d"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=HOUSE_A_PATH state=ON pos=17,15 par_visible=true display=2304,2304",
+          "actor_tile": [
+            17,
+            15
+          ],
+          "par_visible": true,
+          "display": [
+            2304,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_A_PATH_ON.png",
+          "sha256": "4e10d50ac4539c001d8c1ec51ddc5b25c6c881296ef48aea4ef0b5e40b0bba43"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=HOUSE_A_PATH state=AFTER pos=17,14 par_visible=true display=2304,2048",
+          "actor_tile": [
+            17,
+            14
+          ],
+          "par_visible": true,
+          "display": [
+            2304,
+            2048
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_A_PATH_AFTER.png",
+          "sha256": "e62ec3255eb5d0ab373bb2aeea7bc66a9ed40d55c43b7e95ad6b5add706c5bea"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 595,
+        "diff_bbox": [
+          259,
+          188,
+          284,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "HOUSE_B_WALL": {
+      "plan": {
+        "start": [
+          27,
+          18
+        ],
+        "direction": 8,
+        "dest": [
+          27,
+          17
+        ],
+        "manifest_destination_blocked": true,
+        "expected_movement": false,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {
+        "before": [
+          27,
+          18
+        ],
+        "after": [
+          27,
+          18
+        ],
+        "runtime_passable": false,
+        "dir": 8
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=HOUSE_B_WALL state=OFF pos=27,18 par_visible=false display=4864,3072",
+          "actor_tile": [
+            27,
+            18
+          ],
+          "par_visible": false,
+          "display": [
+            4864,
+            3072
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_B_WALL_OFF.png",
+          "sha256": "644c0e8089c8bbd6a06c0ed9346196b374da7664a7363afd207f8c70bf2a27da"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=HOUSE_B_WALL state=ON pos=27,18 par_visible=true display=4864,3072",
+          "actor_tile": [
+            27,
+            18
+          ],
+          "par_visible": true,
+          "display": [
+            4864,
+            3072
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_B_WALL_ON.png",
+          "sha256": "644c0e8089c8bbd6a06c0ed9346196b374da7664a7363afd207f8c70bf2a27da"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=HOUSE_B_WALL state=AFTER pos=27,18 par_visible=true display=4864,3072",
+          "actor_tile": [
+            27,
+            18
+          ],
+          "par_visible": true,
+          "display": [
+            4864,
+            3072
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_B_WALL_AFTER.png",
+          "sha256": "644c0e8089c8bbd6a06c0ed9346196b374da7664a7363afd207f8c70bf2a27da"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 0,
+        "diff_bbox": null,
+        "within_actor_region": false
+      },
+      "snapshot_camera_stable": true
+    },
+    "HOUSE_B_PATH": {
+      "plan": {
+        "start": [
+          27,
+          19
+        ],
+        "direction": 8,
+        "dest": [
+          27,
+          18
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.0,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {
+        "before": [
+          27,
+          19
+        ],
+        "after": [
+          27,
+          18
+        ],
+        "runtime_passable": true,
+        "dir": 8
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=HOUSE_B_PATH state=OFF pos=27,19 par_visible=false display=4864,3328",
+          "actor_tile": [
+            27,
+            19
+          ],
+          "par_visible": false,
+          "display": [
+            4864,
+            3328
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_B_PATH_OFF.png",
+          "sha256": "a6aaac732ee531454e52fdb6a7f9e7683d2c9f5b6171d7d96dc4d0e76cab99a6"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=HOUSE_B_PATH state=ON pos=27,19 par_visible=true display=4864,3328",
+          "actor_tile": [
+            27,
+            19
+          ],
+          "par_visible": true,
+          "display": [
+            4864,
+            3328
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_B_PATH_ON.png",
+          "sha256": "a6aaac732ee531454e52fdb6a7f9e7683d2c9f5b6171d7d96dc4d0e76cab99a6"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=HOUSE_B_PATH state=AFTER pos=27,18 par_visible=true display=4864,3072",
+          "actor_tile": [
+            27,
+            18
+          ],
+          "par_visible": true,
+          "display": [
+            4864,
+            3072
+          ],
+          "capture_ok": true,
+          "image": "V7_HOUSE_B_PATH_AFTER.png",
+          "sha256": "644c0e8089c8bbd6a06c0ed9346196b374da7664a7363afd207f8c70bf2a27da"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 0,
+        "diff_bbox": null,
+        "within_actor_region": false
+      },
+      "snapshot_camera_stable": true
+    },
+    "FOREST_TREE_BLOCK": {
+      "plan": {
+        "start": [
+          4,
+          6
+        ],
+        "direction": 4,
+        "dest": [
+          3,
+          6
+        ],
+        "manifest_destination_blocked": true,
+        "expected_movement": false,
+        "start_actor_mask_overlap": 0.7695,
+        "end_actor_mask_overlap": 0.9753
+      },
+      "native_move": {
+        "before": [
+          4,
+          6
+        ],
+        "after": [
+          4,
+          6
+        ],
+        "runtime_passable": false,
+        "dir": 4
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=FOREST_TREE_BLOCK state=OFF pos=4,6 par_visible=false display=0,0",
+          "actor_tile": [
+            4,
+            6
+          ],
+          "par_visible": false,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_TREE_BLOCK_OFF.png",
+          "sha256": "20568dd2caec71107fc43a64cc58a2cccfbb6952acbb8ff1a5f52d8f26c2b2fb"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=FOREST_TREE_BLOCK state=ON pos=4,6 par_visible=true display=0,0",
+          "actor_tile": [
+            4,
+            6
+          ],
+          "par_visible": true,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_TREE_BLOCK_ON.png",
+          "sha256": "78bb2a20ab4c1f2c2380270c8251092209cc00f42247192a131c305298552496"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=FOREST_TREE_BLOCK state=AFTER pos=4,6 par_visible=true display=0,0",
+          "actor_tile": [
+            4,
+            6
+          ],
+          "par_visible": true,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_TREE_BLOCK_AFTER.png",
+          "sha256": "7c57e0bb6f5a4d7e4805658e64ebb8e35ce9737fdf9075b023b19b4b7fb05d58"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 534,
+        "diff_bbox": [
+          131,
+          190,
+          156,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "FOREST_WALK": {
+      "plan": {
+        "start": [
+          4,
+          6
+        ],
+        "direction": 2,
+        "dest": [
+          4,
+          7
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.7695,
+        "end_actor_mask_overlap": 0.9727
+      },
+      "native_move": {
+        "before": [
+          4,
+          6
+        ],
+        "after": [
+          4,
+          7
+        ],
+        "runtime_passable": true,
+        "dir": 2
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=FOREST_WALK state=OFF pos=4,6 par_visible=false display=0,0",
+          "actor_tile": [
+            4,
+            6
+          ],
+          "par_visible": false,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_WALK_OFF.png",
+          "sha256": "2411f38290d4b1cf8c2ca4ccfe6fc75ed59a6e77c7015960be4da49ebc2e3fa1"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=FOREST_WALK state=ON pos=4,6 par_visible=true display=0,0",
+          "actor_tile": [
+            4,
+            6
+          ],
+          "par_visible": true,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_WALK_ON.png",
+          "sha256": "7c57e0bb6f5a4d7e4805658e64ebb8e35ce9737fdf9075b023b19b4b7fb05d58"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=FOREST_WALK state=AFTER pos=4,7 par_visible=true display=0,256",
+          "actor_tile": [
+            4,
+            7
+          ],
+          "par_visible": true,
+          "display": [
+            0,
+            256
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_WALK_AFTER.png",
+          "sha256": "dbe12bfebbd0343c00cb3eceb4a6b9ab2eeaeb08497fc8ca909dadfc1e73e6f4"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 409,
+        "diff_bbox": [
+          132,
+          189,
+          156,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "FOREST_CANOPY_EXIT_W": {
+      "plan": {
+        "start": [
+          8,
+          6
+        ],
+        "direction": 4,
+        "dest": [
+          7,
+          6
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.957,
+        "end_actor_mask_overlap": 0.0091
+      },
+      "native_move": {
+        "before": [
+          8,
+          6
+        ],
+        "after": [
+          7,
+          6
+        ],
+        "runtime_passable": true,
+        "dir": 4
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_W state=OFF pos=8,6 par_visible=false display=0,0",
+          "actor_tile": [
+            8,
+            6
+          ],
+          "par_visible": false,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_W_OFF.png",
+          "sha256": "0b42dbb23c49ff8f8d0969ddcdf12c0a5bdb19d187fc2f798808415334c510b3"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_W state=ON pos=8,6 par_visible=true display=0,0",
+          "actor_tile": [
+            8,
+            6
+          ],
+          "par_visible": true,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_W_ON.png",
+          "sha256": "4c880bd9f92d9c6f37d07b0a614ed429a3f9cb35b37ebe2f08dda26499ebfb50"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_W state=AFTER pos=7,6 par_visible=true display=0,0",
+          "actor_tile": [
+            7,
+            6
+          ],
+          "par_visible": true,
+          "display": [
+            0,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_W_AFTER.png",
+          "sha256": "599c756e757975c4683521266aa0a59e39d1f0df6609875aaeace9a82bde4a60"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 625,
+        "diff_bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "FOREST_CANOPY_EXIT_S": {
+      "plan": {
+        "start": [
+          25,
+          7
+        ],
+        "direction": 2,
+        "dest": [
+          25,
+          8
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9987,
+        "end_actor_mask_overlap": 0.0508
+      },
+      "native_move": {
+        "before": [
+          25,
+          7
+        ],
+        "after": [
+          25,
+          8
+        ],
+        "runtime_passable": true,
+        "dir": 2
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_S state=OFF pos=25,7 par_visible=false display=4352,256",
+          "actor_tile": [
+            25,
+            7
+          ],
+          "par_visible": false,
+          "display": [
+            4352,
+            256
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_S_OFF.png",
+          "sha256": "45c05bf475b05049edcecebcd23259bf9ff33327d9600c45cd8bfe383d9f25bd"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_S state=ON pos=25,7 par_visible=true display=4352,256",
+          "actor_tile": [
+            25,
+            7
+          ],
+          "par_visible": true,
+          "display": [
+            4352,
+            256
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_S_ON.png",
+          "sha256": "b6bc2ee7f323e291bdea0cd130317f774fa4ef9ea7b4a117e23ceb8aeeb21da7"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_S state=AFTER pos=25,8 par_visible=true display=4352,512",
+          "actor_tile": [
+            25,
+            8
+          ],
+          "par_visible": true,
+          "display": [
+            4352,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_S_AFTER.png",
+          "sha256": "1e01786c445674f1091b91b156bf1837b784566342574d1d844974ebee409035"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 368,
+        "diff_bbox": [
+          260,
+          188,
+          284,
+          210
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "FOREST_CANOPY_EXIT_N": {
+      "plan": {
+        "start": [
+          10,
+          17
+        ],
+        "direction": 8,
+        "dest": [
+          10,
+          16
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9544,
+        "end_actor_mask_overlap": 0.0273
+      },
+      "native_move": {
+        "before": [
+          10,
+          17
+        ],
+        "after": [
+          10,
+          16
+        ],
+        "runtime_passable": true,
+        "dir": 8
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_N state=OFF pos=10,17 par_visible=false display=512,2816",
+          "actor_tile": [
+            10,
+            17
+          ],
+          "par_visible": false,
+          "display": [
+            512,
+            2816
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_N_OFF.png",
+          "sha256": "e2fa9cbfa59b7d64266de87f94eb3435819dcca17ed8e7544b2fab9eae69c7bf"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_N state=ON pos=10,17 par_visible=true display=512,2816",
+          "actor_tile": [
+            10,
+            17
+          ],
+          "par_visible": true,
+          "display": [
+            512,
+            2816
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_N_ON.png",
+          "sha256": "78e764afb80cf2c9459dcac4762819c19f2b5df01a17322b64d780f9a0ef26e5"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_N state=AFTER pos=10,16 par_visible=true display=512,2560",
+          "actor_tile": [
+            10,
+            16
+          ],
+          "par_visible": true,
+          "display": [
+            512,
+            2560
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_N_AFTER.png",
+          "sha256": "fb878dec8939f0af964f38e1b166fdf8d4f6d5a5a0a07ec762de9d6eed060b2c"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 627,
+        "diff_bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "FOREST_CANOPY_EXIT_E": {
+      "plan": {
+        "start": [
+          29,
+          15
+        ],
+        "direction": 6,
+        "dest": [
+          30,
+          15
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9974,
+        "end_actor_mask_overlap": 0.0312
+      },
+      "native_move": {
+        "before": [
+          29,
+          15
+        ],
+        "after": [
+          30,
+          15
+        ],
+        "runtime_passable": true,
+        "dir": 6
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_E state=OFF pos=29,15 par_visible=false display=5376,2304",
+          "actor_tile": [
+            29,
+            15
+          ],
+          "par_visible": false,
+          "display": [
+            5376,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_E_OFF.png",
+          "sha256": "be8d7c2114f2c917452604a2c3e990e23aa63f0de46e1c0c2ea9ed26418bf952"
+        },
+        "ON": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_E state=ON pos=29,15 par_visible=true display=5376,2304",
+          "actor_tile": [
+            29,
+            15
+          ],
+          "par_visible": true,
+          "display": [
+            5376,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_E_ON.png",
+          "sha256": "5922d9728031ee381306dbbf62f1d4cb278517ae34c3f5597dace002bc0e43a3"
+        },
+        "AFTER": {
+          "source_log": "V7_SHOT case=FOREST_CANOPY_EXIT_E state=AFTER pos=30,15 par_visible=true display=5632,2304",
+          "actor_tile": [
+            30,
+            15
+          ],
+          "par_visible": true,
+          "display": [
+            5632,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V7_FOREST_CANOPY_EXIT_E_AFTER.png",
+          "sha256": "1e47dea30592ccec865cda043fdf9782f04cf8d00cb59ae69f9fc387d40a0c3a"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 454,
+        "diff_bbox": [
+          259,
+          188,
+          284,
+          215
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "HOUSE_A_BACK_MOVE": {
+      "plan": {
+        "start": [
+          17,
+          9
+        ],
+        "direction": 6,
+        "dest": [
+          18,
+          9
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 1.0,
+        "end_actor_mask_overlap": 0.6042
+      },
+      "native_move": {
+        "before": [
+          17,
+          9
+        ],
+        "after": [
+          18,
+          9
