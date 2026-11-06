@@ -1,0 +1,130 @@
+{
+  "tests": [
+    {
+      "name": "FOREST_CANOPY_EXIT_W",
+      "start_mask_ratio": 0.957,
+      "end_mask_ratio": 0.0091,
+      "start": {
+        "changed_pixels": 625,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ]
+      },
+      "end": {
+        "changed_pixels": 119,
+        "bbox": [
+          234,
+          207,
+          248,
+          220
+        ]
+      },
+      "end_vs_start_changed_pixel_ratio": 0.1904,
+      "moving_matches_manifest": true,
+      "camera_stable_start": true,
+      "camera_stable_end": true,
+      "par203_toggle_valid": true,
+      "start_diff_actor_local": true,
+      "end_diff_actor_local": true,
+      "gate": "PASS"
+    },
+    {
+      "name": "FOREST_CANOPY_EXIT_S",
+      "start_mask_ratio": 0.9987,
+      "end_mask_ratio": 0.0508,
+      "start": {
+        "changed_pixels": 368,
+        "bbox": [
+          260,
+          188,
+          284,
+          210
+        ]
+      },
+      "end": {
+        "changed_pixels": 0,
+        "bbox": null
+      },
+      "end_vs_start_changed_pixel_ratio": 0.0,
+      "moving_matches_manifest": true,
+      "camera_stable_start": true,
+      "camera_stable_end": true,
+      "par203_toggle_valid": true,
+      "start_diff_actor_local": true,
+      "end_diff_actor_local": true,
+      "gate": "PASS"
+    },
+    {
+      "name": "FOREST_CANOPY_EXIT_N",
+      "start_mask_ratio": 0.9544,
+      "end_mask_ratio": 0.0273,
+      "start": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ]
+      },
+      "end": {
+        "changed_pixels": 232,
+        "bbox": [
+          261,
+          204,
+          284,
+          220
+        ]
+      },
+      "end_vs_start_changed_pixel_ratio": 0.37,
+      "moving_matches_manifest": true,
+      "camera_stable_start": true,
+      "camera_stable_end": true,
+      "par203_toggle_valid": true,
+      "start_diff_actor_local": true,
+      "end_diff_actor_local": true,
+      "gate": "PASS"
+    },
+    {
+      "name": "FOREST_CANOPY_EXIT_E",
+      "start_mask_ratio": 0.9974,
+      "end_mask_ratio": 0.0312,
+      "start": {
+        "changed_pixels": 454,
+        "bbox": [
+          259,
+          188,
+          284,
+          215
+        ]
+      },
+      "end": {
+        "changed_pixels": 1,
+        "bbox": [
+          260,
+          199,
+          261,
+          200
+        ]
+      },
+      "end_vs_start_changed_pixel_ratio": 0.0022,
+      "moving_matches_manifest": true,
+      "camera_stable_start": true,
+      "camera_stable_end": true,
+      "par203_toggle_valid": true,
+      "start_diff_actor_local": true,
+      "end_diff_actor_local": true,
+      "gate": "PASS"
+    }
+  ],
+  "four_sample_native_gate": "PASS",
+  "sample_count": 4,
+  "original_source_unchanged": true,
+  "source": "real RPG Maker VX Game.exe native switch203 screenshots",
+  "art_approval": "UNVERIFIED",
+  "all_map_coverage": "NOT TESTED",
+  "formal_seal": "NO"
+}
