@@ -1,5 +1,10 @@
 # Forest Symphony — RGSS2 Source Authority
 
+## P0 現行儲存／新地圖規則（2026-11-07）
+所有需保留的藝術素材、原始檔、工程/二進位、ZIP、截圖、QA、Handoff 保存 **Google Drive**，可公開程式、規範與版本紀錄保存 **GitHub**。使用者 PC 僅供必要安裝與最短原生 VX 執行暫存；雲端確認後清理；不得再以舊 `E:\` 工作夾或 Git clone 作成果目的地。權威：[P0 雲端規則](docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+FS 新精靈村以**完整 Master-first** 一張圖為座標與 RGB 權威，Ground-underpaint/物件語意 Mask 作候選，PAR 從同圖原 XY 擷取；作者層 GroundOnly/CompletePAR 與執行層 FullGround/OcclusionPAR 不可混淆。RGB 相同不代表物件邊界或通行已驗證，實際 VX 與人工作圖 Gate 需獨立通過。
+*此處以下 Phase49J/K5 是 2026-08 的原始封版歷史，不能覆蓋 2026-11 的現行工作方式。*
+
 This repository is the text-source counterpart of the Forest Symphony RPG Maker VX project.
 
 ## Authority split
