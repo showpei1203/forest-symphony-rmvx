@@ -7,7 +7,8 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 
 > **現行規則入口（2026-11-07）**：先讀 [FS Current Rules Index](../../../authority/FS_CURRENT_RULES_INDEX_20261107.md) → P0 Storage → 共用製作 Authority → FS Precheck；先別讓舊 Handoff 的本機路徑或獨立兩張 AI 地圖生成覆蓋最新決議。
 
-## P0 強制儲存規則（2026-11-07）：使用者 PC 不存任何新成果
+## P0 強制儲存規則（2026-11-07）
+**跨所有專案的真正最高儲存規則**：[Google Drive 00_GLOBAL_HARD_RULES](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)。若 FS 內部文件允許必要 PC 實機暫存，需以全球規則為準：**事前說明理由／檔案範圍／清理方法並取得使用者授權**；不得自動使用 PC。：使用者 PC 不存任何新成果
 **使用者明確指令：「之後除非必要的安裝，任何需要儲存的東西請都放在DRIVE/GITHUB，不要放在我的PC裡。」**
 - 所有新建且需要保留的 PNG／Ground／PAR／素材／ZIP／Game.exe 驗證證據／截圖／Log／Handoff／備份，必須存 **Google Drive**；程式碼、規範、Manifest、QA／版控優先存 **GitHub**。私人或授權不明美術切勿推公開 GitHub。
 - **禁止使用使用者 PC 當持久工作空間**，包含過去慣用的 `E:\FS_AGENT_SKILLS_PILOT_*`、`E:\FS_STAGE*`；歷史路徑只是原始來源／舊紀錄，不是新檔案目的地。能在 ChatGPT 隔離環境／雲端處理就不用 PC。
