@@ -1,60 +1,52 @@
-# FS AI Asset Factory CURRENT_HANDOFF — A05 (2026-11-08)
+# FS AI Asset Factory — CURRENT_HANDOFF A06 (2026-11-08)
 
-This file is the **active entrypoint for A06**. A01-A04 remain historical evidence. Do not overwrite sealed FS, do not merge main, do not claim a native or art seal from geometry QA.
+**ACTIVE next-chat entrypoint: begin A07 from this document, not A01-A05.** Preserve all A01-A06 history, sealed FS main, and private raw Drive art. User wants actual native assets and pixel-art quality, not CI numbers as a proxy.
 
-## Authority / links
-- Global cloud-first priority: https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit
-- Main authority: authority/FS_CURRENT_RULES_INDEX_20261107.md; .agents/skills/fs-rmvx-router/SKILL.md
-- GitHub Draft PR [#15](https://github.com/showpei1203/forest-symphony-rmvx/pull/15), branch feat/fs-asset-factory-v1-20261107, unmerged.
-- [A05 full private Drive Handoff](https://docs.google.com/document/d/1C2gAck-U1lVDGo5yvKBPbqSj25crtoKZdvvp2_Mm52A/edit)
-- [A05 private actual-source QA](https://docs.google.com/document/d/1P663Mgd9C03gPjAFv7X2E4D1t-G1zxudcqz95o8PgGo/edit)
-- [A05 public technical evidence](A05_REAL_EXPORT_AND_AUTHORING_GAP_QA_20261108.md)
-- [Orca independent review taskboard](ORCA_A04_TASKBOARD_20261108.md).
-- [A04 previous Handoff](https://docs.google.com/document/d/1uutNu7PzEveBqeohO8ltuIeNU4hbP5bdZ80FSej1Fj0/edit), [A02 original PMD SHA authority](SOURCE_INVENTORY_A02_20261107.md).
+## Authority and exact deliverables
+- Public repo showpei1203/forest-symphony-rmvx / branch feat/fs-asset-factory-v1-20261107, **Draft PR #15**, unmerged to main.
+- Global P0 Cloud-Only: https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit
+- [A06 private full Handoff](https://docs.google.com/document/d/1_FV0wfG1o9gxe1r2cznJLfvRggwU7i3HE19EY_SHP34/edit)
+- [A06 private real-image and grid QA](https://docs.google.com/document/d/1Tf8bNLr2zASrZfyafSpuH2QKeKBZxoVzXzPxknCABgc/edit)
+- [A06 private layered V4 image/collision candidate ZIP](https://drive.google.com/file/d/12xCWLfj1EFDOlNEAZkOl47wswppVdhBf/view): size 10457859 bytes; SHA256 48af22427d0ba7560c19b8c16dbaf23f15d2076c5af7073155b66b5a469ecaf6. Uploaded via authenticated Drive, fetched back and SHA256 + CRC passed. Never publish game-art PNGs in public repo.
+- [A06 private deterministic rebuilding scripts ZIP](https://drive.google.com/file/d/1dvrRObpv2t2oZcW69W0cUOjg3tIWl2gs/view): size 11497 bytes; SHA256 ab7a51bf367d67f92853663a6eaea9bef84d0cb8bb1bc79a0372afa601d29876.
+- [Public source-independent technical QA (no artwork)](A06_V4_REAL_COLLISION_BRIDGE_PAR_QA_20261108.md), [A05 predecessor](A05_REAL_EXPORT_AND_AUTHORING_GAP_QA_20261108.md), [original source metadata](SOURCE_INVENTORY_A02_20261107.md).
 
-## A05 verified real execution
-### PMD (real direct committed exporter)
-- Actual source bytes were read from original private Drive ZIPs PMD0001/0002/0003.
-- Copied the exact public GitHub pmd.py and native_action_export.py into isolated runtime and verified their actual Git blob SHA:
-  - pmd.py a97778e8c886b839d5dd9a4993e9dabf4177b739
-  - native_action_export.py dd7d5b71b5f96a35fb2d76c09a94d96f8e3cb92b
-- Ran actual compile_native_action() against native XML+SHA-locked full action source PNGs for Idle and Walk, six original+variant folder families, 12/12. The explicit one-row input came from **that same exact preexisting native direction row**; re-encode is RGBA pixel-exact across Anim/Offsets/Shadow, other rows unchanged. One controlled 1-channel mutation in original_0001 Walk row3 frame0 affected exactly one intended channel; all other 7 native direction rows unchanged. **PASS_REAL_SOURCE_FORMAT_ONLY**; this did NOT create new approved lava creature art.
-- A26 PixelLab lava-frog approved Idle/Walk exact private ZIP remains SOURCE_NOT_VERIFIED; do not pass off original_0001 or rock_0001 as that art. Old Handoff ZIP SHA 460b8ca230e579e78d2f3350f0f10c0ba0ab5af2fbaee063faf3bdb3baee1399; targeted private Drive, known old PC directory and Project/Library searches did not verify file. Exhaustive E: scan was not possible; do not claim definitive nonexistence.
+## A06 actual progress (isolated real SOURCE images, not a Game.exe update)
 
-### Map (private V3)
-- Actual V3 frozen master 1280×928 SHA 091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530.
-- Authoring CompletePAR SHA b9935121ef816fb4c79c958c839167b1e9fb9917f120efe0d5bd42c76a9e5d74 has **864,528** alpha pixels; runtime four-object PAR SHA e2486f7a780d260ccfceadac024b94ee37108371c91c7a73f2cf254463c76edb has **118,425** alpha pixels, all within Authoring; Authoring-only **746,103** pixels across **1,049 32px tiles**. Draft walkable tiles include 476,566 of these pixels. This is an **object provenance coverage gap, NOT a prescription to copy all pixels into Runtime PAR**.
-- Static potential actor/eave shortlist from V3 own grayscale binary masks and draft collision:
-  - LEFT_HOUSE_ROOF 6 draft walkable alpha intersect tiles / 4 with assumed 25×32 actor bbox; suggested x/y (5,4), (13,6), (7,6).
-  - RIGHT_HOUSE_ROOF 9 / 9; x/y (25,6), (30,4), (29,4).
-  - Left canopy 49 / 48; right/lower canopy 57 / 56. All NOT native engine legal-footpoint approval, and no switch203 was run in A05.
-- **QA bug/failure log:** first static footpoint trial converted L-mode grayscale masks to RGBA then took alpha, false 790 walkable tiles for every object. INVALID, discarded. Corrected with L mode grayscale values and RGBA alpha; actual results above. Test future L vs RGBA mask mode explicitly.
+1. Found **V3 semantic collision error** from actual source V3 private ZIP SHA b38c08109e25299fa9f4ceabd7f34b42cc82531ba56c8f09cc9f3a4af0429511. Actual 29x40 grid had **370 blocked, 790 walkable but 787 reachable** from (20,15). Isolated roof tile pocket (7,6),(8,6),(9,6) is incorrectly walkable on painted left-house rooftop. Underbridge river candidate (21,19),(22,19),(23,19) visually shows player in water, also erroneously walkable in the draft.
+2. Created V4 six-tile **proposed** blocked change ONLY on the above six cells: **376 blocked / 784 walkable / 784 reachable**; eight-node 4-way bridge route from (20,18) through (24,18) to (25,20) still exists. Candidate JSON and visual map evidence in private ZIP. This is static/visual; **NO NEW V4 NATIVE VX TEST** and no edits to V3.
+3. Found original V3 QA false-negative: code compared roof overlap **ratio >0.2** but labelled count "any roof overlap"; reported zero. Correct any-pixel count on same 23x30 actor box = **4 left roof + 9 right roof draft-walkable tiles**, all legal-footpoint semantics still PENDING.
+4. Built real **fifth Runtime PAR object** from frozen full Master RGB (not artificial concept image). ID BRIDGE_NEAR_RAIL_CANDIDATE_V2, source L mask **3845 pixels**, SHA256 7a3d36087062fb4118da594318ba719f079e49f291bde54aa120d116c0d8d9b6. It is binary alpha, same world 1280x928 and source RGB, intersects no previous four-object Runtime mask, lies wholly within Authoring CompletePAR. Trial combined Runtime PAR **122270 pixels** (was 118425). Both distinct mask and overlay PNG in private ZIP. **ART FAIL/PENDING** because rails still have holes/stray colors and source painting is not accepted FS Ground3 1x pixel style.
+5. Logged and rejected V0 generic GrabCut which accidentally captured wooden bridge deck and grass. V1 manual rail silhouette 4075 pixels; V2 excludes 230 green-dominant suspect source pixels, 3845. This is a narrow art study, not a validated production layer. V3 original Authoring-only 746103 pixels must NOT be blindly copied to Runtime.
+6. Produced synthetic switch-style bridge actor ON/OFF previews using 25x32 actual native actor diff from existing V3 Game.exe screenshot (627 pixels), with 180 pixels affected at bridge deck candidate (23,18), 221 underbridge (22,19). These are **Python projections**, not actual new native VX captures.
+7. Uploaded candidate ZIP and separate rebuild scripts ZIP to private Drive and **read back the exact original candidate bytes**. Deterministically regenerated 3845 mask with **0 pixel delta** and resulting 122270 runtime and 784-reachable collision; no user-PC persistent files, no PixelLab credits.
+8. GitHub public modules: tools/asset_factory/adapters/collision_review.py plus tests/test_a06_collision_review.py (six positive/negative fixtures for tiny overlap, proper L/RGBA alpha, no isolated walking tiles). Total **63 synthetic tests**, first successful run 42419322008 at source commit 3d3f92d8b675160e4a0c4145738234eef15c49cf. Recheck final PR head after later document commits; do not claim old run covers new HEAD.
 
-### A05 code and CI
-- Added tools/asset_factory/adapters/authoring_coverage.py for authoring-vs-runtime alpha subset, Master same XY RGB, 32px tile hotspot and optional binary draft collision scope; status cannot promote object owners, art or native VX.
-- Added tests/test_a05_authoring_coverage.py with 8 positive/negative fixtures. Existing A01 14 + A02 15 + A03 11 + A04 9 + A05 8 = **57** synthetic tests.
-- Actual GitHub Actions run [42416671913](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42416671913), source commit c04cb60ef1c36cd0feb1be1b0619e05e58a5c97b: SUCCESS, 57/57. After doc commits check final PR HEAD and final-head CI.
-- Real private-map pixel count is independently computed in isolated Python, **not claimed as actual execution of the newly committed coverage module**.
+## Corrected PMD A26 approval semantics
+Original A26 2026-11-01 Handoff: https://docs.google.com/document/d/1d6PViz9qJHUzepjPzbQHBxHNY5pNJY9AqZQb6BoqQwk/edit
+- A25 lava creature **appearance** was accepted as the reference. Do NOT claim A26 Idle/Walk five-frame candidates have already passed user animation art.
+- A26 generated five-frame Idle and Walk candidates (some Idle raw artifacts cleaned), but **real native PMD XML Idle = 3 frames; Walk = 6 frames** and full eight-direction Anim/Offsets/Shadow was not completed.
+- A26 old private ZIP source SHA 460b8ca230e579e78d2f3350f0f10c0ba0ab5af2fbaee063faf3bdb3baee1399 is still SOURCE_NOT_VERIFIED. Do not substitute old original/rock PMD images and do not waste PixelLab calls without a source-authority plan.
 
-## Orca permissions / honest status
-- Remote Desktop Commander authorized device DESKTOP-90VT437 ONLINE. Installed Orca processes and historical Codex agents visible; old A36F R4 independent review details previously read. Historical Codex YOLO warning persists.
-- Read-only inspected Orca app configuration paths and searched for available sandbox/approval fields; did NOT obtain authoritative proof that current Orca GUI agent uses approval-required, read-only mode. **NEW ORCA AGENTS S1/M1 NOT LAUNCHED.** Do not disguise an ordinary ChatGPT analysis as multi-agent orchestration.
-- Orca Agent S1/M1 cloud task assignments exist in ORCA_A04_TASKBOARD_20261108.md. Do not launch unrestricted Codex, write PC worktrees, or run Windows Game.exe without previously scoped temp-file approval and cleanup.
-- No PixelLab paid generation, no PC persistent project new files, main unchanged.
+## Orca status (do not fake agent delegation)
+- Historical Orca A36F dual agents ran and found important semantic/9px misclassification. Current A06 new Orca S1/M1 **NOT LAUNCHED**, because approval policy of Orca UI not yet verified. Codex CLI has explicit read-only sandbox, but a direct CLI call is not the Orca UI orchestrator. Do not launch unsandboxed autonomous file writes to user's PC.
+- Orca assignment remains [taskboard](ORCA_A04_TASKBOARD_20261108.md). Native VX Windows clone needs **independent explicit PC temp scope and cleanup approval**; worktrees aren't OS sandboxes.
 
 ## Gate matrix
-- Real direct native exporter source format: PASS 12/12 and 1 controlled mutation.
-- A05 synthetic Actions: PASS 57/57 on recorded run, final head to verify.
-- Full Authoring PAR per-object ownership: FAIL_CLOSED / NOT_VERIFIED.
-- Static potential walkable roof candidates: IDENTIFIED, but true legal-footpoint semantics NOT_TESTED.
-- Orca new agent independent QA: NOT_LAUNCHED.
-- Native VX / switch203 A05: NOT_RUN; user art approval new asset: PENDING; formal seal NO.
+- Frozen source ZIP / 5th object Master RGB identity / private Drive byte SHA: PASS.
+- 5th Alpha provenance and no ownership overlap: PASS.
+- V4 patch collision BFS static: PASS.
+- Bridge front railing complete silhouette/1x FS art: **FAIL/PENDING**.
+- V4 new Map050/Game.exe switch203/continuous movement: **NOT_RUN**.
+- PMD new lava 8direction/3f+6f native animation: NOT_CREATED, art NOT_APPROVED.
+- Orca A06 new agents: NOT_LAUNCHED.
+- FORMAL_SEAL: NO. PixelLab charge 0. Main untouched. PC new work files 0.
 
-## Precise A06
-1. Keep new Codex/Orca execution restricted until actual approval policy is verified, then independently review **this exact A05 exporter and L-mode QA failure** through S1/M1, not broad art rework.
-2. A26 source loss exception remains open, no further blind loops over same PC path. If recoverable, lock source SHA in private Drive first. Next one-action real new appearance requires eight independently valid direction assets, not rotation copies.
-3. Expand Authoring object register (full source object inventory with complete and runtime occlusion masks). Use the 1,049-tile delta as diagnostic scope, NEVER blanket Runtime PAR.
-4. Validate left (5,4)/(13,6)/(7,6), right (25,6)/(30,4)/(29,4) only after reviewing V3 legal collision and actual actor footpoint; native Game.exe switch203 requires separate scoped PC permission, per-frame camera/pose evidence and 1× art gate.
-5. Archive new stage private Drive Handoff + public GitHub only source and metadata, CI and readback, strict ART/NATIVE statuses.
+## A07 exact order
+1. Starting at the private A06 ZIP (not rebuilding source from memory), fix real front railing silhouette at native 1x without copying deck/grass. Every new object mask needs authoring subset + zero double-ownership + Master RGB registration + actual sprite overlap visual.
+2. Finish realistic river/bridge and roof contact collision: use V4 6-candidate proposal as a test input, but native Game.exe/Map050/Switch203 must be executed separately in permitted isolated Windows temp and cleaned. Only pass if actual player path and semantic footpoints are legal.
+3. Grow Authoring PAR inventory by actual source/geometry objects (bridge, gazebo, rocks, roof eaves, canopy family) rather than mask from whole flattened composited ground; keep V3 and A36H tracks distinct. Document full source SHA and human art gate.
+4. Recover or recreate *source-approved A25 64px lava creature* in private Drive before any costed motion attempts; make action-specific native 3/6 frame and eight-direction art with genuine human acceptance, no fake frame duplication.
+5. Bring true Orca S1/M1 under verified read-only/approval settings for independent adversarial reviews. Deliver another Drive + GitHub versioned Handoff with final-head real CI and native/art outcome.
 
-Rollback only A05 feature branch additions. Main/approved original private ZIP unchanged.
+Rollback candidate branch only. No sealed source overwritten.
