@@ -1,59 +1,48 @@
-# FS AI Asset Factory — CURRENT_HANDOFF A02 (2026-11-07)
+# FS AI Asset Factory CURRENT_HANDOFF A03 | 2026-11-08
 
-> **Mandatory next-chat entrypoint** for the Asset Factory workstream. Do NOT restart A01, overwrite sealed FS / main, generate aesthetic concepts without a real source/art brief, or mistake static QA for VX/art acceptance. Previous [A01 Drive Handoff](https://docs.google.com/document/d/1gf1QVlNkx6oIzg7U38WfEp2l6gJeerx22jdNA7urJok/edit). New **[A02 private Drive Handoff](https://docs.google.com/document/d/10co8RTL-WXb2fhiiExLOfxmoasTg8kgjl7wb9rcnvXw/edit)**; its content and placement in Forest Symphony/05_Handoff require readback to confirm.
+Mandatory next-chat entrypoint. Do not restart A01/A02, never merge Draft PR without approval, do not regenerate concept art instead of producing real native assets.
 
-## 0. Hard rule priority
-1. [Global cloud-first storage rule](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit) — GitHub/Drive persist, not user's PC. Never create local persistent worktrees or ZIPs on user's PC. Any necessary Windows temp files need separate prior approval and cleanup.
-2. [FS rules index](../../authority/FS_CURRENT_RULES_INDEX_20261107.md), [cloud policy](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md), [FS router](../../.agents/skills/fs-rmvx-router/SKILL.md), [private Asset Factory plan](https://docs.google.com/document/d/1p6OZ9TSG0kThKbrLqEN4ONKInBy4EM3eikqPzDBdYR4/edit).
-3. [Baseline Index A01 + A02 delta](BASELINE_INDEX_20261107.md), [A02 actual private-source SHA metadata](SOURCE_INVENTORY_A02_20261107.md), [tools README](../../tools/asset_factory/README.md).
-4. Check latest PMD/Actor user-approved/failed candidates, A65 original-image modification decision and V3 vs A36H R3 map Handoff before touching any images. Do not upgrade historical approvals by inference.
+## Authority and links
+- Global P0 storage: https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit
+- Main rules: authority/FS_CURRENT_RULES_INDEX_20261107.md; FS router and Asset Factory V1 plan.
+- Current repo (public code only): showpei1203/forest-symphony-rmvx.
+- Branch: feat/fs-asset-factory-v1-20261107; PR #15 https://github.com/showpei1203/forest-symphony-rmvx/pull/15 remains Draft, unmerged.
+- A02 real source SHA detail: docs/asset_factory/SOURCE_INVENTORY_A02_20261107.md.
+- A03 REAL PRIVATE QA: https://docs.google.com/document/d/11fCR2Z6gmIAZzDTHZbnSse5jFwi4v0sVuYnj_mz1byg/edit
+- A03 FULL private Handoff: https://docs.google.com/document/d/1YtPce0j-Sy86H335TuLdeGDMEgFFkQ0QdvroAHBjPIo/edit
+- Previous A02 Drive Handoff: https://docs.google.com/document/d/10co8RTL-WXb2fhiiExLOfxmoasTg8kgjl7wb9rcnvXw/edit
 
-## 1. Real executed work
-- Repo: showpei1203/forest-symphony-rmvx (**public**: only source code, synthetic test fixtures, nonsecret provenance hashes).
-- Feature branch: feat/fs-asset-factory-v1-20261107. PR [#15](https://github.com/showpei1203/forest-symphony-rmvx/pull/15) **Draft/open/unmerged**. Main/sealed art not altered.
-- New production-facing modules (separate adapters; still static-only):
-  - tools/asset_factory/adapters/pmd.py: exact per-action XML contract and species-specific native atlas sizes, Duration, Rush/Hit/Return frames, CopyOf aliases, one-row and eight-row Anim/Offsets/Shadow. No generic 3f/8dir.
-  - tools/asset_factory/adapters/actor.py: 3 keyframes _1/_2/_3, source SHA, frame geometry, playback loop; semantic footstep/weapon/45° not automatically approved.
-  - tools/asset_factory/adapters/map_objects.py: private source SHA per object, binary mask equality, subset/union, no multiple object ownership. No semantic occlusion or Master RGB approval.
-  - tools/asset_factory/tests/test_a02_adapters.py: **15 positive/negative synthetic tests**, plus A01 existing 14.
-- Actual GitHub Actions **run ID 42376970935**, job **128416449077**: **completed/success**, source commit **9867c87cec72a67f8e65c9147ece0e58a689a5ff**; log **Ran 29 tests in 0.056s, OK**. Subsequent documentation-only commits are not implied to be the same workflow run; inspect current PR head/latest Actions before final reporting.
-- **PixelLab 0 new calls, user's-PC 0 writes; no private source art was committed.**
+## A03 actual verified results, not plans
+1. Executed exact same committed GitHub blob PMD adapter, plus A03 private ZIP scanner, over three real historical private ZIPs. Tested original_0001, rock_0001, ORIGINAL_0002, VOLCANIC_0002, ORIGINAL_0003, VOLCANIC_0003: all PASS_STATIC_ONLY. 6 source sets / 116 concrete action atlases / 348 original Anim/Offsets/Shadow PNGs, matching actual native XML size, frame count and 1-or-8 row atlas geometry. No private art in public CI.
+2. Executed exact same committed GitHub blob runtime_masks.py on private Master-first V3 ZIP (whole ZIP SHA256 b38c08109e25299fa9f4ceabd7f34b42cc82531ba56c8f09cc9f3a4af0429511). Master 1280x928 SHA256 091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530; Runtime PAR SHA256 e2486f7a780d260ccfceadac024b94ee37108371c91c7a73f2cf254463c76edb. 4 source masks (2 roofs + 2 canopies), 118425 alpha pixels exactly accounted for, 0 overlapping owner pixels, 0 visible RGB drift, binary-alpha PASS. This is NOT semantic roof occlusion or full Authoring CompletePAR proof.
+3. Executed exact same committed GitHub blob actor.py on real A62 approved 144x48 three-pose strip extracted from private A63 ZIP. Approved 48x48 F0 is pixel-identical to frame0; three frames distinct; loop 0-1-0-2; PASS_STATIC_ONLY. This 48px reference is NOT original VX 32px nor Tankentai integration.
 
-## 2. Important real-source binary breakthrough (not merely a plan)
-Private Drive originals fetched into isolated ChatGPT runtime, SHA256 calculated from actual ZIP bytes, XML parsed and Anim/Offsets/Shadow raster sizes independently checked (not just historical handoff):
-- PMD0001 original_0001: 34 concrete actions, 2 aliases, 13 single-row / 21 eight-row; ZIP SHA 23309b50c0a07a7321950407f0417bc501985ba5efe4f3b45472ad457582832f; XML SHA c7722f5da724f40f35fccabb1135fbd1b70e770b2a38db3d9fbe7643af626162; Idle 32×40×3, Walk 40×40×6, Attack 64×72×11.
-- PMD0002 ORIGINAL_0002: 12 concrete, 2 aliases, 1 single / 11 eight; ZIP SHA 309a19d3be249411e7ec9e2c3d546638a00660c7e34a76bf4c8ac5b373f46818; XML SHA e1c494c9d795980bb77622e8ce782b4fba62bd1e5103165351748dc3924702c0; Idle 32×32×4, Walk 32×32×4, Attack 64×64×9.
-- PMD0003 ORIGINAL_0003: 12 concrete, 2 aliases, 1 single / 11 eight; ZIP SHA eee94e4fb8e388c5f685db53f36ef470e0088959d9b0a9a3bef3cae712578e97; XML SHA b5b556e42df4322440f63da430e918bbad794c83cdf58dbff2393138f96c15d3; Idle 32×32×4, Walk 32×32×4, Attack 72×72×11.
-- Actor A63 source ZIP SHA 154b3970778ab758008139b19e7dd15c62614c947889a66dd9b31d1e94ba9be9; approved A62 reference F0 **48×48** PNG SHA a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba; approved A62 3-pose 144×48 strip SHA ea063e6ec2db5caf3bddb2dd0b277d888f60e65fe6392bccdad4fdcc34274d5f.
-- [Full action and exact PNG byte hashes](SOURCE_INVENTORY_A02_20261107.md). Original native ZIPs are grammar/evidence baselines; not proof that user-approved *new* lava art passed eight-direction.
-- Original PMD0003 Idle and Walk source PNG were byte-identical, not a new-generation achievement.
+## Exact code and CI
+- A02 native adapter Git blob: tools/asset_factory/adapters/pmd.py = a97778e8c886b839d5dd9a4993e9dabf4177b739.
+- Existing Actor adapter Git blob = 396df40f2acd966cfcd2bdfa10dde90a77926205.
+- New A03 tools/asset_factory/adapters/private_zip_scan.py Git blob = fff75ae47a71099919a12ad8f2d101409fc13245. Source-lock and safe in-memory ZIP reader; no extraction and no protected PNG commits.
+- New A03 tools/asset_factory/adapters/runtime_masks.py Git blob = 4e53047097c245b1498da1cdeb078684ac81a4f3. Compare full canvas source mask ownership and Master RGB registration.
+- New tests tools/asset_factory/tests/test_a03_private_runtime.py: 11 synthetic positive/negative cases. A01 14 + A02 15 + A03 11 = 40.
+- Actual successful GitHub Actions run 42412650688, source commit 9ba9cf7bb3a11481c05dfd414e7431d81efcb343. Log: Ran 40 tests in 0.040s, OK. Any further documentation commit means recheck current branch head Actions, never present old run as latest.
+- PixelLab paid calls 0. No user's PC files, no main overwrite, no freshly approved artwork.
 
-## 3. Gate matrix
-| Gate | A02 |
-|---|---|
-| GitHub delivery / branch | PASS for checked-in source, draft PR |
-| Synthetic unit static | PASS 29/29 on verified Actions run; final branch commits need latest CI recheck |
-| Source ZIP/XML SHA | PASS, actual private bytes for original 0001/0002/0003 and A63 |
-| Original PMD Anim/Offsets/Shadow atlas geometry | PASS independent private scan |
-| New committed adapter execution over the private ZIPs | NOT_RUN; **do not equate synthetic 29/29 with this** |
-| PMD0001 user-accepted A25 look/A26 Idle+Walk | Historical limited approvals only; not eight-direction |
-| PMD0002/0003 evolution chain visual identity | PENDING |
-| Actor native Tankentai/SBS, 32px runtime | NOT_RUN |
-| Master-first source Master object-level real sample | NOT_RUN (A02 module synthetic only) |
-| VX Game.exe + switch 203 movement / occlusion | NOT_RUN |
-| User art approval for new sheets/maps | PENDING |
-| Formal seal | NO |
+## Gate matrix, must stay distinct
+- Source file SHA and native PMD original grammar: PASS for six historical source sets.
+- New same-blob Adapter over actual private source: PASS static, not game.
+- A62 existing approved run reference: SOURCE_STATIC PASS, USER HISTORICAL APPROVAL for this specific run.
+- Four-object V3 Runtime PAR source ownership: PASS_STATIC_ONLY.
+- CompletePAR authoring objects and legal-footpoint occlusion semantics: NOT_TESTED / PENDING.
+- A26 *new lava-frog* approved Idle/Walk exact private binary SHA/Drive source: NOT LOCATED here; old Handoff points to historical E drive. Do not pretend original_0001/rock_0001 is approved A26 lava art.
+- Eight-direction species identity and animation aesthetics: PENDING.
+- Native Windows VX / switch 203 / Tankentai new data this iteration: NOT_RUN. V3 prior historic native test remains historical separate evidence only.
+- User ART acceptance of new asset: PENDING. Formal seal NO.
 
-## 4. Next exact stage A03
-1. Check CURRENT_HANDOFF and latest user artwork decision. Do NOT use an out-of-date 40×40/48×48 *candidate* as the actual native 32px sheet without explicit export/visual validation.
-2. Add a **private ZIP native scan runner** that calls the *same committed* pmd.py inspect_pmd_assets on PMD0001/2/3 original actions; produce JSON gates and source SHA evidence only in private Drive. No licensed art to GitHub.
-3. Pin latest approved PMD0001 A26 Idle/Walk candidate sources separately from original PMD ZIP. Try narrow action-level compiler with native XML, 8-direction identity gate before batch generation.
-4. Use A62 approved recipe with **existing original Actor reference** and latest A65 user instruction to modify rather than regenerate; verify true _1/_2/_3 and proper unarmed 45°.
-5. Map Master-first V3 source + one tree/roof object + negative clear area: actual source ownership and per-pixel masks. Never merge V3 with A36H R3; do not let ground vegetation leak into Runtime PAR. Real switch 203 + VX only after user-PC temp-scope authorization.
-6. Keep PixelLab authorization per batch with fixed credit ceiling, but no paid job is implied here.
-7. At end: new versioned private Drive Handoff, GitHub CURRENT_HANDOFF, Source Inventory, Actions run/commit/QA source evidence, ART/NATIVE/FORMAL status, rollback.
+## Next A04 exact order
+A. Find SHA-verified authorized A26 actual approved Idle/Walk PNGs, or file a missing-source exception. No source guessing.
+B. Start only one PMD0001 Idle/Walk original-XML, per-action dimension, Duration, Offsets/Shadow compliant native export; forbid one-direction-to-eight-direction fake rotation.
+C. Actor use original sample source as base, preserve approved A62 animation recipe, three real _1/_2/_3 45-degree unarmed paper-doll anchors. Avoid large concept generation.
+D. Expand full Authoring CompletePAR source owners and witness one legal walkable roof/bridge/canopy plus negative clear tile; V3 and A36H R3 must not be merged. Avoid grass duplicated under runtime PAR.
+E. Keep human art, native VX, source static, and cloud delivery as separate gates. PC Windows temporary file operations require prior explicit scope/cleanup approval. PixelLab requires explicit capped batch generation approval.
+F. Write versioned private Drive QA/Handoff, current GitHub Handoff, main authority Drive index, verify real CI head and readbacks.
 
-## 5. Rollback / safety
-- To roll back A02, revert only the feature-branch commits adding adapters, tests, A02 metadata and this handoff. A01 branch checkpoint stays. **Do not force-reset main**.
-- Private Drive source ZIPs remain original, unmodified. Public PR contains metadata but never source PNG/XML/ZIP.
-- If readback/CI fails, mark as failed, never claim formal delivery or act as if next step auto-runs.
+Rollback only commits on this feature branch. Main and original source ZIPs are sealed, untouched.
