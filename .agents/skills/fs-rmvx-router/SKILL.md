@@ -5,6 +5,8 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 
 # Forest Symphony | Project-first Agent Skill
 
+> **現行規則入口（2026-11-07）**：先讀 [FS Current Rules Index](../../../authority/FS_CURRENT_RULES_INDEX_20261107.md) → P0 Storage → 共用製作 Authority → FS Precheck；先別讓舊 Handoff 的本機路徑或獨立兩張 AI 地圖生成覆蓋最新決議。
+
 ## P0 強制儲存規則（2026-11-07）：使用者 PC 不存任何新成果
 **使用者明確指令：「之後除非必要的安裝，任何需要儲存的東西請都放在DRIVE/GITHUB，不要放在我的PC裡。」**
 - 所有新建且需要保留的 PNG／Ground／PAR／素材／ZIP／Game.exe 驗證證據／截圖／Log／Handoff／備份，必須存 **Google Drive**；程式碼、規範、Manifest、QA／版控優先存 **GitHub**。私人或授權不明美術切勿推公開 GitHub。
