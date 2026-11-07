@@ -2,6 +2,8 @@
 制定日期：2026-10-30｜適用：精靈村 Ground-first 測試線｜文件性質：待實作規範，不代表美術 PASS
 實作狀態：SPEC_READY / GROUND_ART_FAIL（沿用 R1–R3 最新結果）/ PAR_NOT_STARTED / FORMAL_SEAL_NO
 
+> **LEGACY GROUND-ONLY v2 / 2026-11-07 SUPERSESSION**：本流程在 2026-10 屬舊 Ground-first 實驗分支；其中「不要 Master-first 逆切」與使用者 2026-11-07 新要求矛盾，**新精靈村禁止再按舊路線作先行決策**。現行為單一高品質 MASTER→AI Mask/隱藏 Ground Underpaint→Master 同源 PAR→作者層/運行層分離→原生 VX 測試。GroundOnly 作為作者層仍要製作，但不是由獨立生成另一張世界 RGB 作畫面權威。圖片/ZIP/Log 只存 Drive、程式/規範 GitHub；不得把 PC 當工作區。原內容保留作歷史 Gate/失敗紀錄。[P0](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## 0｜目標與先決原則
 目標：先獨立創作一張真正只有水平地表的高品質 GROUND.png；等 Ground 美術、語義與座標驗收通過並鎖定 SHA-256 後，才以同一 Blueprint 與原圖條件製作獨立透明 PAR 來源。絕不從已含房屋、樹木的 Master 逆切 Ground／PAR。
 本規格以使用者提供的 14 頁《Forest Symphony 精靈村 Ground-first → PAR 生成流程可行性研究》及 R17 Stage12／Stage13、R0／R1–R3 的負例為依據。原 FS/K4 SEALED、正式 Map.rvdata、Scripts.rvdata、Collision、Passability 不得修改。
