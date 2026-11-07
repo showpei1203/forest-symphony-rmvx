@@ -3,8 +3,8 @@
 Status: SOURCE_PIXEL PASS / COLLISION_GRAPH PASS / NATIVE VX NOT RUN / ART FAIL-PENDING / FORMAL SEAL NO. Public GitHub contains no licensed game-image bytes.
 
 ## Private cloud-delivered real artifacts
-- [A06 layered master-first trial, candidate collision and before/after ZIP](https://drive.google.com/file/d/12xCWLfj1EFDOlNEAZkOl47wswppVdhBf/view). Size 10,457,859 bytes. ZIP SHA256: 48af22427d0ba7560c19b8c16dbaf23f15d2076c5af7073155b66b5a469ecaf6.
-- [Deterministic rebuild and failure-history scripts](https://drive.google.com/file/d/1dvrRObpv2t2oZcW69W0cUOjg3tIWl2gs/view). Size 11,497 bytes. ZIP SHA256: ab7a51bf367d67f92853663a6eaea9bef84d0cb8bb1bc79a0372afa601d29876.
+- A06 layered master-first trial, candidate collision and before/after ZIP (restricted private Drive; locate by filename in 05_Handoff). Size 10,457,859 bytes. ZIP SHA256: 48af22427d0ba7560c19b8c16dbaf23f15d2076c5af7073155b66b5a469ecaf6.
+- Deterministic rebuild and failure-history scripts (restricted private Drive; locate by filename in 05_Handoff). Size 11,497 bytes. ZIP SHA256: ab7a51bf367d67f92853663a6eaea9bef84d0cb8bb1bc79a0372afa601d29876.
 - Source private frozen V3 archive SHA256: b38c08109e25299fa9f4ceabd7f34b42cc82531ba56c8f09cc9f3a4af0429511; Master SHA256: 091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530.
 - Full trial ZIP was fetched back from Google Drive, passed ZIP CRC and exact SHA256 verification. The source-only deterministic rebuild reproduced bridge mask alpha exactly, 0 pixel difference; no PC files or PixelLab usage.
 
@@ -36,3 +36,7 @@ A26 private archive source SHA 460b8ca230e579e78d2f3350f0f10c0ba0ab5af2fbaee063f
 ## Orca and next stage
 Historical Orca A36F dual reviews exist, but no new S1/M1 agent was started for this A06 source. An installed Codex CLI supports explicit read-only sandbox; that is not proof the Orca GUI agent is in approval-required mode, and no unsafe autonomous PC process was started.
 A07 sequence: review bridge silhouette at 1x, validate physically walkable river/roof tiles and source-matched 5-object Runtime in isolated real Game.exe once temporary Windows workspace/cleanup is authorized. Preserve strict per-object Authoring ownership and full Native 203 checks. Locate approved A25 lava source before attempting true native new monster sheets.
+
+
+## Private-art security rule (A06 correction)
+Public source documents must NEVER contain direct download URLs for protected PNG/ZIP or private Drive documents that expose those links. The private Drive artifacts and named source archives are located through the owner's private FS authority index. During A06 Drive metadata verification both new artifact ZIPs had anyone-with-link reader permissions; this is **NOT restricted access**. Owner must change sharing to Restricted in Google Drive; no permission-revocation tool was available in this session. No raw image bytes are in public GitHub.
