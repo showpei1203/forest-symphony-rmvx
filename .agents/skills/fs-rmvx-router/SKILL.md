@@ -5,6 +5,14 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 
 # Forest Symphony | Project-first Agent Skill
 
+## P0 強制儲存規則（2026-11-07）：使用者 PC 不存任何新成果
+**使用者明確指令：「之後除非必要的安裝，任何需要儲存的東西請都放在DRIVE/GITHUB，不要放在我的PC裡。」**
+- 所有新建且需要保留的 PNG／Ground／PAR／素材／ZIP／Game.exe 驗證證據／截圖／Log／Handoff／備份，必須存 **Google Drive**；程式碼、規範、Manifest、QA／版控優先存 **GitHub**。私人或授權不明美術切勿推公開 GitHub。
+- **禁止使用使用者 PC 當持久工作空間**，包含過去慣用的 `E:\FS_AGENT_SKILLS_PILOT_*`、`E:\FS_STAGE*`；歷史路徑只是原始來源／舊紀錄，不是新檔案目的地。能在 ChatGPT 隔離環境／雲端處理就不用 PC。
+- 唯一容許的持久本機例外是必要軟體／驅動／Runtime 安裝。若 Windows VX 實機測試技術上需要短暫本機副本，只能最小隔離暫用，當次上傳 Drive／GitHub、驗證雜湊後刪除，**不得保留測試工程、截圖、ZIP 或長期備份**。無法驗證清理時必須回報，不能假稱清乾淨。
+- 既有 PC 歷史成果**不可**不經雲端完整性確認就刪除。每次交付必須附雲端 ID／URL，明確說明是否有未清理 PC 暫存。
+- **本 P0 優先於**任何舊版 Readme、Handoff、本機 clone/working directory 步驟。權威：[FS Cloud-Only Storage Policy](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## NEW experimental map pipeline: one MASTER image -> AI semantic masks -> source-registered Ground/PAR (2026-11-07)
 - **Scope is the new elf-village trial, NOT retroactive approval or overwrite of A36F/A36G/A36H.** Use original approved FS Ground3 as visual quality reference, but let the user select a new complete single **MASTER** image as the scene's pixel-coordinate authority. This is a strategy switch from independently generating Ground and PAR to *single master first*. Original 1473×1068 generated example, target VX 40×29×32 = 1280×928.
 - AI may separately propose **GroundUnderpaint** (replace removed-object areas only) and **object semantic masks**. Independently AI-redrawn RGB Ground and PAR are **not same-source aligned**: first-trial alpha-over reconstructed only **12/1,573,164 pixels exact**, RGB MAE **40.136**, >40 max-channel error **54.8148%**. **FAIL**. The AI PAR has a real RGBA alpha channel, but its coverage **74.316% at alpha>=128** does not prove the occlusion geometry. Keep all generated examples as evidence of failure.

@@ -1,5 +1,7 @@
 # FS Agent Skills | Isolated integration
 
+**P0 規則 (2026-11-07): 使用者 PC 不得成為任何新成果、驗證證據或備份的儲存位置；僅必要軟體安裝可持久保留。** 所有需要保存的檔案請放 Google Drive／GitHub。以下 `E:\\` 歷史目錄／clone 指令**禁止再當作新的工作或交付路徑**，僅供追溯。必需的 Windows VX 實機測試只能產生最小當次暫存，確認雲端完整後刪除；既有未核對備份的 PC 檔案不直接刪除。完整規範：[FS Cloud-Only Storage Policy](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 The canonical Forest Symphony engine is **RPG Maker VX / RGSS2**. Godot is only a supplementary rendering/test adapter. Read [FS routing skill](../../.agents/skills/fs-rmvx-router/SKILL.md) and project authority before using generic upstream skills.
 
 ## Installed pilot
