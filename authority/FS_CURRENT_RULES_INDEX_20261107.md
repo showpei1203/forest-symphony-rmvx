@@ -46,3 +46,15 @@
 - Master-first／同源 RGB／四層／Source owner／32×32 通行／動態 203／Art 之各 Gate 是否分開判定？
 - 雲端實際檔案 ID、QA/CRC/SHA、GitHub branch/PR、PC 暫存清理結果是否可核驗？
 - 未能證明的部分一律 **NOT RUN／FAIL／ART HOLD**，禁止編造成 PASS。
+
+
+## P6 | A08 user-mandated Sprite + Map dual production methodology (2026-11-08)
+Latest user instruction: fully operationalize the complete 22-page PixelLab-led FS Asset Factory research report, for BOTH sprites and Ground/PAR, not only bridge details.
+- Shared active rule: [FS dual-lane authority](FS_ASSET_FACTORY_BOTH_LANES_RULES_V1_20261108.md).
+- Page audit: [A08 22p research mapping](../docs/asset_factory/A08_REPORT_22PAGE_IMPLEMENTATION_AUDIT_20261108.md).
+- Required stage-specific rules: [Sprite Factory SOP](../docs/asset_factory/FS_SPRITE_FACTORY_SOP_V1_20261108.md) and [Master-first Map Factory SOP](../docs/asset_factory/FS_MAP_FACTORY_SOP_V1_20261108.md).
+- Next production gates: [A08 execution queue](../docs/asset_factory/A08_DUAL_FACTORY_EXECUTION_QUEUE_20261108.md) and [CURRENT_HANDOFF](../docs/asset_factory/CURRENT_HANDOFF.md).
+- Build both: reference Style Bible -> archetype/scene template -> real direction skeleton/semantic object family -> bounded batch -> automated QA -> exception-only repair -> native FS exporter -> user 1x Art + Game.exe. NO V0/V1/V2 per-rail-color masking iterations as routine factory work.
+- **Native schema clarification for P5**: three *stored* Actor key poses (loop such as 0,1,0,2) or interim PMD pose templates are not the universal native PMD atlas count. Only genuine per-species AnimData.xml determines exported Idle/Walk/Attack frame counts, durations, XML CopyOf aliases, Anim/Offsets/Shadow and 1/8 native rows. PMD0001 Idle3/Walk6/Attack11; PMD0002 Idle4/Walk4/Attack9; PMD0003 Idle4/Walk4/Attack11. No fake 5->3/6 fitting of A26 unapproved candidates.
+- **P2 remains**: Master-first complete picture remains Runtime FullGround; Runtime OcclusionPAR needs SOURCE-AUTHORED semantic object ownership and conditional legal actor footpoint depth, not RGB similarity or all Authoring PAR.
+- This is a plan/static production-contract gate, not user approval of newly produced assets or license to spend PixelLab credits. Keep P0 source and PC-safe rules intact.
