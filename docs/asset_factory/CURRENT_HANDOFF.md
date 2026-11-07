@@ -1,48 +1,41 @@
-# FS AI Asset Factory CURRENT_HANDOFF A03 | 2026-11-08
+# FS AI Asset Factory — CURRENT_HANDOFF A04 (2026-11-08)
 
-Mandatory next-chat entrypoint. Do not restart A01/A02, never merge Draft PR without approval, do not regenerate concept art instead of producing real native assets.
+**Entry for next chat.** This supersedes active A03 execution status, but A01/A02/A03 remain immutable historical stage records. Don't restart old research, don't merge PR #15, don't generate concept-only images.
 
-## Authority and links
-- Global P0 storage: https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit
-- Main rules: authority/FS_CURRENT_RULES_INDEX_20261107.md; FS router and Asset Factory V1 plan.
-- Current repo (public code only): showpei1203/forest-symphony-rmvx.
-- Branch: feat/fs-asset-factory-v1-20261107; PR #15 https://github.com/showpei1203/forest-symphony-rmvx/pull/15 remains Draft, unmerged.
-- A02 real source SHA detail: docs/asset_factory/SOURCE_INVENTORY_A02_20261107.md.
-- A03 REAL PRIVATE QA: https://docs.google.com/document/d/11fCR2Z6gmIAZzDTHZbnSse5jFwi4v0sVuYnj_mz1byg/edit
-- A03 FULL private Handoff: https://docs.google.com/document/d/1YtPce0j-Sy86H335TuLdeGDMEgFFkQ0QdvroAHBjPIo/edit
-- Previous A02 Drive Handoff: https://docs.google.com/document/d/10co8RTL-WXb2fhiiExLOfxmoasTg8kgjl7wb9rcnvXw/edit
+## Authority / evidence
+- Global Cloud-Only P0: https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit
+- Production rules: main/authority/FS_CURRENT_RULES_INDEX_20261107.md; main/.agents/skills/fs-rmvx-router/SKILL.md.
+- Repo: showpei1203/forest-symphony-rmvx, branch feat/fs-asset-factory-v1-20261107; [Draft PR #15](https://github.com/showpei1203/forest-symphony-rmvx/pull/15), no merge to main.
+- [A04 private Drive full handoff](https://docs.google.com/document/d/1uutNu7PzEveBqeohO8ltuIeNU4hbP5bdZ80FSej1Fj0/edit)
+- [Orca S1/M1 independent adversarial tasks](ORCA_A04_TASKBOARD_20261108.md).
+- [A03 private actual-source QA](https://docs.google.com/document/d/11fCR2Z6gmIAZzDTHZbnSse5jFwi4v0sVuYnj_mz1byg/edit), [A02 exact PMD SHA inventory](SOURCE_INVENTORY_A02_20261107.md).
+- [A03 handoff](https://docs.google.com/document/d/1YtPce0j-Sy86H335TuLdeGDMEgFFkQ0QdvroAHBjPIo/edit).
 
-## A03 actual verified results, not plans
-1. Executed exact same committed GitHub blob PMD adapter, plus A03 private ZIP scanner, over three real historical private ZIPs. Tested original_0001, rock_0001, ORIGINAL_0002, VOLCANIC_0002, ORIGINAL_0003, VOLCANIC_0003: all PASS_STATIC_ONLY. 6 source sets / 116 concrete action atlases / 348 original Anim/Offsets/Shadow PNGs, matching actual native XML size, frame count and 1-or-8 row atlas geometry. No private art in public CI.
-2. Executed exact same committed GitHub blob runtime_masks.py on private Master-first V3 ZIP (whole ZIP SHA256 b38c08109e25299fa9f4ceabd7f34b42cc82531ba56c8f09cc9f3a4af0429511). Master 1280x928 SHA256 091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530; Runtime PAR SHA256 e2486f7a780d260ccfceadac024b94ee37108371c91c7a73f2cf254463c76edb. 4 source masks (2 roofs + 2 canopies), 118425 alpha pixels exactly accounted for, 0 overlapping owner pixels, 0 visible RGB drift, binary-alpha PASS. This is NOT semantic roof occlusion or full Authoring CompletePAR proof.
-3. Executed exact same committed GitHub blob actor.py on real A62 approved 144x48 three-pose strip extracted from private A63 ZIP. Approved 48x48 F0 is pixel-identical to frame0; three frames distinct; loop 0-1-0-2; PASS_STATIC_ONLY. This 48px reference is NOT original VX 32px nor Tankentai integration.
+## Verified A04 actual work
+1. Added tools/asset_factory/adapters/native_action_export.py: in-memory PMD action atlas compiler; checks source SHA for every native input, authentic original per-action XML width/height and Duration length, accepts ONLY explicit native row indexes, requires actual per-frame Anim/Offsets/Shadow triplets, never auto-rotates or resamples. Protects all untargeted native rows at decoded RGBA pixel level. Rejects CopyOf alias as an independent action. Returns PARTIAL CANDIDATE status, art/direction/native not certified.
+2. Added tools/asset_factory/tests/test_a04_native_action_export.py with 9 synthetic positive and intentional-fail tests, combined total 49. Actual GitHub Actions run [42413705628](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42413705628), source commit e2056e0af774e0ff15125bd9f4ced31f68652e24, completed SUCCESS, log Ran 49 tests in 0.083s, OK. New docs have been committed after this run; latest PR-head CI must be checked separately before calling the final HEAD green.
+3. Independent real private-source atlas identity roundtrip in isolated ChatGPT container. Six ZIP source families (PMD0001 original_0001/rock_0001, PMD0002 ORIGINAL_0002/VOLCANIC_0002, PMD0003 ORIGINAL_0003/VOLCANIC_0003) × Idle/Walk = **12/12 PASS**: actually parse native XML, crop an original row, paste it into the same exact row for each of Anim/Offsets/Shadow, verify all decoded RGBA bytes exactly equal and every other row untouched. This was independently implemented as a real-data geometry/roundtrip check, NOT the claimed actual execution of the new GitHub native_action_export with approved lava artwork. No new approved sprite sheets resulted.
+4. Read-only connected Windows (DESKTOP-90VT437) inspection: Orca.exe running, existing E:\FS_ORCA_PILOT_20261107 files inspected. Historical dual Codex Agent A36F R3/R4 findings verified from handoff; R3 9 hair pixels false-positive accepted due <=12 tolerance, R4 isolated VX 10/10 static and 4/4 move, art NO. This historical data is independent from V3 Master-first; never merge their masks/claims.
+5. Orca task board written to public repo: [A04 Orca independent QA](ORCA_A04_TASKBOARD_20261108.md). Agent S1 = Sprite native action adversarial review, M1 = Map semantic/actor collision adversarial review, Native tester only after separately approved PC temp scope. Both new Orca agents **NOT LAUNCHED THIS STAGE**. Old Orca pilot documents report CODEx YOLO permissions; current Orca UI approval status cannot be confirmed from connector. DO NOT let an unsandboxed autonomous agent write user's PC. Worktree != OS sandbox.
+6. The documented historical location E:\GameAssetToolLab_20261023 was read-only inspected and currently contains tools/Pixelorama only. Cloud Drive filename search for exact A26 private ZIP and candidate Idle/Walk did NOT return the binary. A full E: search had time limit, so do not assert the files definitively do not exist. The approved A26 lava Idle/Walk original private binary remains SOURCE_NOT_VERIFIED and must not be faked with original_0001 or rock_0001.
 
-## Exact code and CI
-- A02 native adapter Git blob: tools/asset_factory/adapters/pmd.py = a97778e8c886b839d5dd9a4993e9dabf4177b739.
-- Existing Actor adapter Git blob = 396df40f2acd966cfcd2bdfa10dde90a77926205.
-- New A03 tools/asset_factory/adapters/private_zip_scan.py Git blob = fff75ae47a71099919a12ad8f2d101409fc13245. Source-lock and safe in-memory ZIP reader; no extraction and no protected PNG commits.
-- New A03 tools/asset_factory/adapters/runtime_masks.py Git blob = 4e53047097c245b1498da1cdeb078684ac81a4f3. Compare full canvas source mask ownership and Master RGB registration.
-- New tests tools/asset_factory/tests/test_a03_private_runtime.py: 11 synthetic positive/negative cases. A01 14 + A02 15 + A03 11 = 40.
-- Actual successful GitHub Actions run 42412650688, source commit 9ba9cf7bb3a11481c05dfd414e7431d81efcb343. Log: Ran 40 tests in 0.040s, OK. Any further documentation commit means recheck current branch head Actions, never present old run as latest.
-- PixelLab paid calls 0. No user's PC files, no main overwrite, no freshly approved artwork.
+## Gate matrix
+- New exporter synthetic CI: PASS 49/49 on recorded source commit. All later documentation-only commits need final-head CI check.
+- Real source original direction-row identity roundtrip: PASS 12/12 in isolated execution, NOT official exporter over newly approved art.
+- Real accepted A26 lava source binary: SOURCE_NOT_VERIFIED.
+- PMD 8-direction *new* creature art: PENDING; original native geometry checks exist from A03 only.
+- Actor A62 historically user approved moving loop; 48px source not native 32px VX/Tankentai; no new Actor art.
+- Map V3 four-object source ownership static PASS in A03; all Authoring CompletePAR object ownership and legal eave player-footpoint scene semantics PENDING.
+- Orca new Agent S1/M1: NOT_LAUNCHED; historical Orca R4 work is NOT A04 execution.
+- New Windows VX: NOT_RUN; user art new asset: PENDING; Formal Seal: NO.
+- New PixelLab use: 0. Main unchanged. User-PC new persistent working files: NONE.
 
-## Gate matrix, must stay distinct
-- Source file SHA and native PMD original grammar: PASS for six historical source sets.
-- New same-blob Adapter over actual private source: PASS static, not game.
-- A62 existing approved run reference: SOURCE_STATIC PASS, USER HISTORICAL APPROVAL for this specific run.
-- Four-object V3 Runtime PAR source ownership: PASS_STATIC_ONLY.
-- CompletePAR authoring objects and legal-footpoint occlusion semantics: NOT_TESTED / PENDING.
-- A26 *new lava-frog* approved Idle/Walk exact private binary SHA/Drive source: NOT LOCATED here; old Handoff points to historical E drive. Do not pretend original_0001/rock_0001 is approved A26 lava art.
-- Eight-direction species identity and animation aesthetics: PENDING.
-- Native Windows VX / switch 203 / Tankentai new data this iteration: NOT_RUN. V3 prior historic native test remains historical separate evidence only.
-- User ART acceptance of new asset: PENDING. Formal seal NO.
+## Next A05
+1. Try a focused authorized recovery of real A26-approved lava Idle/Walk sources with exact SHA. If missing, stop repeating same scan, open missing-art exception, use newer clearly labeled approved baseline only if independently verified. No fake originals.
+2. After Orca Agent permissions can be confirmed to require approval, run S1/M1 **read-only, independent** QA tasks against the cloud branch and private per-asset evidence; no new PC worktrees or outputs. Report precise exceptions.
+3. Exercise actual native_action_export.py with real private bytes in isolated container; a strict no-op or one-direction sample is a TECH/FORMAT proof only. First new art exporter requires real approved per-direction source, not fabricated rotations.
+4. Generate separate Authoring CompletePAR full owner masks; test a real legal-actor footpoint along a roof eave/bridge/canopy and clear negative. Native Game.exe only when PC scope and cleanup explicitly approved.
+5. Final CI on latest HEAD, GitHub and Drive Handoff readbacks, exact source SHA and status split. Stop blind retries or PixelLab credit burn.
 
-## Next A04 exact order
-A. Find SHA-verified authorized A26 actual approved Idle/Walk PNGs, or file a missing-source exception. No source guessing.
-B. Start only one PMD0001 Idle/Walk original-XML, per-action dimension, Duration, Offsets/Shadow compliant native export; forbid one-direction-to-eight-direction fake rotation.
-C. Actor use original sample source as base, preserve approved A62 animation recipe, three real _1/_2/_3 45-degree unarmed paper-doll anchors. Avoid large concept generation.
-D. Expand full Authoring CompletePAR source owners and witness one legal walkable roof/bridge/canopy plus negative clear tile; V3 and A36H R3 must not be merged. Avoid grass duplicated under runtime PAR.
-E. Keep human art, native VX, source static, and cloud delivery as separate gates. PC Windows temporary file operations require prior explicit scope/cleanup approval. PixelLab requires explicit capped batch generation approval.
-F. Write versioned private Drive QA/Handoff, current GitHub Handoff, main authority Drive index, verify real CI head and readbacks.
-
-Rollback only commits on this feature branch. Main and original source ZIPs are sealed, untouched.
+## Rollback
+Revert ONLY A04 feature-branch commits when necessary; keep A01-03 history and private Drive original artifacts. No main overwrite. Never use public PR to store licensed PNGs, XML or ZIP.
