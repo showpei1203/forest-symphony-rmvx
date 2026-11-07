@@ -1,5 +1,7 @@
 # Forest Symphony — RGSS2 Source Authority
 
+> **GLOBAL HARD RULES 001 (2026-11-07)**：所有新的開發成果、程式碼、圖像、ZIP、QA、Handoff 及備份僅保存在 **Google Drive／GitHub**；使用者 PC 只允許必要安裝。必須產生本機臨時工作檔時須**事先取得使用者授權**，完成雲端 WRITE→VERIFY 再清除。先讀 [共用最高規則](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)／[本 repo Agent 規範](AGENTS.md)。產品功能與既有技術驗收不因此變動。
+
 ## P0 現行儲存／新地圖規則（2026-11-07）
 [FS 現行規則總索引](authority/FS_CURRENT_RULES_INDEX_20261107.md) 是所有新對話、Agent 和施工的第一入口，舊封版測試資料保持原樣。
 
