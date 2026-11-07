@@ -1,6 +1,8 @@
 # FS A33D Forest Layer + Remote Capability + Native Collision Rules v1
 Date: 2026-11-01. ACTIVE, not formal product acceptance.
 
+> **2026-11-07 P0 + Master-first Gate**：原先 A33D 地圖/遮擋失敗記錄有效；所有新地圖唯一 Master 原 XY 同源 RGB，Runtime FullGround/僅人物前景 PAR 分開，True native passability 及 art Gate 仍獨立。此頁任何本機 Windows 隔離 QA 路徑均為歷史，不得保留新檔在使用者 PC。私人圖/ZIP/截圖傳 Drive、腳本/QA 傳 GitHub；清除前驗證完整性。[P0](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## Unacceptable previous failure
 When a user requests continuing actual work and Desktop Commander was used earlier, **inspect the available connected tools and list_devices before claiming remote tools are unavailable**. User's DESKTOP-90VT437 was shown Online, and the Remote MCP actually connected in this turn. Previous assistant said it could not access any remote tools without checking. **That assertion was false** and led to repeated planning-only replies. In future, call `Remote_Desktop_Commander.list_devices` and check specific operations before falling back to handoff instructions.
 
