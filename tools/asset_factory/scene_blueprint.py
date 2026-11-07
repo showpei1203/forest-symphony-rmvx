@@ -117,25 +117,47 @@ def build_scene(scene, seed):
 
 
 def to_tiled_object_layers(scene):
-    """Tiled-compatible .tmj object layers with transparent source-role props."""
+    """Valid source-typed Tiled .tmj OBJECT layout: IDs globally unique.
+
+    It deliberately contains NO tileset art, image layers, or final FS PAR.
+    """
     if scene["schema"]!="fs-a09-scene-blueprint/v1":
         raise ValueError("bad blueprint")
     layers=[]
-    for group in ("GROUND_ONLY","BACK_OR_STRUCTURAL","CONDITIONAL_FOREGROUND","STRUCTURAL_SOURCE_PENDING"):
+    next_obj=1
+    groups=("GROUND_ONLY","BACK_OR_STRUCTURAL","CONDITIONAL_FOREGROUND","STRUCTURAL_SOURCE_PENDING")
+    for group in groups:
         objects=[]
-        for i,item in enumerate(o for o in scene["objects"] if o["runtime_role"]==group):
+        for item in (o for o in scene["objects"] if o["runtime_role"]==group):
             x,y,w,h=item["tile_rect"]
             props=[{"name":"family_id","type":"string","value":item["family"]},
                    {"name":"part","type":"string","value":item["part"]},
                    {"name":"runtime_role","type":"string","value":item["runtime_role"]},
                    {"name":"source_status","type":"string","value":"SOURCE_ART_REQUIRED"}]
-            objects.append({"id":len(objects)+1,"name":item["id"],"type":item["part"],
+            objects.append({"id":next_obj,"name":item["id"],"type":item["part"],
                             "x":x*TILE,"y":y*TILE,"width":w*TILE,"height":h*TILE,
                             "visible":True,"rotation":0,"properties":props})
-        layers.append({"id":len(layers)+1,"name":group,"type":"objectgroup","visible":True,"opacity":1,"draworder":"topdown","objects":objects})
+            next_obj+=1
+        layers.append({"id":len(layers)+1,"name":group,"type":"objectgroup",
+                       "visible":True,"opacity":1,"draworder":"topdown","objects":objects})
+    # Low vegetation is in the SOURCE manifest AND in its own Tiled authoring layer,
+    # never mixed into conditional actor-foreground overlays.
+    low=[]
+    for obj in scene["low_decor_instances"]:
+        x,y=obj["tile"]
+        low.append({"id":next_obj,"name":obj["id"],"type":obj["part"],
+                    "x":x*TILE,"y":y*TILE,"width":TILE,"height":TILE,
+                    "visible":True,"rotation":0,"properties":[
+                     {"name":"family_id","type":"string","value":obj["family"]},
+                     {"name":"runtime_role","type":"string","value":"GROUND_ONLY"},
+                     {"name":"source_status","type":"string","value":"SOURCE_ART_REQUIRED"}]})
+        next_obj+=1
+    layers.append({"id":len(layers)+1,"name":"GROUND_DECOR","type":"objectgroup",
+                   "visible":True,"opacity":1,"draworder":"topdown","objects":low})
     return {"type":"map","version":"1.10","tiledversion":"1.11.2","orientation":"orthogonal",
             "renderorder":"right-down","width":W,"height":H,
             "tilewidth":TILE,"tileheight":TILE,"infinite":False,"layers":layers,"tilesets":[],
+            "nextobjectid":next_obj,"nextlayerid":len(layers)+1,
             "properties":[{"name":"FS_STATUS","type":"string","value":"GEOMETRY_BLUEPRINT_ONLY"},
                           {"name":"FS_SOURCE_STYLE_SHA256","type":"string","value":GROUND3_SHA},
                           {"name":"PIXELLAB_GENERATIONS","type":"int","value":0}]}
