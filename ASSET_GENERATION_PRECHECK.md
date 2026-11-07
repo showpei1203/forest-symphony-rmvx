@@ -1,5 +1,10 @@
 # Forest Symphony — Asset Generation Precheck
 
+## 2026-11-07 FS 新版本強制優先（P0 + Master-first）
+開工前先讀 [P0 Cloud-only](docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)：成果與證據存 Drive/GitHub，PC 僅必要安裝/最短實機臨時副本；不准把 E: 目錄/快取當輸出庫。
+**FS 新精靈村 ACTIVE 方法**：一張完整高品質 MASTER 作唯一 RGB/world-XY 權威，AI Ground-only 只作底下地表補繪候選，AI PAR 只作物件語意遮罩候選。作者層 `GroundOnly+CompletePAR`、Runtime 層 `FullGround+OcclusionPAR` 分開；每個可見前景像素從同一 MASTER XY 取樣。真實 RPG Maker VX Map050、203 開關、可走格進出遮擋／空地負例和 USER ART Gate 全部必須另驗證。合成零差是建構式技術指標，不等於完整語意或美術 PASS。
+**下方 v2.5 GROUND-FIRST 流程僅對其當年的既有 Ground-first 分支與其他未指定 Master-first 的使用情境保留。**兩種方法的最終 Source SHA／Manifest／Alpha／Scale／Collision／Passability／Art Gate 一樣嚴格。 [V3 Native 實驗](experiments/agent_skills_20261107/MASTER_FIRST_V3_NATIVE_203_COLLISION_HANDOFF.md) 只是局部 Canopy PASS，Formal Seal NO。
+
 **Mandatory before every image generation or image edit.**
 
 1. Read Google Drive shared `SHARED_GAME_ASSET_GENERATION_AUTHORITY`.
