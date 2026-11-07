@@ -15,6 +15,8 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 - 既有 PC 歷史成果**不可**不經雲端完整性確認就刪除。每次交付必須附雲端 ID／URL，明確說明是否有未清理 PC 暫存。
 - **本 P0 優先於**任何舊版 Readme、Handoff、本機 clone/working directory 步驟。權威：[FS Cloud-Only Storage Policy](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
 
+**執行前特別檢查：** GitHub 舊 Python/Ruby/CMD 腳本可能硬編碼 E:\\、C:\\ 或 PC 同步磁碟 G:\\ 作為 output。這些腳本即使已收錄 GitHub，**未移除本機輸出或提供僅必要 VX 臨時執行／結束清理機制前不可直接跑**；文件改寫不會自動修復舊腳本。
+
 ## NEW experimental map pipeline: one MASTER image -> AI semantic masks -> source-registered Ground/PAR (2026-11-07)
 - **Scope is the new elf-village trial, NOT retroactive approval or overwrite of A36F/A36G/A36H.** Use original approved FS Ground3 as visual quality reference, but let the user select a new complete single **MASTER** image as the scene's pixel-coordinate authority. This is a strategy switch from independently generating Ground and PAR to *single master first*. Original 1473×1068 generated example, target VX 40×29×32 = 1280×928.
 - AI may separately propose **GroundUnderpaint** (replace removed-object areas only) and **object semantic masks**. Independently AI-redrawn RGB Ground and PAR are **not same-source aligned**: first-trial alpha-over reconstructed only **12/1,573,164 pixels exact**, RGB MAE **40.136**, >40 max-channel error **54.8148%**. **FAIL**. The AI PAR has a real RGBA alpha channel, but its coverage **74.316% at alpha>=128** does not prove the occlusion geometry. Keep all generated examples as evidence of failure.
