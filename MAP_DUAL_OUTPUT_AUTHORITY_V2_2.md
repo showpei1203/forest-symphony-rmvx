@@ -1,5 +1,7 @@
 # Shared Map Coupled Dual-Output Authority v2.2
 
+> **2026-11-07：此 2026-08 的 coupled dual-output 文件已由 v2.5 通用規則與 FS 新 Master-first 分層權威取代。** 「先各自產生 Ground/PAR」不允許當成 FS 新場景的 RGB 對位方法；必須 MASTER 凍結、AI Mask/隱藏地表提案、原 XY 同源 RGB。技術/版權/碰撞 Gate 保留。PC 不作成果庫，詳見 [P0 Cloud-only](docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 > **SUPERSEDED FOR CURRENT MAP GENERATION BY `MAP_DUAL_OUTPUT_AUTHORITY_V2_3.md`. Before producing any layered map, read v2.3 and follow its mandatory Ground-first + Pixel-crisp rules.**
 
 Effective: 2026-08-19
