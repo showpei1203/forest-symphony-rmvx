@@ -61,6 +61,23 @@ class A09SceneBlueprintTests(unittest.TestCase):
         self.assertTrue(all("SOURCE_ART_REQUIRED" in str(o["properties"]) for layer in tiled["layers"] for o in layer["objects"]))
         self.assertEqual(s["native_vx"],"NOT_RUN")
 
+    def test_tiled_object_ids_are_unique_across_layers(self):
+        tiled=to_tiled_object_layers(build_scene("FOREST_BRIDGE",20261203))
+        ids=[o["id"] for layer in tiled["layers"] for o in layer["objects"]]
+        self.assertEqual(len(ids),len(set(ids)))
+        self.assertEqual(tiled["nextobjectid"],max(ids)+1)
+        self.assertEqual(tiled["nextlayerid"],len(tiled["layers"])+1)
+
+    def test_tiled_decor_has_ground_only_source_roles(self):
+        s=build_scene("ELF_VILLAGE",20261108)
+        tiled=to_tiled_object_layers(s)
+        deco=next(l for l in tiled["layers"] if l["name"]=="GROUND_DECOR")
+        self.assertEqual(len(deco["objects"]),len(s["low_decor_instances"]))
+        for obj in deco["objects"]:
+            p={x["name"]:x["value"] for x in obj["properties"]}
+            self.assertEqual(p["runtime_role"],"GROUND_ONLY")
+            self.assertEqual(p["source_status"],"SOURCE_ART_REQUIRED")
+
     def test_bad_unknown_scene_or_seed_fails(self):
         with self.assertRaises(ValueError):
             build_scene("UNKNOWN",12)
