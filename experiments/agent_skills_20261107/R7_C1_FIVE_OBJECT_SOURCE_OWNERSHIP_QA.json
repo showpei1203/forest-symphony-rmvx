@@ -1,0 +1,760 @@
+{
+  "stage": "A36G_R7_C1_FIVE_OBJECT_NATIVE_SOURCE_VISIBILITY_GATED",
+  "A36G_R5_manifest_sha": "4c24008804df2dedda8deaf5290742580715da68b73de1b3ed69613283671153",
+  "A36G_R5_master_sha": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db",
+  "selected_sources": [
+    {
+      "id": "A36G_ELF_HOUSE_AND_WORKSHOP",
+      "type": "house",
+      "source": "A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png",
+      "source_sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699",
+      "world_xy": [
+        353,
+        209
+      ],
+      "local_size": [
+        284,
+        259
+      ],
+      "selected_pixels": 16185,
+      "selected_visible_pixels": 16091,
+      "visible_semantic_fraction": 0.9942,
+      "scene_ownership_gate": true,
+      "human_art_review": "PENDING"
+    },
+    {
+      "id": "A36G_R5_COTTAGE_B_SINGLE_ROOF",
+      "type": "house",
+      "source": "A36G_R5_PIXELLAB_RIGHT_HOUSE_SINGLE_GABLE_R2_RGBA.png",
+      "source_sha256": "4794a89cb06029112e6581c85a47bdcf6a84b7f636e05755825a989793585206",
+      "world_xy": [
+        743,
+        376
+      ],
+      "local_size": [
+        256,
+        272
+      ],
+      "selected_pixels": 9922,
+      "selected_visible_pixels": 9922,
+      "visible_semantic_fraction": 1.0,
+      "scene_ownership_gate": true,
+      "human_art_review": "PENDING"
+    },
+    {
+      "id": "tree_093",
+      "type": "tree",
+      "source": "A36F_tree_093_ORIGINAL_RGBA.png",
+      "source_sha256": "c744d84a3bf7d6972bf9767448a6d7b94bc6d9d3e290f8f72279e50fe1984e88",
+      "world_xy": [
+        365,
+        88
+      ],
+      "local_size": [
+        143,
+        171
+      ],
+      "selected_pixels": 8968,
+      "selected_visible_pixels": 8968,
+      "visible_semantic_fraction": 1.0,
+      "scene_ownership_gate": true,
+      "human_art_review": "PENDING"
+    },
+    {
+      "id": "tree_010",
+      "type": "tree",
+      "source": "A36F_tree_010_ORIGINAL_RGBA.png",
+      "source_sha256": "6364a13dd821644f33cd075cf937a7a5aa652f59cf1b0a155544f709ddd849be",
+      "world_xy": [
+        807,
+        154
+      ],
+      "local_size": [
+        151,
+        167
+      ],
+      "selected_pixels": 10412,
+      "selected_visible_pixels": 10398,
+      "visible_semantic_fraction": 0.9987,
+      "scene_ownership_gate": true,
+      "human_art_review": "PENDING"
+    },
+    {
+      "id": "tree_020",
+      "type": "tree",
+      "source": "A36F_tree_020_ORIGINAL_RGBA.png",
+      "source_sha256": "b33580ecd2e88a570af439c135ad2dcc13cb4a9b82fec7bac0ab7ecdfdb932a2",
+      "world_xy": [
+        1090,
+        47
+      ],
+      "local_size": [
+        162,
+        194
+      ],
+      "selected_pixels": 11732,
+      "selected_visible_pixels": 11732,
+      "visible_semantic_fraction": 1.0,
+      "scene_ownership_gate": true,
+      "human_art_review": "PENDING"
+    }
+  ],
+  "walkable_test_candidates": {
+    "A36G_ELF_HOUSE_AND_WORKSHOP": {
+      "walkable_top10": [
+        {
+          "tile": [
+            15,
+            8
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            9
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            15,
+            9
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            13,
+            10
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            10
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            15,
+            10
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            16,
+            8
+          ],
+          "overlap": 0.9766,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            8
+          ],
+          "overlap": 0.9518,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            11
+          ],
+          "overlap": 0.9427,
+          "walkable": true
+        },
+        {
+          "tile": [
+            15,
+            11
+          ],
+          "overlap": 0.9323,
+          "walkable": true
+        }
+      ],
+      "all_top5": [
+        {
+          "tile": [
+            15,
+            8
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            9
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            15,
+            9
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            13,
+            10
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            10
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        }
+      ],
+      "walkable_above_10pct": 24,
+      "walkable_max_overlap": 1.0
+    },
+    "A36G_R5_COTTAGE_B_SINGLE_ROOF": {
+      "walkable_top10": [
+        {
+          "tile": [
+            26,
+            14
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            25,
+            13
+          ],
+          "overlap": 0.9948,
+          "walkable": true
+        },
+        {
+          "tile": [
+            24,
+            15
+          ],
+          "overlap": 0.9596,
+          "walkable": true
+        },
+        {
+          "tile": [
+            26,
+            13
+          ],
+          "overlap": 0.9557,
+          "walkable": true
+        },
+        {
+          "tile": [
+            25,
+            14
+          ],
+          "overlap": 0.9297,
+          "walkable": true
+        },
+        {
+          "tile": [
+            25,
+            15
+          ],
+          "overlap": 0.8659,
+          "walkable": true
+        },
+        {
+          "tile": [
+            26,
+            15
+          ],
+          "overlap": 0.7891,
+          "walkable": true
+        },
+        {
+          "tile": [
+            25,
+            16
+          ],
+          "overlap": 0.6484,
+          "walkable": true
+        },
+        {
+          "tile": [
+            24,
+            14
+          ],
+          "overlap": 0.5234,
+          "walkable": true
+        },
+        {
+          "tile": [
+            27,
+            13
+          ],
+          "overlap": 0.5065,
+          "walkable": true
+        }
+      ],
+      "all_top5": [
+        {
+          "tile": [
+            26,
+            14
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            25,
+            13
+          ],
+          "overlap": 0.9948,
+          "walkable": true
+        },
+        {
+          "tile": [
+            24,
+            15
+          ],
+          "overlap": 0.9596,
+          "walkable": true
+        },
+        {
+          "tile": [
+            26,
+            13
+          ],
+          "overlap": 0.9557,
+          "walkable": true
+        },
+        {
+          "tile": [
+            25,
+            14
+          ],
+          "overlap": 0.9297,
+          "walkable": true
+        }
+      ],
+      "walkable_above_10pct": 16,
+      "walkable_max_overlap": 1.0
+    },
+    "tree_093": {
+      "walkable_top10": [
+        {
+          "tile": [
+            13,
+            4
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            13,
+            5
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            12,
+            5
+          ],
+          "overlap": 0.9674,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            6
+          ],
+          "overlap": 0.7839,
+          "walkable": true
+        },
+        {
+          "tile": [
+            13,
+            3
+          ],
+          "overlap": 0.625,
+          "walkable": true
+        },
+        {
+          "tile": [
+            13,
+            6
+          ],
+          "overlap": 0.4466,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            3
+          ],
+          "overlap": 0.4336,
+          "walkable": true
+        },
+        {
+          "tile": [
+            15,
+            5
+          ],
+          "overlap": 0.0885,
+          "walkable": true
+        },
+        {
+          "tile": [
+            15,
+            4
+          ],
+          "overlap": 0.0456,
+          "walkable": true
+        },
+        {
+          "tile": [
+            12,
+            3
+          ],
+          "overlap": 0.0378,
+          "walkable": true
+        }
+      ],
+      "all_top5": [
+        {
+          "tile": [
+            13,
+            4
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            13,
+            5
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            14,
+            5
+          ],
+          "overlap": 0.9753,
+          "walkable": false
+        },
+        {
+          "tile": [
+            12,
+            5
+          ],
+          "overlap": 0.9674,
+          "walkable": true
+        },
+        {
+          "tile": [
+            12,
+            4
+          ],
+          "overlap": 0.9167,
+          "walkable": false
+        }
+      ],
+      "walkable_above_10pct": 7,
+      "walkable_max_overlap": 1.0
+    },
+    "tree_010": {
+      "walkable_top10": [
+        {
+          "tile": [
+            26,
+            7
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            27,
+            6
+          ],
+          "overlap": 0.9935,
+          "walkable": true
+        },
+        {
+          "tile": [
+            27,
+            7
+          ],
+          "overlap": 0.9648,
+          "walkable": true
+        },
+        {
+          "tile": [
+            26,
+            8
+          ],
+          "overlap": 0.832,
+          "walkable": true
+        },
+        {
+          "tile": [
+            26,
+            6
+          ],
+          "overlap": 0.8307,
+          "walkable": true
+        },
+        {
+          "tile": [
+            27,
+            5
+          ],
+          "overlap": 0.7799,
+          "walkable": true
+        },
+        {
+          "tile": [
+            28,
+            5
+          ],
+          "overlap": 0.6315,
+          "walkable": true
+        },
+        {
+          "tile": [
+            28,
+            8
+          ],
+          "overlap": 0.5703,
+          "walkable": true
+        },
+        {
+          "tile": [
+            29,
+            7
+          ],
+          "overlap": 0.2292,
+          "walkable": true
+        },
+        {
+          "tile": [
+            29,
+            6
+          ],
+          "overlap": 0.2266,
+          "walkable": true
+        }
+      ],
+      "all_top5": [
+        {
+          "tile": [
+            28,
+            6
+          ],
+          "overlap": 1.0,
+          "walkable": false
+        },
+        {
+          "tile": [
+            26,
+            7
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            28,
+            7
+          ],
+          "overlap": 0.9987,
+          "walkable": false
+        },
+        {
+          "tile": [
+            27,
+            6
+          ],
+          "overlap": 0.9935,
+          "walkable": true
+        },
+        {
+          "tile": [
+            27,
+            7
+          ],
+          "overlap": 0.9648,
+          "walkable": true
+        }
+      ],
+      "walkable_above_10pct": 11,
+      "walkable_max_overlap": 1.0
+    },
+    "tree_020": {
+      "walkable_top10": [
+        {
+          "tile": [
+            36,
+            3
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            37,
+            3
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            36,
+            4
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            35,
+            4
+          ],
+          "overlap": 0.9557,
+          "walkable": true
+        },
+        {
+          "tile": [
+            36,
+            2
+          ],
+          "overlap": 0.9167,
+          "walkable": true
+        },
+        {
+          "tile": [
+            35,
+            3
+          ],
+          "overlap": 0.8607,
+          "walkable": true
+        },
+        {
+          "tile": [
+            36,
+            5
+          ],
+          "overlap": 0.8008,
+          "walkable": true
+        },
+        {
+          "tile": [
+            37,
+            5
+          ],
+          "overlap": 0.7227,
+          "walkable": true
+        },
+        {
+          "tile": [
+            35,
+            2
+          ],
+          "overlap": 0.5781,
+          "walkable": true
+        },
+        {
+          "tile": [
+            38,
+            4
+          ],
+          "overlap": 0.4948,
+          "walkable": true
+        }
+      ],
+      "all_top5": [
+        {
+          "tile": [
+            36,
+            3
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            37,
+            3
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            36,
+            4
+          ],
+          "overlap": 1.0,
+          "walkable": true
+        },
+        {
+          "tile": [
+            37,
+            4
+          ],
+          "overlap": 1.0,
+          "walkable": false
+        },
+        {
+          "tile": [
+            35,
+            5
+          ],
+          "overlap": 0.9779,
+          "walkable": false
+        }
+      ],
+      "walkable_above_10pct": 13,
+      "walkable_max_overlap": 1.0
+    }
+  },
+  "selected_count": 5,
+  "out_of_scope_R5_total_objects": 192,
+  "exclusions": [
+    "tree_003 original object visibility ~5.12%",
+    "tree_056 original object visibility ~1.92%"
+  ],
+  "runtime_mask_opaque_px": 57111,
+  "runtime_mask_fraction": 0.04808,
+  "runtime_rgb_equals_master": true,
+  "authoring_complete_par_preserved": true,
+  "source_sha_validated": true,
+  "source_visibility_pixel_gate": true,
+  "native_203_gate": "NOT RUN",
+  "A36G_R5_art_gate": "FAIL",
+  "C1_per_object_art_gate": "PENDING",
+  "formal_seal": "NO"
+}

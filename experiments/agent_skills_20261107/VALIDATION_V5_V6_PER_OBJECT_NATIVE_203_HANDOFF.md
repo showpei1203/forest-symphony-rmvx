@@ -66,3 +66,8 @@ A36G R6 C1/C2 因整片森林方格遮罩失敗，這次改為**單件來源遮�
 - A36G original style vs FS Ground3: **ART FAIL (R5 inherited)**
 - New game art generated: NO
 - Formal Seal: **NO**
+
+## R7 Critical Source Visibility Erratum (2026-11-07)
+前一版提到 `tree_003`「單件來源樹冠原生測試 PASS」，現有新的驗證必須區分：203 開關切換＋實機截圖這一段 **ENGINE PASS 不變**，但 `tree_003` 原始 PNG 在 R5 最終場景同位置的可見不透明 RGB 只有 **5.12%** 一致，該來源絕大部分實際被其他物件覆蓋，因此 **「true tree_003 source-owned semantic PAR」FAIL**。這種情況若只檢查 source SHA 與角色消失會產生假陽性；同理 tree_056 只有 1.92% 可見。
+
+R7 已新增 source ownership pixel gate，改採 `tree_093`、`tree_010`、`tree_020` 的真正可見來源，並重新用 A36G R5 本身的 native Map050 測試。R7 Native 6/6、動態 5/5；仍只有 5/192 物件，不是美術或全圖遮擋驗收。權威： [R7 Handoff](../agent_skills_20261107/VALIDATION_R7_REAL_MAP050_5SOURCE_HANDOFF.md) 與 [Drive R7 package](https://drive.google.com/drive/folders/1ZDnzVEtFh2SbcJ4vyZqOkFrGjPJ9AOBl)。保留 V6 原本證據和此更正，禁止改寫歷史紀錄。
