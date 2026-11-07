@@ -1,0 +1,52 @@
+{
+  "stage": "A36H_R3_C1_197_SOURCE_REAL_ART_ROOF_FOREST_COMPILE",
+  "source_count": 197,
+  "R2_source_recompile_original_exact": true,
+  "R2_ground_unchanged": true,
+  "R2_native_collision_unchanged": true,
+  "new_tree_source_count": 5,
+  "new_tree_native_existing_blocked_root": true,
+  "forest_groups_original_44_merged_as_7_full_edit_sources_then_resliced": true,
+  "forest_closure_void_pixels_filled": 9040,
+  "roof_fascia_pixels_changed_vs_R2": 1630,
+  "final_master_pixels_changed_vs_R2": 50590,
+  "runtime_partial_PAR_RGB_exact": true,
+  "runtime_partial_PAR_opaque_pixels": 102801,
+  "new_trees_visibility": [
+    {
+      "id": "a36h_r3_tree_northwest_edge",
+      "visible_fraction": 0.6806,
+      "visible_crown_px": 6546,
+      "total_source_alpha": 9618
+    },
+    {
+      "id": "a36h_r3_tree_northeast_edge",
+      "visible_fraction": 0.8667,
+      "visible_crown_px": 9960,
+      "total_source_alpha": 11495
+    },
+    {
+      "id": "a36h_r3_tree_east_edge",
+      "visible_fraction": 0.9894,
+      "visible_crown_px": 12313,
+      "total_source_alpha": 12558
+    },
+    {
+      "id": "a36h_r3_tree_southeast_edge",
+      "visible_fraction": 0.8587,
+      "visible_crown_px": 10783,
+      "total_source_alpha": 12558
+    },
+    {
+      "id": "a36h_r3_tree_southwest_edge",
+      "visible_fraction": 0.6149,
+      "visible_crown_px": 5980,
+      "total_source_alpha": 9725
+    }
+  ],
+  "V3_original_roof_floating_strip": "FAIL, REJECTED",
+  "V3_alpha_trim_holes": "FAIL, REJECTED",
+  "engine_VX": "NOT_YET_RUN",
+  "art_signoff": "PENDING; visible enough? compare 1x",
+  "formal_seal": "NO"
+}
