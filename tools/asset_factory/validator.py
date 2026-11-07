@@ -113,10 +113,10 @@ def _validate_sprite(data: dict, root: Path, issues: list[dict[str, str]]) -> No
             if alpha.getbbox() is None:
                 _problem(issues, "S_EMPTY", f"{key}[{index}] has no visible pixels")
             if data.get("require_binary_alpha") is True:
-                if any(0 < a < 255 for count, a in enumerate(alpha.getdata()) if 0 < a < 255):
+                if any(0 < a < 255 for a in alpha.tobytes()):
                     _problem(issues, "S_ALPHA", f"{key}[{index}] non-binary alpha")
             if require_distinct and previous is not None and previous.size == image.size:
-                if ImageChops.difference(previous, image).getbbox() is None:
+                if previous.tobytes() == image.tobytes():
                     _problem(issues, "S_DUP_FRAME", f"{key}[{index}] identical to prior frame")
             previous = image
 
@@ -165,7 +165,7 @@ def _validate_map(data: dict, root: Path, issues: list[dict[str, str]]) -> None:
             candidate = images[layer]
             mismatches = sum(
                 1
-                for src, over in zip(master.getdata(), candidate.getdata())
+                for src, over in zip(master.get_flattened_data(), candidate.get_flattened_data())
                 if over[3] and src[:3] != over[:3]
             )
             if mismatches:
