@@ -1,0 +1,360 @@
+{
+  "stage": "FS_MASTER_FIRST_V3_TRUE_NATIVE_RGSS2",
+  "authoritative_master_sha": "091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530",
+  "authoritative_par_sha": "e2486f7a780d260ccfceadac024b94ee37108371c91c7a73f2cf254463c76edb",
+  "original_test_engine_file_shas_unchanged": {
+    "Data/Scripts.rvdata": true,
+    "Data/Map050.rvdata": true,
+    "Overlays/ground50.png": true,
+    "Overlays/Par50.png": true
+  },
+  "isolated_clone": "E:\\FS_AGENT_SKILLS_PILOT_20261106\\FS_MASTER_FIRST_V3_NATIVE_R1_20261107\\VX_NATIVE_MASTER_FIRST_V3",
+  "native_map050_rebuilt_from_v3_collision": true,
+  "native_map50_real_tile_id_map": {
+    "blocked": 768,
+    "free": 769
+  },
+  "native_grid_checked_tiles": 1160,
+  "native_grid_checked_edges": 4502,
+  "native_grid_mismatches": [],
+  "native_grid_error_count": 0,
+  "native_grid_GATE": "PASS",
+  "completed_all_cases": true,
+  "modal_errors": [],
+  "cases": {
+    "LEFT_TREE_EXIT": {
+      "kind": "WALKABLE_POSITIVE",
+      "tile": [
+        10,
+        16
+      ],
+      "end_tile": [
+        10,
+        17
+      ],
+      "overlap_before_after": null,
+      "native_move": {
+        "before": [
+          10,
+          16
+        ],
+        "after": [
+          10,
+          17
+        ],
+        "passable": true
+      },
+      "native_movement_valid": true,
+      "start_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "actor_local_bbox": true
+      },
+      "end_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 161,
+        "bbox": [
+          261,
+          188,
+          283,
+          199
+        ],
+        "actor_local_bbox": true
+      },
+      "gate": "PASS"
+    },
+    "LOWER_RIGHT_TREE_EXIT": {
+      "kind": "WALKABLE_POSITIVE",
+      "tile": [
+        33,
+        24
+      ],
+      "end_tile": [
+        32,
+        24
+      ],
+      "overlap_before_after": null,
+      "native_move": {
+        "before": [
+          33,
+          24
+        ],
+        "after": [
+          32,
+          24
+        ],
+        "passable": true
+      },
+      "native_movement_valid": true,
+      "start_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 627,
+        "bbox": [
+          325,
+          252,
+          350,
+          284
+        ],
+        "actor_local_bbox": true
+      },
+      "end_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 8,
+        "bbox": [
+          308,
+          266,
+          312,
+          273
+        ],
+        "actor_local_bbox": true
+      },
+      "gate": "PASS"
+    },
+    "CLEAR_NEGATIVE": {
+      "kind": "WALKABLE_NEGATIVE",
+      "tile": [
+        20,
+        15
+      ],
+      "end_tile": [
+        20,
+        16
+      ],
+      "overlap_before_after": null,
+      "native_move": {
+        "before": [
+          20,
+          15
+        ],
+        "after": [
+          20,
+          16
+        ],
+        "passable": true
+      },
+      "native_movement_valid": true,
+      "start_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 0,
+        "bbox": null,
+        "actor_local_bbox": true
+      },
+      "end_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 0,
+        "bbox": null,
+        "actor_local_bbox": true
+      },
+      "gate": "PASS"
+    },
+    "LEFT_HOUSE_ROOF_GEOMETRY_ONLY": {
+      "kind": "BLOCKED_ENGINE_ONLY",
+      "tile": [
+        6,
+        5
+      ],
+      "end_tile": [
+        6,
+        5
+      ],
+      "overlap_before_after": null,
+      "native_move": null,
+      "native_movement_valid": true,
+      "start_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 627,
+        "bbox": [
+          197,
+          156,
+          222,
+          188
+        ],
+        "actor_local_bbox": true
+      },
+      "end_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 627,
+        "bbox": [
+          197,
+          156,
+          222,
+          188
+        ],
+        "actor_local_bbox": true
+      },
+      "gate": "ENGINE_ONLY"
+    },
+    "RIGHT_HOUSE_ROOF_GEOMETRY_ONLY": {
+      "kind": "BLOCKED_ENGINE_ONLY",
+      "tile": [
+        27,
+        5
+      ],
+      "end_tile": [
+        27,
+        5
+      ],
+      "overlap_before_after": null,
+      "native_move": null,
+      "native_movement_valid": true,
+      "start_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          156,
+          286,
+          188
+        ],
+        "actor_local_bbox": true
+      },
+      "end_off_on": {
+        "screens_ok": true,
+        "camera_fixed": true,
+        "actual_actor_same": true,
+        "switch_real": true,
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          156,
+          286,
+          188
+        ],
+        "actor_local_bbox": true
+      },
+      "gate": "ENGINE_ONLY"
+    }
+  },
+  "native_canopy_dynamic_GATE": "PASS",
+  "roof_collision_semantics": "BLOCKED; roof 203 is engine-only, no walking pass",
+  "full_collision_art_semantics": "UNVERIFIED",
+  "individual_pixel_silhouette": "UNVERIFIED",
+  "full_scene_completePAR": "NOT COMPLETE",
+  "formal_seal": "NO",
+  "events": [
+    "M3_BEGIN_GRID map=50 width=40 height=29",
+    "M3_GRID_TILE row=0 value=1111111111111111111111111111111111111111",
+    "M3_GRID_EDGE row=0 value=1X1X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X011X011X011X01XX",
+    "M3_GRID_TILE row=1 value=1111111111111111111111111111111111110000",
+    "M3_GRID_EDGE row=1 value=1X111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110111010100000000000000X0",
+    "M3_GRID_TILE row=2 value=1111111111111111111111111111111111000000",
+    "M3_GRID_EDGE row=2 value=1X111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111010000000000000000000000X0",
+    "M3_GRID_TILE row=3 value=1111111111111111111111111111111111000000",
+    "M3_GRID_EDGE row=3 value=1X111111111111111111111101110111011101110111111111111111111111111111111111111111111111111111111111111111111101110111111111110111011111010000000000000000000000X0",
+    "M3_GRID_TILE row=4 value=1111110000011111111111111110011001100000",
+    "M3_GRID_EDGE row=4 value=1X111111111111111111010100000000000000000000001101111111111111111111111111111111111111111111111111111111010100000000001111010000000000111100000000000000000000X0",
+    "M3_GRID_TILE row=5 value=1111100000000111111111111100001000100000",
+    "M3_GRID_EDGE row=5 value=1X111111111111111101000000000000000000000000000000001011111111111111111111111111111111111111111111111101000000000000000010010000000000000001000000000000000000X0",
+    "M3_GRID_TILE row=6 value=1111100111000111111111111100001000000000",
+    "M3_GRID_EDGE row=6 value=1X111111111111111101000000000010011001000000000000000011111111111111111111111111111111111111111111111101000000000000000000010000000000000000000000000000000000X0",
+    "M3_GRID_TILE row=7 value=1111110000000011111111111100000000000000",
+    "M3_GRID_EDGE row=7 value=1X111111111111111111010000000000000000000000000000000000101111111111111111111111111111111111111111111101000000000000000000000000000000000000000000000000000000X0",
+    "M3_GRID_TILE row=8 value=1111100000000011111111111100000000010000",
+    "M3_GRID_EDGE row=8 value=1X111111111111111101000000000000000000000000000000000000101111111111111111111111111111111111111111111101000000000000000000000000000000000000100000000000000000X0",
+    "M3_GRID_TILE row=9 value=1111100000000011111111111100000000010000",
+    "M3_GRID_EDGE row=9 value=1X111111111111111101000000000000000000000000000000000000101111110111011101110111011111111111111111111101000000000000000000000000000000000000100100000000000000X0",
+    "M3_GRID_TILE row=10 value=1111110000000111000001111100000000010000",
+    "M3_GRID_EDGE row=10 value=1X111111111111111111110000000000000000000000000000001010111111010000000000000000000000111111111111111101000000000000000000000000000000000000100100000000000000X0",
+    "M3_GRID_TILE row=11 value=1111111111111111000000111111110000110000",
+    "M3_GRID_EDGE row=11 value=1X111111111111111111111111101110111011101110111011101111111111010000000000000000000000001011111111111111111011101110110000000000000000001010010100000000000000X0",
+    "M3_GRID_TILE row=12 value=1111111111111111000000111111111111100000",
+    "M3_GRID_EDGE row=12 value=1X111111111111111111111111111111111111111111111111111111111111010000000000000000000000001011111111111111111111111111111111101110111011101101000000000000000000X0",
+    "M3_GRID_TILE row=13 value=1111111111111111110001111111111111100000",
+    "M3_GRID_EDGE row=13 value=1X111111111111111111111111111111111111111111111111111111111111111110110000000000000010101111111111111111111111111111111111111111111111111101000000000000000000X0",
+    "M3_GRID_TILE row=14 value=1111111111111111111111111111111111100000",
+    "M3_GRID_EDGE row=14 value=1X111111111111111111111111111111111111111111111111111111111111111111111111101110111011111111111111111111111111111111111111111111111111111101000000000000000000X0",
+    "M3_GRID_TILE row=15 value=1111111111111111111111111111111111100000",
+    "M3_GRID_EDGE row=15 value=1X111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111101000000000000000000X0",
+    "M3_GRID_TILE row=16 value=1111111111111111111111111111111111111000",
+    "M3_GRID_EDGE row=16 value=1X111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111001000000000000X0",
+    "M3_GRID_TILE row=17 value=1111111111111111111111111111111111110000",
+    "M3_GRID_EDGE row=17 value=1X111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110111010100000000000000X0",
+    "M3_GRID_TILE row=18 value=1111111111111111111111111111111111000000",
+    "M3_GRID_EDGE row=18 value=1X111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111110111011101110111011101110111011101010000000000000000000000X0",
+    "M3_GRID_TILE row=19 value=1111111111111111111111111000000000000000",
+    "M3_GRID_EDGE row=19 value=0X110111011101110111111111111111011101110111011111111111111111111111011101110111011111111111111111010000000000000000000000000000000000000000000000000000000000X0",
+    "M3_GRID_TILE row=20 value=0000011100001111100001111100000000000000",
+    "M3_GRID_EDGE row=20 value=0X000000000000000000001101110101000000000000000000110111011101110101000000000000000010111111111111111100000000000000000000000000000000000000000000000000000000X0",
+    "M3_GRID_TILE row=21 value=0000000000000000000001111111110000001111",
+    "M3_GRID_EDGE row=21 value=0X000000000000000000000000000000000000000000000000000000000000000000000000000000000010111111111111111111111011101110110000000000000000000000000010101110111011X0",
+    "M3_GRID_TILE row=22 value=0000000000000000000111111111111111111111",
+    "M3_GRID_EDGE row=22 value=0X000000000000000000000000000000000000000000000000000000000000000000000000001010111011111111111111111111111111111111111111101110111011101110111011111111111111X1",
+    "M3_GRID_TILE row=23 value=0000000000000000011111111111111111111111",
+    "M3_GRID_EDGE row=23 value=0X000000000000000000000000000000000000000000000000000000000000000000101011101111111111111111111111111111111111111111111111111111111111111111111111111111111111X1",
+    "M3_GRID_TILE row=24 value=0000000000000011111111111111111111111111",
+    "M3_GRID_EDGE row=24 value=0X000000000000000000000000000000000000000000000000000000101011100110011101110111011111111111111111111111111111111111111111111111111111111111111111111111111111X1",
+    "M3_GRID_TILE row=25 value=0000000000011111000001111111111111111111",
+    "M3_GRID_EDGE row=25 value=0X000000000000000000000000000000000000000000101011101110111111010000000000000000000000111111111111111111111111111111111111111111111111111111111111111111111111X1",
+    "M3_GRID_TILE row=26 value=1111111111111111000000111111111111111111",
+    "M3_GRID_EDGE row=26 value=1X101110111011101110111011101110111011101110111111111111111101010000000000000000000000001011111111111111111111111111111111111111111111111111111111111111111111X1",
+    "M3_GRID_TILE row=27 value=1111111111111110000000111111111111111111",
+    "M3_GRID_EDGE row=27 value=1X111111111111111111111111111111111111111111111111111111110100000000000000000000000000001011111111111111111111111111111111111111111111111111111111111111111111X1",
+    "M3_GRID_TILE row=28 value=1111111111111110000000111111111111111111",
+    "M3_GRID_EDGE row=28 value=XX11X111X111X111X111X111X111X111X111X111X111X111X111X111X101X000X000X000X000X000X000X000X011X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X111X1X1",
+    "M3_END_GRID",
+    "M3_BEGIN case=LEFT_TREE_EXIT tile=10,16",
+    "M3_SHOT case=LEFT_TREE_EXIT state=OFF pos=10,16 display=512,2560 sprite=true par_visible=false",
+    "M3_SHOT case=LEFT_TREE_EXIT state=ON pos=10,16 display=512,2560 sprite=true par_visible=true",
+    "M3_MOVE case=LEFT_TREE_EXIT before=10,16 after=10,17 passable=true",
+    "M3_SHOT case=LEFT_TREE_EXIT state=END_OFF pos=10,17 display=512,2816 sprite=true par_visible=false",
+    "M3_SHOT case=LEFT_TREE_EXIT state=END_ON pos=10,17 display=512,2816 sprite=true par_visible=true",
+    "M3_BEGIN case=LOWER_RIGHT_TREE_EXIT tile=33,24",
+    "M3_SHOT case=LOWER_RIGHT_TREE_EXIT state=OFF pos=33,24 display=5888,4096 sprite=true par_visible=false",
+    "M3_SHOT case=LOWER_RIGHT_TREE_EXIT state=ON pos=33,24 display=5888,4096 sprite=true par_visible=true",
+    "M3_MOVE case=LOWER_RIGHT_TREE_EXIT before=33,24 after=32,24 passable=true",
+    "M3_SHOT case=LOWER_RIGHT_TREE_EXIT state=END_OFF pos=32,24 display=5888,4096 sprite=true par_visible=false",
+    "M3_SHOT case=LOWER_RIGHT_TREE_EXIT state=END_ON pos=32,24 display=5888,4096 sprite=true par_visible=true",
+    "M3_BEGIN case=CLEAR_NEGATIVE tile=20,15",
+    "M3_SHOT case=CLEAR_NEGATIVE state=OFF pos=20,15 display=3072,2304 sprite=true par_visible=false",
+    "M3_SHOT case=CLEAR_NEGATIVE state=ON pos=20,15 display=3072,2304 sprite=true par_visible=true",
+    "M3_MOVE case=CLEAR_NEGATIVE before=20,15 after=20,16 passable=true",
+    "M3_SHOT case=CLEAR_NEGATIVE state=END_OFF pos=20,16 display=3072,2560 sprite=true par_visible=false",
+    "M3_SHOT case=CLEAR_NEGATIVE state=END_ON pos=20,16 display=3072,2560 sprite=true par_visible=true",
+    "M3_BEGIN case=LEFT_HOUSE_ROOF_GEOMETRY_ONLY tile=6,5",
+    "M3_SHOT case=LEFT_HOUSE_ROOF_GEOMETRY_ONLY state=OFF pos=6,5 display=0,0 sprite=true par_visible=false",
+    "M3_SHOT case=LEFT_HOUSE_ROOF_GEOMETRY_ONLY state=ON pos=6,5 display=0,0 sprite=true par_visible=true",
+    "M3_NO_MOVE case=LEFT_HOUSE_ROOF_GEOMETRY_ONLY roof_tile_blocked_engine_only",
+    "M3_SHOT case=LEFT_HOUSE_ROOF_GEOMETRY_ONLY state=END_OFF pos=6,5 display=0,0 sprite=true par_visible=false",
+    "M3_SHOT case=LEFT_HOUSE_ROOF_GEOMETRY_ONLY state=END_ON pos=6,5 display=0,0 sprite=true par_visible=true",
+    "M3_BEGIN case=RIGHT_HOUSE_ROOF_GEOMETRY_ONLY tile=27,5",
+    "M3_SHOT case=RIGHT_HOUSE_ROOF_GEOMETRY_ONLY state=OFF pos=27,5 display=4864,0 sprite=true par_visible=false",
+    "M3_SHOT case=RIGHT_HOUSE_ROOF_GEOMETRY_ONLY state=ON pos=27,5 display=4864,0 sprite=true par_visible=true",
+    "M3_NO_MOVE case=RIGHT_HOUSE_ROOF_GEOMETRY_ONLY roof_tile_blocked_engine_only",
+    "M3_SHOT case=RIGHT_HOUSE_ROOF_GEOMETRY_ONLY state=END_OFF pos=27,5 display=4864,0 sprite=true par_visible=false",
+    "M3_SHOT case=RIGHT_HOUSE_ROOF_GEOMETRY_ONLY state=END_ON pos=27,5 display=4864,0 sprite=true par_visible=true",
+    "M3_ALL_DONE"
+  ]
+}
