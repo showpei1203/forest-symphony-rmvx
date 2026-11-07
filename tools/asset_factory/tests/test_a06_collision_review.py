@@ -37,7 +37,7 @@ class A06ReviewTests(unittest.TestCase):
             connected_walkable([[1,1],[0,0]],(0,0))
 
     def test_disconnected_then_explicit_block(self):
-        grid=[[0,1,0],[0,1,1],[0,1,0]]
+        grid=[[0,1,0],[0,1,1],[0,1,1]]
         before=connected_walkable(grid,(0,0))
         self.assertEqual(before["total_walkable"],4)
         self.assertEqual(before["reachable_walkable"],3)
