@@ -54,3 +54,11 @@ Rollback candidate branch only. No sealed source overwritten.
 
 ## Private-art security rule (A06 correction)
 Public source documents must NEVER contain direct download URLs for protected PNG/ZIP or private Drive documents that expose those links. The private Drive artifacts and named source archives are located through the owner's private FS authority index. During A06 Drive metadata verification both ZIPs initially inherited anyone-with-link reader permissions from the shared Forest Symphony folder. This was remediated: both ZIPs were MOVED to a new My Drive root restricted folder FS_AI_ASSET_FACTORY_Restricted_Binaries (owner only). Direct post-move Google Drive metadata confirms shared=false, no anyone reader, owner-only permissions. File IDs and SHA256 remain unchanged. Public GitHub contains no protected imagery and no direct private ZIP URLs.
+
+
+## A07 USER-ORDERED METHOD RESET (supersedes A06 railing next steps)
+First read [A07 MANDATORY PRODUCTION METHOD CORRECTION](A07_MANDATORY_PRODUCTION_METHOD_CORRECTION_20261108.md) based on user's 22-page PixelLab-led production report. Do NOT resume V2 railing manual alpha tweaks, per-pixel GrabCut revisions, or inflate test counts as production output. A06 V4 is diagnostic, not an art solution.
+Execute style bible -> canonical templates / semantic layout -> reusable object-family art+instance masks -> 2-scene batch generation -> automatic QA -> exceptions only -> native FS Ground/PAR exporter.
+Master-first stays authoritative for FS: full-scene Master supplies visible ground; only **source-identified true foreground object pixels** enter runtime PAR. A front bridge railing must NOT include the similarly colored bridge deck or grass; a color-based segmentation that does so is a pipeline failure.
+Two independent acceptance axes: artistic 1x full-map coherence plus semantic role/occlusion; separate geometry/pixel/collision and native VX. No claim of finished scalable production until two representative scenes pass with same recipe.
+GitHub production rule was changed in the feature branch; user did NOT authorize PixelLab paid jobs, unsafe Orca agents, Game.exe user-PC temp workspace, nor merging main.
