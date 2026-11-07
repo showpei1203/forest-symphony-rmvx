@@ -1,5 +1,10 @@
 # CURRENT_HANDOFF.md
 
+## CURRENT OVERRIDE 2026-11-07：本檔其他部分是 2026-08 的 Runtime Phase49J/K5 歷史快照
+**GitHub 已可正常存取和更新**，舊「GitHub 遠端發布被封鎖／PENDING」是過期情況，不得再當作操作依據。實際驗證：FS 主 repo `showpei1203/forest-symphony-rmvx`、PR #12 已合併，現行 P0 雲端儲存規則在 [GitHub](FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md) 與 Drive Forest Symphony 中。使用者 PC 不再作成果庫，僅必要安裝及最短實機執行／雲端驗 SHA 後清除。
+**新精靈村地圖當前工作**是 Master-first V3 同源 RGB 局部 PAR + 兩個樹冠 VX 動態實測；碰撞草案對引擎載入 1160/1160、4502/4502 PASS，但屋頂可走遮擋與全圖語意仍待驗證，Formal Seal NO。[最新 Gate](../experiments/agent_skills_20261107/MASTER_FIRST_V3_NATIVE_203_COLLISION_HANDOFF.md)。舊 Phase49J SEALED 與 K5 TEST 的 SHA/狀態均不可因此改寫。
+**每次啟動請先看** [P0＋權威索引](../authority/FS_CURRENT_RULES_INDEX_20261107.md) 和 `.agents/skills/fs-rmvx-router/SKILL.md`，而非只看本 2026-08 舊 Handoff。
+
 ## Purpose
 This is the current conversation-independent handoff for Forest Symphony. New development sessions should first read:
 1. `00_Project_Authority/MASTER_PROJECT_STATE.md`
