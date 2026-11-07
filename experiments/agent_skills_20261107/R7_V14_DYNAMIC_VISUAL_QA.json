@@ -1,0 +1,154 @@
+{
+  "stage": "A36G_R7_V14_REAL_NATIVE_DYNAMIC_SOURCE_OWNED_203",
+  "test_count": 5,
+  "cases": [
+    {
+      "name": "RIGHT_ROOF_EXIT",
+      "start_mask": 0.9596,
+      "end_mask": 0.0,
+      "start_native": {
+        "changed": 626,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "actor_local": true
+      },
+      "end_native": {
+        "changed": 0,
+        "bbox": null,
+        "actor_local": true
+      },
+      "ratio_end_to_start": 0.0,
+      "same_camera_per_state": true,
+      "test_actor_positions_valid": true,
+      "R5_move_permitted_and_occurred": true,
+      "switch203_true_toggle": true,
+      "gate": "PASS"
+    },
+    {
+      "name": "TREE_093_EXIT",
+      "start_mask": 0.9674,
+      "end_mask": 0.0247,
+      "start_native": {
+        "changed": 495,
+        "bbox": [
+          260,
+          156,
+          284,
+          188
+        ],
+        "actor_local": true
+      },
+      "end_native": {
+        "changed": 0,
+        "bbox": null,
+        "actor_local": true
+      },
+      "ratio_end_to_start": 0.0,
+      "same_camera_per_state": true,
+      "test_actor_positions_valid": true,
+      "R5_move_permitted_and_occurred": true,
+      "switch203_true_toggle": true,
+      "gate": "PASS"
+    },
+    {
+      "name": "TREE_010_EXIT",
+      "start_mask": 0.832,
+      "end_mask": 0.0117,
+      "start_native": {
+        "changed": 478,
+        "bbox": [
+          260,
+          188,
+          284,
+          220
+        ],
+        "actor_local": true
+      },
+      "end_native": {
+        "changed": 46,
+        "bbox": [
+          266,
+          188,
+          283,
+          193
+        ],
+        "actor_local": true
+      },
+      "ratio_end_to_start": 0.0962,
+      "same_camera_per_state": true,
+      "test_actor_positions_valid": true,
+      "R5_move_permitted_and_occurred": true,
+      "switch203_true_toggle": true,
+      "gate": "PASS"
+    },
+    {
+      "name": "TREE_020_EXIT",
+      "start_mask": 0.9557,
+      "end_mask": 0.0964,
+      "start_native": {
+        "changed": 616,
+        "bbox": [
+          389,
+          124,
+          414,
+          156
+        ],
+        "actor_local": true
+      },
+      "end_native": {
+        "changed": 56,
+        "bbox": [
+          370,
+          125,
+          379,
+          139
+        ],
+        "actor_local": true
+      },
+      "ratio_end_to_start": 0.0909,
+      "same_camera_per_state": true,
+      "test_actor_positions_valid": true,
+      "R5_move_permitted_and_occurred": true,
+      "switch203_true_toggle": true,
+      "gate": "PASS"
+    },
+    {
+      "name": "LEFT_ROOF_EXIT",
+      "start_mask": 0.9518,
+      "end_mask": 0.0,
+      "start_native": {
+        "changed": 473,
+        "bbox": [
+          262,
+          188,
+          284,
+          220
+        ],
+        "actor_local": true
+      },
+      "end_native": {
+        "changed": 0,
+        "bbox": null,
+        "actor_local": true
+      },
+      "ratio_end_to_start": 0.0,
+      "same_camera_per_state": true,
+      "test_actor_positions_valid": true,
+      "R5_move_permitted_and_occurred": true,
+      "switch203_true_toggle": true,
+      "gate": "PASS"
+    }
+  ],
+  "game_exe_test": true,
+  "R5_MAP050_native_collision_used": true,
+  "original_source_SHA_unchanged": true,
+  "five_case_engine_gate": "PASS",
+  "C1_semantic_mask_user_approved": false,
+  "R5_art_approved": false,
+  "all_192_objects_covered": false,
+  "formal_seal": "NO"
+}
