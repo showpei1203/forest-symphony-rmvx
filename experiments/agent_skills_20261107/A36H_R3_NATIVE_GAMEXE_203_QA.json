@@ -1,0 +1,337 @@
+{
+  "stage": "FS_A36H_R2_ACTUAL_RESTYLED_GROUND_PAR_ON_A36G_R5_NATIVE_COLLISION",
+  "native_engine": "RPG Maker VX RGSS2, HK UOM par switch203",
+  "R5_map050_real_native_map_id_data_SHA256": "4e594794b933eb0efbf2381048c3c093fd7f01e33cd7c8d20fe9c5ca66ceb9a2",
+  "R5_native_map050_tile_ids_verified": true,
+  "R5_collision_grid_919free_241blocked": true,
+  "original_source_SHA_unchanged": true,
+  "runtime_completed": true,
+  "cases": {
+    "A36G_ELF_HOUSE_AND_WORKSHOP": {
+      "source_owned": true,
+      "tile": [
+        15,
+        8
+      ],
+      "walkable": true,
+      "source_alpha_actor_overlap": 1.0,
+      "off": {
+        "actor_tile": [
+          15,
+          8
+        ],
+        "camera": [
+          1792,
+          512
+        ],
+        "sprite_exists": true,
+        "par_visible": false,
+        "screenshot": true,
+        "file": "H3_A36G_ELF_HOUSE_AND_WORKSHOP_OFF.png",
+        "sha256": "a592760ed126c814e86030c0571a32cacd2c17bb5228e86a191a4f0d85ed1491"
+      },
+      "on": {
+        "actor_tile": [
+          15,
+          8
+        ],
+        "camera": [
+          1792,
+          512
+        ],
+        "sprite_exists": true,
+        "par_visible": true,
+        "screenshot": true,
+        "file": "H3_A36G_ELF_HOUSE_AND_WORKSHOP_ON.png",
+        "sha256": "6d038647f0f1b494593845d5c5b885300e5e1f7cbf25d57344f592f4a94315ae"
+      },
+      "diff": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "actor_local": true
+      },
+      "gate": "PASS"
+    },
+    "A36G_R5_COTTAGE_B_SINGLE_ROOF": {
+      "source_owned": true,
+      "tile": [
+        26,
+        14
+      ],
+      "walkable": true,
+      "source_alpha_actor_overlap": 1.0,
+      "off": {
+        "actor_tile": [
+          26,
+          14
+        ],
+        "camera": [
+          4608,
+          2048
+        ],
+        "sprite_exists": true,
+        "par_visible": false,
+        "screenshot": true,
+        "file": "H3_A36G_R5_COTTAGE_B_SINGLE_ROOF_OFF.png",
+        "sha256": "b563989da1360f261858118e3c15499f3fdc3b24e13d1fb492bb6672a2d7e17d"
+      },
+      "on": {
+        "actor_tile": [
+          26,
+          14
+        ],
+        "camera": [
+          4608,
+          2048
+        ],
+        "sprite_exists": true,
+        "par_visible": true,
+        "screenshot": true,
+        "file": "H3_A36G_R5_COTTAGE_B_SINGLE_ROOF_ON.png",
+        "sha256": "305e1922e23af008544cd9797d768fc8df6bf85a9701bd8c0224b7518841b806"
+      },
+      "diff": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "actor_local": true
+      },
+      "gate": "PASS"
+    },
+    "tree_093": {
+      "source_owned": true,
+      "tile": [
+        13,
+        4
+      ],
+      "walkable": true,
+      "source_alpha_actor_overlap": 1.0,
+      "off": {
+        "actor_tile": [
+          13,
+          4
+        ],
+        "camera": [
+          1280,
+          0
+        ],
+        "sprite_exists": true,
+        "par_visible": false,
+        "screenshot": true,
+        "file": "H3_tree_093_OFF.png",
+        "sha256": "0e07b1218c204bb41153a19be51e347fabd63195ca9a4a970b5234936963a460"
+      },
+      "on": {
+        "actor_tile": [
+          13,
+          4
+        ],
+        "camera": [
+          1280,
+          0
+        ],
+        "sprite_exists": true,
+        "par_visible": true,
+        "screenshot": true,
+        "file": "H3_tree_093_ON.png",
+        "sha256": "81953fa642ecf0e569395f70c07d4687ccbe0c4e1243fbcfd7e8320803b535dc"
+      },
+      "diff": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          124,
+          286,
+          156
+        ],
+        "actor_local": true
+      },
+      "gate": "PASS"
+    },
+    "tree_010": {
+      "source_owned": true,
+      "tile": [
+        26,
+        7
+      ],
+      "walkable": true,
+      "source_alpha_actor_overlap": 1.0,
+      "off": {
+        "actor_tile": [
+          26,
+          7
+        ],
+        "camera": [
+          4608,
+          256
+        ],
+        "sprite_exists": true,
+        "par_visible": false,
+        "screenshot": true,
+        "file": "H3_tree_010_OFF.png",
+        "sha256": "ad59329c200359f5e710712158a03eda35d56fbf79c581d92e83069c76d71991"
+      },
+      "on": {
+        "actor_tile": [
+          26,
+          7
+        ],
+        "camera": [
+          4608,
+          256
+        ],
+        "sprite_exists": true,
+        "par_visible": true,
+        "screenshot": true,
+        "file": "H3_tree_010_ON.png",
+        "sha256": "0e8dbb01efa575db4209962562ceb478926d365f9f3f081b1d3821b64e35c741"
+      },
+      "diff": {
+        "changed_pixels": 627,
+        "bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "actor_local": true
+      },
+      "gate": "PASS"
+    },
+    "tree_020": {
+      "source_owned": true,
+      "tile": [
+        36,
+        3
+      ],
+      "walkable": true,
+      "source_alpha_actor_overlap": 1.0,
+      "off": {
+        "actor_tile": [
+          36,
+          3
+        ],
+        "camera": [
+          5888,
+          0
+        ],
+        "sprite_exists": true,
+        "par_visible": false,
+        "screenshot": true,
+        "file": "H3_tree_020_OFF.png",
+        "sha256": "8d9cc725d7cd1ff1c51e18f2962cf3da68c23e05b847794953380aed72a54cea"
+      },
+      "on": {
+        "actor_tile": [
+          36,
+          3
+        ],
+        "camera": [
+          5888,
+          0
+        ],
+        "sprite_exists": true,
+        "par_visible": true,
+        "screenshot": true,
+        "file": "H3_tree_020_ON.png",
+        "sha256": "1bd0d7f53182f79adea61c5d268a846fb00e9d2245737a3636e1c8c6134beb29"
+      },
+      "diff": {
+        "changed_pixels": 627,
+        "bbox": [
+          421,
+          92,
+          446,
+          124
+        ],
+        "actor_local": true
+      },
+      "gate": "PASS"
+    },
+    "CLEAR_NEGATIVE": {
+      "source_owned": false,
+      "tile": [
+        20,
+        14
+      ],
+      "walkable": true,
+      "source_alpha_actor_overlap": 0,
+      "off": {
+        "actor_tile": [
+          20,
+          14
+        ],
+        "camera": [
+          3072,
+          2048
+        ],
+        "sprite_exists": true,
+        "par_visible": false,
+        "screenshot": true,
+        "file": "H3_CLEAR_NEGATIVE_OFF.png",
+        "sha256": "ff505289de8cf3a6b11420670bc95e812d369f3695364a362a2a428c31489d93"
+      },
+      "on": {
+        "actor_tile": [
+          20,
+          14
+        ],
+        "camera": [
+          3072,
+          2048
+        ],
+        "sprite_exists": true,
+        "par_visible": true,
+        "screenshot": true,
+        "file": "H3_CLEAR_NEGATIVE_ON.png",
+        "sha256": "ff505289de8cf3a6b11420670bc95e812d369f3695364a362a2a428c31489d93"
+      },
+      "diff": {
+        "changed_pixels": 0,
+        "bbox": null,
+        "actor_local": false
+      },
+      "gate": "PASS"
+    }
+  },
+  "runtime_events": [
+    "H3_INIT case=A36G_ELF_HOUSE_AND_WORKSHOP tile=15,8",
+    "H3_SHOT case=A36G_ELF_HOUSE_AND_WORKSHOP state=OFF pos=15,8 display=1792,512 sprite=true visible=false",
+    "H3_SHOT case=A36G_ELF_HOUSE_AND_WORKSHOP state=ON pos=15,8 display=1792,512 sprite=true visible=true",
+    "H3_INIT case=A36G_R5_COTTAGE_B_SINGLE_ROOF tile=26,14",
+    "H3_SHOT case=A36G_R5_COTTAGE_B_SINGLE_ROOF state=OFF pos=26,14 display=4608,2048 sprite=true visible=false",
+    "H3_SHOT case=A36G_R5_COTTAGE_B_SINGLE_ROOF state=ON pos=26,14 display=4608,2048 sprite=true visible=true",
+    "H3_INIT case=tree_093 tile=13,4",
+    "H3_SHOT case=tree_093 state=OFF pos=13,4 display=1280,0 sprite=true visible=false",
+    "H3_SHOT case=tree_093 state=ON pos=13,4 display=1280,0 sprite=true visible=true",
+    "H3_INIT case=tree_010 tile=26,7",
+    "H3_SHOT case=tree_010 state=OFF pos=26,7 display=4608,256 sprite=true visible=false",
+    "H3_SHOT case=tree_010 state=ON pos=26,7 display=4608,256 sprite=true visible=true",
+    "H3_INIT case=tree_020 tile=36,3",
+    "H3_SHOT case=tree_020 state=OFF pos=36,3 display=5888,0 sprite=true visible=false",
+    "H3_SHOT case=tree_020 state=ON pos=36,3 display=5888,0 sprite=true visible=true",
+    "H3_INIT case=CLEAR_NEGATIVE tile=20,14",
+    "H3_SHOT case=CLEAR_NEGATIVE state=OFF pos=20,14 display=3072,2048 sprite=true visible=false",
+    "H3_SHOT case=CLEAR_NEGATIVE state=ON pos=20,14 display=3072,2048 sprite=true visible=true",
+    "H3_ALL_CASES_DONE"
+  ],
+  "errors": [],
+  "sample_gate": "PASS",
+  "limitations": [
+    "Sampled stationary actors only on tiles marked walkable by R5 manifest",
+    "No complete tree crown/roof visual approval; user rejected R5 style remains",
+    "This is a 5-source occlusion subset of 192 manifest objects, not complete PAR",
+    "No Godot test this round"
+  ],
+  "art_gate": "A36H R3 candidate HUMAN ART UNAPPROVED",
+  "formal_seal": "NO"
+}
