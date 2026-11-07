@@ -37,3 +37,8 @@
 5. Each stage: GitHub PR feature source only, private Drive QA/Handoff + binary source readback, final PR HEAD CI SHA/run and unresolved gates. Keep old A01-A09 evidence immutable.
 
 Rollback only feature branch. No main merge, no sealed original source overwrite.
+## A09 Tiled export schema correction — shared-template fix
+- After first green scene output, found that Tiled object IDs were repeated across object layers and low vegetation was missing from the TMJ (present only in JSON). Both are now fixed in COMMON `scene_blueprint.py`, not by per-map edits.
+- Added unique monotonically increasing `id` for all object/decor entries, `nextobjectid`, `nextlayerid` and a separate `GROUND_DECOR` layer with GROUND_ONLY and SOURCE_ART_REQUIRED props. Scene art remains NOT_GENERATED.
+- Regression tests +2, verified actual GitHub Actions run 42425356835, source commit c5da4891aff128c64fedeaba06589af41783a802: **97/97 PASS**, plus Tiled artifact SHA `a94c2fd31c35ec2d80b18e838d91c934da6c03ec6875eff0b5fefbc569a3731f` and URL https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42425356835/artifacts/13594888926.
+- Subsequent Handoff-only commit must be followed by a newest-head CI check. Public Tiled artifact contains GEOMETRY only, no protected art bytes.
