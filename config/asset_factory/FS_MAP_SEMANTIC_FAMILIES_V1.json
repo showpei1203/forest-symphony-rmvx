@@ -1,0 +1,147 @@
+{
+  "schema": "fs-map-semantic-families/v1",
+  "version": "A08-20261108",
+  "world_grid_px": 32,
+  "native_target": "FS_MASTER_FIRST_4_LAYER",
+  "foreground_disallowed_classes": [
+    "ground_base",
+    "grass",
+    "flower",
+    "dirt_path",
+    "stone_path",
+    "bridge_deck",
+    "water",
+    "back_shadow",
+    "prop_background"
+  ],
+  "families": [
+    {
+      "family": "terrain_grass_dirt",
+      "parts": [
+        "ground_base",
+        "terrain_transition",
+        "decor_low"
+      ],
+      "default_occlusion": "NEVER",
+      "generation": "WANG_32_AND_SEEDED_DECOR"
+    },
+    {
+      "family": "tree_large",
+      "parts": [
+        "trunk",
+        "branches",
+        "canopy",
+        "shadow"
+      ],
+      "default_occlusion": "CANOPY_CONDITIONAL",
+      "collision": "TRUNK_FOOTPRINT",
+      "source_rule": "complete generated object+mask together"
+    },
+    {
+      "family": "house_workshop",
+      "parts": [
+        "whole_building",
+        "roof",
+        "walls",
+        "eave",
+        "shadow"
+      ],
+      "default_occlusion": "EAVE_OR_ROOF_CONDITIONAL",
+      "collision": "WALLS_BLOCK",
+      "source_rule": "entire house+workshop designed as one coherent source"
+    },
+    {
+      "family": "bridge",
+      "parts": [
+        "bridge_deck",
+        "far_rail",
+        "near_rail",
+        "support_posts",
+        "shadow"
+      ],
+      "default_occlusion": "NEAR_RAIL_IF_LEGAL_FOOTPOINT",
+      "collision": "DECK_PATH_ONLY",
+      "source_rule": "near rail is an independent semantically generated object; never recover it by wood color"
+    },
+    {
+      "family": "cliff_rock",
+      "parts": [
+        "wall",
+        "top_overhang",
+        "foot"
+      ],
+      "default_occlusion": "TOP_1_TO_2_TILES_IF_SCENE_HEIGHT",
+      "collision": "DESIGNED_FOOTPRINT",
+      "source_rule": "legacy cliff details need separate user validation"
+    },
+    {
+      "family": "gazebo",
+      "parts": [
+        "floor",
+        "posts",
+        "roof"
+      ],
+      "default_occlusion": "FRONT_POST_ROOF_CONDITIONAL",
+      "collision": "POSTS_ONLY",
+      "source_rule": "single coherent prop family"
+    },
+    {
+      "family": "forest_decor",
+      "parts": [
+        "grass_tuft",
+        "flower",
+        "small_stone"
+      ],
+      "default_occlusion": "NEVER",
+      "collision": "DEFAULT_WALKABLE",
+      "source_rule": "decor seeded, not par overlay"
+    }
+  ],
+  "canonical_layers": {
+    "ground": [
+      "terrain_base",
+      "terrain_transition",
+      "paths",
+      "bridge_deck",
+      "decals_low",
+      "ground_fx"
+    ],
+    "scene": [
+      "props_back",
+      "houses",
+      "tree_canopies",
+      "bridge_front",
+      "cliff_overhang",
+      "lighting"
+    ],
+    "gameplay": [
+      "collision",
+      "legal_footpoints",
+      "depth_regions",
+      "spawn",
+      "triggers"
+    ],
+    "debug": [
+      "owner_id",
+      "mask_contact",
+      "source_sha"
+    ]
+  },
+  "native_four_layers": [
+    "Authoring_GroundOnly",
+    "Authoring_CompletePAR",
+    "Runtime_FullGround",
+    "Runtime_OcclusionPAR"
+  ],
+  "pilot_scenes": [
+    "ELF_VILLAGE",
+    "FOREST_BRIDGE"
+  ],
+  "budget": {
+    "pixellab_max_new_generations": 0,
+    "paid_generation_requires_explicit_approval": true
+  },
+  "native_vx": "NOT_RUN_FOR_NEW_PILOTS",
+  "art": "PENDING",
+  "formal_seal": "NO"
+}
