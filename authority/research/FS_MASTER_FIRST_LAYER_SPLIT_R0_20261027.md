@@ -1,5 +1,7 @@
 # FS Master-First Semantic Layer Split | R0 實驗紀錄 | 2026-10-27
 
+> **2026-11-07 歷史研究提醒**：R0 曾把 Generated Master 分層作概念研究，其本機 E: 施工與資料儲存只供溯源，不能再作新工作位置。正式 FS Master-first 與 2026-10-27 R0 不等價：同源 4 層、精準 Alpha、完整通行度、原生 Game.exe 和人工美術驗收 Gate 缺一不可；見 [P0](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 狀態：**RESEARCH CANDIDATE / TECH PARTIAL PASS / ART HOLD / VX NOT RUN**
 施工目錄：E:\GameAssetToolLab_20261023\FS_MasterSplit_Research_20261027
 本測試全程使用隔離資料夾；正式 FS K4/N5、SEALED Scripts.rvdata、其他地圖工程均唯讀，絕不視為已封版成果。
