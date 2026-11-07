@@ -56,8 +56,8 @@ def _reachable(blocked, start):
 def build_scene(scene, seed):
     if scene not in ("ELF_VILLAGE","FOREST_BRIDGE"):
         raise ValueError("unknown template")
-    if type(seed) is not int or not 0<=seed<=999999:
-        raise ValueError("seed must be 0..999999")
+    if type(seed) is not int or not 0<=seed<=99999999:
+        raise ValueError("seed must be 0..99999999")
     rand=random.Random(seed)
     blocked=set();routes=set();objects=[]
     terrain={"grass":"GRASS_WANG_SOURCE_REQUIRED","dirt":"PATH_WANG_SOURCE_REQUIRED","water":"WATER_WANG_SOURCE_REQUIRED",
