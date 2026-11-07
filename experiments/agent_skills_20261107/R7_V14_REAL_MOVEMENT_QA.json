@@ -1,0 +1,655 @@
+{
+  "test": "A36G R7 5 real visible-source masks on actual R5 native collision Map050 + HK UOM switch203",
+  "status": "COMPLETE",
+  "completed_all": true,
+  "source_hashes_unchanged": true,
+  "R5_Map050_verified": true,
+  "native_game_exe_started": true,
+  "cases": {
+    "RIGHT_ROOF_EXIT": {
+      "plan": {
+        "start": [
+          24,
+          15
+        ],
+        "direction": 4,
+        "dest": [
+          23,
+          15
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9596,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {
+        "before": [
+          24,
+          15
+        ],
+        "after": [
+          23,
+          15
+        ],
+        "runtime_passable": true,
+        "dir": 4
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V14_SHOT case=RIGHT_ROOF_EXIT state=OFF pos=24,15 par_visible=false display=4096,2304",
+          "actor_tile": [
+            24,
+            15
+          ],
+          "par_visible": false,
+          "display": [
+            4096,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V14_RIGHT_ROOF_EXIT_OFF.png",
+          "sha256": "995d52bce7a31d59d5f4e054aa6869a1cc05bbd138900ef120da528669d3a14d"
+        },
+        "ON": {
+          "source_log": "V14_SHOT case=RIGHT_ROOF_EXIT state=ON pos=24,15 par_visible=true display=4096,2304",
+          "actor_tile": [
+            24,
+            15
+          ],
+          "par_visible": true,
+          "display": [
+            4096,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V14_RIGHT_ROOF_EXIT_ON.png",
+          "sha256": "3d025225ed99e5c1513ae20cfeec496d529f2a16d971d325fbc31e3b16773e95"
+        },
+        "AFTER": {
+          "source_log": "V14_SHOT case=RIGHT_ROOF_EXIT state=AFTER pos=23,15 par_visible=true display=3840,2304",
+          "actor_tile": [
+            23,
+            15
+          ],
+          "par_visible": true,
+          "display": [
+            3840,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V14_RIGHT_ROOF_EXIT_AFTER.png",
+          "sha256": "1b87a932a984774f5dece1aee0461f81bccc7f4b1594e3e495d0711dd8bc8b72"
+        },
+        "END_OFF": {
+          "source_log": "V14_SHOT case=RIGHT_ROOF_EXIT state=END_OFF pos=23,15 par_visible=false display=3840,2304",
+          "actor_tile": [
+            23,
+            15
+          ],
+          "par_visible": false,
+          "display": [
+            3840,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V14_RIGHT_ROOF_EXIT_END_OFF.png",
+          "sha256": "1b87a932a984774f5dece1aee0461f81bccc7f4b1594e3e495d0711dd8bc8b72"
+        },
+        "END_ON": {
+          "source_log": "V14_SHOT case=RIGHT_ROOF_EXIT state=END_ON pos=23,15 par_visible=true display=3840,2304",
+          "actor_tile": [
+            23,
+            15
+          ],
+          "par_visible": true,
+          "display": [
+            3840,
+            2304
+          ],
+          "capture_ok": true,
+          "image": "V14_RIGHT_ROOF_EXIT_END_ON.png",
+          "sha256": "1b87a932a984774f5dece1aee0461f81bccc7f4b1594e3e495d0711dd8bc8b72"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 626,
+        "diff_bbox": [
+          261,
+          188,
+          286,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "TREE_093_EXIT": {
+      "plan": {
+        "start": [
+          12,
+          5
+        ],
+        "direction": 4,
+        "dest": [
+          11,
+          5
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9674,
+        "end_actor_mask_overlap": 0.0247
+      },
+      "native_move": {
+        "before": [
+          12,
+          5
+        ],
+        "after": [
+          11,
+          5
+        ],
+        "runtime_passable": true,
+        "dir": 4
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V14_SHOT case=TREE_093_EXIT state=OFF pos=12,5 par_visible=false display=1024,0",
+          "actor_tile": [
+            12,
+            5
+          ],
+          "par_visible": false,
+          "display": [
+            1024,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_093_EXIT_OFF.png",
+          "sha256": "60fded69e8a430fc286953aa281334ec520684add831a326b9e57f84ca8894ff"
+        },
+        "ON": {
+          "source_log": "V14_SHOT case=TREE_093_EXIT state=ON pos=12,5 par_visible=true display=1024,0",
+          "actor_tile": [
+            12,
+            5
+          ],
+          "par_visible": true,
+          "display": [
+            1024,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_093_EXIT_ON.png",
+          "sha256": "0af3eaf19c3184f4fcb4c47456a35751a5ad56502e48b8fcf1b62c7d8efd36ec"
+        },
+        "AFTER": {
+          "source_log": "V14_SHOT case=TREE_093_EXIT state=AFTER pos=11,5 par_visible=true display=768,0",
+          "actor_tile": [
+            11,
+            5
+          ],
+          "par_visible": true,
+          "display": [
+            768,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_093_EXIT_AFTER.png",
+          "sha256": "cefff7e2d26a2ea50493acf52751c5c401fce0b1e2e1d3c4f08a0ff6d1bfaa8f"
+        },
+        "END_OFF": {
+          "source_log": "V14_SHOT case=TREE_093_EXIT state=END_OFF pos=11,5 par_visible=false display=768,0",
+          "actor_tile": [
+            11,
+            5
+          ],
+          "par_visible": false,
+          "display": [
+            768,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_093_EXIT_END_OFF.png",
+          "sha256": "cefff7e2d26a2ea50493acf52751c5c401fce0b1e2e1d3c4f08a0ff6d1bfaa8f"
+        },
+        "END_ON": {
+          "source_log": "V14_SHOT case=TREE_093_EXIT state=END_ON pos=11,5 par_visible=true display=768,0",
+          "actor_tile": [
+            11,
+            5
+          ],
+          "par_visible": true,
+          "display": [
+            768,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_093_EXIT_END_ON.png",
+          "sha256": "cefff7e2d26a2ea50493acf52751c5c401fce0b1e2e1d3c4f08a0ff6d1bfaa8f"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 495,
+        "diff_bbox": [
+          260,
+          156,
+          284,
+          188
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "TREE_010_EXIT": {
+      "plan": {
+        "start": [
+          26,
+          8
+        ],
+        "direction": 2,
+        "dest": [
+          26,
+          9
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.832,
+        "end_actor_mask_overlap": 0.0117
+      },
+      "native_move": {
+        "before": [
+          26,
+          8
+        ],
+        "after": [
+          26,
+          9
+        ],
+        "runtime_passable": true,
+        "dir": 2
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V14_SHOT case=TREE_010_EXIT state=OFF pos=26,8 par_visible=false display=4608,512",
+          "actor_tile": [
+            26,
+            8
+          ],
+          "par_visible": false,
+          "display": [
+            4608,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_010_EXIT_OFF.png",
+          "sha256": "39f2c63b6fa991e2bb9a1c590507416a08177399158d29d5fc5bd3433e42c279"
+        },
+        "ON": {
+          "source_log": "V14_SHOT case=TREE_010_EXIT state=ON pos=26,8 par_visible=true display=4608,512",
+          "actor_tile": [
+            26,
+            8
+          ],
+          "par_visible": true,
+          "display": [
+            4608,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_010_EXIT_ON.png",
+          "sha256": "d2040561ef006467827fc853814f483cd84fb1c4ad5ed1bfe6ff3920702c2f26"
+        },
+        "AFTER": {
+          "source_log": "V14_SHOT case=TREE_010_EXIT state=AFTER pos=26,9 par_visible=true display=4608,768",
+          "actor_tile": [
+            26,
+            9
+          ],
+          "par_visible": true,
+          "display": [
+            4608,
+            768
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_010_EXIT_AFTER.png",
+          "sha256": "135e7e7e7e766af7f0800c72397c56df4287ec654e2390a03b2535f831b982cd"
+        },
+        "END_OFF": {
+          "source_log": "V14_SHOT case=TREE_010_EXIT state=END_OFF pos=26,9 par_visible=false display=4608,768",
+          "actor_tile": [
+            26,
+            9
+          ],
+          "par_visible": false,
+          "display": [
+            4608,
+            768
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_010_EXIT_END_OFF.png",
+          "sha256": "0417084c580f05331ca83167d79a517f3ae02336317c553bb50cb85b9adc2e10"
+        },
+        "END_ON": {
+          "source_log": "V14_SHOT case=TREE_010_EXIT state=END_ON pos=26,9 par_visible=true display=4608,768",
+          "actor_tile": [
+            26,
+            9
+          ],
+          "par_visible": true,
+          "display": [
+            4608,
+            768
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_010_EXIT_END_ON.png",
+          "sha256": "135e7e7e7e766af7f0800c72397c56df4287ec654e2390a03b2535f831b982cd"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 478,
+        "diff_bbox": [
+          260,
+          188,
+          284,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "TREE_020_EXIT": {
+      "plan": {
+        "start": [
+          35,
+          4
+        ],
+        "direction": 4,
+        "dest": [
+          34,
+          4
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9557,
+        "end_actor_mask_overlap": 0.0964
+      },
+      "native_move": {
+        "before": [
+          35,
+          4
+        ],
+        "after": [
+          34,
+          4
+        ],
+        "runtime_passable": true,
+        "dir": 4
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V14_SHOT case=TREE_020_EXIT state=OFF pos=35,4 par_visible=false display=5888,0",
+          "actor_tile": [
+            35,
+            4
+          ],
+          "par_visible": false,
+          "display": [
+            5888,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_020_EXIT_OFF.png",
+          "sha256": "58055afaa21743114599182578e0db22110c80ffc248434d8ab5e1eb33d0d6d0"
+        },
+        "ON": {
+          "source_log": "V14_SHOT case=TREE_020_EXIT state=ON pos=35,4 par_visible=true display=5888,0",
+          "actor_tile": [
+            35,
+            4
+          ],
+          "par_visible": true,
+          "display": [
+            5888,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_020_EXIT_ON.png",
+          "sha256": "194fa5ef87ad00792531626daadfcac61359b6fcc4e0316d23cc958f29fa5188"
+        },
+        "AFTER": {
+          "source_log": "V14_SHOT case=TREE_020_EXIT state=AFTER pos=34,4 par_visible=true display=5888,0",
+          "actor_tile": [
+            34,
+            4
+          ],
+          "par_visible": true,
+          "display": [
+            5888,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_020_EXIT_AFTER.png",
+          "sha256": "223e60a9035c02fe7730d9133de767e43303c80e7958fcd8cb05a9d46acb52fb"
+        },
+        "END_OFF": {
+          "source_log": "V14_SHOT case=TREE_020_EXIT state=END_OFF pos=34,4 par_visible=false display=5888,0",
+          "actor_tile": [
+            34,
+            4
+          ],
+          "par_visible": false,
+          "display": [
+            5888,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_020_EXIT_END_OFF.png",
+          "sha256": "289ce537aa053ab8ed6f204e0276cafc31129b1370dd4ef372e656761d164261"
+        },
+        "END_ON": {
+          "source_log": "V14_SHOT case=TREE_020_EXIT state=END_ON pos=34,4 par_visible=true display=5888,0",
+          "actor_tile": [
+            34,
+            4
+          ],
+          "par_visible": true,
+          "display": [
+            5888,
+            0
+          ],
+          "capture_ok": true,
+          "image": "V14_TREE_020_EXIT_END_ON.png",
+          "sha256": "223e60a9035c02fe7730d9133de767e43303c80e7958fcd8cb05a9d46acb52fb"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 616,
+        "diff_bbox": [
+          389,
+          124,
+          414,
+          156
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    },
+    "LEFT_ROOF_EXIT": {
+      "plan": {
+        "start": [
+          14,
+          8
+        ],
+        "direction": 4,
+        "dest": [
+          13,
+          8
+        ],
+        "manifest_destination_blocked": false,
+        "expected_movement": true,
+        "start_actor_mask_overlap": 0.9518,
+        "end_actor_mask_overlap": 0.0
+      },
+      "native_move": {
+        "before": [
+          14,
+          8
+        ],
+        "after": [
+          13,
+          8
+        ],
+        "runtime_passable": true,
+        "dir": 4
+      },
+      "movement_matches_manifest": true,
+      "state_203_transition": true,
+      "screens": {
+        "OFF": {
+          "source_log": "V14_SHOT case=LEFT_ROOF_EXIT state=OFF pos=14,8 par_visible=false display=1536,512",
+          "actor_tile": [
+            14,
+            8
+          ],
+          "par_visible": false,
+          "display": [
+            1536,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V14_LEFT_ROOF_EXIT_OFF.png",
+          "sha256": "ff48fbc24670524b37db3cc241c6177a516c3915681e8d830ab3204a365a5854"
+        },
+        "ON": {
+          "source_log": "V14_SHOT case=LEFT_ROOF_EXIT state=ON pos=14,8 par_visible=true display=1536,512",
+          "actor_tile": [
+            14,
+            8
+          ],
+          "par_visible": true,
+          "display": [
+            1536,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V14_LEFT_ROOF_EXIT_ON.png",
+          "sha256": "21d9c905bacbc8704acdb460d74c21790928c4ba3b8809abc46c6179e0b2bfed"
+        },
+        "AFTER": {
+          "source_log": "V14_SHOT case=LEFT_ROOF_EXIT state=AFTER pos=13,8 par_visible=true display=1280,512",
+          "actor_tile": [
+            13,
+            8
+          ],
+          "par_visible": true,
+          "display": [
+            1280,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V14_LEFT_ROOF_EXIT_AFTER.png",
+          "sha256": "0f6faa41fd42f185ad3e8b546c0972ce764504bb1e048e3d2b26933884a76bb4"
+        },
+        "END_OFF": {
+          "source_log": "V14_SHOT case=LEFT_ROOF_EXIT state=END_OFF pos=13,8 par_visible=false display=1280,512",
+          "actor_tile": [
+            13,
+            8
+          ],
+          "par_visible": false,
+          "display": [
+            1280,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V14_LEFT_ROOF_EXIT_END_OFF.png",
+          "sha256": "0f6faa41fd42f185ad3e8b546c0972ce764504bb1e048e3d2b26933884a76bb4"
+        },
+        "END_ON": {
+          "source_log": "V14_SHOT case=LEFT_ROOF_EXIT state=END_ON pos=13,8 par_visible=true display=1280,512",
+          "actor_tile": [
+            13,
+            8
+          ],
+          "par_visible": true,
+          "display": [
+            1280,
+            512
+          ],
+          "capture_ok": true,
+          "image": "V14_LEFT_ROOF_EXIT_END_ON.png",
+          "sha256": "0f6faa41fd42f185ad3e8b546c0972ce764504bb1e048e3d2b26933884a76bb4"
+        }
+      },
+      "off_on_diff": {
+        "change_pixels": 473,
+        "diff_bbox": [
+          262,
+          188,
+          284,
+          220
+        ],
+        "within_actor_region": true
+      },
+      "snapshot_camera_stable": true
+    }
+  },
+  "errors": [],
+  "raw_runtime_events": [
+    "V14_BEGIN case=RIGHT_ROOF_EXIT at=24,15 dir=4",
+    "V14_SHOT case=RIGHT_ROOF_EXIT state=OFF pos=24,15 par_visible=false display=4096,2304",
+    "V14_SHOT case=RIGHT_ROOF_EXIT state=ON pos=24,15 par_visible=true display=4096,2304",
+    "V14_MOVE case=RIGHT_ROOF_EXIT before=24,15 after=23,15 passable=true dir=4",
+    "V14_SHOT case=RIGHT_ROOF_EXIT state=AFTER pos=23,15 par_visible=true display=3840,2304",
+    "V14_SHOT case=RIGHT_ROOF_EXIT state=END_OFF pos=23,15 par_visible=false display=3840,2304",
+    "V14_SHOT case=RIGHT_ROOF_EXIT state=END_ON pos=23,15 par_visible=true display=3840,2304",
+    "V14_BEGIN case=TREE_093_EXIT at=12,5 dir=4",
+    "V14_SHOT case=TREE_093_EXIT state=OFF pos=12,5 par_visible=false display=1024,0",
+    "V14_SHOT case=TREE_093_EXIT state=ON pos=12,5 par_visible=true display=1024,0",
+    "V14_MOVE case=TREE_093_EXIT before=12,5 after=11,5 passable=true dir=4",
+    "V14_SHOT case=TREE_093_EXIT state=AFTER pos=11,5 par_visible=true display=768,0",
+    "V14_SHOT case=TREE_093_EXIT state=END_OFF pos=11,5 par_visible=false display=768,0",
+    "V14_SHOT case=TREE_093_EXIT state=END_ON pos=11,5 par_visible=true display=768,0",
+    "V14_BEGIN case=TREE_010_EXIT at=26,8 dir=2",
+    "V14_SHOT case=TREE_010_EXIT state=OFF pos=26,8 par_visible=false display=4608,512",
+    "V14_SHOT case=TREE_010_EXIT state=ON pos=26,8 par_visible=true display=4608,512",
+    "V14_MOVE case=TREE_010_EXIT before=26,8 after=26,9 passable=true dir=2",
+    "V14_SHOT case=TREE_010_EXIT state=AFTER pos=26,9 par_visible=true display=4608,768",
+    "V14_SHOT case=TREE_010_EXIT state=END_OFF pos=26,9 par_visible=false display=4608,768",
+    "V14_SHOT case=TREE_010_EXIT state=END_ON pos=26,9 par_visible=true display=4608,768",
+    "V14_BEGIN case=TREE_020_EXIT at=35,4 dir=4",
+    "V14_SHOT case=TREE_020_EXIT state=OFF pos=35,4 par_visible=false display=5888,0",
+    "V14_SHOT case=TREE_020_EXIT state=ON pos=35,4 par_visible=true display=5888,0",
+    "V14_MOVE case=TREE_020_EXIT before=35,4 after=34,4 passable=true dir=4",
+    "V14_SHOT case=TREE_020_EXIT state=AFTER pos=34,4 par_visible=true display=5888,0",
+    "V14_SHOT case=TREE_020_EXIT state=END_OFF pos=34,4 par_visible=false display=5888,0",
+    "V14_SHOT case=TREE_020_EXIT state=END_ON pos=34,4 par_visible=true display=5888,0",
+    "V14_BEGIN case=LEFT_ROOF_EXIT at=14,8 dir=4",
+    "V14_SHOT case=LEFT_ROOF_EXIT state=OFF pos=14,8 par_visible=false display=1536,512",
+    "V14_SHOT case=LEFT_ROOF_EXIT state=ON pos=14,8 par_visible=true display=1536,512",
+    "V14_MOVE case=LEFT_ROOF_EXIT before=14,8 after=13,8 passable=true dir=4",
+    "V14_SHOT case=LEFT_ROOF_EXIT state=AFTER pos=13,8 par_visible=true display=1280,512",
+    "V14_SHOT case=LEFT_ROOF_EXIT state=END_OFF pos=13,8 par_visible=false display=1280,512",
+    "V14_SHOT case=LEFT_ROOF_EXIT state=END_ON pos=13,8 par_visible=true display=1280,512",
+    "V14_ALL_CASES_COMPLETED"
+  ],
+  "limitations": [
+    "manifest collision expected behavior may be inconsistent with runtime, no assumptions of PASS",
+    "screenshots are timed external grabs; camera comparisons must be stable to count",
+    "art quality / user acceptance not tested"
+  ],
+  "formal_seal": "NO",
+  "movement_cases_match": 5,
+  "movement_total": 5,
+  "camera_stable_OFF_ON": 5,
+  "switch_203_transitions": 5,
+  "status_gate": "PASS"
+}
