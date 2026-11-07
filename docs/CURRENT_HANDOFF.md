@@ -20,7 +20,7 @@ This is the current conversation-independent handoff for Forest Symphony. New de
 - A Git source bootstrap was generated from the Phase49J SEALED `Scripts.rvdata`, preserving 505 script entries, original order, Script ID, Script Name metadata, raw Script Content, and per-script SHA-256.
 - Git `main` is staged from Phase49J SEALED source.
 - Git `develop` is staged from K5 and differs in Runtime script content only at TEST page478; Formal Runtime delta remains 0.
-- GitHub remote publication is blocked because the connected GitHub App exposes no installed account / repository access.
+- **Historical 2026-08-18 fact only:** GitHub publication was blocked at the time. **Superseded on 2026-11-07:** connected GitHub repository access now works; current rules/QA and PRs are on `showpei1203/forest-symphony-rmvx`.
 
 ## Latest Real-Machine Results
 - Battle standalone: Phase48A `1388 PASS / 0 FAIL / 0 WARN` — SEALED.
@@ -81,7 +81,7 @@ If K5 passes, formally SEALED Phase49K and then run Final Integrated Soak XI in 
 ## Infrastructure
 - Google Drive: https://drive.google.com/drive/folders/1FMDwuFeyzseu_UK7FKDt_rrl9CQwi-IH
 - Linear: https://linear.app/showpei/project/forest-symphony-f0bfaea8775f
-- GitHub: PENDING — `showpei1203` identity is readable, repository access is not yet granted to the connector.
+- GitHub: https://github.com/showpei1203/forest-symphony-rmvx — connector read, create/update and merge verified on 2026-11-07; old PENDING was historical.
 
-## Last Updated
-2026-08-18 08:23 +08:00
+## Snapshot and Update
+Original historical handoff: 2026-08-18 08:23 +08:00. P0/current master-first supersession added 2026-11-07; original sealed test results unmodified.
