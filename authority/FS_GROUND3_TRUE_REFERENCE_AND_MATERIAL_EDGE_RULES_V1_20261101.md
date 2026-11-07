@@ -1,6 +1,8 @@
 # FS Ground3 Authentic Reference + Ground Material Edge Rules v1 — 2026-11-01
 ACTIVE. New evidence A33 after explicit A32B user art approval. Formal Seal remains NO.
 
+> **2026-11-07 P0 來源目錄說明**：此頁引用的 `E:\FS_ROUTE_B...` 是 2026-10/11 的材料擷取歷史位置，**不是**新的 Ground3 參考圖或草/沙 source 正式儲存庫。來源以已登記的 Google Drive ID／SHA 與使用者持有的原圖為權威；新圖修整與所有 QA 存 Drive/GitHub、PC 不存成果。[P0](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## Critical source identity rule
 **The real historical Forest Symphony ground3 ART is `Graphics/Parallaxes/ground3.png`, 1280×928 RGB, SHA256 `ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13`.**
 **`Overlays/ground3.png` is a dark light/shadow-type map, 1280×928, NOT the artistic material reference.** Prior A33 kickoff source audit incorrectly treated it as the reference, producing invalid visual color/gradient comparisons. Correct the path, file type and SHA before deriving style data, and retain prior wrong-source report only as failure evidence.
