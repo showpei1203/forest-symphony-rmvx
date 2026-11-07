@@ -12,7 +12,7 @@
 3. Apply the latest FS Style DNA / accepted benchmark / sealed visual authority.
 4. For any layered map/parallax/environment work, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_5.md` before generation or extraction.
 
-## Current layered-map mode — v2.5
+## Legacy general layered-map mode — v2.5 (NOT current FS new-village Master-first)
 Use:
 `GROUND-FIRST + PLACEMENT ANCHORS + SOURCE-ASSET/EXTRACTION + DETERMINISTIC ASSEMBLY + PAR PURITY + PIXEL-CRISP`
 
@@ -55,6 +55,7 @@ A candidate remains **DRAFT** unless applicable checks pass:
 8. witness/high-risk omission QA.
 
 ## Required read order
-`Shared Authority -> FS Drive Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_5 -> latest FS benchmark/handoff -> Ground -> Ground QA -> anchors -> source/extraction -> deterministic assembly -> per-object QA -> recomposition/witness QA`
+**FS new-village ACTIVE:** `FS Current Rules Index -> P0 Cloud-only -> Shared Authority -> FS Precheck -> Style/MASTER art Gate -> freeze one MASTER -> AI segmentation + hidden underpaint -> source-registered Authoring/Runtime four layers -> per-object QA -> native Map050 / 203 movement / empty control -> final User Art Gate`.
+**LEGACY v2.5:** `Shared Authority -> Project Precheck -> MAP_DUAL_OUTPUT_AUTHORITY_V2_5 -> Ground -> Ground QA -> anchors -> source/extraction -> deterministic assembly -> recomposition/witness QA`.
 
 Version: 2026-08-20 v2.5
