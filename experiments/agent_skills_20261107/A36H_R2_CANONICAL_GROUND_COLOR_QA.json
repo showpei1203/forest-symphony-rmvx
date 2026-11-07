@@ -1,0 +1,50 @@
+{
+  "style_target": "Approved original FS Graphics/Parallaxes/ground3.png",
+  "reference_SHA": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+  "stage": "A36H_R2_CANONICAL_GROUND3_GRASS_PATH_PALETTE_REAL_LAYER_CANDIDATE",
+  "full_canvas": [
+    1280,
+    928
+  ],
+  "ground_original_R5_to_approved_Ground3_grass_RGB_shift": [
+    -16,
+    -15,
+    11
+  ],
+  "ground_original_R5_to_approved_Ground3_path_RGB_shift": [
+    -16,
+    -24,
+    -19
+  ],
+  "grass_pixels_modified": 1076318,
+  "path_pixels_modified": 62796,
+  "original_grass_median": [
+    104,
+    146,
+    21
+  ],
+  "new_ground_grass_median_at_original_mask": [
+    104,
+    146,
+    21
+  ],
+  "original_path_median": [
+    198,
+    161,
+    81
+  ],
+  "new_ground_path_median_at_original_mask": [
+    198,
+    161,
+    81
+  ],
+  "source_192_PAR_unchanged_from_R1": true,
+  "source_alpha_semantic_5mask_unchanged": true,
+  "runtime_RGB_exact_registration": true,
+  "collision_unchanged": true,
+  "R1_R2_GROUND_changed": true,
+  "native_VX": "NOT RUN",
+  "godot": "NOT RUN",
+  "art_user_review": "PENDING",
+  "formal_seal": "NO"
+}
