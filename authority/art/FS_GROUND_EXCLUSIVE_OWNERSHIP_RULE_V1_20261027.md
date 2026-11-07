@@ -1,6 +1,8 @@
 # FS Ground Exclusive Ownership｜V1 Mandatory Authority（2026-10-27）
 **Priority: MUST / FAIL-CLOSED.** The user's new hard rule overrides former R1–R3 approaches allowing original grassy bases beneath houses. Applies to buildings, trees, rocks, props, wells, flowers, fences and all non-Ground PAR objects.
 
+> **2026-11-07 現行優先權：本頁「Ground 只能有地面」規則限定 `Authoring_GroundOnly`。** FS 新地圖改為完整 Master-first，`Runtime_FullGround` 必須保留完整母圖（包含房屋樹木），而 `Runtime_OcclusionPAR` 只放需要遮住角色的局部同 RGB 物件；不准把此頁舊 Authoring 分工誤套到原生 VX Runtime FullGround。兩種分層用途不同，仍保留世界 XY、foot、碰撞與權利 QA。資產/證據雲端留存，PC 不存新工作資料：[P0](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)／[Rule Index](../FS_CURRENT_RULES_INDEX_20261107.md)。
+
 ## Ground exclusive rule
 Natural horizontal terrain grass, soil, paths, sand, pavement, surface flowers and transitions belong ONLY in Ground. Objects MUST NOT carry any independent patch of original ground, even if an alpha silhouette is otherwise complete. Ground should continue beneath placed objects. No blurred seams, stamped donor tiles or renaming ground as decoration.
 
