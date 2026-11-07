@@ -1,10 +1,11 @@
-name: FS asset static QA (synthetic only)
+name: FS factory contract and static QA (no paid generation)
 
 on:
   pull_request:
     paths:
       - "tools/asset_factory/**"
       - "docs/asset_factory/**"
+      - "config/asset_factory/**"
       - ".github/workflows/fs-asset-ci.yml"
   workflow_dispatch:
 
@@ -27,5 +28,7 @@ jobs:
         run: python -m compileall -q tools/asset_factory
       - name: Run synthetic pass and intentional-fail fixtures
         run: python -m unittest discover -s tools/asset_factory/tests -v
+      - name: Execute zero-credit Sprite and Map pilot manifest dry run
+        run: python -m tools.asset_factory.run_a08_pilot
 
-# No secrets, PixelLab calls, user-PC files, native VX claims or private assets.
+# Config and source-only checks. No secrets, PixelLab calls, user-PC files, native VX claims or private assets.
