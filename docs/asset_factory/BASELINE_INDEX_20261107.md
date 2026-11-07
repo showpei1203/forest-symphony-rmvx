@@ -33,3 +33,9 @@ Run the new `tools/asset_factory/tests` **synthetic fixtures** (only positive/ne
 
 ## Current cloud-delivery policy
 No user's-PC workspace, worktree, clone, log archive, or generated image created for this task. Temporary CI runner files are isolated GitHub-owned build artifacts. Native Windows VX testing needs separately explained and approved temporary storage.
+
+
+## A02 update — actual private source bytes checked (2026-11-07)
+New authority: [SOURCE_INVENTORY_A02_20261107.md](SOURCE_INVENTORY_A02_20261107.md). Unlike the A01 research-only index above, A02 **downloaded and SHA-checked actual original PMD0001, PMD0002, PMD0003 and A63 Actor binary ZIPs**, plus original AnimData.xml files and selected PNGs. Full native Anim/Offsets/Shadow geometry was independently inspected across 34/12/12 PMD actions; 2 aliases each, with true 1-row/8-row action variation.
+
+**Keep the status split:** original source-byte checks and XML geometry PASS. Historical source images are **not proof of approval of lava variants or 8-direction identity**. New A02 PMD, Actor and map-object adapters pass **29/29 synthetic CI**, but private source scans through the actual committed adapter and native VX remain separate gates. See the newest [CURRENT_HANDOFF](CURRENT_HANDOFF.md) and private A02 Drive Handoff.
