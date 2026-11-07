@@ -27,7 +27,7 @@ Source assets must have real transparency and meaningful opaque structure. Broad
 ## 6. Per-object progression gate
 Each object/group must pass alpha, scale, bbox containment, entrance/path/water relationship, and pixel-crisp QA before the next object/group proceeds. A failed object does not authorize moving its Ground anchor or altering accepted neighbors.
 
-## 7. Required production order v2.5
+## 7. Required production order v2.5 (GENERAL/LEGACY; FS NEW MAP USES MASTER-FIRST OVERRIDE ABOVE)
 `Shared Authority -> Project Precheck -> Ground -> Ground QA -> Placement Anchor Contract -> per-object source generation -> source alpha/scale QA -> deterministic integer-coordinate assembly -> per-object placement QA -> regional PAR QA -> final recomposition/witness QA -> Runtime approval`
 
 If the current image generator cannot produce viable runtime-scale source assets, switch to extraction/pixel-authoring/approved asset-generation tooling instead of repeatedly forcing unsuitable generative output.
