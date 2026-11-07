@@ -76,3 +76,13 @@ No PixelLab generation, external paid API, or new user's-PC files. Stop any pipe
 
 ## Mandatory handoff
 Before ending **every FS iteration**, write \`docs/asset_factory/CURRENT_HANDOFF.md\` on the feature branch or a new versioned handoff path; mirror a complete handoff in private Google Drive, list Git commit/PR, Drive file ID, source hashes, actually executed tests, errors, Art/Native/Cloud gates, and exact next step. A GitHub branch creation alone is not delivery. No merge into sealed \`main\` without reviewed and evidenced acceptance.
+
+
+## A02 additions (2026-11-07)
+- adapters/pmd.py: inspect genuine AnimData.xml (CopyOf alias, species-specific action frame size/count/durations/events), require native Anim/Offsets/Shadow matching dimensions with 1 or 8 actual raster rows. It does NOT force all actions to three frames or assume every atlas is eight rows.
+- adapters/actor.py: validate a candidate action has three stored _1/_2/_3 PNG keys and an explicit playback loop; original VX walk 32px and approved A62 48px motion candidate remain separate.
+- adapters/map_objects.py: fail-closed owner Source SHA and binary complete/occlusion mask membership, overlap and union proof. Occlusion semantics and original Master source registration remain separate gates.
+- tests/test_a02_adapters.py: 15 new synthetic positive/negative fixtures, combined 29/29 successful Actions run 42376970935 on source commit 9867c87cec72a67f8e65c9147ece0e58a689a5ff.
+- [A02 actual-source inventory](../../docs/asset_factory/SOURCE_INVENTORY_A02_20261107.md): ZIP/XML/selected PNG SHA and original action-specific native metadata, **no protected artwork**.
+
+Private approved source downloads and bytes belong to Drive/isolated runtime, never public Actions artifacts. Every pass here is STATIC ONLY. User art, 45° identity, per-object occlusion semantics, Tankentai/VX native and formal seal remain independent PENDING/NOT_RUN.
