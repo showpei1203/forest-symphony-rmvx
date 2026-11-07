@@ -31,4 +31,13 @@ jobs:
       - name: Execute zero-credit Sprite and Map pilot manifest dry run
         run: python -m tools.asset_factory.run_a08_pilot
 
+      - name: Export two source-typed A09 scene layout blueprints (no artwork)
+        run: python -m tools.asset_factory.export_a09_scenes --output "$RUNNER_TEMP/a09_scene_blueprints"
+      - name: Publish non-art A09 semantic scene blueprints
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A09_Tiled_Semantic_Blueprints
+          path: ${{ runner.temp }}/a09_scene_blueprints/
+          retention-days: 30
+
 # Config and source-only checks. No secrets, PixelLab calls, user-PC files, native VX claims or private assets.
