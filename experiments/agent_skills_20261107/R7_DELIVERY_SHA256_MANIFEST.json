@@ -1,0 +1,264 @@
+{
+  "stage": "FS_A36G_R7_20261107",
+  "native_A36G_collision_map": "1160/1160 tiles and 3544/3544 free-source cardinal directed edges PASS",
+  "native_HK_UOM_static": "5 positives + 1 negative PASS",
+  "native_HK_UOM_dynamic": "5/5 true move into less occluded tile PASS",
+  "source_owned_objects": 5,
+  "total_R5_manifest_objects": 192,
+  "known_semantic_erratum": "V6 tree_003 only 5.12% source-visible, despite engine switch PASS. V6 per-object semantic ownership FAIL; excluded from R7.",
+  "art_gate": "FAIL inherited R5; R7 rooftop mask art human review pending",
+  "godot_this_round": "NOT RUN",
+  "formal_seal": "NO",
+  "checked_files": [
+    {
+      "file": "INPUT_R5_MANIFEST/A36G_R5_SCENE_MANIFEST.json",
+      "bytes": 151200,
+      "sha256": "4c24008804df2dedda8deaf5290742580715da68b73de1b3ed69613283671153"
+    },
+    {
+      "file": "SOURCE_ORIGINAL_RGBA/A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png",
+      "bytes": 56582,
+      "sha256": "964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699"
+    },
+    {
+      "file": "SOURCE_ORIGINAL_RGBA/A36G_R5_PIXELLAB_RIGHT_HOUSE_SINGLE_GABLE_R2_RGBA.png",
+      "bytes": 33149,
+      "sha256": "4794a89cb06029112e6581c85a47bdcf6a84b7f636e05755825a989793585206"
+    },
+    {
+      "file": "SOURCE_ORIGINAL_RGBA/A36F_tree_093_ORIGINAL_RGBA.png",
+      "bytes": 30456,
+      "sha256": "c744d84a3bf7d6972bf9767448a6d7b94bc6d9d3e290f8f72279e50fe1984e88"
+    },
+    {
+      "file": "SOURCE_ORIGINAL_RGBA/A36F_tree_010_ORIGINAL_RGBA.png",
+      "bytes": 33196,
+      "sha256": "6364a13dd821644f33cd075cf937a7a5aa652f59cf1b0a155544f709ddd849be"
+    },
+    {
+      "file": "SOURCE_ORIGINAL_RGBA/A36F_tree_020_ORIGINAL_RGBA.png",
+      "bytes": 37183,
+      "sha256": "b33580ecd2e88a570af439c135ad2dcc13cb4a9b82fec7bac0ab7ecdfdb932a2"
+    },
+    {
+      "file": "AUTHORING_AND_RUNTIME/R7_AUTHORING_GROUND_ONLY.png",
+      "bytes": 2180081,
+      "sha256": "8c4acbfe3c7201de5f66c51f84af8b568972c5a09d97ebc0a76e3152d764e371"
+    },
+    {
+      "file": "AUTHORING_AND_RUNTIME/R7_AUTHORING_COMPLETE_PAR.png",
+      "bytes": 1724899,
+      "sha256": "9079fecdf2d0301817a3e06854a3ab1ffec691de6dac29f28102d9e4833bbe6d"
+    },
+    {
+      "file": "AUTHORING_AND_RUNTIME/R7_RUNTIME_FULL_SCENE_GROUND50.png",
+      "bytes": 2340727,
+      "sha256": "7350d3d8dd34602f8aa2799d2ad76c9bb84ec24f68cdb321c19d3329804743db"
+    },
+    {
+      "file": "AUTHORING_AND_RUNTIME/R7_RUNTIME_PAR50_5OBJECTS.png",
+      "bytes": 144454,
+      "sha256": "5fcb50fb5ffb30044d7342a3fdd3a8c14fbb102beae2de5a61fd927acd7c2818"
+    },
+    {
+      "file": "AUTHORING_AND_RUNTIME/R7_5OBJECTS_FULL_HEATMAP_640.png",
+      "bytes": 651055,
+      "sha256": "f354bb6f20da9629b579c71f5f7d23602860146025770557e3801a5db2b16661"
+    },
+    {
+      "file": "AUTHORING_AND_RUNTIME/R7_5OBJECTS_WALKABLE_TEST_WITNESS_640.png",
+      "bytes": 616334,
+      "sha256": "fd23ac2a084e29bf488b847ea38185d358d877c59d1d53093eca0ce52662ebbe"
+    },
+    {
+      "file": "SOURCE_MASKS/A36G_ELF_HOUSE_AND_WORKSHOP_SOURCE_SEMANTIC_RGBA.png",
+      "bytes": 23980,
+      "sha256": "5c591a54447a0fa3acfe0d2b34508159ba1481b76c141ca17458f9cf48c05dbc"
+    },
+    {
+      "file": "SOURCE_MASKS/A36G_R5_COTTAGE_B_SINGLE_ROOF_SOURCE_SEMANTIC_RGBA.png",
+      "bytes": 16995,
+      "sha256": "392a6803090064b41444e4558512c7c408bcc5fe7ed2ca88af34e0e6321409a1"
+    },
+    {
+      "file": "SOURCE_MASKS/tree_010_SOURCE_SEMANTIC_RGBA.png",
+      "bytes": 28675,
+      "sha256": "31e473ba54787d3abbe9f06a465757d86ead86e938d1eea49b1261ed86581c18"
+    },
+    {
+      "file": "SOURCE_MASKS/tree_020_SOURCE_SEMANTIC_RGBA.png",
+      "bytes": 32701,
+      "sha256": "cb05f005d360d38b9feb6d1e03376edea8248db449609234fc5befab4461ad55"
+    },
+    {
+      "file": "SOURCE_MASKS/tree_093_SOURCE_SEMANTIC_RGBA.png",
+      "bytes": 26342,
+      "sha256": "2d8a2a9fbd681addb88b0c8fe739886683b978c142a3608adc53b425c37e1a2f"
+    },
+    {
+      "file": "SOURCE_MASKS/A36G_ELF_HOUSE_AND_WORKSHOP_SOURCE_WITNESS.png",
+      "bytes": 52829,
+      "sha256": "f3d95ba0c64e0d961a79b49cc9d059297c49453bf812af27ef9948d5642108db"
+    },
+    {
+      "file": "SOURCE_MASKS/A36G_R5_COTTAGE_B_SINGLE_ROOF_SOURCE_WITNESS.png",
+      "bytes": 30832,
+      "sha256": "e73b2ad4510032e283bb75b8b2b7767f0ca94ec911432e4f59058f65b76a6700"
+    },
+    {
+      "file": "SOURCE_MASKS/tree_010_SOURCE_WITNESS.png",
+      "bytes": 31746,
+      "sha256": "abf56cb97f7b439bb58bc3d71e036b3d98b8686c7d859833618170a0adaad60a"
+    },
+    {
+      "file": "SOURCE_MASKS/tree_020_SOURCE_WITNESS.png",
+      "bytes": 35499,
+      "sha256": "540ef59c80e6cc5949178147762975b577e41601098e253d02028fc789ed0375"
+    },
+    {
+      "file": "SOURCE_MASKS/tree_093_SOURCE_WITNESS.png",
+      "bytes": 29076,
+      "sha256": "0568e859d984483223435b27284889c95967db6d2b567c4a12671fe415e3ef99"
+    },
+    {
+      "file": "ENGINE_NATIVE_MAP050/Data/Map050.rvdata",
+      "bytes": 7341,
+      "sha256": "4e594794b933eb0efbf2381048c3c093fd7f01e33cd7c8d20fe9c5ca66ceb9a2"
+    },
+    {
+      "file": "SOURCE_QA/R7_C1_FIVE_OBJECTS_SOURCE_QA.json",
+      "bytes": 15422,
+      "sha256": "7e0dd50649bb1296b04f81fdb7e47d3accc82747a3b6946e7f87ad8cd7055282"
+    },
+    {
+      "file": "SOURCE_QA/FS_V12_A36G_REAL_MAP050_COLLISION_QA.json",
+      "bytes": 995,
+      "sha256": "3add10f79a94e46e419d0c0a7d812a4b00df5a7aec759529805e247a24cd7797"
+    },
+    {
+      "file": "SOURCE_QA/R7_NATIVE_203_REAL_R5_COLLISION_QA.json",
+      "bytes": 9214,
+      "sha256": "a01ff19ec8117d0bda3e3a3bcec940fbd99851d7d4aaf184cd658028a1142712"
+    },
+    {
+      "file": "SOURCE_QA/FS_V14_A36G_R7_NATIVE_EXIT_QA.json",
+      "bytes": 20669,
+      "sha256": "95bb5030afc2b6ddbc704e1f7f417a6895d45d14766e92d5095d00e2ce88ddbf"
+    },
+    {
+      "file": "SOURCE_QA/V14_A36G_R7_DYNAMIC_203_VISUAL_QA.json",
+      "bytes": 3614,
+      "sha256": "4c8bf883e997009fbb594bb0fb9b4349da05c9de5b5dbbbb16e262abd93fb550"
+    },
+    {
+      "file": "VX_STATIC/R7_NATIVE_5OBJECTS_6CASES_OFF_ON_CONTACT.png",
+      "bytes": 2670617,
+      "sha256": "31cbb49c262a93570354ae270ccd41fe15e9f65b068ecbd8c17c259b61be03dd"
+    },
+    {
+      "file": "VX_DYNAMIC/V14_R7_FIVE_DYNAMIC_EXITS_FIVE_STATES_CONTACT.png",
+      "bytes": 837583,
+      "sha256": "d7f3577e3908a3bad155ca6e6dc476aed425f920e178251a9e02187c985ffb7f"
+    },
+    {
+      "file": "VX_STATIC/R7_A36G_ELF_HOUSE_AND_WORKSHOP_OFF_ON.png",
+      "bytes": 468515,
+      "sha256": "258ff3848eb4fec5592e074341ea03094c270fe0c5ec7d74e46b6f4a8fa87445"
+    },
+    {
+      "file": "VX_STATIC/R7_A36G_R5_COTTAGE_B_SINGLE_ROOF_OFF_ON.png",
+      "bytes": 448876,
+      "sha256": "3ecb07814de2ecb32e3caa333b2b68b61ee528beea7710a41411d96c5a953e61"
+    },
+    {
+      "file": "VX_STATIC/R7_CLEAR_NEGATIVE_OFF_ON.png",
+      "bytes": 448264,
+      "sha256": "b1ded7eaddd544e01de14ccdbe32efc338c37e9d808a391507ac97011551e329"
+    },
+    {
+      "file": "VX_STATIC/R7_tree_010_OFF_ON.png",
+      "bytes": 418193,
+      "sha256": "7e1acf381162e04ab4c82269c3e92df393f5cd4a5c4a7036c43279b0e948cf62"
+    },
+    {
+      "file": "VX_STATIC/R7_tree_020_OFF_ON.png",
+      "bytes": 418411,
+      "sha256": "c0472ac1d6841ce664fa612e199c3302e19090f9ef7ed0e1c8c3037552dcc6ff"
+    },
+    {
+      "file": "VX_STATIC/R7_tree_093_OFF_ON.png",
+      "bytes": 447872,
+      "sha256": "b426391c3b7330ef2272c8b6ff289caa3e4a1f69c43a4b627358a250452f5451"
+    },
+    {
+      "file": "VX_DYNAMIC/V14_LEFT_ROOF_EXIT_OFF_ON.png",
+      "bytes": 465445,
+      "sha256": "a0cfc6519929bd96ed06f76c58f299174721a07bc4b85396e39fbc7ee9f06757"
+    },
+    {
+      "file": "VX_DYNAMIC/V14_RIGHT_ROOF_EXIT_OFF_ON.png",
+      "bytes": 444286,
+      "sha256": "0535e27aab01ad99cf83e9c0f70ca3997e3fec587ca96b342e07e737318fc8db"
+    },
+    {
+      "file": "VX_DYNAMIC/V14_TREE_010_EXIT_OFF_ON.png",
+      "bytes": 427865,
+      "sha256": "3cbf618566ed613a34f40374e8a95248012f9f98153af1e9a83b9c756db04234"
+    },
+    {
+      "file": "VX_DYNAMIC/V14_TREE_020_EXIT_OFF_ON.png",
+      "bytes": 417860,
+      "sha256": "2e1e64216559fcabb3e2f9d38dd9f4d2617e82cb1f2e2cdfb36238f4398479f3"
+    },
+    {
+      "file": "VX_DYNAMIC/V14_TREE_093_EXIT_OFF_ON.png",
+      "bytes": 445437,
+      "sha256": "7f36f91382bdcee0ed5c1618478357cb96d1fbb16bd103cc2bdb05bd4521c092"
+    },
+    {
+      "file": "SCRIPTS/fs_v12_a36g_real_map050_grid.py",
+      "bytes": 8265,
+      "sha256": "69ef9d8dd0d7c693d6af2fd9f3cfcae1f4389882365d4091fce20320d2bfa50e"
+    },
+    {
+      "file": "SCRIPTS/fs_a36g_r7_c1_five_sources.py",
+      "bytes": 7610,
+      "sha256": "e60f5f96b884d3144b8d48982a2de542ae98d5239cf2d44c8a731a1230542942"
+    },
+    {
+      "file": "SCRIPTS/fs_v13_r7_five_objects_real_native203.py",
+      "bytes": 9972,
+      "sha256": "c8b2285d3f1013ceccd0d9da2cf2353d90113dbe9a6abb08cea070c6775cae17"
+    },
+    {
+      "file": "SCRIPTS/fs_v14_r7_native_dynamic_exits.py",
+      "bytes": 12431,
+      "sha256": "95a71a9fe9e3aa31e2113610fc927cbfbf0062e279307577d95cf435b880da46"
+    },
+    {
+      "file": "SCRIPTS/fs_v14_a36g_dynamic_visual_qa.py",
+      "bytes": 3557,
+      "sha256": "b994e33ef5a53ab3c8ae4f40105236137341230d1d8f258e8eb84a8ed0511b9a"
+    },
+    {
+      "file": "SCRIPTS/v7_source_provenance_visibility.py",
+      "bytes": 1091,
+      "sha256": "31da2cc95b808aed5fbf787b681833180176823c188d92860fd6dfa0fffcca02"
+    },
+    {
+      "file": "SCRIPTS/v7_scan_all_tree_visibility.py",
+      "bytes": 934,
+      "sha256": "abeb0000c43fa7225bc68eb1ea9cf01d2a6e436138dfc8337f45d6f2fb5225b8"
+    },
+    {
+      "file": "SCRIPTS/r7_find_walkable_occlusion_edges.py",
+      "bytes": 1193,
+      "sha256": "7994145d5555dc219802e5b15a8e506235a08a0b53b6136b6fe4704a94d09e3b"
+    },
+    {
+      "file": "HANDOFF/CURRENT_HANDOFF_FS_R7_NATIVE_COLLISION_5SOURCE_20261107.md",
+      "bytes": 8168,
+      "sha256": "f6f9fe8336a2008df823b717d7cacd9df51407e471707c3af377f3db4f4791f2"
+    }
+  ]
+}
