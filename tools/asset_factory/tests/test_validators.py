@@ -148,8 +148,9 @@ class AssetFactoryTests(unittest.TestCase):
 
     def test_map_fails_unreachable_goal(self):
         data = self.map()
+        data["collision"]["walkable"] = [[1, 0], [0, 1]]
         data["collision"]["goal"] = [1, 1]
-        self.assertIn("M_GOAL", self.gates(self.check(data)))
+        self.assertIn("M_REACHABILITY", self.gates(self.check(data)))
 
     def test_map_fails_authoring_ground_drift(self):
         data = self.map()
