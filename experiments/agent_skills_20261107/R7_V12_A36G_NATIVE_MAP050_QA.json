@@ -1,0 +1,36 @@
+{
+  "stage": "FS_AGENT_SKILLS_V12_NATIVE_COLLISION_GRID",
+  "source_map": "A36G_R5_collision_manifest_40x29",
+  "actual_engine": "RPG Maker VX Game.exe RGSS2 + ISS - ParaPassa",
+  "runtime_completed": true,
+  "source_files_unchanged": true,
+  "map050_rebuilt_from_R5_manifest": true,
+  "layer2_tile_changes_from_A36F": 12,
+  "native_table_ids": {
+    "blocked": 768,
+    "free": 769
+  },
+  "map050_reloaded_exact": true,
+  "runtime_row_counts": {
+    "tiles": 29,
+    "edges": 29
+  },
+  "counts": {
+    "tile_checked": 1160,
+    "tile_runtime_passable": 919,
+    "edge_checked": 3544,
+    "edge_runtime_passable": 2830,
+    "blocked_cells_manifest": 241
+  },
+  "tile_mismatch_count": 0,
+  "tile_mismatches": [],
+  "edge_mismatch_count": 0,
+  "edge_mismatches": [],
+  "runtime_errors": [],
+  "manifest_free_cells": 919,
+  "manifest_blocked_cells": 241,
+  "art_approval": "UNVERIFIED",
+  "formal_seal": "NO",
+  "tile_gate": "PASS",
+  "directional_gate": "PASS"
+}
