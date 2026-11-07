@@ -1,6 +1,8 @@
 # Forest Symphony Ground-first direct generation | A35 Source-first QA v1
 Date: 2026-11-02 Asia/Taipei. ACTIVE workflow, no claim of user final approval.
 
+> **2026-11-07 STATUS：舊版本 Source-first/Ground-first 實測，不是新精靈村的現行生圖順序。** 真正 Ground3 視覺驗收、來源版權、Alpha/Collision Gate 仍有效；新畫面一律完整 MASTER 起步、Mask-only + same-pixel source 上層，不准以色彩對似的另生 Ground/PAR 當對位成功。雲端保管 P0：[Drive/GitHub Only](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## Change and evidence
 User accepted the aesthetic direction of an assistant-directly-generated forest canyon image featuring lush native grass, irregular dirt paths, authentic ledges/cliff faces, stairs, cave, shoreline. It was generated directly, NOT by PixelLab. PixelLab is now an optional assist for standalone object variations, no longer mandatory or a reason to block Ground-first production. This is **an evidence-based trial**, not proof every next generation will maintain quality.
 

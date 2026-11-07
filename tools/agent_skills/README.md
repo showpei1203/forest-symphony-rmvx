@@ -1,26 +1,28 @@
 # FS Agent Skills | Isolated integration
 
+**讀取 [現行規則總索引](../../authority/FS_CURRENT_RULES_INDEX_20261107.md) → P0 Cloud-only → FS Skill，再執行實際工具工作。**
+
 **P0 規則 (2026-11-07): 使用者 PC 不得成為任何新成果、驗證證據或備份的儲存位置；僅必要軟體安裝可持久保留。** 所有需要保存的檔案請放 Google Drive／GitHub。以下 `E:\\` 歷史目錄／clone 指令**禁止再當作新的工作或交付路徑**，僅供追溯。必需的 Windows VX 實機測試只能產生最小當次暫存，確認雲端完整後刪除；既有未核對備份的 PC 檔案不直接刪除。完整規範：[FS Cloud-Only Storage Policy](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
 
 The canonical Forest Symphony engine is **RPG Maker VX / RGSS2**. Godot is only a supplementary rendering/test adapter. Read [FS routing skill](../../.agents/skills/fs-rmvx-router/SKILL.md) and project authority before using generic upstream skills.
 
-## Installed pilot
-Machine: `DESKTOP-90VT437`
-Working directory: `E:\FS_AGENT_SKILLS_PILOT_20261106`
+## Historical installed pilot (NOT a new storage or installation instruction)
+Historical verification machine (2026-11-06): `DESKTOP-90VT437`.
+Historical only: `E:\FS_AGENT_SKILLS_PILOT_20261106` is **RETIRED as a destination for new files**. Today use a temporary **ChatGPT/cloud runtime**, save all durable outputs directly to Google Drive/GitHub, verify, then discard temporary copies.
 
 The isolated pilot contains these complete upstream skill folders in `.agents/skills/`: `router`, `create-game-assets`, `procedural-gen`, `level-design`, `godot-tilemap`, `godot-gdscript-headless-testing`, `rpg`, plus the project-specific `fs-rmvx-router`. It does **not** modify A36F, PMD sources or sealed FS runtime.
 
 Upstream: [gamedev-skills/awesome-gamedev-agent-skills](https://github.com/gamedev-skills/awesome-gamedev-agent-skills) at immutable commit
 `19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9` (Apache-2.0). Preserve upstream `SKILL.md`, subdirectories (assets/references/scripts) and license.
 
-## Reproduce
-Requirements: git, Python 3.11+ and Pillow 10+.
+## Reproduce (cloud-only; historical 2026-11-06 test)
+Requirements: git, Python 3.11+ and Pillow 10+. **The commands below are for an ephemeral Linux/cloud runner only; never run them on the user's desktop/PC as a long-term working clone.** Cloud runtime must define `RUNNER_TEMP`; otherwise use Drive/GitHub connector staging instead.
 
 1. Clone upstream into a distinct, untracked pilot folder, and check out the exact commit (never use a floating `main`):
-   `git clone https://github.com/gamedev-skills/awesome-gamedev-agent-skills.git E:\FS_AGENT_SKILLS_PILOT_20261106\upstream`
-   `git -C E:\FS_AGENT_SKILLS_PILOT_20261106\upstream checkout --detach 19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9`
+   `git clone https://github.com/gamedev-skills/awesome-gamedev-agent-skills.git "$RUNNER_TEMP/fs-skills/upstream"  # cloud runner only, NOT user's PC`
+   `git -C "$RUNNER_TEMP/fs-skills/upstream" checkout --detach 19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9  # cloud runner only`
 2. Use `tools/agent_skills/fs_asset_pilot.py` (copy from this repo into the pilot folder or run in place), providing `--upstream`, `--pilot`, `--fs-skill`, `--a36f`, `--pmd`. Set `--fs-skill` to the tracked `.agents/skills/fs-rmvx-router/SKILL.md`.
-3. The script writes `outputs/FS_AGENT_SKILLS_PILOT_QA.json` and `outputs/PMD0001_0003_3FRAME_CONTACT.png`. Review each check; negative transparency gate must fail its deliberately opaque test input.
+3. The script may write **temporary runner** `outputs/FS_AGENT_SKILLS_PILOT_QA.json` and `outputs/PMD0001_0003_3FRAME_CONTACT.png`. Upload persistent outputs to Drive/GitHub, verify SHA/readback and remove runner temporary files. Never keep them on user PC. The negative transparency gate must fail its intentionally opaque input.
 
 ## What was actually demonstrated on 2026-11-06
 - All 7 upstream skills copied with their complete source folders, plus 1 FS routing skill.
@@ -33,7 +35,7 @@ Requirements: git, Python 3.11+ and Pillow 10+.
 - Do not overwrite existing A36F or PMD source files.
 - New map work follows Drive FS Precheck **v3.2** and the shared game-asset authority before generic skills.
 - Skill QA is only metadata/read-only baseline QA. No artistic or in-engine PASS is implied.
-- Rollbacks are isolated: removing the `E:\FS_AGENT_SKILLS_PILOT_20261106` pilot does not touch the FS source projects, GitHub main or canonical archives.
+- Rollbacks are isolated: the old `E:\FS_AGENT_SKILLS_PILOT_20261106` folder is a historical read-only reference, not permission to keep/refresh local copies. Do not delete it until all unique contents are verified to exist in Drive/GitHub; no new work should be written there.
 
 ## 2026-11-06 follow-up: actual FS runtime PAR contract
 

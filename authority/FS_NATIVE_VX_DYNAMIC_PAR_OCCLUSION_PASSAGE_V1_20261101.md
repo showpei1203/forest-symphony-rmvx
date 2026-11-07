@@ -1,5 +1,7 @@
 # FS Native RPG Maker VX Dynamic PAR Occlusion & ParaPassa Authority v1.0
 
+> **2026-11-07 P0 Native QA 儲存覆寫**：原生 Game.exe/ParSwitch203、移動前後遮擋與 544×416 真截圖 Gate 繼續有效，但任何新 Scripts/Map050 測試副本、截圖、JSON 和錄影只可短期在 PC 作必要實機執行，完成後立即移交 Google Drive/可公開 GitHub QA、核對 SHA，並刪除暫存。不可沿用歷史 E: 測試目錄作長期工程。[P0](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 Date: 2026-11-01, A30 isolated VX engineering verified. Status: ACTIVE ENGINE TEST PROCEDURE. Does NOT change any sealed FS production build; user aesthetic acceptance and Formal Seal remain NO.
 
 ## Required source precedence

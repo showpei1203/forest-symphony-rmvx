@@ -1,5 +1,10 @@
 # CURRENT_HANDOFF.md
 
+## CURRENT OVERRIDE 2026-11-07：本檔其他部分是 2026-08 的 Runtime Phase49J/K5 歷史快照
+**GitHub 已可正常存取和更新**，舊「GitHub 遠端發布被封鎖／PENDING」是過期情況，不得再當作操作依據。實際驗證：FS 主 repo `showpei1203/forest-symphony-rmvx`、PR #12 已合併，現行 P0 雲端儲存規則在 [GitHub](FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md) 與 Drive Forest Symphony 中。使用者 PC 不再作成果庫，僅必要安裝及最短實機執行／雲端驗 SHA 後清除。
+**新精靈村地圖當前工作**是 Master-first V3 同源 RGB 局部 PAR + 兩個樹冠 VX 動態實測；碰撞草案對引擎載入 1160/1160、4502/4502 PASS，但屋頂可走遮擋與全圖語意仍待驗證，Formal Seal NO。[最新 Gate](../experiments/agent_skills_20261107/MASTER_FIRST_V3_NATIVE_203_COLLISION_HANDOFF.md)。舊 Phase49J SEALED 與 K5 TEST 的 SHA/狀態均不可因此改寫。
+**每次啟動請先看** [P0＋權威索引](../authority/FS_CURRENT_RULES_INDEX_20261107.md) 和 `.agents/skills/fs-rmvx-router/SKILL.md`，而非只看本 2026-08 舊 Handoff。
+
 ## Purpose
 This is the current conversation-independent handoff for Forest Symphony. New development sessions should first read:
 1. `00_Project_Authority/MASTER_PROJECT_STATE.md`
@@ -15,7 +20,7 @@ This is the current conversation-independent handoff for Forest Symphony. New de
 - A Git source bootstrap was generated from the Phase49J SEALED `Scripts.rvdata`, preserving 505 script entries, original order, Script ID, Script Name metadata, raw Script Content, and per-script SHA-256.
 - Git `main` is staged from Phase49J SEALED source.
 - Git `develop` is staged from K5 and differs in Runtime script content only at TEST page478; Formal Runtime delta remains 0.
-- GitHub remote publication is blocked because the connected GitHub App exposes no installed account / repository access.
+- **Historical 2026-08-18 fact only:** GitHub publication was blocked at the time. **Superseded on 2026-11-07:** connected GitHub repository access now works; current rules/QA and PRs are on `showpei1203/forest-symphony-rmvx`.
 
 ## Latest Real-Machine Results
 - Battle standalone: Phase48A `1388 PASS / 0 FAIL / 0 WARN` — SEALED.
@@ -76,7 +81,7 @@ If K5 passes, formally SEALED Phase49K and then run Final Integrated Soak XI in 
 ## Infrastructure
 - Google Drive: https://drive.google.com/drive/folders/1FMDwuFeyzseu_UK7FKDt_rrl9CQwi-IH
 - Linear: https://linear.app/showpei/project/forest-symphony-f0bfaea8775f
-- GitHub: PENDING — `showpei1203` identity is readable, repository access is not yet granted to the connector.
+- GitHub: https://github.com/showpei1203/forest-symphony-rmvx — connector read, create/update and merge verified on 2026-11-07; old PENDING was historical.
 
-## Last Updated
-2026-08-18 08:23 +08:00
+## Snapshot and Update
+Original historical handoff: 2026-08-18 08:23 +08:00. P0/current master-first supersession added 2026-11-07; original sealed test results unmodified.

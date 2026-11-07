@@ -2,6 +2,8 @@
 狀態：工作流程更新 / ART NOT PROMOTED。只新增隔離 SOP 與 QA，不修改 FS 已封版、其他對話目前施工檔、F1R1 A04 等原資產。
 現行權威：FS v3.2 Scene Manifest + fail-closed Gate A-F；Style-first v4；2026-10-25 v2.8 Ground passability/ART SOP；2026-10-26 F2 G5R3 actor-scale/plant semantics；新需求若衝突以最近、更具體者優先。
 
+> **2026-11-07 現行流程取代提示**：本 V5 SOP 歷史中「優先 Generate Ground-only + 透明 PAR Source」等順序不再主導新精靈村，改依完整 Master-first + source-registered Mask + Authoring/Runtime 四層分離。其風格/QA/版權/場景 Manifest Gate 繼續有效。所有成果都存 Drive/GitHub；`E:\GameAssetToolLab` 只能作歷史參照，不得作新的工作或存檔位置。詳見 [P0](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## 實際現況（從 Windows 與 Drive 檢查）
 - F1R1 A04 已由使用者視覺驗收，SEALED，保持唯讀。v2.1 水井使用者 PASS，v22 神聖樹可玩測試 OK，不能擴張為全部精靈村正式通過。
 - F2 G4 45×34 / 1530 格，真 RGSS2 Game.exe 碰撞及關門/門前通行技術 PASS。但 full Ground donor patch 路面接縫美術 FAIL，人眼未過。

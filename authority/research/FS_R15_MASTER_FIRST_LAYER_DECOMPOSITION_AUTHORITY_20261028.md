@@ -1,5 +1,7 @@
 # Forest Symphony R15｜美術品質 × 正確 PAR 的根因研究及新流程 Authority｜2026-10-28
 
+> **2026-11-07 新規則**：本 R15 提出 Master-first 是有效前導研究，現行實測是新版 V3。仍必須區分四圖（作者 GroundOnly+CompletePAR／Runtime FullGround+OcclusionPAR）、使用同 MASTER XY RGB 與真實 VX 203/Map050，且先做 ART Gate；不是 Godot 先行。所有產出與證據改存 Drive/GitHub，嚴禁長期保留 PC 執行資料。詳見 [P0](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md) 與 [V3 Handoff](../../experiments/agent_skills_20261107/MASTER_FIRST_V3_NATIVE_203_COLLISION_HANDOFF.md)。
+
 ## 00 判定
 **R15 已驗證：從完整高品質美術母圖出發，在不重拼Tileset、不重繪Ground、不縮小畫布的前提下，Godot可以保留原1280×928全圖100% RGB原樣，並以獨立前景Mask做有深度的角色遮擋；但「全場PAR語義邊界完美自動擷取」尚未解決，User Art Gate F HOLD。**
 

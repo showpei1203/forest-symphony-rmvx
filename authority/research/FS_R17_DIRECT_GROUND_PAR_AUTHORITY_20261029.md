@@ -1,6 +1,8 @@
 # Forest Symphony｜正式修正 Authority：直接產生 GROUND + PAR 雙圖層
 日期：2026-10-29｜版本：R17-DIRECT-LAYERS-v1.0｜Priority: HIGH｜原 FS/K4 SEALED 不變
 
+> **SUPERSEDED 2026-11-07：雖然本文件曾標稱「正式/最終」，使用者後續明確換成「完整 MASTER 先生成，再分出 Ground/PAR」。** 不可再依此版讓 AI 分別繪製兩張場景 RGB。必須同母圖 XY 來源對位且 VX 原生人物／碰撞 Gate 獨立驗證。所有儲存只到 Drive/GitHub，PC 必要安裝/短時執行後清理。見 [P0](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)；歷史內容僅為 R17 失敗研究紀錄。
+
 ## 0. 使用者最終決定（優先於歷來R8～R17任何衝突段落）
 **「妳的 PAR 跟 Ground 可以正確生成就不必再去裁切 PAR；我最後會把 PAR+Ground 合併成新的 Ground，然後用上 PAR，再用腳本由我自己設置通行度。」**
 本 Authority 直接取代「先產完整 Master、事後 SAM2／GrabCut 逆切 PAR、再編譯 Collision」作為**正式生產程序**。前述R12-R17的分割測試保留為研究及負例，禁止作為今後默認流程。

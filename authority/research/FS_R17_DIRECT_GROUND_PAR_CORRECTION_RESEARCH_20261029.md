@@ -1,5 +1,7 @@
 # R17 使用者修正驗證：真正直接 Ground + PAR，不再逆向裁切｜2026-10-29
 
+> **HISTORICAL / NOT CURRENT (2026-11-07)**：以下「直接雙圖而非逆向切割」為 2026-10-29 指令歷史，已由使用者新的 Master-first 策略更新。新圖必須從完整母圖使用 AI 只提議分層 MASK 與隱藏地表，再以原母圖 RGB 取得同源前景。不可把舊結論重新提升為較新的權威。儲存 P0：[Drive/GitHub Only](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## 結論
 使用者確認最終遊戲工作方法：**助手只生產/驗證 Ground.png 地面原圖及 PAR.png 真透明立體物件圖；使用者自己疊成新的完整 Ground，再上 PAR，使用FS現有通行度腳本自行設Passability。** 因此取消本流程原本要求助手先生成完整Master→SAM2/GrabCut切PAR、腳本自動Collision、原生VX每版測試等全部必要Gate。若另日特別要求Game.exe驗收可再做；不能默默回復。
 

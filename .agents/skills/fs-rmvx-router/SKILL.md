@@ -5,6 +5,8 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 
 # Forest Symphony | Project-first Agent Skill
 
+> **現行規則入口（2026-11-07）**：先讀 [FS Current Rules Index](../../../authority/FS_CURRENT_RULES_INDEX_20261107.md) → P0 Storage → 共用製作 Authority → FS Precheck；先別讓舊 Handoff 的本機路徑或獨立兩張 AI 地圖生成覆蓋最新決議。
+
 ## P0 強制儲存規則（2026-11-07）：使用者 PC 不存任何新成果
 **使用者明確指令：「之後除非必要的安裝，任何需要儲存的東西請都放在DRIVE/GITHUB，不要放在我的PC裡。」**
 - 所有新建且需要保留的 PNG／Ground／PAR／素材／ZIP／Game.exe 驗證證據／截圖／Log／Handoff／備份，必須存 **Google Drive**；程式碼、規範、Manifest、QA／版控優先存 **GitHub**。私人或授權不明美術切勿推公開 GitHub。
@@ -12,6 +14,8 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 - 唯一容許的持久本機例外是必要軟體／驅動／Runtime 安裝。若 Windows VX 實機測試技術上需要短暫本機副本，只能最小隔離暫用，當次上傳 Drive／GitHub、驗證雜湊後刪除，**不得保留測試工程、截圖、ZIP 或長期備份**。無法驗證清理時必須回報，不能假稱清乾淨。
 - 既有 PC 歷史成果**不可**不經雲端完整性確認就刪除。每次交付必須附雲端 ID／URL，明確說明是否有未清理 PC 暫存。
 - **本 P0 優先於**任何舊版 Readme、Handoff、本機 clone/working directory 步驟。權威：[FS Cloud-Only Storage Policy](../../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
+**執行前特別檢查：** GitHub 舊 Python/Ruby/CMD 腳本可能硬編碼 E:\\、C:\\ 或 PC 同步磁碟 G:\\ 作為 output。這些腳本即使已收錄 GitHub，**未移除本機輸出或提供僅必要 VX 臨時執行／結束清理機制前不可直接跑**；文件改寫不會自動修復舊腳本。
 
 ## NEW experimental map pipeline: one MASTER image -> AI semantic masks -> source-registered Ground/PAR (2026-11-07)
 - **Scope is the new elf-village trial, NOT retroactive approval or overwrite of A36F/A36G/A36H.** Use original approved FS Ground3 as visual quality reference, but let the user select a new complete single **MASTER** image as the scene's pixel-coordinate authority. This is a strategy switch from independently generating Ground and PAR to *single master first*. Original 1473×1068 generated example, target VX 40×29×32 = 1280×928.

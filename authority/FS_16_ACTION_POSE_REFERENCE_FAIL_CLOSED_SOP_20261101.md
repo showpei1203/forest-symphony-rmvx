@@ -1,5 +1,7 @@
 # FS 16動作三幀骨架權威參考與省額度作業規範（2026-11-01）
 
+> **2026-11-07 P0 Cloud-only 覆寫**：本文件 16 動作骨架/45°/三幀等角色 QA 規格仍有效；所有新 Sprite、參考圖、GIF、PixelLab 輸出、驗證截圖與備份保存至私人 Google Drive，程式/規範保存 GitHub，不准把使用者 PC 當成果工作區。必要軟體安裝/短期 VX 原生 QA 執行例外仍須雲端 SHA 驗證後清理。見 [P0](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 來源：使用者提供 300×519 PNG，16列、每列三個人物姿勢。來源像素 SHA256：ba786a21f2fac0874d78b3332967a0717ca1b9f8206c365b39bf741a0b80d5be。這是動作參考，不是可直接導入FS的40×40戰鬥SPRITE。鏡頭與角色外觀仍以FS原版 `$actor01_1/_2/_3` 的45度SBS素材為權威。**先解析動作骨架，絕不能直接用PixelLab文字提示賭結果。**
 
 ## 關鍵發現：Moving to Close Attack三幀欄位
