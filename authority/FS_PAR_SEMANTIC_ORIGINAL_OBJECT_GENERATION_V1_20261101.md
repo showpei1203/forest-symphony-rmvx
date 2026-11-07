@@ -3,6 +3,8 @@ Date: 2026-11-01 (Asia/Taipei)
 Status: ACTIVE USER AUTHORIZATION (conditional); NO VISUAL SEAL or ENGINE SEAL implied.
 Scope: FS Stage16 Ground/PAR and following maps only; separate from SBS/PMD animation projects.
 
+> **2026-11-07 FS Master-first 特別規則**：新精靈村可以新設計 PAR 物件/樹種，但正式同源分層的可見 RGB 必須從一張已凍結 MASTER 相同 XY 擷取；AI 另外重新繪製的透明物件僅是尚未對位的新素材提案，不能直接當成原 Master 遮擋 PAR。作者層所有地上物件與 Runtime 人物前景遮擋需分開輸出。原樣保留本頁物件 Alpha/完整輪廓/Style QA；所有產物保存 Drive/GitHub，PC 僅必要安裝及雲端驗證後清理的短期 VX Runtime。[P0](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
+
 ## User authorization, precise interpretation
 After the target art style is established, a PAR object MAY be independently generated or designed according to scene semantics and user descriptions. It no longer has to be an exact pre-existing asset from the reference library. Existing source assets remain the style reference / source-of-truth for **provenance**, not a closed whitelist of permissible object designs.
 The A29 scene has **NOT** acquired independent final visual approval. The authorization does not convert A29 into a visual PASS and does not authorize rewriting or replacing locked original Ground.
