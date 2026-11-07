@@ -5,10 +5,10 @@
 ## Authority and exact deliverables
 - Public repo showpei1203/forest-symphony-rmvx / branch feat/fs-asset-factory-v1-20261107, **Draft PR #15**, unmerged to main.
 - Global P0 Cloud-Only: https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit
-- [A06 private full Handoff](https://docs.google.com/document/d/1_FV0wfG1o9gxe1r2cznJLfvRggwU7i3HE19EY_SHP34/edit)
-- [A06 private real-image and grid QA](https://docs.google.com/document/d/1Tf8bNLr2zASrZfyafSpuH2QKeKBZxoVzXzPxknCABgc/edit)
-- [A06 private layered V4 image/collision candidate ZIP](https://drive.google.com/file/d/12xCWLfj1EFDOlNEAZkOl47wswppVdhBf/view): size 10457859 bytes; SHA256 48af22427d0ba7560c19b8c16dbaf23f15d2076c5af7073155b66b5a469ecaf6. Uploaded via authenticated Drive, fetched back and SHA256 + CRC passed. Never publish game-art PNGs in public repo.
-- [A06 private deterministic rebuilding scripts ZIP](https://drive.google.com/file/d/1dvrRObpv2t2oZcW69W0cUOjg3tIWl2gs/view): size 11497 bytes; SHA256 ab7a51bf367d67f92853663a6eaea9bef84d0cb8bb1bc79a0372afa601d29876.
+- A06 private full Handoff (private Drive authority index)
+- A06 private real-image and grid QA (private Drive authority index)
+- A06 private layered V4 image/collision candidate ZIP (restricted private Drive; locate by filename in 05_Handoff): size 10457859 bytes; SHA256 48af22427d0ba7560c19b8c16dbaf23f15d2076c5af7073155b66b5a469ecaf6. Uploaded via authenticated Drive, fetched back and SHA256 + CRC passed. Never publish game-art PNGs in public repo.
+- A06 private deterministic rebuilding scripts ZIP (restricted private Drive; locate by filename in 05_Handoff): size 11497 bytes; SHA256 ab7a51bf367d67f92853663a6eaea9bef84d0cb8bb1bc79a0372afa601d29876.
 - [Public source-independent technical QA (no artwork)](A06_V4_REAL_COLLISION_BRIDGE_PAR_QA_20261108.md), [A05 predecessor](A05_REAL_EXPORT_AND_AUTHORING_GAP_QA_20261108.md), [original source metadata](SOURCE_INVENTORY_A02_20261107.md).
 
 ## A06 actual progress (isolated real SOURCE images, not a Game.exe update)
@@ -50,3 +50,7 @@ Original A26 2026-11-01 Handoff: https://docs.google.com/document/d/1d6PViz9qJHU
 5. Bring true Orca S1/M1 under verified read-only/approval settings for independent adversarial reviews. Deliver another Drive + GitHub versioned Handoff with final-head real CI and native/art outcome.
 
 Rollback candidate branch only. No sealed source overwritten.
+
+
+## Private-art security rule (A06 correction)
+Public source documents must NEVER contain direct download URLs for protected PNG/ZIP or private Drive documents that expose those links. The private Drive artifacts and named source archives are located through the owner's private FS authority index. During A06 Drive metadata verification both new artifact ZIPs had anyone-with-link reader permissions; this is **NOT restricted access**. Owner must change sharing to Restricted in Google Drive; no permission-revocation tool was available in this session. No raw image bytes are in public GitHub.
