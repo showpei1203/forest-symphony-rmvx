@@ -1,0 +1,100 @@
+{
+  "a36g_r4_north_west": {
+    "source_slices": 5,
+    "world_bounds": [
+      310,
+      -145,
+      464,
+      432
+    ],
+    "original_alpha_opaque": 126712,
+    "void_pixels_filled": 456,
+    "fill_where_blocked_or_outside_canvas": true,
+    "whole_before_sha": "a06840ddfa8801a59b544091cd7391b39feb75165e7de9605914e6788b72080b",
+    "whole_after_sha": "80ae2717af3e2ecbccf88d76b83cc57805f280735b6c2a07b4655a6a56a873a6"
+  },
+  "a36g_r4_north_east": {
+    "source_slices": 5,
+    "world_bounds": [
+      714,
+      -140,
+      464,
+      432
+    ],
+    "original_alpha_opaque": 160505,
+    "void_pixels_filled": 371,
+    "fill_where_blocked_or_outside_canvas": true,
+    "whole_before_sha": "a14df2350107bbfacca4ccb50869289a11d97844622288916be4cbf4af903b78",
+    "whole_after_sha": "5102457962deb518d7b395d4e612e59db1c275396c8234d6e07e97be8e08ce63"
+  },
+  "a36g_pixellab_west": {
+    "source_slices": 6,
+    "world_bounds": [
+      -112,
+      -110,
+      464,
+      576
+    ],
+    "original_alpha_opaque": 189991,
+    "void_pixels_filled": 2197,
+    "fill_where_blocked_or_outside_canvas": true,
+    "whole_before_sha": "0564fc4069705d53f4410dd7804a4258f21ce7540682f2d2359b6f2032b563f6",
+    "whole_after_sha": "d8106ced4b5337f8ca299fca63db97774508ea05588a6f2c040f31dadc600421"
+  },
+  "a36g_r4_east": {
+    "source_slices": 7,
+    "world_bounds": [
+      976,
+      260,
+      464,
+      564
+    ],
+    "original_alpha_opaque": 155516,
+    "void_pixels_filled": 539,
+    "fill_where_blocked_or_outside_canvas": true,
+    "whole_before_sha": "5ccc9af9dfe0018af6ab8a8d957e4e2b8c8ac2b179e0c117d22b47461481e1ac",
+    "whole_after_sha": "5fbe3c6244ad3698cffa3cd84c721f02c4cf1e7fd5623c5869b73fa51f028836"
+  },
+  "a36g_r4_south_west": {
+    "source_slices": 7,
+    "world_bounds": [
+      -86,
+      435,
+      464,
+      552
+    ],
+    "original_alpha_opaque": 159001,
+    "void_pixels_filled": 2471,
+    "fill_where_blocked_or_outside_canvas": true,
+    "whole_before_sha": "b20dde464a6206cc62c29b844cda5ce14c9e1531f79b3514a9b4e386cff963ae",
+    "whole_after_sha": "d6fc4d1c3d0b5fe19f34e1238319a8247e022501911c20def51fc926b0546c84"
+  },
+  "a36g_r4_south_centre": {
+    "source_slices": 7,
+    "world_bounds": [
+      322,
+      535,
+      464,
+      552
+    ],
+    "original_alpha_opaque": 144167,
+    "void_pixels_filled": 641,
+    "fill_where_blocked_or_outside_canvas": true,
+    "whole_before_sha": "78f2380b1887fe07642101d2ba2b1e0ca3cfe2aa70fa0ee4c11cf7ffadcf0244",
+    "whole_after_sha": "b4fc2c8d43b6a197cbd990a9a4f5a4f71a12e54db3b093f197ed5fb56fbdc287"
+  },
+  "a36g_r4_south_east": {
+    "source_slices": 7,
+    "world_bounds": [
+      754,
+      545,
+      464,
+      552
+    ],
+    "original_alpha_opaque": 145416,
+    "void_pixels_filled": 2365,
+    "fill_where_blocked_or_outside_canvas": true,
+    "whole_before_sha": "2d18723e985bc339c0c7ea0498b84085a8460688438c41bd2d79ab993868114d",
+    "whole_after_sha": "c3f159d75912070d76bec45f2455617e1e8701cdc29a511fb988d483a87a0693"
+  }
+}
