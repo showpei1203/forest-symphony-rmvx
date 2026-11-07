@@ -1,0 +1,200 @@
+{
+  "schema": "fs-sprite-archetypes/v1",
+  "version": "A08-20261108",
+  "native_format_source": "real private PMD ZIP AnimData.xml, dynamically inspected at build time",
+  "direction_row_order": "SOURCE_LOOKUP_PENDING",
+  "families": [
+    {
+      "id": "pmd0001_quadruped",
+      "type": "quadruped_small",
+      "native_target": "PMD_XML",
+      "native_source_zip_sha256": "23309b50c0a07a7321950407f0417bc501985ba5efe4f3b45472ad457582832f",
+      "pilot_actions": {
+        "Idle": {
+          "cell": [
+            32,
+            40
+          ],
+          "frames": 3,
+          "durations": [
+            40,
+            6,
+            6
+          ],
+          "rows": 8
+        },
+        "Walk": {
+          "cell": [
+            40,
+            40
+          ],
+          "frames": 6,
+          "durations": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "rows": 8
+        },
+        "Attack": {
+          "cell": [
+            64,
+            72
+          ],
+          "frames": 11,
+          "rows": 8
+        }
+      },
+      "art_approval": "A25_LOOK_REFERENCE_ONLY; A26_5FRAME_ACTIONS_UNAPPROVED",
+      "concept_sha256": null,
+      "production_ready": false
+    },
+    {
+      "id": "pmd0002_quadruped",
+      "type": "quadruped_medium",
+      "native_target": "PMD_XML",
+      "native_source_zip_sha256": "309a19d3be249411e7ec9e2c3d546638a00660c7e34a76bf4c8ac5b373f46818",
+      "pilot_actions": {
+        "Idle": {
+          "cell": [
+            32,
+            32
+          ],
+          "frames": 4,
+          "durations": [
+            40,
+            12,
+            12,
+            12
+          ],
+          "rows": 8
+        },
+        "Walk": {
+          "cell": [
+            32,
+            32
+          ],
+          "frames": 4,
+          "durations": [
+            8,
+            10,
+            8,
+            10
+          ],
+          "rows": 8
+        },
+        "Attack": {
+          "cell": [
+            64,
+            64
+          ],
+          "frames": 9,
+          "rows": 8
+        }
+      },
+      "art_approval": "LAVA_VARIANT_NOT_SEALED",
+      "concept_sha256": null,
+      "production_ready": false
+    },
+    {
+      "id": "pmd0003_quadruped",
+      "type": "quadruped_large",
+      "native_target": "PMD_XML",
+      "native_source_zip_sha256": "eee94e4fb8e388c5f685db53f36ef470e0088959d9b0a9a3bef3cae712578e97",
+      "pilot_actions": {
+        "Idle": {
+          "cell": [
+            32,
+            32
+          ],
+          "frames": 4,
+          "durations": [
+            30,
+            16,
+            12,
+            16
+          ],
+          "rows": 8
+        },
+        "Walk": {
+          "cell": [
+            32,
+            32
+          ],
+          "frames": 4,
+          "durations": [
+            8,
+            16,
+            8,
+            16
+          ],
+          "rows": 8
+        },
+        "Attack": {
+          "cell": [
+            72,
+            72
+          ],
+          "frames": 11,
+          "rows": 8
+        }
+      },
+      "art_approval": "LAVA_VARIANT_NOT_SEALED",
+      "concept_sha256": null,
+      "production_ready": false
+    },
+    {
+      "id": "actor01_a62_battle",
+      "type": "humanoid_medium",
+      "native_target": "FS_ACTOR_SBS",
+      "approved_reference_sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+      "approved_run_strip_sha256": "ea063e6ec2db5caf3bddb2dd0b277d888f60e65fe6392bccdad4fdcc34274d5f",
+      "pilot_actions": {
+        "Moving_to_Close_Attack": {
+          "cell": [
+            48,
+            48
+          ],
+          "stored_frames": 3,
+          "playback": [
+            0,
+            1,
+            0,
+            2
+          ],
+          "approved_scope": "A62_RUN_MOTION_ONLY"
+        }
+      },
+      "unarmed_base": true,
+      "weapon_layer": "SEPARATE_PAPER_DOLL",
+      "native_Tankentai_export_verified": false
+    }
+  ],
+  "required_metrics": [
+    "frame_cell",
+    "alpha",
+    "palette_source",
+    "anchor_jitter",
+    "bbox_delta",
+    "pixel_frame_delta",
+    "silhouette_iou",
+    "loop_closure",
+    "distinct_left_right_foot",
+    "direction_identity",
+    "visual_species_identity"
+  ],
+  "hard_fail_on": [
+    "unverified_approved_art",
+    "native_frame_count_guess",
+    "copyof_as_physical_sheet",
+    "weapon_baked_into_actor_base",
+    "identical_pmd_direction_rows_claimed_eight_direction_art"
+  ],
+  "cost_policy": {
+    "maximum_new_generation_calls": 0,
+    "provider_generated_output": "HOLD_UNTIL_APPROVAL"
+  }
+}
