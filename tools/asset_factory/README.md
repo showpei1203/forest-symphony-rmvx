@@ -86,3 +86,14 @@ Before ending **every FS iteration**, write \`docs/asset_factory/CURRENT_HANDOFF
 - [A02 actual-source inventory](../../docs/asset_factory/SOURCE_INVENTORY_A02_20261107.md): ZIP/XML/selected PNG SHA and original action-specific native metadata, **no protected artwork**.
 
 Private approved source downloads and bytes belong to Drive/isolated runtime, never public Actions artifacts. Every pass here is STATIC ONLY. User art, 45° identity, per-object occlusion semantics, Tankentai/VX native and formal seal remain independent PENDING/NOT_RUN.
+
+
+## A03: private-data offline source checks (2026-11-08)
+- adapters/private_zip_scan.py scans a SHA-locked PMD ZIP entirely in memory, never extracts entries to a user's PC, fails closed for wrong SHA, ZIP path traversal, duplicate names, missing AnimData.xml / native Anim-Offsets-Shadow files or invalid species-specific geometry. Input is **private Drive ZIP bytes in an isolated runtime**; outputs contain only source metadata, never source PNG/XML/ZIP.
+- adapters/runtime_masks.py validates one real Master-first 32px-grid Runtime FullGround + Runtime OcclusionPAR pair against individually SHA-pinned object mask files. All Runtime PAR alpha must be owned by exactly one binary mask. The overlay RGB must equal the same Master XY under alpha. This **does not validate the entire Authoring CompletePAR object list** or infer walkable-footpoint roof semantics.
+- tests/test_a03_private_runtime.py adds 11 synthetic positive/negative tests, for a total of 40 with A01/A02.
+- An actual isolated scan using the *same committed source blob* was run against 6 historical private PMD folders (116 action atlases / 348 native PNG checks) and Master-first V3's 4 object runtime masks (118,425 owned pixels, no overlaps). It also checked the A62 approved 48px running-reference strip. These are **source-static tests, not engine/art approval**.
+- [A03 official private source QA](https://docs.google.com/document/d/11fCR2Z6gmIAZzDTHZbnSse5jFwi4v0sVuYnj_mz1byg/edit) and [A03 official private Handoff](https://docs.google.com/document/d/1YtPce0j-Sy86H335TuLdeGDMEgFFkQ0QdvroAHBjPIo/edit). Current [A03 active Handoff](../../docs/asset_factory/CURRENT_HANDOFF.md) separates true-private-source, synthetic CI, native and art gates.
+- Any A26 approved lava Idle/Walk binary that exists only in old local documentation must be recovered and source-locked independently before export. Original PMD native source names/geometry are not substitutes for approved art.
+
+CI on public GitHub uses only generated synthetic pixels. Any real-data runner is **local to isolated ChatGPT scratch/private Drive**, not triggered automatically by a public PR. No PixelLab API is called by these scripts.
