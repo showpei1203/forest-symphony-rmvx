@@ -1,3 +1,5 @@
+> **A11 單一現行 Asset Factory 規範（2026-11-08）**：所有 FS Ground/PAR 和 Battle Sprite 製作，完成 GLOBAL HARD RULE／P0 確認後，先讀 [唯一現行總規範](authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)，再讀 [CURRENT_HANDOFF](docs/asset_factory/CURRENT_HANDOFF.md)。舊 P5 三幀與 A08 Template-first 不得覆寫現行的 Master/F0 美術保真優先路線及原生 PMD XML 幀數。
+
 # Repository Agent Rules
 
 ## GLOBAL HARD RULES 001 · 2026-11-07 · 優先於所有舊專案 SOP
