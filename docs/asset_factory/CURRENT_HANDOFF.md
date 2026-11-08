@@ -2,6 +2,18 @@
 
 **現行唯一規則**：[ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本檔僅記錄實際工程進度，不是新政策。先前 A14 全文已[完整 SHA 不變封存](history/A14_CURRENT_HANDOFF_ARCHIVED_BEFORE_A15_20261108.md)，A13、A11 和 A10 失敗／驗收紀錄也在各自 QA 文件，不應混成現行待辦。
 
+## Orca／Codex 工具連線勘誤（2026-11-08，A15 後立即確認）
+
+**不得再說「沒有 `PIXELLAB_API_TOKEN` 系統環境變數＝PixelLab 未連線」**。已再次在使用者授權桌機 DESKTOP-90VT437（Remote Desktop Commander 只讀）確認：
+- `Orca.exe` 多個程序正在執行，`codex` CLI 已安裝，並非未配置 Orca。
+- `codex mcp list` 顯示 **pixellab enabled / Bearer token / URL `https://api.pixellab.ai/mcp`**。
+- `codex mcp get pixellab` 進一步確認目前 `enabled_tools` **僅六個唯讀能力**：`get_balance`、`list_jobs`、`list_characters`、`list_objects`、`list_images`、`search_help`。**Skeleton v3 動畫生成不在允許清單內**；不應誤稱「已能呼叫付費生成」。
+- 歷史 Orca／Codex 工作流：FS 已使用 Orca Agent 1 Sprite QA、Agent 2 Map QA 等角色；PixelLab MCP 先前曾經從 Orca／Codex 成功讀取餘額（歷史 1414.80 credits，**不是目前餘額**），所以不能只查外部 PowerShell 的環境變數判斷可用性。
+- 本輪試以暫時、唯讀 `codex exec --ephemeral --sandbox read-only` 呼叫 `get_balance`，該工作長時間沒有可讀回覆，**已主動中止本輪啟動的 session 19500**。目前「新一次餘額 API 認證成功」**未確認**；舊 get_balance 歷史成功不能當現在的有效連線。
+- 先前 Orca Agent 曾使用寬鬆 YOLO 權限，使用者要求以人工核准／唯讀方式保護原工程；**新 Orca Agent 及付費 PixelLab 生成均未啟動**。禁止在未驗證 approval 模式前交給 Orca 自動寫正式工程。
+- 分工仍是：ChatGPT＝FS Master/F0 美術與權威、官方規格核對、Drive 私有素材與 GitHub Draft PR/Handoff；Orca／Codex＝受限任務分派、Sprite/Map 獨立 QA、對來源與運動提出反證；PixelLab＝需要授權與明確點數上限時才做真正新動畫；原生 Game.exe＝另行授權的隔離測試。
+- **下一步先在 Orca／Codex 現有環境確認 PixelLab MCP 是否可完成新 read-only `get_balance`，然後才評估是否安全增加一次 `animate-with-skeleton-v3` 工具權限**。當前 A15 F0＋18-joint JSON 可以用作一筆 RUN 3 幀的批准測試；未取得使用者明確付費授權及安全核對前不得送出。
+
 ## 本輪真正完成：官方 Skeleton v3 48px 輸入轉換
 
 - 用授權遠端 Windows PC 的**唯讀公開 HTTPS**，實際取得 PixelLab 官方 `/v2/openapi.json` 中的 `AnimateWithSkeletonV3Request`、`Keypoint-Input` 和 `SkeletonLabel`。完全沒有讀取 API token 或提交推論。
