@@ -1,3 +1,18 @@
+# FS AI Asset Factory CURRENT_HANDOFF | A18 2026-11-09
+
+**唯一施工規則：** [ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本段只是最新施工實況，不覆寫規則。**最新 A18 仍無新的 PixelLab Sprite**。
+
+## A18 本輪已實作
+- 直接下載並核驗 A17 私有 Drive ZIP，14 檔、55,740 bytes、SHA256 `6598d46e0840c5cfb1c9570f28d38848d43e3f97498fc8cba647fd24f09bee65`。未變更 F0/A62/歷史 A17。
+- 從真實 A17 18-joint JSON 發現 A17「雙腳交替」不能代表「腿長合理」：F2 RIGHT HIP→KNEE 約 8.06px、基準 3.61px（約 2.24 倍）；F1 雙臂並無真正反向前領。
+- 公開新程式 [A18 rig gate](../../tools/asset_factory/a18_run_anatomy_preflight.py)：足點**相對髖部**的投影、手臂**相對肩部**的反向相位、上下肢 8 段長度、finite 坐標、18 官方 label、F0 SHA 與舊版位置守衛。已有一組 A18 原始畫布座標候選，補救 F1 手臂與 F2 腿/右臂；並提供只在 RAM 內修補 A17 私有 JSON 的函式，不會上傳原始 base64。
+- 本輪 7 個新 synthetic regression case 已執行，與舊測試一起 [GitHub Actions 42529509257](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42529509257) **126/126 PASS**。這是公開 CI 結果，不是 PixelLab ART。
+- 真實 A17 以及 A18 提案的原始數值比對詳見 [A18 QA](A18_RUN_RIG_ANATOMY_COUNTERPHASE_QA_20261109.md)。A18 F1/F2 骨段對 F0 比例約 0.90～1.34、髖相對左右腳投影候選 `[+7,+14,-13]`、肩相對雙臂 `[+2,-4,+7]`；A17 F0 不完全中立，1x ART 仍可能 FAIL。
+- **狀態誠實區分**：A17 ZIP VERIFIED；A17 anatomy **FAIL**；A18 **CANDIDATE_ONLY**；真實 A18 經供應商輸出 **0**，PRIVATE_A18_ZIP **NOT_UPLOADED**，PixelLab 額度消耗 **0**，VX **NOT_RUN**；PR #15 仍 Draft、main 不動。
+- **下一件實際工作：** 只有在明確核准一次付費、允許受限 MCP `animate-with-skeleton-v3` 工具，並取得可靠的 read-only/approval 狀態後，以 A17 私有請求在記憶體套 A18 修正並提交**一次**，保存 provider 原始三幀及 job ID，做 48×48/Alpha/角色/F0/左右腳/反擺臂/1x ART/VX 分開驗收。禁止暗自改 allowlist、存取密鑰或重複付費。未解鎖即 **PROVIDER_BLOCKED**。
+
+---
+
 # FS AI Asset Factory CURRENT_HANDOFF | A17 2026-11-08
 
 **唯一現行施工規則**：[ACTIVE_MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。這是交接進度，不是另外一套新規則。A15/A16 的原始 evidence 以下保留。**A17 只修好了骨架意圖，沒有生成 1 張新 Sprite。**
