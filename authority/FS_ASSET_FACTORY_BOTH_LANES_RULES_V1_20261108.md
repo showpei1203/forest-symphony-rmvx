@@ -1,3 +1,5 @@
+> **SUPERSEDED_METHOD｜A11**：本 A08 方法保留供研究與程式驗證。現行作畫優先順序已由 [FS 唯一現行總規範](FS_ASSET_FACTORY_ACTIVE_MASTER.md) 覆寫。Template-first 為備選 M-B，不再自動壓過高品質 Master/F0 保真優先。
+
 # FS Asset Factory | Shared authority for Sprite + Ground/PAR — A08
 Effective: 2026-11-08. User-requested 22-page PixelLab-led report review, actual FS source overrides illustrative examples. No main override; active feature branch PR #15.
 
