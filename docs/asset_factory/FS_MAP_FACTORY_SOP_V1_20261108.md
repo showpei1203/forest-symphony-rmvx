@@ -1,3 +1,5 @@
+> **REFERENCE_ONLY｜A11**：保留物件家族、四圖與碰撞技術；現行優先試驗為 [唯一現行總規範](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md) 的 M-A「高品質完整 Master→同源像素分層」。本 SOP 原先獨立物件家族先行是 M-B 備選／量產法。
+
 # FS Master-first Ground/PAR Map Factory SOP V1 — scene-scale, semantic-source-first
 Authority: user's 22-page production report pp9-11,18-20 + verified FS 4-layer Master-first / RGSS2 32px scheme, 2026-11-08.
 Goal: many coherent, high-quality elf-village/forest maps in a repeatable authoring recipe, NOT hundreds of manual alpha mask revisions.
