@@ -1,3 +1,19 @@
+# FS AI Asset Factory CURRENT_HANDOFF | A17 2026-11-08
+
+**唯一現行施工規則**：[ACTIVE_MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。這是交接進度，不是另外一套新規則。A15/A16 的原始 evidence 以下保留。**A17 只修好了骨架意圖，沒有生成 1 張新 Sprite。**
+
+## A17 真正更新
+- 重新讀取 A15 的 owner-only 真實 ZIP，校對原始白髮／深綠 Actor F0（SHA `a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba`）及核准 A62 三姿勢，來源位元保持不變。
+- 找到 A15 v3 RUN 的運動語意失敗：前進方向 SW 的「左腳－右腳領先距離」`[13,15,13]`px，兩個 stride 同一隻腳領先；原 F0 右肘／右腕關節偏離可見輪廓約 2／3.16px。
+- 新私人 A17 v3 RUN 請求修正為 `[13,20,-18]`px（明確交換領先腳），關節定位 0px 偏離來源 Alpha，官方 A15 `validate_payload` **PASS_LOCAL**。這是新骨架候選，*不是*取得 provider 的新 PNG；交叉腿是否自然尚需真實美術驗收。
+- Google Drive owner-only 新私有檔案 `FS_A17_TRUE_F0_RUN_POSE_PREFLIGHT_CORRECTED_20261108.zip`：**55,740 bytes／14 files／SHA256 `6598d46e0840c5cfb1c9570f28d38848d43e3f97498fc8cba647fd24f09bee65`**，已上傳＋下載回讀 SHA/CRC，原 A15 RUN/WAITING 和原始角色不覆寫。
+- 公開 [A17 真實 QA](A17_REAL_F0_RUN_SKELETON_GAIT_PREFLIGHT_20261108.md) 和 `tools/asset_factory/a17_run_gait_preflight.py`、`tests/test_a17_run_gait_preflight.py`，不含私有 F0 或 token。
+- Remote Desktop Commander 只讀 `codex mcp get pixellab` 2026-11-08 再驗：PixelLab enabled，但 `enabled_tools` 仍只准 `get_balance,list_jobs,list_characters,list_objects,list_images,search_help`。**沒有可用的付費動畫生成 action**；未修改 allowlist、未偷讀 token、未提交請求、扣額 0。
+- **下一件真正工作**：使用者核准一筆明確的 3-frame 付費測試與安全工具權限後，提交私有修正 RUN JSON 一次；保存 provider 原始三幀，核對白髮角色身份、48px Alpha、左/右腳步態與 VX 動作，不合格只處理骨架家族問題，不重複騙過 ART gate。若權限未開，保持 `BLOCKED_PROVIDER`，不能再拿骨架示意圖當新美術。
+- Gates：SOURCE PASS；POSE_GEOMETRY_PASS_LOCAL；NEW_ANIMATION 0；USER_ART NOT_RUN；NATIVE_VX NOT_RUN；PIXELLAB_CALLS 0；MAIN UNCHANGED；FORMAL_SEAL NO。
+
+---
+
 # FS AI Asset Factory CURRENT_HANDOFF｜A15（2026-11-08）
 
 **現行唯一規則**：[ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本檔僅記錄實際工程進度，不是新政策。先前 A14 全文已[完整 SHA 不變封存](history/A14_CURRENT_HANDOFF_ARCHIVED_BEFORE_A15_20261108.md)，A13、A11 和 A10 失敗／驗收紀錄也在各自 QA 文件，不應混成現行待辦。
