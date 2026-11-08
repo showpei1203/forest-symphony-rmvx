@@ -1,3 +1,5 @@
+> **現行權威已統一（A11）**：FS Asset Factory 的作畫／分層／動畫製程，先讀 [唯一現行總規範](FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本索引原 P0 雲端保護及歷史 P1–P8 說明保留，但不再各自宣稱是最新施工方法。A11 已改為「完整高品質 Master→保真 Ground/PAR」與「高品質 F0→動作」優先驗證；舊 P5 的三關鍵姿勢不得覆寫 PMD Native XML 幀數。
+
 # Forest Symphony｜CURRENT RULES INDEX & PRECEDENCE｜2026-11-07
 
 > **唯一現行規則入口。** 此索引與 [P0 Cloud-only](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md) 對 FS 專案持續適用。舊版 Handoff、舊 Agent Skill 與版本流程若牴觸，以此索引、使用者最新指令、實際已驗證的版本為準。保留所有歷史原文和 SHA/失敗紀錄，不以新政策改寫已發生的測試結果。
