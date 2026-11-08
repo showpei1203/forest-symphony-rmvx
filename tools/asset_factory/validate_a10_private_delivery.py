@@ -74,7 +74,7 @@ def audit_zip(path: str | Path) -> dict:
                 if mpath not in files:
                     raise ValueError(f"missing source-owned mask: {mpath}")
                 mask=np.asarray(Image.open(BytesIO(z.read(mpath))).convert("L"))
-                fname=o["source_path"].split("/")[-1]
+                fname=("A10_"+o["part"]+".png") if (o["family"]=="bridge" and o["source_path"].startswith("a10_build_real_source_first.py")) else o["source_path"].split("/")[-1]
                 assetname="SOURCE_KIT/"+fname
                 if assetname not in files:
                     raise ValueError(f"missing independent PNG: {fname}")
