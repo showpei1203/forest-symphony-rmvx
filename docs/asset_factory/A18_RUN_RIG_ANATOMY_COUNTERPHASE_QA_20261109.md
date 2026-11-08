@@ -41,6 +41,20 @@ A17 腿領先投影差為 `[13,20,-18]` px，確實換腳。但靜態腳位不�
 - GitHub PR #15 專用 branch 的 Actions run `42529509257` 已 completed/success，日誌確證 **126 tests, OK**（其中 7 項為新增 A18 synthetic）。
 - **限定聲明**：雲端 CI 並未下載私人 F0 或運行 `prepare_actor01_a18_candidate()` 對真圖做端到端測試。真實 A17 的上列數值是本輪在隔離環境解包計算，不可混作 CI PASS。
 
+## A18 私人實料端到端：已完成雲端封存（2026-11-09 補充）
+
+此節取代上面曾標記「尚未上傳 A18 ZIP」的舊狀態。使用者雲端原件在原 A17 限權資料夾中，**不公開私人 Drive ID**。
+
+- 從 A17 真正私人 ZIP 取得原 F0（SHA `a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba`）與正式 A17 JSON，實際通過版本鎖、18 個關節標籤、全部 48px 正規化座標、三組 frame、F0 base64 與 source PNG 位元組一致測試。
+- 對真正 A17 進行防錯誤 A18 Patch，凍結原 `first_frame`、`first_frame_keypoints`、F0、種子與第 0 格，實際產生 `A18_PIXELLAB_V3_RUN_CANDIDATE_PRIVATE.json`，其 SHA256：`e392291d626ff37bb6038d40e0b63d17a7be0fc54df0835d848e50fba546fbfe`。
+- 真實 A17 輸入：相對髖部腳投影 `[7,14,-24]` px；肩相對手臂 `[2,1,7]` px；8 骨段上下界失敗。
+- 實際 A18 新輸入：相對髖部腳投影 `[7,14,-13]` px；肩相對手臂 `[2,-4,7]` px；8 骨段比例全落在 0.60–1.40 範圍。**此為來源實料驗證，不是新的 provider artwork**。
+- 私人 ZIP：`FS_A18_ACTOR01_RUN_PROVIDER_READY_PRIVATE_20261109.zip`，**19,706 bytes／10 files**，SHA256 `f7a8f83bf30a6d9e1b2d0395c484f3f138b440b086dd1cae68a07ff8e1d3160c`。已透過 Drive connector 實際上傳，再下載回讀，CRC 和內部 manifest **全通過**，權限 owner-only / shared=false。
+- 內容：真正 provider request JSON、原 A17 私人 JSON、核准 F0、三張核准 A62 PNG、A18 數值 QA、骨架對照（明標 NOT ART）、私有 README、SHA manifest。**沒有新生成的動畫影格**。
+- 新獨立驗收腳本在隔離容器執行；GitHub 公開 A18 Validator + 7 個 synthetic tests 已經單獨 CI 126 PASS。沒有把私有 F0/JSON 推送到公開 GitHub。
+- PixelLab 仍沒有付費動畫權限或明確上限的授權；**REST POST=0、Provider frames=0、Art NOT_RUN、Game.exe NOT_RUN、Formal Seal NO**。
+- 後續不再針對這一組關節無限增加驗證器。真正下一步是取得使用者明確的一次付費權限與安全工具許可，執行 v3 真三幀並保存 RAW、拒收不自然動畫後再分析模型問題。
+
 ## Gate 與後續
 | Gate | 狀態 |
 | --- | --- |
@@ -48,7 +62,7 @@ A17 腿領先投影差為 `[13,20,-18]` px，確實換腳。但靜態腳位不�
 | A17 全身骨段/手臂相位 | **FAIL** |
 | A18 修正配方 / 真實座標理論預檢 | CANDIDATE_GEOMETRY_ONLY |
 | 新增 GitHub synthetic 測試 | **126/126 PASS** |
-| A18 私人 JSON 原件新檔已雲端保存 | **NO**，由雲端公開程式 + 原 A17 私有 ZIP 重建；不宣稱已 upload |
+| A18 私人 ZIP / 實際候選 v3 JSON | **YES**，已存 owner-only Google Drive，10 檔，下載回讀 SHA256／CRC 通過（不公開私人連結） |
 | PixelLab 動畫生成與扣額 | NOT_RUN / 0 |
 | 新 48×48 Sprite / 1x ART / Native VX | 0 / NOT_RUN / NOT_RUN |
 | main / A62 / F0 | UNCHANGED |
