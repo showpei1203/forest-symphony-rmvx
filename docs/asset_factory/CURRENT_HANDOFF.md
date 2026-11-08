@@ -2,6 +2,18 @@
 
 **現行唯一規則**：[ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本檔僅記錄實際工程進度，不是新政策。先前 A14 全文已[完整 SHA 不變封存](history/A14_CURRENT_HANDOFF_ARCHIVED_BEFORE_A15_20261108.md)，A13、A11 和 A10 失敗／驗收紀錄也在各自 QA 文件，不應混成現行待辦。
 
+## A16｜Orca 接續施工與真正阻礙（2026-11-08）
+
+**正式新動畫產物：0 幀，ART NOT_RUN。** 維持 A15 F0 48px 官方 Skeleton v3 Payload 與 SHA；不因新流程海報宣稱成功。
+
+- Remote Desktop Commander 現場再驗：Orca.exe 多個程序正常執行；Codex CLI 登入狀態為 ChatGPT，`codex mcp get pixellab` 列出 `enabled=true`、`https://api.pixellab.ai/mcp`、Bearer token env var 名稱與**僅六個唯讀 enabled_tools**：`get_balance, list_jobs, list_characters, list_objects, list_images, search_help`。這裡**沒有動畫生成工具**；看到 MCP enabled 不代表能生成。
+- 從普通 PowerShell 執行 Codex `exec --ephemeral --sandbox read-only`，甚至無工具的簡短回覆測試未成功回傳，已主動結束本輪測試 session；沒有向 PixelLab 提交付費請求。Orca 應用程式內的 Codex 帳號／工作樹可能不同於獨立終端，不能據此宣稱 Orca 內 Agent 不可用。
+- 依 [Orca 官方 CLI 文件](https://www.onorca.dev/docs/cli/overview)，其 CLI 要由桌面 Settings → General／Experimental → CLI 註冊；已於 `%LOCALAPPDATA%\Orca\bin` 預期位置和 PATH 只讀檢查，**尚未找到可呼叫的 Orca CLI**。不得憑空寫 `orca terminal send` 或聲稱 Orca Agent 已受命。
+- 本輪重新讀入真正 `APPROVED_F0_EXACT_48_PRIVATE.png` 作唯一美術來源，內建 ImageGen 嘗試卻產出**與白髮 Actor01 不符的美術流程資訊圖**，其聲稱「生成成功、扣 6 credits、PASS」全部為**圖片中虛構內容**。已判 `REJECTED_WRONG_MEDIUM_AND_FALSE_CLAIMS`，**不加入 FS、Drive 成品或計費紀錄**，不得重試同一提示無限制生成。
+- 真正的 A15 私有 `PIXELLAB_V3_RUN_EXACT_REQUEST_PRIVATE.json` 和 F0／官方 18-joint 輸入依舊可使用；任何影格生成都必須由真正可授權的 PixelLab MCP/REST 工具完成，再依 48px、Alpha、F0 外觀、左右腳自然度、人類 ART、VX 原生分別驗證。
+- **實際解鎖條件**：Orca 桌面註冊 CLI，從*已啟動的 Orca Agent 工作樹*核對與 PixelLab MCP 的讀取工具可回應，再在 approval／非 YOLO 模式下授予僅一次 `animate-with-skeleton-v3` 權限及明確費用額度。若沒有這些，不得偷讀 token、另開收費通道或把工作流驗證誤稱新作品。
+- 本輪未新增 PixelLab 點數／費用；未修改原版 F0、A15 私人 ZIP 或 FS main；沒有啟動新 Orca 工作樹／Agent 實際生成。**唯一工程進度為查明並固定既有 Orca 通道與工具權限阻礙。**
+
 ## Orca／Codex 工具連線勘誤（2026-11-08，A15 後立即確認）
 
 **不得再說「沒有 `PIXELLAB_API_TOKEN` 系統環境變數＝PixelLab 未連線」**。已再次在使用者授權桌機 DESKTOP-90VT437（Remote Desktop Commander 只讀）確認：
