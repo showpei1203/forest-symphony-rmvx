@@ -1,0 +1,138 @@
+{
+  "schema": "fs-a10-delivery-receipt/v1",
+  "date": "2026-11-08",
+  "feature_branch": "feat/fs-asset-factory-v1-20261107",
+  "private_delivery": {
+    "file_name": "FS_A10_DUAL_FACTORY_REAL_MAP_AND_SPRITE_PRIVATE_20261108.zip",
+    "size_bytes": 22536082,
+    "zip_entries": 270,
+    "sha256": "3aa93b84190c4b4af63167b9e249a2c69bbe142a0b195ee27a92b75c9cb22eea",
+    "drive_visibility": "OWNER_ONLY_RESTRICTED_BINARIES",
+    "cloud_readback": "SIZE_CRC_SHA256_PASS",
+    "source_code_in_private_archive": [
+      "BUILD_SCRIPTS/a10_build_real_source_first.py",
+      "BUILD_SCRIPTS/a10_validate_visuals.py"
+    ]
+  },
+  "sources": {
+    "A36H_R3_SOURCE_OBJECTS": {
+      "sha256": "d0ecbe0c82ed12a4431f38564c03a1827f701ad90e2979b76e503e0f0a93f2c5",
+      "bytes": 31567182,
+      "status": "ART_CANDIDATE_NOT_FULL_USER_APPROVED"
+    },
+    "A32B_USER_APPROVED_TREES": {
+      "sha256": "219e8c771c8ac8cf027c73c72cea9ee22618b03cd15670508643044764eab633",
+      "bytes": 10366572
+    },
+    "A63_ACTOR_RUN_WAITING": {
+      "sha256": "154b3970778ab758008139b19e7dd15c62614c947889a66dd9b31d1e94ba9be9",
+      "bytes": 327601
+    },
+    "AUTHENTIC_GROUND3_STYLE": {
+      "sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+      "status": "REFERENCE_SHA_LOCKED_NOT_USED_AS_BASE_PIXELS"
+    }
+  },
+  "outputs": {
+    "maps": [
+      {
+        "scene_id": "ELF_VILLAGE",
+        "seed": 20261108,
+        "canvas": [
+          1280,
+          928
+        ],
+        "tile_px": 32,
+        "placed_source_instances": 105,
+        "visible_source_instances": 102,
+        "source_owned_occlusion_pixels": 249372,
+        "forbidden_source_semantic_alpha_leak_pixels": 0,
+        "collision_blocked_tiles": 96,
+        "collision_reachable_tiles": 1062,
+        "compositing_max_channel_delta": 1,
+        "pixels_compositing_delta_gt1": 0,
+        "visual_art": "CANDIDATE"
+      },
+      {
+        "scene_id": "FOREST_BRIDGE",
+        "seed": 20261203,
+        "canvas": [
+          1280,
+          928
+        ],
+        "tile_px": 32,
+        "placed_source_instances": 132,
+        "visible_source_instances": 118,
+        "source_owned_occlusion_pixels": 232123,
+        "forbidden_source_semantic_alpha_leak_pixels": 0,
+        "collision_blocked_tiles": 186,
+        "collision_reachable_tiles": 974,
+        "compositing_max_channel_delta": 1,
+        "pixels_compositing_delta_gt1": 0,
+        "visual_art": "FAIL_STYLE_SOP_PROCEDURAL_BRIDGE_RIVER_NEED_FAMILY_REPLACEMENT"
+      }
+    ],
+    "map_png_per_scene": [
+      "Authoring_GroundOnly.png",
+      "Authoring_CompletePAR.png",
+      "Runtime_FullGround.png",
+      "Runtime_OcclusionPAR_CANDIDATE.png"
+    ],
+    "scene_different_pixel_positions": 1184871,
+    "sprite_actors": [
+      {
+        "actor": "Actor01",
+        "action": "RUN",
+        "cell_px": [
+          48,
+          48
+        ],
+        "stored_frames": 3,
+        "playback": [
+          0,
+          1,
+          0,
+          2
+        ],
+        "art": "A62_HISTORICAL_USER_APPROVED_SCOPE"
+      },
+      {
+        "actor": "Actor01",
+        "action": "WAITING",
+        "cell_px": [
+          48,
+          48
+        ],
+        "stored_frames": 3,
+        "playback": [
+          0,
+          1,
+          2,
+          1
+        ],
+        "art": "A63_W2_TECH_CANDIDATE_USER_ART_PENDING"
+      }
+    ],
+    "pixel_lab_calls": 0,
+    "pixel_lab_credits": 0,
+    "paid_spend": 0
+  },
+  "qa": {
+    "private_zip_cold_crc": "PASS",
+    "source_semantic_ownership": "PASS",
+    "full_ground_par_alpha_recomposition": "PASS_WITH_8BIT_ROUNDING_MAX_1",
+    "collision_path_static": "PASS",
+    "visual_art": "PENDING_OR_FAIL_SEPARATE",
+    "true_native_vx": "NOT_RUN",
+    "actual_par_runtime_switch_203": "NOT_RUN",
+    "orc_agents": "NOT_LAUNCHED",
+    "formal_seal": "NO"
+  },
+  "next_actions": [
+    "Replace whole bridge+river object-family source together; no bridge RGB/GrabCut patching",
+    "Acquire/approve exact Ground3-comparable grass/forest palette before scale",
+    "Map native 203 legal-footpoint layer adapter and test isolated genuine Game.exe only after authorized scope",
+    "Prepare first NEW actor/monster from verified source concept & action-specific XML; do not present A62 reuse as new motion generation",
+    "Once user ART gates pass on both scenes and two actors, run more seeds and measure first-pass acceptance"
+  ]
+}
