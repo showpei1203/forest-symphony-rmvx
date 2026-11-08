@@ -67,3 +67,11 @@
 **A16 實際唯一有價值的工作：** 在授權 PixelLab 已連線且確認一筆生成預算後，直接拿私有 RUN 精準 JSON **一次** 生成 3 格真 48px 角色，立即執行 native PNG/Alpha/外觀/步態 QA，保留完整 RAW 供人看。若美術不達標，改骨架家族或方向，不再做 F0 位移／貼腿 V4-V9；RUN 通過後才生成 WAITING 或第二位角色。沒有授權也不要轉去亂生成海報。
 
 **目前 GitHub PR HEAD CI**：在此 Handoff 提交後重新核對最新 Actions Run。前一階段 A14 107/107 靜態測試 PASS，A15 新增 7 個合成測試；CI PASS 不能算新藝術通過。
+
+
+## A16 補充：一次真正的錯誤排除與動作 Pose Guide（2026-11-08）
+- 本輪再次使用真正白髮、深綠裝備的核准 Actor01 F0。ImageGen 仍回傳**另一個人物的圖解海報**，已拒絕；六部位旋轉程序產生大塊手臂／不自然連接也 **ART FAIL**，沒有可納入 FS 的新動作影格。
+- 將未被採用的方案做成**一份受限 Drive 失敗紀錄／動作姿勢控制包**：13 檔，29,920 bytes，SHA256 `d9ab8177a90b2be2cca5f7dc6e8a6a95537b59e4553276912d245d36642874b7`，上傳後回讀 ZIP CRC/SHA 與 owner-only 存取 PASS。內含核准原 F0、核准 Run、A63 W2 候選、三個不同的 unarmed strike 48px 骨架姿勢**控制圖**與拒收測試影格。它**不是**正式 Sprite、不是新的 PixelLab 成品，更不是官方 v3 request 的替代品。
+- 具有實際新動畫產物：**0 幀**；ART FAIL（錯人像／手臂變形），native VX NOT_RUN，PixelLab 0 付費呼叫。
+- A15 官方 18-joint Skeleton v3 48px provider input 仍是權威，這次 14-point 示意骨架不准覆蓋；唯一下步仍是已授權、設限的真實 PixelLab provider 動畫生成及人眼 ART 驗收。
+- [完整補充 QA](A16_AUX_REJECTED_ART_AND_POSE_GUIDE_20261108.md)。不公開私人 ZIP 直接連結。
