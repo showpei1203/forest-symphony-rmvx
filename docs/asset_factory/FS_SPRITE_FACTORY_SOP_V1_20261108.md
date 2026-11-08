@@ -1,3 +1,5 @@
+> **REFERENCE_ONLY｜A11**：本文件可查 XML、Rig、QA 的技術細節。現行 Battle Sprite 生產優先順序請以 [唯一現行總規範](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md) 的 S-A「高品質 F0→動作」為準，不得再把 PixelLab 模板當成先於美術母圖的必要條件。
+
 # FS Sprite Factory SOP V1 — PMD / Actor production, not one-off image retouch
 Authority: A08 report audit + actual FS sources + user approval. Version 1.0, 2026-11-08.
 Goal: reproducible series of 45-degree battle Actor sprites and PMD monsters with evolution/family identity. Production loop: spec -> approved templates -> batch -> QA exceptions -> native export -> art/native seal.
