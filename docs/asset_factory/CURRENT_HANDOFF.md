@@ -1,3 +1,18 @@
+# FS CURRENT_HANDOFF｜A14 F0 姿勢條件化輸入（2026-11-08）
+> **ACTIVE PROGRESS:** [FS 唯一現行施工規範](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md) 不變。本次是 A14 的實際輸入與生成失敗紀錄；A11、A13 的內容保留為歷史。**沒有已通過的新增動畫！**
+
+## A14 真實交付與否決
+- 第一張白髮 Actor01 F0 SHA256 `a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba`，原圖 48×48 RGBA，來源位元保持原狀；A62 Run 144×48 參考第一影格與 F0 逐像素相同。
+- 供 PixelLab Skeleton v3 使用的**輸入包**：RUN、WAITING 各三組人形 18-joint 姿勢，透明 pose-only PNG、F0 局部疊圖、64px padded source（偏移 8,8）與 48px 回裁檢查；各動作 playback Run 0,1,0,2 / Waiting 0,1,2,1。
+- 私人 ZIP `FS_A14_POSE_CONDITIONED_PIXEL_LAB_READY_INPUTS_20261108.zip`，26 檔、47,164 bytes、SHA256 `20f37ba85922d7c679a318d8fc210c67a46bd7a3ebfd552d077ea7d98990d8b0`。owner-only Drive 限制 Binaries，已上傳、原檔與 47,164-byte readback verified；私人 PNG 不放公開 GitHub。
+- 完整 private scripts `build_a14.py` 和 `validate_and_export.py`，真實本地 4/4 PASS。公開 `tools/asset_factory/a14_f0_pose_provider_gate.py` ＋六個合成負例測試。
+- 在此對話對一般 ImageGen 的**三次實際生成**，輸出都錯誤地變成棕髮 elf 與流程資訊圖，不能當白髮 Actor01 的 48px Sprite。三次 **IMAGEGEN_REJECTED_WRONG_ARTIFACT / WRONG_IDENTITY**，不以修改圖片尺寸冒充通過。這不是 PixelLab v3 的實際測試。
+- PixelLab 2026 v2 docs 支援 `animate-with-skeleton-v3`，可由 F0 與逐格 Skeleton 生成 3–15 幀，但本對話**沒有 PixelLab 可直接使用的已授權工具／token/扣額上限**；尚未呼叫 PixelLab，工具參數仍需在供應商實際 API Schema/estimate-skeleton 確認，不可把內部 canonical 18 joints 直接冒稱合法 v3 request。
+- 本輪新可用 sprite 0、PixelLab 消耗 0、藝術自然度 NOT_TESTED、原生 VX NOT_RUN、Formal Seal NO。
+- [A14 完整真實 QA／方法依據](A14_F0_POSE_CONDITIONED_REDRAW_READINESS_AND_FAILURE_QA_20261108.md)。
+- **下一個製作節點：** 只有在 PixelLab 有可直接使用的連線且已確認本次扣額上限後，先以此 package 跑**一次** RUN 三幀；若 48px 白髮 F0／骨架／自然度達標，再跑 WAITING，最後再測第二角色。仍未能呼叫時不再生成無關海報；可以讀原始 FS game/effects 做 Native Adapter 的靜態準備，但不能假稱新美術成功。
+
+## A11 舊階段紀錄（唯讀歷史，不再當本輪產出）
 # FS AI Asset Factory CURRENT_HANDOFF — A13 / 2026-11-08
 
 CURRENT ENTRYPOINT: [ONE ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md) and [A13 honest ART failure QA](A13_ARTICULATED_POSE_F0_SOURCE_PROTECTION_FAILURE_QA_20261108.md). This file describes actual project state, not new policy.
