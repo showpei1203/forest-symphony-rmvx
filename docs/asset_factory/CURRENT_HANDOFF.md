@@ -1,3 +1,16 @@
+# FS AI Asset Factory CURRENT_HANDOFF | A18 PRIVATE PACKAGE VERIFIED | 2026-11-09
+
+**ACTIVE MASTER 為唯一規範**。最新 A18 私人真正 v3 RUN 請求已完成，仍然 **沒有新 PixelLab 生成影格**。以下修正之前「A18 ZIP 尚未上傳」的舊記載。
+
+- 從 A17 真實私有 ZIP 的 approved 48×48 F0 SHA `a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba` 解出 A17 原始官方 v3 JSON，經版本鎖、18 點座標、三姿勢與 F0 base64 精確核對後套 A18 全身骨段 Patch，**真正輸出新候選 JSON**。其 SHA256：`e392291d626ff37bb6038d40e0b63d17a7be0fc54df0835d848e50fba546fbfe`。
+- 8 個骨段相對 F0 長度均在門檻 `0.60–1.40` 內；雙腳髖相對前進差 `[+7,+14,-13]px`；雙臂肩相對差 `[+2,-4,+7]px`；F0 與 A62 舊素材及 F0 frame 0 不變。
+- 真正私有 ZIP **10 files／19,706 bytes**：`FS_A18_ACTOR01_RUN_PROVIDER_READY_PRIVATE_20261109.zip`，Drive **owner-only / shared=false**；透過 Google Drive 上傳、下載回讀 SHA256 `f7a8f83bf30a6d9e1b2d0395c484f3f138b440b086dd1cae68a07ff8e1d3160c`，ZIP CRC、檔案 SHA manifest 全 PASS。公開 GitHub **不含 F0、base64 或私人 Drive ID**。
+- 真實來源 A18 QA 全文：[A18 RUN RIG ANATOMY](A18_RUN_RIG_ANATOMY_COUNTERPHASE_QA_20261109.md)。公開 GitHub 原來 7 個新 synthetic tests 與 A18 rig gate 保留；最新 CI 成績須依 PR HEAD 重新確認。
+- Gate：SOURCE PASS；A18 PRE-PROVIDER SKELETON REAL_INPUT PASS_GEOMETRY_ONLY；PIXELLAB POST 0；新 RUN PNG 0；ART NOT_RUN；VX NOT_RUN；FORMAL SEAL NO；`main` 不覆寫，PR #15 維持 Draft。
+- 下一步 **不要無限調骨架**：一旦使用者對一次 PixelLab 付費測試及工具權限給明確批准，取私人 A18 JSON 提交一次，保存 job ID + provider RAW 3x48px PNG；格式／角色 F0 身分／左右腳、反擺臂／ART 1x／原生 VX 分開驗證。未授權維持 PROVIDER_BLOCKED，不另走祕密 REST token 或修改 Orca YOLO 權限。
+
+---
+
 # FS AI Asset Factory CURRENT_HANDOFF | A18 2026-11-09
 
 **唯一施工規則：** [ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本段只是最新施工實況，不覆寫規則。**最新 A18 仍無新的 PixelLab Sprite**。
@@ -8,7 +21,7 @@
 - 公開新程式 [A18 rig gate](../../tools/asset_factory/a18_run_anatomy_preflight.py)：足點**相對髖部**的投影、手臂**相對肩部**的反向相位、上下肢 8 段長度、finite 坐標、18 官方 label、F0 SHA 與舊版位置守衛。已有一組 A18 原始畫布座標候選，補救 F1 手臂與 F2 腿/右臂；並提供只在 RAM 內修補 A17 私有 JSON 的函式，不會上傳原始 base64。
 - 本輪 7 個新 synthetic regression case 已執行，與舊測試一起 [GitHub Actions 42529509257](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42529509257) **126/126 PASS**。這是公開 CI 結果，不是 PixelLab ART。
 - 真實 A17 以及 A18 提案的原始數值比對詳見 [A18 QA](A18_RUN_RIG_ANATOMY_COUNTERPHASE_QA_20261109.md)。A18 F1/F2 骨段對 F0 比例約 0.90～1.34、髖相對左右腳投影候選 `[+7,+14,-13]`、肩相對雙臂 `[+2,-4,+7]`；A17 F0 不完全中立，1x ART 仍可能 FAIL。
-- **狀態誠實區分**：A17 ZIP VERIFIED；A17 anatomy **FAIL**；A18 **CANDIDATE_ONLY**；真實 A18 經供應商輸出 **0**，PRIVATE_A18_ZIP **NOT_UPLOADED**，PixelLab 額度消耗 **0**，VX **NOT_RUN**；PR #15 仍 Draft、main 不動。
+- **狀態誠實區分**：A17 ZIP VERIFIED；A17 anatomy **FAIL**；A18 **CANDIDATE_ONLY**；真實 A18 經供應商輸出 **0**，PRIVATE_A18_ZIP **UPLOADED_OWNER_ONLY_AND_SHA_READBACK_PASS**，PixelLab 額度消耗 **0**，VX **NOT_RUN**；PR #15 仍 Draft、main 不動。
 - **下一件實際工作：** 只有在明確核准一次付費、允許受限 MCP `animate-with-skeleton-v3` 工具，並取得可靠的 read-only/approval 狀態後，以 A17 私有請求在記憶體套 A18 修正並提交**一次**，保存 provider 原始三幀及 job ID，做 48×48/Alpha/角色/F0/左右腳/反擺臂/1x ART/VX 分開驗收。禁止暗自改 allowlist、存取密鑰或重複付費。未解鎖即 **PROVIDER_BLOCKED**。
 
 ---
