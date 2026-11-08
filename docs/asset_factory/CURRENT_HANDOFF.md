@@ -1,44 +1,35 @@
-# FS AI Asset Factory CURRENT_HANDOFF — A09 | 2026-11-08
+# FS AI Asset Factory CURRENT_HANDOFF — A10 / 2026-11-08
 
-**ACTIVE NEXT CHAT ENTRYPOINT: A10 real family-level art and full-scene source generation.** No more A06 railing-pixel fixes or A08-only rules expansion. The A08 22-page audit and Sprite/Map Factory SOPs remain mandatory. All source-art/game assets stay private.
+ACTIVE: move to A11 only by improving complete SOURCE families (bridge+river, roof/forest coherence) and then real native 203; do NOT revert to A06 bridge mask tweezers or A08 synthetic-only reports. A08 full 22-page report and both production SOPs remain binding.
 
-## Authority and current stage
-- Global FS P0-P6, [Sprite SOP](FS_SPRITE_FACTORY_SOP_V1_20261108.md), [Map SOP](FS_MAP_FACTORY_SOP_V1_20261108.md), [22p research mapping](A08_REPORT_22PAGE_IMPLEMENTATION_AUDIT_20261108.md), [A08-A12 queue](A08_DUAL_FACTORY_EXECUTION_QUEUE_20261108.md).
-- Branch `feat/fs-asset-factory-v1-20261107`, [Draft PR #15](https://github.com/showpei1203/forest-symphony-rmvx/pull/15), main untouched.
-- [A09 public source & two-scene QA](A09_SOURCE_LOCKED_SPRITE_AND_SEMANTIC_SCENE_QA_20261108.md); private full A09 QA and Handoff stored in owner-only `FS_AI_ASSET_FACTORY_Restricted_Rules` (find by titles FS_ASSET_FACTORY_A09_* through user's Drive authority index); actual PNG/XML/ZIP solely in restricted Binaries.
+## 1. What was ACTUALLY created this turn
+Two FULL 1280x928 four-PNG scene candidate packages, not just TMJ designs:
+- ELF_VILLAGE: Authoring_GroundOnly, Authoring_CompletePAR, Runtime_FullGround, Runtime_OcclusionPAR_CANDIDATE; 105 source placement instances (102 visible), 249,372 source-owned eligible foreground alpha pixels. Technical art composition candidate, USER ART PENDING.
+- FOREST_BRIDGE: same four real PNGs, with a new bridge designed as 4 independent semantic pieces (deck, far rail, near rail, posts), newly authored river ground. 132 source instances (118 visible), 232,123 foreground alpha pixels. USER ART FAIL_STYLE at bridge/river material fidelity; engineering layout/semantics candidate PASS.
+- Actual private source PNGs and each semantic foreground instance's **LOCAL owner-only alpha mask** (72 Elf / 79 Bridge), scene manifest/owner footpoint roles, approximate 32px collision grids, full scene previews, and actual rebuild scripts packed together.
+- Actor01 real action source exports: A62 RUN 3 actual 48px PNG F0/F1/F2, loop 0-1-0-2, historical approved run; A63 W2 WAITING 3 real 48px PNG, loop 0-1-2-1, technical art candidate user review pending. Not new generated Actor, not final native Tankentai mapping.
 
-## Actual Sprite deliverable (not conceptual art)
-- Recovered PRIVATE P3_G9_FULL_EVOLUTION_CHAIN_0001_0003_20261027.zip: `3,881,101` bytes, `1,128` entries, ZIP SHA256 `74061d61a7fde6650699ee30ad1339ff255924a9cae13c98cb1703478eae260f`, CRC PASS.
-- Historical scope: PMD0001 G3R1 is user-accepted native all-action baseline; G8R4/G8R5 selected keyframes of PMD0002/0003 accepted, but 1356 newly generated G9 0002/3 frames require human art review. Do not promote 0002/3 full-art approval.
-- Native source PMD0001 `AnimData.xml` SHA `c7722f5da724f40f35fccabb1135fbd1b70e770b2a38db3d9fbe7643af626162`; original Idle 32x40 ×3 frames ×8 direction rows, Walk 40x40 ×6 ×8; native Anim/Offsets/Shadow all intact. PMD0002/0003 Idle and Walk 32x32 ×4 ×8. In each of six action atlases, eight row first-frames have eight different RGBA values. Direction row NAMES and native eight-direction animation semantics still not certified.
-- A62 approved 48px three-pose Actor run source extracted from sealed private A63. F0 SHA `a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba`; 144×48 strip SHA `ea063e6ec2db5caf3bddb2dd0b277d888f60e65fe6392bccdad4fdcc34274d5f`. Playback 0,1,0,2. No new Tankentai validation.
-- **Actual delivered restricted ZIP** `FS_A09_SOURCE_LOCKED_SPRITE_FACTORY_PILOT_20261108.zip`, `217,991` bytes, `37` files, SHA256 `9b1465828dd40b4fedf63e49f7598583b2a08ac9e2181c5a0c85ebb86c5b389a`, ZIP CRC PASS; uploaded & downloaded back from owner-only Google Drive Restricted_Binaries, shared=false. Contains original PMD0001/2/3 six actions' XML/Anim/Offsets/Shadow PNG, eight-row previews/pose metrics, A62 independent three frames PNG/GIF, manifest. These are reused existing real sprites, **not new AI-generated art**.
-- A25 separate new 64px PixelLab concept source archive remains SOURCE_NOT_VERIFIED and must NOT be confused with recovered G9 source. A26 five-frame candidate Idle/Walk not accepted native 3/6.
+## 2. Private delivery safe cloud
+Private ZIP filename FS_A10_DUAL_FACTORY_REAL_MAP_AND_SPRITE_PRIVATE_20261108.zip, 22,536,082 bytes, 270 members, SHA256 3aa93b84190c4b4af63167b9e249a2c69bbe142a0b195ee27a92b75c9cb22eea, readback ZIP CRC and SHA PASS. Google Drive owner-only Restricted_Binaries. Do not paste owner's Drive ZIP ID, protected image source or binary in public GitHub.
+Full code is inside ZIP BUILD_SCRIPTS/a10_build_real_source_first.py and a10_validate_visuals.py. Public repo has source-only cold validator tools/asset_factory/validate_a10_private_delivery.py and machine receipt config/asset_factory/FS_A10_REAL_DELIVERY_RECEIPT_20261108.json. Full QA: [A10 source-first two-scene results](A10_REAL_FOUR_LAYER_TWO_SCENES_AND_ACTOR_QA_20261108.md).
 
-## Actual Map production and authoritative style source
-- Verified authentic local project `Graphics/Parallaxes/ground3.png`, not `Overlays/ground3.png`. Read-only Windows file SHA `ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13`, size `2,400,808` bytes. No PC source altered or new workfiles created; ground3 art bytes were NOT copied to new maps in A09.
-- New public source `tools/asset_factory/scene_blueprint.py`: SAME 40×29 grid/32px family template, DIFFERENT `ELF_VILLAGE` seed 20261108 and `FOREST_BRIDGE` seed 20261203. Authoring source-role objects include whole workshop houses, canopy groups, bridge deck/far/near rail and posts, water and seeded grass/flowers/pebbles.
-- `bridge_deck` role GROUND_ONLY and `bridge_near_rail` CONDITIONAL_FOREGROUND with missing actual object art/mask. This is designed before rendering, so no manual GrabCut guessing brown wood. Ground3 true style SHA pinned; real semantic object art and full scene Master still NOT generated.
-- New `tools/asset_factory/export_a09_scenes.py` emits 2 Tiled object-layer `.tmj` designs, 2 JSON blueprints and SHA manifest inside GitHub Actions, published as non-art artifact. Earlier successful build artifact [FS_A09_Tiled_Semantic_Blueprints](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42424904974/artifacts/13595047682), SHA `50a05e6e99ef555ce8540c48471d0553b78137eaab6bc18c35c853ddc76a7048`. These are geometry, NOT completed Ground or PAR PNG.
-- Shared template had one early 8-digit-date-seed validation error causing 7 CI errors; fixed in generator. Later actual 95/95 test run passed. This is the desired template-level correction, not pixel-by-pixel repair.
-- Public metadata config `config/asset_factory/FS_A09_REAL_SOURCE_BRIEF_V1.json` records verified source SHA, approval scope, art holds, style SHA, current cost and scene IDs.
+## 3. Original source boundaries and forensic SHA
+- A36H R3 197 independent source object/underpaint candidate ZIP, 31,567,182 bytes, SHA d0ecbe0c82ed12a4431f38564c03a1827f701ad90e2979b76e503e0f0a93f2c5; this artwork as full scene has NOT passed user art.
+- A32B accepted broadleaf trees source ZIP 10,366,572 bytes, SHA 219e8c771c8ac8cf027c73c72cea9ee22618b03cd15670508643044764eab633.
+- A63 actual Actor stored 3 pose archive SHA 154b3970778ab758008139b19e7dd15c62614c947889a66dd9b31d1e94ba9be9.
+- Real Ground3 artistic reference SHA ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13; this is style REF only, not actual new map base pixels. A10 underpaint is prior A36H candidate.
+- A09 earlier G3R1 PMD0001 true native Idle3/Walk6 sample remains intact in owner-only prior source package. No new PMD PixelLab asset generated A10.
 
-## Gate matrix; mandatory truthful labels
-- SPRITE_SOURCE_REAL: PASS. PMD0001 G3R1 historical art baseline approval only; PMD0002/3 G9 newly generated frames ART_HOLD; A62 runner motion historical accepted only.
-- ART_NEW_PMDS/ACTORS: NOT_CREATED in this turn; native Game.exe/PMD integration A09: NOT_RUN.
-- GROUND3_STYLE_SOURCE_SHA: PASS (reference hash only). TWO_SCENE_SEMANTIC_GEOMETRY: PASS. MASTER_RGB / Authoring CompletePAR / Runtime FullGround / OcclusionPAR for newly generated scene: NOT_CREATED. A09 Native Switch203: NOT_RUN.
-- PixelLab paid calls: 0. Orca new agents: NOT_LAUNCHED (permission gate). PC new persistent files: 0. Main untouched; formal seal NO.
+## 4. Measured independent QA gates
+ELF placed105 visible102; forest bridge placed132 visible118; distinct world RGB pixels 1,184,871/1,187,840. For both, forbidden deck/low-decoration source ownership in Runtime PAR: ZERO. All 151 semantic foreground owner masks are alpha-subsets of registered independent source RGBA (including mirrors). Runtime PAR RGB matches same-XY full Master RGB at all positive alpha pixels. 8-bit Pillow recompositing max channel delta=1, number with delta>1=0. Reachability candidate: ELF 96 blocked/1062 reachable, BRIDGE 186 blocked/974 reachable, spawn->exit connected.
+Private archive 270 members validated by independent cold unzip, SHA/CRC. The public GitHub cold validator program can re-run against a private downloaded local ZIP (without API/PixelLab calls). A10 has real source art and real outputs, but has NO user artistic seal, actual legal-footpoint VX test, actual Game.exe switch203, new PixelLab credits, or new Orca agents. Status ENGINEERING_STATIC_CANDIDATE PASS / ART HOLD / NATIVE NOT_RUN / FORMAL NO.
 
-## A10 exact action order
-1. Reuse A09 native 0001/A62 actual approved appearance, build family-level *motion rig/pose source* from real action frames without overriding XML per-action counts. Use G9 0002/3 newly generated frames as QA candidate, not approved material. A25 distinct source remains a separate missing item.
-2. Take authentic Ground3 palette/material/1x look as the art baseline. Build complete tree, house/workshop and bridge object-family SOURCE art and object-only masks **together**. Fill both semantic scene layouts with SAME family kit, preserving coherent full Master. No color segmentation from already flattened map, no V0/V1/V2 railing micro-trimming.
-3. Only once actual art source and user-approved bounded PixelLab batch exist, run one limited provider test; never guess availability/credit balance or make unapproved paid calls.
-4. Export full four FS layers and per-object Source IDs, legal footpoint depth, collision. Native Windows VX Game.exe requires separately scoped temp authorization/cleanup. Judge both scene-scale 1x aesthetics and motion before scaling beyond pilots.
-5. Each stage: GitHub PR feature source only, private Drive QA/Handoff + binary source readback, final PR HEAD CI SHA/run and unresolved gates. Keep old A01-A09 evidence immutable.
+## 5. A11 precise next work, do not repeat source search or studies
+1. Improve one complete bridge/river object/material FAMILY (not wood threshold/one pixel masking). Need a connected source generation tool such as PixelLab with bounded approval or credible offline artwork; swap family's source PNGs into both scene recipes, rerun SAME compiler and source owner QA.
+2. Replace generic grass art candidate by style-exact 1x Ground3-derived (authorized) material recipe when available. Do not quietly claim original ground3 pixels used.
+3. USER reviews whole-map 1x forest/cottage/bridge style, motion/later evolution G9 separately. No synthetic/geometry PASS substitutes.
+4. Confirm FS Map050 real legal player footpoints, switch 203, actor ON/OFF and collisions through a user-approved temporary isolated native VX scope; no modification of main/sealed source.
+5. Sprite generate ONE genuinely new actor/monster action using approved real reference and reusable rig, native source XML counts, 45-degree view, transparent frames. Don't count A62/A63 reused action as new generation.
+6. Save actual assets restricted Drive, public source/scripts QA to GitHub Draft PR, complete Handoff and authority index, SHA readback. Keep main untouched. PixelLab usage remains 0 until explicit allowed bounded batch.
 
-Rollback only feature branch. No main merge, no sealed original source overwrite.
-## A09 Tiled export schema correction — shared-template fix
-- After first green scene output, found that Tiled object IDs were repeated across object layers and low vegetation was missing from the TMJ (present only in JSON). Both are now fixed in COMMON `scene_blueprint.py`, not by per-map edits.
-- Added unique monotonically increasing `id` for all object/decor entries, `nextobjectid`, `nextlayerid` and a separate `GROUND_DECOR` layer with GROUND_ONLY and SOURCE_ART_REQUIRED props. Scene art remains NOT_GENERATED.
-- Regression tests +2, verified actual GitHub Actions run 42425356835, source commit c5da4891aff128c64fedeaba06589af41783a802: **97/97 PASS**, plus Tiled artifact SHA `a94c2fd31c35ec2d80b18e838d91c934da6c03ec6875eff0b5fefbc569a3731f` and URL https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42425356835/artifacts/13594888926.
-- Subsequent Handoff-only commit must be followed by a newest-head CI check. Public Tiled artifact contains GEOMETRY only, no protected art bytes.
+Current repo PR #15 Draft, branch feat/fs-asset-factory-v1-20261107; verify latest HEAD CI after this document commit. The synthetic suite at end of A09 was 97/97; current A10 SOURCE COLD QA is separately verified and not included in GitHub Actions due owner-only art bytes.
