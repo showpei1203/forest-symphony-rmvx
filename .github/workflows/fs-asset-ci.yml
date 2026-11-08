@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install minimal deterministic dependencies
-        run: python -m pip install --disable-pip-version-check Pillow
+        run: python -m pip install --disable-pip-version-check Pillow numpy
       - name: Validate syntax
         run: python -m compileall -q tools/asset_factory
       - name: Run synthetic pass and intentional-fail fixtures
