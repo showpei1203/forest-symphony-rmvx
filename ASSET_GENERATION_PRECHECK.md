@@ -1,3 +1,5 @@
+> **A11 現行作圖方法已統一**：本文件原 P0/Source/Alpha/Collision QA 均保留，但執行優先權請先讀 [FS 唯一現行總規範](authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。完整 Master 美術優先，再以同 XY 像素做 Ground/PAR 語意分層；Battle Sprite 先鎖定高品質 F0，再使用動作 Rig/工具做保真姿勢。舊 v2.5 Ground-first 只屬歷史／其他場景。
+
 # Forest Symphony — Asset Generation Precheck
 
 ## 2026-11-07 FS 新版本強制優先（P0 + Master-first）
