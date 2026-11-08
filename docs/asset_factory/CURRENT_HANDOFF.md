@@ -1,3 +1,5 @@
+> **A11 NEW STRATEGY / CURRENT_PROGRESS**：最新唯一施工方法為 [ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。以下 A10 ZIP、SHA、測試及 Art Hold 是歷史上最近一次的工程證據，不代表 A11 轉換實驗已跑。A11 首先以既有高品質完整 Master、45° F0 做保真分層／Run+Waiting 動作轉換試驗，M-A/M-B 與 S-A/S-B 對照；本次僅做治理和規則整理，並沒有新的 Ground/PAR 或 Sprite 動作成果。
+
 # FS AI Asset Factory CURRENT_HANDOFF — A10 / 2026-11-08
 
 ACTIVE: move to A11 only by improving complete SOURCE families (bridge+river, roof/forest coherence) and then real native 203; do NOT revert to A06 bridge mask tweezers or A08 synthetic-only reports. A08 full 22-page report and both production SOPs remain binding.
