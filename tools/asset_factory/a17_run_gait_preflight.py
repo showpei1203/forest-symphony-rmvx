@@ -68,7 +68,7 @@ def audit_southwest_run(payload, f0_png_bytes: bytes | None = None):
         "lead_difference_px":distances,
         "opposite_leg_lead_present":lead_swap,
         "source_joint_nearest_alpha_px":in_reference,
-        "status":"PASS_POSE_GEOMETRY_ONLY" if lead_swap and all(v<=1.5 for v in in_reference.values()) else "HOLD_POSE_GEOMETRY",
+        "status":("HOLD_SOURCE_NOT_PROVIDED" if f0_png_bytes is None else ("PASS_POSE_GEOMETRY_ONLY" if lead_swap and all(v<=1.5 for v in in_reference.values()) else "HOLD_POSE_GEOMETRY")),
         "new_art_generated":False,"provider_called":False,"native_vx_ran":False,
         "art_user_approved":False,
         "warning":"The foot-order test is specific to this SW RUN pilot; it does not prove natural motion or visual consistency."
