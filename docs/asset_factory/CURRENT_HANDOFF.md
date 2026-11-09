@@ -1,3 +1,30 @@
+# FS AI Asset Factory CURRENT_HANDOFF | A19 | 2026-11-09
+
+**唯一現行方法**：[ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本節只描述 A19 真實工程狀況，A18/A17/A15 歷史下方保留。**PixelLab 真實新生成影格仍為 0**。
+
+## A19 本輪真實進度
+- A18 owner-only ZIP 19,706 bytes / 10 files，SHA256 f7a8f83bf30a6d9e1b2d0395c484f3f138b440b086dd1cae68a07ff8e1d3160c 重新下載回讀 CRC / SHA PASS；真正 A18 私人請求 SHA256 e392291d626ff37bb6038d40e0b63d17a7be0fc54df0835d848e50fba546fbfe，原 F0 SHA a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba。
+- 以授權 PC 唯讀 GET 官方 PixelLab /v2/openapi.json，查證 Skeleton v3 確有 18-joint / 3～15 frames / background_job_id / GET background-jobs 契約，A18 private JSON 的所有欄位與必填欄位吻合；不讀 token。
+- 2026-11-09 在 DESKTOP-90VT437 唯讀 codex mcp get pixellab 再驗：enabled=true，但 enabled_tools 仍然只是 get_balance、list_jobs、list_characters、list_objects、list_images、search_help 六個唯讀。沒有 paid animate_with_skeleton_v3 工具，不自行改 allowlist。
+- GitHub 新增 [A19 單次提交防重扣程式](../../tools/asset_factory/a19_one_shot_provider_gate.py) 與 [11 項回歸測試](../../tools/asset_factory/tests/test_a19_one_shot_provider_gate.py)。真正原圖/base64/密鑰不入公開 GH。設計在正式付費 POST 前核對唯一 SHA、明確一次授權與費用門檻、雲端隔離 runner、私有 intent ledger；收到不明確結果即阻擋重送；provider 完成也僅能判定 PNG format，不能替代 user ART 或 VX。
+- [A19 QA / 官方 API 實查 / 失敗限制](A19_ONESHOT_PROVIDER_GATE_AND_API_RECHECK_20261109.md)。GitHub Actions [Run 42543921836](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42543921836) 137/137 PASS（新增 11 個 A19 synthetic）；正式 main 未修改、PR #15 仍 Draft。
+- 本輪短暫在 owner-only Drive 存放 2 個文字 staging，以完成 GitHub code upload；GH readback 後這兩個 staging 已經 DELETE VERIFIED，沒有使用者 PC 長期存檔。
+
+## A19 Gate
+| 項目 | 狀態 |
+| --- | --- |
+| 真實 A18 輸入與 F0 來源 | PASS |
+| 官方 V3 OpenAPI schema | READ_ONLY VERIFIED |
+| GitHub 靜態合成測試 | 137/137 PASS |
+| 真正付費 PixelLab POST | **0** |
+| 新 48×48 RUN 三幀 | **0 / NOT_GENERATED** |
+| 真人 1x ART 與 VX Game.exe | **NOT_RUN** |
+| main / PR#15 | UNCHANGED / Draft |
+| FORMAL SEAL | NO |
+
+**下一步：** 需要使用者明確核准對 A18 指定 SHA 的一次 paid generation 與可接受最高花費；MCP 需在 approval/read-only 安全控制下提供 Skeleton v3 生成能力。未確認上述兩項，不執行任何付費生成；不要再為了填進度亂改骨架或造假動畫。單一 runner ledger 不能保證跨設備排他，正式上線時仍需雲端協調與實際成本回讀。
+
+---
 # FS AI Asset Factory CURRENT_HANDOFF | A18 PRIVATE PACKAGE VERIFIED | 2026-11-09
 
 **ACTIVE MASTER 為唯一規範**。最新 A18 私人真正 v3 RUN 請求已完成，仍然 **沒有新 PixelLab 生成影格**。以下修正之前「A18 ZIP 尚未上傳」的舊記載。
