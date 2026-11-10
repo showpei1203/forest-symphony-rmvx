@@ -1,3 +1,5 @@
+> **A21 CI VERIFIED (2026-11-10)**：GitHub Actions [Run 42804806871](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42804806871) completed/success；日誌確證 **148/148 synthetic tests PASS**（包含新增 A21 的 11 個單元測試）。它只驗證程式邏輯，不代表 PixelLab 新圖、Art 或 VX 通過。
+
 # A21｜真實 Master Ground/PAR 原像素遮擋 Pilot（2026-11-10）
 
 **狀態：SOURCE REAL / SAME-XY PIXEL PASS / CONDITIONAL SIM PASS / ART PENDING / VX NOT_RUN / PixelLab NEW FRAMES 0**。
