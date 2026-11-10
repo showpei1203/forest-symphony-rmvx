@@ -1,3 +1,17 @@
+# FS AI Asset Factory CURRENT_HANDOFF | A21 REAL MASTER PILOT | 2026-11-10
+
+**唯一方法權威**：[`FS_ASSET_FACTORY_ACTIVE_MASTER.md`](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。A19 A18 原生 PixelLab 結果仍是 0；此輪只新增**真實 A11 Master → 有條件同源 PAR 的静態施工**，不是 PixelLab 圖像生成或 VX 封版。
+
+- 真實私人 A11 ZIP 和 A18 ZIP 重新從 owner-only Drive 下載，SHA 回讀吻合。核准 A18 Actor01 F0 SHA `a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba`。
+- GitHub 新增 [A21 同源 Ground/PAR runtime prototype](../../tools/asset_factory/a21_runtime_occlusion.py) 與 [11 個 synthetic 測試](../../tools/asset_factory/tests/test_a21_runtime_occlusion.py)。**本地 11/11 PASS；請查最新 CI，不能把本地測試當 GitHub Actions**。
+- 真實 A11 1280×928 Master SHA `091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530`，Ground 保留原始 bytes 不變；三張 A11 舊候選遮罩的 Runtime_PAR 由 Master 原 XY 像素複製，合計 90,076 α 像素、RGB mismatch 0。
+- A21 真實四站位樹前後、橋前後：腳點 `(232,556),(232,596),(735,621),(735,670)`，動態 PAR Alpha 分別 `33600,0,1421,0`。Pillow 預覽 **NOT VX**，樹下角色仍有過度遮蔽，ART **HOLD**。
+- 真實 PNG + 四情境預覽 + QA 已存 owner-only Drive `FS_A21_MASTER_OCCLUSION_REAL_INPUT_PILOT_PRIVATE_20261110.zip`，**16,615,073 bytes／12 files／SHA `35a4268baf874c94ac8bd903f362410a8081933fa2d91a324f086908f2008981`**。Drive 上傳、下載、CRC、SHA 回讀 PASS；公開 GitHub 不放私人來源。
+- [A21 完整 QA 與失敗紀錄](A21_REAL_MASTER_GROUND_PAR_PILOT_20261110.md)。現況：MASTER SOURCE / same-XY pixel **PASS**；new SAM segmentation **NOT_RUN**；New PixelLab RUN PNG **0**；Visual ART **HOLD**；Native VX / Switch203 **NOT_RUN**；main **UNCHANGED**；Formal seal **NO**。
+- 下一步：角色 A18 真 PixelLab v3 一次付費生成須有明確單筆額度與安全工具授權；地圖先改良來源物件 Mask，再於合法真人腳點和原生 Game.exe 遮擋驗證。**不要回頭連續改 A17/A18 骨架來替代新 PNG**。
+
+---
+
 # FS AI Asset Factory CURRENT_HANDOFF | A19 | 2026-11-09
 
 **唯一現行方法**：[ACTIVE MASTER](../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md)。本節只描述 A19 真實工程狀況，A18/A17/A15 歷史下方保留。**PixelLab 真實新生成影格仍為 0**。
