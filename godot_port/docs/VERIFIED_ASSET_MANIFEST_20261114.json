@@ -1,0 +1,442 @@
+{
+  "project": "Forest Symphony",
+  "source_path": "FS project/Graphics",
+  "source_readonly": true,
+  "source_binary_committed": false,
+  "source_asset_storage": "Private Google Drive; NOT public GitHub",
+  "target_godot": "4.7.2-stable",
+  "sprite_contract": {
+    "sheets_per_hero": 4,
+    "columns": 3,
+    "rows": 4,
+    "hero_default_cell_size_px": [
+      32,
+      32
+    ],
+    "action_row_semantics": "TODO: verify 505-section RGSS SBS configuration, do not assume logical order"
+  },
+  "heroes": [
+    {
+      "actor_id": 1,
+      "name": "喬伊",
+      "prefix": "$actor01",
+      "sheets": [
+        {
+          "source": "Graphics/Characters/$actor01.png",
+          "target": "res://assets/characters/$actor01.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$actor01_1.png",
+          "target": "res://assets/characters/$actor01_1.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$actor01_2.png",
+          "target": "res://assets/characters/$actor01_2.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$actor01_3.png",
+          "target": "res://assets/characters/$actor01_3.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        }
+      ],
+      "original_character_name": "$actor01"
+    },
+    {
+      "actor_id": 2,
+      "name": "米亞",
+      "prefix": "$Actor5",
+      "sheets": [
+        {
+          "source": "Graphics/Characters/$Actor5.png",
+          "target": "res://assets/characters/$Actor5.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor5_1.png",
+          "target": "res://assets/characters/$Actor5_1.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor5_2.png",
+          "target": "res://assets/characters/$Actor5_2.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor5_3.png",
+          "target": "res://assets/characters/$Actor5_3.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        }
+      ],
+      "original_character_name": "$Actor5"
+    },
+    {
+      "actor_id": 3,
+      "name": "艾卓",
+      "prefix": "$actor03",
+      "sheets": [
+        {
+          "source": "Graphics/Characters/$actor03.png",
+          "target": "res://assets/characters/$actor03.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$actor03_1.png",
+          "target": "res://assets/characters/$actor03_1.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$actor03_2.png",
+          "target": "res://assets/characters/$actor03_2.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$actor03_3.png",
+          "target": "res://assets/characters/$actor03_3.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        }
+      ],
+      "original_character_name": "$actor03"
+    },
+    {
+      "actor_id": 4,
+      "name": "維娜",
+      "prefix": "$Verna",
+      "sheets": [
+        {
+          "source": "Graphics/Characters/$Verna.png",
+          "target": "res://assets/characters/$Verna.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Verna_1.png",
+          "target": "res://assets/characters/$Verna_1.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Verna_2.png",
+          "target": "res://assets/characters/$Verna_2.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Verna_3.png",
+          "target": "res://assets/characters/$Verna_3.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        }
+      ],
+      "original_character_name": "$Verna"
+    },
+    {
+      "actor_id": 5,
+      "name": "艾薇",
+      "prefix": "$Actor6",
+      "sheets": [
+        {
+          "source": "Graphics/Characters/$Actor6.png",
+          "target": "res://assets/characters/$Actor6.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor6_1.png",
+          "target": "res://assets/characters/$Actor6_1.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor6_2.png",
+          "target": "res://assets/characters/$Actor6_2.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor6_3.png",
+          "target": "res://assets/characters/$Actor6_3.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        }
+      ],
+      "original_character_name": "$Actor6"
+    },
+    {
+      "actor_id": 6,
+      "name": "泰勒",
+      "prefix": "$Actor40",
+      "sheets": [
+        {
+          "source": "Graphics/Characters/$Actor40.png",
+          "target": "res://assets/characters/$Actor40.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor40_1.png",
+          "target": "res://assets/characters/$Actor40_1.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor40_2.png",
+          "target": "res://assets/characters/$Actor40_2.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        },
+        {
+          "source": "Graphics/Characters/$Actor40_3.png",
+          "target": "res://assets/characters/$Actor40_3.png",
+          "width": 96,
+          "height": 128,
+          "cell_width": 32,
+          "cell_height": 32
+        }
+      ],
+      "original_character_name": "$Actor40"
+    }
+  ],
+  "ui": {
+    "backgrounds": [
+      {
+        "source": "Graphics/System/MenuBack_a.png",
+        "target": "res://assets/ui/system/MenuBack_a.png",
+        "width": 544,
+        "height": 416
+      },
+      {
+        "source": "Graphics/System/MenuBack_b.png",
+        "target": "res://assets/ui/system/MenuBack_b.png",
+        "width": 544,
+        "height": 416
+      },
+      {
+        "source": "Graphics/System/MenuBack_skill.png",
+        "target": "res://assets/ui/system/MenuBack_skill.png",
+        "width": 544,
+        "height": 416
+      },
+      {
+        "source": "Graphics/System/MenuBack_item.png",
+        "target": "res://assets/ui/system/MenuBack_item.png",
+        "width": 544,
+        "height": 416
+      },
+      {
+        "source": "Graphics/System/MenuBack_equip.png",
+        "target": "res://assets/ui/system/MenuBack_equip.png",
+        "width": 544,
+        "height": 416
+      },
+      {
+        "source": "Graphics/System/MenuBack_party.png",
+        "target": "res://assets/ui/system/MenuBack_party.png",
+        "width": 544,
+        "height": 416
+      },
+      {
+        "source": "Graphics/System/MenuBack_status_a.png",
+        "target": "res://assets/ui/system/MenuBack_status_a.png",
+        "width": 544,
+        "height": 416
+      }
+    ],
+    "gauge_assets": [
+      {
+        "name": "atb_bar.png",
+        "width": 55,
+        "height": 19,
+        "source": "Graphics/System/atb_bar.png",
+        "target": "res://assets/ui/system/atb_bar.png"
+      },
+      {
+        "name": "Btskin_hp.png",
+        "width": 77,
+        "height": 20,
+        "source": "Graphics/System/Btskin_hp.png",
+        "target": "res://assets/ui/system/Btskin_hp.png"
+      },
+      {
+        "name": "Btskin_mp.png",
+        "width": 77,
+        "height": 20,
+        "source": "Graphics/System/Btskin_mp.png",
+        "target": "res://assets/ui/system/Btskin_mp.png"
+      },
+      {
+        "name": "Btskin_odg.png",
+        "width": 105,
+        "height": 48,
+        "source": "Graphics/System/Btskin_odg.png",
+        "target": "res://assets/ui/system/Btskin_odg.png"
+      },
+      {
+        "name": "Btskin_main.png",
+        "width": 135,
+        "height": 40,
+        "source": "Graphics/System/Btskin_main.png",
+        "target": "res://assets/ui/system/Btskin_main.png"
+      },
+      {
+        "name": "HUD_喬伊.png",
+        "width": 135,
+        "height": 135,
+        "source": "Graphics/System/HUD_喬伊.png",
+        "target": "res://assets/ui/system/HUD_喬伊.png"
+      },
+      {
+        "name": "menu_喬伊.png",
+        "width": 100,
+        "height": 284,
+        "source": "Graphics/System/menu_喬伊.png",
+        "target": "res://assets/ui/system/menu_喬伊.png"
+      }
+    ],
+    "menu_assets": [
+      {
+        "name": "Menu01.png",
+        "width": 50,
+        "height": 20,
+        "source": "Graphics/Menu/Menu01.png",
+        "target": "res://assets/ui/menu/Menu01.png"
+      },
+      {
+        "name": "Item01.png",
+        "width": 60,
+        "height": 20,
+        "source": "Graphics/Menu/Item01.png",
+        "target": "res://assets/ui/menu/Item01.png"
+      },
+      {
+        "name": "Skill01.png",
+        "width": 60,
+        "height": 20,
+        "source": "Graphics/Menu/Skill01.png",
+        "target": "res://assets/ui/menu/Skill01.png"
+      },
+      {
+        "name": "Equip01.png",
+        "width": 60,
+        "height": 20,
+        "source": "Graphics/Menu/Equip01.png",
+        "target": "res://assets/ui/menu/Equip01.png"
+      },
+      {
+        "name": "Battle01.png",
+        "width": 54,
+        "height": 48,
+        "source": "Graphics/Menu/Battle01.png",
+        "target": "res://assets/ui/menu/Battle01.png"
+      },
+      {
+        "name": "Battle01a.png",
+        "width": 54,
+        "height": 48,
+        "source": "Graphics/Menu/Battle01a.png",
+        "target": "res://assets/ui/menu/Battle01a.png"
+      },
+      {
+        "name": "menu_喬伊.png",
+        "width": 252,
+        "height": 312,
+        "source": "Graphics/Menu/menu_喬伊.png",
+        "target": "res://assets/ui/menu/menu_喬伊.png"
+      }
+    ],
+    "iconset": {
+      "source": "Graphics/System/iconset.png",
+      "target": "res://assets/ui/system/iconset.png",
+      "width": 384,
+      "height": 15096,
+      "cell_size_px": [
+        24,
+        24
+      ],
+      "columns": 16
+    }
+  },
+  "exceptions": [
+    {
+      "source": "Graphics/Characters/$001.png",
+      "width": 96,
+      "height": 128
+    },
+    {
+      "source": "Graphics/Characters/$001_1.png",
+      "width": 90,
+      "height": 120
+    },
+    {
+      "source": "Graphics/Characters/$001_2.png",
+      "width": 90,
+      "height": 120
+    },
+    {
+      "source": "Graphics/Characters/$001_3.png",
+      "width": 90,
+      "height": 120
+    }
+  ],
+  "validation": "All dimensions read-only from original PNG IHDR on 2026-11-14. Filename identity and dimensions verified; actual RGSS action mapping and copyright/licensing still unverified."
+}
