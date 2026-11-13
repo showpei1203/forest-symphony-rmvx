@@ -6,6 +6,7 @@ var db: FSDatabase
 var battle: FSBattle
 var view_name: String = "MENU"
 var body: VBoxContainer
+var original_background: TextureRect
 var title_label: Label
 var status_label: Label
 var log_label: Label
@@ -32,6 +33,13 @@ func _build_shell() -> void:
     back.color = Color(0.035, 0.065, 0.1)
     back.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     add_child(back)
+    original_background = TextureRect.new()
+    original_background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    original_background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    original_background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+    original_background.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
+    original_background.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+    add_child(original_background)
     var layout := VBoxContainer.new()
     layout.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     layout.add_theme_constant_override("separation", 7)
@@ -87,7 +95,14 @@ func _add_button(text_value: String, callback: Callable) -> void:
     button.pressed.connect(callback)
     body.add_child(button)
 
+func _set_original_background(file_name: String) -> void:
+    # Only load source-exact pixels after private Drive image assembly.
+    # Do not claim visual parity from a missing or approximate asset.
+    var path: String = "res://assets/ui/system/" + file_name
+    original_background.texture = load(path) as Texture2D if ResourceLoader.exists(path) else null
+
 func _show_menu() -> void:
+    _set_original_background("MenuBack_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / MENU"
     status_label.text = "角色 / 技能 / 物品 / 裝備 / 狀態"
@@ -98,6 +113,7 @@ func _show_menu() -> void:
     _add_button("進入 BATTLE", _show_battle)
 
 func _show_status() -> void:
+    _set_original_background("MenuBack_status_a.png")
     _clear_body()
     for actor in battle.party:
         _add_text("%s  Lv.%d  HP %d/%d  MP %d/%d" % [actor.get("name","?"), actor.get("level",0), actor.get("hp",0), actor.get("maxhp",0), actor.get("mp",0), actor.get("maxmp",0)])
@@ -105,6 +121,7 @@ func _show_status() -> void:
     _add_button("返回選單", _show_menu)
 
 func _show_skills() -> void:
+    _set_original_background("MenuBack_skill.png")
     _clear_body()
     _add_text("來源技能資料（完整學習、消耗、限制、被動效果尚待轉譯）")
     var items: Variant = db.tables.get("skills", [])
@@ -119,6 +136,7 @@ func _show_skills() -> void:
     _add_button("返回選單", _show_menu)
 
 func _show_items() -> void:
+    _set_original_background("MenuBack_item.png")
     _clear_body()
     _add_text("背包（道具消耗尚待原版規則核對）")
     for k in battle.inventory:
@@ -126,6 +144,7 @@ func _show_items() -> void:
     _add_button("返回選單", _show_menu)
 
 func _show_equipment() -> void:
+    _set_original_background("MenuBack_equip.png")
     _clear_body()
     for actor in battle.party:
         _add_text("%s 裝備 IDs: %s" % [actor.get("name","?"), str(actor.get("equipment",[]))])
@@ -134,12 +153,24 @@ func _show_equipment() -> void:
 func _show_battle() -> void:
     if battle == null:
         return
+    # Actual battlefield layers are selected by the original BattleScape authority.
+    # Blank source-exact MENU background rather than displaying an incorrect battle map.
+    original_background.texture = null
     _clear_body()
     title_label.text = "Forest Symphony / BATTLE (P1)"
     if battle.enemies.is_empty():
-        for idx in range(1, int(db.tables.get("enemies", []).size())):
-            if battle.add_enemy(idx):
-                break
+        var troop_id: int = int(db.system().get("test_troop_id", 0))
+        var troop: Dictionary = db.record("troops", troop_id)
+        if troop.is_empty():
+            var troops: Variant = db.tables.get("troops", [])
+            if troops is Array:
+                for idx in range(1, troops.size()):
+                    troop = db.record("troops", idx)
+                    if not troop.is_empty() and not troop.get("members", []).is_empty():
+                        break
+        for member in troop.get("members", []):
+            if member is Dictionary and not bool(member.get("hidden", false)):
+                battle.add_enemy(int(member.get("enemy_id", 0)))
     if not battle.active:
         battle.start()
     _refresh_battle_status()
