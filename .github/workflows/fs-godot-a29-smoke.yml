@@ -26,6 +26,9 @@ jobs:
           find /tmp/fs-godot -maxdepth 1 -type f -print
           chmod +x /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64
           /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Diagnose raw packed scene structure before strict import
+        run: |
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_scene_structure.gd 2>&1 | tee /tmp/fs-godot/preimport_structure.log || true
       - name: Import and parse project, no private artwork
         run: |
           set -o pipefail
