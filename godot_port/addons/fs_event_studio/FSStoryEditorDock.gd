@@ -60,6 +60,7 @@ func _build_ui() -> void:
     _make_button(toolbar,"新建事件",_new_clicked)
     _make_button(toolbar,"開啟事件",_open_clicked)
     _make_button(toolbar,"儲存 JSON",_save_clicked)
+    _make_button(toolbar,"複製 JSON",_copy_clicked)
     _make_button(toolbar,"復原",_undo)
     _make_button(toolbar,"重做",_redo)
     _make_button(toolbar,"檢查所有頁",_validate_clicked)
@@ -408,6 +409,16 @@ func _validate_clicked() -> void:
         _show_status("全部 %d 頁已通過 VX 指令結構驗證" % _doc.get("pages",[]).size())
     else:
         _show_status("不可儲存： " + errors[0])
+
+func _copy_clicked() -> void:
+    # Cloud-first alternative: copy serialized event to chat for direct GitHub commit.
+    # Does not write a local file. Native Save above writes to the opened project's res://.
+    var errors: PackedStringArray = _validate_all()
+    if not errors.is_empty():
+        _show_status("複製已阻擋：" + errors[0])
+        return
+    DisplayServer.clipboard_set(JSON.stringify(_doc,"\t",false))
+    _show_status("事件 JSON 已複製，尚未存入 GitHub")
 
 func _save_clicked() -> void:
     var errors: PackedStringArray = _validate_all()
