@@ -297,11 +297,13 @@ func _step_selected(index: int) -> void:
     _inspector.edit_step(page["steps"][index])
 
 func _step_edited() -> void:
+    # Do NOT rebuild the inspector while TextEdit / LineEdit is emitting text_changed:
+    # destroying the active widget would break typing and focus.
     _changed()
-    var selected: int = _selected_step
-    _refresh_steps()
-    if selected >= 0 and selected < _step_list.item_count:
-        _step_list.select(selected)
+    var steps: Array = DATA.get_page(_doc,_page_index).get("steps",[])
+    if _selected_step >= 0 and _selected_step < steps.size():
+        _step_list.set_item_text(_selected_step,
+            "%02d  %s" % [_selected_step+1,COMPILER.describe(steps[_selected_step])])
 
 func _add_step() -> void:
     if _add_selector.selected < 0:
