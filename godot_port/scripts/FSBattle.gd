@@ -9,11 +9,16 @@ var db: FSDatabase
 var party: Array[Dictionary] = []
 var enemies: Array[Dictionary] = []
 var inventory: Dictionary = {}  # keys "item:<id>" / "weapon:<id>" / "armor:<id>"
+var world: FSGameState
 var active: bool = false
 var pending_actor: int = -1
 
-func _init(database: FSDatabase) -> void:
+func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
+    world = shared_world
+    if world != null:
+        # One shared inventory is mandatory for event reward + MENU + BATTLE parity.
+        inventory = world.inventory
 
 func add_actor(actor_id: int) -> bool:
     var battler: Dictionary = db.apply_equipment(db.actor_stats(actor_id))
