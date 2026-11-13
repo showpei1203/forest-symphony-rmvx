@@ -54,9 +54,10 @@ far_foot_y = 610
 near_foot_y = 641
 
 [node name="CollisionPaint" type="TileMapLayer" parent="."]
-# Intentionally no TileSet or painted cells: do NOT pretend the collision map is validated.
+z_index = -5
 
 [node name="Characters" type="Node2D" parent="."]
+y_sort_enabled = false
 
 [node name="Player" type="CharacterBody2D" parent="Characters"]
 position = Vector2(232, 596)
