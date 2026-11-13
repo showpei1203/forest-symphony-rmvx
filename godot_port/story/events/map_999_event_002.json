@@ -1,0 +1,76 @@
+{
+  "schema": "fs-story-event-v1",
+  "map_id": 999,
+  "event_id": 2,
+  "name": "示範：旅人 NPC",
+  "x": 8,
+  "y": 6,
+  "pages": [
+    {
+      "title": "旅人對話",
+      "trigger": "action",
+      "priority": "same",
+      "condition": {
+        "switch_id": 0,
+        "switch2_id": 0,
+        "variable_id": 0,
+        "variable_min": 0,
+        "self_switch": ""
+      },
+      "steps": [
+        {
+          "op": "dialogue",
+          "text": "早安，旅人。你想幫忙整理這座森林嗎？",
+          "face": "",
+          "face_index": 0,
+          "background": 0,
+          "position": 2
+        },
+        {
+          "op": "choice",
+          "options": [
+            "願意幫忙",
+            "現在沒空"
+          ],
+          "cancel_type": 2
+        },
+        {
+          "op": "when_choice",
+          "index": 0
+        },
+        {
+          "op": "dialogue",
+          "text": "感謝你！這 50 金幣是我的謝禮。",
+          "face": "",
+          "face_index": 0,
+          "background": 0,
+          "position": 2
+        },
+        {
+          "op": "gold",
+          "amount": 50
+        },
+        {
+          "op": "switch",
+          "id": 5,
+          "enabled": true
+        },
+        {
+          "op": "when_choice",
+          "index": 1
+        },
+        {
+          "op": "dialogue",
+          "text": "沒關係，等你準備好再來吧。",
+          "face": "",
+          "face_index": 0,
+          "background": 0,
+          "position": 2
+        },
+        {
+          "op": "end_choice"
+        }
+      ]
+    }
+  ]
+}
