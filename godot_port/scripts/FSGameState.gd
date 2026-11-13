@@ -48,7 +48,7 @@ func amount(kind: String, id: int) -> int:
     return int(inventory.get("%s:%d" % [kind,id], 0))
 
 func gain_item(kind: String, id: int, delta: int) -> void:
-    if id < 1 or not kind in ["item", "weapon", "armor"]:
+    if id < 1 or not (kind in ["item", "weapon", "armor"]):
         return
     var key: String = "%s:%d" % [kind,id]
     inventory[key] = clampi(amount(kind,id) + delta, 0, 99)
