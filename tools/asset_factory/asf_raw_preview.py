@@ -10,7 +10,7 @@ import hashlib
 import io
 from typing import Sequence
 
-from PIL import Image, ImageChops
+from PIL import Image
 
 
 class SpritePreviewError(ValueError):
@@ -80,7 +80,7 @@ def preview_frames(
     # We report comparison evidence, never assert motion/anatomy has passed.
     duplicates = [
         [i, j] for i in range(len(aligned)) for j in range(i + 1, len(aligned))
-        if ImageChops.difference(aligned[i], aligned[j]).getbbox() is None
+        if aligned[i].tobytes() == aligned[j].tobytes()
     ]
     return {
         "status": "PREVIEW_ONLY_NEEDS_ART_REVIEW",
