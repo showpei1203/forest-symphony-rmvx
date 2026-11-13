@@ -18,7 +18,7 @@ func _check_scene() -> void:
         push_error("A29 FAIL: scene cannot instantiate")
         quit(1)
         return
-    get_root().add_child(instance)
+    # Pure structural inspection: do not enter tree or demand private PNGs in public CI.
     var required := ["FullGround", "Occluders/LeftTree", "Occluders/RightTree", "Occluders/BridgeRail", "CollisionPaint", "Characters/Player", "Characters/Player/ActorVisual", "Characters/Player/ActorForeground", "Characters/Player/Camera2D"]
     for path in required:
         if instance.get_node_or_null(NodePath(path)) == null:
@@ -26,4 +26,5 @@ func _check_scene() -> void:
             quit(1)
             return
     print("A29 GODOT SCENE TREE PASS: ", required.size(), " nodes")
+    instance.free()
     quit(0)
