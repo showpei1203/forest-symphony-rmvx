@@ -63,6 +63,11 @@ def main(a21_path: Path, a18_path: Path, output_dir: Path):
     right = full & ~left & ~bridge
     if (int(left.sum()),int(bridge.sum()),int(right.sum())) != (33600,1421,55055):
         raise ValueError('A21 pixel counts did not reconcile')
+    # Self-contained private replay bundle; never commit these source pixels to public GitHub.
+    (output_dir/'Runtime_FullGround_UNCHANGED.png').write_bytes(master)
+    (output_dir/'APPROVED_F0_EXACT_48_PRIVATE.png').write_bytes(actor)
+    for label, arr in [('LEFT_TREE',left),('RIGHT_TREE',right),('BRIDGE_RAIL',bridge)]:
+        (output_dir/f'A27_SOURCE_MASK_{label}.png').write_bytes(png_bytes(Image.fromarray((arr*255).astype(np.uint8),'L')))
     owner_layers = [
       build_owner('left_tree_canopy','tree_canopy',left,75,435,440,575),
       build_owner('right_lower_canopy','tree_canopy',right,1039,1280,700,927),
@@ -108,6 +113,16 @@ def main(a21_path: Path, a18_path: Path, output_dir: Path):
             board.paste(im.crop(region).convert('RGB'),(j*(panel_w+10),y))
             draw.text((j*(panel_w+10)+4,i*panel_h+2),
                 f'{name} | {"A21 BASELINE" if j==0 else "A27 DEPTH PREVIEW"}',fill=(240,240,240))
+    # Moving F0 still-image reference: evaluates runtime positional occlusion only.
+    # Not movement animation and not an RPG Maker VX Game.exe recording.
+    trajectory=[]
+    for yy in range(490,555,6):
+        _,_,view,_=render_actor_case(master,MASTER_SHA,actor,(208,yy),(232,yy+47),owner_layers)
+        frame=img(view).crop((120,425,420,635)).convert('RGB')
+        trajectory.append(frame)
+    trajectory[0].save(output_dir/'A27_TREE_POSITIONAL_OCCLUSION_F0_STILL_NOT_VX.gif',
+        format='GIF',save_all=True,append_images=trajectory[1:],duration=240,loop=0,optimize=False)
+    report['positional_proof_frames']=len(trajectory)
     visual_png=png_bytes(board)
     (output_dir/'A27_A21_SIDE_BY_SIDE_REAL_INPUT_NOT_VX.png').write_bytes(visual_png)
     (output_dir/'A27_REAL_QA.json').write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf-8')
@@ -120,6 +135,7 @@ def main(a21_path: Path, a18_path: Path, output_dir: Path):
                 'Per-character dynamic PAR requires explicit engine integration; do not drop these conditional files as static global PAR.\n'
                 'No paid generation. No changes to sealed Ground or source work.\n')
     (output_dir/'A27_FAILURE_LOG.txt').write_text(fail_log,encoding='utf-8')
+    (output_dir/'README_PRIVATE.txt').write_text('FS A27 real A21 replay; main map pixels unchanged.\nActor masks copied from the A21 source PAR alpha and manually depth-hinted.\nAll png previews and GIF are Pillow simulations, not Game.exe native recordings.\nNo new art approval, no per-character RGSS2 runtime switch, no roof source, no formal seal.\n',encoding='utf-8')
     output_zip = output_dir.parent/'FS_A27_REAL_A21_GEOMETRY_DEPTH_PRIVATE_20261113.zip'
     with zipfile.ZipFile(output_zip,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for f in sorted(output_dir.iterdir()):
