@@ -50,6 +50,12 @@ jobs:
           /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_a30_public_contract.gd 2>&1 | tee /tmp/fs-godot/a30_public_contract.log
           grep -q "A30 GODOT PUBLIC CI PASS" /tmp/fs-godot/a30_public_contract.log
           if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-godot/a30_public_contract.log; then exit 1; fi
+      - name: A31 source-only canopy parity and negative-control tests
+        run: |
+          set -o pipefail
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_a31_canopy_public.gd 2>&1 | tee /tmp/fs-godot/a31_canopy_public.log
+          grep -q "A31 GODOT CANOPY PUBLIC PASS" /tmp/fs-godot/a31_canopy_public.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-godot/a31_canopy_public.log; then exit 1; fi
       - name: Upload text-only proof
         if: always()
         uses: actions/upload-artifact@v4
@@ -60,6 +66,7 @@ jobs:
             /tmp/fs-godot/synthetic_test.log
             /tmp/fs-godot/scene_structure.log
             /tmp/fs-godot/a30_public_contract.log
+            /tmp/fs-godot/a31_canopy_public.log
           retention-days: 14
 
 # Private original Master/F0/PAR images are deliberately not available to public CI.

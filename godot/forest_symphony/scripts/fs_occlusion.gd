@@ -4,8 +4,13 @@ extends RefCounted
 
 const ALLOWED := ["tree_canopy", "roof_front_eave", "bridge_near_rail", "cliff_top"]
 
-static func build_overlay(actor: Image, actor_top_left: Vector2i, foot: Vector2i, owners: Array) -> Image:
+## A31 experimental assisted canopy visibility. Default opacity=1.0 exactly
+## reproduces approved A30 source-locked occlusion. The pixel RGB is unchanged;
+## only selected tree-canopy overlay alpha is adjusted during gameplay.
+## This is NOT a change to original Master Ground or source PAR asset bytes.
+static func build_overlay(actor: Image, actor_top_left: Vector2i, foot: Vector2i, owners: Array, tree_alpha: float = 1.0) -> Image:
     assert(actor != null and not actor.is_empty())
+    assert(tree_alpha >= 0.20 and tree_alpha <= 1.0)
     var result := Image.create_empty(actor.get_width(), actor.get_height(), false, Image.FORMAT_RGBA8)
     result.fill(Color.TRANSPARENT)
     for owner in owners:
@@ -30,6 +35,10 @@ static func build_overlay(actor: Image, actor_top_left: Vector2i, foot: Vector2i
                     continue
                 var pixel := source.get_pixel(wx - rect.position.x, wy - rect.position.y)
                 if pixel.a > 0.0:
+                    # No opacity change for roof/bridge/cliff. Only actors behind
+                    # a tree can see a faint continuous silhouette through leaves.
+                    if owner["semantic"] == "tree_canopy":
+                        pixel.a *= tree_alpha
                     result.set_pixel(local_x, local_y, pixel)
     return result
 

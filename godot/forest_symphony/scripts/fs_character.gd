@@ -10,6 +10,9 @@ const RUN_ORDER := [0, 1, 0, 2]
 @export var fast_multiplier: float = 2.0
 @export_range(1.0, 16.0, 1.0) var run_fps: float = 8.0
 @export var preview_battle_run: bool = true
+## A31 Opt-in visibility aid: original A30 still default. Not an ART-approved mode.
+@export var assisted_canopy_visibility: bool = false
+@export_range(0.2,1.0,0.05) var assisted_tree_alpha: float = 0.35
 
 @onready var visual: Sprite2D = $ActorVisual
 @onready var foreground: Sprite2D = $ActorForeground
@@ -78,7 +81,8 @@ func refresh_occlusion() -> void:
     last_visual_id = display_id
     # The A62 48px reference shares its F0 anchor at (-24,-47).
     var top_left := foot + Vector2i(-24,-47)
-    var overlay: Image = OverlayEngine.build_overlay(current_actor,top_left,foot,owners)
+    var tree_alpha: float = assisted_tree_alpha if assisted_canopy_visibility else 1.0
+    var overlay: Image = OverlayEngine.build_overlay(current_actor,top_left,foot,owners,tree_alpha)
     last_overlay_cpu = overlay
     dynamic_overlay.update(overlay)
 
@@ -115,3 +119,9 @@ func set_battle_run_preview(enabled: bool) -> void:
     if not enabled:
         _set_visual(-1)
         refresh_occlusion()
+
+func set_canopy_visibility_aid(enabled: bool) -> void:
+    # H toggles a scoped, non-destructive art experiment. Keep A30 baseline.
+    assisted_canopy_visibility = enabled
+    last_foot = Vector2i(-9999,-9999)
+    refresh_occlusion()

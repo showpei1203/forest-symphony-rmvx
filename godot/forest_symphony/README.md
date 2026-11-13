@@ -1,6 +1,6 @@
-# Forest Symphony | Godot-first A30 (RPG Maker VX migration pilot)
+# Forest Symphony | Godot-first A31 (RPG Maker VX migration pilot)
 
-**Godot 4.7.2 stable.** This repository section is the **source-code-only** Godot development project. Download the matching [**owner-only Drive A30 ZIP**](https://drive.google.com/file/d/1F_Orv1JlGOoTy1x1ZpyL_97Y2_BmHpSK/view) for the complete privately licensed 1280×928 FS Master, Actor01 A62 Run frames, tree/bridge PAR and real engine screenshots. Do not publish those PNGs to GitHub.
+**Godot 4.7.2 stable.** A31 extends the verified A30 collision+Actor A62 baseline with an **opt-in** localized tree-canopy visibility aid. Original A11 Master, A62 approved frames and source PAR remain unchanged. This repository section is the **source-code-only** Godot development project. Download the matching **owner-only Drive A30 ZIP** for the complete privately licensed 1280×928 FS Master, Actor01 A62 Run frames, tree/bridge PAR and real engine screenshots. Do not publish those PNGs to GitHub.
 
 ## A30 concrete features
 
@@ -10,9 +10,16 @@
 - **Dynamic same-XY PAR** on each actor, updated on footpoint **or changed animation frame**, so animation cannot leave a stale foreground mask. Not an inferred 3D depth reconstruction; 1x ART is still HOLD.
 - Camera2D, native Godot CharacterBody2D, editor-visible red collision debug tiles, view toggle at runtime, editable source occluder depth.
 
+## A31 experimental art candidate (NOT ART APPROVED)
+
+- Tree-only canopy alpha in the actor-sized foreground clip can be adjusted with `assisted_tree_alpha` (Inspector; initial 0.35). By default the assistance is OFF, reproducing A30 pixel-for-pixel. Toggle at runtime with `H`.
+- This is **not** a replacement for the real original tree or the unchanged 1280x928 Ground. PAR source pixel **RGB** stays the same; only selected **runtime overlay alpha** over the actor changes. Bridge/roof/cliff source remains fully opaque.
+- Actual Godot native 4-way 100/65/35/20-percent canopy comparisons, private-source regression and QA reports are in owner-only Drive R3 ZIP. One 45-degree battle Actor01 is still a stylistic mismatch to the high-detail A11 scene. Tree-head artifact is mitigated but may remain visually awkward. USER ART HOLD.
+- A31 test entrypoints: `res://tests/test_a31_canopy_public.gd` (133 source-only checks) and `res://tests/test_a31_canopy_real.gd` (4,627 checks with private source), both actually run under Godot 4.7.2. A30 real 221 checks PASS; A30 public 389 checks PASS on unchanged collision and animation contracts.
+
 ## Controls
 
-WASD / arrows = move; Shift = faster; `G` = 32px world grid; `C` = collision debug red candidate cells; `O` = toggle per-actor PAR; `R` = toggle A62 **battle-run preview** when moving. Editing `CollisionPaint` tiles in Godot updates the collision layer directly, which is the primary advantage over the old VX approach.
+WASD / arrows = move; Shift = faster; `G` = 32px world grid; `C` = collision debug red candidate cells; `O` = toggle per-actor PAR; `R` = toggle A62 **battle-run preview** when moving; `H` = toggle experimental canopy assistance (tree-only, OFF initially). Editing `CollisionPaint` tiles in Godot updates the collision layer directly, which is the primary advantage over the old VX approach.
 
 ## QA status and reproducible tests
 

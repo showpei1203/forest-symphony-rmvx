@@ -112,6 +112,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
         collision_paint.modulate = Color.WHITE if collision_paint.modulate.a < 0.5 else Color(1,1,1,0)
     elif key.keycode == KEY_R:
         player.set_battle_run_preview(not player.preview_battle_run)
+    elif key.keycode == KEY_H:
+        player.set_canopy_visibility_aid(not player.assisted_canopy_visibility)
 
 func _draw() -> void:
     if not Engine.is_editor_hint() and grid.visible:
