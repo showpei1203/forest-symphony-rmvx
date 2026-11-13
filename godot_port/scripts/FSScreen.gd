@@ -4,6 +4,7 @@ const FS_DB = preload("res://scripts/FSDatabase.gd")
 const FS_BATTLE = preload("res://scripts/FSBattle.gd")
 var db: FSDatabase
 var battle: FSBattle
+var world: FSGameState
 var view_name: String = "MENU"
 var body: VBoxContainer
 var original_background: TextureRect
@@ -20,9 +21,12 @@ func _ready() -> void:
         title_label.text = "Forest Symphony｜原始資料未載入"
         status_label.text = "尚未匯入 RVData 轉換後的 JSON。\n" + "\n".join(PackedStringArray(db.errors)) + "\n\n這是正式移植保護機制，不使用假角色數值。"
         return
-    battle = FS_BATTLE.new(db)
+    world = FSGameState.new()
     var members: Array = db.system().get("party_members", [])
     for member_id in members:
+        world.party_actor_ids.append(int(member_id))
+    battle = FS_BATTLE.new(db, world)
+    for member_id in world.party_actor_ids:
         battle.add_actor(int(member_id))
     battle.changed.connect(_show_log)
     battle.finished.connect(_on_battle_finished)
