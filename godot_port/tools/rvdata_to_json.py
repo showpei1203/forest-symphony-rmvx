@@ -94,12 +94,14 @@ class RubyMarshal48:
         if tag == "o":
             result = self.track({"__ruby_class__":self.symbol()})
             for _ in range(self.integer()):
-                result[self.symbol().lstrip("@")] = self.value()
+                key = self.symbol()
+                result[key.lstrip("@")] = self.value()
             return result
         if tag == "S":
             result = self.track({"__ruby_struct__":self.symbol()})
             for _ in range(self.integer()):
-                result[self.symbol()] = self.value()
+                key = self.symbol()
+                result[key] = self.value()
             return result
         if tag == "I":
             obj = self.value()
