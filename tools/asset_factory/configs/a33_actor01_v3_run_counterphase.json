@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "case_id": "A33_ACTOR01_RUN_COUNTERPHASE_V3",
   "date": "2026-11-14",
-  "status": "INPUT_READY_PROVIDER_NOT_RUN",
+  "status": "PROVIDER_GENERATED_ART_HOLD",
   "provider": {
     "name": "PixelLab Creator",
     "tool": "Animate with text",
@@ -25,7 +25,10 @@
     "background": "transparent",
     "max_generation_count_this_pilot": 1,
     "additional_credit_purchase": false,
-    "art_gate_before_additional_generation": true
+    "art_gate_before_additional_generation": true,
+    "actual_generated_frames": 4,
+    "actual_total_frames_including_original": 5,
+    "actual_included_generation_cost": 1
   },
   "prompt": "RUN-IN-PLACE: four new poses after supplied F0. F1 LEFT boot forward, RIGHT back. F2 feet pass under hips. F3 RIGHT boot forward, LEFT back. F4 return to original neutral F0. Arms swing opposite legs, bend knees, lift feet, subtle torso bounce. LOCK southeast 45-degree 3/4 camera: NEVER turn face or body, NEVER move toward viewer or change scale. Keep original white hair, green armor, face, boots, pixel-art palette. Crisp transparent pixels, no cape, effects, background or extra limbs.",
   "planned_frames": [
@@ -74,6 +77,50 @@
     {
       "category": "A33_REMOTE_GUI_FOCUS_LOSS",
       "finding": "Original Chrome tab repeatedly foregrounded by other activity; separate app windows ceased to be targetable. No A33 Generate submitted."
+    },
+    {
+      "category": "A33_FOUR_POSE_RUN_FEET_COUNTERPHASE_FAIL",
+      "finding": "Native new A33 F1-F4 retain sprite appearance but feet do not visibly alternate lead. F4 does not return to original F0: 477 of 4096 RGBA pixels differ; head region F4 vs F0 210 pixels differ. Additional generic text-only generations are not justified until a pose-controlled method is introduced."
+    },
+    {
+      "category": "A33_PROVIDER_REAL_SUCCESS",
+      "finding": "PixelLab Creator V3 GUI with exact 64x64 A30 first-frame reference succeeded; monthly generation cost UI showed 1, returned 5 frames and original GIF/PNG, privately archived with SHA and CRC."
     }
-  ]
+  ],
+  "actual_prompt": "4 new RUN-IN-PLACE poses after F0. LOCK southeast 45-degree 3/4 battle view; NEVER turn toward camera. F1 LEFT foot forward, RIGHT back; F2 feet under hips; F3 RIGHT foot forward, LEFT back; F4 return to neutral to loop. Knees flex, feet lift, opposite arms swing, subtle torso bob. Preserve original white hair, dark green armor, face, boots, size and pixel colors. Transparent pixels; no extra limbs, cape, weapons, effects or background.",
+  "qa_actual": {
+    "source_f0_rgba_exact": true,
+    "unique_frames": 5,
+    "adjacent_pixel_diffs": [
+      472,
+      439,
+      454,
+      442
+    ],
+    "f4_to_f0_differing_pixels": 477,
+    "pixel_palette_counts": [
+      35,
+      44,
+      41,
+      43,
+      44
+    ],
+    "binary_alpha": true,
+    "first_frame_source_lock": "PASS",
+    "identity": "PARTIAL",
+    "camera_45_degree": "HOLD",
+    "left_right_boot_counterphase": "FAIL",
+    "loop_closure": "FAIL",
+    "native_vx": "NOT_RUN",
+    "art_gate": "HOLD"
+  },
+  "cloud": {
+    "zip_id": "1op7uzo0jQUjr0khC5rTQKrf0h9XtZwMb",
+    "zip_sha256": "0d5afc7f9a9de86d645a9d2ceede03eca520ef7e7ba2453c736fa17e296991ac",
+    "zip_bytes": 44039,
+    "zip_crc": "PASS",
+    "original_gif_id": "15tp55cRjp_wI5YWgcbtdm0tdup6tB_QV",
+    "original_sheet_id": "1jaPqanGTM-lYs8ad5GJ3jirgODH5EQy-",
+    "private_verified": true
+  }
 }
