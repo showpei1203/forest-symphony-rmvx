@@ -14,7 +14,11 @@ Public GitHub Draft PR #15（不碰 main）：
 - `tools/asset_factory/tests/test_fs_a28_rgss2_adapter.rb`：12 synthetic cases ＋ 1 private real replay（沒有私人 fixture 時自動 SKIP）；驗證來源 pixel、半開邊界、foot/depth、alpha、異常、禁用預設。
 - `tools/asset_factory/tests/test_fs_a28_rgss2_runtime_mock.rb`：6 個 Ruby 類 RGSS2 mock 行為（繪圖初始化、場景捲動保持世界一致、map switch hide、tile char skip、Bitmap/overlay dispose、未知 map fail closed）。**只是 mock，不是跑真正 Game.exe**。
 
-Private owner-only Drive A28 ZIP（實際 SHA／URL 見 Handoff 更新）：
+Private owner-only Drive A28 ZIP：
+
+- Drive owner-only: https://drive.google.com/file/d/1epHrNLXsXSW-9GH0n0O8wUug6NdTZjAC/view
+- 7 files; 829,396 bytes; SHA256 `bb3757f4e5a69eb0954b5c8f0176bfcdeff58c0aef6f8c4e84a53ca5a8f92177`; upload → download → size/SHA/ZIP CRC **PASS**。
+- Public GitHub PR #15 retains code / tests; private PNG/cross-language fixture remain Drive-only。
 - `FS_A28_LEFT_TREE.png`，世界原點 (75,413)、尺寸 360×138，來源 33,600 α pixels。
 - `FS_A28_RIGHT_TREE.png`，世界原點 (1039,645)、尺寸 241×283，來源 55,055 α pixels。
 - `FS_A28_BRIDGE_RAIL.png`，世界原點 (667,582)、尺寸 106×72，來源 1,421 α pixels。
@@ -34,6 +38,7 @@ Private owner-only Drive A28 ZIP（實際 SHA／URL 見 Handoff 更新）：
 - 原本 Master 沒有重新壓縮或改色。裁切層的所有非透明 RGBA 均來自原 Master 的同世界 XY。左樹、右樹、橋欄的裁切 mask 無互相重疊。
 - Ruby 3.3.8 沙盒執行 `ruby -c` **Syntax OK**；兩份 Ruby 單測合計 **19 tests，36 assertions，0 failures**，其中真實 4 案例內容受私人來源鎖定；這不代表 Ruby 1.8 RGSS2 的真正引擎能正確解譯、負載順序安全，或 FPS 達標。
 - 兩角色在同一森林區的 PNG 測試已輸出，但用 Pillow 模擬，**非 Game.exe 畫面**。
+- GitHub [A28 Ruby synthetic CI run 43424236999](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43424236999) **completed/success**；[FS Factory CI run 43424236992](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43424236992) **completed/success**。以上均不是 Game.exe 測試。
 
 ## 4. 重要技術／美術 HOLD
 
