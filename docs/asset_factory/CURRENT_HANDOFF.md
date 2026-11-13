@@ -1,3 +1,5 @@
+> **A22 UPSTREAM RESEARCH / NOT RUN (2026-11-13)**：已檢視 Agent Sprite Forge upstream 0.6.0（含 Pixel Looks 11/12 demo、pixel_motion、source limit），建立 [A22 技術評估與 Actor01/PMD/地圖受限試驗規格](A22_AGENT_SPRITE_FORGE_RESEARCH_AND_FS_PILOT_20261113.md)；只作上游程式碼與 FS 約束對照，未安裝/執行 ASF、未生成新影格、付費呼叫 0、Art/VX 未驗證。FS Active Master 不變，A21 148/148 synthetic PASS 是舊測試，不代表 A22 通過。下一個真正的 gate 是以核准原始 F0 做一個可見 PNG 動作／Native FS 轉換的受控測試，避免只累積規格。
+
 > **A21 CI VERIFIED (2026-11-10)**：GitHub Actions [Run 42804806871](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/42804806871) completed/success；日誌確證 **148/148 synthetic tests PASS**（包含新增 A21 的 11 個單元測試）。它只驗證程式邏輯，不代表 PixelLab 新圖、Art 或 VX 通過。
 
 # FS AI Asset Factory CURRENT_HANDOFF | A21 REAL MASTER PILOT | 2026-11-10
