@@ -78,6 +78,10 @@ func acknowledge_transfer() -> void:
         waiting_kind = ""
         _pump()
 
+func abort_current(reason: String) -> void:
+    if active:
+        _stop_failure(reason)
+
 func resolve_choice(index: int) -> void:
     if not active or waiting_kind != "choice":
         return
