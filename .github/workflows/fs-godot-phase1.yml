@@ -57,3 +57,13 @@ jobs:
         run: |
           set -euo pipefail
           /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_map_marker.gd
+      - name: Play native dialogue and choice UI test
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_dialogue_panel.gd
+      - name: Play 2D story sandbox with chest and NPC
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_sandbox.gd
