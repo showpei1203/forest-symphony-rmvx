@@ -38,5 +38,12 @@ P5 native engine test on Godot 4.7.2 stable and original VX screenshot compariso
 ## Architectural choice
 Place candidate separately at `godot_port` on `feature/fs-godot-phase1`; do not overwrite SEALED main or clean Tankentai baseline repo. Original Ruby scripts are **references**, not executable Godot scripts. Link baseline Tankentai character/SBS adapter only after separate compatibility proof; do not silently treat it as FS code.
 
-## Explicitly excluded from Phase 1
-Full plot/story/map/quests/dialogue and new Ground/PAR art production. Their old source must remain intact for Phase 2.
+## 2026-11-14 updated scope: first-class NEW Event Studio, compatibility-only OLD events
+User explicitly clarified: **original RMVX story events need not be bulk-migrated**. However, VX opcode-compatible execution should remain available. A graphical authoring workflow for **new** Godot story events is now a priority; it may run in parallel with (not replace) the original P1 combat/MENU/BATTLE parity gates.
+
+- New FS Event Studio on the same `feature/fs-godot-phase1` branch: graphical pages, conditions, editable VX-compatible steps, JSON save/load, no eval.
+- Legacy VX events can run through `FSStoryRuntime.interact_legacy_vx` using the same fail-closed interpreter; this is partial compatibility, not comprehensive conversion.
+- Map Marker and treasure-chest synthetic fixture included, with Godot 4.7.2 native headless tests PASS. New work is NOT an original UI/ATB acceptance signal.
+- Due GLOBAL HARD RULE 001, native editor's ordinary Save button creates `res://` files wherever Godot runs. On user's PC, it is prohibited as a durable destination; interim use Copy JSON + GitHub workflow, or cloud isolated tools. See `FS_EVENT_STUDIO_V01_20261114.md`.
+- Full plot/story/map/quest **legacy bulk port** remains out of scope. New event studio, game dialogue preview and actual map interaction become new focused deliverables in subsequent phases.
+
