@@ -35,19 +35,21 @@ func system() -> Dictionary:
     var data: Variant = tables.get("system", {})
     return data if data is Dictionary else {}
 
-func class_param(class_id: int, level: int, name: String) -> int:
+func actor_param(actor_id: int, level: int, name: String) -> int:
     var column: int = PARAMS.find(name)
     if column < 0:
         return 0
-    var item := record("classes", class_id)
-    var table: Dictionary = item.get("parameters", {})
+    # Verified actual FS source: RPG::Actor.parameters is a 6 × 100 Table.
+    # X axis is stat: [maxhp, maxmp, atk, def, spi, agi]; Y axis is level.
+    # RPG::Class has NO parameters table in this project's RVData.
+    var actor := record("actors", actor_id)
+    var table: Dictionary = actor.get("parameters", {})
     var width: int = int(table.get("xsize", 0))
     var height: int = int(table.get("ysize", 0))
     var values: Array = table.get("data_int16", [])
-    # RPG::Table uses x-fastest linearized data.
-    if width <= 0 or height <= column or level < 0 or level >= width:
+    if width <= column or level < 0 or level >= height:
         return 0
-    var offset: int = column * width + level
+    var offset: int = level * width + column
     return int(values[offset]) if offset < values.size() else 0
 
 func actor_stats(actor_id: int, level: int = -1) -> Dictionary:
@@ -58,7 +60,7 @@ func actor_stats(actor_id: int, level: int = -1) -> Dictionary:
     var result: Dictionary = {"id": actor_id, "name": str(actor.get("name", "?")), "level": resolved_level,
         "class_id": int(actor.get("class_id", 0)), "actor": true}
     for name in PARAMS:
-        result[name] = class_param(result["class_id"], resolved_level, name)
+        result[name] = actor_param(actor_id, resolved_level, name)
     # VX starts with weapon + four armors; the full custom slot rules remain P1 TODO.
     var slots: Array = [int(actor.get("weapon_id", 0))]
     for i in range(1, 5):
