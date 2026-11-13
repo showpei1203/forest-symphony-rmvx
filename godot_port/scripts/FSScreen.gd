@@ -17,11 +17,7 @@ func _ready() -> void:
     db = FS_DB.new()
     if not db.load_all():
         title_label.text = "Forest Symphony｜原始資料未載入"
-        status_label.text = "尚未匯入 RVData 轉換後的 JSON。
-" + "
-".join(db.errors) + "
-
-這是正式移植保護機制，不使用假角色數值。"
+        status_label.text = "尚未匯入 RVData 轉換後的 JSON。\n" + "\n".join(PackedStringArray(db.errors)) + "\n\n這是正式移植保護機制，不使用假角色數值。"
         return
     battle = FS_BATTLE.new(db)
     var members: Array = db.system().get("party_members", [])
@@ -161,8 +157,7 @@ func _refresh_battle_status() -> void:
         all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s" % [actor.get("name","?"),actor.get("hp",0),actor.get("maxhp",0),actor.get("mp",0),actor.get("maxmp",0),actor.get("od",0)])
     for enemy in battle.enemies:
         all_lines.append("%s HP:%s/%s" % [enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0)])
-    status_label.text = "
-".join(all_lines)
+    status_label.text = "\n".join(PackedStringArray(all_lines))
 
 func _player_attack() -> void:
     if battle.party.is_empty() or battle.enemies.is_empty() or not battle.active:
