@@ -20,3 +20,6 @@ textures/canvas_textures/default_texture_filter=0
 
 [gui]
 theme/default_font_size=14
+
+[editor_plugins]
+enabled=PackedStringArray("res://addons/fs_event_studio/plugin.cfg")
