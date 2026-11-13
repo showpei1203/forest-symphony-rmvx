@@ -55,3 +55,17 @@ Private owner-only Drive A28 ZIP：
 - 待實際取得原 FS `Scripts.rvdata` / PAR 載入位置後，**唯讀解出 map display_x/y、Sprite_Character、Switch203 真正用途、場景地圖 ID**；對應實際腳本後做一個經授權的**隔離 VX Game.exe 小地圖**，不再修改正式 Scripts.rvdata。
 - 用兩個移動中的人物測同樹前/後、橋前/後、另一個 NPC 及一個屋簷真正來源，確認視角、穿模、fps、地圖捲動；失敗停在適配器層，不退回重畫整張 Master。
 - Ground/屋簷來源若未真正達到 Ground3 美術，仍維持 ART HOLD。以真正遊戲截圖和使用者驗收決定量產，不以 synthetic PASS 取代。
+
+## 6. 唯讀補查 FS 既有 VX 測試工程（A28 同輪，非 Game.exe 實測）
+
+2026-11-13 直接由 owner-only Drive 取回 `FS_STYLE_FIRST_V233_FULL_ARCHITECTURE_SCROLLING_VILLAGE_20261025_PRIVATE_PLAYABLE.zip`（Drive ID `1X9A7c_oZD-gHtqsUvp0hrnK8PxFcOlF-`）。26,048,056 bytes，SHA256 `4f0a4bf16548d0c1de788c12a30fbac2f9807fd96b4ba1820e040d6feda6f452`、ZIP CRC PASS。**這是 v2.3.3「測試用精靈村」工程，並非現行 FS 主遊戲或 A21 的 map_id**。
+
+只抽取歷史 `VX_V233_COTTAGE_MANUAL_PLAYABLE/Data/Scripts.rvdata` 做隔離分析（111,807 bytes，SHA256 `3a3e336968dae60a3b54215a085c76fcad5b51554e9caecc1182b6b4a4a726af`）。Ruby Marshal＋Zlib 解壓後確認共 99 個 Script entries，主要 native 索引：`Game_Map` 23、`Game_Character` 25、`Sprite_Character` 33、`Spriteset_Map` 38、測試用 `B1 OWNER NATIVE V3` 96。
+
+實際讀到 VX 這個測試基底的畫面規則：
+- `Game_Map` 的 `display_x/display_y` 使用「1/256 tile」；`Spriteset_Map#update_tilemap` 以 `display_x/8`、`display_y/8` 轉像素，和 A28 提出的 `display_x*32/256` 等價。
+- `Sprite_Character#update` 使用來源圖的 `@cw/@ch`、`self.ox`、`self.oy`、`screen_x/y/z`，並有自訂測試腳本在玩家移動時覆寫 z。A28 的 alias 插入點必須在原生及 FS 的相關腳本後，否則可能被覆寫。
+- **重要 4 像素差異：**這個真實測試基底的 `Game_Character#screen_y` 對非 `object?` 類角色有 `y -= 4`。A28 目前 `foot_y` 計算是「畫出來的角色下緣 -1」，**尚未等於 FS 世界 32px 碰撞格的真正合法腳點**。因此 A28 四案例的逐像素等價只是和 A27 的畫格腳點對齊，不得當成真實遊戲碰撞／遮擋深度已正確。下一個原生整合必須同時比較 `@real_y/8 + 32` 的 tile-foot 與 `screen_y + display_y/8 - 1` 的 graphic-foot，再依實際 FS 腳本確認深度定義。
+- 目前原生 `Switch203` 真正契約仍未從**現行 FS 主工程**確認；v2.3.3 測試工程不能取代其權威。Map ID 1 只是 v2.3.3 測試地圖，不可擅自寫入 A28 預設設定。
+
+**本輪補查不新增任何 VX PASS，也不啟用或覆寫 Scripts.rvdata。原生實機仍為 NOT_RUN、腳點校準 HOLD。**
