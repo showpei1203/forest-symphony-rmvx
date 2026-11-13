@@ -1,0 +1,72 @@
+{
+  "schema": "fs-story-event-v1",
+  "map_id": 999,
+  "event_id": 1,
+  "name": "示範：可重複檢查的寶箱",
+  "x": 4,
+  "y": 6,
+  "pages": [
+    {
+      "title": "尚未開啟",
+      "trigger": "action",
+      "priority": "same",
+      "condition": {
+        "switch_id": 0,
+        "switch2_id": 0,
+        "variable_id": 0,
+        "variable_min": 0,
+        "self_switch": ""
+      },
+      "steps": [
+        {
+          "op": "dialogue",
+          "text": "你打開了寶箱！",
+          "face": "",
+          "face_index": 0,
+          "background": 0,
+          "position": 2
+        },
+        {
+          "op": "item",
+          "id": 1,
+          "amount": 1
+        },
+        {
+          "op": "self_switch",
+          "letter": "A",
+          "enabled": true
+        },
+        {
+          "op": "dialogue",
+          "text": "獲得了 1 個物品。",
+          "face": "",
+          "face_index": 0,
+          "background": 0,
+          "position": 2
+        }
+      ]
+    },
+    {
+      "title": "已經開啟",
+      "trigger": "action",
+      "priority": "same",
+      "condition": {
+        "switch_id": 0,
+        "switch2_id": 0,
+        "variable_id": 0,
+        "variable_min": 0,
+        "self_switch": "A"
+      },
+      "steps": [
+        {
+          "op": "dialogue",
+          "text": "寶箱已經空了。",
+          "face": "",
+          "face_index": 0,
+          "background": 0,
+          "position": 2
+        }
+      ]
+    }
+  ]
+}
