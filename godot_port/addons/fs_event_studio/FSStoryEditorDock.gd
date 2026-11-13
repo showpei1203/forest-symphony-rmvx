@@ -13,6 +13,9 @@ var _page_index: int = 0
 var _selected_step: int = -1
 var _dirty: bool = false
 var _pending_action: String = ""
+var _history: Array = []
+var _history_index: int = -1
+var _saved_snapshot: String = ""
 
 var _status: Label
 var _metadata: VBoxContainer
@@ -57,6 +60,8 @@ func _build_ui() -> void:
     _make_button(toolbar,"新建事件",_new_clicked)
     _make_button(toolbar,"開啟事件",_open_clicked)
     _make_button(toolbar,"儲存 JSON",_save_clicked)
+    _make_button(toolbar,"復原",_undo)
+    _make_button(toolbar,"重做",_redo)
     _make_button(toolbar,"檢查所有頁",_validate_clicked)
     _status = _make_label(toolbar,"")
     _status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -186,6 +191,9 @@ func _set_document(event: Dictionary, path: String) -> void:
     _page_index = 0
     _selected_step = -1
     _dirty = false
+    _history = [_doc.duplicate(true)]
+    _history_index = 0
+    _saved_snapshot = JSON.stringify(_doc)
     _refresh_metadata()
     _refresh_pages()
     _refresh_steps()
@@ -350,8 +358,34 @@ func _move_step(offset: int) -> void:
     _refresh_steps()
 
 func _changed() -> void:
-    _dirty = true
-    _show_status("● 尚未儲存的修改")
+    if _history_index + 1 < _history.size():
+        _history.resize(_history_index+1)
+    _history.append(_doc.duplicate(true))
+    if _history.size() > 100:
+        _history.remove_at(0)
+    _history_index = _history.size()-1
+    _dirty = JSON.stringify(_doc) != _saved_snapshot
+    _show_status("● 尚未儲存的修改" if _dirty else "目前無修改")
+
+func _restore_history() -> void:
+    _doc = _history[_history_index].duplicate(true)
+    _page_index = clampi(_page_index,0,_doc.get("pages",[]).size()-1)
+    _selected_step = -1
+    _dirty = JSON.stringify(_doc) != _saved_snapshot
+    _refresh_metadata()
+    _refresh_pages()
+    _refresh_steps()
+    _show_status("● 尚未儲存的修改" if _dirty else "目前無修改")
+
+func _undo() -> void:
+    if _history_index > 0:
+        _history_index -= 1
+        _restore_history()
+
+func _redo() -> void:
+    if _history_index + 1 < _history.size():
+        _history_index += 1
+        _restore_history()
 
 func _show_status(text: String) -> void:
     if _status != null:
@@ -389,6 +423,7 @@ func _save_clicked() -> void:
         _show_status("儲存失敗：" + str(saved.get("error","")))
         return
     _path = str(saved["path"])
+    _saved_snapshot = JSON.stringify(_doc)
     _dirty = false
     _show_status("儲存成功：" + _path)
 
