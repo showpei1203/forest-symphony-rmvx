@@ -1,0 +1,19 @@
+config_version=5
+
+[application]
+config/name="Forest Symphony | Godot-first Map Pilot A29"
+run/main_scene="res://scenes/elf_forest_map.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[display]
+window/size/viewport_width=544
+window/size/viewport_height=416
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
+
+[physics]
+2d/default_gravity=0.0

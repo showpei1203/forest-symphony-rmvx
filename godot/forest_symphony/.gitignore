@@ -1,0 +1,5 @@
+.godot/
+private_assets/*.png
+private_assets/*.webp
+private_assets/*.zip
+*.import
