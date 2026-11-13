@@ -20,6 +20,7 @@ var commands: Array = []
 var cursor: int = 0
 var active: bool = false
 var waiting: bool = false
+var waiting_kind: String = ""
 var wait_frames: int = 0
 var source_map_id: int = 0
 var source_event_id: int = 0
@@ -42,6 +43,7 @@ func start_event(list: Array, map_id: int, event_id: int) -> void:
     cursor = 0
     active = true
     waiting = false
+    waiting_kind = ""
     wait_frames = 0
     source_map_id = map_id
     source_event_id = event_id
@@ -58,17 +60,26 @@ func _process(_delta: float) -> void:
         wait_frames -= 1
         if wait_frames <= 0:
             waiting = false
+            waiting_kind = ""
         return
     if not waiting:
         _pump()
 
 func acknowledge_message() -> void:
-    if active and waiting and wait_frames == 0:
+    if active and waiting_kind == "message":
         waiting = false
+        waiting_kind = ""
+        _pump()
+
+func acknowledge_transfer() -> void:
+    # Host invokes only after loading destination and updating FSGameState position.
+    if active and waiting_kind == "transfer":
+        waiting = false
+        waiting_kind = ""
         _pump()
 
 func resolve_choice(index: int) -> void:
-    if not active or not waiting:
+    if not active or waiting_kind != "choice":
         return
     if cursor <= 0 or int(commands[cursor-1].get("code", -1)) != 102:
         # Choice 102 may follow message 101; the waiting command is always 102.
@@ -85,31 +96,36 @@ func resolve_choice(index: int) -> void:
         return
     _choice_branch[int(command.get("indent", 0))] = index
     waiting = false
+    waiting_kind = ""
     _pump()
 
 func resolve_battle(result: int) -> void:
     # VX: 0 victory / 1 escape / 2 defeat.
-    if not active or not waiting or result < 0 or result > 2:
+    if not active or waiting_kind != "battle" or result < 0 or result > 2:
         return
     _battle_branch[int(commands[cursor-1].get("indent", 0))] = result
     waiting = false
+    waiting_kind = ""
     _pump()
 
 func _stop_failure(message: String) -> void:
     active = false
     waiting = false
+    waiting_kind = ""
     set_process(false)
     aborted.emit(message)
 
 func _stop_success() -> void:
     active = false
     waiting = false
+    waiting_kind = ""
     set_process(false)
     completed.emit()
 
 func _block(code: int, params: Array, index: int) -> void:
-    waiting = true
+    # Permanent fail-closed halt, NOT resumable via acknowledge_message().
     unsupported_command.emit(code, params, index)
+    _stop_failure("不支援的 VX 指令 #%d（事件指令 %d），請先完成相容性轉譯" % [code,index])
 
 func _seek(indent: int, codes: Array[int]) -> void:
     while cursor < commands.size():
@@ -153,9 +169,11 @@ func _pump() -> void:
                     lines.append(str(continuation[0]) if not continuation.is_empty() else "")
                     cursor += 1
                 waiting = true
+                waiting_kind = "message"
                 message_requested.emit(lines, str(params[0]), int(params[1]), int(params[2]), int(params[3]))
             102: # Show Choices
                 waiting = true
+                waiting_kind = "choice"
                 choices_requested.emit(params[0], int(params[1]))
             402: # Choice branch
                 if int(_choice_branch.get(indent, -99)) != int(params[0]):
@@ -188,6 +206,7 @@ func _pump() -> void:
             230: # Wait (VX units = frames)
                 wait_frames = maxi(0,int(params[0]))
                 waiting = wait_frames > 0
+                waiting_kind = "wait" if waiting else ""
             118, 108, 408: # Labels/comments
                 pass
             201: # Transfer player
@@ -196,10 +215,12 @@ func _pump() -> void:
                 var x: int = world.variable(int(params[2])) if indirect else int(params[2])
                 var y: int = world.variable(int(params[3])) if indirect else int(params[3])
                 waiting = true
+                waiting_kind = "transfer"
                 transfer_requested.emit(m,x,y,int(params[4]))
             301: # Battle processing; linked to BATTLE UI
                 var troop: int = world.variable(int(params[1])) if int(params[0]) != 0 else int(params[1])
                 waiting = true
+                waiting_kind = "battle"
                 battle_requested.emit(troop,bool(params[2]),bool(params[3]))
             601,602,603: # Battle branch
                 if int(_battle_branch.get(indent,-99)) != code-601:
