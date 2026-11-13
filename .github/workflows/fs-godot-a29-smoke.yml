@@ -28,7 +28,18 @@ jobs:
           /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --version
       - name: Import and parse project, no private artwork
         run: |
+          set -o pipefail
           /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/fs-godot/editor_import.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-godot/editor_import.log; then
+            echo 'FAILED: Godot editor parsing errors or missing child nodes'
+            exit 1
+          fi
+      - name: PackedScene real structure must instantiate
+        run: |
+          set -o pipefail
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_scene_structure.gd 2>&1 | tee /tmp/fs-godot/scene_structure.log
+          grep -q "A29 GODOT SCENE TREE PASS" /tmp/fs-godot/scene_structure.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-godot/scene_structure.log; then exit 1; fi
       - name: Real Godot 4.7 synthetic GDScript source smoke
         run: |
           /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_godot_code.gd 2>&1 | tee /tmp/fs-godot/synthetic_test.log
@@ -41,6 +52,7 @@ jobs:
           path: |
             /tmp/fs-godot/editor_import.log
             /tmp/fs-godot/synthetic_test.log
+            /tmp/fs-godot/scene_structure.log
           retention-days: 14
 
 # Private original Master/F0/PAR images are deliberately not available to public CI.
