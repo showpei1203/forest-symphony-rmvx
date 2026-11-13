@@ -1,5 +1,5 @@
 # FS AI Asset Factory｜唯一現行施工規範
-版本：ACTIVE-MASTER v1.1｜2026-11-13｜適用：RPG Maker VX／RGSS2／Forest Symphony
+版本：ACTIVE-MASTER v1.2｜2026-11-13｜適用：RPG Maker VX／RGSS2／Forest Symphony
 狀態：**ACTIVE on Draft PR #15 only; not merged into main**。更新規範不代表已生產合格美術。
 
 > **從本檔開始。** 未來新對話先讀本檔、P0 雲端保護，再讀 `docs/asset_factory/CURRENT_HANDOFF.md` 查目前工程進度。其他 SOP／Axx 文件不是可自行覆寫本檔的「最新規則」。
@@ -24,6 +24,16 @@
 - **獨立的瀏覽／檢閱與原生導出（NATIVE ADAPTER）。** ASF 原始影格可用任意尺寸打包預覽與循環 GIF，完成 Art Gate 後，才決定角色的統一 cell（自然尺寸或按比例調整），最後再看 RPG Maker VX／Tankentai／PMD 真正需要的排列、錨點及裁切。原生格式檢查保留在 **NATIVE EXPORT** 階段，不得卡住前面的生成。
 - **驗收順位：** (1) 有實際新影格／新動作，(2) 動作自然與完整、角色一致、45° 視角，(3) 1x 美術效果，(4) 可循環／可辨識，(5) 可批次複製，(6) 最後才是 FS 原生對接。技術測試 PASS 不能取代美術評價。
 - **P0 不變：** 使用者 PC 不做永久儲存；私人圖像留在 owner-only Drive；程式／文件可在 GitHub Draft PR；付費供應商有成本上限與授權才呼叫；未執行的美術／VX 一律標 NOT_RUN。
+
+## 0b. GODOT-FIRST RUNTIME PRIMARY（2026-11-13 新使用者決策，v1.2）
+**使用者已明確指定：Forest Symphony（FS）後續以 Godot 為主要遊戲開發與地圖編輯引擎，VX 的功能與戰鬥系統逐步遷移。** 此節在「**未來主執行引擎**」上覆寫本檔原來 Game.exe 必須是每張新地圖最終驗收的假設，但 P0、來源與 SHA、美術 Master/F0 保真、語意遮擋、可走區、1x Art、Failure Log、Handoff 的驗收仍完全有效。
+
+- **Godot 版本：4.7.2 stable**（2026-11-13 官方最新穩定；4.8 仍 beta）。本輪 Godot 主開發分支為 [Draft PR #16](https://github.com/showpei1203/forest-symphony-rmvx/pull/16)，與此 Asset Factory Draft PR #15 分工、皆不可未授權合併 main。
+- **地圖主線：** 完整高品質 Master → Godot `Sprite2D` FullGround（原檔不破壞），獨立同源原像素前景物件及可編輯深度 → 每個角色局部遮擋；`TileMapLayer` 為 32px 邏輯碰撞／地面語意，`Camera2D`、`CharacterBody2D` 及導航由 Godot 主導。此決策不允許把已核准高品質地圖切回低品質拼貼。
+- **新的兩套驗收各自記錄：** `GODOT_SCENE_PARSE`、`GODOT_NATIVE_F0_MAP`、`GODOT_CHARACTER_CAMERA`、`GODOT_OCCLUSION_PIXEL`、`GODOT_COLLISION_NAV`、`USER_ART`、`CLOUD_SHA`；舊 `VX_GAME_EXE` 保留為原始遊戲行為／功能參照與歷史證據，**不是新 Godot 地圖封版的前置關卡**。不能反過來宣稱 Godot CI 通過就等於原版 VX 相容或美術過關。
+- **已完成 A29 Pilot：** 主圖 1280×928、核准 Actor01 F0、A28 三個同源 PAR 物件，真正 Godot 4.7.2 雲端 scene+code CI success、隔離引擎真實四站位 197/0/29/0 同原像素、14 項原生 source/move/camera 檢查與四張 544×416 Godot framebuffer 截圖。**ART HOLD、碰撞 TileMapLayer 未繪製、完整人物動畫/任務/ATB/技能/召喚等仍未移植、正式產品 SEAL NO**。Private owner-only Drive 請查 PR #16 及其 Handoff。
+- **漸進遷移：** 先地圖美術/分層/碰撞/導航，再角色/怪物、事件/存檔、最後六角色戰鬥（Tankentai 表現、ATB、Break、Cover、Overdrive、召喚），逐項保留原 VX 功能對照測試。
+- 不動原始封版 VX 工程及 `main`，不把作者私有 PNG 放公開 GitHub；必要 Windows 原生測試應按 P0 取得先行授權。**先交付能玩的 Godot 畫面，不再以只有概念圖/文件或純 synthetic QA 冒充進度。**
 
 ## 1. 共同生產架構：高品質母圖保真優先
 
