@@ -1,7 +1,7 @@
 config_version=5
 
 [application]
-config/name="Forest Symphony | Godot-first Map Pilot A29"
+config/name="Forest Symphony | Godot-first Map+Collision Pilot A30"
 run/main_scene="res://scenes/elf_forest_map.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 

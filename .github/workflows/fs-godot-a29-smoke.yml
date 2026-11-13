@@ -1,4 +1,4 @@
-name: FS A29 Godot 4.7.2 map-first smoke (synthetic code only)
+name: FS A30 Godot 4.7.2 map-collision source-only QA
 
 on:
   pull_request:
@@ -44,15 +44,22 @@ jobs:
         run: |
           /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_godot_code.gd 2>&1 | tee /tmp/fs-godot/synthetic_test.log
           grep -q "A29 GODOT SOURCE-ONLY SYNTHETIC CI PASSED" /tmp/fs-godot/synthetic_test.log
+      - name: Native TileMapLayer and A30 candidate path graph contract (no private artwork)
+        run: |
+          set -o pipefail
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_a30_public_contract.gd 2>&1 | tee /tmp/fs-godot/a30_public_contract.log
+          grep -q "A30 GODOT PUBLIC CI PASS" /tmp/fs-godot/a30_public_contract.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-godot/a30_public_contract.log; then exit 1; fi
       - name: Upload text-only proof
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: FS_A29_GODOT47_SOURCE_ONLY_SMOKE
+          name: FS_A30_GODOT47_SOURCE_ONLY_SMOKE
           path: |
             /tmp/fs-godot/editor_import.log
             /tmp/fs-godot/synthetic_test.log
             /tmp/fs-godot/scene_structure.log
+            /tmp/fs-godot/a30_public_contract.log
           retention-days: 14
 
 # Private original Master/F0/PAR images are deliberately not available to public CI.

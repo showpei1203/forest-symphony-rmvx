@@ -1,38 +1,25 @@
-# Forest Symphony · Godot-first map pilot A29
+# Forest Symphony | Godot-first A30 (RPG Maker VX migration pilot)
 
-**Godot 4.7.2 stable.** This is a real Godot project with editable scene nodes using an owner-only A21 **1280×928** original Master, A18 **48×48** approved F0 and three same-XY source-locked A28 PAR cropped objects. This is not a new illustration. 
+**Godot 4.7.2 stable.** This repository section is the **source-code-only** Godot development project. Download the matching [**owner-only Drive A30 ZIP**](https://drive.google.com/file/d/1F_Orv1JlGOoTy1x1ZpyL_97Y2_BmHpSK/view) for the complete privately licensed 1280×928 FS Master, Actor01 A62 Run frames, tree/bridge PAR and real engine screenshots. Do not publish those PNGs to GitHub.
 
-**Open the owner-only ZIP** from the corresponding FS Drive A29 delivery with Godot. Do not open this public-code-only checkout expecting full graphics: the private PNG files are intentionally **NOT in GitHub**. Never upload those PNG files to GitHub.
+## A30 concrete features
 
-## What is already implemented
-
-- Complete Master as static background, same bytes and same coordinates, no tile chopping.
-- Three editable Sprite2D foreground objects (two tree sections and a bridge rail), source-locked by SHA, with editable depth limits in Godot Inspector.
-- Per-character dynamically recomputed same-XY PAR with actor silhouette. Actor's feet use real Godot world XY, not VX `screen_y`.
-- `CharacterBody2D` movement, camera following, nearest-neighbor rendering and world 32×32 grid toggle.
-- Scene node reserved for collision TileMapLayer (NOT painted; no collision approved yet).
+- FullGround is the **original SHA-locked A11 1280×928 Master**, not a downscaled/repainted image; editable same-XY tree/bridge occluders are retained from A28.
+- **32×32 native Godot TileMapLayer `CollisionPaint`**: 180 **visual-candidate** blocked tiles across 40×29 cells, with an external, editable 1-tile `TileSet`, actual physics polygon on collision layer 1, and collisions tested against `CharacterBody2D`. Source annotations are in `data/collision_candidate.json` and regeneration logic in `tools/make_a30_collision_candidate.py` + `tools/build_collision_scene.gd`. **Do not import A10 collision JSON: a different Master.**
+- **Original A62-approved Actor01 Run 48×48 three-frame replay**, hashes locked and no resampling or new image generation. Native input movement loops `_1,_2,_1,_3` at 8 fps; idle returns to approved F0. This is **battle angle proxy**, not an all-direction town walking cycle.
+- **Dynamic same-XY PAR** on each actor, updated on footpoint **or changed animation frame**, so animation cannot leave a stale foreground mask. Not an inferred 3D depth reconstruction; 1x ART is still HOLD.
+- Camera2D, native Godot CharacterBody2D, editor-visible red collision debug tiles, view toggle at runtime, editable source occluder depth.
 
 ## Controls
 
-- WASD / arrows: walk; Shift: faster.
-- G: toggle 32×32 world grid.
-- O: enable/disable PAR occlusion so you can compare alignment.
+WASD / arrows = move; Shift = faster; `G` = 32px world grid; `C` = collision debug red candidate cells; `O` = toggle per-actor PAR; `R` = toggle A62 **battle-run preview** when moving. Editing `CollisionPaint` tiles in Godot updates the collision layer directly, which is the primary advantage over the old VX approach.
 
-## Warning and scope
+## QA status and reproducible tests
 
-- Source art for A21 forest+bridge is ART HOLD. This step verifies engine architecture, not visual quality, collision, animations or the entire game.
-- Actor01 uses static, approved F0 only. Walking changes position but not the 3-frame animation. It is not a new RUN asset.
-- Trees/bridge per-pixel shading uses A27's *manually calibrated linear screen-row depth hint*, not a discovered 3D model. Do not infer `ART PASS` from 197/29 occluded pixels.
-- No production FPS benchmark, navigation mesh, collision wall tracing, water logic, lighting or party system is claimed.
-- 1st run requires private PNG assets. Public code-only CI (already real Godot 4.7.2 `PASS`): `godot --headless --path . --script res://tests/test_godot_code.gd`; structural check: `res://tests/test_scene_structure.gd`. Owner-only `res://tests/test_godot_real.gd` has been run on official Godot 4.7.2, **14/14 PASS**, four original XY cases 197/0/29/0, native character movement and camera. Four 544×416 real framebuffer screenshots are in the private ZIP `qa/`.
-- Opening editor with source assets loads original full map and editor-editable occluder sprites. For art review, look at the true four-case native screenshots, which are not Pillow simulations. ART HOLD remains until user approves and occlusion flaws repaired.
+- **Real private assets, native Godot 4.7.2**: `res://tests/test_a30_real_runtime.gd` **221/221 checks PASS**, including 180 source-locked candidate tile cells, four A27 footpoint occlusion counts **197/0/29/0**, actual Godot physics contact with a painted pond tile, three A62 run frames playing and idle return, camera following, overlay changing with frame. Real 544×416 Godot OpenGL framebuffer captures under `qa/`, plus GIF assembled **only from 12 real Godot frames**.
+- **Public checkout without private original PNGs**: `res://tests/test_a30_public_contract.gd` **389/389 checks PASS**, Godot 4.7.2 editor import no errors, correct physics shape and external TileSet, 180 blocked candidate cells, 980 candidate free cells connected in 4-neighbor graph. **Connectivity is not proof all 980 are truly safe to walk.**
+- **Not approved**: manual visual candidate collision geometry; whole-scene art, floating-head tree occlusion, top-down town walking angles, Windows EXE, full navigation, doors, dialogues, save, battle and user Art Gate. The 180 tiles exclude a lot of unvalidated blocked terrain; this is a map-editing **pilot**, not a complete collision solution.
 
-## Future feature migration
+## Pipeline and safety
 
-1. Godot map pipeline/occlusion and edit tools (this A29 pilot).
-2. 32px collision, character navigation, door/house interactions, tile layers and animated ground.
-3. Actor/monster animation import pipeline (A62, PMD -> Godot actions).
-4. Events, inventory, dialogues, save and scene transitions.
-5. Six-actor battles, Tankentai SBS look, ATB, Break, Overdrive, Cover and summons, using original VX as test oracle.
-
-See `docs/GODOT_FIRST_PORT.md` for gate status and source hashes.
+On GitHub keep **only source code, A30 collision candidate coordinates and procedurally drawn 32px debug atlas**. Private A11 Master, A18/A62 PNGs, A28 PAR, screenshot PNG/GIF and ZIP stay owner-only Drive. Isolated build/test, no user PC writes, no paid calls, no changes to old VX or `main`. Formal seal NO. Details: [`docs/A30_HANDOFF.md`](docs/A30_HANDOFF.md).

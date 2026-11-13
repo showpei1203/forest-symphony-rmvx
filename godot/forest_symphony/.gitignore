@@ -1,5 +1,11 @@
 .godot/
 private_assets/*.png
-private_assets/*.webp
 private_assets/*.zip
+qa/*.png
+qa/*.jpg
+qa/*.jpeg
+qa/*.gif
+qa/*.log
+qa/*.pid
 *.import
+__pycache__/

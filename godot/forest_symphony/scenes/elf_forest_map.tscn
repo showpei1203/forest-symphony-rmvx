@@ -1,50 +1,49 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=4]
 
 [ext_resource type="Script" path="res://scripts/fs_world.gd" id="1_world"]
 [ext_resource type="Script" path="res://scripts/fs_character.gd" id="2_actor"]
+[ext_resource type="TileSet" path="res://resources/fs_collision_32.tres" id="3_jvc7f"]
 [ext_resource type="Script" path="res://scripts/fs_occluder.gd" id="3_occluder"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_foot"]
 radius = 7.0
 
-[node name="ElfForest_A29" type="Node2D"]
+[node name="ElfForest_A30" type="Node2D" unique_id=2095855770]
 script = ExtResource("1_world")
 
-[node name="FullGround" type="Sprite2D" parent="."]
-centered = false
-texture_filter = 1
+[node name="FullGround" type="Sprite2D" parent="." unique_id=963638589]
 z_index = -10
+texture_filter = 1
+centered = false
 
-[node name="Occluders" type="Node2D" parent="."]
+[node name="Occluders" type="Node2D" parent="." unique_id=167717400]
 
-[node name="LeftTree" type="Sprite2D" parent="Occluders"]
+[node name="LeftTree" type="Sprite2D" parent="Occluders" unique_id=948236723]
+texture_filter = 1
 position = Vector2(75, 413)
 centered = false
-texture_filter = 1
 script = ExtResource("3_occluder")
 object_id = "left_tree_canopy"
-semantic = "tree_canopy"
 source_path = "res://private_assets/par_left_tree.png"
 source_sha256 = "3e96f2f07b948120440afaae96f426e1579a2c1bcb51297699edba996977b2cd"
 far_foot_y = 440
 near_foot_y = 575
 
-[node name="RightTree" type="Sprite2D" parent="Occluders"]
+[node name="RightTree" type="Sprite2D" parent="Occluders" unique_id=754000330]
+texture_filter = 1
 position = Vector2(1039, 645)
 centered = false
-texture_filter = 1
 script = ExtResource("3_occluder")
 object_id = "right_tree_canopy"
-semantic = "tree_canopy"
 source_path = "res://private_assets/par_right_tree.png"
 source_sha256 = "270702b749ea383b1b63df99953981ec67057e33569e389e82aae86640b6e219"
 far_foot_y = 700
 near_foot_y = 927
 
-[node name="BridgeRail" type="Sprite2D" parent="Occluders"]
+[node name="BridgeRail" type="Sprite2D" parent="Occluders" unique_id=1761793716]
+texture_filter = 1
 position = Vector2(667, 582)
 centered = false
-texture_filter = 1
 script = ExtResource("3_occluder")
 object_id = "bridge_near_rail"
 semantic = "bridge_near_rail"
@@ -53,51 +52,49 @@ source_sha256 = "4e030860cf1a043dee14f39b3be18cc056f3e886ab2fa644ed46d1c905548a7
 far_foot_y = 610
 near_foot_y = 641
 
-[node name="CollisionPaint" type="TileMapLayer" parent="."]
+[node name="CollisionPaint" type="TileMapLayer" parent="." unique_id=1738938870]
 z_index = -5
+tile_map_data = PackedByteArray("AAABABYAAAAAAAAAAAACABUAAAAAAAAAAAACABYAAAAAAAAAAAACABcAAAAAAAAAAAACABgAAAAAAAAAAAADABUAAAAAAAAAAAADABYAAAAAAAAAAAADABcAAAAAAAAAAAADABgAAAAAAAAAAAAEABUAAAAAAAAAAAAEABYAAAAAAAAAAAAEABcAAAAAAAAAAAAEABgAAAAAAAAAAAAEABkAAAAAAAAAAAAFABUAAAAAAAAAAAAFABYAAAAAAAAAAAAFABcAAAAAAAAAAAAFABgAAAAAAAAAAAAFABkAAAAAAAAAAAAGABUAAAAAAAAAAAAGABYAAAAAAAAAAAAGABcAAAAAAAAAAAAGABgAAAAAAAAAAAAGABkAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAHABUAAAAAAAAAAAAHABYAAAAAAAAAAAAHABcAAAAAAAAAAAAHABgAAAAAAAAAAAAHABkAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAIABUAAAAAAAAAAAAIABYAAAAAAAAAAAAIABcAAAAAAAAAAAAIABgAAAAAAAAAAAAIABkAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAJABUAAAAAAAAAAAAJABYAAAAAAAAAAAAJABcAAAAAAAAAAAAJABgAAAAAAAAAAAAJABkAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAKABQAAAAAAAAAAAAKABUAAAAAAAAAAAAKABYAAAAAAAAAAAAKABcAAAAAAAAAAAAKABgAAAAAAAAAAAAKABkAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALABQAAAAAAAAAAAALABYAAAAAAAAAAAALABcAAAAAAAAAAAALABgAAAAAAAAAAAALABkAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMABQAAAAAAAAAAAAMABYAAAAAAAAAAAAMABcAAAAAAAAAAAAMABgAAAAAAAAAAAAMABkAAAAAAAAAAAANAAgAAAAAAAAAAAANABQAAAAAAAAAAAANABYAAAAAAAAAAAANABcAAAAAAAAAAAANABgAAAAAAAAAAAAOABQAAAAAAAAAAAAOABYAAAAAAAAAAAAOABcAAAAAAAAAAAAOABgAAAAAAAAAAAAPABQAAAAAAAAAAAAPABcAAAAAAAAAAAAQABQAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARABQAAAAAAAAAAAARABUAAAAAAAAAAAASAAMAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAASAAYAAAAAAAAAAAASABQAAAAAAAAAAAASABUAAAAAAAAAAAATAAMAAAAAAAAAAAATAAQAAAAAAAAAAAATAAUAAAAAAAAAAAATAAYAAAAAAAAAAAATABQAAAAAAAAAAAATABUAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUABQAAAAAAAAAAAAUABUAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAUAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAUAAAAAAAAAAAAbAAUAAAAAAAAAAAAbAAYAAAAAAAAAAAAbAAcAAAAAAAAAAAAbAAgAAAAAAAAAAAAbAAkAAAAAAAAAAAAbABMAAAAAAAAAAAAcAAUAAAAAAAAAAAAcAAYAAAAAAAAAAAAcAAcAAAAAAAAAAAAcAAgAAAAAAAAAAAAcAAkAAAAAAAAAAAAcABMAAAAAAAAAAAAdAAUAAAAAAAAAAAAdAAYAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdABMAAAAAAAAAAAAdABQAAAAAAAAAAAAeAAUAAAAAAAAAAAAeAAYAAAAAAAAAAAAeAAcAAAAAAAAAAAAeAAgAAAAAAAAAAAAeAAkAAAAAAAAAAAAeABMAAAAAAAAAAAAeABQAAAAAAAAAAAAfAAUAAAAAAAAAAAAfAAYAAAAAAAAAAAAfAAcAAAAAAAAAAAAfAAgAAAAAAAAAAAAfAAkAAAAAAAAAAAAfABMAAAAAAAAAAAAfABQAAAAAAAAAAAAgAAYAAAAAAAAAAAAgAAcAAAAAAAAAAAAgAAgAAAAAAAAAAAAgAAkAAAAAAAAAAAAgABQAAAAAAAAAAAAhAAcAAAAAAAAAAAAhAAgAAAAAAAAAAAAhAAkAAAAAAAAAAAAmAAQAAAAAAAAAAAAmAAUAAAAAAAAAAAAmAAsAAAAAAAAAAAAmAAwAAAAAAAAAAAAmAA0AAAAAAAAAAAAnAAMAAAAAAAAAAAAnAAQAAAAAAAAAAAAnAAUAAAAAAAAAAAAnAAYAAAAAAAAAAAAnAAcAAAAAAAAAAAAnAAgAAAAAAAAAAAAnAAkAAAAAAAAAAAAnAAoAAAAAAAAAAAAnAAsAAAAAAAAAAAAnAAwAAAAAAAAAAAAnAA0AAAAAAAAAAAAnAA4AAAAAAAAAAAAnAA8AAAAAAAAAAAA=")
+tile_set = ExtResource("3_jvc7f")
 
-[node name="Characters" type="Node2D" parent="."]
-y_sort_enabled = false
+[node name="Characters" type="Node2D" parent="." unique_id=1143459509]
 
-[node name="Player" type="CharacterBody2D" parent="Characters"]
+[node name="Player" type="CharacterBody2D" parent="Characters" unique_id=142541384]
 position = Vector2(232, 596)
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("2_actor")
 
-[node name="ActorVisual" type="Sprite2D" parent="Characters/Player"]
+[node name="ActorVisual" type="Sprite2D" parent="Characters/Player" unique_id=809485546]
+texture_filter = 1
 position = Vector2(-24, -47)
 centered = false
-texture_filter = 1
 
-[node name="ActorForeground" type="Sprite2D" parent="Characters/Player"]
-position = Vector2(-24, -47)
-centered = false
-texture_filter = 1
+[node name="ActorForeground" type="Sprite2D" parent="Characters/Player" unique_id=2103919957]
 z_index = 1
+texture_filter = 1
+position = Vector2(-24, -47)
+centered = false
 
-[node name="FootCollision" type="CollisionShape2D" parent="Characters/Player"]
+[node name="FootCollision" type="CollisionShape2D" parent="Characters/Player" unique_id=637555088]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_foot")
 
-[node name="Camera2D" type="Camera2D" parent="Characters/Player"]
-enabled = true
-position_smoothing_enabled = false
+[node name="Camera2D" type="Camera2D" parent="Characters/Player" unique_id=1345504713]
 limit_left = 0
 limit_top = 0
 limit_right = 1280
 limit_bottom = 928
 
-[node name="EditorGrid" type="Node2D" parent="."]
-z_index = 50
+[node name="EditorGrid" type="Node2D" parent="." unique_id=899017076]
 visible = false
+z_index = 50
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=410794551]
 
-[node name="StatusLabel" type="Label" parent="HUD"]
+[node name="StatusLabel" type="Label" parent="HUD" unique_id=2116105948]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 528.0
 offset_bottom = 78.0
-text = "Forest Symphony | Godot-first A29 | F0 STILL | ART HOLD\nWASD / arrows: move | Shift: faster | G: 32px grid | O: toggle PAR"
-mouse_filter = 2
+text = "Forest Symphony | Godot-first A29 | F0 STILL | ART HOLD
+WASD / arrows: move | Shift: faster | G: 32px grid | O: toggle PAR"
