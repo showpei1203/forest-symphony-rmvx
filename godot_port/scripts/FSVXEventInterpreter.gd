@@ -210,6 +210,38 @@ func _pump() -> void:
                     _block(code,params,at_index)
             123: # Control Self Switch
                 world.set_self_switch(source_map_id,source_event_id,str(params[0]),int(params[1]) == 0)
+            125: # Change gold. VX 0=add, 1=sub; operand type 0=constant, 1=variable.
+                var operand_gold: Dictionary = _event_operand(params,1,2)
+                if not bool(operand_gold.get("ok",false)):
+                    _block(code,params,at_index)
+                else:
+                    var amount: int = int(operand_gold["value"])
+                    world.gold = maxi(0,world.gold + (-amount if int(params[0]) == 1 else amount))
+            126,127,128: # Item / weapon / armor changes
+                if params.size() < 4:
+                    _block(code,params,at_index)
+                else:
+                    var operand_item: Dictionary = _event_operand(params,2,3)
+                    if not bool(operand_item.get("ok",false)):
+                        _block(code,params,at_index)
+                    else:
+                        var kind: String = {126:"item",127:"weapon",128:"armor"}[code]
+                        var delta: int = int(operand_item["value"]) * (-1 if int(params[1]) == 1 else 1)
+                        world.gain_item(kind,int(params[0]),delta)
+            129: # Add/remove actor (reset-to-initial implementation is NOT yet supported)
+                if params.size() < 3 or int(params[2]) == 1:
+                    _block(code,params,at_index)
+                else:
+                    var actor_id: int = int(params[0])
+                    if actor_id < 1:
+                        _block(code,params,at_index)
+                    elif int(params[1]) == 0:
+                        if not actor_id in world.party_actor_ids:
+                            world.party_actor_ids.append(actor_id)
+                    elif int(params[1]) == 1:
+                        world.party_actor_ids.erase(actor_id)
+                    else:
+                        _block(code,params,at_index)
             230: # Wait (VX units = frames)
                 wait_frames = maxi(0,int(params[0]))
                 waiting = wait_frames > 0
@@ -299,3 +331,11 @@ func _control_variables(params: Array) -> bool:
                     next_value = current % value
         world.set_variable(i,next_value)
     return true
+
+func _event_operand(params: Array, type_index: int, number_index: int) -> Dictionary:
+    if params.size() <= number_index:
+        return {"ok":false}
+    match int(params[type_index]):
+        0: return {"ok":true,"value":int(params[number_index])}
+        1: return {"ok":true,"value":world.variable(int(params[number_index]))}
+        _: return {"ok":false}
