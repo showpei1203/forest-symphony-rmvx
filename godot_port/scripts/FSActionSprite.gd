@@ -14,14 +14,14 @@ func load_actor(prefix: String) -> bool:
     for postfix in ["", "_1", "_2", "_3"]:
         var path: String = "res://assets/characters/%s%s.png" % [prefix, postfix]
         var tex: Texture2D = load(path) as Texture2D if ResourceLoader.exists(path) else null
-        if tex == null or tex.get_size() != Vector2(96, 128):
+        if tex == null or (int(tex.get_width()) % 3 != 0) or (int(tex.get_height()) % 4 != 0):
             sheets.clear()
             return false
         sheets.append(tex)
     texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
     custom_minimum_size = Vector2(32, 32)
     expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-    stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
     _refresh()
     return true
 
@@ -44,6 +44,9 @@ func _refresh() -> void:
     if sheets.size() != 4:
         return
     var atlas := AtlasTexture.new()
-    atlas.atlas = sheets[action_row / 4]
-    atlas.region = Rect2(frame_index * 32, (action_row % 4) * 32, 32, 32)
+    var sheet: Texture2D = sheets[int(action_row / 4)]
+    var cell_w: int = int(sheet.get_width()) / 3
+    var cell_h: int = int(sheet.get_height()) / 4
+    atlas.atlas = sheet
+    atlas.region = Rect2(frame_index * cell_w, (action_row % 4) * cell_h, cell_w, cell_h)
     texture = atlas
