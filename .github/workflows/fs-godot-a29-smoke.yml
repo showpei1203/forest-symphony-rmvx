@@ -60,3 +60,14 @@ jobs:
 
 # Private original Master/F0/PAR images are deliberately not available to public CI.
 # This workflow is NOT a real-art screenshot test or an ART/Collision acceptance gate.
+
+      - name: Publish pinned open-source runner binary for isolated private real-art QA
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A29_GODOT472_PUBLIC_ENGINE_BIN
+          path: /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64
+          retention-days: 1
+          compression-level: 1
+
+# Engine artifact is the public Godot binary ONLY. Never upload original FS assets.
