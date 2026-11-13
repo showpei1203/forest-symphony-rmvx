@@ -1,0 +1,39 @@
+name: FS Godot Phase 1 (candidate smoke)
+
+on:
+  push:
+    branches:
+      - feature/fs-godot-phase1
+    paths:
+      - "godot_port/**"
+      - ".github/workflows/fs-godot-phase1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  headless-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout candidate source
+        uses: actions/checkout@v4
+      - name: Download pinned official Godot 4.7.2 stable
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/godot.zip "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          unzip -q /tmp/godot.zip -d /tmp/fs-godot-engine
+          chmod +x /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Import project (headless)
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --editor --quit
+      - name: Run synthetic VX event commands
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_vx_event_interpreter.gd
