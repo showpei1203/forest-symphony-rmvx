@@ -113,9 +113,9 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     if old_id > 0:
         inventory[prefix + str(old_id)] = int(inventory.get(prefix + str(old_id), 0)) + 1
     slots[slot] = item_id
-    var restored := db.apply_equipment(db.actor_stats(int(actor["id"]), int(actor["level"])))
-    restored["equipment"] = slots
-    restored = db.apply_equipment(restored) # Recalculate from class baseline after changing slots.
+    var restored := db.actor_stats(int(actor["id"]), int(actor["level"]))
+    restored["equipment"] = slots.duplicate()
+    restored = db.apply_equipment(restored) # Apply only the currently equipped items, once.
     for stat in ["maxhp", "maxmp", "atk", "def", "spi", "agi"]:
         actor[stat] = restored[stat]
     actor["hp"] = mini(int(actor["hp"]), int(actor["maxhp"]))
