@@ -53,6 +53,14 @@ func _run() -> void:
     if str(list[1].get("text","")) != "圖形化編輯器真正修改了事件對話":
         _fail("TextEdit change did not update event model")
         return
+    dock._undo()
+    if dock._doc["pages"][0]["steps"][1]["text"] != "你好！":
+        _fail("Undo did not restore prior dialogue")
+        return
+    dock._redo()
+    if dock._doc["pages"][0]["steps"][1]["text"] != "圖形化編輯器真正修改了事件對話":
+        _fail("Redo did not recover edited dialogue")
+        return
 
     if not Compiler.compile_page(dock._doc["pages"][0])["ok"]:
         _fail("UI generated invalid opcode blocks")
