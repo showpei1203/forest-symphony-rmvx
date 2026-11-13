@@ -89,10 +89,13 @@ func resolve_choice(index: int) -> void:
     var count: int = int((params[0] as Array).size())
     var cancel_type: int = int(params[1])
     if index < 0:
-        if cancel_type < 0:
+        # Verified original Window_Message#input_choice:
+        # cancel_type==0 disables cancellation, else callback receives cancel_type - 1.
+        # 1..4 selects a normal option; 5 selects special cancel branch index 4.
+        if cancel_type <= 0:
             return
-        index = 4 # VX's cancel branch uses 4, independent of option count.
-    if index >= count and index != 4:
+        index = cancel_type - 1
+    if index >= count and not (index == 4 and cancel_type == 5):
         return
     _choice_branch[int(command.get("indent", 0))] = index
     waiting = false
