@@ -13,9 +13,9 @@ func _ready() -> void:
     centered = false
     texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
     if source_path != "" and FileAccess.file_exists(source_path):
-        var image := Image.load_from_file(source_path)
-        if image != null and not image.is_empty():
-            texture = ImageTexture.create_from_image(image)
+        var imported: Texture2D = load(source_path) as Texture2D
+        if imported != null:
+            texture = imported
 
 func get_owner_data() -> Dictionary:
     if object_id.is_empty() or source_path.is_empty():
@@ -27,10 +27,16 @@ func get_owner_data() -> Dictionary:
     if FileAccess.get_sha256(source_path) != source_sha256:
         push_error("SHA MISMATCH: " + source_path)
         return {}
-    var image := Image.load_from_file(source_path)
-    if image == null or image.is_empty() or image.get_format() != Image.FORMAT_RGBA8:
-        push_error("Require PNG decoded RGBA8: " + source_path)
+    var imported: Texture2D = load(source_path) as Texture2D
+    if imported == null:
+        push_error("PNG not imported as Texture2D: " + source_path)
         return {}
+    var image: Image = imported.get_image()
+    if image == null or image.is_empty():
+        push_error("Could not decode source PNG: " + source_path)
+        return {}
+    if image.get_format() != Image.FORMAT_RGBA8:
+        image.convert(Image.FORMAT_RGBA8)
     var x := int(position.x)
     var y := int(position.y)
     if near_foot_y < far_foot_y or far_foot_y < 0 or near_foot_y > 4096:

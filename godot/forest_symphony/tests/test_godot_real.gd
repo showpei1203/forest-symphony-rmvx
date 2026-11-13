@@ -7,12 +7,13 @@ const GroundPath := "res://private_assets/full_ground.png"
 const GoldActorSHA := "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba"
 const GoldGroundSHA := "091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530"
 var checks := 0
+var failures: Array[String] = []
 
 func check(condition: bool, label: String) -> void:
     checks += 1
     if not condition:
+        failures.append(label)
         push_error("A29 REAL TEST FAIL: " + label)
-        quit(1)
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -39,7 +40,25 @@ func _run() -> void:
     for item in cases:
         player.position = Vector2(item[0].x, item[0].y)
         player.refresh_occlusion()
-        var overlay: Image = player.dynamic_overlay.get_image()
-        check(Overlay.opaque_count(overlay) == item[1], "real original-XY source-mask parity %s" % str(item[0]))
-    print("A29 REAL GODOT SOURCE SHA + FOUR-FOOTPOINT PAR PASSED: %d checks (ART NOT YET APPROVED)" % checks)
-    quit(0)
+        var overlay: Image = player.last_overlay_cpu
+        var got := Overlay.opaque_count(overlay)
+        print("A29 REAL FOOT ", item[0], " expected=", item[1], " actual=", got)
+        check(got == item[1], "real original-XY source-mask parity %s" % str(item[0]))
+    # Engine-native physics: move right via InputMap, observe actual world footpoint
+    # and require the per-actor overlay to track the new position.
+    player.position = Vector2(232, 596)
+    player.refresh_occlusion()
+    var start_x: float = player.position.x
+    Input.action_press("fs_move_right")
+    for step in 8:
+        await physics_frame
+    Input.action_release("fs_move_right")
+    check(player.position.x > start_x + 2.0, "native Godot CharacterBody2D movement")
+    check(player.last_foot.x > 232, "overlay refresh follows moved footpoint")
+    check(player.get_node("Camera2D").is_current(), "native camera active")
+    if not failures.is_empty():
+        print("A29 REAL GODOT FAILED: ", failures)
+        quit(1)
+    else:
+        print("A29 REAL GODOT SOURCE SHA + FOUR-FOOTPOINT PAR PASSED: %d checks (ART NOT YET APPROVED)" % checks)
+        quit(0)

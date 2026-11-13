@@ -12,6 +12,7 @@ const OverlayEngine = preload("res://scripts/fs_occlusion.gd")
 var original_actor: Image
 var owners: Array = []
 var dynamic_overlay: ImageTexture
+var last_overlay_cpu: Image
 var last_foot: Vector2i = Vector2i(-9999, -9999)
 var overlay_enabled := true
 var world_size := Vector2i(1280, 928)
@@ -36,19 +37,26 @@ func refresh_occlusion() -> void:
     last_foot = foot
     var top_left := foot + Vector2i(-24, -47)
     var overlay := OverlayEngine.build_overlay(original_actor, top_left, foot, owners)
+    last_overlay_cpu = overlay
     dynamic_overlay.update(overlay)
+
+func _ready() -> void:
+    # Allow deterministic InputMap action simulation and future controller remaps.
+    for action in ["fs_move_left", "fs_move_right", "fs_move_up", "fs_move_down"]:
+        if not InputMap.has_action(action):
+            InputMap.add_action(action)
 
 func _physics_process(_delta: float) -> void:
     if original_actor == null:
         return
     var move_direction := Vector2.ZERO
-    if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
+    if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT) or Input.is_action_pressed("fs_move_left"):
         move_direction.x -= 1.0
-    if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT):
+    if Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_RIGHT) or Input.is_action_pressed("fs_move_right"):
         move_direction.x += 1.0
-    if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP):
+    if Input.is_key_pressed(KEY_W) or Input.is_key_pressed(KEY_UP) or Input.is_action_pressed("fs_move_up"):
         move_direction.y -= 1.0
-    if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN):
+    if Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_DOWN) or Input.is_action_pressed("fs_move_down"):
         move_direction.y += 1.0
     var speed := walk_speed * (fast_multiplier if Input.is_key_pressed(KEY_SHIFT) else 1.0)
     velocity = move_direction.normalized() * speed

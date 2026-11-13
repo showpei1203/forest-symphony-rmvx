@@ -24,7 +24,8 @@
 - Actor01 uses static, approved F0 only. Walking changes position but not the 3-frame animation. It is not a new RUN asset.
 - Trees/bridge per-pixel shading uses A27's *manually calibrated linear screen-row depth hint*, not a discovered 3D model. Do not infer `ART PASS` from 197/29 occluded pixels.
 - No production FPS benchmark, navigation mesh, collision wall tracing, water logic, lighting or party system is claimed.
-- 1st run requires private PNG assets. For public synthetic code-only CI, run `godot --headless --path . --script res://tests/test_godot_code.gd`. For owner-only original-asset checks run `godot --headless --path . --script res://tests/test_godot_real.gd`.
+- 1st run requires private PNG assets. Public code-only CI (already real Godot 4.7.2 `PASS`): `godot --headless --path . --script res://tests/test_godot_code.gd`; structural check: `res://tests/test_scene_structure.gd`. Owner-only `res://tests/test_godot_real.gd` has been run on official Godot 4.7.2, **14/14 PASS**, four original XY cases 197/0/29/0, native character movement and camera. Four 544×416 real framebuffer screenshots are in the private ZIP `qa/`.
+- Opening editor with source assets loads original full map and editor-editable occluder sprites. For art review, look at the true four-case native screenshots, which are not Pillow simulations. ART HOLD remains until user approves and occlusion flaws repaired.
 
 ## Future feature migration
 

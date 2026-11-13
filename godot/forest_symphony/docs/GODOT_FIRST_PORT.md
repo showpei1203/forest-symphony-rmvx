@@ -1,5 +1,5 @@
 # Forest Symphony Godot-first A29
-Status: **REAL_SOURCE_SCENE_BUILT / GODOT_RUNTIME_VERIFY_PENDING / ART_HOLD / COLLISION_PENDING**.
+Status: **GODOT 4.7.2 SOURCE AND NATIVE REAL-MAP PILOT PASS / ART_HOLD / COLLISION_PENDING**.
 Godot version: **4.7.2 stable**, not Godot 4.8 beta.
 
 ## Authoritative decision
@@ -17,14 +17,15 @@ Godot 4.7.2 replaces RPG Maker VX as the primary future-development / map-editin
 - Cropped masks provenance: A28 owner-only verified ZIP, source exact pixel, `ART_HOLD` for forest/bridge style.
 - This is a small *playable scene pilot*, not a full demo or a replacement for all FS mechanics. Collision/Nav, second actor AI, animations, battles, data import, UI, player ART and final map production require separate gates.
 - Godot editor can manipulate the three PAR object nodes and future CollisionPaint/scene objects more conveniently; it does **not** automatically convert flat Master images into true separate ground/roof geometry.
-- Do not claim real Godot 4.7.2 runtime PASS until actual CI/editor run and screenshots are verified.
+- **Confirmed native run:** Official Godot 4.7.2 ed1daf0bf in isolated Linux OpenGL llvmpipe + Xvfb; actual 1280×928 original source opened, 4 per-pixel parity cases (197/0/29/0), native `CharacterBody2D` 8 physics frames, real `Camera2D` active. 14/14 checks PASS. Four engine framebuffer screenshots captured at 544×416 and SHA logged. Rendering via software OpenGL has audio device warnings only; no private art shipped publicly. This is a **real Godot smoke**, not artistic acceptance or Godot export EXE.
 - No new paid PixelLab calls. main branch and locked source untouched.
 
 ## Next gated tasks
-1. Confirm Godot parser, source SHA, four A27 parity cases, and actual headless screenshot on an isolated runner.
+1. Recheck native runtime and four source SHA/case parity tests whenever source or engine revision changes; CI synthetic 6/6 plus scene tree structure 9/9 on public Actions.
 2. Author the walkable/non-walkable map from original FS collision witness rather than guessing blocked cells; paint Godot TileMapLayer with 32px Source-Grid.
 3. Implement authentic semi-opaque roof/tree depth templates + dynamic water/trees under Godot, preserving full Ground art.
 4. Incrementally port scene transitions/events, save, then six party characters, summons, ATB/Tankentai semantics. Use parity fixtures with known VX behavior, not blind translation.
+5. Prepare exportable source asset import pipeline. Editor-native `load()` currently verified; pack export and licensed shipping still NOT_RUN. 
 
 ## CI and public/private split
 - Public GitHub: `.tscn`, GDScript, Godot project settings, source contracts, tests, GitHub Actions.

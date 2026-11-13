@@ -23,8 +23,15 @@ func _ready() -> void:
         if not Engine.is_editor_hint():
             get_tree().quit(4)
         return
-    var ground := Image.load_from_file(MASTER_FILE)
-    var actor := Image.load_from_file(ACTOR_FILE)
+    var ground_tex: Texture2D = load(MASTER_FILE) as Texture2D
+    var actor_tex: Texture2D = load(ACTOR_FILE) as Texture2D
+    if ground_tex == null or actor_tex == null:
+        push_error("FS original PNG import failed")
+        if not Engine.is_editor_hint():
+            get_tree().quit(5)
+        return
+    var ground: Image = ground_tex.get_image()
+    var actor: Image = actor_tex.get_image()
     if ground == null or actor == null or ground.is_empty() or actor.is_empty():
         push_error("FS master or actor could not decode")
         if not Engine.is_editor_hint():
