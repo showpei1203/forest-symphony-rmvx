@@ -42,3 +42,8 @@ jobs:
         run: |
           set -euo pipefail
           /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_vx_battle_bridge.gd
+      - name: Test FS Event Studio (compiler, pages, JSON, legacy compatibility)
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio.gd
