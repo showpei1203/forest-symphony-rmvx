@@ -52,3 +52,8 @@ jobs:
         run: |
           set -euo pipefail
           /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_ui.gd
+      - name: Test 2D map marker and treasure chest sample
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_map_marker.gd
