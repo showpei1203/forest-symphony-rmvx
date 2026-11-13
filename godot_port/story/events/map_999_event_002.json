@@ -71,6 +71,28 @@
           "op": "end_choice"
         }
       ]
+    },
+    {
+      "title": "已接受委託",
+      "trigger": "action",
+      "priority": "same",
+      "condition": {
+        "switch_id": 5,
+        "switch2_id": 0,
+        "variable_id": 0,
+        "variable_min": 0,
+        "self_switch": ""
+      },
+      "steps": [
+        {
+          "op": "dialogue",
+          "text": "委託已經交給你了。謝謝你的幫忙！",
+          "face": "",
+          "face_index": 0,
+          "background": 0,
+          "position": 2
+        }
+      ]
     }
   ]
 }
