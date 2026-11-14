@@ -119,7 +119,7 @@ func _run() -> void:
     if not _check(battle.party[0]["source_atb_count"]==540,
             "FSBattle source WAIT flag pauses all gauges"): return
     battle.source_atb_wait = false
-    battle.advance_atb(58.0/60.0)
+    battle.advance_atb(1.0)
     if not _check(battle.ready_actors()==[0] and
             battle.ready_enemies()==[0],
             "ready actor/enemy after frame progress: " + str({
