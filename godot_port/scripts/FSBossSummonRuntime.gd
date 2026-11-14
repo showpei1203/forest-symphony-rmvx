@@ -140,16 +140,23 @@ func _summon_specs(battle,boss_id: int,specs: Array,
     # Preflight ALL additions in one Boss batch before flags are committed.
     # Missing records/modes refuse, but MAX_ENEMIES partial capacity is
     # source behavior (first spec gets first available slot).
+    var virtual_counts: Dictionary = {}
+    for enemy in battle.enemies:
+        var eid: int = int(enemy.get("id",0))
+        virtual_counts[eid] = int(virtual_counts.get(eid,0))+1
+    var space_left: int = maxi(0,MAX_ENEMIES-battle.enemies.size())
     for spec in specs:
         var desired: int = int(spec[1])
         var enemy_id: int = int(spec[0])
-        var slots: int = maxi(0,mini(desired-_count(battle.enemies,enemy_id),
-            MAX_ENEMIES-battle.enemies.size()))
+        var slots: int = maxi(0,mini(desired-int(virtual_counts.get(enemy_id,0)),
+            space_left))
         if slots > 0:
             var check: Dictionary = prepare_summoned(battle,enemy_id,int(spec[2]))
             if not bool(check.get("ok",false)):
                 return _fail("Boss%d→Enemy%d：%s" % [
                     boss_id,enemy_id,check.get("reason","unknown")])
+            virtual_counts[enemy_id] = int(virtual_counts.get(enemy_id,0))+slots
+            space_left -= slots
     for spec in specs:
         if not _summon(battle,boss_id,int(spec[0]),
                 int(spec[1]),int(spec[2]),category):

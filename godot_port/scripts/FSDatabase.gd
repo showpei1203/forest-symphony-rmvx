@@ -5,10 +5,14 @@ const NAMES: Array[String] = ["actors", "classes", "skills", "items", "weapons",
 const PARAMS: Array[String] = ["maxhp", "maxmp", "atk", "def", "spi", "agi"]
 var tables: Dictionary = {}
 var errors: Array[String] = []
+# True only after load_all passes the post-Apply witness guard.
+# In-memory synthetic unit-test tables must explicitly opt-in to Boss runtime.
+var boot_final_verified: bool = false
 
 func load_all(folder: String = "res://data") -> bool:
     tables.clear()
     errors.clear()
+    boot_final_verified = false
     for name in NAMES:
         var file_path: String = folder.path_join(name + ".json")
         if not FileAccess.file_exists(file_path):
@@ -44,7 +48,8 @@ func load_all(folder: String = "res://data") -> bool:
         # Never accidentally allow partial raw data through load_all() after
         # source-consistency failure. In-memory synthetic test tables bypass this.
         tables.clear()
-    return errors.is_empty()
+    boot_final_verified = errors.is_empty()
+    return boot_final_verified
 
 static func validate_boot_manifest(manifest: Dictionary, actual_hashes: Dictionary) -> PackedStringArray:
     # This is a reproducibility gate, NOT cryptographic proof of the witness

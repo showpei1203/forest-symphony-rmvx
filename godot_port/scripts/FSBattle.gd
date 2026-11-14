@@ -23,10 +23,14 @@ var source_atb_wait: bool = false
 # ATB actor queue is active in BATTLE UI; final enemy AI/forced action/OD
 # aliases are still outside the verified P1 source implementation.
 var action_queue: FSActionQueue = FSActionQueue.new()
+# Source #401 Runtime Provider. Automatically opt-in only after the real
+# boot-final DB witness gate; synthetic battle tests opt in intentionally.
+var boss_runtime: FSBossSummonRuntime = FSBossSummonRuntime.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
     world = shared_world
+    boss_runtime.active = db.boot_final_verified
     if world != null:
         # One shared inventory is mandatory for event reward + MENU + BATTLE parity.
         inventory = world.inventory
@@ -257,6 +261,9 @@ func advance_atb(delta: float) -> void:
             # Enemy actions are chosen after ATB readiness, then must earn
             # ACT charge in subsequent source frames, not in selection frame.
             action_queue.schedule_enemy(self)
+            # Source #401 Scene_Battle#update calls Boss runtime AFTER
+            # base update. New allies start their gauge on NEXT source frame.
+            boss_runtime.tick(self)
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
         object_id: int = 0) -> bool:

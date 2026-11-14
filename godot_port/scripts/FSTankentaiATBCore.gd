@@ -105,6 +105,27 @@ static func prepare(party: Array[Dictionary],enemies: Array[Dictionary],
         battler["source_atb_count"] = raw
         battler["atb"] = float(raw)/GAUGE_MAX
 
+static func initialize_summoned(party: Array[Dictionary],
+        enemies: Array[Dictionary],enemy: Dictionary,roll: int = -1) -> void:
+    # Source #231 Sprite_ATB.initialize -> start_atb, after ma_call_ally
+    # creates a new battler Sprite. Do NOT reset existing gauges or pending
+    # commands. Source gain is computed on the new sprite's change_atb;
+    # existing sprites retain their prior gain until source change_atb.
+    var chosen: int = clampi(roll,0,4) if roll >= 0 else randi_range(0,4)
+    var max_agi: int = int(_agi_extremes(party,enemies)["highest"])
+    var raw: int = START_ENEMY*10+chosen*10
+    enemy["source_atb_gain_per_frame"] = source_base_frame_gain(
+        int(enemy.get("agi",0)),max_agi)
+    enemy["source_atb_speed"] = ATB_SPEED
+    enemy["source_atb_count"] = raw
+    enemy["source_act_count"] = 0
+    enemy["source_act_gain_per_frame"] = 0
+    enemy["source_atb_count_up"] = true
+    enemy["source_at_active"] = false
+    enemy["source_act_active"] = false
+    enemy["source_atb_mode"] = "tankentai_1_2c_summoned"
+    enemy["atb"] = float(raw)/GAUGE_MAX
+
 static func advance_frames(party: Array[Dictionary],enemies: Array[Dictionary],
         frame_count: int,wait_for_input: bool = false) -> void:
     if frame_count <= 0 or wait_for_input:
