@@ -18,11 +18,13 @@ var actor_index: int = 0
 var enemy_index: int = 0
 var battle_command_buttons: Array[Button] = []
 var selected_troop_id: int = 0
+var story_sandbox: FSStorySandbox
 
 func _ready() -> void:
     _build_shell()
     db = FS_DB.new()
     if not db.load_all():
+        _add_button("開啟 Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
         title_label.text = "Forest Symphony｜原始資料未載入"
         status_label.text = "缺少啟動後 FS 正式資料與原 VX 權威證據。\n" + "\n".join(PackedStringArray(db.errors)) + "\n\n只匯入原始 RVData 不足以完成驗證；不使用假角色數值。"
         return
@@ -154,6 +156,7 @@ func _show_menu() -> void:
     _add_button("裝備", _show_equipment)
     _add_button("編隊", _show_formation)
     _add_button("選擇原始敵方隊伍並進入 BATTLE", _show_troop_picker)
+    _add_button("Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
 
 func _actor_selector(on_select: Callable) -> void:
     # Clickable actor tabs for true party ID/level; MENU never shows all 800 skills.
@@ -267,6 +270,30 @@ func _formation_clicked(index: int) -> void:
         else:
             _show_log("交換編隊失敗")
     _show_formation()
+
+func _open_story_sandbox() -> void:
+    if story_sandbox != null:
+        return
+    if battle != null and battle.active:
+        _show_log("戰鬥進行中，不能切換到地圖測試場")
+        return
+    story_sandbox = STORY_SANDBOX.new()
+    story_sandbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    add_child(story_sandbox)
+    var back := Button.new()
+    back.name = "ReturnToFSMenu"
+    back.text = "返回 FS 選單"
+    back.position = Vector2(8,56)
+    back.pressed.connect(_close_story_sandbox)
+    story_sandbox.add_child(back)
+
+func _close_story_sandbox() -> void:
+    if story_sandbox == null:
+        return
+    story_sandbox.queue_free()
+    story_sandbox = null
+    if battle != null:
+        _show_menu()
 
 func _show_troop_picker() -> void:
     view_name = "MENU"
