@@ -144,7 +144,11 @@ static func begin_charge(battler: Dictionary,kind: String = "attack",
     var charge_percent: int = 0
     if kind == "skill":
         charge_percent = 1 if source_id == 1 else 10
-    elif kind not in ["attack","item","guard"]:
+    elif kind == "item":
+        # Original #230 Item#charge: item 1 has [4,20,0,""],
+        # otherwise [4,0,0,""].
+        charge_percent = 20 if source_id == 1 else 0
+    elif kind not in ["attack","guard"]:
         return false
     var base: int = int(battler.get("source_atb_speed",ATB_SPEED)) # act_type[0] == 4
     var charge_gain: int = GAUGE_MAX if charge_percent <= 0 else int(
