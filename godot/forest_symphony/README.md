@@ -1,3 +1,16 @@
+# FS Godot-first A33 | Complete Independent Lantern PAR
+
+**Godot 4.7.2; Ground-first v1.3**. This is the A32 native source-based scene with **4 new complete independently generated lantern sprites**, NOT crops from any flattened Master map. A32 original scene is still selectable. The new main scene is `scenes/a33_groundfirst_lantern_scene.tscn`.
+
+- Source-owned full Ground 1280×928 SHA unchanged. No Master-first PNG splitting.
+- 146 editable PAR instances, 27 unique source families; four of the instances reference the same new full 52×124 lantern PNG, shaft/roof/stone base complete, 140 base/root physics colliders, `YSort` per-foot sorting.
+- Native QA **760 checks PASS**, prior A32 **734 PASS**, 4 original Godot native framebuffers and A/B montage; users must inspect 1x art, **ART HOLD**.
+- Private original/generated artwork is supplied only in owner-only Drive complete ZIP; public GitHub contains only source and tests.
+- For reproducibility: `tools/a33_build_complete_lantern.py` derives the PNG from private independently generated source, with SHA locks. `tests/test_a33_lantern_real.gd` needs private sources; `tests/test_a33_public_contract.gd` needs no private images.
+- Remaining: two house visuals, tree-family palette, complete terrain collision, entrances, actual four-direction overworld actor, dialogue/event editor, battle. Do not claim finished game.
+
+See `CURRENT_HANDOFF.md` and `docs/A33_INDEPENDENT_LANTERN_NATIVE_HANDOFF.md`.
+
 # Forest Symphony A32 | Ground-first, independent complete PAR (GODOT)
 
 **FS Active Master v1.3 (2026-11-14) supersedes Master-first**. A32 begins a new high-quality scene asset lane without rewriting old A31 baselines. Godot 4.7.2 stable primary map engine.

@@ -1,3 +1,13 @@
+# FS CURRENT_HANDOFF｜A33 Ground-first standalone lantern | 2026-11-14
+
+**Production Rule:** Active Master v1.3: Ground-only first, independent full transparent PAR sources, Godot scene composition, 1x visual-art parity. Never default to Master flatten→mask crop. No main merge and no owner PC writes.
+
+- **Latest A33:** `scenes/a33_groundfirst_lantern_scene.tscn` becomes main scene; A32 remains unchanged for baseline. Ground **1280×928 SHA256 3348d4d30f7bea64d6e4a8ea349d3ed868a1a04660671dd93c1787d6418b0000** untouched. 146 editor nodes, 27 independent source PAR families, 4 independent fully generated tall lanterns 52×124 SHA256 6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991, original generated 887×1774 stored in private art.
+- Native QA Godot 4.7.2 A33 **760 checks PASS**, actual base contact, old A32 **734 checks PASS**, public source-only contract PASS. Four actual 1280×928 native framebuffer PNG, 7,964 RGB pixels changed exactly within old/new four-lamp ROIs; outside **0**. One lamp repositioned from (496,473) to (438,473) to avoid covering original well.
+- **ART HOLD**: lamp candidate not user approved; two houses and tree style mismatch, full grid passability/NPC/4-direction overworld/ATB Windows export not yet complete. Formal Seal NO.
+- [Owner-only A33 full ZIP](https://drive.google.com/file/d/1mIJVMUsdHJu0oVUqBbVqvGhhJ582o7zl/view) (61,517,282 bytes, SHA 50729302db83d920d55f131c69f1f671001664af86fad1099dab1b09c1d4b224) uploaded and roundtrip validated; [native A/B image](https://drive.google.com/file/d/1lrB7aoIgCFSbfeGMnk5hP5P3HT8Qix8Q/view).
+- Detailed QA + Failure Log: `docs/A33_INDEPENDENT_LANTERN_NATIVE_HANDOFF.md`. Next A34 focus: real high-quality **complete independent house PAR family**, Ground and other PAR unchanged, followed by Godot native comparison.
+
 # Forest Symphony｜Godot-first CURRENT_HANDOFF（A32）
 
 Latest: **A32 Ground-first + independent complete PAR** | 2026-11-14. Active Master v1.3 **overrides** A11/A21 old flattened-Master source-crop default.
@@ -22,7 +32,3 @@ Latest: **A32 Ground-first + independent complete PAR** | 2026-11-14. Active Mas
 - **Real Godot 4.7.2 1x framebuffer**: https://drive.google.com/file/d/1YVEJozXA_4GyLO1T1647CvJFJAi9YXyg/view ; **Ground / independently authored PAR / composite**: https://drive.google.com/file/d/1mV1P1M0gn8CHFvuVrFEdDdbGtUQjACop/view.
 - **A32 full Failure Log and Handoff owner-only Drive**: https://drive.google.com/file/d/1-Cfnv_7QuVgShWZaLQftfrz-fADRIW3x/view .
 - Private Drive metadata confirmed user-only. Public Godot PR #16 only source/script/manifests/CI; image files never pushed to GitHub. User PC untouched; PixelLab paid credits not used.
-
-
-## A32 user visual feedback｜2026-11-14
-User confirms Ground-first + independent full PAR **direction is correct and a significant improvement**, but flags street lamps visually **half-height**. Source audit: legacy `FSOBJ_post_lantern.png` is an original **16×41** sprite, A32 PAD-only **32×57** with alpha bbox (8,8)-(24,49); four independent instances use it. This is an **ART/source proportion issue**, not evidence of Godot cutting a full lamppost or an excuse to alter Ground/PAR architecture. **A32-F05 ART HOLD**; construct a coherent complete tall lamp family, retain original SHA, and compare actual Godot 1x; no art fix claimed. Other A32 ART HOLD (two house detail/style, tree-tone diversity) remains.

@@ -1,10 +1,14 @@
+# All source-owned private FS art stays ONLY in owner-only Google Drive.
 .godot/
-private_assets/**
-!private_assets/README.txt
-qa/*.png
-qa/*.jpg
-qa/*.gif
-qa/*.webp
-qa/*.log
+private_assets/
+qa/
+qa_a30/
+qa_a31/
+qa_a33/
 *.import
-__pycache__/
+*.zip
+*.gif
+*.png
+*.webp
+*.jpg
+*.jpeg

@@ -1,0 +1,53 @@
+name: FS A33 Godot independent complete lantern public QA
+on:
+  pull_request:
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a33-lantern.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-lamp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout source-only Godot project
+        uses: actions/checkout@v4
+      - name: Install official pinned Godot 4.7.2
+        shell: bash
+        run: |
+          curl -fL --retry 3 -o /tmp/godot-4.7.2.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot-4.7.2.zip -d /tmp/
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Parse and import both A32 and A33 Godot scenes
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/fs-a33
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/fs-a33/editor.log
+          if grep -E '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-a33/editor.log; then exit 1; fi
+      - name: Validate 146 independent art owners and four new lamp resource contracts
+        shell: bash
+        run: |
+          set -o pipefail
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a33_public_contract.gd 2>&1 | tee /tmp/fs-a33/public.log
+          grep -q 'A33 GODOT PUBLIC LAMP CONTRACT PASS' /tmp/fs-a33/public.log
+          if grep -E '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-a33/public.log; then exit 1; fi
+      - name: Preserve A32 source-only architecture regression
+        shell: bash
+        run: |
+          set -o pipefail
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a32_public_contract.gd 2>&1 | tee /tmp/fs-a33/a32-public.log
+          grep -q 'A32 GODOT SOURCE-ONLY PUBLIC PASS' /tmp/fs-a33/a32-public.log
+          if grep -E '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-a33/a32-public.log; then exit 1; fi
+      - name: Upload source-only log evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A33_GODOT472_COMPLETE_LANTERN_SOURCE_ONLY_QA
+          path: /tmp/fs-a33/*.log
+          retention-days: 14
+# No private PNG or original generated source bytes in public CI.
+# Native real-art tests are executed separately in an isolated owner-only environment.

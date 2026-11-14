@@ -1,0 +1,1924 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/a33_world.gd" id="1_world"]
+[ext_resource type="Script" path="res://scripts/a32_par_instance.gd" id="2_object"]
+[ext_resource type="Script" path="res://scripts/a32_player.gd" id="3_player"]
+[sub_resource type="RectangleShape2D" id="actor_foot"]
+size = Vector2(13, 9)
+[node name="FS_A33_GroundFirst" type="Node2D"]
+script = ExtResource("1_world")
+[node name="FullGround" type="Sprite2D" parent="."]
+centered = false
+texture_filter = 1
+[node name="YSort" type="Node2D" parent="."]
+y_sort_enabled = true
+[node name="Player" type="CharacterBody2D" parent="YSort"]
+position = Vector2(663, 568)
+script = ExtResource("3_player")
+[node name="Sprite" type="Sprite2D" parent="YSort/Player"]
+centered = false
+[node name="BodyCollision" type="CollisionShape2D" parent="YSort/Player"]
+shape = SubResource("actor_foot")
+position = Vector2(0, -4)
+[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+zoom = Vector2(1.35, 1.35)
+enabled = true
+[node name="EditorGrid" type="Node2D" parent="."]
+visible = false
+[node name="obj_001_a36f_elf_cottage_a" type="Node2D" parent="YSort"]
+position = Vector2(285, 406)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_elf_cottage_a_annex_rgba.png"
+source_sha256 = "535f71fb4c581c3af28d933c790d850c1449ee68c8dc7b6417506bdd8f0d0a55"
+source_semantic = "house"
+source_object_id = "obj_001_a36f_elf_cottage_a"
+footprint_width_px = 157.48
+footprint_height_px = 34
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_001_a36f_elf_cottage_a"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_001_a36f_elf_cottage_a"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_001_a36f_elf_cottage_a/Body"]
+[node name="obj_002_a36f_elf_cottage_b" type="Node2D" parent="YSort"]
+position = Vector2(1046, 419)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_elf_cottage_b_moss_roof_rgba.png"
+source_sha256 = "dd64fc1cc11dadf15dd11c6020b6380f3b03de4880de8e48de6d519beec0c9a2"
+source_semantic = "house"
+source_object_id = "obj_002_a36f_elf_cottage_b"
+footprint_width_px = 132.68
+footprint_height_px = 34
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_002_a36f_elf_cottage_b"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_002_a36f_elf_cottage_b"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_002_a36f_elf_cottage_b/Body"]
+[node name="obj_003_a36f_dense_tree_10" type="Node2D" parent="YSort"]
+position = Vector2(343, 93)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_102_rgba.png"
+source_sha256 = "cc896d31a9d7a4b70948b25e2a1c1238fa4a069b6a4a70a37ccafa8be6292b0e"
+source_semantic = "tree"
+source_object_id = "obj_003_a36f_dense_tree_10"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_003_a36f_dense_tree_10"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_003_a36f_dense_tree_10"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_003_a36f_dense_tree_10/Body"]
+[node name="obj_004_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(225, 44)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_004_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_004_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_004_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_004_a36f_dense_tree_08/Body"]
+[node name="obj_005_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(369.5, 134)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_005_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_005_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_005_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_005_a36f_dense_tree_04/Body"]
+[node name="obj_006_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(135, 111)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_001_rgba.png"
+source_sha256 = "28f183cbc12b0779c5a2598f9d48371b2b081a2549c88b94d5d6d18f6d8ace4f"
+source_semantic = "tree"
+source_object_id = "obj_006_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_006_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_006_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_006_a36f_dense_tree_00/Body"]
+[node name="obj_007_fsobj_tree_lime_03" type="Node2D" parent="YSort"]
+position = Vector2(260, 85)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_lime_03.png"
+source_sha256 = "e90c57459839f00d6c91f6291369398b88d39f0563f88366e9f40fdd8818692d"
+source_semantic = "tree"
+source_object_id = "obj_007_fsobj_tree_lime_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_007_fsobj_tree_lime_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_007_fsobj_tree_lime_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_007_fsobj_tree_lime_03/Body"]
+[node name="obj_008_a36f_dense_tree_13" type="Node2D" parent="YSort"]
+position = Vector2(294.5, 51)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_131_rgba.png"
+source_sha256 = "b426d12eff1706f87082824b29c0c0f56fa70033c3f1bdfc7cad6c30383d191d"
+source_semantic = "tree"
+source_object_id = "obj_008_a36f_dense_tree_13"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_008_a36f_dense_tree_13"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_008_a36f_dense_tree_13"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_008_a36f_dense_tree_13/Body"]
+[node name="obj_009_fsobj_tree_moss_01" type="Node2D" parent="YSort"]
+position = Vector2(306, 130)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_moss_01.png"
+source_sha256 = "bc83162ed3b98102857209171fa37bfeb83c64a4cb766818e38bd5e345084e59"
+source_semantic = "tree"
+source_object_id = "obj_009_fsobj_tree_moss_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_009_fsobj_tree_moss_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_009_fsobj_tree_moss_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_009_fsobj_tree_moss_01/Body"]
+[node name="obj_010_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(435, 122)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_021_rgba.png"
+source_sha256 = "321bcf6b869b3440f35145f98dbce0c5c84bc6b32b769c0d360a783edf39d185"
+source_semantic = "tree"
+source_object_id = "obj_010_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_010_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_010_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_010_a36f_dense_tree_02/Body"]
+[node name="obj_011_a36f_dense_tree_03" type="Node2D" parent="YSort"]
+position = Vector2(78.5, 5)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_034_rgba.png"
+source_sha256 = "24b458aa2f3a1cbb78910698e5474e7a2d4f0f08debe69707106217af881ebe7"
+source_semantic = "tree"
+source_object_id = "obj_011_a36f_dense_tree_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_011_a36f_dense_tree_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_011_a36f_dense_tree_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_011_a36f_dense_tree_03/Body"]
+[node name="obj_012_a36f_dense_tree_05" type="Node2D" parent="YSort"]
+position = Vector2(143.5, 44)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_056_rgba.png"
+source_sha256 = "499882fb966ebc68406df82e4ebf814a5d7bb9dba135df7da7ab7a2568623342"
+source_semantic = "tree"
+source_object_id = "obj_012_a36f_dense_tree_05"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_012_a36f_dense_tree_05"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_012_a36f_dense_tree_05"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_012_a36f_dense_tree_05/Body"]
+[node name="obj_013_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(487.5, 101)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_013_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_013_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_013_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_013_a36f_dense_tree_04/Body"]
+[node name="obj_014_a36f_dense_tree_10" type="Node2D" parent="YSort"]
+position = Vector2(78, 128)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_102_rgba.png"
+source_sha256 = "cc896d31a9d7a4b70948b25e2a1c1238fa4a069b6a4a70a37ccafa8be6292b0e"
+source_semantic = "tree"
+source_object_id = "obj_014_a36f_dense_tree_10"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_014_a36f_dense_tree_10"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_014_a36f_dense_tree_10"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_014_a36f_dense_tree_10/Body"]
+[node name="obj_015_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(54, 75)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_015_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_015_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_015_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_015_a36f_dense_tree_11/Body"]
+[node name="obj_016_a36f_dense_tree_13" type="Node2D" parent="YSort"]
+position = Vector2(422.5, 59)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_131_rgba.png"
+source_sha256 = "b426d12eff1706f87082824b29c0c0f56fa70033c3f1bdfc7cad6c30383d191d"
+source_semantic = "tree"
+source_object_id = "obj_016_a36f_dense_tree_13"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_016_a36f_dense_tree_13"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_016_a36f_dense_tree_13"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_016_a36f_dense_tree_13/Body"]
+[node name="obj_017_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(92, 44)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_017_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_017_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_017_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_017_a36f_dense_tree_11/Body"]
+[node name="obj_018_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(202, 123)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_001_rgba.png"
+source_sha256 = "28f183cbc12b0779c5a2598f9d48371b2b081a2549c88b94d5d6d18f6d8ace4f"
+source_semantic = "tree"
+source_object_id = "obj_018_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_018_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_018_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_018_a36f_dense_tree_00/Body"]
+[node name="obj_019_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(479, 41)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_019_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_019_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_019_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_019_a36f_dense_tree_08/Body"]
+[node name="obj_020_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(373, 42)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_020_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_020_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_020_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_020_a36f_dense_tree_11/Body"]
+[node name="obj_021_a36f_dense_tree_09" type="Node2D" parent="YSort"]
+position = Vector2(878, 127)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_092_rgba.png"
+source_sha256 = "5979db155b0d7093c2f33e514ac4a5f564349c0607ac2291302f6b2e7ec0cc0d"
+source_semantic = "tree"
+source_object_id = "obj_021_a36f_dense_tree_09"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_021_a36f_dense_tree_09"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_021_a36f_dense_tree_09"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_021_a36f_dense_tree_09/Body"]
+[node name="obj_022_a36f_dense_tree_06" type="Node2D" parent="YSort"]
+position = Vector2(1114.5, 36)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_065_rgba.png"
+source_sha256 = "a70420592997d192d07ea94abc8feb64ba75efe16107b6cc7a5794587bfe0c78"
+source_semantic = "tree"
+source_object_id = "obj_022_a36f_dense_tree_06"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_022_a36f_dense_tree_06"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_022_a36f_dense_tree_06"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_022_a36f_dense_tree_06/Body"]
+[node name="obj_023_fsobj_tree_blue_02" type="Node2D" parent="YSort"]
+position = Vector2(1054, 138)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_blue_02.png"
+source_sha256 = "9c6535f7306615aa95b7f1c9981d43a67ab0db4e3ebebc8e5536eae873653ba1"
+source_semantic = "tree"
+source_object_id = "obj_023_fsobj_tree_blue_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_023_fsobj_tree_blue_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_023_fsobj_tree_blue_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_023_fsobj_tree_blue_02/Body"]
+[node name="obj_024_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(1149.5, 99)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_024_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_024_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_024_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_024_a36f_dense_tree_14/Body"]
+[node name="obj_025_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(1305.5, 131)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_025_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_025_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_025_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_025_a36f_dense_tree_04/Body"]
+[node name="obj_026_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(1230.5, 93)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_026_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_026_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_026_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_026_a36f_dense_tree_04/Body"]
+[node name="obj_027_a36f_dense_tree_10" type="Node2D" parent="YSort"]
+position = Vector2(1063, 88)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_102_rgba.png"
+source_sha256 = "cc896d31a9d7a4b70948b25e2a1c1238fa4a069b6a4a70a37ccafa8be6292b0e"
+source_semantic = "tree"
+source_object_id = "obj_027_a36f_dense_tree_10"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_027_a36f_dense_tree_10"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_027_a36f_dense_tree_10"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_027_a36f_dense_tree_10/Body"]
+[node name="obj_028_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(1328.5, 60)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_007_rgba.png"
+source_sha256 = "5c8a500d7af7fb97156c3746604455b86ec2682e5eeb56607897c4b3e16eac6a"
+source_semantic = "tree"
+source_object_id = "obj_028_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_028_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_028_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_028_a36f_dense_tree_00/Body"]
+[node name="obj_029_a36f_dense_tree_05" type="Node2D" parent="YSort"]
+position = Vector2(894.5, 91)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_056_rgba.png"
+source_sha256 = "499882fb966ebc68406df82e4ebf814a5d7bb9dba135df7da7ab7a2568623342"
+source_semantic = "tree"
+source_object_id = "obj_029_a36f_dense_tree_05"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_029_a36f_dense_tree_05"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_029_a36f_dense_tree_05"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_029_a36f_dense_tree_05/Body"]
+[node name="obj_030_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(1253, 126)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_030_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_030_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_030_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_030_a36f_dense_tree_12/Body"]
+[node name="obj_031_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(939.5, 98)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_031_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_031_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_031_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_031_a36f_dense_tree_14/Body"]
+[node name="obj_032_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(1125, 138)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_032_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_032_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_032_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_032_a36f_dense_tree_12/Body"]
+[node name="obj_033_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(1191, 38)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_033_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_033_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_033_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_033_a36f_dense_tree_11/Body"]
+[node name="obj_034_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(964.5, 133)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_034_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_034_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_034_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_034_a36f_dense_tree_14/Body"]
+[node name="obj_035_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(889, 29)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_035_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_035_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_035_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_035_a36f_dense_tree_11/Body"]
+[node name="obj_036_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(1000.5, 60)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_036_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_036_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_036_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_036_a36f_dense_tree_14/Body"]
+[node name="obj_037_fsobj_tree_moss_01" type="Node2D" parent="YSort"]
+position = Vector2(1326, 96)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_moss_01.png"
+source_sha256 = "bc83162ed3b98102857209171fa37bfeb83c64a4cb766818e38bd5e345084e59"
+source_semantic = "tree"
+source_object_id = "obj_037_fsobj_tree_moss_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_037_fsobj_tree_moss_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_037_fsobj_tree_moss_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_037_fsobj_tree_moss_01/Body"]
+[node name="obj_038_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(1277, 51)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_038_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_038_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_038_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_038_a36f_dense_tree_11/Body"]
+[node name="obj_039_a36f_dense_tree_06" type="Node2D" parent="YSort"]
+position = Vector2(74.5, 324)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_065_rgba.png"
+source_sha256 = "a70420592997d192d07ea94abc8feb64ba75efe16107b6cc7a5794587bfe0c78"
+source_semantic = "tree"
+source_object_id = "obj_039_a36f_dense_tree_06"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_039_a36f_dense_tree_06"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_039_a36f_dense_tree_06"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_039_a36f_dense_tree_06/Body"]
+[node name="obj_040_fsobj_tree_blue_02" type="Node2D" parent="YSort"]
+position = Vector2(68, 738)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_blue_02.png"
+source_sha256 = "9c6535f7306615aa95b7f1c9981d43a67ab0db4e3ebebc8e5536eae873653ba1"
+source_semantic = "tree"
+source_object_id = "obj_040_fsobj_tree_blue_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_040_fsobj_tree_blue_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_040_fsobj_tree_blue_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_040_fsobj_tree_blue_02/Body"]
+[node name="obj_041_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(119, 625)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_001_rgba.png"
+source_sha256 = "28f183cbc12b0779c5a2598f9d48371b2b081a2549c88b94d5d6d18f6d8ace4f"
+source_semantic = "tree"
+source_object_id = "obj_041_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_041_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_041_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_041_a36f_dense_tree_00/Body"]
+[node name="obj_042_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(9, 279)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_042_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_042_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_042_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_042_a36f_dense_tree_08/Body"]
+[node name="obj_043_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(126.5, 569)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_043_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_043_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_043_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_043_a36f_dense_tree_04/Body"]
+[node name="obj_044_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(-1.5, 584)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_044_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_044_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_044_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_044_a36f_dense_tree_04/Body"]
+[node name="obj_045_a36f_dense_tree_06" type="Node2D" parent="YSort"]
+position = Vector2(6.5, 236)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_065_rgba.png"
+source_sha256 = "a70420592997d192d07ea94abc8feb64ba75efe16107b6cc7a5794587bfe0c78"
+source_semantic = "tree"
+source_object_id = "obj_045_a36f_dense_tree_06"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_045_a36f_dense_tree_06"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_045_a36f_dense_tree_06"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_045_a36f_dense_tree_06/Body"]
+[node name="obj_046_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(125, 871)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_046_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_046_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_046_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_046_a36f_dense_tree_12/Body"]
+[node name="obj_047_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(93, 522)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_047_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_047_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_047_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_047_a36f_dense_tree_11/Body"]
+[node name="obj_048_a36f_dense_tree_05" type="Node2D" parent="YSort"]
+position = Vector2(40.5, 772)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_056_rgba.png"
+source_sha256 = "499882fb966ebc68406df82e4ebf814a5d7bb9dba135df7da7ab7a2568623342"
+source_semantic = "tree"
+source_object_id = "obj_048_a36f_dense_tree_05"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_048_a36f_dense_tree_05"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_048_a36f_dense_tree_05"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_048_a36f_dense_tree_05/Body"]
+[node name="obj_049_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(76.5, 558)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_028_rgba.png"
+source_sha256 = "5f43e4881c27e0ab354128552f1f10a566f4c9efb56d36f26f9785727e0f25f1"
+source_semantic = "tree"
+source_object_id = "obj_049_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_049_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_049_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_049_a36f_dense_tree_02/Body"]
+[node name="obj_050_a36f_dense_tree_09" type="Node2D" parent="YSort"]
+position = Vector2(28, 447)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_092_rgba.png"
+source_sha256 = "5979db155b0d7093c2f33e514ac4a5f564349c0607ac2291302f6b2e7ec0cc0d"
+source_semantic = "tree"
+source_object_id = "obj_050_a36f_dense_tree_09"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_050_a36f_dense_tree_09"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_050_a36f_dense_tree_09"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_050_a36f_dense_tree_09/Body"]
+[node name="obj_051_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(53.5, 850)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_051_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_051_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_051_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_051_a36f_dense_tree_04/Body"]
+[node name="obj_052_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(114.5, 358)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_052_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_052_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_052_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_052_a36f_dense_tree_04/Body"]
+[node name="obj_053_fsobj_tree_lime_03" type="Node2D" parent="YSort"]
+position = Vector2(120, 304)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_lime_03.png"
+source_sha256 = "e90c57459839f00d6c91f6291369398b88d39f0563f88366e9f40fdd8818692d"
+source_semantic = "tree"
+source_object_id = "obj_053_fsobj_tree_lime_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_053_fsobj_tree_lime_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_053_fsobj_tree_lime_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_053_fsobj_tree_lime_03/Body"]
+[node name="obj_054_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(51.5, 411)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_054_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_054_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_054_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_054_a36f_dense_tree_04/Body"]
+[node name="obj_055_fsobj_tree_blue_02" type="Node2D" parent="YSort"]
+position = Vector2(115, 435)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_blue_02.png"
+source_sha256 = "9c6535f7306615aa95b7f1c9981d43a67ab0db4e3ebebc8e5536eae873653ba1"
+source_semantic = "tree"
+source_object_id = "obj_055_fsobj_tree_blue_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_055_fsobj_tree_blue_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_055_fsobj_tree_blue_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_055_fsobj_tree_blue_02/Body"]
+[node name="obj_056_fsobj_tree_lime_03" type="Node2D" parent="YSort"]
+position = Vector2(-6, 905)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_lime_03.png"
+source_sha256 = "e90c57459839f00d6c91f6291369398b88d39f0563f88366e9f40fdd8818692d"
+source_semantic = "tree"
+source_object_id = "obj_056_fsobj_tree_lime_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_056_fsobj_tree_lime_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_056_fsobj_tree_lime_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_056_fsobj_tree_lime_03/Body"]
+[node name="obj_057_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(112.5, 246)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_028_rgba.png"
+source_sha256 = "5f43e4881c27e0ab354128552f1f10a566f4c9efb56d36f26f9785727e0f25f1"
+source_semantic = "tree"
+source_object_id = "obj_057_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_057_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_057_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_057_a36f_dense_tree_02/Body"]
+[node name="obj_058_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(144, 733)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_021_rgba.png"
+source_sha256 = "321bcf6b869b3440f35145f98dbce0c5c84bc6b32b769c0d360a783edf39d185"
+source_semantic = "tree"
+source_object_id = "obj_058_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_058_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_058_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_058_a36f_dense_tree_02/Body"]
+[node name="obj_059_fsobj_tree_blue_02" type="Node2D" parent="YSort"]
+position = Vector2(61, 935)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_blue_02.png"
+source_sha256 = "9c6535f7306615aa95b7f1c9981d43a67ab0db4e3ebebc8e5536eae873653ba1"
+source_semantic = "tree"
+source_object_id = "obj_059_fsobj_tree_blue_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_059_fsobj_tree_blue_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_059_fsobj_tree_blue_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_059_fsobj_tree_blue_02/Body"]
+[node name="obj_060_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(36.5, 371)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_060_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_060_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_060_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_060_a36f_dense_tree_14/Body"]
+[node name="obj_061_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(1319, 388)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_021_rgba.png"
+source_sha256 = "321bcf6b869b3440f35145f98dbce0c5c84bc6b32b769c0d360a783edf39d185"
+source_semantic = "tree"
+source_object_id = "obj_061_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_061_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_061_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_061_a36f_dense_tree_02/Body"]
+[node name="obj_062_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(1410, 448)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_021_rgba.png"
+source_sha256 = "321bcf6b869b3440f35145f98dbce0c5c84bc6b32b769c0d360a783edf39d185"
+source_semantic = "tree"
+source_object_id = "obj_062_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_062_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_062_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_062_a36f_dense_tree_02/Body"]
+[node name="obj_063_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(1325, 231)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_063_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_063_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_063_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_063_a36f_dense_tree_08/Body"]
+[node name="obj_064_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(1272, 328)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_064_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_064_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_064_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_064_a36f_dense_tree_08/Body"]
+[node name="obj_065_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(1263.5, 867)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_065_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_065_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_065_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_065_a36f_dense_tree_04/Body"]
+[node name="obj_066_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(1359.5, 565)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_007_rgba.png"
+source_sha256 = "5c8a500d7af7fb97156c3746604455b86ec2682e5eeb56607897c4b3e16eac6a"
+source_semantic = "tree"
+source_object_id = "obj_066_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_066_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_066_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_066_a36f_dense_tree_00/Body"]
+[node name="obj_067_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(1288, 659)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_067_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_067_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_067_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_067_a36f_dense_tree_08/Body"]
+[node name="obj_068_a36f_dense_tree_03" type="Node2D" parent="YSort"]
+position = Vector2(1237.5, 591)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_034_rgba.png"
+source_sha256 = "24b458aa2f3a1cbb78910698e5474e7a2d4f0f08debe69707106217af881ebe7"
+source_semantic = "tree"
+source_object_id = "obj_068_a36f_dense_tree_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_068_a36f_dense_tree_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_068_a36f_dense_tree_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_068_a36f_dense_tree_03/Body"]
+[node name="obj_069_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(1358, 427)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_069_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_069_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_069_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_069_a36f_dense_tree_12/Body"]
+[node name="obj_070_a36f_dense_tree_07" type="Node2D" parent="YSort"]
+position = Vector2(1291, 594)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_073_rgba.png"
+source_sha256 = "18f312461f3cab40b4821c67079caf782431c7656cde0d8b0dba5ceb1c9448c1"
+source_semantic = "tree"
+source_object_id = "obj_070_a36f_dense_tree_07"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_070_a36f_dense_tree_07"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_070_a36f_dense_tree_07"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_070_a36f_dense_tree_07/Body"]
+[node name="obj_071_a36f_dense_tree_06" type="Node2D" parent="YSort"]
+position = Vector2(1363.5, 763)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_065_rgba.png"
+source_sha256 = "a70420592997d192d07ea94abc8feb64ba75efe16107b6cc7a5794587bfe0c78"
+source_semantic = "tree"
+source_object_id = "obj_071_a36f_dense_tree_06"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_071_a36f_dense_tree_06"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_071_a36f_dense_tree_06"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_071_a36f_dense_tree_06/Body"]
+[node name="obj_072_a36f_dense_tree_13" type="Node2D" parent="YSort"]
+position = Vector2(1290.5, 534)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_131_rgba.png"
+source_sha256 = "b426d12eff1706f87082824b29c0c0f56fa70033c3f1bdfc7cad6c30383d191d"
+source_semantic = "tree"
+source_object_id = "obj_072_a36f_dense_tree_13"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_072_a36f_dense_tree_13"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_072_a36f_dense_tree_13"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_072_a36f_dense_tree_13/Body"]
+[node name="obj_073_a36f_dense_tree_03" type="Node2D" parent="YSort"]
+position = Vector2(1350.5, 182)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_034_rgba.png"
+source_sha256 = "24b458aa2f3a1cbb78910698e5474e7a2d4f0f08debe69707106217af881ebe7"
+source_semantic = "tree"
+source_object_id = "obj_073_a36f_dense_tree_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_073_a36f_dense_tree_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_073_a36f_dense_tree_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_073_a36f_dense_tree_03/Body"]
+[node name="obj_074_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(1343.5, 812)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_074_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_074_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_074_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_074_a36f_dense_tree_04/Body"]
+[node name="obj_075_fsobj_tree_moss_01" type="Node2D" parent="YSort"]
+position = Vector2(1406, 559)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_moss_01.png"
+source_sha256 = "bc83162ed3b98102857209171fa37bfeb83c64a4cb766818e38bd5e345084e59"
+source_semantic = "tree"
+source_object_id = "obj_075_fsobj_tree_moss_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_075_fsobj_tree_moss_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_075_fsobj_tree_moss_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_075_fsobj_tree_moss_01/Body"]
+[node name="obj_076_a36f_dense_tree_03" type="Node2D" parent="YSort"]
+position = Vector2(1301.5, 709)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_034_rgba.png"
+source_sha256 = "24b458aa2f3a1cbb78910698e5474e7a2d4f0f08debe69707106217af881ebe7"
+source_semantic = "tree"
+source_object_id = "obj_076_a36f_dense_tree_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_076_a36f_dense_tree_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_076_a36f_dense_tree_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_076_a36f_dense_tree_03/Body"]
+[node name="obj_077_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(1320, 282)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_021_rgba.png"
+source_sha256 = "321bcf6b869b3440f35145f98dbce0c5c84bc6b32b769c0d360a783edf39d185"
+source_semantic = "tree"
+source_object_id = "obj_077_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_077_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_077_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_077_a36f_dense_tree_02/Body"]
+[node name="obj_078_fsobj_tree_moss_01" type="Node2D" parent="YSort"]
+position = Vector2(1266, 386)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_moss_01.png"
+source_sha256 = "bc83162ed3b98102857209171fa37bfeb83c64a4cb766818e38bd5e345084e59"
+source_semantic = "tree"
+source_object_id = "obj_078_fsobj_tree_moss_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_078_fsobj_tree_moss_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_078_fsobj_tree_moss_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_078_fsobj_tree_moss_01/Body"]
+[node name="obj_079_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(1384, 504)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_079_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_079_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_079_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_079_a36f_dense_tree_12/Body"]
+[node name="obj_080_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(1411, 618)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_080_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_080_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_080_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_080_a36f_dense_tree_12/Body"]
+[node name="obj_081_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(1368.5, 688)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_081_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_081_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_081_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_081_a36f_dense_tree_14/Body"]
+[node name="obj_082_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(1390.5, 821)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_007_rgba.png"
+source_sha256 = "5c8a500d7af7fb97156c3746604455b86ec2682e5eeb56607897c4b3e16eac6a"
+source_semantic = "tree"
+source_object_id = "obj_082_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_082_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_082_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_082_a36f_dense_tree_00/Body"]
+[node name="obj_083_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(1249.5, 792)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_083_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_083_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_083_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_083_a36f_dense_tree_04/Body"]
+[node name="obj_084_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(1241.5, 760)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_028_rgba.png"
+source_sha256 = "5f43e4881c27e0ab354128552f1f10a566f4c9efb56d36f26f9785727e0f25f1"
+source_semantic = "tree"
+source_object_id = "obj_084_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_084_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_084_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_084_a36f_dense_tree_02/Body"]
+[node name="obj_085_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(1262.5, 833)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_085_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_085_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_085_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_085_a36f_dense_tree_04/Body"]
+[node name="obj_086_a36f_dense_tree_05" type="Node2D" parent="YSort"]
+position = Vector2(371.5, 964)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_056_rgba.png"
+source_sha256 = "499882fb966ebc68406df82e4ebf814a5d7bb9dba135df7da7ab7a2568623342"
+source_semantic = "tree"
+source_object_id = "obj_086_a36f_dense_tree_05"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_086_a36f_dense_tree_05"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_086_a36f_dense_tree_05"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_086_a36f_dense_tree_05/Body"]
+[node name="obj_087_a36f_dense_tree_05" type="Node2D" parent="YSort"]
+position = Vector2(292.5, 1034)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_056_rgba.png"
+source_sha256 = "499882fb966ebc68406df82e4ebf814a5d7bb9dba135df7da7ab7a2568623342"
+source_semantic = "tree"
+source_object_id = "obj_087_a36f_dense_tree_05"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_087_a36f_dense_tree_05"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_087_a36f_dense_tree_05"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_087_a36f_dense_tree_05/Body"]
+[node name="obj_088_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(345, 893)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_088_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_088_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_088_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_088_a36f_dense_tree_08/Body"]
+[node name="obj_089_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(252.5, 915)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_089_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_089_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_089_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_089_a36f_dense_tree_04/Body"]
+[node name="obj_090_fsobj_tree_lime_03" type="Node2D" parent="YSort"]
+position = Vector2(53, 1050)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_lime_03.png"
+source_sha256 = "e90c57459839f00d6c91f6291369398b88d39f0563f88366e9f40fdd8818692d"
+source_semantic = "tree"
+source_object_id = "obj_090_fsobj_tree_lime_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_090_fsobj_tree_lime_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_090_fsobj_tree_lime_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_090_fsobj_tree_lime_03/Body"]
+[node name="obj_091_a36f_dense_tree_01" type="Node2D" parent="YSort"]
+position = Vector2(335.5, 858)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_014_rgba.png"
+source_sha256 = "71ef30055d0ebe51e91675a04a894f578708217d4eedffd1f35ea7e3b78b5a27"
+source_semantic = "tree"
+source_object_id = "obj_091_a36f_dense_tree_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_091_a36f_dense_tree_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_091_a36f_dense_tree_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_091_a36f_dense_tree_01/Body"]
+[node name="obj_092_a36f_dense_tree_03" type="Node2D" parent="YSort"]
+position = Vector2(272.5, 958)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_034_rgba.png"
+source_sha256 = "24b458aa2f3a1cbb78910698e5474e7a2d4f0f08debe69707106217af881ebe7"
+source_semantic = "tree"
+source_object_id = "obj_092_a36f_dense_tree_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_092_a36f_dense_tree_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_092_a36f_dense_tree_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_092_a36f_dense_tree_03/Body"]
+[node name="obj_093_a36f_dense_tree_10" type="Node2D" parent="YSort"]
+position = Vector2(383, 1076)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_102_rgba.png"
+source_sha256 = "cc896d31a9d7a4b70948b25e2a1c1238fa4a069b6a4a70a37ccafa8be6292b0e"
+source_semantic = "tree"
+source_object_id = "obj_093_a36f_dense_tree_10"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_093_a36f_dense_tree_10"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_093_a36f_dense_tree_10"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_093_a36f_dense_tree_10/Body"]
+[node name="obj_094_fsobj_tree_moss_01" type="Node2D" parent="YSort"]
+position = Vector2(154, 1111)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_moss_01.png"
+source_sha256 = "bc83162ed3b98102857209171fa37bfeb83c64a4cb766818e38bd5e345084e59"
+source_semantic = "tree"
+source_object_id = "obj_094_fsobj_tree_moss_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_094_fsobj_tree_moss_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_094_fsobj_tree_moss_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_094_fsobj_tree_moss_01/Body"]
+[node name="obj_095_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(345.5, 1027)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_095_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_095_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_095_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_095_a36f_dense_tree_14/Body"]
+[node name="obj_096_a36f_dense_tree_01" type="Node2D" parent="YSort"]
+position = Vector2(23.5, 1001)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_014_rgba.png"
+source_sha256 = "71ef30055d0ebe51e91675a04a894f578708217d4eedffd1f35ea7e3b78b5a27"
+source_semantic = "tree"
+source_object_id = "obj_096_a36f_dense_tree_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_096_a36f_dense_tree_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_096_a36f_dense_tree_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_096_a36f_dense_tree_01/Body"]
+[node name="obj_097_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(241.5, 1046)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_049_rgba.png"
+source_sha256 = "348fd6b69318a54f525ed10f629abf56bcc221591b3226fd93f3c92765c3c9ec"
+source_semantic = "tree"
+source_object_id = "obj_097_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_097_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_097_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_097_a36f_dense_tree_04/Body"]
+[node name="obj_098_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(190.5, 1020)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_098_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_098_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_098_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_098_a36f_dense_tree_04/Body"]
+[node name="obj_099_a36f_dense_tree_03" type="Node2D" parent="YSort"]
+position = Vector2(244.5, 992)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_034_rgba.png"
+source_sha256 = "24b458aa2f3a1cbb78910698e5474e7a2d4f0f08debe69707106217af881ebe7"
+source_semantic = "tree"
+source_object_id = "obj_099_a36f_dense_tree_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_099_a36f_dense_tree_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_099_a36f_dense_tree_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_099_a36f_dense_tree_03/Body"]
+[node name="obj_100_a36f_dense_tree_10" type="Node2D" parent="YSort"]
+position = Vector2(167, 1062)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_102_rgba.png"
+source_sha256 = "cc896d31a9d7a4b70948b25e2a1c1238fa4a069b6a4a70a37ccafa8be6292b0e"
+source_semantic = "tree"
+source_object_id = "obj_100_a36f_dense_tree_10"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_100_a36f_dense_tree_10"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_100_a36f_dense_tree_10"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_100_a36f_dense_tree_10/Body"]
+[node name="obj_101_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(89.5, 1001)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_007_rgba.png"
+source_sha256 = "5c8a500d7af7fb97156c3746604455b86ec2682e5eeb56607897c4b3e16eac6a"
+source_semantic = "tree"
+source_object_id = "obj_101_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_101_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_101_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_101_a36f_dense_tree_00/Body"]
+[node name="obj_102_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(165, 968)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_102_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_102_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_102_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_102_a36f_dense_tree_12/Body"]
+[node name="obj_103_fsobj_tree_moss_01" type="Node2D" parent="YSort"]
+position = Vector2(318, 957)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_moss_01.png"
+source_sha256 = "bc83162ed3b98102857209171fa37bfeb83c64a4cb766818e38bd5e345084e59"
+source_semantic = "tree"
+source_object_id = "obj_103_fsobj_tree_moss_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_103_fsobj_tree_moss_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_103_fsobj_tree_moss_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_103_fsobj_tree_moss_01/Body"]
+[node name="obj_104_a36f_dense_tree_08" type="Node2D" parent="YSort"]
+position = Vector2(176, 896)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_082_rgba.png"
+source_sha256 = "a74eff33abe24db66e30f77af0ca0d6a20173a99b3a7b113046b0e235a87231d"
+source_semantic = "tree"
+source_object_id = "obj_104_a36f_dense_tree_08"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_104_a36f_dense_tree_08"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_104_a36f_dense_tree_08"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_104_a36f_dense_tree_08/Body"]
+[node name="obj_105_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(113.5, 967)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_105_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_105_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_105_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_105_a36f_dense_tree_04/Body"]
+[node name="obj_106_fsobj_tree_blue_02" type="Node2D" parent="YSort"]
+position = Vector2(418, 1117)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_blue_02.png"
+source_sha256 = "9c6535f7306615aa95b7f1c9981d43a67ab0db4e3ebebc8e5536eae873653ba1"
+source_semantic = "tree"
+source_object_id = "obj_106_fsobj_tree_blue_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_106_fsobj_tree_blue_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_106_fsobj_tree_blue_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_106_fsobj_tree_blue_02/Body"]
+[node name="obj_107_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(1084, 978)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_021_rgba.png"
+source_sha256 = "321bcf6b869b3440f35145f98dbce0c5c84bc6b32b769c0d360a783edf39d185"
+source_semantic = "tree"
+source_object_id = "obj_107_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_107_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_107_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_107_a36f_dense_tree_02/Body"]
+[node name="obj_108_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(1148.5, 1003)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_108_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_108_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_108_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_108_a36f_dense_tree_14/Body"]
+[node name="obj_109_a36f_dense_tree_10" type="Node2D" parent="YSort"]
+position = Vector2(1268, 1096)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_102_rgba.png"
+source_sha256 = "cc896d31a9d7a4b70948b25e2a1c1238fa4a069b6a4a70a37ccafa8be6292b0e"
+source_semantic = "tree"
+source_object_id = "obj_109_a36f_dense_tree_10"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_109_a36f_dense_tree_10"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_109_a36f_dense_tree_10"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_109_a36f_dense_tree_10/Body"]
+[node name="obj_110_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(1108, 1038)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_110_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_110_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_110_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_110_a36f_dense_tree_12/Body"]
+[node name="obj_111_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(1262, 955)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_111_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_111_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_111_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_111_a36f_dense_tree_11/Body"]
+[node name="obj_112_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(1203, 1064)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_112_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_112_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_112_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_112_a36f_dense_tree_11/Body"]
+[node name="obj_113_a36f_dense_tree_09" type="Node2D" parent="YSort"]
+position = Vector2(1057, 1022)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_092_rgba.png"
+source_sha256 = "5979db155b0d7093c2f33e514ac4a5f564349c0607ac2291302f6b2e7ec0cc0d"
+source_semantic = "tree"
+source_object_id = "obj_113_a36f_dense_tree_09"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_113_a36f_dense_tree_09"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_113_a36f_dense_tree_09"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_113_a36f_dense_tree_09/Body"]
+[node name="obj_114_fsobj_tree_moss_01" type="Node2D" parent="YSort"]
+position = Vector2(1327, 938)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_moss_01.png"
+source_sha256 = "bc83162ed3b98102857209171fa37bfeb83c64a4cb766818e38bd5e345084e59"
+source_semantic = "tree"
+source_object_id = "obj_114_fsobj_tree_moss_01"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_114_fsobj_tree_moss_01"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_114_fsobj_tree_moss_01"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_114_fsobj_tree_moss_01/Body"]
+[node name="obj_115_a36f_dense_tree_09" type="Node2D" parent="YSort"]
+position = Vector2(1027, 915)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_092_rgba.png"
+source_sha256 = "5979db155b0d7093c2f33e514ac4a5f564349c0607ac2291302f6b2e7ec0cc0d"
+source_semantic = "tree"
+source_object_id = "obj_115_a36f_dense_tree_09"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_115_a36f_dense_tree_09"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_115_a36f_dense_tree_09"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_115_a36f_dense_tree_09/Body"]
+[node name="obj_116_a36f_dense_tree_02" type="Node2D" parent="YSort"]
+position = Vector2(1090, 946)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_021_rgba.png"
+source_sha256 = "321bcf6b869b3440f35145f98dbce0c5c84bc6b32b769c0d360a783edf39d185"
+source_semantic = "tree"
+source_object_id = "obj_116_a36f_dense_tree_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_116_a36f_dense_tree_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_116_a36f_dense_tree_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_116_a36f_dense_tree_02/Body"]
+[node name="obj_117_a36f_dense_tree_05" type="Node2D" parent="YSort"]
+position = Vector2(1015.5, 1077)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_056_rgba.png"
+source_sha256 = "499882fb966ebc68406df82e4ebf814a5d7bb9dba135df7da7ab7a2568623342"
+source_semantic = "tree"
+source_object_id = "obj_117_a36f_dense_tree_05"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_117_a36f_dense_tree_05"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_117_a36f_dense_tree_05"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_117_a36f_dense_tree_05/Body"]
+[node name="obj_118_a36f_dense_tree_06" type="Node2D" parent="YSort"]
+position = Vector2(1140.5, 967)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_065_rgba.png"
+source_sha256 = "a70420592997d192d07ea94abc8feb64ba75efe16107b6cc7a5794587bfe0c78"
+source_semantic = "tree"
+source_object_id = "obj_118_a36f_dense_tree_06"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_118_a36f_dense_tree_06"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_118_a36f_dense_tree_06"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_118_a36f_dense_tree_06/Body"]
+[node name="obj_119_a36f_dense_tree_13" type="Node2D" parent="YSort"]
+position = Vector2(1311.5, 975)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_131_rgba.png"
+source_sha256 = "b426d12eff1706f87082824b29c0c0f56fa70033c3f1bdfc7cad6c30383d191d"
+source_semantic = "tree"
+source_object_id = "obj_119_a36f_dense_tree_13"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_119_a36f_dense_tree_13"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_119_a36f_dense_tree_13"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_119_a36f_dense_tree_13/Body"]
+[node name="obj_120_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(1335.5, 900)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_007_rgba.png"
+source_sha256 = "5c8a500d7af7fb97156c3746604455b86ec2682e5eeb56607897c4b3e16eac6a"
+source_semantic = "tree"
+source_object_id = "obj_120_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_120_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_120_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_120_a36f_dense_tree_00/Body"]
+[node name="obj_121_a36f_dense_tree_06" type="Node2D" parent="YSort"]
+position = Vector2(1139.5, 877)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_065_rgba.png"
+source_sha256 = "a70420592997d192d07ea94abc8feb64ba75efe16107b6cc7a5794587bfe0c78"
+source_semantic = "tree"
+source_object_id = "obj_121_a36f_dense_tree_06"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_121_a36f_dense_tree_06"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_121_a36f_dense_tree_06"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_121_a36f_dense_tree_06/Body"]
+[node name="obj_122_a36f_dense_tree_14" type="Node2D" parent="YSort"]
+position = Vector2(1192.5, 1120)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_145_rgba.png"
+source_sha256 = "8267ad2b32861582fb124370afa7378beb4e39ec1f767416f2b56dd0e3abcb58"
+source_semantic = "tree"
+source_object_id = "obj_122_a36f_dense_tree_14"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_122_a36f_dense_tree_14"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_122_a36f_dense_tree_14"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_122_a36f_dense_tree_14/Body"]
+[node name="obj_123_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(1234, 900)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_123_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_123_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_123_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_123_a36f_dense_tree_11/Body"]
+[node name="obj_124_a36f_dense_tree_06" type="Node2D" parent="YSort"]
+position = Vector2(1018.5, 878)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_065_rgba.png"
+source_sha256 = "a70420592997d192d07ea94abc8feb64ba75efe16107b6cc7a5794587bfe0c78"
+source_semantic = "tree"
+source_object_id = "obj_124_a36f_dense_tree_06"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_124_a36f_dense_tree_06"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_124_a36f_dense_tree_06"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_124_a36f_dense_tree_06/Body"]
+[node name="obj_125_a36f_dense_tree_13" type="Node2D" parent="YSort"]
+position = Vector2(993.5, 956)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_131_rgba.png"
+source_sha256 = "b426d12eff1706f87082824b29c0c0f56fa70033c3f1bdfc7cad6c30383d191d"
+source_semantic = "tree"
+source_object_id = "obj_125_a36f_dense_tree_13"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_125_a36f_dense_tree_13"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_125_a36f_dense_tree_13"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_125_a36f_dense_tree_13/Body"]
+[node name="obj_126_a36f_dense_tree_12" type="Node2D" parent="YSort"]
+position = Vector2(1369, 1016)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_121_rgba.png"
+source_sha256 = "5f5ff80499ea4b06f954b64396e66ccbb64a5ae3ab90ba4ac9157476bad49db7"
+source_semantic = "tree"
+source_object_id = "obj_126_a36f_dense_tree_12"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_126_a36f_dense_tree_12"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_126_a36f_dense_tree_12"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_126_a36f_dense_tree_12/Body"]
+[node name="obj_127_a36f_dense_tree_13" type="Node2D" parent="YSort"]
+position = Vector2(1297.5, 1033)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_131_rgba.png"
+source_sha256 = "b426d12eff1706f87082824b29c0c0f56fa70033c3f1bdfc7cad6c30383d191d"
+source_semantic = "tree"
+source_object_id = "obj_127_a36f_dense_tree_13"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_127_a36f_dense_tree_13"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_127_a36f_dense_tree_13"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_127_a36f_dense_tree_13/Body"]
+[node name="obj_128_a36f_dense_tree_13" type="Node2D" parent="YSort"]
+position = Vector2(1319.5, 867)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_131_rgba.png"
+source_sha256 = "b426d12eff1706f87082824b29c0c0f56fa70033c3f1bdfc7cad6c30383d191d"
+source_semantic = "tree"
+source_object_id = "obj_128_a36f_dense_tree_13"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_128_a36f_dense_tree_13"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_128_a36f_dense_tree_13"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_128_a36f_dense_tree_13/Body"]
+[node name="obj_129_fsobj_tree_blue_02" type="Node2D" parent="YSort"]
+position = Vector2(537, 106)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_blue_02.png"
+source_sha256 = "9c6535f7306615aa95b7f1c9981d43a67ab0db4e3ebebc8e5536eae873653ba1"
+source_semantic = "tree"
+source_object_id = "obj_129_fsobj_tree_blue_02"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_129_fsobj_tree_blue_02"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_129_fsobj_tree_blue_02"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_129_fsobj_tree_blue_02/Body"]
+[node name="obj_130_a36f_dense_tree_00" type="Node2D" parent="YSort"]
+position = Vector2(556, 64)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_001_rgba.png"
+source_sha256 = "28f183cbc12b0779c5a2598f9d48371b2b081a2549c88b94d5d6d18f6d8ace4f"
+source_semantic = "tree"
+source_object_id = "obj_130_a36f_dense_tree_00"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_130_a36f_dense_tree_00"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_130_a36f_dense_tree_00"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_130_a36f_dense_tree_00/Body"]
+[node name="obj_131_a36f_dense_tree_04" type="Node2D" parent="YSort"]
+position = Vector2(591.5, 107)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_042_rgba.png"
+source_sha256 = "db9184e0dbd96208daab2f0bc18e6dd6f9436d3332b59ef494e5ac1e2efa98f2"
+source_semantic = "tree"
+source_object_id = "obj_131_a36f_dense_tree_04"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_131_a36f_dense_tree_04"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_131_a36f_dense_tree_04"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_131_a36f_dense_tree_04/Body"]
+[node name="obj_132_a36f_dense_tree_07" type="Node2D" parent="YSort"]
+position = Vector2(866, 189)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_073_rgba.png"
+source_sha256 = "18f312461f3cab40b4821c67079caf782431c7656cde0d8b0dba5ceb1c9448c1"
+source_semantic = "tree"
+source_object_id = "obj_132_a36f_dense_tree_07"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_132_a36f_dense_tree_07"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_132_a36f_dense_tree_07"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_132_a36f_dense_tree_07/Body"]
+[node name="obj_133_a36f_dense_tree_10" type="Node2D" parent="YSort"]
+position = Vector2(787, 51)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_102_rgba.png"
+source_sha256 = "cc896d31a9d7a4b70948b25e2a1c1238fa4a069b6a4a70a37ccafa8be6292b0e"
+source_semantic = "tree"
+source_object_id = "obj_133_a36f_dense_tree_10"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_133_a36f_dense_tree_10"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_133_a36f_dense_tree_10"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_133_a36f_dense_tree_10/Body"]
+[node name="obj_134_fsobj_tree_lime_03" type="Node2D" parent="YSort"]
+position = Vector2(791, 108)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_tree_lime_03.png"
+source_sha256 = "e90c57459839f00d6c91f6291369398b88d39f0563f88366e9f40fdd8818692d"
+source_semantic = "tree"
+source_object_id = "obj_134_fsobj_tree_lime_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_134_fsobj_tree_lime_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_134_fsobj_tree_lime_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_134_fsobj_tree_lime_03/Body"]
+[node name="obj_135_a36f_dense_tree_11" type="Node2D" parent="YSort"]
+position = Vector2(740, 43)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_112_rgba.png"
+source_sha256 = "70c45773689f976bdcab9a13dd6836bee468ea8fa432333f5de05c5a2b8470fa"
+source_semantic = "tree"
+source_object_id = "obj_135_a36f_dense_tree_11"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_135_a36f_dense_tree_11"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_135_a36f_dense_tree_11"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_135_a36f_dense_tree_11/Body"]
+[node name="obj_136_a36f_dense_tree_03" type="Node2D" parent="YSort"]
+position = Vector2(830.5, 15)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a36f_dense_tree_034_rgba.png"
+source_sha256 = "24b458aa2f3a1cbb78910698e5474e7a2d4f0f08debe69707106217af881ebe7"
+source_semantic = "tree"
+source_object_id = "obj_136_a36f_dense_tree_03"
+footprint_width_px = 22
+footprint_height_px = 12
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_136_a36f_dense_tree_03"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_136_a36f_dense_tree_03"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_136_a36f_dense_tree_03/Body"]
+[node name="obj_137_fsobj_well" type="Node2D" parent="YSort"]
+position = Vector2(501.5, 423)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_well.png"
+source_sha256 = "8a5318fb213293bf5f6ac32b3bb51aa1c77f459329e3291c09334fa27b659e50"
+source_semantic = "prop"
+source_object_id = "obj_137_fsobj_well"
+footprint_width_px = 0
+footprint_height_px = 0
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_137_fsobj_well"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_137_fsobj_well"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_137_fsobj_well/Body"]
+[node name="obj_138_fsobj_post_lantern" type="Node2D" parent="YSort"]
+position = Vector2(438, 473)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a33_ornate_lantern_complete_52x124.png"
+source_sha256 = "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+source_semantic = "prop"
+source_object_id = "obj_138_fsobj_post_lantern"
+footprint_width_px = 12
+footprint_height_px = 8
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_138_fsobj_post_lantern"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_138_fsobj_post_lantern"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_138_fsobj_post_lantern/Body"]
+[node name="obj_139_fsobj_post_lantern" type="Node2D" parent="YSort"]
+position = Vector2(880, 510)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a33_ornate_lantern_complete_52x124.png"
+source_sha256 = "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+source_semantic = "prop"
+source_object_id = "obj_139_fsobj_post_lantern"
+footprint_width_px = 12
+footprint_height_px = 8
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_139_fsobj_post_lantern"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_139_fsobj_post_lantern"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_139_fsobj_post_lantern/Body"]
+[node name="obj_140_fsobj_post_lantern" type="Node2D" parent="YSort"]
+position = Vector2(576, 751)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a33_ornate_lantern_complete_52x124.png"
+source_sha256 = "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+source_semantic = "prop"
+source_object_id = "obj_140_fsobj_post_lantern"
+footprint_width_px = 12
+footprint_height_px = 8
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_140_fsobj_post_lantern"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_140_fsobj_post_lantern"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_140_fsobj_post_lantern/Body"]
+[node name="obj_141_fsobj_post_lantern" type="Node2D" parent="YSort"]
+position = Vector2(1016, 676)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/a33_ornate_lantern_complete_52x124.png"
+source_sha256 = "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+source_semantic = "prop"
+source_object_id = "obj_141_fsobj_post_lantern"
+footprint_width_px = 12
+footprint_height_px = 8
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_141_fsobj_post_lantern"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_141_fsobj_post_lantern"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_141_fsobj_post_lantern/Body"]
+[node name="obj_142_fsobj_rock_cluster" type="Node2D" parent="YSort"]
+position = Vector2(351.5, 599)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_rock_cluster.png"
+source_sha256 = "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+source_semantic = "prop"
+source_object_id = "obj_142_fsobj_rock_cluster"
+footprint_width_px = 0
+footprint_height_px = 0
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_142_fsobj_rock_cluster"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_142_fsobj_rock_cluster"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_142_fsobj_rock_cluster/Body"]
+[node name="obj_143_fsobj_rock_cluster" type="Node2D" parent="YSort"]
+position = Vector2(1101.5, 557)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_rock_cluster.png"
+source_sha256 = "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+source_semantic = "prop"
+source_object_id = "obj_143_fsobj_rock_cluster"
+footprint_width_px = 0
+footprint_height_px = 0
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_143_fsobj_rock_cluster"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_143_fsobj_rock_cluster"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_143_fsobj_rock_cluster/Body"]
+[node name="obj_144_fsobj_rock_cluster" type="Node2D" parent="YSort"]
+position = Vector2(411.5, 692)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_rock_cluster.png"
+source_sha256 = "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+source_semantic = "prop"
+source_object_id = "obj_144_fsobj_rock_cluster"
+footprint_width_px = 0
+footprint_height_px = 0
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_144_fsobj_rock_cluster"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_144_fsobj_rock_cluster"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_144_fsobj_rock_cluster/Body"]
+[node name="obj_145_fsobj_rock_cluster" type="Node2D" parent="YSort"]
+position = Vector2(906.5, 782)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_rock_cluster.png"
+source_sha256 = "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+source_semantic = "prop"
+source_object_id = "obj_145_fsobj_rock_cluster"
+footprint_width_px = 0
+footprint_height_px = 0
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_145_fsobj_rock_cluster"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_145_fsobj_rock_cluster"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_145_fsobj_rock_cluster/Body"]
+[node name="obj_146_fsobj_bush_sprout" type="Node2D" parent="YSort"]
+position = Vector2(144.5, 580)
+script = ExtResource("2_object")
+source_file = "res://private_assets/independent_par/fsobj_bush_sprout.png"
+source_sha256 = "c95079a418388c0f32c45cf9a600378474dbba28bbd9ea79bac7e9a40a386e5a"
+source_semantic = "prop"
+source_object_id = "obj_146_fsobj_bush_sprout"
+footprint_width_px = 0
+footprint_height_px = 0
+[node name="Sprite" type="Sprite2D" parent="YSort/obj_146_fsobj_bush_sprout"]
+centered = false
+[node name="Body" type="StaticBody2D" parent="YSort/obj_146_fsobj_bush_sprout"]
+[node name="Collision" type="CollisionShape2D" parent="YSort/obj_146_fsobj_bush_sprout/Body"]
