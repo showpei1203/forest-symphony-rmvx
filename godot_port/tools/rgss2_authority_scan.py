@@ -39,7 +39,7 @@ ALIAS_RX = re.compile(r"^\s*alias(?:_method)?\b")
 CONTEXT_RX = re.compile(r"^\s*(?:class|module)\s+([A-Za-z_]\w*(?:::[A-Za-z_]\w*)*)")
 FILE_RX = re.compile(r"^(\d{3})__.*\.rb$")
 DATA_TOUCH_RX = re.compile(r"\$data_(?:actors|classes|skills|items|weapons|armors|enemies|states|troops|animations)\b")
-TEST_NAME_RX = re.compile(r"(?:TEST-only|_Test_|Regression|Fixtures|VALIDATION)",re.I)
+TEST_NAME_RX = re.compile(r"(?:TEST-only|_Test_|Regression|Fixtures?|VALIDATION)",re.I)
 
 def index_source(name: str, source: str) -> dict:
     match = FILE_RX.match(name)
