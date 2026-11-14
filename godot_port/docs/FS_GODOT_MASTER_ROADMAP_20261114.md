@@ -53,3 +53,10 @@
 - M3 **部分資料移植 PASS**：唯讀確認 FS Actors 300/Classes 300/Skills 800/Items 850/Weapons 350/Armors 800/Enemies 800/States 155（資料表包含 nil slot 0），和 System.party_members=[1,2,5]；Godot `FSDatabase` 現在處理 actor Table(6×100), Class.learnings, 角色名稱/臉圖、dual wield/offhand、class weapon_set/armor_set、armor kind、hit/eva/cri；`FSBattle.equip` 支援雙手武器自動卸裝與原子庫存更新。測試 synthetic PASS，**真 FS 505 RGSS2 最終覆寫與完整原資料匯入仍缺**。
 - M4 **操作介面增量 PASS**：`FSMenuModel.gd` + `FSScreen.gd` 提供目前隊伍真正已學技能、持有道具、裝備更換、編隊、角色能力、BATTLE 指定操作角色與我/敵目標。Godot 4.7.2 真引擎 headless 測試 source-shaped synthetic PASS。**外觀未還原、原始 UI 圖私有來源尚未匯入**。
 - 最新完整 CI PASS： https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43546339479
+
+## 2026-11-14 第二輪來源有效性與物品子系統狀態
+- **嚴格更新 M2**：FS 原資料真正來源 = `Data/*.rvdata` + `FS_MasterSetup_00..20`（含 06.5，計 22 頁）+ `FS_MasterSetup_18` 在啟動後通過 `FS_DB_AUTOSET.apply_all` 覆寫。真實移植必須由這個 **post-Apply 狀態** 輸出並與原 VX 執行痕跡交叉對照。raw RVData-only 的 JSON 現在無法通過 `FSDatabase.load_all`，這是刻意保護。新規格 `docs/BOOT_FINAL_DATABASE_CONTRACT_20261114.md`。
+- **M3 部分物品功能**：`FSItemRules` 已保守支援單體 HP/MP 恢復與藥物知識，僅在來源欄位無特殊 Note/State/CommonEvent/傷害/Element 時執行，不擅自付費或消耗，且包含 MENU/BATTLE 真控制項。User-facing FS 全量特殊道具 **未完成**。
+- **FS-SkillCost 規則風險**：`FS_SkillCost_Authority_v2.0.0` 在 script #411 定義 `calc_mp_cost` 與其他成本；技能欄位只是移植起點。必須另實作 effective cost source and trace，現行 `FSBattle.use_skill` 仍僅過渡候選。
+- **機器可讀證據**：Actions `fs-rgss2-static-authority-index` 具有 505 scripts source SHA and method/alias line hints。不可將最後一個 lexical definition 誤當 final-effective method；動態 alias、class re-open、runtime test pages 都需 runtime 判斷。
+- Native Godot 4.7.2 **最新 CI PASS**： https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43547941870。所有原始來源檔 E: 唯讀，GitHub 只提交新程式與文件。

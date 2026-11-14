@@ -35,3 +35,21 @@
 3. Deterministic original-versus-Godot battle trace fixtures for party [1,2,5], representative enemies and 6 heroes, including equipment changes.
 4. MENU/BATTLE reconstruct from private 544×416 original artwork and original icons; validate keyboard/pad + real screenshots.
 5. Integrate A37 variable-frame RUN source when art QA approved, then complete other actor/battler clips without any 3-frame hard limit.
+
+## 2026-11-14 新增 P1 Source Authority 與道具 QA
+| Gate | 狀態 | 佐證與未解決部分 |
+|---|---|---|
+| 505 RGSS2 順序、SHA/alias/方法定義靜態索引 | **PASS 靜態** | Actions artifact `fs-rgss2-static-authority-index`，22 MasterSetup page、1 apply_all call；不等同 VX runtime 實際 alias 效果 |
+| Boot-final FS 權威資料驗證 | **PASS synthetic gate** | `FSDatabase.load_all` 拒絕未具 VX source+SHA witness 的原始 11-table JSON；test_fs_boot_authority_guard 原生 PASS。現無真資料證據，因此 production load 仍刻意失敗 |
+| Stock VX 簡單物品回復與 Pharma | **PASS synthetic** | `FSItemRules.gd`、`test_fs_item_recovery.gd`；FS 自訂 Note/狀態/公共事件/自訂成本全部仍 NOT DONE |
+| 真正 MENU / BATTLE 物品選擇與我方角色目標 | **PASS synthetic native** | `FSScreen._select_item_target`、`test_fs_item_ui.gd`；未重製原 UI |
+| FS_MasterSetup post-apply JSON 全量 | **NOT DONE** | 來源 E: 只讀，尚無能直接把最新本機 binary 安全上傳私人 Drive 的完成流程；不可用舊歷史 ZIP 取代 |
+| FS 道具的最終 Runtime 公式 | **NOT DONE** | 須解析 MasterSetup + alias、Notes、Common Events、Item Cost 等 |
+| Original VX trace / effective cost | **NOT DONE** | 無 runtime witness，CI 合成測試不代表精準等價 |
+### 新增修復
+1. `test_fs_item_recovery.gd` 最初用有 Pharmacology 的施用者預期 300 HP，實際應 ×2；測試拆分一般角色與 Pharmacology，修正。
+2. 同一測試之 battle-only 物品誤選已滿血角色，保護拒絕是正確行為；改測受傷角色再驗證 occasion。
+3. `rgss2_authority_scan.py --self-test` fixture 偵測只接受複數 `Fixtures`；修正同時支援單數/複數，502+ 等載入順序仍不據此判斷 runtime。
+### 最新 native/CI 證據
+- PASS run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43547941870
+- 17× Godot 4.7.2 headless native script tests、Python scanner unit selftest、505 script SHA/source audit，GitHub artifact retained 30 days（至 2026-12-14）。
