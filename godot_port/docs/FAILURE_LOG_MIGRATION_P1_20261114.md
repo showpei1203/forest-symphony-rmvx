@@ -132,3 +132,21 @@
 - 首次工作流程 https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43554116441 的第 25 前之舊 `test_fs_enemy_ai_source.gd` fail：舊測試預期「Core551 不論 Boss 是否在場一律不得使用原 actions」。查原版 #401 `return base if specs == nil || base == nil` 才證實這是**錯誤的早期保守假設**，因此改為「無對應 Boss 時回原 `Enemy.actions`」。沒有為了通過測試而捏造 fallback attack。
 - #372 新增 ACT 執行前目標再驗證；防範選定後 Provoke/target priority 動態改變導致錯人被打。這是安全 fail closed；原版自動換目標的完整流程未取得 VX runtime parity。
 - 驗收：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43554328368 （Godot 4.7.2 native 26/26 PASS；505 RGSS2 static authority scanner retained）。私有素材/檔案未進 public，原 E 槽未修改。
+
+
+## 2026-11-14 Boss Summon Runtime + ATB QA
+| Gate | 狀態 | 真正證據與限制 |
+|---|---|---|
+| #401 / MasterSetup #440 `START_SUMMONS`、`CORE_GROUPS` 一致 | **PASS static** | Ruby 原字串經雙腳本比較完全一致，Godot 靜態字典基於此 |
+| 開場 Boss507→Core551×2、Boss503 自己補員 | **PASS native synthetic** | Count 含場上既存怪，缺1補1，flag 禁止逐幀重複 |
+| Boss510 altar 和 Boss511 雙 Elite RNG | **PASS native synthetic** | #210 tagged FS_AI_RANDOM test-only seed，來源物種池、72% fixed stats，8 slots |
+| HP門檻 520≤70%、547≤60% | **PASS native synthetic** | 邊界710/700與600，按 source once-only threshold flag |
+| Pokémon600 動態等級／HP/MP 成長 | **PASS guarded synthetic** | 無 level runtime witness 拒絕；明確合成 verified level10 才按原 #401 算 |
+| 召喚後 ATB/ACT 與 #401 Boss context AI | **PASS native synthetic** | 只新敵人初始化 gauge，不重置既有方；新 Core 受同場 Boss #401 context 影響 |
+| Source `ma_call_ally` 視覺/座標、Phase State+Weather、Break/OD/Cover | **NOT PORTED** | 無真 original VX runtime witness，不能當完整 Boss 召喚戰 |
+| 原 FS post-Apply DB/美術/VX Screenshot | **NOT DONE** | 正式資料未匯入私有 Drive，原 Godot FS 不可作 playable seal |
+### Failure Log / 證據界線
+- 這輪 Godot 4.7.2 原有 26 + 新 2 原生回歸 = **28/28 PASS**（CI https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43555104501）；沒有失敗的 native tests 被弱化跳過。
+- 仍存在**已記錄的來源對照缺口**：原生 VX `ma_call_ally` 的 sprite/safe position、Game_Enemy Runtime Level、Phase States/Weather/Shield 的具體狀態機與視覺沒有 runtime trace；使用獨立 source guards 不為尚未驗證成長／召喚建假 stats。
+- 因部分 P1 synthetic 設定不含真 Boss 資料，`boss_runtime` 預設只在 `FSDatabase.boot_final_verified` 真時啟用；合成針對 Boss 的 QA 才明確設 `.active=true`。
+- 目前全部新成果僅存公開 GitHub 合法程式碼／source-shaped synthetic；**沒有把原始私有 RVData、PNG、角色圖或音效傳上公開庫**，也沒在使用者 E 槽寫檔。

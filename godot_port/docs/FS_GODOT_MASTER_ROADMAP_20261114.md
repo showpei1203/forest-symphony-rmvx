@@ -89,3 +89,10 @@
 - `FSTargetPriority.gd` 已來源驗證並接線：玩家 UI 只顯示合法敵人；queue request/ACT completion 二次合法性檢查，包含 #372 最高優先 Enemy/State Note、Provoke State14。敵方 random target 含 Provoke 優先與 safe weighted fallback。 `FSSkillCostRules` 白名單允許 source #372 的 ignore-priority tag 不影響 MP quote；未知 Note 繼續 FAIL CLOSED。
 - Godot 4.7.2 source-shaped native tests 從 24→26，新增 Boss context / TargetPriority + 先前所有 regressions，CI PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43554328368。
 - **P1 Seal NO**：尚未得到真 FS post-Apply DB/runtime witness；Boss 召喚/天氣/Phase 與完整 505 Alias、EnemyActionPattern Skill83/TargetFix/Threat/Disappear、OD/Break/Cover、原角色動畫/怪物與 UI 美術圖片。後續以真來源資料的 private Drive 匯入優先，並逐項 port Boss special runtime。Event Studio 仍列長期功能。
+
+
+## M3 Boss Summon Runtime（2026-11-14 最新）
+- 已逐字對照 #401 Runtime Boss Provider 與 MasterSetup #440 的 `START_SUMMONS` / `CORE_GROUPS` 原始資料，實裝 `FSBossSummonRuntime.gd` 依 Boss ID 排序的 start guard、Boss510 altar 隨機1、Boss511 500..510 隨機不重複兩名 scale72、Boss520 HP≤70% core557、Boss547 HP≤60% core558×2；按 source `members.size<=8`、敵人 count 包含死亡、per-battle flag once。
+- `FSBossSummonRuntime.prepare_summoned` 依 source fixed/database/growth mode 與倍率做最終基本能力、HP/MP，Pokémon 成長型沒有 Runtime Level witness 時 fail closed；`FSBattle` 官方 boot-final DB 驗證後才自動開啟 Boss runtime，且每 source frame 於原 AI/ACT 更新後執行。召出的怪物 `FSTankentaiATBCore.initialize_summoned` 只初始化新人的 ATB，不重設其他人的 gauge，接現有 BossContext/#211 Enemy AI。
+- 新增兩個 Godot 4.7.2 native tests + 原有 26 → **28 PASS**：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43555104501。
+- **下一個阻擋**：#401 Boss524 階段 State150/151/152 及 Law140-143、Weather 548–550、530/531 Core shield State77/128/129 的有來源 State effect；#401 `ma_call_ally` sprite／safe coordinates；原 VX post-Apply 11-table private Drive 與 runtime witness；角色/怪物多幀動畫。P1 Seal NO。
