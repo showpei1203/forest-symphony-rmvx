@@ -123,11 +123,15 @@ func _run() -> void:
             queued.field_weather.current_id==153 and
             qactor["mp"]==qmp and qenemy["hp"]==qhp,
             "queue stage never applies field or MP before ACT"): return
+    queued.advance_atb(9.0/60.0)
+    if not _check(queued.field_weather.current_id==153 and
+            qactor["mp"]==qmp and qenemy["hp"]==qhp,
+            "Skill2 source ACT is 10 frames; 9 frames change neither field nor MP"): return
     queued.advance_atb(1.0/60.0)
     if not _check(queued.field_weather.current_id==156 and
             qactor["mp"]==qmp-10 and
             qenemy["hp"]==qhp-125,
-            "Skill2 source ACT 1 frame changes weather after original hit"): return
+            "Skill2 source ACT frame10 changes weather AFTER original hit"): return
 
     # Boss548 HP phase status still remains a non-applied INTENT, while
     # source #404 global field runtime can have its OWN validated state.
