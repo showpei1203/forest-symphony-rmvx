@@ -24,8 +24,14 @@
 - 本輪使用 **1 次訂閱內 generation**。檔案由 E:\Downloads 移入 G: 私人 Drive，Windows TEMP 暫存 F7 已刪。
 
 ## QA、備份與接續
-- [A36 最終完整 21 檔私有 ZIP](https://drive.google.com/file/d/1KZTywv67UR4SId-kzkLwASeDQvv5kc0V/view)，**161,431 bytes／SHA256 `f384e1453614092970f72df065a60605ddfe6205b7b756b3d3af4e3591aed01a`／Zip CRC PASS／Drive 上傳→回讀 metadata size 與 SHA/CRC 通過／shared=false**。包含 A36 96×128 & 144×192 測試圖集、對照圖、可重跑 Python/GDScript、真 Godot GPU 截圖、PixelLab F7 負例、逐檔 SHA manifest、A36_QA_FINAL.json。
+- [A36 最終完整 21 檔私有 ZIP](https://drive.google.com/file/d/1KZTywv67UR4SId-kzkLwASeDQvv5kc0V/view)，**161,431 bytes／SHA256 `f384e1453614092970f72df065a60605ddfe6205b7b756b3d3af4e3591aed01a`／Zip CRC PASS／Drive 上傳→回讀 metadata size 與 SHA/CRC 通過／shared=false**。包含 A36 96×128 & 144×192 測試圖集、對照圖、可重跑 GDScript、真 Godot GPU 截圖、PixelLab F7 負例、逐檔 SHA manifest、A36_QA_FINAL.json。
 - [A36 圖集 96x128 原圖/核准/AI 三排對照](https://drive.google.com/file/d/12oS2WooyeQKe00SkpY8N-gW8g0CflQ3N/view)、[48px 保真 vs 32px 縮小失真](https://drive.google.com/file/d/1PZHKedtNVSZ_2V9bOKXiUMNmrNttVOIE/view)；[原工程四張真圖集的私人來源保留](https://drive.google.com/drive/folders/1yrJkVRl7RxBfr3A-CdxCTBqgLXGk7sDz)；私人來源與主專案無任何改寫。
 - **A37 建議**：不要進一步嘗試以一兩張新綠甲畫格取代已存在且風格不同的棕甲戰鬥表；先選擇統一 Actor01 四列視覺的方式，明確確定以 48px 原稿提升品質並經過 Tankentai 引擎尺寸相容測試。另保留 A35/A36 已成功的雙端 Interpolate，避免 F7 區塊用整圖 Edit 重做。使用者已決定未來走 Godot-first，可先將 A36 的 48px 正版動作優先接入 Godot 正式 BATTLE 系統，再返回 RMVX 校對兼容。
 
 **A36 Seal：SOURCE PASS／Row2 non-target PRESERVATION PASS／Godot GPU+AnimatedSprite2D PASS／Pixellab F7 Edit ART FAIL／visual style ART HOLD／VX native NOT_RUN／main unchanged。**
+
+## 已提交 GitHub 的可重跑來源程式
+- [A36 FSJ_MOVE Row2 候選 32px/48px 圖集與 QA 生成腳本](../../tools/asset_factory/experiments/a36_vx_fsj_move_row2_native_mapper.py)（註：讀取 `/mnt/data` 私有來源 ZIP；請依環境替換資料根目錄）
+- [Godot 4.7.2 GPU Sprite2D/Region 截圖 QA](../../tools/asset_factory/godot/a36_gpu_sprite_region_qa.gd)
+- [Godot AnimatedSprite2D `[0,1,0,2]` 真正播放 QA](../../tools/asset_factory/godot/a36_animated_sprite_four_phase_qa.gd)
+- A36 私人 ZIP 包含兩支 GDScript，Python 生成原始碼另存 GitHub 與 [私人雲端 Python 備份](https://drive.google.com/file/d/1oUtnzXbTXkIcAjO-r1hkTLLe1nbHCe0O/view)；**不是**聲稱 ZIP 已內含 Python。
