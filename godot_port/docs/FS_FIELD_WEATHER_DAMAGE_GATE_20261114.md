@@ -39,3 +39,12 @@
 ## Storage
 
 Only code, public RGSS2 source references, synthetic test data and QA/Handoff docs are in GitHub `feature/fs-godot-phase1`; no original private RVData/PNG/audio and no local user E: writes. Main/develop branches remain immutable.
+
+
+## #404 mid-ACT global field race, validated 2026-11-14
+
+Native integration `tests/test_fs_weather_act_race_404.gd` and pinned Godot 4.7.2 CI **34/34 PASS**: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43559768437
+
+- Selection-time `<field effect:156>` skill may be legal under Field153 priority10, then become illegal after a **forced** Field155 priority30 while its 10-frame Tankentai ACT is charging. At execution, `skill_preflight` must recheck field priority and reject the action **without MP debit, damage, or field override**.
+- If Field153's source dies during ACT, `FSFieldWeather.update_source` clears global weather before damage resolution. Skill2's baseline100 damage is not inflated by the deceased source's +25%; the verified field-changing skill subsequently sets Field156 **after** paying once and applying its existing hit.
+- The test validates source-shaped timing, late payment and field source tracking, not full original VX post-Apply damage authority. `P1 Seal = NO`; 505 final alias results, missing private 11-table runtime witness and original assets remain formal blockers.

@@ -188,3 +188,12 @@
 2. 失敗 run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557197991：新測試誤把所有 Skill ACT 當成1幀。來源 `#230` 是 Skill ID1 charge1%，**Skill2 charge10%=10 source frames**。修正測試加強成9幀無成本/天氣效果、第10幀成功切換，沒有修改正確的引擎蓄力規則。
 3. 修正後 32/32 PASS https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557327251；再加入原 #015 元素與換裝來源測試後 **33/33 PASS** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557813518。
 4. 風險：原 #404 依來源 Game_Temp 保存 global field source/priority，現在已真計算有限天氣倍率，但原 VX `FS_ElementRate`、State/Guard/Cover/OD/Break 仍待有效 source trace，故只能視為 source-subset feature gate 而非正式 FS damage parity。
+
+
+### 2026-11-14 #404 Source Weather 中途 ACT 事件競態增補
+| Gate | 狀態 | 核對 |
+|---|---|---|
+| ACT 中 Field153→高優先 Field155 | **PASS native** | 第5幀改天氣，第10幀檢查 Skill2 Field156 申請被拒；MP/敵方HP不動、Field155保留 |
+| ACT 中天氣來源死亡 | **PASS native** | update_source 先清 Field153，技能第10幀以100未加成底數傷害，MP10只付一次，後續才設 Field156 |
+| 正式 FS 505 Alias/原 VX post-Apply 11表 | **NOT DONE** | 合成資料驗證的是競態與已辨識規則，非正式 Boss/玩家平衡 |
+- 測試：`godot_port/tests/test_fs_weather_act_race_404.gd`；CI **34/34 PASS** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43559768437。沒有隱藏或繞過失敗案例。
