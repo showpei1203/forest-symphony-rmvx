@@ -29,23 +29,29 @@ static func legacy_kaduki(prefix: String, asset_folder: String = "res://assets/c
     return {"schema":"fs-animation-v1","source":"legacy_kaduki","clips":clips}
 
 static func sample_flexible() -> Dictionary:
-    # Pure synthetic authoring fixture. Demonstrates clip-specific frame count:
-    # actual frame images are intentionally NOT included in public repo.
-    return {"schema":"fs-animation-v1","source":"new_godot",
-        "clips":{
-            "idle":{"loop":true,"frames":[{"texture":"res://assets/characters/actor_idle.png",
-                "grid":{"columns":1,"rows":1,"column":0,"row":0},"duration_ms":400}]},
-            "walk_down":{"loop":true,"frames":[
-                {"texture":"res://assets/characters/actor_walk.png",
-                "grid":{"columns":8,"rows":4,"column":i,"row":0},
-                "duration_ms":80 if i%2 else 110} for i in range(8)]},
-            "attack":{"loop":false,"frames":[
-                {"texture":"res://assets/characters/actor_attack.png",
-                "grid":{"columns":6,"rows":1,"column":i,"row":0},
-                "duration_ms":60 if i < 3 else 120,
-                "marker":"impact" if i==3 else ""} for i in range(6)]}
-        }
-    }
+    # Synthetic paths demonstrate variable frame counts; assets are intentionally
+    # NOT committed here and this example must not be treated as a loaded game.
+    var walk_frames: Array = []
+    var attack_frames: Array = []
+    for i in range(8):
+        walk_frames.append({
+            "texture":"res://assets/characters/actor_walk.png",
+            "grid":{"columns":8,"rows":4,"column":i,"row":0},
+            "duration_ms":80 if i%2 else 110
+        })
+    for i in range(6):
+        attack_frames.append({
+            "texture":"res://assets/characters/actor_attack.png",
+            "grid":{"columns":6,"rows":1,"column":i,"row":0},
+            "duration_ms":60 if i<3 else 120,
+            "marker":"impact" if i==3 else ""
+        })
+    return {"schema":"fs-animation-v1","source":"new_godot","clips":{
+        "idle":{"loop":true,"frames":[{"texture":"res://assets/characters/actor_idle.png",
+            "grid":{"columns":1,"rows":1,"column":0,"row":0},"duration_ms":400}]},
+        "walk_down":{"loop":true,"frames":walk_frames},
+        "attack":{"loop":false,"frames":attack_frames}
+    }}
 
 static func validate(profile: Dictionary) -> PackedStringArray:
     var errors := PackedStringArray()
