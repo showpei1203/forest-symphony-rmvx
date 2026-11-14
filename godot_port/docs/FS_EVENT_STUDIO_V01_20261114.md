@@ -13,8 +13,8 @@
 2. 編輯器底部會出現 **FS Events**（`addons/fs_event_studio/plugin.cfg` 已在 `project.godot` 啟用）。面板中點「開啟事件」，選 `res://story/events/map_999_event_001.json` 即可查看示範寶箱。
 3. 左側編輯事件名稱、Map/Event ID、X/Y、事件頁、觸發方式、優先級、頁面條件：開關 1/2、變數最低值、獨立開關 A/B/C/D。
 4. 右側選指令類別「新增指令」，選取列表後在下方修改文字／數值／選項；支援插入、移動、刪除。新增 if／choice／battle 會自動建立必要的封閉結構。復原／重做最多保留 100 個變更快照。
-5. 「檢查所有頁」會針對結構不合法的分支、選項或未知指令阻擋儲存；「儲存 JSON」會寫入**當前 Godot 專案的** `res://story/events/map_NNN_event_NNN.json`。已存在但未開啟的事件 ID 不覆寫。
-6. **雲端唯一持久保存規則**：這個原生「儲存 JSON」按鈕在使用者電腦開啟時會產生本地專案檔，尚不符合 cloud-only 長期政策。**在未另行確認授權的 PC 本機工作流程之前，不可用它留下本機成果。** 面板提供「複製 JSON」（不新增本地檔）；可把序列化文字交給已連接的 GitHub 工作流程直接提交雲端。雲端 Actions 測試中的本地儲存只在雲端臨時工作區，不會寫到使用者 PC。未來應補 GitHub 原生雲端儲存／遠端圖形介面，避免複製貼上。
+5. 「檢查所有頁」會針對結構不合法的分支、選項或未知指令阻擋儲存；「預覽目前頁」會在獨立視窗用 **FSDialoguePanel + FSStoryRuntime 真實播放尚未儲存的當前頁**，並建立專用的模擬狀態。面板另有「試玩劇情測試場」按鈕，遊玩 `scenes/story/FSStorySandbox.tscn`，不依賴原始 FS 授權素材。
+6. **雲端唯一持久保存規則**：已在 `FSStoryData.write_event()` **預設阻擋電腦本機寫入**。「儲存 JSON（雲端）」只允許 GitHub Actions (`GITHUB_ACTIONS=true`) 或明確授權的隔離雲端工作區 (`FS_EVENT_AUTHORIZED_EPHEMERAL_WRITE=true`) 建立檔案，且雲端臨時檔並不代表自動永久保存，仍須提交 GitHub/Drive。一般使用面板請用「複製 JSON」交給已連接 GitHub 的 ChatGPT 提交。目前尚**沒有**從 Godot 直接一鍵完成安全 GitHub 永久儲存功能。
 7. 地圖場景可加入 `res://scenes/story/FSStoryEventMarker.tscn`。在 Marker Inspector 選 `event_file` 並設定 Godot 2D 位置，從玩家互動腳本呼叫 `marker.interact(state, story_runtime)`；目前標記不是自行啟動的完整 NPC／碰撞觸發系統。
 
 ## 開放的視覺編輯指令
@@ -35,8 +35,9 @@
 - 事件文件 Schema/頁面條件/JSON roundtrip/編譯 → runtime → choices/rewards/legacy 指令 PASS。
 - 面板真實 Control instantiation：自動新增 IF/END、插入對話、TextEdit 實際修改模型、Undo/Redo、Save/Open PASS。
 - 拖入地圖的 Marker 行為與兩頁示範寶箱：首次領取物品、設獨立開關 A、第二次只顯示空箱，沒有二次領取 PASS。
-- GitHub Action：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43529305543
-- **未驗收**：手動開啟 Godot 真實桌面編輯器截圖／鍵盤操作體驗、遊戲內人物移動與按鍵對話框、NPC 動畫、經過事件/自動事件/平行事件排程、所有 VX opcodes / 355 Ruby。不要宣稱整款遊戲可玩。
+- GitHub Action：歷史 v0.1 run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43529305543；**最新原生自動測試** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43531883953
+- **已新增並通過**：原生遊戲對話/選項/取消視窗 `FSDialoguePanel.gd`；方向鍵/WASD + 調查事件的 544×416 `FSStorySandbox.tscn`；NPC 委託、拒絕/接受、報酬領取一次；未存檔事件「預覽目前頁」對話/選項/狀態 reset；`FSStoryData` 本機寫入保護。
+- **未驗收**：真人桌面編輯器/遊戲手動操作、私有圖像與原 FS 對話框外觀一致、動畫、原 FS 地圖(TileMapLayer)/劇情全文、經過事件/自動事件/平行事件排程、所有 VX opcodes / 355 Ruby，以及直接寫入 GitHub 的編輯器 OAuth/安全工作流。不要宣稱整款遊戲可玩。
 
 ## 需要遵守的邊界
 - 新事件文字來源現在可在 PUBLIC GitHub；未經審核的原遊戲私有內容、授權素材、玩家存檔不能上傳 PUBLIC repo。
