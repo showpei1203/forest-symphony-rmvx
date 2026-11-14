@@ -41,7 +41,8 @@ func _run() -> void:
         "items":[null,{"id":1,"name":"Potion","description":"Heal","icon_index":10}]
     }
     var state = STATE.new()
-    state.party_actor_ids = [1,2]
+    state.party_actor_ids.append(1)
+    state.party_actor_ids.append(2)
     state.gain_item("item",1,3)
     state.gain_item("weapon",2,1)
     state.gain_item("armor",2,1)
