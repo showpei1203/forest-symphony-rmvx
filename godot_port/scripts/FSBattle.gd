@@ -45,8 +45,11 @@ func add_enemy(enemy_id: int) -> bool:
     return true
 
 func start() -> bool:
-    active = not party.is_empty() and not enemies.is_empty()
-    changed.emit("進入戰鬥" if active else "未選擇有效隊伍／敵人")
+    # Never revive a completed troop just because the UI was redrawn.
+    var allies_alive: bool = party.any(func(x: Dictionary) -> bool: return int(x.get("hp",0)) > 0)
+    var enemies_alive: bool = enemies.any(func(x: Dictionary) -> bool: return int(x.get("hp",0)) > 0)
+    active = allies_alive and enemies_alive
+    changed.emit("進入戰鬥" if active else "未選擇存活隊伍／敵人")
     return active
 
 func attack(attacker: Dictionary, target: Dictionary) -> int:
