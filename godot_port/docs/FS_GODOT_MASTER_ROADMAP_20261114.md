@@ -82,3 +82,10 @@
 - 原版 #211 的 Enhanced Enemy Action roulette（而非 VX stock rating），#406 的特定敵人攻擊分布機率，#210 deterministic test RNG 都已來源比對並保守移植至 `FSEnemyAIDecision` / `FSAIRandom`。特定不完整 AI 事件/Target Priority/#401 Boss runtime context 優先 fail-closed。
 - `FSActionQueue` 已包含 actor 和 enemy 兩邊來源形狀的 pending ACT；敵方 ATB Ready 後自動選技能/攻擊、防禦，經 ACT 充能才套用 HP/MP 效果及 source ATB recharge。 `FSBattle.advance_atb` 依每個 60Hz source frame 排程，而不是在 delta 後整批跳過。敵方 scope1 對玩家、scope7 對敵方友軍，原相對技能定義已修復。
 - 合成 native 24 組 Godot 4.7.2 PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43553309465。下一步 #401 Boss AI/召喚群組、#211 composite conditions/turn_count、#372 TargetPriority/Provoke、damage/OD/Break/Cover 原 505 最終有效邏輯；真後套用 11 庫+美術資料到私人 Drive，對應的原 VX Runtime witness。完整 P1 遠未封版。
+
+
+## M3 Boss Context AI + #372 Target Priority 實際完成（2026-11-14）
+- `FSBossContext.gd` 已等值 port #401/#440 15 個 Core 551–565 的動態 AI 行動表（Boss 存在時替換、無 Boss 回原 actions、排序 BossID、已倒下仍視為在場），與 #211 輪盤、#231 ACT/MP/行動佇列相容。
+- `FSTargetPriority.gd` 已來源驗證並接線：玩家 UI 只顯示合法敵人；queue request/ACT completion 二次合法性檢查，包含 #372 最高優先 Enemy/State Note、Provoke State14。敵方 random target 含 Provoke 優先與 safe weighted fallback。 `FSSkillCostRules` 白名單允許 source #372 的 ignore-priority tag 不影響 MP quote；未知 Note 繼續 FAIL CLOSED。
+- Godot 4.7.2 source-shaped native tests 從 24→26，新增 Boss context / TargetPriority + 先前所有 regressions，CI PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43554328368。
+- **P1 Seal NO**：尚未得到真 FS post-Apply DB/runtime witness；Boss 召喚/天氣/Phase 與完整 505 Alias、EnemyActionPattern Skill83/TargetFix/Threat/Disappear、OD/Break/Cover、原角色動畫/怪物與 UI 美術圖片。後續以真來源資料的 private Drive 匯入優先，並逐項 port Boss special runtime。Event Studio 仍列長期功能。

@@ -116,3 +116,19 @@
 - **Run 43553128766**：原 `test_fs_enemy_atb_queue` 的同時就緒測試假設「第二隻排隊時第一隻仍在 pending」，但零蓄力攻擊在選招後 frame+1 就能結算，因此 frame90 第一隻排隊、frame91 第一隻完成並排第二隻、frame92 第二隻完成。修正為觀測正確逐幀狀態，沒有降低來源規則嚴格性。
 - **加強回歸**：新增 enemy scope7 對自己回復與 source ACT10幀成本、蓄力時敵方目標死亡未扣 MP。完整 24 組原生 PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43553309465。
 - 原始 E 槽唯讀，`main`、`develop` 不允許改動，公開 GitHub 不含使用者私有 `.rvdata`/PNG。文件/程式已上傳 feature branch。
+
+
+## 2026-11-14 Boss Context + TargetPriority QA（本輪）
+| 項目 | 狀態 | 來源／證據／嚴格限制 |
+|---|---|---|
+| Boss 核心 551–565 情境 AI 表 | **PASS source-shaped synthetic** | #401 Runtime Provider = #440 MasterSetup 15，同一張 `CONTEXT_ACTIONS`；15 core；Boss ID 排序，包含已死亡但仍留場的 Boss |
+| 無對應 Boss 時核心回原 Enemy.actions | **PASS synthetic** | #401 `candidate_actions_enemy` 僅在 specs 存在才替換；不可一律停止 |
+| Boss Core551→Boss540 技能300/302，ACT 完成付款 | **PASS native synthetic** | 真戰鬥 `FSActionQueue` enemy pending Skill，不提前 MP，ACT 完成造成 HP 變化 |
+| #372 目標最高優先與嘲諷 State14 | **PASS native synthetic** | UI 與 Queue 同源限制，Note、State Note priority，State14=1000；敵人 random first Provoke |
+| ACT 期間優先級改變的舊目標失效 | **PASS native synthetic** | 結算前再驗證新最高優先；阻擋過期目標、不消耗 MP，精確 VX retarget 尚未認證 |
+| 技能 `<ignore target priority>` 繞過與成本中立 | **PASS native synthetic** | #372 目標規則 + #411 quote：僅允許已驗證 target-priority tag，MP 在 ACT 完成扣 |
+| Boss 召喚/天氣、複雜 Threat/Disappear、正式資料／原 VX trace | **NOT DONE** | 非 source-final / 非原 FS 可玩封版 |
+### Failure log / source correction
+- 首次工作流程 https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43554116441 的第 25 前之舊 `test_fs_enemy_ai_source.gd` fail：舊測試預期「Core551 不論 Boss 是否在場一律不得使用原 actions」。查原版 #401 `return base if specs == nil || base == nil` 才證實這是**錯誤的早期保守假設**，因此改為「無對應 Boss 時回原 `Enemy.actions`」。沒有為了通過測試而捏造 fallback attack。
+- #372 新增 ACT 執行前目標再驗證；防範選定後 Provoke/target priority 動態改變導致錯人被打。這是安全 fail closed；原版自動換目標的完整流程未取得 VX runtime parity。
+- 驗收：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43554328368 （Godot 4.7.2 native 26/26 PASS；505 RGSS2 static authority scanner retained）。私有素材/檔案未進 public，原 E 槽未修改。
