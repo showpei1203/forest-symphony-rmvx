@@ -17,6 +17,7 @@ var log_label: Label
 var actor_index: int = 0
 var enemy_index: int = 0
 var battle_command_buttons: Array[Button] = []
+var selected_troop_id: int = 0
 
 func _ready() -> void:
     _build_shell()
@@ -152,7 +153,7 @@ func _show_menu() -> void:
     _add_button("持有道具", _show_items)
     _add_button("裝備", _show_equipment)
     _add_button("編隊", _show_formation)
-    _add_button("進入 BATTLE（候選測試）", _show_battle)
+    _add_button("選擇原始敵方隊伍並進入 BATTLE", _show_troop_picker)
 
 func _actor_selector(on_select: Callable) -> void:
     # Clickable actor tabs for true party ID/level; MENU never shows all 800 skills.
@@ -267,6 +268,50 @@ func _formation_clicked(index: int) -> void:
             _show_log("交換編隊失敗")
     _show_formation()
 
+func _show_troop_picker() -> void:
+    view_name = "MENU"
+    _clear_body()
+    title_label.text = "Forest Symphony / 原始敵方隊伍"
+    if battle == null or db == null:
+        return
+    if battle.active:
+        _add_text("戰鬥進行中，不可替換敵方隊伍。")
+        _add_button("返回戰鬥", _show_battle)
+        return
+    var troops: Variant = db.tables.get("troops",[])
+    if not (troops is Array):
+        _add_text("原始 Troops 資料表不存在，無法開始戰鬥。")
+        _add_button("返回 MENU", _show_menu)
+        return
+    var choices: int = 0
+    for troop_id in range(1,troops.size()):
+        var troop: Dictionary = db.record("troops",troop_id)
+        if troop.is_empty():
+            continue
+        var names: Array[String] = []
+        for member in troop.get("members",[]):
+            if not (member is Dictionary) or bool(member.get("hidden",false)):
+                continue
+            var enemy: Dictionary = db.record("enemies",int(member.get("enemy_id",0)))
+            if not enemy.is_empty():
+                names.append(str(enemy.get("name","?")))
+        if names.is_empty():
+            continue
+        choices += 1
+        var id: int = troop_id
+        _add_button("#%d %s｜%s" % [id,str(troop.get("name","Troop")),", ".join(PackedStringArray(names))],
+            func() -> void: _start_selected_troop(id))
+    if choices == 0:
+        _add_text("沒有可用的原始敵方隊伍；請確認私人資料匯入。")
+    _add_button("返回 MENU", _show_menu)
+
+func _start_selected_troop(troop_id: int) -> void:
+    if battle == null or battle.active:
+        return
+    selected_troop_id = troop_id
+    battle.enemies.clear()
+    _show_battle()
+
 func _show_battle() -> void:
     view_name = "BATTLE"
     if battle == null:
@@ -278,18 +323,22 @@ func _show_battle() -> void:
     battle_command_buttons.clear()
     title_label.text = "Forest Symphony / BATTLE (P1)"
     if battle.enemies.is_empty():
-        var troop_id: int = int(db.system().get("test_troop_id", 0))
-        var troop: Dictionary = db.record("troops", troop_id)
+        if selected_troop_id <= 0:
+            _add_text("尚未選擇原始 Troop，請先選擇敵方隊伍。")
+            _add_button("選擇隊伍", _show_troop_picker)
+            return
+        var troop: Dictionary = db.record("troops",selected_troop_id)
         if troop.is_empty():
-            var troops: Variant = db.tables.get("troops", [])
-            if troops is Array:
-                for idx in range(1, troops.size()):
-                    troop = db.record("troops", idx)
-                    if not troop.is_empty() and not troop.get("members", []).is_empty():
-                        break
-        for member in troop.get("members", []):
-            if member is Dictionary and not bool(member.get("hidden", false)):
-                battle.add_enemy(int(member.get("enemy_id", 0)))
+            _add_text("Troop #%d 不存在；拒絕建立虛構敵方隊伍。" % selected_troop_id)
+            _add_button("重新選擇隊伍", _show_troop_picker)
+            return
+        for member in troop.get("members",[]):
+            if member is Dictionary and not bool(member.get("hidden",false)):
+                battle.add_enemy(int(member.get("enemy_id",0)))
+        if battle.enemies.is_empty():
+            _add_text("Troop #%d 沒有可用的可見敵人。" % selected_troop_id)
+            _add_button("重新選擇隊伍", _show_troop_picker)
+            return
     if not battle.active:
         battle.start()
     # Source #230 defaults to Wait during active command/target selection.
