@@ -95,37 +95,69 @@ func use_item(target: Dictionary, item_id: int) -> bool:
     return false
 
 func equip(actor_index: int, slot: int, item_id: int) -> bool:
+    # Source: Game_Actor.change_equip and equippable? (base authority).
+    # Class weapon_set/armor_set, item.kind, dual-wield, and two_handed are
+    # enforced; later FS custom slot overrides remain a separate parity gate.
     if actor_index < 0 or actor_index >= party.size():
         return false
-    if slot < 0 or slot > 4:
+    var actor: Dictionary = party[actor_index]
+    if not db.can_equip(actor,slot,item_id):
+        changed.emit("職業／裝備欄位限制，或角色裝備固定")
         return false
-    var kind: String = "weapons" if slot == 0 else "armors"
-    var item := db.record(kind, item_id)
-    if item_id != 0 and item.is_empty():
+    var kind: String = db.equip_kind(actor,slot)
+    var item: Dictionary = db.record(kind,item_id)
+    var slots: Array = actor.get("equipment",[]).duplicate()
+    if slots.size() != 5:
         return false
-    var actor := party[actor_index]
-    var slots: Array = actor["equipment"]
     var old_id: int = int(slots[slot])
     if item_id == old_id:
         return true
-    # Full class restrictions and custom equipment slots remain pending.
-    var prefix: String = "weapon:" if slot == 0 else "armor:"
-    if item_id > 0 and int(inventory.get(prefix + str(item_id), 0)) < 1:
+
+    var new_key: String = ("weapon:" if kind == "weapons" else "armor:") + str(item_id)
+    if item_id > 0 and int(inventory.get(new_key,0)) < 1:
         changed.emit("背包中沒有指定裝備")
         return false
-    if item_id > 0:
-        inventory[prefix + str(item_id)] = int(inventory[prefix + str(item_id)]) - 1
-    if old_id > 0:
-        inventory[prefix + str(old_id)] = int(inventory.get(prefix + str(old_id), 0)) + 1
-    slots[slot] = item_id
-    var restored := db.actor_stats(int(actor["id"]), int(actor["level"]))
-    restored["equipment"] = slots.duplicate()
-    restored = db.apply_equipment(restored) # Apply only the currently equipped items, once.
-    for stat in ["maxhp", "maxmp", "atk", "def", "spi", "agi"]:
+    # Compute a full atomic swap before changing ANY inventory or actor stat.
+    var next_slots: Array = slots.duplicate()
+    next_slots[slot] = item_id
+    # Source Game_Actor.two_hands_legal?: if first hand is two-handed,
+    # the second must be empty; if second weapon is two-handed, first empty.
+    var main: Dictionary = db.record("weapons",int(next_slots[0]))
+    var second: Dictionary = db.record(
+        "weapons" if bool(actor.get("two_swords_style",false)) else "armors",
+        int(next_slots[1]))
+    if int(next_slots[0]) > 0 and bool(main.get("two_handed",false)) and int(next_slots[1]) > 0:
+        next_slots[1 if slot == 0 else 0] = 0
+    elif bool(actor.get("two_swords_style",false)) and int(next_slots[1]) > 0 and bool(second.get("two_handed",false)) and int(next_slots[0]) > 0:
+        next_slots[0 if slot == 1 else 1] = 0
+
+    var changes: Dictionary = {}
+    for i in range(5):
+        if int(slots[i]) == int(next_slots[i]):
+            continue
+        var slot_kind: String = db.equip_kind(actor,i)
+        var key_old: String = ("weapon:" if slot_kind == "weapons" else "armor:") + str(slots[i])
+        var key_new: String = ("weapon:" if slot_kind == "weapons" else "armor:") + str(next_slots[i])
+        if int(slots[i]) > 0:
+            changes[key_old] = int(changes.get(key_old,0)) + 1
+        if int(next_slots[i]) > 0:
+            changes[key_new] = int(changes.get(key_new,0)) - 1
+    for key in changes:
+        if int(inventory.get(key,0)) + int(changes[key]) < 0:
+            changed.emit("裝備交換後背包數量不足：" + str(key))
+            return false
+    # All checks passed: perform the transaction in one step.
+    for key in changes:
+        inventory[key] = int(inventory.get(key,0)) + int(changes[key])
+    actor["equipment"] = next_slots
+    var restored: Dictionary = db.actor_stats(int(actor["id"]),int(actor["level"]))
+    restored["equipment"] = next_slots.duplicate()
+    restored = db.apply_equipment(restored)
+    for stat in ["maxhp","maxmp","atk","def","spi","agi","hit","eva","cri"]:
         actor[stat] = restored[stat]
-    actor["hp"] = mini(int(actor["hp"]), int(actor["maxhp"]))
-    actor["mp"] = mini(int(actor["mp"]), int(actor["maxmp"]))
-    changed.emit("%s 裝備欄位 %d 已更新" % [actor.get("name", "?"), slot])
+    actor["hp"] = mini(int(actor["hp"]),int(actor["maxhp"]))
+    actor["mp"] = mini(int(actor["mp"]),int(actor["maxmp"]))
+    changed.emit("%s 裝備欄位 %d 已更新" % [actor.get("name","?"),slot])
     return true
 
 func advance_atb(delta: float) -> void:
