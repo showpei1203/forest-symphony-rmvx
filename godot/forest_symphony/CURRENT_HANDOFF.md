@@ -1,3 +1,4 @@
+> **2026-11-14 CHECKPOINT / USER REQUESTED HANDOFF:** [A36B R2 formal checkpoint](docs/FS_A36B_R2_CHECKPOINT_HANDOFF_20261114.md) and [owner-only Drive mirror](https://drive.google.com/file/d/1zZNfqOIHrfYuhBzn4PBtfN-MMWNcOnd0/view). **Stop new art work at A36B R2**. Read the checkpoint for source SHA, all seven source-only CI, native real-art proof, private ZIP, failure log, and A36C safe start. ART/COLLISION/WATER HOLD, no formal seal. Godot PR #16 Draft/main untouched.
 # Forest Symphony｜Godot Ground/PAR Art CURRENT_HANDOFF｜A36B R2｜2026-11-14
 
 This conversation creates **Ground-only art, fully independent PAR, SHADOW/LIGHT/WATER visuals, biome art and large maps only**. **NPC/events/story/combat are owned by another conversation.** Never replace with flattened Master crop.
