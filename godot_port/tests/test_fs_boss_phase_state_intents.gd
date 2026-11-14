@@ -111,6 +111,7 @@ func _run() -> void:
 
     # Invalid HP is not a legal source phase witness: no partial State150.
     var invalid = _battle(db,524)
+    if not _check(invalid.start(),"invalid-HP fixture battle starts"): return
     invalid.enemies[0]["maxhp"] = 0
     invalid.boss_runtime.phase_runtime.tick(invalid,{})
     if not _check(invalid.enemies[0].get("fs_phase_state_intents",[]).is_empty() and
