@@ -287,6 +287,21 @@ func apply_combo_atb_shift(enemy: Dictionary,delta: int,
             outcome.get("after",0),outcome.get("level_after",0)])
     return outcome
 
+func apply_combo_atb_shift_to_actor(actor: Dictionary,delta: int,
+        attacker: Dictionary = {},state_id: int = 0) -> Dictionary:
+    # ComboCore #374 applies negative ATB shifts to ALL battlers, whereas
+    # Boss-only resistance #377 is only enabled for tagged enemies.
+    if not party.has(actor):
+        return {"ok":false,"reason":"目標不是戰鬥中的我方角色"}
+    var outcome: Dictionary = FSATBResistance.apply_direct_shift(
+        actor,delta,state_id,attacker)
+    if bool(outcome.get("ok",false)):
+        action_queue.cancel_interrupted(self)
+        changed.emit("%s ATB 受到直接位移 %d→%d" % [
+            actor.get("name","我方"),outcome.get("before",0),
+            outcome.get("after",0)])
+    return outcome
+
 func enemy_valid_action_completed(enemy: Dictionary) -> int:
     # Called after a VERIFIED valid enemy action, not from UI redraw or ATB tick.
     if not enemies.has(enemy):
