@@ -295,6 +295,9 @@ func apply_combo_atb_shift(enemy: Dictionary,delta: int,
     var outcome: Dictionary = FSATBResistance.apply_direct_shift(
         enemy,delta,state_id,attacker)
     if bool(outcome.get("ok",false)):
+        # Cancel enemy ACT pending immediately after ComboCore negative shift,
+        # rather than leaving it alive until a later rendered frame.
+        action_queue.cancel_interrupted(self)
         changed.emit("%s ATB %d→%d／抗性 Lv%d" % [
             enemy.get("name","敵人"),outcome.get("before",0),
             outcome.get("after",0),outcome.get("level_after",0)])
