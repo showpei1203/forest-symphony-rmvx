@@ -155,8 +155,9 @@ func _show_skills() -> void:
     if rows.is_empty():
         _add_text("目前沒有已學會的技能")
     for row in rows:
-        _add_text("#%d %s｜MP %d｜%s" % [
-            row["id"],row["name"],row["mp_cost"],row["description"]])
+        var cost_text: String = str(row["mp_cost"]) if bool(row["cost_verified"]) else "未核對"
+        _add_text("#%d %s｜MP %s｜%s" % [
+            row["id"],row["name"],cost_text,row["description"]])
     _add_text("實際治療／狀態／自訂技能效果待完整 RGSS2 規則移植")
     _add_button("返回選單", _show_menu)
 
@@ -326,8 +327,11 @@ func _skill_action() -> void:
         _add_text("角色未習得技能")
     for row in rows:
         var sid: int = int(row["id"])
-        _add_button("%s MP:%d" % [row["name"],row["mp_cost"]],
-            func() -> void: _select_skill_target(sid))
+        if bool(row["cost_verified"]):
+            _add_button("%s MP:%d" % [row["name"],row["mp_cost"]],
+                func() -> void: _select_skill_target(sid))
+        else:
+            _add_text("%s MP:未核對（%s）" % [row["name"],row["cost_warning"]])
     _add_button("返回", _show_battle)
 
 func _select_skill_target(skill_id: int) -> void:
