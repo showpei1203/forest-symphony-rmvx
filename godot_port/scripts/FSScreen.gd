@@ -322,10 +322,19 @@ func _refresh_battle_status() -> void:
         if not planned.is_empty():
             enemy_line += " [State意圖:%s／效果未套用]" % str(planned)
         all_lines.append(enemy_line)
-    # Original #404 weather is a global field. Never put Field153..158
-    # in a battler's states or imply elemental damage is already applied.
+    # Original #404 weather is a GLOBAL Field, never a battler State.
+    # Display an actually authorized source-subset separately from Boss
+    # Phase STATE intentions, which still lack original effect parity.
+    var actual_weather: FSFieldWeather = battle.field_weather
     var field_request: Dictionary = battle.boss_runtime.phase_runtime.weather_request
-    if not field_request.is_empty():
+    if actual_weather.active and actual_weather.current_id > 0:
+        all_lines.append("全域天氣 Field%d / Source%d（#404 限定元素倍率已套用；原版全 Alias 尚待核對）" % [
+            actual_weather.current_id,int(actual_weather.current_source.get("id",0))])
+        if not field_request.is_empty() and int(
+                field_request.get("field_id",0)) != actual_weather.current_id:
+            all_lines.append("Boss 天氣意圖 Field%d 尚未生效" % [
+                int(field_request.get("field_id",0))])
+    elif not field_request.is_empty():
         all_lines.append("天氣預定 Field%d / Boss%d（未實裝傷害效果）" % [
             int(field_request.get("field_id",0)),
             int(field_request.get("source_boss_id",0))])

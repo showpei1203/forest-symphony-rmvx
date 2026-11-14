@@ -159,8 +159,10 @@ func _run() -> void:
     ui.battle = boss_battle
     ui.db = db
     ui._refresh_battle_status()
-    if not _check("State意圖" in ui.status_label.text,
-            "unverified Boss State remains explicitly pending on battle screen"): return
+    if not _check("State意圖" in ui.status_label.text and
+            "全域天氣 Field153" in ui.status_label.text and
+            "#404 限定元素倍率已套用" in ui.status_label.text,
+            "UI distinguishes applied limited global weather from unapplied Boss State intent"): return
 
     print("FS #404 weather real positive damage, late cost/field switching, queue, Boss global integration PASS")
     quit(0)
