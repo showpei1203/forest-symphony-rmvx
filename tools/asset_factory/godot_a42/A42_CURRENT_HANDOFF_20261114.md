@@ -24,4 +24,11 @@
 ## Authority and next
 - Private full Godot project `FS_A42_GODOT_SEPARATE_WEAPON_FX_HITSTOP_20261114` under `FS_AI_ASSET_FACTORY_Restricted_Binaries` on G: Google Drive.
 - GitHub public code-only: `showpei1203/forest-symphony-rmvx`, branch `feat/fs-asset-factory-v1-20261107`, `tools/asset_factory/godot_a42`.
-- To complete formal delivery: package final private ZIP, cold-extract Godot import/GPU QA, archive CRC/all-file SHA, check Drive owner-only permissions/readback and then append final SHA and links to this Handoff.
+- Formal delivery now completed and verified in the final section below.
+## Final verified delivery: PRIVATE CLOUD + GITHUB
+- [Owner-only A42 complete native Godot Drive project](https://drive.google.com/drive/folders/1VtCjlEzgI_0Mhowh7law4l-87p4L5Yi0).
+- [Owner-only complete A42 81-file ZIP](https://drive.google.com/file/d/12MGWp8e0W6yvic3dqnUv6BNf8_YPOt6P/view) **309,843 bytes**, SHA256 `52a3c040387a1d0da9c617c3d257d77ab441457859b4adf40830d5181951fdca`. Tested authenticated Drive download independently of G: mount, member count **81**, **ZIP CRC PASS**, SHA matches local signed hash. Drive permissions **owner-only**, `shared=false`.
+- New independent ZIP cold extraction: Godot editor import **EXIT0**, genuine RX 6700 XT GPU runtime QA **EXIT0**, every member original vs cold SHA identical, `12/12` composite framebuffer images 0 RGBA pixel differences, 11 distinct poses.
+- [Real native Godot GPU 12-frame contact](https://drive.google.com/file/d/1rPszL7qp_Ad1uOVgUrtqSBdAUXlpcERV/view), [real native Godot animation GIF](https://drive.google.com/file/d/1eub7zjfVpZkuIIOGbi19ZNaX-7cCQAyx/view), [FX/weapon toggle three-panel A/B](https://drive.google.com/file/d/1pr4Tsg2DM7oBfrBz-dGBAqEuxtsMb_pR/view).
+- [Complete A42 public source-code and QA, no private art](https://github.com/showpei1203/forest-symphony-rmvx/tree/feat/fs-asset-factory-v1-20261107/tools/asset_factory/godot_a42).
+- No original E: VX changes; no GitHub main, Godot migration or map branch changes; 0 paid PixelLab generations. TECH PASS / ART HOLD / true FS migrated battle NOT_RUN.
