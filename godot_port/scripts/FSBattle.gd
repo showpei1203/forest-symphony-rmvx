@@ -26,11 +26,15 @@ var action_queue: FSActionQueue = FSActionQueue.new()
 # Source #401 Runtime Provider. Automatically opt-in only after the real
 # boot-final DB witness gate; synthetic battle tests opt in intentionally.
 var boss_runtime: FSBossSummonRuntime = FSBossSummonRuntime.new()
+# #404 single global field, distinct from Boss Phase State intents. Enabled
+# only with source boot-final witness; native tests must opt in themselves.
+var field_weather: FSFieldWeather = FSFieldWeather.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
     world = shared_world
     boss_runtime.active = db.boot_final_verified
+    field_weather.active = db.boot_final_verified
     if world != null:
         # One shared inventory is mandatory for event reward + MENU + BATTLE parity.
         inventory = world.inventory
@@ -73,11 +77,34 @@ func start() -> bool:
     changed.emit("進入戰鬥" if active else "未選擇存活隊伍／敵人")
     return active
 
+func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
+    # #404 requires effective attacker.element_set for positive attacks.
+    # With global weather active, do not pretend an unverified source has
+    # zero element types. The unweathered basic attack remains a candidate.
+    if not field_weather.active or field_weather.current_id <= 0:
+        return true
+    var sample: Dictionary = field_weather.preview_damage(
+        db,target,attacker.get("element_set",null),1,0)
+    if not bool(sample.get("ok",false)):
+        changed.emit("天氣攻擊已阻擋：" + str(sample.get("reason","")))
+        return false
+    return true
+
 func attack(attacker: Dictionary, target: Dictionary) -> int:
     # RPG Maker VX unmodified baseline: max(0, ATK*4 - DEF*2).
-    # Element, variance, hit/evade, guard, critical, Cover and custom authority NOT PORTED.
+    # Variance, hit/evade, critical, Cover and other 505 overrides NOT PORTED.
+    if not attack_preflight(attacker,target):
+        return 0
     var raw_damage: int = maxi(0, int(attacker.get("atk", 0)) * 4 - int(target.get("def", 0)) * 2)
     var damage: int = raw_damage / 2 if bool(target.get("guarding", false)) else raw_damage
+    if field_weather.active and field_weather.current_id > 0:
+        # #404 source hook runs AFTER baseline damage is calculated.
+        var field: Dictionary = field_weather.preview_damage(
+            db,target,attacker.get("element_set",null),damage,0)
+        if not bool(field.get("ok",false)):
+            changed.emit("天氣傷害欄位無法核對，未造成傷害")
+            return 0
+        damage = int(field["hp"])
     target["hp"] = maxi(0, int(target.get("hp", 0)) - damage)
     changed.emit("%s 攻擊 %s：%d 傷害" % [attacker.get("name", "?"), target.get("name", "?"), damage])
     _check_end()
@@ -123,6 +150,21 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
     if int(user.get("mp", 0)) < mp_cost:
         changed.emit("MP 不足")
         return false
+    # #404 weather source-object tags are cost-neutral, but they MUST
+    # also pass global-field authorization before an ACT command begins.
+    var field_action: Dictionary = field_weather.preflight_source_object(
+        db,user,skill,enemies)
+    if not bool(field_action.get("ok",false)):
+        changed.emit("技能天氣尚未驗證，未扣 MP：" + str(field_action.get("reason","")))
+        return false
+    if field_weather.active and field_weather.current_id > 0 and int(
+            skill.get("base_damage",0)) > 0:
+        var sample: Dictionary = field_weather.preview_damage(
+            db,target,skill.get("element_set",null),1,0,
+            bool(skill.get("rate_damage",false)))
+        if not bool(sample.get("ok",false)):
+            changed.emit("技能元素／天氣未驗證：" + str(sample.get("reason","")))
+            return false
     return true
 
 func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
@@ -131,7 +173,6 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     var skill: Dictionary = db.record("skills",skill_id)
     # Exact quote has already been validated by skill_preflight.
     var mp_cost: int = int(FSSkillCostRules.preview(skill,user)["mp"])
-    user["mp"] = int(user["mp"]) - mp_cost
     var val: int = int(skill.get("base_damage", 0))
     if val > 0:
         val += int(user.get("atk", 0)) * 4 * int(skill.get("atk_f", 0)) / 100
@@ -140,7 +181,28 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             val -= int(target.get("def", 0)) * 2 * int(skill.get("atk_f", 0)) / 100
             val -= int(target.get("spi", 0)) * int(skill.get("spi_f", 0)) / 100
         val = maxi(0, val)
+    if field_weather.active and field_weather.current_id > 0 and val > 0:
+        var field: Dictionary = field_weather.preview_damage(
+            db,target,skill.get("element_set",null),val,0,
+            bool(skill.get("rate_damage",false)))
+        if not bool(field.get("ok",false)):
+            # Recheck after ACT: never charge MP if field/target data changed.
+            changed.emit("天氣傷害無法核對，未扣 MP")
+            return false
+        val = int(field["hp"])
+    # Source #404 resolves the existing hit BEFORE a new weather skill can
+    # set the next field. Verify the requested Field before paying.
+    var planned: Dictionary = field_weather.preflight_source_object(
+        db,user,skill,enemies)
+    if not bool(planned.get("ok",false)):
+        return false
+    user["mp"] = int(user["mp"]) - mp_cost
     target["hp"] = clampi(int(target.get("hp", 0)) - val, 0, maxi(1, int(target.get("maxhp", 1))))
+    if str(planned.get("kind","none")) != "none":
+        var applied: Dictionary = field_weather.apply_source_object(
+            db,user,skill,enemies)
+        if not bool(applied.get("ok",false)):
+            changed.emit("技能已結算，但天氣變更被原版場域優先權拒絕")
     changed.emit("%s 使用 %s：HP 變化 %d" % [user.get("name", "?"), skill.get("name", "?"), -val])
     _check_end()
     return true
@@ -252,6 +314,7 @@ func advance_atb(delta: float) -> void:
     # EACH frame; processing a multi-frame delta in one lump lets enemies
     # skip their turn or delay the final attack until the next render frame.
     for frame in range(steps):
+        field_weather.update_source(db)
         FSTankentaiATBCore.advance_frames(party,enemies,1,source_atb_wait)
         if not active:
             break

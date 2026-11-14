@@ -215,6 +215,10 @@ static func choose(battle,index: int,rng: FSAIRandom) -> Dictionary:
     var target_index: int = FSTargetPriority.random_target(battle,side,rng)
     if target_index < 0:
         return _fail("source random target priorities/states unresolved or none")
+    if kind_text == "attack":
+        var selected: Dictionary = battle.party[target_index] if side == "actor" else battle.enemies[target_index]
+        if not battle.attack_preflight(enemy,selected):
+            return _fail("source #404 attack elements unavailable for global weather")
     enemy["fs_ead_last_damage_skill"] = final_damage_skill
     return {"ok":true,"kind":kind_text,"object_id":sid,
         "target_side":side,"target_index":target_index}

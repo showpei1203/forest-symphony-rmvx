@@ -74,6 +74,8 @@ func request(battle, index: int, kind: String, target_index: int = -1,
                 target_index in priority.get("indices",[])):
             return false
 
+    if kind == "attack" and not battle.attack_preflight(actor,target):
+        return false
     if kind == "skill" and not battle.skill_preflight(actor,target,object_id):
         return false
     if kind == "item":
@@ -218,9 +220,10 @@ func _resolve_enemy_ready(battle) -> int:
         elif not target.is_empty() and int(target.get("hp",0)) > 0 and (
                 not bool(target.get("fs_boss_phase_effects_pending",false))):
             if kind == "attack" and battle.party.has(target):
-                enemy["guarding"] = false
-                battle.attack(enemy,target)
-                success = true
+                if battle.attack_preflight(enemy,target):
+                    enemy["guarding"] = false
+                    battle.attack(enemy,target)
+                    success = true
             elif kind == "skill":
                 success = battle.use_skill(enemy,target,object_id)
         if success and battle.active:
@@ -279,9 +282,10 @@ func resolve_ready(battle) -> int:
         elif legal_target and not target.is_empty() and int(target.get("hp",0)) > 0 and (
                 not bool(target.get("fs_boss_phase_effects_pending",false))):
             if kind == "attack" and side == "enemy":
-                actor["guarding"] = false
-                battle.attack(actor,target)
-                success = true
+                if battle.attack_preflight(actor,target):
+                    actor["guarding"] = false
+                    battle.attack(actor,target)
+                    success = true
             elif kind == "skill":
                 success = battle.use_skill(actor,target,obj)
             elif kind == "item":

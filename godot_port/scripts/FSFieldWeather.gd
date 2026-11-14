@@ -232,6 +232,37 @@ func preview_damage(db: FSDatabase,target: Dictionary,
     return {"ok":true,"hp":hp,"mp":mp,"delta":combined,
         "rate":rate,"applied":true,"field_id":current_id}
 
+func preflight_source_object(db: FSDatabase,user: Dictionary,
+        obj: Dictionary,enemies: Array[Dictionary]) -> Dictionary:
+    var note: String = str(obj.get("note",""))
+    var tagged: bool = removes_field(obj) or explicit_field_id(obj)>0 or _tag(
+        note,"(?i)<field_context_weather\\s*>")
+    if not tagged:
+        return {"ok":true,"kind":"none"}
+    if not active:
+        return {"ok":false,"reason":"原始天氣技能已識別，但戰場 Field 引擎未具來源驗證"}
+    if removes_field(obj):
+        # #404 remove_field? does NOT block skill usability; clear_field(false)
+        # may still fail when priority>=20. The underlying skill may succeed.
+        return {"ok":true,"kind":"clear"}
+    var id: int = requested_field_id(user,obj,enemies)
+    if id <= 0:
+        return {"ok":false,"reason":"原始天氣 Context 找不到存活來源"}
+    var state: Dictionary = db.record("states",id)
+    if state.is_empty() or not weather_state(state):
+        return {"ok":false,"reason":"原版天氣 State%d 未驗證" % id}
+    # #404 Game_Battler#skill_can_use? rejects same or lower-priority
+    # weather; test against current global field before paying skill cost.
+    if current_id == id:
+        return {"ok":false,"reason":"該天氣已經生效，不可重複施放"}
+    if current_id > 0:
+        var old: Dictionary = db.record("states",current_id)
+        if old.is_empty():
+            return {"ok":false,"reason":"現有天氣來源資料遺失"}
+        if priority(old) > priority(state):
+            return {"ok":false,"reason":"現有高優先權天氣不可被此技能覆蓋"}
+    return {"ok":true,"kind":"set","field_id":id}
+
 func apply_source_object(db: FSDatabase,user: Dictionary,obj: Dictionary,
         enemies: Array[Dictionary]) -> Dictionary:
     # Source #404 effect hooks run AFTER actual skill/item resolves.

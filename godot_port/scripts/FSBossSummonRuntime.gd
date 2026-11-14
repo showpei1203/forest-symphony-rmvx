@@ -209,4 +209,16 @@ func tick(battle) -> int:
     # -> core exposure. Phase runtime emits only verified ID/field INTENTS,
     # never silently applies RPG State effects or weather damage.
     phase_runtime.tick(battle,flags)
+    # Source #404 weather is a real global field, NOT a regular battler
+    # State. Only activate this sourced subset when the explicit field
+    # engine gate passes; Phase State 122..127 effects remain pending.
+    if battle.field_weather.active:
+        var request: Dictionary = phase_runtime.weather_request
+        if not request.is_empty():
+            var source: Dictionary = _member(battle.enemies,int(
+                request.get("source_boss_id",0)),true)
+            if not source.is_empty():
+                if not battle.field_weather.set_field(battle.db,int(
+                        request.get("field_id",0)),source,true):
+                    _fail("Boss 場域天氣設定被來源驗證阻擋")
     return battle.enemies.size()-before

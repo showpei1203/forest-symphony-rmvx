@@ -71,6 +71,14 @@ static func preview(skill: Dictionary, user: Dictionary) -> Dictionary:
         return _fail("目標優先權標籤解析器設定錯誤")
     for match_result in target_note.search_all(leftover):
         leftover = leftover.replace(match_result.get_string(0),"")
+    # Source #404 Field Weather Notes affect the global field AFTER a
+    # skill effect, not the MP quote. Only these exact known tags are
+    # neutral to #411's MP-cost parsing. Unrecognized tags still fail.
+    var weather_note := RegEx.new()
+    if weather_note.compile("(?i)<\\s*field[ _]effect\\s*:\\s*[0-9]+\\s*>|<\\s*remove[ _]field[ _]effect\\s*>|<\\s*field_context_weather\\s*>") != OK:
+        return _fail("天氣技能 Note 解析器設定錯誤")
+    for weather_match in weather_note.search_all(leftover):
+        leftover = leftover.replace(weather_match.get_string(0),"")
     if not leftover.strip_edges().is_empty():
         return _fail("包含不明的技能 Note／其他系統標記，不可按原始 mp_cost 支付")
     if bool(skill.get("fs_cost_level_modifier_pending",false)) or bool(
