@@ -127,6 +127,7 @@ func _run() -> void:
     # as below the 55% threshold, or publish a global field request.
     var bad_hp = _battle(db,[548])
     if not _check(bad_hp.start(),"invalid weather HP fixture starts"): return
+    bad_hp.enemies[0]["fs_phase_state_intents"] = []
     bad_hp.enemies[0]["hp"] = -1
     var bad_weather = PHASE.new()
     bad_weather.tick(bad_hp,{})
