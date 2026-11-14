@@ -42,6 +42,12 @@ jobs:
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a36b_public.gd 2>&1 | tee /tmp/fs-a36b-logs/public.log
           grep -q 'A36B PUBLIC GODOT SOURCE CONTRACT PASS: 1973 checks' /tmp/fs-a36b-logs/public.log
           if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|A36B PUBLIC FAIL)' /tmp/fs-a36b-logs/public.log; then exit 1; fi
+      - name: A36C R2 scene and manifest integrity (Python stdlib)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot/forest_symphony/tests/test_a36c_r2_public.py 2>&1 | tee /tmp/fs-a36b-logs/a36c_r2_contract.log
+          grep -q 'A36C R2 manifest/scene static source contract PASS' /tmp/fs-a36b-logs/a36c_r2_contract.log
       - name: Upload logs only, no original art
         if: always()
         uses: actions/upload-artifact@v4
