@@ -72,6 +72,7 @@ func _run() -> void:
 
     screen._show_battle()
     if not _check(battle.active,"battle started with real-style troop"): return
+    screen._process(2.0) # Source ATB, actor ready for the next item command.
     screen._item_action()
     item_button = _button(screen.body,"Potion")
     if not _check(item_button != null,"battle shows owned potion"): return
@@ -79,8 +80,12 @@ func _run() -> void:
     target = _button(screen.body,"Hero")
     if not _check(target != null,"battle item target shown"): return
     target.pressed.emit()
+    if not _check(battle.party[0]["hp"]==400 and world.amount("item",1)==2 and
+            battle.has_actor_pending_action(0),
+            "battle item queued without premature healing/consumption"): return
+    screen._process(0.4) # Source Item1 charge is 20%, needs 20 frames.
     if not _check(battle.party[0]["hp"]==500 and world.amount("item",1)==1,
-            "battle item heals to cap, inventory shared"): return
+            "battle item heals at ACT resolution, shared inventory"): return
     screen._show_items()
     item_button = _button(screen.body,"Potion")
     item_button.pressed.emit()

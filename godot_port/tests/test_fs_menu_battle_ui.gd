@@ -103,12 +103,24 @@ func _run() -> void:
     screen._show_battle()
     if not _check(battle.active and battle.enemies.size()==1,"real troop membership starts battle"): return
     screen._player_attack()
+    if not _check("角色 ATB 尚未就緒" in screen.log_label.text,
+            "premature attack blocked in BATTLE UI"): return
+    screen._process(2.0) # Source 60fps ATB, no premature attacks.
+    screen._player_attack()
+    if not _check(battle.source_atb_wait,
+            "source Wait mode freezes gauges during enemy targeting"): return
     if not _check("選擇敵方目標" in screen.title_label.text,"attack opens target choice"): return
     var target: Button = _button_with(screen.body,"Test monster")
     if not _check(target != null,"enemy target from source Troops.rvdata"): return
     target.pressed.emit()
-    if not _check(battle.enemies[0]["hp"] < 300,"attack actually applies to chosen target"): return
+    if not _check(battle.enemies[0]["hp"] == 300 and
+            battle.has_actor_pending_action(0),
+            "queued attack does not damage enemy until ACT is charged"): return
+    screen._process(1.0/60.0)
+    if not _check(battle.enemies[0]["hp"] < 300,
+            "attack actually applies to chosen target AFTER source ACT"): return
 
+    screen._process(2.0) # Source attack recharge and ATB refill for skill command.
     var original_mp: int = int(battle.party[0]["mp"])
     screen._skill_action()
     if not _check(_button_with(screen.body,"Flash") != null and
@@ -117,8 +129,12 @@ func _run() -> void:
     target = _button_with(screen.body,"Test monster")
     if not _check(target != null,"skill scope selects enemy"): return
     target.pressed.emit()
+    if not _check(int(battle.party[0]["mp"]) == original_mp and
+            battle.has_actor_pending_action(0),
+            "skill selection only queues ACT and does NOT prematurely charge MP"): return
+    screen._process(0.2) # Skill3 source ACT=10% needs 10 frames.
     if not _check(int(battle.party[0]["mp"]) == original_mp - 5,
-            "allowed skill decreases MP only when actually used"): return
+            "allowed skill decreases MP only after ACT resolves"): return
     if not _check(not battle.use_skill(battle.party[0],battle.enemies[0],4) and
             int(battle.party[0]["mp"]) == original_mp - 5,
             "unlearned skill blocked without MP cost"): return
