@@ -72,3 +72,8 @@
 - `FSScreen._process` 在 BATTLE 將 delta 導入 source Core，角色/敵人 ATB/ACT label 即時更新，MENU 無背景推進。第 374 段 ComboCore 負延遲與 #377 Boss Resistance 已同步 source integer gauge 及中斷 charge/ready。
 - CI source-shaped synthetic 21 原生測試（新核心 + UI）、Python 505 脚本掃描：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43550617123。
 - 下一個最高優先級是 1. 真 VX post-Apply private data 快照與 witness；2. **ACT ready→真正動畫/動作執行→傷害/成本支付→ATB reset** 的完整可重播動作佇列與行動中 pause flags；3. 505 RGSS2 最終覆寫/OD/Break/Cover；4. 6 位主角正式素材/戰鬥動作和 UI 對照。Event Studio 仍長期，不優先擴充。
+
+## M3 玩家端 Source ATB/ACT 行動佇列（2026-11-14 最新）
+- **實作**：`FSActionQueue` 將 `FSBattle` 的 Source ATB READY→玩家 Attack/Guard/Skill/Item 指令→ACT source charge→單次執行/依 source recharge 重置，真正套用於 `FSScreen` 的戰鬥按鈕。固定/百分比 MP 成本交給 `FSSkillCostRules` quote；物品走 `FSItemRules`。只有 ACT 結算時才支付 MP／Item，失敗或中斷不扣。選敵/己/技能/物品時以原 #230/#231 wait 預設凍結 ATB。ACT 中斷後防止佇列重放。
+- **Godot 4.7.2 自動 QA**：新 `test_fs_atb_action_queue.gd` + 修改老 UI 單體測試；既有 21 + 1 = 22 native tests PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551938441。新 Gate 規格 `docs/FS_ATB_ACT_COMMAND_QUEUE_GATE_20261114.md`。
+- **未完成**：對 `Game_Enemy` 真 AI 與 action queue 的自動派送、Force/Union/Break/Cover/OD 實際付款與動作連動、傷害最終原版 505 aliases、狀態與敵 AI Turn、原 VX screenshot 測試。標準原始資料庫的 post-Apply 版本與私人圖像未到位；P1 Seal 仍 NO。Event Studio 保持長期。

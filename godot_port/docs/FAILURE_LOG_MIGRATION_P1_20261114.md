@@ -86,3 +86,18 @@
 - GitHub Actions official Godot 4.7.2，**21 native script smoke tests**（原本19 + 新增2）與 Python 505 scripts authority scanner。
 - 原始成功鏈：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43550617123
 - 注意：**沒有執行原 FS 的有效數值 trace**。本輪都是 source-shaped/in-memory synthetic 檢驗，Phase1 Seal = NO。
+
+## 2026-11-14 ATB 行動佇列回歸與風險
+| Gate | 結果 | 證據與限制 |
+|---|---|---|
+| 玩家 ATB 指令防提前出招、重複佇列 | **PASS native synthetic** | `FSActionQueue.request` 強制 readiness 和唯一 pending actor |
+| ACT 蓄力完成才付 Skill MP / 消耗 Item | **PASS native synthetic** | cost quote+effect 在 resolve 重新驗證；Item1 20% ACT (20 source frames) |
+| Attack/Guard/Skill/Item 真 BATTLE UI | **PASS native integration** | `FSScreen` buttons disabled until ready; 目標／技能／物品選擇時按 #230/#231 wait freeze |
+| 角色 ComboCore -ATB 中斷 ACT / 原佇列失效 | **PASS native synthetic** | `apply_combo_atb_shift_to_actor`、`cancel_interrupted`，中斷後 MP 及目標 HP 不變 |
+| ACT 期間目標死亡、不合法執行 | **PASS native synthetic** | 只完成一次失敗 receipt，成本不扣，reset 為候選處理（**未經 VX trace**） |
+| 敵方自動行動/攻擊數值與全 505 alias、OD Break Cover | **NOT DONE** | 此時只有玩家端已驗證子集，不可說全套 queue 完成 |
+| 真 FS 資料/美術/動畫/VX screenshot | **NOT DONE** | 原始資料轉換後 post-Apply private Drive 尚未完成 |
+### 重要 regression 說明
+- 首次啟用 UI ATB command gate 時，舊版 `test_fs_menu_battle_ui` 仍預期 ATB 未滿就能選敵人，CI 43551735116 的 `attack opens target choice` 失敗是新 gate 正常拒絕。更新 fixture 使角色跑到 source READY，再 assert ACT 蓄滿後才扣技能 MP、再執行物品消耗。最新全 22 native PASS。
+- 對 `FSActionQueue` 新增總計 1 個核心 regression，包含第 374 段失去 readiness 中斷與多種資源交易失敗防護。未藉由更動測試來繞過 source-gate。
+- 最新原生/CI https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551938441
