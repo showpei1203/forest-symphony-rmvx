@@ -122,7 +122,14 @@ func _run() -> void:
     battle.advance_atb(58.0/60.0)
     if not _check(battle.ready_actors()==[0] and
             battle.ready_enemies()==[0],
-            "FSBattle reports both source-ready actors/enemies after frame progress"): return
+            "ready actor/enemy after frame progress: " + str({
+              "party0":battle.party[0]["source_atb_count"],
+              "party1":battle.party[1]["source_atb_count"],
+              "enemy0":battle.enemies[0]["source_atb_count"],
+              "actors":battle.ready_actors(),
+              "enemies":battle.ready_enemies(),
+              "fraction":battle.source_atb_frame_fraction
+            })): return
     if not _check(battle.begin_source_atb_charge(battle.party[0],"skill",1),
             "FSBattle can start ACT phase from ready party actor"): return
     if not _check(not battle.source_action_charged(battle.party[0]),
