@@ -86,28 +86,34 @@ func _phase524(battle) -> void:
     var boss: Dictionary = _alive(battle.enemies,BOSS_PHASE_HP)
     if boss.is_empty():
         return
+    # Validate source HP before ANY phase mutation. An invalid battler must
+    # never gain a seemingly legitimate initial State150 intent.
+    var hp: int = int(boss.get("hp",0))
+    var maxhp: int = int(boss.get("maxhp",0))
+    if maxhp <= 0 or hp < 0 or hp > maxhp:
+        _error("Boss524 HP/maxhp 非法，階段意圖暫停")
+        return
     var states: Array[int] = _ids(boss)
     if not (states.has(150) or states.has(151) or states.has(152)):
         if not _attempt_atomic(boss,524,[],[150],battle.db):
             return
-    var hp: int = int(boss.get("hp",0))
-    var maxhp: int = int(boss.get("maxhp",0))
-    if maxhp <= 0:
-        _error("Boss524 maxhp 非法，階段意圖暫停")
-        return
     if hp*100 <= maxhp*35:
         # Exact source removes 150/151 and all law states 140..143, then
         # adds 152 if absent. If source had 152 already from earlier
         # low-HP phase, heal does NOT automatically remove it.
         var removal: Array[int] = [150,151,140,141,142,143]
-        _attempt_atomic(boss,524,removal,[152],battle.db)
-        boss["fs_law_cycle_authority_pending"] = false
+        if _attempt_atomic(boss,524,removal,[152],battle.db):
+            boss["fs_law_cycle_authority_pending"] = false
     elif hp*100 <= maxhp*70:
         if _attempt_atomic(boss,524,[150],[151],battle.db):
             var law_running: bool = false
             for id in LAW_STATES:
                 law_running = law_running or _ids(boss).has(id)
-            if not law_running:
+            if law_running:
+                # A law is already represented: do not keep a stale
+                # initialization request from a previous tick.
+                boss["fs_law_cycle_authority_pending"] = false
+            else:
                 # Source expects albert_ant_initialize_law_cycle iff
                 # respond_to? and no law state. The method's alias-chain
                 # remains missing. No fake Law140 is inserted.
