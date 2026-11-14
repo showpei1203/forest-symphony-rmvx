@@ -1,8 +1,8 @@
 config_version=5
 
 [application]
-config/name="Forest Symphony | Godot-first A36 80x58 large continuous Ground-first forest"
-run/main_scene="res://scenes/a36_large_verdant_forest_80x58.tscn"
+config/name="Forest Symphony | Godot-first A36B 80x58 large continuous Ground-first forest"
+run/main_scene="res://scenes/a36b_large_forest_tree_ecology_80x58.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]
