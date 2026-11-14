@@ -135,6 +135,11 @@ func actor_stats(actor_id: int, level: int = -1) -> Dictionary:
     result["face_name"] = str(actor.get("face_name",""))
     result["face_index"] = int(actor.get("face_index",0))
     result["skills"] = learned_skills(actor_id,resolved_level)
+    # Game_Actor#odds (stock VX) = 4 - actor class.position.
+    # Needed by source #372 final weighted random_target, never equal
+    # odds for front/mid/back positions unless class data says so.
+    var klass: Dictionary = record("classes",int(actor.get("class_id",0)))
+    result["odds"] = maxi(0,4-int(klass.get("position",0)))
     return result
 
 func learned_skills(actor_id: int, level: int) -> Array[int]:

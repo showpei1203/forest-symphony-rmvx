@@ -231,16 +231,18 @@ static func choose(battle,index: int,rng: FSAIRandom) -> Dictionary:
                 sid = 0
     # #406 always records the FINAL selected damaging skill,
     # irrespective of whether Skill later hits or misses.
-    enemy["fs_ead_last_damage_skill"] = kind_text == "skill" and int(
+    var final_damage_skill: bool = kind_text == "skill" and int(
         battle.db.record("skills",sid).get("base_damage",0)) > 0
 
     var side: String = "enemy" if kind_text == "skill" and int(
         battle.db.record("skills",sid).get("scope",0)) == 7 else "actor"
     if kind_text == "guard":
+        enemy["fs_ead_last_damage_skill"] = false
         return {"ok":true,"kind":kind_text,"object_id":0,
             "target_side":"none","target_index":-1}
     var target_index: int = _basic_target(battle,side,rng)
     if target_index < 0:
         return _fail("source random target priorities/states unresolved or none")
+    enemy["fs_ead_last_damage_skill"] = final_damage_skill
     return {"ok":true,"kind":kind_text,"object_id":sid,
         "target_side":side,"target_index":target_index}
