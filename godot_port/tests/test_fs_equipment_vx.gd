@@ -87,8 +87,7 @@ func _run() -> void:
     if not _assert(battle.party[0]["def"]==15 and state.amount("armor",2)==0,
             "helmet applies defense and inventory consumed"): return
     var before: Dictionary = state.inventory.duplicate(true)
-    if not _assert(not battle.equip(0,2,2),"same item? should allow noop") : return
-    # Intentionally count as no-op success below.
-    if not _assert(state.inventory==before,"failed/no-op equip cannot change inventory"): return
+    if not _assert(battle.equip(0,2,2),"re-equipping same item should be harmless"): return
+    if not _assert(state.inventory==before,"no-op equipment change preserves inventory"): return
     print("FS actor/classes/skills/equipment two-sword/two-hand/source Table smoke PASS")
     quit(0)
