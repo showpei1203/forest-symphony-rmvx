@@ -2,9 +2,12 @@ extends Control
 
 const FS_DB = preload("res://scripts/FSDatabase.gd")
 const FS_BATTLE = preload("res://scripts/FSBattle.gd")
+const FS_MENU = preload("res://scripts/FSMenuModel.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
+var menu_model: FSMenuModel
+var formation_first: int = -1
 var view_name: String = "MENU"
 var body: VBoxContainer
 var original_background: TextureRect
@@ -28,6 +31,7 @@ func _ready() -> void:
     battle = FS_BATTLE.new(db, world)
     for member_id in world.party_actor_ids:
         battle.add_actor(int(member_id))
+    menu_model = FS_MENU.new(db, battle)
     battle.changed.connect(_show_log)
     battle.finished.connect(_on_battle_finished)
     _show_menu()
@@ -109,50 +113,123 @@ func _show_menu() -> void:
     _set_original_background("MenuBack_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / MENU"
-    status_label.text = "角色 / 技能 / 物品 / 裝備 / 狀態"
+    status_label.text = "角色 / 技能 / 物品 / 裝備 / 狀態 / 編隊（原始 UI 影像待私有素材導入）"
     _add_button("隊伍與狀態", _show_status)
-    _add_button("技能列表", _show_skills)
-    _add_button("道具列表", _show_items)
-    _add_button("裝備列表", _show_equipment)
-    _add_button("進入 BATTLE", _show_battle)
+    _add_button("已習得技能", _show_skills)
+    _add_button("持有道具", _show_items)
+    _add_button("裝備", _show_equipment)
+    _add_button("編隊", _show_formation)
+    _add_button("進入 BATTLE（候選測試）", _show_battle)
+
+func _actor_selector(on_select: Callable) -> void:
+    # Clickable actor tabs for true party ID/level; MENU never shows all 800 skills.
+    var selected_actor: int = actor_index
+    for i in range(battle.party.size()):
+        var index: int = i
+        _add_button(("%s " % ("▶" if i == selected_actor else "　")) +
+            str(battle.party[i].get("name","?")),
+            func() -> void:
+                actor_index = index
+                on_select.call())
 
 func _show_status() -> void:
     _set_original_background("MenuBack_status_a.png")
     _clear_body()
-    for actor in battle.party:
-        _add_text("%s  Lv.%d  HP %d/%d  MP %d/%d" % [actor.get("name","?"), actor.get("level",0), actor.get("hp",0), actor.get("maxhp",0), actor.get("mp",0), actor.get("maxmp",0)])
-        _add_text("ATK %d  DEF %d  SPI %d  AGI %d" % [actor.get("atk",0),actor.get("def",0),actor.get("spi",0),actor.get("agi",0)])
+    title_label.text = "Forest Symphony / 角色狀態"
+    for row in menu_model.party():
+        _add_text("%s  Lv.%d  HP %d/%d  MP %d/%d" % [
+            row["name"],row["level"],row["hp"],row["maxhp"],row["mp"],row["maxmp"]])
+        _add_text("ATK %d DEF %d SPI %d AGI %d HIT %d EVA %d CRI %d" % [
+            row["atk"],row["def"],row["spi"],row["agi"],row["hit"],row["eva"],row["cri"]])
     _add_button("返回選單", _show_menu)
 
 func _show_skills() -> void:
     _set_original_background("MenuBack_skill.png")
     _clear_body()
-    _add_text("來源技能資料（完整學習、消耗、限制、被動效果尚待轉譯）")
-    var items: Variant = db.tables.get("skills", [])
-    if items is Array:
-        var shown: int = 0
-        for item in items:
-            if item is Dictionary and not item.is_empty():
-                _add_text("#%d %s / MP:%d" % [int(item.get("id",0)), item.get("name",""), int(item.get("mp_cost",0))])
-                shown += 1
-                if shown >= 30:
-                    break
+    title_label.text = "Forest Symphony / 技能"
+    _actor_selector(_show_skills)
+    if actor_index < 0 or actor_index >= battle.party.size():
+        return
+    _add_text("目前角色已習得技能（依原 Class.learnings + 等級）")
+    var rows: Array[Dictionary] = menu_model.known_skills(actor_index)
+    if rows.is_empty():
+        _add_text("目前沒有已學會的技能")
+    for row in rows:
+        _add_text("#%d %s｜MP %d｜%s" % [
+            row["id"],row["name"],row["mp_cost"],row["description"]])
+    _add_text("實際治療／狀態／自訂技能效果待完整 RGSS2 規則移植")
     _add_button("返回選單", _show_menu)
 
 func _show_items() -> void:
     _set_original_background("MenuBack_item.png")
     _clear_body()
-    _add_text("背包（道具消耗尚待原版規則核對）")
-    for k in battle.inventory:
-        _add_text("%s ×%d" % [k, int(battle.inventory[k])])
+    title_label.text = "Forest Symphony / 物品"
+    _add_text("背包：來源道具 ID + 名稱 + 持有數")
+    var rows: Array[Dictionary] = menu_model.inventory_rows("item")
+    if rows.is_empty():
+        _add_text("尚無物品")
+    for row in rows:
+        _add_text("%s (#%d) ×%d｜%s" % [
+            row["name"],row["id"],row["count"],row["description"]])
+    _add_text("物品效果未通過原規則驗收前不消耗道具")
     _add_button("返回選單", _show_menu)
 
 func _show_equipment() -> void:
     _set_original_background("MenuBack_equip.png")
     _clear_body()
-    for actor in battle.party:
-        _add_text("%s 裝備 IDs: %s" % [actor.get("name","?"), str(actor.get("equipment",[]))])
+    title_label.text = "Forest Symphony / 裝備"
+    _actor_selector(_show_equipment)
+    if actor_index < 0 or actor_index >= battle.party.size():
+        return
+    for row in menu_model.equipment_rows(actor_index):
+        var slot: int = int(row["slot"])
+        _add_button("%s：%s%s" % [
+            row["label"],row["name"],"（鎖定）" if row["locked"] else ""],
+            func() -> void: _show_equipment_candidates(slot))
     _add_button("返回選單", _show_menu)
+
+func _show_equipment_candidates(slot: int) -> void:
+    _set_original_background("MenuBack_equip.png")
+    _clear_body()
+    title_label.text = "Forest Symphony / 選擇裝備"
+    if actor_index < 0 or actor_index >= battle.party.size():
+        return
+    _add_text("%s：選擇有庫存且職業允許的裝備" % [
+        str(battle.party[actor_index].get("name","?"))])
+    var rows: Array[Dictionary] = menu_model.available_equipment(actor_index,slot)
+    if rows.is_empty():
+        _add_text("此欄位不可變更")
+    for row in rows:
+        var item_id: int = int(row["id"])
+        _add_button("%s (#%d)" % [row["name"],item_id],
+            func() -> void:
+                if menu_model.change_equipment(actor_index,slot,item_id):
+                    _show_equipment()
+                else:
+                    _show_log("裝備更換已拒絕：請檢查職業、欄位與庫存"))
+    _add_button("返回裝備", _show_equipment)
+
+func _show_formation() -> void:
+    _set_original_background("MenuBack_party.png")
+    _clear_body()
+    title_label.text = "Forest Symphony / 編隊"
+    _add_text("點選兩位角色交換順序。" if formation_first < 0 else
+        "請選擇與 %s 交換的角色" % str(battle.party[formation_first].get("name","?")))
+    for i in range(battle.party.size()):
+        var index: int = i
+        _add_button("%d. %s" % [i+1,battle.party[i].get("name","?")],
+            func() -> void: _formation_clicked(index))
+    _add_button("返回選單", _show_menu)
+
+func _formation_clicked(index: int) -> void:
+    if formation_first < 0:
+        formation_first = index
+    else:
+        if menu_model.switch_formation(formation_first,index):
+            formation_first = -1
+        else:
+            _show_log("交換編隊失敗")
+    _show_formation()
 
 func _show_battle() -> void:
     if battle == null:
