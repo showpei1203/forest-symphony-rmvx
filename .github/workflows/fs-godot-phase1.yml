@@ -72,3 +72,13 @@ jobs:
         run: |
           set -euo pipefail
           /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_preview.gd
+      - name: Preview unsaved page through the real event editor button
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_editor_preview.gd
+      - name: Verify unapproved PC filesystem writes are blocked
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_cloud_guard.gd
