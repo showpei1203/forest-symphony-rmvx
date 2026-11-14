@@ -61,13 +61,13 @@ func _run() -> void:
         "maxmp":100,"mp":10}
     if not _check(battle.inventory is Dictionary and battle.inventory==world.inventory,
             "shared world inventory"): return
-    if not _check(battle.use_item(actor,1,hero,false),"potion from MENU"): return
+    if not _check(battle.use_item(actor,1,actor,false),"potion from MENU"): return
     if not _check(actor["hp"]==950 and world.amount("item",1)==1,
             "300 HP recovery and consumed one"): return
-    if not _check(battle.use_item(actor,1,hero,true),"potion from battle"): return
+    if not _check(battle.use_item(actor,1,actor,true),"potion from battle"): return
     if not _check(actor["hp"]==1000 and world.amount("item",1)==0,
             "HP capped at max and consumed final potion"): return
-    if not _check(not battle.use_item(actor,1,hero,false) and world.amount("item",1)==0,
+    if not _check(not battle.use_item(actor,1,actor,false) and world.amount("item",1)==0,
             "empty bag refuses action"): return
     if not _check(battle.use_item(actor,2,actor,false),"ether restores MP"): return
     if not _check(actor["mp"]==50 and world.amount("item",2)==1,
