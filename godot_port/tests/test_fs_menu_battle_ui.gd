@@ -100,8 +100,15 @@ func _run() -> void:
     if not _check(world.party_actor_ids==[2,1],"formation button updates team order"): return
 
     screen.actor_index = 0
-    screen._show_battle()
-    if not _check(battle.active and battle.enemies.size()==1,"real troop membership starts battle"): return
+    screen._show_troop_picker()
+    if not _check(not battle.active and "Test monster" in _text_of(screen.body),
+            "real source troop selector lists imported enemy names"): return
+    var troop_button: Button = _button_with(screen.body,"Test monster")
+    if not _check(troop_button != null,"source troop is selectable"): return
+    troop_button.pressed.emit()
+    if not _check(battle.active and battle.enemies.size()==1 and
+            screen.selected_troop_id==1,
+            "selected original troop membership starts actual battle"): return
     screen._player_attack()
     if not _check("角色 ATB 尚未就緒" in screen.log_label.text,
             "premature attack blocked in BATTLE UI"): return
