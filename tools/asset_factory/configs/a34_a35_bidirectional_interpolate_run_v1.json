@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "profile": "A34_A35_ACTOR01_RUN_BIDIRECTIONAL_V3",
+  "date": "2026-11-14",
+  "status": "PROVIDER_GENERATED_8FRAME_LOOP_CANDIDATE_ART_HOLD",
+  "source": {
+    "archive": "FS_A18_ACTOR01_RUN_PROVIDER_READY_PRIVATE_20261109.zip",
+    "run1_sha256": "6b25abb1dd702701716844a2ad36dfb8bfb8e3eccaf87fe7b15b2b85a41d101d",
+    "run2_sha256": "a96d6d4df959f66cb5cc08aa78e7b8f7a22f9e37140584b0fb3c928bc5b37029",
+    "run3_sha256": "84a8edb267bea9608d40de9f3af9b20050d7e85ef2293f0cd4d4199045107b79",
+    "pad_from": [
+      48,
+      48
+    ],
+    "pad_to": [
+      64,
+      64
+    ],
+    "offset": [
+      8,
+      8
+    ],
+    "method": "transparent RGBA pad only, original 48x48 pixels byte-identical"
+  },
+  "provider": {
+    "name": "PixelLab",
+    "tool": "Creator Interpolate",
+    "model": "V3",
+    "url": "https://www.pixellab.ai/create?tool=interpolate",
+    "transparent": true,
+    "cost_generation_per_request": 1,
+    "frames_requested_per_job": 4,
+    "actual_frames_per_job": 5
+  },
+  "jobs": [
+    {
+      "id": "A34",
+      "input_first": "approved RUN2",
+      "input_last": "approved RUN3",
+      "prompt": "RUN-IN-PLACE half-cycle between the supplied FIRST and LAST frames: two approved opposite-foot lead poses of the same white-haired green-armored fighter. Keep BOTH keyframe silhouettes, exact scale, face, hair, clothing, pixel colors and fixed southeast 45-degree battle view. Transition through both boots under the hips, then the opposite leg ahead. Bend knees, lift feet, swing opposite arms, gentle body bob. Never turn or move toward camera. Crisp transparent pixels, no extra limbs or cape.",
+      "original_gif_drive_id": "1zs_Xjjv9URLkbauE7gmIM2aIy7SvZcnB",
+      "original_sheet_drive_id": "1x0Kcfqnd79wF5GGhkgsnVD9qD6-ahq9Q",
+      "start_pixel_diff": 0,
+      "end_pixel_diff": 10,
+      "archive_drive_id": "1LUMLCSt9kK4nO9ztkA-goeEbNd_-JE5t"
+    },
+    {
+      "id": "A35",
+      "input_first": "approved RUN3",
+      "input_last": "approved RUN2",
+      "prompt": "RUN-IN-PLACE second half-cycle between supplied FIRST and LAST approved opposite-foot keyframes. Move forward through a natural running stride: knee lifts, toes push off, feet cross under hips, opposite arms swing and torso bobs. Keep identical southeast 45-degree battle camera, face, white hair, green armor, boots, scale and pixel colors. Never rotate, move toward viewer, change outfit or add limbs. Preserve both keyframe shapes. Crisp transparent pixels without effects.",
+      "original_gif_drive_id": "1vHYNMuSWasZGnawEhTCjLMdufFgmGh51",
+      "original_sheet_drive_id": "1v0hYC2csSlpu_h7UPbyMjdvfkxycKQlb",
+      "start_pixel_diff": 0,
+      "end_pixel_diff": 18,
+      "archive_drive_id": "1thdLcIKrhP3mNkXMC8yiF_RChcr0PPqw"
+    }
+  ],
+  "compose": {
+    "sheet_columns": 4,
+    "sheet_rows": 2,
+    "frame_size": [
+      64,
+      64
+    ],
+    "source_rgba_frames": [
+      "approved RUN2",
+      "A34 generated F1",
+      "A34 generated F2",
+      "A34 generated F3",
+      "approved RUN3",
+      "A35 generated F1",
+      "A35 generated F2",
+      "A35 generated F3"
+    ],
+    "first_last_endpoint_policy": "replace model end with exact approved keyframe; omit duplicate endpoint",
+    "loop_frame_count": 8,
+    "fps_preview": 8.33,
+    "frame_diffs_rgba_px": [
+      279,
+      515,
+      446,
+      512,
+      458,
+      377,
+      368,
+      422
+    ],
+    "new_model_generated_frames": 6,
+    "approved_static_frames": 2,
+    "sheet_drive_id": "1y6SgxUsTdDSgR7-SBaeVU2ZgMWBZCbk8",
+    "gif_drive_id": "1lhnPAjpXrkLX1-frl9v122wGLbRGLIg6"
+  },
+  "qa": {
+    "source_authority": "A62 approved",
+    "pixel_palette": "binary alpha required",
+    "f0_exact": true,
+    "unique_frames": 8,
+    "art_status": "HOLD",
+    "issues": [
+      "A35 F6 oversized stepping stride",
+      "A35 F7 arm silhouette risk",
+      "Not converted to formal FS three-frame Tankentai semantics"
+    ],
+    "engine_status": "NOT_RUN",
+    "sealed": false
+  },
+  "storage": {
+    "privacy": "owner_only_drive",
+    "zip_a34_sha256": "5540cfd7032156b7322aef56cd427a0a84e1874db19966ca42c1a01a92affdf4",
+    "zip_a35_sha256": "6f3901415d5ee5909054eadbdb9f965717b15dd0e693a529843f952471f910",
+    "pc_temp_cleaned": true,
+    "main_unchanged": true
+  },
+  "next": "Fix A35 F6/F7 regionally, then select 3 authoritative FS frames, test Tankentai 45degree RPGVX screenshot and Godot battle preview; no redraw baseline."
+}

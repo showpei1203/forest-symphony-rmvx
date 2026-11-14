@@ -1,0 +1,60 @@
+{
+  "stage": "A39",
+  "date": "2026-11-14",
+  "technical_result": "PASS",
+  "art_result": "HOLD",
+  "FS_main_battle_integration": "NOT_RUN",
+  "provider_calls_this_stage": 0,
+  "engine": "Godot 4.7.2, native real OpenGL AMD RX 6700XT",
+  "source_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "original_run_sheet_sha256": "ec0c7a59fb5983f13b1b3385323218edf0e77c23890db074c18c6e114e74408b",
+  "animation": "AnimationPlayer --> ShaderMaterial chest_breath local native pixel UV sampling",
+  "loop_seconds": 3.2,
+  "phase_slots": 8,
+  "unique_gpu_poses": 4,
+  "gpu_changed_pixels": [
+    0,
+    14,
+    45,
+    37,
+    37,
+    45,
+    14,
+    0
+  ],
+  "non_torso_changed_pixels": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "alpha_changed_pixels": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "actual_engine_tests": [
+    "qa/a39_rig_gpu_qa.gd",
+    "qa/a39_integrated_runtime_qa.gd"
+  ],
+  "run_to_idle_rig_to_run": "PASS",
+  "original_a38_profiles": "UNCHANGED",
+  "actor_ground_foot_alignment": "battle preview Y=416; floor Y=479",
+  "owner_only_drive": true,
+  "original_E_FS_untouched": true,
+  "github_main_untouched": true,
+  "open_art_issues": [
+    "Chest pixel change is intentionally subtle; 4 genuine GPU poses, not 8 individually generated pictures",
+    "Further character art sign-off needed"
+  ],
+  "cold_repro": "PASS, independent G: cold extract Godot editor import and both real RX6700XT GPU scripts EXIT=0"
+}

@@ -1,4 +1,7 @@
 # Forest Symphony — Semantic PAR Object Generation Authority v1.0
+
+> **2026-11-14 使用者 v1.3 最高優先：已恢復並強制 Ground-first → 獨立完整 PAR → Godot 動態合成 → 1x 最終美術豐富度驗收。** 任何 2026-11-07 的「全圖 Master-first → source crop」均為舊實驗歷史，**不得用作新地圖正式產線**。請先讀 `authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md` v1.3 的 0c；本頁保留可重用的尺寸、alpha/footpoint/碰撞/素材來源和冷驗證方法，但被 0c 覆寫的工序不再有效。
+
 Date: 2026-11-01 (Asia/Taipei)
 Status: ACTIVE USER AUTHORIZATION (conditional); NO VISUAL SEAL or ENGINE SEAL implied.
 Scope: FS Stage16 Ground/PAR and following maps only; separate from SBS/PMD animation projects.

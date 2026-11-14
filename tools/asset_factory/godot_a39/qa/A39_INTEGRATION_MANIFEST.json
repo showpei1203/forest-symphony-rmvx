@@ -1,0 +1,19 @@
+{
+  "stage": "A39",
+  "clone_source": "FS_A38_GODOT_BATTLE_RUN_IDLE_20261114",
+  "source_sha256": {
+    "assets/actor01_animation_manifest.json": "8eab3de7a27f51cc088747a5a49bb37e6a9cf81909dbec23e07213064ddaad82",
+    "assets/actor01_run_a35_8frames.png": "ec0c7a59fb5983f13b1b3385323218edf0e77c23890db074c18c6e114e74408b",
+    "assets/actor01_idle_r1_raw_8phases.png": "ba8d0db8bc78017ecb465788665325a058d613e92044024e33a68ded19293502",
+    "assets/actor01_idle_r2_raw_8phases.png": "b986b4b8aa7a0d20c5812fc8fe14d3c5cb551523c6b0d01002bf4c4db6a1f4e2",
+    "assets/actor01_idle_r1_calm_curated_8phases.png": "25859b73282ea2f928b7fbca7ed60a3e46e5996a75f979525e5b6b51ff6eae31"
+  },
+  "changed_code": [
+    "scripts/fs_actor_animator.gd",
+    "scripts/battle_animation_preview.gd",
+    "scenes/actor01.tscn",
+    "scenes/battle_animation_preview.tscn",
+    "project.godot"
+  ],
+  "preserve": "A38 five atlas profiles unchanged, A39 adds procedural idle_rig handled by AnimationPlayer and torso-only pixel shader"
+}

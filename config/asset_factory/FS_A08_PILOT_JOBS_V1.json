@@ -1,0 +1,214 @@
+{
+  "schema": "fs-asset-factory-pilot-batch/v1",
+  "version": "A08-20261108",
+  "generator": "NONE_DRY_RUN",
+  "paid_calls_authorized": 0,
+  "description": "First four canonical-source/semantic pilot manifests. Distinct bridge scene is explicitly NOT generated. No art/native PASS claimed.",
+  "jobs": [
+    {
+      "schema": "fs-asset-factory-job/v1",
+      "kind": "sprite",
+      "asset_id": "ACTOR01_A62_RUN_3POSE",
+      "requested_stage": "TEMPLATE",
+      "source": {
+        "sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+        "verified": true,
+        "scope": "A62_48PX_APPROVED_RUN_F0_ONLY",
+        "private_asset_title": "FS_A63_REUSABLE_RIG_WAITING_W2_GIF_QA_20261102.zip"
+      },
+      "style": {
+        "profile_id": "FS_STYLE_BIBLE_V1",
+        "art_reference_approved": false
+      },
+      "generation": {
+        "requested_calls": 0,
+        "max_authorized_calls": 0,
+        "explicit_user_authorization": false
+      },
+      "sprite": {
+        "native_target": "FS_ACTOR_SBS",
+        "approved_concept_sha256": null,
+        "actions": [
+          {
+            "name": "Moving_to_Close_Attack",
+            "canonical_frames": 3,
+            "playback": [
+              0,
+              1,
+              0,
+              2
+            ],
+            "forty_five_degree_visual_approved": true,
+            "anchor_verified": false
+          }
+        ]
+      },
+      "qa": {
+        "user_art": "PENDING",
+        "native_vx": "NOT_RUN",
+        "formal_seal": "NO"
+      }
+    },
+    {
+      "schema": "fs-asset-factory-job/v1",
+      "kind": "sprite",
+      "asset_id": "PMD0001_LAVA_IDLE_WALK_PILOT",
+      "requested_stage": "TEMPLATE",
+      "source": {
+        "sha256": "23309b50c0a07a7321950407f0417bc501985ba5efe4f3b45472ad457582832f",
+        "verified": true,
+        "scope": "ORIGINAL_NATIVE_XML_GEOMETRY_ONLY",
+        "private_asset_title": "P3_R3_G2_NATIVE_GODOT_XML_PLAYER_20261026.zip"
+      },
+      "style": {
+        "profile_id": "FS_STYLE_BIBLE_V1",
+        "art_reference_approved": false
+      },
+      "generation": {
+        "requested_calls": 0,
+        "max_authorized_calls": 0,
+        "explicit_user_authorization": false
+      },
+      "sprite": {
+        "native_target": "PMD_XML",
+        "approved_concept_sha256": null,
+        "actions": [
+          {
+            "name": "Idle",
+            "canonical_frames": 3,
+            "native_xml_frames": 3,
+            "native_rows": 8,
+            "xml_source_verified": true,
+            "eight_direction_art_verified": false,
+            "anchor_verified": false
+          },
+          {
+            "name": "Walk",
+            "canonical_frames": 6,
+            "native_xml_frames": 6,
+            "native_rows": 8,
+            "xml_source_verified": true,
+            "eight_direction_art_verified": false,
+            "anchor_verified": false
+          }
+        ]
+      },
+      "qa": {
+        "user_art": "PENDING",
+        "native_vx": "NOT_RUN",
+        "formal_seal": "NO"
+      }
+    },
+    {
+      "schema": "fs-asset-factory-job/v1",
+      "kind": "map",
+      "asset_id": "ELF_VILLAGE_1280X928_PILOT",
+      "requested_stage": "TEMPLATE",
+      "source": {
+        "sha256": "091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530",
+        "verified": true,
+        "scope": "FROZEN_V3_MASTER_NOT_ART_APPROVED",
+        "private_asset_title": "FS_MASTERFIRST_V3_NATIVE_GROUND_PAR_COLLISION_QA_20261107.zip"
+      },
+      "style": {
+        "profile_id": "FS_STYLE_BIBLE_V1",
+        "art_reference_approved": false
+      },
+      "generation": {
+        "requested_calls": 0,
+        "max_authorized_calls": 0,
+        "explicit_user_authorization": false
+      },
+      "map": {
+        "native_contract": "MASTER_FIRST_4_LAYER",
+        "tile_size": 32,
+        "scene_id": "ELF_VILLAGE",
+        "master_1x_art_approved": false,
+        "collision_semantics_approved": false,
+        "full_authoring_object_inventory": false,
+        "objects": [
+          {
+            "id": "left_house_roof",
+            "semantic_class": "roof_front",
+            "runtime_foreground": true,
+            "object_source_separated": true,
+            "depth_footpoint_rule": "REQUIRES_NATIVE_LEGAL_FOOTPOINT",
+            "occlusion_mask_sha256": "3a45373eb17bb6e883421a455fe41aed37d23a6eb952981a99d7e77810423654"
+          },
+          {
+            "id": "left_tree_canopy",
+            "semantic_class": "tree_canopy",
+            "runtime_foreground": true,
+            "object_source_separated": true,
+            "depth_footpoint_rule": "CANOPY_BEHIND_ACTOR_FOOT_Y",
+            "occlusion_mask_sha256": "b209774205cb53d2d4b224c852dace5c69cef4e462d5b22f09a76d47868b3407"
+          },
+          {
+            "id": "grass_low",
+            "semantic_class": "grass",
+            "runtime_foreground": false
+          }
+        ]
+      },
+      "qa": {
+        "user_art": "PENDING",
+        "native_vx": "NOT_RUN",
+        "formal_seal": "NO"
+      }
+    },
+    {
+      "schema": "fs-asset-factory-job/v1",
+      "kind": "map",
+      "asset_id": "FOREST_BRIDGE_NEW_LAYOUT_PILOT",
+      "requested_stage": "TEMPLATE",
+      "source": {
+        "sha256": null,
+        "verified": false,
+        "scope": "NEW_SECOND_SCENE_NOT_GENERATED",
+        "private_asset_title": null
+      },
+      "style": {
+        "profile_id": "FS_STYLE_BIBLE_V1",
+        "art_reference_approved": false
+      },
+      "generation": {
+        "requested_calls": 0,
+        "max_authorized_calls": 0,
+        "explicit_user_authorization": false
+      },
+      "map": {
+        "native_contract": "MASTER_FIRST_4_LAYER",
+        "tile_size": 32,
+        "scene_id": "FOREST_BRIDGE",
+        "master_1x_art_approved": false,
+        "collision_semantics_approved": false,
+        "full_authoring_object_inventory": false,
+        "objects": [
+          {
+            "id": "bridge_deck",
+            "semantic_class": "bridge_deck",
+            "runtime_foreground": false
+          },
+          {
+            "id": "bridge_near_rail",
+            "semantic_class": "near_rail",
+            "runtime_foreground": true,
+            "object_source_separated": false,
+            "depth_footpoint_rule": "",
+            "occlusion_mask_sha256": null
+          },
+          {
+            "id": "water",
+            "semantic_class": "water",
+            "runtime_foreground": false
+          }
+        ]
+      },
+      "qa": {
+        "user_art": "PENDING",
+        "native_vx": "NOT_RUN",
+        "formal_seal": "NO"
+      }
+    }
+  ]
+}

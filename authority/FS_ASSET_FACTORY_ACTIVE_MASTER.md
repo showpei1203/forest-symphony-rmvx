@@ -1,0 +1,147 @@
+# FS AI Asset Factory｜唯一現行施工規範
+版本：ACTIVE-MASTER v1.3｜2026-11-14｜適用：Forest Symphony（Godot 主開發／VX 歷史來源相容）
+狀態：**ACTIVE on Draft PR #15 only; not merged into main**。更新規範不代表已生產合格美術。
+
+> **從本檔開始。** 未來新對話先讀本檔、P0 雲端保護，再讀 `docs/asset_factory/CURRENT_HANDOFF.md` 查目前工程進度。其他 SOP／Axx 文件不是可自行覆寫本檔的「最新規則」。
+
+## 0c. 2026-11-14 使用者最終決策：GROUND-FIRST + 獨立完整 PAR（v1.3，優先於 0a/0b 與舊 Master-first）
+**正式製作順序不可任意改變**：
+1. **先製作完整高品質 Ground-only 影像**：地面可含自然草地、植被小花、砂土/碎石、步道和低矮不遮擋的細節；沒有任何樹木樹冠、完整房屋、柱子、岩壁前景等會阻擋角色視線的物件。Ground 必須在加入任何 PAR 前，獨立達到美術要求，採 1x 真人驗收。
+2. **再獨立生成/製作每個完整 PAR 物件**：透明 RGBA、完整可見樹冠+樹幹+根、完整一致的房屋（含屋頂/附屋）、橋欄、立體岩石等；來源可用合法授權素材、AI 原創生成或人手編輯，但不得只是從一張已畫好的 Master 場景切割可見的局部像素。物件風格/像素密度/光源/45 度或 top-down 3/4 視角需與 Ground 一致；保留原始物件、物件 ID、footpoint、完整 alpha 和可獨立替換狀態。
+3. **Godot 原生組合**：Ground 以完整原圖 Sprite2D 渲染；獨立 PAR 物件以 Sprite2D / object scene、pivot footpoint、Y-depth / z-index、相機和**碰撞落腳面**管理。Ground 不因前景修改而重畫或刪除區域，樹冠大小不等於碰撞範圍。遮擋可由完整物件 alpha＋角色腳點動態計算；SHADOW、LIGHT、水動畫等另層保留。
+4. **正式美術驗收＝合成後 1x 場景的豐富度和一致性不低於相同內容一次生成完整場景**，至少依 Ground3 原畫與核准參考比較森林密度、自然林群、完整房屋、道路過渡、草花碎石比例、像素銳利度、色彩統一、視覺瑕疵。禁止用 RGB 零差、Shader、CI 綠燈、物件數量或漂亮概念圖冒充藝術過關。
+5. **遊戲實用驗收**：Godot 實測人物樹前/樹後、屋簷、橋、門口、岸邊、碰撞、實走路線、動畫。目標是高品質可遊玩的場景與可量產的資產家族，不是只停留技術 PoC。
+6. **完整場景 Master → 分割遮擋層** 降為**非預設、不得替代正式流程**的技術研究／比較支線，只有經獨立 1x 美術驗收證明分割+遮住區補畫不減損品質，才可作個別案例。2026-11-04 的試驗請求不等於長期生產授權。過去 A21～A31 三個遮罩、同源 RGB、遮擋 197/0/29/0 與 Godot CI 的成功，**只證明已存在素材可被原生引擎顯示及遮擋**，沒有證明 AI 自動分割或獨立美術製作突破。
+7. **使用 A27/A36F 已存在的獨立 Ground/PAR 來源和驗證系統作合法起點**，優先改善視覺而非重寫跑通的技術；保留 A29～A31 Godot 相機/碰撞/動作作可重用引擎元件，但**A11 flatten Master 不再當未來新地圖的 Ground 母圖**。來源/權利/版控標記 `APPROVED`、`CANDIDATE`、`REFERENCE_ONLY`，避免把視覺候選標成封版。
+8. 每輪新地圖交付 **完整 Ground 原圖、每個獨立完整 PAR RGBA、manifest、真實 Godot 合成圖與遊玩 QA、與「一次生圖」美術參考比較、Failure Log、Handoff**；數位素材僅 owner-only Drive、程式/非私人資料在 GitHub Draft PR，正式 main、舊封版不動。
+
+**這個 v1.3 指令是唯一有效的新地圖美術產線；0a/0b 與任何 2026-11-07 Master-first/same-XY crop 文件在「製作順序」方面均已失效，僅保留舊實驗與來源保真的歷史紀錄。**
+
+## 0d. 地圖美術範圍與六系未來世界規格（2026-11-14 使用者指定）
+- **本地圖美術對話只開發 Ground／完整獨立 PAR／SHADOW／LIGHT／水流等畫面、Godot 場景合成、碰撞來源語意及大型地圖 art QA。NPC、事件編輯器、劇情、對話、進出門觸發、戰鬥系統由**另一個對話負責**。本產線只交可驗證的節點 ID、場景 ID、落腳座標與 32px 行走地圖，不自行延伸事件程式。
+- **先把 1280×928 的 Ground-first + 完整獨立 PAR 產線穩定量產與美術統一，再做真正 2560×1856（80×58 @32px）的單區大型連續地圖。** 禁止用四份舊 Ground 複製／鏡像／拼縫來冒充大型原創地圖完成。尺寸及 renderer mock 不等於大型美術已完成。
+- **後續規劃六種不同地形，每種一張迷宮＋一張村莊，共十二張核心地圖：** 蒼翠精靈林、凜霜雪原、風蝕金砂、赤焰火山、幽霧水澤、星晶浮島。每系共用調色與建築風格，但村莊和迷宮的 Ground/完整 PAR/視覺導引獨立；詳細唯一施工資料放在 [Godot PR #16](https://github.com/showpei1203/forest-symphony-rmvx/pull/16) 之 `godot/forest_symphony/data/fs_six_biomes_world_catalog.json` 與 `docs/FS_SIX_BIOMES_WORLD_ART_PLAN_20261114.md`。上述六系都還只是規劃，**不能宣稱十二張地圖已生成**。
+- **A35 真正目前進度**：4 款獨立完整樹木家族、8 棵代表樹原生 Godot 實景比較、Ground 不動，整體仍 ART HOLD。下一步是大型 Ground-first 森林地圖及全林群視覺一致性，而非為已有素材再增加無必要格式測試。
+
+## 0. 規則權限與「真實進度」分開
+
+規則決策順序（由上到下）：
+1. **使用者當次明確要求與已核准的美術／工程規格**；保留來源與核准範圍，不能猜。
+2. **P0 雲端、保護正式封版、來源授權與 SHA**：`docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md`，原有 P1 Source Precheck。
+3. **本檔 ACTIVE-MASTER**：兩條產線如何製作及驗收；若和舊 P2/P4/P5、A07/A08/A10 方法相抵觸，以本檔為執行入口。
+4. **真正的 FS 原生來源契約**：Ground/Parallaxes、`AnimData.xml`、Anim/Offsets/Shadow、Actor SBS／Tankentai、Script／Switch203、32px world-grid。原生 XML 的實際數據優先於一般教學範例。
+5. **技術附錄與實驗紀錄**：A08 22 頁來源研究、舊 SOP V1、A01～A10 Handoff／QA／失敗紀錄是證據或操作參考，不單獨擁有覆寫優先權。
+
+規則≠進度：`CURRENT_HANDOFF.md` 只保留目前檔案、SHA、測試證據、待辦及確定的 PASS/HOLD；不得寫入與本規範相衝突的新政策。不要把 A10 的 Source-first 候選解讀成唯一美術生產法。
+
+## 0a. 2026-11-13 使用者新決策：先成功產出，再談尺寸與原生匯入（v1.1）
+**此節覆寫此前 A24 將 48×48／144×48 當生成入口的做法；不追溯竄改 A24 歷史證據。**
+
+- **生成候選階段（GENERATION / ART CANDIDATE）：尺寸自由。** ASF 可能回傳 30×44、48×48、64×64、96×96、不等寬高、甚至各幀不同裁切尺寸。以上**不可只因尺寸與 48px 不同而拒收**；原始 PNG/GIF 應完整留存。
+- **動作先於格式。** 先用真正的工具或影像生成供應商產出看得見的新角色／怪物動作，選取自然、有清楚姿態、角色辨識度高的影格；幀數可依工具輸出先保留原始數量，**三幀是既有 Actor 戰鬥規格，不是生成模型的固定輸出要求**。
+- **原版與生成結果都不盲目重畫。** 已核准 F0 仍是人物身份／風格對照，但生成候選可有合理的新陰影／新增色彩；候選不得因與 F0 調色盤不完全相同就自動淘汰，應記錄差異供 Art Gate 評價。嚴禁以舊 A62 影格重播或複製姿勢冒充**新生成動作**。
+- **獨立的瀏覽／檢閱與原生導出（NATIVE ADAPTER）。** ASF 原始影格可用任意尺寸打包預覽與循環 GIF，完成 Art Gate 後，才決定角色的統一 cell（自然尺寸或按比例調整），最後再看 RPG Maker VX／Tankentai／PMD 真正需要的排列、錨點及裁切。原生格式檢查保留在 **NATIVE EXPORT** 階段，不得卡住前面的生成。
+- **驗收順位：** (1) 有實際新影格／新動作，(2) 動作自然與完整、角色一致、45° 視角，(3) 1x 美術效果，(4) 可循環／可辨識，(5) 可批次複製，(6) 最後才是 FS 原生對接。技術測試 PASS 不能取代美術評價。
+- **P0 不變：** 使用者 PC 不做永久儲存；私人圖像留在 owner-only Drive；程式／文件可在 GitHub Draft PR；付費供應商有成本上限與授權才呼叫；未執行的美術／VX 一律標 NOT_RUN。
+
+## 0b. GODOT-FIRST RUNTIME PRIMARY（2026-11-13 新使用者決策，v1.2）
+**使用者已明確指定：Forest Symphony（FS）後續以 Godot 為主要遊戲開發與地圖編輯引擎，VX 的功能與戰鬥系統逐步遷移。** 此節在「**未來主執行引擎**」上覆寫本檔原來 Game.exe 必須是每張新地圖最終驗收的假設，但 P0、來源與 SHA、美術 Master/F0 保真、語意遮擋、可走區、1x Art、Failure Log、Handoff 的驗收仍完全有效。
+
+- **Godot 版本：4.7.2 stable**（2026-11-13 官方最新穩定；4.8 仍 beta）。本輪 Godot 主開發分支為 [Draft PR #16](https://github.com/showpei1203/forest-symphony-rmvx/pull/16)，與此 Asset Factory Draft PR #15 分工、皆不可未授權合併 main。
+- **地圖主線（依 v1.3 0c 修正）：** 新地圖先創作完整 **Ground-only** → 獨立創作/保存完整 **PAR RGBA 物件** → Godot `Sprite2D`/`YSort` 原生合成、角色/根部碰撞與 `TileMapLayer` 32px 地圖語意。原 Master-first/同源 RGB 切割只保留 A29～A31 歷史工程證據，**不是新地圖生產規則**。`Camera2D`、`CharacterBody2D` 與導航由 Godot 主導；嚴禁以可分層為由犧牲 Ground3 美術水準。
+- **新的兩套驗收各自記錄：** `GODOT_SCENE_PARSE`、`GODOT_NATIVE_F0_MAP`、`GODOT_CHARACTER_CAMERA`、`GODOT_OCCLUSION_PIXEL`、`GODOT_COLLISION_NAV`、`USER_ART`、`CLOUD_SHA`；舊 `VX_GAME_EXE` 保留為原始遊戲行為／功能參照與歷史證據，**不是新 Godot 地圖封版的前置關卡**。不能反過來宣稱 Godot CI 通過就等於原版 VX 相容或美術過關。
+- **已完成 A29 Pilot：** 主圖 1280×928、核准 Actor01 F0、A28 三個同源 PAR 物件，真正 Godot 4.7.2 雲端 scene+code CI success、隔離引擎真實四站位 197/0/29/0 同原像素、14 項原生 source/move/camera 檢查與四張 544×416 Godot framebuffer 截圖。**ART HOLD、碰撞 TileMapLayer 未繪製、完整人物動畫/任務/ATB/技能/召喚等仍未移植、正式產品 SEAL NO**。Private owner-only Drive 請查 PR #16 及其 Handoff。
+- **漸進遷移：** 先地圖美術/分層/碰撞/導航，再角色/怪物、事件/存檔、最後六角色戰鬥（Tankentai 表現、ATB、Break、Cover、Overdrive、召喚），逐項保留原 VX 功能對照測試。
+- 不動原始封版 VX 工程及 `main`，不把作者私有 PNG 放公開 GitHub；必要 Windows 原生測試應按 P0 取得先行授權。**先交付能玩的 Godot 畫面，不再以只有概念圖/文件或純 synthetic QA 冒充進度。**
+
+## 1. 共同生產架構：高品質母圖保真優先
+
+兩條產線共享：
+**美術母圖／角色 F0 → 凍結原始影像與核准範圍 → 分析語意／骨架（不重畫已核准的靜態部分） → 精確轉換 → FS 原生格式 → 自動技術 QA + 1x 美術 QA + 原生 VX QA → 小批次複現 → 才量產。**
+
+目標不是「圖片能分層／能拼成表」，而是：**高品質外觀不退步、語意／動作正確、可在 FS 使用**。任何數據只是其一，禁止以 synthetic CI、SHA、0-pixel RGB mismatch 或漂亮預覽取代使用者 Art PASS、Game.exe PASS。
+
+通用停止條件：
+- 相同錯誤在兩個資產重複，或單次例外修整後仍未解決 ⇒ 停止單件 V0/V1/V2 連環修圖，修「母圖來源／骨架／物件家族模板／轉換器」。
+- 未找到核准原圖、方向順序、原生 XML、合法足點或付費額度 ⇒ 明確 `HOLD`，不可自動補猜。
+- **優先用已經過美術驗收的單張圖測轉換**；不要求每個階段先重畫一張美術較差但比較好切的圖。
+
+## 2. 地圖現行兩條實驗路線與優先順序
+
+### M-A（優先試驗）：高品質「完整 Master」→ 保真 Ground／PAR
+1. 先選一張真正達到 FS 風格的完整場景。使用者已核准才標 `ART_MASTER_APPROVED`；其他候選標 `ART_PENDING`。以實際 PNG 尺寸和 SHA 凍結（世界格 32×32，常用視埠 544×416；大型場景可用 1280×928）。
+2. **AI 提議**物件、屋簷／樹冠／橋前側欄、遠近、通行／足點及分層遮罩；AI **不重畫** Ground 或 PAR 來取代 Master。從原圖的原始 **XY 像素**直接產生 Runtime FullGround 和 PAR。
+3. `Runtime_FullGround = 完整、未移位的 Master`。只有在合法人物位置應覆蓋人物的像素，才由同源 Master 原 XY 抽入 `Runtime_OcclusionPAR`；禁止橋面木板、水、道路、低地草花進前景遮擋。
+4. 保留 `Authoring_GroundOnly`（必要時補全被物件遮住的地面）與 `Authoring_CompletePAR`（可追溯全部地上物件），形成 FS 四圖契約。但它們是**Authoring 資料**，不等同 Runtime 覆蓋人物的遮罩。
+5. **雙獨立門檻**：
+   - 像素保真：同大小、同原點、原始 XY、PNG 對齊；重組像素相同或記錄色彩轉換舍入容許值；不得因「看起來差不多」忽略移位。
+   - 遊戲語意：合法人物腳位、不同方向與姿勢的前／後遮擋、Switch203、碰撞、水域與屋簷。這些不會因重組零誤差而自動通過。
+6. 整體場景 1x 畫面美術先驗收，**再量產**。不可為了拆遮罩而讓一棟房子或整群森林變醜。
+
+### M-B（備選／量產路線）：獨立來源物件 → Master → 四圖
+- 來源圖像和獨立物件 Alpha／Mask 在合成前建立，物件 Source ID、空間座標和遮擋語意可追溯；適用重複地圖、地形變體、同一族房屋／樹群。
+- A10 已驗證來源 Alpha 歸屬技術，但**橋樑／河流水平未達美術**，所以不可因技術較容易 PASS 就壓過 M-A。
+- 比較 M-A/M-B：完整 Master 美術保真、座標差異、遮擋語意、ART first-pass rate、native pass、人工修次數和單張成本。以同一組高品質參考＋至少兩張不同場景做公平試驗，勝者才升正式量產線。
+
+### 必要解法界線
+同一張 Master 的「前景物件身份」不可單靠相同 RGB 顏色猜。優先利用來源、物件邊界／幾何、語意遮罩和角色深度檢查；若扁平原圖內確實無法分出完整獨立物件，只允許**局部**重新生成來源物件或明確標記不足，不能重新畫整張 Ground/PAR 造成漂移。**RGB 零差≠PAR 語意正確**。碰撞格以合法可走路網驗證，不以 Alpha 有無判斷。
+
+## 3. Sprite 現行轉換路線
+
+### S-A（優先試驗）：高品質單張 F0 → 角色動作
+1. 先產出／選用最好的**單張 45° 戰鬥視角 F0**，凍結來源 SHA、核准程度、角色比例、色盤、身體部位、武器紙娃娃規則。**F0 是美術真相**。
+2. 從 F0 建立角色骨架（頭、軀幹、雙手、雙腳、尾巴、翅膀等視物種）與已核准 Rig／Motion 範本；模板負責姿勢／節奏／方向，不決定最終美術品質。
+3. 對每個動作，平行比較兩種可行路線：**骨架產生姿勢後依 F0 重新繪製**，以及**參考 F0 直接生成指定姿勢**。用同樣的 F0 保真、肢體邏輯、左右腳輪替、重心、循環接點與 1x 像素質感挑選。
+4. PixelLab、Aseprite、Pixelorama、其他 Rig 工具只是姿勢或批次編排工具，不能把已核准 F0 變成未核准的新物種／人物。A62 成功步態能重用於同拓樸的角色，但新拓樸另立骨架家族。
+5. 先做一個高品質 F0 的 **RUN + WAITING** 真正動畫候選；生成階段允許不同尺寸與任意合理幀數，不因 48×48 或 3 幀限制阻礙新動作。等動作及風格看得過關，才選出 FS Actor 所需關鍵影格。第二個不同角色採同流程驗證複用，之後才拓展攻擊、施法、受傷、閃避、死亡、進化鏈及八方向。
+
+### S-B（保留備選）：原生既有影格／動作模板 → 新造型
+- 保留 A62/A63 與 P3_G9 原生來源等已核准動作供骨架與時間參考，但這不代表同物種新造型的美術已核准；不能把套色改名當新怪物。
+
+### 原生格式 **兩套契約，不得混淆（僅於 NATIVE EXPORT 階段硬性檢查）**
+- **FS Actor SBS**：特定戰鬥動作存三關鍵影格 `_1/_2/_3`，Run loop 可 `0,1,0,2`，Waiting 等依行為實際設定。歷史核准 A62 Run 48×48；城鎮 32×32 是不同系統。
+- **PMD native**：每隻、每動作的真實 `AnimData.xml` 才決定 cell、frame-count、duration、CopyOf／Action event、方向排列與 Anim/Offsets/Shadow。已知例：PMD0001 Idle3／Walk6／Attack11；PMD0002 Idle4／Walk4／Attack9；PMD0003 Idle4／Walk4／Attack11。生成時「三個姿勢」不能假裝已經是原生 PMD 三／六／十一幀。不能複製單方向影格冒充真實八方向。
+- A25 僅外觀歷史核准；A26 五幀 Idle/Walk 候選未封版；A62 Run 某一動作過關不代表所有人物動作過關。
+
+## 4. 量產 Gate（各欄獨立）
+
+每次產物必填：
+`SOURCE_VERIFIED | ART_MASTER/F0_APPROVED | TRANSFORM_PIXEL_GEOMETRY | SEMANTIC_OR_MOTION | FS_NATIVE_FORMAT | GAME_EXE_RUNTIME | USER_ART_RESULT | CLOUD_SHA_READBACK | PAID_BUDGET | FORMAL_SEAL`
+
+- SOURCE：真實來源 PNG/ZIP/XML 名稱、SHA、位置、權利、核准範圍。無原檔不得以說明稿當作原檔。
+- TRANSFORM：Ground/PAR 相同世界座標重組；Sprite F0 對所有影格的身份、比例、骨架一致性；所有修改有目標來源與差異報告。
+- SEMANTIC/MOTION：遮擋、legal footpoint、自然走路與方向、重要負例；由人看 1x 畫面／動畫，不得僅藉 RGB 或 bbox 自動過。
+- FS_NATIVE：真正 RPG Maker VX RGSS2／Tankentai、PMD Adapter + XML、Switch203 狀態與動作；Godot 與 Python 預覽只算輔助。
+- COST：額度授權前 `PixelLab 新付費呼叫=0`；須先明確上限再執行。Orca 必須證實 read-only／approval 安全權限才能投入新 Agent。
+- DELIVERY：程式／規則／合成測試放 GitHub Draft 特徵分支；授權受限制的圖片、PDF、ZIP 在 owner-only Drive；寫入後回讀 SHA／ZIP CRC。PC 只做必要安裝或另有明確授權的短暫隔離 Game.exe 驗證，正式 FS main 與原版封版不得覆寫。
+- 不明確的結果一律 `PENDING / NOT_RUN / FAIL_CLOSED`，禁止合併不同 Gate 的 PASS。確認兩張地圖及兩種 Sprite 的轉換及 1x ART/真正 Engine 均達標後，才測 5–10 變體與批次量產。
+
+## 5. 目前 A10 實際工程狀態（不是新政策）
+
+- A10 兩張 1280×928 四圖 candidate 已保存私有 Drive，驗過來源遮罩和靜態合成，但**ELF ART PENDING、FOREST BRIDGE／RIVER ART FAIL_STYLE、Game.exe 203 NOT_RUN、Formal Seal NO**。
+- Actor01 Run A62 已有歷史核准動作；Waiting A63 W2 待美術；**A10 沒有新生成 Battle Sprite 動作**。
+- 下一施工階段 A11 為**母圖轉換基準試驗**（M-A 與 M-B 對照、S-A 與 S-B 對照），而不是先盲目重新修橋／增加測試數量。
+- 每輪實際成果／版本／指令請看 `docs/asset_factory/CURRENT_HANDOFF.md`，不要照 A01～A09 的「下一輪」執行。
+
+## 6. 舊規範檔案的效力與用途（不刪舊證據）
+
+| 檔案／族群 | 目前身分 | 說明 |
+|---|---|---|
+| `docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md` + 授權 Precheck | **ACTIVE SAFETY** | 僅保護／權利／雲端，與本檔共同執行 |
+| `authority/FS_CURRENT_RULES_INDEX_20261107.md` | **ENTRY REDIRECT** | 應先轉本檔；舊 P0–P8 完整文本保留供溯源 |
+| `authority/FS_ASSET_FACTORY_BOTH_LANES_RULES_V1_20261108.md` | **SUPERSEDED_METHOD** | 舊 A08 Template-first 方法；不能壓過本檔 F0／Master 保真優先 |
+| `docs/asset_factory/FS_SPRITE_FACTORY_SOP_V1_20261108.md` | **REFERENCE_ONLY** | 原生 XML、來源與例外流程仍可參考；作畫優先順序依本檔 S-A |
+| `docs/asset_factory/FS_MAP_FACTORY_SOP_V1_20261108.md` | **REFERENCE_ONLY** | 來源物件、32px、四圖、QA 可參考；路線 A/B 優先依本檔 M-A |
+| `docs/asset_factory/A08_REPORT_22PAGE_IMPLEMENTATION_AUDIT_20261108.md` + 原始 PDF | **RESEARCH_SOURCE** | 研究依據，非每條範例數值都已獲 FS 驗證 |
+| `docs/asset_factory/A08_DUAL_FACTORY_EXECUTION_QUEUE_20261108.md` | **HISTORICAL_PLAN** | 階段時間與優先序由 A11 實驗覆寫 |
+| `docs/asset_factory/A01～A10*`、舊 Stage／R17／A36* | **IMMUTABLE_EVIDENCE** | 測試數據／失敗／SHA 真實紀錄；不得把當時判斷當現行方法 |
+| `authority/FS_16_ACTION_POSE_REFERENCE_FAIL_CLOSED_SOP_20261101.md` | **NATIVE_POSE_REFERENCE** | 45°姿勢與三關鍵影格規則限適用範圍，不能覆寫 PMD 原生 XML |
+| `docs/asset_factory/CURRENT_HANDOFF.md` | **CURRENT_PROGRESS** | 只描述目前工程與下一個實驗，不得獨立生規則 |
+
+### 新對話真正最短讀取路徑
+**本檔 → P0／安全 → CURRENT_HANDOFF → 只有當次作業需要才讀特定 XML／技術附錄／私有 QA**。不要先讀完數十份歷史檔再從頭規劃。
+
+## 7. 本規範治理方式
+- **唯一方法權威**：只改本檔；任何新用戶方向先在本檔升版本號／記錄變更。原始 A08/A10 SOP 僅註明覆寫，避免「一份規則多個版本都喊 ACTIVE」。
+- **資料分層**：規則／實驗計畫／目前進度／已封存證據／美術來源彼此不同。保留差異與反面證據。
+- 每次變更至少核對 GitHub 對應 Draft PR HEAD + CI、Drive 鏡像版內容與可存取權限，交接不得聲稱已通過未執行的真正 VX 或使用者 Art。

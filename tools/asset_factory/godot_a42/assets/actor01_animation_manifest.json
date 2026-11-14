@@ -1,0 +1,210 @@
+{
+  "schema_version": 2,
+  "actor_id": "fs.actor01.godot.first",
+  "animation_format": "64px RGBA sprite grid; variable frame counts, no VX three-frame restriction",
+  "default_profiles": {
+    "run": "run_tuned",
+    "idle": "idle_calm",
+    "attack": "attack_weighted"
+  },
+  "animation_profiles": {
+    "run_raw": {
+      "motion": "run",
+      "sprite_sheet": "res://assets/actor01_run_a35_8frames.png",
+      "grid": {
+        "frame_width": 64,
+        "frame_height": 64,
+        "columns": 4,
+        "rows": 2,
+        "frame_count": 8
+      },
+      "fps": 8.0,
+      "durations": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "loop": true,
+      "art_gate": "HOLD: A35 F6/F7",
+      "provenance": "A62 2 approved keyframes plus six real PixelLab V3 interpolation frames"
+    },
+    "run_tuned": {
+      "motion": "run",
+      "sprite_sheet": "res://assets/actor01_run_a35_8frames.png",
+      "grid": {
+        "frame_width": 64,
+        "frame_height": 64,
+        "columns": 4,
+        "rows": 2,
+        "frame_count": 8
+      },
+      "fps": 10.0,
+      "durations": [
+        0.9,
+        1,
+        1,
+        1,
+        0.9,
+        1,
+        0.7,
+        0.8
+      ],
+      "loop": true,
+      "art_gate": "HOLD: pacing does not repair A35 F6/F7"
+    },
+    "idle_raw": {
+      "motion": "idle",
+      "sprite_sheet": "res://assets/actor01_idle_r1_raw_8phases.png",
+      "grid": {
+        "frame_width": 64,
+        "frame_height": 64,
+        "columns": 4,
+        "rows": 2,
+        "frame_count": 8
+      },
+      "fps": 5.0,
+      "durations": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "loop": true,
+      "art_gate": "FAIL: G1/G2 wave arms and alter head; this is comparative only",
+      "provenance": "PixelLab 5 real inhale frames, exact reverse 3 frames, 8 phases/5 unique"
+    },
+    "idle_r2": {
+      "motion": "idle",
+      "sprite_sheet": "res://assets/actor01_idle_r2_raw_8phases.png",
+      "grid": {
+        "frame_width": 64,
+        "frame_height": 64,
+        "columns": 4,
+        "rows": 2,
+        "frame_count": 8
+      },
+      "fps": 5.0,
+      "durations": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "loop": true,
+      "art_gate": "FAIL: G1/G2/G3 move face and feet, not quiet breathing",
+      "provenance": "Second independent PixelLab interpolate run with a near-rest G3 endpoint; 5 unique/8 phases"
+    },
+    "idle_calm": {
+      "motion": "idle",
+      "sprite_sheet": "res://assets/actor01_idle_r1_calm_curated_8phases.png",
+      "grid": {
+        "frame_width": 64,
+        "frame_height": 64,
+        "columns": 4,
+        "rows": 2,
+        "frame_count": 8
+      },
+      "fps": 4.0,
+      "durations": [
+        1.4,
+        1,
+        0.8,
+        0.9,
+        1.4,
+        1,
+        0.8,
+        1.0
+      ],
+      "loop": true,
+      "art_gate": "HOLD: only three unique true RGBA poses, may still have head bob",
+      "provenance": "PixelLab R1 provider G0/G3/G4 reused as [0,0,3,3,4,4,3,0] no generated extra frames"
+    },
+    "attack_slash": {
+      "motion": "attack_legacy_compare",
+      "sprite_sheet": "res://assets/actor01_attack_lunge_8frames.png",
+      "grid": {
+        "frame_width": 64,
+        "frame_height": 64,
+        "columns": 4,
+        "rows": 2,
+        "frame_count": 8
+      },
+      "fps": 10.0,
+      "durations": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "loop": false,
+      "hit_event_second": 0.44,
+      "art_gate": "A40 prototype hold, not battle-validated at A41 attack timing",
+      "provenance": "A62 exact source; non-generative editable 8-keypose reconstruction"
+    },
+    "attack_weighted": {
+      "motion": "attack",
+      "sprite_sheet": "res://assets/actor01_a42_body_12frames.png",
+      "grid": {
+        "frame_width": 64,
+        "frame_height": 64,
+        "columns": 4,
+        "rows": 3,
+        "frame_count": 12
+      },
+      "fps": 12.0,
+      "durations": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "loop": false,
+      "hit_time": 0.55,
+      "hit_frame": 6,
+      "art_gate": "HOLD: A42 independently editable A41-exact body, weapon, FX with 0 source pixel changes",
+      "provenance": "A41 source pose split into Body/Weapon/FX; Godot one-clock 12-frame animation and 70ms hitstop"
+    }
+  },
+  "unsupported_motions": [
+    "cast",
+    "hurt",
+    "death",
+    "overdrive",
+    "break"
+  ],
+  "integrity": "Never substitute a missing state with another; preserve original PixelLab and A62 sources, private Google Drive",
+  "layering": {
+    "body": "res://assets/actor01_a42_body_12frames.png",
+    "weapon": "res://assets/actor01_a42_weapon_12frames.png",
+    "fx": "res://assets/actor01_a42_fx_12frames.png",
+    "fps": 12,
+    "contact_second": 0.55,
+    "hitstop_seconds": 0.07,
+    "animation_authority": "one Godot AnimationPlayer clock"
+  }
+}

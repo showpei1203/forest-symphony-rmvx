@@ -1,0 +1,76 @@
+{
+  "stage": "A38",
+  "date": "2026-11-14",
+  "godot_editor_import": "PASS",
+  "gpu_renderer": "AMD Radeon RX 6700 XT (OpenGL 3.3)",
+  "runtime_motion_profiles": [
+    "run_raw",
+    "run_tuned",
+    "idle_raw",
+    "idle_r2",
+    "idle_calm"
+  ],
+  "godot_runtime": "PASS (21 observed idle frame_changed; 2 loop wraps; 5 profiles; reject attack)",
+  "gpu_frame_capture": "PASS (3 x 8 actual framebuffer snapshots; uniqueness hashes diagnostic only, not distinct sprites)",
+  "provider_calls": 2,
+  "provider": "PixelLab Creator Interpolate V3",
+  "r1_real_generated_frames": 5,
+  "r2_real_generated_frames": 5,
+  "eight_phase_loops": true,
+  "original_unique_frames": {
+    "actor01_run_a35_8frames.png": 8,
+    "actor01_idle_r1_raw_8phases.png": 5,
+    "actor01_idle_r2_raw_8phases.png": 5,
+    "actor01_idle_r1_calm_curated_8phases.png": 3
+  },
+  "r1_first_source_RGBA_diff": 0,
+  "r1_end_A23_mechanical_RGBA_diff": 16,
+  "r1_head_diff_px": [
+    0,
+    309,
+    327,
+    54,
+    234
+  ],
+  "r2_first_source_RGBA_diff": 0,
+  "r2_end_R1_G3_RGBA_diff": 17,
+  "r2_head_diff_px": [
+    0,
+    243,
+    329,
+    281,
+    56
+  ],
+  "curated_selection_from_R1_original": [
+    0,
+    0,
+    3,
+    3,
+    4,
+    4,
+    3,
+    0
+  ],
+  "curated_distinct_source_poses": 3,
+  "curated_art_status": "HOLD: reduced broad arm motion but possible sprite bob/hand inconsistency",
+  "r1_art_status": "FAIL: G1/G2 face and arm drift",
+  "r2_art_status": "FAIL: G1/G2/G3 face drift and stepping despite still-feet prompt",
+  "battle_system_integration": "NOT_RUN: isolated Godot actor pilot, not migrated FS full combat",
+  "formal_art_approved": false,
+  "rmvx_three_frames": "NOT_REQUIRED per user Godot-first direction",
+  "original_e_drive_files_changed": false,
+  "github_main_changed": false,
+  "pc_temp_cleaned": true,
+  "sha256_art_assets": {
+    "actor01_run_a35_8frames.png": "ec0c7a59fb5983f13b1b3385323218edf0e77c23890db074c18c6e114e74408b",
+    "actor01_idle_r1_raw_8phases.png": "ba8d0db8bc78017ecb465788665325a058d613e92044024e33a68ded19293502",
+    "actor01_idle_r2_raw_8phases.png": "b986b4b8aa7a0d20c5812fc8fe14d3c5cb551523c6b0d01002bf4c4db6a1f4e2",
+    "actor01_idle_r1_calm_curated_8phases.png": "25859b73282ea2f928b7fbca7ed60a3e46e5996a75f979525e5b6b51ff6eae31"
+  },
+  "sha256_provider_originals": {
+    "r1_png": "c38c6cfd6f1690c73136c67cf4e106b3f75a427fecacdc06332cf4611dd37022",
+    "r1_gif": "95e76d457f940364af7f5678249a5ea39faae2480309ffa5f1b62e36a56ce87d",
+    "r2_png": "18642325ee867b481ef9d450219aab4a21c545bcb3b43d2fabb09dd73f054be5",
+    "r2_gif": "15dcc32fd27d0a2defd958ccd64e009804fe32e81addd3938d921d79af5bfe30"
+  }
+}

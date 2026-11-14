@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/actor01.tscn" id="1_actor"]
+[ext_resource type="Script" path="res://combat/fs_combat_target.gd" id="2_target"]
+[ext_resource type="Script" path="res://combat/fs_attack_bridge.gd" id="3_bridge"]
+
+[node name="A43R3CombatBridge" type="Node2D"]
+
+[node name="Actor" parent="." instance=ExtResource("1_actor")]
+position = Vector2(320, 280)
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2(375, 290)
+script = ExtResource("2_target")
+max_hp = 90
+defense = 5
+
+[node name="Bridge" type="Node" parent="."]
+script = ExtResource("3_bridge")
+actor_path = NodePath("../Actor")
+target_path = NodePath("../Target")
+base_damage = 30
+attack_reach = 128.0
