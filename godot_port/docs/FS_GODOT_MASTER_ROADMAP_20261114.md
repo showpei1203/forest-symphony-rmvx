@@ -103,3 +103,11 @@
 - `FSBossSummonRuntime` 已接 Phase intent engine，維持 Source 開場召喚 → Threshold → Phase/Weather/Shield → Core exposure。Boss phase tick 即使 `source_atb_wait` 仍更新；只有 ATB/ACT/敵方排隊在 Wait 模式凍結。
 - `FSEnemyAIDecision` 和 `FSActionQueue` 在 Boss 仍有未套用 phase effects 時保護性停止；`FSScreen` BATTLE 狀態可視化待套用 ID 及天氣來源、未實裝效果。新測試 `test_fs_boss_phase_state_intents.gd` 與 `test_fs_boss_weather_intents.gd`，28→30 native QA。
 - **下一步**：原 VX final DB + witness 優先，再釐清 524 151→Law140-143 最後 alias、#404 Weather damage/element target type/priority、正式 State77/128/129 effect、OD/Break/Cover；原角色/怪物動畫和 MENU/BATTLE 美術及 VX screenshots。Phase1 Seal NO。
+
+
+## M3 第404段全域天氣傷害 + 第015段角色攻擊元素（2026-11-14 本輪）
+- 原版 FieldWeather #404 (MasterSetup #440)：`FSFieldWeather` 單一 global Field153..158，來源/優先權、ctx ID510→554/555/556，元素＆目標型別 Note、rate clamp25–175，正 HP/MP 傷害、治療/比例傷害豁免；Skill/Item Note 前置合法性及源技能 ACT 結算後才切場域。按 #401 Boss548–550 選出 Field 時，只有 `boot_final_verified` 或合成測試顯式啟用的 Field runtime 才真正套入。Boss 122–127 等階段 State 效果仍 pending。
+- `FSBattle.attack/use_skill` 與 `FSActionQueue`／`FSEnemyAIDecision` 已接入全域 Field 授權與正傷倍率，`FSSkillCostRules` 已限縮允許 #404 確認的 Field Note 而非整段未知 Note。真 Godot BATTLE UI 區分「有限 Field 倍率已套用」與「Boss 階段 State 未套用」。
+- 來源 #015 `Game_Actor#element_set`：空手[1]、武器 ElementSet union。已接 `FSDatabase.apply_equipment`、`FSBattle.equip`、源 #013 Game_Battler enemy default []，實測動態換裝後天氣元素倍率同步；缺 metadata fail closed。
+- 原有30 native + 兩項 Field測試 + 一項 Actor ElementSet = **33/33 Godot4.7.2 native PASS**：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557813518。完整規格在 `docs/FS_FIELD_WEATHER_DAMAGE_GATE_20261114.md`；Handoff/FailureLog 同步。
+- **下一步**優先解原 VX post-Apply 私有11表 witness + #358類型/ #414 ElementRate 與傷害基數；Law140–143 真 State、77/128/129 護盾；正式角色/怪物 6+ multi-frame Animation 與 MENU/BATTLE screenshot。P1 Seal NO。

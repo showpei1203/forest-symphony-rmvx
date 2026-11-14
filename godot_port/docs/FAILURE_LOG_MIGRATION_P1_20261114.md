@@ -170,3 +170,21 @@
 4. **只提供安全 Trigger，不偽造戰鬥效果**：State77 防禦、Law 140–143、Weather 正傷倍率與 505 alias 未確認時，任何標記為 pending 的 Boss 被 gameplay queue/AI fail-closed；不能用 synthetic PASS 推論正式 RPG Maker VX parity。
 
 驗收來源：source-shaped in-memory synthetic 30 項 Godot 4.7.2 native script tests；第一輪 PASS https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43556057604，BATTLE UI 新文字後將重跑。只改指定 GitHub feature branch，原 E: 唯讀。
+
+
+## 2026-11-14 #404 FieldWeather 真傷害子集與 #015 ElementSet QA
+| Gate | 結果 | 確認來源及限制 |
+|---|---|---|
+| 單一 Global Field153..158、來源/優先權、Boss510 context | **PASS native synthetic** | `FSFieldWeather` 對照 RGSS2 #404/#440，無 per-battler weather State |
+| 25..175% 正 HP/MP 傷害及治療豁免 | **PASS native synthetic** | #404 element/target-type Note，混合元素 Ruby rounding、rate_damage skip |
+| 玩家/敵方 attack+single skill + ACT MP/weather切換 | **PASS native synthetic** | Skill2 本應 ACT10幀；先套舊 Field，再結算技能並設新 Field |
+| Boss548 Field153 與 State122 效果分離 | **PASS native synthetic/UI** | Global field source-subset 有限生效，但 Boss Phase122 只記 Intent，攻擊流程仍需 State-effect source witness |
+| 原 #015 barehand/dual weapon element_set 與裝備換裝 | **PASS native synthetic** | 空手[1]、武器元素 ordered union，缺 weapon metadata 禁止天氣下攻擊 |
+| 真 505 alias、#358 類型資料和 #414 元素倍率 | **NOT DONE** | baseline damage formula 還是候選，不能稱全套 FS 屬性系統 |
+| 真 FS post-Apply 11 DB/畫面/角色動畫 | **NOT DONE** | 正式資料與素材未輸入私人 Drive，P1 Seal NO |
+
+### 這輪兩項實際失敗與修正
+1. 失敗 run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557119074：新 `test_fs_field_weather_battle_404.gd::_check` 宣告 `-> bool`，但成功分支缺 `return true`，官方 Godot 解析直接拒絕載入。已修，**不是天氣引擎錯誤**。
+2. 失敗 run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557197991：新測試誤把所有 Skill ACT 當成1幀。來源 `#230` 是 Skill ID1 charge1%，**Skill2 charge10%=10 source frames**。修正測試加強成9幀無成本/天氣效果、第10幀成功切換，沒有修改正確的引擎蓄力規則。
+3. 修正後 32/32 PASS https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557327251；再加入原 #015 元素與換裝來源測試後 **33/33 PASS** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557813518。
+4. 風險：原 #404 依來源 Game_Temp 保存 global field source/priority，現在已真計算有限天氣倍率，但原 VX `FS_ElementRate`、State/Guard/Cover/OD/Break 仍待有效 source trace，故只能視為 source-subset feature gate 而非正式 FS damage parity。
