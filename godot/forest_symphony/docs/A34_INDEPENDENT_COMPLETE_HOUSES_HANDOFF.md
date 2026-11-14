@@ -49,4 +49,11 @@
 - [完整 184-file A34 私有工程 ZIP](https://drive.google.com/file/d/1VskVH2ghTgv7HYAaanLBYikjLLQhKw6A/view)：**79,844,278 bytes**、SHA256 **`ed15669314d59bee9d3fa16c9ced09855c153be090ac6795b8568f0455a550bc`**，Drive 上傳→原檔重新下載後 SHA256、ZIP CRC、184/184 entry 和 183 筆 member manifest **PASS**。
 - [真實 Godot 4.7.2 全圖 1x](https://drive.google.com/file/d/1ReUpQHR6Y8PC0i2H27Hh6gDMlDCl3ErV/view)；[兩棟房屋真實 Godot A/B 1x 對照](https://drive.google.com/file/d/1vd5Yk5ft5_kAD_UEnTYenmVSq_HvBG7b/view)。
 - 可重建：`tools/a34_build_from_independent_house_sources.py --a33 <previous-owner-project-dir> --output <fresh-dir> --workshop-png <private-whole-workshop.png> --residence-png <private-whole-residence.png>`。已在不同隔離目錄重建，兩房 PNG／場景／manifest／a34_world.gd **5/5 SHA 完全一致**，Godot 4.7.2 再執行 1036 PASS。
-- 來源完整 PNG／生成高解析 PNG／Godot 原生 QA 私人持有，**未在公開 GitHub 上傳原圖**。Source-only GitHub CI 實際結果待最後提交後回填 Handoff；美術與門口仍 HOLD。
+- 來源完整 PNG／生成高解析 PNG／Godot 原生 QA 私人持有，**未在公開 GitHub 上傳原圖**。Source-only GitHub CI 已正式成功，以下附真實執行結果；美術與門口仍 HOLD。
+
+
+## A34 GitHub source-only CI 最終確認（2026-11-14）
+- A34 code commit `babea793f41d9d0600906f2a44c52a96aac1d1dd`：僅 public GDScript／scene／manifest／QA，**沒有私人圖片**。
+- [A34 Godot official 4.7.2 CI #43548223676](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43548223676) **completed/success**，工作日誌明確顯示 `A34 GODOT PUBLIC HOUSE CONTRACT PASS: 744`，A33 和 A32 public 也實際執行。
+- [A33 回歸 #43548223589](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43548223589)、[A32 回歸 #43548223595](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43548223595)、[A30/A31 回歸 #43548223653](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43548223653) **三組均 completed/success**。
+- 私有真正 Godot 原生 1,036 PASS、新舊版 760 與 734 PASS；USER ART HOLD、Doorway COLLISION HOLD、正式 SEAL NO。
