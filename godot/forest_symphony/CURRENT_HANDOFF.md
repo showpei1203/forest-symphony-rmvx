@@ -27,3 +27,10 @@
 - [Native Godot A34 vs A35 art A/B](https://drive.google.com/file/d/19K82PK8_F5W_riClWDdF302UZ6TKzYRR/view) and [native actor standing tree behind/front](https://drive.google.com/file/d/1mTgJ8EgrdoJZ4q0l1sPKjtOQhmI1jAO0/view).
 - [A35 real QA / failure log Drive Handoff](https://drive.google.com/file/d/1BBWccz2iTXHt5Mu9QtBBGFtWdXb9ftGW/view); [six biome/12 scene art world plan](https://drive.google.com/file/d/1hQEUuEGcuFunJVkQfREjdfLWSaMvU4Fz/view).
 - **Important:** 2560x1856 A36 and 12 map artworks remain **NOT_BUILT**, only source-validated art contract exists. Do not state otherwise.
+
+
+## A35 GitHub native official public CI final evidence (2026-11-14)
+- Actual code commit `d072ab6f296086a5f6b6a539aa134754527a43b0`. All A35 scene/JSON/script/art pipeline data are source-only in GitHub, no private PNG.
+- [A35 Godot 4.7.2 CI #43551132706](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132706) **COMPLETED/SUCCESS**. Real CI logs show `A35 GODOT PUBLIC TREE+6-BIOME CONTRACT PASS: 788 checks` and `A35 SIX BIOME SOURCE CATALOG PASS: 6 terrain types / 12 scenes` (not merely a green status).
+- Existing [A34 #43551132656](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132656), [A33 #43551132660](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132660), [A32 #43551132669](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132669), [A30/A31 #43551132662](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132662) **COMPLETED/SUCCESS**.
+- Fully private Godot actual original-art 1063 checks PASS; cold rebuild 4 new PNGs/scene/manifest identical; two real native before/after framebuffers + actor front/back proof, no claims of ART approval. Large 80x58 is a target **NOT_BUILT**.
