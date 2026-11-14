@@ -6,6 +6,7 @@ extends VBoxContainer
 const DATA = preload("res://scripts/story/FSStoryData.gd")
 const COMPILER = preload("res://scripts/story/FSStoryCompiler.gd")
 const Inspector = preload("res://addons/fs_event_studio/FSStoryStepInspector.gd")
+const PreviewWindow = preload("res://addons/fs_event_studio/FSStoryPreviewWindow.gd")
 
 var _doc: Dictionary = {}
 var _path: String = ""
@@ -26,6 +27,7 @@ var _add_selector: OptionButton
 var _inspector: VBoxContainer
 var _open_dialog: FileDialog
 var _discard_dialog: ConfirmationDialog
+var _preview_dialog: FSStoryPreviewWindow
 
 func _ready() -> void:
     name = "FS Event Studio"
@@ -61,6 +63,8 @@ func _build_ui() -> void:
     _make_button(toolbar,"開啟事件",_open_clicked)
     _make_button(toolbar,"儲存 JSON",_save_clicked)
     _make_button(toolbar,"複製 JSON",_copy_clicked)
+    _make_button(toolbar,"預覽目前頁",_preview_clicked)
+    _make_button(toolbar,"試玩劇情測試場",_sandbox_clicked)
     _make_button(toolbar,"復原",_undo)
     _make_button(toolbar,"重做",_redo)
     _make_button(toolbar,"檢查所有頁",_validate_clicked)
@@ -140,6 +144,8 @@ func _build_ui() -> void:
     _discard_dialog.dialog_text = "目前事件尚未儲存，確定放棄修改嗎？"
     _discard_dialog.confirmed.connect(_discard_confirmed)
     add_child(_discard_dialog)
+    _preview_dialog = PreviewWindow.new()
+    add_child(_preview_dialog)
 
 func _line(parent: Node, caption: String, value: String, cb: Callable) -> LineEdit:
     var row := HBoxContainer.new()
@@ -409,6 +415,24 @@ func _validate_clicked() -> void:
         _show_status("全部 %d 頁已通過 VX 指令結構驗證" % _doc.get("pages",[]).size())
     else:
         _show_status("不可儲存： " + errors[0])
+
+func _preview_clicked() -> void:
+    var page: Dictionary = DATA.get_page(_doc,_page_index)
+    if page.is_empty():
+        _show_status("目前沒有可預覽的事件頁")
+        return
+    var result: Dictionary = COMPILER.compile_page(page)
+    if not bool(result.get("ok",false)):
+        var errors: Array = result.get("errors",[])
+        _show_status("無法預覽：" + str(errors[0] if not errors.is_empty() else "不合法的事件"))
+        return
+    var outcome: Dictionary = _preview_dialog.preview_page(_doc,_page_index)
+    if not bool(outcome.get("ok",false)):
+        _show_status("無法預覽：" + str(outcome.get("error","未知原因")))
+
+func _sandbox_clicked() -> void:
+    # Separate runnable demo; does NOT require private FS database imports.
+    EditorInterface.play_custom_scene("res://scenes/story/FSStorySandbox.tscn")
 
 func _copy_clicked() -> void:
     # Cloud-first alternative: copy serialized event to chat for direct GitHub commit.
