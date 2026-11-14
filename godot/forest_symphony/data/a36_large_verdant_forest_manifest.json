@@ -1,0 +1,5346 @@
+{
+  "schema": "fs-a36-ground-first-large-continuous-world/v1",
+  "status": "REAL_GROUND_FIRST_NATIVE_PENDING_ART_HOLD",
+  "scene_id": "FS_A36_LARGE_FOREST",
+  "world_px": [
+    2560,
+    1856
+  ],
+  "logical_grid": [
+    80,
+    58
+  ],
+  "cell_px": 32,
+  "source_ground": {
+    "file": "a36_ground_original_1478x1064.png",
+    "size": [
+      1478,
+      1064
+    ],
+    "sha256": "020e8c8a7a84f43653ffc43fe660614525d13ee9e956fd7e27b5a18923315a38",
+    "authoring": "FRESH_SINGLE_CONTINUOUS_IMAGE_GENERATION",
+    "generated_not_native_32px": true
+  },
+  "runtime_ground": {
+    "file": "a36_ground_only_2560x1856.png",
+    "size": [
+      2560,
+      1856
+    ],
+    "sha256": "ac591877b05c00543e6756e44e6ba81f6fea7e36086049e35de81e2610e0c911",
+    "transform": "PIL.Image.resize NEAREST (1478x1064 to 2560x1856); nonuniform 0.7%-scale distortion, ART HOLD",
+    "source_is_not_a34": true
+  },
+  "shadow": {
+    "file": "a36_contact_shadows_2560x1856.png",
+    "sha256": "f65ffa73fa49fffec4179084d712f03dccc3cfb828ef02b99857d03800a603a3",
+    "ownership": "separate source-only generated contact shade; source ground unchanged"
+  },
+  "objects": [
+    {
+      "id": "a36_tree_001",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        158,
+        1852
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_002",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        549,
+        515
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_003",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        365,
+        1203
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_004",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        77,
+        556
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_005",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1475,
+        1016
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_006",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2429,
+        1088
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_007",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        72,
+        757
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_008",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        981,
+        959
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_009",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1883,
+        179
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_010",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2284,
+        1664
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_011",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2265,
+        1017
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_012",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1057,
+        136
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_013",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1023,
+        1265
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_014",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1082,
+        499
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_015",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        538,
+        1740
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_016",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1021,
+        1701
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_017",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1993,
+        1006
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_018",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        17,
+        1077
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_019",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1239,
+        193
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_020",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1222,
+        762
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_021",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2528,
+        876
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_022",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1428,
+        1717
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_023",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        239,
+        663
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_024",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        78,
+        942
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_025",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2312,
+        263
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_026",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2261,
+        539
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_027",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1353,
+        139
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_028",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2345,
+        1503
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_029",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2204,
+        990
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_030",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        457,
+        1573
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_031",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1161,
+        1509
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_032",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        66,
+        674
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_033",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1515,
+        1425
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_034",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2569,
+        928
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_035",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2339,
+        355
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_036",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2223,
+        262
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_037",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1681,
+        93
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_038",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1207,
+        287
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_039",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1446,
+        337
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_040",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        739,
+        463
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_041",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1982,
+        180
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_042",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1921,
+        892
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_043",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        100,
+        1657
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_044",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1593,
+        744
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_045",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1069,
+        1573
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_046",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2582,
+        1170
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_047",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        132,
+        129
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_048",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2478,
+        453
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_049",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2561,
+        1638
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_050",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        523,
+        1174
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_051",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2207,
+        1654
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_052",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        89,
+        1447
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_053",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2569,
+        1258
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_054",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        958,
+        1140
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_055",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1026,
+        81
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_056",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        864,
+        140
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_057",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1014,
+        214
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_058",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1946,
+        1512
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_059",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        832,
+        502
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_060",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        778,
+        356
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_061",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        272,
+        713
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_062",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2547,
+        1491
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_063",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        517,
+        1832
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_064",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        212,
+        1523
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_065",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2127,
+        1678
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_066",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        46,
+        115
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_067",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        32,
+        516
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_068",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        582,
+        1545
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_069",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2078,
+        856
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_070",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1629,
+        1135
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_071",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        620,
+        1454
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_072",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1315,
+        1786
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_073",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1928,
+        1786
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_074",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1744,
+        1742
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_075",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1468,
+        1650
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_076",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        488,
+        143
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_077",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1621,
+        1325
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_078",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1985,
+        1620
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_079",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        618,
+        369
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_080",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        698,
+        195
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_081",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2037,
+        96
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_082",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2303,
+        1128
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_083",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        965,
+        1594
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_084",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2240,
+        385
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_085",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1245,
+        91
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_086",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        617,
+        1620
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_087",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        -7,
+        1187
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_088",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2324,
+        765
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_089",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        760,
+        1868
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_090",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2038,
+        1752
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_091",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        722,
+        1404
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_092",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1265,
+        714
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_093",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1027,
+        310
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_094",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1393,
+        1245
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_095",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1053,
+        1876
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_096",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        719,
+        1481
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_097",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1422,
+        1122
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_098",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2517,
+        1107
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_099",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1846,
+        740
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_100",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2121,
+        224
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_101",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1355,
+        405
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_102",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1502,
+        864
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_103",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        448,
+        1655
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_104",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2183,
+        184
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_105",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2392,
+        313
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_106",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1756,
+        1627
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_107",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        873,
+        1673
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_108",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2478,
+        1238
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_109",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2263,
+        1807
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_110",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1466,
+        88
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_111",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        180,
+        90
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_112",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        933,
+        107
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_113",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2488,
+        1480
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_114",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2274,
+        475
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_115",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2513,
+        1860
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_116",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2552,
+        1727
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_117",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1121,
+        558
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_118",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        252,
+        1074
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_119",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        445,
+        1780
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_120",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        429,
+        558
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_121",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2362,
+        1663
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_122",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        777,
+        1299
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_123",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1258,
+        833
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_124",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        854,
+        356
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_125",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2415,
+        877
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_126",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        81,
+        1207
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_127",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2027,
+        1875
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_128",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        -16,
+        1636
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_129",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        969,
+        362
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_130",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        132,
+        1290
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_131",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        800,
+        569
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_132",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        784,
+        1691
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_133",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        13,
+        408
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_134",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1246,
+        501
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_135",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        621,
+        175
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_136",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2138,
+        84
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_137",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        665,
+        1717
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_138",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2572,
+        1038
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_139",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        915,
+        1845
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_140",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2568,
+        1433
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_141",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1800,
+        1369
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_142",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        27,
+        602
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_143",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        705,
+        1765
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_144",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2351,
+        959
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_145",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2445,
+        182
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_146",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2135,
+        1766
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_147",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1559,
+        1769
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_148",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        378,
+        1799
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_149",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1074,
+        237
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_150",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        202,
+        790
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_151",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        334,
+        1041
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_152",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1429,
+        267
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_153",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        629,
+        1826
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_154",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        221,
+        1400
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_155",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2460,
+        748
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_156",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        833,
+        288
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_157",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1688,
+        1723
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_158",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2058,
+        1648
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_159",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        238,
+        208
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_160",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2369,
+        605
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_161",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2523,
+        1178
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_162",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2364,
+        119
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_163",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        273,
+        1816
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_164",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1134,
+        1856
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_165",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        38,
+        896
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_166",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        3,
+        1423
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_167",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        286,
+        143
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_168",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1792,
+        124
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_169",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1384,
+        1436
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_170",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1187,
+        470
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_171",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        813,
+        1456
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_172",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1584,
+        115
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_173",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2272,
+        846
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_174",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1741,
+        253
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_175",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1414,
+        593
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_176",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1851,
+        1738
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_177",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1083,
+        1731
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_178",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1469,
+        758
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_179",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1873,
+        1656
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_180",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        -2,
+        970
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_181",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2534,
+        1340
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_182",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2349,
+        1764
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_183",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        844,
+        1285
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_184",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2346,
+        696
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_185",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2520,
+        989
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_186",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1295,
+        404
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_187",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2297,
+        160
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_188",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        21,
+        1532
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_189",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1952,
+        735
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_190",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1134,
+        286
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_191",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        695,
+        507
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_192",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1128,
+        1691
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_193",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1280,
+        615
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_194",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        -16,
+        810
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_195",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        160,
+        1431
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_196",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1091,
+        686
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_197",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1455,
+        1284
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_198",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1673,
+        1595
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_199",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        18,
+        1284
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_200",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2356,
+        1193
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_201",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1344,
+        1856
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_202",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1455,
+        212
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_203",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        645,
+        1558
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_204",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1884,
+        983
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_205",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        135,
+        626
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_206",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2445,
+        561
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_207",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        626,
+        540
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_208",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1570,
+        318
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_209",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1238,
+        1624
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_210",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1512,
+        1072
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_211",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1289,
+        1182
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_212",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        192,
+        1274
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_213",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        704,
+        1264
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_214",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        603,
+        109
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_215",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2479,
+        806
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_216",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1468,
+        1867
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_217",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1055,
+        377
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_218",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1819,
+        1830
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_219",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2376,
+        1856
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_220",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1677,
+        829
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_221",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1948,
+        1670
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_222",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        940,
+        172
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_223",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        557,
+        191
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_224",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1220,
+        409
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_225",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2554,
+        782
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_226",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2156,
+        607
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_227",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        353,
+        483
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_228",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2455,
+        1563
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_229",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        718,
+        407
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_230",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2167,
+        770
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_231",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        438,
+        355
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_232",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1356,
+        266
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_233",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        174,
+        1358
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_234",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2341,
+        495
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_235",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        969,
+        1407
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_236",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        692,
+        1852
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_237",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2355,
+        1576
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_238",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        892,
+        411
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_239",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        281,
+        1476
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_240",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1530,
+        1309
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_241",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        473,
+        403
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_242",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        677,
+        99
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_243",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2457,
+        959
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_244",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        31,
+        1691
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_245",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        60,
+        271
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_246",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        802,
+        1591
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_247",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2166,
+        890
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_248",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        291,
+        301
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_249",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1485,
+        1217
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_250",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2223,
+        1509
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_251",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        821,
+        992
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_252",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2134,
+        357
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_253",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1514,
+        129
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_254",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        768,
+        232
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_255",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        530,
+        1000
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_256",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1560,
+        923
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_257",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2565,
+        600
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_258",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1142,
+        86
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_259",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1857,
+        87
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_260",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        293,
+        1634
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_261",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1662,
+        1217
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_262",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        96,
+        1576
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_263",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2513,
+        81
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_264",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2104,
+        1869
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_265",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1719,
+        763
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_266",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2451,
+        280
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_267",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        501,
+        1063
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_268",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1814,
+        1588
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_269",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2188,
+        423
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_270",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1141,
+        1216
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_271",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2579,
+        255
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_272",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        156,
+        925
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_273",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        787,
+        1756
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_274",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        410,
+        1325
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_275",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2154,
+        1056
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_276",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        140,
+        714
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_277",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        698,
+        1200
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_278",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1580,
+        1223
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_279",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1695,
+        207
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_280",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2357,
+        435
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_281",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        904,
+        1313
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_282",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1088,
+        1465
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_283",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        117,
+        1370
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_284",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1133,
+        383
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_285",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1029,
+        1112
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_286",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1258,
+        1528
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_287",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1594,
+        1385
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_288",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2190,
+        543
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_289",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        306,
+        229
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_290",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1498,
+        374
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_291",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1986,
+        876
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_292",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        2496,
+        329
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_293",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        526,
+        1469
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_294",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        614,
+        1300
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_295",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1740,
+        1836
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_296",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1117,
+        172
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_297",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        966,
+        1504
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_298",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        716,
+        1645
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_299",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        562,
+        1259
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_300",
+      "family": "a35_birch_cream_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        2332,
+        886
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0"
+    },
+    {
+      "id": "a36_tree_301",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        925,
+        510
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_302",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        -6,
+        691
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_303",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        827,
+        225
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_304",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1200,
+        1672
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_tree_305",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        455,
+        620
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_306",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        452,
+        1840
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_307",
+      "family": "a35_birch_blush_122x170.png",
+      "semantic": "tree",
+      "foot": [
+        1600,
+        229
+      ],
+      "width": 122,
+      "height": 170,
+      "footprint": [
+        22,
+        12
+      ],
+      "asset_sha256": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3"
+    },
+    {
+      "id": "a36_tree_308",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        784,
+        154
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_309",
+      "family": "a35_oak_summer_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        103,
+        382
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040"
+    },
+    {
+      "id": "a36_tree_310",
+      "family": "a35_oak_golden_176x174.png",
+      "semantic": "tree",
+      "foot": [
+        1395,
+        1650
+      ],
+      "width": 176,
+      "height": 174,
+      "footprint": [
+        32,
+        18
+      ],
+      "asset_sha256": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c"
+    },
+    {
+      "id": "a36_house_01",
+      "family": "a34_elf_workshop_house_complete_288x282.png",
+      "semantic": "house",
+      "foot": [
+        590,
+        780
+      ],
+      "width": 288,
+      "height": 282,
+      "footprint": [
+        160,
+        38
+      ],
+      "asset_sha256": "2a4e50666bbd3acb89147b3ab844d5c998ad796bf98a8687a4a9428f33e2a741"
+    },
+    {
+      "id": "a36_house_02",
+      "family": "a34_elf_residence_atelier_complete_252x252.png",
+      "semantic": "house",
+      "foot": [
+        1810,
+        460
+      ],
+      "width": 252,
+      "height": 252,
+      "footprint": [
+        136,
+        38
+      ],
+      "asset_sha256": "9936140695863a679f62e4a295373a706a7a92f6308965903adc3b64e1139da6"
+    },
+    {
+      "id": "a36_lamp_01",
+      "family": "a33_ornate_lantern_complete_52x124.png",
+      "semantic": "lamp",
+      "foot": [
+        930,
+        380
+      ],
+      "width": 52,
+      "height": 124,
+      "footprint": [
+        14,
+        13
+      ],
+      "asset_sha256": "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+    },
+    {
+      "id": "a36_lamp_02",
+      "family": "a33_ornate_lantern_complete_52x124.png",
+      "semantic": "lamp",
+      "foot": [
+        1400,
+        650
+      ],
+      "width": 52,
+      "height": 124,
+      "footprint": [
+        14,
+        13
+      ],
+      "asset_sha256": "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+    },
+    {
+      "id": "a36_lamp_03",
+      "family": "a33_ornate_lantern_complete_52x124.png",
+      "semantic": "lamp",
+      "foot": [
+        1050,
+        1040
+      ],
+      "width": 52,
+      "height": 124,
+      "footprint": [
+        14,
+        13
+      ],
+      "asset_sha256": "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+    },
+    {
+      "id": "a36_lamp_04",
+      "family": "a33_ornate_lantern_complete_52x124.png",
+      "semantic": "lamp",
+      "foot": [
+        1780,
+        1005
+      ],
+      "width": 52,
+      "height": 124,
+      "footprint": [
+        14,
+        13
+      ],
+      "asset_sha256": "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+    },
+    {
+      "id": "a36_lamp_05",
+      "family": "a33_ornate_lantern_complete_52x124.png",
+      "semantic": "lamp",
+      "foot": [
+        1600,
+        1420
+      ],
+      "width": 52,
+      "height": 124,
+      "footprint": [
+        14,
+        13
+      ],
+      "asset_sha256": "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+    },
+    {
+      "id": "a36_lamp_06",
+      "family": "a33_ornate_lantern_complete_52x124.png",
+      "semantic": "lamp",
+      "foot": [
+        900,
+        1520
+      ],
+      "width": 52,
+      "height": 124,
+      "footprint": [
+        14,
+        13
+      ],
+      "asset_sha256": "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991"
+    },
+    {
+      "id": "a36_well_01",
+      "family": "fsobj_well.png",
+      "semantic": "well",
+      "foot": [
+        1250,
+        1030
+      ],
+      "width": 63,
+      "height": 69,
+      "footprint": [
+        29,
+        22
+      ],
+      "asset_sha256": "8a5318fb213293bf5f6ac32b3bb51aa1c77f459329e3291c09334fa27b659e50"
+    },
+    {
+      "id": "a36_rock_01",
+      "family": "fsobj_rock_cluster.png",
+      "semantic": "rock",
+      "foot": [
+        450,
+        300
+      ],
+      "width": 43,
+      "height": 38,
+      "footprint": [
+        21,
+        10
+      ],
+      "asset_sha256": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+    },
+    {
+      "id": "a36_rock_02",
+      "family": "fsobj_rock_cluster.png",
+      "semantic": "rock",
+      "foot": [
+        1190,
+        390
+      ],
+      "width": 43,
+      "height": 38,
+      "footprint": [
+        21,
+        10
+      ],
+      "asset_sha256": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+    },
+    {
+      "id": "a36_rock_03",
+      "family": "fsobj_rock_cluster.png",
+      "semantic": "rock",
+      "foot": [
+        1610,
+        790
+      ],
+      "width": 43,
+      "height": 38,
+      "footprint": [
+        21,
+        10
+      ],
+      "asset_sha256": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+    },
+    {
+      "id": "a36_rock_04",
+      "family": "fsobj_rock_cluster.png",
+      "semantic": "rock",
+      "foot": [
+        2210,
+        1050
+      ],
+      "width": 43,
+      "height": 38,
+      "footprint": [
+        21,
+        10
+      ],
+      "asset_sha256": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+    },
+    {
+      "id": "a36_rock_05",
+      "family": "fsobj_rock_cluster.png",
+      "semantic": "rock",
+      "foot": [
+        560,
+        1150
+      ],
+      "width": 43,
+      "height": 38,
+      "footprint": [
+        21,
+        10
+      ],
+      "asset_sha256": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+    },
+    {
+      "id": "a36_rock_06",
+      "family": "fsobj_rock_cluster.png",
+      "semantic": "rock",
+      "foot": [
+        1870,
+        1570
+      ],
+      "width": 43,
+      "height": 38,
+      "footprint": [
+        21,
+        10
+      ],
+      "asset_sha256": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+    },
+    {
+      "id": "a36_rock_07",
+      "family": "fsobj_rock_cluster.png",
+      "semantic": "rock",
+      "foot": [
+        1150,
+        1700
+      ],
+      "width": 43,
+      "height": 38,
+      "footprint": [
+        21,
+        10
+      ],
+      "asset_sha256": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400"
+    }
+  ],
+  "assets": {
+    "a35_oak_summer_176x174.png": {
+      "name": "a35_oak_summer_176x174.png",
+      "w": 176,
+      "h": 174,
+      "sha": "2d1089cf8fd61b3d678d56a5e8db2670320bda6cc6137f84eea5708a59b61040",
+      "file": "res://private_assets/independent_par/a35_oak_summer_176x174.png"
+    },
+    "a35_oak_golden_176x174.png": {
+      "name": "a35_oak_golden_176x174.png",
+      "w": 176,
+      "h": 174,
+      "sha": "20482568e124e827fb63d464d2ec1bdb2e01bcb63252ebfb583afa11458ec01c",
+      "file": "res://private_assets/independent_par/a35_oak_golden_176x174.png"
+    },
+    "a35_birch_blush_122x170.png": {
+      "name": "a35_birch_blush_122x170.png",
+      "w": 122,
+      "h": 170,
+      "sha": "079cf4f83ecae04dae50f0e6d4f8e072e3ffee51c3073fe93dc3a16fcbad8ec3",
+      "file": "res://private_assets/independent_par/a35_birch_blush_122x170.png"
+    },
+    "a35_birch_cream_122x170.png": {
+      "name": "a35_birch_cream_122x170.png",
+      "w": 122,
+      "h": 170,
+      "sha": "8201724377772a01975671c03828cb0fe8232f677fc54d3472ecdb5f1e112bd0",
+      "file": "res://private_assets/independent_par/a35_birch_cream_122x170.png"
+    },
+    "a34_elf_workshop_house_complete_288x282.png": {
+      "name": "a34_elf_workshop_house_complete_288x282.png",
+      "w": 288,
+      "h": 282,
+      "sha": "2a4e50666bbd3acb89147b3ab844d5c998ad796bf98a8687a4a9428f33e2a741",
+      "file": "res://private_assets/independent_par/a34_elf_workshop_house_complete_288x282.png"
+    },
+    "a34_elf_residence_atelier_complete_252x252.png": {
+      "name": "a34_elf_residence_atelier_complete_252x252.png",
+      "w": 252,
+      "h": 252,
+      "sha": "9936140695863a679f62e4a295373a706a7a92f6308965903adc3b64e1139da6",
+      "file": "res://private_assets/independent_par/a34_elf_residence_atelier_complete_252x252.png"
+    },
+    "a33_ornate_lantern_complete_52x124.png": {
+      "name": "a33_ornate_lantern_complete_52x124.png",
+      "w": 52,
+      "h": 124,
+      "sha": "6e0bed07a735cba3c908a5da4c81863222363cab01325aeeaaf1f821d63a6991",
+      "file": "res://private_assets/independent_par/a33_ornate_lantern_complete_52x124.png"
+    },
+    "fsobj_well.png": {
+      "name": "fsobj_well.png",
+      "w": 63,
+      "h": 69,
+      "sha": "8a5318fb213293bf5f6ac32b3bb51aa1c77f459329e3291c09334fa27b659e50",
+      "file": "res://private_assets/independent_par/fsobj_well.png"
+    },
+    "fsobj_rock_cluster.png": {
+      "name": "fsobj_rock_cluster.png",
+      "w": 43,
+      "h": 38,
+      "sha": "38ebe42cc296234cc3566b4a69ff2f4e3b2d6fecb9c13097bf00dcc428975400",
+      "file": "res://private_assets/independent_par/fsobj_rock_cluster.png"
+    }
+  },
+  "object_count": 326,
+  "counts": {
+    "tree": 310,
+    "house": 2,
+    "lamp": 6,
+    "well": 1,
+    "rock": 7
+  },
+  "river_collision_status": "CANDIDATE_ONLY",
+  "events": "OUT_OF_SCOPE_OTHER_CONVERSATION",
+  "art_gate": "HOLD_NEEDS_NATIVE_1X_USER_REVIEW",
+  "quality_contract": {
+    "no_old_ground_tiling": true,
+    "full_independent_par_sources": true,
+    "world_render_native_required": true,
+    "water_animation": "NOT_IMPLEMENTED",
+    "par_shadow_light_layers": [
+      "GROUND",
+      "CONTACT_SHADOW",
+      "PAR",
+      "LIGHT_NOT_IMPLEMENTED",
+      "ANIMATED_WATER_NOT_IMPLEMENTED"
+    ]
+  }
+}

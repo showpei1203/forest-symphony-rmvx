@@ -1,0 +1,63 @@
+name: FS A36B Godot 4.7.2 tree-ecology independent-PAR public QA
+on:
+  pull_request:
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a36b-tree-ecology.yml'
+  push:
+    branches:
+      - feat/fs-godot-first-a29-20261113
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a36b-tree-ecology.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  a36b-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout source-only project
+        uses: actions/checkout@v4
+      - name: Install official pinned Godot 4.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 -o /tmp/godot-4.7.2.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot-4.7.2.zip -d /tmp/
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Godot editor parse all scenes and scripts, no original artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fs-a36b-logs
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/fs-a36b-logs/editor.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-a36b-logs/editor.log; then exit 1; fi
+      - name: Full tree-source and ecology public strict QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a36b_public.gd 2>&1 | tee /tmp/fs-a36b-logs/public.log
+          grep -q 'A36B PUBLIC GODOT SOURCE CONTRACT PASS: 1973 checks' /tmp/fs-a36b-logs/public.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|A36B PUBLIC FAIL)' /tmp/fs-a36b-logs/public.log; then exit 1; fi
+      - name: A36C R2 scene and manifest integrity (Python stdlib)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot/forest_symphony/tests/test_a36c_r2_public.py 2>&1 | tee /tmp/fs-a36b-logs/a36c_r2_contract.log
+          grep -q 'A36C R2 manifest/scene static source contract PASS' /tmp/fs-a36b-logs/a36c_r2_contract.log
+      - name: A36C R5 real forest placement source contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot/forest_symphony/tests/test_a36c_r5_public.py 2>&1 | tee /tmp/fs-a36b-logs/a36c_r5_contract.log
+          grep -q 'A36C R5 SOURCE SCENE CONTRACT PASS' /tmp/fs-a36b-logs/a36c_r5_contract.log
+      - name: Upload logs only, no original art
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A36B_GODOT472_FOREST_ECOLOGY_SOURCE_ONLY
+          path: /tmp/fs-a36b-logs/*.log
+          retention-days: 14

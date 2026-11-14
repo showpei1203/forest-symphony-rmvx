@@ -1,0 +1,15 @@
+# Private user-generated and source-owned FS assets must not reach public GitHub.
+.godot/
+private_assets/
+qa/
+qa_a33/
+qa_a34/
+qa_a30/
+qa_a31/
+*.import
+*.zip
+*.gif
+*.png
+*.webp
+*.jpg
+*.jpeg

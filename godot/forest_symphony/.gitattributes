@@ -1,0 +1,5 @@
+*.png binary
+*.godot text
+*.tscn text
+*.tres text
+*.gd text
