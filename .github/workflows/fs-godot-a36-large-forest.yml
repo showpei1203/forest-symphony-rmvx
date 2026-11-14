@@ -1,0 +1,51 @@
+name: FS A36 Godot 80x58 continuous Ground-first large forest public contract
+on:
+  pull_request:
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a36-large-forest.yml'
+  push:
+    branches:
+      - feat/fs-godot-first-a29-20261113
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a36-large-forest.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  a36-source-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout public source-only project
+        uses: actions/checkout@v4
+      - name: Install official pinned Godot 4.7.2
+        shell: bash
+        run: |
+          curl -fL --retry 3 -o /tmp/godot-4.7.2.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot-4.7.2.zip -d /tmp/
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Parse all Godot source scenes and scripts without private artwork
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fs-a36-logs
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/fs-a36-logs/editor.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-a36-logs/editor.log; then exit 1; fi
+      - name: A36 80x58 full Ground and independent PAR source-only strict contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a36_large_public.gd 2>&1 | tee /tmp/fs-a36-logs/public.log
+          grep -q 'A36 GODOT PUBLIC LARGE GROUND-FIRST CONTRACT PASS:' /tmp/fs-a36-logs/public.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|PUBLIC CONTRACT FAIL)' /tmp/fs-a36-logs/public.log; then exit 1; fi
+      - name: Upload native engine text logs only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A36_GODOT472_80x58_SOURCE_ONLY_ART_CONTRACT
+          path: /tmp/fs-a36-logs/*.log
+          retention-days: 14
+# Private Ground and original sprite images never enter GitHub CI; real native source QA in owner-only run.

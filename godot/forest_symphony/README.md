@@ -1,19 +1,13 @@
-# Forest Symphony A34 | Godot Ground-first + full independent house family
+# Forest Symphony Godot 4.7.2｜A36 Large Forest Ground-first (80×58)
 
-**Use Godot 4.7.2 stable.** Active project `res://scenes/a34_groundfirst_full_houses_scene.tscn`.
+Main scene `res://scenes/a36_large_verdant_forest_80x58.tscn`. Full original art and source-owned project are in an owner-only private Drive ZIP; **the public GitHub branch has intentionally NO private PNGs**. Old A35/A34 scenes are preserved for regression, but require corresponding owner-only art to run.
 
-- Main A32 Ground-only source 1280×928, SHA locked. No flattened full-scene slicing.
-- 2 full transparent house sprites, original standalone generated transparent RGBA source preserved in private assets, 146 edit-ready Godot PAR nodes (27 families), 4 independent A33 lanterns, YSort, 140 legacy collision candidates.
-- Real native tests: `res://tests/test_a34_full_houses_real.gd` (**1036 checks**), previous A33 (**760**) and A32 (**734**) native regression, plus 4 native OpenGL framebuffers and `qa_a34/A34_NATIVE_HOUSE_AB_1X.png`.
-- Public CI only code/scene/provenance manifest; source-only `res://tests/test_a34_public_contract.gd` (**744 checks**). Private art only in owner-only Drive ZIP.
-- New house art still USER ART HOLD; doorway geometry, building entrance event and 4-direction character animation NOT_RUN. We do not mark it final map.
+Full world 2560×1856; original generated Ground 1478×1064 resized with nearest to match 80×58 logic grid, explicitly ART HOLD for native pixel density. 326 fully independent complete PAR objects, separate contact shadow RGBA and tentative 148 water semantic candidate grid cells (NOT yet physical river-blocking). No NPC, event dialogue or battle written in this art conversation.
 
-Open [`CURRENT_HANDOFF.md`](CURRENT_HANDOFF.md) and [`A34 Failure Log`](docs/A34_INDEPENDENT_COMPLETE_HOUSES_HANDOFF.md) before future work.
+- Source files: `data/a36_large_verdant_forest_manifest.json`, `data/a36_terrain_semantic_candidates.json`.
+- Visual: native Godot 2560×1856 framebuffer and four 1x quadrants, `qa_a36/`, private only.
+- Rebuilder: `tools/a36/a36_build_large_forest.py` needs env `FS_A36_BASE_PROJECT` (A35 private project), `FS_A36_GROUND_SOURCE` (fresh original 1478×1064 image), `FS_A36_OUT_DIR` (new isolated output); NEVER overwrite A35 or user's PC.
+- Source QA: `tools/a36/validate_a36_art_contract.py` (requires private art), `tests/test_a36_large_forest_real.gd` (Godot 4.7.2 real art), `tests/test_a36_large_public.gd` (source only, no private art).
+- User request: prioritize visuals, large maps, six biome maze/village art. Events, NPC dialogue, story and combat are owned by another conversation.
 
-## A35: independent tree families + six-biome art contract (2026-11-14)
-
-Godot main scene: `scenes/a35_independent_tree_family_scene.tscn`; original A34 scene is kept. A35 uses **two original transparent art sheets containing four separately isolated, COMPLETE tree sprites**, preserving the original art sheet copies privately. **No sprites extracted from flattened map / Master**. Only eight tree references are changed, all footpoints and collision footprints remain; houses, lamps, and Ground SHA are immutable.
-
-Native Godot 4.7.2 privately sourced checks: 1063 PASS, two full 1280x928 true native A/B frames and two new-tree actor depth frames. Source-only GitHub smoke: `tests/test_a35_public_contract.gd` (788 checks), data only not private bitmaps. Independent `tools/a35_build_independent_tree_family.py` supports `--base --dest --pair1 --pair2` reproducible building. Native real sources only in owner-only Google Drive.
-
-For **six future terrain families** (each maze+village, 12 map artwork goals), see `docs/FS_SIX_BIOMES_WORLD_ART_PLAN_20261114.md` and `data/fs_six_biomes_world_catalog.json` (Python validator `tools/validate_world_biomes.py`). First scale target A36 is 2560x1856, 80x58 at 32px, **not yet authored as new art**. No repeated A34 Ground quilting. This conversation owns art and map visuals only; events, NPC and combat belong to other conversation. All A35 art remains **USER_ART_HOLD**.
+See [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md) and [A36 detailed failure log](docs/A36_LARGE_FOREST_GROUNDFIRST_HANDOFF.md). **Art HOLD / Collision HOLD / Formal seal NO.**

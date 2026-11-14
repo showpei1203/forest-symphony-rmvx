@@ -1,8 +1,8 @@
 config_version=5
 
 [application]
-config/name="Forest Symphony | Godot-first A35 full independent house family"
-run/main_scene="res://scenes/a35_independent_tree_family_scene.tscn"
+config/name="Forest Symphony | Godot-first A36 80x58 large continuous Ground-first forest"
+run/main_scene="res://scenes/a36_large_verdant_forest_80x58.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]

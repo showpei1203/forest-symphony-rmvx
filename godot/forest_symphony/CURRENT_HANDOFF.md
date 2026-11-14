@@ -1,36 +1,17 @@
-# Forest Symphony｜Godot-first Current Handoff A35 (2026-11-14)
+# Forest Symphony Godot Ground/PAR Art CURRENT_HANDOFF｜A36（2026-11-14）
 
-**This conversation owns only Ground/PAR production, authored art quality, larger map scaling, and six biome maze-village art.** **Other conversation owns events, NPCs, quests, door scripting, combat**. No event code is to be produced here.
+**Godot 主開發 PR #16；事件、NPC、戰鬥在另一個對話。本分支只管美術／Ground-first／完整獨立 PAR／大地圖與六地形規劃。**
 
-## Single source of policy
-[Active Master v1.3 Ground-first + independently authored complete PAR](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-asset-factory-v1-20261107/authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md). Godot 4.7.2 remains the main development engine. Legacy VX and flattened-Master-based A29–A31 are reference/compatibility only, not new map production.
+- **最新可用實作**：`res://scenes/a36_large_verdant_forest_80x58.tscn`，真正 2560×1856（80×58×32px）新的森林 Ground；**非複製鏡像 A34 Ground**，也不從完整圖分割 PAR。
+- 原生成 Ground 為 1478×1064 → nearest 2560×1856，保留 original + exact source SHA。**非原生 pixel-perfect 尺度，ART HOLD**。
+- **326** 個完整獨立 PAR：310 樹（四類）、2 完整房屋、6 路燈、1 井、7 岩石。獨立 SHADOW PNG / YSort / 足點及物件碰撞形狀；河流禁行 148 格只是語意**候選**，並未匯入完成的碰撞系統。
+- 真實 Godot 4.7.2：原生素材 **2301 checks PASS**、2,560×1,856 native screenshot 以及原生樹前後 544×416，來源/拓撲 Python **1633 PASS**；全新乾淨移除私人圖片後的 Godot **2306 checks PASS**。獨立從 A35 冷重建 8/8 關鍵檔 SHA 一致，冷 Godot 2301 PASS。
+- **已完成的是大型分層地圖技術樣板，不是美術封版。** 樹群重複與原始生圖縮放感仍要改善。六地形/12 地圖依 `data/fs_six_biomes_world_catalog.json` 長期規格，**尚未製作**。
+- [詳細 A36 Failure Log / QA / 下一施工步驟](docs/A36_LARGE_FOREST_GROUNDFIRST_HANDOFF.md)。
+- **最重要：** Active Master v1.3 Ground-first → 完整獨立透明 PAR → Godot → 1x 美術驗收，不回到 Master-first 切割；不寫事件、不碰 main、VX/使用者 PC。
 
-## Real newest state A35
-- `project.godot` opens `res://scenes/a35_independent_tree_family_scene.tscn`. Old A34 and A33/A32 scenes remain independently available.
-- A34 independent opaque 1280x928 Ground unchanged SHA256 `3348d4d30f7bea64d6e4a8ea349d3ed868a1a04660671dd93c1787d6418b0000`.
-- Original A33 four independent complete lanterns, A34 two complete houses preserved byte-for-byte. **No flattened Master source cutting**.
-- A35: **2 source tree-art sheets, each with 2 COMPLETE isolated transparent trees; 4 new RGBA full tree variants**. Replaced exactly **8** representative tree instances among **134**; **138** unrelated scene objects remain original source SHA/footpoints. Total scene 146 editable object owners, **31** family assets. Keep 140 original physical footprint colliders; not a full map traversal seal.
-- **Real private Godot 4.7.2 source tests: 1063 PASS**, 2 true native OpenGL A/B source scenes + 2 native tree front/back actor cases. Unchanged Ground exact; **65,992 native framebuffer RGB pixels changed, only within replaced-tree object ROIs; 0 pixels outside**. Cold rebuild of **all 4 art PNGs + scene + manifest** SHA identical. Public source-only Godot **788 checks PASS**; strict failure accumulator fixed after first test false-positive, recorded in A35 Failure Log.
-- **USER ART HOLD**: new foliage brighter/more detailed, some trees partially beyond viewport (deliberate forest edge), other older family trees still pixel-density mismatched. Cannot claim entire forest completed or 1x Art PASS.
+## A36 雲端私人封包已驗證
 
-## Forward road map (not completed content)
-- **A36 first larger map**: target **2560×1856 = 80×58 @32px**, **four times current area**. Must author a **genuinely continuous and non-repetitive** Ground-only source, followed by independent complete PAR scene objects. Never mirror/quilt 4 copies of A34 Ground and pretend visual success. 80×58 is a **target design contract, not actual A36 artwork**.
-- Six biomes × maze and village = **12 desired maps**, spec file `data/fs_six_biomes_world_catalog.json`, readable version `docs/FS_SIX_BIOMES_WORLD_ART_PLAN_20261114.md`. Six types: forest, frost, desert, volcano, marsh, astral crystal isles. This is a **style and world spec only**, not 12 generated maps.
-- All future scenes: independent Ground-only, complete transparent PAR, independent SHADOW/LIGHT/WATER FX, separate semantic footpoint + collision. **Event team receives scene IDs / 32px collision / door geometry only when validated**; no events authored here.
-
-## Cloud and protection
-- Full private Godot project and original generated tree source pages: owner-only Drive. Only code/test/JSON/docs and public scene references to SHA go on GitHub Draft PR #16. No user PC writes, no public copyrighted/private PNG, no changes to sealed VX or GitHub main, no paid PixelLab calls.
-- Cloud ZIP/CI proof and owner-only A/B links appended after verified upload/readback. See `docs/A35_TREE_ART_AND_BIOME_PLAN_HANDOFF_20261114.md` for QA/Failure Log.
-
-## A35 Owner-only Drive completed + readback
-- [158-file complete original art + Godot 4.7.2 A35 project](https://drive.google.com/file/d/1gNjkqvo_I8KbT4siEolsAWflyIRBPVim/view): **40,467,666 bytes**, SHA256 `f1de2a44f89e580620b86e154904907e484fea5610d10da83d895b54c20f4c98`. Uploaded + raw downloaded; ZIP CRC **PASS**, every 157 report-member SHA **PASS** (plus report itself in archive). Owner-only Drive.
-- [Native Godot A34 vs A35 art A/B](https://drive.google.com/file/d/19K82PK8_F5W_riClWDdF302UZ6TKzYRR/view) and [native actor standing tree behind/front](https://drive.google.com/file/d/1mTgJ8EgrdoJZ4q0l1sPKjtOQhmI1jAO0/view).
-- [A35 real QA / failure log Drive Handoff](https://drive.google.com/file/d/1BBWccz2iTXHt5Mu9QtBBGFtWdXb9ftGW/view); [six biome/12 scene art world plan](https://drive.google.com/file/d/1hQEUuEGcuFunJVkQfREjdfLWSaMvU4Fz/view).
-- **Important:** 2560x1856 A36 and 12 map artworks remain **NOT_BUILT**, only source-validated art contract exists. Do not state otherwise.
-
-
-## A35 GitHub native official public CI final evidence (2026-11-14)
-- Actual code commit `d072ab6f296086a5f6b6a539aa134754527a43b0`. All A35 scene/JSON/script/art pipeline data are source-only in GitHub, no private PNG.
-- [A35 Godot 4.7.2 CI #43551132706](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132706) **COMPLETED/SUCCESS**. Real CI logs show `A35 GODOT PUBLIC TREE+6-BIOME CONTRACT PASS: 788 checks` and `A35 SIX BIOME SOURCE CATALOG PASS: 6 terrain types / 12 scenes` (not merely a green status).
-- Existing [A34 #43551132656](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132656), [A33 #43551132660](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132660), [A32 #43551132669](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132669), [A30/A31 #43551132662](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551132662) **COMPLETED/SUCCESS**.
-- Fully private Godot actual original-art 1063 checks PASS; cold rebuild 4 new PNGs/scene/manifest identical; two real native before/after framebuffers + actor front/back proof, no claims of ART approval. Large 80x58 is a target **NOT_BUILT**.
+- **Owner-only Drive 完整 212-file Godot A36 工程**：[A36 full private ZIP](https://drive.google.com/file/d/1_RuQUGpURoASJmJ6_H0tEtNESz_FjmQU/view)，**55,657,235 bytes**，SHA256 `1877cfef806b907243b9bc4714713422d484e3ae651314e09094cc385be6c760`；上傳、重新下載、ZIP CRC、211 個內部檔案 SHA256 **PASS**。
+- **真正 Godot 4.7.2 原生 1x 全圖（2560×1856）**：[Drive 原生完整 PNG](https://drive.google.com/file/d/1Hq5WLRNpBj91k90B5PVxhBpLPQo2lv3i/view)，另有 [手機全圖預覽](https://drive.google.com/file/d/1ZSawHsLoC7u9GGKwFY5XQAz9ZvxhBnxJ/view)、[原生角色樹前後 A/B](https://drive.google.com/file/d/1KjCPdJZpH_ARs9Hjcqrn3g6mQx-gZc6u/view)。
+- [A36 詳細 QA、Failure Log 與接續工序 Drive 鏡像](https://drive.google.com/file/d/18Wp5Io5UHfMuwwNj-KPHuNzYKDyCl9rP/view)。私人像素素材無公開到 GitHub。正式 1x 美術、溪流碰撞與水動畫仍 **HOLD/NOT_RUN**。
