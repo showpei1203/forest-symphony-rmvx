@@ -24,3 +24,10 @@ Continues A39 RUN/IDLE/native breathing and A40 ATTACK prototype without overwri
 - True migrated FS battle (ATB, target acquisition, hurtboxes, damage, skills, enemy stats) NOT_RUN. Dummy contact verifies event contract, not gameplay feature completion.
 - Use preview scene `scenes/battle_animation_preview.tscn`, key `7` for A41 weighted sword, `6` A39 idle, space pause.
 - Only G: mounted private Drive for persistent artifacts, no E: RMVX write, GitHub `main` untouched.
+
+### FINAL VERIFIED CLOUD DELIVERY
+- [Owner-only A41 COMPLETE PROJECT](https://drive.google.com/drive/folders/18Inp2zA8-Y66hmmt1Kq7XezwDVRPq5mU)
+- [Owner-only A41 full ZIP, 61 entries, 211,304 bytes](https://drive.google.com/file/d/1svCyNnHsN4arYoQ-vG-U0TkQAgS2ZwlU/view) with SHA256 `5ab0166260e313d5248b0f113e348f7b349615a026e390a614e4aa34c8fbacdc`; ZIP CRC PASS, files SHA read back across fresh unzip PASS.
+- Fresh unzip native Godot import EXIT 0, real RX6700 XT native GPU QA EXIT 0, 11 distinct, no visual GPU difference from 12 original atlas cells.
+- [Native GPU 12-frame contact sheet](https://drive.google.com/drive/folders/18Inp2zA8-Y66hmmt1Kq7XezwDVRPq5mU) and private `qa/A41_NATIVE_GODOT_GPU_ATTACK.gif` in `qa`.
+- Art acceptance HOLD. Full FS Godot battle integration NOT RUN.
