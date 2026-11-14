@@ -292,6 +292,8 @@ func _show_battle() -> void:
                 battle.add_enemy(int(member.get("enemy_id", 0)))
     if not battle.active:
         battle.start()
+    # Source #230 defaults to Wait during active command/target selection.
+    battle.source_atb_wait = false
     _refresh_battle_status()
     _add_text("ATB 就緒 → 選指令 → ACT 蓄力 → 執行 → 重置（敵方 AI／特殊行動仍待移植）")
     _actor_selector(_show_battle)
@@ -334,6 +336,7 @@ func _atb_status_fragment(battler: Dictionary) -> String:
     return "ATB:%d%%" % pct
 
 func _select_enemy_target(callback: Callable) -> void:
+    battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 選擇敵方目標"
     for index in range(battle.enemies.size()):
@@ -346,6 +349,7 @@ func _select_enemy_target(callback: Callable) -> void:
     _add_button("返回", _show_battle)
 
 func _select_ally_target(callback: Callable) -> void:
+    battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 選擇我方目標"
     for index in range(battle.party.size()):
@@ -378,6 +382,8 @@ func _player_guard() -> void:
         _show_log("防禦指令未建立，未變更防禦姿態")
 
 func _skill_action() -> void:
+    if battle != null and battle.active:
+        battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 戰鬥技能"
     if actor_index < 0 or actor_index >= battle.party.size():
@@ -419,6 +425,8 @@ func _use_skill(skill_id: int, target: Dictionary) -> void:
     _show_battle()
 
 func _item_action() -> void:
+    if battle != null and battle.active:
+        battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 戰鬥物品"
     _add_text("僅可執行源碼基礎規則已驗證的單體 HP／MP 回復")
@@ -432,6 +440,8 @@ func _select_item_target(item_id: int, in_battle: bool) -> void:
     if in_battle and not battle.active:
         _show_log("戰鬥已結束，無法使用物品")
         return
+    if in_battle:
+        battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 物品指定目標"
     var item: Dictionary = db.record("items",item_id)
