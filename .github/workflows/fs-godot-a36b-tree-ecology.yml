@@ -48,6 +48,12 @@ jobs:
           set -euo pipefail
           python3 godot/forest_symphony/tests/test_a36c_r2_public.py 2>&1 | tee /tmp/fs-a36b-logs/a36c_r2_contract.log
           grep -q 'A36C R2 manifest/scene static source contract PASS' /tmp/fs-a36b-logs/a36c_r2_contract.log
+      - name: A36C R5 real forest placement source contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot/forest_symphony/tests/test_a36c_r5_public.py 2>&1 | tee /tmp/fs-a36b-logs/a36c_r5_contract.log
+          grep -q 'A36C R5 SOURCE SCENE CONTRACT PASS' /tmp/fs-a36b-logs/a36c_r5_contract.log
       - name: Upload logs only, no original art
         if: always()
         uses: actions/upload-artifact@v4
