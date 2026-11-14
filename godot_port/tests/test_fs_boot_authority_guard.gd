@@ -50,5 +50,29 @@ func _run() -> void:
     incomplete["master_setup_pages"] = 21
     if not _check(not DB.validate_boot_manifest(incomplete,hashes).is_empty(),
             "missing MasterSetup 06.5 or other page rejected"): return
+    var counts: Dictionary = {}
+    for name in DB.NAMES:
+        if name != "system":
+            counts[name] = 1
+    var runtime_witness: Dictionary = {
+        "stage":"post_FS_DB_AUTOSET.apply_all",
+        "engine":"RPG Maker VX RGSS2",
+        "party_actor_ids":[1,2,5],
+        "table_counts":counts
+    }
+    if not _check(DB.validate_runtime_witness(runtime_witness).is_empty(),
+            "source-shaped post-Apply runtime witness metadata accepted"): return
+    var no_roster: Dictionary = runtime_witness.duplicate(true)
+    no_roster.erase("party_actor_ids")
+    if not _check(not DB.validate_runtime_witness(no_roster).is_empty(),
+            "witness with no runtime party roster rejected"): return
+    var no_states: Dictionary = runtime_witness.duplicate(true)
+    no_states["table_counts"].erase("states")
+    if not _check(not DB.validate_runtime_witness(no_states).is_empty(),
+            "witness with missing post-Apply states count rejected"): return
+    var fake_engine: Dictionary = runtime_witness.duplicate(true)
+    fake_engine["engine"] = "Godot synthetic"
+    if not _check(not DB.validate_runtime_witness(fake_engine).is_empty(),
+            "synthetic Godot data cannot impersonate original VX witness"): return
     print("FS boot-final 505 scripts / 22 MasterSetup / eleven-table SHA witness fail-closed PASS")
     quit(0)
