@@ -3,13 +3,13 @@ class_name FSActionSprite
 
 # Backward-compatible façade for original FS 16-row Kaduki actions.
 # New Godot animations should use FSAnimationSprite directly with arbitrary frames.
-const PROFILE = preload("res://scripts/animation/FSAnimationProfile.gd")
+const LEGACY_PROFILE = preload("res://scripts/animation/FSAnimationProfile.gd")
 
 var frames_per_second: float = 6.0
 
 func load_actor(prefix: String) -> bool:
     var duration_ms: int = maxi(1,int(round(1000.0 / maxf(frames_per_second,0.01))))
-    return set_profile(PROFILE.legacy_kaduki(prefix,"res://assets/characters/",duration_ms))
+    return set_profile(LEGACY_PROFILE.legacy_kaduki(prefix,"res://assets/characters/",duration_ms))
 
 func play_action(index: int) -> bool:
     if index < 0 or index >= 16:
