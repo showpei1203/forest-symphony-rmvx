@@ -41,6 +41,7 @@ func add_enemy(enemy_id: int) -> bool:
     battler["od"] = 0
     battler["atb"] = 0.0
     battler["guarding"] = false
+    FSATBResistance.setup(battler)
     enemies.append(battler)
     return true
 
@@ -210,6 +211,26 @@ func advance_atb(delta: float) -> void:
         if int(battler["hp"]) <= 0:
             continue
         battler["atb"] = minf(1.0, float(battler.get("atb", 0.0)) + delta * (0.08 + float(battler.get("agi", 1)) / 800.0))
+
+func apply_combo_atb_shift(enemy: Dictionary,delta: int,
+        attacker: Dictionary = {},state_id: int = 0) -> Dictionary:
+    # This adapter is ONLY the direct ComboCore ATB shift <atb_shift:-x>.
+    # Ordinary ATB accumulation (above) is still a placeholder.
+    if not enemies.has(enemy):
+        return {"ok":false,"reason":"目標不是戰鬥中的敵人"}
+    var outcome: Dictionary = FSATBResistance.apply_direct_shift(
+        enemy,delta,state_id,attacker)
+    if bool(outcome.get("ok",false)):
+        changed.emit("%s ATB %d→%d／抗性 Lv%d" % [
+            enemy.get("name","敵人"),outcome.get("before",0),
+            outcome.get("after",0),outcome.get("level_after",0)])
+    return outcome
+
+func enemy_valid_action_completed(enemy: Dictionary) -> int:
+    # Called after a VERIFIED valid enemy action, not from UI redraw or ATB tick.
+    if not enemies.has(enemy):
+        return 0
+    return FSATBResistance.after_valid_enemy_action(enemy)
 
 func ready_actors() -> Array[int]:
     var out: Array[int] = []

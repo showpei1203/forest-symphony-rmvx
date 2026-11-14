@@ -191,6 +191,7 @@ func enemy_stats(enemy_id: int) -> Dictionary:
     result["gold"] = int(enemy.get("gold",0))
     result["actions"] = enemy.get("actions",[])
     result["battler_name"] = str(enemy.get("battler_name",""))
+    result["note"] = str(enemy.get("note",""))
     return result
 
 func apply_equipment(stats: Dictionary) -> Dictionary:
