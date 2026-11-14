@@ -74,5 +74,23 @@ func _run() -> void:
     fake_engine["engine"] = "Godot synthetic"
     if not _check(not DB.validate_runtime_witness(fake_engine).is_empty(),
             "synthetic Godot data cannot impersonate original VX witness"): return
+    var loaded: Dictionary = {"system":{"party_members":[1,2,5]}}
+    for name in DB.NAMES:
+        if name != "system":
+            loaded[name] = [null,{"id":1}]
+    if not _check(DB.validate_witness_against_tables(runtime_witness,loaded).is_empty(),
+            "post-Apply runtime count and starting party match actual loaded JSON"): return
+    var wrong_count: Dictionary = runtime_witness.duplicate(true)
+    wrong_count["table_counts"]["skills"] = 2
+    if not _check(not DB.validate_witness_against_tables(wrong_count,loaded).is_empty(),
+            "runtime count mismatch against loaded skills is rejected"): return
+    var wrong_party: Dictionary = runtime_witness.duplicate(true)
+    wrong_party["party_actor_ids"] = [1,5,2]
+    if not _check(not DB.validate_witness_against_tables(wrong_party,loaded).is_empty(),
+            "runtime party order mismatch against loaded System rejected"): return
+    var bad_table: Dictionary = loaded.duplicate(true)
+    bad_table["states"] = {"wrong":"shape"}
+    if not _check(not DB.validate_witness_against_tables(runtime_witness,bad_table).is_empty(),
+            "non-array state table is rejected before gameplay"): return
     print("FS boot-final 505 scripts / 22 MasterSetup / eleven-table SHA witness fail-closed PASS")
     quit(0)
