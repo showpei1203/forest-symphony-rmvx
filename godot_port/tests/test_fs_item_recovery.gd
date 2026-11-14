@@ -79,8 +79,8 @@ func _run() -> void:
             "unknown FS note fails closed without consumption"): return
     if not _check(not battle.use_item(actor,5,hero,true) and world.amount("item",5)==2,
             "state-adding item protected"): return
-    if not _check(not battle.use_item(actor,6,hero,false) and
-            battle.use_item(actor,6,hero,true) and world.amount("item",6)==1,
+    if not _check(not battle.use_item(hero,6,actor,false) and
+            battle.use_item(hero,6,actor,true) and world.amount("item",6)==1,
             "battle-only occasion rejected in MENU, allowed in battle"): return
     if not _check(not battle.use_item(actor,7,hero,false) and world.amount("item",7)==2,
             "common event item protected"): return
