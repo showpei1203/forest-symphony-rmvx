@@ -20,8 +20,7 @@ var source_atb_frame_fraction: float = 0.0
 var source_atb_rolls_for_test: Dictionary = {}
 var source_atb_advantage: String = ""
 var source_atb_wait: bool = false
-# Opt-in until real VX action/queue/charging timing is parity-certified.
-var source_atb_strict_actions: bool = false
+# Action queue enforcement is NOT implemented; no misleading opt-in toggle.
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
