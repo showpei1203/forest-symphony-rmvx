@@ -41,52 +41,52 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_vx_event_interpreter.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_vx_event_interpreter.gd
       - name: Run synthetic VX event-to-battle bridge
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_vx_battle_bridge.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_vx_battle_bridge.gd
       - name: Test FS Event Studio (compiler, pages, JSON, legacy compatibility)
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio.gd
       - name: Test native Event Studio editor controls
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_ui.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_ui.gd
       - name: Test 2D map marker and treasure chest sample
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_map_marker.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_map_marker.gd
       - name: Play native dialogue and choice UI test
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_dialogue_panel.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_dialogue_panel.gd
       - name: Play 2D story sandbox with chest and NPC
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_sandbox.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_sandbox.gd
       - name: Preview unsaved event page using actual dialogue player
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_preview.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_story_preview.gd
       - name: Preview unsaved page through the real event editor button
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_editor_preview.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_editor_preview.gd
       - name: Verify unapproved PC filesystem writes are blocked
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_cloud_guard.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_event_studio_cloud_guard.gd
       - name: Test dynamic action clips and legacy Kaduki compatible playback
         shell: bash
         timeout-minutes: 2
@@ -97,12 +97,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_equipment_vx.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_equipment_vx.gd
       - name: Test migrated MENU model (items, learned skills, equipment, formation)
         shell: bash
         run: |
           set -euo pipefail
-          /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_menu_model.gd
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_menu_model.gd
       - name: Test migrated MENU/BATTLE visual controls and selected-target actions
         shell: bash
         run: |
