@@ -30,3 +30,5 @@ Authority: Isolated A41 self-contained private Godot project at Google Drive fol
 - Fresh unzip native Godot import EXIT 0, real RX6700 XT native GPU QA EXIT 0, 11 distinct, no visual GPU difference from 12 original atlas cells.
 - [Native GPU 12-frame contact sheet](https://drive.google.com/drive/folders/18Inp2zA8-Y66hmmt1Kq7XezwDVRPq5mU) and private `qa/A41_NATIVE_GODOT_GPU_ATTACK.gif` in `qa`.
 - Art acceptance HOLD. Full FS Godot battle integration NOT RUN.
+### AUTHENTICATED DRIVE READBACK (post-package)
+An authenticated Google Drive download of the owner-only ZIP was verified independently of the G: mount: SHA256 `5ab0166260e313d5248b0f113e348f7b349615a026e390a614e4aa34c8fbacdc`, archive CRC no errors, exactly 61 files, and Google metadata `shared=false` (owner permission only).
