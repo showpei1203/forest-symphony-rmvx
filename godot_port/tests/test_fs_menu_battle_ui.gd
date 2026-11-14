@@ -62,7 +62,8 @@ func _run() -> void:
         "system":{"test_troop_id":1}
     }
     var world = State.new()
-    world.party_actor_ids = [1,2]
+    world.party_actor_ids.append(1)
+    world.party_actor_ids.append(2)
     world.gain_item("item",1,3)
     world.gain_item("weapon",2,1)
     var battle = Battle.new(source_db,world)
