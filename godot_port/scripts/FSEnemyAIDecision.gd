@@ -98,9 +98,10 @@ static func _basic_target(battle,side: String,rng: FSAIRandom) -> int:
     var battlers: Array[Dictionary] = battle.party if side == "actor" else battle.enemies
     for index in range(battlers.size()):
         var target: Dictionary = battlers[index]
-        if int(target.get("hp",0)) <= 0 or bool(
-                target.get("fs_target_unverified",false)):
-            return -1 if bool(target.get("fs_target_unverified",false)) else _empty_or_continue()
+        if int(target.get("hp",0)) <= 0:
+            continue
+        if bool(target.get("fs_target_unverified",false)):
+            return -1
         # #372 random_target honors Provoke/Disappear/weighted odds.
         # Do not approximate unknown states/Note restrictions as uniform.
         if not str(target.get("note","")).is_empty():
@@ -122,9 +123,6 @@ static func _basic_target(battle,side: String,rng: FSAIRandom) -> int:
             return candidates[n]
         draw -= weights[n]
     return candidates.back()
-
-static func _empty_or_continue() -> int:
-    return -2
 
 static func choose(battle,index: int,rng: FSAIRandom) -> Dictionary:
     if index < 0 or index >= battle.enemies.size():
