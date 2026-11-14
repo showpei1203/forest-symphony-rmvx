@@ -16,6 +16,7 @@ func _check(ok: bool,label: String) -> bool:
         push_error("FS #404 weather BATTLE integration FAIL: "+label)
         quit(1)
         return false
+    return true
 
 func _skill(id: int,note: String = "") -> Dictionary:
     return {"id":id,"name":"Skill%d" % id,"scope":1,"occasion":0,
