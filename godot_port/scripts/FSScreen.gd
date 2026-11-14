@@ -255,7 +255,9 @@ func _show_battle() -> void:
     if not battle.active:
         battle.start()
     _refresh_battle_status()
-    _add_button("普通攻擊", _player_attack)
+    _actor_selector(_show_battle)
+    _add_text("目前操作角色：" + str(battle.party[actor_index].get("name","?")) if actor_index >= 0 and actor_index < battle.party.size() else "尚無角色")
+    _add_button("普通攻擊（選擇敵人）", _player_attack)
     _add_button("防禦", _player_guard)
     _add_button("技能", _skill_action)
     _add_button("物品", _item_action)
@@ -271,37 +273,77 @@ func _refresh_battle_status() -> void:
         all_lines.append("%s HP:%s/%s" % [enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0)])
     status_label.text = "\n".join(PackedStringArray(all_lines))
 
+func _select_enemy_target(callback: Callable) -> void:
+    _clear_body()
+    title_label.text = "Forest Symphony / 選擇敵方目標"
+    for index in range(battle.enemies.size()):
+        var target: Dictionary = battle.enemies[index]
+        if int(target.get("hp",0)) <= 0:
+            continue
+        _add_button("%s HP %d/%d" % [
+            target.get("name","?"),target.get("hp",0),target.get("maxhp",0)],
+            func() -> void: callback.call(target))
+    _add_button("返回", _show_battle)
+
+func _select_ally_target(callback: Callable) -> void:
+    _clear_body()
+    title_label.text = "Forest Symphony / 選擇我方目標"
+    for index in range(battle.party.size()):
+        var target: Dictionary = battle.party[index]
+        _add_button("%s HP %d/%d" % [
+            target.get("name","?"),target.get("hp",0),target.get("maxhp",0)],
+            func() -> void: callback.call(target))
+    _add_button("返回", _show_battle)
+
 func _player_attack() -> void:
-    if battle.party.is_empty() or battle.enemies.is_empty() or not battle.active:
+    if actor_index < 0 or actor_index >= battle.party.size() or not battle.active:
+        _show_log("目前角色不可行動")
         return
-    battle.attack(battle.party[0], battle.enemies[0])
-    _refresh_battle_status()
+    _select_enemy_target(_do_player_attack)
+
+func _do_player_attack(target: Dictionary) -> void:
+    if battle.active and actor_index >= 0 and actor_index < battle.party.size():
+        battle.attack(battle.party[actor_index],target)
+    _show_battle()
 
 func _player_guard() -> void:
-    if battle.party.is_empty():
+    if actor_index < 0 or actor_index >= battle.party.size() or not battle.active:
         return
-    battle.party[0]["guarding"] = true
-    _show_log("防禦姿態（P1，待原版時序核對）")
+    battle.party[actor_index]["guarding"] = true
+    _show_log("防禦姿態（目前為 P1 UI 候選，ATB 時序未驗證）")
 
 func _skill_action() -> void:
     _clear_body()
-    _add_text("先選擇技能；僅基本 HP 技能公式已移植候選")
-    var source: Variant = db.tables.get("skills", [])
-    if source is Array:
-        var shown: int = 0
-        for row in source:
-            if row is Dictionary and not row.is_empty() and int(row.get("base_damage",0)) != 0:
-                var sid: int = int(row.get("id",0))
-                _add_button("%s MP:%d" % [row.get("name","?"), int(row.get("mp_cost",0))],
-                    func() -> void: _use_skill(sid))
-                shown += 1
-                if shown >= 10:
-                    break
+    title_label.text = "Forest Symphony / 戰鬥技能"
+    if actor_index < 0 or actor_index >= battle.party.size():
+        return
+    _add_text("目前角色：" + str(battle.party[actor_index].get("name","?")))
+    _add_text("僅列出角色從原 Class.learnings 習得的技能")
+    var rows: Array[Dictionary] = menu_model.known_skills(actor_index)
+    if rows.is_empty():
+        _add_text("角色未習得技能")
+    for row in rows:
+        var sid: int = int(row["id"])
+        _add_button("%s MP:%d" % [row["name"],row["mp_cost"]],
+            func() -> void: _select_skill_target(sid))
     _add_button("返回", _show_battle)
 
-func _use_skill(skill_id: int) -> void:
-    if battle.active and not battle.party.is_empty() and not battle.enemies.is_empty():
-        battle.use_skill(battle.party[0], battle.enemies[0], skill_id)
+func _select_skill_target(skill_id: int) -> void:
+    if not battle.active:
+        _show_log("尚未進入戰鬥")
+        return
+    var skill: Dictionary = db.record("skills",skill_id)
+    var scope: int = int(skill.get("scope",0))
+    if scope == 1:
+        _select_enemy_target(func(target: Dictionary) -> void: _use_skill(skill_id,target))
+    elif scope == 7:
+        _select_ally_target(func(target: Dictionary) -> void: _use_skill(skill_id,target))
+    else:
+        _show_log("此技能需多目標、隨機目標或特殊規則，尚未完成移植，不消耗 MP")
+
+func _use_skill(skill_id: int, target: Dictionary) -> void:
+    if battle.active and actor_index >= 0 and actor_index < battle.party.size():
+        battle.use_skill(battle.party[actor_index],target,skill_id)
     _show_battle()
 
 func _item_action() -> void:
