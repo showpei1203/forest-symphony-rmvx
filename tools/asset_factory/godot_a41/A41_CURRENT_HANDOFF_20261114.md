@@ -23,3 +23,10 @@ Authority: Isolated A41 self-contained private Godot project at Google Drive fol
 - ART HOLD: visually inspect actual native 1x motion and improve arm anatomy, sword consistency, whole-body inertia; do NOT seal as approved sprite.
 - A42: derive reusable 45° skeletal wrist/leg pose library; implement hitstop/VFX separate from art and target facing; integrate `attack_contact_anchor` into a dedicated battle migration branch ONLY after checking that branch latest code, with real ATB/skills/damage tests.
 - Full original RMVX E: remains intact; GitHub main and map/migration branches untouched; no paid credits.
+
+### FINAL VERIFIED CLOUD DELIVERY
+- [Owner-only A41 COMPLETE PROJECT](https://drive.google.com/drive/folders/18Inp2zA8-Y66hmmt1Kq7XezwDVRPq5mU)
+- [Owner-only A41 full ZIP, 61 entries, 211,304 bytes](https://drive.google.com/file/d/1svCyNnHsN4arYoQ-vG-U0TkQAgS2ZwlU/view) with SHA256 `5ab0166260e313d5248b0f113e348f7b349615a026e390a614e4aa34c8fbacdc`; ZIP CRC PASS, files SHA read back across fresh unzip PASS.
+- Fresh unzip native Godot import EXIT 0, real RX6700 XT native GPU QA EXIT 0, 11 distinct, no visual GPU difference from 12 original atlas cells.
+- [Native GPU 12-frame contact sheet](https://drive.google.com/drive/folders/18Inp2zA8-Y66hmmt1Kq7XezwDVRPq5mU) and private `qa/A41_NATIVE_GODOT_GPU_ATTACK.gif` in `qa`.
+- Art acceptance HOLD. Full FS Godot battle integration NOT RUN.
