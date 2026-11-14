@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "asset_id": "fs.actor01.run.a35_8frame",
+  "source_stage": "A35 PixelLab bidirectional Interpolate with exact approved A62 frames 0 and 4",
+  "source_file_sha256": "ec0c7a59fb5983f13b1b3385323218edf0e77c23890db074c18c6e114e74408b",
+  "runtime": "Godot 4.7.2",
+  "grid": {
+    "frame_width": 64,
+    "frame_height": 64,
+    "columns": 4,
+    "rows": 2,
+    "frame_count": 8,
+    "alpha": "binary",
+    "sampling": "nearest"
+  },
+  "source_visual_size": 48,
+  "art_gate": "HOLD: foot-stride F6 and glove F7 imperfections are not approved",
+  "animation_profiles": {
+    "run_raw": {
+      "fps": 8.0,
+      "durations": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "loop": true
+    },
+    "run_tuned": {
+      "fps": 10.0,
+      "durations": [
+        0.9,
+        1.0,
+        1.0,
+        1.0,
+        0.9,
+        1.0,
+        0.7,
+        0.8
+      ],
+      "loop": true
+    }
+  },
+  "approved_exact_keyframe_indices": [
+    0,
+    4
+  ],
+  "unavailable_states": [
+    "idle",
+    "attack",
+    "cast",
+    "hurt",
+    "death"
+  ],
+  "integrity_policy": "Never synthesize missing states, never replace source image without individual art sign-off"
+}
