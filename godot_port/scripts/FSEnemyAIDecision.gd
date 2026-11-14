@@ -97,6 +97,10 @@ static func choose(battle,index: int,rng: FSAIRandom) -> Dictionary:
     var enemy: Dictionary = battle.enemies[index]
     if int(enemy.get("hp",0)) <= 0:
         return _fail("enemy defeated")
+    if bool(enemy.get("fs_boss_phase_effects_pending",false)):
+        # IDs are only SOURCE INTENTS; original State effects and alias
+        # behavior are still missing, so don't execute invented Boss AI.
+        return _fail("Boss phase State effects not yet applied/verified")
     if bool(enemy.get("fs_enemy_ai_context_pending",false)) or bool(
             enemy.get("fs_enemy_ai_state_pattern_pending",false)):
         return _fail("Boss/context/state AI runtime authority missing")

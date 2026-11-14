@@ -61,6 +61,12 @@ func request(battle, index: int, kind: String, target_index: int = -1,
         target = battle.party[target_index]
     if target_side != "none" and int(target.get("hp",0)) <= 0:
         return false
+    # Source phase IDs are pending, NOT actual status effects. A Boss
+    # shield/phase awaiting effect parity cannot be damaged through this
+    # provisional generic action queue.
+    if not target.is_empty() and bool(
+            target.get("fs_boss_phase_effects_pending",false)):
+        return false
     if target_side == "enemy":
         var priority: Dictionary = FSTargetPriority.player_enemy_candidates(
             battle,object_id if kind=="skill" else 0)
@@ -209,7 +215,8 @@ func _resolve_enemy_ready(battle) -> int:
         if kind == "guard":
             enemy["guarding"] = true
             success = true
-        elif not target.is_empty() and int(target.get("hp",0)) > 0:
+        elif not target.is_empty() and int(target.get("hp",0)) > 0 and (
+                not bool(target.get("fs_boss_phase_effects_pending",false))):
             if kind == "attack" and battle.party.has(target):
                 enemy["guarding"] = false
                 battle.attack(enemy,target)
@@ -269,7 +276,8 @@ func resolve_ready(battle) -> int:
             actor["guarding"] = true
             success = true
             battle.changed.emit("%s 防禦姿態成立" % actor.get("name","角色"))
-        elif legal_target and not target.is_empty() and int(target.get("hp",0)) > 0:
+        elif legal_target and not target.is_empty() and int(target.get("hp",0)) > 0 and (
+                not bool(target.get("fs_boss_phase_effects_pending",false))):
             if kind == "attack" and side == "enemy":
                 actor["guarding"] = false
                 battle.attack(actor,target)

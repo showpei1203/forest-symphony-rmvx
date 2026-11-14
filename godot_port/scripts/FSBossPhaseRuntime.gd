@@ -65,19 +65,20 @@ func _write(enemy: Dictionary,boss_id: int,id: int,operation: String,
     return true
 
 func _attempt_atomic(enemy: Dictionary,boss_id: int,
-        removals: Array[int],additions: Array[int],db: FSDatabase) -> bool:
+        removals: Array,additions: Array,db: FSDatabase) -> bool:
     # Source #401 uses real Game_Battler.add_state which invokes
     # multiple aliases. We only record consistent planned changes.
     # Validate EVERY new State before changing a single planned ID.
-    for id in additions:
+    for v in additions:
+        var id: int = int(v)
         if not _ids(enemy).has(id) and db.record("states",id).is_empty():
             _error("Boss%d 狀態轉換缺少 State%d，整批意圖已拒絕" % [boss_id,id])
             return false
-    for id in removals:
-        if not _write(enemy,boss_id,id,"remove",db):
+    for value in removals:
+        if not _write(enemy,boss_id,int(value),"remove",db):
             return false
-    for id in additions:
-        if not _write(enemy,boss_id,id,"add",db):
+    for value in additions:
+        if not _write(enemy,boss_id,int(value),"add",db):
             return false
     return true
 
