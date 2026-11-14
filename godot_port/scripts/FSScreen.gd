@@ -22,7 +22,7 @@ func _ready() -> void:
     db = FS_DB.new()
     if not db.load_all():
         title_label.text = "Forest Symphony｜原始資料未載入"
-        status_label.text = "尚未匯入 RVData 轉換後的 JSON。\n" + "\n".join(PackedStringArray(db.errors)) + "\n\n這是正式移植保護機制，不使用假角色數值。"
+        status_label.text = "缺少啟動後 FS 正式資料與原 VX 權威證據。\n" + "\n".join(PackedStringArray(db.errors)) + "\n\n只匯入原始 RVData 不足以完成驗證；不使用假角色數值。"
         return
     world = FSGameState.new()
     var members: Array = db.system().get("party_members", [])
@@ -77,6 +77,14 @@ func _build_shell() -> void:
     log_label.text = "狀態：來源資料等待驗證"
     layout.add_child(log_label)
 
+func _process(delta: float) -> void:
+    # The actual source Tankentai source-frame gauge now ticks in real gameplay
+    # time. UI refresh does NOT execute actions or grant free player commands.
+    if battle == null or not battle.active or view_name != "BATTLE":
+        return
+    battle.advance_atb(delta)
+    _refresh_battle_status()
+
 func _change(tab: String) -> void:
     view_name = tab
     if battle == null:
@@ -110,6 +118,7 @@ func _set_original_background(file_name: String) -> void:
     original_background.texture = load(path) as Texture2D if ResourceLoader.exists(path) else null
 
 func _show_menu() -> void:
+    view_name = "MENU"
     _set_original_background("MenuBack_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / MENU"
@@ -235,6 +244,7 @@ func _formation_clicked(index: int) -> void:
     _show_formation()
 
 func _show_battle() -> void:
+    view_name = "BATTLE"
     if battle == null:
         return
     # Actual battlefield layers are selected by the original BattleScape authority.
@@ -258,6 +268,7 @@ func _show_battle() -> void:
     if not battle.active:
         battle.start()
     _refresh_battle_status()
+    _add_text("ATB / ACT：依原 Tankentai 60fps 逐幀推進；完整行動排程仍待驗收")
     _actor_selector(_show_battle)
     _add_text("目前操作角色：" + str(battle.party[actor_index].get("name","?")) if actor_index >= 0 and actor_index < battle.party.size() else "尚無角色")
     _add_button("普通攻擊（選擇敵人）", _player_attack)
@@ -271,10 +282,30 @@ func _refresh_battle_status() -> void:
         return
     var all_lines: Array[String] = []
     for actor in battle.party:
-        all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s" % [actor.get("name","?"),actor.get("hp",0),actor.get("maxhp",0),actor.get("mp",0),actor.get("maxmp",0),actor.get("od",0)])
+        var gauge: String = _atb_status_fragment(actor)
+        all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s %s" % [
+            actor.get("name","?"),actor.get("hp",0),actor.get("maxhp",0),
+            actor.get("mp",0),actor.get("maxmp",0),actor.get("od",0),gauge])
     for enemy in battle.enemies:
-        all_lines.append("%s HP:%s/%s" % [enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0)])
+        all_lines.append("%s HP:%s/%s %s" % [
+            enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0),
+            _atb_status_fragment(enemy)])
     status_label.text = "\n".join(PackedStringArray(all_lines))
+
+func _atb_status_fragment(battler: Dictionary) -> String:
+    if not battle.source_atb_initialized:
+        return "ATB:待開始"
+    var count: int = int(battler.get("source_atb_count",0))
+    var pct: int = clampi(int(count / 10.0),-100,100)
+    if bool(battler.get("source_act_active",false)):
+        return "ACT:完成"
+    if not bool(battler.get("source_atb_count_up",true)) and not bool(
+            battler.get("source_at_active",false)):
+        var act_pct: int = clampi(int(int(battler.get("source_act_count",0)) / 10.0),0,100)
+        return "ACT:%d%%" % act_pct
+    if bool(battler.get("source_at_active",false)):
+        return "ATB:就緒"
+    return "ATB:%d%%" % pct
 
 func _select_enemy_target(callback: Callable) -> void:
     _clear_body()
