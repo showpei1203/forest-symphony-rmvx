@@ -169,9 +169,11 @@ func _show_items() -> void:
     if rows.is_empty():
         _add_text("尚無物品")
     for row in rows:
-        _add_text("%s (#%d) ×%d｜%s" % [
-            row["name"],row["id"],row["count"],row["description"]])
-    _add_text("物品效果未通過原規則驗收前不消耗道具")
+        var item_id: int = int(row["id"])
+        _add_button("%s (#%d) ×%d｜%s" % [
+            row["name"],row["id"],row["count"],row["description"]],
+            func() -> void: _select_item_target(item_id,false))
+    _add_text("只執行已核對的單體 HP／MP 回復；其他效果拒絕且不消耗")
     _add_button("返回選單", _show_menu)
 
 func _show_equipment() -> void:
@@ -348,8 +350,47 @@ func _use_skill(skill_id: int, target: Dictionary) -> void:
 
 func _item_action() -> void:
     _clear_body()
-    _add_text("物品效果原始解析尚未通過，故不會錯誤消耗物品。")
-    _add_button("返回", _show_battle)
+    title_label.text = "Forest Symphony / 戰鬥物品"
+    _add_text("僅可執行源碼基礎規則已驗證的單體 HP／MP 回復")
+    for row in menu_model.inventory_rows("item"):
+        var item_id: int = int(row["id"])
+        _add_button("%s ×%d" % [row["name"],row["count"]],
+            func() -> void: _select_item_target(item_id,true))
+    _add_button("返回戰鬥", _show_battle)
+
+func _select_item_target(item_id: int, in_battle: bool) -> void:
+    if in_battle and not battle.active:
+        _show_log("戰鬥已結束，無法使用物品")
+        return
+    _clear_body()
+    title_label.text = "Forest Symphony / 物品指定目標"
+    var item: Dictionary = db.record("items",item_id)
+    _add_text("%s：選擇我方角色" % str(item.get("name","未知物品")))
+    for i in range(battle.party.size()):
+        var target: Dictionary = battle.party[i]
+        if int(target.get("hp",0)) <= 0:
+            continue
+        _add_button("%s HP:%d/%d MP:%d/%d" % [
+            target.get("name","?"),target.get("hp",0),target.get("maxhp",0),
+            target.get("mp",0),target.get("maxmp",0)],
+            func() -> void: _use_item_from_ui(item_id,target,in_battle))
+    if in_battle:
+        _add_button("取消", _item_action)
+    else:
+        _add_button("取消", _show_items)
+
+func _use_item_from_ui(item_id: int, target: Dictionary, in_battle: bool) -> void:
+    if actor_index < 0 or actor_index >= battle.party.size():
+        _show_log("角色不在隊伍中")
+        return
+    var result: bool = battle.use_item(target,item_id,battle.party[actor_index],in_battle)
+    if in_battle:
+        _item_action()
+    else:
+        _show_items()
+    if not result:
+        _show_log("物品未使用，請檢查上方物品限制；沒有消耗背包")
+
 
 func _show_log(message: String) -> void:
     log_label.text = message
