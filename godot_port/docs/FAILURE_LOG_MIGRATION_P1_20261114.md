@@ -101,3 +101,18 @@
 - 首次啟用 UI ATB command gate 時，舊版 `test_fs_menu_battle_ui` 仍預期 ATB 未滿就能選敵人，CI 43551735116 的 `attack opens target choice` 失敗是新 gate 正常拒絕。更新 fixture 使角色跑到 source READY，再 assert ACT 蓄滿後才扣技能 MP、再執行物品消耗。最新全 22 native PASS。
 - 對 `FSActionQueue` 新增總計 1 個核心 regression，包含第 374 段失去 readiness 中斷與多種資源交易失敗防護。未藉由更動測試來繞過 source-gate。
 - 最新原生/CI https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551938441
+
+## 2026-11-14 敵方 AI 串接與 QA
+| 項目 | 狀態 | 驗證依據與限制 |
+|---|---|---|
+| #211 `CONDITION_ROULETTE=true` + #210 test RNG LCG | **PASS native synthetic** | 順序加權輪盤 + seed=12345 [6,5,3,573] + trace tag，非 stock VX ratings_max-3 |
+| #406 Enemy Action Distribution for 600–745 | **PASS synthetic** | Party/BREAK/Note/previous skill rate, 15~90 clamp, off tag, fixed chance |
+| Enemy readiness → choose → ACT → execute → recharge | **PASS native synthetic** | `FSActionQueue`, #231 60 fps，敵人不可能在 ATB 未滿時先造成傷害 |
+| Enemy Scope1 attack／Scope7 friend recovery & late MP | **PASS native synthetic** | `FSBattle.skill_preflight` 修正敵我相對範圍，執行前成本與目標重驗 |
+| -ATB 中斷／敵方目標死亡／雙敵人先後 | **PASS native synthetic** | 負 ATB 清除 queued ACT，死人不消費；兩敵同時 ready 分別下一來源幀執行 |
+| #401 Boss action provider／#211 Skill83/Turn/121..130／#372 Provoke+Threat | **NOT PORTED** | 明確 fail closed 不假裝策略/目標；不能當正式 AI parity |
+| 真 FS 後套用資料/VX witness/真原素材 | **NOT DONE** | 原私有 data 未透過核准 Drive 流程完整帶入；P1 Seal NO |
+### Failure Log
+- **Run 43553128766**：原 `test_fs_enemy_atb_queue` 的同時就緒測試假設「第二隻排隊時第一隻仍在 pending」，但零蓄力攻擊在選招後 frame+1 就能結算，因此 frame90 第一隻排隊、frame91 第一隻完成並排第二隻、frame92 第二隻完成。修正為觀測正確逐幀狀態，沒有降低來源規則嚴格性。
+- **加強回歸**：新增 enemy scope7 對自己回復與 source ACT10幀成本、蓄力時敵方目標死亡未扣 MP。完整 24 組原生 PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43553309465。
+- 原始 E 槽唯讀，`main`、`develop` 不允許改動，公開 GitHub 不含使用者私有 `.rvdata`/PNG。文件/程式已上傳 feature branch。

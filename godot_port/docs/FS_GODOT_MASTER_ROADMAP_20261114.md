@@ -77,3 +77,8 @@
 - **實作**：`FSActionQueue` 將 `FSBattle` 的 Source ATB READY→玩家 Attack/Guard/Skill/Item 指令→ACT source charge→單次執行/依 source recharge 重置，真正套用於 `FSScreen` 的戰鬥按鈕。固定/百分比 MP 成本交給 `FSSkillCostRules` quote；物品走 `FSItemRules`。只有 ACT 結算時才支付 MP／Item，失敗或中斷不扣。選敵/己/技能/物品時以原 #230/#231 wait 預設凍結 ATB。ACT 中斷後防止佇列重放。
 - **Godot 4.7.2 自動 QA**：新 `test_fs_atb_action_queue.gd` + 修改老 UI 單體測試；既有 21 + 1 = 22 native tests PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43551938441。新 Gate 規格 `docs/FS_ATB_ACT_COMMAND_QUEUE_GATE_20261114.md`。
 - **未完成**：對 `Game_Enemy` 真 AI 與 action queue 的自動派送、Force/Union/Break/Cover/OD 實際付款與動作連動、傷害最終原版 505 aliases、狀態與敵 AI Turn、原 VX screenshot 測試。標準原始資料庫的 post-Apply 版本與私人圖像未到位；P1 Seal 仍 NO。Event Studio 保持長期。
+
+## M3 敵方 AI/ATB 自動行動子系統（2026-11-14 最新）
+- 原版 #211 的 Enhanced Enemy Action roulette（而非 VX stock rating），#406 的特定敵人攻擊分布機率，#210 deterministic test RNG 都已來源比對並保守移植至 `FSEnemyAIDecision` / `FSAIRandom`。特定不完整 AI 事件/Target Priority/#401 Boss runtime context 優先 fail-closed。
+- `FSActionQueue` 已包含 actor 和 enemy 兩邊來源形狀的 pending ACT；敵方 ATB Ready 後自動選技能/攻擊、防禦，經 ACT 充能才套用 HP/MP 效果及 source ATB recharge。 `FSBattle.advance_atb` 依每個 60Hz source frame 排程，而不是在 delta 後整批跳過。敵方 scope1 對玩家、scope7 對敵方友軍，原相對技能定義已修復。
+- 合成 native 24 組 Godot 4.7.2 PASS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43553309465。下一步 #401 Boss AI/召喚群組、#211 composite conditions/turn_count、#372 TargetPriority/Provoke、damage/OD/Break/Cover 原 505 最終有效邏輯；真後套用 11 庫+美術資料到私人 Drive，對應的原 VX Runtime witness。完整 P1 遠未封版。
