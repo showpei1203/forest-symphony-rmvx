@@ -81,6 +81,8 @@ func _run() -> void:
     boss["fs_phase_state_intents"] = [151,140,142]
     boss["hp"] = 351
     battle.advance_atb(1.0/60.0)
+    if not _check(not bool(boss.get("fs_law_cycle_authority_pending",true)),
+            "existing law IDs clear stale initializer request"): return
     if not _check(boss["fs_phase_state_intents"]==[151,140,142],
             "35.1% remains second phase and retains any law intents"): return
     boss["hp"] = 350
@@ -106,6 +108,14 @@ func _run() -> void:
             "player queue refuses damage to Boss with unapplied State effects"): return
     if not _check(not AI.choose(battle,0,battle.action_queue.ai_rng).get("ok",false),
             "Boss AI fails closed while its actual Phase effects unverified"): return
+
+    # Invalid HP is not a legal source phase witness: no partial State150.
+    var invalid = _battle(db,524)
+    invalid.enemies[0]["maxhp"] = 0
+    invalid.boss_runtime.phase_runtime.tick(invalid,{})
+    if not _check(invalid.enemies[0].get("fs_phase_state_intents",[]).is_empty() and
+            not invalid.boss_runtime.phase_runtime.failures.is_empty(),
+            "invalid maxhp cannot create initial phase intent"): return
 
     var missing_db = _db()
     missing_db.tables["states"][151] = null
