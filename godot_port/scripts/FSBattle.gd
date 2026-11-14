@@ -98,11 +98,16 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
     if int(skill.get("base_damage",0)) < 0 and (int(skill.get("atk_f",0)) != 0 or int(skill.get("spi_f",0)) != 0):
         changed.emit("治療技能的屬性加成尚未移植，已阻擋且不消耗 MP")
         return false
-    if int(skill.get("scope",0)) == 1 and bool(target.get("actor",false)):
-        changed.emit("單體敵人技能不得以我方為目標")
+    # Source VX scope1 targets OPPONENTS and scope7 targets FRIENDS,
+    # relative to the user. Enemy AI's party targets are the opposite of
+    # actors' enemy targets, so absolute actor flags were incorrect.
+    var same_side: bool = bool(user.get("actor",false)) == bool(
+        target.get("actor",false))
+    if int(skill.get("scope",0)) == 1 and same_side:
+        changed.emit("單體敵方技能必須選擇施術者的敵對陣營")
         return false
-    if int(skill.get("scope",0)) == 7 and not bool(target.get("actor",false)):
-        changed.emit("單體我方技能不得以敵人為目標")
+    if int(skill.get("scope",0)) == 7 and not same_side:
+        changed.emit("單體友方技能必須選擇施術者的同陣營")
         return false
     # Keep quote and payment synchronized: reading raw skill.mp_cost here
     # would bypass FS_SkillCost_Authority #411 fixed/percent tags.
@@ -239,11 +244,19 @@ func advance_atb(delta: float) -> void:
     if steps <= 0:
         return
     source_atb_frame_fraction -= float(steps)
-    FSTankentaiATBCore.advance_frames(party,enemies,steps,source_atb_wait)
-    if not source_atb_wait:
-        # Complete at most one valid ACT action per update; input command
-        # selection never spends resources before ACT is fully charged.
+    # Source #231 update_atb scans Party+Troop in their source order
+    # EACH frame; processing a multi-frame delta in one lump lets enemies
+    # skip their turn or delay the final attack until the next render frame.
+    for frame in range(steps):
+        FSTankentaiATBCore.advance_frames(party,enemies,1,source_atb_wait)
+        if source_atb_wait or not active:
+            continue
+        action_queue.cancel_interrupted(self)
         action_queue.resolve_ready(self)
+        if active:
+            # Enemy actions are chosen after ATB readiness, then must earn
+            # ACT charge in subsequent source frames, not in selection frame.
+            action_queue.schedule_enemy(self)
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
         object_id: int = 0) -> bool:
