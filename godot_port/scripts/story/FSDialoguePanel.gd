@@ -132,6 +132,11 @@ func _on_choices(choices: Array, cancel_type: int) -> void:
     _choices = choices.duplicate(true)
     _cancel_type = cancel_type
     _place_panel(2,0)
+    # Expand for the longest VX list (four options plus optional cancel).
+    # 544x416 viewport leaves enough room while avoiding overflowing the panel.
+    var panel_height: int = 76 + choices.size()*34 + (36 if cancel_type > 0 else 0)
+    panel.offset_top = -panel_height - 8
+    panel.offset_bottom = -8
     message.text = "請選擇："
     for child in choice_list.get_children():
         choice_list.remove_child(child)
