@@ -1,5 +1,5 @@
 # FS AI Asset Factory｜唯一現行施工規範
-版本：ACTIVE-MASTER v1.3｜2026-11-14｜適用：RPG Maker VX／RGSS2／Forest Symphony
+版本：ACTIVE-MASTER v1.3｜2026-11-14｜適用：Forest Symphony（Godot 主開發／VX 歷史來源相容）
 狀態：**ACTIVE on Draft PR #15 only; not merged into main**。更新規範不代表已生產合格美術。
 
 > **從本檔開始。** 未來新對話先讀本檔、P0 雲端保護，再讀 `docs/asset_factory/CURRENT_HANDOFF.md` 查目前工程進度。其他 SOP／Axx 文件不是可自行覆寫本檔的「最新規則」。
@@ -42,7 +42,7 @@
 **使用者已明確指定：Forest Symphony（FS）後續以 Godot 為主要遊戲開發與地圖編輯引擎，VX 的功能與戰鬥系統逐步遷移。** 此節在「**未來主執行引擎**」上覆寫本檔原來 Game.exe 必須是每張新地圖最終驗收的假設，但 P0、來源與 SHA、美術 Master/F0 保真、語意遮擋、可走區、1x Art、Failure Log、Handoff 的驗收仍完全有效。
 
 - **Godot 版本：4.7.2 stable**（2026-11-13 官方最新穩定；4.8 仍 beta）。本輪 Godot 主開發分支為 [Draft PR #16](https://github.com/showpei1203/forest-symphony-rmvx/pull/16)，與此 Asset Factory Draft PR #15 分工、皆不可未授權合併 main。
-- **地圖主線：** 完整高品質 Master → Godot `Sprite2D` FullGround（原檔不破壞），獨立同源原像素前景物件及可編輯深度 → 每個角色局部遮擋；`TileMapLayer` 為 32px 邏輯碰撞／地面語意，`Camera2D`、`CharacterBody2D` 及導航由 Godot 主導。此決策不允許把已核准高品質地圖切回低品質拼貼。
+- **地圖主線（依 v1.3 0c 修正）：** 新地圖先創作完整 **Ground-only** → 獨立創作/保存完整 **PAR RGBA 物件** → Godot `Sprite2D`/`YSort` 原生合成、角色/根部碰撞與 `TileMapLayer` 32px 地圖語意。原 Master-first/同源 RGB 切割只保留 A29～A31 歷史工程證據，**不是新地圖生產規則**。`Camera2D`、`CharacterBody2D` 與導航由 Godot 主導；嚴禁以可分層為由犧牲 Ground3 美術水準。
 - **新的兩套驗收各自記錄：** `GODOT_SCENE_PARSE`、`GODOT_NATIVE_F0_MAP`、`GODOT_CHARACTER_CAMERA`、`GODOT_OCCLUSION_PIXEL`、`GODOT_COLLISION_NAV`、`USER_ART`、`CLOUD_SHA`；舊 `VX_GAME_EXE` 保留為原始遊戲行為／功能參照與歷史證據，**不是新 Godot 地圖封版的前置關卡**。不能反過來宣稱 Godot CI 通過就等於原版 VX 相容或美術過關。
 - **已完成 A29 Pilot：** 主圖 1280×928、核准 Actor01 F0、A28 三個同源 PAR 物件，真正 Godot 4.7.2 雲端 scene+code CI success、隔離引擎真實四站位 197/0/29/0 同原像素、14 項原生 source/move/camera 檢查與四張 544×416 Godot framebuffer 截圖。**ART HOLD、碰撞 TileMapLayer 未繪製、完整人物動畫/任務/ATB/技能/召喚等仍未移植、正式產品 SEAL NO**。Private owner-only Drive 請查 PR #16 及其 Handoff。
 - **漸進遷移：** 先地圖美術/分層/碰撞/導航，再角色/怪物、事件/存檔、最後六角色戰鬥（Tankentai 表現、ATB、Break、Cover、Overdrive、召喚），逐項保留原 VX 功能對照測試。
