@@ -44,6 +44,20 @@ func load_all(folder: String = "res://data") -> bool:
                     hashes[name] = FileAccess.get_sha256(folder.path_join(name + ".json")).to_lower()
                 for problem in validate_boot_manifest(manifest,hashes):
                     errors.append(problem)
+                # A SHA string in JSON is only a claim. Verify the actual
+                # retained VX post-Apply runtime witness bytes as well.
+                var witness_path: String = folder.path_join("fs_boot_final_runtime_witness.json")
+                if not FileAccess.file_exists(witness_path):
+                    errors.append("缺少實際 VX 啟動後執行證據：" + witness_path)
+                else:
+                    var witness_sha: String = FileAccess.get_sha256(witness_path).to_lower()
+                    if witness_sha != str(manifest.get("vx_runtime_witness_sha256","")):
+                        errors.append("VX 執行證據檔案 SHA256 不符合 manifest")
+                    var witness_data: Variant = JSON.parse_string(FileAccess.get_file_as_string(witness_path))
+                    if not (witness_data is Dictionary):
+                        errors.append("VX 執行證據不是合法 JSON 物件")
+                    elif str(witness_data.get("stage","")) != "post_FS_DB_AUTOSET.apply_all":
+                        errors.append("VX 執行證據不是 FS_DB_AUTOSET.apply_all 之後的快照")
     if not errors.is_empty():
         # Never accidentally allow partial raw data through load_all() after
         # source-consistency failure. In-memory synthetic test tables bypass this.
