@@ -12,6 +12,16 @@ var inventory: Dictionary = {}  # keys "item:<id>" / "weapon:<id>" / "armor:<id>
 var world: FSGameState
 var active: bool = false
 var pending_actor: int = -1
+# Godot 60fps phase clock feeds original Tankentai 1.2c integer gauges.
+# The timing/action queue as a whole is NOT yet source-final; source damage
+# still needs effective 505 RGSS2 override witness.
+var source_atb_initialized: bool = false
+var source_atb_frame_fraction: float = 0.0
+var source_atb_rolls_for_test: Dictionary = {}
+var source_atb_advantage: String = ""
+var source_atb_wait: bool = false
+# Opt-in until real VX action/queue/charging timing is parity-certified.
+var source_atb_strict_actions: bool = false
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
@@ -50,6 +60,11 @@ func start() -> bool:
     var allies_alive: bool = party.any(func(x: Dictionary) -> bool: return int(x.get("hp",0)) > 0)
     var enemies_alive: bool = enemies.any(func(x: Dictionary) -> bool: return int(x.get("hp",0)) > 0)
     active = allies_alive and enemies_alive
+    if active and not source_atb_initialized:
+        FSTankentaiATBCore.prepare(party,enemies,db,
+            source_atb_rolls_for_test,source_atb_advantage)
+        source_atb_initialized = true
+        source_atb_frame_fraction = 0.0
     changed.emit("進入戰鬥" if active else "未選擇存活隊伍／敵人")
     return active
 
@@ -204,13 +219,37 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     return true
 
 func advance_atb(delta: float) -> void:
-    if not active:
+    if not active or not source_atb_initialized or delta <= 0.0:
         return
-    # PLACEHOLDER: real FS ATB (1.2c)-0627 formula MUST supersede this.
-    for battler in party + enemies:
-        if int(battler["hp"]) <= 0:
-            continue
-        battler["atb"] = minf(1.0, float(battler.get("atb", 0.0)) + delta * (0.08 + float(battler.get("agi", 1)) / 800.0))
+    # Real Tankentai #231 gauge increments are PER SOURCE FRAME, not an
+    # invented continuous float rate. Accumulate fractional 60fps frames.
+    source_atb_frame_fraction += delta * float(FSTankentaiATBCore.FRAMES_PER_SECOND)
+    var steps: int = int(floor(source_atb_frame_fraction+0.000001))
+    if steps <= 0:
+        return
+    source_atb_frame_fraction -= float(steps)
+    FSTankentaiATBCore.advance_frames(party,enemies,steps,source_atb_wait)
+
+func begin_source_atb_charge(battler: Dictionary,kind: String = "attack",
+        object_id: int = 0) -> bool:
+    if not active or not source_atb_initialized:
+        return false
+    if not party.has(battler) and not enemies.has(battler):
+        return false
+    return FSTankentaiATBCore.begin_charge(battler,kind,object_id)
+
+func source_action_charged(battler: Dictionary) -> bool:
+    return source_atb_initialized and bool(battler.get("source_act_active",false))
+
+func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
+        object_id: int = 0) -> bool:
+    # Charge completion is distinct from battle result calculation.
+    if not source_action_charged(battler):
+        return false
+    FSTankentaiATBCore.reset_after_action(battler,kind,object_id,db)
+    if enemies.has(battler):
+        enemy_valid_action_completed(battler)
+    return true
 
 func apply_combo_atb_shift(enemy: Dictionary,delta: int,
         attacker: Dictionary = {},state_id: int = 0) -> Dictionary:
@@ -233,6 +272,8 @@ func enemy_valid_action_completed(enemy: Dictionary) -> int:
     return FSATBResistance.after_valid_enemy_action(enemy)
 
 func ready_actors() -> Array[int]:
+    if source_atb_initialized:
+        return FSTankentaiATBCore.ready_actors(party)
     var out: Array[int] = []
     for i in range(party.size()):
         if int(party[i]["hp"]) > 0 and float(party[i].get("atb", 0.0)) >= 1.0:
@@ -240,6 +281,8 @@ func ready_actors() -> Array[int]:
     return out
 
 func ready_enemies() -> Array[int]:
+    if source_atb_initialized:
+        return FSTankentaiATBCore.ready_enemies(enemies)
     var out: Array[int] = []
     for i in range(enemies.size()):
         if int(enemies[i]["hp"]) > 0 and float(enemies[i].get("atb", 0.0)) >= 1.0:
