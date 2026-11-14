@@ -11,3 +11,5 @@ Full world 2560×1856; original generated Ground 1478×1064 resized with nearest
 - User request: prioritize visuals, large maps, six biome maze/village art. Events, NPC dialogue, story and combat are owned by another conversation.
 
 See [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md) and [A36 detailed failure log](docs/A36_LARGE_FOREST_GROUNDFIRST_HANDOFF.md). **Art HOLD / Collision HOLD / Formal seal NO.**
+
+**Safety:** The R2 builder refuses to run if `FS_A36_OUT_DIR` already exists. Use an entirely new destination directory per rebuild. The published R1 ZIP is historical only; [safe R2 ZIP](https://drive.google.com/file/d/1LgUCJRi8i-NDz-EC1roXHWnBjNysjtuu/view) is authoritative.

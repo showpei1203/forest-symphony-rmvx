@@ -15,3 +15,8 @@
 - **Owner-only Drive 完整 212-file Godot A36 工程**：[A36 full private ZIP](https://drive.google.com/file/d/1_RuQUGpURoASJmJ6_H0tEtNESz_FjmQU/view)，**55,657,235 bytes**，SHA256 `1877cfef806b907243b9bc4714713422d484e3ae651314e09094cc385be6c760`；上傳、重新下載、ZIP CRC、211 個內部檔案 SHA256 **PASS**。
 - **真正 Godot 4.7.2 原生 1x 全圖（2560×1856）**：[Drive 原生完整 PNG](https://drive.google.com/file/d/1Hq5WLRNpBj91k90B5PVxhBpLPQo2lv3i/view)，另有 [手機全圖預覽](https://drive.google.com/file/d/1ZSawHsLoC7u9GGKwFY5XQAz9ZvxhBnxJ/view)、[原生角色樹前後 A/B](https://drive.google.com/file/d/1KjCPdJZpH_ARs9Hjcqrn3g6mQx-gZc6u/view)。
 - [A36 詳細 QA、Failure Log 與接續工序 Drive 鏡像](https://drive.google.com/file/d/18Wp5Io5UHfMuwwNj-KPHuNzYKDyCl9rP/view)。私人像素素材無公開到 GitHub。正式 1x 美術、溪流碰撞與水動畫仍 **HOLD/NOT_RUN**。
+
+### A36 R2 安全修訂（取代 R1 作為正式下載）
+
+- **正式主封包改用 [A36 R2 owner-only Drive](https://drive.google.com/file/d/1LgUCJRi8i-NDz-EC1roXHWnBjNysjtuu/view)**：**212 files, 55,658,735 bytes, SHA256 `6f7bbcccc8bff0e9389039dda0e77d534196c48382716c13fb7539bb32cff58c`**。Drive upload/download raw、整包 ZIP CRC、211 file SHA **PASS**。R1 保留為舊記錄，**請勿繼續使用 R1 的生成腳本**。
+- R2 將生成器改為 **拒絕任何已存在輸出資料夾**（不會 `rmtree`、覆寫來源或使用者專案），另用全新隔離資料夾冷重建，Ground、Scene、Manifest、SHADOW **4/4 SHA byte-exact**；第二次對相同目的地執行會在寫入前拒絕，該拒絕為預期的 P0 安全測試 PASS。

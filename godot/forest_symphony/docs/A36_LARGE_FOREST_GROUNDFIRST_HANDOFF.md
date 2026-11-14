@@ -54,3 +54,11 @@
 - [Owner-only full A36 Godot project ZIP](https://drive.google.com/file/d/1_RuQUGpURoASJmJ6_H0tEtNESz_FjmQU/view) **212 files／55,657,235 bytes／SHA256 `1877cfef806b907243b9bc4714713422d484e3ae651314e09094cc385be6c760`**。上傳→下載完整位元組再校驗：ZIP CRC PASS、211 member SHA PASS、存取 shared=false。
 - [真正 Godot 4.7.2 native full framebuffer PNG](https://drive.google.com/file/d/1Hq5WLRNpBj91k90B5PVxhBpLPQo2lv3i/view)，[mobile native preview](https://drive.google.com/file/d/1ZSawHsLoC7u9GGKwFY5XQAz9ZvxhBnxJ/view)，[Godot native actor tree depth A/B](https://drive.google.com/file/d/1KjCPdJZpH_ARs9Hjcqrn3g6mQx-gZc6u/view)。
 - 正式核心限制依舊：原始生成 1478×1064 nearest 轉換，**不是 2560×1856 原生畫素**；326 個來自 9 家族可能重複；水/動畫/碰撞及整體 1x 美術尚未封版。請勿把 ZIP CRC/Godot 全綠冒充使用者美術通過。
+
+- **A36-F07 防止覆蓋**：早期重建器的 `shutil.rmtree(output)` 是危險預設；已改為 **Fail-Closed**，指定目標資料夾存在時直接拒絕，不刪除任何既有專案，也禁止在來源專案內建立輸出。需使用全新 `FS_A36_OUT_DIR`。R2 私人封包及公開 GitHub 程式保留安全版本。
+
+### A36 R2 正式私人交付（安全修訂）
+
+- **以 R2 取代 R1 的新下載入口**：[owner-only A36 R2 full Godot project](https://drive.google.com/file/d/1LgUCJRi8i-NDz-EC1roXHWnBjNysjtuu/view)，**212 files／55,658,735 bytes／SHA256 `6f7bbcccc8bff0e9389039dda0e77d534196c48382716c13fb7539bb32cff58c`**，Drive upload→download/CRC/211 members SHA **PASS**。
+- **A36-F07 防篡改防刪除**：R2 生成器對已存在的 output dir 直接 fail-closed，確定不刪除、不覆寫；用全新隔離目的地重建 Ground／Scene／Manifest／SHADOW 4/4 SHA 完全一致。A36 R1 留歷史，不再作為正式生成腳本下載。
+- 沒有更動 A36 真實原生渲染／Ground／任何 PAR 家族來源；安全修正只變更生成器程式及文字交接，ART、Collision 仍 HOLD。

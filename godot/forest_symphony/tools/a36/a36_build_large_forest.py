@@ -3,7 +3,12 @@ from PIL import Image,ImageDraw
 import numpy as np, shutil,hashlib,json,random,math,os
 from collections import Counter
 S=Path(os.environ.get('FS_A36_BASE_PROJECT','/mnt/data/fs_godot_a35')); D=Path(os.environ.get('FS_A36_OUT_DIR','/mnt/data/fs_godot_a36'))
-if D.exists(): shutil.rmtree(D)
+# Fail closed: never delete or overwrite an existing user folder.
+# A36 input sources remain immutable; every rebuild must use a new, not-yet-existing output path.
+if D.exists():
+    raise RuntimeError(f"Refusing overwrite/destructive rebuild of existing directory: {D}. Use a NEW FS_A36_OUT_DIR")
+if D.resolve() == S.resolve() or S.resolve() in D.resolve().parents:
+    raise RuntimeError("Refusing to rebuild into the source project or its descendants")
 shutil.copytree(S,D,ignore=shutil.ignore_patterns('.godot','qa_a29','qa_a30','qa_a31','qa_a32','qa_a33','qa_a34','qa_a35','*.log','*.uid','qa_*'))
 for p in ['qa_a36','tools/a36']:(D/p).mkdir(parents=True,exist_ok=True)
 world_w,world_h=2560,1856
