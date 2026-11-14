@@ -19,8 +19,9 @@ def audit(data):
     # Fixed 320x232 px observation bins: no invented geographic labels.
     for tree in trees:
         x, y = tree["foot"]
-        assert 0 <= x < width and 0 <= y < height, (tree["id"], tree["foot"])
-        cells[(min(x // 320, 7), min(y // 232, 7))].append(tree)
+        # Deliberate off-canvas forest crowns can have negative footpoints.
+        assert -512 <= x < width + 512 and -512 <= y < height + 512, (tree["id"], tree["foot"])
+        cells[(x // 320, y // 232)].append(tree)
     hotspots = []
     for (cx, cy), members in sorted(cells.items()):
         counts = collections.Counter(o["family"] for o in members)
@@ -40,6 +41,7 @@ def audit(data):
         "status": "SOURCE_ONLY_AUDIT_NOT_ART_PASS",
         "world_px": [width, height],
         "tree_count": total,
+        "off_canvas_tree_feet": sum(not (0 <= o["foot"][0] < width and 0 <= o["foot"][1] < height) for o in trees),
         "family_count": len(families),
         "family_counts": dict(sorted(families.items())),
         "largest_family_share": round(max(families.values()) / total, 4),
