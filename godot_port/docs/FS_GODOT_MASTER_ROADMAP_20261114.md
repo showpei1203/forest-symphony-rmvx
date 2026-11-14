@@ -60,3 +60,8 @@
 - **FS-SkillCost 規則風險**：`FS_SkillCost_Authority_v2.0.0` 在 script #411 定義 `calc_mp_cost` 與其他成本；技能欄位只是移植起點。必須另實作 effective cost source and trace，現行 `FSBattle.use_skill` 仍僅過渡候選。
 - **機器可讀證據**：Actions `fs-rgss2-static-authority-index` 具有 505 scripts source SHA and method/alias line hints。不可將最後一個 lexical definition 誤當 final-effective method；動態 alias、class re-open、runtime test pages 都需 runtime 判斷。
 - Native Godot 4.7.2 **最新 CI PASS**： https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43547941870。所有原始來源檔 E: 唯讀，GitHub 只提交新程式與文件。
+
+## M3 source-anchored battle rules advance（2026-11-14，本輪）
+- 已在原始第 411 段 FS SkillCost Authority 確認固定 MP、百分比 MP、Half MP 並以 `FSSkillCostRules` 實際移植，連動 MENU quote 與 BATTLE debit。任何 HP/Gold/OD/Item/State cost 與非成本標籤仍需實際有效來源查核，默認 FAIL CLOSED；YEZ level modifier 待補。
+- 已在原始第 377 段 FS ATB DynamicResistance 確認 Boss 的 direct ComboCore ATB 延遲抗性規則，`FSATBResistance` 實裝 source multipliers、Boss Note/抗性/最低線、穿透與恢復；仍需與全 Tankentai ATB/ComboCore/CharacterCore 時序整合並對原 VX trace。
+- Godot 4.7.2 native QA：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43549022785。P1 seal 仍 NO，資料後套用與原圖缺口最高優先。

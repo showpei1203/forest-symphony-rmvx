@@ -53,3 +53,14 @@
 ### 最新 native/CI 證據
 - PASS run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43547941870
 - 17× Godot 4.7.2 headless native script tests、Python scanner unit selftest、505 script SHA/source audit，GitHub artifact retained 30 days（至 2026-12-14）。
+
+## 2026-11-14 下一批戰鬥規則 Source-Parity 部分移植
+| 本輪項目 | 結果 | Evidence / 風險 |
+|---|---|---|
+| FS #411 MP-only Cost source parser | **PASS native synthetic** | `FSSkillCostRules.gd` + `test_fs_skill_cost_authority.gd`: note 固定與百分比、halving、無法解析 fail-closed；其他多資源成本及 YEZ modifier 不可略過 |
+| MENU/BATTLE 技能成本 quote=payment | **PASS native synthetic** | `FSMenuModel`/ `FSScreen`/ `FSBattle` 全部使用同個 `FSSkillCostRules.preview`；不明成本不能下指令、不扣 MP |
+| FS #377 Boss 直接 ATB 削減與動態抗性 | **PASS native synthetic** | `FSATBResistance.gd`/ `test_fs_atb_dynamic_resistance.gd`: 1000-base、note、倍率、floor、Aizhuo pierce、有效敵方行動復原；其他 Tankentai ATB/OD/Break/Cover 仍 NOT DONE |
+| 真 VX 505 RGSS2 最終實際 MP/ATB parity | **NOT DONE** | 尚無 post-Apply runtime witness、multi-script alias/行動時序、私有正式資料；不能由合成 PASS 代替 |
+| 真原素材與 UI/VX 截圖手動驗收 | **NOT DONE** | 仍無 FS 私有原圖及 VX runtime 對照 |
+- PASS CI：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43549022785
+- 兩組 Godot 4.7.2 synthetic native script tests 新增，原 17 tests retained。沒有讀寫使用者原始 E: 專案。
