@@ -128,6 +128,11 @@ jobs:
         run: |
           set -euo pipefail
           python3 godot_port/tools/rgss2_authority_scan.py --self-test
+      - name: Self-test M2 private post-Apply bundle preflight (synthetic only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot_port/tools/verify_boot_final_bundle.py --self-test
       - name: Audit actual 505-script FS source order and MasterSetup boot bridge
         shell: bash
         run: |
