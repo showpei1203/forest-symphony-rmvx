@@ -22,3 +22,7 @@ Latest: **A32 Ground-first + independent complete PAR** | 2026-11-14. Active Mas
 - **Real Godot 4.7.2 1x framebuffer**: https://drive.google.com/file/d/1YVEJozXA_4GyLO1T1647CvJFJAi9YXyg/view ; **Ground / independently authored PAR / composite**: https://drive.google.com/file/d/1mV1P1M0gn8CHFvuVrFEdDdbGtUQjACop/view.
 - **A32 full Failure Log and Handoff owner-only Drive**: https://drive.google.com/file/d/1-Cfnv_7QuVgShWZaLQftfrz-fADRIW3x/view .
 - Private Drive metadata confirmed user-only. Public Godot PR #16 only source/script/manifests/CI; image files never pushed to GitHub. User PC untouched; PixelLab paid credits not used.
+
+
+## A32 user visual feedback｜2026-11-14
+User confirms Ground-first + independent full PAR **direction is correct and a significant improvement**, but flags street lamps visually **half-height**. Source audit: legacy `FSOBJ_post_lantern.png` is an original **16×41** sprite, A32 PAD-only **32×57** with alpha bbox (8,8)-(24,49); four independent instances use it. This is an **ART/source proportion issue**, not evidence of Godot cutting a full lamppost or an excuse to alter Ground/PAR architecture. **A32-F05 ART HOLD**; construct a coherent complete tall lamp family, retain original SHA, and compare actual Godot 1x; no art fix claimed. Other A32 ART HOLD (two house detail/style, tree-tone diversity) remains.
