@@ -145,16 +145,16 @@ func _run() -> void:
             order.action_queue.enemy_pending.has("enemy:0"),
             "two enemies simultaneously ready: first enemy queued first"): return
     order.advance_atb(1.0/60.0)
-    if not _check(order.action_queue.enemy_pending.size()==2,
-            "next source frame queues other ready enemy without skipping"): return
-    order.advance_atb(1.0/60.0)
     if not _check(order.action_queue.completed.size()==1 and
+            order.action_queue.enemy_pending.size()==1 and
+            order.action_queue.enemy_pending.has("enemy:1") and
             int(order.party[0]["hp"])==430,
-            "first enemy ACT resolved, second pending remains"): return
+            "frame91: first enemy ACT executes, second ready enemy queues"): return
     order.advance_atb(1.0/60.0)
     if not _check(order.action_queue.completed.size()==2 and
+            order.action_queue.enemy_pending.is_empty() and
             int(order.party[0]["hp"])==360,
-            "second enemy resolves next frame and not duplicate"): return
+            "frame92: second enemy ACT executes, no duplicate"): return
 
     print("FS enemy source ATB/ACT auto attack/skill, enemy MP, interrupt and two-enemy order PASS")
     quit(0)
