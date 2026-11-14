@@ -61,7 +61,7 @@ func _build_ui() -> void:
     _make_label(toolbar,"FS Event Studio")
     _make_button(toolbar,"新建事件",_new_clicked)
     _make_button(toolbar,"開啟事件",_open_clicked)
-    _make_button(toolbar,"儲存 JSON",_save_clicked)
+    _make_button(toolbar,"儲存 JSON（雲端）",_save_clicked)
     _make_button(toolbar,"複製 JSON",_copy_clicked)
     _make_button(toolbar,"預覽目前頁",_preview_clicked)
     _make_button(toolbar,"試玩劇情測試場",_sandbox_clicked)
