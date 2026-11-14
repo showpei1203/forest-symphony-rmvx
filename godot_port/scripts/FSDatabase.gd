@@ -56,14 +56,35 @@ func load_all(folder: String = "res://data") -> bool:
                     var witness_data: Variant = JSON.parse_string(FileAccess.get_file_as_string(witness_path))
                     if not (witness_data is Dictionary):
                         errors.append("VX 執行證據不是合法 JSON 物件")
-                    elif str(witness_data.get("stage","")) != "post_FS_DB_AUTOSET.apply_all":
-                        errors.append("VX 執行證據不是 FS_DB_AUTOSET.apply_all 之後的快照")
+                    else:
+                        for problem in validate_runtime_witness(witness_data):
+                            errors.append(problem)
     if not errors.is_empty():
         # Never accidentally allow partial raw data through load_all() after
         # source-consistency failure. In-memory synthetic test tables bypass this.
         tables.clear()
     boot_final_verified = errors.is_empty()
     return boot_final_verified
+
+static func validate_runtime_witness(witness: Dictionary) -> PackedStringArray:
+    var problems := PackedStringArray()
+    if str(witness.get("stage","")) != "post_FS_DB_AUTOSET.apply_all":
+        problems.append("VX 執行證據不是 FS_DB_AUTOSET.apply_all 之後的快照")
+    if str(witness.get("engine","")) != "RPG Maker VX RGSS2":
+        problems.append("VX 執行證據缺少原始 RGSS2 引擎身分")
+    var roster: Variant = witness.get("party_actor_ids",null)
+    if not (roster is Array) or roster.is_empty():
+        problems.append("VX 執行證據缺少啟動後實際隊伍")
+    var table_counts: Variant = witness.get("table_counts",null)
+    if not (table_counts is Dictionary):
+        problems.append("VX 執行證據缺少啟動後資料表計數")
+    else:
+        for name in NAMES:
+            if name == "system":
+                continue
+            if int(table_counts.get(name,0)) <= 0:
+                problems.append("VX 執行證據缺少資料表計數：" + name)
+    return problems
 
 static func validate_boot_manifest(manifest: Dictionary, actual_hashes: Dictionary) -> PackedStringArray:
     # This is a reproducibility gate, NOT cryptographic proof of the witness
