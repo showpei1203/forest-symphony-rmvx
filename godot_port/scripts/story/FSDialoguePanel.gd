@@ -147,14 +147,19 @@ func _on_choices(choices: Array, cancel_type: int) -> void:
         option.text = "%d. %s" % [index+1,str(choices[index])]
         option.pressed.connect(_choose.bind(index))
         choice_list.add_child(option)
-        if index == 0:
-            option.call_deferred("grab_focus")
+
     continue_button.hide()
     if _cancel_type > 0:
         cancel_button.show()
     else:
         cancel_button.hide()
     show()
+    # Assign focus immediately once the choice controls are visible and inside
+    # the SceneTree; deferred focus could target controls already queue_freed.
+    if choice_list.get_child_count() > 0:
+        var first: Control = choice_list.get_child(0) as Control
+        if first != null and first.is_inside_tree():
+            first.grab_focus()
     choices_displayed.emit(_choices)
 
 func advance_message() -> void:
