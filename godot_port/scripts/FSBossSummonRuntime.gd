@@ -22,6 +22,9 @@ var failures: Array[String] = []
 var events: Array[Dictionary] = []
 var rng: FSAIRandom = FSAIRandom.new()
 var active: bool = false
+# Phase/Weather source INTENTS are tracked separately; actual RPG State
+# effects and global field damage remain explicitly unimplemented.
+var phase_runtime: FSBossPhaseRuntime = FSBossPhaseRuntime.new()
 
 static func _member(enemies: Array[Dictionary],id: int,alive_only: bool) -> Dictionary:
     for enemy in enemies:
@@ -202,4 +205,8 @@ func tick(battle) -> int:
             int(boss547.get("hp",0))*100 <= int(boss547.get("maxhp",1))*60):
         if _summon_specs(battle,547,[[558,2,100]],"threshold"):
             flags["threshold:547"] = true
+    # Source #401 exact update order: initial -> threshold -> phase states
+    # -> core exposure. Phase runtime emits only verified ID/field INTENTS,
+    # never silently applies RPG State effects or weather damage.
+    phase_runtime.tick(battle,flags)
     return battle.enemies.size()-before
