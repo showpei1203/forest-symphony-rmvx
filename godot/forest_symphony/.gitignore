@@ -1,10 +1,11 @@
-# All source-owned private FS art stays ONLY in owner-only Google Drive.
+# Private user-generated and source-owned FS assets must not reach public GitHub.
 .godot/
 private_assets/
 qa/
+qa_a33/
+qa_a34/
 qa_a30/
 qa_a31/
-qa_a33/
 *.import
 *.zip
 *.gif

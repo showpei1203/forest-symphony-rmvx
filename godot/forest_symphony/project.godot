@@ -1,8 +1,8 @@
 config_version=5
 
 [application]
-config/name="Forest Symphony | Godot-first A33 full-height independent lantern"
-run/main_scene="res://scenes/a33_groundfirst_lantern_scene.tscn"
+config/name="Forest Symphony | Godot-first A34 full independent house family"
+run/main_scene="res://scenes/a34_groundfirst_full_houses_scene.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]

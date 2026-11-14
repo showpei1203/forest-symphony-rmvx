@@ -1,0 +1,54 @@
+name: FS A34 Godot ground-first independent complete house CI
+on:
+  pull_request:
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a34-houses.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-only-houses:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout GitHub source-only Godot project
+        uses: actions/checkout@v4
+      - name: Install official Godot 4.7.2 stable
+        shell: bash
+        run: |
+          curl -fL --retry 3 -o /tmp/fs-godot47.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/fs-godot47.zip -d /tmp/
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Parse A34 and all prior scenes without private pixels
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/fs-a34
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/fs-a34/editor.log
+          if grep -Ei 'ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished' /tmp/fs-a34/editor.log; then exit 1; fi
+      - name: Validate two entire independent houses and 144 unaffected scene objects
+        shell: bash
+        run: |
+          set -o pipefail
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a34_public_contract.gd 2>&1 | tee /tmp/fs-a34/a34.log
+          grep -q 'A34 GODOT PUBLIC HOUSE CONTRACT PASS:' /tmp/fs-a34/a34.log
+          if grep -Ei 'ERROR:|SCRIPT ERROR|Parse Error' /tmp/fs-a34/a34.log; then exit 1; fi
+      - name: Source-only A33 lantern and A32 original art contracts regression
+        shell: bash
+        run: |
+          set -o pipefail
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a33_public_contract.gd 2>&1 | tee /tmp/fs-a34/a33-regression.log
+          grep -q 'A33 GODOT PUBLIC LAMP CONTRACT PASS:' /tmp/fs-a34/a33-regression.log
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a32_public_contract.gd 2>&1 | tee /tmp/fs-a34/a32-regression.log
+          grep -q 'A32 GODOT SOURCE-ONLY PUBLIC PASS:' /tmp/fs-a34/a32-regression.log
+          if grep -Ei 'ERROR:|SCRIPT ERROR|Parse Error' /tmp/fs-a34/*regression.log; then exit 1; fi
+      - name: Upload source-only logs, no user art
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A34_GODOT472_INDEPENDENT_FULL_HOUSES_SOURCE_ONLY
+          path: /tmp/fs-a34/*.log
+          retention-days: 14
+# Private generated original house PNGs and licensed tree/ground source are never in GitHub CI.
