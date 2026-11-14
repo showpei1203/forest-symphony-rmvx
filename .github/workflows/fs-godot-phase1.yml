@@ -118,3 +118,20 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_item_ui.gd
+      - name: Self-test static RGSS2 authority scanner (never executes Ruby)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot_port/tools/rgss2_authority_scan.py --self-test
+      - name: Audit actual 505-script FS source order and MasterSetup boot bridge
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot_port/tools/rgss2_authority_scan.py --source exported_scripts --expect-count 505 --output "$RUNNER_TEMP/fs_rgss2_static_authority_index.json"
+      - name: Upload source-order authority evidence to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-rgss2-static-authority-index
+          path: ${{ runner.temp }}/fs_rgss2_static_authority_index.json
+          if-no-files-found: error
+          retention-days: 30
