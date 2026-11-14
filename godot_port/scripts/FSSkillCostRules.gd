@@ -35,7 +35,7 @@ static func preview(skill: Dictionary, user: Dictionary) -> Dictionary:
     var seen_tags: Dictionary = {}
     for match_result in found:
         var m: RegExMatch = match_result
-        var key: String = m.get_string(1).to_lower().strip_edges().replace("  "," ")
+        var key: String = " ".join(m.get_string(1).to_lower().strip_edges().split(" ",false))
         var value_string: String = m.get_string(2)
         var percent: bool = not m.get_string(3).is_empty()
         if not value_string.is_valid_int():
@@ -52,7 +52,9 @@ static func preview(skill: Dictionary, user: Dictionary) -> Dictionary:
         if key == "costo mp":
             if percent:
                 mp_percent = value
-            else:
+            elif value > 0:
+                # FS #411 parses the fixed tag but only sets skill.mp_cost
+                # when mp_fixed is POSITIVE (source lines 416..424).
                 mp_fixed = value
         elif key in DANGEROUS_COST_NAMES:
             if value > 0:
