@@ -73,7 +73,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     # This early migrated action supports ONLY one-target HP changes;
     # state/element/absorb/MP-damage/notes and multi-target effects must await
     # the effective 505-script RGSS2 override trace. No silent consumption.
-    if int(skill.get("scope",0)) not in [1,7] or not skill.get("plus_state_set",[]).is_empty() or not skill.get("minus_state_set",[]).is_empty() or bool(skill.get("damage_to_mp",false)) or bool(skill.get("absorb_damage",false)) or not str(skill.get("note","")).is_empty():
+    if int(skill.get("scope",0)) not in [1,7] or not skill.get("plus_state_set",[]).is_empty() or not skill.get("minus_state_set",[]).is_empty() or bool(skill.get("damage_to_mp",false)) or bool(skill.get("absorb_damage",false)):
         changed.emit("技能效果包含尚未移植的原版特殊規則，已阻擋且不消耗 MP")
         return false
     if int(skill.get("base_damage",0)) < 0 and (int(skill.get("atk_f",0)) != 0 or int(skill.get("spi_f",0)) != 0):
@@ -85,7 +85,13 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if int(skill.get("scope",0)) == 7 and not bool(target.get("actor",false)):
         changed.emit("單體我方技能不得以敵人為目標")
         return false
-    var mp_cost: int = int(skill.get("mp_cost", 0))
+    # Keep quote and payment synchronized: reading raw skill.mp_cost here
+    # would bypass FS_SkillCost_Authority #411 fixed/percent tags.
+    var quoted: Dictionary = FSSkillCostRules.preview(skill,user)
+    if not bool(quoted.get("ok",false)):
+        changed.emit("技能成本無法驗證，未扣 MP：" + str(quoted.get("reason","")))
+        return false
+    var mp_cost: int = int(quoted["mp"])
     if int(user.get("mp", 0)) < mp_cost:
         changed.emit("MP 不足")
         return false
