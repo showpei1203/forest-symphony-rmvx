@@ -253,16 +253,19 @@ func advance_atb(delta: float) -> void:
     # skip their turn or delay the final attack until the next render frame.
     for frame in range(steps):
         FSTankentaiATBCore.advance_frames(party,enemies,1,source_atb_wait)
-        if source_atb_wait or not active:
-            continue
-        action_queue.cancel_interrupted(self)
-        action_queue.resolve_ready(self)
+        if not active:
+            break
+        if not source_atb_wait:
+            action_queue.cancel_interrupted(self)
+            action_queue.resolve_ready(self)
+            if active:
+                # Enemy actions are chosen after ATB readiness, then must
+                # earn ACT charge on later source frames.
+                action_queue.schedule_enemy(self)
+        # Original #401 Scene_Battle#update boss hook runs AFTER base update
+        # even when #230 ATB_WAIT freezes gauges during target selection.
+        # This is an encounter state update, NOT an ATB charge action.
         if active:
-            # Enemy actions are chosen after ATB readiness, then must earn
-            # ACT charge in subsequent source frames, not in selection frame.
-            action_queue.schedule_enemy(self)
-            # Source #401 Scene_Battle#update calls Boss runtime AFTER
-            # base update. New allies start their gauge on NEXT source frame.
             boss_runtime.tick(self)
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
