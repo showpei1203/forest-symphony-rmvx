@@ -50,3 +50,10 @@
 - Full R4 source-owned project ZIP: [Drive file](https://drive.google.com/file/d/10oUrfTbgohCHuCq0GO36vyQ3kCABIlBc/view), 228 files, **47,995,335 bytes**, SHA256 **`28a52f2a901f8ea4ca2bcffe53646dcafe619a3d6ef365b6152efcc77b36b544`**. Downloaded back with Drive raw file API; exact SHA256, ZIP CRC and source Ground byte comparison **PASS**.
 - True Godot 1280×928 1x native framebuffer [Drive file](https://drive.google.com/file/d/1YVEJozXA_4GyLO1T1647CvJFJAi9YXyg/view); [Ground / PAR transparent / composite 3-way](https://drive.google.com/file/d/1mV1P1M0gn8CHFvuVrFEdDdbGtUQjACop/view). Private art not in GitHub PR.
 - **Caveat:** This final cloud copy is the exact pre-cloud-link Handoff inside the immutable R4 ZIP; the more recent GitHub `docs/A32_GROUND_FIRST_HANDOFF.md` and Drive Handoff mirror track owner-only links after upload. No files added to local user PC.
+
+
+## A32-F05｜使用者 2026-11-14 1x 美術回饋：路燈像只剩半截（ART HOLD）
+- 真正參考來源：V233 私有原生 `Graphics/Pictures/FSOBJ_post_lantern.png` 大小 **16×41 RGBA**；A32 `private_assets/independent_par/fsobj_post_lantern.png` 只是四周補 8 px 透明邊界，尺寸 **32×57**，不透明範圍 bbox **(8,8)→(24,49)**；`manifest` asset `fsobj_post_lantern` 以四個獨立物件引用，並未在合成中對圖片做垂直裁切。舊燈柱本身短、末端呈平直截斷；在新的高細節草地比例下呈現「半截」視感。
+- **不可誤報為已修復**：目前已完成來源定位，無任何新燈具美術、神奇補全或新實機演算；現有私有 R4 原始封包仍保存完全相同。不要以伸長相同像素的比例拉伸假裝藝術過關。
+- **下一個獨立 PAR 實作 gate**：生成/製作一個完整自洽 3/4 俯視長柄立燈透明 RGBA，含燈罩、光源、立柱、完整底座與接地陰影（燈光層分離）；與 Ground 的像素密度、受光方向和尺寸匹配。另建新資產 ID、SHA、物件家族版本，替換四個燈實例；Ground PNG SHA 完全不變；1x 原生 Godot 前後比較與角色通行檢查。使用者尚未 ART PASS。
+- **使用者正面確認方向**：Ground-first 加完整獨立 PAR 是值得沿用的方向；此確認**不代表**路燈/房屋/全圖美術已通過。
