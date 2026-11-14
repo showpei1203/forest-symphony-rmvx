@@ -35,9 +35,12 @@ func known_skills(actor_index: int) -> Array[Dictionary]:
         var row: Dictionary = db.record("skills",int(skill_id))
         if row.is_empty():
             continue
+        var quote: Dictionary = FSSkillCostRules.preview(row,actor)
         result.append({
             "id":int(skill_id),"name":str(row.get("name","")),
-            "mp_cost":int(row.get("mp_cost",0)),
+            "mp_cost":int(quote.get("mp",0)) if bool(quote.get("ok",false)) else -1,
+            "cost_verified":bool(quote.get("ok",false)),
+            "cost_warning":str(quote.get("reason","")),
             "scope":int(row.get("scope",0)),
             "occasion":int(row.get("occasion",0)),
             "icon_index":int(row.get("icon_index",0)),
