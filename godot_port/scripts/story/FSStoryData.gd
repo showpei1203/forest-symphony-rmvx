@@ -75,7 +75,16 @@ static func read_event(path: String) -> Dictionary:
         return {}
     return parsed
 
+static func cloud_write_allowed() -> bool:
+    # Project HARD RULE 001: generated deliverables must be persisted in GitHub / Drive.
+    # Never create a new permanent story file on the user's PC by default.
+    # CI and explicitly approved disposable cloud workspaces are the ONLY exceptions.
+    return OS.get_environment("GITHUB_ACTIONS") == "true" or (
+        OS.get_environment("FS_EVENT_AUTHORIZED_EPHEMERAL_WRITE") == "true")
+
 static func write_event(event: Dictionary, path: String = "") -> Dictionary:
+    if not cloud_write_allowed():
+        return {"ok":false,"error":"已阻擋本機寫入。使用「複製 JSON」並提交 GitHub／Drive，或改用已授權的隔離雲端工作區。"}
     var errors: PackedStringArray = validate(event)
     if not errors.is_empty():
         return {"ok": false, "error": "; ".join(errors)}
