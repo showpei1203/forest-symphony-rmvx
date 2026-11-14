@@ -130,6 +130,15 @@ func _run() -> void:
               "enemies":battle.ready_enemies(),
               "fraction":battle.source_atb_frame_fraction
             })): return
+    var shifted: Dictionary = battle.apply_combo_atb_shift(battle.enemies[0],-200)
+    if not _check(shifted.get("ok",false) and
+            battle.enemies[0]["source_atb_count"]==800 and
+            not battle.enemies[0]["source_at_active"] and
+            battle.enemies[0]["source_atb_count_up"],
+            "FS #374 direct negative shift updates integer ATB and interrupts readiness"): return
+    battle.advance_atb(1.0/60.0)
+    if not _check(battle.enemies[0]["source_atb_count"]==810,
+            "source ATB next frame continues from resisted/shifted count, not stale float"): return
     if not _check(battle.begin_source_atb_charge(battle.party[0],"skill",1),
             "FSBattle can start ACT phase from ready party actor"): return
     if not _check(not battle.source_action_charged(battle.party[0]),
