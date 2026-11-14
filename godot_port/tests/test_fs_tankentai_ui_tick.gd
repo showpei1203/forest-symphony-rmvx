@@ -27,11 +27,11 @@ func _run() -> void:
     }
     var world = WORLD.new()
     var battle = BATTLE.new(db,world)
-    battle.party = [{"id":1,"actor":true,"name":"Joey",
+    battle.party.append({"id":1,"actor":true,"name":"Joey",
         "agi":40,"hp":100,"maxhp":100,"mp":50,"maxmp":50,
-        "od":0,"equipment":[1,0,0,0,0],"two_swords_style":false}]
-    battle.enemies = [{"id":1,"actor":false,"name":"Forest test enemy",
-        "agi":50,"hp":80,"maxhp":80,"atb":0.0}]
+        "od":0,"equipment":[1,0,0,0,0],"two_swords_style":false})
+    battle.enemies.append({"id":1,"actor":false,"name":"Forest test enemy",
+        "agi":50,"hp":80,"maxhp":80,"atb":0.0})
     battle.source_atb_rolls_for_test = {"actor:0":0,"enemy:0":0}
     var ui = SCREEN.new()
     root.add_child(ui)
