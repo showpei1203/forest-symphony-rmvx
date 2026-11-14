@@ -83,6 +83,10 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
     # zero element types. The unweathered basic attack remains a candidate.
     if not field_weather.active or field_weather.current_id <= 0:
         return true
+    if attacker.has("fs_attack_elements_verified") and not bool(
+            attacker.get("fs_attack_elements_verified",false)):
+        changed.emit("武器元素資料尚未核對，不允許在天氣下攻擊")
+        return false
     var sample: Dictionary = field_weather.preview_damage(
         db,target,attacker.get("element_set",null),1,0)
     if not bool(sample.get("ok",false)):
@@ -293,7 +297,8 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     var restored: Dictionary = db.actor_stats(int(actor["id"]),int(actor["level"]))
     restored["equipment"] = next_slots.duplicate()
     restored = db.apply_equipment(restored)
-    for stat in ["maxhp","maxmp","atk","def","spi","agi","hit","eva","cri"]:
+    for stat in ["maxhp","maxmp","atk","def","spi","agi","hit","eva","cri",
+            "element_set","fs_attack_elements_verified"]:
         actor[stat] = restored[stat]
     actor["hp"] = mini(int(actor["hp"]),int(actor["maxhp"]))
     actor["mp"] = mini(int(actor["mp"]),int(actor["maxmp"]))

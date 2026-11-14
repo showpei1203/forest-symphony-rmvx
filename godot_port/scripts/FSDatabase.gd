@@ -202,6 +202,11 @@ func enemy_stats(enemy_id: int) -> Dictionary:
     result["actions"] = enemy.get("actions",[])
     result["battler_name"] = str(enemy.get("battler_name",""))
     result["note"] = str(enemy.get("note",""))
+    # #013 Game_Battler#element_set returns []; #016 Game_Enemy does not
+    # override it. Later dynamic RGSS2 aliases still need original VX
+    # witness. This is the verified stock-source baseline only.
+    result["element_set"] = []
+    result["fs_attack_elements_verified"] = true
     return result
 
 func apply_equipment(stats: Dictionary) -> Dictionary:
@@ -232,4 +237,31 @@ func apply_equipment(stats: Dictionary) -> Dictionary:
     result["hit"] = mini(hit_one,hit_two) if two_swords else hit_one
     result["eva"] = armor_eva
     result["cri"] = 4 + bonus_cri
+    # #015 Game_Actor#element_set: no weapons => [1] bare-hands
+    # fighting element; otherwise ordered union of equipped weapons'
+    # element_set, regardless of armor slots. Weapon-source data missing
+    # must NOT masquerade as a valid no-element weapon attack.
+    var attack_elements: Array[int] = []
+    var found_weapon: bool = false
+    var weapon_elements_verified: bool = true
+    for slot in range(slots.size()):
+        if equip_kind(stats,slot) != "weapons":
+            continue
+        var weapon_id: int = int(slots[slot])
+        if weapon_id <= 0:
+            continue
+        var weapon: Dictionary = record("weapons",weapon_id)
+        if weapon.is_empty() or not weapon.has("element_set") or not (
+                weapon.get("element_set") is Array):
+            weapon_elements_verified = false
+            continue
+        found_weapon = true
+        for element in weapon.get("element_set",[]):
+            var id: int = int(element)
+            if not attack_elements.has(id):
+                attack_elements.append(id)
+    if not found_weapon and weapon_elements_verified:
+        attack_elements = [1]
+    result["element_set"] = attack_elements
+    result["fs_attack_elements_verified"] = weapon_elements_verified
     return result
