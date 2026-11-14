@@ -119,8 +119,11 @@ func _run() -> void:
             "Boss context action override 551 requires runtime provider"): return
     enemy["id"] = 50
     battle.party[0]["states"] = [14]
+    if not _check(AI.choose(battle,0,rng).get("ok",false),
+            "source #372 verified Provoke State14 accepted as random-target priority"): return
+    battle.party[0]["states"] = [22]
     if not _check(not AI.choose(battle,0,rng).get("ok",false),
-            "source #372 provoke/complex target state not silently ignored"): return
+            "unverified non-Provoke status still blocks random targeting"): return
     battle.party[0]["states"] = []
     world.set_switch(10,true)
     enemy["actions"] = [_row(0,0,0,8,6,10,0)]

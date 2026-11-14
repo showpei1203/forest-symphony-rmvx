@@ -335,17 +335,20 @@ func _atb_status_fragment(battler: Dictionary) -> String:
         return "ATB:就緒"
     return "ATB:%d%%" % pct
 
-func _select_enemy_target(callback: Callable) -> void:
+func _select_enemy_target(callback: Callable,skill_id: int = 0) -> void:
     battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 選擇敵方目標"
-    for index in range(battle.enemies.size()):
-        var target: Dictionary = battle.enemies[index]
-        if int(target.get("hp",0)) <= 0:
-            continue
-        _add_button("%s HP %d/%d" % [
-            target.get("name","?"),target.get("hp",0),target.get("maxhp",0)],
-            func() -> void: callback.call(target))
+    var allowed: Dictionary = FSTargetPriority.player_enemy_candidates(
+        battle,skill_id)
+    if not bool(allowed.get("ok",false)):
+        _add_text("無法確認原版目標優先權：" + str(allowed.get("reason","")))
+    else:
+        for index in allowed.get("indices",[]):
+            var target: Dictionary = battle.enemies[int(index)]
+            _add_button("%s HP %d/%d" % [
+                target.get("name","?"),target.get("hp",0),target.get("maxhp",0)],
+                func() -> void: callback.call(target))
     _add_button("返回", _show_battle)
 
 func _select_ally_target(callback: Callable) -> void:
@@ -409,7 +412,7 @@ func _select_skill_target(skill_id: int) -> void:
     var skill: Dictionary = db.record("skills",skill_id)
     var scope: int = int(skill.get("scope",0))
     if scope == 1:
-        _select_enemy_target(func(target: Dictionary) -> void: _use_skill(skill_id,target))
+        _select_enemy_target(func(target: Dictionary) -> void: _use_skill(skill_id,target),skill_id)
     elif scope == 7:
         _select_ally_target(func(target: Dictionary) -> void: _use_skill(skill_id,target))
     else:

@@ -61,6 +61,12 @@ func request(battle, index: int, kind: String, target_index: int = -1,
         target = battle.party[target_index]
     if target_side != "none" and int(target.get("hp",0)) <= 0:
         return false
+    if target_side == "enemy":
+        var priority: Dictionary = FSTargetPriority.player_enemy_candidates(
+            battle,object_id if kind=="skill" else 0)
+        if not bool(priority.get("ok",false)) or not (
+                target_index in priority.get("indices",[])):
+            return false
 
     if kind == "skill" and not battle.skill_preflight(actor,target,object_id):
         return false

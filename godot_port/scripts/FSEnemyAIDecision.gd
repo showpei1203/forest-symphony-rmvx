@@ -91,39 +91,6 @@ static func _condition(enemy: Dictionary,action: Dictionary,battle) -> int:
             return 1 if battle.world.switch_on(a) else 0
     return -1
 
-static func _basic_target(battle,side: String,rng: FSAIRandom) -> int:
-    var candidates: Array[int] = []
-    var weights: Array[int] = []
-    var total: int = 0
-    var battlers: Array[Dictionary] = battle.party if side == "actor" else battle.enemies
-    for index in range(battlers.size()):
-        var target: Dictionary = battlers[index]
-        if int(target.get("hp",0)) <= 0:
-            continue
-        if bool(target.get("fs_target_unverified",false)):
-            return -1
-        # #372 random_target honors Provoke/Disappear/weighted odds.
-        # Do not approximate unknown states/Note restrictions as uniform.
-        if not str(target.get("note","")).is_empty():
-            return -1
-        var states: Array = target.get("states",[])
-        if not states.is_empty():
-            return -1
-        var weight: int = int(target.get("odds",4))
-        if weight <= 0:
-            continue
-        total += weight
-        candidates.append(index)
-        weights.append(weight)
-    if total <= 0:
-        return -1
-    var draw: int = rng.roll(total,"random_target_weight")
-    for n in range(candidates.size()):
-        if draw < weights[n]:
-            return candidates[n]
-        draw -= weights[n]
-    return candidates.back()
-
 static func choose(battle,index: int,rng: FSAIRandom) -> Dictionary:
     if index < 0 or index >= battle.enemies.size():
         return _fail("enemy index invalid")
@@ -134,13 +101,14 @@ static func choose(battle,index: int,rng: FSAIRandom) -> Dictionary:
             enemy.get("fs_enemy_ai_state_pattern_pending",false)):
         return _fail("Boss/context/state AI runtime authority missing")
     var raw_actions: Variant = enemy.get("actions",[])
+    # #401/#440 authority: when a recognized boss is present, this core
+    # uses its Boss-specific context actions INSTEAD OF raw Enemy.actions.
+    # Original provider checks ALL troop.members and sorts boss IDs.
+    var context: Dictionary = FSBossContext.resolve(int(enemy.get("id",0)),battle.enemies)
+    if bool(context.get("matched",false)):
+        raw_actions = context["actions"]
     if not raw_actions is Array or raw_actions.is_empty():
-        return _fail("no source Enemy.actions")
-    # #401 context_action_specs dynamically replaces these actions when
-    # core IDs 551..565 are present in specific boss battles. Until the
-    # context provider is ported, NEVER use their stale raw action rows.
-    if int(enemy.get("id",0)) >= 551 and int(enemy.get("id",0)) <= 565:
-        return _fail("Boss runtime context actions 551..565 unported")
+        return _fail("no source Enemy.actions or matching Boss context")
     var actions: Array[Dictionary] = []
     var highest_so_far: int = 0
     var weight_total: int = 0
@@ -240,7 +208,7 @@ static func choose(battle,index: int,rng: FSAIRandom) -> Dictionary:
         enemy["fs_ead_last_damage_skill"] = false
         return {"ok":true,"kind":kind_text,"object_id":0,
             "target_side":"none","target_index":-1}
-    var target_index: int = _basic_target(battle,side,rng)
+    var target_index: int = FSTargetPriority.random_target(battle,side,rng)
     if target_index < 0:
         return _fail("source random target priorities/states unresolved or none")
     enemy["fs_ead_last_damage_skill"] = final_damage_skill
