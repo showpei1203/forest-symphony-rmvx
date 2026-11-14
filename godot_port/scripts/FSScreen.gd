@@ -3,6 +3,7 @@ extends Control
 const FS_DB = preload("res://scripts/FSDatabase.gd")
 const FS_BATTLE = preload("res://scripts/FSBattle.gd")
 const FS_MENU = preload("res://scripts/FSMenuModel.gd")
+const STORY_SANDBOX = preload("res://scripts/story/FSStorySandbox.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
