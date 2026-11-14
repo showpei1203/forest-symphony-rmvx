@@ -115,8 +115,8 @@ func _run() -> void:
             "unsupported candidate blocks entire roulette, not biasing odds"): return
     enemy["actions"] = [_row(0,0,0,8)]
     enemy["id"] = 551
-    if not _check(not AI.choose(battle,0,rng).get("ok",false),
-            "Boss context action override 551 requires runtime provider"): return
+    if not _check(AI.choose(battle,0,rng).get("ok",false),
+            "source #401 Core551 without any matching Boss delegates to original action list"): return
     enemy["id"] = 50
     battle.party[0]["states"] = [14]
     if not _check(AI.choose(battle,0,rng).get("ok",false),
