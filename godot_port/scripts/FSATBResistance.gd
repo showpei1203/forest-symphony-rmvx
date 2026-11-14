@@ -51,7 +51,10 @@ static func apply_direct_shift(enemy: Dictionary,delta: int,
     # state_id != 0 means native State ATB handling, bypass this interception.
     if not enemy.has("atb"):
         return {"ok":false,"reason":"Battler 尚無 ATB 狀態"}
-    var before: int = clampi(roundi(float(enemy["atb"]) * MAX_ATB),0,MAX_ATB)
+    # If Tankentai #231 core is enabled, its integer at_count MUST be
+    # authoritative. The float gauge is only a UI projection.
+    var before: int = int(enemy.get("source_atb_count",
+        roundi(float(enemy["atb"])*MAX_ATB)))
     var effective_delta: int = delta
     var affected: bool = bool(enemy.get("atb_resist_enabled",false)) and (
         not bool(enemy.get("actor",false))) and delta < 0 and state_id == 0
@@ -65,6 +68,18 @@ static func apply_direct_shift(enemy: Dictionary,delta: int,
         effective_delta = -mini(resisted_amount,max_reducible)
     var after: int = clampi(before+effective_delta,0,MAX_ATB)
     enemy["atb"] = float(after)/MAX_ATB
+    if enemy.has("source_atb_count"):
+        enemy["source_atb_count"] = after
+    # Exact ComboCore baseline #374 lines 2633..2645: any REAL negative
+    # delta interrupts ACT charging and re-arms normal ATB count-up.
+    # #377 may calculate effective_delta == 0 due floor protection, in
+    # which case #374 returns early: do NOT interrupt on a zero shift.
+    if effective_delta < 0 and enemy.has("source_atb_count"):
+        enemy["source_act_count"] = 0
+        enemy["source_act_active"] = false
+        enemy["source_at_active"] = false
+        enemy["source_atb_count_up"] = true
+        enemy["source_charge_kind"] = ""
     var actual_reduction: int = maxi(0,before-after)
     var level_before: int = int(enemy.get("atb_resist_level",0))
     if affected and actual_reduction >= MIN_ACTUAL_REDUCTION_FOR_GAIN:
