@@ -129,6 +129,18 @@ func _run() -> void:
             not no_state.boss_runtime.phase_runtime.failures.is_empty(),
             "missing State151 rejects entire middle-phase transition"): return
 
+    # Bad HP must never create Shield77/Awakening128/Exposure129,
+    # even if a summon flag is already set by an earlier source tick.
+    var bad_shield = _battle(db,530)
+    if not _check(bad_shield.start(),"bad-shield fixture starts"): return
+    bad_shield.enemies[0]["maxhp"] = 0
+    var bad_flags: Dictionary = {"start:530":true}
+    var bad_phase = PHASE.new()
+    bad_phase.tick(bad_shield,bad_flags)
+    if not _check(bad_shield.enemies[0].get("fs_phase_state_intents",[]).is_empty() and
+            not bad_flags.has("exposed:530") and not bad_phase.failures.is_empty(),
+            "invalid HP rejects shield, awakening and exposure intents"): return
+
     var shield = _battle(db,530)
     shield.start()
     shield.advance_atb(1.0/60.0)
