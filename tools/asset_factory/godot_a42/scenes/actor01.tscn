@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/fs_actor_animator.gd" id="1_actor"]
+[ext_resource type="PackedScene" path="res://scenes/actor01_breath_rig.tscn" id="2_breath"]
+
+[node name="Actor01" type="Node2D"]
+script = ExtResource("1_actor")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+
+[node name="BreathRig" parent="." instance=ExtResource("2_breath")]
+visible = false
+
+[node name="AttackClock" type="AnimationPlayer" parent="."]
+
+[node name="HitMarker" type="Marker2D" parent="."]
+position = Vector2(28, 11)
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+
+[node name="EffectSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
