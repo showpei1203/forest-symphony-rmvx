@@ -6,6 +6,7 @@ extends SceneTree
 const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
 const PHASE = preload("res://scripts/FSBossPhaseRuntime.gd")
+const SCREEN = preload("res://scripts/FSScreen.gd")
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -63,6 +64,17 @@ func _run() -> void:
             boss.get("states",[]).is_empty() and
             boss["fs_boss_weather_effects_pending"],
             "Boss548 above55% plans State122 & global Field153, never battler state"): return
+    # Live BATTLE UI must visibly label *pending* state/field effects;
+    # original 153..158 weather is NOT a battler State.
+    var ui = SCREEN.new()
+    root.add_child(ui)
+    ui.db = db
+    ui.battle = battle
+    ui._refresh_battle_status()
+    if not _check("State意圖:[122]" in ui.status_label.text and
+            "Field153" in ui.status_label.text and
+            "未實裝傷害效果" in ui.status_label.text,
+            "actual Godot BATTLE label exposes pending source IDs without fake applied effect"): return
     var count: int = phase.transitions.size()
     battle.advance_atb(1.0/60.0)
     if not _check(phase.transitions.size()==count,

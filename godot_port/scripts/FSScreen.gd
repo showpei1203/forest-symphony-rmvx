@@ -315,9 +315,20 @@ func _refresh_battle_status() -> void:
             actor.get("name","?"),actor.get("hp",0),actor.get("maxhp",0),
             actor.get("mp",0),actor.get("maxmp",0),actor.get("od",0),gauge])
     for enemy in battle.enemies:
-        all_lines.append("%s HP:%s/%s %s" % [
+        var enemy_line: String = "%s HP:%s/%s %s" % [
             enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0),
-            _atb_status_fragment(enemy)])
+            _atb_status_fragment(enemy)]
+        var planned: Array = enemy.get("fs_phase_state_intents",[])
+        if not planned.is_empty():
+            enemy_line += " [State意圖:%s／效果未套用]" % str(planned)
+        all_lines.append(enemy_line)
+    # Original #404 weather is a global field. Never put Field153..158
+    # in a battler's states or imply elemental damage is already applied.
+    var field_request: Dictionary = battle.boss_runtime.phase_runtime.weather_request
+    if not field_request.is_empty():
+        all_lines.append("天氣預定 Field%d / Boss%d（未實裝傷害效果）" % [
+            int(field_request.get("field_id",0)),
+            int(field_request.get("source_boss_id",0))])
     status_label.text = "\n".join(PackedStringArray(all_lines))
 
 func _atb_status_fragment(battler: Dictionary) -> String:
