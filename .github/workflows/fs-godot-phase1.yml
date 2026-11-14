@@ -155,3 +155,8 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_tankentai_atb_core.gd
+      - name: Test live BATTLE Godot UI drives source ATB and MENU freezes
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_tankentai_ui_tick.gd
