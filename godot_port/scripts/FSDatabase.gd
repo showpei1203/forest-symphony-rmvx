@@ -23,7 +23,64 @@ func load_all(folder: String = "res://data") -> bool:
             errors.append("JSON 無法解碼：" + file_path)
             continue
         tables[name] = result
+    if errors.is_empty():
+        # Raw RVData dumps are NOT FS gameplay DB: FS_MasterSetup 18 replaces
+        # AutoSetup placeholders and FS_DB_AUTOSET.apply_all mutates $data_*.
+        # A real post-Apply VX witness and per-table SHA are mandatory.
+        var manifest_path: String = folder.path_join("fs_boot_final_authority.json")
+        if not FileAccess.file_exists(manifest_path):
+            errors.append("缺少 FS 啟動後權威資料證明 fs_boot_final_authority.json；只匯入原始 RVData 不可進入正式遊戲")
+        else:
+            var manifest: Variant = JSON.parse_string(FileAccess.get_file_as_string(manifest_path))
+            if not manifest is Dictionary:
+                errors.append("FS 啟動後權威資料證明 JSON 格式錯誤")
+            else:
+                var hashes: Dictionary = {}
+                for name in NAMES:
+                    hashes[name] = FileAccess.get_sha256(folder.path_join(name + ".json")).to_lower()
+                for problem in validate_boot_manifest(manifest,hashes):
+                    errors.append(problem)
+    if not errors.is_empty():
+        # Never accidentally allow partial raw data through load_all() after
+        # source-consistency failure. In-memory synthetic test tables bypass this.
+        tables.clear()
     return errors.is_empty()
+
+static func validate_boot_manifest(manifest: Dictionary, actual_hashes: Dictionary) -> PackedStringArray:
+    # This is a reproducibility gate, NOT cryptographic proof of the witness
+    # issuer. Human QA still needs the actual verified VX runtime trace.
+    var problems := PackedStringArray()
+    if str(manifest.get("schema","")) != "fs-boot-final-authority-v1":
+        problems.append("啟動後權威資料格式版本不正確")
+    if str(manifest.get("stage","")) != "post_FS_DB_AUTOSET.apply_all":
+        problems.append("資料尚未確認是 FS_DB_AUTOSET.apply_all 之後的結果")
+    if int(manifest.get("rgss2_script_sections",0)) != 505:
+        problems.append("原始 RGSS2 載入順序尚未核對 505 段")
+    if int(manifest.get("master_setup_pages",0)) != 22:
+        problems.append("MasterSetup 22 段配置尚未核對")
+    if not bool(manifest.get("vx_runtime_trace_verified",false)):
+        problems.append("尚未完成 VX Runtime 來源數值比對")
+    var witness: String = str(manifest.get("vx_runtime_witness_sha256",""))
+    if not _looks_sha256(witness):
+        problems.append("缺少合法的原 VX 執行痕跡 SHA256")
+    var database_hashes: Variant = manifest.get("database_sha256",{})
+    if not database_hashes is Dictionary:
+        problems.append("權威資料庫各表 SHA256 格式無效")
+    else:
+        for name in NAMES:
+            var expected: String = str(database_hashes.get(name,""))
+            var actual: String = str(actual_hashes.get(name,""))
+            if not _looks_sha256(expected) or actual != expected:
+                problems.append("啟動後資料不一致或缺少 SHA256：" + name)
+    return problems
+
+static func _looks_sha256(value: String) -> bool:
+    if value.length() != 64:
+        return false
+    for character in value:
+        if "0123456789abcdef".find(character) == -1:
+            return false
+    return true
 
 func record(kind: String, index: int) -> Dictionary:
     var data: Variant = tables.get(kind, [])
