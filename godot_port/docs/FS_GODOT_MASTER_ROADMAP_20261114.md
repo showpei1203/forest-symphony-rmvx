@@ -65,3 +65,10 @@
 - 已在原始第 411 段 FS SkillCost Authority 確認固定 MP、百分比 MP、Half MP 並以 `FSSkillCostRules` 實際移植，連動 MENU quote 與 BATTLE debit。任何 HP/Gold/OD/Item/State cost 與非成本標籤仍需實際有效來源查核，默認 FAIL CLOSED；YEZ level modifier 待補。
 - 已在原始第 377 段 FS ATB DynamicResistance 確認 Boss 的 direct ComboCore ATB 延遲抗性規則，`FSATBResistance` 實裝 source multipliers、Boss Note/抗性/最低線、穿透與恢復；仍需與全 Tankentai ATB/ComboCore/CharacterCore 時序整合並對原 VX trace。
 - Godot 4.7.2 native QA：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43549022785。P1 seal 仍 NO，資料後套用與原圖缺口最高優先。
+
+## M3 Tankentai Source ATB 1.2c 核心增量（2026-11-14）
+- 改用 `FSTankentaiATBCore` 的原版 **60fps integer 0..1000 gauges**，替換舊 `delta*(0.08+AGI/800)` placeholder；ATB/ACT 分離，兩者個別 readiness。來源 #230/#231，正常速度為 `10 × AGI / 全場最高 AGI` 每幀，純整數；特定 Actor01 開場30%、一般10%、原 source 未持武器時開場 ATB 會加倍、先制/偷襲 -50%。
+- 戰鬥 Runtime 目前能 `start` 時初始化，`advance_atb` 進位 source frames，等待旗標暫停，透過 `begin_source_atb_charge`/ `finish_source_atb_action` 明確外部 API 切換量表；但**完整行動佇列、遊戲指令流程與實際戰鬥 action execution 的 ATB 強制限制仍未建立**，不能宣稱 ATB 系統全部完成。
+- `FSScreen._process` 在 BATTLE 將 delta 導入 source Core，角色/敵人 ATB/ACT label 即時更新，MENU 無背景推進。第 374 段 ComboCore 負延遲與 #377 Boss Resistance 已同步 source integer gauge 及中斷 charge/ready。
+- CI source-shaped synthetic 21 原生測試（新核心 + UI）、Python 505 脚本掃描：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43550617123。
+- 下一個最高優先級是 1. 真 VX post-Apply private data 快照與 witness；2. **ACT ready→真正動畫/動作執行→傷害/成本支付→ATB reset** 的完整可重播動作佇列與行動中 pause flags；3. 505 RGSS2 最終覆寫/OD/Break/Cover；4. 6 位主角正式素材/戰鬥動作和 UI 對照。Event Studio 仍長期，不優先擴充。

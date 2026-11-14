@@ -64,3 +64,25 @@
 | 真原素材與 UI/VX 截圖手動驗收 | **NOT DONE** | 仍無 FS 私有原圖及 VX runtime 對照 |
 - PASS CI：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43549022785
 - 兩組 Godot 4.7.2 synthetic native script tests 新增，原 17 tests retained。沒有讀寫使用者原始 E: 專案。
+
+## 2026-11-14 Tankentai 核心計時與 UI QA
+
+| Gate | 結果 | 證據及邊界 |
+|---|---|---|
+| 原版 ATB 基礎速度與初始量表 | **PASS source-shaped synthetic** | `FSTankentaiATBCore` 第 230／231 段對照，Source AGI per-frame 整數、武器空位加成、preemptive/surprise |
+| ATB→ACT 充能與行動後重置 | **PASS model-level synthetic** | `begin_charge/reset_after_action` 分離兩條量表；**還沒有真完整 action queue/execution/scheduling** |
+| Godot BATTLE 畫面即時推進 | **PASS native UI** | `FSScreen._process` 只在 BATTLE 更新 source gauge，狀態文字顯示真資料，MENU 暫停 |
+| Boss 抗性與 ComboCore 負延遲一致 | **PASS deterministic synthetic** | source #374/#377 整數值同步，取消 ACT/ready 並重新計時；State 多段 alias/runtime witness 仍待 |
+| 原 VX 真運行時序/傷害/OD/Break/Cover | **NOT DONE** | 需要原版 post-Apply 資料、動畫和 VX trace、完整行動佇列 |
+| 原圖對照與原生 GUI 人工驗收 | **NOT DONE** | 缺少 FS 私有素材與截圖 |
+
+### 失敗、分析、修正
+- **原子幀數測試失敗**：`test_fs_tankentai_atb_core.gd` 整合測試原本從 enemy ATB400 推 58 幀卻要求達到 1000，實際只有 980。修正為 60 幀。正確原公式每幀 +10，沒有為了過測試而修改。
+- **Array[Dictionary] 型態錯誤**：`test_fs_tankentai_ui_tick.gd` 初版直接指派普通陣列給型別化欄位，Godot 跳 Script Error，50秒 timeout exit124。改為 `.append(Dictionary)`，回歸 PASS。
+- **錯誤分支寫入已立即復原**：漏傳 GitHub `update_file.branch`，導致 `main` 短暫被寫入單一測試 fixture commit `d0ebfdc7...`。當輪立刻以 `expected_sha` + `force=true` restore 原 `main=fca0f884...`，並在 feature branch 正確補上提交 `de49bfb6...`。`develop` 不變。後續所有 contents API 更新必須**強制傳 branch**，版本應從 feature ref 讀取及 readback。不可再違反不動 main 的規則。
+- **同步風險修正**：源 #374 `albert_combo_apply_atb_delta` 對負 delta 會清掉 `act_count/act_active/at_active` 並 `atb_count_up=true`；源 #377 Boss 抗性之前只改顯示用 float，下一幀 source integer 可能覆蓋。已修正 source 整數同步與負 delta 取消充能。
+
+### CI
+- GitHub Actions official Godot 4.7.2，**21 native script smoke tests**（原本19 + 新增2）與 Python 505 scripts authority scanner。
+- 原始成功鏈：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43550617123
+- 注意：**沒有執行原 FS 的有效數值 trace**。本輪都是 source-shaped/in-memory synthetic 檢驗，Phase1 Seal = NO。
