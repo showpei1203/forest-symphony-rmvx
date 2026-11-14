@@ -112,6 +112,7 @@ func _run() -> void:
     # Invalid HP is not a legal source phase witness: no partial State150.
     var invalid = _battle(db,524)
     if not _check(invalid.start(),"invalid-HP fixture battle starts"): return
+    invalid.enemies[0]["fs_phase_state_intents"] = []
     invalid.enemies[0]["maxhp"] = 0
     invalid.boss_runtime.phase_runtime.tick(invalid,{})
     if not _check(invalid.enemies[0].get("fs_phase_state_intents",[]).is_empty() and
@@ -133,6 +134,7 @@ func _run() -> void:
     # even if a summon flag is already set by an earlier source tick.
     var bad_shield = _battle(db,530)
     if not _check(bad_shield.start(),"bad-shield fixture starts"): return
+    bad_shield.enemies[0]["fs_phase_state_intents"] = []
     bad_shield.enemies[0]["maxhp"] = 0
     var bad_flags: Dictionary = {"start:530":true}
     var bad_phase = PHASE.new()
