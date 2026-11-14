@@ -1,0 +1,48 @@
+# Forest Symphony → Godot｜長期目標與移植施工權威 (2026-11-14)
+
+**狀態**：候選實作，非完成移植。**最新使用者指令優先**於本分支任何舊的 P1 線性施工順序。
+
+## 本輪決策（不可再退回）
+1. **先完成既定 Forest Symphony 搬移**：以 P1 真實戰鬥系統、原始角色／職業／裝備／物品／技能／動畫數值、MENU/BATTLE 操作及素材重用為首要驗收；不可被 Event Studio 的長期增量工作無限推遲。
+2. **FS Event Studio 與完整劇情工具列為長期目標**：現有 v0.1 原生工具／沙盒／預覽保留且可回歸測試，不需砍掉。但日後事件指令庫、雲端一鍵儲存、TileMapLayer 編輯、公共事件、移動路線、對話多角色編排、NPC 自動/平行事件、觸發器管理等暫以 roadmap 管理，非此次 P1 的前置依賴。
+3. **不強求 VX 舊劇情批次轉移**：保留原始 VX `code/indent/parameters` 向 `FSVXEventInterpreter` 的兼容入口；未支援 opcode 明確報錯，沒有聲稱全面相容。
+4. **人物行走／戰鬥／怪物動作脫離 VX 固定 3 幀限制**：Godot 的動畫每一動作可獨立配置 **1、3、6、8、12+ 幀**、逐格秒數、循環／單次、轉向、位移、圖層、受擊判定與事件訊號。VX Kaduki 3×4×4 資料只是一個 Legacy **adapter**，不是新動畫引擎的核心規格。
+5. **其他動畫管線不得被倒退到 3 幀**：使用者已有另一條動畫實驗線（A17/A19 / PixelLab、ASF、骨架運動、PMD/LPC 等）；它已探索可變幀與動作資料。此移植只定義接入格式與可替換 renderer，不宣稱已從那些分支合併或已驗證所有原始素材。
+6. **新舊素材兼容**：先保留 32×32 來源、原始角度與人物外觀；可使用更長幀動畫、逐格 timing 和一組動作多張透明圖。禁止為了硬塞舊 3 幀而砍掉新動畫，亦不可假裝原始 90×120／96×128 sheet 每格相同尺寸。
+7. **所有新成果 GitHub／Drive；原始 `E:\遊戲專案開發\三大項目現行專案\FS project` 唯讀**。程式、CI、Handoff 留 `showpei1203/forest-symphony-rmvx` 分支 `feature/fs-godot-phase1`。私有完整圖、聲音與 .rvdata 轉換輸出留私人 Google Drive。原始 `main`、`develop` 與私有 `tankentai-sbs-godot` 均不得污染或覆寫。
+
+## 優先排程 / 完成條件
+
+| 階段 | 預定成果 | P1 Gate |
+|---|---|---|
+| **M0** 現存成果保護 | FS source hashes、GitHub candidate branch、原始 VX 相容與 Event Studio 定版長期事項 | 已有初步資料稽核／Godot CI；Phase 1 seal NO |
+| **M1** 動作格式拆耦 | FSAnimationClip/Renderer data-driven multi-frame，Legacy Kaduki adapter，不同尺寸、duration、loop/end/action signal，同步測試 | **本輪優先施工** |
+| **M2** 真實原始資料匯入 | 11 種 .rvdata 全量 JSON（含 actor tables、skills、states、classes、troops、animations）轉入**私人 Drive** 並 hash+readback，不公開原始私有/授權資產 | 缺少 cloud-only 大型二進位轉移整合；尚未完成 |
+| **M3** FS 戰鬥相容 | RGSS2 505 節點的有效 alias/override 路徑、ATB、命中/防禦、OD/Break/Cover、裝備合法性/使用與敵人 AI，10+ 角色/怪物 seed 固定 fixture 比對 VX | 公式 placeholder 不能叫 parity |
+| **M4** MENU / BATTLE UI | 原 FS 544×416 影像與圖示（權利確認後）直接重用、裝備/技能/道具/編隊/角色狀態、ATB/BATTLE/目標選擇與結果 UI 可操作 | Native screenshots + VX 對照 |
+| **M5** 行走/戰鬥動作 | 原 Kaduki 16 組可 fallback；新骨架/PixelLab/ASF/LPC 轉為同一 Clip manifest，行走四方向、站立、攻擊、施法、受傷、死亡、特殊動作均可自定格數 | 6 主角＋指定怪物動作和引擎回放 QA |
+| **M6** 完整移植驗收 | 真實原始資料驅動實戰、MENU 裝備/物品/技能、控制器輸入、可存讀測試、原始圖視覺驗收 | P1 Seal 待定 |
+
+> **核心規則**：動作自由度提升不意味戰鬥數值可以隨意改。原技能/裝備/狀態、ATB 與戰鬥結果仍以原版資料和有效 RGSS2 規則為判準，除非未來使用者要求改設計。
+
+## Event Studio 長期 Backlog（保留但暫不阻擋搬移）
+- L1：Godot 編輯器中角色對話可視化、臉圖、表情、立繪、原版音樂／音效；先前 v0.1 預覽和合成測試繼續保留。
+- L2：事件地圖觸發器、事件頁優先順序、碰撞/貼合/步進、平行和自動事件與保存／恢復語意。
+- L3：多角色對話、劇情節點圖、任務／標籤、公共事件、動畫/鏡頭/音效、中文指令清單與 undo/redo。
+- L4：安全的一鍵 GitHub/Drive 提交及版本衝突偵測（不能把 access token 寫在 Godot 版控）。
+- L5：事件編輯器整體可用性 benchmark：完成 10 種典型 RPG 事件所需點擊、操作時間與 QA 錯誤率。
+- L6：遺留 Ruby 腳本的明確 Adapter 白名單，不自動執行 Ruby；由真正需要的舊事件逐項補齊。
+- L7：地圖美術遵守既有 Ground→PAR 順序（完整圖片拆層僅輔助），新動畫與地圖 Pipeline 不互相綁死。
+
+## 隔離與驗證
+- 任何三幀 Legacy 動作都應有 **明確 clip_id、來源圖、cell、sheet、幀間時間**，可無損播放原來源，不得默認要將所有新動作填滿 3 幀。
+- 長幀的角色動畫是 presentation layer；戰鬥計算完成才透過 action signal request 演出，不能把輸出 frame index 當作造成傷害的判斷依據。
+- CI：native Godot 4.7.2 headless、長/短幀 1/3/6/8/12 clip、混合尺寸、停止/loop/frame-skip、MENU/BATTLE 相容、實機圖像來源未進入私人 Drive 前清楚標 WIP。
+- 每一個施工步驟需更新 QA、Failure Log、Handoff，取得 GitHub commit、CI log 與 readback。
+
+## 第三方研究條件
+- 先前 A17/A19 動作線的素材與規格必須獨立讀取授權／版本，不直接把其他對話「已完成」當作在此分支可用；ASF 喬伊 7 姿勢雖曾驗證像素差 0，仍需真正移入本分支的 asset source & test。
+- 4.7.2 為本輪固定引擎版本；所有 UI/動作移植若換版本需 CI 重新認證。
+
+## 本輪 Gate
+**FS Event Studio v0.1**：目前已有功能雛形和獨立沙盒，本輪保留既有全部測試且不新增後續事件特性。**FS 原始數值/介面/動畫搬移**：開始新階段，待實際施工結果另寫 Failure Log。
