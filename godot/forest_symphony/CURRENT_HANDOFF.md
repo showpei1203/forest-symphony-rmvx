@@ -1,27 +1,24 @@
-# Forest Symphony｜Godot-first CURRENT_HANDOFF
-Latest: **A31 / 2026-11-14** | Repository: `showpei1203/forest-symphony-rmvx`
-**Current development:** [Draft PR #16](https://github.com/showpei1203/forest-symphony-rmvx/pull/16) | branch `feat/fs-godot-first-a29-20261113`. **Do not merge main** without approval.
-**Primary engine:** Godot 4.7.2 stable. Original RMVX/Tankentai scripts and FS v2.3.3 remain read-only function/art references. [Active Master v1.2](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-asset-factory-v1-20261107/authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md) + P0 cloud-only rules control rights, source SHA, QA, preservation.
+# Forest Symphony｜Godot-first CURRENT_HANDOFF（A32）
 
-## Actual latest build
-- A30: original A11 1280×928 Ground byte/SHA unchanged, 3 individually editable PAR owners, true 32×32 Godot TileMapLayer physics with **180/1160 blocked CANDIDATES**, 980 remaining candidate-free cells connected but not USER-APPROVED traversable. Actual native Godot collisions and camera; original 48×48 Actor01 approved A62 battle RUN loop `0,1,0,2`. A62 is **not a full overworld four-direction animation**.
-- A31: only opt-in `tree_canopy` foreground RGBA alpha changes over actor silhouette, **default OFF**. Key `H` toggles, exported `assisted_tree_alpha=0.35` candidate. Original complete Ground RGB/SHA, standalone source PAR assets and non-tree bridge are unchanged. A30 build_overlay default parity is byte-for-byte.
-- Native framebuffer comparison at 544×416, tree behind A30→A31 changed 181 pixels; tree front **0**, bridge behind **0**. 100/65/35/20%-opacity comparisons under private QA. These are human ART review aids, **not ART PASS**.
+Latest: **A32 Ground-first + independent complete PAR** | 2026-11-14. Active Master v1.3 **overrides** A11/A21 old flattened-Master source-crop default.
 
-## Actual tests and source evidence
-- **Godot 4.7.2 isolated true private sources:** A30 real 221/221; A31 real 4627/4627; 8 native rendered screenshot captures. Master SHA `091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530`. Audio not tested.
-- **Godot source-only public:** A30 389/389, A31 133/133; [A31 exact HEAD CI 43518321348](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43518321348) completed/success. CI log confirms all new tests actually ran.
-- **Private complete 79-file R3:** [Drive A31 ZIP](https://drive.google.com/file/d/1ENyWqKdqQkmENbQNXUdFOZxt8lHddiQK/view) 28,297,484 bytes, SHA256 `56696d0abe47e2176d2a1624fb4a4a914cb8ffe4b5aaf46cea1deb259dcdcde6`, upload/download SHA256/ZIP CRC PASS, not in GitHub.
-- [Drive true native 4-way visual comparison](https://drive.google.com/file/d/1avAhO6gUJjcKHs_jgfI_n7rSbm29NHiX/view) (owner-only); [A31 QA/Failure Log/Handoff](docs/A31_HANDOFF.md); [Drive Handoff mirror](https://drive.google.com/file/d/1hPCDlIJ57MDryOyRdz2keLoEduVTjUyB/view).
+**Entry points:** `project.godot` -> `scenes/a32_groundfirst_scene.tscn` main scene. Older A31 original `/scenes/elf_forest_map.tscn` remains separately executable for historical comparison, not a future production art source.
 
-## Gates / stopped assumptions
-- USER_ART_RESULT **HOLD**, detached-head may remain due to small 48×48 battle F0 and source mask. A31 alpha assist is candidate, NOT approved new final art.
-- COLLISION_ART **HOLD**: 180 blocked cells are manually judged candidates, not complete source semantic legal network.
-- PMD/Actor01 overworld 4-direction, roof source independent mask, real events / skills / summons / ATB / Save / Windows build **NOT_RUN**.
-- Native VX Game.exe no longer prerequisite for Godot map development. Formal seal **NO**; user PC writes **0**; PixelLab paid calls **0**. PR #15 and original VX sealed files untouched.
+**Actual new art:** New Ground-only authored before any upright object, crop from 1536x1024 to **1280x928 without resampling**, file `private_assets/ground_only.png` SHA256 `3348d4d30f7bea64d6e4a8ea349d3ed868a1a04660671dd93c1787d6418b0000`. Includes lush grass, irregular winding dirt path, small flowers, stones, ferns; no tree, roof or building sprite. Full image-gen source privately preserved as `private_assets/a32_ground_creation_source_1536x1024.png` SHA256 `ca406a73350f325d2da5541770c6a3c3da075dcf8f5635b03f1f5063fee77910`.
 
-## Next concrete work
-**Priority 1:** improve true tree-canopy/trunk source geometry and role-based cover, compare 1x **art** and record USER_ART/HOLD.
-**Priority 2:** revise water/river/house/forest map collision boundaries using source-matched 32px semantic evidence, then native Godot walk/negative/camera tests.
-**Priority 3:** obtain proper top-down overworld 4-direction actor actions; do not relabel A62 battle 45° animation as overworld walk.
-Always write real test proof, Failure Log and cloud Handoff at end of the stage. Keep private PNGs/ZIP on owner-only Drive, only code/tests/docs in public GitHub PR.
+**Actual new independent scene:** 27 separate independent RGBA source families (not source crops from this generated Ground), 146 editor-placeable Godot `Node2D` objects (134 complete trees, 2 moss-roof complete same-family houses, 10 props); source provenance = preexisting owner-only A36F independent RGBA source archive + FS v2.3.3 standalone Graphics/Pictures sprites, source and processed PNG hash tracked. 136 tree/house object-root rectangular physics footprints; independent actor 48x48 F0 and Camera2D. All original objects may be individually repositioned in Godot scene inspector. Ground source not modified by compositor, flat PAR alpha preview only QA, not runtime layering.
+
+**True native Godot 4.7.2 QA:** `--headless --editor` no parse errors, `test_a32_groundfirst_real.gd` **734 PASS**, source-only without ANY art `test_a32_public_contract.gd` PASS; native OpenGL full 1280x928 screenshot, plus two 544x416 tree-front/behind screenshots. RGB comparison native/full vs static Pillow source composite: 10,965 changed pixels, 720 >1, max per-channel 16, MAE 0.005118; native YSort alpha order differs minimally from a static crop. Not pixel-perfect and not claimed as such.
+
+**Current gates:** `GROUND_ART=CANDIDATE`, `PAR_ART=HOLD` (moss house roof and front are less detailed than rich ground, tree pixel density consistency still unapproved), `REAL_COLLISION_SOURCE=HOLD` (136 tree/house root footprints only, 40x29 path graph/door transitions not mapped), `OVERWORLD_FOUR_DIRECTION=NOT_RUN` (legacy 45deg A62 battle RUN explicitly not reused as overworld walk), `USER_ART=HOLD`, `NPC/EVENTS/BATTLE/SAVE=NOT_RUN`, `FORMAL_SEAL=NO`.
+
+**Next real work priority:** Create *independent* detailed house family PAR transparent RGBA matching the actual 1x pixel-rich Ground, using art tools or authorized user originals. Do not fall back to cutting from full scene. Improve tree color/lighting consistency and clustered forest, compare source-ground-only + PAR + Godot native 1x composite vs complete image reference. Then fill source-faithful 32px navigable geometry and a working NPC/entrance; do not waste time only on pixel-diff numbers.
+
+**Safety:** No new user PC files; no paid PixelLab credits; owner-only private art to Drive; source, manifests and tests to GitHub Draft PR #16, original VX sealed assets and main branch protected. Always make Handoff/Failure Log and native capture. Keep this A32 ground-only PNG SHA frozen while testing independent PAR replacements.
+
+## A32 VERIFIED CLOUD ART AND QA LINKS
+
+- **Owner-only full portable Godot R4**: https://drive.google.com/file/d/10oUrfTbgohCHuCq0GO36vyQ3kCABIlBc/view, **228 ZIP entries, 47,995,335 bytes, SHA256 `28a52f2a901f8ea4ca2bcffe53646dcafe619a3d6ef365b6152efcc77b36b544`**, upload → raw Drive download, SHA256/ZIP CRC verified PASS; contains new 1536 ground original, 1280 Ground-only, 27 RGBA PAR, 146 editable Godot scene objects, true native screenshot and old A31 baseline.
+- **Real Godot 4.7.2 1x framebuffer**: https://drive.google.com/file/d/1YVEJozXA_4GyLO1T1647CvJFJAi9YXyg/view ; **Ground / independently authored PAR / composite**: https://drive.google.com/file/d/1mV1P1M0gn8CHFvuVrFEdDdbGtUQjACop/view.
+- **A32 full Failure Log and Handoff owner-only Drive**: https://drive.google.com/file/d/1-Cfnv_7QuVgShWZaLQftfrz-fADRIW3x/view .
+- Private Drive metadata confirmed user-only. Public Godot PR #16 only source/script/manifests/CI; image files never pushed to GitHub. User PC untouched; PixelLab paid credits not used.

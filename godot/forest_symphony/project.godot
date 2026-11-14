@@ -1,8 +1,8 @@
 config_version=5
 
 [application]
-config/name="Forest Symphony | Godot-first Map+Collision Pilot A30"
-run/main_scene="res://scenes/elf_forest_map.tscn"
+config/name="Forest Symphony | Godot-first A32 independent PAR"
+run/main_scene="res://scenes/a32_groundfirst_scene.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [display]
