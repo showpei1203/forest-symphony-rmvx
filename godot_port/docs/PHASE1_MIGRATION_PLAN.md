@@ -12,7 +12,7 @@
 ## Non-negotiable Phase 1 delivered features
 1. **Data/identity**: lossless export including IDs, original attributes, notes/tags, classes parameter tables, enemy action data, animation frames, and source count + SHA manifest.
 2. **Combat numerical parity**: derive effective actor stats with class/level/equipment/states; accuracy/evade/critical/guard, elements/variance, skill formulas, MP/HP cost, item and passive effects, state stacking, immunities, OD/Break/Cover, summoning, target selection, enemy AI, BattleResult XP/gold/drops. Deterministic input seed.
-3. **Movement**: preserve original 16 Kaduki action types, 3-frame rows and SBS weapon/icon transforms; actor/enemy pose control from actual action definitions, not placeholder movement.
+3. **Movement / animation (updated 2026-11-14)**: retain original 16 Kaduki action types through a source-preserving compatibility adapter. **New primary Godot animation clips are NOT limited to three frames**; support arbitrary frames (1/3/6/8/12+), per-frame duration, directional walking, combat poses, action markers and optional skeletal/layered/PixelLab renderers. Source SBS weapon/icon transforms and original effective behavior still require parity evidence.
 4. **ATB**: exact ATB (1.2c)-0627 flow, actor/enemy action window, cancel/target, pause mode and timing. Record tick/frame counts.
 5. **MENU UI**: items, skills, equipment, status, party/formation, save/load when required, actual navigation/selection/confirm/cancel/disabled semantics.
 6. **BATTLE UI**: actor status/ATB/OD/HP/MP, actor commands, target selection, skill/item info, battle message, animations, battle result.
@@ -30,8 +30,8 @@ P5 native engine test on Godot 4.7.2 stable and original VX screenshot compariso
 - **G0 Inventory + storage**: DONE for folder inventory, repo branch created. Unknown rights/audit details remain.
 - **G1 Raw RVData parser**: candidate present in `tools/rvdata_to_json.py`, requires full source read-only inspection; never export files to the user's PC.
 - **G2 Data parity**: counts, representative actor/skill/weapon/state/equip/AI fixtures, raw notes; verify IDs and hashes.
-- **G3 Functional battle**: action queue and exact formulas, equip/skills/items/state/OD/Break/Cover, 10+ trace scenarios and multiple boss benchmark comparisons.
-- **G4 UI parity**: MENU+BATTLE full view acceptance, source image assets, click/key/gamepad navigation and original screenshots.
+- **G3 Functional battle**: **PARTIAL candidate**: migrated class skill learns, dual-wield equipment class/kind restrictions, shared inventory and actor-target UI, native synthetic tests PASS. Real effective RGSS2 formulas, ATB, states, OD/Break/Cover, battle item effects, enemy AI and 10+ original scenario trace comparisons **NOT DONE**.
+- **G4 UI parity**: **PARTIAL candidate**: Godot MENU/ BATTLE native controls for party stats, known skills, inventory, equipment changes, formation, target selection have synthetic end-to-end PASS. Original source images, font/icon alignment, controller mapping and VX screenshot pixel parity **NOT DONE**.
 - **G5 Native Godot test**: Godot 4.7.2 headless start, real UI gameplay QA, screenshot/video evidence to private Drive; user visual approval.
 - **G6 Phase1 seal**: zero unverified functional or visual TODOs in committed scope. Current seal **NO**.
 
@@ -47,3 +47,6 @@ User explicitly clarified: **original RMVX story events need not be bulk-migrate
 - Due GLOBAL HARD RULE 001, native editor's ordinary Save button creates `res://` files wherever Godot runs. On user's PC, it is prohibited as a durable destination; interim use Copy JSON + GitHub workflow, or cloud isolated tools. See `FS_EVENT_STUDIO_V01_20261114.md`.
 - Full plot/story/map/quest **legacy bulk port** remains out of scope. New event studio, game dialogue preview and actual map interaction become new focused deliverables in subsequent phases.
 
+
+## 2026-11-14 P1 return-to-migration checkpoint
+See `FS_GODOT_MASTER_ROADMAP_20261114.md`, `FAILURE_LOG_MIGRATION_P1_20261114.md` and latest `HANDOFF_20261114.md`. Event Studio v0.1 kept as long-term independent feature, and the current branch now refocuses on actual FS data/combat/menu/battle instead of developing further event tools.

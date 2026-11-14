@@ -46,3 +46,10 @@
 
 ## 本輪 Gate
 **FS Event Studio v0.1**：目前已有功能雛形和獨立沙盒，本輪保留既有全部測試且不新增後續事件特性。**FS 原始數值/介面/動畫搬移**：開始新階段，待實際施工結果另寫 Failure Log。
+
+## 本輪 M1/M3/M4 增量施工證據（2026-11-14）
+- M1 **Godot Native synthetic PASS**：`FSAnimationProfile.gd` + `FSAnimationSprite.gd` 可播放任意幀數並設定各格播放時間、loop/end、marker、frame region；`FSActionSprite.gd` 只負責 16 組 Kaduki 舊動作相容。測試涵蓋 1/3/6/8/12 幀與 30／32 px 來源影格。**這不等於原六主角正式動作素材已核准或導入**。
+- 使用者已有獨立 [A37 Godot-first RUN 實作](https://drive.google.com/file/d/1h1Z7XfyEicDrVfZdmiqbfnUeSU6QBQEu/view)（8 幀、原圖 256×128、採 64 px 格並用 AnimatedSprite2D）。此線目前明示 **ART HOLD**，F6／F7 待修，只有 RUN 而無攻擊／施法／受傷／死亡。新 Clip 方案可容納該格式，尚未搬入實際私有圖。
+- M3 **部分資料移植 PASS**：唯讀確認 FS Actors 300/Classes 300/Skills 800/Items 850/Weapons 350/Armors 800/Enemies 800/States 155（資料表包含 nil slot 0），和 System.party_members=[1,2,5]；Godot `FSDatabase` 現在處理 actor Table(6×100), Class.learnings, 角色名稱/臉圖、dual wield/offhand、class weapon_set/armor_set、armor kind、hit/eva/cri；`FSBattle.equip` 支援雙手武器自動卸裝與原子庫存更新。測試 synthetic PASS，**真 FS 505 RGSS2 最終覆寫與完整原資料匯入仍缺**。
+- M4 **操作介面增量 PASS**：`FSMenuModel.gd` + `FSScreen.gd` 提供目前隊伍真正已學技能、持有道具、裝備更換、編隊、角色能力、BATTLE 指定操作角色與我/敵目標。Godot 4.7.2 真引擎 headless 測試 source-shaped synthetic PASS。**外觀未還原、原始 UI 圖私有來源尚未匯入**。
+- 最新完整 CI PASS： https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43546339479
