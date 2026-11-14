@@ -20,7 +20,9 @@ var source_atb_frame_fraction: float = 0.0
 var source_atb_rolls_for_test: Dictionary = {}
 var source_atb_advantage: String = ""
 var source_atb_wait: bool = false
-# Action queue enforcement is NOT implemented; no misleading opt-in toggle.
+# ATB actor queue is active in BATTLE UI; final enemy AI/forced action/OD
+# aliases are still outside the verified P1 source implementation.
+var action_queue: FSActionQueue = FSActionQueue.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
@@ -77,7 +79,9 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     _check_end()
     return damage
 
-func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
+func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
+    # This is the same cost/effect/target verification invoked before ACT
+    # starts AND immediately before skill payment at ACT completion.
     var skill := db.record("skills", skill_id)
     if skill.is_empty():
         changed.emit("找不到技能 ID %d" % skill_id)
@@ -110,6 +114,14 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if int(user.get("mp", 0)) < mp_cost:
         changed.emit("MP 不足")
         return false
+    return true
+
+func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
+    if not skill_preflight(user,target,skill_id):
+        return false
+    var skill: Dictionary = db.record("skills",skill_id)
+    # Exact quote has already been validated by skill_preflight.
+    var mp_cost: int = int(FSSkillCostRules.preview(skill,user)["mp"])
     user["mp"] = int(user["mp"]) - mp_cost
     var val: int = int(skill.get("base_damage", 0))
     if val > 0:
@@ -228,6 +240,17 @@ func advance_atb(delta: float) -> void:
         return
     source_atb_frame_fraction -= float(steps)
     FSTankentaiATBCore.advance_frames(party,enemies,steps,source_atb_wait)
+    if not source_atb_wait:
+        # Complete at most one valid ACT action per update; input command
+        # selection never spends resources before ACT is fully charged.
+        action_queue.resolve_ready(self)
+
+func queue_actor_action(index: int,kind: String,target_index: int = -1,
+        object_id: int = 0) -> bool:
+    return action_queue.request(self,index,kind,target_index,object_id)
+
+func has_actor_pending_action(index: int) -> bool:
+    return action_queue.has_pending(index)
 
 func begin_source_atb_charge(battler: Dictionary,kind: String = "attack",
         object_id: int = 0) -> bool:
