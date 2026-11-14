@@ -1,8 +1,21 @@
 # FS AI Asset Factory｜唯一現行施工規範
-版本：ACTIVE-MASTER v1.2｜2026-11-13｜適用：RPG Maker VX／RGSS2／Forest Symphony
+版本：ACTIVE-MASTER v1.3｜2026-11-14｜適用：RPG Maker VX／RGSS2／Forest Symphony
 狀態：**ACTIVE on Draft PR #15 only; not merged into main**。更新規範不代表已生產合格美術。
 
 > **從本檔開始。** 未來新對話先讀本檔、P0 雲端保護，再讀 `docs/asset_factory/CURRENT_HANDOFF.md` 查目前工程進度。其他 SOP／Axx 文件不是可自行覆寫本檔的「最新規則」。
+
+## 0c. 2026-11-14 使用者最終決策：GROUND-FIRST + 獨立完整 PAR（v1.3，優先於 0a/0b 與舊 Master-first）
+**正式製作順序不可任意改變**：
+1. **先製作完整高品質 Ground-only 影像**：地面可含自然草地、植被小花、砂土/碎石、步道和低矮不遮擋的細節；沒有任何樹木樹冠、完整房屋、柱子、岩壁前景等會阻擋角色視線的物件。Ground 必須在加入任何 PAR 前，獨立達到美術要求，採 1x 真人驗收。
+2. **再獨立生成/製作每個完整 PAR 物件**：透明 RGBA、完整可見樹冠+樹幹+根、完整一致的房屋（含屋頂/附屋）、橋欄、立體岩石等；來源可用合法授權素材、AI 原創生成或人手編輯，但不得只是從一張已畫好的 Master 場景切割可見的局部像素。物件風格/像素密度/光源/45 度或 top-down 3/4 視角需與 Ground 一致；保留原始物件、物件 ID、footpoint、完整 alpha 和可獨立替換狀態。
+3. **Godot 原生組合**：Ground 以完整原圖 Sprite2D 渲染；獨立 PAR 物件以 Sprite2D / object scene、pivot footpoint、Y-depth / z-index、相機和**碰撞落腳面**管理。Ground 不因前景修改而重畫或刪除區域，樹冠大小不等於碰撞範圍。遮擋可由完整物件 alpha＋角色腳點動態計算；SHADOW、LIGHT、水動畫等另層保留。
+4. **正式美術驗收＝合成後 1x 場景的豐富度和一致性不低於相同內容一次生成完整場景**，至少依 Ground3 原畫與核准參考比較森林密度、自然林群、完整房屋、道路過渡、草花碎石比例、像素銳利度、色彩統一、視覺瑕疵。禁止用 RGB 零差、Shader、CI 綠燈、物件數量或漂亮概念圖冒充藝術過關。
+5. **遊戲實用驗收**：Godot 實測人物樹前/樹後、屋簷、橋、門口、岸邊、碰撞、實走路線、動畫。目標是高品質可遊玩的場景與可量產的資產家族，不是只停留技術 PoC。
+6. **完整場景 Master → 分割遮擋層** 降為**非預設、不得替代正式流程**的技術研究／比較支線，只有經獨立 1x 美術驗收證明分割+遮住區補畫不減損品質，才可作個別案例。2026-11-04 的試驗請求不等於長期生產授權。過去 A21～A31 三個遮罩、同源 RGB、遮擋 197/0/29/0 與 Godot CI 的成功，**只證明已存在素材可被原生引擎顯示及遮擋**，沒有證明 AI 自動分割或獨立美術製作突破。
+7. **使用 A27/A36F 已存在的獨立 Ground/PAR 來源和驗證系統作合法起點**，優先改善視覺而非重寫跑通的技術；保留 A29～A31 Godot 相機/碰撞/動作作可重用引擎元件，但**A11 flatten Master 不再當未來新地圖的 Ground 母圖**。來源/權利/版控標記 `APPROVED`、`CANDIDATE`、`REFERENCE_ONLY`，避免把視覺候選標成封版。
+8. 每輪新地圖交付 **完整 Ground 原圖、每個獨立完整 PAR RGBA、manifest、真實 Godot 合成圖與遊玩 QA、與「一次生圖」美術參考比較、Failure Log、Handoff**；數位素材僅 owner-only Drive、程式/非私人資料在 GitHub Draft PR，正式 main、舊封版不動。
+
+**這個 v1.3 指令是唯一有效的新地圖美術產線；0a/0b 與任何 2026-11-07 Master-first/same-XY crop 文件在「製作順序」方面均已失效，僅保留舊實驗與來源保真的歷史紀錄。**
 
 ## 0. 規則權限與「真實進度」分開
 
