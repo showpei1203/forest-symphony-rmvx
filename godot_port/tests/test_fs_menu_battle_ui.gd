@@ -77,6 +77,14 @@ func _run() -> void:
     screen.battle = battle
     screen.menu_model = Menu.new(source_db,battle)
     screen._show_menu()
+    screen._open_story_sandbox()
+    if not _check(screen.story_sandbox != null and
+            screen.story_sandbox.markers.size()==2 and
+            screen.story_sandbox.has_node("ReturnToFSMenu"),
+            "boot UI opens playable Godot event map with return navigation"): return
+    screen._close_story_sandbox()
+    if not _check(screen.story_sandbox == null and "MENU" in screen.title_label.text,
+            "map sandbox returns to actual FS menu"): return
     if not _check("MENU" in screen.title_label.text,"MENU first opens"): return
     screen._show_skills()
     var skill_rows: String = _text_of(screen.body)
