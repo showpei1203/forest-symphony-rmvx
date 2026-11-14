@@ -103,17 +103,32 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     _check_end()
     return true
 
-func use_item(target: Dictionary, item_id: int) -> bool:
+func use_item(target: Dictionary, item_id: int, user: Dictionary = {},
+        in_battle: bool = true) -> bool:
+    # Implement ONLY the verified stock VX simple recovery subset.
+    # Final FS MasterSetup/runtime/skill-cost aliases still need real VX traces.
+    # Unsupported tag/state/common-event/parameter/item never consumes inventory.
     var key: String = "item:%d" % item_id
-    var count: int = int(inventory.get(key, 0))
-    var item := db.record("items", item_id)
-    if count <= 0 or item.is_empty():
-        changed.emit("沒有該物品")
+    if int(inventory.get(key,0)) < 1:
+        changed.emit("背包中沒有物品 #%d" % item_id)
         return false
-    # Item effects/consumability/target scope vary by game tags; require trace.
-    # Fails closed instead of applying a made-up healing formula.
-    changed.emit("物品效果待 RGSS2 核對，未消耗物品：" + str(item.get("name", "?")))
-    return false
+    var item: Dictionary = db.record("items",item_id)
+    if item.is_empty():
+        changed.emit("原始物品資料不存在 #%d" % item_id)
+        return false
+    var effect: Dictionary = FSItemRules.preview(item,user,target,in_battle)
+    if not bool(effect.get("ok",false)):
+        changed.emit("已阻擋未驗證物品效果：" + str(effect.get("reason","")))
+        return false
+    # Source shared inventory is committed only once effect was validated.
+    target["hp"] = int(effect["new_hp"])
+    target["mp"] = int(effect["new_mp"])
+    if bool(item.get("consumable",true)):
+        inventory[key] = int(inventory.get(key,0)) - 1
+    changed.emit("%s 使用 %s：HP %+d / MP %+d" % [
+        user.get("name","角色"),item.get("name","物品"),
+        int(effect["hp_gain"]),int(effect["mp_gain"])])
+    return true
 
 func equip(actor_index: int, slot: int, item_id: int) -> bool:
     # Source: Game_Actor.change_equip and equippable? (base authority).
