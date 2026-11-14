@@ -253,6 +253,15 @@ func resolve_ready(battle) -> int:
         var obj: int = int(entry["object_id"])
         var target: Dictionary = _target(battle,entry)
         var side: String = str(entry["target_side"])
+        # #372 target priority can CHANGE during ACT (new Provoke,
+        # enemy defeated, state removed). Check at EXECUTION, not only UI
+        # selection, otherwise an outdated cursor hits the wrong enemy.
+        var legal_target: bool = true
+        if side == "enemy" and kind in ["attack","skill"]:
+            var allowed: Dictionary = FSTargetPriority.player_enemy_candidates(
+                battle,obj if kind == "skill" else 0)
+            legal_target = bool(allowed.get("ok",false)) and (
+                int(entry.get("target_index",-1)) in allowed.get("indices",[]))
         # Pop before executing to prevent duplicate completion/reentrancy.
         pending.erase(key)
         var success: bool = false
@@ -260,7 +269,7 @@ func resolve_ready(battle) -> int:
             actor["guarding"] = true
             success = true
             battle.changed.emit("%s 防禦姿態成立" % actor.get("name","角色"))
-        elif not target.is_empty() and int(target.get("hp",0)) > 0:
+        elif legal_target and not target.is_empty() and int(target.get("hp",0)) > 0:
             if kind == "attack" and side == "enemy":
                 actor["guarding"] = false
                 battle.attack(actor,target)

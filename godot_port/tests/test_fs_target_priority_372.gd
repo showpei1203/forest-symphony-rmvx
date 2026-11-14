@@ -75,8 +75,16 @@ func _run() -> void:
     if not _assert(battle.queue_actor_action(0,"attack",1) and
             battle.has_actor_pending_action(0),
             "queue accepts highest-priority target when source ATB ready"): return
-
+    # A new Provoke may appear during ACT, so execution needs to reject
+    # the outdated selected target rather than damaging the old enemy.
+    battle.source_atb_wait = false
+    var hp_before_target_change: int = int(battle.enemies[1]["hp"])
     battle.enemies[0]["states"] = [14]
+    battle.advance_atb(1.0/60.0)
+    if not _assert(int(battle.enemies[1]["hp"])==hp_before_target_change and
+            not battle.has_actor_pending_action(0) and
+            not bool(battle.action_queue.completed[-1]["success"]),
+            "late Provoke change invalidates queued target, no wrong-target damage"): return
     allowed = TARGET.player_enemy_candidates(battle)
     if not _assert(allowed["indices"]==[0] and
             allowed["priority"]==1000,
