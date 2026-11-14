@@ -185,12 +185,17 @@ func _shield(battle,summon_flags: Dictionary) -> void:
         var boss: Dictionary = _alive(battle.enemies,boss_id)
         if boss.is_empty():
             continue
+        var hp: int = int(boss.get("hp",-1))
+        var maxhp: int = int(boss.get("maxhp",0))
+        if maxhp <= 0 or hp < 0 or hp > maxhp:
+            _error("Boss%d HP/maxhp 非法，護盾與覺醒意圖暫停" % boss_id)
+            continue
         var group: Array = FSBossSummonRuntime.CORE_GROUPS.get(boss_id,[])
         if _core_alive(battle,group):
             _attempt_atomic(boss,boss_id,[],[77],battle.db)
         else:
             _attempt_atomic(boss,boss_id,[77],[],battle.db)
-        if int(boss.get("hp",0))*100 <= int(boss.get("maxhp",1))*45:
+        if hp*100 <= maxhp*45:
             _attempt_atomic(boss,boss_id,[],[128],battle.db)
     # Source iterates CORE_GROUPS in its original Ruby insertion order.
     for boss_id in FSBossSummonRuntime.CORE_GROUPS.keys():
@@ -202,6 +207,11 @@ func _shield(battle,summon_flags: Dictionary) -> void:
             continue
         if not summon_flags.has("start:%d" % int(boss_id)) and not (
                 summon_flags.has("threshold:%d" % int(boss_id))):
+            continue
+        var hp: int = int(boss.get("hp",-1))
+        var maxhp: int = int(boss.get("maxhp",0))
+        if maxhp <= 0 or hp < 0 or hp > maxhp:
+            _error("Boss%d HP/maxhp 非法，核心暴露意圖暫停" % int(boss_id))
             continue
         if _core_alive(battle,FSBossSummonRuntime.CORE_GROUPS[boss_id]):
             continue
