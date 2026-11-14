@@ -1,0 +1,19 @@
+; A38 isolated Godot 4.7.2 BATTLE animation pilot; no RMVX 3-frame constraint.
+config_version=5
+
+[application]
+config/name="FS A38 | Actor01 RUN and WAITING"
+run/main_scene="res://scenes/battle_animation_preview.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[display]
+window/size/viewport_width=1024
+window/size/viewport_height=720
+window/size/window_width_override=1024
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
