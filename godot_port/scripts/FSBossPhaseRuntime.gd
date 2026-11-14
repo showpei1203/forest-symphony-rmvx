@@ -131,12 +131,13 @@ func _weather(battle) -> void:
         var boss: Dictionary = _alive(battle.enemies,int(boss_id))
         if boss.is_empty():
             continue
+        var hp: int = int(boss.get("hp",-1))
         var maxhp: int = int(boss.get("maxhp",0))
-        if maxhp <= 0:
-            _error("Boss%d maxhp 不合法" % int(boss_id))
+        if maxhp <= 0 or hp < 0 or hp > maxhp:
+            _error("Boss%d HP/maxhp 不合法，天氣意圖暫停" % int(boss_id))
             continue
         var specs: Array = PHASE_WEATHER[boss_id]
-        var late: bool = int(boss.get("hp",0))*100 <= maxhp*55
+        var late: bool = hp*100 <= maxhp*55
         var phase_state: int = int(specs[1] if late else specs[0])
         var weather_id: int = int(specs[3] if late else specs[2])
         if battle.db.record("states",phase_state).is_empty() or (
