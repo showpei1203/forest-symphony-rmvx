@@ -63,6 +63,14 @@ static func preview(skill: Dictionary, user: Dictionary) -> Dictionary:
             # fails closed. Do not silently discard unknown FS gameplay tags.
         else:
             return _fail("未知的技能成本語意")
+    # #372 TargetPriority: these two explicit Notes change ONLY target
+    # selection eligibility. They are not FS #411 MP/HP/OD cost tags.
+    # Whitelist them without weakening fail-closed handling of other Notes.
+    var target_note := RegEx.new()
+    if target_note.compile("(?i)<\\s*ignore[ _-]*target[ _-]*priority\\s*>|<\\s*無視目標優先\\s*>") != OK:
+        return _fail("目標優先權標籤解析器設定錯誤")
+    for match_result in target_note.search_all(leftover):
+        leftover = leftover.replace(match_result.get_string(0),"")
     if not leftover.strip_edges().is_empty():
         return _fail("包含不明的技能 Note／其他系統標記，不可按原始 mp_cost 支付")
     if bool(skill.get("fs_cost_level_modifier_pending",false)) or bool(

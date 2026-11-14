@@ -65,6 +65,10 @@ func _run() -> void:
             "unknown effect Note fails closed"): return
     if not _check(not bool(COST.preview(_skill(12,"<costo mp: 12>\n<costo mp: 22>"),user).get("ok",false)),
             "duplicate MP tag fails closed"): return
+    if not _check(int(COST.preview(_skill(13,"<ignore target priority>"),user).get("mp",-1))==10,
+            "#372 exact target priority bypass Note is cost-neutral, not unknown cost"): return
+    if not _check(not bool(COST.preview(_skill(14,"<ignore target priority>\n<unknown effect>"),user).get("ok",false)),
+            "permitted #372 Note does not accidentally whitelist other gameplay effects"): return
 
     var db = DB.new()
     db.tables = {

@@ -32,13 +32,16 @@ func _run() -> void:
     state_rows.resize(30)
     state_rows[22] = {"id":22,"note":"<target_priority: 12>"}
     db.tables = {"states":state_rows,"skills":[null,
-        {"id":1,"note":"<ignore target priority>","scope":1}],
+        {"id":1,"name":"Ignore Priority Hit","note":"<ignore target priority>",
+         "scope":1,"occasion":0,"mp_cost":5,"base_damage":20,
+         "atk_f":0,"spi_f":0,"ignore_defense":false,"damage_to_mp":false,
+         "absorb_damage":false,"plus_state_set":[],"minus_state_set":[]}],
         "armors":[null],"weapons":[null]}
     var battle = BATTLE.new(db)
     battle.party.append({"id":1,"name":"Hero","actor":true,
         "hp":400,"maxhp":400,"agi":20,"atk":15,"mp":50,"maxmp":50,
         "equipment":[0,0,0,0,0],"two_swords_style":false,
-        "odds":4,"states":[],"note":""})
+        "skills":[1],"odds":4,"states":[],"note":""})
     battle.enemies.append(_enemy(1,"<target priority: 2>"))
     battle.enemies.append(_enemy(2,"<target_priority: 5>"))
     if not _assert(battle.start(),"priority battle start"): return
@@ -89,6 +92,23 @@ func _run() -> void:
     if not _assert(allowed["indices"]==[0] and
             allowed["priority"]==1000,
             "enemy State14 Provoke outranks Note5 in manual targeting"): return
+    # Real BATTLE skill path: #372 ignore target priority must be
+    # interpreted by the UI, the queue and the MP quote together.
+    var actor: Dictionary = battle.party[0]
+    actor["source_at_active"] = true
+    actor["source_atb_count_up"] = false
+    actor["source_atb_count"] = 1000
+    var old_mp: int = int(actor["mp"])
+    var old_enemy_hp: int = int(battle.enemies[1]["hp"])
+    if not _assert(battle.queue_actor_action(0,"skill",1,1) and
+            actor["mp"]==old_mp,
+            "#372 bypass skill can target lower-priority enemy without early MP debit"): return
+    battle.advance_atb(1.0/60.0)
+    if not _assert(actor["mp"]==old_mp-5 and
+            int(battle.enemies[1]["hp"])==old_enemy_hp-20 and
+            not battle.has_actor_pending_action(0),
+            "ignore-priority skill resolves after ACT with source MP cost and exact target"): return
+
     battle.enemies[0]["states"] = [22]
     allowed = TARGET.player_enemy_candidates(battle)
     if not _assert(allowed["indices"]==[0] and allowed["priority"]==12,
