@@ -1,7 +1,7 @@
 extends SceneTree
 
 # Godot 4.7.2 headless native controls and input lifecycle; no copyrighted source assets.
-const Panel = preload("res://scripts/story/FSDialoguePanel.gd")
+const DialoguePanelScript = preload("res://scripts/story/FSDialoguePanel.gd")
 const Runner = preload("res://scripts/FSVXEventInterpreter.gd")
 const State = preload("res://scripts/FSGameState.gd")
 
@@ -23,7 +23,7 @@ func _run() -> void:
     var runner = Runner.new()
     root.add_child(runner)
     runner.setup(world)
-    var panel = Panel.new()
+    var panel = DialoguePanelScript.new()
     root.add_child(panel)
     panel.bind(runner)
     var seen_text: Array = []
