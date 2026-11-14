@@ -102,6 +102,34 @@ func _run() -> void:
             int(caster["source_atb_count"])==0,
             "source ACT frame10 resolves enemy one-opponent skill and MP10"): return
 
+    # Enemy scope7 is a FRIEND skill relative to an ENEMY user,
+    # not a skill targeted at the player's actor side.
+    var healer = _battle(db,world,_enemy(3,1,3))
+    healer.enemies[0]["hp"] = 200
+    healer.start()
+    healer.advance_atb(90.0/60.0)
+    if not _check(healer.action_queue.enemy_pending.size()==1 and
+            int(healer.enemies[0]["hp"])==200,
+            "enemy friend-heal queues self target without premature recovery"): return
+    healer.advance_atb(10.0/60.0)
+    if not _check(int(healer.enemies[0]["hp"])==220 and
+            int(healer.enemies[0]["mp"])==40 and
+            int(healer.party[0]["hp"])==500,
+            "enemy scope7 heals ENEMY ally/self after ACT, not opponent"): return
+
+    # Recheck at actual ACT execution. A target that dies while casting
+    # must NOT consume MP, even if selection was initially valid.
+    var expired = _battle(db,world,_enemy(3,1,2))
+    expired.start()
+    expired.advance_atb(90.0/60.0)
+    expired.advance_atb(5.0/60.0)
+    expired.party[0]["hp"] = 0
+    expired.advance_atb(5.0/60.0)
+    if not _check(int(expired.enemies[0]["mp"])==50 and
+            expired.action_queue.enemy_pending.is_empty() and
+            not bool(expired.action_queue.completed[-1]["success"]),
+            "enemy target dead at ACT: action canceled, MP not charged"): return
+
     var interrupted = _battle(db,world,_enemy(1,1,2))
     interrupted.start()
     interrupted.advance_atb(90.0/60.0)
