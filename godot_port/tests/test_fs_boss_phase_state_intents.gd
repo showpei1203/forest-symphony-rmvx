@@ -68,7 +68,12 @@ func _run() -> void:
     if not _check(boss["fs_phase_state_intents"]==[150],
             "HP 70.1% does not trigger second phase"): return
     boss["hp"] = 700
+    var gauge_before_wait: int = int(boss["source_atb_count"])
+    battle.source_atb_wait = true
     battle.advance_atb(1.0/60.0)
+    if not _check(int(boss["source_atb_count"])==gauge_before_wait,
+            "target-selection WAIT freezes ATB gauge, not Boss phase update"): return
+    battle.source_atb_wait = false
     if not _check(boss["fs_phase_state_intents"]==[151] and
             boss["fs_law_cycle_authority_pending"] and
             not boss.get("fs_phase_state_intents",[]).has(140),
