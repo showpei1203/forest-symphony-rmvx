@@ -59,6 +59,8 @@ func load_all(folder: String = "res://data") -> bool:
                     else:
                         for problem in validate_runtime_witness(witness_data):
                             errors.append(problem)
+                        for problem in validate_witness_against_tables(witness_data,tables):
+                            errors.append(problem)
     if not errors.is_empty():
         # Never accidentally allow partial raw data through load_all() after
         # source-consistency failure. In-memory synthetic test tables bypass this.
@@ -84,6 +86,41 @@ static func validate_runtime_witness(witness: Dictionary) -> PackedStringArray:
                 continue
             if int(table_counts.get(name,0)) <= 0:
                 problems.append("VX 執行證據缺少資料表計數：" + name)
+    return problems
+
+static func validate_witness_against_tables(witness: Dictionary, loaded_tables: Dictionary) -> PackedStringArray:
+    # An internally plausible witness is not enough: it must describe the
+    # same actual post-Apply data that Godot is about to execute.
+    var problems := PackedStringArray()
+    var counts: Variant = witness.get("table_counts",{})
+    if not (counts is Dictionary):
+        problems.append("VX 執行證據缺少資料表計數")
+        return problems
+    for name in NAMES:
+        if name == "system":
+            continue
+        var rows: Variant = loaded_tables.get(name,null)
+        if not (rows is Array):
+            problems.append("Godot 載入的資料表不是陣列：" + name)
+            continue
+        var actual_count: int = 0
+        for row in rows:
+            if row != null:
+                actual_count += 1
+        if int(counts.get(name,-1)) != actual_count:
+            problems.append("VX/Godot 啟動後非空記錄數不一致：" + name)
+    var sys: Variant = loaded_tables.get("system",null)
+    if not (sys is Dictionary):
+        problems.append("Godot System 資料不是物件")
+    else:
+        var source_roster: Variant = sys.get("party_members",null)
+        var runtime_roster: Variant = witness.get("party_actor_ids",null)
+        if not (source_roster is Array) or not (runtime_roster is Array):
+            problems.append("VX/Godot 啟動後隊伍格式錯誤")
+        elif source_roster != runtime_roster:
+            # A runtime party may differ from the System starting roster if
+            # the witness is captured after events. Require boot-time capture.
+            problems.append("VX/Godot 初始隊伍不一致，需啟動後事件前 witness")
     return problems
 
 static func validate_boot_manifest(manifest: Dictionary, actual_hashes: Dictionary) -> PackedStringArray:
