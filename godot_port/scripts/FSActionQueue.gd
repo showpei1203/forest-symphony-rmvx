@@ -4,15 +4,16 @@ class_name FSActionQueue
 # Bounded, source-shaped Tankentai command -> ACT -> execute -> recharge
 # candidate, traced against script #231 lines 176-224, 1310-1382, 559-622.
 # Commands are validated when selected, but NO MP/item is spent until ACT
-# completes AND the target/cost is revalidated. Original damage, OD, cover,
-# enemy AI and forced/union actions are outside this explicit scope.
-#
-# This component deliberately does NOT allow more than one command per actor
-# and does NOT auto-execute arbitrary enemy AI.
+# completes AND the target/cost is revalidated. Enemy AI is a LIMITED
+# source-based roulette/weighted target candidate and not full Boss AI.
+# Original final damage, OD, cover and forced/union actions are unresolved.
 
 var pending: Dictionary = {}
 var completed: Array[Dictionary] = []
 var next_serial: int = 1
+var enemy_pending: Dictionary = {}
+var enemy_refusals: Dictionary = {}
+var ai_rng: FSAIRandom = FSAIRandom.new()
 
 func _key(index: int) -> String:
     return "actor:%d" % index
@@ -114,7 +115,118 @@ func cancel_interrupted(battle) -> int:
             canceled += 1
             battle.changed.emit("%s ACT 蓄力中斷，待執行指令已取消" %
                 str(actor.get("name","角色")))
+    for key in enemy_pending.keys():
+        var e: Dictionary = enemy_pending[key]
+        var idx: int = int(e["enemy_index"])
+        if idx < 0 or idx >= battle.enemies.size():
+            enemy_pending.erase(key)
+            canceled += 1
+            continue
+        var enemy: Dictionary = battle.enemies[idx]
+        if int(enemy.get("hp",0)) <= 0 or bool(enemy.get("source_atb_count_up",true)) or (
+                bool(enemy.get("source_at_active",false))):
+            enemy_pending.erase(key)
+            canceled += 1
+            battle.changed.emit("%s 的敵方 ACT 已被中斷，指令取消" %
+                str(enemy.get("name","敵人")))
     return canceled
+
+func _enemy_key(index: int) -> String:
+    return "enemy:%d" % index
+
+func schedule_enemy(battle) -> bool:
+    if not battle.active or not battle.source_atb_initialized or battle.source_atb_wait:
+        return false
+    for index in range(battle.enemies.size()):
+        var key: String = _enemy_key(index)
+        if enemy_pending.has(key) or enemy_refusals.has(key):
+            continue
+        var enemy: Dictionary = battle.enemies[index]
+        if int(enemy.get("hp",0)) <= 0 or not bool(enemy.get("source_at_active",false)):
+            continue
+        var choice: Dictionary = FSEnemyAIDecision.choose(battle,index,ai_rng)
+        if not bool(choice.get("ok",false)):
+            # Missing source rules means NO imaginary fallback attack. Keep the
+            # enemy ready, report once, and leave the original DB untouched.
+            enemy_refusals[key] = str(choice.get("reason","unverified source"))
+            battle.changed.emit("%s 的原始 AI 尚無安全實作：%s" % [
+                enemy.get("name","敵人"),enemy_refusals[key]])
+            continue
+        var kind: String = str(choice["kind"])
+        var obj: int = int(choice.get("object_id",0))
+        var side: String = str(choice.get("target_side","none"))
+        var target_index: int = int(choice.get("target_index",-1))
+        var target: Dictionary = {}
+        if side == "actor" and target_index >= 0 and target_index < battle.party.size():
+            target = battle.party[target_index]
+        elif side == "enemy" and target_index >= 0 and target_index < battle.enemies.size():
+            target = battle.enemies[target_index]
+        if kind == "skill" and (target.is_empty() or not battle.skill_preflight(enemy,target,obj)):
+            enemy_refusals[key] = "source skill preflight invalid"
+            continue
+        if not battle.begin_source_atb_charge(enemy,kind,obj):
+            continue
+        var serial: int = next_serial
+        next_serial += 1
+        enemy_pending[key] = {
+            "serial":serial,"enemy_index":index,"kind":kind,
+            "target_side":side,"target_index":target_index,"object_id":obj
+        }
+        battle.changed.emit("%s AI 已選擇 %s，進入 ACT（尚未結算）" % [
+            enemy.get("name","敵人"),kind])
+        return true
+    return false
+
+func _enemy_target(battle,entry: Dictionary) -> Dictionary:
+    var target_index: int = int(entry.get("target_index",-1))
+    var side: String = str(entry.get("target_side","none"))
+    if side == "actor" and target_index >= 0 and target_index < battle.party.size():
+        return battle.party[target_index]
+    if side == "enemy" and target_index >= 0 and target_index < battle.enemies.size():
+        return battle.enemies[target_index]
+    return {}
+
+func _resolve_enemy_ready(battle) -> int:
+    for index in range(battle.enemies.size()):
+        var key: String = _enemy_key(index)
+        if not enemy_pending.has(key):
+            continue
+        var enemy: Dictionary = battle.enemies[index]
+        if not battle.source_action_charged(enemy):
+            continue
+        var entry: Dictionary = enemy_pending[key]
+        var kind: String = str(entry["kind"])
+        var object_id: int = int(entry["object_id"])
+        var target: Dictionary = _enemy_target(battle,entry)
+        enemy_pending.erase(key) # Pop before any battle signals/reentrancy.
+        var success: bool = false
+        if kind == "guard":
+            enemy["guarding"] = true
+            success = true
+        elif not target.is_empty() and int(target.get("hp",0)) > 0:
+            if kind == "attack" and battle.party.has(target):
+                enemy["guarding"] = false
+                battle.attack(enemy,target)
+                success = true
+            elif kind == "skill":
+                success = battle.use_skill(enemy,target,object_id)
+        if success and battle.active:
+            battle.finish_source_atb_action(enemy,kind,object_id)
+        elif success:
+            # A lethal final hit ends battle. Recharge is still bookkept, but
+            # no more enemy commands are scheduled after the result.
+            FSTankentaiATBCore.reset_after_action(enemy,kind,object_id,battle.db)
+            battle.enemy_valid_action_completed(enemy)
+        else:
+            # Lost targets and unsupported conditions are NOT charged.
+            # The precise enemy retry/turn end remains a VX trace blocker.
+            FSTankentaiATBCore.reset_after_action(enemy,kind,object_id,battle.db)
+            battle.changed.emit("%s 的敵方指令未能執行，無成本消耗" %
+                enemy.get("name","敵人"))
+        completed.append({"serial":int(entry["serial"]),"kind":kind,
+            "side":"enemy","enemy_index":index,"success":success})
+        return 1
+    return 0
 
 func resolve_ready(battle) -> int:
     if not battle.active or battle.source_atb_wait:
@@ -166,4 +278,6 @@ func resolve_ready(battle) -> int:
                 str(actor.get("name","角色")))
         resolved += 1
         break
+    if resolved == 0:
+        return _resolve_enemy_ready(battle)
     return resolved
