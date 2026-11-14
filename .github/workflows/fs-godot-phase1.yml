@@ -140,3 +140,8 @@ jobs:
           path: ${{ runner.temp }}/fs_rgss2_static_authority_index.json
           if-no-files-found: error
           retention-days: 30
+      - name: Test FS 411 MP Cost Authority and MENU BATTLE quoted payment
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_skill_cost_authority.gd
