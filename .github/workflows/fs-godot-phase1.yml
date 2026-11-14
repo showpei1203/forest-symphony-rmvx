@@ -12,6 +12,11 @@ on:
 permissions:
   contents: read
 
+# Many rapid source commits must not leave dozens of redundant 4.7.2 runners.
+concurrency:
+  group: fs-godot-phase1-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   headless-smoke:
     runs-on: ubuntu-latest
