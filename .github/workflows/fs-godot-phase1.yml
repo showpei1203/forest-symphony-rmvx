@@ -128,6 +128,11 @@ jobs:
         run: |
           set -euo pipefail
           python3 godot_port/tools/rgss2_authority_scan.py --self-test
+      - name: Self-test raw VX source reference auditor
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 godot_port/tools/audit_raw_vx_references.py --self-test
       - name: Self-test M2 private post-Apply bundle preflight (synthetic only)
         shell: bash
         run: |
