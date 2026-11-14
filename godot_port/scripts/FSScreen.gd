@@ -16,6 +16,7 @@ var status_label: Label
 var log_label: Label
 var actor_index: int = 0
 var enemy_index: int = 0
+var battle_command_buttons: Array[Button] = []
 
 func _ready() -> void:
     _build_shell()
@@ -84,6 +85,7 @@ func _process(delta: float) -> void:
         return
     battle.advance_atb(delta)
     _refresh_battle_status()
+    _update_battle_command_buttons()
 
 func _change(tab: String) -> void:
     view_name = tab
@@ -110,6 +112,28 @@ func _add_button(text_value: String, callback: Callable) -> void:
     button.focus_mode = Control.FOCUS_ALL
     button.pressed.connect(callback)
     body.add_child(button)
+
+func _battle_actor_ready() -> bool:
+    if battle == null or not battle.active:
+        return false
+    return actor_index >= 0 and actor_index < battle.party.size() and (
+        battle.ready_actors().has(actor_index)) and (
+        not battle.has_actor_pending_action(actor_index))
+
+func _add_battle_command(label: String, callback: Callable) -> void:
+    var button := Button.new()
+    button.text = label
+    button.focus_mode = Control.FOCUS_ALL
+    button.disabled = not _battle_actor_ready()
+    button.pressed.connect(callback)
+    body.add_child(button)
+    battle_command_buttons.append(button)
+
+func _update_battle_command_buttons() -> void:
+    var enabled: bool = _battle_actor_ready()
+    for button in battle_command_buttons:
+        if is_instance_valid(button):
+            button.disabled = not enabled
 
 func _set_original_background(file_name: String) -> void:
     # Only load source-exact pixels after private Drive image assembly.
@@ -251,6 +275,7 @@ func _show_battle() -> void:
     # Blank source-exact MENU background rather than displaying an incorrect battle map.
     original_background.texture = null
     _clear_body()
+    battle_command_buttons.clear()
     title_label.text = "Forest Symphony / BATTLE (P1)"
     if battle.enemies.is_empty():
         var troop_id: int = int(db.system().get("test_troop_id", 0))
@@ -268,14 +293,15 @@ func _show_battle() -> void:
     if not battle.active:
         battle.start()
     _refresh_battle_status()
-    _add_text("ATB / ACT：依原 Tankentai 60fps 逐幀推進；完整行動排程仍待驗收")
+    _add_text("ATB 就緒 → 選指令 → ACT 蓄力 → 執行 → 重置（敵方 AI／特殊行動仍待移植）")
     _actor_selector(_show_battle)
     _add_text("目前操作角色：" + str(battle.party[actor_index].get("name","?")) if actor_index >= 0 and actor_index < battle.party.size() else "尚無角色")
-    _add_button("普通攻擊（選擇敵人）", _player_attack)
-    _add_button("防禦", _player_guard)
-    _add_button("技能", _skill_action)
-    _add_button("物品", _item_action)
+    _add_battle_command("普通攻擊（選擇敵人）", _player_attack)
+    _add_battle_command("防禦", _player_guard)
+    _add_battle_command("技能", _skill_action)
+    _add_battle_command("物品", _item_action)
     _add_button("返回 MENU", _show_menu)
+    _update_battle_command_buttons()
 
 func _refresh_battle_status() -> void:
     if battle == null:
@@ -330,21 +356,26 @@ func _select_ally_target(callback: Callable) -> void:
     _add_button("返回", _show_battle)
 
 func _player_attack() -> void:
-    if actor_index < 0 or actor_index >= battle.party.size() or not battle.active:
-        _show_log("目前角色不可行動")
+    if not _battle_actor_ready():
+        _show_log("角色 ATB 尚未就緒，或正在 ACT 蓄力")
         return
     _select_enemy_target(_do_player_attack)
 
 func _do_player_attack(target: Dictionary) -> void:
     if battle.active and actor_index >= 0 and actor_index < battle.party.size():
-        battle.attack(battle.party[actor_index],target)
+        var index: int = battle.enemies.find(target)
+        if not battle.queue_actor_action(actor_index,"attack",index):
+            _show_log("攻擊指令被拒絕：ATB 未就緒、已有指令或目標不合法")
     _show_battle()
 
 func _player_guard() -> void:
-    if actor_index < 0 or actor_index >= battle.party.size() or not battle.active:
+    if not _battle_actor_ready():
+        _show_log("防禦指令遭拒：ATB 尚未就緒")
         return
-    battle.party[actor_index]["guarding"] = true
-    _show_log("防禦姿態（目前為 P1 UI 候選，ATB 時序未驗證）")
+    if battle.queue_actor_action(actor_index,"guard"):
+        _show_battle()
+    else:
+        _show_log("防禦指令未建立，未變更防禦姿態")
 
 func _skill_action() -> void:
     _clear_body()
@@ -380,7 +411,11 @@ func _select_skill_target(skill_id: int) -> void:
 
 func _use_skill(skill_id: int, target: Dictionary) -> void:
     if battle.active and actor_index >= 0 and actor_index < battle.party.size():
-        battle.use_skill(battle.party[actor_index],target,skill_id)
+        var scope: int = int(db.record("skills",skill_id).get("scope",0))
+        var target_index: int = battle.enemies.find(target) if scope == 1 else (
+            battle.party.find(target))
+        if not battle.queue_actor_action(actor_index,"skill",target_index,skill_id):
+            _show_log("技能未排入 ACT：ATB 未就緒、目標或技能成本無法驗證")
     _show_battle()
 
 func _item_action() -> void:
@@ -418,13 +453,17 @@ func _use_item_from_ui(item_id: int, target: Dictionary, in_battle: bool) -> voi
     if actor_index < 0 or actor_index >= battle.party.size():
         _show_log("角色不在隊伍中")
         return
-    var result: bool = battle.use_item(target,item_id,battle.party[actor_index],in_battle)
+    var result: bool = false
     if in_battle:
-        _item_action()
+        result = battle.queue_actor_action(
+            actor_index,"item",battle.party.find(target),item_id)
+        _show_battle()
     else:
+        # MENU items work without ATB and retain immediate use.
+        result = battle.use_item(target,item_id,battle.party[actor_index],false)
         _show_items()
     if not result:
-        _show_log("物品未使用，請檢查上方物品限制；沒有消耗背包")
+        _show_log("物品指令被拒，或效果未驗證；沒有消耗背包")
 
 
 func _show_log(message: String) -> void:
