@@ -98,3 +98,8 @@ jobs:
         run: |
           set -euo pipefail
           /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_menu_model.gd
+      - name: Test migrated MENU/BATTLE visual controls and selected-target actions
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_menu_battle_ui.gd
