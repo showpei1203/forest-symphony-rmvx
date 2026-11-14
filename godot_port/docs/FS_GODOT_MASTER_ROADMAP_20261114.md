@@ -96,3 +96,10 @@
 - `FSBossSummonRuntime.prepare_summoned` 依 source fixed/database/growth mode 與倍率做最終基本能力、HP/MP，Pokémon 成長型沒有 Runtime Level witness 時 fail closed；`FSBattle` 官方 boot-final DB 驗證後才自動開啟 Boss runtime，且每 source frame 於原 AI/ACT 更新後執行。召出的怪物 `FSTankentaiATBCore.initialize_summoned` 只初始化新人的 ATB，不重設其他人的 gauge，接現有 BossContext/#211 Enemy AI。
 - 新增兩個 Godot 4.7.2 native tests + 原有 26 → **28 PASS**：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43555104501。
 - **下一個阻擋**：#401 Boss524 階段 State150/151/152 及 Law140-143、Weather 548–550、530/531 Core shield State77/128/129 的有來源 State effect；#401 `ma_call_ally` sprite／safe coordinates；原 VX post-Apply 11-table private Drive 與 runtime witness；角色/怪物多幀動畫。P1 Seal NO。
+
+
+## M3 Boss Phase Source-ID Intents + Field Weather（2026-11-14 最新）
+- 新 `FSBossPhaseRuntime.gd` 使用原 #401 Lines415–489 與 MasterSetup #440 的逐字一致 PHASE_WEATHER 表實作 524: State150/151/152, 70/35% gates + Law140–143 pending；548–550 的 early/late State 122–127、全域 Field153–158 與55%門檻、先後來源；530/531 在對應 Core 存活時 Shield77、HP≤45 Awakening128，Start/Threshold 後所有 Core 死亡一次 Exposure129。全為**條件與 ID 意圖**，不是效果移植；未驗證原始 State 與天氣數據時 Fail Closed。
+- `FSBossSummonRuntime` 已接 Phase intent engine，維持 Source 開場召喚 → Threshold → Phase/Weather/Shield → Core exposure。Boss phase tick 即使 `source_atb_wait` 仍更新；只有 ATB/ACT/敵方排隊在 Wait 模式凍結。
+- `FSEnemyAIDecision` 和 `FSActionQueue` 在 Boss 仍有未套用 phase effects 時保護性停止；`FSScreen` BATTLE 狀態可視化待套用 ID 及天氣來源、未實裝效果。新測試 `test_fs_boss_phase_state_intents.gd` 與 `test_fs_boss_weather_intents.gd`，28→30 native QA。
+- **下一步**：原 VX final DB + witness 優先，再釐清 524 151→Law140-143 最後 alias、#404 Weather damage/element target type/priority、正式 State77/128/129 effect、OD/Break/Cover；原角色/怪物動畫和 MENU/BATTLE 美術及 VX screenshots。Phase1 Seal NO。

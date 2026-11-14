@@ -150,3 +150,23 @@
 - 仍存在**已記錄的來源對照缺口**：原生 VX `ma_call_ally` 的 sprite/safe position、Game_Enemy Runtime Level、Phase States/Weather/Shield 的具體狀態機與視覺沒有 runtime trace；使用獨立 source guards 不為尚未驗證成長／召喚建假 stats。
 - 因部分 P1 synthetic 設定不含真 Boss 資料，`boss_runtime` 預設只在 `FSDatabase.boot_final_verified` 真時啟用；合成針對 Boss 的 QA 才明確設 `.active=true`。
 - 目前全部新成果僅存公開 GitHub 合法程式碼／source-shaped synthetic；**沒有把原始私有 RVData、PNG、角色圖或音效傳上公開庫**，也沒在使用者 E 槽寫檔。
+
+
+## 2026-11-14 Boss 524 Phase / 548–550 Global Weather / 530–531 Shield：Failure Log + QA
+| 功能 Gate | 驗收 | 邊界 |
+|---|---|---|
+| Boss524 初始150、HP≤70% 151、HP≤35% 152、清除 Law140–143 | **PASS native synthetic intent** | 原版 #401 行號 415–443；無法執行 `albert_ant_initialize_law_cycle`，只記 pending，不產生假 Law |
+| Boss548–550 HP≤55% phase/Field153–158 切換 | **PASS native synthetic intent** | #401/#440 + #404 FieldWeather 是全域狀態，無元素傷害/target type 套用 |
+| Boss530/531 Shield77、45%128、全部 Core 死亡 Exposure129 | **PASS native synthetic intent** | Source flags 必須先 start/threshold；只有 State-ID 意圖，原 Buff/Shield 效果未移植 |
+| Wait 期間 Phase/Spawn tick 與 BATTLE 顯示 | **PASS native integration** | source #401 Scene_Battle.update 在 ATB input WAIT 時仍更新 phase；UI 清楚寫 pending/unapplied |
+| 缺原 State/Field 資料 | **PASS fail-closed** | State151、Weather158 缺資料拒絕該階段變更，避免半生效與未知倍率 |
+| 真原 VX State effect/Weather damage/Law cycle | **NOT DONE** | 不能只把 ID 塞進 battler.states；後套用真資料與完整 alias witness 未有 |
+| 原始角色/怪物圖、動畫、正式 battle parity | **NOT DONE** | P1 Seal NO |
+
+### 本輪特別處理的來源陷阱
+1. **不可把 State IDs 當成完整狀態**：原 #404 明寫 Field153–158 是 `Game_Temp.field_effect`，不應加入每個角色 `states`。因此程式採 `fs_phase_state_intents` 和 global `weather_request`，BATTLE label 也標「未套用」。
+2. **Boss524 第三階段不能強制變回第一階段**：原 #401 只在 HP門檻內增減 State，沒有補血後撤銷152的來源分支；測試覆蓋152與151可能共存這個反直覺結果。
+3. **不能在 WAIT 模式漏掉 Boss 更新**：此前每幀 `advance_atb` 在 `source_atb_wait` 時提前 `continue`；source #401 Scene_Battle#update Boss hook 不應因此取消。改為 WAIT 只凍結 ATB/ACT/選招，Boss Tick 仍執行，新增 native 验证。
+4. **只提供安全 Trigger，不偽造戰鬥效果**：State77 防禦、Law 140–143、Weather 正傷倍率與 505 alias 未確認時，任何標記為 pending 的 Boss 被 gameplay queue/AI fail-closed；不能用 synthetic PASS 推論正式 RPG Maker VX parity。
+
+驗收來源：source-shaped in-memory synthetic 30 項 Godot 4.7.2 native script tests；第一輪 PASS https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43556057604，BATTLE UI 新文字後將重跑。只改指定 GitHub feature branch，原 E: 唯讀。
