@@ -123,6 +123,18 @@ func _run() -> void:
             weather.weather_request["source_boss_id"]==549,
             "dead Boss550 no longer forces Field; living Boss549 owns Field154"): return
 
+    # A corrupt HP record must not select late weather by treating -1
+    # as below the 55% threshold, or publish a global field request.
+    var bad_hp = _battle(db,[548])
+    if not _check(bad_hp.start(),"invalid weather HP fixture starts"): return
+    bad_hp.enemies[0]["hp"] = -1
+    var bad_weather = PHASE.new()
+    bad_weather.tick(bad_hp,{})
+    if not _check(bad_weather.weather_request.is_empty() and
+            bad_hp.enemies[0].get("fs_phase_state_intents",[]).is_empty() and
+            not bad_weather.failures.is_empty(),
+            "negative Boss548 HP refuses State125 and Field156"): return
+
     var incomplete = _db()
     incomplete.tables["states"][158] = null
     var denied = _battle(incomplete,[550])
