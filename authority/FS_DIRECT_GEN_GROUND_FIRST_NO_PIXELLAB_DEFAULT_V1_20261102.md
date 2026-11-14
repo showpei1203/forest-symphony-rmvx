@@ -1,4 +1,7 @@
 # Forest Symphony Ground-first direct generation | A35 Source-first QA v1
+
+> **2026-11-14 使用者 v1.3 最高優先：已恢復並強制 Ground-first → 獨立完整 PAR → Godot 動態合成 → 1x 最終美術豐富度驗收。** 任何 2026-11-07 的「全圖 Master-first → source crop」均為舊實驗歷史，**不得用作新地圖正式產線**。請先讀 `authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md` v1.3 的 0c；本頁保留可重用的尺寸、alpha/footpoint/碰撞/素材來源和冷驗證方法，但被 0c 覆寫的工序不再有效。
+
 Date: 2026-11-02 Asia/Taipei. ACTIVE workflow, no claim of user final approval.
 
 > **2026-11-07 STATUS：舊版本 Source-first/Ground-first 實測，不是新精靈村的現行生圖順序。** 真正 Ground3 視覺驗收、來源版權、Alpha/Collision Gate 仍有效；新畫面一律完整 MASTER 起步、Mask-only + same-pixel source 上層，不准以色彩對似的另生 Ground/PAR 當對位成功。雲端保管 P0：[Drive/GitHub Only](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。
