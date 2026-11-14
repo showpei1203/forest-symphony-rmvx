@@ -70,8 +70,12 @@ func _run() -> void:
     if not _check(battle.party[0]["hp"]==400 and world.amount("item",1)==2,
             "MENU actually heals and consumes exactly one"): return
 
-    screen._show_battle()
-    if not _check(battle.active,"battle started with real-style troop"): return
+    screen._show_troop_picker()
+    var troop_button: Button = _button(screen.body,"Slime")
+    if not _check(troop_button != null,"imported source troop offered in picker"): return
+    troop_button.pressed.emit()
+    if not _check(battle.active and screen.selected_troop_id==1,
+            "selected source troop starts actual battle"): return
     screen._process(2.0) # Source ATB, actor ready for the next item command.
     screen._item_action()
     item_button = _button(screen.body,"Potion")
