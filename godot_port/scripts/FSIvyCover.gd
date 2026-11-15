@@ -151,15 +151,22 @@ func _guard(battle,target: Dictionary) -> Dictionary:
             int(ivy.get("fs_ivy_guard_actions_left",0))>0):
         if not bool(ivy.get("fs_ivy_guard_source_verified",false)):
             return _fail("艾薇已啟動的主動護衛缺少原版技能/次數權威")
-        if bool(ivy.get("casting",false)) or not bool(
+        if not (bool(ivy.get("casting",false)) or not bool(
                 ivy.get("movable",true)) or bool(
-                ivy.get("fs_ivy_cover_motion_busy",false)):
-            return {"ok":true,"covered":false}
-        if not ivy.has("max_od") or int(ivy["max_od"])<=0 or not ivy.has("od"):
-            return _fail("原版艾薇 MaxOD 尚未驗證，不能贈送護衛 OD")
-        return {"ok":true,"covered":true,"guard":ivy,
-            "guard_type":"main","reduce":clampi(int(
-                ivy.get("fs_ivy_guard_reduce",0)),0,95)}
+                ivy.get("fs_ivy_cover_motion_busy",false))):
+            if not ivy.has("max_od") or int(ivy["max_od"])<=0 or not ivy.has("od"):
+                return _fail("原版艾薇 MaxOD 尚未驗證，不能贈送護衛 OD")
+            if 142 in ivy.get("skills",[]) and not bool(
+                    ivy.get("fs_ivy_passive_defense_verified",false)):
+                return _fail("艾薇被動142 的怒氣減傷尚未驗證")
+            if int(ivy.get("fs_ivy_taunt_reduce",0))>0 and not bool(
+                    ivy.get("fs_ivy_taunt_source_verified",false)):
+                return _fail("艾薇挑釁造成的護衛追加減傷來源未驗證")
+            return {"ok":true,"covered":true,"guard":ivy,
+                "guard_type":"main","reduce":clampi(int(
+                    ivy.get("fs_ivy_guard_reduce",0)),0,95)}
+        # Source select_guard falls through to half-HP Ivy Clone when
+        # active main guard is casting/unmovable/busy. Do not skip it.
     if int(target.get("maxhp",0))>0 and int(
             target.get("hp",0))*100<int(target.get("maxhp",1))*50:
         for ally in battle.party:
