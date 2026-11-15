@@ -1,3 +1,10 @@
+## FINAL OWNER-ONLY FOREST ZIP CLOUD READBACK (verified)
+- [Full FS_01_MAZE 「幽葉迴廊」 A36C R7 UTF-8 Godot Native QA ZIP](https://drive.google.com/file/d/1vCUPIBc6Yv3vtc3Wy7cDRBvI8Y65-9wf/view) contains 193 members, **73,228,430 bytes**, SHA256 **de0e2039327b234b3adffa2ab110fbaf7620022f566febb5c66cf618c912ded5**, ZIP CRC PASS.
+- Google Drive provider separately read back exact size, shared=false, permission owner-only; avoid stale first R7 filename whose cloud bytes differed.
+- Latest canonical R7 scene file SHA **8bf0a897bc6525ec7cef29e4992c46aa36639ffbeb9b675bbc4cd88194128c36**. Merger writes UTF-8 bytes with normalized LF to avoid Windows CRLF producing incorrect cross-platform SHA.
+- Archive includes full A36B original private art, R6 comparison source, reconciled R7 main scene, new manifest, two actual full 2560×1856 Godot GPU images, native test scripts/logs, 910809-pixel ROI QA and original 12-map factory documents. **Still ART/ROUTE/WATER HOLD**, NOT a sealed playable maze.
+- [1:1 original Godot A/B visual contact](https://drive.google.com/file/d/1MSMGYlS1QLLHENuxjVpKtdsSOSeWxMcO/view) is derivative composition of two original native frames.
+
 # Forest Symphony | 12 Map Factory V1 + FS_01_MAZE R7 | Official Native Handoff | 2026-11-16
 
 **ENGINE PASS · NATIVE GPU PASS · ROI PASS · ART HOLD · FOREST ROUTES/WATER HOLD. Godot 4.7.2 only.**
