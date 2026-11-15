@@ -263,6 +263,29 @@ func _run() -> void:
     if not _assert(auto_release_count==2,
             "two exact auto-release events: Exposure129 once, Overheat128 once"): return
 
+    # End-to-end FSBattle.advance_atb proof: the same native frame that
+    # crosses 1000 must age State128 BEFORE AI scheduling or ACT execution.
+    var real_ready = _battle(db,530)
+    if not _assert(real_ready.start(),"real ATB READY fixture starts"): return
+    real_ready.advance_atb(1.0/60.0)
+    var timer_boss: Dictionary = real_ready.enemies[0]
+    timer_boss["hp"] = 4500
+    real_ready.advance_atb(1.0/60.0)
+    if not _assert(int(timer_boss.get("fs_boss_state_turns",{}).get("128",-1))==4,
+            "State128 ATB timeout begins at full source hold_turn4"): return
+    timer_boss["source_atb_count"] = 999
+    timer_boss["source_atb_count_up"] = true
+    timer_boss["source_at_active"] = false
+    timer_boss["source_act_active"] = false
+    real_ready.advance_atb(1.0/60.0)
+    if not _assert(int(timer_boss.get("fs_boss_state_turns",{}).get("128",-1))==3 and
+            timer_boss.get("states",[]).has(128) and
+            not timer_boss.has("source_just_atb_ready"),
+            "actual 60fps battle pipeline consumes READY edge exactly once"): return
+    real_ready.advance_atb(4.0/60.0)
+    if not _assert(int(timer_boss.get("fs_boss_state_turns",{}).get("128",-1))==3,
+            "subsequent ACT frames cannot double-age the same ATB READY"): return
+
     var bad = _db()
     bad.tables["states"][77]["note"] += "\n<unknown_damage_effect:99>"
     var denied = _battle(bad,530)
