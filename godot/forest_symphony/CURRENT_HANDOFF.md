@@ -1,3 +1,18 @@
+# CURRENT | FS A35 R7 actual Godot tree shadow study | 2026-11-15
+
+**Godot 4.7.2 · ENGINE PASS · NAV PASS · GPU SHADOW PIXEL PASS · ART HOLD.** Separate map-art workstream. A36C, game systems and sealed R2–R6 Ground/PAR immutable.
+
+- [Formal R7 Handoff](docs/A35_R7_NATIVE_HANDOFF_20261115.md) | [R7 Failure Log](docs/A35_R7_FAILURE_LOG_20261115.md) | [real Godot caster script](scripts/a35_r7_shadow_study.gd) | [reproducible builder](tools/a35_r7_shadow_build.py) | [original GPU shadow analysis](tools/a35_r7_shadow_qa.py).
+- New R7 **separate** scene creates 175 real Godot `LightOccluder2D` trunk polygons, one isolated PointLight2D test lamp at (260,785), keyboard **O** to toggle shadow; old R3 village lights remain unchanged.
+- Actual Godot native source test confirms 187 PAR and all collision shapes/Ground identical, 175 occluders and on/off toggling PASS; physical NAV 8/8 and routes 4/4; two original 1280x928 GPU shadow frames PASS.
+- GPU original shadow OFF vs ON: **17,943 changed pixels all inside test light radius 263px, zero outside**, so physical 2D light/shadow pipeline verified. Simple trunk polygons only; no realistic canopy shadows, 3D volumetrics or final DOF.
+- Private full source R7 ZIP on Drive mount `FS_A35_R7_SHADOW_SOURCE_PRIVATE_20261115.zip`, 343 files/176,207,023 bytes/SHA256 `9e32a559fc40b90c38a573c227106f9f33c6c48a5165ccd55ca96af7f55fb3eb`. Reconstructible from sealed R6 with GitHub builder.
+- Private compact 2-native-frame QA evidence ZIP on Drive mount `FS_A35_R7_SHADOW_NATIVE_EVIDENCE_PRIVATE_20261115.zip`, 18 files/5,969,885 bytes/SHA256 `fac653f0e1bca3529cb2fe9bff10038ce681726d6437563d9daf301079aecb81`. Actual Drive provider file ID must be confirmed before linking.
+- Prior R6 conifer ART remains HOLD, rear actor visible 53/576 at one test point. Next refine conifer visual tips and shadow geometry with canopy-aware outlines in a separate scene, then Ground3 once visuals pass.
+- Public GitHub text only; private PNGs/ZIP exclusively owner-only Google Drive. No reset from A33, no accidental parallel-branch edits.
+
+---
+
 # CURRENT | Forest Symphony A35 R6 conifer art + HD-2D | 2026-11-15
 
 - **ENGINE PASS · NAV PASS · ORIGINAL GODOT GPU PASS · ROI PASS · ART HOLD**. Godot 4.7.2, RX 6700 XT. Do not work in RPG Maker VX or touch separate A36C / combat workstream.
