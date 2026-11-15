@@ -20,8 +20,9 @@ func _test() -> void:
     var data: Variant=JSON.parse_string(FileAccess.get_file_as_string(MAN))
     if typeof(data)!=TYPE_DICTIONARY:
         _fail("A36C manifest parse failed",41);return
-    if data["objects"].size()!=326 or data["logical_grid"]!=[80,58] or data["cell_px"]!=32:
-        _fail("wrong A36C source content or dimensions",42);return
+    var size: Array=data.get("logical_grid",[])
+    if data["objects"].size()!=326 or size.size()!=2 or int(size[0])!=80 or int(size[1])!=58 or int(data["cell_px"])!=32:
+        _fail("wrong A36C data objects="+str(data["objects"].size())+" grid="+str(size)+" cell="+str(data["cell_px"]),42);return
     if data["a36c_r6"]["changes"].size()!=39:
         _fail("R6 must contain exactly 39 movement records",43);return
     var base: Node2D=load(BASE).instantiate()
