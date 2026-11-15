@@ -196,6 +196,12 @@ static func reset_after_action(battler: Dictionary,kind: String = "attack",
         reset_percent = RESET_GUARD
     elif kind == "skill":
         reset_percent = 30 if source_id == 1 else RESET_SKILL
+        # Original Ivy145 has <recharge:10%>. This *specific* clean
+        # source-shape fixture uses that verified recharge, while the
+        # full Skill145 JP/ricarica turn cooldown remains unresolved.
+        if source_id==145 and db!=null and bool(db.record(
+                "skills",145).get("fs_ivy_furnace_source_verified",false)):
+            reset_percent=10
     elif kind == "item":
         reset_percent = RESET_ITEM
     elif kind == "attack":
