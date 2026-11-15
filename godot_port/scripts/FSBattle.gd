@@ -60,6 +60,53 @@ var ivy_pain: FSIvyPain = FSIvyPain.new()
 # Original 147 action-start stored-pain snapshot, post-effect consume gate.
 # Source 220475/222005; disabled until full private source testimony.
 var ivy_revenge: FSIvyRevenge = FSIvyRevenge.new()
+# Final source CharacterCore actor notes: private Profile.tag_text +
+# all equipped items + live State Notes, never handwritten Actor.note.
+var ivy_pain_source: FSIvyPainSourceProvider = FSIvyPainSourceProvider.new()
+
+func enable_private_ivy_pain_notes(folder:String="res://data")->bool:
+    ivy_pain.active=false
+    ivy_revenge.active=false
+    for actor in party:
+        actor.erase("fs_ivy_effective_notes")
+        actor.erase("fs_ivy_pain_notes_verified")
+        actor.erase("fs_ivy_furnace_state_verified")
+    var result:Dictionary=ivy_pain_source.configure_private(db,folder)
+    if not bool(result.get("ok",false)):
+        changed.emit("原版 Ivy Profile 有效 Note 尚未驗證："+str(
+            result.get("reason","")))
+        return false
+    var staged:Array=[]
+    for actor in party:
+        var built:Dictionary=ivy_pain_source.build(db,actor)
+        if not bool(built.get("ok",false)):
+            ivy_pain_source.active=false
+            changed.emit("Ivy Profile/裝備/State Source 交易被拒絕："+str(
+                built.get("reason","")))
+            return false
+        staged.append({"actor":actor,"quote":built})
+    for item in staged:
+        var quote_data:Dictionary=item["quote"]
+        if bool(quote_data.get("applicable",false)):
+            var actor:Dictionary=item["actor"]
+            actor["fs_ivy_effective_notes"]=quote_data["notes"].duplicate(true)
+            actor["fs_ivy_pain_notes_verified"]=true
+            actor["fs_ivy_furnace_state_verified"]=bool(quote_data[
+                "furnace_verified"])
+    # Source installation DOES NOT automatically enable the unported
+    # original Skill145, Skill147, OD/JP, or all 505 aliases.
+    return true
+
+func _refresh_ivy_pain_source(battler:Dictionary)->bool:
+    if not ivy_pain_source.active:
+        return true
+    var result:Dictionary=ivy_pain_source.refresh(db,battler)
+    if not bool(result.get("ok",false)):
+        changed.emit("原版艾薇 Profile/裝備/State Notes 更新失敗："+str(
+            result.get("reason","")))
+        return false
+    return true
+
 
 func enable_private_element_provider(folder: String = "res://data") -> bool:
     # Any reconfiguration invalidates the previous source witness; stale
@@ -173,7 +220,9 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
     # even if the original combat action was queued one ATB frame earlier.
     # Never draw RNG or mutate HP before the FINAL source quote validates.
     if not _refresh_element_source(attacker) or not (
-            _refresh_element_source(target)):
+            _refresh_element_source(target)) or not (
+            _refresh_ivy_pain_source(attacker)) or not (
+            _refresh_ivy_pain_source(target)):
         return false
     # Source stock attack_effect skips dead targets. Protect direct API
     # calls as well as queued ACT, without changing legacy test-only paths.
@@ -346,7 +395,9 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
 
 func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if not _refresh_element_source(user) or not (
-            _refresh_element_source(target)):
+            _refresh_element_source(target)) or not (
+            _refresh_ivy_pain_source(user)) or not (
+            _refresh_ivy_pain_source(target)):
         return false
     # Current migrated scope1/7 covers only living targets; VX revival
     # scopes are not implemented. Never consume HIT/EVA RNG on dead units.
