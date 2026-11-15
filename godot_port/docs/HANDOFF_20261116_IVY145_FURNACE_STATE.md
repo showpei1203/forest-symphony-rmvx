@@ -33,7 +33,11 @@
 - `43775011079`：新源形 Skill145、State85 5次 READY、State100 raw 狀態、舊專案所有 prior Godot headless native suite **SUCCESS**。
 - `43775214767`：加上真正 OpenGL 1280 戰鬥 Screenshot 與 CJK 斷言，完整 **SUCCESS**。artifact ID **14185861394**，已下載原生 PNG、解壓目視確認無錯字/裁切：HP923、MP84、State85倒數3、痛苦77、State100仍在；PNG **1280×720 RGBA，149,802 bytes，SHA256 `2991138fa9172ce2c63818781e58b2d5bc8e2d164121d35c263e9e97654289a0`**。
 - `43775661989`：學習被動 Note + Skill146 cap400 + Skill142 OD16不重算 + Legacy814 後，完整所有原生 QA + OpenGL 截圖 **SUCCESS**。
-- `43775947118`：本輪最後新增**勝利解除 State85/100** 與來源失效安全測試後，正式 CI 應確認結果再封 Handoff；若失敗，先修正來源計時與交易並完整重跑。所有中間被後續 commit 的 CI concurrency 取消，不得當成測試成功，也不是測試失敗。
+- `43775947118` **SUCCESS**：新增**勝利解除 State85/100** 與原版 State100 來源失效安全測試後，所有 Godot native 530/531 + 舊戰鬥/Boss/Field404/事件編輯器/圖像回歸測試通過。
+- `43776110185` **SUCCESS**：正式包含 GitHub Handoff / Master index 的工程 HEAD `8fc03b327060decb69200f7594c3b67fe8d88c9b` 完整原生 CI 再驗證，失敗步驟0，並且成功上傳原生 Godot4.7.2 OpenGL 圖。
+  https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43776110185
+  最新 `fs-godot-p1-ivy-furnace-native-qa` artifact ID **14186880364**，已下載解壓、SHA256 和人工畫面核對，真正 **1280×720 RGBA，149,982 bytes**，PNG SHA256 **`004affcb800289d03f69a86416c87f1f4a2a16c1f701ee03d37fcb85ed5d11e4`**。畫面 HP923、MP84、State85倒數3、蓄痛77、State100仍附加，繁體字完整。除正式完整 FS 尚缺 post-Apply 而「PHASE1 SEAL=NO」外，本輪這組工程 QA 已完整通過。
+- 中間因新 commit 觸發 CI concurrency 而取消的 run，不得算作測試成功，也不是規格測試失敗。
 - **Failure Log**：本輪主要是原版讀法與相容性差異，不是可玩完整145：① 最初 State100 從 raw 空白與 Aizhuo 共用ID，不能推論 post-Apply；② State85到期是第5次 READY，不能從4→0就刪除；③ 重新施放必須依 priority 排序；④ 曾發現已習得 Skill146 的 cap400 與 Skill142 Note 雙計問題，完成程式修正並有原生回歸；⑤ 原始完整 Skill145 JP/charge/ricarica 仍未移植，**一律拒絕原版 Full Note**；⑥ Victory battle_only 初始尚未處理，已以來源 Game_Battler/battle_end 真正接線。
 - 這些工程 source/測試/QA/Handoff 存 GitHub **feature** 分支；私人完整原版資料未曝光；原始 E: 未寫入。
 
