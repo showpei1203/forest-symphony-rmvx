@@ -4,11 +4,11 @@ class_name FSIvyCover
 # SOURCE RESTRICTED Ivy (Actor#5) Cover adapter.
 # Original All_Scripts_Export.txt lines 244516-248300
 # ALBERT_IVY_CLONE V1.6.2 final try_redirect and last-wins select_guard.
-# Implements only actively-charged MAIN IVY guard on enemy single-target
-# landed positive HP damage, with original independent guard damage roll.
-# Clone emergency cover, sprite motion, stored pain, fatal OD save and
-# post-Cover State effects still require RGSS2 runtime testimony. OFF by
-# default. Unsupported relevant source effects FAIL CLOSED before RNG.
+# Implements main Ivy and source-verified emergency Ivy clone on enemy
+# landed single-target HP damage, with independent guard damage calculation.
+# Original source #397 / #402 and Phase46 test fixtures.
+# Stored pain, fatal OD, sprite movement and post-Cover state-transfer are
+# separately guarded; source subsets OFF by default, never fake full FS.
 const IVY_ID: int = 5
 const ACTIVE_COVER_OD_PERCENT: int = 6
 var active: bool = false
@@ -42,6 +42,9 @@ func start_battle(battle) -> bool:
     last_action_serial=0
     session.clear()
     for ally in battle.party:
+        if str(ally.get("fs_clone_role",""))=="ivy":
+            ally["fs_ivy_clone_guard_used"]=false
+            ally["fs_ivy_clone_guarded"]=false
         if int(ally.get("id",0))!=IVY_ID or not bool(
                 ally.get("actor",false)) or int(ally.get("hp",0))<=0:
             continue
@@ -94,9 +97,16 @@ func activate_main_guard(battle,ivy: Dictionary,skill: Dictionary) -> Dictionary
     return plan
 
 func owner_action_finished(ivy: Dictionary) -> void:
+    # Original tick_owner_action resets clone's once-per-owner-action
+    # emergency guard usage, independent of main Ivy active guard duration.
+    if not active:
+        return
+    if str(ivy.get("fs_clone_role",""))=="ivy":
+        ivy["fs_ivy_clone_guard_used"]=false
+        ivy["fs_ivy_clone_guarded"]=false
     # Original tick_owner_action must skip the SAME action that first
     # activated <ig> (source @albert_ic_guard_activated_serial).
-    if not active or int(ivy.get("id",0))!=IVY_ID or not bool(
+    if int(ivy.get("id",0))!=IVY_ID or not bool(
             ivy.get("fs_ivy_guard_source_verified",false)) or int(
             ivy.get("fs_ivy_guard_actions_left",0))<=0:
         return
@@ -172,8 +182,25 @@ func _guard(battle,target: Dictionary) -> Dictionary:
         for ally in battle.party:
             if ally==target or int(ally.get("hp",0))<=0:
                 continue
-            if str(ally.get("fs_clone_role",""))=="ivy":
-                return _fail("半血以下映體艾薇緊急護衛尚未移植，拒絕錯誤攻擊")
+            if str(ally.get("fs_clone_role",""))!="ivy":
+                continue
+            # Original clone_role is derived from ALBERT_ACTOR_PROFILE,
+            # summoned actor Notes and <human_clone:ivy>. Require an
+            # explicitly verified origin before making gameplay decisions.
+            if not bool(ally.get("fs_clone_role_source_verified",false)):
+                return _fail("映體艾薇角色來源 Note/Profile 尚未核對")
+            if bool(ally.get("fs_ivy_clone_guard_used",false)):
+                continue
+            if bool(ally.get("casting",false)) or not bool(
+                    ally.get("movable",true)) or bool(
+                    ally.get("fs_ivy_cover_motion_busy",false)):
+                continue
+            if bool(ally.get("fs_boss_phase_effects_pending",false)):
+                return _fail("映體護衛者的未知 Boss 狀態未驗證")
+            # Source v1.5 select_guard returns FIRST eligible clone.
+            # No main-Ivy +6% OD charge on clone emergency cover.
+            return {"ok":true,"covered":true,"guard":ally,
+                "guard_type":"clone","reduce":15}
     return {"ok":true,"covered":false}
 
 func preview(battle,attacker: Dictionary,target: Dictionary,
@@ -191,6 +218,7 @@ func preview(battle,attacker: Dictionary,target: Dictionary,
         if session.get("original",{}) != target:
             return {"ok":true,"covered":false}
         return {"ok":true,"covered":true,"guard":session["guard"],
+            "guard_type":str(session.get("guard_type","main")),
             "reduce":int(session["reduce"]),"same_session":true}
     var picked: Dictionary=_guard(battle,target)
     if not bool(picked.get("ok",false)) or not bool(
@@ -266,6 +294,7 @@ func guard_damage(battle,attacker: Dictionary,target: Dictionary,
             guard.get("od",0))>=300):
         return _fail("艾薇替身承擔致死 Cover 的 OD 救援未實裝")
     return {"ok":true,"covered":true,"guard":guard,
+        "guard_type":str(result.get("guard_type","main")),
         "hit":hit,"damage":int(hit["hp"]),"reduce":reduce,
         "critical":bool(power.get("critical",false)),
         "raw":raw,"same_session":bool(result.get("same_session",false))}
@@ -278,17 +307,25 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
     var guard: Dictionary=resolved["guard"]
     var first: bool=not bool(resolved.get("same_session",false))
     # Commit is one transaction after ALL power/Shield quote checks.
+    var role: String=str(resolved.get("guard_type","main"))
     if first:
         session={"serial":action_serial,"original":original,
-            "guard":guard,"reduce":int(resolved["reduce"])}
-        guard["fs_ivy_guard_charges"]=maxi(0,int(
-            guard["fs_ivy_guard_charges"])-1)
-        var gained: int=roundi(float(guard["max_od"])*
-            float(ACTIVE_COVER_OD_PERCENT)/100.0)
-        guard["od"]=clampi(int(guard["od"])+gained,0,int(guard["max_od"]))
-        if int(guard["fs_ivy_guard_charges"])<=0:
-            guard["fs_ivy_guard_actions_left"]=0
-            guard["fs_ivy_guard_reduce"]=0
+            "guard":guard,"reduce":int(resolved["reduce"]),
+            "guard_type":role}
+        if role=="clone":
+            # Source v1.5 marks clone.used exactly ONCE, reset only
+            # when the clone completes ITS OWN action.
+            guard["fs_ivy_clone_guard_used"]=true
+            guard["fs_ivy_clone_guarded"]=true
+        else:
+            guard["fs_ivy_guard_charges"]=maxi(0,int(
+                guard["fs_ivy_guard_charges"])-1)
+            var gained: int=roundi(float(guard["max_od"])*
+                float(ACTIVE_COVER_OD_PERCENT)/100.0)
+            guard["od"]=clampi(int(guard["od"])+gained,0,int(guard["max_od"]))
+            if int(guard["fs_ivy_guard_charges"])<=0:
+                guard["fs_ivy_guard_actions_left"]=0
+                guard["fs_ivy_guard_reduce"]=0
     battle.boss_state_effects.commit_hit(guard,resolved["hit"])
     party_damage(battle,attacker,guard,int(resolved["hit"]["hp"]))
     original["fs_last_action_result"]="hit"
@@ -296,9 +333,11 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
     guard["fs_last_action_result"]="hit"
     guard["fs_last_action_critical"]=bool(resolved.get("critical",false))
     events.append({"serial":action_serial,"from":int(original.get("id",0)),
-        "to":int(guard.get("id",0)),"hp":int(resolved["hit"]["hp"]),
+        "to":int(guard.get("id",0)),"guard_type":role,
+        "hp":int(resolved["hit"]["hp"]),
         "mp":int(resolved["hit"]["mp"]),"first":first,
         "charges":int(guard.get("fs_ivy_guard_charges",0)),
+        "clone_used":bool(guard.get("fs_ivy_clone_guard_used",false)),
         "od":int(guard.get("od",0))})
     return {"ok":true,"covered":true,"guard":guard,
         "hp":int(resolved["hit"]["hp"]),
