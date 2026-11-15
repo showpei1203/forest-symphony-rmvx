@@ -1,0 +1,46 @@
+{
+  "stage": "A44",
+  "old_head_equal": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "alpha_at_64px_border": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "body_pixel_changes": [
+    0,
+    109,
+    116,
+    133,
+    134,
+    135,
+    162,
+    157,
+    132,
+    110,
+    103,
+    0
+  ],
+  "weapon_sha256": "d2d7598aa02c7306cc9594cd88674d3ef8a40f7591968abdbe851375a9c6c2f8"
+}

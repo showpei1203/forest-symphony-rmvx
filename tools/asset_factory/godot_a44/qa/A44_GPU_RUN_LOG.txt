@@ -1,0 +1,59 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 Core Profile Context 26.10.1.261008 - Compatibility - Using Device: ATI Technologies Inc. - AMD Radeon RX 6700 XT
+
+A44_PASS actor-scene-load
+A44_PASS all-a44-atlases-present
+A44_PASS body-12frames
+A44_PASS weapon-12frames
+A44_PASS fx-12frames
+A44_PASS attack-start
+A44_PASS GPU-RGBA-premultiplied-a44-F00-diff-0
+A44_PASS GPU-no-crop-F00
+A44_PASS native-screenshot-F00
+A44_PASS GPU-RGBA-premultiplied-a44-F01-diff-0
+A44_PASS GPU-no-crop-F01
+A44_PASS native-screenshot-F01
+A44_PASS GPU-RGBA-premultiplied-a44-F02-diff-0
+A44_PASS GPU-no-crop-F02
+A44_PASS native-screenshot-F02
+A44_PASS GPU-RGBA-premultiplied-a44-F03-diff-0
+A44_PASS GPU-no-crop-F03
+A44_PASS native-screenshot-F03
+A44_PASS GPU-RGBA-premultiplied-a44-F04-diff-0
+A44_PASS GPU-no-crop-F04
+A44_PASS native-screenshot-F04
+A44_PASS GPU-RGBA-premultiplied-a44-F05-diff-0
+A44_PASS GPU-no-crop-F05
+A44_PASS native-screenshot-F05
+A44_PASS GPU-RGBA-premultiplied-a44-F06-diff-0
+A44_PASS GPU-no-crop-F06
+A44_PASS native-screenshot-F06
+A44_PASS GPU-RGBA-premultiplied-a44-F07-diff-0
+A44_PASS GPU-no-crop-F07
+A44_PASS native-screenshot-F07
+A44_PASS GPU-RGBA-premultiplied-a44-F08-diff-0
+A44_PASS GPU-no-crop-F08
+A44_PASS native-screenshot-F08
+A44_PASS GPU-RGBA-premultiplied-a44-F09-diff-0
+A44_PASS GPU-no-crop-F09
+A44_PASS native-screenshot-F09
+A44_PASS GPU-RGBA-premultiplied-a44-F10-diff-0
+A44_PASS GPU-no-crop-F10
+A44_PASS native-screenshot-F10
+A44_PASS GPU-RGBA-premultiplied-a44-F11-diff-0
+A44_PASS GPU-no-crop-F11
+A44_PASS native-screenshot-F11
+A44_PASS at-least-8-unique-attack-poses
+A44_PASS runtime-attack-start
+A44_PASS no-early-hit
+A44_PASS f6-hit-timestamp
+A44_PASS 70ms-hitstop-contract
+A44_PASS one-hit-at-frame-6
+A44_PASS hitstop-start-resume
+A44_PASS returns-to-a39-breathing
+A44_PASS weapons-hidden-after-attack
+A44_GPU_PIXEL_DIFFS [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+A44_GPU_UNIQUE_POSES 11
+A44_QA_RESULT PASS
+
+STDERR
