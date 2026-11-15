@@ -100,6 +100,42 @@ func enable_private_ivy_pain_notes(folder:String="res://data")->bool:
     # original Skill145, Skill147, OD/JP, or all 505 aliases.
     return true
 
+func enable_private_ivy_od_defense() -> bool:
+    # Source-only explicit opt-in. A synthetic boolean or ordinary
+    # handwritten Note is NOT authority to enable passive142 gameplay.
+    ivy_od_defense.active=false
+    for member in party:
+        member.erase("fs_ivy_od_source_verified")
+    if not db.boot_final_verified or not ivy_pain_source.active or (
+            ivy_pain_source.fixture_only):
+        changed.emit("Ivy142 真實 OD 減傷缺少 post-Apply11表與私有來源見證")
+        return false
+    # Refresh every live Ivy State/Equip/Actor Profile before staging.
+    # Do not leave a half-enabled OD engine on a bad passive Note.
+    var eligible:Array[Dictionary]=[]
+    for member in party:
+        if int(member.get("id",0))!=5 or not bool(
+                member.get("actor",false)):
+            continue
+        if not _refresh_ivy_pain_source(member):
+            return false
+        eligible.append(member)
+    if eligible.is_empty():
+        changed.emit("Ivy142 沒有來源已驗證的 Actor5")
+        return false
+    ivy_od_defense.active=true
+    for member in eligible:
+        member["fs_ivy_od_source_verified"]=true
+        var quote_data:Dictionary=ivy_od_defense.quote(self,member,1)
+        if not bool(quote_data.get("ok",false)):
+            for another in eligible:
+                another.erase("fs_ivy_od_source_verified")
+            ivy_od_defense.active=false
+            changed.emit("Ivy142 私有來源防禦未啟用："+str(
+                quote_data.get("reason","")))
+            return false
+    return true
+
 func _refresh_ivy_pain_source(battler:Dictionary)->bool:
     if not ivy_pain_source.active:
         return true
