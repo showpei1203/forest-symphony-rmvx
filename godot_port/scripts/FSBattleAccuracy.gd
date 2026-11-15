@@ -95,9 +95,17 @@ func quote(battle,user: Dictionary,target: Dictionary,
     if is_skill and (not skill.has("hit") or not skill.has("physical_attack")):
         return _fail("原始技能 HIT／physical_attack 未匯入")
     # The source #271214 recovery override explicitly bypasses both rolls.
-    var heal: bool = is_skill and int(skill.get("scope",0)) == 7 and (
-        int(skill.get("base_damage",0)) < 0 or
-        str(skill.get("note","")).contains("<回復技能>"))
+    var skill_note: String = str(skill.get("note","")).to_upper()
+    var heal_tag: bool = false
+    for tag in ["<回復技能>","<回复技能>","<恢復技能>",
+            "<恢复技能>","<回復>","<回复>","<恢復>","<恢复>",
+            "<AI_HEAL>"]:
+        if skill_note.contains(tag):
+            heal_tag = true
+            break
+    var heal: bool = is_skill and (
+        heal_tag or (int(skill.get("scope",0)) == 7 and
+        int(skill.get("base_damage",0)) < 0))
     if heal:
         return {"ok":true,"enabled":true,"hit":100,"eva":0,
             "crit":0,"recovery":true,"physical":false}
