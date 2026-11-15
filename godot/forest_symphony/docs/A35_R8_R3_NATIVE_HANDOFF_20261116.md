@@ -1,3 +1,8 @@
+## Verified cloud artifact (not merely mounted local file)
+- [Complete R8 R3 Godot playable native QA ZIP](https://drive.google.com/file/d/1uGa7waQ-SwSSWVcgGUnbmlI7PjRaEKC2/view): provider returned exact 199,988,204 bytes, shared=false, owner-only; local CRC PASS and SHA256 1c235f6155298a8f4bd54173e228ad4061ac8abced29d3d296136e0567983830.
+- This ZIP contains all original GPU 4/4 frames, corrected source/nav/GPU QA, official logs and historical assets. Preferred handoff artifact.
+- R8 R3 full native release is now **Drive cloud verified** and no longer pending sync.
+
 # Forest Symphony | A35 R8 R3 | Official Godot HD-2D Grove Lighting Handoff
 Date 2026-11-16, Asia/Taipei. Godot 4.7.2 official, AMD RX 6700 XT, OpenGL compatibility.
 
