@@ -1,7 +1,7 @@
 # CURRENT | A35 R4 native organic foliage candidate | 2026-11-15
 
 - **ENGINE PASS / NAV PASS / ART HOLD.** This workstream is only Godot 4.7.2 map art. Main A35 R2/R3 and A36C forest separate and immutable.
-- Private owner-only complete R4 native ZIP: `FS_A35_R4_ORGANIC_NATIVE_QA_PRIVATE_20261115.zip` (269 members, 131,309,501 bytes, CRC PASS, SHA256 `51467d0a709bc7e6def518d79c25adbbd9de78c9123770e498e143e5ee446206`). Find in Drive FS_AI_ASSET_FACTORY_Restricted_Binaries and verify metadata ID.
+- [Verified owner-only A35 R4 native ZIP](https://drive.google.com/file/d/1wdVrsfVcF47j5FtDYxm_pKPWZ9GWtpoz/view): `FS_A35_R4_ORGANIC_NATIVE_QA_PRIVATE_20261115.zip` (269 members, 131,309,501 bytes, CRC PASS, SHA256 `51467d0a709bc7e6def518d79c25adbbd9de78c9123770e498e143e5ee446206`). Find in Drive FS_AI_ASSET_FACTORY_Restricted_Binaries and verify metadata ID.
 - 8 one-piece source-derived species candidates, 32 grove instances replaced, 155 other PAR preserved, 187 total objects/175 trees, original Ground SHA stable. Not genuinely new painted biology, so ART HOLD.
 - Real native Godot 4.7.2: source PASS, NAV 8/8 and paths 4/4 PASS; 7 GPU images 1280x928 PASS; 143,456 changed tree pixels inside source union ROI, **0 outside**, behind/front actor 184/576 = 31.94% visible for partial evergreen foliage.
 - [A35 R4 Formal Handoff](docs/A35_R4_NATIVE_HANDOFF_20261115.md) | [A35 R4 Failure Log](docs/A35_R4_FAILURE_LOG_20261115.md) | [reproducible builder](tools/a35_r4_organic_build.py).
