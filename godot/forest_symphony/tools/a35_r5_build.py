@@ -125,6 +125,7 @@ def build(base:Path,out:Path,workspace:Path,artcode:Path):
     ab=ab.replace('const NEW := "res://'+OLD_SCENE+'"',
                   'const NEW := "res://'+NEW_SCENE+'"')
     ab=ab.replace("A35_R4_","A35_R5_")
+    ab=ab.replace("A35_R5_R3_BASELINE_NATIVE.png","A35_R5_R4_BASELINE_NATIVE.png")
     ab=ab.replace("A35 R4","A35 R5")
     files["tests/capture_a35_r5_ab_actor_native.gd"]=ab.encode()
     files["qa_a35/A35_R5_SOURCE_GALLERY_NOT_NATIVE.png"]=png(atlas)
