@@ -105,8 +105,23 @@ func quote(battle,target:Dictionary,positive_hp:int,
     var passives:Dictionary=_passive_notes(battle,target)
     if not bool(passives.get("ok",false)):
         return passives
-    for note in passives["notes"]:
-        notes.append(str(note))
+    if bool(target.get("fs_ivy_effective_notes_have_passives",false)):
+        # A refreshed final CharacterCore provider already appended ALL
+        # passive skill Notes. Do not add Skill142 a SECOND TIME; that
+        # would turn the actual OD50 16% reduction into a false32%.
+        for note in passives["notes"]:
+            var found:bool=false
+            for source_note in effective:
+                if str(source_note).begins_with(str(note)):
+                    found=true
+                    break
+            if not found:
+                return _fail("Skill142 被動 Note 已變更，需刷新 CharacterCore 來源")
+    else:
+        # Backward-compatible standalone source fixtures keep their
+        # manual equipment/State notes plus separately verified passives.
+        for note in passives["notes"]:
+            notes.append(str(note))
     var parsed:Dictionary=_parse_notes(notes)
     if not bool(parsed.get("ok",false)):
         return parsed
