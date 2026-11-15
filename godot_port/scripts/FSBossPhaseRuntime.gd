@@ -7,8 +7,9 @@ class_name FSBossPhaseRuntime
 #
 # IMPORTANT: This is an authoritative SOURCE-INTENT / PHASE-ID TRACKER.
 # It does NOT call RPG::State add_state/remove_state, nor apply associated
-# hit rate/defense, law-cycle (140..143), weather elemental damage,
-# protection 77, awakening 128 or exposure 129 effects.
+# hit rate/defense, law-cycle State effects (140..143), protection77,
+# awakening128 or exposure129 buffs. Source Note law-cycle ID timing is
+# implemented as INTENTS, while limited global Field404 damage is live.
 # Pending states are stored in fs_phase_state_intents, deliberately separate
 # from battler.states. AI and actual attack costs must not mistake them
 # for implemented gameplay state effects.
