@@ -19,48 +19,102 @@
       "name": "蒼翠精靈林",
       "ground": "林間草地、自然泥土道路、溪流與落葉",
       "par": "完整樹冠、樹屋、木屋、吊橋與神樹",
-      "shadow": "林群遮光與柔和日夜光"
+      "shadow": "林群遮光與柔和日夜光",
+      "canonical_id": "BIOME_01_VERDANT_ELF_FOREST",
+      "palette_hex": [
+        "#203d25",
+        "#386438",
+        "#6da84d",
+        "#d2b478",
+        "#f6d5ab",
+        "#a3c95e"
+      ]
     },
     {
       "id": "frost_snowfield",
       "name": "凜霜雪原",
       "ground": "積雪、冰層、雪線、冰河與凍土",
       "par": "冰杉、冰柱、雪屋、風蝕岩塊",
-      "shadow": "冷色反射、極地晨昏與雪塵"
+      "shadow": "冷色反射、極地晨昏與雪塵",
+      "canonical_id": "BIOME_02_FROSTFALL_HIGHLANDS",
+      "palette_hex": [
+        "#142c45",
+        "#49718e",
+        "#a3c9ce",
+        "#e3edf0",
+        "#9ba59c",
+        "#d4dfab"
+      ]
     },
     {
       "id": "wind_eroded_sands",
       "name": "風蝕金砂",
       "ground": "細沙、沙紋、風蝕裸岩、乾河道",
       "par": "沙丘崖、綠洲椰棕、帳篷石城",
-      "shadow": "長陰影、沙霧與熱浪"
+      "shadow": "長陰影、沙霧與熱浪",
+      "canonical_id": "BIOME_03_DUNE_CANYON",
+      "palette_hex": [
+        "#52392d",
+        "#a26a3d",
+        "#dba463",
+        "#efd7a1",
+        "#6d9773",
+        "#4e6c67"
+      ]
     },
     {
       "id": "crimson_volcano",
       "name": "赤焰火山",
       "ground": "火山岩、裂隙、岩漿流、火山灰",
       "par": "岩壁、黑曜晶簇、爐房與石橋",
-      "shadow": "火光、灰燼與高熱濾鏡"
+      "shadow": "火光、灰燼與高熱濾鏡",
+      "canonical_id": "BIOME_04_EMBER_VOLCANO",
+      "palette_hex": [
+        "#151a20",
+        "#3c4248",
+        "#825044",
+        "#dc6e37",
+        "#ffbe55",
+        "#6b7a5d"
+      ]
     },
     {
       "id": "misty_marsh",
       "name": "幽霧水澤",
       "ground": "濕泥、淺水、倒影、浮萍與苔地",
       "par": "沼澤巨樹、蘆葦、木棧橋與水屋",
-      "shadow": "漂浮薄霧、漫射濕氣"
+      "shadow": "漂浮薄霧、漫射濕氣",
+      "canonical_id": "BIOME_05_MISTWATER_MARSH",
+      "palette_hex": [
+        "#172d2b",
+        "#335b50",
+        "#6e8466",
+        "#8f9c71",
+        "#766d50",
+        "#c5b88b"
+      ]
     },
     {
       "id": "star_crystal_isles",
       "name": "星晶浮島",
       "ground": "晶岩平臺、星塵路徑、虛空裂谷",
       "par": "浮島崖緣、晶塔、空橋與星輝屋",
-      "shadow": "晶體折射、星光與高差遮擋"
+      "shadow": "晶體折射、星光與高差遮擋",
+      "canonical_id": "BIOME_06_ASTRAL_CRYSTAL_ISLES",
+      "palette_hex": [
+        "#273454",
+        "#495488",
+        "#7f91c5",
+        "#b1bedf",
+        "#d8b3e8",
+        "#b8cb9b"
+      ]
     }
   ],
   "maps": [
     {
       "id": "forest_dungeon",
-      "name": "森林迷宮",
+      "name": "幽葉迴廊",
       "biome_id": "verdant_elf_forest",
       "role": "dungeon",
       "status": "SOURCE_QA_ONLY",
@@ -78,11 +132,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_01_MAZE",
+      "canonical_display_name": "幽葉迴廊"
     },
     {
       "id": "elf_village",
-      "name": "精靈村",
+      "name": "苔光村",
       "biome_id": "verdant_elf_forest",
       "role": "village",
       "status": "ENGINE_PASS_ART_HOLD",
@@ -100,11 +156,13 @@
         "navigation": "PASS",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_01_VILLAGE",
+      "canonical_display_name": "苔光村"
     },
     {
       "id": "snow_dungeon",
-      "name": "雪原迷宮",
+      "name": "冰脊迷谷",
       "biome_id": "frost_snowfield",
       "role": "dungeon",
       "status": "PLANNED",
@@ -119,11 +177,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_02_MAZE",
+      "canonical_display_name": "冰脊迷谷"
     },
     {
       "id": "snow_village",
-      "name": "雪原村",
+      "name": "霜燈聚落",
       "biome_id": "frost_snowfield",
       "role": "village",
       "status": "PLANNED",
@@ -138,11 +198,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_02_VILLAGE",
+      "canonical_display_name": "霜燈聚落"
     },
     {
       "id": "desert_dungeon",
-      "name": "沙漠迷宮",
+      "name": "風沙裂谷",
       "biome_id": "wind_eroded_sands",
       "role": "dungeon",
       "status": "PLANNED",
@@ -157,11 +219,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_03_MAZE",
+      "canonical_display_name": "風沙裂谷"
     },
     {
       "id": "desert_village",
-      "name": "沙漠村",
+      "name": "星井綠洲",
       "biome_id": "wind_eroded_sands",
       "role": "village",
       "status": "PLANNED",
@@ -176,11 +240,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_03_VILLAGE",
+      "canonical_display_name": "星井綠洲"
     },
     {
       "id": "volcano_dungeon",
-      "name": "火山迷宮",
+      "name": "熔脈裂橋",
       "biome_id": "crimson_volcano",
       "role": "dungeon",
       "status": "PLANNED",
@@ -195,11 +261,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_04_MAZE",
+      "canonical_display_name": "熔脈裂橋"
     },
     {
       "id": "volcano_village",
-      "name": "火山村",
+      "name": "灰鑄工坊城",
       "biome_id": "crimson_volcano",
       "role": "village",
       "status": "PLANNED",
@@ -214,11 +282,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_04_VILLAGE",
+      "canonical_display_name": "灰鑄工坊城"
     },
     {
       "id": "marsh_dungeon",
-      "name": "沼澤迷宮",
+      "name": "泥潭迷水",
       "biome_id": "misty_marsh",
       "role": "dungeon",
       "status": "PLANNED",
@@ -233,11 +303,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_05_MAZE",
+      "canonical_display_name": "泥潭迷水"
     },
     {
       "id": "marsh_village",
-      "name": "水澤村",
+      "name": "蘆燈水上村",
       "biome_id": "misty_marsh",
       "role": "village",
       "status": "PLANNED",
@@ -252,11 +324,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_05_VILLAGE",
+      "canonical_display_name": "蘆燈水上村"
     },
     {
       "id": "crystal_island_dungeon",
-      "name": "浮島迷宮",
+      "name": "星盤斷空",
       "biome_id": "star_crystal_isles",
       "role": "dungeon",
       "status": "PLANNED",
@@ -271,11 +345,13 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_06_MAZE",
+      "canonical_display_name": "星盤斷空"
     },
     {
       "id": "crystal_island_village",
-      "name": "浮島村",
+      "name": "虹晶臺地村",
       "biome_id": "star_crystal_isles",
       "role": "village",
       "status": "PLANNED",
@@ -290,7 +366,12 @@
         "navigation": "NOT_RUN",
         "art": "HOLD",
         "final_seal": false
-      }
+      },
+      "canonical_scene_id": "FS_06_VILLAGE",
+      "canonical_display_name": "虹晶臺地村"
     }
-  ]
+  ],
+  "canonical_world_source": "A36B R2 original archive:data/fs_six_biomes_world_catalog.json + docs/FS_SIX_BIOMES_WORLD_ART_PLAN_20261114.md",
+  "canonical_world_sha_input": "FS_A36B_GODOT_80x58_TREE_ECOLOGY_PRIVATE_20261114.zip SHA256 7e1cd53397aeb76deb09ceed0dc3002b5b7cc56c0a7fe40fac684a32eda6ac2b",
+  "warning": "Original FS_01_MAZE..FS_06_VILLAGE names, colors, Ground materials, PAR families defined Nov14 must never be overwritten by generic later labels."
 }
