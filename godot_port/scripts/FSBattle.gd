@@ -121,6 +121,10 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     # Damage power still uses the early port's stock formula: the final
     # FS_BATTLE_BALANCE smooth core, affinity and 505 alias chain are NOT
     # certified. HIT/EVA/CRIT/variance use the explicitly gated source subset.
+    if accuracy.active:
+        # Prevent stale critical/miss flags from a previous ACT.
+        target.erase("fs_last_action_result")
+        target.erase("fs_last_action_critical")
     if not attack_preflight(attacker,target):
         return 0
     var landed: Dictionary = accuracy.resolve(self,attacker,target)
@@ -254,15 +258,6 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             val -= boss_state_effects.stat(target,"def") * 2 * int(skill.get("atk_f", 0)) / 100
             val -= boss_state_effects.stat(target,"spi") * int(skill.get("spi_f", 0)) / 100
         val = maxi(0, val)
-    if field_weather.active and field_weather.current_id > 0 and val > 0:
-        var field: Dictionary = field_weather.preview_damage(
-            db,target,skill.get("element_set",null),val,0,
-            bool(skill.get("rate_damage",false)))
-        if not bool(field.get("ok",false)):
-            # Recheck after ACT: never charge MP if field/target data changed.
-            changed.emit("天氣傷害無法核對，未扣 MP")
-            return false
-        val = int(field["hp"])
     # Source #404 resolves the existing hit BEFORE a new weather skill can
     # set the next field. Verify the requested Field before paying.
     var planned: Dictionary = field_weather.preflight_source_object(
@@ -271,6 +266,9 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         return false
     # Targeting/HIT/EVA is rolled exactly once at ACT resolution.
     # Source Scene_Battle pays MP for a valid issued skill even on miss.
+    if accuracy.active:
+        target.erase("fs_last_action_result")
+        target.erase("fs_last_action_critical")
     var landed: Dictionary = accuracy.resolve(self,user,target,skill)
     if not bool(landed.get("ok",false)):
         changed.emit("技能命中資料尚未驗證，無成本消耗")
@@ -278,6 +276,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if str(landed.get("kind","hit")) != "hit":
         user["mp"] = int(user["mp"])-mp_cost
         target["fs_last_action_result"] = str(landed["kind"])
+        target["fs_last_action_critical"] = false
         # Source #404 skill_effect wrapper can change field after the
         # original effect returns, including an ordinary miss.
         if str(planned.get("kind","none")) != "none":
@@ -294,14 +293,32 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             return false
         if bool(crit.get("critical",false)):
             val = int(float(val)*1.7)
+            target["fs_last_action_critical"] = true
+        else:
+            target["fs_last_action_critical"] = false
         var varied: Dictionary = accuracy.variance(
             val,int(skill.get("variance",0)))
         if not bool(varied.get("ok",false)):
             changed.emit("技能浮動來源未確認，無成本消耗")
             return false
         val = int(varied["damage"])
+        # Apply guard AFTER damage variation, BEFORE global Field404.
+        # Only enable this ordered subset when combat accuracy is enabled;
+        # non-witness legacy candidate path remains stable.
+        if bool(target.get("guarding",false)):
+            val = int(val / (4 if bool(target.get("super_guard",false)) else 2))
+    if field_weather.active and field_weather.current_id > 0 and val > 0:
+        # Actual source #404 is invoked after skill damage generation.
+        # Applying weather before CRIT/variance alters rounding and parity.
+        var field: Dictionary = field_weather.preview_damage(
+            db,target,skill.get("element_set",null),val,0,
+            bool(skill.get("rate_damage",false)))
+        if not bool(field.get("ok",false)):
+            changed.emit("天氣傷害無法核對，未扣 MP")
+            return false
+        val = int(field["hp"])
     # Preflight the confirmed ComboCore shield before any MP is spent.
-    # Damage is already modified by the validated global field subset.
+    # Damage is modified by the OLD validated global field subset.
     var hit: Dictionary = boss_state_effects.preview_hit(target,val)
     if not bool(hit.get("ok",false)):
         changed.emit("Boss 狀態效果缺少來源證據，未消耗 MP")
