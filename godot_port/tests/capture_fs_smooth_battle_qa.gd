@@ -52,6 +52,12 @@ func _run() -> void:
         _fail("synthetic opponent fixture missing")
         return
     var target: Dictionary = b.enemies[0]
+    # Must come from native Game_Battler initialization, not a manually
+    # forged screenshot fixture that hides real battle model omissions.
+    if not (target.get("states",null) is Array) or not (
+            target["states"].is_empty()):
+        _fail("VX Game_Battler initial enemy RPG State array missing")
+        return
     target["fs_normal_source_verified"] = true
     target["fs_normal_enemy_note_verified"] = true
     target["fs_normal_element_neutral_verified"] = true
