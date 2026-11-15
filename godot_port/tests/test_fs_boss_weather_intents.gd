@@ -122,6 +122,18 @@ func _run() -> void:
     if not _check(weather_hit.get("ok",false) and
             int(weather_hit.get("hp",0))==150,
             "live Boss Field153 changes real damage 100 to 150"): return
+    # Exercise real HP mutation through FSBattle.attack, not just preview.
+    live.party[0]["element_set"] = [1]
+    var boss_hp_before: int = int(live.enemies[0]["hp"])
+    var actual_hit: int = live.attack(live.party[0],live.enemies[0])
+    if not _check(actual_hit==30 and
+            int(live.enemies[0]["hp"])==boss_hp_before-30,
+            "live attack baseline20 becomes30 with Field153"): return
+    live.party[0]["atk"] = 50
+    actual_hit = live.attack(live.party[0],live.enemies[0])
+    if not _check(actual_hit==270 and
+            int(live.enemies[0]["hp"])==boss_hp_before-300,
+            "live attack baseline180 becomes270 with Field153"): return
     live.enemies[0]["hp"] = 550
     live.advance_atb(1.0/60.0)
     weather_hit = live.field_weather.preview_damage(
