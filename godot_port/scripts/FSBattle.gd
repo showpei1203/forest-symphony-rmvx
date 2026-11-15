@@ -57,6 +57,9 @@ var ivy_cover: FSIvyCover = FSIvyCover.new()
 # Separate source-only Ivy actual-HP-loss stored pain adapter.
 # Original MechanicExpansion v1.1 #382, Phase46A/B2; disabled by default.
 var ivy_pain: FSIvyPain = FSIvyPain.new()
+# Original 147 action-start stored-pain snapshot, post-effect consume gate.
+# Source 220475/222005; disabled until full private source testimony.
+var ivy_revenge: FSIvyRevenge = FSIvyRevenge.new()
 
 func enable_private_element_provider(folder: String = "res://data") -> bool:
     # Any reconfiguration invalidates the previous source witness; stale
@@ -360,6 +363,13 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
     if bool(user.get("actor",false)) and not skill_id in user.get("skills",[]):
         changed.emit("角色未習得技能 ID %d" % skill_id)
         return false
+    # Pure source Skill147 quote must pass at COMMAND selection, before
+    # paying MP, ATB ACT or drawing YEM HIT RNG.
+    var revenge_quote: Dictionary=ivy_revenge.preview(user,skill)
+    if not bool(revenge_quote.get("ok",false)):
+        changed.emit("艾薇復仇重擊來源未完成：" + str(
+            revenge_quote.get("reason","")))
+        return false
     # Original Skill141 scope11 is SELF-targeting and activates Ivy <ig>
     # after successful ACT. Only a clean source-verified ig Note subset
     # is allowed; actual MasterSetup Skill141 has additional unported
@@ -476,6 +486,9 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if not skill_preflight(user,target,skill_id):
         return false
     var skill: Dictionary = db.record("skills",skill_id)
+    var revenge_plan: Dictionary=ivy_revenge.preview(user,skill)
+    if not bool(revenge_plan.get("ok",false)):
+        return false
     # Clean synthetic source subset of original Ivy Skill141: selected
     # self at COMMAND time, pays MP and activates guard on completed ACT.
     # No HIT/EVA/CRIT RNG; original end_action activates <ig> even for
@@ -532,6 +545,9 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         changed.emit("技能命中資料尚未驗證，無成本消耗")
         return false
     if str(landed.get("kind","hit")) != "hit":
+        # Source wrapper drains pain only on an EFFECTFUL success. On
+        # MISS/EVADE it still pays MP but preserves the action snapshot.
+        ivy_revenge.after_action(user,revenge_plan,false)
         user["mp"] = int(user["mp"])-mp_cost
         target["fs_last_action_result"] = str(landed["kind"])
         target["fs_last_action_critical"] = false
@@ -574,6 +590,12 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         val = int(varied["damage"])
         if bool(target.get("guarding",false)):
             val = int(val / (4 if bool(target.get("super_guard",false)) else 2))
+    if bool(revenge_plan.get("applicable",false)):
+        # ALBERT_MECHANIC_EXPANSION::make_obj_damage_value wraps the
+        # previous smooth skill core and appends trunc(snapshot*50%).
+        # This is AFTER YEM/crit/variance/Guard but BEFORE later Field404
+        # and Boss shield. Explicitly gated, not a stock skill bonus.
+        val+=int(revenge_plan["extra"])
     if field_weather.active and field_weather.current_id > 0 and val > 0:
         # Actual source #404 is invoked after skill damage generation.
         # Applying weather before CRIT/variance alters rounding and parity.
@@ -623,6 +645,10 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     user["mp"] = int(user["mp"]) - mp_cost
     boss_state_effects.commit_hit(target,hit)
     ivy_pain.commit(target,pain_quote)
+    # RPG VX skill_effect success: !miss/!evade/!skip AND an actual
+    # HP/MP/State effect. Bounded 147 has no state effects or MP damage.
+    # Thus a positive final HP effect consumes the stored snapshot once.
+    ivy_revenge.after_action(user,revenge_plan,int(hit["hp"])!=0)
     if accuracy.active:
         target["fs_last_action_result"] = "hit"
     if ivy_cover.active:
