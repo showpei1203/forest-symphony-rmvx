@@ -1,0 +1,14 @@
+# Forest Symphony | A35 R8 R2 Failure Log | 2026-11-16
+
+**Official status: ENGINE PASS · NAV PASS · 4/4 REAL GPU PASS · ZERO-DELTA CONTROL PASS · ART HOLD**
+
+1. **True semitransparent shadow unavailable through a solid occluder**: Godot `LightOccluder2D` does not dynamically transmit 24% light through an arbitrary opaque shadow polygon. New source implements physically separate unshadowed low-energy fill light alongside shadowed key, preserving approximate original key+fill total. Treat as art-directed **approximation**, never a real per-leaf translucency algorithm.
+2. **Real GPU control failed initially**: R8 hard baseline vs R2 new lights with all energies 0 showed **16,633 changed pixels outside primary lamp**, located entirely around northeast secondary lamp. Any test that only checked energy=0 would miss this. Fix: explicitly set `secondary_key.enabled=false` and `secondary_fill.enabled=false` when multi-light off, plus `fill_light.enabled=false` when fraction 0. Re-run source and four original GPU captures: **0 changed pixels** baseline vs zero-fill, PASS. The original failure remains in QA history and new scripted regression.
+3. **Shadow/lighting pixel scope**: With 24% fill, 131,758 changed strictly within primary light radius, 0 outside; adding second lamp changes 122,464 strictly within northeast radius, 0 outside. This verifies controlled illumination rather than entire-scene tint.
+4. **Art brightness overshoot**: In actual four-way 1:1 Godot image, the second experimental lamp over-illuminates the right cottage and surroundings. Not accepted as permanent lighting. **ART HOLD**. Next tune position, falloff and energy.
+5. **Physical scene unchanged**: R8 original 187 PAR locations/source SHA and 175 trunks+175 canopy masks unchanged. Original Ground SHA `3348d4d30f7bea64d6e4a8ea349d3ed868a1a04660671dd93c1787d6418b0000`; original R8 scene SHA `27aad890c0c6c8d7f770070738550f0a84fe278c275ae67ce9c94844cdb6d3ad`; independent new scene, R2–R8 sealed originals retained. Physical NAV 8/8 gates, 4/4 routes, 0 protected-road regression.
+6. **Perf scope**: 6×50 native wall-clock frame samples: hard 16.691ms, fill 16.684ms, dual 16.696ms. Not isolated GPU, likely vsync. Cannot declare generalized performance superiority.
+7. **Private packaging**: Full 378-file /188,106,570-byte private ZIP SHA `1217c36f9e19ece3d104f6cdf3b8973474c472fd62a7f5e6cd0b94013ffab37c`, CRC PASS, Drive provider verified owner only. GitHub contains source/docs, no private art PNGs.
+8. **Gameplay limitations**: Dynamic camera/actor occlusion in all directions, real leaf shadows and PBR 3D depth were not fully evaluated here. GPU test sampled one village overview; do not declare full HD-2D sealed. Original R6 spike shapes remain ART HOLD.
+
+**Next R8 R3:** restore beautiful natural cottage lighting and multi-source consistency; then continue Ground3 after art acceptance.
