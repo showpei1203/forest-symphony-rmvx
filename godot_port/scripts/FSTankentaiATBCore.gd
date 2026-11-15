@@ -145,6 +145,10 @@ static func advance_frames(party: Array[Dictionary],enemies: Array[Dictionary],
                 battler["source_atb_count"] = count
                 battler["atb"] = float(count)/GAUGE_MAX
                 if count >= GAUGE_MAX:
+                    # Source #231 Sprite_ATB.atb calls remove_states_auto
+                    # at THIS transition, before battle action scheduling.
+                    # State effects adapter consumes this single edge.
+                    battler["source_just_atb_ready"] = true
                     battler["source_atb_count_up"] = false
                     battler["source_at_active"] = true
             elif not bool(battler.get("source_at_active",false)):
