@@ -71,6 +71,17 @@ static func preview(skill: Dictionary, user: Dictionary) -> Dictionary:
         return _fail("目標優先權標籤解析器設定錯誤")
     for match_result in target_note.search_all(leftover):
         leftover = leftover.replace(match_result.get_string(0),"")
+    # The separately verified FS smooth-skill subset has a source-only
+    # DEF penetration Note. It is NOT an MP-cost modifier; whitelist it
+    # ONLY after BOTH skill and user explicitly declare source authority.
+    # The actual damage module independently validates the Note syntax.
+    if bool(skill.get("fs_smooth_source_verified",false)) and bool(
+            user.get("fs_smooth_battler_verified",false)):
+        var pen_note := RegEx.new()
+        if pen_note.compile("(?i)<pen_rate\\s*:\\s*-?[0-9]+\\s*>") != OK:
+            return _fail("穿透 Note 解析器設定錯誤")
+        for match_result in pen_note.search_all(leftover):
+            leftover = leftover.replace(match_result.get_string(0),"")
     # Source #404 Field Weather Notes affect the global field AFTER a
     # skill effect, not the MP quote. Only these exact known tags are
     # neutral to #411's MP-cost parsing. Unrecognized tags still fail.
