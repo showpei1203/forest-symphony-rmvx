@@ -260,6 +260,15 @@ func preview(battle,attacker: Dictionary,target: Dictionary,
     var fatal: Dictionary=_fatal_authority(battle,guard)
     if not bool(fatal.get("ok",false)):
         return fatal
+    # In source try_redirect, the MAIN Cover bonus OD +6% is granted
+    # BEFORE guard.make_attack_damage_value, so actor142 at OD49%
+    # can cross the OD50 threshold when the action actually executes.
+    var preview_od:Dictionary=battle.ivy_od_defense.quote(
+        battle,guard,1,str(picked.get("guard_type","main"))=="main" and not (
+        bool(picked.get("same_session",false))))
+    if not bool(preview_od.get("ok",false)):
+        return _fail("護衛者被動142 OD 減傷權威缺失：" + str(
+            preview_od.get("reason","")))
     # Source read-only pain-provider preflight BEFORE original HIT RNG.
     # It needs effective merged Note provenance for Actor#5 only.
     var pain_check: Dictionary=battle.ivy_pain.quote(
@@ -316,7 +325,13 @@ func guard_damage(battle,attacker: Dictionary,target: Dictionary,
             battle,attacker,guard,skill,guard_crit)
     if not bool(power.get("ok",false)):
         return _fail("護衛重算原版傷害失敗："+str(power.get("reason","")))
-    var raw: int=int(power["hp"])
+    var od_plan:Dictionary=battle.ivy_od_defense.quote(
+        battle,guard,int(power["hp"]),str(result.get("guard_type","main"))=="main" and not (
+        bool(result.get("same_session",false))))
+    if not bool(od_plan.get("ok",false)):
+        return _fail("護衛承傷 OD 倍率來源無效：" + str(
+            od_plan.get("reason","")))
+    var raw:int=int(od_plan["hp"])
     var reduce: int=maxi(int(result["reduce"]),
         int(guard.get("fs_ivy_taunt_reduce",0)))
     # Source perform_guard_damage rounds AGAIN after independent
@@ -357,7 +372,7 @@ func guard_damage(battle,attacker: Dictionary,target: Dictionary,
         return _fail("艾薇實際承傷蓄痛來源缺失："+str(
             pain_plan.get("reason","")))
     return {"ok":true,"covered":true,"guard":guard,
-        "pain_plan":pain_plan,"fatal_save":fatal_save,
+        "od_plan":od_plan,"pain_plan":pain_plan,"fatal_save":fatal_save,
         "guard_type":str(result.get("guard_type","main")),
         "hit":hit,"damage":int(hit["hp"]),"reduce":reduce,
         "critical":bool(power.get("critical",false)),
@@ -396,6 +411,7 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
         guard["od"]=int(guard["od"])-FATAL_COVER_OD_COST
         guard["fs_ivy_fatal_used"]=true
     battle.boss_state_effects.commit_hit(guard,resolved["hit"])
+    battle.ivy_od_defense.record(resolved.get("od_plan",{"applicable":false}))
     var pain: Dictionary=battle.ivy_pain.commit(guard,resolved.get(
         "pain_plan",{"ok":true,"applicable":false}))
     if not bool(pain.get("ok",false)):
