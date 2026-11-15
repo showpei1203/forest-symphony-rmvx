@@ -7,6 +7,7 @@ extends SceneTree
 const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
 const LAW = preload("res://scripts/FSBossLawCycle.gd")
+const SCREEN = preload("res://scripts/FSScreen.gd")
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -65,6 +66,14 @@ func _run() -> void:
             int(boss.get("fs_law_action_count",-1))==0 and
             boss.get("states",[]).is_empty(),
             "HP70% starts Note-driven first Law140 INTENT, no fake RPG State"): return
+    var ui = SCREEN.new()
+    root.add_child(ui)
+    ui.db = db
+    ui.battle = b
+    ui._refresh_battle_status()
+    if not _check("四律:第1律／有效行動 0/3" in ui.status_label.text and
+            "效果待移植" in ui.status_label.text,
+            "live Godot battle UI shows source Law1 count0/3 as pending effects"): return
     b.advance_atb(8.0/60.0)
     if not _check(boss["fs_phase_state_intents"]==[151,140] and
             int(boss["fs_law_action_count"])==0,
@@ -74,7 +83,13 @@ func _run() -> void:
     if not _check(boss["fs_phase_state_intents"]==[151,140] and
             int(boss["fs_law_action_count"])==2,
             "two valid actions hold Law140; current interval3 wins legacy actions1"): return
+    ui._refresh_battle_status()
+    if not _check("四律:第1律／有效行動 2/3" in ui.status_label.text,
+            "live UI exposes valid ACT counter before rotation"): return
     b.enemy_valid_action_completed(boss)
+    ui._refresh_battle_status()
+    if not _check("四律:第2律／有效行動 0/3" in ui.status_label.text,
+            "live UI switches Law1 to Law2 only after completed ACT"): return
     if not _check(boss["fs_phase_state_intents"]==[151,141] and
             int(boss["fs_law_action_count"])==0,
             "third completed action rotates Law140 to Law141 exactly once"): return
