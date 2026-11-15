@@ -5,6 +5,9 @@ class_name FSIvyPainSourceProvider
 # overriding earlier ALBERT_COMBO_CORE.source_text:
 # user.actor? => ALBERT_ACTOR_PROFILE.tag_text(actor.id)
 # + all equipped WEAPON/ARMOR Notes + live State Notes; NOT RPG::Actor.note.
+# LAST-WINS FS_BATTLE_V22 ~253742-253810 then appends ALL learned
+# mechanic-passive skill Notes to ALBERT_CHARACTER_CORE.source_text.
+# This matters: passive146 raises Ivy's actual pain cap to400%.
 # No manual effective-note strings for a playable original FS.
 # The only PRIVATE authority is SHA-bound to the post-FS_DB_AUTOSET
 # 11-table runtime witness. Synthetic fixture entrypoint exists for CI.
@@ -81,6 +84,28 @@ func _state85_verified(state:Dictionary)->bool:
         "<cover_store_cap_percent:300>") and note.contains(
         "<hud_priority:290>") and note.contains("<hud_detail>")
 
+func _passive_note_with_defaults(skill:Dictionary)->String:
+    # Final FS_BATTLE_V22.note_with_defaults, source ~253505. Only these
+    # three passives have late-added missing tag defaults; no invented
+    # defaults for Ivy's Skill142 or Skill146.
+    var note:String=str(skill.get("note",""))
+    var name:String=str(skill.get("name",""))
+    var additions:Array[String]=[]
+    if name=="共鳴感知" and not note.to_lower().contains(
+            "<cc_od_summon_action:"):
+        additions.append("<cc_od_summon_action:55>")
+    if name=="和聲領袖" and not note.to_lower().contains(
+            "<bonus_if_od "):
+        additions.append("<bonus_if_od 70:20>")
+    if name=="毒理學":
+        for state_id in [31,35,37]:
+            var tag:String="<state_chance_bonus %d:" % state_id
+            if not note.to_lower().contains(tag):
+                additions.append("<state_chance_bonus %d:10>" % state_id)
+    for addition in additions:
+        note+="\n"+addition
+    return note
+
 func build(db:FSDatabase,ivy:Dictionary)->Dictionary:
     if not active:
         return _fail("艾薇有效 Note Source Provider 尚未啟用")
@@ -94,8 +119,10 @@ func build(db:FSDatabase,ivy:Dictionary)->Dictionary:
         return _fail("Actor5 Profile tag_text 無實際來源")
     var equipped:Variant=ivy.get("equipment",null)
     var states:Variant=ivy.get("states",null)
-    if not (equipped is Array) or not (states is Array):
-        return _fail("艾薇原版裝備欄/當前狀態集合不可驗證")
+    var learned:Variant=ivy.get("skills",null)
+    if not (equipped is Array) or not (states is Array) or not (
+            learned is Array):
+        return _fail("艾薇原版裝備欄／State／已習得技能集合不可驗證")
     var notes:Array=[profile]
     for slot in range(equipped.size()):
         var id:int=int(equipped[slot])
@@ -121,8 +148,31 @@ func build(db:FSDatabase,ivy:Dictionary)->Dictionary:
                 return _fail("原始 State85 效果/回合/來源 Note 與 FS_MasterSetup 不相符")
             has_state85=true
         notes.append(state["note"])
+    # FS_BATTLE_V22.passive_skill_note_text is a LATE
+    # ALBERT_CHARACTER_CORE.source_text alias; append after State Notes.
+    # All learned skills must have a real post-Apply record so an
+    # unknown passive cannot disappear silently from Ivy's pain cap.
+    for raw_skill_id in learned:
+        var skill_id:int=int(raw_skill_id)
+        if skill_id<1:
+            return _fail("艾薇已學技能 ID 無效")
+        var skill:Dictionary=db.record("skills",skill_id)
+        if int(skill.get("id",0))!=skill_id or not (
+                skill.get("note",null) is String):
+            return _fail("Ivy 有效 Note 缺少 Skill%d 來源" % skill_id)
+        var name:String=str(skill.get("name",""))
+        var note:String=str(skill["note"])
+        var expected:String=str(FSIvyODDefense.PASSIVE_NAMES.get(
+            skill_id,""))
+        var known_passive:bool=not expected.is_empty() and (
+            expected==name)
+        var marked_passive:bool=note.to_lower().contains(
+            "<mechanic_passive>") or bool(skill.get("passive",false))
+        if marked_passive or known_passive:
+            notes.append(_passive_note_with_defaults(skill))
     return {"ok":true,"applicable":true,
-        "notes":notes,"furnace_verified":has_state85,
+        "notes":notes,"passives_included":true,
+        "furnace_verified":has_state85,
         "origin":"synthetic" if fixture_only else "private_post_Apply"}
 
 func refresh(db:FSDatabase,ivy:Dictionary)->Dictionary:
@@ -131,10 +181,12 @@ func refresh(db:FSDatabase,ivy:Dictionary)->Dictionary:
         ivy.erase("fs_ivy_effective_notes")
         ivy.erase("fs_ivy_pain_notes_verified")
         ivy.erase("fs_ivy_furnace_state_verified")
+        ivy.erase("fs_ivy_effective_notes_have_passives")
         return built
     if not bool(built.get("applicable",false)):
         return built
     ivy["fs_ivy_effective_notes"]=built["notes"].duplicate(true)
+    ivy["fs_ivy_effective_notes_have_passives"]=true
     ivy["fs_ivy_pain_notes_verified"]=true
     ivy["fs_ivy_furnace_state_verified"]=bool(built["furnace_verified"])
     refresh_count+=1
