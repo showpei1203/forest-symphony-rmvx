@@ -305,6 +305,27 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     changed.emit("%s 裝備欄位 %d 已更新" % [actor.get("name","?"),slot])
     return true
 
+func sync_boss_global_weather() -> bool:
+    # Boss #401 force requests are global Field #404, never battler States.
+    # Only the verified field engine can execute the pending request.
+    if not boss_runtime.active or not field_weather.active:
+        return false
+    var request: Dictionary = boss_runtime.phase_runtime.weather_request
+    if request.is_empty():
+        return false
+    var boss_id: int = int(request.get("source_boss_id",0))
+    var field_id: int = int(request.get("field_id",0))
+    if boss_id <= 0 or field_id <= 0:
+        return false
+    var source: Dictionary = FSBossSummonRuntime._member(enemies,boss_id,true)
+    if source.is_empty():
+        return false
+    # Validate the source field BEFORE modifying the current global field.
+    var state: Dictionary = db.record("states",field_id)
+    if state.is_empty() or not FSFieldWeather.weather_state(state):
+        return false
+    return field_weather.set_field(db,field_id,source,true)
+
 func advance_atb(delta: float) -> void:
     if not active or not source_atb_initialized or delta <= 0.0:
         return
@@ -335,6 +356,7 @@ func advance_atb(delta: float) -> void:
         # This is an encounter state update, NOT an ATB charge action.
         if active:
             boss_runtime.tick(self)
+            sync_boss_global_weather()
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
         object_id: int = 0) -> bool:
