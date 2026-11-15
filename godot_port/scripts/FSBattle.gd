@@ -63,6 +63,9 @@ var ivy_revenge: FSIvyRevenge = FSIvyRevenge.new()
 # Final source CharacterCore actor notes: private Profile.tag_text +
 # all equipped items + live State Notes, never handwritten Actor.note.
 var ivy_pain_source: FSIvyPainSourceProvider = FSIvyPainSourceProvider.new()
+# ComboCore OD mitigation: learned passive142 + verified Equip/State Notes.
+# Original main Cover grants +6% before recalculating guard defense.
+var ivy_od_defense: FSIvyODDefense = FSIvyODDefense.new()
 
 func enable_private_ivy_pain_notes(folder:String="res://data")->bool:
     ivy_pain.active=false
@@ -259,6 +262,12 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
             changed.emit("原版艾薇護衛來源未驗證：" + str(
                 coverage.get("reason","")))
             return false
+    if ivy_od_defense.active:
+        var od_preflight:Dictionary=ivy_od_defense.quote(self,target,1)
+        if not bool(od_preflight.get("ok",false)):
+            changed.emit("原版 OD 減傷來源不完整：" + str(
+                od_preflight.get("reason","")))
+            return false
     if ivy_pain.active:
         var direct_pain: Dictionary=ivy_pain.quote(
             self,attacker,target,{"hp":1},false)
@@ -341,6 +350,13 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
             raw_damage = int(varied["damage"])
         damage = raw_damage / (4 if bool(target.get("super_guard",false)) else 2) if (
             bool(target.get("guarding",false))) else raw_damage
+    # Original ComboCore make_attack_damage_value modifies positive
+    # source hit AFTER the baseline/guard, BEFORE Field404 and Shield77.
+    var od_hit:Dictionary=ivy_od_defense.quote(self,target,damage)
+    if not bool(od_hit.get("ok",false)):
+        changed.emit("OD 減傷狀態於 ACT 失去來源，攻擊未提交")
+        return 0
+    damage=int(od_hit["hp"])
     if field_weather.active and field_weather.current_id > 0:
         # #404 source hook runs AFTER baseline damage is calculated.
         var field: Dictionary = field_weather.preview_damage(
@@ -381,6 +397,7 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
         return 0
     boss_state_effects.commit_hit(target,hit)
     ivy_pain.commit(target,pain_quote)
+    ivy_od_defense.record(od_hit)
     if accuracy.active:
         target["fs_last_action_result"] = "hit"
     if ivy_cover.active:
@@ -521,6 +538,11 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
             changed.emit("艾薇護衛技能目標來源不完整，未扣 MP：" + str(
                 coverage.get("reason","")))
             return false
+    if ivy_od_defense.active:
+        var od_preflight:Dictionary=ivy_od_defense.quote(self,target,1)
+        if not bool(od_preflight.get("ok",false)):
+            changed.emit("艾薇 OD 防禦有效 Note 不完整，技能未扣 MP")
+            return false
     if ivy_pain.active:
         var direct_pain: Dictionary=ivy_pain.quote(
             self,user,target,{"hp":1},false)
@@ -651,6 +673,14 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         # This is AFTER YEM/crit/variance/Guard but BEFORE later Field404
         # and Boss shield. Explicitly gated, not a stock skill bonus.
         val+=int(revenge_plan["extra"])
+    # Original ComboCore make_obj_damage_value adjusts positive SKILL
+    # damage after prior YEM/Guard and source 147 revenge bonus but
+    # before Field404, Cover and Shield77.
+    var od_hit:Dictionary=ivy_od_defense.quote(self,target,val)
+    if not bool(od_hit.get("ok",false)):
+        changed.emit("OD 減傷來源於 ACT 改變，技能未扣 MP")
+        return false
+    val=int(od_hit["hp"])
     if field_weather.active and field_weather.current_id > 0 and val > 0:
         # Actual source #404 is invoked after skill damage generation.
         # Applying weather before CRIT/variance alters rounding and parity.
@@ -700,6 +730,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     user["mp"] = int(user["mp"]) - mp_cost
     boss_state_effects.commit_hit(target,hit)
     ivy_pain.commit(target,pain_quote)
+    ivy_od_defense.record(od_hit)
     # RPG VX skill_effect success: !miss/!evade/!skip AND an actual
     # HP/MP/State effect. Bounded 147 has no state effects or MP damage.
     # Thus a positive final HP effect consumes the stored snapshot once.
