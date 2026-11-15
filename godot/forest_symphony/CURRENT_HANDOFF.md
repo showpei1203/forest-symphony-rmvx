@@ -1,3 +1,18 @@
+# CURRENT | Forest Symphony A35 R8 R2 — Balanced Canopy Fill + 2-Light Test | 2026-11-16
+
+**ENGINE PASS · NAV PASS · REAL GPU 4/4 PASS · ART HOLD.** Godot 4.7.2 map/HD-2D only. Do not touch RPG Maker VX, parallel A36C, combat or sealed historical A35 R2–R8.
+
+- [Official R8 R2 Handoff](docs/A35_R8_R2_NATIVE_HANDOFF_20261116.md) | [Failure Log](docs/A35_R8_R2_FAILURE_LOG_20261116.md) | [Godot lighting control](scripts/a35_r8_r2_light_balance.gd) | [reproducible builder](tools/a35_r8_r2_build.py) | [original GPU exact delta QA](tools/a35_r8_r2_gpu_qa.py).
+- New additive R8 R2 Godot 4.7.2 scene uses real shadowed key + unshadowed fill PointLight2D (24% soft fill for canopy), optional separate northeast shadowed key and fill PointLight2D. Runtime O/P/F/M controls. **Unshadowed fill is an artistic approximation, not real alpha physical shadow transmission.**
+- Existing 187 PAR sprites/anchors/collision, 175 trunks +175 canopy occluders and original Ground unchanged. Native NAV 8/8, 4/4 protected routes, original GPU 4/4; zero-fill+multi OFF **0 pixel difference** to original R8.
+- With 24% primary fill: 131,758 pixels brighten/change within primary radius, 0 outside. Secondary lamp: 122,464 additional pixels within northeast radius, 0 outside. 6×50 frame engine wall-time smoke benchmark: hard 16.691 ms, fill 16.684 ms, dual 16.696 ms, **not isolated GPU**.
+- **[Complete owner-only R8 R2 Godot native QA ZIP](https://drive.google.com/file/d/1qPRcM1uT-4Ep9cglVcUzHsz0kvd8CQ-p/view)** 378 entries, 188,106,570 bytes, CRC PASS SHA256 `1217c36f9e19ece3d104f6cdf3b8973474c472fd62a7f5e6cd0b94013ffab37c`. Drive shared=false, owner only. [Private source-only ZIP](https://drive.google.com/file/d/1EipigwoH2Nqk0tJHGQpEnddol4WgXSj0/view) 363 entries and [four-way real GPU derivative comparison](https://drive.google.com/file/d/1572OLVno9Y3Eu0pI08LEwpo_IU9pfAk0/view).
+- **Failure discovered and repaired:** zero-energy second PointLight2D caused ghost 16,633 northeast pixels with feature OFF. Explicitly `enabled=false` for inactive lights fixes regression. Details and original evidence in Failure Log.
+- ART HOLD: visual 1:1 screenshot shows experimental northeast light overbrightens the right cottage; R6 conifer leaf spikes remain. Next **R8 R3** refine placement/intensity and evaluate lighting aesthetics before production. Then Ground3 grasses/flowers/organic road edges in reversible scene, original Ground unchanged.
+- GitHub public code/docs only; all private PNG/ZIP art in Google Drive. Native Godot original images and full QA in ZIP. Every turn stage needs QA, Failure Log, Handoff and source SHA.
+
+---
+
 ## R8 封存與雙重雲端讀回完成 | 2026-11-16
 - **[完整 R8 Godot 工程 ZIP，Drive 已驗證私人權限](https://drive.google.com/file/d/1xcUgm5bqAfKr8-MB45ijOfP8WoW4qAO2/view)**：176,237,979 bytes、354 files、CRC PASS、SHA `e47e8cba8d746a034fcd5620680554a20bfd96c2d146d8c062874f59f22507fc`。
 - **[R8 原生 GPU／導航／效能 QA 證據 ZIP，Drive 已驗證私人權限](https://drive.google.com/file/d/1GucEGmHx2EVCrQ4XJ3V4SXP3-EjRb7-C/view)**：5,991,876 bytes、27 files、CRC PASS、SHA `2cb31183351217fbf050fac2c973df84e3115ae657e2c04922887b69fe8e5518`。不是獨立 Godot 工程。
