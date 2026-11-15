@@ -62,7 +62,8 @@ func _db() -> FSDatabase:
         "actors":[null,_actor(1,2,1,1),_actor(2,3)],
         "classes":[null,null,{"id":2,"position":0,
             "element_ranks":{"data_int16":_ranks()},
-            "weapon_set":[1],"armor_set":[1,2],"learnings":[]},
+            "weapon_set":[1],"armor_set":[1,2],
+            "learnings":[{"level":1,"skill_id":1}]},
             {"id":3,"position":0,"element_ranks":_ranks(),
             "weapon_set":[],"armor_set":[],"learnings":[]}],
         "enemies":[null,{"id":1,"name":"Synthetic Water Ground",
@@ -75,7 +76,9 @@ func _db() -> FSDatabase:
         "states":[null,{"id":1,"name":"Element State",
             "note":"<ele_weak[14]:30>","element_set":[14],
             "reduce_hit_ratio":false,"restriction":0}],
-        "skills":[null]
+        "skills":[null,{"id":1,"name":"Synthetic Passive",
+            "note":"<mechanic_passive><ele_weak 14:35>",
+            "passive":false}]
     }
     return db
 
@@ -192,6 +195,64 @@ func _run() -> void:
             battle.accuracy.scripted_rolls==[0,99,0,99,99,0,1] and
             not actor.has("fs_element_authority"),
             "unknown source passive must block before RNG and clear stale authority"): return
+
+    # Real FS_BATTLE_V22 passive Note discovery uses current SKILL
+    # records, not handwritten effective passives from a type map.
+    # The source PASSIVE_NAMES whitelist is separately SHA-bound in
+    # the private provider; here it is an EXPLICIT synthetic fixture.
+    var passive_db: FSDatabase=_db()
+    var passive_battle: FSBattle=BATTLE.new(passive_db)
+    var passive_map: Dictionary=_map()
+    passive_map["passive_source_mode"]="skills"
+    passive_map["passive_names"]={"1":"Synthetic Passive"}
+    passive_map["actor_passive_notes"]={"1":["<ele_weak 14:999>"],"2":[]}
+    if not _check(passive_battle.element_provider.configure_fixture(
+            passive_map).get("ok",false) and
+            passive_battle.add_actor(1) and passive_battle.add_enemy(1),
+            "source skill-mode provider builds actor and enemy snapshots"): return
+    passive_battle.element_rates.active=true
+    if not _check(passive_battle.start(),"dynamic actual Skill Note battle starts"): return
+    var passive_actor: Dictionary=passive_battle.party[0]
+    var passive_target: Dictionary=passive_battle.enemies[0]
+    r=passive_battle.element_rates.max_rate_for(passive_db,
+        passive_actor,[14])
+    if not _check(int(r.get("rate",-1))==122 and
+            passive_actor["skills"]==[1],
+            "passive actual Skill Note weak35 + armor res-25 gives122, manual999 ignored"): return
+    var skill_row: Dictionary=passive_db.record("skills",1)
+    skill_row["note"]="<ele_res 14:45>"
+    if not _check(passive_battle.attack_preflight(passive_target,
+            passive_actor),"source skill name-only passive refreshed"): return
+    r=passive_battle.element_rates.max_rate_for(passive_db,
+        passive_actor,[14])
+    if not _check(int(r.get("rate",-1))==42,
+            "source PASSIVE_NAMES maps named skill, live Note res45 =>42"): return
+    skill_row["name"]="Renamed ordinary Skill"
+    if not _check(passive_battle.attack_preflight(passive_target,
+            passive_actor),"renamed source skill can refresh"): return
+    r=passive_battle.element_rates.max_rate_for(passive_db,
+        passive_actor,[14])
+    if not _check(int(r.get("rate",-1))==87,
+            "source name mismatch disables passive Note: only armor res25"): return
+    skill_row["passive"]=true
+    if not _check(passive_battle.attack_preflight(passive_target,
+            passive_actor),"skill.passive runtime tag refreshes"): return
+    r=passive_battle.element_rates.max_rate_for(passive_db,
+        passive_actor,[14])
+    if not _check(int(r.get("rate",-1))==42,
+            "source skill.passive true enables elemental res45 independent of name"): return
+    skill_row["passive"]=false
+    skill_row["note"]="<mechanic_passive><ele_weak 14:25>"
+    if not _check(passive_battle.attack_preflight(passive_target,
+            passive_actor),"mechanic_passive Note marker refreshes"): return
+    r=passive_battle.element_rates.max_rate_for(passive_db,
+        passive_actor,[14])
+    if not _check(int(r.get("rate",-1))==112,
+            "source mechanic_passive tag enables weak25, cancels armor res25"): return
+    passive_db.tables["skills"][1]=null
+    if not _check(not passive_battle.attack_preflight(passive_target,
+            passive_actor) and not passive_actor.has("fs_element_authority"),
+            "missing real learned Skill row fail-closes without stale passive"): return
 
     print("FS Phase28 source provider Actor/Class/Enemy real table ranks, weapon/armor KGC, passive/state, atomic equip, ACT and SHA gate PASS")
     quit(0)
