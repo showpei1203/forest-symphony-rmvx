@@ -131,6 +131,15 @@ func preview(battle,user:Dictionary,skill:Dictionary)->Dictionary:
         future.append(FURNACE_ID)
     if not future.has(SHARED_STATE_ID):
         future.append(SHARED_STATE_ID)
+    # Original Game_Battler#sort_states: highest State.priority first,
+    # then lower state ID for equal priority. State85=290, raw100=5.
+    # Re-adding State85 when State100 already exists must NOT invert it.
+    future.sort_custom(func(a,b):
+        var aa:Dictionary=battle.db.record("states",int(a))
+        var bb:Dictionary=battle.db.record("states",int(b))
+        var pa:int=int(aa.get("priority",0))
+        var pb:int=int(bb.get("priority",0))
+        return pa>pb if pa!=pb else int(a)<int(b))
     hypothetical["states"]=future
     var source:Dictionary=battle.ivy_pain_source.build(battle.db,hypothetical)
     if not bool(source.get("ok",false)) or not bool(
