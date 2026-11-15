@@ -1,0 +1,8 @@
+# Forest Symphony A51 | True PixelLab full-body sword action, timing and special FX
+
+Three runnable standalone Godot 4.7.2 projects: godot_a51, godot_a51_swordtrail and godot_a51_r4_stable_fx.
+PixelLab job b997be06-c1fa-4741-8fb9-bcedf6fc9a39 generated 10 real new fullbody frames via previously real-estimated 18-joint skeleton, one POST costing 3.0 generations. F0/F11 original approved Actor01 A62.
+A51 new body chest/torso moves stronger than R4 (401->617 changed pixels), but head consistency worsens (aligned head residual 141->273); ART HOLD.
+Only independent Weapon/FX layers manipulated, no Body pixel edits. R2 real model sword and original A50 R4 body remain usable; separate source model sword spark trail follows tip F6 (50,26) F7 (61,39) F8 (56,48), 5 source palettes, 38 visible FX pixels at F7. Attack keyframe acceleration F6 .560 -> F7 .620, contact .630, 70ms Hitstop.
+The preferred engineering candidate is godot_a51_r4_stable_fx, which keeps exact original true PixelLab A50 R4 Body and original model sword while adding the isolated new FX and tempo. All 3 projects passed native Godot RX6700XT import/12 GPU frames/real collision HP100->75->50 with miss/cancel/dedup/double-speed. Full FS ATB NOT RUN and final visual user art not accepted.
+The owner-private ZIP includes true PixelLab PNGs, full provider reply, the 18-joint JSON request (without auth token), three Godot projects, native screenshots/GIFs, QA logs, Failure Log and formal Handoff.

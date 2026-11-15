@@ -1,0 +1,16 @@
+{
+  "stage": "A51",
+  "source": "owner-private exact SHA-verified 1102-entry source ZIP",
+  "source_zip_SHA256": "4bf1895b9d26a5a9235cee0c990301df8b4d35e54b2303239ccb2a34cbed8946",
+  "native_system": "Godot 4.7.2 AMD RX6700XT",
+  "candidate": "godot_a51_r4_stable_fx",
+  "original_user_files_untouched": true,
+  "IMPORT_exit": 0,
+  "IMPORT_pass": true,
+  "GPU_exit": 0,
+  "GPU_pass": true,
+  "CONTACT_exit": 0,
+  "CONTACT_pass": true,
+  "status": "PASS",
+  "C_temp_removed": true
+}
