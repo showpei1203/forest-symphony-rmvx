@@ -212,5 +212,84 @@ func _run() -> void:
             b.accuracy.scripted_rolls.is_empty(),
             "Boss State152 effective ATK57 live source attack deals smooth99"): return
 
+    # Activate REAL Phase28 final element calculation in an ACT, not an
+    # isolated formula. The earlier neutral-only witness flag is disabled:
+    # this pathway must compute the original element source itself.
+    target["states"] = []
+    target.erase("fs_applied_boss_states")
+    target["fs_element_authority"] = {"verified":true,
+        "primary":"grass","secondary":"",
+        "ranks":{"13":3,"14":3,"15":3,"16":3},
+        "extra_notes_verified":true,"extra_notes":[]}
+    b.element_rates.active = true
+    actor["element_set"] = [13] # Fire -> Grass = 200%
+    actor["fs_normal_equipment_verified"] = true
+    b.accuracy.scripted_rolls = [0,99,0,99,99,0,1]
+    hp_before = int(target["hp"])
+    var element_quote: Dictionary = b.normal_core.quote(b,actor,target)
+    if not _check(int(element_quote.get("element_rate",-1))==200 and
+            b.attack(actor,target)==174 and
+            int(target["hp"])==hp_before-174 and
+            int(b.normal_core.events[-1]["element_rate"])==200,
+            "real normal ACT Fire200 before CRIT/variance and smooth=>HP174"): return
+
+    # Electric->Ground has exact immunity, still a legal completed
+    # HIT but consumes only HIT/EVA and source power draw. No CRIT/variance.
+    target["fs_element_authority"]["primary"] = "ground"
+    actor["element_set"] = [16]
+    b.accuracy.draws.clear()
+    b.accuracy.scripted_rolls = [0,99,0]
+    hp_before = int(target["hp"])
+    if not _check(b.attack_preflight(actor,target) and
+            b.attack(actor,target)==0 and int(target["hp"])==hp_before and
+            str(target.get("fs_last_action_result",""))=="hit" and
+            b.accuracy.scripted_rolls.is_empty() and
+            b.accuracy.draws.map(func(e: Dictionary): return e["kind"])==[
+                "hit","eva","legacy_attack_power"],
+            "real source immunity zero skips provisional crit and variance"): return
+
+    # Two different elements are multiplied, NOT max-selected. For
+    # Water/Ground, Fire50*Grass250% =125%, so old damage11->13,
+    # then FS smooth ratio gives103; source duplicate IDs ignored.
+    target["fs_element_authority"]["primary"]="water"
+    target["fs_element_authority"]["secondary"]="ground"
+    actor["element_set"] = [13,15,13]
+    b.accuracy.scripted_rolls = [0,99,0,99,99,0,0]
+    hp_before = int(target["hp"])
+    if not _check(b.attack(actor,target)==103 and
+            int(target["hp"])==hp_before-103 and
+            int(b.normal_core.events[-1]["element_rate"])==125,
+            "actual multielement Fire50 Grass250 product125 and smooth103"): return
+
+    # A negative final element Rank * type is absorb, i.e. HEAL HP.
+    # MaxHP clamp prevents unauthorized over-healing. Shield applies
+    # only to strictly positive source damage.
+    target["fs_element_authority"]["primary"]="fire"
+    target["fs_element_authority"]["secondary"]=""
+    target["fs_element_authority"]["ranks"]["14"] = 6
+    actor["element_set"] = [14] # Water vs Fire + rank6 => -100%.
+    b.accuracy.scripted_rolls = [0,99,0,0,0]
+    hp_before = int(target["hp"])
+    if not _check(b.attack(actor,target)==-11 and
+            int(target["hp"])==hp_before+11 and
+            int(b.normal_core.events[-1]["element_rate"])==-100,
+            "real attack absorbs -11 HP, no critical, smooth ratio skipped"): return
+    target["hp"] = int(target["maxhp"])-3
+    b.accuracy.scripted_rolls = [0,99,0,0,0]
+    if not _check(b.attack(actor,target)==-11 and
+            int(target["hp"])==int(target["maxhp"]),
+            "source elemental absorption heals but clamps at maxHP"): return
+
+    # Missing source rank is not a synthetic neutral fallback and can
+    # never consume RNG before the caller accepts the ACT.
+    target["fs_element_authority"]["ranks"].erase("14")
+    b.accuracy.scripted_rolls = [0,99,0,0,0]
+    hp_before = int(target["hp"])
+    if not _check(not b.attack_preflight(actor,target) and
+            b.attack(actor,target)==0 and
+            int(target["hp"])==hp_before and
+            b.accuracy.scripted_rolls==[0,99,0,0,0],
+            "missing Phase28 Rank fails closed before any ACT RNG or HP"): return
+
     print("FS normal legacy->smooth actual battle, 2x CRIT, 5pct RNG, guard, weapon, Field404, Shield77, fail-closed PASS")
     quit(0)
