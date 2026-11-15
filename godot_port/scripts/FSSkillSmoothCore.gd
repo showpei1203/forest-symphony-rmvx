@@ -138,13 +138,23 @@ func resolve(battle,user: Dictionary,target: Dictionary,
         return q
     var damage: int = int(q["legacy"])
     var critical: bool = false
-    if bool(skill.get("has_critical",false)):
-        # YEM CRIT_SKILL uses 200% multiplier; source final safe
-        # common_critical runs only when the skill allows critical hits.
-        var result: Dictionary = battle.accuracy.critical(crit_chance)
-        if not bool(result.get("ok",false)):
-            return result
-        critical = bool(result["critical"])
+    if damage > 0:
+        # Source YEM::CRIT_SKILL first consumes a PROVISIONAL rand(100)
+        # even if skill.has_critical is false. The later safe
+        # common_critical overrides @critical: for has_critical=false it
+        # returns false without an additional rand, but eligible critical
+        # skills consume a SECOND d100 unless target prevents critical.
+        var provisional: int = battle.accuracy._rand(100,
+            "legacy_skill_critical_provisional")
+        if provisional < 0:
+            return _fail("YEM 技能首次暴擊抽籤越界")
+        if bool(skill.get("has_critical",false)) and not bool(
+                target.get("prevent_critical",false)):
+            var final_roll: int = battle.accuracy._rand(100,
+                "skill_critical_final")
+            if final_roll < 0:
+                return _fail("YEM 技能最終暴擊抽籤越界")
+            critical = final_roll < crit_chance
         if critical:
             damage *= 2
     var varied: Dictionary = battle.accuracy.variance(damage,int(
