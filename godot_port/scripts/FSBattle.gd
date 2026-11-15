@@ -29,12 +29,17 @@ var boss_runtime: FSBossSummonRuntime = FSBossSummonRuntime.new()
 # #404 single global field, distinct from Boss Phase State intents. Enabled
 # only with source boot-final witness; native tests must opt in themselves.
 var field_weather: FSFieldWeather = FSFieldWeather.new()
+# Strict Boss State subset: sourced stat rates and ComboCore mana shield.
+# Synthetic unit tests must enable this explicitly; never treat an
+# unverified Boss intent as an applied state.
+var boss_state_effects: FSBossCombatStates = FSBossCombatStates.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
     world = shared_world
     boss_runtime.active = db.boot_final_verified
     field_weather.active = db.boot_final_verified
+    boss_state_effects.active = db.boot_final_verified
     if world != null:
         # One shared inventory is mandatory for event reward + MENU + BATTLE parity.
         inventory = world.inventory
@@ -81,6 +86,10 @@ func start() -> bool:
     return active
 
 func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
+    if bool(target.get("fs_boss_phase_effects_pending",false)) or (
+            bool(attacker.get("fs_boss_phase_effects_pending",false))):
+        changed.emit("Boss 狀態實際效果未驗證，攻擊已阻擋")
+        return false
     # #404 requires effective attacker.element_set for positive attacks.
     # With global weather active, do not pretend an unverified source has
     # zero element types. The unweathered basic attack remains a candidate.
@@ -102,7 +111,8 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     # Variance, hit/evade, critical, Cover and other 505 overrides NOT PORTED.
     if not attack_preflight(attacker,target):
         return 0
-    var raw_damage: int = maxi(0, int(attacker.get("atk", 0)) * 4 - int(target.get("def", 0)) * 2)
+    var raw_damage: int = maxi(0, boss_state_effects.stat(attacker,"atk") * 4 -
+        boss_state_effects.stat(target,"def") * 2)
     var damage: int = raw_damage / 2 if bool(target.get("guarding", false)) else raw_damage
     if field_weather.active and field_weather.current_id > 0:
         # #404 source hook runs AFTER baseline damage is calculated.
@@ -112,12 +122,22 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
             changed.emit("天氣傷害欄位無法核對，未造成傷害")
             return 0
         damage = int(field["hp"])
-    target["hp"] = maxi(0, int(target.get("hp", 0)) - damage)
-    changed.emit("%s 攻擊 %s：%d 傷害" % [attacker.get("name", "?"), target.get("name", "?"), damage])
+    var hit: Dictionary = boss_state_effects.preview_hit(target,damage)
+    if not bool(hit.get("ok",false)):
+        changed.emit("原版 Boss 護盾效果未驗證，攻擊未結算")
+        return 0
+    boss_state_effects.commit_hit(target,hit)
+    changed.emit("%s 攻擊 %s：HP %d／護盾吸收 MP %d" % [
+        attacker.get("name","?"),target.get("name","?"),
+        int(hit["hp"]),int(hit["mp"])])
     _check_end()
-    return damage
+    return int(hit["hp"])
 
 func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
+    if bool(target.get("fs_boss_phase_effects_pending",false)) or (
+            bool(user.get("fs_boss_phase_effects_pending",false))):
+        changed.emit("Boss 的未驗證狀態效果不允許技能扣 MP 或結算")
+        return false
     # This is the same cost/effect/target verification invoked before ACT
     # starts AND immediately before skill payment at ACT completion.
     var skill := db.record("skills", skill_id)
@@ -182,11 +202,11 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     var mp_cost: int = int(FSSkillCostRules.preview(skill,user)["mp"])
     var val: int = int(skill.get("base_damage", 0))
     if val > 0:
-        val += int(user.get("atk", 0)) * 4 * int(skill.get("atk_f", 0)) / 100
-        val += int(user.get("spi", 0)) * 2 * int(skill.get("spi_f", 0)) / 100
+        val += boss_state_effects.stat(user,"atk") * 4 * int(skill.get("atk_f", 0)) / 100
+        val += boss_state_effects.stat(user,"spi") * 2 * int(skill.get("spi_f", 0)) / 100
         if not bool(skill.get("ignore_defense", false)):
-            val -= int(target.get("def", 0)) * 2 * int(skill.get("atk_f", 0)) / 100
-            val -= int(target.get("spi", 0)) * int(skill.get("spi_f", 0)) / 100
+            val -= boss_state_effects.stat(target,"def") * 2 * int(skill.get("atk_f", 0)) / 100
+            val -= boss_state_effects.stat(target,"spi") * int(skill.get("spi_f", 0)) / 100
         val = maxi(0, val)
     if field_weather.active and field_weather.current_id > 0 and val > 0:
         var field: Dictionary = field_weather.preview_damage(
@@ -203,14 +223,23 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         db,user,skill,enemies)
     if not bool(planned.get("ok",false)):
         return false
+    # Preflight the confirmed ComboCore shield before any MP is spent.
+    # HP damage is already modified by the OLD global weather field.
+    var hit: Dictionary = boss_state_effects.preview_hit(target,val)
+    if not bool(hit.get("ok",false)):
+        changed.emit("Boss 狀態效果缺少來源證據，未消耗 MP")
+        return false
     user["mp"] = int(user["mp"]) - mp_cost
-    target["hp"] = clampi(int(target.get("hp", 0)) - val, 0, maxi(1, int(target.get("maxhp", 1))))
+    boss_state_effects.commit_hit(target,hit)
+    target["hp"] = mini(int(target["hp"]),maxi(1,int(target.get("maxhp",1))))
     if str(planned.get("kind","none")) != "none":
         var applied: Dictionary = field_weather.apply_source_object(
             db,user,skill,enemies)
         if not bool(applied.get("ok",false)):
             changed.emit("技能已結算，但天氣變更被原版場域優先權拒絕")
-    changed.emit("%s 使用 %s：HP 變化 %d" % [user.get("name", "?"), skill.get("name", "?"), -val])
+    changed.emit("%s 使用 %s：HP 變化 %d／護盾 MP 吸收 %d" % [
+        user.get("name","?"),skill.get("name","?"),
+        -int(hit["hp"]),int(hit["mp"])])
     _check_end()
     return true
 
@@ -338,6 +367,7 @@ func advance_atb(delta: float) -> void:
         # This is an encounter state update, NOT an ATB charge action.
         if active:
             boss_runtime.tick(self)
+            boss_state_effects.sync(self)
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
         object_id: int = 0) -> bool:
