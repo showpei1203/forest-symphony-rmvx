@@ -213,7 +213,13 @@ func _run() -> void:
             int(q_ivy["od"])==100 and
             q.accuracy.scripted_rolls==[95] and
             not q.has_actor_pending_action(1),
-            "valid Ivy ACT pays MP8, activates 2 guards and does NOT tick own buff or roll HIT"): return
+            "valid Ivy ACT: completed=%s mp=%s charges=%s actions=%s od=%s rolls=%s pending=%s source=%s cover=%s" % [
+                str(q.action_queue.completed),str(q_ivy.get("mp")),
+                str(q_ivy.get("fs_ivy_guard_charges")),
+                str(q_ivy.get("fs_ivy_guard_actions_left")),
+                str(q_ivy.get("od")),str(q.accuracy.scripted_rolls),
+                str(q.action_queue.pending),str(q_ivy.get("source_atb_count")),
+                str(q.ivy_cover.errors)]): return
 
     # The original source includes independent target and guard power
     # calculations for incoming ENEMY SKILLS as well as ordinary attacks.
