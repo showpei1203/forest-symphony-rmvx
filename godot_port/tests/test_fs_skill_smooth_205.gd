@@ -199,5 +199,55 @@ func _run() -> void:
             str(target.get("fs_last_action_result",""))=="miss",
             "single-target source skill miss pays MP without calculating damage"): return
 
+    # Actual Tankentai actor command -> ACT charge -> source skill power
+    # -> completed action/recharge. This goes through FSActionQueue, not
+    # a direct one-shot battle.use_skill() call.
+    var queued: FSBattle = _battle()
+    if not _check(queued.start(),"native skill queue fixture starts"): return
+    var q_actor: Dictionary = queued.party[0]
+    var q_target: Dictionary = queued.enemies[0]
+    q_actor["source_at_active"] = true
+    q_actor["source_atb_count_up"] = false
+    q_actor["source_atb_count"] = 1000
+    queued.accuracy.scripted_rolls = [0,99]
+    var q_hp: int = int(q_target["hp"])
+    if not _check(queued.queue_actor_action(0,"skill",0,1) and
+            queued.has_actor_pending_action(0) and
+            int(q_actor["mp"])==100 and int(q_target["hp"])==q_hp and
+            queued.accuracy.scripted_rolls==[0,99],
+            "source skill command queues without early MP or RNG draw"): return
+    queued.advance_atb(1.0/60.0)
+    if not _check(not queued.has_actor_pending_action(0) and
+            queued.action_queue.completed.size()==1 and
+            bool(queued.action_queue.completed[0]["success"]) and
+            int(q_actor["mp"])==90 and int(q_target["hp"])==q_hp-184 and
+            bool(q_actor["source_atb_count_up"]),
+            "native ACT skill1 source smooth184 pays MP10 once and recharges"): return
+    # Skill MISS still pays MP and completes the queued ACT.
+    q_actor["source_at_active"] = true
+    q_actor["source_atb_count_up"] = false
+    q_actor["source_atb_count"] = 1000
+    queued.accuracy.scripted_rolls = [95]
+    q_hp = int(q_target["hp"])
+    if not _check(queued.queue_actor_action(0,"skill",0,1),
+            "queued second skill enters ACT"): return
+    queued.advance_atb(1.0/60.0)
+    if not _check(queued.action_queue.completed.size()==2 and
+            bool(queued.action_queue.completed[1]["success"]) and
+            int(q_actor["mp"])==80 and int(q_target["hp"])==q_hp and
+            str(q_target.get("fs_last_action_result",""))=="miss",
+            "queued MISS consumes MP10 and ACT but no HP damage"): return
+
+    # Unverified CRIT RNG fails at the end of charge WITHOUT paying MP.
+    hero["mp"] = 100
+    b.accuracy.scripted_rolls = [0,99,100]
+    before_hp = int(target["hp"])
+    before_mp = int(hero["mp"])
+    if not _check(not b.use_skill(hero,target,4) and
+            int(hero["mp"])==before_mp and
+            int(target["hp"])==before_hp and
+            not b.accuracy.failures.is_empty(),
+            "invalid final critical RNG aborts source skill before MP payment"): return
+
     print("FS source YEM skill coefficients, smooth defense, CRIT200, Guard, Pen, Field404, Shield77, MP-on-MISS PASS")
     quit(0)
