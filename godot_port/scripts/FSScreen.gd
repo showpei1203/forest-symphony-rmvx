@@ -93,6 +93,11 @@ func _build_shell() -> void:
         button.pressed.connect(func() -> void: _change(tab))
         tabs.add_child(button)
     status_label = Label.new()
+    # Real native OpenGL QA exposed horizontal clipping of Ivy charge
+    # details at 544x416 original VX aspect. Never force users to read
+    # an overflowing single line in the new Godot battle HUD.
+    status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     layout.add_child(status_label)
     var scroll := ScrollContainer.new()
     scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -428,10 +433,12 @@ func _refresh_battle_status() -> void:
         if battle.accuracy.active and all_lines.size()>0:
             all_lines[all_lines.size()-1] += _combat_result_text(actor)
         if battle.ivy_cover.active and int(actor.get("id",0))==5:
-            all_lines[all_lines.size()-1] += " [艾薇護衛:%d 次／有效行動:%d／減傷:%d%%]" % [
+            # A separate native status row fits both original 4:3 game
+            # layout and TV 16:9 layout, without hiding OD/HP numbers.
+            all_lines.append("  艾薇護衛：%d 次｜持續 %d 行動｜減傷 %d%%" % [
                 int(actor.get("fs_ivy_guard_charges",0)),
                 int(actor.get("fs_ivy_guard_actions_left",0)),
-                int(actor.get("fs_ivy_guard_reduce",0))]
+                int(actor.get("fs_ivy_guard_reduce",0))])
     for enemy in battle.enemies:
         var enemy_line: String = "%s HP:%s/%s %s" % [
             enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0),
