@@ -32,6 +32,83 @@ func end_action() -> void:
     session.clear()
     action_serial = 0
 
+func start_battle(battle) -> bool:
+    # ALBERT_IVY_CLONE.start_battle resets active cover and grants Actor5
+    # exactly 10% of its MAX OD. Does not infer that 1000 is universal.
+    action_serial=0
+    direct_serial=0
+    session.clear()
+    for ally in battle.party:
+        if int(ally.get("id",0))!=IVY_ID or not bool(
+                ally.get("actor",false)) or int(ally.get("hp",0))<=0:
+            continue
+        ally["fs_ivy_guard_charges"]=0
+        ally["fs_ivy_guard_actions_left"]=0
+        ally["fs_ivy_guard_reduce"]=0
+        ally["fs_ivy_team_hit_serial"]=-1
+        ally["fs_ivy_self_hit_serial"]=-1
+        if not bool(ally.get("fs_ivy_guard_source_verified",false)):
+            continue
+        if not ally.has("max_od") or int(ally["max_od"])<=0 or not ally.has("od"):
+            _fail("艾薇原版最大 OD 不存在，不能正確初始化")
+            return false
+        ally["od"]=clampi(int(ally["od"])+roundi(float(
+            ally["max_od"])*0.10),0,int(ally["max_od"]))
+    return true
+
+func activate_main_guard(battle,ivy: Dictionary,skill: Dictionary) -> Dictionary:
+    # This is an explicit source ACTION-END hook, not a free status flag.
+    # Skill <ig:charges,actions,reduce> is used by source
+    # ALBERT_IVY_CLONE.apply_action_skill_tags after valid ACT.
+    if not active or not battle.party.has(ivy) or int(
+            ivy.get("id",0))!=IVY_ID or not bool(
+            ivy.get("fs_ivy_guard_source_verified",false)):
+        return _fail("無原版艾薇已驗證的護衛來源")
+    if not bool(skill.get("fs_ivy_guard_tag_verified",false)):
+        return _fail("艾薇護衛技能 Note 來源未驗證")
+    var rx:=RegEx.new()
+    if rx.compile("(?i)<\\s*(?:ig|ivy_guard)\\s*:\\s*([0-9]+)\\s*,\\s*([0-9]+)\\s*,\\s*([0-9]+)\\s*>")!=OK:
+        return _fail("艾薇原版護衛 Note 解析器錯誤")
+    var match_result: RegExMatch=rx.search(str(skill.get("note","")))
+    if match_result==null:
+        return _fail("原版護衛技能沒有 ig/ivy_guard 設定")
+    var charges: int=int(match_result.get_string(1))
+    var actions: int=int(match_result.get_string(2))
+    var reduce: int=clampi(int(match_result.get_string(3)),0,95)
+    ivy["fs_ivy_guard_charges"]=maxi(0,charges)
+    ivy["fs_ivy_guard_actions_left"]=maxi(0,actions)
+    ivy["fs_ivy_guard_reduce"]=reduce
+    ivy["fs_ivy_guard_activated_serial"]=action_serial
+    return {"ok":true,"charges":charges,"actions":actions,
+        "reduce":reduce}
+
+func _gain_percent(ivy: Dictionary,percent: int) -> bool:
+    if not ivy.has("max_od") or int(ivy["max_od"])<=0 or not ivy.has("od"):
+        return false
+    ivy["od"]=clampi(int(ivy["od"])+roundi(float(
+        ivy["max_od"])*float(percent)/100.0),0,int(ivy["max_od"]))
+    return true
+
+func party_damage(battle,attacker: Dictionary,victim: Dictionary,
+        damage: int) -> void:
+    # Original source process_party_damage checks enemy->actor and
+    # positive HP damage, then pays +2% team and +2% self only ONCE
+    # for each source action serial. Does not stack per multi-hit.
+    if not active or damage<=0 or bool(attacker.get("actor",true)) or not bool(
+            victim.get("actor",false)):
+        return
+    for ally in battle.party:
+        if int(ally.get("id",0))!=IVY_ID or int(ally.get("hp",0))<=0 or not bool(
+                ally.get("fs_ivy_guard_source_verified",false)):
+            continue
+        if int(ally.get("fs_ivy_team_hit_serial",-1))!=action_serial:
+            ally["fs_ivy_team_hit_serial"]=action_serial
+            _gain_percent(ally,2)
+        if ally==victim and int(ally.get("fs_ivy_self_hit_serial",-1))!=action_serial:
+            ally["fs_ivy_self_hit_serial"]=action_serial
+            _gain_percent(ally,2)
+        break
+
 func _guard(battle,target: Dictionary) -> Dictionary:
     # Source original select_guard: active main Ivy FIRST, then optional
     # clone Ivy when target HP is below 50%. Do not pretend that this
@@ -170,6 +247,7 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
             guard["fs_ivy_guard_actions_left"]=0
             guard["fs_ivy_guard_reduce"]=0
     battle.boss_state_effects.commit_hit(guard,resolved["hit"])
+    party_damage(battle,attacker,guard,int(resolved["hit"]["hp"]))
     original["fs_last_action_result"]="hit"
     original["fs_cover_redirected_serial"]=action_serial
     guard["fs_last_action_result"]="hit"
