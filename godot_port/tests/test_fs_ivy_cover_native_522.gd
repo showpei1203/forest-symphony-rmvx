@@ -141,7 +141,7 @@ func _run() -> void:
     # Guard's own verified source damage source must be available BEFORE
     # HIT RNG: unknown elements/weapon notes never use a magic defense.
     b.ivy_cover.activate_main_guard(b,ivy,note)
-    ivy["fs_normal_equipment_verified"]=false
+    ivy["fs_normal_element_neutral_verified"]=false
     b.accuracy.scripted_rolls=[0,99,0,99,99,0,0]
     untouched_hp=int(ally["hp"])
     var denied: bool=not b.attack_preflight(enemy,ally)
@@ -149,10 +149,10 @@ func _run() -> void:
     if not _check(denied and aborted==0 and
             int(ally["hp"])==untouched_hp and
             b.accuracy.scripted_rolls==[0,99,0,99,99,0,0],
-            "unverified guard source: denied=%s damage=%d HP=%d/%d rolls=%s cover=%s" % [
+            "unverified guard element-rate source: denied=%s damage=%d HP=%d/%d rolls=%s cover=%s" % [
                 str(denied),aborted,int(ally["hp"]),untouched_hp,
                 str(b.accuracy.scripted_rolls),str(b.ivy_cover.errors)]): return
-    ivy["fs_normal_equipment_verified"]=true
+    ivy["fs_normal_element_neutral_verified"]=true
 
     # The original emergency Ivy clone activates below 50% HP even with
     # no main guard. This workflow is UNPORTED so must fail closed,
