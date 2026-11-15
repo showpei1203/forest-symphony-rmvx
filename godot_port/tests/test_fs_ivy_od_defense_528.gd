@@ -209,6 +209,36 @@ func _run()->void:
             b.ivy_od_defense.events[-1]["hp"])==143,
             "original OD50 threshold reduces real skill smooth171 to143 before Shield"):return
 
+    # FS_BATTLE_V22 also recognizes OLD Ivy passive ID814 by name,
+    # even without <mechanic_passive>. Never confuse legacy with absent
+    # learned passive: it must apply the exact verified Note 50:12/0.08.
+    var skill_table:Array=b.db.tables["skills"]
+    skill_table.resize(815)
+    var old_passive:Dictionary=skill_table[142].duplicate(true)
+    old_passive["id"]=814
+    old_passive["note"]=str(old_passive["note"]).replace(
+        "<mechanic_passive>\\n","")
+    skill_table[814]=old_passive
+    ivy["skills"]=[814]
+    ivy["od"]=500
+    var old_quote:Dictionary=b.ivy_od_defense.quote(b,ivy,77)
+    if not _check(bool(old_quote.get("ok",false)) and int(
+            old_quote["hp"])==64 and is_equal_approx(float(
+            old_quote["reduction"]),16.0),
+            "legacy FS Skill814 name-matched passive applies correct OD50 16pct"):return
+    ivy["fs_ivy_guard_charges"]=1
+    ivy["fs_ivy_guard_actions_left"]=2
+    ivy["fs_ivy_guard_reduce"]=20
+    b.ivy_od_defense.active=false
+    var blocked:Dictionary=b.ivy_cover.preview(
+        b,enemy,friend,"attack")
+    if not _check(not bool(blocked.get("ok",false)),
+            "legacy Skill814 guard must NOT bypass disabled OD reduction"):return
+    b.ivy_od_defense.active=true
+    ivy["skills"]=[142]
+    ivy["fs_ivy_guard_charges"]=0
+    ivy["fs_ivy_guard_actions_left"]=0
+
     # Missing source Skill142 data/name/Note or provenance must fail
     # BEFORE the attack draws RNG or mutates HP, pain or OD.
     ivy["hp"]=1000
