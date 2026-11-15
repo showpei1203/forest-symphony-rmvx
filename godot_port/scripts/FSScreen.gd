@@ -398,6 +398,14 @@ func _refresh_battle_status() -> void:
         var planned: Array = enemy.get("fs_phase_state_intents",[])
         if not planned.is_empty():
             enemy_line += " [State意圖:%s／效果未套用]" % str(planned)
+        if bool(enemy.get("fs_law_active",false)):
+            var cfg: Dictionary = FSBossLawCycle.configuration(enemy)
+            enemy_line += " [四律:第%d律／有效行動 %d/%d（效果待移植）]" % [
+                int(enemy.get("fs_law_index",0))+1,
+                int(enemy.get("fs_law_action_count",0)),
+                int(cfg.get("interval",1))]
+        elif bool(enemy.get("fs_law_cycle_authority_pending",false)):
+            enemy_line += " [四律:原始 Note／State 未驗證]"
         all_lines.append(enemy_line)
     # Original #404 weather is a GLOBAL Field, never a battler State.
     # Display an actually authorized source-subset separately from Boss
