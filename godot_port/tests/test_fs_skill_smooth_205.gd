@@ -81,20 +81,23 @@ func _run() -> void:
             "YEM RD: base100+ATK50*2=200-DEF10=>190; smooth184.615"): return
     var before_hp: int = int(target["hp"])
     var before_mp: int = int(hero["mp"])
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.draws.clear()
+    b.accuracy.scripted_rolls = [0,99,99]
     if not _check(b.skill_preflight(hero,target,1) and
-            b.accuracy.scripted_rolls==[0,99] and
+            b.accuracy.scripted_rolls==[0,99,99] and
             b.use_skill(hero,target,1) and
             int(target["hp"])==before_hp-184 and
             int(hero["mp"])==before_mp-10 and
-            int(b.skill_core.events[-1]["damage"])==184,
-            "real source skill executes 190 * smooth_ratio => Integer184 and MP10 once"): return
+            int(b.skill_core.events[-1]["damage"])==184 and
+            b.accuracy.draws.map(func(e: Dictionary): return e["kind"])==[
+                "hit","eva","legacy_skill_critical_provisional"],
+            "real skill184 pays MP10 and consumes provisional CRIT RNG even when no critical allowed"): return
 
     q = b.skill_core.quote(b,hero,target,b.db.record("skills",2))
     if not _check(int(q["legacy"])==130 and
             is_equal_approx(float(q["smooth"]),129.23076923077),
             "SPI-only coefficient uses user SPI20x2 and target SPI10"): return
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.scripted_rolls = [0,99,99]
     before_hp = int(target["hp"])
     if not _check(b.use_skill(hero,target,2) and
             int(target["hp"])==before_hp-129,
@@ -104,7 +107,7 @@ func _run() -> void:
     if not _check(int(q["legacy"])==160 and
             is_equal_approx(float(q["smooth"]),156.92307692308),
             "mixed ATK50/SPI50 weighted target defense source ratio"): return
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.scripted_rolls = [0,99,99]
     before_hp = int(target["hp"])
     if not _check(b.use_skill(hero,target,3) and
             int(target["hp"])==before_hp-156,
@@ -114,7 +117,7 @@ func _run() -> void:
     if not _check(int(q["pen"])==50 and
             is_equal_approx(float(q["smooth"]),192.0),
             "FS skill Note pen_rate50 halves DEF to5, smooth192"): return
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.scripted_rolls = [0,99,99]
     before_hp = int(target["hp"])
     if not _check(b.use_skill(hero,target,5) and
             int(target["hp"])==before_hp-192,
@@ -123,7 +126,7 @@ func _run() -> void:
     q = b.skill_core.quote(b,hero,target,b.db.record("skills",6))
     if not _check(float(q["ratio"])==1.0 and int(q["legacy"])==200,
             "ignore_defense bypasses smoothing rather than double-penetrating"): return
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.scripted_rolls = [0,99,99]
     before_hp = int(target["hp"])
     if not _check(b.use_skill(hero,target,6) and
             int(target["hp"])==before_hp-200,
@@ -132,7 +135,7 @@ func _run() -> void:
     # This final source Skill CRIT uses YEM RD CRIT_MOD=200%, not
     # the ordinary attack's CRITICAL_RATE=170%.
     hero["mp"] = 100
-    b.accuracy.scripted_rolls = [0,99,0]
+    b.accuracy.scripted_rolls = [0,99,99,0]
     before_hp = int(target["hp"])
     if not _check(b.use_skill(hero,target,4) and
             int(target["hp"])==before_hp-369 and
@@ -143,7 +146,7 @@ func _run() -> void:
     # Source Guard occurs BEFORE smooth-ratio postprocessing. 190/2=95,
     # ratio184.615/190 => truncated92, not round93 or guard184/2.
     target["guarding"] = true
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.scripted_rolls = [0,99,99]
     before_hp = int(target["hp"])
     if not _check(b.use_skill(hero,target,1) and
             int(target["hp"])==before_hp-92,
@@ -162,7 +165,7 @@ func _run() -> void:
     target["fs_boss_stat_rates"] = {"def":100.0,"spi":100.0}
     target["fs_boss_shield_remaining"] = 3000
     target["fs_boss_shield_rate"] = 60
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.scripted_rolls = [0,99,99]
     before_hp = int(target["hp"])
     before_mp = int(target["mp"])
     if not _check(b.use_skill(hero,target,1) and
@@ -174,12 +177,12 @@ func _run() -> void:
 
     # Source spell with unverified Note must fail BEFORE HIT/MP/HP.
     hero["mp"] = 100
-    b.accuracy.scripted_rolls = [0,99]
+    b.accuracy.scripted_rolls = [0,99,99]
     before_hp = int(target["hp"])
     before_mp = int(hero["mp"])
     if not _check(not b.skill_preflight(hero,target,7) and
             not b.use_skill(hero,target,7) and
-            b.accuracy.scripted_rolls==[0,99] and
+            b.accuracy.scripted_rolls==[0,99,99] and
             int(hero["mp"])==before_mp and
             int(target["hp"])==before_hp,
             "unknown original Skill Note refuses cost and RNG, no fake smoothing"): return
@@ -209,12 +212,12 @@ func _run() -> void:
     q_actor["source_at_active"] = true
     q_actor["source_atb_count_up"] = false
     q_actor["source_atb_count"] = 1000
-    queued.accuracy.scripted_rolls = [0,99]
+    queued.accuracy.scripted_rolls = [0,99,99]
     var q_hp: int = int(q_target["hp"])
     if not _check(queued.queue_actor_action(0,"skill",0,1) and
             queued.has_actor_pending_action(0) and
             int(q_actor["mp"])==100 and int(q_target["hp"])==q_hp and
-            queued.accuracy.scripted_rolls==[0,99],
+            queued.accuracy.scripted_rolls==[0,99,99],
             "source skill command queues without early MP or RNG draw"): return
     queued.advance_atb(1.0/60.0)
     if not _check(not queued.has_actor_pending_action(0) and
@@ -240,7 +243,7 @@ func _run() -> void:
 
     # Unverified CRIT RNG fails at the end of charge WITHOUT paying MP.
     hero["mp"] = 100
-    b.accuracy.scripted_rolls = [0,99,100]
+    b.accuracy.scripted_rolls = [0,99,99,100]
     before_hp = int(target["hp"])
     before_mp = int(hero["mp"])
     if not _check(not b.use_skill(hero,target,4) and
