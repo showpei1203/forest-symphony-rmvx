@@ -1,1 +1,14 @@
-emote tool call e430427c-8da7-44f0-b8cd-ef25ad8b6e1a (read_file) is still executing. Call get_tool_result again later; do not retry the original tool.
+{
+  "stage": "A48",
+  "zip_sha256": "0fd8d5c81def1c04f2a9170bcbad991012961dd8a85ff0ae57b924027612bb77",
+  "zip_files": 296,
+  "sha_mismatches": 0,
+  "rebuild_sha_match": true,
+  "import_exit": 0,
+  "gpu_exit": 0,
+  "contact_exit": 0,
+  "waist_A62_exit": 0,
+  "waist_A45_exit": 1,
+  "waist_A48_exit": 0,
+  "status": "PASS"
+}

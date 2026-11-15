@@ -1,1 +1,18 @@
-emote tool call 5a311dd4-ec84-4df0-8be8-13969cbec0f1 (read_file) is still executing. Call get_tool_result again later; do not retry the original tool.
+{
+  "stage": "A48",
+  "source": "private Drive integrated torso candidate",
+  "native_Godot": "4.7.2",
+  "candidate_body_sha256": "71acbb8e0c13c9fcf7f95d5c3c252dcc43b79378bec353fe9e4eba0b6f1f9f42",
+  "import_exit": 0,
+  "import_pass": true,
+  "gpu_exit": 0,
+  "gpu_pass": true,
+  "contact_exit": 0,
+  "contact_pass": true,
+  "native_screenshot_count": 12,
+  "contact_screenshot": true,
+  "waist_A62_exit": 0,
+  "waist_A45_exit": 1,
+  "waist_A48_exit": 0,
+  "status": "PASS"
+}
