@@ -170,6 +170,7 @@ func apply(battle,user:Dictionary,skill:Dictionary,quote_data:Dictionary)->Dicti
     timers[str(SHARED_STATE_ID)]=0
     user["fs_ivy_furnace_state_turns"]=timers
     user["fs_ivy_effective_notes"]=ready["notes"].duplicate(true)
+    user["fs_ivy_effective_notes_have_passives"]=true
     user["fs_ivy_pain_notes_verified"]=true
     user["fs_ivy_furnace_state_verified"]=true
     user["fs_ivy_furnace_state_authority_pending"]=false
@@ -226,6 +227,7 @@ func on_atb_ready(battle)->int:
         timers.erase(str(FURNACE_ID))
         ivy["fs_ivy_furnace_state_turns"]=timers
         ivy["fs_ivy_effective_notes"]=rebuilt["notes"].duplicate(true)
+        ivy["fs_ivy_effective_notes_have_passives"]=true
         ivy["fs_ivy_pain_notes_verified"]=true
         ivy["fs_ivy_furnace_state_verified"]=false
         ivy["fs_ivy_furnace_state_authority_pending"]=false
