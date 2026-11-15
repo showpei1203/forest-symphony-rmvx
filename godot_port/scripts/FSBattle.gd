@@ -783,7 +783,12 @@ func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
     if not source_action_charged(battler):
         return false
     if ivy_cover.active and party.has(battler):
+        # Guard / Item actions have no attack()/use_skill() call to open
+        # a fresh source action serial. They STILL tick Ivy's duration.
+        if kind in ["guard","item"]:
+            ivy_cover.begin_action()
         ivy_cover.owner_action_finished(battler)
+        ivy_cover.end_action()
     FSTankentaiATBCore.reset_after_action(battler,kind,object_id,db)
     if enemies.has(battler):
         enemy_valid_action_completed(battler)
