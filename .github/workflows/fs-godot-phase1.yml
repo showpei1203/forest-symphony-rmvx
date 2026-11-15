@@ -220,6 +220,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_skill_smooth_205.gd
+      - name: Test source Ivy clone emergency Cover under 50pct HP and own-ACT reset
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ivy_clone_cover_523.gd
       - name: Test original Ivy main Cover independent source damage roll, action charges, OD and fail-close
         shell: bash
         run: |
