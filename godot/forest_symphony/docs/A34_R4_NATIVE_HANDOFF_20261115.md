@@ -21,7 +21,7 @@ A35 natural forest groups and edge continuations, improve Ground-native resoluti
 ## Drive owner-only native artifacts
 - Native screenshots, actor occlusion contact, JSON QA and handoff: https://drive.google.com/drive/folders/1wP9AJua0F985j4YgMLcHV86-0LGStUd8
 - A34 R4 portable candidate ZIP (169 members): https://drive.google.com/file/d/1iij7dr3dMr5dHh3b3cH-6ofFRz6tOvmS/view
-- Complete native ZIP copy in private Drive File Stream folder: verify file ID before using as link.
+- Complete owner-only 176-member ZIP **[FS_A34_R4_COMPLETE_NATIVE_PRIVATE_20261115.zip](https://drive.google.com/file/d/1BrLqDQE2udcPglfaUVOxuTPrkP-pml_s/view)**, 87,194,369 bytes, SHA256 `dd2ecf7612e45d65c8fbb04515e0f0c94a69af449c941f6d9a7db71787f9d6f0`, ZIP CRC PASS, Drive download readback hash VERIFIED; contains 4 new Godot native 1280x928 screenshots, actor contact, JSON QA and Handoff; owner-only, shared=false.
 
 ## Source-only GitHub
 `scenes/a34_r4_house_pair_scene.tscn`, `scripts/a34_r4_world.gd`, `tests/test_a34_r4_real.gd`, `tests/capture_a34_r4_native.gd`, `data/a34_r4_house_pair_manifest.json`, `tools/a34_r4_build_pair.py`.
