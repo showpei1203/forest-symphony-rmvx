@@ -233,5 +233,41 @@ func _run()->void:
     if not _check(not other.skill_preflight(actor,actor,145) and
             int(actor["mp"])==before_mp,
             "fake verified flags without real post-Apply authority cannot enable145"):return
-    print("FS Phase530 real Godot Ivy145 source-only ACT MP16 State85+100, ATB READY 4->0 then fifth expires, Pain100->50, strict full145 and State100 fail-close PASS")
+    # Actual source Scene_Battle#battle_end calls remove_states_battle,
+    # clearing both State85 and shared State100 because battle_only=true.
+    # Other source-owned states must not be accidentally removed.
+    var won:FSBattle=_battle()
+    if not _check(won.start(),"victory source battle starts"):return
+    var survivor:Dictionary=won.party[0]
+    if not _check(won.use_skill(survivor,survivor,145) and
+            survivor["states"]==[85,100] and int(
+            survivor["mp"])==84,
+            "source victory fixture applies both battle-only states"):return
+    won.enemies[0]["hp"]=0
+    won._check_end()
+    if not _check(not won.active and survivor["states"].is_empty() and
+            survivor["fs_ivy_furnace_state_turns"].is_empty() and
+            not bool(survivor["fs_ivy_furnace_state_verified"]) and
+            survivor["fs_ivy_effective_notes"]==[""] and
+            str(won.ivy_furnace.events[-1]["op"])=="remove_battle_only_on_victory" and
+            int(won.ivy_furnace.events[-1]["removed_count"])==2,
+            "source ordinary victory removes both original battle_only states and rebuilds Notes"):return
+
+    # Changed effective State100 during battle-end quote cannot lead
+    # to silent state deletion, even after enemies are defeated.
+    var corrupted:FSBattle=_battle()
+    if not _check(corrupted.start(),"corrupt source victory battle starts"):return
+    var holder:Dictionary=corrupted.party[0]
+    if not _check(corrupted.use_skill(holder,holder,145) and
+            holder["states"]==[85,100],
+            "state authority fixture must be active before corruption"):return
+    corrupted.db.tables["states"][100]["note"]="<unknown_final_state_effect>"
+    corrupted.enemies[0]["hp"]=0
+    corrupted._check_end()
+    if not _check(not corrupted.active and holder["states"]==[85,100] and
+            bool(holder.get("fs_ivy_furnace_state_authority_pending",false)) and
+            int(holder["mp"])==84,
+            "unknown State100 final source fails closed on victory cleanup"):return
+
+    print("FS Phase530 real Godot Ivy145 source ACT MP16 State85+100, READY fifth expiry, Pain100->50, victory battle_only cleanup and full145/State100 fail-close PASS")
     quit(0)
