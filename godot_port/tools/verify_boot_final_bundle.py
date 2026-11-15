@@ -110,11 +110,20 @@ def validate_bundle(folder):
             cid = actor.get("class_id")
             if not isinstance(cid, int) or cid <= 0 or cid >= len(classes) or classes[cid] is None:
                 errors.append("actor %s has missing class" % actor.get("id"))
-            table = actor.get("parameters", {})
-            if not isinstance(table, dict) or table.get("xsize") != 6 or (
-                    table.get("ysize", 0) < 1) or (
-                    len(table.get("data_int16", [])) !=
-                    table.get("xsize", 0) * table.get("ysize", 0) * table.get("zsize", 1)):
+            table = actor.get("parameters")
+            if not isinstance(table, dict):
+                errors.append("actor %s has invalid parameter Table" % actor.get("id"))
+                continue
+            xsize, ysize, zsize = (table.get("xsize"), table.get("ysize"),
+                                     table.get("zsize", 1))
+            values = table.get("data_int16")
+            if (type(xsize) is not int or xsize != 6 or
+                    type(ysize) is not int or ysize < 1 or
+                    type(zsize) is not int or zsize < 1 or
+                    not isinstance(values, list) or
+                    len(values) != xsize * ysize * zsize or
+                    any(type(value) is not int or value < -32768 or value > 32767
+                        for value in values)):
                 errors.append("actor %s has invalid parameter Table" % actor.get("id"))
     troops = tables.get("troops", [])
     enemies = tables.get("enemies", [])
@@ -175,6 +184,18 @@ def _self_test():
         manifest["database_sha256"] = None
         (root / "fs_boot_final_authority.json").write_text(json.dumps(manifest), encoding="utf-8")
         assert any("database_sha256 must be object" in e for e in validate_bundle(root))
+        # A correctly re-hashed malformed Table must still fail safely.
+        manifest["database_sha256"] = {
+            name: sha256(root / (name + ".json")) for name in NAMES}
+        for bad in (None, [], {"xsize": 6, "ysize": "1", "data_int16": [1]*6},
+                    {"xsize": 6, "ysize": 1, "data_int16": "123456"},
+                    {"xsize": 6, "ysize": 1, "data_int16": [40000]*6}):
+            data["actors"][1]["parameters"] = bad
+            (root / "actors.json").write_text(json.dumps(data["actors"]), encoding="utf-8")
+            manifest["database_sha256"]["actors"] = sha256(root / "actors.json")
+            (root / "fs_boot_final_authority.json").write_text(
+                json.dumps(manifest), encoding="utf-8")
+            assert any("invalid parameter Table" in e for e in validate_bundle(root)), bad
     print("M2 boot-final bundle preflight self-test PASS")
 
 
