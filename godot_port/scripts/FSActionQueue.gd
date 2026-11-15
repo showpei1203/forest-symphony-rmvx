@@ -47,6 +47,14 @@ func request(battle, index: int, kind: String, target_index: int = -1,
             target_side = "enemy"
         elif int(skill.get("scope",0)) == 7:
             target_side = "actor"
+        elif int(skill.get("scope",0))==11 and battle.ivy_furnace.active and (
+                bool(skill.get("fs_ivy_furnace_source_verified",false))) and int(
+                skill.get("id",0))==145:
+            # Original Ivy145 is self-only. No original target selector
+            # may silently rewrite the specified actor at ACT resolution.
+            if target_index!=index:
+                return false
+            target_side="actor"
         elif int(skill.get("scope",0))==11 and battle.ivy_cover.active and (
                 bool(skill.get("fs_ivy_guard_tag_verified",false))) and int(
                 skill.get("id",0))==141:
