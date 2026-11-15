@@ -1,0 +1,13 @@
+# Forest Symphony | A35 R6 Failure Log | 2026-11-15
+
+1. **R5 conifer block texture:** Cypress/Fir/Needle were 141/144/137px high but their leaves still used coarse enlarged source texture. R6 refines at **current actual canvas resolution** with inside-opaque foliage median/volume grading and 1px native needles, with no additional nearest-neighbor resize. Existing R5 art stays available for revert.
+2. **Root/footpoint corruption risk:** Every R6 sprite pixel in bottom 19px is asserted byte-identical to R5. All 13 owner locations/187 PAR collision geometries and Ground SHA immutable; Godot source test PASS.
+3. **First source QA message mislabeled:** Generated native test had the correct changed=13, retained=174 assertion, but its success string was a stale R5 `32 replaced, 155 retained`. Corrected GitHub builder, changed on-disk test, reran real Godot 4.7.2 native source test PASS with accurately labeled 13/174. Final QA ZIP includes corrected script/log.
+4. **Alpha transparency vs visual silhouette:** On tested fir location R5 actor behind fully hidden (0 changed px); R6 shows 53 changed px behind vs 576 front. 9.20% passes partial foliage transparency threshold, but absolute concealment regressed. Must inspect actual 1:1 screenshot and more locations before formal art seal.
+5. **Micro-needle overpopulation risk:** A/B source sprite gallery shows R6 edges more finely detailed but occasional thorn-like symmetrical tips, particularly pine. Source QA cannot determine aesthetic consistency with approved FS forest artwork. **ART HOLD**.
+6. **GPU ROI contract:** R5/R6 comparisons use identical world-space camera with R3 atmosphere disabled to prevent moving particles affecting out-of-ROI pixels. Official Godot GPU output: 37,535 changed pixels inside union of 13 conifer source boxes; outside **0**. Lighting day/dusk/night tested separately (3 actual frames).
+7. **Scene safety:** Original R2/R3/R4/R5 scenes and Ground SHA verified immutable, original total 187 PAR/175 trees. Four physical nav routes and 8 protected gates PASS. A36C independent large-forest line untouched.
+8. **HD-2D not complete:** Current lamps PointLight2D have shadow_enabled=false. No tree-aware `LightOccluder2D` yet, no actual 3D depth-of-field or real volumetric sunlight. Do not conflate day/night 2D tint with full HD-2D lighting.
+9. **Privacy:** private full 335-member ZIP 176,190,698 bytes (SHA256 `20411549004f0931517a1016e07e0511ed9c61916e6888999c40fa6bbd0ee2f2`) owner-only Drive, never GitHub. GitHub only source and documentation.
+
+**Final status: ENGINE PASS · NAV PASS · SOURCE SHA PASS · 7 REAL GPU FRAMES PASS · ROI PASS · ART HOLD.**
