@@ -6,6 +6,7 @@ extends SceneTree
 # NO proprietary post-Apply 11-table witness is fabricated here.
 const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
+const SCREEN = preload("res://scripts/FSScreen.gd")
 const CORE = preload("res://scripts/FSNormalAttackCore.gd")
 
 func _initialize() -> void:
@@ -76,6 +77,16 @@ func _run() -> void:
             is_equal_approx(float(q["smooth"]),110.7692307692) and
             int(q["attack_rate"])==100 and int(q["penetration"])==0,
             "actual source level1 attack50 defense10 legacy14 smooth110.769"): return
+
+    var ui = SCREEN.new()
+    root.add_child(ui)
+    ui.db = b.db
+    ui.battle = b
+    ui._refresh_battle_status()
+    if not _check("普攻：FS舊核心→平滑防禦（來源限定）" in
+            ui.status_label.text and
+            not ("技能：YEM RD→平滑防禦" in ui.status_label.text),
+            "native BATTLE exposes approved normal core only, not unverified skill mode"): return
 
     # Pure preflight: no power roll or HIT/EVA/CRI roll before ACT.
     b.accuracy.scripted_rolls = [0,99,0,99,99,0,0]
