@@ -156,6 +156,10 @@ func start() -> bool:
             source_atb_rolls_for_test,source_atb_advantage)
         source_atb_initialized = true
         source_atb_frame_fraction = 0.0
+        if ivy_pain.active or ivy_revenge.active:
+            # Original FS MechanicExpansion Scene_Battle.start clears
+            # stored Cover damage once, independent of an Ivy guard action.
+            ivy_pain.reset_battle(self)
         if ivy_cover.active:
             ivy_cover.start_battle(self)
         if boss_runtime.active:
