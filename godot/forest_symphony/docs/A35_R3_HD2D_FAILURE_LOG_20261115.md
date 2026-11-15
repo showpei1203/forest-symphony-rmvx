@@ -9,4 +9,4 @@
 - **F7 Release privacy:** Source-only GitHub, full ZIP and real native captures private owner-only Drive. Do not commit 100MB archive/screenshots or private art to public GitHub.
 - **F8 Scene regressions:** 187 PAR source/positions and Ground SHA checked in Godot, but full original R2 navigation 8/8 and player front/back occlusion were NOT rerun under R3. Must run before art release and never infer new physical tests passed.
 
-Status: **ENGINE/SOURCE PASS, native day/dusk/night GPU 3/3 PASS, ART HOLD**, package pending checksum/readback verification.
+Status: **ENGINE/SOURCE PASS, native day/dusk/night GPU 3/3 PASS, ART HOLD**. Final release ZIP CRC PASS / 236 members / 108,931,403 bytes / SHA256 `16a707417d65dc41eeb12919a52b560af26a9860d888f560f740e785c018797c`. Google Drive metadata readback verified `shared=false`: https://drive.google.com/file/d/1xWgVRNW2bLL9XUBZvc6I1vP7W8BQdX9-/view.
