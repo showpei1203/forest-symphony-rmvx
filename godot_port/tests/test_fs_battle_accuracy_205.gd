@@ -330,6 +330,28 @@ func _run() -> void:
             "unsupported state_chance Note refuses MP and RNG at both gates"): return
     b.accuracy.scripted_rolls.clear()
 
+    # Direct API must enforce VX's dead-target attack_effect skip,
+    # not just rely on FSActionQueue to reject dead references.
+    var dead = _battle()
+    dead.start()
+    var actor_dead: Dictionary = dead.party[0]
+    var victim_dead: Dictionary = dead.enemies[0]
+    victim_dead["hp"] = 0
+    dead.accuracy.scripted_rolls = [0,99]
+    var dead_mp: int = int(actor_dead["mp"])
+    if not _check(not dead.attack_preflight(actor_dead,victim_dead) and
+            dead.attack(actor_dead,victim_dead)==0 and
+            not dead.use_skill(actor_dead,victim_dead,1) and
+            int(actor_dead["mp"])==dead_mp and
+            dead.accuracy.scripted_rolls==[0,99],
+            "dead target cannot spend RNG or MP through direct battle API"): return
+    victim_dead["hp"] = 300
+    actor_dead["hp"] = 0
+    if not _check(not dead.attack_preflight(actor_dead,victim_dead) and
+            not dead.use_skill(actor_dead,victim_dead,1) and
+            dead.accuracy.scripted_rolls==[0,99],
+            "dead attacker cannot use direct skill or attack RNG"): return
+
     # The raw roll injection enforces exact rand bounds and fails closed.
     b.accuracy.scripted_rolls = [100]
     hp_before = int(enemy["hp"])
