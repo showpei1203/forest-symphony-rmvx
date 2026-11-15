@@ -215,6 +215,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_boss_law_cycle_401.gd
+      - name: Test source YEM CustomDmg skill smooth DEF after crit variance guard Field404 and Shield77
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_skill_smooth_205.gd
       - name: Test original FS normal attack legacy RNG to smooth power core and Field404 Shield77 pipeline
         shell: bash
         run: |
