@@ -1,3 +1,9 @@
+## Verified Google Drive readback
+
+- Complete [A35 R4 Godot-native ZIP](https://drive.google.com/file/d/1wdVrsfVcF47j5FtDYxm_pKPWZ9GWtpoz/view): read back exact 131,309,501 bytes, owner-only permissions (shared=false, owner only). SHA256 locally sealed: 51467d0a709bc7e6def518d79c25adbbd9de78c9123770e498e143e5ee446206.
+- Actual original [Day GPU screenshot](https://drive.google.com/file/d/1bX7jJrL17LsKTWjvlrm2jyss2VeLA6v4/view), [Dusk GPU screenshot](https://drive.google.com/file/d/1oC2pjPAHNTT1pBZyVOdfoDOs4WSJffI5/view) and [Night GPU screenshot](https://drive.google.com/file/d/1OGI2-pJPlvs2g6p-Tiyo7PYZvSJn5QFv/view) were previously verified in private Drive, in addition to those embedded in the complete native QA ZIP.
+- Failure Log, corrected native QA source and 7 native screenshots packaged, no public original PNG data in GitHub.
+
 # Forest Symphony | A35 R4 Organic Grove / HD-2D Native Handoff | 2026-11-15
 
 ## Engineering boundary and baseline
