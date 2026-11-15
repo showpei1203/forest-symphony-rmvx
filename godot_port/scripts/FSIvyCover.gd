@@ -192,7 +192,9 @@ func _guard(battle,target: Dictionary) -> Dictionary:
                 ivy.get("fs_ivy_cover_motion_busy",false))):
             if not ivy.has("max_od") or int(ivy["max_od"])<=0 or not ivy.has("od"):
                 return _fail("原版艾薇 MaxOD 尚未驗證，不能贈送護衛 OD")
-            if 142 in ivy.get("skills",[]):
+            if 142 in ivy.get("skills",[]) or 814 in ivy.get("skills",[]):
+                # Both source passive142 and legacy skill814 carry Ivy
+                # defense meaning in FS_BATTLE_V22.PASSIVE_NAMES.
                 # Previous source guard correctly refused unported 142.
                 # It may now proceed ONLY when the actual ComboCore OD
                 # reduction adapter is live and independently verified;
