@@ -105,7 +105,7 @@ func _install_layer_frame_bank() -> void:
     # Weapon and FX use distinct RGBA atlases, never mixed into canonical character pixels.
     for sprite_node: AnimatedSprite2D in [weapon_sprite, fx_sprite]:
         var name: String = "weapon" if sprite_node == weapon_sprite else "fx"
-        var tex: Texture2D = load("res://assets/actor01_a42_%s_12frames.png" % name) as Texture2D
+        var tex: Texture2D = load("res://assets/actor01_a43_fx_12frames.png" if name == "fx" else "res://assets/actor01_a43_weapon_12frames.png") as Texture2D
         assert(tex != null and tex.get_size() == Vector2(256, 192))
         var frames := SpriteFrames.new()
         if frames.has_animation("default"):

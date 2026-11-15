@@ -160,7 +160,7 @@
     },
     "attack_weighted": {
       "motion": "attack",
-      "sprite_sheet": "res://assets/actor01_a42_body_12frames.png",
+      "sprite_sheet": "res://assets/actor01_a43_body_12frames.png",
       "grid": {
         "frame_width": 64,
         "frame_height": 64,
@@ -186,8 +186,8 @@
       "loop": false,
       "hit_time": 0.55,
       "hit_frame": 6,
-      "art_gate": "HOLD: A42 independently editable A41-exact body, weapon, FX with 0 source pixel changes",
-      "provenance": "A41 source pose split into Body/Weapon/FX; Godot one-clock 12-frame animation and 70ms hitstop"
+      "art_gate": "HOLD: A43 manually retargeted shoulder/body, sword and FX candidate requiring native QA and artistic inspection",
+      "provenance": "A42 12 poses, A43 separated manually revised Body/Weapon/FX"
     }
   },
   "unsupported_motions": [
