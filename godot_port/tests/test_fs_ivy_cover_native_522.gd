@@ -167,6 +167,32 @@ func _run() -> void:
             b.accuracy.scripted_rolls==[0,99,0,99,99,0,0],
             "low-HP emergency clone is blocked until original clone cover port"): return
 
+    # Source final select_guard v1.5: main Ivy who is casting may NOT
+    # intercept. It must FALL THROUGH to the half-HP emergency clone
+    # authority; the unported clone path must therefore refuse.
+    ivy["fs_ivy_guard_charges"]=2
+    ivy["fs_ivy_guard_actions_left"]=2
+    ivy["casting"]=true
+    if not _check(not b.attack_preflight(enemy,ally) and
+            b.accuracy.scripted_rolls==[0,99,0,99,99,0,0],
+            "casting main Ivy does not hide possible emergency clone branch"): return
+    ivy["casting"]=false
+    # Source passive Skill142 changes Ivy's effective damage according
+    # to OD. Until this alias is ported, it must not silently take
+    # a wrong guarded-damage amount.
+    ivy["skills"]=[142]
+    if not _check(not b.attack_preflight(enemy,ally) and
+            b.accuracy.scripted_rolls==[0,99,0,99,99,0,0],
+            "unverified Ivy passive142 cannot bypass source guard effect"): return
+    ivy["skills"]=[]
+    ivy["fs_ivy_taunt_reduce"]=15
+    if not _check(not b.attack_preflight(enemy,ally) and
+            b.accuracy.scripted_rolls==[0,99,0,99,99,0,0],
+            "unverified Ivy taunt damage reduction cannot affect source guard"): return
+    ivy.erase("fs_ivy_taunt_reduce")
+    ivy["fs_ivy_guard_charges"]=0
+    ivy["fs_ivy_guard_actions_left"]=0
+
     # Repeated battle start never grants additional OD or resets gauge.
     var old_od: int=int(ivy["od"])
     if not _check(b.start() and int(ivy["od"])==old_od,
