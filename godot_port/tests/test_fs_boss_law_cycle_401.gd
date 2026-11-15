@@ -49,6 +49,11 @@ func _battle(db: FSDatabase) -> FSBattle:
 
 func _run() -> void:
     var note: String = "<law_cycle_states:140,141,142,143>\n" +         "<law_cycle_interval:3>\n<law_cycle_actions:1>\n<law_cycle_if_state:151>"
+    var parsed: Dictionary = LAW.configuration({"note":
+        "<law_cycle_states:140,, 141,140>\\n<law_cycle_interval:0>\\n<law_cycle_actions:8>"})
+    if not _check(parsed.get("states",[])==[140,141] and
+            int(parsed.get("interval",-1))==1,
+            "RGSS2 raw.scan deduplicates IDs and interval0 clamps1 ahead of legacy8"): return
     var db = _db(note)
     var b = _battle(db)
     if not _check(b.start(),"Boss battle starts"): return
