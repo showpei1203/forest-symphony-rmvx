@@ -75,7 +75,15 @@ func quote(battle,user: Dictionary,target: Dictionary,
         return _fail("缺少原始技能 variance 或元素集合")
     if int(skill["variance"]) < 0 or int(skill["variance"]) > 100:
         return _fail("技能 variance 不在來源安全範圍")
-    if not bool(target.get("fs_smooth_element_neutral_verified",false)):
+    var element_rate: int = 100
+    if battle.element_rates.active:
+        var element_quote: Dictionary = battle.element_rates.max_rate_for(
+            battle.db,target,skill["element_set"])
+        if not bool(element_quote.get("ok",false)):
+            return _fail("技能最終屬性倍率權威缺失：" + str(
+                element_quote.get("reason","")))
+        element_rate = int(element_quote["rate"])
+    elif not bool(target.get("fs_smooth_element_neutral_verified",false)):
         return _fail("技能原版屬性倍率未驗證，不能假定100%")
     var note_result: Dictionary = _pen_from_note(str(
         skill.get("note","")))
@@ -129,7 +137,7 @@ func quote(battle,user: Dictionary,target: Dictionary,
     return {"ok":true,"enabled":true,"legacy":legacy_damage,
         "legacy_core":legacy_core,"smooth":smooth,
         "ratio":ratio,"pen":pen,"raw":raw,
-        "def_penalty":def_penalty}
+        "def_penalty":def_penalty,"element_rate":element_rate}
 
 func resolve(battle,user: Dictionary,target: Dictionary,
         skill: Dictionary,crit_chance: int) -> Dictionary:
@@ -137,6 +145,11 @@ func resolve(battle,user: Dictionary,target: Dictionary,
     if not bool(q.get("ok",false)):
         return q
     var damage: int = int(q["legacy"])
+    # Original YEM make_obj_damage_value calls elements_max_rate after
+    # the positive source coefficients but BEFORE provisional CRIT,
+    # YEM variance, Guard and later smooth-defense wrapping.
+    if battle.element_rates.active:
+        damage = floori(float(damage)*float(int(q["element_rate"]))/100.0)
     var critical: bool = false
     if damage > 0:
         # Source YEM::CRIT_SKILL first consumes a PROVISIONAL rand(100)
@@ -171,7 +184,9 @@ func resolve(battle,user: Dictionary,target: Dictionary,
         damage = maxi(1,int(float(damage)*float(q["ratio"])))
     events.append({"legacy":int(q["legacy"]),
         "ratio":float(q["ratio"]),"damage":damage,
-        "critical":critical,"penetration":int(q["pen"])})
+        "critical":critical,"penetration":int(q["pen"]),
+        "element_rate":int(q["element_rate"])})
     return {"ok":true,"hp":damage,"critical":critical,
         "legacy":int(q["legacy"]),"smooth":float(q["smooth"]),
-        "ratio":float(q["ratio"]),"pen":int(q["pen"])}
+        "ratio":float(q["ratio"]),"pen":int(q["pen"]),
+        "element_rate":int(q["element_rate"])}
