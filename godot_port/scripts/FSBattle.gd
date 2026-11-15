@@ -51,6 +51,9 @@ var element_rates: FSElementFinalAuthority = FSElementFinalAuthority.new()
 # Derived from real Class/Enemy ranks, source Actor/Class/Enemy types,
 # KGC equipped items, and STATE/passive Notes. Not a handwritten ACT flag.
 var element_provider: FSElementSourceProvider = FSElementSourceProvider.new()
+# Original main Ivy Actor#5 single-target Cover; requires source guard,
+# MaxOD and independent damage re-roll. Disabled in production by default.
+var ivy_cover: FSIvyCover = FSIvyCover.new()
 
 func enable_private_element_provider(folder: String = "res://data") -> bool:
     # Any reconfiguration invalidates the previous source witness; stale
@@ -147,6 +150,8 @@ func start() -> bool:
             source_atb_rolls_for_test,source_atb_advantage)
         source_atb_initialized = true
         source_atb_frame_fraction = 0.0
+        if ivy_cover.active:
+            ivy_cover.start_battle(self)
         if boss_runtime.active:
             # Source AntagonistCore Scene_Battle.start initial law hook.
             boss_runtime.phase_runtime.start_laws(self)
@@ -185,6 +190,16 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
             changed.emit("原版普攻核心來源未驗證：" + str(
                 power_quote.get("reason","")))
             return false
+    # Source ALBERT_IVY_CLONE v1.6.2 can redirect landed positive damage
+    # to Actor#5 only when a verified main Ivy guard has active charges.
+    # Check the guard's own independent defense quote BEFORE any HIT RNG.
+    if ivy_cover.active:
+        var coverage: Dictionary=ivy_cover.preview(
+            self,attacker,target,"attack")
+        if not bool(coverage.get("ok",false)):
+            changed.emit("原版艾薇護衛來源未驗證：" + str(
+                coverage.get("reason","")))
+            return false
     # #404 requires effective attacker.element_set for positive attacks.
     # With global weather active, do not pretend an unverified source has
     # zero element types. The unweathered basic attack remains a candidate.
@@ -211,6 +226,8 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
         target.erase("fs_last_action_critical")
     if not attack_preflight(attacker,target):
         return 0
+    if ivy_cover.active:
+        ivy_cover.begin_action()
     var landed: Dictionary = accuracy.resolve(self,attacker,target)
     if not bool(landed.get("ok",false)):
         changed.emit("攻擊命中判定拒絕：" + str(landed.get("reason","")))
@@ -266,6 +283,27 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
             changed.emit("天氣傷害欄位無法核對，未造成傷害")
             return 0
         damage = int(field["hp"])
+    if ivy_cover.active and damage>0:
+        # Original make_attack_damage_value first calculates HP damage on
+        # the selected actor. Main Ivy Cover then recalculates an entirely
+        # separate attack against the REAL guard, WITHOUT rerolling HIT/EVA.
+        var covered: Dictionary=ivy_cover.guard_damage(
+            self,attacker,target,"attack",{},int(
+                landed.get("crit_chance",0)))
+        if not bool(covered.get("ok",false)):
+            changed.emit("艾薇護衛重算被拒絕：" + str(covered.get("reason","")))
+            return 0
+        if bool(covered.get("covered",false)):
+            var transferred: Dictionary=ivy_cover.commit(
+                self,attacker,target,covered)
+            if not bool(transferred.get("ok",false)):
+                return 0
+            changed.emit("%s 被艾薇護衛，實際承傷 %d／護盾 MP %d" % [
+                target.get("name","隊友"),int(transferred["hp"]),
+                int(transferred["mp"])])
+            ivy_cover.end_action()
+            _check_end()
+            return int(transferred["hp"])
     var hit: Dictionary = boss_state_effects.preview_hit(target,damage)
     if not bool(hit.get("ok",false)):
         changed.emit("原版 Boss 護盾效果未驗證，攻擊未結算")
@@ -276,6 +314,8 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     changed.emit("%s 攻擊 %s：HP %d／護盾吸收 MP %d" % [
         attacker.get("name","?"),target.get("name","?"),
         int(hit["hp"]),int(hit["mp"])])
+    if ivy_cover.active:
+        ivy_cover.end_action()
     _check_end()
     return int(hit["hp"])
 
@@ -360,6 +400,13 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
             changed.emit("FS 技能傷害來源未確認，未扣 MP：" + str(
                 power_quote.get("reason","")))
             return false
+    if ivy_cover.active and int(skill.get("base_damage",0))>0:
+        var coverage: Dictionary=ivy_cover.preview(
+            self,user,target,"skill",skill)
+        if not bool(coverage.get("ok",false)):
+            changed.emit("艾薇護衛技能目標來源不完整，未扣 MP：" + str(
+                coverage.get("reason","")))
+            return false
     if field_weather.active and field_weather.current_id > 0 and int(
             skill.get("base_damage",0)) > 0:
         var sample: Dictionary = field_weather.preview_damage(
@@ -374,6 +421,8 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if not skill_preflight(user,target,skill_id):
         return false
     var skill: Dictionary = db.record("skills",skill_id)
+    if ivy_cover.active:
+        ivy_cover.begin_action()
     # Exact quote has already been validated by skill_preflight.
     var mp_cost: int = int(FSSkillCostRules.preview(skill,user)["mp"])
     var val: int = int(skill.get("base_damage", 0))
@@ -454,6 +503,31 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             changed.emit("天氣傷害無法核對，未扣 MP")
             return false
         val = int(field["hp"])
+    # Cover happens after a landed positive original-target skill result.
+    # Guard recalculates its own source damage with independent YEM RNG.
+    # Actual MP payment happens exactly once after the guard quote passes.
+    if ivy_cover.active and val>0:
+        var covered: Dictionary=ivy_cover.guard_damage(
+            self,user,target,"skill",skill,int(landed.get("crit_chance",0)))
+        if not bool(covered.get("ok",false)):
+            changed.emit("原版技能護衛來源拒絕結算，無成本消耗：" + str(
+                covered.get("reason","")))
+            return false
+        if bool(covered.get("covered",false)):
+            var transferred: Dictionary=ivy_cover.commit(
+                self,user,target,covered)
+            if not bool(transferred.get("ok",false)):
+                return false
+            user["mp"]=int(user["mp"])-mp_cost
+            target["fs_last_action_result"]="hit"
+            if str(planned.get("kind","none"))!="none":
+                field_weather.apply_source_object(db,user,skill,enemies)
+            changed.emit("%s 的技能 %s 被艾薇護衛：承傷 %d／護盾 MP %d" % [
+                user.get("name","敵人"),skill.get("name","技能"),
+                int(transferred["hp"]),int(transferred["mp"])])
+            ivy_cover.end_action()
+            _check_end()
+            return true
     # Preflight the confirmed ComboCore shield before any MP is spent.
     # Damage is modified by the OLD validated global field subset.
     var hit: Dictionary = boss_state_effects.preview_hit(target,val)
@@ -473,6 +547,8 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     changed.emit("%s 使用 %s：HP 變化 %d／護盾 MP 吸收 %d" % [
         user.get("name","?"),skill.get("name","?"),
         -int(hit["hp"]),int(hit["mp"])])
+    if ivy_cover.active:
+        ivy_cover.end_action()
     _check_end()
     return true
 
