@@ -22,7 +22,10 @@ func _source_rate(notes: Array,tag: String,default_rate: float) -> Dictionary:
     var rx:=RegEx.new()
     if rx.compile("(?i)<\\s*"+tag+"\\s*:\\s*([0-9]+(?:\\.[0-9]+)?)\\s*>")!=OK:
         return _fail("艾薇蓄痛來源標籤解析器錯誤："+tag)
-    var highest: float=default_rate
+    # Ruby source returns values.max if any Note was found; the
+    # default applies ONLY when there are no matching source Notes.
+    # A source Note below the default is an explicit override too.
+    var highest: float=-1.0
     for note in notes:
         if not (note is String):
             return _fail("來源 Notes 陣列含非字串項目")
@@ -31,7 +34,7 @@ func _source_rate(notes: Array,tag: String,default_rate: float) -> Dictionary:
             if not is_finite(rate) or rate<0.0 or rate>10000.0:
                 return _fail("原版蓄痛 Rate 超出可驗證範圍")
             highest=maxf(highest,rate)
-    return {"ok":true,"rate":highest}
+    return {"ok":true,"rate":default_rate if highest<0.0 else highest}
 
 func quote(battle,attacker: Dictionary,target: Dictionary,
         proposed_hit: Dictionary,as_cover: bool=false) -> Dictionary:
