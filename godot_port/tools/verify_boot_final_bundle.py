@@ -59,8 +59,12 @@ def validate_bundle(folder):
             errors.append("manifest mismatch: " + key)
     if manifest.get("vx_runtime_witness_sha256") != sha256(witness_path):
         errors.append("witness bytes SHA256 mismatch")
+    digest_map = manifest.get("database_sha256")
+    if not isinstance(digest_map, dict):
+        digest_map = {}
+        errors.append("manifest database_sha256 must be object")
     for name in NAMES:
-        if manifest.get("database_sha256", {}).get(name) != hashes[name]:
+        if digest_map.get(name) != hashes[name]:
             errors.append("table bytes SHA256 mismatch: " + name)
     if witness.get("stage") != "post_FS_DB_AUTOSET.apply_all":
         errors.append("witness not post-Apply")
@@ -168,6 +172,9 @@ def _self_test():
         (root / "fs_boot_final_authority.json").write_text(
             json.dumps(manifest), encoding="utf-8")
         assert any("missing enemy" in e for e in validate_bundle(root))
+        manifest["database_sha256"] = None
+        (root / "fs_boot_final_authority.json").write_text(json.dumps(manifest), encoding="utf-8")
+        assert any("database_sha256 must be object" in e for e in validate_bundle(root))
     print("M2 boot-final bundle preflight self-test PASS")
 
 
