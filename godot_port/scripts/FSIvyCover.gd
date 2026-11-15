@@ -251,6 +251,12 @@ func preview(battle,attacker: Dictionary,target: Dictionary,
             picked.get("covered",false)):
         return picked
     var guard: Dictionary=picked["guard"]
+    # Original last-wins MechanicExpansion.source_text includes ACTUAL
+    # guard equipment and live State notes. Source provider refreshes
+    # the guard even though only the protected target was quoted by
+    # the caller's attack_preflight.
+    if not battle._refresh_ivy_pain_source(guard):
+        return _fail("護衛者最新裝備/State 蓄痛來源未驗證")
     var fatal: Dictionary=_fatal_authority(battle,guard)
     if not bool(fatal.get("ok",false)):
         return fatal
