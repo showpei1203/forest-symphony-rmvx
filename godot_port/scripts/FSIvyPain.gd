@@ -12,6 +12,16 @@ var active: bool=false
 var errors: Array[String]=[]
 var events: Array[Dictionary]=[]
 
+func reset_battle(battle) -> void:
+    # Original Scene_Battle.start alias ~221950 clears Ivy reservoir.
+    # This must occur ONCE per real battle start, not on HUD redraw or
+    # repeated FSBattle.start() calls while the same battle is alive.
+    for member in battle.party:
+        if int(member.get("id",0))==5 and bool(
+                member.get("actor",false)):
+            member["fs_ivy_stored_pain"]=0
+    events.clear()
+
 func _fail(reason: String) -> Dictionary:
     if not errors.has(reason):
         errors.append(reason)
