@@ -69,10 +69,18 @@ func quote(battle,attacker: Dictionary,target: Dictionary) -> Dictionary:
     # Source FS_ElementRate_FinalAuthority is a separate last-wins module.
     # Neutral 100% has an independently validated subset; no arbitrary
     # nonneutral rates are invented by this approximation.
-    if not bool(target.get("fs_normal_element_neutral_verified",false)):
-        return _fail("無法驗證原版元素倍率；不允許假設100%")
     if not (attacker.get("element_set",null) is Array):
         return _fail("武器元素集合未驗證")
+    var element_rate: int = 100
+    if battle.element_rates.active:
+        var element_quote: Dictionary = battle.element_rates.max_rate_for(
+            battle.db,target,attacker["element_set"])
+        if not bool(element_quote.get("ok",false)):
+            return _fail("FS 最終元素倍率來源不完整：" + str(
+                element_quote.get("reason","")))
+        element_rate = int(element_quote["rate"])
+    elif not bool(target.get("fs_normal_element_neutral_verified",false)):
+        return _fail("無法驗證原版元素倍率；不允許假設100%")
     var raw_equips: Variant = attacker.get("equipment",[])
     if not (raw_equips is Array):
         return _fail("原始裝備資料型別不合法")
@@ -137,7 +145,8 @@ func quote(battle,attacker: Dictionary,target: Dictionary) -> Dictionary:
     var smooth: float = maxf(1.0,raw*DEF_CONST/(DEF_CONST+effective_def))
     return {"ok":true,"enabled":true,"legacy":legacy,"smooth":smooth,
         "ratio":smooth/float(legacy),"attack_rate":attack_rate,
-        "penetration":pen,"attack":attack,"defense":defense}
+        "penetration":pen,"attack":attack,"defense":defense,
+        "element_rate":element_rate}
 
 func resolve(battle,attacker: Dictionary,target: Dictionary,
         critical_chance: int) -> Dictionary:
@@ -152,6 +161,11 @@ func resolve(battle,attacker: Dictionary,target: Dictionary,
     if roll < 0:
         return _fail("來源 85..100 普攻亂數越界")
     var damage: int = int(float(int(q["legacy"]))*float(85+roll)/100.0)
+    # Original CustomDmgFormulaRD applies elements_max_rate BEFORE
+    # any provisional/final CRIT and variance, not after smoothing.
+    # Ruby Integer / is floor for negative absorption values.
+    if battle.element_rates.active:
+        damage = floori(float(damage)*float(int(q["element_rate"]))/100.0)
     var critical: bool = false
     if damage > 0:
         # Original Yanfly code takes a provisional crit roll BEFORE the
@@ -182,8 +196,10 @@ func resolve(battle,attacker: Dictionary,target: Dictionary,
     events.append({"legacy":int(q["legacy"]),
         "smooth":float(q["smooth"]),"ratio":float(q["ratio"]),
         "rolled_factor":85+roll,"critical":critical,
-        "before_ratio":damage,"damage":final_damage})
+        "before_ratio":damage,"damage":final_damage,
+        "element_rate":int(q["element_rate"])})
     return {"ok":true,"hp":final_damage,"critical":critical,
         "legacy":int(q["legacy"]),"smooth":float(q["smooth"]),
         "ratio":float(q["ratio"]),"rolled_factor":85+roll,
-        "attack_rate":int(q["attack_rate"]),"penetration":int(q["penetration"])}
+        "attack_rate":int(q["attack_rate"]),"penetration":int(q["penetration"]),
+        "element_rate":int(q["element_rate"])}
