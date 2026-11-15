@@ -192,9 +192,18 @@ func _guard(battle,target: Dictionary) -> Dictionary:
                 ivy.get("fs_ivy_cover_motion_busy",false))):
             if not ivy.has("max_od") or int(ivy["max_od"])<=0 or not ivy.has("od"):
                 return _fail("原版艾薇 MaxOD 尚未驗證，不能贈送護衛 OD")
-            if 142 in ivy.get("skills",[]) and not bool(
-                    ivy.get("fs_ivy_passive_defense_verified",false)):
-                return _fail("艾薇被動142 的怒氣減傷尚未驗證")
+            if 142 in ivy.get("skills",[]):
+                # Previous source guard correctly refused unported 142.
+                # It may now proceed ONLY when the actual ComboCore OD
+                # reduction adapter is live and independently verified;
+                # a lone legacy boolean must never bypass damage math.
+                if not battle.ivy_od_defense.active:
+                    return _fail("原版艾薇被動142 仍未啟用實際 OD 減傷")
+                var shield_quote:Dictionary=battle.ivy_od_defense.quote(
+                    battle,ivy,1,true)
+                if not bool(shield_quote.get("ok",false)):
+                    return _fail("艾薇被動142 護衛來源不完整：" + str(
+                        shield_quote.get("reason","")))
             if int(ivy.get("fs_ivy_taunt_reduce",0))>0 and not bool(
                     ivy.get("fs_ivy_taunt_source_verified",false)):
                 return _fail("艾薇挑釁造成的護衛追加減傷來源未驗證")
