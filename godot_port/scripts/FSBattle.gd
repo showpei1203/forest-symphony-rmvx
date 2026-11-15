@@ -353,6 +353,10 @@ func advance_atb(delta: float) -> void:
     for frame in range(steps):
         field_weather.update_source(db)
         FSTankentaiATBCore.advance_frames(party,enemies,1,source_atb_wait)
+        # Tankentai calls remove_states_auto ON new ATB readiness, before
+        # action selection. Timed Boss 128/129 use that exact edge, not ACT
+        # completion and not the global FPS clock.
+        boss_state_effects.on_atb_ready(self)
         if not active:
             break
         if not source_atb_wait:
