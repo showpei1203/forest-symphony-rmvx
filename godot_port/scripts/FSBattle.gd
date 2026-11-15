@@ -344,6 +344,37 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
     if bool(user.get("actor",false)) and not skill_id in user.get("skills",[]):
         changed.emit("角色未習得技能 ID %d" % skill_id)
         return false
+    # Original Skill141 scope11 is SELF-targeting and activates Ivy <ig>
+    # after successful ACT. Only a clean source-verified ig Note subset
+    # is allowed; actual MasterSetup Skill141 has additional unported
+    # JP/charge/recharge/OD/pop tags, so it remains correctly blocked.
+    if ivy_cover.active and bool(
+            skill.get("fs_ivy_guard_tag_verified",false)) and skill_id==141:
+        if int(skill.get("scope",0))!=11 or user!=target or int(
+                user.get("id",0))!=5 or not bool(user.get("actor",false)):
+            changed.emit("Ivy 護衛技能只能由艾薇施放於自己")
+            return false
+        if int(skill.get("base_damage",1))!=0 or int(
+                skill.get("atk_f",0))!=0 or int(
+                skill.get("spi_f",0))!=0 or not skill.get(
+                "plus_state_set",[]).is_empty() or not skill.get(
+                "minus_state_set",[]).is_empty() or bool(
+                skill.get("damage_to_mp",false)) or bool(
+                skill.get("absorb_damage",false)):
+            changed.emit("原版 Ivy Guard 含未移植額外效果，不扣 MP")
+            return false
+        var ivy_plan: Dictionary=ivy_cover.preview_main_guard(
+            self,user,skill)
+        if not bool(ivy_plan.get("ok",false)):
+            changed.emit("Ivy Guard 來源無法核對：" + str(
+                ivy_plan.get("reason","")))
+            return false
+        var ivy_cost: Dictionary=FSSkillCostRules.preview(skill,user)
+        if not bool(ivy_cost.get("ok",false)) or int(
+                user.get("mp",0))<int(ivy_cost.get("mp",999999)):
+            changed.emit("Ivy Guard 額外技能 Note 或 MP 成本未驗證")
+            return false
+        return true
     # Original #271050 FS_SUPPORT_STATE_RULES has a second, Note-defined
     # state-chance roll. This subset has NOT ported that effect/authority.
     # A harmless-looking zero-base-damage skill must not silently consume MP.
@@ -423,6 +454,32 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if not skill_preflight(user,target,skill_id):
         return false
     var skill: Dictionary = db.record("skills",skill_id)
+    # Clean synthetic source subset of original Ivy Skill141: selected
+    # self at COMMAND time, pays MP and activates guard on completed ACT.
+    # No HIT/EVA/CRIT RNG; original end_action activates <ig> even for
+    # non-damaging self-buffs. No guard before this execution completes.
+    if ivy_cover.active and skill_id==141 and bool(
+            skill.get("fs_ivy_guard_tag_verified",false)):
+        var ivy_plan: Dictionary=ivy_cover.preview_main_guard(
+            self,user,skill)
+        if not bool(ivy_plan.get("ok",false)):
+            return false
+        var ivy_cost: Dictionary=FSSkillCostRules.preview(skill,user)
+        if not bool(ivy_cost.get("ok",false)) or int(
+                user.get("mp",0))<int(ivy_cost.get("mp",999999)):
+            return false
+        ivy_cover.begin_action()
+        var activated: Dictionary=ivy_cover.activate_main_guard(
+            self,user,skill)
+        if not bool(activated.get("ok",false)):
+            return false
+        user["mp"]=int(user["mp"])-int(ivy_cost["mp"])
+        user["fs_last_action_result"]="hit"
+        changed.emit("%s 完成 Ivy 主動護衛：次數 %d，持續 %d 次行動，支付 MP %d" % [
+            str(user.get("name","Ivy")),int(activated["charges"]),
+            int(activated["actions"]),int(ivy_cost["mp"])])
+        ivy_cover.end_action()
+        return true
     if ivy_cover.active:
         ivy_cover.begin_action()
     # Exact quote has already been validated by skill_preflight.
@@ -725,6 +782,8 @@ func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
     # Charge completion is distinct from battle result calculation.
     if not source_action_charged(battler):
         return false
+    if ivy_cover.active and party.has(battler):
+        ivy_cover.owner_action_finished(battler)
     FSTankentaiATBCore.reset_after_action(battler,kind,object_id,db)
     if enemies.has(battler):
         enemy_valid_action_completed(battler)
