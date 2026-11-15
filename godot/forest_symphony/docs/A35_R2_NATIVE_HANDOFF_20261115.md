@@ -18,12 +18,17 @@
 - Source PNG QA: all 8 hash and size PASS; full ZIP CRC PASS; A35 R1 scene and Ground byte-immutable.
 
 ## Status / remaining art issues
-ENGINE PASS, NAV PASS, ROI PASS, **ART HOLD**. New crown textures have obvious tiled patches and overly smooth canopy geometry at native 1x. They need visual refinement / hand-pixel review before declaring FS-quality art. Source screenshot outputs remain on remote testing session, not yet included in private ZIP (so native proof is runtime log here, not screenshot bytes).
+ENGINE PASS, NAV PASS, ROI PASS, **ART HOLD**. New crown textures have obvious tiled patches and overly smooth canopy geometry at native 1x. They need visual refinement / hand-pixel review before declaring FS-quality art. The four real Godot native screenshot files have been synchronized to private Drive and included inside this final portable ZIP, under `qa_a35/`.
 
 ## Art + collision next
 - Refine native crown texture synthesis so source tiles do not repeat; increase irregular leaf outline and trunk foot realism, keeping R2 as reversible candidate.
-- Re-run native full frame, character back/front occlusion screenshot, and exact old+new union ROI checks; independently inspect at 1x; mirror real PNGs to owner-only Drive.
+- After further art refinements, rerun the native GPU full frame, explicit front/back character-depth check, old+new union ROI and 1x visual acceptance.
 - Continue Ground3 native pixel density and seamless biome transition work only after the tree styles fit Ground and village architecture.
 
 ## Public/private boundary
 - Private owner-only ZIP contains PNGs, build sources, QA reports. Do **not** publish new tree PNGs publicly. GitHub branch only source, manifest and QA. No public share permissions.
+
+## Verified final private evidence
+- 4 actual original 1280x928 Godot 4.7.2 OpenGL PNGs included under `qa_a35/`, plus private Drive mirror folder https://drive.google.com/drive/folders/1uaEPlL5FAfNJki_j73AMRVNKT2FR22r6 (private, shared=false).
+- Independent pixel checks on the four mirrored PNGs: 149047 inside old+new tree union ROI, **0 outside**, rear actor diff **0**, front actor diff **576**.
+- Private full ZIP: this complete owner-only archive; permanent Drive URL recorded in GitHub CURRENT_HANDOFF; art remains HOLD.
