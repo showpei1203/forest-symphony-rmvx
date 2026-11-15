@@ -87,6 +87,17 @@ func configure_private(db: FSDatabase,folder: String="res://data") -> Dictionary
         return _fail("私有元素來源 SHA256 未被 post-Apply manifest 授權")
     if str(snapshot.get("source",""))!="FS_ElementalSettings_Phase28":
         return _fail("私有元素來源識別不符合 Phase28")
+    # The private Drive map exported from static RGSS2 is a DRAFT:
+    # it has NO effective post-FS_DB_AUTOSET passive/DB runtime evidence.
+    # Even if someone inserts it into the game folder and computes a
+    # matching file SHA, these explicit gates must refuse production.
+    if bool(snapshot.get("incomplete",true)) or bool(
+            snapshot.get("not_post_apply",true)):
+        return _fail("靜態 RGSS2 元素對照草稿不是 post-Apply 完整實機資料")
+    var script_sha: String=str(snapshot.get("rgss2_script_sha256","")).to_lower()
+    var witness_sha: String=str(manifest.get("rgss2_scripts_sha256","")).to_lower()
+    if script_sha.length()!=64 or script_sha!=witness_sha:
+        return _fail("FS 原版 RGSS2 腳本 SHA256 與 runtime manifest 不一致")
     for key in ["actors","classes","enemies",
             "actor_passive_notes","enemy_passive_notes"]:
         if not (snapshot.get(key,null) is Dictionary):
