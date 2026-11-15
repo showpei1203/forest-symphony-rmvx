@@ -181,6 +181,43 @@ func _run() -> void:
             int(hero["hp"])==1260 and int(hero["mp"])==mp_before-9,
             "native recovery scope7 always hits (99) and heals 60"): return
 
+    # Actual Tankentai actor ATB -> ACT -> queued hit judgement.
+    # A legal MISS is a *successful completed action* and recharges ATB;
+    # a broken RNG witness must NOT turn into a phantom success.
+    var queued = _battle()
+    if not _check(queued.start(),"queued battle starts"): return
+    var queued_actor: Dictionary = queued.party[0]
+    var queued_enemy: Dictionary = queued.enemies[0]
+    queued_actor["source_at_active"] = true
+    queued_actor["source_atb_count_up"] = false
+    queued_actor["source_atb_count"] = 1000
+    var queued_hp: int = int(queued_enemy["hp"])
+    queued.accuracy.scripted_rolls = [95]
+    if not _check(queued.queue_actor_action(0,"attack",0) and
+            queued.accuracy.scripted_rolls==[95] and
+            queued.has_actor_pending_action(0),
+            "real queue preflight does not spend RNG or HP before ACT"): return
+    queued.advance_atb(1.0/60.0)
+    if not _check(int(queued_enemy["hp"])==queued_hp and
+            queued_enemy.get("fs_last_action_result","")=="miss" and
+            queued.action_queue.completed.size()==1 and
+            bool(queued.action_queue.completed[0]["success"]) and
+            not queued.has_actor_pending_action(0) and
+            bool(queued_actor["source_atb_count_up"]),
+            "real queued MISS consumes ACT once and recharges without HP loss"): return
+    queued_actor["source_at_active"] = true
+    queued_actor["source_atb_count_up"] = false
+    queued_actor["source_atb_count"] = 1000
+    queued.accuracy.scripted_rolls = [100]
+    if not _check(queued.queue_actor_action(0,"attack",0),
+            "source queue can begin next ACT before late RNG check"): return
+    queued.advance_atb(1.0/60.0)
+    if not _check(int(queued_enemy["hp"])==queued_hp and
+            queued.action_queue.completed.size()==2 and
+            not bool(queued.action_queue.completed[1]["success"]) and
+            not queued.has_actor_pending_action(0),
+            "invalid RNG aborts queued action rather than falsely completing"): return
+
     # The raw roll injection enforces exact rand bounds and fails closed.
     b.accuracy.scripted_rolls = [100]
     hp_before = int(enemy["hp"])
