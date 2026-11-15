@@ -58,6 +58,9 @@ func configure_fixture(verified_map: Dictionary) -> Dictionary:
             return _fail("合成來源對照表缺少："+key)
     if verified_map.get("growth_use_enemy_element_rate",null)!=false:
         return _fail("ActorEnemyGrowth 元素 Rank 來源必須明確為 false")
+    if str(verified_map.get("passive_source_mode",""))=="skills" and not (
+            verified_map.get("passive_names",null) is Dictionary):
+        return _fail("原版 Passive 名稱與 ID 映射未驗證")
     source_map=verified_map.duplicate(true)
     active=true
     fixture_only=true
@@ -90,6 +93,12 @@ func configure_private(db: FSDatabase,folder: String="res://data") -> Dictionary
             return _fail("私有元素來源缺少："+key)
     if snapshot.get("growth_use_enemy_element_rate",null)!=false:
         return _fail("來源 ActorEnemyGrowth 與原始腳本設定不同")
+    # Production cannot rely on handwritten per-actor effective Note strings;
+    # the passive skill status is reconstructed from the verified post-Apply
+    # SKILL table plus source PASSIVE_NAMES and skill.passive/Note markers.
+    if str(snapshot.get("passive_source_mode",""))!="skills" or not (
+            snapshot.get("passive_names",null) is Dictionary):
+        return _fail("正式被動來源必須可從技能表自動重建，不接受手填 Note")
     source_map=snapshot.duplicate(true)
     active=true
     return {"ok":true,"sha256":declared_sha}
@@ -123,10 +132,40 @@ func _ranks(raw: Variant) -> Dictionary:
         result[str(id)]=n
     return {"ok":true,"ranks":result}
 
-func _passive_notes(battler: Dictionary) -> Dictionary:
-    var family: String="actor_passive_notes" if bool(
-        battler.get("actor",false)) else "enemy_passive_notes"
+func _passive_notes(db: FSDatabase,battler: Dictionary) -> Dictionary:
+    var actor: bool=bool(battler.get("actor",false))
+    var family: String="actor_passive_notes" if actor else "enemy_passive_notes"
     var key: String=str(int(battler.get("id",0)))
+    if actor and str(source_map.get("passive_source_mode",""))=="skills":
+        var known_names: Variant=source_map.get("passive_names",null)
+        var current_skills: Variant=battler.get("skills",null)
+        if not (known_names is Dictionary) or not (
+                current_skills is Array):
+            return _fail("原版目前已學被動 Skill ID 集合或名稱表缺失")
+        var texts: Array=[]
+        for raw_skill in current_skills:
+            var skill_id: int=int(raw_skill)
+            if skill_id<1:
+                return _fail("角色 Skill ID 不是有效正整數")
+            var skill: Dictionary=db.record("skills",skill_id)
+            if skill.is_empty() or not skill.has("name") or not (
+                    skill.get("note",null) is String):
+                return _fail("目前技能%d 缺少 post-Apply Note／名稱" % skill_id)
+            var note: String=str(skill["note"])
+            var name_match: Variant=_map_type(known_names,skill_id)
+            var named: bool=name_match!=null and str(skill["name"])==str(name_match)
+            var passive: bool=bool(skill.get("passive",false)) or (
+                note.to_lower().contains("<mechanic_passive>")) or named
+            if passive:
+                # Original FS_BATTLE_V22.note_with_defaults adds 3 passive
+                # fallback effects (cc_od, bonus_if_od and state_chance),
+                # NONE of which are elemental ele_weak/ele_res tags. The
+                # Phase28 element subset reads only exact source Skill Note.
+                texts.append(note)
+        return {"ok":true,"notes":texts}
+    # Enemies have no authoritative Game_Enemy#skills list in the
+    # current source bridge. Their effective passive Notes require an
+    # explicit private post-Apply witness, never an assumed empty set.
     var notes: Variant=_map_type(source_map.get(family,{}),int(key))
     if not (notes is Array):
         return _fail("原版被動技能有效 Note 清單未證明："+family+" #"+key)
@@ -171,7 +210,7 @@ func build(db: FSDatabase,battler: Dictionary) -> Dictionary:
     var rank_quote: Dictionary=_ranks(rank_record["element_ranks"])
     if not bool(rank_quote.get("ok",false)):
         return rank_quote
-    var passive: Dictionary=_passive_notes(battler)
+    var passive: Dictionary=_passive_notes(db,battler)
     if not bool(passive.get("ok",false)):
         return passive
     var notes: Array=[]
