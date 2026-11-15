@@ -391,10 +391,14 @@ func _refresh_battle_status() -> void:
         all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s %s" % [
             actor.get("name","?"),actor.get("hp",0),actor.get("maxhp",0),
             actor.get("mp",0),actor.get("maxmp",0),actor.get("od",0),gauge])
+        if battle.accuracy.active and all_lines.size()>0:
+            all_lines[all_lines.size()-1] += _combat_result_text(actor)
     for enemy in battle.enemies:
         var enemy_line: String = "%s HP:%s/%s %s" % [
             enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0),
             _atb_status_fragment(enemy)]
+        if battle.accuracy.active:
+            enemy_line += _combat_result_text(enemy)
         var planned: Array = enemy.get("fs_phase_state_intents",[])
         if not planned.is_empty():
             if battle.boss_state_effects.active and not bool(
@@ -432,6 +436,19 @@ func _refresh_battle_status() -> void:
             int(field_request.get("field_id",0)),
             int(field_request.get("source_boss_id",0))])
     status_label.text = "\n".join(PackedStringArray(all_lines))
+
+func _combat_result_text(battler: Dictionary) -> String:
+    # Result belongs to the TARGET battler and is recorded only when
+    # the source accuracy subset genuinely resolves an ACT.
+    match str(battler.get("fs_last_action_result","")):
+        "miss":
+            return " [上次受擊:落空]"
+        "evade":
+            return " [上次受擊:迴避]"
+        "hit":
+            return (" [上次受擊:暴擊]" if bool(battler.get(
+                "fs_last_action_critical",false)) else " [上次受擊:命中]")
+    return ""
 
 func _atb_status_fragment(battler: Dictionary) -> String:
     if not battle.source_atb_initialized:
