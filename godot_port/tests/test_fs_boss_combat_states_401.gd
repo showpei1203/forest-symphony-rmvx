@@ -2,11 +2,12 @@ extends SceneTree
 
 # Source bounded RPG::State rates + ComboCore <mana_shield 3000:60>.
 # Source-only witness fixtures, NOT original post-Apply database authority.
-# States 128/129 with hold_turn 4/2 and auto_release 100 are deliberately
-# refused until native turn/end-action parity is implemented.
+# Source128/129 hold_turn 4/2 with auto_release 100 are checked
+# at Tankentai ATB READY, not per rendered frame or ACT completion.
 const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
 const EFFECT = preload("res://scripts/FSBossCombatStates.gd")
+const ATB = preload("res://scripts/FSTankentaiATBCore.gd")
 const SCREEN = preload("res://scripts/FSScreen.gd")
 
 func _initialize() -> void:
@@ -83,6 +84,18 @@ func _battle(db: FSDatabase,boss_id: int) -> FSBattle:
     b.source_atb_rolls_for_test = {"actor:0":0,"enemy:0":0,
         "enemy:1":0,"enemy:2":0,"enemy:3":0,"enemy:4":0}
     return b
+
+func _force_ready(b: FSBattle,enemy: Dictionary) -> void:
+    # Isolate the real Tankentai gauge crossing and source phase refresh
+    # without scheduling a fake enemy AI action to accelerate a test.
+    enemy["source_atb_count"] = 999
+    enemy["source_atb_count_up"] = true
+    enemy["source_at_active"] = false
+    enemy["source_act_active"] = false
+    ATB.advance_frames(b.party,b.enemies,1,false)
+    b.boss_state_effects.on_atb_ready(b)
+    b.boss_runtime.tick(b)
+    b.boss_state_effects.sync(b)
 
 func _run() -> void:
     var db = _db()
@@ -192,27 +205,63 @@ func _run() -> void:
     if not _assert("已生效Boss State:[77]" in ui.status_label.text and
             "MP護盾剩餘:3000" in ui.status_label.text,
             "actual Godot BATTLE shows applied State77 and replenished shield capacity"): return
-    # Unsupported timed-state effects must refuse BEFORE any HP/MP mutation.
+    # Source 128 is a true +20% ATK/SPI, -10% DEF, +15% AGI
+    # timed State, automatically renewed by source Boss530 at HP<=45%.
     protected["hp"] = 4500
     shield.advance_atb(1.0/60.0)
-    if not _assert(protected.get("states",[])==[77] and
-            bool(protected.get("fs_boss_phase_effects_pending",false)) and
-            protected.get("fs_phase_state_intents",[]).has(128),
-            "State128 hold4/auto100 remains pending, no false application"): return
+    if not _assert(protected.get("states",[])==[77,128] and
+            not bool(protected.get("fs_boss_phase_effects_pending",true)) and
+            shield.boss_state_effects.stat(protected,"atk")==36 and
+            shield.boss_state_effects.stat(protected,"def")==18 and
+            int(protected.get("fs_boss_state_turns",{}).get("128",-1))==4,
+            "State128 applies actual overheat rate and starts hold_turn4"): return
     caster_mp = int(caster["mp"])
     protected_hp = int(protected["hp"])
-    if not _assert(not shield.skill_preflight(caster,protected,1) and
-            not shield.use_skill(caster,protected,1) and
-            shield.attack(caster,protected)==0 and
-            int(caster["mp"])==caster_mp and
-            int(protected["hp"])==protected_hp,
-            "unsupported timed Boss effect fail-closes direct attack and skill"): return
+    if not _assert(shield.use_skill(caster,protected,1) and
+            int(caster["mp"])==caster_mp-10 and
+            int(protected["hp"])==protected_hp-40,
+            "overheat phase can take a real skill while Shield77 absorbs MP"): return
     for k in range(1,shield.enemies.size()):
         shield.enemies[k]["hp"] = 0
     shield.advance_atb(1.0/60.0)
-    if not _assert(protected.get("fs_phase_state_intents",[]).has(129) and
-            bool(protected.get("fs_boss_phase_effects_pending",false)),
-            "core death exposure129 remains blocked pending real turn expiry"): return
+    if not _assert(protected.get("states",[])==[128,129] and
+            not bool(protected.get("fs_boss_phase_effects_pending",true)) and
+            shield.boss_state_effects.stat(protected,"def")==12 and
+            int(protected.get("fs_boss_state_turns",{}).get("129",-1))==2,
+            "core death removes Shield77 and applies Exposure129 -30% DEF/SPI"): return
+    # Source Boss530 keeps its Overheat128 but Exposure129 is once-only.
+    var before_wait: int = int(protected["fs_boss_state_turns"]["129"])
+    shield.source_atb_wait = true
+    shield.advance_atb(12.0/60.0)
+    shield.source_atb_wait = false
+    if not _assert(int(protected["fs_boss_state_turns"]["129"])==before_wait,
+            "ATB WAIT/visual frames never expire a timed RPG State"): return
+    _force_ready(shield,protected)
+    if not _assert(int(protected["fs_boss_state_turns"]["129"])==1 and
+            protected.get("states",[]).has(129),
+            "first READY subtracts State129 turn2->1"): return
+    _force_ready(shield,protected)
+    if not _assert(int(protected["fs_boss_state_turns"]["129"])==0 and
+            protected.get("states",[]).has(129),
+            "second READY subtracts State129 turn1->0 without releasing"): return
+    _force_ready(shield,protected)
+    if not _assert(not protected.get("states",[]).has(129) and
+            protected.get("states",[]).has(128) and
+            shield.boss_runtime.flags.has("exposed:530") and
+            shield.boss_state_effects.stat(protected,"def")==18,
+            "third READY guarantees Exposure129 release and recomputes DEF"): return
+    _force_ready(shield,protected)
+    _force_ready(shield,protected)
+    if not _assert(protected.get("states",[]).has(128) and
+            not protected.get("states",[]).has(129) and
+            int(protected.get("fs_boss_state_turns",{}).get("128",-1))==4,
+            "fifth READY expires Overheat128 then source Boss530 renews it"): return
+    var auto_release_count: int = 0
+    for event in shield.boss_state_effects.transitions:
+        if str(event.get("op",""))=="auto_release_atb_ready":
+            auto_release_count += 1
+    if not _assert(auto_release_count==2,
+            "two exact auto-release events: Exposure129 once, Overheat128 once"): return
 
     var bad = _db()
     bad.tables["states"][77]["note"] += "\n<unknown_damage_effect:99>"
@@ -224,5 +273,18 @@ func _run() -> void:
             not denied.boss_state_effects.errors.is_empty(),
             "unknown State77 Note cannot silently enter a live combat state"): return
 
-    print("FS Boss source State152 rates, Law140-143, ComboCore Shield77 damage, timed-state guards PASS")
+    # Corrupted timer authority must still fail closed, never advance
+    # or randomly release a State without source witnesses.
+    var corrupt = _db()
+    corrupt.tables["states"][128]["auto_release_prob"] = 75
+    var corrupt_battle = _battle(corrupt,530)
+    corrupt_battle.start()
+    corrupt_battle.advance_atb(1.0/60.0)
+    corrupt_battle.enemies[0]["hp"] = 4500
+    corrupt_battle.advance_atb(1.0/60.0)
+    if not _assert(corrupt_battle.enemies[0].get("states",[])==[77] and
+            bool(corrupt_battle.enemies[0].get("fs_boss_phase_effects_pending",false)),
+            "non-source auto-release chance refuses actual State128"): return
+
+    print("FS Boss actual State rates, Shield77, 128/129 Tankentai READY expiry, native UI PASS")
     quit(0)
