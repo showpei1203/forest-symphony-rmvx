@@ -26,8 +26,8 @@ def finalize(workspace):
         diffs[scenes[i]+"_vs_"+scenes[j]]={"changed_pixels":int(np.any(delta!=0,axis=2).sum()),"mean_abs_rgb_delta":round(float(delta.mean()),4)}
     if any(v["changed_pixels"]<1000 for v in diffs.values()):
         raise RuntimeError("Day/night captures are not distinguishable")
-    native=(workspace/"A35_R3_GODOT_NATIVE_SOURCE_QA_R2.log").read_text(errors="replace")
-    gpu=(workspace/"A35_R3_GODOT_GPU_CAPTURE_R2.log").read_text(errors="replace")
+    native=(workspace/"A35_R3_GODOT_NATIVE_SOURCE_QA_R2.log").read_text(encoding="utf-16",errors="replace")
+    gpu=(workspace/"A35_R3_GODOT_GPU_CAPTURE_R2.log").read_text(encoding="utf-16",errors="replace")
     if "A35 R3 GODOT NATIVE PASS" not in native or "three-phase capture PASS" not in gpu:
         raise RuntimeError("Official Godot logs not PASS")
     with zipfile.ZipFile(original) as zi:
