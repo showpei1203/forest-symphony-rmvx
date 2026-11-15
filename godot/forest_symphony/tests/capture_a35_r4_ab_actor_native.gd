@@ -39,7 +39,7 @@ func _run() -> void:
             push_error("A35 R4 native A/B GPU frame invalid")
             quit(51)
             return
-        var file := "res://qa_a35/"+item["file"]
+        var file: String = "res://qa_a35/"+str(item["file"])
         if frame.save_png(file)!=OK:
             push_error("A35 R4 failed GPU save "+file)
             quit(52)
