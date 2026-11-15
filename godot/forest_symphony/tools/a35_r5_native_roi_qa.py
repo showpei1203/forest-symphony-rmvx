@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw,ImageChops
 NAMES=[
-    "A35_R5_R3_BASELINE_NATIVE.png",
+    "A35_R5_R4_BASELINE_NATIVE.png",
     "A35_R5_ART_CANDIDATE_NATIVE.png",
     "A35_R5_ACTOR_BEHIND_NATIVE.png",
     "A35_R5_ACTOR_FRONT_NATIVE.png",
