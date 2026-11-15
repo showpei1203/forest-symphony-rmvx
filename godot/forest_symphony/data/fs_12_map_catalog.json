@@ -117,10 +117,10 @@
       "name": "幽葉迴廊",
       "biome_id": "verdant_elf_forest",
       "role": "dungeon",
-      "status": "SOURCE_QA_ONLY",
+      "status": "NATIVE_GPU_PASS_NAV_HOLD",
       "scene_path": null,
-      "source_branch": "feat/fs-godot-first-a29-20261113",
-      "source_scene_path": "godot/forest_symphony/scenes/a36c_r6_forest_groves_80x58.tscn",
+      "source_branch": "feat/fs-a35-r3-hd2d-20261115",
+      "source_scene_path": "res://scenes/fs_01_maze_a36c_r7_reconciled_80x58.tscn",
       "grid_px": 32,
       "base_canvas_px": [
         2560,
@@ -128,13 +128,30 @@
       ],
       "gates": {
         "source": "PASS",
-        "native_gpu": "NOT_RUN",
-        "navigation": "NOT_RUN",
+        "native_gpu": "PASS",
+        "navigation": "HOLD",
         "art": "HOLD",
         "final_seal": false
       },
       "canonical_scene_id": "FS_01_MAZE",
-      "canonical_display_name": "幽葉迴廊"
+      "canonical_display_name": "幽葉迴廊",
+      "source_lineage": "A36B R2 private original + A36C R6 existing source geometry, reconciled FS_01_MAZE R7 separate project",
+      "qa_metadata": {
+        "ground_sha256": "ac591877b05c00543e6756e44e6ba81f6fea7e36086049e35de81e2610e0c911",
+        "shadow_sha256": "752c252b0ac48961a164943749b421172ad775d2fe0e1329faa748219ff63ffa",
+        "independent_par": 326,
+        "trees": 310,
+        "grove_position_shifts": 56,
+        "old_sprite_reversions_prevented": 40,
+        "native_gpu_full_map_frames": 2,
+        "real_gpu_changed_pixels_inside_roi": 910809,
+        "outside_roi": 0
+      },
+      "blockers": [
+        "Candidate lives in separate private map project; do not load as same-project finished scene",
+        "Water 148 semantic collision candidates, maze entry/exit and routes not physically tested",
+        "Ground was resized nonuniformly from earlier source; ART HOLD"
+      ]
     },
     {
       "id": "elf_village",
