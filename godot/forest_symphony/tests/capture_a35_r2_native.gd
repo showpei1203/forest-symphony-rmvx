@@ -17,7 +17,7 @@ func _run() -> void:
         {"scene":OLD,"file":"A35_R2_A34_BASELINE_NATIVE.png","actor":false},
         {"scene":NEW,"file":"A35_R2_FOREST_GROVES_NATIVE.png","actor":false},
         {"scene":NEW,"file":"A35_R2_GROVE_ACTOR_BEHIND_NATIVE.png","actor":true,"foot":Vector2(1247,174)},
-        {"scene":NEW,"file":"A35_R2_GROVE_ACTOR_FRONT_NATIVE.png","actor":true,"foot":Vector2(1247,263)},
+        {"scene":NEW,"file":"A35_R2_GROVE_ACTOR_FRONT_NATIVE.png","actor":true,"foot":Vector2(1247,440)},
     ]
     for item in scenarios:
         var scene:PackedScene=load(item["scene"])
@@ -74,4 +74,17 @@ func _run() -> void:
     if inside<2000 or outside!=0:
         push_error("A35 native ROI regression");quit(35);return
     print("A35 R2 NATIVE A/B GROVE ROI PASS: zero changed pixels outside new tree source rectangles")
+    var rear:Image=captures["A35_R2_GROVE_ACTOR_BEHIND_NATIVE.png"]
+    var front:Image=captures["A35_R2_GROVE_ACTOR_FRONT_NATIVE.png"]
+    var rear_diff:int=0
+    var front_diff:int=0
+    for yy in range(H):
+        for xx in range(W):
+            if b.get_pixel(xx,yy)!=rear.get_pixel(xx,yy):rear_diff+=1
+            if b.get_pixel(xx,yy)!=front.get_pixel(xx,yy):front_diff+=1
+    print("A35 R2 NATIVE ACTOR DEPTH: behind_diff="+str(rear_diff)+" front_diff="+str(front_diff))
+    if rear_diff!=0 or front_diff<100:
+        push_error("A35 R2 actor depth visibility regression")
+        quit(36)
+        return
     quit(0)
