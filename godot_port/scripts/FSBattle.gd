@@ -69,6 +69,11 @@ func add_actor(actor_id: int) -> bool:
     battler["od"] = 0
     battler["atb"] = 0.0
     battler["guarding"] = false
+    # Source Game_Battler#initialize starts with @states=[] for both
+    # Actor and Enemy. Missing source arrays must not be misclassified
+    # as an unknown gameplay state by Phase28 FinalAuthority.
+    if not (battler.get("states",null) is Array):
+        battler["states"] = []
     party.append(battler)
     return true
 
@@ -81,6 +86,8 @@ func add_enemy(enemy_id: int) -> bool:
     battler["od"] = 0
     battler["atb"] = 0.0
     battler["guarding"] = false
+    if not (battler.get("states",null) is Array):
+        battler["states"] = []
     FSATBResistance.setup(battler)
     enemies.append(battler)
     return true
