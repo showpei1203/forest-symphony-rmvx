@@ -119,15 +119,15 @@ func _run() -> void:
     actor["equipment"] = [0,1,0,0,0]
     actor["fs_element_authority"]["equipment_verified"] = true
     actor["fs_element_authority"]["element_resistance"] = {"13":150}
-    if not _rate(e,db,actor,[13],-55,
-            "Armor native half + KGC resist/guard/weak/absorb: -55%"): return
+    if not _rate(e,db,actor,[13],-100,
+            "Armor half + KGC150 guard/weak/absorb gives -112 clipped -100"): return
     actor["equipment"] = [0,1,2,0,0]
     if not _rate(e,db,actor,[13],0,
             "KGC invalid_element_set overrides absorption to zero"): return
     actor["equipment"] = [0,1,0,0,0]
     actor["fs_element_authority"]["element_resistance"] = {"13":100}
-    if not _rate(e,db,actor,[13],-37,
-            "KGC source integer guard/weak stages with rate100"): return
+    if not _rate(e,db,actor,[13],-75,
+            "KGC source integer guard/weak stages 100->50->75 negative"): return
 
     # Fail-closed evidence gates. A blocked quote is pure: no RNG, HP
     # or MP mutations and no default-element guesses.
