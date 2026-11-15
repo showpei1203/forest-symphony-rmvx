@@ -126,7 +126,13 @@ func _run()->void:
             int(b.ivy_pain.events[-1]["cap"])==3000 and
             bool(ivy["fs_ivy_furnace_state_verified"]) and
             ivy["fs_ivy_effective_notes"].size()==2,
-            "live State85 verified data adds direct100%, Cover150%, cap300%"):return
+            "State85 direct source: damage=%d hp=%d store=%d gain=%s cap=%s stateok=%s notes=%s gate=%s" % [
+                amount,int(ivy.get("hp",0)),int(ivy.get(
+                "fs_ivy_stored_pain",-1)),str(b.ivy_pain.events[-1].get("gain")),
+                str(b.ivy_pain.events[-1].get("cap")),
+                str(ivy.get("fs_ivy_furnace_state_verified",null)),
+                str(ivy.get("fs_ivy_effective_notes",[])),
+                str(b.ivy_pain_source.errors)]):return
 
     # Actual main Ivy guard HP58, State85 Cover150% -> store87.
     ivy["fs_ivy_guard_charges"]=2
