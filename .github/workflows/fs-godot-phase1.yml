@@ -336,3 +336,20 @@ jobs:
           path: ${{ runner.temp }}/fs-ivy-cover-native-qa.png
           if-no-files-found: error
           retention-days: 30
+
+      - name: Render real Godot Ivy147 ten-frame ACT and pain-consume OpenGL viewport
+        shell: bash
+        env:
+          FS_IVY_REVENGE_QA_SCREENSHOT_PATH: ${{ runner.temp }}/fs-ivy-revenge-native-qa.png
+        run: |
+          set -euo pipefail
+          test -n "$(fc-list : family | grep -i 'Noto Sans CJK' | head -1)"
+          xvfb-run -a -s "-screen 0 1280x720x24" timeout --signal=TERM --kill-after=5s 65s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --rendering-driver opengl3 --path godot_port --script res://tests/capture_fs_ivy_revenge_qa.gd
+          test -s "$FS_IVY_REVENGE_QA_SCREENSHOT_PATH"
+      - name: Upload actual Ivy revenge Godot 4.7.2 OpenGL PNG
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-godot-p1-ivy-revenge-native-qa
+          path: ${{ runner.temp }}/fs-ivy-revenge-native-qa.png
+          if-no-files-found: error
+          retention-days: 30
