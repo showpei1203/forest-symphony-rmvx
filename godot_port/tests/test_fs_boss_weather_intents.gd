@@ -105,6 +105,35 @@ func _run() -> void:
             phase.transitions[-1]["op"]=="request_clear_field",
             "dead weather source requests global field clear, no fake damage"): return
 
+    # Full BATTLE bridge: Boss phase now drives the live global field,
+    # including actual damage modifier, not only a UI intent label.
+    var live_db = _db()
+    live_db.tables["states"][153]["note"] = "<field_damage 1: +50>"
+    live_db.tables["states"][156]["note"] = "<field_damage 1: -25>"
+    var live = _battle(live_db,[548],true)
+    live.field_weather.active = true
+    if not _check(live.start(),"live Boss weather bridge starts"): return
+    live.advance_atb(1.0/60.0)
+    if not _check(live.field_weather.current_id==153 and
+            live.field_weather.current_source==live.enemies[0],
+            "Boss548 applies global Field153 with live source"): return
+    var weather_hit: Dictionary = live.field_weather.preview_damage(
+        live_db,live.party[0],[1],100,0)
+    if not _check(weather_hit.get("ok",false) and
+            int(weather_hit.get("hp",0))==150,
+            "live Boss Field153 changes real damage 100 to 150"): return
+    live.enemies[0]["hp"] = 550
+    live.advance_atb(1.0/60.0)
+    weather_hit = live.field_weather.preview_damage(
+        live_db,live.party[0],[1],100,0)
+    if not _check(live.field_weather.current_id==156 and
+            int(weather_hit.get("hp",0))==75,
+            "Boss HP55% switches live global Field156 and damage 100 to 75"): return
+    live.enemies[0]["hp"] = 0
+    live.field_weather.update_source(live_db)
+    if not _check(live.field_weather.current_id==0,
+            "dead source clears live global field"): return
+
     var multi = _battle(db,[548,549,550])
     multi.start()
     var weather = PHASE.new()
