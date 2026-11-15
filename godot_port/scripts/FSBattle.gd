@@ -40,6 +40,9 @@ var accuracy: FSBattleAccuracy = FSBattleAccuracy.new()
 # REMAINS OFF for normal gameplay until the 505-alias + runtime witness
 # has been audited. Native synthetic integration fixtures may opt in.
 var normal_core: FSNormalAttackCore = FSNormalAttackCore.new()
+# Source-positive SKILL power: YEM CustomDmg RD -> smooth DEF ratio after
+# source variance/guard. Off until original post-Apply + alias witness.
+var skill_core: FSSkillSmoothCore = FSSkillSmoothCore.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
@@ -285,6 +288,12 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
         if not bool(chance.get("ok",false)):
             changed.emit("技能命中來源未確認，未扣 MP：" + str(chance.get("reason","")))
             return false
+    if skill_core.active:
+        var power_quote: Dictionary = skill_core.quote(self,user,target,skill)
+        if not bool(power_quote.get("ok",false)):
+            changed.emit("FS 技能傷害來源未確認，未扣 MP：" + str(
+                power_quote.get("reason","")))
+            return false
     if field_weather.active and field_weather.current_id > 0 and int(
             skill.get("base_damage",0)) > 0:
         var sample: Dictionary = field_weather.preview_damage(
@@ -302,7 +311,9 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     # Exact quote has already been validated by skill_preflight.
     var mp_cost: int = int(FSSkillCostRules.preview(skill,user)["mp"])
     var val: int = int(skill.get("base_damage", 0))
-    if val > 0:
+    if not skill_core.active and val > 0:
+        # Candidate stock-VX route is intentionally unchanged until
+        # original full 505-script proof exists for all skills.
         val += boss_state_effects.stat(user,"atk") * 4 * int(skill.get("atk_f", 0)) / 100
         val += boss_state_effects.stat(user,"spi") * 2 * int(skill.get("spi_f", 0)) / 100
         if not bool(skill.get("ignore_defense", false)):
@@ -336,7 +347,19 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             user.get("name","?"),skill.get("name","?"),
             "落空" if landed["kind"]=="miss" else "被迴避",mp_cost])
         return true
-    if accuracy.active and val > 0:
+    if skill_core.active:
+        # Original RD skill: positive source damage -> optional 200% CRIT
+        # -> YEM variance -> Guard -> truncated smooth defense ratio.
+        # Global Field404 and ComboCore Shield77 are downstream.
+        var source_skill: Dictionary = skill_core.resolve(self,user,target,
+            skill,int(landed.get("crit_chance",0)))
+        if not bool(source_skill.get("ok",false)):
+            changed.emit("原版技能核心拒絕執行，無成本消耗：" + str(
+                source_skill.get("reason","")))
+            return false
+        val = int(source_skill["hp"])
+        target["fs_last_action_critical"] = bool(source_skill["critical"])
+    elif accuracy.active and val > 0:
         var crit: Dictionary = accuracy.critical(int(
             landed.get("crit_chance",0)))
         if not bool(crit.get("ok",false)):
@@ -353,9 +376,6 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             changed.emit("技能浮動來源未確認，無成本消耗")
             return false
         val = int(varied["damage"])
-        # Apply guard AFTER damage variation, BEFORE global Field404.
-        # Only enable this ordered subset when combat accuracy is enabled;
-        # non-witness legacy candidate path remains stable.
         if bool(target.get("guarding",false)):
             val = int(val / (4 if bool(target.get("super_guard",false)) else 2))
     if field_weather.active and field_weather.current_id > 0 and val > 0:
