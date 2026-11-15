@@ -1,3 +1,8 @@
+## Verified owner-only R8 patch + full Godot package
+- [R8 native physics patch + original GPU/QA evidence ZIP](https://drive.google.com/file/d/1urk3hwGXCUJqTZ-nUM1AYGTKUSYrQFFw/view): 18 members, **18,753,939 bytes**, SHA256 **b2f13ce1770a21113ba358206a9663a5c1140a0aa406b2d5f319e9b2bb58e49b**, ZIP CRC PASS. Google Drive provider returned exact bytes and shared=false / owner-only permissions. **Not standalone:** overlay over verified original R7B [full private source](https://drive.google.com/file/d/1vCUPIBc6Yv3vtc3Wy7cDRBvI8Y65-9wf/view).
+- A **complete standalone R8 Godot project** was also built as FS_01_MAZE_R8_WATER_NATIVE_FULL_GODOT_PRIVATE_20261116.zip, 211 entries, 91,979,830 bytes, SHA256 **bcafbe212c101ddcfbdb5de5d31d3bf69ee9d2e3c6c447fcc90f8f50a972895b**, ZIP CRC PASS and original Ground/R7 scene SHA unchanged. As of this Handoff entry, its exact cloud file ID/owner-only sharing was **not yet provider-read-back**; link only after verification.
+- The full project combines both previously verified owner-only source and patch; native R8 private scene tests (148/148 Godot physics and 2/2 real GPU) already PASS in the original Drive working directory. A full map maze path from entrance to exit is **NOT validated**.
+
 # Forest Symphony | FS_01_MAZE R8 Water Physics | Official Godot Handoff | 2026-11-16
 
 **ENGINE PASS · 148/148 REAL PHYSICS PASS · REAL GPU 2/2 PASS · ZERO-PIXEL VISUAL REGRESSION PASS · MAZE ROUTES HOLD · WATER ART HOLD · OVERALL ART HOLD.**
