@@ -95,6 +95,15 @@ func _run() -> void:
     await process_frame
     await process_frame
     await process_frame
+    var selected_font: Font = view.get_theme_default_font()
+    # A valid PNG with Chinese rendered as square tofu is NOT a QA pass.
+    # U+666E (普), U+4E2D (中) and U+6587 (文) must be present in the
+    # actual theme font selected by the engine.
+    if selected_font == null or not selected_font.has_char(0x666E) or not (
+            selected_font.has_char(0x4E2D)) or not (
+            selected_font.has_char(0x6587)):
+        _fail("OS Chinese fallback font missing: native HUD still shows tofu")
+        return
     var output_path: String = OS.get_environment("FS_QA_SCREENSHOT_PATH")
     if output_path.is_empty():
         _fail("QA screenshot output path missing")
