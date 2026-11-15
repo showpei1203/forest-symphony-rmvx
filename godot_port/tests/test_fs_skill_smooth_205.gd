@@ -7,6 +7,7 @@ extends SceneTree
 # FSActionQueue charges MP at ACT resolution only.
 const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
+const SCREEN = preload("res://scripts/FSScreen.gd")
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -79,6 +80,16 @@ func _run() -> void:
             int(q["raw"])==200 and int(q["def_penalty"])==10 and
             is_equal_approx(float(q["smooth"]),184.61538461538),
             "YEM RD: base100+ATK50*2=200-DEF10=>190; smooth184.615"): return
+    var ui = SCREEN.new()
+    root.add_child(ui)
+    ui.db = b.db
+    ui.battle = b
+    ui._refresh_battle_status()
+    if not _check("技能：YEM RD→平滑防禦（來源限定）" in
+            ui.status_label.text and
+            not ("普攻：FS舊核心→平滑防禦" in ui.status_label.text),
+            "native BATTLE exposes actual gated skill source mode only"): return
+
     var before_hp: int = int(target["hp"])
     var before_mp: int = int(hero["mp"])
     b.accuracy.draws.clear()
