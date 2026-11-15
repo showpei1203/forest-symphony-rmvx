@@ -1,3 +1,8 @@
+## Verified 1:1 native GPU art A/B closeups
+- [R4 vs R5 1:1 tree-closeup comparison derived from the actual GPU frames](https://drive.google.com/file/d/1fg2KxReXDCmz6EMc2qX4HJCkGCXQv8Sc/view), owner-only, verified exists. Shows southwest trees, northeast conifer and northwest canopy from exact same-frame coordinates, FX off. This is an *illustrative contact sheet*, NOT one original native renderer screenshot.
+- Visual finding: scale and silhouettes of the three conifers improve materially, but nearest-neighbor enlarged leaves have visibly blockier pixel clusters than native broadleaf/house art. Keep **ART HOLD**, refine the three conifer texture families before sealing.
+- [Fully read-back verified private R5 native ZIP](https://drive.google.com/file/d/1249K95NDG_eJ4jvNOS50TI_h2VDhnrMR/view), 153,836,761 bytes, shared=false, owner only, CRC PASS and original R2/R3/R4/Ground SHA retained.
+
 # Forest Symphony | A35 R5 Botanical Forest Native Handoff | 2026-11-15
 
 ## Baseline and protection
