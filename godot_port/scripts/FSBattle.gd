@@ -43,6 +43,11 @@ var normal_core: FSNormalAttackCore = FSNormalAttackCore.new()
 # Source-positive SKILL power: YEM CustomDmg RD -> smooth DEF ratio after
 # source variance/guard. Off until original post-Apply + alias witness.
 var skill_core: FSSkillSmoothCore = FSSkillSmoothCore.new()
+# Source #52-24: final Phase28 element/type authority (18 Pokémon types,
+# original Rank/State/Armor KGC, multielement multiplication). This remains
+# disabled in normal gameplay until post-Apply effective 11 tables and all
+# equipment/passive Note witnesses are verified. Synthetic QA opts in.
+var element_rates: FSElementFinalAuthority = FSElementFinalAuthority.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
