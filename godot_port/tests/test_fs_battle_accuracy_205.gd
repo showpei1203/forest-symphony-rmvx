@@ -42,7 +42,13 @@ func _db() -> FSDatabase:
             "atk_f":0,"spi_f":0,"mp_cost":9,"ignore_defense":false,
             "plus_state_set":[],"minus_state_set":[],"element_set":[],
             "note":"","damage_to_mp":false,"absorb_damage":false,
-            "has_critical":false}]
+            "has_critical":false},
+        {"id":4,"name":"Unported Note State","scope":1,"base_damage":0,
+            "variance":0,"hit":100,"physical_attack":false,
+            "atk_f":0,"spi_f":0,"mp_cost":15,"ignore_defense":false,
+            "plus_state_set":[],"minus_state_set":[],"element_set":[],
+            "note":"<state_chance 2:35>","damage_to_mp":false,
+            "absorb_damage":false,"has_critical":false}]
     db.tables={"enemies":enemies,"skills":skills,"states":[null],
         "weapons":[null],"armors":[null]}
     return db
@@ -53,7 +59,7 @@ func _battle() -> FSBattle:
         "hp":2000,"maxhp":2000,"mp":100,"maxmp":100,
         "atk":50,"def":10,"spi":20,"agi":20,
         "hit":95,"eva":5,"cri":10,"element_set":[1],
-        "skills":[1,2,3],"states":[],"note":"",
+        "skills":[1,2,3,4],"states":[],"note":"",
         "equipment":[0,0,0,0,0],"two_swords_style":false})
     b.add_enemy(1)
     # Real data gate is still closed. A source-shaped fixture explicitly
@@ -268,6 +274,27 @@ func _run() -> void:
             not bool(queued.action_queue.completed[1]["success"]) and
             not queued.has_actor_pending_action(0),
             "invalid RNG aborts queued action rather than falsely completing"): return
+
+    # The original Recovery/AI_HEAL Note override has priority over the
+    # database's 5% HIT, even if it is a different friendly helper.
+    var marked_heal: Dictionary = b.db.record("skills",3).duplicate()
+    marked_heal["note"] = "<AI_HEAL>"
+    marked_heal["base_damage"] = 0
+    marked_heal["hit"] = 5
+    q = b.accuracy.quote(b,hero,hero,marked_heal)
+    if not _check(int(q["hit"])==100 and int(q["eva"])==0,
+            "SupportStateRules AI_HEAL Note guarantees HIT100/EVA0"): return
+
+    # Unported NOTE chance-mode state skills must be declined before MP
+    # payment and before consuming any RNG at ACT or preflight.
+    mp_before = int(hero["mp"])
+    b.accuracy.scripted_rolls = [0,99]
+    if not _check(not b.skill_preflight(hero,enemy,4) and
+            not b.use_skill(hero,enemy,4) and
+            int(hero["mp"])==mp_before and
+            b.accuracy.scripted_rolls==[0,99],
+            "unsupported state_chance Note refuses MP and RNG at both gates"): return
+    b.accuracy.scripted_rolls.clear()
 
     # The raw roll injection enforces exact rand bounds and fails closed.
     b.accuracy.scripted_rolls = [100]
