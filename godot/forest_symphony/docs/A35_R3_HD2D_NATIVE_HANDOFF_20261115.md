@@ -1,3 +1,11 @@
+## Verified private complete artifact (Drive readback)
+- [FS A35 R3 HD-2D Native QA full release](https://drive.google.com/file/d/1xWgVRNW2bLL9XUBZvc6I1vP7W8BQdX9-/view) (owner-only, **shared=false**, 108,931,403 bytes, 236 members, CRC PASS).
+- SHA256 `16a707417d65dc41eeb12919a52b560af26a9860d888f560f740e785c018797c`.
+- Original real Godot captures, also owner-only: [DAY](https://drive.google.com/file/d/18hz0XhDHkIVAdazr-y9WRBkDkyK7MZ-x/view), [DUSK](https://drive.google.com/file/d/1N-YPJ4nIoDUyP_S-t1379d0SCM8T5-R2/view), [NIGHT](https://drive.google.com/file/d/1qCgN_T7NiNazeR_vreIKiW60zUVFd3yh/view).
+- Native pixel differences: DAY-DUSK 1,185,598 changed pixels (MAE 13.4242), DAY-NIGHT 1,187,405 changed pixels (MAE 32.6205), DUSK-NIGHT 1,187,262 changed pixels (MAE 19.2291).
+- Full source artifact includes all three GPU screenshots, source and GPU logs, corrected test script, CRC+SHA report, current handoff and failure log.
+- Native contract **PASS**, lighting artistic acceptance and the 8 R2 crown families **HOLD**.
+
 # Forest Symphony | A35 R3 HD-2D Native Handoff | 2026-11-15
 
 ## Ownership and correct baseline
@@ -28,7 +36,7 @@
 ## Sources, release and handoff
 - Original owner-only R2 private artifact: https://drive.google.com/file/d/16HaP7PUWKbP9SPvsYtdmT6dULJtr4dIy/view
 - Owner-only Drive R3 workspace folder: https://drive.google.com/drive/folders/1zigGjPHA-2tJM2RzInLpqLGGIk4Bhw2T
-- Private intended final release name `FS_A35_R3_HD2D_NATIVE_QA_PRIVATE_20261115.zip`, created only after successful CRC/SHA and native screenshot packaging. Check Drive metadata/readback before claiming uploaded.
+- Private intended final release name `FS_A35_R3_HD2D_NATIVE_QA_PRIVATE_20261115.zip`, VERIFIED uploaded and read back from owner-only Drive; SHA and file link above.
 - Commit to this branch only, no overwrite of original R2 or A36C.
 
 ## Next work: R3 ART (not A33 reset)
