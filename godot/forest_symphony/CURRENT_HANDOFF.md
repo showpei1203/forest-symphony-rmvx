@@ -1,3 +1,19 @@
+# CURRENT | Forest Symphony A35 R8 Pixel Canopy Shadows | 2026-11-16
+
+**Godot 4.7.2 · ORIGINAL GPU SHADOW PASS · NAV PASS · ART HOLD.** Dedicated map-art/HD-2D workstream. **DO NOT** reset to RPG Maker VX, overwrite sealed R2–R7 / A36C or modify combat systems.
+
+- [A35 R8 full native Handoff](docs/A35_R8_NATIVE_HANDOFF_20261116.md) | [Failure Log](docs/A35_R8_FAILURE_LOG_20261116.md) | [alpha mask extractor](tools/a35_r8_canopy_extract.py) | [separate Godot scene builder](tools/a35_r8_build.py) | [Godot R8 canopy shadow script](scripts/a35_r8_canopy_shadow.gd).
+- **[Complete private A35 R8 Godot source project](https://drive.google.com/file/d/1xcUgm5bqAfKr8-MB45ijOfP8WoW4qAO2/view)**, 354 files, 176,237,979 bytes, ZIP CRC PASS, SHA256 `e47e8cba8d746a034fcd5620680554a20bfd96c2d146d8c062874f59f22507fc`. Private Drive provider verified `shared=false`.
+- New independent scene `scenes/a35_r8_canopy_shadow_scene.tscn`, not touching historical R7. Original R7 has **175 LightOccluder2D trunks**; new R8 adds **175 canopy LightOccluder2D** derived from **29 original private PNG source silhouettes**, with 5,378 polygon vertices.
+- 187 independent PAR anchors, sources and collision geometries unchanged, original Ground SHA `3348d4d30f7bea64d6e4a8ea349d3ed868a1a04660671dd93c1787d6418b0000`. NAV 8/8 protected gates; 4/4 main paths; Godot native screenshots 2/2.
+- Exact original GPU difference with trunk shadows always on and canopy OFF vs ON: **122,342 changed pixels entirely within the test lamp region; 0 outside**. [Original OFF GPU image](https://drive.google.com/file/d/1zR8c0JcYXRUH6_Iq3YVIg-2BaCzfY1On/view) | [Original ON GPU image](https://drive.google.com/file/d/1qUvUGhuMl3Sii6OD0EyLR9tDgMInzUFw/view).
+- Native Godot 6 x 50 frame wall benchmark: canopy OFF average **16.688ms**, ON **16.681ms**. Not isolated GPU time or 60FPS guarantee. PCF5 softened shadow border in study scene. Still no actual 3D DOF or real volumetric lighting.
+- First native test had 175 bad profile keys: missing `res://` normalization. Fixed the extractor, rebuilt from original sealed R7, reran source 175/175 PASS, nav PASS, GPU PASS; logged in Failure Log. **ART HOLD**: shadow patch can be too dark, tree leaves still need nuanced translucency, R6 conifers too pointy.
+- [Verified private R8 native test workspace](https://drive.google.com/drive/folders/1eYK4rx6-D2FboIe7gFhWmbdPZRgnOnya). Compact QA evidence ZIP `FS_A35_R8_CANOPY_NATIVE_EVIDENCE_PRIVATE_20261116.zip` is a *separate evidence companion*, not the full project. Do not link until Google Drive provider confirms file metadata.
+- Next: aesthetic tuning of canopy shadow darkness/transmission and more lighting points in independent R8 R2 candidate; refine R6 needles; Ground3 grasses/flowers/road-edge construction after ART approval, with original Ground preserved. Keep GitHub public text only; owner-only PNG and ZIP in Drive.
+
+---
+
 ## 2026-11-15 Drive synchronization verification (important)
 - **Provider-confirmed and private:** [R6 complete source candidate ZIP](https://drive.google.com/file/d/15ZvDWtHo98pRxX4TpAVyAlOCJMvQFGPY/view), 154,025,021 bytes, shared=false. This is reconstructible R6 project source, NOT R6 final native QA archive.
 - **Written and CRC/SHA checked on owner Google Drive G: mount but NOT yet visible as a Google Drive cloud file ID on last provider readback:** `FS_A35_R6_CONIFER_NATIVE_QA_PRIVATE_20261115.zip` (176,190,698 bytes), `FS_A35_R7_SHADOW_SOURCE_PRIVATE_20261115.zip` (176,207,023 bytes), `FS_A35_R7_SHADOW_NATIVE_EVIDENCE_PRIVATE_20261115.zip` (5,969,885 bytes). Never claim these three cloud uploads confirmed until their provider metadata is actually available; GoogleDriveFS process was running and local bytes verified.
