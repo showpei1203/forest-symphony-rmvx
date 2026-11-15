@@ -62,10 +62,15 @@ func _battle()->FSBattle:
 
 func _run()->void:
     var b:FSBattle=_battle()
-    if not _check(b.start(),"real native battle starts"):return
+    b.party[0]["fs_ivy_stored_pain"]=777
+    if not _check(b.start() and int(
+            b.party[0].get("fs_ivy_stored_pain",-1))==0,
+            "original Scene_Battle.start resets previous-battle pain once"):return
     var hero:Dictionary=b.party[0]
     var enemy:Dictionary=b.enemies[0]
     hero["fs_ivy_stored_pain"]=401
+    if not _check(b.start() and int(hero["fs_ivy_stored_pain"])==401,
+            "same live battle start or HUD redraw cannot clear accumulated pain"):return
     var before_hp:int=int(enemy["hp"])
     b.accuracy.scripted_rolls=[0,99,99]
     if not _check(b.skill_preflight(hero,enemy,147) and
