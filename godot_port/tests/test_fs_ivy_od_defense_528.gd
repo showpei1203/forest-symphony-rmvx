@@ -156,6 +156,12 @@ func _run()->void:
     b.accuracy.scripted_rolls+=[0,99,99,0,0]
     var friend_before:int=int(friend["hp"])
     var cover:int=b.attack(enemy,friend)
+    print("P528_REAL_OD_COVER: ",{"damage":cover,"friend":friend["hp"],
+        "ivy_hp":ivy["hp"],"od":ivy["od"],
+        "pain":ivy["fs_ivy_stored_pain"],
+        "charge":ivy["fs_ivy_guard_charges"],
+        "events":b.ivy_od_defense.events,"errors":b.ivy_cover.errors,
+        "last":b.ivy_cover.events[-1] if not b.ivy_cover.events.is_empty() else {}})
     if not _check(cover==48 and int(friend["hp"])==friend_before and
             int(ivy["hp"])==952 and int(ivy["od"])==590 and int(
             ivy["fs_ivy_stored_pain"])==48 and int(
