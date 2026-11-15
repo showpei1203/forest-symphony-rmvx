@@ -240,7 +240,11 @@ func preview_hit(target: Dictionary,hp_damage: int) -> Dictionary:
 func commit_hit(target: Dictionary,hit: Dictionary) -> void:
     var hp: int = int(hit.get("hp",0))
     var mp: int = int(hit.get("mp",0))
-    target["hp"] = maxi(0,int(target.get("hp",0))-hp)
+    # FS_ELEMENT_FINAL allows negative elemental rates (absorption).
+    # Negative HP damage HEALS, but must never exceed real max HP.
+    # Positive damage still stops at zero; Shield77 only absorbs >0.
+    target["hp"] = clampi(int(target.get("hp",0))-hp,0,
+        maxi(1,int(target.get("maxhp",1))))
     if mp > 0:
         target["mp"] = maxi(0,int(target.get("mp",0))-mp)
         var remaining: int = maxi(0,int(target.get(
