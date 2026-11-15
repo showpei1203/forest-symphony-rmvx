@@ -6,6 +6,7 @@ extends SceneTree
 # Source try_redirect gives +6% OD BEFORE guard's independent damage.
 const DB=preload("res://scripts/FSDatabase.gd")
 const BATTLE=preload("res://scripts/FSBattle.gd")
+const SCREEN=preload("res://scripts/FSScreen.gd")
 
 func _initialize()->void:
     call_deferred("_run")
@@ -85,6 +86,15 @@ func _hit(b:FSBattle)->void:
 
 func _run()->void:
     var b:FSBattle=_battle()
+    # A manually fabricated source flag must never enable real private
+    # post-Apply 11-table production behavior. The negative activation
+    # clears all presumed provenance before this synthetic QA opts in.
+    if not _check(not b.enable_private_ivy_od_defense() and not (
+            b.ivy_od_defense.active) and not bool(
+            b.party[1].get("fs_ivy_od_source_verified",false)),
+            "private 142 source needs genuine post-Apply authority"):return
+    b.ivy_od_defense.active=true
+    b.party[1]["fs_ivy_od_source_verified"]=true
     if not _check(b.start(),"native source battle started"):return
     var ivy:Dictionary=b.party[1]
     var friend:Dictionary=b.party[0]
@@ -174,6 +184,15 @@ func _run()->void:
                 int(ivy["od"]),int(ivy["fs_ivy_stored_pain"]),
                 int(ivy["fs_ivy_guard_charges"]),
                 str(b.ivy_od_defense.events),str(b.ivy_cover.errors)]):return
+
+    var screen=SCREEN.new()
+    root.add_child(screen)
+    screen.db=b.db
+    screen.battle=b
+    screen._refresh_battle_status()
+    if not _check("怒意不熄：OD 59.0%" in screen.status_label.text and
+            "傷害減免 16.72%" in screen.status_label.text,
+            "real native Godot HUD uses updated OD590, not earlier pre-Cover 55%"):return
 
     # Enemy SKILL is subject to same source ComboCore OD mitigation:
     # source smooth171 vs Ivy DEF20, at OD50=>floor171*.84=143.
