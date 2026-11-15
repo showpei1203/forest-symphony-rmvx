@@ -90,6 +90,12 @@ func start() -> bool:
     return active
 
 func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
+    # Source stock attack_effect skips dead targets. Protect direct API
+    # calls as well as queued ACT, without changing legacy test-only paths.
+    if accuracy.active and (int(attacker.get("hp",0)) <= 0 or
+            int(target.get("hp",0)) <= 0):
+        changed.emit("已死亡的施術者／目標不允許命中判定或消耗亂數")
+        return false
     if bool(target.get("fs_boss_phase_effects_pending",false)) or (
             bool(attacker.get("fs_boss_phase_effects_pending",false))):
         changed.emit("Boss 狀態實際效果未驗證，攻擊已阻擋")
@@ -179,6 +185,12 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     return int(hit["hp"])
 
 func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
+    # Current migrated scope1/7 covers only living targets; VX revival
+    # scopes are not implemented. Never consume HIT/EVA RNG on dead units.
+    if accuracy.active and (int(user.get("hp",0)) <= 0 or
+            int(target.get("hp",0)) <= 0):
+        changed.emit("未驗證的死亡目標／施術者，技能不允許扣 MP")
+        return false
     if bool(target.get("fs_boss_phase_effects_pending",false)) or (
             bool(user.get("fs_boss_phase_effects_pending",false))):
         changed.emit("Boss 的未驗證狀態效果不允許技能扣 MP 或結算")
