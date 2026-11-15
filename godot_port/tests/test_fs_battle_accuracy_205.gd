@@ -275,6 +275,27 @@ func _run() -> void:
             not queued.has_actor_pending_action(0),
             "invalid RNG aborts queued action rather than falsely completing"): return
 
+    # Enemy AI uses the SAME native hit engine through its own queued ACT.
+    # Source FSEnemyAIDecision basic=0 is not a guaranteed hit.
+    var enemy_auto = _battle()
+    enemy_auto.enemies[0]["actions"] = [{
+        "kind":0,"basic":0,"skill_id":0,"rating":8,
+        "condition_type":0,"condition_param1":0,
+        "condition_param2":0}]
+    enemy_auto.source_atb_rolls_for_test = {"actor:0":0,"enemy:0":0}
+    enemy_auto.action_queue.ai_rng.enable_test(12345)
+    if not _check(enemy_auto.start(),"auto enemy HIT fixture starts"): return
+    var enemy_hero_hp: int = int(enemy_auto.party[0]["hp"])
+    enemy_auto.accuracy.scripted_rolls = [95]
+    enemy_auto.advance_atb(130.0/60.0)
+    if not _check(enemy_auto.action_queue.completed.size()==1 and
+            bool(enemy_auto.action_queue.completed[0]["success"]) and
+            str(enemy_auto.party[0].get("fs_last_action_result",""))=="miss" and
+            int(enemy_auto.party[0]["hp"])==enemy_hero_hp and
+            int(enemy_auto.enemies[0]["source_atb_count"])==200 and
+            enemy_auto.accuracy.scripted_rolls.is_empty(),
+            "enemy AI queued attack MISS completes ACT with no player HP loss"): return
+
     # The original Recovery/AI_HEAL Note override has priority over the
     # database's 5% HIT, even if it is a different friendly helper.
     var marked_heal: Dictionary = b.db.record("skills",3).duplicate()
