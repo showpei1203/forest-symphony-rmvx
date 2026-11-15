@@ -424,7 +424,7 @@ func _refresh_battle_status() -> void:
     if battle.element_rates.active:
         all_lines.append("元素：FS Phase28 十八屬性＋雙屬性倍率（來源限定）")
     if battle.ivy_cover.active:
-        all_lines.append("護衛：Ivy Actor05 / 原版主動 Cover（來源限定，映體與致死保命待移植）")
+        all_lines.append("護衛：Ivy Actor05 / 主動、映體與致死保命（來源限定；未完成全505覆寫）")
     for actor in battle.party:
         var gauge: String = _atb_status_fragment(actor)
         all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s %s" % [
