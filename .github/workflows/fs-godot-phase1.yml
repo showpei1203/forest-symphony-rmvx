@@ -225,6 +225,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ivy_fatal_cover_524.gd
+      - name: Test original Ivy145 bounded self ACT State85 plus State100 and fifth ATB ready expiry
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ivy_furnace_state_530.gd
       - name: Test source Ivy142 OD mitigation and pending Cover +6pct timing
         shell: bash
         run: |
