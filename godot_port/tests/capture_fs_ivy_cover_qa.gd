@@ -91,6 +91,9 @@ func _run() -> void:
         _fail("actual source-Cover damage HP/OD/charge mismatch")
         return
     var window: Window=root
+    # The project intentionally keeps VX-like 544×416 4:3 viewport;
+    # rendered screenshot explicitly uses 16:9 to inspect CJK HUD width.
+    window.content_scale_aspect=Window.CONTENT_SCALE_ASPECT_EXPAND
     window.size=Vector2i(1280,720)
     var view=SCREEN.new()
     view.db=b.db
@@ -98,10 +101,10 @@ func _run() -> void:
     view.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     root.add_child(view)
     view.title_label.text="Forest Symphony / Ivy COVER · SYNTHETIC Godot QA"
-    view.log_label.text="Source Actor5 Skill141 ACT / Enemy HIT / Ivy redirected damage62, OD200"
+    view.log_label.text="SYNTHETIC ACT→Cover：護衛62 HP／隊友1000／Ivy938／OD200"
     view._refresh_battle_status()
     if not ("護衛：Ivy Actor05" in view.status_label.text and
-            "艾薇護衛:1 次" in view.status_label.text and
+            "艾薇護衛：1 次" in view.status_label.text and
             "Ivy Main HP:938/1000" in view.status_label.text and
             "Protected Ally HP:1000/1000" in view.status_label.text and
             "MP:92/100 OD:200" in view.status_label.text):
