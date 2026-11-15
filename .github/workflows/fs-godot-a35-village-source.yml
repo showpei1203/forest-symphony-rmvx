@@ -1,0 +1,23 @@
+name: FS A35 Village Forest Source Contract
+on:
+  push:
+    paths:
+      - "godot/forest_symphony/data/a34_r4_house_pair_manifest.json"
+      - "godot/forest_symphony/data/a35_r1_forest_groves_manifest.json"
+      - "godot/forest_symphony/scenes/a34_r4_house_pair_scene.tscn"
+      - "godot/forest_symphony/scenes/a35_r1_forest_groves_scene.tscn"
+      - "godot/forest_symphony/tests/test_a35_r1_*.gd"
+      - "godot/forest_symphony/tools/a35_r1_public_contract.py"
+      - ".github/workflows/fs-godot-a35-village-source.yml"
+  pull_request:
+    paths:
+      - "godot/forest_symphony/**"
+      - ".github/workflows/fs-godot-a35-village-source.yml"
+  workflow_dispatch:
+jobs:
+  source-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: A35 additive source validation (never downloads private art)
+        run: python3 godot/forest_symphony/tools/a35_r1_public_contract.py

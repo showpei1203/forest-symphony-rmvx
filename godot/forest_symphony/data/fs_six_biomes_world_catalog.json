@@ -1,0 +1,468 @@
+{
+  "schema": "fs-six-biomes-maze-village-world-art/v1",
+  "status": "PLANNED_NO_LARGE_MAP_ART_APPROVED",
+  "owner": "FS_GODOT_ART_PIPELINE_ONLY_EVENTS_MANAGED_EXTERNALLY",
+  "policy": "FS_ACTIVE_MASTER_V1.3_GROUND_FIRST_INDEPENDENT_COMPLETE_PAR",
+  "large_map_technical_pilot": {
+    "logical_grid": [
+      80,
+      58
+    ],
+    "tile_px": 32,
+    "image_pixels": [
+      2560,
+      1856
+    ],
+    "ground_texture_rgba8_bytes": 19005440,
+    "scale_from_a34_grid": [
+      2,
+      2
+    ],
+    "quality_gate": "NONREPEATED_CONTINUOUS_GROUND_ONLY_IMAGE_NO_VISIBLE_STITCH_SEAMS",
+    "native_godot_viewports": [
+      "544x416",
+      "1280x928",
+      "2560x1856"
+    ],
+    "status": "DESIGN_CONTRACT_NO_2560x1856_ART_YET"
+  },
+  "layering": {
+    "authoring_order": [
+      "GROUND_ONLY",
+      "INDEPENDENT_COMPLETE_PAR",
+      "SHADOW",
+      "LIGHT",
+      "ANIMATED_WATER_OR_EFFECTS",
+      "COLLISION_32",
+      "GODOT_RUNTIME"
+    ],
+    "foreground_ownership": "COMPLETE_TRANSPARENT_RGBA_OBJECTS_NOT_FLATTENED_MASTER_CROPS",
+    "footpoint": "Y_SORT_FOOT_LOCATION_SEPARATE_FROM_SPRITE_TEXTURE_TOP_LEFT",
+    "collision": "32PX_TRAVERSAL_DATA_DISTINCT_FROM_RENDERING_ALPHA",
+    "ground_gate": "1X_SOURCE_ART_BEFORE_PAR_APPROVED",
+    "final_composite_gate": "AT_LEAST_EQUAL_TO_SINGLE_GENERATED_REFERENCE_LEVEL_OF_RICHNESS",
+    "events": "OUT_OF_SCOPE_OTHER_CONVERSATION"
+  },
+  "biomes": [
+    {
+      "id": "BIOME_01_VERDANT_ELF_FOREST",
+      "terrain_name": "蒼翠精靈林",
+      "base_palette": [
+        "#203d25",
+        "#386438",
+        "#6da84d",
+        "#d2b478",
+        "#f6d5ab",
+        "#a3c95e"
+      ],
+      "shared_style": "FS top-down 3/4, 32px walk-grid, crisp shadow edge, consistent source-owned complete independent 1x art",
+      "maze": {
+        "scene_id": "FS_01_MAZE",
+        "display_name": "幽葉迴廊",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "苔毯林道",
+          "樹根織網地",
+          "蕨類碎石坡",
+          "清溪踏石"
+        ],
+        "par_families": [
+          "完整巨橡",
+          "橫生樹根與枯木",
+          "蕨類林牆",
+          "枝橋",
+          "蘑菇簇"
+        ],
+        "visual_navigation_cues": [
+          "地面小花引導主路",
+          "木質腳印辨認回程"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "village": {
+        "scene_id": "FS_01_VILLAGE",
+        "display_name": "苔光村",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "草地群落",
+          "自然土徑",
+          "花朵碎石",
+          "村口卵石"
+        ],
+        "par_families": [
+          "完整木石小屋",
+          "完整樹木家族",
+          "雕花路燈",
+          "藤蔓拱門",
+          "木橋"
+        ],
+        "visual_navigation_cues": [
+          "暖色窗戶指向中心",
+          "門口石階與道路相接"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "distinct_mechanic_visual_only": "地面小花引導主路",
+      "art_status": "WORLD_BIBLE_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "BIOME_02_FROSTFALL_HIGHLANDS",
+      "terrain_name": "凜霜雪原",
+      "base_palette": [
+        "#142c45",
+        "#49718e",
+        "#a3c9ce",
+        "#e3edf0",
+        "#9ba59c",
+        "#d4dfab"
+      ],
+      "shared_style": "FS top-down 3/4, 32px walk-grid, crisp shadow edge, consistent source-owned complete independent 1x art",
+      "maze": {
+        "scene_id": "FS_02_MAZE",
+        "display_name": "冰脊迷谷",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "積雪碎岩道",
+          "碎冰溪面",
+          "深藍冰裂縫",
+          "背風凍土"
+        ],
+        "par_families": [
+          "完整積雪冷杉",
+          "冰晶柱",
+          "冰壁斷崖",
+          "風雪旗幟",
+          "結霜木橋"
+        ],
+        "visual_navigation_cues": [
+          "雪地足跡可辨轉向",
+          "冰裂縫深色線不可走"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "village": {
+        "scene_id": "FS_02_VILLAGE",
+        "display_name": "霜燈聚落",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "壓實雪地",
+          "冷石板路",
+          "火爐融雪圈",
+          "冰緣草叢"
+        ],
+        "par_families": [
+          "覆雪尖頂木屋",
+          "暖光壁爐煙囪",
+          "冰燈",
+          "雪松防風牆"
+        ],
+        "visual_navigation_cues": [
+          "暖光路燈引導主街",
+          "雪地石階清晰可走"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "distinct_mechanic_visual_only": "雪地足跡可辨轉向",
+      "art_status": "WORLD_BIBLE_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "BIOME_03_DUNE_CANYON",
+      "terrain_name": "風蝕金砂",
+      "base_palette": [
+        "#52392d",
+        "#a26a3d",
+        "#dba463",
+        "#efd7a1",
+        "#6d9773",
+        "#4e6c67"
+      ],
+      "shared_style": "FS top-down 3/4, 32px walk-grid, crisp shadow edge, consistent source-owned complete independent 1x art",
+      "maze": {
+        "scene_id": "FS_03_MAZE",
+        "display_name": "風沙裂谷",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "沙丘階面",
+          "硬砂岩台階",
+          "石灰碎礫",
+          "乾涸河道"
+        ],
+        "par_families": [
+          "獨立岩塔",
+          "枯樹骨架",
+          "風蝕岩橋",
+          "沙丘風旗",
+          "仙人掌族"
+        ],
+        "visual_navigation_cues": [
+          "石柱陰影標示安全線",
+          "岩台邊界與落差分色"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "village": {
+        "scene_id": "FS_03_VILLAGE",
+        "display_name": "星井綠洲",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "夯土廣場",
+          "綠洲草皮",
+          "砂岩街道",
+          "井邊石環"
+        ],
+        "par_families": [
+          "砂岩拱頂民居",
+          "獨立棕櫚",
+          "遮陽布棚",
+          "水井",
+          "商隊燈架"
+        ],
+        "visual_navigation_cues": [
+          "水井定位村中心",
+          "連續石街避免迷航"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "distinct_mechanic_visual_only": "石柱陰影標示安全線",
+      "art_status": "WORLD_BIBLE_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "BIOME_04_EMBER_VOLCANO",
+      "terrain_name": "赤焰火山",
+      "base_palette": [
+        "#151a20",
+        "#3c4248",
+        "#825044",
+        "#dc6e37",
+        "#ffbe55",
+        "#6b7a5d"
+      ],
+      "shared_style": "FS top-down 3/4, 32px walk-grid, crisp shadow edge, consistent source-owned complete independent 1x art",
+      "maze": {
+        "scene_id": "FS_04_MAZE",
+        "display_name": "熔脈裂橋",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "玄武岩碎面",
+          "火山灰坡",
+          "熔岩河岸",
+          "凝固岩脊"
+        ],
+        "par_families": [
+          "完整玄武岩石柱",
+          "火光鐵橋",
+          "熔爐排氣口",
+          "硫磺結晶",
+          "灰燼枯樹"
+        ],
+        "visual_navigation_cues": [
+          "熱色熔岩不可走",
+          "黑岩步道保持高反差"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "village": {
+        "scene_id": "FS_04_VILLAGE",
+        "display_name": "灰鑄工坊城",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "打磨玄武岩",
+          "爐灰石磚",
+          "鐵橋接縫",
+          "礦渣小徑"
+        ],
+        "par_families": [
+          "鍛造屋",
+          "石造煙囪",
+          "鐵匠吊燈",
+          "熔爐煙道",
+          "防熱護欄"
+        ],
+        "visual_navigation_cues": [
+          "爐火光定位工坊",
+          "灰石階指出門口"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "distinct_mechanic_visual_only": "熱色熔岩不可走",
+      "art_status": "WORLD_BIBLE_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "BIOME_05_MISTWATER_MARSH",
+      "terrain_name": "幽霧水澤",
+      "base_palette": [
+        "#172d2b",
+        "#335b50",
+        "#6e8466",
+        "#8f9c71",
+        "#766d50",
+        "#c5b88b"
+      ],
+      "shared_style": "FS top-down 3/4, 32px walk-grid, crisp shadow edge, consistent source-owned complete independent 1x art",
+      "maze": {
+        "scene_id": "FS_05_MAZE",
+        "display_name": "泥潭迷水",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "泥炭沉陷地",
+          "浮萍水池",
+          "木棧道",
+          "濕石岸"
+        ],
+        "par_families": [
+          "完整紅樹根",
+          "蘆葦林牆",
+          "浮橋段",
+          "枯木標誌",
+          "水百合群"
+        ],
+        "visual_navigation_cues": [
+          "浮萍水色深淺區分深水",
+          "棧道木紋是主通路"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "village": {
+        "scene_id": "FS_05_VILLAGE",
+        "display_name": "蘆燈水上村",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "濕草丘",
+          "木棧街",
+          "泥岸腳印",
+          "木樁碼頭"
+        ],
+        "par_families": [
+          "高腳水屋",
+          "蘆葦屋頂",
+          "水上燈籠",
+          "木船埠",
+          "根系階梯"
+        ],
+        "visual_navigation_cues": [
+          "燈籠線串聯房屋",
+          "木橋板色統一可走"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "distinct_mechanic_visual_only": "浮萍水色深淺區分深水",
+      "art_status": "WORLD_BIBLE_ONLY_NOT_GENERATED"
+    },
+    {
+      "id": "BIOME_06_ASTRAL_CRYSTAL_ISLES",
+      "terrain_name": "星晶浮島",
+      "base_palette": [
+        "#273454",
+        "#495488",
+        "#7f91c5",
+        "#b1bedf",
+        "#d8b3e8",
+        "#b8cb9b"
+      ],
+      "shared_style": "FS top-down 3/4, 32px walk-grid, crisp shadow edge, consistent source-owned complete independent 1x art",
+      "maze": {
+        "scene_id": "FS_06_MAZE",
+        "display_name": "星盤斷空",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "石灰島面",
+          "水晶礫石",
+          "裂空斷層",
+          "古代星紋路"
+        ],
+        "par_families": [
+          "完整晶簇塔",
+          "殘破符文門",
+          "懸空石橋",
+          "漂浮石核",
+          "星紋柱"
+        ],
+        "visual_navigation_cues": [
+          "島緣明暗分離",
+          "橋面材質保持連續"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "village": {
+        "scene_id": "FS_06_VILLAGE",
+        "display_name": "虹晶臺地村",
+        "size_class": "LARGE_80x58_TARGET_NOT_YET_BUILT",
+        "ground_only_first": true,
+        "par_full_independent": true,
+        "ground_materials": [
+          "白色石路",
+          "星盤廣場",
+          "懸空草坪",
+          "碎晶花圃"
+        ],
+        "par_families": [
+          "晶石圓頂屋",
+          "星光路燈",
+          "浮橋拱門",
+          "石造觀測塔",
+          "水晶花園"
+        ],
+        "visual_navigation_cues": [
+          "藍白石街引導中心",
+          "橋面與懸空區分明"
+        ],
+        "art_gate": "NOT_YET_GENERATED",
+        "event_implementation_owner": "OTHER_CONVERSATION"
+      },
+      "distinct_mechanic_visual_only": "島緣明暗分離",
+      "art_status": "WORLD_BIBLE_ONLY_NOT_GENERATED"
+    }
+  ],
+  "milestones": [
+    "A35_TREE_FAMILY_REAL_PROOF",
+    "A36_LARGE_80x58_SINGLE_BIOME_GROUND_PAR_REAL_SCENE",
+    "A37_SIX_BIOME_STYLE_GUIDES_AND_MAZE_VILLAGE_PAIRS",
+    "A38_FIRST_NEW_BIOME_REAL_GROUND_PAR"
+  ],
+  "handoff_to_events_team": [
+    "scene_id",
+    "source_height_map_if_verified",
+    "32px_ground_collision_grid",
+    "door_world_footpoints_if_art_passed",
+    "scene_transition_markers_if_art_passed"
+  ],
+  "exclusions": [
+    "DO_NOT_WRITE_NPC_DIALOG",
+    "DO_NOT_IMPLEMENT_EVENT_EDITOR",
+    "DO_NOT_FAKE_LARGE_MAP_ART_WITH_REPEATED_OLD_GROUND",
+    "DO_NOT_CALL_RENDER_PAR_ART_APPROVED_WITHOUT_1X_REVIEW"
+  ]
+}

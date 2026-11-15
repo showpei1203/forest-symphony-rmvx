@@ -1,0 +1,45 @@
+name: FS A32 Godot ground-first and independent PAR source contract
+on:
+  pull_request:
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a32-groundfirst.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  groundfirst-public-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout GitHub source-only project
+        uses: actions/checkout@v4
+      - name: Install pinned official Godot 4.7.2
+        shell: bash
+        run: |
+          curl -fL --retry 3 -o /tmp/godot-4.7.2.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot-4.7.2.zip -d /tmp/
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Godot parses scenes and scripts without private original art
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/a32-logs
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/a32-logs/editor.log
+          if grep -E '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/a32-logs/editor.log; then exit 1; fi
+      - name: Test 146 independent editor nodes and manifest without art bytes
+        shell: bash
+        run: |
+          set -o pipefail
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a32_public_contract.gd 2>&1 | tee /tmp/a32-logs/public.log
+          grep -q 'A32 GODOT SOURCE-ONLY PUBLIC PASS' /tmp/a32-logs/public.log
+          if grep -E '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/a32-logs/public.log; then exit 1; fi
+      - name: Upload text-only native evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A32_GODOT47_GROUND_FIRST_PUBLIC_QA
+          path: /tmp/a32-logs/*.log
+          retention-days: 14
+# This workflow NEVER uses private creator art. Real image and native Xvfb tests run in isolated owner-only environment.

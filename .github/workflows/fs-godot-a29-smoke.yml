@@ -1,0 +1,73 @@
+name: FS A30 Godot 4.7.2 map-collision source-only QA
+
+on:
+  pull_request:
+    paths:
+      - "godot/forest_symphony/**"
+      - ".github/workflows/fs-godot-a29-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  godot-headless-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout source-only project
+        uses: actions/checkout@v4
+      - name: Install pinned official Godot 4.7.2 binary
+        shell: bash
+        run: |
+          curl -fL --retry 3 -o /tmp/godot-4.7.2.zip \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot-4.7.2.zip -d /tmp/fs-godot
+          find /tmp/fs-godot -maxdepth 1 -type f -print
+          chmod +x /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Import and parse project, no private artwork
+        run: |
+          set -o pipefail
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/fs-godot/editor_import.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-godot/editor_import.log; then
+            echo 'FAILED: Godot editor parsing errors or missing child nodes'
+            exit 1
+          fi
+      - name: PackedScene real structure must instantiate
+        run: |
+          set -o pipefail
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_scene_structure.gd 2>&1 | tee /tmp/fs-godot/scene_structure.log
+          grep -q "A29 GODOT SCENE TREE PASS" /tmp/fs-godot/scene_structure.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-godot/scene_structure.log; then exit 1; fi
+      - name: Real Godot 4.7 synthetic GDScript source smoke
+        run: |
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_godot_code.gd 2>&1 | tee /tmp/fs-godot/synthetic_test.log
+          grep -q "A29 GODOT SOURCE-ONLY SYNTHETIC CI PASSED" /tmp/fs-godot/synthetic_test.log
+      - name: Native TileMapLayer and A30 candidate path graph contract (no private artwork)
+        run: |
+          set -o pipefail
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_a30_public_contract.gd 2>&1 | tee /tmp/fs-godot/a30_public_contract.log
+          grep -q "A30 GODOT PUBLIC CI PASS" /tmp/fs-godot/a30_public_contract.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-godot/a30_public_contract.log; then exit 1; fi
+      - name: A31 source-only canopy parity and negative-control tests
+        run: |
+          set -o pipefail
+          /tmp/fs-godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot/forest_symphony --script res://tests/test_a31_canopy_public.gd 2>&1 | tee /tmp/fs-godot/a31_canopy_public.log
+          grep -q "A31 GODOT CANOPY PUBLIC PASS" /tmp/fs-godot/a31_canopy_public.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-godot/a31_canopy_public.log; then exit 1; fi
+      - name: Upload text-only proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A30_GODOT47_SOURCE_ONLY_SMOKE
+          path: |
+            /tmp/fs-godot/editor_import.log
+            /tmp/fs-godot/synthetic_test.log
+            /tmp/fs-godot/scene_structure.log
+            /tmp/fs-godot/a30_public_contract.log
+            /tmp/fs-godot/a31_canopy_public.log
+          retention-days: 14
+
+# Private original Master/F0/PAR images are deliberately not available to public CI.
+# This workflow is NOT a real-art screenshot test or an ART/Collision acceptance gate.

@@ -1,0 +1,45 @@
+{
+  "schema": "fs-a34-r4-godot472-native-rx6700xt/v1",
+  "environment": "Godot 4.7.2 stable official ed1daf0bf, Windows 11, OpenGL 3.3 AMD Radeon RX 6700 XT",
+  "scene_import_exit": 0,
+  "source_contract_native": "738/738 PASS exit 0",
+  "native_capture_exit": 0,
+  "native_framebuffer_dimensions": [
+    1280,
+    928
+  ],
+  "native_pixel_changes_inside_two_house_rois": 72265,
+  "native_pixel_changes_outside_two_house_rois": 0,
+  "actor_behind_house_changed_pixels_vs_no_actor": 0,
+  "actor_front_house_changed_pixels_vs_no_actor": 576,
+  "ground_sha256": "3348d4d30f7bea64d6e4a8ea349d3ed868a1a04660671dd93c1787d6418b0000",
+  "images": {
+    "A34_R4_BASELINE_A33_NATIVE.png": {
+      "sha256": "108dd1767d70ce6e1ebd6841b7833e8591d94ac68d78899b43eb1eb238b99278",
+      "bytes": 3117488
+    },
+    "A34_R4_HOUSE_PAIR_NATIVE.png": {
+      "sha256": "7c5bc37983926d84abda1eb7b46c683ac9e81470ef06bdb2487e2f7c81111b3b",
+      "bytes": 3191327
+    },
+    "A34_R4_ACTOR_BEHIND_LEFT_HOUSE_NATIVE.png": {
+      "sha256": "7c5bc37983926d84abda1eb7b46c683ac9e81470ef06bdb2487e2f7c81111b3b",
+      "bytes": 3191327
+    },
+    "A34_R4_ACTOR_FRONT_LEFT_HOUSE_NATIVE.png": {
+      "sha256": "d32e5e947dc9a780a7b6407b617fe34513b12ce28a20a8dbcc4b0571d53f78c5",
+      "bytes": 3191409
+    },
+    "A34_R4_NATIVE_ACTOR_OCCLUSION_CONTACT.png": {
+      "sha256": "eae9c4e8881c2b66c4e38c59a860a59846ff71f7ecf398d51e4847d97e4fe04c",
+      "bytes": 367379
+    }
+  },
+  "native_visual_observation": "Actor behind left house fully occluded, actor in front visible; 146 independent PAR owners unchanged",
+  "art_approval": "HOLD awaiting human 1x review",
+  "limitations": [
+    "Full game movement/path collision beyond two houses not approved",
+    "Architecture imported into actual scene but house art still candidate",
+    "No gameplay port claim"
+  ]
+}

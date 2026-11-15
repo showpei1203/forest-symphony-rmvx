@@ -1,0 +1,56 @@
+name: FS A35 Godot complete-tree art families and 6-biome source QA
+on:
+  pull_request:
+    paths:
+      - 'godot/forest_symphony/**'
+      - '.github/workflows/fs-godot-a35-trees-biomes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-tree-source-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install official Godot 4.7.2 stable (public, no private image sources)
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 -o /tmp/fs-godot47.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/fs-godot47.zip -d /tmp/
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Parse A35 + all previous separate scenes, without any user art
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fs-a35
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --editor --path godot/forest_symphony --quit 2>&1 | tee /tmp/fs-a35/editor.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|Parent path .* vanished)' /tmp/fs-a35/editor.log; then exit 1; fi
+      - name: Verify 4 complete independent-tree family sources and 6 biomes / 12 map plan
+        shell: bash
+        run: |
+          set -euo pipefail
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a35_public_contract.gd 2>&1 | tee /tmp/fs-a35/a35_contract.log
+          grep -q 'A35 GODOT PUBLIC TREE+6-BIOME CONTRACT PASS:' /tmp/fs-a35/a35_contract.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error|A35 PUBLIC FAIL)' /tmp/fs-a35/a35_contract.log; then exit 1; fi
+          python godot/forest_symphony/tools/validate_world_biomes.py godot/forest_symphony/data/fs_six_biomes_world_catalog.json | tee /tmp/fs-a35/biome_catalog.log
+          grep -q '6 terrain types / 12 scenes' /tmp/fs-a35/biome_catalog.log
+      - name: Re-run original A34 and A33 source-only baselines
+        shell: bash
+        run: |
+          set -euo pipefail
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a34_public_contract.gd 2>&1 | tee /tmp/fs-a35/a34_regression.log
+          grep -q 'A34 GODOT PUBLIC HOUSE CONTRACT PASS:' /tmp/fs-a35/a34_regression.log
+          GODOT_SILENCE_ROOT_WARNING=1 /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --audio-driver Dummy --path godot/forest_symphony --script res://tests/test_a33_public_contract.gd 2>&1 | tee /tmp/fs-a35/a33_regression.log
+          grep -q 'A33 GODOT PUBLIC LAMP CONTRACT PASS:' /tmp/fs-a35/a33_regression.log
+          if grep -Ei '(ERROR:|SCRIPT ERROR|Parse Error)' /tmp/fs-a35/*regression.log; then exit 1; fi
+      - name: Upload logs only – private generated art stays on owner-only Drive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A35_GODOT472_4TREE_6BIOME_SOURCE_ONLY
+          path: /tmp/fs-a35/*.log
+          retention-days: 14
+# This CI cannot and must not claim native art approval or any 2560x1856 artwork was built.
