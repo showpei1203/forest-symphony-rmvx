@@ -47,6 +47,11 @@ static func _map_type(mapping: Variant,index: int) -> Variant:
     return null
 
 func configure_fixture(verified_map: Dictionary) -> Dictionary:
+    # Every new fixture invalidates the earlier source object on error;
+    # an invalid replacement cannot retain the last trusted snapshot.
+    active=false
+    fixture_only=false
+    source_map.clear()
     # This entrypoint is limited to in-memory synthetic Godot CI tests.
     # It does not make db.boot_final_verified=true, and must not be used by
     # actual data loaders; production uses the SHA-checked file path.
