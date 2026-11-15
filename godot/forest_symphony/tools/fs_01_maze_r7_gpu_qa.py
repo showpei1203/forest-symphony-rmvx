@@ -27,7 +27,7 @@ def evaluate(project,work):
     if len(changes)!=56:raise RuntimeError("Not expected 56 A36C grove shifts")
     if any(original[i]["source"]!=newer[i]["source"] or original[i]["sha"]!=newer[i]["sha"] for i in original):
         raise RuntimeError("Forest sprite identities changed, rejected")
-    m=json.loads((project/"data/fs_01_maze_a36c_r7_reconciled_manifest.json").read_text())
+    m=json.loads((project/"data/fs_01_maze_a36c_r7_reconciled_manifest.json").read_text(encoding="utf-8"))
     objects={o["id"]:o for o in m["objects"]}
     if len(objects)!=326:raise RuntimeError("Manifest PAR count drift")
     frames=[]
