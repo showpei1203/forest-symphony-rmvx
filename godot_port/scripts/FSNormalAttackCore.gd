@@ -35,7 +35,7 @@ func _fail(reason: String) -> Dictionary:
 
 static func _note_number(note: String,key: String) -> int:
     var rx := RegEx.new()
-    var pattern: String = "(?i)<"+RegEx.escape(key)+"\\s*:\\s*(-?[0-9]+)>"
+    var pattern: String = "(?i)<"+key+"\\s*:\\s*(-?[0-9]+)>"
     if rx.compile(pattern) != OK:
         return 0
     var m: RegExMatch = rx.search(note)
@@ -73,9 +73,10 @@ func quote(battle,attacker: Dictionary,target: Dictionary) -> Dictionary:
         return _fail("無法驗證原版元素倍率；不允許假設100%")
     if not (attacker.get("element_set",null) is Array):
         return _fail("武器元素集合未驗證")
-    var equips: Array = attacker.get("equipment",[])
-    if not (equips is Array):
+    var raw_equips: Variant = attacker.get("equipment",[])
+    if not (raw_equips is Array):
         return _fail("原始裝備資料型別不合法")
+    var equips: Array = raw_equips
     var rates: Array[int] = []
     var pen: int = 0
     var seen_weapon: bool = false
