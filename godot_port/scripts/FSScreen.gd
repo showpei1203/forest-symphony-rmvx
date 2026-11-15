@@ -441,9 +441,19 @@ func _refresh_battle_status() -> void:
                 int(actor.get("fs_ivy_guard_reduce",0))])
             if bool(actor.get("fs_ivy_fatal_used",false)):
                 all_lines.append("  替身承擔：本場致死保命已使用（技能146）")
-        if battle.ivy_pain.active and int(actor.get("id",0))==5:
+        if (battle.ivy_pain.active or battle.ivy_revenge.active) and int(
+                actor.get("id",0))==5:
             all_lines.append("  蓄痛：%d（原版實際 HP 損失／來源限定）" % int(
                 actor.get("fs_ivy_stored_pain",0)))
+            if battle.ivy_revenge.active and not battle.ivy_revenge.events.is_empty():
+                var last_revenge: Dictionary=battle.ivy_revenge.events[-1]
+                if bool(last_revenge.get("success",false)):
+                    all_lines.append("  復仇重擊：快照 %d／追加傷害 %d／已消耗 %d" % [
+                        int(last_revenge.get("snapshot",0)),
+                        int(last_revenge.get("extra",0)),
+                        int(last_revenge.get("consumed",0))])
+                else:
+                    all_lines.append("  復仇重擊：未命中／蓄痛未消耗")
         if battle.ivy_cover.active and str(
                 actor.get("fs_clone_role",""))=="ivy":
             all_lines.append("  映體護衛：%s" % (
