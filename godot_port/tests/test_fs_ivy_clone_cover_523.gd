@@ -118,7 +118,10 @@ func _run() -> void:
             int(target["hp"])==before_target and
             int(ivy["od"])==160 and
             b.ivy_cover.events.size()==2,
-            "clone can emergency cover once more on next enemy serial"):return
+            "clone own-guard ACT next cover: damage=%d cloneHP=%d/%d targetHP=%d/%d od=%d events=%d guard=%s rolls=%s" % [
+                damage,int(clone["hp"]),before_clone,int(target["hp"]),
+                before_target,int(ivy["od"]),b.ivy_cover.events.size(),
+                str(clone.get("guarding",false)),str(b.accuracy.scripted_rolls)]):return
 
     # Above EXACTLY half (500/1000) clone does NOT activate; strictly
     # below50% is source hp_rate_percent(target) < 50.
