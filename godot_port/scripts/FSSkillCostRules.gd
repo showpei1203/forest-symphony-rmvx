@@ -95,6 +95,18 @@ static func preview(skill: Dictionary, user: Dictionary) -> Dictionary:
             return _fail("原版 Ivy 護衛標記解析器錯誤")
         for tag in ivy_note.search_all(leftover):
             leftover=leftover.replace(tag.get_string(0),"")
+    # Ivy source Skill147: these tags affect final damage and the
+    # post-success reservoir, NOT MP price. Only a clean source-gated
+    # Actor5/Skill147 form can pass; every original JP/charge/level tag
+    # remains visible in leftover and blocks the real unported skill.
+    if int(skill.get("id",0))==147 and bool(
+            skill.get("fs_ivy_revenge_source_verified",false)) and int(
+            user.get("id",0))==5 and bool(user.get("actor",false)):
+        var revenge_note:=RegEx.new()
+        if revenge_note.compile("(?i)<\\s*revenge_from_cover\\s*:\\s*50(?:\\.0+)?\\s*>|<\\s*consume_stored_cover\\s*>")!=OK:
+            return _fail("艾薇復仇技能成本 Note 解析器錯誤")
+        for tag in revenge_note.search_all(leftover):
+            leftover=leftover.replace(tag.get_string(0),"")
     # Source #404 Field Weather Notes affect the global field AFTER a
     # skill effect, not the MP quote. Only these exact known tags are
     # neutral to #411's MP-cost parsing. Unrecognized tags still fail.
