@@ -1,3 +1,10 @@
+## Actual Godot FX-off A/B and character depth evidence (owner-only)
+
+- [R3 native baseline without optional atmosphere](https://drive.google.com/file/d/13outjToqN_h-cMlynl6m-vCrMmITH2HI/view)
+- [R4 native organic art candidate without optional atmosphere](https://drive.google.com/file/d/1kn9n2tbZP2-REMaRYpgtBz7zLDBI93XI/view)
+- [R4 rear actor native screenshot](https://drive.google.com/file/d/1d-qiZJcujGB2P2jE08d4h19QdLvC1kXT/view) and [front actor native screenshot](https://drive.google.com/file/d/1XVtwVbMjpdIPaDbAGnLab9PLtran_PNf/view)
+- [Pixel ROI and alpha-depth QA report](https://drive.google.com/file/d/1DekptQn8tTCO4E1ojawmUJ0I8g32RXg_/view): changed 143456 inside, zero outside; rear/front 184/576.
+
 ## Verified Google Drive readback
 
 - Complete [A35 R4 Godot-native ZIP](https://drive.google.com/file/d/1wdVrsfVcF47j5FtDYxm_pKPWZ9GWtpoz/view): read back exact 131,309,501 bytes, owner-only permissions (shared=false, owner only). SHA256 locally sealed: 51467d0a709bc7e6def518d79c25adbbd9de78c9123770e498e143e5ee446206.
