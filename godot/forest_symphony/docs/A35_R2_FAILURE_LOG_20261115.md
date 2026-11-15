@@ -3,5 +3,8 @@
 1. First Godot headless run failed: PNG `load()` returned no loader because the cold ZIP had never run `--editor --import`. Recovered with official Godot `--headless --editor --import` exit 0 then source/COLLISION test exit 0. Always import before tests.
 2. First native OpenGL image ROI reported 187 pixels outside change region. Cause: R2 trees change dimensions, so old R1 sprite pixels can lie outside new R2 rectangle. Fix: union R1 and R2 bounding ROIs. Re-test 149,047 changed pixels within union, 0 outside, exit 0.
 3. ART HOLD: new tree crowns, though eight full new native-size PNG silhouette shapes, inherit repetitive 8px foliage-patch patterns and smooth blob contours, visibly less consistent than original high-quality tree artwork. Do not seal art or claim final visual quality.
-4. Native screenshots exist on authorized PC test temp, not mirrored to owner-only Drive package yet. GPU test logs are included in ZIP. Final proof not closed.
-5. Reproduction source script currently defaults to the `/mnt/data` temporary paths; make CLI parameters before treating as generalized map factory.
+4. Initial candidate lacked native screenshots in the ZIP. Corrected: four real 1280x928 PNGs copied into the owner-only Drive evidence folder, read back via Drive connector and included in the final ZIP. GPU render evidence PASS; art visual acceptance remains HOLD.
+5. Private ZIP contains initial build script with local `/mnt/data` defaults; a portable CLI-argument version is committed to the public GitHub source branch. Packaging remains reproducible when that builder is run with the appropriate private A35 R1 input.
+
+6. Initial R2 actor-depth capture used x=1247,y=263 for the supposed front actor; neighboring canopies still covered it, producing byte-identical rear/front captures. Corrected front to x=1247,y=440, added explicit actor image pixel regression; native rerun behind=0, front=576, exit 0.
+7. Four actual GPU PNGs copied to owner-only G: Google Drive directory and read back through Google Drive connector, then embedded in the final owner-only ZIP. No screenshot is mislabeled as native.
