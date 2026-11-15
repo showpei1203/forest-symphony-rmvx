@@ -65,9 +65,10 @@ def build(source:Path,output:Path):
         assignment={}
         for o in trees:
             asset=manifest["assets"][o["asset_id"]]
-            path=asset["file"]
+            original_path=asset["file"]
+            path="res://"+original_path
             if path not in profiles:
-                profiles[path]=extract(z.read(path))
+                profiles[path]=extract(z.read(original_path))
             assignment[o["id"]]=path
         if len(assignment)!=175:raise ValueError("Duplicate original owner IDs")
     result={"schema":"FS_A35_R8_CANOPY_PROFILES_V1",
