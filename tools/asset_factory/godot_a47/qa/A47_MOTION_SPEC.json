@@ -1,0 +1,92 @@
+{
+  "stage": "A47",
+  "authority": [
+    "A57 18-joint prompt",
+    "A62 small-stride accepted",
+    "A65 scanline flat-waist negative"
+  ],
+  "source": "A46 V1 clean anatomical core + A46 approved separate weapon and fx",
+  "method": "2D smooth inverse sample Gaussian body coupling with wrist/foot constraint, NOT scanline offsets",
+  "12_frame_profile": [
+    {
+      "phase": "idle",
+      "load": 0.0,
+      "twist": 0.0,
+      "recoil": 0.0
+    },
+    {
+      "phase": "anticipate",
+      "load": -0.45,
+      "twist": -0.4,
+      "recoil": 0.0
+    },
+    {
+      "phase": "draw_back",
+      "load": -1.4,
+      "twist": -0.9,
+      "recoil": -0.1
+    },
+    {
+      "phase": "draw_back_peak",
+      "load": -2.15,
+      "twist": -1.25,
+      "recoil": -0.25
+    },
+    {
+      "phase": "pre_accel",
+      "load": -1.75,
+      "twist": -1.0,
+      "recoil": -0.2
+    },
+    {
+      "phase": "accelerate",
+      "load": 0.35,
+      "twist": 0.55,
+      "recoil": 0.15
+    },
+    {
+      "phase": "contact",
+      "load": 1.85,
+      "twist": 1.35,
+      "recoil": 0.15
+    },
+    {
+      "phase": "follow_through",
+      "load": 1.9,
+      "twist": 1.2,
+      "recoil": 0.1
+    },
+    {
+      "phase": "recover",
+      "load": 0.8,
+      "twist": 0.45,
+      "recoil": 0.0
+    },
+    {
+      "phase": "recover",
+      "load": 0.25,
+      "twist": 0.15,
+      "recoil": 0.0
+    },
+    {
+      "phase": "settle",
+      "load": -0.15,
+      "twist": -0.05,
+      "recoil": 0.0
+    },
+    {
+      "phase": "idle",
+      "load": 0.0,
+      "twist": 0.0,
+      "recoil": 0.0
+    }
+  ],
+  "generated_variants": [
+    "R1 strength=0.72",
+    "R2 strength=1.0",
+    "R3 strength=1.43"
+  ],
+  "source_A46_body_sha256": "f1c5c2b10962c24ce4d54d1a19170eeed77a436a58099269a76d359916a27096",
+  "weapon_sha256": "0529dea325516ee97ba83eed07853c9dfa1c57ebb49748ec1cb6c78f1d601d8f",
+  "no_paid_pixellab_calls": true
+}
