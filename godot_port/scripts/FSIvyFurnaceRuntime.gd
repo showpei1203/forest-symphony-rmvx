@@ -180,6 +180,59 @@ func apply(battle,user:Dictionary,skill:Dictionary,quote_data:Dictionary)->Dicti
     return {"ok":true,"added_states":[FURNACE_ID,SHARED_STATE_ID],
         "spent_mp":16}
 
+func end_battle(battle)->int:
+    # Source Scene_Battle#battle_end calls $game_party.remove_states_battle
+    # for ordinary completed victories/allowed endings, and the original
+    # Game_Battler removes every State whose battle_only==true.
+    # This bounded Ivy source owns ONLY 85/100; leave unrelated states
+    # to their respective owners, and never silently remove them.
+    if not active:
+        return 0
+    var removed:int=0
+    for ivy in battle.party:
+        if int(ivy.get("id",0))!=IVY_ID or not bool(
+                ivy.get("actor",false)):
+            continue
+        var old_states:Array=ivy.get("states",[]).duplicate()
+        if not old_states.has(FURNACE_ID) and not old_states.has(
+                SHARED_STATE_ID):
+            continue
+        if _verified_record(battle,FURNACE_ID).is_empty() or (
+                _verified_record(battle,SHARED_STATE_ID).is_empty()):
+            ivy["fs_ivy_furnace_state_authority_pending"]=true
+            _fail("State85/100 的 battle_only 來源失效，拒絕靜默解除")
+            continue
+        var future:Array=old_states.duplicate()
+        future.erase(FURNACE_ID)
+        future.erase(SHARED_STATE_ID)
+        var hypothetical:Dictionary=ivy.duplicate(true)
+        hypothetical["states"]=future
+        if not battle.ivy_pain_source.active:
+            ivy["fs_ivy_furnace_state_authority_pending"]=true
+            _fail("戰鬥結束 State85/100 解除後有效 Note 來源缺失")
+            continue
+        var rebuilt:Dictionary=battle.ivy_pain_source.build(
+            battle.db,hypothetical)
+        if not bool(rebuilt.get("ok",false)):
+            ivy["fs_ivy_furnace_state_authority_pending"]=true
+            _fail("戰鬥結束後的原始被動/裝備 Notes 無法驗證")
+            continue
+        ivy["states"]=future
+        var timers:Dictionary=ivy.get("fs_ivy_furnace_state_turns",{}).duplicate()
+        timers.erase(str(FURNACE_ID))
+        timers.erase(str(SHARED_STATE_ID))
+        ivy["fs_ivy_furnace_state_turns"]=timers
+        ivy["fs_ivy_effective_notes"]=rebuilt["notes"].duplicate(true)
+        ivy["fs_ivy_effective_notes_have_passives"]=true
+        ivy["fs_ivy_pain_notes_verified"]=true
+        ivy["fs_ivy_furnace_state_verified"]=false
+        ivy["fs_ivy_furnace_state_authority_pending"]=false
+        removed+=old_states.size()-future.size()
+        events.append({"op":"remove_battle_only_on_victory",
+            "from":old_states,"to":future.duplicate(),
+            "removed_count":old_states.size()-future.size()})
+    return removed
+
 func on_atb_ready(battle)->int:
     if not active:
         return 0
