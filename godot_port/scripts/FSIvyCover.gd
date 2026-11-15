@@ -195,13 +195,23 @@ func guard_damage(battle,attacker: Dictionary,target: Dictionary,
             result.get("covered",false)):
         return result
     var guard: Dictionary=result["guard"]
+    # Source guard.make_attack_damage_value / make_obj_damage_value
+    # re-evaluates effective CRITICAL chance for guard's own AGI, State
+    # and prevent_critical. The originally-selected actor's CRIT chance
+    # is NOT reused; only original HIT/EVA are already resolved.
+    var guard_chance: Dictionary=battle.accuracy.quote(
+        battle,attacker,guard,skill if kind=="skill" else {})
+    if not bool(guard_chance.get("ok",false)):
+        return _fail("護衛者獨立暴擊來源未驗證："+str(
+            guard_chance.get("reason","")))
+    var guard_crit: int=int(guard_chance.get("crit",critical_chance))
     var power: Dictionary={}
     if kind=="attack":
         power=battle.normal_core.resolve(
-            battle,attacker,guard,critical_chance)
+            battle,attacker,guard,guard_crit)
     else:
         power=battle.skill_core.resolve(
-            battle,attacker,guard,skill,critical_chance)
+            battle,attacker,guard,skill,guard_crit)
     if not bool(power.get("ok",false)):
         return _fail("護衛重算原版傷害失敗："+str(power.get("reason","")))
     var raw: int=int(power["hp"])
