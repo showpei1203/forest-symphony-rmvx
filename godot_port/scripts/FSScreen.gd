@@ -386,6 +386,12 @@ func _refresh_battle_status() -> void:
     if battle == null:
         return
     var all_lines: Array[String] = []
+    # Name only the subset that is actually enabled. Source 505-alias
+    # parity is not automatically implied by a green synthetic CI.
+    if battle.normal_core.active:
+        all_lines.append("普攻：FS舊核心→平滑防禦（來源限定）")
+    if battle.skill_core.active:
+        all_lines.append("技能：YEM RD→平滑防禦（來源限定）")
     for actor in battle.party:
         var gauge: String = _atb_status_fragment(actor)
         all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s %s" % [
