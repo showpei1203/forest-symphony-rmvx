@@ -54,6 +54,9 @@ var element_provider: FSElementSourceProvider = FSElementSourceProvider.new()
 # Original main Ivy Actor#5 single-target Cover; requires source guard,
 # MaxOD and independent damage re-roll. Disabled in production by default.
 var ivy_cover: FSIvyCover = FSIvyCover.new()
+# Separate source-only Ivy actual-HP-loss stored pain adapter.
+# Original MechanicExpansion v1.1 #382, Phase46A/B2; disabled by default.
+var ivy_pain: FSIvyPain = FSIvyPain.new()
 
 func enable_private_element_provider(folder: String = "res://data") -> bool:
     # Any reconfiguration invalidates the previous source witness; stale
@@ -200,6 +203,13 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
             changed.emit("原版艾薇護衛來源未驗證：" + str(
                 coverage.get("reason","")))
             return false
+    if ivy_pain.active:
+        var direct_pain: Dictionary=ivy_pain.quote(
+            self,attacker,target,{"hp":1},false)
+        if not bool(direct_pain.get("ok",false)):
+            changed.emit("艾薇原版蓄痛來源缺失：" + str(
+                direct_pain.get("reason","")))
+            return false
     # #404 requires effective attacker.element_set for positive attacks.
     # With global weather active, do not pretend an unverified source has
     # zero element types. The unweathered basic attack remains a candidate.
@@ -308,7 +318,13 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     if not bool(hit.get("ok",false)):
         changed.emit("原版 Boss 護盾效果未驗證，攻擊未結算")
         return 0
+    var pain_quote: Dictionary=ivy_pain.quote(
+        self,attacker,target,hit,false)
+    if not bool(pain_quote.get("ok",false)):
+        changed.emit("艾薇蓄痛缺少實際 HP 損失來源，未結算")
+        return 0
     boss_state_effects.commit_hit(target,hit)
+    ivy_pain.commit(target,pain_quote)
     if accuracy.active:
         target["fs_last_action_result"] = "hit"
     if ivy_cover.active:
@@ -439,6 +455,12 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
         if not bool(coverage.get("ok",false)):
             changed.emit("艾薇護衛技能目標來源不完整，未扣 MP：" + str(
                 coverage.get("reason","")))
+            return false
+    if ivy_pain.active:
+        var direct_pain: Dictionary=ivy_pain.quote(
+            self,user,target,{"hp":1},false)
+        if not bool(direct_pain.get("ok",false)):
+            changed.emit("原版艾薇蓄痛有效 Note 尚未核對，未扣 MP")
             return false
     if field_weather.active and field_weather.current_id > 0 and int(
             skill.get("base_damage",0)) > 0:
@@ -593,8 +615,14 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if not bool(hit.get("ok",false)):
         changed.emit("Boss 狀態效果缺少來源證據，未消耗 MP")
         return false
+    var pain_quote: Dictionary=ivy_pain.quote(
+        self,user,target,hit,false)
+    if not bool(pain_quote.get("ok",false)):
+        changed.emit("艾薇蓄痛失去 post-Apply Note，技能未扣 MP")
+        return false
     user["mp"] = int(user["mp"]) - mp_cost
     boss_state_effects.commit_hit(target,hit)
+    ivy_pain.commit(target,pain_quote)
     if accuracy.active:
         target["fs_last_action_result"] = "hit"
     if ivy_cover.active:
