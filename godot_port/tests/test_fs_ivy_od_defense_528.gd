@@ -163,7 +163,11 @@ func _run()->void:
             is_equal_approx(float(
             b.ivy_od_defense.events[-1]["rate"]),55.0) and
             int(b.ivy_od_defense.events[-1]["hp"])==64,
-            "Ivy original +6% BEFORE main Cover guard power, crosses50% threshold"):return
+            "Ivy Cover +6% state: dealt=%d friend=%d/%d IvyHP=%d OD=%d stored=%d charge=%d events=%s source_errors=%s" % [
+                cover,int(friend["hp"]),friend_before,int(ivy["hp"]),
+                int(ivy["od"]),int(ivy["fs_ivy_stored_pain"]),
+                int(ivy["fs_ivy_guard_charges"]),
+                str(b.ivy_od_defense.events),str(b.ivy_cover.errors)]):return
 
     # Enemy SKILL is subject to same source ComboCore OD mitigation:
     # source smooth171 vs Ivy DEF20, at OD50=>floor171*.84=143.
