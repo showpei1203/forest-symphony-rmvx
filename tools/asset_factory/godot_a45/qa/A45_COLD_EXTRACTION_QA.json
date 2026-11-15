@@ -1,0 +1,18 @@
+{
+  "stage": "A45",
+  "release_sha256": "5913dc77ed3bbb0942585c8f491a4dbd3e6fa1b56464dcb72e478eaf264dddbc",
+  "zip_files": 172,
+  "sha_file_errors": [],
+  "cold_regen_exit": 0,
+  "cold_regen_pass": true,
+  "cold_geometry_exit": 0,
+  "cold_geometry_pass": true,
+  "cold_import_exit": 0,
+  "cold_gpu_exit": 0,
+  "cold_gpu_pass": true,
+  "cold_contact_exit": 0,
+  "cold_contact_pass": true,
+  "cold_smoke_exit": 0,
+  "regenerated_assets_equal": true,
+  "result": "PASS"
+}
