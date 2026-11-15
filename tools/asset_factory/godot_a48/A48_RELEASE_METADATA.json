@@ -1,0 +1,14 @@
+{
+  "stage": "A48",
+  "zip_name": "FS_A48_CONNECTED_SWORD_ARM_NATIVE_GODOT_ART_HOLD_20261115.zip",
+  "zip_bytes": 1398892,
+  "zip_sha256": "0fd8d5c81def1c04f2a9170bcbad991012961dd8a85ff0ae57b924027612bb77",
+  "files_in_zip": 296,
+  "manifest_source_count": 295,
+  "A47_source_archive_sha256": "e48cd680edd63a888deb2b370df4686a289253383fdbd7dc770df271df793ee5",
+  "native_engine": "PASS",
+  "body_structure": "PASS",
+  "human_art_approval": "HOLD",
+  "formal_FS_ATB": "NOT RUN",
+  "PixelLab_calls": 0
+}

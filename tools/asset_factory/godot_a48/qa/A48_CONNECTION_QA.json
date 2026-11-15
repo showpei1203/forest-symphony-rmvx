@@ -1,0 +1,191 @@
+{
+  "stage": "A48 R1",
+  "known_bad_previous": "A47",
+  "head_exact_A62": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "feet_pelvis_exact_A62": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "offhand_exact_A62": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "component_sizes": [
+    [
+      576
+    ],
+    [
+      606
+    ],
+    [
+      598
+    ],
+    [
+      594
+    ],
+    [
+      600
+    ],
+    [
+      617
+    ],
+    [
+      635
+    ],
+    [
+      627
+    ],
+    [
+      628
+    ],
+    [
+      619
+    ],
+    [
+      610
+    ],
+    [
+      576
+    ]
+  ],
+  "joint_touch": [
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 1.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 0.0
+    },
+    {
+      "shoulder": 0.0,
+      "elbow": 0.0,
+      "wrist": 1.0
+    }
+  ],
+  "pose_uniqueness": 11,
+  "temporal_pixels_change": [
+    0,
+    64,
+    46,
+    38,
+    23,
+    47,
+    80,
+    81,
+    53,
+    32,
+    33,
+    69
+  ],
+  "changed_from_A47": [
+    0,
+    450,
+    585,
+    630,
+    630,
+    491,
+    676,
+    662,
+    570,
+    444,
+    83,
+    0
+  ],
+  "border_alpha": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "lower_body_color_pass": [],
+  "structural_pass": true
+}

@@ -1,0 +1,17 @@
+{
+  "archive": "FS_A47_R3_JOINT_KINEMATIC_NATIVE_COLDPASS_20261115.zip",
+  "stage": "A47",
+  "derived_from_A46_sha256": "7134ccaeb719cc198abd589fae67fbfe86e15cfd07fd61f66ceff397801f14c9",
+  "Godot_engine": "4.7.2",
+  "live_art_candidate": "R3",
+  "engine": "PASS",
+  "human_art": "HOLD",
+  "formal_FS_ATB": "NOT RUN",
+  "paid_pixellab_calls": 0,
+  "source_regeneration": true,
+  "positive_negative_waist": true,
+  "zip_sha256": "e48cd680edd63a888deb2b370df4686a289253383fdbd7dc770df271df793ee5",
+  "zip_bytes": 1181252,
+  "zip_files": 258,
+  "manifest_sources": 257
+}

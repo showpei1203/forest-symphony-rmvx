@@ -1,0 +1,41 @@
+{
+  "stage": "A48",
+  "engine": "Godot 4.7.2",
+  "candidate": "R1 connected drawn sleeve",
+  "reference": "approved A62 complete body, A47 weapon+FX preserved",
+  "native_GPU_12_frame_diff": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "native_import_pass": true,
+  "contact_damage_pass": true,
+  "wrist_to_body_joint_10_frames_pass": true,
+  "head_exact_A62_12": 12,
+  "hips_feet_exact_A62_12": 12,
+  "offhand_exact_A62_12": 12,
+  "arm_5x5_min_opaque": 16,
+  "source_body_8connected_12": true,
+  "A47_known_bad_identity_detected": true,
+  "native_A62_good_A45_bad_A48_fixed": true,
+  "realtime_attack_F6": [
+    30,
+    9
+  ],
+  "hit_time": 0.55,
+  "hitstop_ms": 70,
+  "source_body_sha256": "71acbb8e0c13c9fcf7f95d5c3c252dcc43b79378bec353fe9e4eba0b6f1f9f42",
+  "art_structural": "PASS",
+  "art_aesthetic": "HOLD, user inspection needed",
+  "formal_fs_atb": "NOT RUN",
+  "PixelLab_calls": 0
+}

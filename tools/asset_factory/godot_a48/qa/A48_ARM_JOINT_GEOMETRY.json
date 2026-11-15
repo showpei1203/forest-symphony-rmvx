@@ -1,0 +1,234 @@
+{
+  "source": "A62 64x64 canonical entire person",
+  "stage": "A48_R1",
+  "pose_nodes": [
+    {
+      "frame": 0,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        41,
+        40
+      ],
+      "wrist": [
+        42,
+        43
+      ],
+      "weapon_tip": [
+        43,
+        44
+      ]
+    },
+    {
+      "frame": 1,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        41,
+        40
+      ],
+      "wrist": [
+        42,
+        42
+      ],
+      "weapon_tip": [
+        44,
+        26
+      ]
+    },
+    {
+      "frame": 2,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        41,
+        37
+      ],
+      "wrist": [
+        42,
+        39
+      ],
+      "weapon_tip": [
+        45,
+        22
+      ]
+    },
+    {
+      "frame": 3,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        41,
+        35
+      ],
+      "wrist": [
+        43,
+        36
+      ],
+      "weapon_tip": [
+        48,
+        19
+      ]
+    },
+    {
+      "frame": 4,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        42,
+        35
+      ],
+      "wrist": [
+        44,
+        37
+      ],
+      "weapon_tip": [
+        52,
+        17
+      ]
+    },
+    {
+      "frame": 5,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        43,
+        35
+      ],
+      "wrist": [
+        47,
+        37
+      ],
+      "weapon_tip": [
+        59,
+        24
+      ]
+    },
+    {
+      "frame": 6,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        44,
+        39
+      ],
+      "wrist": [
+        48,
+        41
+      ],
+      "weapon_tip": [
+        62,
+        41
+      ]
+    },
+    {
+      "frame": 7,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        43,
+        42
+      ],
+      "wrist": [
+        46,
+        44
+      ],
+      "weapon_tip": [
+        58,
+        54
+      ]
+    },
+    {
+      "frame": 8,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        43,
+        43
+      ],
+      "wrist": [
+        45,
+        45
+      ],
+      "weapon_tip": [
+        54,
+        58
+      ]
+    },
+    {
+      "frame": 9,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        42,
+        42
+      ],
+      "wrist": [
+        43,
+        44
+      ],
+      "weapon_tip": [
+        49,
+        57
+      ]
+    },
+    {
+      "frame": 10,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        41,
+        41
+      ],
+      "wrist": [
+        42,
+        43
+      ],
+      "weapon_tip": [
+        44,
+        56
+      ]
+    },
+    {
+      "frame": 11,
+      "shoulder": [
+        39,
+        36
+      ],
+      "elbow": [
+        41,
+        40
+      ],
+      "wrist": [
+        42,
+        43
+      ],
+      "weapon_tip": [
+        43,
+        44
+      ]
+    }
+  ]
+}

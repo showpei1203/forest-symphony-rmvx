@@ -1,0 +1,401 @@
+{
+  "stage": "A47",
+  "source_stage": "A46 V1 canonical full-body; A46 V2 comparator",
+  "candidates": {
+    "R1": {
+      "version": "R1",
+      "sha256": "cf951d85853b3c3f56d08ae1dc0ab0f2d8c159444ca149a320d24aeec097cade",
+      "body_connected_components": [
+        [
+          576
+        ],
+        [
+          601
+        ],
+        [
+          606
+        ],
+        [
+          644
+        ],
+        [
+          654,
+          10
+        ],
+        [
+          638
+        ],
+        [
+          601
+        ],
+        [
+          592
+        ],
+        [
+          575
+        ],
+        [
+          575
+        ],
+        [
+          602
+        ],
+        [
+          576
+        ]
+      ],
+      "waist": null,
+      "per_frame_alpha_border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "planted_feet_unchanged": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "wrist_to_body_distance": [
+        null,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        null
+      ],
+      "delta_pixels_vs_A46V2": [
+        0,
+        17,
+        129,
+        245,
+        206,
+        0,
+        205,
+        192,
+        132,
+        0,
+        0,
+        0
+      ],
+      "delta_torso_px": [
+        0,
+        17,
+        66,
+        127,
+        120,
+        0,
+        126,
+        122,
+        23,
+        0,
+        0,
+        0
+      ],
+      "delta_head_px": [
+        0,
+        0,
+        40,
+        50,
+        46,
+        0,
+        42,
+        42,
+        102,
+        0,
+        0,
+        0
+      ],
+      "frame_unique": 11,
+      "waist_gate_exit": 0,
+      "waist_gate_output": "A46_WAIST_GATE PASS FRAMES none",
+      "technical_pass": false
+    },
+    "R2": {
+      "version": "R2",
+      "sha256": "9e8e83a387466b3efd018694ac74ed1b5a4af255d6c45298fb8553fc7d225784",
+      "body_connected_components": [
+        [
+          576
+        ],
+        [
+          600
+        ],
+        [
+          595,
+          10
+        ],
+        [
+          643
+        ],
+        [
+          668
+        ],
+        [
+          638
+        ],
+        [
+          600
+        ],
+        [
+          597
+        ],
+        [
+          576
+        ],
+        [
+          575
+        ],
+        [
+          602
+        ],
+        [
+          576
+        ]
+      ],
+      "waist": null,
+      "per_frame_alpha_border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "planted_feet_unchanged": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "wrist_to_body_distance": [
+        null,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        null
+      ],
+      "delta_pixels_vs_A46V2": [
+        0,
+        118,
+        209,
+        320,
+        275,
+        61,
+        271,
+        274,
+        99,
+        0,
+        0,
+        0
+      ],
+      "delta_torso_px": [
+        0,
+        81,
+        106,
+        136,
+        142,
+        59,
+        155,
+        158,
+        24,
+        0,
+        0,
+        0
+      ],
+      "delta_head_px": [
+        0,
+        31,
+        48,
+        105,
+        67,
+        2,
+        75,
+        82,
+        59,
+        0,
+        0,
+        0
+      ],
+      "frame_unique": 11,
+      "waist_gate_exit": 0,
+      "waist_gate_output": "A46_WAIST_GATE PASS FRAMES none",
+      "technical_pass": false
+    },
+    "R3": {
+      "version": "R3",
+      "sha256": "6b91059f345931d325bbdf6af8fec12b6d9b5245fd83e53225536dddfa63052a",
+      "body_connected_components": [
+        [
+          576
+        ],
+        [
+          602
+        ],
+        [
+          612
+        ],
+        [
+          645
+        ],
+        [
+          679
+        ],
+        [
+          628
+        ],
+        [
+          587
+        ],
+        [
+          584
+        ],
+        [
+          570
+        ],
+        [
+          575
+        ],
+        [
+          602
+        ],
+        [
+          576
+        ]
+      ],
+      "waist": null,
+      "per_frame_alpha_border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "planted_feet_unchanged": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "wrist_to_body_distance": [
+        null,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        null
+      ],
+      "delta_pixels_vs_A46V2": [
+        0,
+        202,
+        287,
+        400,
+        363,
+        159,
+        357,
+        358,
+        147,
+        62,
+        0,
+        0
+      ],
+      "delta_torso_px": [
+        0,
+        96,
+        121,
+        143,
+        153,
+        117,
+        169,
+        169,
+        105,
+        59,
+        0,
+        0
+      ],
+      "delta_head_px": [
+        0,
+        89,
+        101,
+        168,
+        132,
+        42,
+        134,
+        139,
+        29,
+        3,
+        0,
+        0
+      ],
+      "frame_unique": 11,
+      "waist_gate_exit": 0,
+      "waist_gate_output": "A46_WAIST_GATE PASS FRAMES none",
+      "technical_pass": true
+    }
+  }
+}
