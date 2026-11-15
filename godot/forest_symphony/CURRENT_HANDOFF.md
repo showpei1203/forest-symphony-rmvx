@@ -1,3 +1,15 @@
+# CURRENT | Forest Symphony A35 R6 conifer art + HD-2D | 2026-11-15
+
+- **ENGINE PASS · NAV PASS · ORIGINAL GODOT GPU PASS · ROI PASS · ART HOLD**. Godot 4.7.2, RX 6700 XT. Do not work in RPG Maker VX or touch separate A36C / combat workstream.
+- Latest formal documents: [A35 R6 Native Handoff](docs/A35_R6_NATIVE_HANDOFF_20261115.md) and [Failure Log](docs/A35_R6_FAILURE_LOG_20261115.md). Reproducible public text: [R6 artist](tools/a35_r6_conifer_art.py), [R6 scene builder](tools/a35_r6_build.py), [real GPU QA](tools/a35_r6_roi_qa.py).
+- Owner-only portable ZIP in Google Drive mount: `FS_A35_R6_CONIFER_NATIVE_QA_PRIVATE_20261115.zip`, **335 entries /176,190,698 bytes / CRC PASS / SHA256 `20411549004f0931517a1016e07e0511ed9c61916e6888999c40fa6bbd0ee2f2`**. Exact Drive cloud file ID pending provider readback; never invent link.
+- **13** conifer owner instances refined, **174** PAR untouched, total 187 independent PAR/175 trees. Preserved bottom 19px each tree, tree anchor/collision, Ground SHA and historical R2-R5 scene bytes. A36C untouched.
+- Original Godot R5 vs R6 native GPU comparison: 37,535 changed pixels within 13-tree union, **0 outside**. NAV protected gates 8/8, four routes 4/4, 7 original frame captures 3 light phases + 4 A/B/actor.
+- Actor visibility one-position front 576 vs rear 53 (R5 rear was 0). This partial alpha occlusion tradeoff and spiky canopy tips remain ART HOLD. No true per-tree shadow occluders or 3D depth-of-field.
+- Next: original 1:1 visual review of needles/alpha; then physically cast Godot tree shadows on separate reversible scene, then Ground3 after ART acceptance. Each stage includes QA/Failure Log/Handoff, private binary art only in Drive.
+
+---
+
 # CURRENT | Forest Symphony A35 R5 Botanical Forest HD-2D | 2026-11-15
 
 **Godot 4.7.2 engine, NAV, original GPU, tree ROI PASS. ART HOLD.**
