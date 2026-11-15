@@ -11,6 +11,8 @@ class_name FSIvyCover
 # separately guarded; source subsets OFF by default, never fake full FS.
 const IVY_ID: int = 5
 const ACTIVE_COVER_OD_PERCENT: int = 6
+const FATAL_COVER_SKILL_ID: int = 146
+const FATAL_COVER_OD_COST: int = 300
 var active: bool = false
 var errors: Array[String] = []
 var events: Array[Dictionary] = []
@@ -53,6 +55,8 @@ func start_battle(battle) -> bool:
         ally["fs_ivy_guard_reduce"]=0
         ally["fs_ivy_team_hit_serial"]=-1
         ally["fs_ivy_self_hit_serial"]=-1
+        # Source reset_battler sets one-battle fatal Cover rescue to unused.
+        ally["fs_ivy_fatal_used"]=false
         if not bool(ally.get("fs_ivy_guard_source_verified",false)):
             continue
         if not ally.has("max_od") or int(ally["max_od"])<=0 or not ally.has("od"):
@@ -145,6 +149,28 @@ func party_damage(battle,attacker: Dictionary,victim: Dictionary,
             _gain_percent(ally,2)
         break
 
+func _fatal_authority(battle,guard: Dictionary) -> Dictionary:
+    # Phase46B2 actual RGSS2 Ivy fixture proves:
+    # only actor5, learned skill146, OD>=300, pending lethal cover,
+    # once per battle. This exact passive Note remains private until
+    # post-Apply FS_DB_AUTOSET source witness is available.
+    if int(guard.get("id",0))!=IVY_ID or not bool(
+            guard.get("actor",false)) or not (
+            FATAL_COVER_SKILL_ID in guard.get("skills",[])):
+        return {"ok":true,"eligible":false}
+    if not bool(guard.get("fs_ivy_fatal_source_verified",false)):
+        return _fail("艾薇原版 Skill146 被動資格與 OD 成本未驗證")
+    var passive: Dictionary=battle.db.record("skills",FATAL_COVER_SKILL_ID)
+    var note: String=str(passive.get("note","")).to_lower()
+    if int(passive.get("id",0))!=FATAL_COVER_SKILL_ID or (
+            int(passive.get("scope",-1))!=0) or not (
+            note.contains("<mechanic_passive>")) or not (
+            note.contains("<cover_store_cap_percent:400>")):
+        return _fail("艾薇被動 Skill146 必須符合原版 post-Apply 來源")
+    if not guard.has("max_od") or int(guard["max_od"])<=0 or not guard.has("od"):
+        return _fail("艾薇致死 Cover 無法驗證原版 OD 欄位")
+    return {"ok":true,"eligible":true}
+
 func _guard(battle,target: Dictionary) -> Dictionary:
     # Source original select_guard: active main Ivy FIRST, then optional
     # clone Ivy when target HP is below 50%. Do not pretend that this
@@ -225,6 +251,9 @@ func preview(battle,attacker: Dictionary,target: Dictionary,
             picked.get("covered",false)):
         return picked
     var guard: Dictionary=picked["guard"]
+    var fatal: Dictionary=_fatal_authority(battle,guard)
+    if not bool(fatal.get("ok",false)):
+        return fatal
     if bool(guard.get("fs_boss_phase_effects_pending",false)):
         return _fail("護衛者具有原版未知狀態效果")
     # Recalculate damage on the ACTUAL guard like source
@@ -288,12 +317,30 @@ func guard_damage(battle,attacker: Dictionary,target: Dictionary,
     var hit: Dictionary=battle.boss_state_effects.preview_hit(guard,adjusted)
     if not bool(hit.get("ok",false)):
         return _fail("護衛者原版 MP 護盾計算尚未驗證")
-    # Fatal-cover OD rescue and stored pain have separate source hooks.
-    if int(hit.get("hp",0))>=int(guard.get("hp",0)) and (
-            146 in guard.get("skills",[]) and int(
-            guard.get("od",0))>=300):
-        return _fail("艾薇替身承擔致死 Cover 的 OD 救援未實裝")
+    # Source ~246106 & Phase46B2: fatal guard rescue sees damage
+    # AFTER guard's independent damage and reduction; +6% MaxOD main
+    # Cover income is awarded BEFORE execute_damage and may qualify.
+    # OD300 is paid BEFORE HP commit, and exactly HP-1 is dealt.
+    var fatal_save: bool=false
+    var fatal: Dictionary=_fatal_authority(battle,guard)
+    if not bool(fatal.get("ok",false)):
+        return fatal
+    var lethal: bool=int(guard.get("hp",0))>0 and int(
+            hit.get("hp",0))>=int(guard.get("hp",0))
+    if lethal and bool(fatal.get("eligible",false)) and not bool(
+            guard.get("fs_ivy_fatal_used",false)):
+        var additional_od: int=0
+        if str(result.get("guard_type","main"))=="main" and not bool(
+                result.get("same_session",false)):
+            additional_od=roundi(float(guard.get("max_od",0))*0.06)
+        var available_od: int=mini(int(guard.get("max_od",0)),
+            int(guard.get("od",0))+additional_od)
+        if available_od>=FATAL_COVER_OD_COST:
+            fatal_save=true
+            hit=hit.duplicate(true)
+            hit["hp"]=maxi(0,int(guard["hp"])-1)
     return {"ok":true,"covered":true,"guard":guard,
+        "fatal_save":fatal_save,
         "guard_type":str(result.get("guard_type","main")),
         "hit":hit,"damage":int(hit["hp"]),"reduce":reduce,
         "critical":bool(power.get("critical",false)),
@@ -326,6 +373,11 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
             if int(guard["fs_ivy_guard_charges"])<=0:
                 guard["fs_ivy_guard_actions_left"]=0
                 guard["fs_ivy_guard_reduce"]=0
+    if bool(resolved.get("fatal_save",false)):
+        # This executes after first-session main +6% OD, which matches
+        # source try_redirect -> execute_damage wrapper ordering.
+        guard["od"]=int(guard["od"])-FATAL_COVER_OD_COST
+        guard["fs_ivy_fatal_used"]=true
     battle.boss_state_effects.commit_hit(guard,resolved["hit"])
     party_damage(battle,attacker,guard,int(resolved["hit"]["hp"]))
     original["fs_last_action_result"]="hit"
@@ -338,7 +390,9 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
         "mp":int(resolved["hit"]["mp"]),"first":first,
         "charges":int(guard.get("fs_ivy_guard_charges",0)),
         "clone_used":bool(guard.get("fs_ivy_clone_guard_used",false)),
+        "fatal_save":bool(resolved.get("fatal_save",false)),
         "od":int(guard.get("od",0))})
     return {"ok":true,"covered":true,"guard":guard,
         "hp":int(resolved["hit"]["hp"]),
-        "mp":int(resolved["hit"]["mp"]),"first":first}
+        "mp":int(resolved["hit"]["mp"]),"first":first,
+        "fatal_save":bool(resolved.get("fatal_save",false))}
