@@ -47,6 +47,11 @@ static func _state(db: FSDatabase,id: int) -> Dictionary:
             state["restriction"]) != 0 or bool(
             state["release_by_damage"]) or bool(state["slip_damage"]):
         return {}
+    if not bool(state.get("battle_only",false)) or bool(
+            state.get("nonresistance",true)) or bool(
+            state.get("offset_by_opposite",true)) or bool(
+            state.get("reduce_hit_ratio",true)):
+        return {}
     if not (state["state_set"] is Array) or not state["state_set"].is_empty():
         return {}
     for stat in STATS:
@@ -139,8 +144,11 @@ func stat(battler: Dictionary,name: String) -> int:
     if not active or not battler.has("fs_applied_boss_states"):
         return original
     var rates: Dictionary = battler.get("fs_boss_stat_rates",{})
-    # Ruby positive-stat truncation; state rate product retained as float.
-    return maxi(1,int(float(original)*float(rates.get(name,100.0))/100.0))
+    # VX original Game_Battler#atk/def/spi/agi clamps base to [1,999],
+    # multiplies each state rate and Integer-truncates, then clamps again.
+    var capped: int = clampi(original,1,999)
+    return clampi(int(float(capped)*float(
+        rates.get(name,100.0))/100.0),1,999)
 
 func preview_hit(target: Dictionary,hp_damage: int) -> Dictionary:
     if bool(target.get("fs_boss_phase_effects_pending",false)):
