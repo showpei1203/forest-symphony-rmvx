@@ -53,6 +53,11 @@ var element_rates: FSElementFinalAuthority = FSElementFinalAuthority.new()
 var element_provider: FSElementSourceProvider = FSElementSourceProvider.new()
 
 func enable_private_element_provider(folder: String = "res://data") -> bool:
+    # Any reconfiguration invalidates the previous source witness; stale
+    # Actor/Enemy element snapshots must not survive a failed new SHA.
+    element_rates.active = false
+    for unit in party+enemies:
+        unit.erase("fs_element_authority")
     # Do NOT enable either legacy or source smooth damage engines just
     # because the provider snapshot has a valid SHA. This only enables
     # the final element authority after all private witnesses pass.
