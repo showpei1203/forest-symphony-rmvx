@@ -220,6 +220,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_skill_smooth_205.gd
+      - name: Test original Ivy main Cover independent source damage roll, action charges, OD and fail-close
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ivy_cover_native_522.gd
       - name: Test original Phase28 actor class enemy source data provider and actual equip/state/ACT
         shell: bash
         run: |
