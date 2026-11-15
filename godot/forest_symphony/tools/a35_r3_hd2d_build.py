@@ -49,7 +49,7 @@ func _run() -> void:
     for node in a.get_node("YSort").get_children():
         if node is CharacterBody2D:
             continue
-        var match_node = b.get_node("YSort").get_node_or_null(node.name)
+        var match_node = b.get_node("YSort").get_node_or_null(NodePath(str(node.name)))
         if match_node == null or match_node.position != node.position:
             push_error("A35 R3 world positions changed: " + node.name)
             quit(34)
