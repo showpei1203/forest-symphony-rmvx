@@ -7,6 +7,22 @@ class_name FSIvyODDefense
 # Original try_redirect ~248198 grants +6% OD BEFORE guard power recompute,
 # hence pending_main_cover previews that increase before source mitigation.
 # Production OFF until private post-Apply tables/505 final aliases certified.
+# Exact FS_BATTLE_V22.PASSIVE_NAMES also recognizes the old 774..828
+# skill IDs by name, even if the source skill lacks mechanic_passive.
+const PASSIVE_NAMES:Dictionary={
+    102:"共鳴感知",106:"和聲領袖",
+    112:"溢光回路",116:"大地祝福",
+    122:"靜電回收",126:"超頻神經",
+    132:"毒理學",136:"病灶連鎖",
+    142:"怒意不熄",146:"替身承擔",
+    152:"鬥志打磨",156:"破城者",
+    774:"共鳴感知",778:"和聲領袖",
+    784:"溢光回路",788:"大地祝福",
+    794:"靜電回收",798:"超頻神經",
+    804:"毒理學",808:"病灶連鎖",
+    814:"怒意不熄",818:"替身承擔",
+    824:"鬥志打磨",828:"破城者"
+}
 var active: bool=false
 var errors: Array[String]=[]
 var events: Array[Dictionary]=[]
@@ -30,11 +46,15 @@ func _passive_notes(battle,ivy:Dictionary)->Dictionary:
             return _fail("已學 Skill%d 缺原版 post-Apply Note" % id)
         var name:String=str(skill.get("name",""))
         var note:String=str(skill["note"])
-        if id==142 and name!="怒意不熄":
-            return _fail("艾薇被動 Skill142 原始名稱不符")
-        var passive:bool=note.to_lower().contains("<mechanic_passive>")
+        if id in [142,814] and name!="怒意不熄":
+            return _fail("艾薇減傷被動 Skill%d 名稱與 FS_BATTLE_V22 不符" % id)
+        var passive:bool=note.to_lower().contains(
+            "<mechanic_passive>") or bool(skill.get("passive",false)) or (
+            str(PASSIVE_NAMES.get(id,""))==name and not name.is_empty())
         if id==142 and name=="怒意不熄":
-            passive=true
+            # The formal NEW Skill142 Source is exact. Legacy Skill814
+            # has no guaranteed post-Apply Note mirror; only parse its
+            # ACTUAL verified database Note without inventing tags.
             if not note.contains("<reduce_damage_if_od 50:12>") or not (
                     note.contains("<reduce_damage_per_od_percent:0.08>")):
                 return _fail("原版 Skill142 OD 條件12%+累計0.08% Note 不符")
