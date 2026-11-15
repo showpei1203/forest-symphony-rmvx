@@ -85,8 +85,21 @@ func quote(battle,user: Dictionary,target: Dictionary,
         element_rate = int(element_quote["rate"])
     elif not bool(target.get("fs_smooth_element_neutral_verified",false)):
         return _fail("技能原版屬性倍率未驗證，不能假定100%")
-    var note_result: Dictionary = _pen_from_note(str(
-        skill.get("note","")))
+    var skill_note: String=str(skill.get("note",""))
+    # The source Ivy Skill147 mechanic is a LATE Game_Battler alias,
+    # AFTER original YE damage/variance and smooth resolution. Its
+    # extra is applied by FSBattle.use_skill, never disguised as PEN.
+    # This parser only exempts the two verified mechanical tags and
+    # rejects ALL remaining unsupported full original skill Notes.
+    if int(skill.get("id",0))==147 and bool(
+            skill.get("fs_ivy_revenge_source_verified",false)) and int(
+            user.get("id",0))==5 and bool(user.get("actor",false)):
+        var revenge_notes:=RegEx.new()
+        if revenge_notes.compile("(?i)<\\s*revenge_from_cover\\s*:\\s*50(?:\\.0+)?\\s*>|<\\s*consume_stored_cover\\s*>")!=OK:
+            return _fail("來源復仇技能 Note 無法解析")
+        for mechanic in revenge_notes.search_all(skill_note):
+            skill_note=skill_note.replace(mechanic.get_string(0),"")
+    var note_result: Dictionary = _pen_from_note(skill_note)
     if not bool(note_result.get("ok",false)):
         return _fail("技能 Note 有未移植的公式或追加效果")
     var pen: int = int(note_result["pen"])
