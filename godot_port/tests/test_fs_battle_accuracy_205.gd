@@ -121,6 +121,57 @@ func _run() -> void:
     hero.erase("ignore_eva")
     enemy["agi"] = 15
 
+    # Boundaries are from final ALBERT_BATTLE_FIX, not 0..100 defaults.
+    hero["hit"] = 500
+    enemy["eva"] = 500
+    q = b.accuracy.quote(b,hero,enemy)
+    if not _check(int(q["hit"])==97 and int(q["eva"])==60,
+            "final HIT97 and EVA60 caps, even from 500 source rates"): return
+    hero["hit"] = 0
+    hero["agi"] = 1
+    enemy["agi"] = 500
+    q = b.accuracy.quote(b,hero,enemy)
+    if not _check(int(q["hit"])==10 and int(q["eva"])==60,
+            "HIT10 lower bound under negative AGI, EVA60 upper cap"): return
+    hero["hit"] = 95
+    hero["agi"] = 20
+    enemy["agi"] = 15
+    enemy["eva"] = 5
+    enemy["prevent_critical"] = true
+    q = b.accuracy.quote(b,hero,enemy)
+    if not _check(int(q["crit"])==0,
+            "prevent_critical suppresses source critical rate"): return
+    enemy.erase("prevent_critical")
+
+    # Blindness is a source State property: physical HIT is divided by 4
+    # BEFORE the final AGI modifier and 10..97 clamp.
+    b.db.tables["states"].append({"id":1,
+        "reduce_hit_ratio":true,"restriction":0})
+    hero["states"] = [1]
+    q = b.accuracy.quote(b,hero,enemy)
+    if not _check(int(q["hit"])==23,
+            "source State blind physical attack HIT95/4 becomes23"): return
+    hero["states"] = []
+
+    # Boss effective State AGI must affect HIT and EVA, not only
+    # damage and the visual ATB text.
+    b.db.tables["states"].resize(153)
+    b.db.tables["states"][152] = {"id":152,
+        "reduce_hit_ratio":false,"restriction":0}
+    b.boss_state_effects.active = true
+    enemy["agi"] = 80
+    enemy["states"] = [152]
+    enemy["fs_applied_boss_states"] = [152]
+    enemy["fs_boss_stat_rates"] = {"agi":115.0}
+    q = b.accuracy.quote(b,hero,enemy)
+    if not _check(int(q["hit"])==85 and int(q["eva"])==10,
+            "source State152 effective AGI80*115%=92 feeds HIT and EVA"): return
+    enemy["states"] = []
+    enemy.erase("fs_applied_boss_states")
+    enemy.erase("fs_boss_stat_rates")
+    b.boss_state_effects.active = false
+    enemy["agi"] = 15
+
     # Never let a missing original State silently become zero EVA.
     enemy["states"] = [2]
     hp_before = int(enemy["hp"])
