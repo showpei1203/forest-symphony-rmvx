@@ -32,6 +32,7 @@ func _actor(id:int,name:String,df:int)->Dictionary:
 func _state85()->Dictionary:
     return {"id":85,"name":"Pain Furnace (synthetic DB)",
         "hold_turn":4,"auto_release_prob":100,
+        "restriction":0,"reduce_hit_ratio":false,
         "atk_rate":100,"def_rate":100,"spi_rate":100,"agi_rate":100,
         "note":"<store_cover_damage:150>\n<cover_store_cap_percent:300>\n<hud_priority:290>\n<hud_detail>"}
 
