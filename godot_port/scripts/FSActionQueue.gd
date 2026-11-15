@@ -61,9 +61,9 @@ func request(battle, index: int, kind: String, target_index: int = -1,
         target = battle.party[target_index]
     if target_side != "none" and int(target.get("hp",0)) <= 0:
         return false
-    # Source phase IDs are pending, NOT actual status effects. A Boss
-    # shield/phase awaiting effect parity cannot be damaged through this
-    # provisional generic action queue.
+    # Do not target an unresolved Boss State intent. The source-gated
+    # FSBossCombatStates adapter clears the pending flag only when its
+    # entire current State subset is actually applied to battler.states.
     if not target.is_empty() and bool(
             target.get("fs_boss_phase_effects_pending",false)):
         return false
