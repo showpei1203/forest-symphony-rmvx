@@ -90,6 +90,21 @@ func _run()->void:
             bool(b.ivy_pain.events[-1]["cover"]),
             "Cover actual HP58 stores100%, adds prior direct38 =>96"):return
 
+    # Original Ruby scan(values).max applies the DEFAULT only when
+    # no source Note exists. A Note75 must override Cover default100;
+    # a source cap150 must override default cap200, never max-with-default.
+    ivy["fs_ivy_effective_notes"]=[
+        "<store_cover_damage:75>\\n<store_direct_damage:25>",
+        "<cover_store_cap_percent:150>"]
+    var lowered:Dictionary=b.ivy_pain.quote(b,enemy,ivy,{"hp":20},true)
+    if not _check(bool(lowered.get("ok",false)) and
+            int(lowered["gain"])==15 and int(lowered["cap"])==1500,
+            "source explicit Cover75 and cap150 override DEFAULT100/200"):return
+    lowered=b.ivy_pain.quote(b,enemy,ivy,{"hp":20},false)
+    if not _check(bool(lowered.get("ok",false)) and
+            int(lowered["gain"])==5,
+            "source explicit direct25 overrides default direct50"):return
+
     # Source strongest Note override wins; original State85 and
     # Equipment/Profile/Actor effective Notes must be prevalidated.
     ivy["fs_ivy_effective_notes"]=[
