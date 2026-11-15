@@ -1,3 +1,17 @@
+# CURRENT | Forest Symphony A35 R8 R3 D1 | 2026-11-16
+
+**Godot 4.7.2 · ENGINE PASS · NAV PASS · ORIGINAL GPU (4+6) PASS · THREE PHASE COTTAGE PROTECTION PASS · ART HOLD.** Dedicated map/HD-2D workstream. Preserve sealed prior scenes, original Ground, A36C and independent combat branch. Do NOT reset to VX or A33.
+
+- [R8 R3 complete native Handoff](docs/A35_R8_R3_NATIVE_HANDOFF_20261116.md) | [R8 R3 Failure Log](docs/A35_R8_R3_FAILURE_LOG_20261116.md) | [R8 R3 D1 daycycle native Handoff](docs/A35_R8_R3_D1_NATIVE_HANDOFF_20261116.md) | [D1 Failure Log](docs/A35_R8_R3_D1_FAILURE_LOG_20261116.md).
+- [Complete private A35 R8 R3 playable Godot QA ZIP](https://drive.google.com/file/d/1uGa7waQ-SwSSWVcgGUnbmlI7PjRaEKC2/view): provider verified 398 files, 199,988,204 bytes, private owner-only, ZIP CRC PASS, SHA256 1c235f6155298a8f4bd54173e228ad4061ac8abced29d3d296136e0567983830. [Private source ZIP](https://drive.google.com/file/d/1y5mkwx4LUGXdAQH7hCuziXTA7G6u3jah/view).
+- [Separate D1 six ORIGINAL Godot GPU day/dusk/night evidence ZIP](https://drive.google.com/file/d/1txh9Veip2mVf6mji_KEvD4hRPAc3-Rtc/view) is evidence-only, not a standalone Godot project; 13 entries, 27,184,687 bytes, CRC PASS, SHA256 e2f85b888024fc68ebfd390faa13d992a2616df2b9afe99f1209e62c41c2c975, shared=false, owner-only. [6-way original GPU derived comparison](https://drive.google.com/file/d/1BLL-KJH5rlR4X4oXGwXJrubsU1LQ_Yzk/view).
+- New R8 R3 second forest light at (805,90), energy .29/scale 2.2 replaces previous R8 R2 glare (1090,280) energy .66/scale 3.4, without touching R8 R2 scene, 187 PAR, 175 trunk+canopy blocker sets, original Ground or nav 8/8 and routes 4/4.
+- 4 original night GPU controls: new light OFF matches R8 R2 fill-only pixel-for-pixel, 0 changed. R8 R2 old lamp affected 65,972 right cottage pixels; R8 R3 new lamp affects 0, forest receives 43,667 pixels of new localized light.
+- Additional D1 6 original GPU frames: DAY 41,964 forest pixels altered/0 right-house; DUSK 43,818/0; NIGHT 43,667/0; all light pixels within radius 190, zero outside. Day-vs-night has 1,187,582 baseline pixels change.
+- **ART HOLD**: current overall art and R6 conifer silhouette still need 1x approval; no physically accurate leaf translucency/3D volumetric DOF. Next work: conifer silhouette/character occlusion art QA, then separate Ground3 grasses/flowers/organic road edges after art gate. Every stage source integrity, native QA, Failure Log, Drive and GitHub Handoff.
+
+---
+
 # CURRENT｜Forest Symphony A35 R8 R3 | 2026-11-16
 
 **ENGINE PASS · NAV PASS · REAL GPU 4/4 PASS · COTTAGE GLARE FIXED · ART HOLD.** Godot 4.7.2 map HD-2D only. Do not reset to VX/A33 or touch A36C/combat.
