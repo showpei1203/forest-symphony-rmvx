@@ -223,7 +223,12 @@ func _resolve_enemy_ready(battle) -> int:
                 if battle.attack_preflight(enemy,target):
                     enemy["guarding"] = false
                     battle.attack(enemy,target)
-                    success = true
+                    # A legal miss/evade consumes ACT just like a hit.
+                    # An invalid RNG/source gate does NOT become a
+                    # successful paid action merely because attack() is int.
+                    success = not battle.accuracy.active or str(
+                        target.get("fs_last_action_result","blocked")) in [
+                            "hit","miss","evade"]
             elif kind == "skill":
                 success = battle.use_skill(enemy,target,object_id)
         if success and battle.active:
@@ -285,7 +290,9 @@ func resolve_ready(battle) -> int:
                 if battle.attack_preflight(actor,target):
                     actor["guarding"] = false
                     battle.attack(actor,target)
-                    success = true
+                    success = not battle.accuracy.active or str(
+                        target.get("fs_last_action_result","blocked")) in [
+                            "hit","miss","evade"]
             elif kind == "skill":
                 success = battle.use_skill(actor,target,obj)
             elif kind == "item":
