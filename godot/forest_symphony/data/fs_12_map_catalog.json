@@ -1,0 +1,296 @@
+{
+  "schema": "fs-world-12-maps/v1",
+  "authority": "docs/FS_12_MAP_ACTIVE_MASTER_20261116.md",
+  "engine": "Godot 4.7.2",
+  "grid_px": 32,
+  "target": "Six biome families x one dungeon and one village = twelve original cohesive playable maps",
+  "world_map_count": 12,
+  "biome_count": 6,
+  "rules": [
+    "GROUND-first continuous rich floor and roads; floor generally traversable except water/hazard",
+    "PAR fully independent complete transparent whole objects, meaningful YSort; never extract production objects from finished composited map",
+    "SHADOW/LIGHT/WATER independent and actor footpoint colliders separate from visual alpha",
+    "Original-Godot 1x screenshots and physical routes, owner-only sources, GitHub docs/QA only",
+    "Keep all twelve biomes/roles tracked; never misreport source-only or ART HOLD as final playable"
+  ],
+  "biomes": [
+    {
+      "id": "verdant_elf_forest",
+      "name": "蒼翠精靈林",
+      "ground": "林間草地、自然泥土道路、溪流與落葉",
+      "par": "完整樹冠、樹屋、木屋、吊橋與神樹",
+      "shadow": "林群遮光與柔和日夜光"
+    },
+    {
+      "id": "frost_snowfield",
+      "name": "凜霜雪原",
+      "ground": "積雪、冰層、雪線、冰河與凍土",
+      "par": "冰杉、冰柱、雪屋、風蝕岩塊",
+      "shadow": "冷色反射、極地晨昏與雪塵"
+    },
+    {
+      "id": "wind_eroded_sands",
+      "name": "風蝕金砂",
+      "ground": "細沙、沙紋、風蝕裸岩、乾河道",
+      "par": "沙丘崖、綠洲椰棕、帳篷石城",
+      "shadow": "長陰影、沙霧與熱浪"
+    },
+    {
+      "id": "crimson_volcano",
+      "name": "赤焰火山",
+      "ground": "火山岩、裂隙、岩漿流、火山灰",
+      "par": "岩壁、黑曜晶簇、爐房與石橋",
+      "shadow": "火光、灰燼與高熱濾鏡"
+    },
+    {
+      "id": "misty_marsh",
+      "name": "幽霧水澤",
+      "ground": "濕泥、淺水、倒影、浮萍與苔地",
+      "par": "沼澤巨樹、蘆葦、木棧橋與水屋",
+      "shadow": "漂浮薄霧、漫射濕氣"
+    },
+    {
+      "id": "star_crystal_isles",
+      "name": "星晶浮島",
+      "ground": "晶岩平臺、星塵路徑、虛空裂谷",
+      "par": "浮島崖緣、晶塔、空橋與星輝屋",
+      "shadow": "晶體折射、星光與高差遮擋"
+    }
+  ],
+  "maps": [
+    {
+      "id": "forest_dungeon",
+      "name": "森林迷宮",
+      "biome_id": "verdant_elf_forest",
+      "role": "dungeon",
+      "status": "SOURCE_QA_ONLY",
+      "scene_path": null,
+      "source_branch": "feat/fs-godot-first-a29-20261113",
+      "source_scene_path": "godot/forest_symphony/scenes/a36c_r6_forest_groves_80x58.tscn",
+      "grid_px": 32,
+      "base_canvas_px": [
+        2560,
+        1856
+      ],
+      "gates": {
+        "source": "PASS",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "elf_village",
+      "name": "精靈村",
+      "biome_id": "verdant_elf_forest",
+      "role": "village",
+      "status": "ENGINE_PASS_ART_HOLD",
+      "scene_path": "res://scenes/a35_r8_r3_grove_balance_scene.tscn",
+      "source_branch": "feat/fs-a35-r3-hd2d-20261115",
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": [
+        1280,
+        928
+      ],
+      "gates": {
+        "source": "PASS",
+        "native_gpu": "PASS",
+        "navigation": "PASS",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "snow_dungeon",
+      "name": "雪原迷宮",
+      "biome_id": "frost_snowfield",
+      "role": "dungeon",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "snow_village",
+      "name": "雪原村",
+      "biome_id": "frost_snowfield",
+      "role": "village",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "desert_dungeon",
+      "name": "沙漠迷宮",
+      "biome_id": "wind_eroded_sands",
+      "role": "dungeon",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "desert_village",
+      "name": "沙漠村",
+      "biome_id": "wind_eroded_sands",
+      "role": "village",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "volcano_dungeon",
+      "name": "火山迷宮",
+      "biome_id": "crimson_volcano",
+      "role": "dungeon",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "volcano_village",
+      "name": "火山村",
+      "biome_id": "crimson_volcano",
+      "role": "village",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "marsh_dungeon",
+      "name": "沼澤迷宮",
+      "biome_id": "misty_marsh",
+      "role": "dungeon",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "marsh_village",
+      "name": "水澤村",
+      "biome_id": "misty_marsh",
+      "role": "village",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "crystal_island_dungeon",
+      "name": "浮島迷宮",
+      "biome_id": "star_crystal_isles",
+      "role": "dungeon",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    },
+    {
+      "id": "crystal_island_village",
+      "name": "浮島村",
+      "biome_id": "star_crystal_isles",
+      "role": "village",
+      "status": "PLANNED",
+      "scene_path": null,
+      "source_branch": null,
+      "source_scene_path": null,
+      "grid_px": 32,
+      "base_canvas_px": null,
+      "gates": {
+        "source": "NOT_RUN",
+        "native_gpu": "NOT_RUN",
+        "navigation": "NOT_RUN",
+        "art": "HOLD",
+        "final_seal": false
+      }
+    }
+  ]
+}
