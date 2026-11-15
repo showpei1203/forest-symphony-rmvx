@@ -74,6 +74,9 @@ func start() -> bool:
             source_atb_rolls_for_test,source_atb_advantage)
         source_atb_initialized = true
         source_atb_frame_fraction = 0.0
+        if boss_runtime.active:
+            # Source AntagonistCore Scene_Battle.start initial law hook.
+            boss_runtime.phase_runtime.start_laws(self)
     changed.emit("進入戰鬥" if active else "未選擇存活隊伍／敵人")
     return active
 
@@ -305,27 +308,6 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     changed.emit("%s 裝備欄位 %d 已更新" % [actor.get("name","?"),slot])
     return true
 
-func sync_boss_global_weather() -> bool:
-    # Boss #401 force requests are global Field #404, never battler States.
-    # Only the verified field engine can execute the pending request.
-    if not boss_runtime.active or not field_weather.active:
-        return false
-    var request: Dictionary = boss_runtime.phase_runtime.weather_request
-    if request.is_empty():
-        return false
-    var boss_id: int = int(request.get("source_boss_id",0))
-    var field_id: int = int(request.get("field_id",0))
-    if boss_id <= 0 or field_id <= 0:
-        return false
-    var source: Dictionary = FSBossSummonRuntime._member(enemies,boss_id,true)
-    if source.is_empty():
-        return false
-    # Validate the source field BEFORE modifying the current global field.
-    var state: Dictionary = db.record("states",field_id)
-    if state.is_empty() or not FSFieldWeather.weather_state(state):
-        return false
-    return field_weather.set_field(db,field_id,source,true)
-
 func advance_atb(delta: float) -> void:
     if not active or not source_atb_initialized or delta <= 0.0:
         return
@@ -356,7 +338,6 @@ func advance_atb(delta: float) -> void:
         # This is an encounter state update, NOT an ATB charge action.
         if active:
             boss_runtime.tick(self)
-            sync_boss_global_weather()
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
         object_id: int = 0) -> bool:
@@ -422,7 +403,12 @@ func enemy_valid_action_completed(enemy: Dictionary) -> int:
     # Called after a VERIFIED valid enemy action, not from UI redraw or ATB tick.
     if not enemies.has(enemy):
         return 0
-    return FSATBResistance.after_valid_enemy_action(enemy)
+    var resistance_level: int = FSATBResistance.after_valid_enemy_action(enemy)
+    # Original AntagonistCore counts COMPLETED valid enemy actions, not
+    # source 60Hz frames or AI choices. It never adds unverified States.
+    if boss_runtime.active:
+        boss_runtime.phase_runtime.after_valid_enemy_action(self,enemy)
+    return resistance_level
 
 func ready_actors() -> Array[int]:
     if source_atb_initialized:
