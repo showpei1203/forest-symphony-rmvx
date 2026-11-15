@@ -1,3 +1,11 @@
+## R8 封存與雙重雲端讀回完成 | 2026-11-16
+- **[完整 R8 Godot 工程 ZIP，Drive 已驗證私人權限](https://drive.google.com/file/d/1xcUgm5bqAfKr8-MB45ijOfP8WoW4qAO2/view)**：176,237,979 bytes、354 files、CRC PASS、SHA `e47e8cba8d746a034fcd5620680554a20bfd96c2d146d8c062874f59f22507fc`。
+- **[R8 原生 GPU／導航／效能 QA 證據 ZIP，Drive 已驗證私人權限](https://drive.google.com/file/d/1GucEGmHx2EVCrQ4XJ3V4SXP3-EjRb7-C/view)**：5,991,876 bytes、27 files、CRC PASS、SHA `2cb31183351217fbf050fac2c973df84e3115ae657e2c04922887b69fe8e5518`。不是獨立 Godot 工程。
+- **[Drive R8 Handoff](https://drive.google.com/file/d/1S5R0QK_9XyI_OOClmY_j8Gev55r5MRk8/view)** | **[Drive R8 Failure Log](https://drive.google.com/file/d/1gnFj6R_o3tKI9QMfkw9zeKoEtm7GashJ/view)**；GitHub 原始碼及文件也已保存。
+- **ENGINE, NAV, 2/2 ORIGINAL GPU, 122,342 canopy shadow pixels PASS; ART HOLD.** Next R8 R2 shadow light/alpha nuance and multi-source testing, then Ground3 only after visual gate.
+
+---
+
 # CURRENT | Forest Symphony A35 R8 Pixel Canopy Shadows | 2026-11-16
 
 **Godot 4.7.2 · ORIGINAL GPU SHADOW PASS · NAV PASS · ART HOLD.** Dedicated map-art/HD-2D workstream. **DO NOT** reset to RPG Maker VX, overwrite sealed R2–R7 / A36C or modify combat systems.
