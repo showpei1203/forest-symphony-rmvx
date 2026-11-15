@@ -16,9 +16,30 @@ func _fail(reason: String) -> void:
 
 func _db() -> FSDatabase:
     var db = DB.new()
+    var ranks: Array=[]
+    ranks.resize(22)
+    ranks.fill(3) # Synthetic source RPG::Class/Enemy element_ranks
+    var params: Array=[]
+    params.resize(12)
+    params.fill(0)
+    var source_stats: Array=[1000,100,50,10,20,20]
+    for index in range(6):
+        params[6+index]=source_stats[index]
     db.tables = {
         "states":[null],
-        "weapons":[null],
+        "actors":[null,{"id":1,"name":"Source-Test Hero",
+            "class_id":2,"initial_level":1,
+            "parameters":{"xsize":6,"ysize":2,"data_int16":params},
+            "weapon_id":1,"armor1_id":0,"armor2_id":0,
+            "armor3_id":0,"armor4_id":0}],
+        "classes":[null,null,{"id":2,"position":0,
+            "element_ranks":ranks,"weapon_set":[1],"armor_set":[],
+            "learnings":[{"level":1,"skill_id":1}]}],
+        "weapons":[null,{"id":1,"name":"Source Fire Sword",
+            "atk":0,"hit":95,"element_set":[13],"note":"",
+            "element_resistance":{},"invalid_element_set":[],
+            "guard_element_set":[],"weak_element_set":[],
+            "absorb_element_set":[]}],
         "armors":[null],
         "skills":[null,{
             "id":1,"name":"Test Physical Wave","scope":1,
@@ -34,43 +55,45 @@ func _db() -> FSDatabase:
             "id":1,"name":"Synthetic Training Guard","maxhp":1000,
             "maxmp":100,"atk":20,"def":10,"spi":10,
             "agi":20,"hit":95,"eva":5,"has_critical":false,
-            "note":"","actions":[]}]}
+            "note":"","actions":[],"element_ranks":ranks.duplicate()}]}
     return db
 
 func _run() -> void:
     var b = BATTLE.new(_db())
-    b.party.append({"id":1,"name":"Source-Test Hero","actor":true,
-        "hp":1000,"maxhp":1000,"mp":100,"maxmp":100,"level":1,
-        "atk":50,"def":10,"spi":20,"agi":20,"hit":95,"eva":5,
-        "cri":10,"skills":[1],"element_set":[13],"states":[],
-        "equipment":[0,0,0,0,0],"two_swords_style":false,
-        "fs_normal_source_verified":true,
-        "fs_normal_equipment_verified":true,
-        "fs_normal_element_neutral_verified":true,
-        "fs_smooth_battler_verified":true})
-    if not b.add_enemy(1):
-        _fail("synthetic opponent fixture missing")
+    var source_map: Dictionary={
+        "source":"FS_ElementalSettings_Phase28",
+        "actors":{"1":["fire",null]},
+        "classes":{"2":["water",null]},
+        "enemies":{"1":["grass",null]},
+        "actor_passive_notes":{"1":[]},
+        "enemy_passive_notes":{"1":[]},
+        "passive_source_mode":"skills","passive_names":{},
+        "growth_use_enemy_element_rate":false}
+    if not bool(b.element_provider.configure_fixture(
+            source_map).get("ok",false)):
+        _fail("Synthetic source-map adapter rejected")
         return
+    b.element_rates.active = true
+    if not b.add_actor(1) or not b.add_enemy(1):
+        _fail("FSDatabase source Actor/Enemy spawn or source adapter rejected")
+        return
+    var hero: Dictionary = b.party[0]
     var target: Dictionary = b.enemies[0]
-    # Must come from native Game_Battler initialization, not a manually
-    # forged screenshot fixture that hides real battle model omissions.
     if not (target.get("states",null) is Array) or not (
             target["states"].is_empty()):
         _fail("VX Game_Battler initial enemy RPG State array missing")
         return
+    if str(target.get("fs_element_authority",{}).get("primary",""))!="grass" or (
+            str(hero.get("fs_element_authority",{}).get("primary",""))!="fire") or (
+            int(b.element_provider.refresh_count)!=2):
+        _fail("Actual Actor/Enemy type source provider was bypassed")
+        return
+    hero["fs_normal_source_verified"] = true
+    hero["fs_normal_equipment_verified"] = true
+    hero["fs_smooth_battler_verified"] = true
     target["fs_normal_source_verified"] = true
     target["fs_normal_enemy_note_verified"] = true
-    target["fs_normal_element_neutral_verified"] = true
     target["fs_smooth_battler_verified"] = true
-    target["fs_smooth_element_neutral_verified"] = true
-    # Real native screenshot showcases Fire attack against Grass enemy.
-    # This is a synthetic source-shaped elemental witness, not a pasted
-    # label or fabricated original game screenshot.
-    target["fs_element_authority"] = {"verified":true,
-        "primary":"grass","secondary":"",
-        "ranks":{"13":3},
-        "extra_notes_verified":true,"extra_notes":[]}
-    b.element_rates.active = true
     b.accuracy.active = true
     b.normal_core.active = true
     b.skill_core.active = true
@@ -101,7 +124,7 @@ func _run() -> void:
     view.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     root.add_child(view)
     view.title_label.text = "Forest Symphony / Godot P1 SYNTHETIC combat QA"
-    view.log_label.text = "Synthetic QA only | Original post-Apply VX witness NOT loaded"
+    view.log_label.text = "Source type/rank from FSDatabase Actor/Enemy | SYNTHETIC QA; no VX runtime witness"
     view._refresh_battle_status()
     if not ("普攻：FS舊核心→平滑防禦（來源限定）" in view.status_label.text and
             "技能：YEM RD→平滑防禦（來源限定）" in view.status_label.text and
