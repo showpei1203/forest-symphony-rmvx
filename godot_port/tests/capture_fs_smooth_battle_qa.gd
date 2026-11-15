@@ -76,8 +76,12 @@ func _run() -> void:
     # Actual source-candidate battles resolve damage BEFORE screenshot;
     # these are not artificially authored display labels.
     b.accuracy.scripted_rolls = [0,99,0,99,99,0,1]
-    if b.attack(hero,target) != 174:
-        _fail("native source Fire200% normal damage did not equal174")
+    var normal_quote: Dictionary = b.normal_core.quote(b,hero,target)
+    var normal_hit: int = b.attack(hero,target)
+    if normal_hit != 174:
+        _fail("source Fire200 normal expected174 actual%d quote=%s last_event=%s failures=%s rolls=%s" % [
+            normal_hit,str(normal_quote),str(b.normal_core.events),
+            str(b.normal_core.failures),str(b.accuracy.draws)])
         return
     b.accuracy.scripted_rolls = [0,99,99]
     if not b.use_skill(hero,target,1) or int(target["hp"]) != 457:
