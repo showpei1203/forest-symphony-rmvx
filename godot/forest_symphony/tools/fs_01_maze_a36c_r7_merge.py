@@ -57,7 +57,7 @@ def build(root:Path,out:Path):
     if text==base.decode():
         raise RuntimeError("No actual new forest scene")
     root.joinpath("scenes").mkdir(exist_ok=True)
-    (root/OUT_SCENE).write_text(text,encoding="utf8")
+    (root/OUT_SCENE).write_bytes(text.encode("utf-8"))
     # Keep original A36B manifest/source asset entries, only change 56 footpoints.
     objects={ob["id"]:ob for ob in manifest["objects"]}
     for id in shifts:
@@ -84,12 +84,12 @@ def build(root:Path,out:Path):
       "river_collision":"HOLD",
       "godot_native":"NOT_RUN"
     }
-    (root/OUT_MAN).write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+    (root/OUT_MAN).write_bytes((json.dumps(manifest,ensure_ascii=False,indent=2)+"\n").encode("utf-8"))
     project=root/"project.godot"
     current=project.read_text(encoding="utf8")
     current=current.replace('run/main_scene="res://'+INCOMING_SCENE+'"','run/main_scene="res://'+OUT_SCENE+'"')
     if ('res://'+OUT_SCENE) not in current:raise RuntimeError("Missing new Godot startup scene")
-    project.write_text(current,encoding="utf8")
+    project.write_bytes(current.encode("utf-8"))
     qa={
       "scene":"FS_01_MAZE 幽葉迴廊",
       "mode":"source-only, native testing not yet run",
@@ -100,7 +100,7 @@ def build(root:Path,out:Path):
       "Ground_SHA":GROUND_SHA,"SHADOW_SHA":SHADOW_SHA,
       "objects":326,"trees":310,"art":"HOLD","river_navigation":"HOLD"}
     (root/"qa_a36c").mkdir(exist_ok=True)
-    (root/"qa_a36c"/"FS_01_MAZE_R7_SOURCE_QA.json").write_text(json.dumps(qa,ensure_ascii=False,indent=2)+"\n")
+    (root/"qa_a36c"/"FS_01_MAZE_R7_SOURCE_QA.json").write_bytes((json.dumps(qa,ensure_ascii=False,indent=2)+"\n").encode("utf-8"))
     print(json.dumps({"scene":OUT_SCENE,"source_qa":qa,"baseline_sha":sha(base),
        "incoming_sha":sha(incoming),"new_scene_sha":sha(text.encode())},ensure_ascii=False,indent=2))
 
