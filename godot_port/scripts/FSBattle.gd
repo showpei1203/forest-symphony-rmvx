@@ -1081,5 +1081,11 @@ func _check_end() -> void:
     var allies_alive: bool = party.any(func(x: Dictionary) -> bool: return int(x.get("hp", 0)) > 0)
     var enemies_alive: bool = enemies.any(func(x: Dictionary) -> bool: return int(x.get("hp", 0)) > 0)
     if not allies_alive or not enemies_alive:
+        # Original Scene_Battle#battle_end normal victory clears
+        # party battle_only States (RPG::State battle_only). A defeat
+        # that goes straight to Gameover bypasses that path, so this
+        # bounded source cleanup is deliberately VICTORY-only.
+        if not enemies_alive and ivy_furnace.active:
+            ivy_furnace.end_battle(self)
         active = false
         finished.emit(enemies_alive == false)
