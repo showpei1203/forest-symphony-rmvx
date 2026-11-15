@@ -46,7 +46,8 @@ func _verified_record(battle,id:int)->Dictionary:
             return {}
     if id==FURNACE_ID:
         if int(s["hold_turn"])!=HOLD or int(
-                s["auto_release_prob"])!=100 or bool(
+                s["auto_release_prob"])!=100 or int(
+                s.get("priority",-1))!=290 or bool(
                 s["nonresistance"]) or bool(s["offset_by_opposite"]):
             return {}
         var note:String=str(s["note"]).replace("\r","").strip_edges()
@@ -57,7 +58,8 @@ func _verified_record(battle,id:int)->Dictionary:
         # This is the ACTUAL RAW VX snapshot, not an assertion that
         # FS_DB_AUTOSET never changes State100 at title load.
         if int(s["hold_turn"])!=0 or int(
-                s["auto_release_prob"])!=0 or not str(
+                s["auto_release_prob"])!=0 or int(
+                s.get("priority",-1))!=5 or not str(
                 s["note"]).strip_edges().is_empty():
             return {}
     else:
@@ -106,12 +108,16 @@ func preview(battle,user:Dictionary,skill:Dictionary)->Dictionary:
     var shared:Dictionary=_verified_record(battle,SHARED_STATE_ID)
     if furnace.is_empty() or shared.is_empty():
         return _fail("State85 正式值或原始100效果/期限不完整")
-    if not user.get("states",[]) is Array or not (
+    if not (user.get("states",null) is Array) or not (
             user.get("equipment",null) is Array):
         return _fail("艾薇目前 State/裝備來源缺失")
     for existing in user.get("states",[]):
         if int(existing) not in [FURNACE_ID,SHARED_STATE_ID]:
             return _fail("145 原版對其他並存狀態的優先權尚未驗證")
+    var quoted:Dictionary=FSSkillCostRules.preview(skill,user)
+    if not bool(quoted.get("ok",false)) or int(
+            quoted.get("mp",-1))!=16:
+        return _fail("原版145 存在額外 MP/YEZ 成本效果，拒絕純淨交易")
     if int(user.get("hp",0))<=0 or int(user.get("mp",0))<16:
         return _fail("145 使用者已死亡或 MP 不足")
     # Do not apply a state that cannot feed the live effective-Note
