@@ -49,7 +49,7 @@ func _create_fill_lights() -> void:
     secondary_key.color = Color(0.66, 0.77, 0.96)
     secondary_key.shadow_enabled = true
     secondary_key.shadow_color = Color(0.11, 0.16, 0.21, 0.76)
-    secondary_key.shadow_filter = CanvasItemLightShadowFilter.SHADOW_FILTER_PCF5
+    secondary_key.set("shadow_filter", 1) # PointLight2D PCF5
     secondary_key.shadow_filter_smooth = 2.2
     secondary_key.energy = 0.0
     add_child(secondary_key)
