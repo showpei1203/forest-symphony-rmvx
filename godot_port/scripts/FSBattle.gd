@@ -78,6 +78,7 @@ func enable_private_ivy_pain_notes(folder:String="res://data")->bool:
         actor.erase("fs_ivy_effective_notes")
         actor.erase("fs_ivy_pain_notes_verified")
         actor.erase("fs_ivy_furnace_state_verified")
+        actor.erase("fs_ivy_effective_notes_have_passives")
     var result:Dictionary=ivy_pain_source.configure_private(db,folder)
     if not bool(result.get("ok",false)):
         changed.emit("原版 Ivy Profile 有效 Note 尚未驗證："+str(
@@ -97,6 +98,8 @@ func enable_private_ivy_pain_notes(folder:String="res://data")->bool:
         if bool(quote_data.get("applicable",false)):
             var actor:Dictionary=item["actor"]
             actor["fs_ivy_effective_notes"]=quote_data["notes"].duplicate(true)
+            actor["fs_ivy_effective_notes_have_passives"]=bool(quote_data.get(
+                "passives_included",false))
             actor["fs_ivy_pain_notes_verified"]=true
             actor["fs_ivy_furnace_state_verified"]=bool(quote_data[
                 "furnace_verified"])
