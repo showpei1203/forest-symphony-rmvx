@@ -164,6 +164,7 @@ func rate_for(db: FSDatabase,target: Dictionary,element_id: int) -> Dictionary:
         if not (equipment is Array):
             return _fail("Actor 裝備表不是有效陣列")
         var armors: Array[Dictionary] = []
+        var kgc_equips: Array[Dictionary] = []
         for index in range(equipment.size()):
             var kind: String = db.equip_kind(target,index)
             var item_id: int = int(equipment[index])
@@ -174,12 +175,15 @@ func rate_for(db: FSDatabase,target: Dictionary,element_id: int) -> Dictionary:
             var item: Dictionary = db.record(kind,item_id)
             if item.is_empty():
                 return _fail("裝備%d來源記錄缺失" % item_id)
+            for field in ["invalid_element_set","guard_element_set",
+                    "weak_element_set","absorb_element_set"]:
+                if not item.has(field) or not (item[field] is Array):
+                    return _fail("KGC 裝備%d 選項 %s 尚未驗證" % [item_id,field])
+            kgc_equips.append(item)
             if kind == "armors":
-                for field in ["element_set","invalid_element_set",
-                        "guard_element_set","weak_element_set",
-                        "absorb_element_set"]:
-                    if not item.has(field) or not (item[field] is Array):
-                        return _fail("防具%d元素選項 %s 不完整" % [item_id,field])
+                if not item.has("element_set") or not (
+                        item["element_set"] is Array):
+                    return _fail("防具%d 原生 element_set 尚未驗證" % item_id)
                 armors.append(item)
         # Original VX native Armor#element_set halves the DB rank for
         # EACH matching armor, BEFORE state and KGC equipment options.
@@ -196,7 +200,10 @@ func rate_for(db: FSDatabase,target: Dictionary,element_id: int) -> Dictionary:
         var guarded: int = int(result)*resistance_rate/100
         var absorb: bool = guarded < 0
         guarded = absi(guarded)
-        for item in armors:
+        # Original FS KGC implementation loops battler.equips.compact,
+        # including WEAPONS. Only the stock VX Armor#element_set halves
+        # the database Rank; KGC invalid/guard/weak/absorb uses ALL equips.
+        for item in kgc_equips:
             if _contains(item["invalid_element_set"],element_id):
                 guarded = 0
                 break
