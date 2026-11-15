@@ -29,8 +29,9 @@ func _actor(id: int,cls: int,weapon: int=0,armor: int=0) -> Dictionary:
     var stats: Array=[]
     stats.resize(12)
     stats.fill(0)
+    var defaults: Array=[1000,100,50,10,20,20]
     for i in range(6):
-        stats[6+i]=[1000,100,50,10,20,20][i]
+        stats[6+i]=defaults[i]
     return {"id":id,"name":"Synthetic Actor%d" % id,"class_id":cls,
         "initial_level":1,"weapon_id":weapon,"armor1_id":armor,
         "armor2_id":0,"armor3_id":0,"armor4_id":0,
