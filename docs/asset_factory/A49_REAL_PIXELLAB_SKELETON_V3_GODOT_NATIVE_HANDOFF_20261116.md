@@ -46,3 +46,5 @@
 ## 下階段真正要改善的事
 
 優先人工（1×、3×、全動態）比較 R1/R2 的人物身份、頭肩角度與 F5–F7 揮劍力量傳遞。**不再靠 GPU PASS 冒稱美術合格**；若 R2 頭像漂移過大，以 R1 保身份的骨架與 R2 的軀幹姿勢限制進行**單次明確目的實驗**，先確認成本與 QA，絕不無限制重複呼叫 PixelLab。若正式選 R2，武器圖層另有原模型劍，可比較是否比 A48 舊劍符合手腕動作，但原生 BODY 應保留無劍獨立來源。
+
+**雲端提供者已讀回、私有 owner-only 的完整 ZIP：** [A49 R1＋R2 真 PixelLab／Godot 工程完整封包](https://drive.google.com/file/d/1PKF0ECQP-esDpU7BXmO8nkOWAmNfrEG-/view)（3,519,028 bytes、SHA256 `19850a78febf5f3384dba15f8ee4238daf8505a719f581cb5c3c774ff10b68dd`；732 檔 CRC PASS／731 SHA 一致）。
