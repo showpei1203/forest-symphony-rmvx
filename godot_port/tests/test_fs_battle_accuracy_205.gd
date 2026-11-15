@@ -6,6 +6,7 @@ extends SceneTree
 # post-FS_DB_AUTOSET runtime or full 505 alias order witness.
 const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
+const SCREEN = preload("res://scripts/FSScreen.gd")
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -90,6 +91,14 @@ func _run() -> void:
             b.accuracy.draws.size()==1,
             "d100=95 misses 95pct; no EVA/CRI/variance or HP/MP mutation"): return
 
+    # Inspect the actual native BATTLE status widget, not only the model.
+    var ui = SCREEN.new()
+    root.add_child(ui)
+    ui.db = b.db
+    ui.battle = b
+    ui._refresh_battle_status()
+    if not _check("上次受擊:落空" in ui.status_label.text,
+            "Godot BATTLE status exposes actual source miss"): return
     b.accuracy.draws.clear()
     b.accuracy.scripted_rolls = [0,0]
     if not _check(b.attack(hero,enemy)==0 and
@@ -115,6 +124,10 @@ func _run() -> void:
             int(enemy["hp"])==hp_before-300 and
             bool(enemy.get("fs_last_action_critical",false)),
             "critical170% occurs before integer variance5% on stock candidate"): return
+
+    ui._refresh_battle_status()
+    if not _check("上次受擊:暴擊" in ui.status_label.text,
+            "Godot BATTLE status shows real critical HIT after ACT"): return
 
     enemy["agi"] = 80
     q = b.accuracy.quote(b,hero,enemy)
