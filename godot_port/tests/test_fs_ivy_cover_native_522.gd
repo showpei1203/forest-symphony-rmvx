@@ -204,6 +204,15 @@ func _run() -> void:
             int(q_ivy["fs_ivy_guard_charges"])==0 and
             q.accuracy.scripted_rolls==[95],
             "Ivy self-buff COMMAND only queues, no charge/MP/RNG yet"): return
+    # Tankentai original special fast Skill1 charges in ONE frame.
+    # Source Skill141 uses the generic 10% skill ACT gauge: ATB_SPEED10
+    # makes 100/1000 per frame, so payment happens after TEN frames.
+    q.advance_atb(9.0/60.0)
+    if not _check(q.has_actor_pending_action(1) and
+            int(q_ivy["mp"])==100 and
+            int(q_ivy["fs_ivy_guard_charges"])==0 and
+            int(q_ivy["source_act_count"])==900,
+            "Ivy source Skill141 ACT still charging at 9/10 frames, no MP/guard"): return
     q.advance_atb(1.0/60.0)
     if not _check(q.action_queue.completed.size()==1 and
             bool(q.action_queue.completed[0]["success"]) and
