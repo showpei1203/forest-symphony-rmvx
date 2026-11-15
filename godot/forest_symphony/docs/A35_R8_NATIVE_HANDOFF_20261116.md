@@ -1,3 +1,12 @@
+## 本輪完整原生 QA 證據 ZIP（已雲端讀回驗證）
+
+- **[A35 R8 Godot 原生測試證據 ZIP](https://drive.google.com/file/d/1GucEGmHx2EVCrQ4XJ3V4SXP3-EjRb7-C/view)**：27 個檔案，5,991,876 bytes，ZIP CRC PASS，SHA256 `2cb31183351217fbf050fac2c973df84e3115ae657e2c04922887b69fe8e5518`。Google Drive provider 已核對 `shared=false` 且僅擁有者權限。
+- 內容：2 張 **原始 Godot GPU** 陰影 OFF／ON PNG、完整 source/nav/GPU 原生日誌、122,342 像素差異 QA、6×50 幀 benchmark、29 種樹冠輪廓 JSON、Godot 腳本、GitHub Handoff 與 Failure Log。
+- **注意：這是測試證據包，不是單獨完整遊戲。** 需搭配上方 176 MB 的完整 R8 可執行工程 ZIP。所有檔案均維持私人 Drive。
+- 私人 Drive 也已讀回 [正式 Handoff 文件](https://drive.google.com/file/d/1S5R0QK_9XyI_OOClmY_j8Gev55r5MRk8/view) 和 [Failure Log](https://drive.google.com/file/d/1gnFj6R_o3tKI9QMfkw9zeKoEtm7GashJ/view)，不只存在 GitHub。
+
+---
+
 # Forest Symphony | A35 R8 · Pixel-derived Canopy Shadows | Native Godot Handoff
 
 **交接日期：2026-11-16（台灣）**  
