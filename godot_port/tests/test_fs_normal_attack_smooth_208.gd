@@ -24,6 +24,9 @@ func _db() -> FSDatabase:
     states.resize(154)
     states[77] = {"id":77,"name":"Mana Shield","note":"<mana_shield 3000:60>",
         "reduce_hit_ratio":false,"restriction":0}
+    states[152] = {"id":152,"name":"Loss of Harmony",
+        "note":"<hud_priority:520>","reduce_hit_ratio":false,
+        "restriction":0}
     states[153] = {"id":153,"name":"Global Field153",
         "note":"<field_damage 1: +50>"}
     var weapons: Array = [null,
@@ -179,6 +182,24 @@ func _run() -> void:
     if not _check(not b.attack_preflight(actor,target) and
             b.accuracy.scripted_rolls.size()==7,
             "unverified element type cannot masquerade as neutral"): return
+
+    # Boss State152 affects the SMOOTH source formula through actual
+    # source stat promotion. Do not reduce the new core to raw ATK*4.
+    target["states"] = [152]
+    target["fs_applied_boss_states"] = [152]
+    target["fs_boss_stat_rates"] = {"atk":115.0,"def":100.0}
+    var boss_quote: Dictionary = b.normal_core.quote(b,target,actor)
+    if not _check(boss_quote.get("ok",false) and
+            int(boss_quote["attack"])==57 and
+            int(boss_quote["legacy"])==15 and
+            is_equal_approx(float(boss_quote["smooth"]),123.6923076923),
+            "Boss State152 true ATK+15% drives smooth core 20+57x2 vs heroDEF10"): return
+    b.accuracy.scripted_rolls = [0,99,0,99,99,0,0]
+    var hero_hp: int = int(actor["hp"])
+    var boss_hit: int = b.attack(target,actor)
+    if not _check(boss_hit==99 and int(actor["hp"])==hero_hp-99 and
+            b.accuracy.scripted_rolls.is_empty(),
+            "Boss State152 effective ATK57 live source attack deals smooth99"): return
 
     print("FS normal legacy->smooth actual battle, 2x CRIT, 5pct RNG, guard, weapon, Field404, Shield77, fail-closed PASS")
     quit(0)
