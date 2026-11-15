@@ -22,6 +22,7 @@ var selected_troop_id: int = 0
 var story_sandbox: FSStorySandbox
 
 func _ready() -> void:
+    _install_system_cjk_font()
     _build_shell()
     # Explicit synthetic/native QA fixture injection, never a fallback
     # for the actual FS boot-final DB authority. Ordinary gameplay still
@@ -49,6 +50,20 @@ func _ready() -> void:
     battle.changed.connect(_show_log)
     battle.finished.connect(_on_battle_finished)
     _show_menu()
+
+func _install_system_cjk_font() -> void:
+    # Godot's embedded default Latin font cannot render Chinese; the
+    # native OpenGL QA screenshot exposed literal missing-glyph boxes.
+    # Use installed OS Chinese fonts without bundling proprietary fonts.
+    # The game still needs an approved packaged CJK font before release.
+    var face := SystemFont.new()
+    face.font_names = PackedStringArray([
+        "Microsoft JhengHei","Noto Sans CJK TC",
+        "PingFang TC","WenQuanYi Micro Hei"])
+    var global_theme := Theme.new()
+    global_theme.default_font = face
+    global_theme.default_font_size = 16
+    theme = global_theme
 
 func _build_shell() -> void:
     var back := ColorRect.new()
