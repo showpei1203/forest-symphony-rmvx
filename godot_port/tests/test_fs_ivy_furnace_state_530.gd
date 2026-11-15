@@ -203,7 +203,7 @@ func _run()->void:
     # and resets State85 duration to exactly four ATB READY edges.
     ivy["mp"]=100
     if not _check(b.skill_preflight(ivy,ivy,145) and b.use_skill(
-            ivy,ivy,145) and ivy["states"]==[100,85] and int(
+            ivy,ivy,145) and ivy["states"]==[85,100] and int(
             ivy["fs_ivy_furnace_state_turns"]["85"])==4 and int(
             ivy["mp"])==84,
             "source repeated 145 adds State85 once, refreshes hold4, pays once"):return
