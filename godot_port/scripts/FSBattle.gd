@@ -36,6 +36,10 @@ var boss_state_effects: FSBossCombatStates = FSBossCombatStates.new()
 # Source BattleFormula TargetFix / support rule HIT-EVA engine. The final
 # weapon/passive/505-alias witness is separate from this safe subset.
 var accuracy: FSBattleAccuracy = FSBattleAccuracy.new()
+# FS final attack smoothing is a verified-source restricted subset.
+# REMAINS OFF for normal gameplay until the 505-alias + runtime witness
+# has been audited. Native synthetic integration fixtures may opt in.
+var normal_core: FSNormalAttackCore = FSNormalAttackCore.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
@@ -107,6 +111,14 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
         if not bool(chance.get("ok",false)):
             changed.emit("攻擊命中來源未核對：" + str(chance.get("reason","")))
             return false
+    # Exact source core MUST pass equipment, rate, neutral-element,
+    # and unknown-alias guards before ACT or RNG.
+    if normal_core.active:
+        var power_quote: Dictionary = normal_core.quote(self,attacker,target)
+        if not bool(power_quote.get("ok",false)):
+            changed.emit("原版普攻核心來源未驗證：" + str(
+                power_quote.get("reason","")))
+            return false
     # #404 requires effective attacker.element_set for positive attacks.
     # With global weather active, do not pretend an unverified source has
     # zero element types. The unweathered basic attack remains a candidate.
@@ -143,26 +155,43 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
             attacker.get("name","?"),target.get("name","?"),
             "落空" if landed["kind"]=="miss" else "被迴避"])
         return 0
-    var raw_damage: int = maxi(0, boss_state_effects.stat(attacker,"atk") * 4 -
-        boss_state_effects.stat(target,"def") * 2)
-    if accuracy.active and raw_damage > 0:
-        var critical_result: Dictionary = accuracy.critical(int(
+    var damage: int = 0
+    if normal_core.active:
+        # Source Yanfly legacy power -> source critical/variance/guard ->
+        # FS_BATTLE_BALANCE smooth-defense ratio, then Field404 -> Shield77.
+        var power: Dictionary = normal_core.resolve(self,attacker,target,int(
             landed.get("crit_chance",0)))
-        if not bool(critical_result.get("ok",false)):
-            changed.emit("暴擊來源未確認：" + str(critical_result.get("reason","")))
+        if not bool(power.get("ok",false)):
+            changed.emit("原版普攻核心拒絕結算：" + str(power.get("reason","")))
             return 0
-        if bool(critical_result.get("critical",false)):
-            raw_damage = int(float(raw_damage)*1.7)
-            target["fs_last_action_critical"] = true
-        else:
-            target["fs_last_action_critical"] = false
-        # Original YE::BATTLE::NATK::VARYDMG = 5, not VX default 20.
-        var varied: Dictionary = accuracy.variance(raw_damage,5)
-        if not bool(varied.get("ok",false)):
-            changed.emit("普攻傷害浮動未確認：" + str(varied.get("reason","")))
-            return 0
-        raw_damage = int(varied["damage"])
-    var damage: int = raw_damage / 2 if bool(target.get("guarding", false)) else raw_damage
+        damage = int(power["hp"])
+        target["fs_last_action_critical"] = bool(power["critical"])
+    else:
+        # Legacy migration candidate retained for all previously verified
+        # tests. Never confuse this with the final FS original damage core.
+        var raw_damage: int = maxi(0, boss_state_effects.stat(attacker,"atk") * 4 -
+            boss_state_effects.stat(target,"def") * 2)
+        if accuracy.active and raw_damage > 0:
+            var critical_result: Dictionary = accuracy.critical(int(
+                landed.get("crit_chance",0)))
+            if not bool(critical_result.get("ok",false)):
+                changed.emit("暴擊來源未確認：" + str(
+                    critical_result.get("reason","")))
+                return 0
+            if bool(critical_result.get("critical",false)):
+                raw_damage = int(float(raw_damage)*1.7)
+                target["fs_last_action_critical"] = true
+            else:
+                target["fs_last_action_critical"] = false
+            # Original YE::BATTLE::NATK::VARYDMG = 5, not VX default20.
+            var varied: Dictionary = accuracy.variance(raw_damage,5)
+            if not bool(varied.get("ok",false)):
+                changed.emit("普攻傷害浮動未確認：" + str(
+                    varied.get("reason","")))
+                return 0
+            raw_damage = int(varied["damage"])
+        damage = raw_damage / (4 if bool(target.get("super_guard",false)) else 2) if (
+            bool(target.get("guarding",false))) else raw_damage
     if field_weather.active and field_weather.current_id > 0:
         # #404 source hook runs AFTER baseline damage is calculated.
         var field: Dictionary = field_weather.preview_damage(
