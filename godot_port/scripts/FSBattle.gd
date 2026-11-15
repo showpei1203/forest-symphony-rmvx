@@ -48,6 +48,42 @@ var skill_core: FSSkillSmoothCore = FSSkillSmoothCore.new()
 # disabled in normal gameplay until post-Apply effective 11 tables and all
 # equipment/passive Note witnesses are verified. Synthetic QA opts in.
 var element_rates: FSElementFinalAuthority = FSElementFinalAuthority.new()
+# Derived from real Class/Enemy ranks, source Actor/Class/Enemy types,
+# KGC equipped items, and STATE/passive Notes. Not a handwritten ACT flag.
+var element_provider: FSElementSourceProvider = FSElementSourceProvider.new()
+
+func enable_private_element_provider(folder: String = "res://data") -> bool:
+    # Do NOT enable either legacy or source smooth damage engines just
+    # because the provider snapshot has a valid SHA. This only enables
+    # the final element authority after all private witnesses pass.
+    var result: Dictionary = element_provider.configure_private(db,folder)
+    if not bool(result.get("ok",false)):
+        changed.emit("來源屬性資料無法驗證：" + str(result.get("reason","")))
+        return false
+    var pending: Array[Dictionary] = []
+    for unit in party+enemies:
+        var built: Dictionary = element_provider.build(db,unit)
+        if not bool(built.get("ok",false)):
+            changed.emit("來源屬性初始化阻擋：" + str(built.get("reason","")))
+            element_provider.active = false
+            return false
+        pending.append({"unit":unit,"data":built})
+    for item in pending:
+        var authority: Dictionary = item["data"].duplicate(true)
+        authority.erase("ok")
+        item["unit"]["fs_element_authority"] = authority
+    element_rates.active=true
+    return true
+
+func _refresh_element_source(battler: Dictionary) -> bool:
+    if not element_provider.active:
+        return true
+    var updated: Dictionary = element_provider.refresh(db,battler)
+    if not bool(updated.get("ok",false)):
+        changed.emit("屬性來源更新失敗：" + str(updated.get("reason","")))
+        return false
+    return true
+
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
@@ -74,6 +110,8 @@ func add_actor(actor_id: int) -> bool:
     # as an unknown gameplay state by Phase28 FinalAuthority.
     if not (battler.get("states",null) is Array):
         battler["states"] = []
+    if not _refresh_element_source(battler):
+        return false
     party.append(battler)
     return true
 
@@ -88,6 +126,8 @@ func add_enemy(enemy_id: int) -> bool:
     battler["guarding"] = false
     if not (battler.get("states",null) is Array):
         battler["states"] = []
+    if not _refresh_element_source(battler):
+        return false
     FSATBResistance.setup(battler)
     enemies.append(battler)
     return true
@@ -109,6 +149,12 @@ func start() -> bool:
     return active
 
 func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
+    # A pure authority refresh is required for dynamic State/Equip changes
+    # even if the original combat action was queued one ATB frame earlier.
+    # Never draw RNG or mutate HP before the FINAL source quote validates.
+    if not _refresh_element_source(attacker) or not (
+            _refresh_element_source(target)):
+        return false
     # Source stock attack_effect skips dead targets. Protect direct API
     # calls as well as queued ACT, without changing legacy test-only paths.
     if accuracy.active and (int(attacker.get("hp",0)) <= 0 or
@@ -229,6 +275,9 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     return int(hit["hp"])
 
 func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
+    if not _refresh_element_source(user) or not (
+            _refresh_element_source(target)):
+        return false
     # Current migrated scope1/7 covers only living targets; VX revival
     # scopes are not implemented. Never consume HIT/EVA RNG on dead units.
     if accuracy.active and (int(user.get("hp",0)) <= 0 or
@@ -501,6 +550,18 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
         if int(inventory.get(key,0)) + int(changes[key]) < 0:
             changed.emit("裝備交換後背包數量不足：" + str(key))
             return false
+    # In source-authorized mode, validate the NEW equipment list before
+    # inventory/stat mutation. A missing KGC field must leave the original
+    # weapon, bag counts and source element snapshot intact.
+    var staged_authority: Dictionary = {}
+    if element_provider.active:
+        var planned_actor: Dictionary = actor.duplicate(true)
+        planned_actor["equipment"] = next_slots.duplicate()
+        staged_authority = element_provider.build(db,planned_actor)
+        if not bool(staged_authority.get("ok",false)):
+            changed.emit("裝備來源無法驗證，未變更背包：" + str(
+                staged_authority.get("reason","")))
+            return false
     # All checks passed: perform the transaction in one step.
     for key in changes:
         inventory[key] = int(inventory.get(key,0)) + int(changes[key])
@@ -513,6 +574,10 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
         actor[stat] = restored[stat]
     actor["hp"] = mini(int(actor["hp"]),int(actor["maxhp"]))
     actor["mp"] = mini(int(actor["mp"]),int(actor["maxmp"]))
+    if element_provider.active:
+        staged_authority.erase("ok")
+        actor["fs_element_authority"] = staged_authority
+        element_provider.refresh_count += 1
     changed.emit("%s 裝備欄位 %d 已更新" % [actor.get("name","?"),slot])
     return true
 
