@@ -5,14 +5,12 @@ class_name FSBossPhaseRuntime
 # MasterSetup15. Original #404 Field Weather says weather IDs 153..158
 # are GLOBAL FIELD EFFECTS, not per-battler States.
 #
-# IMPORTANT: This is an authoritative SOURCE-INTENT / PHASE-ID TRACKER.
-# It does NOT call RPG::State add_state/remove_state, nor apply associated
-# hit rate/defense, law-cycle State effects (140..143), protection77,
-# awakening128 or exposure129 buffs. Source Note law-cycle ID timing is
-# implemented as INTENTS, while limited global Field404 damage is live.
-# Pending states are stored in fs_phase_state_intents, deliberately separate
-# from battler.states. AI and actual attack costs must not mistake them
-# for implemented gameplay state effects.
+# IMPORTANT: This class is SOURCE-INTENT / PHASE-ID TRACKING only.
+# FSBossCombatStates independently validates selected effective original
+# State definitions and promotes supported intents into REAL battler.states,
+# including rate modifiers, Shield77 and ATB-ready 128/129 expiry.
+# Unsupported aliases remain fail-closed. Source #404 weather is GLOBAL.
+# Pending intents stay separate from battler.states until verified.
 
 const PHASE_WEATHER: Dictionary = {548: [122,125,153,156], 549: [123,126,154,157], 550: [124,127,155,158]}
 const LAW_STATES: Array[int] = [140,141,142,143]
