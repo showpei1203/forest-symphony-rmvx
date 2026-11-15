@@ -215,6 +215,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_boss_law_cycle_401.gd
+      - name: Test original FS normal attack legacy RNG to smooth power core and Field404 Shield77 pipeline
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_normal_attack_smooth_208.gd
       - name: Test source 205 BattleFormula hit miss evade crit variance and skill payment
         shell: bash
         run: |
