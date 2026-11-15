@@ -7,6 +7,7 @@ extends SceneTree
 const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
 const EFFECT = preload("res://scripts/FSBossCombatStates.gd")
+const SCREEN = preload("res://scripts/FSScreen.gd")
 
 func _initialize() -> void:
     call_deferred("_run")
@@ -50,12 +51,14 @@ func _db() -> FSDatabase:
     states[152] = _state(152,115,100,115,115)
     states[128] = _state(128,120,90,120,115,4,100)
     states[129] = _state(129,100,70,70,100,2,100)
+    states[153] = {"id":153,"note":"<field_weather>"}
+    states[156] = {"id":156,"note":"<field_weather>"}
     var enemies: Array = []
     enemies.resize(566)
     var law_note: String = "<fs_fixed_enemy_stats>\n" + \
         "<law_cycle_states:140,141,142,143>\n" + \
         "<law_cycle_interval:3>\n<law_cycle_if_state:151>"
-    for id in [524,530,531,561,562,563,564,565]:
+    for id in [524,530,531,548,558,561,562,563,564,565]:
         enemies[id] = {"id":id,"name":"Boss%d" % id,
             "maxhp":10000,"maxmp":5000,"atk":30,"def":20,
             "spi":40,"agi":60,"note":law_note if id==524 else
@@ -117,6 +120,28 @@ func _run() -> void:
     if not _assert(boss.get("states",[])==[152,151,140],
             "healed Boss re-adds State151+first law while retaining State152"): return
 
+    # Boss548 low-HP Source State125 is a *real* stat buff, separate
+    # from the 153/156 global weather. All native buffs are applied after
+    # the verified source #401 55%-HP transition.
+    var weather_phase = _battle(db,548)
+    if not _assert(weather_phase.start(),"Boss548 battle starts"): return
+    weather_phase.advance_atb(1.0/60.0)
+    var source548: Dictionary = weather_phase.enemies[0]
+    if not _assert(source548.get("states",[])==[122] and
+            weather_phase.boss_state_effects.stat(source548,"def")==20,
+            "Boss548 initial State122 is an actual neutral-rate battler State"): return
+    source548["hp"] = 5500
+    weather_phase.advance_atb(1.0/60.0)
+    if not _assert(source548.get("states",[])==[125] and
+            weather_phase.boss_state_effects.stat(source548,"atk")==33 and
+            weather_phase.boss_state_effects.stat(source548,"def")==23 and
+            weather_phase.boss_state_effects.stat(source548,"agi")==63,
+            "Boss548 exact55% changes actual State125 stats atk110 def115 agi105"): return
+    var weather_hero_hp: int = int(weather_phase.party[0]["hp"])
+    if not _assert(weather_phase.attack(source548,weather_phase.party[0])==112 and
+            int(weather_phase.party[0]["hp"])==weather_hero_hp-112,
+            "Boss548 State125 real attack uses atk33 damage112"): return
+
     var shield = _battle(db,530)
     if not _assert(shield.start(),"Boss530 shield battle starts"): return
     shield.advance_atb(1.0/60.0)
@@ -143,6 +168,30 @@ func _run() -> void:
             int(protected["mp"])==protected_mp-216 and
             int(protected["fs_boss_shield_remaining"])==2724,
             "live attack360 is split HP144 and MP216 by source shield60pct"): return
+    # ComboCore removes State77 when capacity reaches zero. Source Boss
+    # phase hook reinstates the shield on its next update if cores survive.
+    caster["atk"] = 1260
+    protected_hp = int(protected["hp"])
+    protected_mp = int(protected["mp"])
+    if not _assert(shield.attack(caster,protected)==2276 and
+            int(protected["hp"])==protected_hp-2276 and
+            int(protected["mp"])==protected_mp-2724 and
+            int(protected["fs_boss_shield_remaining"])==0 and
+            not protected.get("states",[]).has(77),
+            "shield capacity depletes at2724, removes State77 and splits hit5000"): return
+    shield.advance_atb(1.0/60.0)
+    if not _assert(protected.get("states",[]).has(77) and
+            int(protected.get("fs_boss_shield_remaining",0))==3000,
+            "Boss530 source re-adds State77 next frame while its cores survive"): return
+    caster["atk"] = 100
+    var ui = SCREEN.new()
+    root.add_child(ui)
+    ui.db = db
+    ui.battle = shield
+    ui._refresh_battle_status()
+    if not _assert("已生效Boss State:[77]" in ui.status_label.text and
+            "MP護盾剩餘:3000" in ui.status_label.text,
+            "actual Godot BATTLE shows applied State77 and replenished shield capacity"): return
     # Unsupported timed-state effects must refuse BEFORE any HP/MP mutation.
     protected["hp"] = 4500
     shield.advance_atb(1.0/60.0)
