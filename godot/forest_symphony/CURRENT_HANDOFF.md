@@ -1,3 +1,11 @@
+## 2026-11-15 Drive synchronization verification (important)
+- **Provider-confirmed and private:** [R6 complete source candidate ZIP](https://drive.google.com/file/d/15ZvDWtHo98pRxX4TpAVyAlOCJMvQFGPY/view), 154,025,021 bytes, shared=false. This is reconstructible R6 project source, NOT R6 final native QA archive.
+- **Written and CRC/SHA checked on owner Google Drive G: mount but NOT yet visible as a Google Drive cloud file ID on last provider readback:** `FS_A35_R6_CONIFER_NATIVE_QA_PRIVATE_20261115.zip` (176,190,698 bytes), `FS_A35_R7_SHADOW_SOURCE_PRIVATE_20261115.zip` (176,207,023 bytes), `FS_A35_R7_SHADOW_NATIVE_EVIDENCE_PRIVATE_20261115.zip` (5,969,885 bytes). Never claim these three cloud uploads confirmed until their provider metadata is actually available; GoogleDriveFS process was running and local bytes verified.
+- Owner-only [Drive private binaries folder](https://drive.google.com/drive/folders/1_OAbjQ8-fsjli0jRv7EYDnQu629CUJms) / [R7 Godot testing workspace](https://drive.google.com/drive/folders/1cBdOgyOxvHmy56CTxThNpLxLY5NVIPu8). Source code and formal Handoff safely committed to GitHub.
+- Future handoff must check cloud synchronization and link actual provider file IDs, not invent Google Drive URLs from filenames or local paths.
+
+---
+
 # CURRENT | FS A35 R7 actual Godot tree shadow study | 2026-11-15
 
 **Godot 4.7.2 · ENGINE PASS · NAV PASS · GPU SHADOW PIXEL PASS · ART HOLD.** Separate map-art workstream. A36C, game systems and sealed R2–R6 Ground/PAR immutable.
