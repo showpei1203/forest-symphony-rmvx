@@ -5,7 +5,7 @@ Builds owner-only new R4 scene from immutable private R3. Outputs PNGs only
 inside owner-only private ZIP; public GitHub contains only this reproducible code.
 Uses whole approved FS A36F artworks, not repeating 8x8 patches.
 """
-import argparse,copy,hashlib,io,json,math,random,zipfile
+import argparse,copy,hashlib,io,json,random,zipfile
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw,ImageOps
@@ -77,25 +77,6 @@ def sprite(spec,info,assets,files):
                 draw.rectangle((x,y,x+1,y+1),fill=color)
     if spec in ('elder','oak','maple'):art=ImageOps.mirror(art)
     canvas=Image.new('RGBA',size,(0,0,0,0))
-    if spec=='fir':
-        # Multi-frequency full-opacity shadow foliage beneath existing individually painted
-        # needles; preserves deep canopy coverage over the actor, without 8px atlas repeats.
-        shade=Image.new('RGBA',size,(0,0,0,0))
-        pixels=shade.load()
-        cx=size[0]//2
-        start=size[1]-h+4
-        end=size[1]-17
-        for y in range(start,end):
-            t=(y-start)/float(max(1,end-start))
-            extent=round(4+34*min(1.0,(t*1.66)**.87))
-            # hand-like irregular branches, broad underboughs; no tiled texture
-            extent+=round(2.7*np.sin(y*.28)+1.8*np.sin(y*.63))
-            for x in range(max(0,cx-extent),min(size[0],cx+extent+1)):
-                jag=2*np.sin(x*.47+y*.19)+2*np.cos(x*.16-y*.25)
-                if abs(x-cx)>extent+jag:continue
-                luma=round(5*np.sin(x*.21+y*.17)+3*np.cos(x*.37-y*.23))
-                pixels[x,y]=(max(17,34+luma),max(43,76+luma),max(18,34+luma),255)
-        canvas.alpha_composite(shade)
     canvas.alpha_composite(art,((size[0]-w)//2,size[1]-h))
     return canvas
 
