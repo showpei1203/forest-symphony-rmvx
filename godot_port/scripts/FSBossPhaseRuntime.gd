@@ -23,6 +23,7 @@ var transitions: Array[Dictionary] = []
 var failures: Array[String] = []
 var weather_request: Dictionary = {}
 var source_update_ticks: int = 0
+var law_cycle: FSBossLawCycle = FSBossLawCycle.new()
 
 static func _alive(enemies: Array[Dictionary],enemy_id: int) -> Dictionary:
     return FSBossSummonRuntime._member(enemies,enemy_id,true)
@@ -103,22 +104,23 @@ func _phase524(battle) -> void:
         # low-HP phase, heal does NOT automatically remove it.
         var removal: Array[int] = [150,151,140,141,142,143]
         if _attempt_atomic(boss,524,removal,[152],battle.db):
-            boss["fs_law_cycle_authority_pending"] = false
+            # Removing condition State151 resets the ORIGINAL counter;
+            # old Law IDs are intents only until Game_Battler parity.
+            law_cycle.reset(boss)
     elif hp*100 <= maxhp*70:
         if _attempt_atomic(boss,524,[150],[151],battle.db):
             var law_running: bool = false
             for id in LAW_STATES:
                 law_running = law_running or _ids(boss).has(id)
             if law_running:
-                # A law is already represented: do not keep a stale
-                # initialization request from a previous tick.
+                # Exactly like Phase47A1: never reset a running law's
+                # completed-action counter on each visual/ATB frame.
                 boss["fs_law_cycle_authority_pending"] = false
             else:
-                # Source expects albert_ant_initialize_law_cycle iff
-                # respond_to? and no law state. The method's alias-chain
-                # remains missing. No fake Law140 is inserted.
-                boss["fs_law_cycle_authority_pending"] = true
-                boss["fs_boss_phase_effects_pending"] = true
+                # Parse the real Enemy Note (interval beats legacy actions)
+                # and plan first law ONLY when every State ID exists.
+                # This remains an intent, not a real RPG State effect.
+                law_cycle.initialize(boss,self,battle.db)
     # At HP >70 source makes no removal of previous phases.
 
 func _weather(battle) -> void:
@@ -218,6 +220,19 @@ func _shield(battle,summon_flags: Dictionary) -> void:
             continue
         if _attempt_atomic(boss,int(boss_id),[],[129],battle.db):
             summon_flags[key] = true
+
+func start_laws(battle) -> void:
+    # RGSS2 AntagonistCore Scene_Battle.start initializes law cycles
+    # that have no gating State; condition-based Boss524 starts on 151.
+    for enemy in battle.enemies:
+        var cfg: Dictionary = FSBossLawCycle.configuration(enemy)
+        if bool(cfg.get("tagged",false)) and int(cfg.get("condition",0)) == 0:
+            law_cycle.initialize(enemy,self,battle.db)
+
+func after_valid_enemy_action(battle,enemy: Dictionary) -> bool:
+    if not battle.enemies.has(enemy) or int(enemy.get("hp",0)) <= 0:
+        return false
+    return law_cycle.after_valid_action(enemy,self,battle.db)
 
 func tick(battle,summon_flags: Dictionary) -> int:
     if not battle.active:
