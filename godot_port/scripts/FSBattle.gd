@@ -33,6 +33,9 @@ var field_weather: FSFieldWeather = FSFieldWeather.new()
 # Synthetic unit tests must enable this explicitly; never treat an
 # unverified Boss intent as an applied state.
 var boss_state_effects: FSBossCombatStates = FSBossCombatStates.new()
+# Source BattleFormula TargetFix / support rule HIT-EVA engine. The final
+# weapon/passive/505-alias witness is separate from this safe subset.
+var accuracy: FSBattleAccuracy = FSBattleAccuracy.new()
 
 func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     db = database
@@ -40,6 +43,7 @@ func _init(database: FSDatabase, shared_world: FSGameState = null) -> void:
     boss_runtime.active = db.boot_final_verified
     field_weather.active = db.boot_final_verified
     boss_state_effects.active = db.boot_final_verified
+    accuracy.active = db.boot_final_verified
     if world != null:
         # One shared inventory is mandatory for event reward + MENU + BATTLE parity.
         inventory = world.inventory
@@ -90,6 +94,13 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
             bool(attacker.get("fs_boss_phase_effects_pending",false))):
         changed.emit("Boss 狀態實際效果未驗證，攻擊已阻擋")
         return false
+    # The quote must be pure: ATB command selection must not consume a
+    # HIT or EVA RNG roll before the actual source ACT resolves.
+    if accuracy.active:
+        var chance: Dictionary = accuracy.quote(self,attacker,target)
+        if not bool(chance.get("ok",false)):
+            changed.emit("攻擊命中來源未核對：" + str(chance.get("reason","")))
+            return false
     # #404 requires effective attacker.element_set for positive attacks.
     # With global weather active, do not pretend an unverified source has
     # zero element types. The unweathered basic attack remains a candidate.
@@ -107,12 +118,40 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
     return true
 
 func attack(attacker: Dictionary, target: Dictionary) -> int:
-    # RPG Maker VX unmodified baseline: max(0, ATK*4 - DEF*2).
-    # Variance, hit/evade, critical, Cover and other 505 overrides NOT PORTED.
+    # Damage power still uses the early port's stock formula: the final
+    # FS_BATTLE_BALANCE smooth core, affinity and 505 alias chain are NOT
+    # certified. HIT/EVA/CRIT/variance use the explicitly gated source subset.
     if not attack_preflight(attacker,target):
+        return 0
+    var landed: Dictionary = accuracy.resolve(self,attacker,target)
+    if not bool(landed.get("ok",false)):
+        changed.emit("攻擊命中判定拒絕：" + str(landed.get("reason","")))
+        return 0
+    if str(landed.get("kind","hit")) != "hit":
+        target["fs_last_action_result"] = str(landed["kind"])
+        changed.emit("%s 攻擊 %s：%s" % [
+            attacker.get("name","?"),target.get("name","?"),
+            "落空" if landed["kind"]=="miss" else "被迴避"])
         return 0
     var raw_damage: int = maxi(0, boss_state_effects.stat(attacker,"atk") * 4 -
         boss_state_effects.stat(target,"def") * 2)
+    if accuracy.active and raw_damage > 0:
+        var critical_result: Dictionary = accuracy.critical(int(
+            landed.get("crit_chance",0)))
+        if not bool(critical_result.get("ok",false)):
+            changed.emit("暴擊來源未確認：" + str(critical_result.get("reason","")))
+            return 0
+        if bool(critical_result.get("critical",false)):
+            raw_damage = int(float(raw_damage)*1.7)
+            target["fs_last_action_critical"] = true
+        else:
+            target["fs_last_action_critical"] = false
+        # Original YE::BATTLE::NATK::VARYDMG = 5, not VX default 20.
+        var varied: Dictionary = accuracy.variance(raw_damage,5)
+        if not bool(varied.get("ok",false)):
+            changed.emit("普攻傷害浮動未確認：" + str(varied.get("reason","")))
+            return 0
+        raw_damage = int(varied["damage"])
     var damage: int = raw_damage / 2 if bool(target.get("guarding", false)) else raw_damage
     if field_weather.active and field_weather.current_id > 0:
         # #404 source hook runs AFTER baseline damage is calculated.
@@ -127,6 +166,8 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
         changed.emit("原版 Boss 護盾效果未驗證，攻擊未結算")
         return 0
     boss_state_effects.commit_hit(target,hit)
+    if accuracy.active:
+        target["fs_last_action_result"] = "hit"
     changed.emit("%s 攻擊 %s：HP %d／護盾吸收 MP %d" % [
         attacker.get("name","?"),target.get("name","?"),
         int(hit["hp"]),int(hit["mp"])])
@@ -184,6 +225,11 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
     if not bool(field_action.get("ok",false)):
         changed.emit("技能天氣尚未驗證，未扣 MP：" + str(field_action.get("reason","")))
         return false
+    if accuracy.active:
+        var chance: Dictionary = accuracy.quote(self,user,target,skill)
+        if not bool(chance.get("ok",false)):
+            changed.emit("技能命中來源未確認，未扣 MP：" + str(chance.get("reason","")))
+            return false
     if field_weather.active and field_weather.current_id > 0 and int(
             skill.get("base_damage",0)) > 0:
         var sample: Dictionary = field_weather.preview_damage(
@@ -223,14 +269,47 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         db,user,skill,enemies)
     if not bool(planned.get("ok",false)):
         return false
+    # Targeting/HIT/EVA is rolled exactly once at ACT resolution.
+    # Source Scene_Battle pays MP for a valid issued skill even on miss.
+    var landed: Dictionary = accuracy.resolve(self,user,target,skill)
+    if not bool(landed.get("ok",false)):
+        changed.emit("技能命中資料尚未驗證，無成本消耗")
+        return false
+    if str(landed.get("kind","hit")) != "hit":
+        user["mp"] = int(user["mp"])-mp_cost
+        target["fs_last_action_result"] = str(landed["kind"])
+        # Source #404 skill_effect wrapper can change field after the
+        # original effect returns, including an ordinary miss.
+        if str(planned.get("kind","none")) != "none":
+            field_weather.apply_source_object(db,user,skill,enemies)
+        changed.emit("%s 使用 %s：%s／支付 MP %d" % [
+            user.get("name","?"),skill.get("name","?"),
+            "落空" if landed["kind"]=="miss" else "被迴避",mp_cost])
+        return true
+    if accuracy.active and val > 0:
+        var crit: Dictionary = accuracy.critical(int(
+            landed.get("crit_chance",0)))
+        if not bool(crit.get("ok",false)):
+            changed.emit("技能暴擊來源未確認，無成本消耗")
+            return false
+        if bool(crit.get("critical",false)):
+            val = int(float(val)*1.7)
+        var varied: Dictionary = accuracy.variance(
+            val,int(skill.get("variance",0)))
+        if not bool(varied.get("ok",false)):
+            changed.emit("技能浮動來源未確認，無成本消耗")
+            return false
+        val = int(varied["damage"])
     # Preflight the confirmed ComboCore shield before any MP is spent.
-    # HP damage is already modified by the OLD global weather field.
+    # Damage is already modified by the validated global field subset.
     var hit: Dictionary = boss_state_effects.preview_hit(target,val)
     if not bool(hit.get("ok",false)):
         changed.emit("Boss 狀態效果缺少來源證據，未消耗 MP")
         return false
     user["mp"] = int(user["mp"]) - mp_cost
     boss_state_effects.commit_hit(target,hit)
+    if accuracy.active:
+        target["fs_last_action_result"] = "hit"
     target["hp"] = mini(int(target["hp"]),maxi(1,int(target.get("maxhp",1))))
     if str(planned.get("kind","none")) != "none":
         var applied: Dictionary = field_weather.apply_source_object(
