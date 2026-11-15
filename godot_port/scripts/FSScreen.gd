@@ -418,6 +418,8 @@ func _refresh_battle_status() -> void:
         all_lines.append("技能：YEM RD→平滑防禦（來源限定）")
     if battle.element_rates.active:
         all_lines.append("元素：FS Phase28 十八屬性＋雙屬性倍率（來源限定）")
+    if battle.ivy_cover.active:
+        all_lines.append("護衛：Ivy Actor05 / 原版主動 Cover（來源限定，映體與致死保命待移植）")
     for actor in battle.party:
         var gauge: String = _atb_status_fragment(actor)
         all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s %s" % [
@@ -425,6 +427,11 @@ func _refresh_battle_status() -> void:
             actor.get("mp",0),actor.get("maxmp",0),actor.get("od",0),gauge])
         if battle.accuracy.active and all_lines.size()>0:
             all_lines[all_lines.size()-1] += _combat_result_text(actor)
+        if battle.ivy_cover.active and int(actor.get("id",0))==5:
+            all_lines[all_lines.size()-1] += " [艾薇護衛:%d 次／有效行動:%d／減傷:%d%%]" % [
+                int(actor.get("fs_ivy_guard_charges",0)),
+                int(actor.get("fs_ivy_guard_actions_left",0)),
+                int(actor.get("fs_ivy_guard_reduce",0))]
     for enemy in battle.enemies:
         var enemy_line: String = "%s HP:%s/%s %s" % [
             enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0),
@@ -577,6 +584,10 @@ func _select_skill_target(skill_id: int) -> void:
         _select_enemy_target(func(target: Dictionary) -> void: _use_skill(skill_id,target),skill_id)
     elif scope == 7:
         _select_ally_target(func(target: Dictionary) -> void: _use_skill(skill_id,target))
+    elif scope==11 and skill_id==141 and battle.ivy_cover.active and bool(
+            skill.get("fs_ivy_guard_tag_verified",false)):
+        # Self-targeting Ivy source-only skill, not arbitrary AoE/state.
+        _use_skill(skill_id,battle.party[actor_index])
     else:
         _show_log("此技能需多目標、隨機目標或特殊規則，尚未完成移植，不消耗 MP")
 
