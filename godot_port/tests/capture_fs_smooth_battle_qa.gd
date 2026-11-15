@@ -27,7 +27,7 @@ func _db() -> FSDatabase:
             "has_critical":false,"variance":0,
             "mp_cost":10,"ignore_defense":false,
             "plus_state_set":[],"minus_state_set":[],
-            "element_set":[1],"note":"",
+            "element_set":[13],"note":"",
             "damage_to_mp":false,"absorb_damage":false,
             "fs_smooth_source_verified":true}],
         "enemies":[null,{
@@ -42,7 +42,7 @@ func _run() -> void:
     b.party.append({"id":1,"name":"Source-Test Hero","actor":true,
         "hp":1000,"maxhp":1000,"mp":100,"maxmp":100,"level":1,
         "atk":50,"def":10,"spi":20,"agi":20,"hit":95,"eva":5,
-        "cri":10,"skills":[1],"element_set":[1],"states":[],
+        "cri":10,"skills":[1],"element_set":[13],"states":[],
         "equipment":[0,0,0,0,0],"two_swords_style":false,
         "fs_normal_source_verified":true,
         "fs_normal_equipment_verified":true,
@@ -57,6 +57,14 @@ func _run() -> void:
     target["fs_normal_element_neutral_verified"] = true
     target["fs_smooth_battler_verified"] = true
     target["fs_smooth_element_neutral_verified"] = true
+    # Real native screenshot showcases Fire attack against Grass enemy.
+    # This is a synthetic source-shaped elemental witness, not a pasted
+    # label or fabricated original game screenshot.
+    target["fs_element_authority"] = {"verified":true,
+        "primary":"grass","secondary":"",
+        "ranks":{"13":3},
+        "extra_notes_verified":true,"extra_notes":[]}
+    b.element_rates.active = true
     b.accuracy.active = true
     b.normal_core.active = true
     b.skill_core.active = true
@@ -67,13 +75,13 @@ func _run() -> void:
     var hero: Dictionary = b.party[0]
     # Actual source-candidate battles resolve damage BEFORE screenshot;
     # these are not artificially authored display labels.
-    b.accuracy.scripted_rolls = [0,99,0,99,99,0,0]
-    if b.attack(hero,target) != 87:
-        _fail("native source normal damage did not equal87")
+    b.accuracy.scripted_rolls = [0,99,0,99,99,0,1]
+    if b.attack(hero,target) != 174:
+        _fail("native source Fire200% normal damage did not equal174")
         return
     b.accuracy.scripted_rolls = [0,99,99]
-    if not b.use_skill(hero,target,1) or int(target["hp"]) != 729:
-        _fail("native source skill did not resolve HP1000-87-184=729")
+    if not b.use_skill(hero,target,1) or int(target["hp"]) != 457:
+        _fail("native source Fire200% skill did not resolve HP1000-174-369=457")
         return
     var window: Window = root
     window.size = Vector2i(1280,720)
@@ -87,7 +95,8 @@ func _run() -> void:
     view._refresh_battle_status()
     if not ("普攻：FS舊核心→平滑防禦（來源限定）" in view.status_label.text and
             "技能：YEM RD→平滑防禦（來源限定）" in view.status_label.text and
-            "HP:729/1000" in view.status_label.text):
+            "元素：FS Phase28 十八屬性＋雙屬性倍率（來源限定）" in view.status_label.text and
+            "HP:457/1000" in view.status_label.text):
         _fail("real native BATTLE HUD lacks active source modes and resulting HP")
         return
     # Allow native Control theme/fonts/render frames to be drawn. A manual
@@ -126,5 +135,5 @@ func _run() -> void:
     check.close()
     print("Godot 4.7.2 native synthetic BATTLE screenshot PASS; ",
         captured.get_width(),"x",captured.get_height(),
-        "; source cores alive; real HP729; PNG emitted")
+        "; source cores alive; real Fire200% HP457; PNG emitted")
     quit(0)
