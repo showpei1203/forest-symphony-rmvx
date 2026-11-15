@@ -416,6 +416,8 @@ func _refresh_battle_status() -> void:
         all_lines.append("普攻：FS舊核心→平滑防禦（來源限定）")
     if battle.skill_core.active:
         all_lines.append("技能：YEM RD→平滑防禦（來源限定）")
+    if battle.element_rates.active:
+        all_lines.append("元素：FS Phase28 十八屬性＋雙屬性倍率（來源限定）")
     for actor in battle.party:
         var gauge: String = _atb_status_fragment(actor)
         all_lines.append("%s HP:%s/%s MP:%s/%s OD:%s %s" % [
