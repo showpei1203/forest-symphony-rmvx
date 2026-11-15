@@ -254,6 +254,12 @@ func preview(battle,attacker: Dictionary,target: Dictionary,
     var fatal: Dictionary=_fatal_authority(battle,guard)
     if not bool(fatal.get("ok",false)):
         return fatal
+    # Source read-only pain-provider preflight BEFORE original HIT RNG.
+    # It needs effective merged Note provenance for Actor#5 only.
+    var pain_check: Dictionary=battle.ivy_pain.quote(
+        battle,attacker,guard,{"hp":1},true)
+    if not bool(pain_check.get("ok",false)):
+        return _fail("蓄痛來源未驗證："+str(pain_check.get("reason","")))
     if bool(guard.get("fs_boss_phase_effects_pending",false)):
         return _fail("護衛者具有原版未知狀態效果")
     # Recalculate damage on the ACTUAL guard like source
@@ -339,8 +345,13 @@ func guard_damage(battle,attacker: Dictionary,target: Dictionary,
             fatal_save=true
             hit=hit.duplicate(true)
             hit["hp"]=maxi(0,int(guard["hp"])-1)
+    var pain_plan: Dictionary=battle.ivy_pain.quote(
+        battle,attacker,guard,hit,true)
+    if not bool(pain_plan.get("ok",false)):
+        return _fail("艾薇實際承傷蓄痛來源缺失："+str(
+            pain_plan.get("reason","")))
     return {"ok":true,"covered":true,"guard":guard,
-        "fatal_save":fatal_save,
+        "pain_plan":pain_plan,"fatal_save":fatal_save,
         "guard_type":str(result.get("guard_type","main")),
         "hit":hit,"damage":int(hit["hp"]),"reduce":reduce,
         "critical":bool(power.get("critical",false)),
@@ -379,6 +390,10 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
         guard["od"]=int(guard["od"])-FATAL_COVER_OD_COST
         guard["fs_ivy_fatal_used"]=true
     battle.boss_state_effects.commit_hit(guard,resolved["hit"])
+    var pain: Dictionary=battle.ivy_pain.commit(guard,resolved.get(
+        "pain_plan",{"ok":true,"applicable":false}))
+    if not bool(pain.get("ok",false)):
+        return pain
     party_damage(battle,attacker,guard,int(resolved["hit"]["hp"]))
     original["fs_last_action_result"]="hit"
     original["fs_cover_redirected_serial"]=action_serial
@@ -391,6 +406,7 @@ func commit(battle,attacker: Dictionary,original: Dictionary,
         "charges":int(guard.get("fs_ivy_guard_charges",0)),
         "clone_used":bool(guard.get("fs_ivy_clone_guard_used",false)),
         "fatal_save":bool(resolved.get("fatal_save",false)),
+        "stored_pain":int(guard.get("fs_ivy_stored_pain",0)),
         "od":int(guard.get("od",0))})
     return {"ok":true,"covered":true,"guard":guard,
         "hp":int(resolved["hit"]["hp"]),
