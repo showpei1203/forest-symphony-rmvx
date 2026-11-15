@@ -192,6 +192,16 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
     if bool(user.get("actor",false)) and not skill_id in user.get("skills",[]):
         changed.emit("角色未習得技能 ID %d" % skill_id)
         return false
+    # Original #271050 FS_SUPPORT_STATE_RULES has a second, Note-defined
+    # state-chance roll. This subset has NOT ported that effect/authority.
+    # A harmless-looking zero-base-damage skill must not silently consume MP.
+    var source_note: String = str(skill.get("note","")).to_lower()
+    if source_note.contains("<state_chance") or (
+            source_note.contains("<ai_state>")) or (
+            source_note.contains("<狀態技能>")) or (
+            source_note.contains("<状态技能>")):
+        changed.emit("狀態技能含原始 Note 命中／附加機制，未驗證且未扣 MP")
+        return false
     # This early migrated action supports ONLY one-target HP changes;
     # state/element/absorb/MP-damage/notes and multi-target effects must await
     # the effective 505-script RGSS2 override trace. No silent consumption.
