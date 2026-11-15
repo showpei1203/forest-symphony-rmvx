@@ -23,6 +23,15 @@ var story_sandbox: FSStorySandbox
 
 func _ready() -> void:
     _build_shell()
+    # Explicit synthetic/native QA fixture injection, never a fallback
+    # for the actual FS boot-final DB authority. Ordinary gameplay still
+    # requires db.load_all() and the private original VX witness below.
+    if db != null and battle != null:
+        menu_model = FS_MENU.new(db,battle)
+        battle.changed.connect(_show_log)
+        battle.finished.connect(_on_battle_finished)
+        _show_battle()
+        return
     db = FS_DB.new()
     if not db.load_all():
         _add_button("開啟 Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
