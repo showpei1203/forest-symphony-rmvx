@@ -1,0 +1,17 @@
+{
+  "archive_sha256": "7134ccaeb719cc198abd589fae67fbfe86e15cfd07fd61f66ceff397801f14c9",
+  "test": "A46 V2 clean archive extraction + source regeneration + native Godot GPU & contact",
+  "files": 213,
+  "source_sha_mismatches": 0,
+  "art_source_reproducible": true,
+  "import_exit": 0,
+  "import_pass": true,
+  "gpu_exit": 0,
+  "gpu_pass": true,
+  "contact_exit": 0,
+  "contact_pass": true,
+  "waist_gate_BASELINE": 0,
+  "waist_gate_NEGATIVE": 1,
+  "waist_gate_A46": 0,
+  "status": "PASS"
+}
