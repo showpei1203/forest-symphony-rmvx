@@ -441,6 +441,19 @@ func _refresh_battle_status() -> void:
                 int(actor.get("fs_ivy_guard_reduce",0))])
             if bool(actor.get("fs_ivy_fatal_used",false)):
                 all_lines.append("  替身承擔：本場致死保命已使用（技能146）")
+        if battle.ivy_od_defense.active and int(
+                actor.get("id",0))==5 and bool(actor.get("actor",false)):
+            # Pure read-only ComboCore quote for the actual OD gauge,
+            # not synthetic HUD math or a claimed full 505 alias port.
+            var defense:Dictionary=battle.ivy_od_defense.quote(
+                battle,actor,100)
+            if bool(defense.get("ok",false)) and bool(
+                    defense.get("applicable",false)):
+                all_lines.append("  怒意不熄：OD %.1f%%｜傷害減免 %.2f%%（來源限定）" % [
+                    float(defense["od_rate"]),
+                    float(defense["reduction"])])
+            elif not bool(defense.get("ok",false)):
+                all_lines.append("  怒意不熄：來源不完整／未套用減傷")
         if (battle.ivy_pain.active or battle.ivy_revenge.active) and int(
                 actor.get("id",0))==5:
             all_lines.append("  蓄痛：%d（原版實際 HP 損失／來源限定）" % int(
