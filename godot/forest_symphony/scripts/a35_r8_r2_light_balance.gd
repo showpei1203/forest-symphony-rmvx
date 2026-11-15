@@ -48,6 +48,8 @@ func _create_fill_lights() -> void:
     secondary_key.texture_scale = 3.4
     secondary_key.color = Color(0.66, 0.77, 0.96)
     secondary_key.shadow_enabled = true
+    secondary_key.enabled = active
+    secondary_fill.enabled = active
     secondary_key.shadow_color = Color(0.11, 0.16, 0.21, 0.76)
     secondary_key.set("shadow_filter", 1) # PointLight2D PCF5
     secondary_key.shadow_filter_smooth = 2.2
@@ -70,6 +72,7 @@ func set_fill_fraction(value: float) -> void:
         study_light.energy = STUDY_KEY_ENERGY * (1.0 - fill_fraction) if study_enabled else 0.0
     if fill_light != null:
         fill_light.energy = STUDY_KEY_ENERGY * fill_fraction if study_enabled else 0.0
+        fill_light.enabled = study_enabled and fill_fraction > 0.0001
 
 func set_study_enabled(on: bool) -> void:
     super.set_study_enabled(on)
