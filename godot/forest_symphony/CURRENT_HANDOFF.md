@@ -1,14 +1,25 @@
+# A35 R3 HD-2D | Godot native PASS / ART HOLD | 2026-11-15
+
+- Official Godot 4.7.2 imported the candidate and passed source scene QA **Exit 0** on real AMD RX 6700 XT hardware. Original 187 PAR source/footpoints and Ground SHA immutable.
+- Original 1280x928 GPU frames captured **3/3** for DAY, DUSK, NIGHT with Godot OpenGL compatibility renderer, **Exit 0**. Native pixel differences DAY vs DUSK 1,185,598; DAY vs NIGHT 1,187,405.
+- **Owner-only sealed native release** `FS_A35_R3_HD2D_NATIVE_QA_PRIVATE_20261115.zip`, **236 members / 108,931,403 bytes / ZIP CRC PASS / SHA256 16a707417d65dc41eeb12919a52b560af26a9860d888f560f740e785c018797c** on mounted Google Drive folder `FS_AI_ASSET_FACTORY_Restricted_Binaries`. Before linking the individual file, wait for Drive metadata sync.
+- [Formal GitHub Native Handoff](docs/A35_R3_HD2D_NATIVE_HANDOFF_20261115.md) | [Failure Log](docs/A35_R3_HD2D_FAILURE_LOG_20261115.md).
+- Native imported/scene/GPU PASS does **NOT** mean ART PASS. Original R2 repeated-tree patterns unresolved; no physical light occluders, correct leaf-depth or true DOF. R3 full physics navigation not rerun. **ART HOLD**.
+- Proceed with improved foliage native sprites, anchors/collision untouched, then 1x visual QA, original nav & occlusion and source ROI regression before Ground3.
+
+---
+
 # A35 R3 | HD-2D real-time layered candidate | 2026-11-15
 
 - **Map-art workstream only.** Godot 4.7.2. The latest user-authorized base is A35 R2 (187 independent PAR / 175 trees / 8 new R2 species), not obsolete A33/R1, and not parallel A36C.
 - New independent branch: `feat/fs-a35-r3-hd2d-20261115`.
 - New source: `scripts/a35_r3_hd2d_fx.gd` and `tools/a35_r3_hd2d_build.py`. Builder takes owner-only R2 ZIP and adds `scenes/a35_r3_hd2d_layered_scene.tscn`, native verification, three phase native GPU capture script. Does **not** replace any PAR image or Ground and does **not** overwrite R2 scene.
 - Private produced package filename: `FS_A35_R3_HD2D_LAYERED_PRIVATE_20261115.zip`. Source/package integrity PASS (229 ZIP entries, CRC PASS, original Ground SHA 3348d4..., original R2 scene immutable, source-only pipeline).
-- **Native Godot verification pending** while R3 import/QA/capture is being run; do not claim native or visual PASS until logs and images are checked.
+- **Native Godot PASS**: editor import, source QA 187 unchanged PAR, 3/3 GPU day/dusk/night images, all exit 0. ART HOLD; see formal R3 Handoff.
 - ART HOLD remains: R2 crown patch repetition is not solved by adding effects; organic-canopy art is a **separate candidate**, not sealed.
 - Runtime keys: N cycle daylight/dusk/night, V toggle rain, L toggle atmosphere, G existing editor grid. Light occluder shadows off pending authoring. No finished postprocessing/DOF claims.
 - Original archive kept separately; only owner-only Drive for binaries and captures. GitHub only source/Handoff/failure logs.
-- Next: verify actual Godot import, native source QA, 3 GPU frames; inspect 1x visuals before committing to lighting. Then integrate refined independent R3 tree species with unchanged anchors/collision and rerun navigation/front-back ROI tests.
+- Next: native import/QA/capture complete; inspect 1x visuals and replace repetitive tree crowns before Ground3. Then integrate refined independent R3 tree species with unchanged anchors/collision and rerun navigation/front-back ROI tests.
 
 ---
 
