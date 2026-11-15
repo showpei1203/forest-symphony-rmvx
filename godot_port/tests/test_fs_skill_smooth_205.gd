@@ -263,5 +263,94 @@ func _run() -> void:
             not b.accuracy.failures.is_empty(),
             "invalid final critical RNG aborts source skill before MP payment"): return
 
+    # Source FinalAuthority must be used BEFORE source YEM provisional
+    # critical/variance/Guard/smooth ratio. Normal neutral-only checks
+    # are NOT sufficient for a dual-type enemy.
+    hero["mp"] = 100
+    b.element_rates.active = true
+    target["fs_element_authority"] = {"verified":true,
+        "primary":"grass","secondary":"",
+        "ranks":{"13":3,"14":3,"15":3,"16":3},
+        "extra_notes_verified":true,"extra_notes":[]}
+    b.db.tables["skills"][1]["element_set"] = [13]
+    b.accuracy.scripted_rolls = [0,99,99]
+    before_hp = int(target["hp"])
+    var fire_quote: Dictionary = b.skill_core.quote(b,hero,target,
+        b.db.record("skills",1))
+    if not _check(int(fire_quote.get("element_rate",-1))==200 and
+            b.use_skill(hero,target,1) and
+            int(target["hp"])==before_hp-369 and
+            int(b.skill_core.events[-1]["element_rate"])==200,
+            "source YEM skill190 Fire200 ->380, smooth trunc369"): return
+
+    # Electric versus Ground is immune: MP is still paid for an issued
+    # successful HIT, but no provisional CRIT/variance or HP damage.
+    target["fs_element_authority"]["primary"]="ground"
+    b.db.tables["skills"][1]["element_set"] = [16]
+    hero["mp"] = 100
+    b.accuracy.draws.clear()
+    b.accuracy.scripted_rolls = [0,99]
+    before_hp = int(target["hp"])
+    if not _check(b.use_skill(hero,target,1) and
+            int(target["hp"])==before_hp and int(hero["mp"])==90 and
+            b.accuracy.draws.map(func(e: Dictionary): return e["kind"])==[
+                "hit","eva"],
+            "source skill immune 0 damage yet costs MP, no crit RNG"): return
+
+    # Rank6 is absorbing: -190 old HP damage, ratio applies only to
+    # positive attacks. Negative HP damage heals, never MP-drains Shield.
+    target["fs_element_authority"]["primary"]="fire"
+    target["fs_element_authority"]["ranks"]["14"]=6
+    b.db.tables["skills"][1]["element_set"]=[14]
+    hero["mp"] = 100
+    b.accuracy.scripted_rolls = [0,99]
+    before_hp = int(target["hp"])
+    if not _check(b.use_skill(hero,target,1) and
+            int(target["hp"])==mini(int(target["maxhp"]),before_hp+190) and
+            int(hero["mp"])==90 and
+            int(b.skill_core.events[-1]["element_rate"])==-100,
+            "real YEM skill absorbed -190 heals HP, source smooth disabled"): return
+
+    # The actual Field404+Shield77 must still apply AFTER the element
+    # multiplier + smooth core. Unknown element id1 is source neutral100.
+    b.db.tables["states"][77]["element_set"]=[]
+    target["states"] = [77]
+    target["fs_applied_boss_states"]=[77]
+    target["fs_boss_stat_rates"]={"def":100.0,"spi":100.0}
+    target["fs_boss_shield_remaining"]=3000
+    target["fs_boss_shield_rate"]=60
+    b.field_weather.active = true
+    b.db.tables["skills"][1]["element_set"]=[1]
+    if not _check(b.field_weather.set_field(b.db,153,hero,true),
+            "Field404 ready after element source skill"): return
+    hero["mp"]=100
+    b.accuracy.scripted_rolls=[0,99,99]
+    before_hp=int(target["hp"])
+    var before_shield: int=int(target["fs_boss_shield_remaining"])
+    before_mp=int(target["mp"])
+    if not _check(b.use_skill(hero,target,1) and
+            int(target["hp"])==before_hp-111 and
+            int(target["mp"])==before_mp-165 and
+            int(target["fs_boss_shield_remaining"])==before_shield-165 and
+            int(hero["mp"])==90,
+            "FinalAuthority neutral id1 -> smooth184 -> Field276 -> Shield77 HP111 MP165"): return
+
+    # Missing effective element Rank can never charge MP or consume HIT
+    # RNG; source authority failure must happen at pure preflight.
+    target["states"]=[]
+    target.erase("fs_applied_boss_states")
+    b.field_weather.clear_field(b.db,true)
+    b.db.tables["skills"][1]["element_set"]=[13]
+    target["fs_element_authority"]["ranks"].erase("13")
+    hero["mp"]=100
+    b.accuracy.scripted_rolls=[0,99,99]
+    before_hp=int(target["hp"])
+    if not _check(not b.skill_preflight(hero,target,1) and
+            not b.use_skill(hero,target,1) and
+            int(hero["mp"])==100 and
+            int(target["hp"])==before_hp and
+            b.accuracy.scripted_rolls==[0,99,99],
+            "missing final element Rank blocks source skill ACT before MP and RNG"): return
+
     print("FS source YEM skill coefficients, smooth defense, CRIT200, Guard, Pen, Field404, Shield77, MP-on-MISS PASS")
     quit(0)
