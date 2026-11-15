@@ -1,3 +1,16 @@
+# CURRENT | Forest Symphony A35 R5 Botanical Forest HD-2D | 2026-11-15
+
+**Godot 4.7.2 engine, NAV, original GPU, tree ROI PASS. ART HOLD.**
+
+- [A35 R5 formal native handoff](docs/A35_R5_NATIVE_HANDOFF_20261115.md) | [Failure Log](docs/A35_R5_FAILURE_LOG_20261115.md) | [A35 R5 real source builder](tools/a35_r5_build.py) | [8 botanical sprite renderer](tools/a35_r5_botanical_sprites.py).
+- [Verified owner-only R5 complete native release ZIP](https://drive.google.com/file/d/1249K95NDG_eJ4jvNOS50TI_h2VDhnrMR/view), 304 members, 153,836,761 bytes, ZIP CRC PASS, SHA256 `cedd6e8162352f443eddca851a291ae08e97bc0aa71c32096fbde39e9eba1931`. Private artwork strictly in Drive, no PNGs on public GitHub.
+- Source from sealed owner-only R4. Replaced 32 original tree owners with 8 species; 155 other PAR retained, total 187 PAR/175 trees, existing Ground/footpoints/collision and R2/R3/R4 scenes unchanged.
+- Original Godot GPU 7/7 PASS; actual navigation 8/8, four routes 4/4 PASS; source test 187 PAR PASS; fixed-phase native R4-to-R5 scene delta 98,693 pixels inside changed-tree union, 0 outside; at one tested character point rear 0 visible vs front 576.
+- Three conifers alpha height fixed: Cypress 93→141, Fir 83→144, Needle 76→137; nearest-neighbor enlargement with 1px retexturing, **not** strict native 1x source pixel art. Visual inspection still reveals coarser conifer detail versus existing original forest art. ART HOLD.
+- Next: refine native conifer texture, broaden spatial occlusion QA, then real Ground3 roads/grass/flowers and dynamic tree light occluders on separate scenes. Respect A36C separate workstream; no reset to A33/A35 R2.
+
+---
+
 # CURRENT | A35 R4 native organic foliage candidate | 2026-11-15
 
 - **ENGINE PASS / NAV PASS / ART HOLD.** This workstream is only Godot 4.7.2 map art. Main A35 R2/R3 and A36C forest separate and immutable.
