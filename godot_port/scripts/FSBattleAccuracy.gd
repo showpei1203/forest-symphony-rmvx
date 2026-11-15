@@ -24,7 +24,9 @@ const MAX_CRIT: int = 60
 const CRIT_MULT: int = 170
 
 var active: bool = false
-var scripted_rolls: Array[int] = []
+# Untyped Array is deliberate: native test fixtures assign ordinary GDScript
+# literals [0,99], which cannot be assigned to Array[int] at runtime.
+var scripted_rolls: Array = []
 var draws: Array[Dictionary] = []
 var results: Array[Dictionary] = []
 var failures: Array[String] = []
