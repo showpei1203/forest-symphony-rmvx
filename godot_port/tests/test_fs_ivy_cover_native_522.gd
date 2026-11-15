@@ -144,11 +144,14 @@ func _run() -> void:
     ivy["fs_normal_equipment_verified"]=false
     b.accuracy.scripted_rolls=[0,99,0,99,99,0,0]
     untouched_hp=int(ally["hp"])
-    if not _check(not b.attack_preflight(enemy,ally) and
-            b.attack(enemy,ally)==0 and
+    var denied: bool=not b.attack_preflight(enemy,ally)
+    var aborted: int=b.attack(enemy,ally)
+    if not _check(denied and aborted==0 and
             int(ally["hp"])==untouched_hp and
             b.accuracy.scripted_rolls==[0,99,0,99,99,0,0],
-            "unverified guard defense aborts full action before RNG and HP"): return
+            "unverified guard source: denied=%s damage=%d HP=%d/%d rolls=%s cover=%s" % [
+                str(denied),aborted,int(ally["hp"]),untouched_hp,
+                str(b.accuracy.scripted_rolls),str(b.ivy_cover.errors)]): return
     ivy["fs_normal_equipment_verified"]=true
 
     # The original emergency Ivy clone activates below 50% HP even with
