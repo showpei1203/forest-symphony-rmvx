@@ -48,8 +48,6 @@ func _create_fill_lights() -> void:
     secondary_key.texture_scale = 3.4
     secondary_key.color = Color(0.66, 0.77, 0.96)
     secondary_key.shadow_enabled = true
-    secondary_key.enabled = active
-    secondary_fill.enabled = active
     secondary_key.shadow_color = Color(0.11, 0.16, 0.21, 0.76)
     secondary_key.set("shadow_filter", 1) # PointLight2D PCF5
     secondary_key.shadow_filter_smooth = 2.2
@@ -91,6 +89,8 @@ func _apply_secondary_light() -> void:
     secondary_key.energy = SECONDARY_KEY_ENERGY * (1.0 - SECONDARY_FILL_FRACTION) if active else 0.0
     secondary_fill.energy = SECONDARY_KEY_ENERGY * SECONDARY_FILL_FRACTION if active else 0.0
     secondary_key.shadow_enabled = true
+    secondary_key.enabled = active
+    secondary_fill.enabled = active
 
 func _unhandled_key_input(event: InputEvent) -> void:
     super._unhandled_key_input(event)
