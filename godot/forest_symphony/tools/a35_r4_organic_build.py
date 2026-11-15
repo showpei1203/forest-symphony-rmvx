@@ -110,8 +110,10 @@ func _run() -> void:
             push_error("R4 source SHA mismatch "+str(name));quit(43);return
         var l:CollisionShape2D=left.get_node("Body/Collision")
         var r:CollisionShape2D=right.get_node("Body/Collision")
-        if l.shape==null or r.shape==null or l.shape.get_rect()!=r.shape.get_rect():
-            push_error("R4 collision changed "+str(name));quit(44);return
+        if (l.shape==null)!=(r.shape==null) or l.disabled!=r.disabled:
+            push_error("R4 collision presence changed "+str(name));quit(44);return
+        if l.shape!=null and l.shape.get_rect()!=r.shape.get_rect():
+            push_error("R4 collision size changed "+str(name));quit(44);return
         if left.source_file==right.source_file:retained+=1
         else:changed+=1
     if changed!=32 or retained!=155:
