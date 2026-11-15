@@ -225,6 +225,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ivy_fatal_cover_524.gd
+      - name: Test Ivy Skill147 actual ATB revenge snapshot, hit-only consumption and Skill145 source guard
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ivy_revenge_526.gd
       - name: Test source Ivy stored pain actual HP loss and post-fatal HP49
         shell: bash
         run: |
