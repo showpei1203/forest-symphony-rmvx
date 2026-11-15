@@ -23,11 +23,13 @@ static func configuration(enemy: Dictionary) -> Dictionary:
     if list_text.is_empty():
         return {"tagged":false,"ok":false,"states":[]}
     var ids: Array[int] = []
-    for part in list_text.split(","):
-        var candidate: String = part.strip_edges()
-        if candidate.is_empty() or not candidate.is_valid_int():
-            return {"tagged":true,"ok":false,"states":[]}
-        var id: int = int(candidate)
+    # Exact AntagonistCore parser uses raw.scan(/\\d+/), so repeated
+    # commas/whitespace are ignored and duplicate IDs deduplicated.
+    var numeric := RegEx.new()
+    if numeric.compile("\\d+") != OK:
+        return {"tagged":true,"ok":false,"states":[]}
+    for match_result in numeric.search_all(list_text):
+        var id: int = int(match_result.get_string())
         if id > 0 and not ids.has(id):
             ids.append(id)
     if ids.is_empty():
