@@ -124,16 +124,21 @@ func _run() -> void:
             "live Boss Field153 changes real damage 100 to 150"): return
     # Exercise real HP mutation through FSBattle.attack, not just preview.
     live.party[0]["element_set"] = [1]
-    var boss_hp_before: int = int(live.enemies[0]["hp"])
-    var actual_hit: int = live.attack(live.party[0],live.enemies[0])
+    # Source Boss phase State effects are not verified by this fixture.
+    # Attack the real summoned Core558 instead of bypassing Boss guards.
+    if not _check(live.enemies.size()>=2 and
+            int(live.enemies[1].get("id",0))==558,
+            "Boss548 summons actual Core558 weather target"): return
+    var target_hp_before: int = int(live.enemies[1]["hp"])
+    var actual_hit: int = live.attack(live.party[0],live.enemies[1])
     if not _check(actual_hit==30 and
-            int(live.enemies[0]["hp"])==boss_hp_before-30,
-            "live attack baseline20 becomes30 with Field153"): return
+            int(live.enemies[1]["hp"])==target_hp_before-30,
+            "live attack baseline20 becomes30 with Field153 on Core558"): return
     live.party[0]["atk"] = 50
-    actual_hit = live.attack(live.party[0],live.enemies[0])
+    actual_hit = live.attack(live.party[0],live.enemies[1])
     if not _check(actual_hit==270 and
-            int(live.enemies[0]["hp"])==boss_hp_before-300,
-            "live attack baseline180 becomes270 with Field153"): return
+            int(live.enemies[1]["hp"])==target_hp_before-300,
+            "live attack baseline180 becomes270 on Core558, Boss State still blocked"): return
     live.enemies[0]["hp"] = 550
     live.advance_atb(1.0/60.0)
     weather_hit = live.field_weather.preview_damage(
