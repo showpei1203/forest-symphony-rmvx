@@ -397,7 +397,15 @@ func _refresh_battle_status() -> void:
             _atb_status_fragment(enemy)]
         var planned: Array = enemy.get("fs_phase_state_intents",[])
         if not planned.is_empty():
-            enemy_line += " [State意圖:%s／效果未套用]" % str(planned)
+            if battle.boss_state_effects.active and not bool(
+                    enemy.get("fs_boss_phase_effects_pending",true)):
+                enemy_line += " [已生效Boss State:%s／完整Alias待核對]" % str(
+                    enemy.get("states",[]))
+            else:
+                enemy_line += " [State意圖:%s／效果未套用]" % str(planned)
+        if enemy.get("fs_applied_boss_states",[]).has(77):
+            enemy_line += " [MP護盾剩餘:%d／原版60%%吸收]" % int(
+                enemy.get("fs_boss_shield_remaining",0))
         if bool(enemy.get("fs_law_active",false)):
             var cfg: Dictionary = FSBossLawCycle.configuration(enemy)
             enemy_line += " [四律:第%d律／有效行動 %d/%d（效果待移植）]" % [
