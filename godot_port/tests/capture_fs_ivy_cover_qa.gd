@@ -27,6 +27,10 @@ func _actor(id: int,name: String,defense: int) -> Dictionary:
     if id==5:
         result["max_od"]=1000
         result["fs_ivy_guard_source_verified"]=true
+        # Synthetic effective-Note witness ONLY, not user's private
+        # source post-Apply data.
+        result["fs_ivy_pain_notes_verified"]=true
+        result["fs_ivy_effective_notes"]=[]
         result["skills"]=[141]
     return result
 
@@ -63,6 +67,7 @@ func _run() -> void:
     b.accuracy.active=true
     b.normal_core.active=true
     b.ivy_cover.active=true
+    b.ivy_pain.active=true
     b.source_atb_rolls_for_test={"actor:0":0,"actor:1":0,"enemy:0":0}
     if not b.start():
         _fail("native source-cover battle start refused")
@@ -87,7 +92,8 @@ func _run() -> void:
         0,99,99,0,0]
     if b.attack(enemy,protected)!=62 or int(protected["hp"])!=1000 or (
             int(ivy["hp"])!=938 or int(ivy["od"])!=200 or int(
-            ivy["fs_ivy_guard_charges"])!=1):
+            ivy["fs_ivy_guard_charges"])!=1 or int(
+            ivy.get("fs_ivy_stored_pain",-1))!=62):
         _fail("actual source-Cover damage HP/OD/charge mismatch")
         return
     var window: Window=root
@@ -101,10 +107,11 @@ func _run() -> void:
     view.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     root.add_child(view)
     view.title_label.text="Forest Symphony / Ivy COVER · SYNTHETIC Godot QA"
-    view.log_label.text="SYNTHETIC ACT→Cover：護衛62 HP／隊友1000／Ivy938／OD200"
+    view.log_label.text="SYNTHETIC ACT→Cover：護衛62 HP／蓄痛62／隊友1000／Ivy938／OD200"
     view._refresh_battle_status()
     if not ("護衛：Ivy Actor05" in view.status_label.text and
             "艾薇護衛：1 次" in view.status_label.text and
+            "蓄痛：62" in view.status_label.text and
             "Ivy Main HP:938/1000" in view.status_label.text and
             "Protected Ally HP:1000/1000" in view.status_label.text and
             "MP:92/100 OD:200" in view.status_label.text):
@@ -137,5 +144,5 @@ func _run() -> void:
     check.close()
     print("Godot 4.7.2 Ivy source Cover native OpenGL PNG PASS: ",
         png.get_width(),"x",png.get_height(),
-        " original ally1000 Ivy938 MP92 OD200 charges1")
+        " original ally1000 Ivy938 MP92 OD200 charges1 stored62")
     quit(0)
