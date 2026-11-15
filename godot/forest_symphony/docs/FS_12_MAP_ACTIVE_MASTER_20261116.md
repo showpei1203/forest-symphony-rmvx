@@ -1,3 +1,21 @@
+## ORIGINAL WORLD BIBLE AUTHORITY (DO NOT RENAME)
+Original **2026-11-14** world bible was recovered from the sealed A36B R2 archive at:
+- data/fs_six_biomes_world_catalog.json
+- docs/FS_SIX_BIOMES_WORLD_ART_PLAN_20261114.md
+- Private 173-file [A36B R2 source ZIP](https://drive.google.com/file/d/15t5Yn6zdTC8vG1dOYrLmMEHGVYqjEjwO/view), SHA256 7e1cd53397aeb76deb09ceed0dc3002b5b7cc56c0a7fe40fac684a32eda6ac2b.
+
+**Canonical paired scene IDs / names** from that already-existing source:
+| Biome | Dungeon Scene ID / proper name | Village Scene ID / proper name |
+|---|---|---|
+| 蒼翠精靈林 | FS_01_MAZE 幽葉迴廊 | FS_01_VILLAGE 苔光村 |
+| 凜霜雪原 | FS_02_MAZE 冰脊迷谷 | FS_02_VILLAGE 霜燈聚落 |
+| 風蝕金砂 | FS_03_MAZE 風沙裂谷 | FS_03_VILLAGE 星井綠洲 |
+| 赤焰火山 | FS_04_MAZE 熔脈裂橋 | FS_04_VILLAGE 灰鑄工坊城 |
+| 幽霧水澤 | FS_05_MAZE 泥潭迷水 | FS_05_VILLAGE 蘆燈水上村 |
+| 星晶浮島 | FS_06_MAZE 星盤斷空 | FS_06_VILLAGE 虹晶臺地村 |
+
+The 2026-11-16 catalog is an **execution tracker built on top of that original world bible**, not a replacement for its scene identifiers, palettes, materials, full independent PAR lists, visual guidance or exclusions. Any simple names such as "森林迷宮" are descriptions, not official new titles.
+
 # Forest Symphony | WORLD MAP ACTIVE MASTER v1.0 | 2026-11-16
 
 ## 0. NON-NEGOTIABLE GOAL (12 maps)
