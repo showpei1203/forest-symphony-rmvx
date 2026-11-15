@@ -3,9 +3,11 @@ class_name FSBossSummonRuntime
 
 # FS #401 Runtime Boss provider + #440 MasterSetup15 data authority.
 # Both START_SUMMONS and CORE_GROUPS source constants matched exactly.
-# Only logical troop summons and the known fixed/growth stat formulas
-# are implemented. ma_call_ally spatial placement/spriteset, actual RPG::State effects, EXP/Gold reward hooks and summoning
-# animations still require original VX runtime witnesses. The limited
+# Logical troop summons and fixed/growth stat formulas are source-shaped.
+# The separate FSBossCombatStates adapter applies the bounded, source-gated
+# State77/122-129/140-143/150-152 damage/stat/ATB expiry subset.
+# Spatial spriteset placement, unrelated RPG State alias effects, EXP/Gold
+# and summoning animations still require original VX runtime witnesses. The limited
 # global Field404 element-damage subset is already integrated.
 #
 # All safe failures do NOT set a "summoned" flag and do NOT modify roster.
@@ -22,8 +24,9 @@ var failures: Array[String] = []
 var events: Array[Dictionary] = []
 var rng: FSAIRandom = FSAIRandom.new()
 var active: bool = false
-# Phase/Law STATE EFFECTS remain intent-only. The limited source #404
-# GLOBAL weather damage is applied through battle.field_weather below.
+# Phase runtime produces ID intents. FSBossCombatStates verifies and
+# applies its restricted combat subset; source #404 GLOBAL weather damage
+# is applied independently through battle.field_weather below.
 var phase_runtime: FSBossPhaseRuntime = FSBossPhaseRuntime.new()
 
 static func _member(enemies: Array[Dictionary],id: int,alive_only: bool) -> Dictionary:
