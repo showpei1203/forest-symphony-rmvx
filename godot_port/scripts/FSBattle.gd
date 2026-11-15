@@ -66,6 +66,10 @@ var ivy_pain_source: FSIvyPainSourceProvider = FSIvyPainSourceProvider.new()
 # ComboCore OD mitigation: learned passive142 + verified Equip/State Notes.
 # Original main Cover grants +6% before recalculating guard defense.
 var ivy_od_defense: FSIvyODDefense = FSIvyODDefense.new()
+# Original Game_Battler/Tankentai Ivy145 State85+100 subset.
+# Synthetic source-shape only until real post-Apply 11 tables, Skill145
+# JP/charge/cooldown and shared State100 Aizhuo ownership are verified.
+var ivy_furnace: FSIvyFurnaceRuntime = FSIvyFurnaceRuntime.new()
 
 func enable_private_ivy_pain_notes(folder:String="res://data")->bool:
     ivy_pain.active=false
@@ -262,6 +266,10 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
             _refresh_element_source(target)) or not (
             _refresh_ivy_pain_source(attacker)) or not (
             _refresh_ivy_pain_source(target)):
+        return false
+    if bool(target.get("fs_ivy_furnace_state_authority_pending",false)) or bool(
+            attacker.get("fs_ivy_furnace_state_authority_pending",false)):
+        changed.emit("Ivy145 State85 ATB 狀態期限已失去來源，不消耗攻擊亂數")
         return false
     # Source stock attack_effect skips dead targets. Protect direct API
     # calls as well as queued ACT, without changing legacy test-only paths.
@@ -471,6 +479,24 @@ func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> boo
     if bool(user.get("actor",false)) and not skill_id in user.get("skills",[]):
         changed.emit("角色未習得技能 ID %d" % skill_id)
         return false
+    if bool(user.get("fs_ivy_furnace_state_authority_pending",false)) or bool(
+            target.get("fs_ivy_furnace_state_authority_pending",false)):
+        changed.emit("State85 的實際 ATB 期限來源缺失，禁止支付技能 MP")
+        return false
+    # A source-gated self-only Ivy145 ACT can attach the original 85+100
+    # pair only with a PURE verified shape. Full MasterSetup note with
+    # JP/charge/ricarica remains unsupported and must fail closed.
+    if skill_id==145 and ivy_furnace.active and bool(
+            skill.get("fs_ivy_furnace_source_verified",false)):
+        if user!=target:
+            changed.emit("145 必須向艾薇本人附加狀態")
+            return false
+        var furnace_plan:Dictionary=ivy_furnace.preview(self,user,skill)
+        if not bool(furnace_plan.get("ok",false)):
+            changed.emit("原版145 State85/100 效果不可驗證：" + str(
+                furnace_plan.get("reason","")))
+            return false
+        return true
     # Pure source Skill147 quote must pass at COMMAND selection, before
     # paying MP, ATB ACT or drawing YEM HIT RNG.
     var revenge_quote: Dictionary=ivy_revenge.preview(user,skill)
@@ -599,6 +625,20 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     if not skill_preflight(user,target,skill_id):
         return false
     var skill: Dictionary = db.record("skills",skill_id)
+    if skill_id==145 and ivy_furnace.active and bool(
+            skill.get("fs_ivy_furnace_source_verified",false)):
+        var furnace_quote:Dictionary=ivy_furnace.preview(self,user,skill)
+        if not bool(furnace_quote.get("ok",false)):
+            return false
+        var result:Dictionary=ivy_furnace.apply(
+            self,user,skill,furnace_quote)
+        if not bool(result.get("ok",false)):
+            changed.emit("艾薇145 已拒絕不完整的狀態交易："+str(
+                result.get("reason","")))
+            return false
+        user["fs_last_action_result"]="hit"
+        changed.emit("艾薇145 ACT 完成：已扣 MP16，State85 4次 ATB READY 後待解除；State100 來源限定")
+        return true
     var revenge_plan: Dictionary=ivy_revenge.preview(user,skill)
     if not bool(revenge_plan.get("ok",false)):
         return false
@@ -918,6 +958,7 @@ func advance_atb(delta: float) -> void:
         # Tankentai calls remove_states_auto ON new ATB readiness, before
         # action selection. Timed Boss 128/129 use that exact edge, not ACT
         # completion and not the global FPS clock.
+        ivy_furnace.on_atb_ready(self)
         boss_state_effects.on_atb_ready(self)
         if not active:
             break
