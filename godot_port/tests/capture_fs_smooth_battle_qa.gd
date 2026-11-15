@@ -101,7 +101,7 @@ func _run() -> void:
     if not b.start():
         _fail("synthetic battle start refused")
         return
-    var hero: Dictionary = b.party[0]
+
     # Actual source-candidate battles resolve damage BEFORE screenshot;
     # these are not artificially authored display labels.
     b.accuracy.scripted_rolls = [0,99,0,99,99,0,1]
