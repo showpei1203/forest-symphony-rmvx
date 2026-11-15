@@ -16,6 +16,7 @@ var errors: Array[String] = []
 var events: Array[Dictionary] = []
 var action_serial: int = 0
 var direct_serial: int = 0
+var last_action_serial: int = 0
 var session: Dictionary = {}
 
 func _fail(reason: String) -> Dictionary:
@@ -26,6 +27,7 @@ func _fail(reason: String) -> Dictionary:
 func begin_action(serial: int=0) -> void:
     direct_serial += 1
     action_serial = serial if serial>0 else direct_serial
+    last_action_serial=action_serial
     session.clear()
 
 func end_action() -> void:
@@ -37,6 +39,7 @@ func start_battle(battle) -> bool:
     # exactly 10% of its MAX OD. Does not infer that 1000 is universal.
     action_serial=0
     direct_serial=0
+    last_action_serial=0
     session.clear()
     for ally in battle.party:
         if int(ally.get("id",0))!=IVY_ID or not bool(
@@ -56,14 +59,16 @@ func start_battle(battle) -> bool:
             ally["max_od"])*0.10),0,int(ally["max_od"]))
     return true
 
-func activate_main_guard(battle,ivy: Dictionary,skill: Dictionary) -> Dictionary:
-    # This is an explicit source ACTION-END hook, not a free status flag.
-    # Skill <ig:charges,actions,reduce> is used by source
-    # ALBERT_IVY_CLONE.apply_action_skill_tags after valid ACT.
+func preview_main_guard(battle,ivy: Dictionary,skill: Dictionary) -> Dictionary:
+    # Pure skill-source quote, used at ATB COMMAND selection AND ACT end.
+    # Unknown source Note or missing MaxOD cannot spend MP.
     if not active or not battle.party.has(ivy) or int(
             ivy.get("id",0))!=IVY_ID or not bool(
+            ivy.get("actor",false)) or not bool(
             ivy.get("fs_ivy_guard_source_verified",false)):
         return _fail("無原版艾薇已驗證的護衛來源")
+    if not ivy.has("max_od") or int(ivy["max_od"])<=0 or not ivy.has("od"):
+        return _fail("艾薇最大 OD 權威尚未驗證")
     if not bool(skill.get("fs_ivy_guard_tag_verified",false)):
         return _fail("艾薇護衛技能 Note 來源未驗證")
     var rx:=RegEx.new()
@@ -72,15 +77,36 @@ func activate_main_guard(battle,ivy: Dictionary,skill: Dictionary) -> Dictionary
     var match_result: RegExMatch=rx.search(str(skill.get("note","")))
     if match_result==null:
         return _fail("原版護衛技能沒有 ig/ivy_guard 設定")
-    var charges: int=int(match_result.get_string(1))
-    var actions: int=int(match_result.get_string(2))
-    var reduce: int=clampi(int(match_result.get_string(3)),0,95)
-    ivy["fs_ivy_guard_charges"]=maxi(0,charges)
-    ivy["fs_ivy_guard_actions_left"]=maxi(0,actions)
-    ivy["fs_ivy_guard_reduce"]=reduce
+    return {"ok":true,"charges":int(match_result.get_string(1)),
+        "actions":int(match_result.get_string(2)),
+        "reduce":clampi(int(match_result.get_string(3)),0,95)}
+
+func activate_main_guard(battle,ivy: Dictionary,skill: Dictionary) -> Dictionary:
+    # Original ALBERT_IVY_CLONE.end_action applies source <ig> only AFTER
+    # a successful ACT, never at command selection or during charge.
+    var plan: Dictionary=preview_main_guard(battle,ivy,skill)
+    if not bool(plan.get("ok",false)):
+        return plan
+    ivy["fs_ivy_guard_charges"]=int(plan["charges"])
+    ivy["fs_ivy_guard_actions_left"]=int(plan["actions"])
+    ivy["fs_ivy_guard_reduce"]=int(plan["reduce"])
     ivy["fs_ivy_guard_activated_serial"]=action_serial
-    return {"ok":true,"charges":charges,"actions":actions,
-        "reduce":reduce}
+    return plan
+
+func owner_action_finished(ivy: Dictionary) -> void:
+    # Original tick_owner_action must skip the SAME action that first
+    # activated <ig> (source @albert_ic_guard_activated_serial).
+    if not active or int(ivy.get("id",0))!=IVY_ID or not bool(
+            ivy.get("fs_ivy_guard_source_verified",false)) or int(
+            ivy.get("fs_ivy_guard_actions_left",0))<=0:
+        return
+    if int(ivy.get("fs_ivy_guard_activated_serial",-1))==last_action_serial:
+        return
+    ivy["fs_ivy_guard_actions_left"]=maxi(0,int(
+        ivy["fs_ivy_guard_actions_left"])-1)
+    if int(ivy["fs_ivy_guard_actions_left"])<=0:
+        ivy["fs_ivy_guard_charges"]=0
+        ivy["fs_ivy_guard_reduce"]=0
 
 func _gain_percent(ivy: Dictionary,percent: int) -> bool:
     if not ivy.has("max_od") or int(ivy["max_od"])<=0 or not ivy.has("od"):
