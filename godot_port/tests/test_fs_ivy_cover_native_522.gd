@@ -172,5 +172,122 @@ func _run() -> void:
     if not _check(b.start() and int(ivy["od"])==old_od,
             "redrawing/starting same battle cannot grant repeated start OD"): return
 
+    # SOURCE-GATED Ivy Skill141 is a true SELF (scope11) command.
+    # It must NOT grant guard at selection; only after the Tankentai ACT
+    # resolves, and must pay MP8 ONCE. The original real Skill141 has
+    # extra unported JP/charge/recharge/OD tags; synthetic clean Note
+    # subset explicitly marked verified for this native test.
+    var q: FSBattle=_battle()
+    var skills: Array=[]
+    skills.resize(142)
+    skills[141]={"id":141,"name":"Ivy Cover (source-only subset)",
+        "scope":11,"base_damage":0,"atk_f":0,"spi_f":0,
+        "hit":100,"physical_attack":false,"variance":0,
+        "mp_cost":8,"plus_state_set":[],"minus_state_set":[],
+        "damage_to_mp":false,"absorb_damage":false,
+        "element_set":[],"note":"<ig:2,2,20>",
+        "fs_ivy_guard_tag_verified":true}
+    q.db.tables["skills"]=skills
+    var q_ivy: Dictionary=q.party[1]
+    q_ivy["skills"]=[141]
+    if not _check(q.start(),"source clean Ivy skill ACT battle starts"): return
+    q_ivy["source_at_active"]=true
+    q_ivy["source_atb_count_up"]=false
+    q_ivy["source_atb_count"]=1000
+    q.accuracy.scripted_rolls=[95]
+    if not _check(not q.queue_actor_action(1,"skill",0,141) and
+            int(q_ivy["mp"])==100,
+            "scope11 Ivy guard cannot be cast onto another ally"): return
+    if not _check(q.queue_actor_action(1,"skill",1,141) and
+            q.has_actor_pending_action(1) and
+            int(q_ivy["mp"])==100 and
+            int(q_ivy["fs_ivy_guard_charges"])==0 and
+            q.accuracy.scripted_rolls==[95],
+            "Ivy self-buff COMMAND only queues, no charge/MP/RNG yet"): return
+    q.advance_atb(1.0/60.0)
+    if not _check(q.action_queue.completed.size()==1 and
+            bool(q.action_queue.completed[0]["success"]) and
+            int(q_ivy["mp"])==92 and
+            int(q_ivy["fs_ivy_guard_charges"])==2 and
+            int(q_ivy["fs_ivy_guard_actions_left"])==2 and
+            int(q_ivy["od"])==100 and
+            q.accuracy.scripted_rolls==[95] and
+            not q.has_actor_pending_action(1),
+            "valid Ivy ACT pays MP8, activates 2 guards and does NOT tick own buff or roll HIT"): return
+
+    # The original source includes independent target and guard power
+    # calculations for incoming ENEMY SKILLS as well as ordinary attacks.
+    var enemy_skill: Dictionary={
+        "id":1,"name":"Synthetic Single Magic",
+        "scope":1,"base_damage":100,"atk_f":100,"spi_f":0,
+        "hit":95,"physical_attack":false,"variance":0,
+        "mp_cost":10,"plus_state_set":[],"minus_state_set":[],
+        "element_set":[],"note":"",
+        "has_critical":false,"ignore_defense":false,
+        "damage_to_mp":false,"absorb_damage":false,
+        "fs_smooth_source_verified":true}
+    q.db.tables["skills"][1]=enemy_skill
+    q.skill_core.active=true
+    q_ivy["fs_smooth_battler_verified"]=true
+    q_ivy["fs_smooth_element_neutral_verified"]=true
+    q.party[0]["fs_smooth_battler_verified"]=true
+    q.party[0]["fs_smooth_element_neutral_verified"]=true
+    q.enemies[0]["fs_smooth_battler_verified"]=true
+    var q_enemy: Dictionary=q.enemies[0]
+    var q_ally: Dictionary=q.party[0]
+    q.accuracy.scripted_rolls=[0,99,99,99]
+    var q_ivy_hp: int=int(q_ivy["hp"])
+    var q_ally_hp: int=int(q_ally["hp"])
+    var q_enemy_mp: int=int(q_enemy["mp"])
+    if not _check(q.skill_preflight(q_enemy,q_ally,1) and
+            q.accuracy.scripted_rolls==[0,99,99,99] and
+            q.use_skill(q_enemy,q_ally,1) and
+            int(q_ally["hp"])==q_ally_hp and
+            int(q_ivy["hp"])==q_ivy_hp-137 and
+            int(q_enemy["mp"])==q_enemy_mp-10 and
+            int(q_ivy["od"])==200 and
+            int(q_ivy["fs_ivy_guard_charges"])==1 and
+            q.accuracy.scripted_rolls.is_empty(),
+            "enemy skill source190->184 original, Ivy own DEF20 skill171 then guard20%=137, MP10 paid once"): return
+
+    # A completed Ivy GUARD command advances actions_left once even
+    # though no attack()/use_skill() method is involved.
+    q_ivy["source_at_active"]=true
+    q_ivy["source_atb_count_up"]=false
+    q_ivy["source_atb_count"]=1000
+    if not _check(q.queue_actor_action(1,"guard") and
+            int(q_ivy["fs_ivy_guard_actions_left"])==2,
+            "guard command does not tick Ivy duration at selection"): return
+    q.advance_atb(1.0/60.0)
+    if not _check(q.action_queue.completed.size()==2 and
+            int(q_ivy["fs_ivy_guard_actions_left"])==1 and
+            int(q_ivy["fs_ivy_guard_charges"])==1,
+            "guard ACT counts one owner action, retaining one cover duration"): return
+    q_ivy["source_at_active"]=true
+    q_ivy["source_atb_count_up"]=false
+    q_ivy["source_atb_count"]=1000
+    if not _check(q.queue_actor_action(1,"guard"),
+            "second owner GUARD ACT can start"): return
+    q.advance_atb(1.0/60.0)
+    if not _check(q.action_queue.completed.size()==3 and
+            int(q_ivy["fs_ivy_guard_actions_left"])==0 and
+            int(q_ivy["fs_ivy_guard_charges"])==0 and
+            int(q_ivy["fs_ivy_guard_reduce"])==0,
+            "second owner action expires Ivy guard, remaining charge cleared"): return
+
+    # Original real Skill141 has further JP/charge/recharge/io/MPU/pop
+    # authority. It must be refused, not stripped to an imaginary buff.
+    q.db.tables["skills"][141]["note"]="<jp cost:400>\\n<ig:2,2,20>"
+    q_ivy["source_at_active"]=true
+    q_ivy["source_atb_count_up"]=false
+    q_ivy["source_atb_count"]=1000
+    q.accuracy.scripted_rolls=[95]
+    var q_mp_before: int=int(q_ivy["mp"])
+    if not _check(not q.queue_actor_action(1,"skill",1,141) and
+            int(q_ivy["mp"])==q_mp_before and
+            int(q_ivy["fs_ivy_guard_charges"])==0 and
+            q.accuracy.scripted_rolls==[95],
+            "real MasterSetup guard skill extra JP/charge Notes fail closed before ACT/MP"): return
+
     print("FS Ivy Main Cover V1.6.2 source guard selection, 2x independent power, charges, OD, MISS and clone fail-close PASS")
     quit(0)
