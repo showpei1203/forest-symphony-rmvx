@@ -1,3 +1,18 @@
+# CURRENT｜Forest Symphony A35 R8 R3 | 2026-11-16
+
+**ENGINE PASS · NAV PASS · REAL GPU 4/4 PASS · COTTAGE GLARE FIXED · ART HOLD.** Godot 4.7.2 map HD-2D only. Do not reset to VX/A33 or touch A36C/combat.
+
+- [R8 R3 formal Handoff](docs/A35_R8_R3_NATIVE_HANDOFF_20261116.md) | [Failure Log](docs/A35_R8_R3_FAILURE_LOG_20261116.md) | [Godot real grove light script](scripts/a35_r8_r3_grove_light.gd) | [reproducible scene builder](tools/a35_r8_r3_build.py) | [GPU pixel QA](tools/a35_r8_r3_gpu_qa.py).
+- **[Private FULL native Godot R8 R3 QA ZIP](https://drive.google.com/file/d/1uGa7waQ-SwSSWVcgGUnbmlI7PjRaEKC2/view)**: Google Drive provider readback 398 files, 199,988,204 bytes, owner-only shared=false; local ZIP CRC PASS SHA256 1c235f6155298a8f4bd54173e228ad4061ac8abced29d3d296136e0567983830. Contains all code, private assets, real GPU screenshots/QA logs.
+- [Private SOURCE ZIP](https://drive.google.com/file/d/1y5mkwx4LUGXdAQH7hCuziXTA7G6u3jah/view) (387 files, 188,126,672 bytes, SHA 14d7a30dc6d44291d8206d18156169cfe1f8d228d5aba05df83bd386ee4adf3c), original R8 R2 Ground/assets untouched.
+- New isolated scene: a35_r8_r3_grove_balance_scene.tscn. R8 R2 secondary light overbrightened east cottage; moved (1090,280) -> grove (805,90), energy .66 -> .29, scale 3.4 -> 2.2. R8 R2 scene historical unchanged.
+- **Original Godot night GPU 4/4**; exact OFF control R2-vs-R3 **0 changed pixels**, new forest 45,608 pixels within its light ROI, 0 outside, of which 43,667 upper forest. Original east cottage was overbrightened by 65,972 pixels; R3 causes **0 changed pixels** in same cottage ROI.
+- Real Godot source and collision PASS: 187 original PAR, 175 trunks and 175 alpha-canopy occluders, immutable Ground SHA, NAV 8/8 gates and 4/4 main routes unchanged.
+- [Four-way GPU-derived 1:1 comparison](https://drive.google.com/file/d/1w6bmiMwzyZGcbJIrgTSGty1TaztmfzDd/view) is contact of real GPU frames, not a native frame itself.
+- Next R8 R3 day/dusk/night real light variation QA; R6 conifer jagged leaves still ART HOLD. Ground3 only after foliage art gate, separate candidate preserving Ground SHA. Use GitHub for public text code/Handoff, owner-only Drive for private source art/ZIP, every stage QA + Failure Log + Handoff.
+
+---
+
 # CURRENT | Forest Symphony A35 R8 R2 — Balanced Canopy Fill + 2-Light Test | 2026-11-16
 
 **ENGINE PASS · NAV PASS · REAL GPU 4/4 PASS · ART HOLD.** Godot 4.7.2 map/HD-2D only. Do not touch RPG Maker VX, parallel A36C, combat or sealed historical A35 R2–R8.
