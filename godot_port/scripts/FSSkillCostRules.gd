@@ -82,6 +82,19 @@ static func preview(skill: Dictionary, user: Dictionary) -> Dictionary:
             return _fail("穿透 Note 解析器設定錯誤")
         for match_result in pen_note.search_all(leftover):
             leftover = leftover.replace(match_result.get_string(0),"")
+    # Source ALBERT_IVY_CLONE.end_action handles its own <ig:C,A,R>
+    # buff after a VALID ACT, never as a raw damage/cost modifier. Only
+    # the exact synthetic source-verified Actor#5 Skill#141 scope11 form
+    # is cost-neutral; the real full Skill141 Note still has JP/charge/
+    # recharge/pop/OD tags and MUST remain blocked until those systems port.
+    if bool(skill.get("fs_ivy_guard_tag_verified",false)) and int(
+            skill.get("id",0))==141 and int(
+            skill.get("scope",0))==11 and int(user.get("id",0))==5:
+        var ivy_note:=RegEx.new()
+        if ivy_note.compile("(?i)<\\s*(?:ig|ivy_guard)\\s*:\\s*[0-9]+\\s*,\\s*[0-9]+\\s*,\\s*[0-9]+\\s*>")!=OK:
+            return _fail("原版 Ivy 護衛標記解析器錯誤")
+        for tag in ivy_note.search_all(leftover):
+            leftover=leftover.replace(tag.get_string(0),"")
     # Source #404 Field Weather Notes affect the global field AFTER a
     # skill effect, not the MP quote. Only these exact known tags are
     # neutral to #411's MP-cost parsing. Unrecognized tags still fail.
