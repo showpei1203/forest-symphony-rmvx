@@ -111,6 +111,7 @@ def build(input_zip:Path,output_zip:Path,work:Path,art_script:Path):
                     'const MAN := "res://'+NEW_MAN+'"')
     nat=nat.replace('changed!=32 or retained!=155','changed!=13 or retained!=174')
     nat=nat.replace("R5","R6")
+    nat=nat.replace("32 replaced, 155 retained","13 replaced, 174 retained")
     # Ensure old R5 path wasn't accidentally renamed by blanket version replacement.
     nat=nat.replace("scenes/a35_r6_botanical_forest_hd2d_scene.tscn",
                     BASE_SCENE)
