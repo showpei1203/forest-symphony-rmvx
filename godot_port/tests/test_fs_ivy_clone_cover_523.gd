@@ -114,7 +114,10 @@ func _run() -> void:
     before_clone=int(clone["hp"])
     before_target=int(target["hp"])
     damage=b.attack(enemy,target)
-    if not _check(damage==65 and int(clone["hp"])==before_clone-65 and
+    # Clone used its own Guard ACT to reset emergency Cover: guarding
+    # posture remains active, so own power77 halves to39, then source
+    # 15% emergency reduction rounds to33, NOT the unguarded65.
+    if not _check(damage==33 and int(clone["hp"])==before_clone-33 and
             int(target["hp"])==before_target and
             int(ivy["od"])==160 and
             b.ivy_cover.events.size()==2,
@@ -159,7 +162,7 @@ func _run() -> void:
     _roll(b)
     before_clone=int(clone["hp"])
     damage=b.attack(enemy,target)
-    if not _check(damage==65 and int(clone["hp"])==before_clone-65 and
+    if not _check(damage==33 and int(clone["hp"])==before_clone-33 and
             int(ivy["od"])==300 and
             str(b.ivy_cover.events[-1]["guard_type"])=="clone",
             "casting main Ivy falls back to source-verified clone"):return
