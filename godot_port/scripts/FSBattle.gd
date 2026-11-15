@@ -311,6 +311,8 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     boss_state_effects.commit_hit(target,hit)
     if accuracy.active:
         target["fs_last_action_result"] = "hit"
+    if ivy_cover.active:
+        ivy_cover.party_damage(self,attacker,target,int(hit["hp"]))
     changed.emit("%s 攻擊 %s：HP %d／護盾吸收 MP %d" % [
         attacker.get("name","?"),target.get("name","?"),
         int(hit["hp"]),int(hit["mp"])])
@@ -538,6 +540,8 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
     boss_state_effects.commit_hit(target,hit)
     if accuracy.active:
         target["fs_last_action_result"] = "hit"
+    if ivy_cover.active:
+        ivy_cover.party_damage(self,user,target,int(hit["hp"]))
     target["hp"] = mini(int(target["hp"]),maxi(1,int(target.get("maxhp",1))))
     if str(planned.get("kind","none")) != "none":
         var applied: Dictionary = field_weather.apply_source_object(
