@@ -439,6 +439,16 @@ func _refresh_battle_status() -> void:
                 int(actor.get("fs_ivy_guard_charges",0)),
                 int(actor.get("fs_ivy_guard_actions_left",0)),
                 int(actor.get("fs_ivy_guard_reduce",0))])
+            if bool(actor.get("fs_ivy_fatal_used",false)):
+                all_lines.append("  替身承擔：本場致死保命已使用（技能146）")
+        if battle.ivy_pain.active and int(actor.get("id",0))==5:
+            all_lines.append("  蓄痛：%d（原版實際 HP 損失／來源限定）" % int(
+                actor.get("fs_ivy_stored_pain",0)))
+        if battle.ivy_cover.active and str(
+                actor.get("fs_clone_role",""))=="ivy":
+            all_lines.append("  映體護衛：%s" % (
+                "本次已用／自己行動後重置" if bool(
+                actor.get("fs_ivy_clone_guard_used",false)) else "可以緊急護衛"))
     for enemy in battle.enemies:
         var enemy_line: String = "%s HP:%s/%s %s" % [
             enemy.get("name","?"),enemy.get("hp",0),enemy.get("maxhp",0),
