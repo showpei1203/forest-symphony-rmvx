@@ -14,6 +14,22 @@ func _run() -> void:
     var biomes: Array=registry.record.get("biomes",[])
     if all.size()!=12 or biomes.size()!=6:
         _fail("must have exactly 12 map slots and 6 biome families");return
+    var canon: Array[String]=[
+        "FS_01_MAZE","FS_01_VILLAGE","FS_02_MAZE","FS_02_VILLAGE",
+        "FS_03_MAZE","FS_03_VILLAGE","FS_04_MAZE","FS_04_VILLAGE",
+        "FS_05_MAZE","FS_05_VILLAGE","FS_06_MAZE","FS_06_VILLAGE"
+    ]
+    var titles: Array[String]=[
+        "幽葉迴廊","苔光村","冰脊迷谷","霜燈聚落",
+        "風沙裂谷","星井綠洲","熔脈裂橋","灰鑄工坊城",
+        "泥潭迷水","蘆燈水上村","星盤斷空","虹晶臺地村"
+    ]
+    for i in range(12):
+        if all[i].get("canonical_scene_id","")!=canon[i] or all[i].get("canonical_display_name","")!=titles[i]:
+            _fail("Original 2026-11-14 world-bible name/ID overwritten at "+str(i));return
+    for family in biomes:
+        if family.get("palette_hex",[]).size()!=6:
+            _fail("Missing original six-color palette for "+str(family.get("id","")));return
     var seen: Dictionary={}
     var roles_by_biome: Dictionary={}
     for entry in all:
