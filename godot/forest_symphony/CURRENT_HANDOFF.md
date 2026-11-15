@@ -1,3 +1,18 @@
+# CURRENT | FS SIX BIOMES × DUNGEON/VILLAGE = 12 MAPS | 2026-11-16
+
+**Godot 4.7.2 ONLY. All 12 map titles and palette/materials from original 2026-11-14 FS world bible. Map factory infrastructure NATIVE PASS. Forest village ENGINE/NAV/GPU PASS ART HOLD. Forest dungeon SOURCE/GPU PASS, NAV/WATER/ART HOLD. No formal ART-sealed map yet.**
+
+- **Original canonical twelve-map master:** [FS 12-map Active Master](docs/FS_12_MAP_ACTIVE_MASTER_20261116.md). **[Exact status of all twelve biomes and paired maps](data/fs_12_map_catalog.json)**. Godot-native loader: [world-map registry](scripts/fs_world_map_registry.gd), [real 12-slot Godot test](tests/test_fs_12_map_catalog_native.gd).
+- Names: 01 幽葉迴廊／苔光村; 02 冰脊迷谷／霜燈聚落; 03 風沙裂谷／星井綠洲; 04 熔脈裂橋／灰鑄工坊城; 05 泥潭迷水／蘆燈水上村; 06 星盤斷空／虹晶臺地村. These proper names, IDs FS_01_MAZE..FS_06_VILLAGE and biome color palettes are source authority; do not reset to generic labels or invent new names.
+- [12-map factory V1 + forest dungeon source/NATIVE Handoff](docs/FS_12_MAP_FACTORY_V1_NATIVE_HANDOFF_20261116.md) | [Failure Log](docs/FS_12_MAP_FACTORY_V1_FAILURE_LOG_20261116.md).
+- **FS_01_VILLAGE「苔光村」**: existing [private R8 R3 full Godot village ZIP](https://drive.google.com/file/d/1uGa7waQ-SwSSWVcgGUnbmlI7PjRaEKC2/view), 187 PAR/175 tree trunk+175 canopy shadow occluders, 4+6 real GPU phase screenshots, native 8/8 gates, 4/4 routes PASS. ART HOLD; source, scenes, Ground untouched.
+- **FS_01_MAZE「幽葉迴廊」**: [FULL private 80×58 Godot R7B UTF-8 reconciled ZIP](https://drive.google.com/file/d/1vCUPIBc6Yv3vtc3Wy7cDRBvI8Y65-9wf/view), **193 files / 73,228,430 bytes / SHA256 de0e2039327b234b3adffa2ab110fbaf7620022f566febb5c66cf618c912ded5**, CRC PASS/Drive provider owner-only. [Actual native A/B forest image](https://drive.google.com/file/d/1MSMGYlS1QLLHENuxjVpKtdsSOSeWxMcO/view).
+- Forest source provenance: exact A36B R2 private Ground/Shadow and full independent PNGs retained, NOT A36C R6 40 older texture variants; merge A36C 56 new grove footpoints only. 326 independent PAR/310 trees. Real Godot source/native 2x2560×1856 GPU PASS; **910809 changed pixels only inside 56 moved-tree ROI, 0 outside**. **NAV HOLD, 148 river obstruction candidate tiles not integrated, no verified maze entry/exit, ART HOLD**.
+- Original A36B and parallel A36C R6 branch unmodified. No VX, no overwrite of Godot combat/NPC/event branch, private image/binaries only Drive and text docs/code on GitHub.
+- **NEXT:** Forest dungeon true 148 water mask, legal navigable maze exit/routes + character obstruction, then native Ground3 organic roads/grass/snow style template. Once first two maps are art/physics approved, move into second biome 凜霜雪原 and continue all twelve, not just endlessly retouch forest trees. Every stage real scene/assets+native QA, Failure Log, complete Handoff, Drive exact ID and SHA verification.
+
+---
+
 # CURRENT | Forest Symphony A35 R8 R3 D1 | 2026-11-16
 
 **Godot 4.7.2 · ENGINE PASS · NAV PASS · ORIGINAL GPU (4+6) PASS · THREE PHASE COTTAGE PROTECTION PASS · ART HOLD.** Dedicated map/HD-2D workstream. Preserve sealed prior scenes, original Ground, A36C and independent combat branch. Do NOT reset to VX or A33.
