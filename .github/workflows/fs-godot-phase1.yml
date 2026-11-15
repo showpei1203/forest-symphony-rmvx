@@ -268,6 +268,13 @@ jobs:
         run: |
           set -euo pipefail
           command -v xvfb-run >/dev/null || { echo "xvfb-run unavailable: native screenshot NOT certified"; exit 1; }
+          # Real native screenshot revealed tofu glyphs. Install an OS CJK
+          # fallback on EPHEMERAL GitHub runner only, not on the user PC.
+          if ! fc-list : family | grep -qi "Noto Sans CJK"; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq fonts-noto-cjk
+          fi
+          fc-cache -f >/dev/null
           xvfb-run -a -s "-screen 0 1280x720x24" timeout --signal=TERM --kill-after=5s 65s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --rendering-driver opengl3 --path godot_port --script res://tests/capture_fs_smooth_battle_qa.gd
           test -s "$FS_QA_SCREENSHOT_PATH"
       - name: Upload actual Godot BATTLE screenshot QA witness
