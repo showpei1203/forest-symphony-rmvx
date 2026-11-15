@@ -3,11 +3,14 @@ class_name FSBossCombatStates
 
 # Bounded original RPG::State combat adapter, NOT generic 505-alias parity.
 # Only post-Apply DB-verified state subsets (or explicitly synthetic tests)
-# may be applied. Unsourced Notes, turn-expiring States 128/129, and unknown
-# battler states fail closed. Source: FS_MasterSetup STATES::DATA; ComboCore
-# albert_apply_mana_shield (HP damage after Field404, before execute_damage).
-const SUPPORTED: Array[int] = [77,122,123,124,125,126,127,
+# may be applied. Source: FS_MasterSetup STATES::DATA; ComboCore
+# albert_apply_mana_shield (after Field404, before execute_damage);
+# Tankentai Sprite_ATB.atb -> remove_states_auto at gauge READY.
+# State128/129 have deterministic 100% expiry after 4/2 counters reach 0;
+# any other timed/random or unknown effect fails closed.
+const SUPPORTED: Array[int] = [77,122,123,124,125,126,127,128,129,
     140,141,142,143,150,151,152]
+const TIMED: Dictionary = {128:4,129:2}
 const STATS: Array[String] = ["atk","def","spi","agi"]
 var active: bool = false
 var errors: Array[String] = []
@@ -35,16 +38,22 @@ static func _state(db: FSDatabase,id: int) -> Dictionary:
     var state: Dictionary = db.record("states",id)
     if int(state.get("id",0)) != id:
         return {}
-    # Every supported source State is permanent until an explicit removal.
-    # 128/129 are intentionally excluded: hold_turn4/2, auto_release100.
+    # Only 128/129 may time out. Source #231 removes States on ATB READY;
+    # the original Game_Battler#remove_states_auto decrements 4/2→0,
+    # then removes with guaranteed auto_release_prob=100 next readiness.
     for required in ["atk_rate","def_rate","spi_rate","agi_rate",
             "hold_turn","auto_release_prob","restriction",
             "release_by_damage","slip_damage","state_set","note"]:
         if not state.has(required):
             return {}
-    if int(state["hold_turn"]) != 99 or int(
-            state["auto_release_prob"]) != 0 or int(
-            state["restriction"]) != 0 or bool(
+    if TIMED.has(id):
+        if int(state["hold_turn"]) != int(TIMED[id]) or int(
+                state["auto_release_prob"]) != 100:
+            return {}
+    elif int(state["hold_turn"]) != 99 or int(
+            state["auto_release_prob"]) != 0:
+        return {}
+    if int(state["restriction"]) != 0 or bool(
             state["release_by_damage"]) or bool(state["slip_damage"]):
         return {}
     if not bool(state.get("battle_only",false)) or bool(
@@ -76,6 +85,66 @@ static func _state(db: FSDatabase,id: int) -> Dictionary:
     if id == 77 and _shield_data(note).is_empty():
         return {}
     return state
+
+static func _rates(db: FSDatabase,ids: Array) -> Dictionary:
+    var rates: Dictionary = {}
+    for stat in STATS:
+        rates[stat] = 100.0
+    for value in ids:
+        var record: Dictionary = db.record("states",int(value))
+        for stat in STATS:
+            rates[stat] = float(rates[stat])*float(
+                int(record.get(stat+"_rate",100)))/100.0
+    return rates
+
+func on_atb_ready(battle) -> int:
+    # Native #231 Sprite_ATB.atb calls Game_Battler.remove_states_auto
+    # precisely when a new ATB gauge reaches READY, before AI acts.
+    # An ACT command or arbitrary 60fps frame must not age states.
+    if not active or not battle.boss_runtime.active:
+        return 0
+    var removed: int = 0
+    for enemy in battle.enemies:
+        if not bool(enemy.get("source_just_atb_ready",false)):
+            continue
+        enemy.erase("source_just_atb_ready")
+        var timers: Dictionary = enemy.get("fs_boss_state_turns",{}).duplicate()
+        var owned: Array = enemy.get("fs_applied_boss_states",[]).duplicate()
+        if owned.is_empty():
+            continue
+        var expired: Array[int] = []
+        for value in owned:
+            var id: int = int(value)
+            if not TIMED.has(id):
+                continue
+            var key: String = str(id)
+            if not timers.has(key):
+                _fail(enemy,"Boss State%d ATB 期限計數遺失" % id)
+                continue
+            var left: int = int(timers[key])
+            if left > 0:
+                timers[key] = left-1
+            else:
+                # Only 100% expiry States are supported.
+                expired.append(id)
+        for id in expired:
+            var planned: Array = enemy.get("fs_phase_state_intents",[]).duplicate()
+            var current: Array = enemy.get("states",[]).duplicate()
+            planned.erase(id)
+            current.erase(id)
+            owned.erase(id)
+            timers.erase(str(id))
+            enemy["fs_phase_state_intents"] = planned
+            enemy["states"] = current
+            removed += 1
+            transitions.append({"enemy_id":int(enemy.get("id",0)),
+                "state_id":id,"op":"auto_release_atb_ready",
+                "stage":"bounded_live_state"})
+        enemy["fs_applied_boss_states"] = owned
+        enemy["fs_boss_state_turns"] = timers
+        if not expired.is_empty():
+            enemy["fs_boss_stat_rates"] = _rates(battle.db,owned)
+    return removed
 
 func sync(battle) -> int:
     if not active or not battle.boss_runtime.active:
@@ -111,18 +180,18 @@ func sync(battle) -> int:
             continue
         var was_shielded: bool = previous.has(77)
         var now_shielded: bool = confirmed.has(77)
-        var rates: Dictionary = {}
-        for stat in STATS:
-            rates[stat] = 100.0
+        var timers: Dictionary = enemy.get("fs_boss_state_turns",{}).duplicate()
+        for old in previous:
+            if not confirmed.has(int(old)):
+                timers.erase(str(int(old)))
         for id in confirmed:
-            var record: Dictionary = battle.db.record("states",id)
             current.append(id)
-            for stat in STATS:
-                rates[stat] = float(rates[stat])*float(
-                    int(record[stat+"_rate"]))/100.0
+            if TIMED.has(id) and not previous.has(id):
+                timers[str(id)] = int(TIMED[id])
         enemy["states"] = current
         enemy["fs_applied_boss_states"] = confirmed
-        enemy["fs_boss_stat_rates"] = rates
+        enemy["fs_boss_stat_rates"] = _rates(battle.db,confirmed)
+        enemy["fs_boss_state_turns"] = timers
         enemy["fs_boss_phase_effects_pending"] = false
         if not was_shielded and now_shielded:
             var data: Dictionary = _shield_data(str(
