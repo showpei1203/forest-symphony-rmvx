@@ -254,5 +254,27 @@ func _run() -> void:
             passive_actor) and not passive_actor.has("fs_element_authority"),
             "missing real learned Skill row fail-closes without stale passive"): return
 
+    # A valid fixture was once active. Attempting to switch to PRIVATE
+    # source mode without the post-Apply witness invalidates every old
+    # source snapshot. No stale cached Type data survives the failure.
+    var final_hp: int=int(enemy["hp"])
+    if not _check(not battle.enable_private_element_provider() and
+            not battle.element_provider.active and
+            not battle.element_rates.active and
+            not actor.has("fs_element_authority") and
+            not fallback.has("fs_element_authority") and
+            not enemy.has("fs_element_authority") and
+            int(enemy["hp"])==final_hp,
+            "failed production reauthorization evicts all cached type data"): return
+
+    # Reject an invalid replacement snapshot without retaining the
+    # preceding allowed in-memory source map (security regression).
+    var replacement: Dictionary=_map()
+    replacement["growth_use_enemy_element_rate"]=true
+    if not _check(not bool(passive_battle.element_provider.configure_fixture(
+            replacement).get("ok",false)) and
+            not passive_battle.element_provider.active,
+            "invalid new source map cannot leave previous fixture active"): return
+
     print("FS Phase28 source provider Actor/Class/Enemy real table ranks, weapon/armor KGC, passive/state, atomic equip, ACT and SHA gate PASS")
     quit(0)
