@@ -53,7 +53,7 @@ static func database()->FSDatabase:
         "classes":[null,{"id":1,"position":1,
             "weapon_set":[],"armor_set":[],"learnings":[]}],
         "enemies":[null,{"id":1,"name":"測試木靈",
-            "maxhp":48,"maxmp":0,"atk":2,"def":1,
+            "maxhp":48,"maxmp":0,"atk":9,"def":1,
             "spi":2,"agi":5,"hit":95,"eva":0,
             "has_critical":false,"actions":[],
             "battler_name":"","note":""}],
