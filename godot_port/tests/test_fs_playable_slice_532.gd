@@ -173,7 +173,11 @@ func _run()->void:
             slice.world.amount("item",1)==2 and
             slice.world.switch_on(10) and
             slice.world.self_switch_on(1000,2,"B"),
-            "atomic restore world location/inventory/gold/switches/selfswitches"):return
+            "checkpoint restore result=%s actual=%s map=%d player=%s gold=%d item=%d sw10=%s selfB=%s" % [
+                str(result),str(slice.checkpoint_json.left(230)),
+                slice.world.map_id,str(slice.player),slice.world.gold,
+                slice.world.amount("item",1),str(slice.world.switch_on(10)),
+                str(slice.world.self_switch_on(1000,2,"B"))]):return
     var valid:String=slice.checkpoint_json
     slice.checkpoint_json=valid.replace("\"gold\":50","\"gold\":99")
     if not _check(not bool(slice.load_checkpoint().get("ok",false)) and
