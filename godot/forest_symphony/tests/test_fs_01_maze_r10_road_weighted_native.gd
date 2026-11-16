@@ -37,7 +37,8 @@ func _run()->void:
     var meta:Dictionary=meta_data
     var old:Dictionary=old_data
     var confidence:Array=meta.get("road_confidence",[])
-    if confidence.size()!=GRID.y or meta.get("grid",[])!=[80,58] or meta.get("full_Ground_only_original_sha256","")!=GROUND_SHA:
+    var dims:Array=meta.get("grid",[])
+    if confidence.size()!=GRID.y or dims.size()!=2 or int(dims[0])!=80 or int(dims[1])!=58 or meta.get("full_Ground_only_original_sha256","")!=GROUND_SHA:
         _fail("R10 road confidence provenance/size mismatch",74);return
     for line in confidence:
         if typeof(line)!=TYPE_ARRAY or line.size()!=GRID.x:
