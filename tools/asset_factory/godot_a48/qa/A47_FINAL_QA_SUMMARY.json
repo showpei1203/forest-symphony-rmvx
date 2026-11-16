@@ -1,0 +1,60 @@
+{
+  "stage": "A47",
+  "generator": "2D smooth joint-constrained warp, NOT cut/translate horizontal rows",
+  "reference": [
+    "FS A57",
+    "A62",
+    "A65",
+    "ACTIVE MASTER"
+  ],
+  "candidates": {
+    "R1": {
+      "technical_pass": false,
+      "isolated_frames": 1,
+      "unique_poses": 11,
+      "torso_changed_pixels_f6": 126
+    },
+    "R2": {
+      "technical_pass": false,
+      "isolated_frames": 1,
+      "unique_poses": 11,
+      "torso_changed_pixels_f6": 155
+    },
+    "R3": {
+      "technical_pass": true,
+      "isolated_frames": 0,
+      "unique_poses": 11,
+      "torso_changed_pixels_f6": 169
+    }
+  },
+  "winner": "R3",
+  "sha_body": "6b91059f345931d325bbdf6af8fec12b6d9b5245fd83e53225536dddfa63052a",
+  "Godot_4_7_2": "native PASS",
+  "GPU_pixel_diff": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "real_damage_demo": "PASS",
+  "waist_good_A62": "PASS",
+  "waist_bad_A45": "EXPECTED FAIL",
+  "waist_A47": "PASS",
+  "F6_hit_time": 0.55,
+  "F6_anchor": [
+    30,
+    9
+  ],
+  "hitstop_ms": 70,
+  "paid_PixelLab_spend": 0,
+  "Art_status": "HOLD",
+  "full_FS_ATB": "NOT_RUN"
+}

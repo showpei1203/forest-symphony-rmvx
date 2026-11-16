@@ -1,0 +1,63 @@
+{
+  "stage": "A51",
+  "preferred_engine_candidate": "R4 stable Body + new physical swordtrail & nonlinear cadence",
+  "three_real_native_GPU_candidates": "R4 baseline, A51 SAFE stable R4+FX, A51 new genuine provider body+FX",
+  "all_three_count_12_GPU_frames": true,
+  "R4_source_exact_original_body_SHA256": "0c5a6a8314528bb9708c837bbf5d139aba1f383d756178b57bb1356e3cbe9605",
+  "real_model_R5_head_identity_gate": false,
+  "R5_compensated_head_residual": 273,
+  "R4_compensated_head_residual": 141,
+  "native_stable_Godot": {
+    "stage": "A51 R4 SAFE genuine PixelLab stable body + curved sword FX + nonlinear key times",
+    "job_id": "1c671687-681a-4667-a4e7-956b15fc7eae",
+    "body_sha256": "0c5a6a8314528bb9708c837bbf5d139aba1f383d756178b57bb1356e3cbe9605",
+    "Godot": "4.7.2",
+    "import_pass": true,
+    "import_exit": 0,
+    "gpu_pass": true,
+    "gpu_exit": 0,
+    "contact_pass": true,
+    "contact_exit": 0,
+    "native_frames": 12,
+    "contact_screenshot": true,
+    "status": "PASS"
+  },
+  "native_new_model_Godot": {
+    "stage": "A51 Real PixelLab strong windup + independent curved blade-tip FX",
+    "job_id": "b997be06-c1fa-4741-8fb9-bcedf6fc9a39",
+    "body_sha256": "97ec48a36ba1c219156300c25963fa11d9f3f03ed6782e78d4a829beb8fb919c",
+    "Godot": "4.7.2",
+    "import_pass": true,
+    "import_exit": 0,
+    "gpu_pass": true,
+    "gpu_exit": 0,
+    "contact_pass": true,
+    "contact_exit": 0,
+    "native_frames": 12,
+    "contact_screenshot": true,
+    "status": "PASS"
+  },
+  "model_new_frame_cost_generations": 3.0,
+  "animation_12frame_timings_ms": [
+    100,
+    90,
+    85,
+    75,
+    105,
+    105,
+    60,
+    185,
+    95,
+    80,
+    70,
+    135
+  ],
+  "previews": [
+    "A51_R4_BASE_SAFE_MODEL_NATIVE_GPU_12FRAMES_3X.png",
+    "A51_THREE_WAY_REAL_GODOT_5X.gif",
+    "A51_STABLE_R4_SWORDTRAIL_NATIVE_GODOT_5X.gif",
+    "A51_STABLE_R4_ACTUAL_GODOT_F7_CONTACT.png"
+  ],
+  "A50_R4_not_overwritten": true,
+  "overall_ART": "HOLD; prefer SAFE as current visual candidate, no final user acceptance"
+}

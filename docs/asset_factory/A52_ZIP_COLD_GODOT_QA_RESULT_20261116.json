@@ -1,0 +1,16 @@
+{
+  "stage": "A52",
+  "source": "Original owner private exact A52 387-entry ZIP",
+  "source_SHA256": "a7ee69534b99a44cfdcfd12591b5b48d2ade6b91f2e5a8e3f8d47c5a807d7c07",
+  "source_size": 1927251,
+  "Godot": "4.7.2 AMD RX6700XT native GPU",
+  "candidate": "godot_a52_lower_body_lunge",
+  "import_exit": 0,
+  "import_pass": true,
+  "gpu_exit": 0,
+  "gpu_pass": true,
+  "contact_exit": 0,
+  "contact_pass": true,
+  "status": "PASS",
+  "cleaned_C_scratch": true
+}

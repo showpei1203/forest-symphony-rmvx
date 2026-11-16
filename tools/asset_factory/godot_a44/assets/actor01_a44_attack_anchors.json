@@ -1,0 +1,206 @@
+{
+  "schema": "fs.battle.attack-contact.v2",
+  "stage": "A44",
+  "frame_grid": [
+    4,
+    3
+  ],
+  "frame_size": [
+    64,
+    64
+  ],
+  "sprite_center": [
+    32,
+    32
+  ],
+  "frame_count": 12,
+  "fps": 12,
+  "event": {
+    "frame": 6,
+    "time_sec": 0.55,
+    "hitstop_sec": 0.07
+  },
+  "pose_anchors": [
+    {
+      "frame": 0,
+      "wrist_px": [
+        42,
+        43
+      ],
+      "sword_tip_px": [
+        43,
+        44
+      ],
+      "hit_marker_local_px": [
+        11,
+        12
+      ]
+    },
+    {
+      "frame": 1,
+      "wrist_px": [
+        42,
+        42
+      ],
+      "sword_tip_px": [
+        44,
+        26
+      ],
+      "hit_marker_local_px": [
+        12,
+        -6
+      ]
+    },
+    {
+      "frame": 2,
+      "wrist_px": [
+        43,
+        39
+      ],
+      "sword_tip_px": [
+        46,
+        22
+      ],
+      "hit_marker_local_px": [
+        14,
+        -10
+      ]
+    },
+    {
+      "frame": 3,
+      "wrist_px": [
+        44,
+        36
+      ],
+      "sword_tip_px": [
+        49,
+        19
+      ],
+      "hit_marker_local_px": [
+        17,
+        -13
+      ]
+    },
+    {
+      "frame": 4,
+      "wrist_px": [
+        45,
+        37
+      ],
+      "sword_tip_px": [
+        53,
+        17
+      ],
+      "hit_marker_local_px": [
+        21,
+        -15
+      ]
+    },
+    {
+      "frame": 5,
+      "wrist_px": [
+        47,
+        37
+      ],
+      "sword_tip_px": [
+        59,
+        24
+      ],
+      "hit_marker_local_px": [
+        27,
+        -8
+      ]
+    },
+    {
+      "frame": 6,
+      "wrist_px": [
+        47,
+        41
+      ],
+      "sword_tip_px": [
+        61,
+        41
+      ],
+      "hit_marker_local_px": [
+        29,
+        9
+      ]
+    },
+    {
+      "frame": 7,
+      "wrist_px": [
+        46,
+        44
+      ],
+      "sword_tip_px": [
+        58,
+        54
+      ],
+      "hit_marker_local_px": [
+        26,
+        22
+      ]
+    },
+    {
+      "frame": 8,
+      "wrist_px": [
+        45,
+        45
+      ],
+      "sword_tip_px": [
+        54,
+        58
+      ],
+      "hit_marker_local_px": [
+        22,
+        26
+      ]
+    },
+    {
+      "frame": 9,
+      "wrist_px": [
+        43,
+        44
+      ],
+      "sword_tip_px": [
+        49,
+        57
+      ],
+      "hit_marker_local_px": [
+        17,
+        25
+      ]
+    },
+    {
+      "frame": 10,
+      "wrist_px": [
+        42,
+        43
+      ],
+      "sword_tip_px": [
+        44,
+        56
+      ],
+      "hit_marker_local_px": [
+        12,
+        24
+      ]
+    },
+    {
+      "frame": 11,
+      "wrist_px": [
+        42,
+        43
+      ],
+      "sword_tip_px": [
+        43,
+        44
+      ],
+      "hit_marker_local_px": [
+        11,
+        12
+      ]
+    }
+  ],
+  "source": "A43 documented sword tip coordinates, now animated as actual HitMarker track, no static marker assumption"
+}

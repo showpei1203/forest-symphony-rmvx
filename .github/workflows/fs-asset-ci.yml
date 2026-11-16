@@ -1,0 +1,43 @@
+name: FS factory contract and static QA (no paid generation)
+
+on:
+  pull_request:
+    paths:
+      - "tools/asset_factory/**"
+      - "docs/asset_factory/**"
+      - "config/asset_factory/**"
+      - ".github/workflows/fs-asset-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-static-gates:
+    name: Sprite and map fail-closed unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install minimal deterministic dependencies
+        run: python -m pip install --disable-pip-version-check Pillow numpy
+      - name: Validate syntax
+        run: python -m compileall -q tools/asset_factory
+      - name: Run synthetic pass and intentional-fail fixtures
+        run: python -m unittest discover -s tools/asset_factory/tests -v
+      - name: Execute zero-credit Sprite and Map pilot manifest dry run
+        run: python -m tools.asset_factory.run_a08_pilot
+
+      - name: Export two source-typed A09 scene layout blueprints (no artwork)
+        run: python -m tools.asset_factory.export_a09_scenes --output "$RUNNER_TEMP/a09_scene_blueprints"
+      - name: Publish non-art A09 semantic scene blueprints
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A09_Tiled_Semantic_Blueprints
+          path: ${{ runner.temp }}/a09_scene_blueprints/
+          retention-days: 30
+
+# Config and source-only checks. No secrets, PixelLab calls, user-PC files, native VX claims or private assets.

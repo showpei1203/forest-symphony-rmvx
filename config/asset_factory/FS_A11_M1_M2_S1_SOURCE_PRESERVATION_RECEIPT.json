@@ -1,0 +1,72 @@
+{
+  "schema": "fs-a11-translation-pilot-receipt/v1",
+  "version": "A11-M1-M2-S1",
+  "date": "2026-11-08",
+  "private_delivery": {
+    "file_name": "FS_A11_MASTER_F0_TRANSLATION_PILOT_20261108.zip",
+    "zip_bytes": 19807540,
+    "files": 32,
+    "sha256": "3131fc99ba5d19f5d6328cfd43068ebea2ddda2d50486576b430df71fe7bc910",
+    "restricted_owner_only": true,
+    "drive_readback_size_sha_crc": "PASS"
+  },
+  "map": {
+    "source_zip_sha256": "b38c08109e25299fa9f4ceabd7f34b42cc82531ba56c8f09cc9f3a4af0429511",
+    "source_master_png_sha256": "091e177a1fd0964dafe0dd79319c525d6b4888e19264f3d1af0ea990d2848530",
+    "canvas": [
+      1280,
+      928
+    ],
+    "source_master_bytes_unchanged": true,
+    "two_previous_canopy_masks_alpha_pixels": 88655,
+    "combined_two_canopies_bridge_semantic_mask_alpha_pixels": 90076,
+    "same_world_xy_par_RGB_mismatch_pixels": 0,
+    "authoring_groundonly_completepar_recomposition_mae": 0,
+    "mask_origin": "previous V3 GrabCut canopy draft plus new hand-vectorized near railing proposal. Semantic art NOT approved",
+    "legacy_bridge_rail_alpha_pixels": 3845,
+    "legacy_bridge_mask_deck_core_overlap_pixels": 494,
+    "A11_bridge_rail_alpha_pixels": 1421,
+    "A11_bridge_mask_deck_core_overlap_pixels": 0,
+    "caveat": "Deck core is conservative hand-defined ROI, not entire floor; zero in this region is not a complete semantic guarantee",
+    "static_actor_on_bridge_demo_overlap_pixels": 227,
+    "static_actor_on_bridge_demo_covered_ratio": 0.394,
+    "actual_Game_exe": "NOT_RUN",
+    "switch203": "NOT_RUN",
+    "art_approval": "PENDING"
+  },
+  "sprite": {
+    "source_approved_F0_SHA256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+    "source_approved_A62_run_strip_SHA256": "ea063e6ec2db5caf3bddb2dd0b277d888f60e65fe6392bccdad4fdcc34274d5f",
+    "F0_original_binary_unchanged": true,
+    "cell": [
+      48,
+      48
+    ],
+    "poses": 3,
+    "loop": [
+      0,
+      1,
+      0,
+      2
+    ],
+    "new_waiting_pose_pixel_changes_vs_F0": [
+      0,
+      407,
+      381
+    ],
+    "rgb_palette_preserved": true,
+    "new_waiting_pose_alpha_IoU_vs_F0": [
+      1,
+      0.8893,
+      0.8896
+    ],
+    "technique": "integer-only source F0 palette warp. Not regenerated art. No AI guided pixel redraw or PixelLab",
+    "rig_natural_motion": "ART_HOLD",
+    "native_tankentai": "NOT_RUN"
+  },
+  "new_pixellab_calls": 0,
+  "new_orca_agents": 0,
+  "user_PC_write": "NONE",
+  "formal_seal": "NO",
+  "ready_next": "Source-owned semantic masks from original beauty Master need human/AI geometry improvement without RGB regeneration; F0-based articulated pose redraw and naturalness review; native VX requires separately authorized temporary PC scope"
+}

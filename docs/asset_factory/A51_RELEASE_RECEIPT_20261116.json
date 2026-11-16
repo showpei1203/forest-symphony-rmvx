@@ -1,0 +1,20 @@
+{
+  "stage": "A51",
+  "file": "FS_A51_REAL_PIXELLAB_ATTACK_R4_SAFE_SWORDFX_NATIVE_GODOT_PRIVATE_20261116.zip",
+  "bytes": 5564961,
+  "SHA256": "4bf1895b9d26a5a9235cee0c990301df8b4d35e54b2303239ccb2a34cbed8946",
+  "ZIP_entries": 1102,
+  "sources_SHA256_verified": 1101,
+  "CRC": "PASS",
+  "SHA_mismatches": 0,
+  "PixelLab_NEW_real_job": "b997be06-c1fa-4741-8fb9-bcedf6fc9a39",
+  "PixelLab_new_usage_generations": 3.0,
+  "Prior_total_generations": 9.1,
+  "cumulative_generations": 12.1,
+  "Godot_A51_body_NATIVE": "PASS",
+  "Godot_A51_newFX_NATIVE": "PASS",
+  "Godot_A51_R4safe_NATIVE": "PASS",
+  "final_ART": "HOLD",
+  "recommended_candidate": "godot_a51_r4_stable_fx",
+  "full_FS_ATB": "NOT RUN"
+}

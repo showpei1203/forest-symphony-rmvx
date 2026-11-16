@@ -1,0 +1,160 @@
+{
+  "stage": "A50 R3 vs R4",
+  "date": "2026-11-16",
+  "engine": "Godot 4.7.2 native AMD RX6700XT (actual GPU PNG frames)",
+  "R3_real_model_job": "6786d5c5-d95d-48c9-b9ca-6a84627ea039",
+  "R4_real_model_job": "1c671687-681a-4667-a4e7-956b15fc7eae",
+  "PixelLab_new_generations_this_stage": 3.0,
+  "prior_A49_generations": 6.1,
+  "total_estimate_skeleton_and_3_animations_generation_units": 9.1,
+  "R3_native": {
+    "stage": "A50 R3 REAL PIXELLAB sword F7 true blade contact",
+    "job_id": "6786d5c5-d95d-48c9-b9ca-6a84627ea039",
+    "body_sha256": "61f9ed460613c414917845ad8b999e7f20fa791f58383bc288568cc551ecbb35",
+    "Godot": "4.7.2",
+    "import_pass": true,
+    "import_exit": 0,
+    "gpu_pass": true,
+    "gpu_exit": 0,
+    "contact_pass": true,
+    "contact_exit": 0,
+    "native_frames": 12,
+    "contact_screenshot": true,
+    "status": "PASS"
+  },
+  "R4_native": {
+    "stage": "A50 R4 HEAD LOCK real PixelLab torso and original model sword F7",
+    "job_id": "1c671687-681a-4667-a4e7-956b15fc7eae",
+    "body_sha256": "0c5a6a8314528bb9708c837bbf5d139aba1f383d756178b57bb1356e3cbe9605",
+    "Godot": "4.7.2",
+    "import_pass": true,
+    "import_exit": 0,
+    "gpu_pass": true,
+    "gpu_exit": 0,
+    "contact_pass": true,
+    "contact_exit": 0,
+    "native_frames": 12,
+    "contact_screenshot": true,
+    "status": "PASS"
+  },
+  "R4_original_provider_10_frames_pixel_exact": true,
+  "R4_12frames_recovered_from_A62_and_provider": true,
+  "R3_to_R4_head_registered_residual_pixels": [
+    293,
+    141
+  ],
+  "R3_to_R4_chest_motion_pixels": [
+    366,
+    401
+  ],
+  "R3_to_R4_hip_motion_pixels": [
+    337,
+    218
+  ],
+  "R4_model_unrequested_sword": false,
+  "R4_body_connected_all_frames": true,
+  "R4_sword_frame_realignments": [
+    {
+      "frame": 0,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 1,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 2,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 3,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 4,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 5,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 6,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 7,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 8,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 9,
+      "weapon_dx_dy": [
+        -1,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 10,
+      "weapon_dx_dy": [
+        -2,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    },
+    {
+      "frame": 11,
+      "weapon_dx_dy": [
+        0,
+        0
+      ],
+      "one_connected_body_plus_weapon": true
+    }
+  ],
+  "R3_to_R4_hit_phase": "F7 at 0.63s; old F6 0.55s negative check PASS",
+  "actual_legacy_contact_scene_HP": "100->75->50 and miss/cancel/2x PASS",
+  "visual_art": "HOLD: user acceptance pending; R4 is engineering preferred candidate",
+  "formal_FS_ATB_integration": "NOT RUN",
+  "pixel_art_skill": "create-game-assets and raster-pipeline, real 18-joint A57 authority and Godot native QA skill",
+  "PC_permanent_output": "NONE, Drive/GitHub only"
+}

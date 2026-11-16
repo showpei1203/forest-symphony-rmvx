@@ -1,0 +1,59 @@
+{
+  "stage": "A51 swordtrail",
+  "PixelLab_real_full_body_untouched": true,
+  "old_Body_sha256": "97ec48a36ba1c219156300c25963fa11d9f3f03ed6782e78d4a829beb8fb919c",
+  "new_Body_SHA256": "97ec48a36ba1c219156300c25963fa11d9f3f03ed6782e78d4a829beb8fb919c",
+  "effect_frame_counts": {
+    "5": 2,
+    "6": 4,
+    "7": 38,
+    "8": 14,
+    "9": 1
+  },
+  "palette": {
+    "aura": [
+      87,
+      180,
+      181,
+      95
+    ],
+    "mint": [
+      155,
+      224,
+      210,
+      165
+    ],
+    "edge": [
+      235,
+      250,
+      233,
+      215
+    ],
+    "gold": [
+      254,
+      223,
+      157,
+      180
+    ],
+    "faint": [
+      98,
+      173,
+      162,
+      72
+    ]
+  },
+  "stroke_follows_actual_PixelLab_tip_F6": [
+    50,
+    26
+  ],
+  "stroke_follows_actual_PixelLab_tip_F7": [
+    61,
+    39
+  ],
+  "source_R2_provider_real_sword": true,
+  "FX_only_new_layer": true,
+  "all_sparks_right_of_face": true,
+  "style": "hard-edged 64px pixel, five-color max, no antialias",
+  "ENGINE": "PENDING",
+  "ART": "HOLD"
+}

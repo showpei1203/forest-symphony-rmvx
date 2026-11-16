@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/a39_rig_preview.gd" id="1_preview"]
+[ext_resource type="Texture2D" path="res://assets/actor01_a62_approved_idle_source_64.png" id="2_original"]
+[ext_resource type="PackedScene" path="res://scenes/actor01_breath_rig.tscn" id="3_rig"]
+[ext_resource type="Texture2D" path="res://assets/actor01_idle_r1_calm_curated_8phases.png" id="4_ai_calm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_calm"]
+atlas = ExtResource("4_ai_calm")
+region = Rect2(0, 0, 64, 64)
+
+[node name="A39LocalBreathPreview" type="Node2D"]
+script = ExtResource("1_preview")
+
+[node name="ApprovedSource" type="Sprite2D" parent="."]
+position = Vector2(200,345)
+scale = Vector2(4,4)
+texture_filter = 1
+texture = ExtResource("2_original")
+
+[node name="A38AICalm" type="Sprite2D" parent="."]
+position = Vector2(500,345)
+scale = Vector2(4,4)
+texture_filter = 1
+texture = SubResource("AtlasTexture_calm")
+
+[node name="BreathRig" parent="." instance=ExtResource("3_rig")]
+position = Vector2(800,345)
+scale = Vector2(4,4)

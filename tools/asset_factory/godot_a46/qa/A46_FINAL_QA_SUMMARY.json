@@ -1,0 +1,43 @@
+{
+  "stage": "A46",
+  "variant": "V2 coherent upper lean",
+  "Godot": "4.7.2",
+  "renderer": "AMD RX 6700 XT OpenGL",
+  "art_sprite_waist_gate": "PASS",
+  "prior_A45_known_bad": "FAIL, F06/F07/F08 (correct negative)",
+  "native_A46_screenshots": 12,
+  "native_gpu_pixel_diff": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "native_engine_import": "PASS",
+  "native_contact_demo": "PASS",
+  "waist_gate_native": "PASS",
+  "F6_hit_time_seconds": 0.55,
+  "hitstop_milliseconds": 70,
+  "F6_hit_marker_local": [
+    30,
+    9
+  ],
+  "isolated_hp_deltas": [
+    -25,
+    -25
+  ],
+  "regenerate_from_source": "PASS, three layers exact SHA",
+  "true_art_aesthetic": "HOLD: shoulder/chest rotational weight still subtle",
+  "formal_migrated_fs_atb": "NOT_RUN",
+  "body_sha256": "78b98878360e1af25aef0a806fa0566dc19c94f0ac0f5fda22879ec62cc8a468",
+  "weapon_sha256": "0529dea325516ee97ba83eed07853c9dfa1c57ebb49748ec1cb6c78f1d601d8f",
+  "fx_sha256": "4972f75eaa22b2494e1dfeaca0bc5e3d1abcac8b12b467b1e0795dfaac0e9f35",
+  "gif_sha256": "18c8636400e53d5a29052e9bd1c68afa8d5a2450421a244a2ab204df026be98c"
+}

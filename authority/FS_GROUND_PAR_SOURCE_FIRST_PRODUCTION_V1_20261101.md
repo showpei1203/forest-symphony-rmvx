@@ -1,4 +1,7 @@
 # FS Ground/PAR Source-First Production Authority v1.0
+
+> **2026-11-14 使用者 v1.3 最高優先：已恢復並強制 Ground-first → 獨立完整 PAR → Godot 動態合成 → 1x 最終美術豐富度驗收。** 任何 2026-11-07 的「全圖 Master-first → source crop」均為舊實驗歷史，**不得用作新地圖正式產線**。請先讀 `authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md` v1.3 的 0c；本頁保留可重用的尺寸、alpha/footpoint/碰撞/素材來源和冷驗證方法，但被 0c 覆寫的工序不再有效。
+
 Date: 2026-11-01 | Adopted baseline: Stage16 A27 R2 | Status: ACTIVE PROCEDURE, not formal visual seal.
 
 > **2026-11-07 新版指令補充：SOURCE-FIRST 的 SHA/ROI/Manifest/Alpha 是有效技術，但「必須先 Ground 再生成物件」已不適用目前 FS 新精靈村。** 新路徑是 Master-first（完整高品質 Master→AI mask/隱藏地表→Master RGB 分層）後仍依 Source-first 技術執行 Alpha、碰撞、footpoint、權利和原生 VX 驗證。所有必要保留文件/PNG/ZIP 必須存雲端；舊本機 workspace 為歷史，只准必要 runtime 的短期副本。[P0](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)。

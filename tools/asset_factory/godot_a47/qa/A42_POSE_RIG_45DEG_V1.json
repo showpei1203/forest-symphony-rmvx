@@ -1,0 +1,366 @@
+{
+  "schema": "fs.battle.45deg.rig.pose-v1",
+  "stage": "A42",
+  "frame_size": [
+    64,
+    64
+  ],
+  "fps": 12,
+  "view_angle": "topdown three-quarter ~45 degrees",
+  "source_actor": "A62 approved Actor01",
+  "stable_joints_px": {
+    "right_shoulder": [
+      40,
+      38
+    ],
+    "pelvis": [
+      35,
+      43
+    ],
+    "contact_anchor": [
+      60,
+      43
+    ]
+  },
+  "event": {
+    "type": "attack_hit",
+    "time_sec": 0.55,
+    "visible_frame": 6,
+    "hitstop_sec": 0.07
+  },
+  "head_policy": "copy original source head rigidly without repaint",
+  "palette_policy": "native A62 RGBA only",
+  "poses": [
+    {
+      "frame": 0,
+      "phase": "ready",
+      "torso_offset_px": [
+        0,
+        0
+      ],
+      "left_leg_offset_px": [
+        0,
+        0
+      ],
+      "right_leg_offset_px": [
+        0,
+        0
+      ],
+      "wrist_px": null,
+      "sword_tip_px": null,
+      "effect": false,
+      "normalized_wrist": null
+    },
+    {
+      "frame": 1,
+      "phase": "load",
+      "torso_offset_px": [
+        -1,
+        1
+      ],
+      "left_leg_offset_px": [
+        -1,
+        0
+      ],
+      "right_leg_offset_px": [
+        1,
+        0
+      ],
+      "wrist_px": [
+        42,
+        43
+      ],
+      "sword_tip_px": [
+        44,
+        31
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.65625,
+        0.67188
+      ]
+    },
+    {
+      "frame": 2,
+      "phase": "guard",
+      "torso_offset_px": [
+        -2,
+        1
+      ],
+      "left_leg_offset_px": [
+        -2,
+        0
+      ],
+      "right_leg_offset_px": [
+        1,
+        0
+      ],
+      "wrist_px": [
+        44,
+        40
+      ],
+      "sword_tip_px": [
+        46,
+        25
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.6875,
+        0.625
+      ]
+    },
+    {
+      "frame": 3,
+      "phase": "draw",
+      "torso_offset_px": [
+        -2,
+        0
+      ],
+      "left_leg_offset_px": [
+        -2,
+        -1
+      ],
+      "right_leg_offset_px": [
+        1,
+        0
+      ],
+      "wrist_px": [
+        44,
+        37
+      ],
+      "sword_tip_px": [
+        48,
+        22
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.6875,
+        0.57812
+      ]
+    },
+    {
+      "frame": 4,
+      "phase": "windup",
+      "torso_offset_px": [
+        -1,
+        -1
+      ],
+      "left_leg_offset_px": [
+        -1,
+        -1
+      ],
+      "right_leg_offset_px": [
+        1,
+        1
+      ],
+      "wrist_px": [
+        46,
+        35
+      ],
+      "sword_tip_px": [
+        52,
+        21
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.71875,
+        0.54688
+      ]
+    },
+    {
+      "frame": 5,
+      "phase": "accelerate",
+      "torso_offset_px": [
+        1,
+        -1
+      ],
+      "left_leg_offset_px": [
+        1,
+        0
+      ],
+      "right_leg_offset_px": [
+        -1,
+        -1
+      ],
+      "wrist_px": [
+        48,
+        37
+      ],
+      "sword_tip_px": [
+        59,
+        26
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.75,
+        0.57812
+      ]
+    },
+    {
+      "frame": 6,
+      "phase": "contact",
+      "torso_offset_px": [
+        3,
+        0
+      ],
+      "left_leg_offset_px": [
+        3,
+        1
+      ],
+      "right_leg_offset_px": [
+        -2,
+        -1
+      ],
+      "wrist_px": [
+        50,
+        41
+      ],
+      "sword_tip_px": [
+        59,
+        41
+      ],
+      "effect": true,
+      "normalized_wrist": [
+        0.78125,
+        0.64062
+      ]
+    },
+    {
+      "frame": 7,
+      "phase": "followthrough",
+      "torso_offset_px": [
+        3,
+        0
+      ],
+      "left_leg_offset_px": [
+        3,
+        1
+      ],
+      "right_leg_offset_px": [
+        -2,
+        -1
+      ],
+      "wrist_px": [
+        49,
+        44
+      ],
+      "sword_tip_px": [
+        56,
+        52
+      ],
+      "effect": true,
+      "normalized_wrist": [
+        0.76562,
+        0.6875
+      ]
+    },
+    {
+      "frame": 8,
+      "phase": "recover",
+      "torso_offset_px": [
+        2,
+        1
+      ],
+      "left_leg_offset_px": [
+        2,
+        1
+      ],
+      "right_leg_offset_px": [
+        -1,
+        0
+      ],
+      "wrist_px": [
+        47,
+        45
+      ],
+      "sword_tip_px": [
+        55,
+        57
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.73438,
+        0.70312
+      ]
+    },
+    {
+      "frame": 9,
+      "phase": "settle",
+      "torso_offset_px": [
+        1,
+        1
+      ],
+      "left_leg_offset_px": [
+        1,
+        0
+      ],
+      "right_leg_offset_px": [
+        0,
+        0
+      ],
+      "wrist_px": [
+        44,
+        44
+      ],
+      "sword_tip_px": [
+        49,
+        55
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.6875,
+        0.6875
+      ]
+    },
+    {
+      "frame": 10,
+      "phase": "lower",
+      "torso_offset_px": [
+        0,
+        0
+      ],
+      "left_leg_offset_px": [
+        0,
+        0
+      ],
+      "right_leg_offset_px": [
+        0,
+        0
+      ],
+      "wrist_px": [
+        42,
+        44
+      ],
+      "sword_tip_px": [
+        44,
+        53
+      ],
+      "effect": false,
+      "normalized_wrist": [
+        0.65625,
+        0.6875
+      ]
+    },
+    {
+      "frame": 11,
+      "phase": "return",
+      "torso_offset_px": [
+        0,
+        0
+      ],
+      "left_leg_offset_px": [
+        0,
+        0
+      ],
+      "right_leg_offset_px": [
+        0,
+        0
+      ],
+      "wrist_px": null,
+      "sword_tip_px": null,
+      "effect": false,
+      "normalized_wrist": null
+    }
+  ],
+  "scope": "A41 exact 12-pose reference; new actor proportions require explicit rig retarget before acceptance"
+}

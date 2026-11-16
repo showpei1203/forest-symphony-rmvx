@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle_run_preview.gd" id="1_stage"]
+[ext_resource type="PackedScene" path="res://scenes/actor01.tscn" id="2_actor"]
+
+[node name="BattleRunPreview" type="Node2D"]
+script = ExtResource("1_stage")
+
+[node name="Actor01" parent="." instance=ExtResource("2_actor")]
+position = Vector2(512, 408)
+scale = Vector2(4.0, 4.0)

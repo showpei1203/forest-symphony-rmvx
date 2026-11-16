@@ -1,0 +1,48 @@
+{
+  "schema": "fs-style-bible/v1",
+  "version": "A08-20261108",
+  "status": "CANDIDATE_NOT_USER_ART_APPROVED",
+  "authority": [
+    "FS Ground3 approved-looking reference must be SHA-locked before setting exact palette",
+    "Original FS 32px 3/4 source",
+    "A25 monster look and A62 run approval have narrower scopes"
+  ],
+  "common": {
+    "tile_size_px": 32,
+    "projection": "top-down 3/4",
+    "render_target": "RPG Maker VX RGSS2",
+    "alpha_format": "straight-alpha PNG",
+    "pixel_scale": "nearest-neighbor integers only",
+    "palette_colors_hex": null,
+    "palette_status": "SOURCE_REFERENCE_REQUIRED",
+    "reference_style_sha256": null
+  },
+  "map": {
+    "subject": "forest elf village",
+    "composition": [
+      "natural forest groups extend beyond canvas",
+      "whole coherent buildings and workshops",
+      "organic grass, flowers, stones and roads",
+      "separate bridge deck from near/far rail foreground",
+      "full scene approved before per-object polishing"
+    ],
+    "quality": "Ground3-like detail at true 1x, not painterly upscale",
+    "master_first": true,
+    "foreground_rule": "source-authored semantic instance masks only; never infer by equal color"
+  },
+  "sprite": {
+    "combat_camera": "45 degree",
+    "monster_family_identity": "species silhouette/parts change visibly, not recolor",
+    "actor_base": "unarmed, external weapon attachment",
+    "template": "approved concept -> direction master -> archetype skeleton -> canonical frames -> native exporter"
+  },
+  "budget": {
+    "pixellab_max_new_generations": 0,
+    "paid_generation_requires_explicit_approval": true
+  },
+  "statuses": {
+    "art": "PENDING",
+    "native": "NOT_RUN",
+    "formal_seal": "NO"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "stage": "A37",
+  "timestamp_local": "2026-11-14 10:20 Asia/Taipei",
+  "project_type": "standalone Godot-first battle animation pilot; not merged into FS migration project",
+  "engine": "Godot 4.7.2.stable.official.ed1daf0bf",
+  "gpu": "AMD Radeon RX 6700 XT, OpenGL 3.3 GL Compatibility",
+  "source": "A35 approved + native PixelLab V3 intermediate 8-frame source; artwork unchanged",
+  "source_exact_sha256": "ec0c7a59fb5983f13b1b3385323218edf0e77c23890db074c18c6e114e74408b",
+  "sheet_size": [
+    256,
+    128
+  ],
+  "frames": 8,
+  "frame_size": [
+    64,
+    64
+  ],
+  "source_visual_size_approx_px": 48,
+  "source_rgba_unique_frames": 8,
+  "gpu_captured_unique_frames": 8,
+  "alpha_only_0_255": true,
+  "visible_rgba_color_counts": [
+    33,
+    39,
+    36,
+    48,
+    34,
+    40,
+    40,
+    42
+  ],
+  "source_bboxes": [
+    [
+      20,
+      14,
+      43,
+      50
+    ],
+    [
+      20,
+      13,
+      43,
+      50
+    ],
+    [
+      19,
+      12,
+      45,
+      50
+    ],
+    [
+      20,
+      13,
+      45,
+      51
+    ],
+    [
+      21,
+      14,
+      43,
+      51
+    ],
+    [
+      20,
+      13,
+      43,
+      51
+    ],
+    [
+      21,
+      12,
+      43,
+      50
+    ],
+    [
+      21,
+      12,
+      43,
+      51
+    ]
+  ],
+  "profiles": {
+    "run_raw": {
+      "fps": 8,
+      "durations_ms": [
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125
+      ],
+      "cycle_ms": 1000
+    },
+    "run_tuned": {
+      "fps": 10,
+      "durations_ms": [
+        90,
+        100,
+        100,
+        100,
+        90,
+        100,
+        70,
+        80
+      ],
+      "cycle_ms": 730,
+      "basis": "F6 and F7 are displayed for less time; artwork itself is NOT repaired"
+    }
+  },
+  "actual_engine_test": {
+    "godot_editor_import_exit": 0,
+    "native_renderer_exit": 0,
+    "frame_changed_events": 27,
+    "complete_wraps_observed": 2,
+    "profile_switch": "PASS",
+    "unsupported_states": "REJECTED CORRECTLY",
+    "actual_gpu_frames": "8/8 UNIQUE",
+    "capture_test_exit": 0
+  },
+  "gates": {
+    "PROVIDER": "A35 PRIOR PASS",
+    "SOURCE_INTEGRITY": "PASS",
+    "GODOT_IMPORT": "PASS",
+    "GODOT_RENDER": "PASS",
+    "GODOT_ANIMATION": "PASS",
+    "DYNAMIC_PROFILE": "PASS",
+    "ART": "HOLD",
+    "FULL_FS_INTEGRATION": "NOT_RUN",
+    "VX": "NOT_RUN"
+  },
+  "art_issues": [
+    "A35 F6 exaggerated spread stride",
+    "A35 F7 hand anatomy drift",
+    "source combat facing needs human evaluation",
+    "no attack/idle/hurt/cast/death art provided yet"
+  ],
+  "safety": "Original VX project and GitHub main untouched. No new user PC non-cloud assets."
+}

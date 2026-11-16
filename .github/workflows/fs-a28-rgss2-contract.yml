@@ -1,0 +1,43 @@
+name: FS A28 Ruby RGSS2 occlusion adapter contract (synthetic only)
+
+on:
+  pull_request:
+    paths:
+      - 'tools/asset_factory/rgss2/FS_A28_RUNTIME_OCCLUSION_EXPERIMENTAL.rb'
+      - 'tools/asset_factory/tests/test_fs_a28_rgss2_adapter.rb'
+      - 'tools/asset_factory/tests/test_fs_a28_rgss2_runtime_mock.rb'
+      - 'tools/asset_factory/a28_export_source_locked_par.py'
+      - '.github/workflows/fs-a28-rgss2-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ruby-synthetic-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Check RGSS2-oriented Ruby syntax
+        run: ruby -c tools/asset_factory/rgss2/FS_A28_RUNTIME_OCCLUSION_EXPERIMENTAL.rb
+      - name: Run source-pixel and geometry synthetic contract
+        run: |
+          cp tools/asset_factory/rgss2/FS_A28_RUNTIME_OCCLUSION_EXPERIMENTAL.rb tools/asset_factory/tests/fs_a28_rgss2_actor_occlusion.rb
+          ruby tools/asset_factory/tests/test_fs_a28_rgss2_adapter.rb
+      - name: Run Sprite_Character mock update / scroll / dispose checks
+        run: ruby tools/asset_factory/tests/test_fs_a28_rgss2_runtime_mock.rb
+      - name: Source-lock exporter Python syntax (no real inputs)
+        run: python -m py_compile tools/asset_factory/a28_export_source_locked_par.py
+      - name: Check no private map assets published by workflow
+        run: |
+          test ! -f tools/asset_factory/tests/A28_PRIVATE_PIXEL_PARITY_FIXTURE.json
+          test ! -f tools/asset_factory/rgss2/FS_A28_LEFT_TREE.png
+          test ! -f tools/asset_factory/rgss2/FS_A28_RIGHT_TREE.png
+          test ! -f tools/asset_factory/rgss2/FS_A28_BRIDGE_RAIL.png
+
+# Synthetic tests only; real A28 pixel-parity ZIP remains owner-only Drive.
+# The RGSS2 runtime itself / Game.exe / switch203 MUST be tested separately.

@@ -1,3 +1,5 @@
+> **A11 CURRENT PRODUCTION AUTHORITY｜2026-11-08**：FS Asset Factory 地圖/人物開工必先 [唯一現行 Master 規範](../../../authority/FS_ASSET_FACTORY_ACTIVE_MASTER.md) 與 P0、安全原生來源，進度見 [CURRENT_HANDOFF](../../../docs/asset_factory/CURRENT_HANDOFF.md)。下方 2026-11-07 舊方法與歷史 QA 作為來源證據；遇到優先權衝突，以使用者最新指令、P0、本 Master 規則為準。
+
 ---
 name: fs-rmvx-router
 description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Ground/PAR, PMD0001-0003, Actor sprite, source-asset and engine-native validation. Route these tasks to FS authority before generic Godot or art workflows.

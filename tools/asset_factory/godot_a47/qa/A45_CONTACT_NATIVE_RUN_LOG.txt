@@ -1,0 +1,53 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 Core Profile Context 26.10.1.261008 - Compatibility - Using Device: ATI Technologies Inc. - AMD Radeon RX 6700 XT
+
+A45_CONTACT_PASS demo-scene-load
+A45_CONTACT_PASS real-area2d-target
+A45_CONTACT_PASS initial-a39-breathing
+A45_CONTACT_PASS single-clock-body-weapon-fx-moving-marker-and-method
+A45_CONTACT_PASS 12-weapon-tip-pose-anchors
+A45_CONTACT_PASS marker-on-real-animation-track
+A45_CONTACT_PASS frame-0-sword-tip-track
+A45_CONTACT_PASS frame-1-sword-tip-track
+A45_CONTACT_PASS frame-2-sword-tip-track
+A45_CONTACT_PASS frame-3-sword-tip-track
+A45_CONTACT_PASS frame-4-sword-tip-track
+A45_CONTACT_PASS frame-5-sword-tip-track
+A45_CONTACT_PASS frame-6-sword-tip-track
+A45_CONTACT_PASS frame-7-sword-tip-track
+A45_CONTACT_PASS frame-8-sword-tip-track
+A45_CONTACT_PASS frame-9-sword-tip-track
+A45_CONTACT_PASS frame-10-sword-tip-track
+A45_CONTACT_PASS frame-11-sword-tip-track
+A45_CONTACT_PASS first-attack-start
+A45_CONTACT_PASS damage-payload-25
+A44_PRACTICE_HIT serial=1 hp=75 local=(29.0, 9.0)
+A45_CONTACT_PASS range-first-hit-real-hp-decrease
+A45_CONTACT_PASS F6-moving-hit-marker-(29,9)
+A45_CONTACT_PASS correct-local-to-global-with-scale
+A45_CONTACT_PASS prevent-double-hit-same-serial
+A45_CONTACT_PASS native-damage-scene-shot-saved
+A45_CONTACT_PASS return-to-idle-after-damage
+A45_CONTACT_PASS second-attack-start
+A45_CONTACT_PASS damage-payload-25
+A44_PRACTICE_HIT serial=2 hp=50 local=(29.0, 9.0)
+A45_CONTACT_PASS second-distinct-serial-damage
+A45_CONTACT_PASS out-of-range-attack-start
+A44_PRACTICE_MISS serial=3 local=(29.0, 9.0)
+A45_CONTACT_PASS range-miss-no-ghost-damage
+A45_CONTACT_PASS cancel-case-attack-start
+A45_CONTACT_PASS cancel-before-contact
+A45_CONTACT_PASS cancel-no-ghost-damage
+A45_CONTACT_PASS double-speed-attack-start
+A45_CONTACT_PASS damage-payload-25
+A44_PRACTICE_HIT serial=5 hp=75 local=(29.0, 9.0)
+A45_CONTACT_PASS double-speed-single-damage
+A45_CONTACT_PASS double-speed-f6-anchor
+A45_CONTACT_PASS double-speed-return-idle
+A45_CONTACT_PASS reentrant-cancel-attack-start
+A45_CONTACT_PASS cancel-within-hit-no-anchor-damage
+A45_CONTACT_PASS interrupt-restores-idle
+A45_CONTACT_DAMAGE_EVENT_COUNT 3
+A45_CONTACT_QA_RESULT PASS
+
+STDERR

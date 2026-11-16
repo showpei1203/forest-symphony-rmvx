@@ -1,0 +1,14 @@
+{
+  "stage": "A47",
+  "zip_sha": "e48cd680edd63a888deb2b370df4686a289253383fdbd7dc770df271df793ee5",
+  "file_count": 258,
+  "source_SHA_mismatch_count": 0,
+  "image_rebuild_SHA_equal": true,
+  "native_editor_exit": 0,
+  "native_gpu_exit": 0,
+  "native_contact_exit": 0,
+  "waist_A62": 0,
+  "waist_A45": 1,
+  "waist_A47": 0,
+  "status": "PASS"
+}

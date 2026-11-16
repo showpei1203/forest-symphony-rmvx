@@ -1,0 +1,43 @@
+{
+  "stage": "A44",
+  "godot_version": "4.7.2.stable.official.ed1daf0bf",
+  "native_renderer": "AMD Radeon RX 6700 XT OpenGL 3.3 Compatibility",
+  "atlas_frames": 12,
+  "native_screenshots": 12,
+  "gpu_expected_differences": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "native_sprite_qa": "PASS",
+  "contact_demo_qa": "PASS",
+  "battle_tests": [
+    "HP 100 to75",
+    "HP 75 to50",
+    "out of range no damage",
+    "prevent duplicate serial",
+    "cancel before contact",
+    "2x speed",
+    "cancel from attack_hit callback"
+  ],
+  "hit_anchor_local_F6": [
+    29,
+    9
+  ],
+  "hit_event_second": 0.55,
+  "hitstop_ms": 70,
+  "art_gate": "HOLD",
+  "formal_fs_atb_integration": "NOT_RUN",
+  "source_A43_release_sha256": "37d7bb4ffb2274de4ebdf4afaf4835bd670ff1bf42b521572958f7e17a4ba19c",
+  "native_combat_screenshot_sha256": "7367482a9d78663d8058df13c8b2c5a5ce973cb92047ecadfac54c86f67aad73",
+  "native_animation_gif_sha256": "fadd813c02e3b276225b17efdf20aedd5933de695e8a85ed3c4a7b4947155122"
+}

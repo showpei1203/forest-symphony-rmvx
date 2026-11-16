@@ -1,0 +1,139 @@
+{
+  "schema": "fs-a09-real-source-brief/v1",
+  "version": "2026-11-08",
+  "status": "SOURCE_LOCKED_PARTIAL_AND_TWO_SCENE_GEOMETRY",
+  "sprite": {
+    "private_restricted_drive_artifact_title": "FS_A09_SOURCE_LOCKED_SPRITE_FACTORY_PILOT_20261108.zip",
+    "derived_pilot_sha256": "9b1465828dd40b4fedf63e49f7598583b2a08ac9e2181c5a0c85ebb86c5b389a",
+    "protected_source_release_sha256": "74061d61a7fde6650699ee30ad1339ff255924a9cae13c98cb1703478eae260f",
+    "accepted_baseline": {
+      "species": "PMD0001",
+      "baseline": "P3_G9 copies user-approved G3R1",
+      "native_xml_sha256": "c7722f5da724f40f35fccabb1135fbd1b70e770b2a38db3d9fbe7643af626162",
+      "actions": {
+        "Idle": {
+          "cell": [
+            32,
+            40
+          ],
+          "frames": 3,
+          "rows": 8,
+          "durations": [
+            40,
+            6,
+            6
+          ],
+          "native_anim_sha256": "c2ed09908e2a1d1ccce2407249c66902ba499c8a8efb4e4be2c371111c68c605",
+          "direction_F0_distinct_rows": 8
+        },
+        "Walk": {
+          "cell": [
+            40,
+            40
+          ],
+          "frames": 6,
+          "rows": 8,
+          "durations": [
+            4,
+            4,
+            4,
+            4,
+            4,
+            4
+          ],
+          "native_anim_sha256": "6456d3c9da3d0faadf4ab3235bbad9ad15da6ba9ca0c2a8d73cc083270cfb9db",
+          "direction_F0_distinct_rows": 8
+        }
+      },
+      "art_approval_scope": "HISTORICAL_G3R1_BASELINE_ONLY",
+      "direction_semantic_order": "PENDING"
+    },
+    "evolution_art_qa": {
+      "PMD0002": {
+        "native_xml_sha256": "e1c494c9d795980bb77622e8ce782b4fba62bd1e5103165351748dc3924702c0",
+        "Idle": [
+          32,
+          32,
+          4
+        ],
+        "Walk": [
+          32,
+          32,
+          4
+        ],
+        "art": "SELECTED_G8R4_KEYFRAMES_ACCEPTED_G9_REMAINDER_PENDING"
+      },
+      "PMD0003": {
+        "native_xml_sha256": "b5b556e42df4322440f63da430e918bbad794c83cdf58dbff2393138f96c15d3",
+        "Idle": [
+          32,
+          32,
+          4
+        ],
+        "Walk": [
+          32,
+          32,
+          4
+        ],
+        "art": "SELECTED_G8R5_KEYFRAMES_ACCEPTED_G9_REMAINDER_PENDING"
+      }
+    },
+    "actor_A62": {
+      "accepted_48x48_F0_sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+      "run_3pose_strip_sha256": "ea063e6ec2db5caf3bddb2dd0b277d888f60e65fe6392bccdad4fdcc34274d5f",
+      "playback": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "status": "HISTORICAL_ACTION_ACCEPTED_NATIVE_NEW_NOT_RUN"
+    },
+    "A25_new_concept_binary": "SOURCE_NOT_VERIFIED_NOT_USED_AS_REFERENCE"
+  },
+  "map": {
+    "true_style_source": {
+      "actual_path": "Graphics/Parallaxes/ground3.png",
+      "sha256": "ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13",
+      "size_bytes": 2400808,
+      "provenance": "READ_ONLY_WINDOWS_HASH_CONFIRMED",
+      "pixels_in_public_github": false
+    },
+    "scene_blueprints": [
+      {
+        "scene": "ELF_VILLAGE",
+        "seed": 20261108
+      },
+      {
+        "scene": "FOREST_BRIDGE",
+        "seed": 20261203
+      }
+    ],
+    "composer": "tools/asset_factory/scene_blueprint.py",
+    "exporter": "tools/asset_factory/export_a09_scenes.py",
+    "tile_px": 32,
+    "canvas_px": [
+      1280,
+      928
+    ],
+    "master_generated": false,
+    "runtime_Ground_PAR_generated": false,
+    "semantic_guards": [
+      "bridge_deck:GROUNDED_NEVER_FOREGROUND",
+      "bridge_near_rail:CONDITIONAL_FOREGROUND_REQUIRES_ART_SOURCE",
+      "vegetation_low:GROUND_ONLY"
+    ],
+    "preview_art_status": "NOT_CREATED",
+    "native_vx": "NOT_RUN"
+  },
+  "budget": {
+    "pixellab_calls": 0,
+    "provider_credits_consumed": 0
+  },
+  "release": {
+    "art_pass": false,
+    "native_vx_pass": false,
+    "formal_seal": false
+  },
+  "protected_drive_policy": "PRIVATE_IMAGE_ZIPS_ONLY_OWNER_RESTRICTED_DRIVE_FOLDER; PUBLIC_REPO_METADATA_ONLY"
+}

@@ -1,0 +1,12 @@
+# A50 Failure Log | 2026-11-16
+
+1. A49 R2 generated sword baked into body F6-F10; old A48 separate weapon overlay created an accidental double sword. A50 R3 uses actual model sword extracted to an independent RGBA layer with exact original R2 body+weapon pixel reconstruction (F6-F10 all differences 0). R4 raw model Body contains no sword by design, reuse R2 sword.
+2. Old F6 at 0.55s did not match new model motion. R3/R4 now mark F7 at 0.63s and local (29,7). True Godot native test has negative 0.55s no-early-hit gate, once-only contact, 70ms hitstop, practice dummy HP100->75->50.
+3. A49 old FX F6-F8 left yellow particles floating away from true sword. Replaced with minimal original-palette sparks 1/3/1 px, all within 2px of model sword. Body pixels unchanged.
+4. A50 initial blade-tip F6 guessed (51,26), pixel QA rejected. Real provider sword pixel is (50,26). Fixed metadata from original PNG.
+5. Initial A50 native QA runner pointed at old qa/output/a49 folder and recorded missing native screenshot evidence despite script engine PASS. Corrected to qa/output/a50 and reran, 12 real screenshots plus damage scene PASS.
+6. Initial A50 native QA labels said F6 while predicates checked F7. Fixed labels and added negative test: at .57s, after old hit timestamp, no damage; event .63s at F7. Native re-tested exit0.
+7. R2 head/face after motion compensation differed 293 pixels over 10 frames from A62. R4 real PixelLab with 6 face/neck joints aligned to stable R1 improves residual to 141, retains stronger chest motion 401 compared R2 366, and no extra baked sword. Model result not fabricated; job 1c671687-681a-4667-a4e7-956b15fc7eae, one call cost 3 generations.
+8. First R4 integration tester incorrectly required model sword hilt in frame2 old windup ROI. Frame2 composite already one connected component, test was overstrict. Corrected to check connection in all moving frames and model hilt ROI only F6-F10; R4 model weapon F9 and F10 shifted -1px and -2px to attach without editing real Body.
+9. Both A50 R3 and R4 independent native Godot projects passed cold editor import, GPU, F7 combat and damage tests. Full FS Godot migration integration not run. 12 GPU pixel difference zero alone does not prove beautiful animation, ART HOLD.
+10. All provider raw outputs and source hashes owner-only; no original project overwrite, no uncontrolled paid retries, no credential in files. C scratch cleaned by each native runner.

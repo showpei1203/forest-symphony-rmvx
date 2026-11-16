@@ -1,0 +1,1000 @@
+{
+  "stage": "A47",
+  "derived_from": "A57 18-joint skill-style / A65 negative scanline",
+  "source_joint_coordinates": "Manual approximate pixel anchors measured from A62/A46 45deg pose; NOT paid PixelLab estimate",
+  "constraint_method": "spatial Gaussian inverse warp anchored pelvis, knees, boots, wrist; whole body resampled once",
+  "frames": [
+    {
+      "frame": 0,
+      "phase": "idle",
+      "pose_18_joint_design": {
+        "NOSE": [
+          33.0,
+          31.0
+        ],
+        "LEFT EYE": [
+          30.0,
+          30.0
+        ],
+        "RIGHT EYE": [
+          36.0,
+          30.0
+        ],
+        "LEFT EAR": [
+          28.0,
+          29.0
+        ],
+        "RIGHT EAR": [
+          38.0,
+          29.0
+        ],
+        "NECK": [
+          34.0,
+          34.0
+        ],
+        "LEFT SHOULDER": [
+          29.0,
+          36.0
+        ],
+        "RIGHT SHOULDER": [
+          39.0,
+          36.0
+        ],
+        "LEFT ELBOW": [
+          27.0,
+          40.0
+        ],
+        "RIGHT ELBOW": [
+          43.0,
+          39.0
+        ],
+        "LEFT ARM": [
+          28.0,
+          43.0
+        ],
+        "RIGHT ARM": [
+          42,
+          43
+        ],
+        "LEFT HIP": [
+          31.0,
+          44.0
+        ],
+        "RIGHT HIP": [
+          38.0,
+          44.0
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        34.0,
+        39.0
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        43,
+        44
+      ]
+    },
+    {
+      "frame": 1,
+      "phase": "anticipate",
+      "pose_18_joint_design": {
+        "NOSE": [
+          32.18,
+          31.04
+        ],
+        "LEFT EYE": [
+          29.28,
+          30.12
+        ],
+        "RIGHT EYE": [
+          35.25,
+          29.94
+        ],
+        "LEFT EAR": [
+          27.38,
+          29.15
+        ],
+        "RIGHT EAR": [
+          37.33,
+          28.9
+        ],
+        "NECK": [
+          33.01,
+          34.0
+        ],
+        "LEFT SHOULDER": [
+          27.99,
+          36.25
+        ],
+        "RIGHT SHOULDER": [
+          38.24,
+          35.82
+        ],
+        "LEFT ELBOW": [
+          26.1,
+          40.26
+        ],
+        "RIGHT ELBOW": [
+          42.8,
+          38.92
+        ],
+        "LEFT ARM": [
+          27.29,
+          43.15
+        ],
+        "RIGHT ARM": [
+          42,
+          42
+        ],
+        "LEFT HIP": [
+          30.35,
+          44.06
+        ],
+        "RIGHT HIP": [
+          37.73,
+          43.97
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        33.05,
+        39.0
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        44,
+        26
+      ]
+    },
+    {
+      "frame": 2,
+      "phase": "draw_back",
+      "pose_18_joint_design": {
+        "NOSE": [
+          30.48,
+          31.07
+        ],
+        "LEFT EYE": [
+          27.77,
+          30.27
+        ],
+        "RIGHT EYE": [
+          33.72,
+          29.86
+        ],
+        "LEFT EAR": [
+          26.08,
+          29.32
+        ],
+        "RIGHT EAR": [
+          35.97,
+          28.77
+        ],
+        "NECK": [
+          31.1,
+          33.96
+        ],
+        "LEFT SHOULDER": [
+          25.87,
+          36.49
+        ],
+        "RIGHT SHOULDER": [
+          37.76,
+          35.76
+        ],
+        "LEFT ELBOW": [
+          24.2,
+          40.48
+        ],
+        "RIGHT ELBOW": [
+          43.0,
+          39.0
+        ],
+        "LEFT ARM": [
+          25.79,
+          43.21
+        ],
+        "RIGHT ARM": [
+          42,
+          39
+        ],
+        "LEFT HIP": [
+          28.95,
+          44.01
+        ],
+        "RIGHT HIP": [
+          36.57,
+          43.79
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        31.18,
+        38.9
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        45,
+        22
+      ]
+    },
+    {
+      "frame": 3,
+      "phase": "draw_back_peak",
+      "pose_18_joint_design": {
+        "NOSE": [
+          29.19,
+          31.08
+        ],
+        "LEFT EYE": [
+          26.58,
+          30.36
+        ],
+        "RIGHT EYE": [
+          32.7,
+          29.8
+        ],
+        "LEFT EAR": [
+          25.05,
+          29.45
+        ],
+        "RIGHT EAR": [
+          35.15,
+          28.71
+        ],
+        "NECK": [
+          29.62,
+          33.91
+        ],
+        "LEFT SHOULDER": [
+          24.19,
+          36.61
+        ],
+        "RIGHT SHOULDER": [
+          37.35,
+          35.69
+        ],
+        "LEFT ELBOW": [
+          22.7,
+          40.55
+        ],
+        "RIGHT ELBOW": [
+          42.12,
+          38.73
+        ],
+        "LEFT ARM": [
+          24.6,
+          43.15
+        ],
+        "RIGHT ARM": [
+          43,
+          36
+        ],
+        "LEFT HIP": [
+          27.81,
+          43.88
+        ],
+        "RIGHT HIP": [
+          35.06,
+          43.47
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        29.2,
+        38.73
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        48,
+        19
+      ]
+    },
+    {
+      "frame": 4,
+      "phase": "pre_accel",
+      "pose_18_joint_design": {
+        "NOSE": [
+          29.84,
+          31.07
+        ],
+        "LEFT EYE": [
+          27.21,
+          30.29
+        ],
+        "RIGHT EYE": [
+          33.17,
+          29.83
+        ],
+        "LEFT EAR": [
+          25.6,
+          29.36
+        ],
+        "RIGHT EAR": [
+          35.52,
+          28.75
+        ],
+        "NECK": [
+          30.25,
+          33.92
+        ],
+        "LEFT SHOULDER": [
+          25.07,
+          36.49
+        ],
+        "RIGHT SHOULDER": [
+          36.99,
+          35.63
+        ],
+        "LEFT ELBOW": [
+          23.5,
+          40.44
+        ],
+        "RIGHT ELBOW": [
+          42.66,
+          38.9
+        ],
+        "LEFT ARM": [
+          25.23,
+          43.12
+        ],
+        "RIGHT ARM": [
+          44,
+          37
+        ],
+        "LEFT HIP": [
+          28.4,
+          43.9
+        ],
+        "RIGHT HIP": [
+          35.63,
+          43.58
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        29.98,
+        38.77
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        52,
+        17
+      ]
+    },
+    {
+      "frame": 5,
+      "phase": "accelerate",
+      "pose_18_joint_design": {
+        "NOSE": [
+          33.64,
+          30.97
+        ],
+        "LEFT EYE": [
+          30.56,
+          29.84
+        ],
+        "RIGHT EYE": [
+          36.58,
+          30.1
+        ],
+        "LEFT EAR": [
+          28.48,
+          28.81
+        ],
+        "RIGHT EAR": [
+          38.52,
+          29.14
+        ],
+        "NECK": [
+          34.78,
+          34.06
+        ],
+        "LEFT SHOULDER": [
+          29.79,
+          35.76
+        ],
+        "RIGHT SHOULDER": [
+          39.67,
+          36.36
+        ],
+        "LEFT ELBOW": [
+          27.7,
+          39.8
+        ],
+        "RIGHT ELBOW": [
+          43.29,
+          39.25
+        ],
+        "LEFT ARM": [
+          28.55,
+          42.98
+        ],
+        "RIGHT ARM": [
+          47,
+          37
+        ],
+        "LEFT HIP": [
+          31.52,
+          44.1
+        ],
+        "RIGHT HIP": [
+          38.5,
+          44.29
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        34.84,
+        39.18
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        59,
+        24
+      ]
+    },
+    {
+      "frame": 6,
+      "phase": "contact",
+      "pose_18_joint_design": {
+        "NOSE": [
+          36.38,
+          30.9
+        ],
+        "LEFT EYE": [
+          32.96,
+          29.6
+        ],
+        "RIGHT EYE": [
+          39.11,
+          30.22
+        ],
+        "LEFT EAR": [
+          30.54,
+          28.51
+        ],
+        "RIGHT EAR": [
+          40.76,
+          29.35
+        ],
+        "NECK": [
+          38.16,
+          34.06
+        ],
+        "LEFT SHOULDER": [
+          33.16,
+          35.26
+        ],
+        "RIGHT SHOULDER": [
+          43.06,
+          36.88
+        ],
+        "LEFT ELBOW": [
+          30.7,
+          39.28
+        ],
+        "RIGHT ELBOW": [
+          44.99,
+          39.7
+        ],
+        "LEFT ARM": [
+          30.93,
+          42.69
+        ],
+        "RIGHT ARM": [
+          48,
+          41
+        ],
+        "LEFT HIP": [
+          33.75,
+          43.98
+        ],
+        "RIGHT HIP": [
+          40.6,
+          44.44
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        38.48,
+        39.18
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        62,
+        41
+      ]
+    },
+    {
+      "frame": 7,
+      "phase": "follow_through",
+      "pose_18_joint_design": {
+        "NOSE": [
+          36.47,
+          30.9
+        ],
+        "LEFT EYE": [
+          33.04,
+          29.64
+        ],
+        "RIGHT EYE": [
+          39.19,
+          30.2
+        ],
+        "LEFT EAR": [
+          30.61,
+          28.57
+        ],
+        "RIGHT EAR": [
+          40.84,
+          29.31
+        ],
+        "NECK": [
+          38.27,
+          34.04
+        ],
+        "LEFT SHOULDER": [
+          33.27,
+          35.32
+        ],
+        "RIGHT SHOULDER": [
+          43.22,
+          36.77
+        ],
+        "LEFT ELBOW": [
+          30.8,
+          39.32
+        ],
+        "RIGHT ELBOW": [
+          45.36,
+          39.7
+        ],
+        "LEFT ARM": [
+          31.01,
+          42.68
+        ],
+        "RIGHT ARM": [
+          46,
+          44
+        ],
+        "LEFT HIP": [
+          33.82,
+          43.94
+        ],
+        "RIGHT HIP": [
+          40.32,
+          44.31
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        38.58,
+        39.12
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        58,
+        54
+      ]
+    },
+    {
+      "frame": 8,
+      "phase": "recover",
+      "pose_18_joint_design": {
+        "NOSE": [
+          34.46,
+          30.96
+        ],
+        "LEFT EYE": [
+          31.28,
+          29.86
+        ],
+        "RIGHT EYE": [
+          37.34,
+          30.07
+        ],
+        "LEFT EAR": [
+          29.1,
+          28.84
+        ],
+        "RIGHT EAR": [
+          39.2,
+          29.11
+        ],
+        "NECK": [
+          35.8,
+          34.0
+        ],
+        "LEFT SHOULDER": [
+          30.8,
+          35.72
+        ],
+        "RIGHT SHOULDER": [
+          40.79,
+          36.27
+        ],
+        "LEFT ELBOW": [
+          28.6,
+          39.71
+        ],
+        "RIGHT ELBOW": [
+          44.1,
+          39.27
+        ],
+        "LEFT ARM": [
+          29.27,
+          42.84
+        ],
+        "RIGHT ARM": [
+          45,
+          45
+        ],
+        "LEFT HIP": [
+          32.18,
+          43.93
+        ],
+        "RIGHT HIP": [
+          38.88,
+          44.07
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        35.92,
+        39.0
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        54,
+        58
+      ]
+    },
+    {
+      "frame": 9,
+      "phase": "recover",
+      "pose_18_joint_design": {
+        "NOSE": [
+          33.46,
+          30.99
+        ],
+        "LEFT EYE": [
+          30.4,
+          29.95
+        ],
+        "RIGHT EYE": [
+          36.42,
+          30.02
+        ],
+        "LEFT EAR": [
+          28.34,
+          28.95
+        ],
+        "RIGHT EAR": [
+          38.37,
+          29.04
+        ],
+        "NECK": [
+          34.56,
+          34.0
+        ],
+        "LEFT SHOULDER": [
+          29.56,
+          35.91
+        ],
+        "RIGHT SHOULDER": [
+          39.52,
+          36.08
+        ],
+        "LEFT ELBOW": [
+          27.5,
+          39.9
+        ],
+        "RIGHT ELBOW": [
+          43.26,
+          39.07
+        ],
+        "LEFT ARM": [
+          28.39,
+          42.95
+        ],
+        "RIGHT ARM": [
+          43,
+          44
+        ],
+        "LEFT HIP": [
+          31.37,
+          43.98
+        ],
+        "RIGHT HIP": [
+          38.18,
+          44.01
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        34.58,
+        39.0
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        49,
+        57
+      ]
+    },
+    {
+      "frame": 10,
+      "phase": "settle",
+      "pose_18_joint_design": {
+        "NOSE": [
+          32.73,
+          31.0
+        ],
+        "LEFT EYE": [
+          29.76,
+          30.02
+        ],
+        "RIGHT EYE": [
+          35.75,
+          29.99
+        ],
+        "LEFT EAR": [
+          27.79,
+          29.02
+        ],
+        "RIGHT EAR": [
+          37.78,
+          28.99
+        ],
+        "NECK": [
+          33.67,
+          34.0
+        ],
+        "LEFT SHOULDER": [
+          28.66,
+          36.03
+        ],
+        "RIGHT SHOULDER": [
+          38.72,
+          35.97
+        ],
+        "LEFT ELBOW": [
+          26.7,
+          40.03
+        ],
+        "RIGHT ELBOW": [
+          42.89,
+          38.98
+        ],
+        "LEFT ARM": [
+          27.76,
+          43.02
+        ],
+        "RIGHT ARM": [
+          42,
+          43
+        ],
+        "LEFT HIP": [
+          30.78,
+          44.01
+        ],
+        "RIGHT HIP": [
+          37.92,
+          44.0
+        ],
+        "LEFT KNEE": [
+          30,
+          47
+        ],
+        "RIGHT KNEE": [
+          41,
+          47
+        ],
+        "LEFT LEG": [
+          30,
+          49
+        ],
+        "RIGHT LEG": [
+          43,
+          49
+        ]
+      },
+      "virtual_chest_center": [
+        33.67,
+        39.0
+      ],
+      "virtual_pelvis_center": [
+        34,
+        44
+      ],
+      "sword_tip_px": [
+        44,
+        56
+      ]
+    },
+    {
+      "frame": 11,
+      "phase": "idle",
+      "pose_18_joint_design": {

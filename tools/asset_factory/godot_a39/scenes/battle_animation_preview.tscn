@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle_animation_preview.gd" id="1_preview"]
+[ext_resource type="PackedScene" path="res://scenes/actor01.tscn" id="2_actor"]
+
+[node name="FSBattleRunIdlePreview" type="Node2D"]
+script = ExtResource("1_preview")
+
+[node name="RunActor" parent="." instance=ExtResource("2_actor")]
+position = Vector2(326, 416)
+scale = Vector2(3.5, 3.5)
+initial_motion = &"run"
+initial_profile = &"run_tuned"
+
+[node name="IdleActor" parent="." instance=ExtResource("2_actor")]
+position = Vector2(698, 416)
+scale = Vector2(3.5, 3.5)
+initial_motion = &"idle"
+initial_profile = &"idle_rig"

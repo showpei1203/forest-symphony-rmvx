@@ -1,0 +1,12 @@
+{
+  "stage": "A44",
+  "archive_sha256": "a1433c135d6963082259c8573e6004a4ef35d263fe956eb379e34d60f7288443",
+  "zip_file_count": 186,
+  "sha_mismatch_count": 0,
+  "cold_import_exit": 0,
+  "cold_gpu_exit": 0,
+  "cold_gpu_pass": true,
+  "cold_contact_exit": 0,
+  "cold_contact_pass": true,
+  "result": "PASS"
+}

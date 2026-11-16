@@ -1,0 +1,57 @@
+name: FS A24 pinned Agent Sprite Forge upstream smoke (synthetic, no paid generation)
+
+on:
+  pull_request:
+    paths:
+      - "tools/asset_factory/a24_upstream_asf_smoke.py"
+      - ".github/workflows/fs-asf-a24-upstream.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  upstream-asf-real-cli:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout Forest Symphony code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install public open-source runtime dependencies
+        run: python -m pip install --disable-pip-version-check "Pillow>=10" "numpy>=1.26" "scipy>=1.11" "imageio>=2.31" "imageio-ffmpeg>=0.5"
+      - name: Install real ffmpeg and ffprobe (ASF video backend requires both)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Check both codec tools (fail closed)
+        run: command -v ffmpeg && command -v ffprobe && ffmpeg -version > /dev/null && ffprobe -version > /dev/null
+      - name: Clone reviewed ASF revision, pinned by full commit SHA
+        shell: bash
+        run: |
+          git clone https://github.com/0x0funky/agent-sprite-forge.git "$RUNNER_TEMP/agent-sprite-forge"
+          git -C "$RUNNER_TEMP/agent-sprite-forge" checkout --detach 25203d03900b46b444bdd72a75768c33d1895ad6
+          test "$(git -C "$RUNNER_TEMP/agent-sprite-forge" rev-parse HEAD)" = 25203d03900b46b444bdd72a75768c33d1895ad6
+      - name: Execute real ASF breath, prepare, frames, finish CLI (synthetic sprite)
+        run: |
+          python tools/asset_factory/a24_upstream_asf_smoke.py \
+            --upstream-root "$RUNNER_TEMP/agent-sprite-forge" \
+            --output-dir "$RUNNER_TEMP/fs_a24_synthetic"
+      - name: Publish public synthetic proof (never upload private FS art)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_A24_ASF_UPSTREAM_SYNTHETIC_PROOF
+          path: |
+            ${{ runner.temp }}/fs_a24_synthetic/A24_UPSTREAM_SMOKE_QA.json
+            ${{ runner.temp }}/fs_a24_synthetic/synthetic_48px_rgba.png
+            ${{ runner.temp }}/fs_a24_synthetic/breath/review.png
+            ${{ runner.temp }}/fs_a24_synthetic/prepared/registration_job.json
+            ${{ runner.temp }}/fs_a24_synthetic/frames/frames.json
+            ${{ runner.temp }}/fs_a24_synthetic/finish/review.png
+          if-no-files-found: warn
+          retention-days: 14
+
+# Hard safety: never pass cloud tokens, user Drive F0/PNG, paid-generation keys or secrets to upstream.
+# Even a successful run proves only adapter compatibility with a synthetic source replay.

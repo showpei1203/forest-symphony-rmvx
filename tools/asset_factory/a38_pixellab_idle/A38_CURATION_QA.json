@@ -1,0 +1,18 @@
+{
+  "curated_indices_from_first_five_R1": [
+    0,
+    0,
+    3,
+    3,
+    4,
+    4,
+    3,
+    0
+  ],
+  "8_slots": 8,
+  "unique_RGBA_poses": 3,
+  "method": "lossless selection of original Pixellab R1 frames only; no new poses synthesized",
+  "R2_wide_steps": "REJECTED ART HOLD",
+  "R1_G1_G2_upper_body_motion": "REJECTED ART HOLD",
+  "source_first_exact": true
+}

@@ -1,0 +1,18 @@
+{
+  "stage": "A47",
+  "source": "private Drive integrated torso candidate",
+  "native_Godot": "4.7.2",
+  "candidate_body_sha256": "6b91059f345931d325bbdf6af8fec12b6d9b5245fd83e53225536dddfa63052a",
+  "import_exit": 0,
+  "import_pass": true,
+  "gpu_exit": 0,
+  "gpu_pass": true,
+  "contact_exit": 0,
+  "contact_pass": true,
+  "native_screenshot_count": 12,
+  "contact_screenshot": true,
+  "waist_A62_exit": 0,
+  "waist_A45_exit": 1,
+  "waist_A47_exit": 0,
+  "status": "PASS"
+}
