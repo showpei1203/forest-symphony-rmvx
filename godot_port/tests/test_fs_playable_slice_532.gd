@@ -232,13 +232,25 @@ func _run()->void:
             int(slice.battle.party[0].get("source_atb_count",-1))<1000 and
             slice.story.runner.waiting_kind=="battle",
             "second VX301 encounter restores persistent actor HP100, fresh ATB"):return
-    # Actual Godot attack completes the second event, no reset of
-    # persisted HP or duplicate first-victory reward.
-    slice.battle.attack(slice.battle.party[0],slice.battle.enemies[0])
+    # The synthetic monster now owns a real stock-shaped Enemy Action.
+    # Source #211 roulette selects basic ATTACK at enemy ATB READY,
+    # then #231 ACT executes it (no manual hit call in this encounter).
+    var second_battle=slice.battle
+    second_battle.advance_atb(4.0)
+    var ai_hit:bool=false
+    for completed_action in second_battle.action_queue.completed:
+        if str(completed_action.get("side",""))=="enemy" and bool(
+                completed_action.get("success",false)):
+            ai_hit=true
+    if not _check(ai_hit and int(second_battle.party[0]["hp"])==80,
+            "native Enemy.actions chooses real AI ATB ACT, HP100->80"):return
+    # Actual Godot player attack completes second event. HP80 is
+    # committed through VX301 bridge without resetting to maxHP120.
+    second_battle.attack(second_battle.party[0],second_battle.enemies[0])
     await process_frame
     if not _check(slice.battle==null and not slice.story.runner.active and
             slice.world.gold==50 and int(slice.world.get_actor_vitals(
-            1).get("hp",-1))==100 and slice.battles_completed==2,
-            "second battle completes through same bridge and preserves health"):return
+            1).get("hp",-1))==80 and slice.battles_completed==2,
+            "source enemy AI damage survives bridge rematch and world HP persistence"):return
     print("FS P532 Godot PLAYABLE map999 chest→VX301 real ACT→601 gold50→map1000 VX102 quest→checkpoint SHA→second VX301 HP100 persists PASS")
     quit(0)
