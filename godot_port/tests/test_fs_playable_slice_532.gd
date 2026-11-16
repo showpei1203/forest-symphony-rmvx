@@ -82,6 +82,13 @@ func _run()->void:
     native_ui._process(2.0)
     if not _check(battle.ready_actors().has(0),
             "true Tankentai source ATB becomes ready"):return
+    # Enemy genuinely hits the player before victory, so actor HP must
+    # persist into the next encounter rather than resetting to full.
+    var enemy_damage:int=battle.attack(
+        battle.enemies[0],battle.party[0])
+    if not _check(enemy_damage==20 and int(
+            battle.party[0]["hp"])==100,
+            "actual source-shaped Godot enemy attack reduces actor HP120->100"):return
     native_ui._player_attack()
     var enemy_button:Button=_button("測試木靈",native_ui.body)
     if not _check(enemy_button!=null and
@@ -98,8 +105,10 @@ func _run()->void:
             battle.enemies[0]["hp"])==0 and slice.world.switch_on(10) and
             slice.world.gold==50 and
             slice.story.runner.waiting_kind=="message" and
-            slice.battles_completed==1,
-            "native attack ACT kills enemy, real bridge resumes VX601, gold50 and victory message"):return
+            slice.battles_completed==1 and int(
+            slice.world.get_actor_vitals(1).get("hp",-1))==100 and int(
+            slice.world.get_actor_vitals(1).get("mp",-1))==50,
+            "ACT victory persists actor HP100 MP50, real bridge resumes VX601 gold50"):return
     await process_frame # Deferred removal of native battle UI
     if not _check(slice.battle_overlay==null and slice.battle==null and
             slice.dialogue._mode=="message",
@@ -158,11 +167,13 @@ func _run()->void:
     result=slice.save_checkpoint()
     if not _check(bool(result.get("ok",false)) and
             slice.checkpoint_json.length()>60 and
-            str(result["sha256"]).length()==64,
-            "checksum checkpoint JSON and memory-only UI save"):return
+            str(result["sha256"]).length()==64 and
+            int(slice.world.get_actor_vitals(1).get("hp",-1))==100,
+            "checksum checkpoint includes true actor HP/MP across battles"):return
     var saved_map:int=slice.world.map_id
     var saved_pos:Vector2i=slice.player
     slice.world.gold=0
+    slice.world.set_actor_vitals(1,1,0)
     slice.world.gain_item("item",1,-2)
     slice.world.set_switch(10,false)
     slice.move_one_tile(Vector2i.LEFT)
@@ -172,7 +183,9 @@ func _run()->void:
             slice.player==saved_pos and slice.world.gold==50 and
             slice.world.amount("item",1)==2 and
             slice.world.switch_on(10) and
-            slice.world.self_switch_on(1000,2,"B"),
+            slice.world.self_switch_on(1000,2,"B") and
+            int(slice.world.get_actor_vitals(1).get("hp",-1))==100 and
+            int(slice.world.get_actor_vitals(1).get("mp",-1))==50,
             "checkpoint restore result=%s actual=%s map=%d player=%s gold=%d item=%d sw10=%s selfB=%s" % [
                 str(result),str(slice.checkpoint_json.left(230)),
                 slice.world.map_id,str(slice.player),slice.world.gold,
@@ -204,5 +217,28 @@ func _run()->void:
             "old checkpoint protocol/schemas cannot bypass integrity gate"):return
     if not _check(bool(slice.load_checkpoint().get("ok",false)),
             "valid restore remains available after failed import"):return
-    print("FS P532 native Godot PLAYABLE 2 maps, VX101 chest, VX301 real ATB ACT boss kill, VX601 gold50, VX201 transfer, VX102 choices+quest, JSON SHA memory checkpoint PASS")
+    # Full real VX301 bridge re-entry, not raw test-only actor creation.
+    # Actor HP100 must be restored, and battle-only ATB/guard must start
+    # fresh, never restored from the last action or fabricated in the save.
+    var rematch:Dictionary=slice.story.interact_legacy_vx([
+        {"code":301,"indent":0,"parameters":[0,1,false,true]},
+        {"code":601,"indent":0,"parameters":[]},
+        {"code":0,"indent":0,"parameters":[]}
+    ],slice.world,1000,77)
+    if not _check(bool(rematch.get("ok",false)) and
+            slice.battle!=null and slice.battle.active and
+            int(slice.battle.party[0]["hp"])==100 and int(
+            slice.battle.party[0]["mp"])==50 and
+            int(slice.battle.party[0].get("source_atb_count",-1))<1000 and
+            slice.story.runner.waiting_kind=="battle",
+            "second VX301 encounter restores persistent actor HP100, fresh ATB"):return
+    # Actual Godot attack completes the second event, no reset of
+    # persisted HP or duplicate first-victory reward.
+    slice.battle.attack(slice.battle.party[0],slice.battle.enemies[0])
+    await process_frame
+    if not _check(slice.battle==null and not slice.story.runner.active and
+            slice.world.gold==50 and int(slice.world.get_actor_vitals(
+            1).get("hp",-1))==100 and slice.battles_completed==2,
+            "second battle completes through same bridge and preserves health"):return
+    print("FS P532 Godot PLAYABLE map999 chest→VX301 real ACT→601 gold50→map1000 VX102 quest→checkpoint SHA→second VX301 HP100 persists PASS")
     quit(0)
