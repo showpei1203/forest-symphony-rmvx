@@ -117,10 +117,10 @@
       "name": "幽葉迴廊",
       "biome_id": "verdant_elf_forest",
       "role": "dungeon",
-      "status": "NATIVE_GPU_WATER_PHYSICS_PASS_ROUTE_HOLD",
+      "status": "LIVE_ROAD_NAV_ENGINE_PASS_FORMAL_MAZE_ART_HOLD",
       "scene_path": null,
       "source_branch": "feat/fs-a35-r3-hd2d-20261115",
-      "source_scene_path": "res://scenes/fs_01_maze_r8_water_collision_80x58.tscn",
+      "source_scene_path": "res://scenes/fs_01_maze_r12_live_road_navigation_80x58.tscn",
       "grid_px": 32,
       "base_canvas_px": [
         2560,
@@ -128,16 +128,20 @@
       ],
       "gates": {
         "source": "PASS",
-        "native_gpu": "PASS",
+        "native_gpu": "PASS_2_FRAMES",
         "water_physics": "PASS_148_OF_148",
-        "water_visual": "HOLD",
+        "road_semantics": "PASS_5_OF_5",
+        "actor_continuous_sweep": "PASS_231_OF_231",
+        "live_runtime_navigator": "PASS_5_OF_5",
+        "final_entrance_exit": "HOLD",
         "navigation": "HOLD",
+        "water_visual": "HOLD",
         "art": "HOLD",
         "final_seal": false
       },
       "canonical_scene_id": "FS_01_MAZE",
       "canonical_display_name": "幽葉迴廊",
-      "source_lineage": "A36B R2 original + A36C R6 grove geometry R7 reconciled + R8 independent real water physics. Separate private standalone project.",
+      "source_lineage": "A36B R2 original + A36C R6 56 grove positions reconciled R7 + R8 148 water colliders + R9 actual physics 4640 + R10 Ground-only road affinity + R11 actual Player sweeps 231 + R12 live Godot road navigator separate standalone project",
       "qa_metadata": {
         "ground_sha256": "ac591877b05c00543e6756e44e6ba81f6fea7e36086049e35de81e2610e0c911",
         "shadow_sha256": "752c252b0ac48961a164943749b421172ad775d2fe0e1329faa748219ff63ffa",
@@ -153,13 +157,24 @@
         "original_gpu_r7_vs_r8_frames": 2,
         "original_gpu_changed_pixels_r7_vs_r8": 0,
         "r7_scene_sha256": "8bf0a897bc6525ec7cef29e4992c46aa36639ffbeb9b675bbc4cd88194128c36",
-        "r8_scene_sha256": "bb7f1b565419977c0851e4a188531b3426128758a098251bd151805e0e9fbfec"
+        "r8_scene_sha256": "bb7f1b565419977c0851e4a188531b3426128758a098251bd151805e0e9fbfec",
+        "physical_grid_checks": 4640,
+        "physically_open_cells": 4129,
+        "physically_blocked_cells": 511,
+        "road_confidence_ground_sha256": "d442540efe2b45389aed99e77a3ddc81129201ec891404cbf785dc02234f54ec",
+        "native_R10_road_candidate_pass": 5,
+        "native_R11_real_Player_movement_segments": 231,
+        "native_R11_colliding_segments": 0,
+        "native_R12_live_runtime_exact_reference_routes": 5,
+        "native_R12_Godot_gpu_comparison_pixels": 4751360,
+        "native_R12_changed_visual_pixels": 0,
+        "r12_scene_sha256": "54224083a741bf4d451c9d44674d48fae68e399eac856c31b31c15c10457c392"
       },
       "blockers": [
-        "Not in same-project village runtime. Complete forest project in private Drive R7B and pending R8 physics patch",
-        "148 real physics hits do NOT prove start/exit path graph or crossing bridges",
-        "River appearance/animation and art are not approved",
-        "Original Ground resized nonuniformly from smaller source, art HOLD"
+        "Real dungeon source is a separate private full Godot project; do not substitute into main village scene without integration QA",
+        "Select actual authored dungeon entrance/exits and run gameplay movement/bridge/teleport tests",
+        "No ART PASS: original Ground non-native enlarged source and static river, conifer/palette cohesion pending",
+        "NPC dynamic obstacles/path invalidation and event system not integrated"
       ]
     },
     {
