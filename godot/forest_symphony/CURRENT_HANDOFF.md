@@ -1,3 +1,25 @@
+# CURRENT | Forest Symphony 12 HD-2D maps / First Dungeon FS_01_MAZE R12 | 2026-11-16
+
+**ENGINE Godot 4.7.2 ONLY · 6 canonical biomes x maze/village = 12 maps. First forest village art HOLD; first forest maze R12 actual Godot native source/GPU/real Player road navigation PASS, formal maze entrance-exit and final ART HOLD. Other 10 planned, zero formal completed map seals.**
+
+## Most recent actually VERIFIED source, not historical R8
+- **[FULL FS_01_MAZE「幽葉迴廊」R12 PRIVATE GODOT PROJECT + ALL ART & QA](https://drive.google.com/file/d/1VikZtZc0YWhHFNMjylNGXFEbN2_oW6qR/view): 241 files, 113,804,051 bytes, SHA256 cf1d01ca564eaba05d7ff900314ae82b385dfab7a74b7d5010f5004e5aa21106; ZIP CRC PASS, Drive provider shared=false, only owner permission.**
+- **Cold rebuilt after release**: isolated extract 241 files, official Godot editor import Exit 0, live FS_01_MAZE R12 scene/route-native QA Exit 0, actual Godot Player 231/231 continuous foot movements Exit 0. Source Ground/Shadow and 326 independent complete PAR/310 tree owners unchanged.
+- World 80x58 at 32px = 2560x1856. 148 independent actual river collider tiles PASS. 4640 genuine 13x9 pixel actor-foot cell physics checks; 4129 open, 511 blocked. Original Ground-only warm-earth road confidence calculated per 32x32 cell; five road-aligned native routes improved vs previous straight physical shortest paths (5/5). R11 actual Player CharacterBody2D.test_move 231/231 segments zero collision. New R12 **LIVE RoadNavigator node inside real Godot main scene**, public get_route_cells/get_world_route/get_nearest_open APIs, native 5/5 route match and same real 231 sweeps.
+- R12 two original full 2560x1856 Godot native GPU screenshots vs R8: **4,751,360 original pixels, changed RGB=0**. Engine features added without corrupting art. 1x visual comparison from previous R9/R10 remains [private A/B review](https://drive.google.com/file/d/1l4hSLmu7hZOEtjBsESiETYj0Ic5094wY/view). Comparison is a derivative, not new authored art.
+- **[Latest R12 official Handoff](docs/FS_01_MAZE_R12_LIVE_NAV_NATIVE_HANDOFF_20261116.md) | [R12 Failure Log](docs/FS_01_MAZE_R12_LIVE_NAV_FAILURE_LOG_20261116.md) | [Original world production Master](docs/FS_12_MAP_ACTIVE_MASTER_20261116.md) | [Exact twelve-map engineering status](data/fs_12_map_catalog.json)**.
+- The original canonical names: 01 幽葉迴廊／苔光村; 02 冰脊迷谷／霜燈聚落; 03 風沙裂谷／星井綠洲; 04 熔脈裂橋／灰鑄工坊城; 05 泥潭迷水／蘆燈水上村; 06 星盤斷空／虹晶臺地村. Original Nov14 world art source specifies unique palette, terrain materials and whole PAR families for EACH biome; do not blindly reuse forest tan road detection for snow/sand/lava/marsh/crystal.
+- **[FS_01_VILLAGE「苔光村」FULL PRIVATE GODOT R8 R3 original candidate](https://drive.google.com/file/d/1uGa7waQ-SwSSWVcgGUnbmlI7PjRaEKC2/view)** remains separate 1280x928 village art branch: real native Ground/PAR, physical navigation, day/dusk/night light and canopy shadows PASS but ART HOLD. Do not merge blindly with R12 forest, A36C parallel branch or unrelated Godot combat/NPC events work.
+- Prior sealed first maze R8 full ZIP, R9 native route survey evidence and R10 derived route screenshots remain history only; NEXT WORK SHOULD START FROM R12 COMPLETE PROJECT, not reset to A33–A36.
+
+## Next substantive stage
+1. **Actual authored maze topology, entrances/exits and in-game moving actor**. Route navigation is now a real scene component, not just test metadata. Wire actual movement/transition/bridge semantics to approved visible trails; run real Godot native gameplay tests, retain water+PAR occlusion. Current technical PASS is NOT yet production-ready maze NAV PASS.
+2. **HD-2D art improvement Ground3** as separate new immutable candidate: fully natural roads, wildflowers, leaf clusters, denser unique conifers and coherent cottages, water layering/flow. Existing original A36B ground was resized and ART still HOLD. Native full 1x art A/B required; no composited-image chopping, no plain conceptual image accepted.
+3. Then **FS_02_MAZE 冰脊迷谷 and FS_02_VILLAGE 霜燈聚落** using the original world catalog; continue all remaining biomes rather than endless forest micro-edits.
+4. Every stage needs actual scene/asset changes, source QA + original Godot native screenshot and physics, explicit Failure Log/Handoff, owner-only Google Drive full ZIP SHA/CRC/cloud metadata readback, GitHub code/docs/CURRENT_HANDOFF. No VX/new local permanent files.
+
+---
+
 # CURRENT | Forest Symphony 6 BIOMES × VILLAGE/DUNGEON = 12 MAPS | FS_01_MAZE R8 PHYSICS | 2026-11-16
 
 **Godot 4.7.2 ONLY. Core delivery 12 authored maps. Original Nov14 world bible names/IDs/palettes are authoritative.**
