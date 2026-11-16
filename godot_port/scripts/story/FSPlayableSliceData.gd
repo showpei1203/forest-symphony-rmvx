@@ -55,7 +55,13 @@ static func database()->FSDatabase:
         "enemies":[null,{"id":1,"name":"測試木靈",
             "maxhp":48,"maxmp":0,"atk":9,"def":1,
             "spi":2,"agi":5,"hit":95,"eva":0,
-            "has_critical":false,"actions":[],
+            "has_critical":false,
+            # Legal, single action shape matches RGSS2 Enemy.actions.
+            # This is explicitly a synthetic fixture, NOT the user's
+            # original post-Apply Enemy AI. Real native AI+ACT runs.
+            "actions":[{"kind":0,"basic":0,"skill_id":0,
+                "rating":5,"condition_type":0,
+                "condition_param1":0,"condition_param2":0}],
             "battler_name":"","note":""}],
         "troops":[null,{"id":1,"name":"測試林間遭遇",
             "members":[{"enemy_id":1,"hidden":false}],"pages":[]}],
