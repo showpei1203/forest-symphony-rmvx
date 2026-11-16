@@ -65,6 +65,21 @@ static func inspect(json_text:String)->Dictionary:
             x<0 or x>=FSPlayableSliceData.WIDTH) or (
             y<2 or y>=FSPlayableSliceData.HEIGHT):
         return _fail("存檔指向尚未支援的地圖／座標")
+    var vitals:Variant=values.get("actor_vitals",{})
+    if not (vitals is Dictionary):
+        return _fail("角色 HP/MP 存續資料不是物件")
+    for actor_key in vitals:
+        if not str(actor_key).is_valid_int() or int(actor_key)!=1 or not (
+                vitals[actor_key] is Dictionary):
+            return _fail("角色 HP/MP 存續資料含無效 Actor")
+        var row:Dictionary=vitals[actor_key]
+        if not row.has("hp") or not row.has("mp"):
+            return _fail("角色 HP/MP 存續資料不完整")
+        if (not row["hp"] is float and not row["hp"] is int) or (
+                not row["mp"] is float and not row["mp"] is int) or (
+                int(row["hp"])<0) or int(row["mp"])<0 or int(
+                row["hp"])>1000000 or int(row["mp"])>1000000:
+            return _fail("角色 HP/MP 存續數值越界")
     if values["party_actor_ids"].is_empty():
         return _fail("存檔缺少有效戰鬥隊伍")
     for actor_id in values["party_actor_ids"]:
