@@ -1,3 +1,10 @@
+## FINAL R12 FULL STANDALONE GODOT ZIP: CLOUD + COLD REBUILD VERIFIED
+- **[FS_01_MAZE「幽葉迴廊」R12 FULL PRIVATE GODOT 4.7.2 SOURCE + ALL QA](https://drive.google.com/file/d/1VikZtZc0YWhHFNMjylNGXFEbN2_oW6qR/view)** is the preferred complete playable technical candidate (no extra patch needed). **241 files, 113,804,051 bytes, SHA256 cf1d01ca564eaba05d7ff900314ae82b385dfab7a74b7d5010f5004e5aa21106; ZIP CRC PASS**. Google Drive readback exact size, shared=false, owner-only permission confirmed.
+- **Cold rebuild after package:** Extracted all 241 files into a **new** owner-only Google Drive working directory, ran official **Godot 4.7.2 --headless --editor --import Exit 0**, then **R12 live RoadNavigator test Exit 0** (4,640 native physics cells, 148 river, 5/5 runtime exact weighted road routes, 231/231 real Player sweeps), then independent **R11 CharacterBody2D test_move 231/231 Exit 0**.
+- Native GPU R8 vs R12 two original **2560×1856** OpenGL frames PASS; 4,751,360 visual pixels changed **0**; preserves old A36B Ground/Shadow/R8 scene SHA. R10 derived A/B review image is only a private debug comparison, not regenerated map art.
+- Formal production status intentionally remains **ART HOLD / MAZE ENTRANCE–EXIT & GAMEPLAY TRANSITION HOLD**. R12 is a technical, reproducible, fully Godot-loadable **forest dungeon candidate**, not an approved completed maze. Other 10 canonical biome pair maps remain PLANNED.
+- Primary next-stage source should be this R12 full ZIP and this GitHub CURRENT_HANDOFF. Do not redo R8, recut sprites or return to RPG Maker VX.
+
 # Forest Symphony | FS_01_MAZE R9→R12 Road Navigator | Official Engineering Handoff | 2026-11-16
 
 **ENGINE/GPU PASS · 4,640 actual Godot physical cells PASS · 148 water blockers PASS · 5/5 road routes PASS · 231/231 real CharacterBody2D sweeps PASS · R12 LIVE RUNTIME API PASS · VISUAL PIXEL REGRESSION 0 · ART HOLD · FINAL MAZE/ENTRANCE/EXIT HOLD.**
