@@ -179,18 +179,30 @@ func _run()->void:
                 slice.world.amount("item",1),str(slice.world.switch_on(10)),
                 str(slice.world.self_switch_on(1000,2,"B"))]):return
     var valid:String=slice.checkpoint_json
-    slice.checkpoint_json=valid.replace("\"gold\":50","\"gold\":99")
+    var envelope:Dictionary=JSON.parse_string(valid)
+    var original_inner:String=str(envelope["payload_json"])
+    var tampered_inner:String=original_inner.replace(
+        "\"gold\":50","\"gold\":99")
+    if not _check(tampered_inner!=original_inner,
+            "checksum test actually modifies the saved gold payload"):return
+    envelope["payload_json"]=tampered_inner
+    # Keep the ORIGINAL digest: valid data can never be silently
+    # swapped merely by changing the nested JSON string.
+    slice.checkpoint_json=JSON.stringify(envelope)
     if not _check(not bool(slice.load_checkpoint().get("ok",false)) and
             slice.world.gold==50,
             "tampered checksum never partially restores world"):return
     slice.checkpoint_json=valid
+    var older:String=original_inner.replace(
+        "fs_godot_story_checkpoint_v1","fs_godot_story_checkpoint_v0")
+    envelope["payload_json"]=older
+    envelope["sha256"]=older.sha256_text()
     var unsupported:Dictionary=CODEC.inspect(
-        valid.replace("fs_godot_story_checkpoint_v1",
-            "fs_godot_story_checkpoint_v0"))
+        JSON.stringify(envelope))
     if not _check(not bool(unsupported.get("ok",false)) and
             slice.world.gold==50,
             "old checkpoint protocol/schemas cannot bypass integrity gate"):return
-    if not _check(not bool(slice.load_checkpoint().get("ok",false))==false,
+    if not _check(bool(slice.load_checkpoint().get("ok",false)),
             "valid restore remains available after failed import"):return
     print("FS P532 native Godot PLAYABLE 2 maps, VX101 chest, VX301 real ATB ACT boss kill, VX601 gold50, VX201 transfer, VX102 choices+quest, JSON SHA memory checkpoint PASS")
     quit(0)
