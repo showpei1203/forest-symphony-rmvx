@@ -12,6 +12,9 @@ var switches: Dictionary = {}
 var variables: Dictionary = {}
 var self_switches: Dictionary = {}
 var inventory: Dictionary = {} # item:1 / weapon:2 / armor:3
+# Source VX Game_Actor HP/MP persist between battles, unlike ATB, guard,
+# OD and battle-only State. No other battler-state parity is claimed.
+var actor_vitals: Dictionary = {} # "actor_id" => {"hp":X,"mp":Y}
 var gold: int = 0
 var party_actor_ids: Array[int] = []
 var map_id: int = 0
@@ -55,6 +58,15 @@ func gain_item(kind: String, id: int, delta: int) -> void:
     inventory[key] = clampi(amount(kind,id) + delta, 0, 99)
     inventory_changed.emit(kind,id,int(inventory[key]))
 
+func set_actor_vitals(actor_id:int,hp:int,mp:int)->void:
+    if actor_id<1 or hp<0 or mp<0:
+        return
+    actor_vitals[str(actor_id)]={"hp":hp,"mp":mp}
+
+func get_actor_vitals(actor_id:int)->Dictionary:
+    var row:Variant=actor_vitals.get(str(actor_id),null)
+    return row.duplicate(true) if row is Dictionary else {}
+
 func as_save_dict() -> Dictionary:
     return {
         "switches":switches.duplicate(true),
@@ -62,6 +74,7 @@ func as_save_dict() -> Dictionary:
         "self_switches":self_switches.duplicate(true),
         "inventory":inventory.duplicate(true),
         "gold":gold,"party_actor_ids":party_actor_ids.duplicate(),
+        "actor_vitals":actor_vitals.duplicate(true),
         "map_id":map_id,"map_x":map_x,"map_y":map_y
     }
 
@@ -75,6 +88,9 @@ func restore_save_dict(data: Dictionary) -> void:
         variables[int(key)] = int(data["variables"][key])
     self_switches = data.get("self_switches", {}).duplicate(true)
     inventory = data.get("inventory", {}).duplicate(true)
+    # Older story files may omit vitals. This is a bounded HP/MP-only
+    # restore, not arbitrary State/skill/equipment deserialization.
+    actor_vitals = data.get("actor_vitals",{}).duplicate(true)
     gold = int(data.get("gold", 0))
     party_actor_ids.clear()
     for actor_id in data.get("party_actor_ids", []):
