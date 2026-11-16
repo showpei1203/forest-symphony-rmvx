@@ -1,3 +1,20 @@
+# CURRENT | Forest Symphony 6 BIOMES × VILLAGE/DUNGEON = 12 MAPS | FS_01_MAZE R8 PHYSICS | 2026-11-16
+
+**Godot 4.7.2 ONLY. Core delivery 12 authored maps. Original Nov14 world bible names/IDs/palettes are authoritative.**
+**First Village: NATIVE/SHADOW/NAV PASS / ART HOLD. First Forest Dungeon: NATIVE/GPU/148 WATER PHYSICS PASS / ROUTES/WATER ART/OVERALL ART HOLD. Other 10 maps PLANNED. Formal production seals ZERO.**
+
+- [Six-biome twelve-map Master and reusable Ground/PAR/shadow/water/nav rulebook](docs/FS_12_MAP_ACTIVE_MASTER_20261116.md) | [Original twelve-map state catalog](data/fs_12_map_catalog.json) | [Native map registry](scripts/fs_world_map_registry.gd).
+- 12 canonical names: 01 幽葉迴廊／苔光村; 02 冰脊迷谷／霜燈聚落; 03 風沙裂谷／星井綠洲; 04 熔脈裂橋／灰鑄工坊城; 05 泥潭迷水／蘆燈水上村; 06 星盤斷空／虹晶臺地村. Original Nov14 source and full color palettes retained in catalog and source master.
+- [First village (苔光村) existing full private R8 R3 Godot project](https://drive.google.com/file/d/1uGa7waQ-SwSSWVcgGUnbmlI7PjRaEKC2/view): native Godot 1280x928, 187 PAR, 175 canopies, day/dusk/night, phys navigation PASS, art HOLD. Never overwrite.
+- **[First forest dungeon (幽葉迴廊) full standalone private R8 Godot project](https://drive.google.com/file/d/19uk8jdZTTkLWVky1qbnD08vMiDzjPDLI/view)**: 211 files, 91,979,830 bytes, SHA256 bcafbe212c101ddcfbdb5de5d31d3bf69ee9d2e3c6c447fcc90f8f50a972895b, ZIP CRC PASS, Drive provider shared=false/owner-only. **Cold extract + Godot 4.7.2 editor import + 148/148 real water physics native test PASS.** Preferred FULL project, not just incremental patch.
+- Original forest 80x58/2560x1856 @32px; 326 independent complete PAR/310 trees, A36B original art retained and 56 A36C grove coordinates adopted, avoiding 40 old art regressions. Existing Ground SHA unchanged. R7→R8 water colliders do not change a single visual RGB pixel in two real Godot 2560x1856 GPU frames. [Derived 148 water cell debugging map](https://drive.google.com/file/d/12kEk-6GMtMiVmKTkZrfxazQdaGjcOkgg/view) is not actual in-game blue overlay.
+- [R8 water native Handoff](docs/FS_01_MAZE_R8_WATER_NATIVE_HANDOFF_20261116.md) | [R8 Failure Log](docs/FS_01_MAZE_R8_WATER_FAILURE_LOG_20261116.md) | [12-map Handoff](docs/FS_12_MAP_FACTORY_V1_NATIVE_HANDOFF_20261116.md) | [12-map Failure Log](docs/FS_12_MAP_FACTORY_V1_FAILURE_LOG_20261116.md).
+- Forest script files: [R8 semantic water StaticBody2D](scripts/fs_01_maze_r8_water_collision.gd), [R8 scene builder](tools/fs_01_maze_r8_water_build.py), [true 148/148 native physics tests](tests/test_fs_01_maze_r8_water_native.gd), [full reproducible R8 project builder](tools/fs_01_maze_r8_full_project.py).
+- **NEXT EXECUTION:** full maze entrance→exit footstep and bridge connectivity, sample real Godot player physics against 326 tree/148 water colliders, revise water border precision if necessary; then new independent ART-quality original Ground3 and PAR style, then next biome 凜霜雪原 (both named maze and village). Do not get trapped retouching one village forever.
+- Every stage real Godot native screenshots and physics QA, source SHA/ZIP CRC, clear ART HOLD vs actual pass, owner-only Drive binary assets (cloud ID verified), public GitHub text code/Handoff. No VX, do not overwrite parallel A36C, combat, original maps.
+
+---
+
 # CURRENT | FS SIX BIOMES × DUNGEON/VILLAGE = 12 MAPS | 2026-11-16
 
 **Godot 4.7.2 ONLY. All 12 map titles and palette/materials from original 2026-11-14 FS world bible. Map factory infrastructure NATIVE PASS. Forest village ENGINE/NAV/GPU PASS ART HOLD. Forest dungeon SOURCE/GPU PASS, NAV/WATER/ART HOLD. No formal ART-sealed map yet.**
