@@ -47,3 +47,13 @@
 3. 地圖導航與動畫：正式角色任意幀動畫/腳點、事件觸發、碰撞/遮蔽、地圖/戰鬥實際場景切換。未驗證的原版事件 opcode fail closed，Game Over/escape source witness 待補。
 4. 永久進度只可導向 user-authorized owner-only Cloud Drive/GitHub，不在開發機留常駐文件；此輪「記憶體暫存」會隨應用結束消失，不能叫正式永久存檔。
 5. QA、Failure Log、GitHub Handoff、PRIVATE Drive Handoff 每輪完整收尾；**Phase1 SEAL=NO**。
+
+
+### 6. 2026-11-16 最終真實 Godot 原生 QA / 圖像確認
+- `717d59ab6f8e8664cc56aabb015ae2c503b45435`：新合成木靈真 `Enemy.actions`+ATB/ACT 行動、第二場跨戰鬥角色 HP100→80、UI 合成來源標記均已提交；完整 GitHub Godot 4.7.2 native CI **`43783721755` SUCCESS**。
+- `64845e1cbe699a4f38aadafb618215226dcf3a97`：包含正式本輪完整 Handoff 與 Master Handoff 索引的完整 HEAD；Godot Actions **`43784033175` SUCCESS**，zero failures、包含新 P532、P533 與全部既有 Boss/Skill/Weather/MapEditor/Animation suites。
+  https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43784033175
+- 此 HEAD 真正 Native Xvfb/OpenGL 1088×832 GPU BATTLE 截圖 artifact `fs-godot-p1-playable-slice-battle-native-qa` ID **14190015820**，已實際下載、解壓和目視驗收，PNG 83,511 bytes SHA256 **`7fb6bd4046a388a12e90effff23d8e864068c9db8b7819e25eb591ab166cde92`**。實際畫面有木靈 HP48/48、角色 HP120/120／MP50、來源 ATB READY、真正「選擇敵方目標」按鈕以及合成 QA 警語，繁中文字型完整。
+- 此 HEAD 真正 Native GPU QUEST 地圖截圖 artifact `fs-godot-p1-playable-slice-map-native-qa` ID **14189198508**，已下載、解壓、目視驗收，PNG 60,805 bytes SHA256 **`e620d276f957dc732061c55504dfb4f11291ede2c4eaeeae64a8be6022d83530`**。顯示 Map1000 (6,6)、藥草×2、金錢50、木靈已擊退、記憶體暫存與真正角色/傳送門/NPC 互動座標。全部明標**合成測試格，非正式原版地圖**。
+- 本工程有可執行場景 `res://scenes/story/FSPlayableSlice.tscn` 與 main Boot `FSScreen`「Godot 地圖→事件→戰鬥→存讀 可玩切片」入口，不再需要只讀技術文件才能看到跨系統流程。
+- CI artifact 為**真實 Godot GPU 原始圖像**，仍非真 FS artwork。原始私人地圖的 ART HOLD、原 11 DB/505 runtime witness、完整原版遊玩能力仍未封版。下階段按上面第 5 節進行。
