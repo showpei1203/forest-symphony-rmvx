@@ -76,14 +76,14 @@ func _run() -> void:
     live.queue_free()
     await process_frame
     var dungeon: Dictionary=registry.get_map("forest_dungeon")
-    if dungeon.get("status","")!="NATIVE_GPU_WATER_PHYSICS_PASS_ROUTE_HOLD" or registry.has_native_scene("forest_dungeon"):
+    if dungeon.get("status","")!="LIVE_ROAD_NAV_ENGINE_PASS_FORMAL_MAZE_ART_HOLD" or registry.has_native_scene("forest_dungeon"):
         _fail("A36C Forest Dungeon not allowed to pretend native-ready");return
-    if dungeon.get("gates",{}).get("native_gpu")!="PASS" or dungeon.get("gates",{}).get("navigation")!="HOLD" or dungeon.get("gates",{}).get("water_physics")!="PASS_148_OF_148":
+    if dungeon.get("gates",{}).get("native_gpu")!="PASS_2_FRAMES" or dungeon.get("gates",{}).get("navigation")!="HOLD" or dungeon.get("gates",{}).get("water_physics")!="PASS_148_OF_148" or dungeon.get("gates",{}).get("live_runtime_navigator")!="PASS_5_OF_5" or dungeon.get("gates",{}).get("actor_continuous_sweep")!="PASS_231_OF_231":
         _fail("FS_01_MAZE has real GPU proof but still lacks maze navigation");return
     if registry.is_candidate_runnable("forest_dungeon"):
         _fail("A36C unverified source must be locked");return
     var summary: Dictionary=registry.get_summary()
     if int(summary.get("candidate_runnable",-1))!=1 or int(summary.get("production_ready",-1))!=0:
         _fail("expected one DEV map and ZERO formally sealed maps");return
-    print("FS 12-MAP GODOT NATIVE PASS: biomes=6, slots=12, paired dungeons/villages=6, candidate village=1, forest GPU+148 water physics, route HOLD=1, production seals=0; actual R8 R3 175-canopy scene instantiated")
+    print("FS 12-MAP GODOT NATIVE PASS: biomes=6, slots=12, paired dungeons/villages=6, candidate village=1, forest GPU+148 water+5 live routes+231 real actor sweeps PASS, FORMAL maze/art HOLD=1, production seals=0; actual R8 R3 175-canopy scene instantiated")
     quit(0)
