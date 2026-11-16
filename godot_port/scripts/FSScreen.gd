@@ -5,6 +5,7 @@ const FS_BATTLE = preload("res://scripts/FSBattle.gd")
 const FS_MENU = preload("res://scripts/FSMenuModel.gd")
 const STORY_SANDBOX = preload("res://scripts/story/FSStorySandbox.gd")
 const PLAYABLE_SLICE = preload("res://scenes/story/FSPlayableSlice.tscn")
+const A35_PRIVATE_GATE = preload("res://scripts/story/FSPrivateA35Gate.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -22,6 +23,7 @@ var battle_command_buttons: Array[Button] = []
 var selected_troop_id: int = 0
 var story_sandbox: FSStorySandbox
 var playable_slice: FSPlayableSlice
+var a35_preview: Control
 
 func _ready() -> void:
     _install_system_cjk_font()
@@ -44,6 +46,7 @@ func _ready() -> void:
     if not db.load_all():
         _add_button("遊玩 Godot 地圖→事件→ACT戰鬥→劇情切片（合成資料）", _open_playable_slice)
         _add_button("開啟 Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
+        _offer_a35_private_preview()
         title_label.text = "Forest Symphony｜原始資料未載入"
         status_label.text = "缺少啟動後 FS 正式資料與原 VX 權威證據。\n" + "\n".join(PackedStringArray(db.errors)) + "\n\n只匯入原始 RVData 不足以完成驗證；不使用假角色數值。"
         return
@@ -196,6 +199,7 @@ func _show_menu() -> void:
     _add_button("選擇原始敵方隊伍並進入 BATTLE", _show_troop_picker)
     _add_button("Godot 地圖→事件→戰鬥→存讀 可玩切片（合成資料）", _open_playable_slice)
     _add_button("Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
+    _offer_a35_private_preview()
 
 func _actor_selector(on_select: Callable) -> void:
     # Clickable actor tabs for true party ID/level; MENU never shows all 800 skills.
@@ -309,6 +313,56 @@ func _formation_clicked(index: int) -> void:
         else:
             _show_log("交換編隊失敗")
     _show_formation()
+
+
+func _offer_a35_private_preview() -> void:
+    # Only visible when original owner-only scene can actually load.
+    # No synthetic fallback and no claimed FS Story/ACT integration.
+    var gate:Dictionary=A35_PRIVATE_GATE.inspect()
+    if bool(gate.get("ok",false)):
+        _add_button("A35 苔光村真實森林預覽（ART HOLD，尚未接事件）",
+            _open_a35_private_preview)
+
+func _open_a35_private_preview() -> void:
+    if a35_preview!=null or playable_slice!=null or story_sandbox!=null:
+        return
+    if battle!=null and battle.active:
+        _show_log("戰鬥進行中不可切換地圖")
+        return
+    var gate:Dictionary=A35_PRIVATE_GATE.inspect()
+    if not bool(gate.get("ok",false)):
+        _show_log(str(gate.get("reason","私人森林地圖拒絕載入")))
+        return
+    a35_preview=Control.new()
+    a35_preview.name="PrivateA35VillagePreview_ART_HOLD"
+    a35_preview.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    add_child(a35_preview)
+    var container:=SubViewportContainer.new()
+    container.name="A35NativeViewportContainer"
+    container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    container.stretch=true
+    a35_preview.add_child(container)
+    var view:=SubViewport.new()
+    view.name="A35NativeViewport"
+    view.size=Vector2i(1280,928)
+    view.render_target_update_mode=SubViewport.UPDATE_ALWAYS
+    container.add_child(view)
+    var packed:PackedScene=gate["scene"]
+    view.add_child(packed.instantiate())
+    var back:=Button.new()
+    back.name="ReturnFromA35Preview"
+    back.text="返回 FS｜A35 真素材預覽，非正式劇情移植"
+    back.position=Vector2(8,8)
+    back.pressed.connect(_close_a35_private_preview)
+    a35_preview.add_child(back)
+
+func _close_a35_private_preview() -> void:
+    if a35_preview==null:
+        return
+    a35_preview.queue_free()
+    a35_preview=null
+    if battle!=null:
+        _show_menu()
 
 func _open_playable_slice() -> void:
     if playable_slice != null:

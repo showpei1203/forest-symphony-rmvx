@@ -230,6 +230,16 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ivy_final_passive_notes_531.gd
+      - name: Verify A35 owner-only archive staging safety using synthetic ephemeral ZIPs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s godot_port/tests -p 'test_private_a35_stage_534.py' -v
+      - name: Native Godot deny missing private A35 Ground/PAR (never synthetic-substitute)
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_private_a35_gate_534.gd
       - name: Test actual playable two-map VX chest to ACT battle to victory branch portal quest and memory save
         shell: bash
         run: |

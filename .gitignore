@@ -7,3 +7,7 @@ Graphics/
 Save*.rvdata
 *.log
 .tmp/
+
+# Private owner-only A35 Ground/PAR staging; never push original artwork.
+godot_port/a35_private/
+godot_port/.a35-stage-*/
