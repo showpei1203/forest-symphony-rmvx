@@ -34,6 +34,11 @@ func _ready() -> void:
         battle.changed.connect(_show_log)
         battle.finished.connect(_on_battle_finished)
         _show_battle()
+        # Native real ACT screenshots must not claim "source awaiting
+        # validation" as a broken app while synthetic QA is explicitly
+        # running. Never mistake the fixture for complete FS DB parity.
+        if not db.boot_final_verified:
+            log_label.text="合成 QA 戰鬥：已接通原 VX 事件與 Godot ATB／ACT；不是原版 FS 正式數值或美術"
         return
     db = FS_DB.new()
     if not db.load_all():
