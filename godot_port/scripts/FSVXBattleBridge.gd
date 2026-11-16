@@ -41,7 +41,22 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
         return
     var combat := FSBattle.new(_database, _world)
     for actor_id in _world.party_actor_ids:
-        combat.add_actor(actor_id)
+        if not combat.add_actor(actor_id):
+            _fail("原始 VX Actor%d 不存在或裝備來源不完整" % actor_id)
+            return
+        # Stock VX actor HP/MP survive each battle. Restore only those
+        # verified fields, never a stale ATB/OD/State from prior combat.
+        var live:Dictionary=combat.party[-1]
+        var vitals:Dictionary=_world.get_actor_vitals(actor_id)
+        if not vitals.is_empty():
+            if not vitals.has("hp") or not vitals.has("mp") or int(
+                    vitals["hp"])<0 or int(vitals["mp"])<0:
+                _fail("Actor%d 存續 HP/MP 來源不合法" % actor_id)
+                return
+            live["hp"]=clampi(int(vitals["hp"]),0,
+                int(live.get("maxhp",1)))
+            live["mp"]=clampi(int(vitals["mp"]),0,
+                int(live.get("maxmp",0)))
     for member in troop.get("members", []):
         if not member is Dictionary:
             continue
@@ -60,12 +75,28 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
     _combat.finished.connect(_on_combat_finished)
     combat_ready.emit(_combat, troop_id)
 
+func _commit_actor_vitals()->void:
+    if _combat==null or _world==null:
+        return
+    for actor in _combat.party:
+        if not bool(actor.get("actor",false)):
+            continue
+        var actor_id:int=int(actor.get("id",0))
+        if actor_id<1:
+            continue
+        _world.set_actor_vitals(actor_id,
+            clampi(int(actor.get("hp",0)),0,maxi(1,int(
+                actor.get("maxhp",1)))),
+            clampi(int(actor.get("mp",0)),0,maxi(0,int(
+                actor.get("maxmp",0)))))
+
 func _on_combat_finished(victory: bool) -> void:
     if _runner == null or not _runner.active:
         return
     if not victory and not _allow_lose:
         _fail("戰鬥失敗；原始 VX 此設定應交由 Game Over 流程，尚未移植")
         return
+    _commit_actor_vitals()
     _runner.resolve_battle(0 if victory else 2)
 
 func request_escape() -> bool:
@@ -73,6 +104,7 @@ func request_escape() -> bool:
         return false
     # Actual escape probability / ATB timing remain FS parity work.
     # This method is for a battle layer that already verified an escape succeeded.
+    _commit_actor_vitals()
     _combat.active = false
     _runner.resolve_battle(1)
     return true
