@@ -1,3 +1,8 @@
+## Actual 1:1 route-overlay ART observation (important)
+- [Original-Godot-frame-derived 5-route debug overlay](https://drive.google.com/file/d/1yIsGxa7OGJEIj6gVPeyro0vj2UyKqQ_C/view), verified owner-only in Drive.
+- VISUAL INSPECTION: Godot foot-sized static-grid AStar chooses several mostly straight axis-aligned shortcuts **through dense forest foliage/grass rather than following the visibly winding painted dirt-and-stone trails**, particularly center-to-east cottage and south/north long link. This is a real semantic route-design problem despite 5/5 static physics connectivity.
+- **Do not mark NAV PASS or use raw AStar path coordinates as canonical roads.** Next stage needs authored road centerline/semantic preference cost (road walkable, water blocked, houses collision), explicit entrance/exit and gameplay movement sweep with YSort character depth. Keep Ground untouched until a separate quality-controlled art candidate.
+
 # Forest Symphony | FS_01_MAZE R9 Route Survey Failure Log | 2026-11-16
 
 1. R8 148 real river collision point hits did not prove maze walkability. R9 conducts 4,640 actual Godot 13x9 pixel actor-foot collision shape queries on 80x58 grid, then four-neighbor AStarGrid2D exploration. All five indicative landmark pairs connected. This is only limited engineering feasibility.
