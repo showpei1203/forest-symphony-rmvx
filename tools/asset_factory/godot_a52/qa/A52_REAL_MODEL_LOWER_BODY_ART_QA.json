@@ -1,0 +1,338 @@
+{
+  "stage": "A52",
+  "real_provider_job_id": "094a45f9-c279-4c06-94e4-a1708a13daac",
+  "model_source": "complete new PixelLab skeleton V3 full body, no Pillow body drawing",
+  "frames": [
+    {
+      "frame": 0,
+      "bbox": [
+        21,
+        15,
+        44,
+        50
+      ],
+      "connected_regions": [
+        576
+      ],
+      "detached_island_ge3": 0,
+      "colors": 35,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 0,
+        "upper_torso": 0,
+        "leg_hip": 0,
+        "boots": 0
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        41,
+        49
+      ]
+    },
+    {
+      "frame": 1,
+      "bbox": [
+        21,
+        15,
+        44,
+        50
+      ],
+      "connected_regions": [
+        584
+      ],
+      "detached_island_ge3": 0,
+      "colors": 34,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 2,
+        "upper_torso": 30,
+        "leg_hip": 10,
+        "boots": 1
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        41,
+        49
+      ]
+    },
+    {
+      "frame": 2,
+      "bbox": [
+        21,
+        15,
+        45,
+        50
+      ],
+      "connected_regions": [
+        567
+      ],
+      "detached_island_ge3": 0,
+      "colors": 32,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 10,
+        "upper_torso": 45,
+        "leg_hip": 26,
+        "boots": 7
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        39,
+        49
+      ]
+    },
+    {
+      "frame": 3,
+      "bbox": [
+        21,
+        15,
+        46,
+        50
+      ],
+      "connected_regions": [
+        546
+      ],
+      "detached_island_ge3": 0,
+      "colors": 32,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 8,
+        "upper_torso": 45,
+        "leg_hip": 37,
+        "boots": 9
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        38,
+        49
+      ]
+    },
+    {
+      "frame": 4,
+      "bbox": [
+        21,
+        15,
+        47,
+        50
+      ],
+      "connected_regions": [
+        554
+      ],
+      "detached_island_ge3": 0,
+      "colors": 32,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 6,
+        "upper_torso": 52,
+        "leg_hip": 36,
+        "boots": 9
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        38,
+        49
+      ]
+    },
+    {
+      "frame": 5,
+      "bbox": [
+        21,
+        15,
+        49,
+        50
+      ],
+      "connected_regions": [
+        579
+      ],
+      "detached_island_ge3": 0,
+      "colors": 33,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 2,
+        "upper_torso": 29,
+        "leg_hip": 29,
+        "boots": 9
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        38,
+        49
+      ]
+    },
+    {
+      "frame": 6,
+      "bbox": [
+        21,
+        15,
+        49,
+        50
+      ],
+      "connected_regions": [
+        611
+      ],
+      "detached_island_ge3": 0,
+      "colors": 31,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 14,
+        "upper_torso": 128,
+        "leg_hip": 108,
+        "boots": 32
+      },
+      "lower_body_mask_bbox": [
+        22,
+        42,
+        48,
+        49
+      ]
+    },
+    {
+      "frame": 7,
+      "bbox": [
+        21,
+        15,
+        48,
+        50
+      ],
+      "connected_regions": [
+        610
+      ],
+      "detached_island_ge3": 0,
+      "colors": 30,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 16,
+        "upper_torso": 130,
+        "leg_hip": 123,
+        "boots": 43
+      },
+      "lower_body_mask_bbox": [
+        22,
+        42,
+        47,
+        49
+      ]
+    },
+    {
+      "frame": 8,
+      "bbox": [
+        21,
+        15,
+        45,
+        50
+      ],
+      "connected_regions": [
+        591
+      ],
+      "detached_island_ge3": 0,
+      "colors": 32,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 15,
+        "upper_torso": 93,
+        "leg_hip": 108,
+        "boots": 38
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        44,
+        49
+      ]
+    },
+    {
+      "frame": 9,
+      "bbox": [
+        21,
+        15,
+        43,
+        50
+      ],
+      "connected_regions": [
+        582
+      ],
+      "detached_island_ge3": 0,
+      "colors": 34,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 1,
+        "upper_torso": 12,
+        "leg_hip": 56,
+        "boots": 27
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        42,
+        49
+      ]
+    },
+    {
+      "frame": 10,
+      "bbox": [
+        21,
+        15,
+        43,
+        50
+      ],
+      "connected_regions": [
+        575
+      ],
+      "detached_island_ge3": 0,
+      "colors": 35,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 1,
+        "upper_torso": 3,
+        "leg_hip": 3,
+        "boots": 1
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        41,
+        49
+      ]
+    },
+    {
+      "frame": 11,
+      "bbox": [
+        21,
+        15,
+        44,
+        50
+      ],
+      "connected_regions": [
+        576
+      ],
+      "detached_island_ge3": 0,
+      "colors": 35,
+      "ROI_pixel_differences_vs_R4": {
+        "head": 0,
+        "upper_torso": 0,
+        "leg_hip": 0,
+        "boots": 0
+      },
+      "lower_body_mask_bbox": [
+        23,
+        42,
+        41,
+        49
+      ]
+    }
+  ],
+  "total_changed_pixels_vs_R4_by_region": {
+    "head": 75,
+    "upper_torso": 567,
+    "leg_hip": 536,
+    "boots": 176
+  },
+  "gates": {
+    "ten_real_model_frames": true,
+    "F0_F11_approved_source": true,
+    "body_no_large_split_parts": true,
+    "distinct_anim_frames": true,
+    "visible_legs_f3_f7": true,
+    "visible_boots_F7": true,
+    "upper_body_identity_guard": true
+  },
+  "engine_eligible": true,
+  "actual_Godot": "NOT RUN",
+  "provider_raw_body_sha256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "head_and_upper_BODY_change_risk": "source upper keypoints held identical but model may redraw pixels"
+}

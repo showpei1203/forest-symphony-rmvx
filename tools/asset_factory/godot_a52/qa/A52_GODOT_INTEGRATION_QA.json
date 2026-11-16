@@ -1,0 +1,108 @@
+{
+  "stage": "A52",
+  "source_real_PixelLab_job": "094a45f9-c279-4c06-94e4-a1708a13daac",
+  "model_raw_full_body_unmodified": true,
+  "Body_SHA256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "model_art_gates": {
+    "ten_real_model_frames": true,
+    "F0_F11_approved_source": true,
+    "body_no_large_split_parts": true,
+    "distinct_anim_frames": true,
+    "visible_legs_f3_f7": true,
+    "visible_boots_F7": true,
+    "upper_body_identity_guard": true
+  },
+  "original_A51_stable_unmodified": true,
+  "weapon_alignment": [
+    {
+      "frame": 0,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 1,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 2,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 3,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 4,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 5,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 6,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 7,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 8,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 9,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 10,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    },
+    {
+      "frame": 11,
+      "weapon_dx": 0,
+      "weapon_dy": 0,
+      "body_sword_one_connected_component": true,
+      "raw_model_body_single_component": true
+    }
+  ],
+  "F7_contact_px": [
+    29,
+    7
+  ],
+  "native_Godot": "PENDING",
+  "ART": "HOLD"
+}
