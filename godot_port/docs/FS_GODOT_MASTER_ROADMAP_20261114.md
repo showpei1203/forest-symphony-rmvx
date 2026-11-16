@@ -111,3 +111,10 @@
 - 來源 #015 `Game_Actor#element_set`：空手[1]、武器 ElementSet union。已接 `FSDatabase.apply_equipment`、`FSBattle.equip`、源 #013 Game_Battler enemy default []，實測動態換裝後天氣元素倍率同步；缺 metadata fail closed。
 - 原有30 native + 兩項 Field測試 + 一項 Actor ElementSet = **33/33 Godot4.7.2 native PASS**：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43557813518。完整規格在 `docs/FS_FIELD_WEATHER_DAMAGE_GATE_20261114.md`；Handoff/FailureLog 同步。
 - **下一步**優先解原 VX post-Apply 私有11表 witness + #358類型/ #414 ElementRate 與傷害基數；Law140–143 真 State、77/128/129 護盾；正式角色/怪物 6+ multi-frame Animation 與 MENU/BATTLE screenshot。P1 Seal NO。
+
+
+## M5→M6 P534：A35 R8 R3 私有場景安全匯入架構（2026-11-16）
+- [P534 Handoff](HANDOFF_20261116_A35_BRIDGE_P534.md) / [Failure Log](FAIL_LOG_A35_BRIDGE_P534_20261116.md) / [Godot 4.7.2 native CI PASS #43818163395](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43818163395)。
+- 新 SHA256+CRC ZIP 安全 staging、A35 namespace path rewrite、真私人 Ground HASH gate、Godot 主畫面只有來源實際就緒才有苔光村 Preview。Synthetic P532 existing full flow PASS。
+- 切記：正式 A35 source staging + native GPU 合併 **NOT RUN**；A35 ART HOLD；世界故事/事件/ACT 真場景接線未完成；11 post-Apply DB / 505 runtime authority 未完成；Phase1 SEAL NO。
+- P535：私有臨時原圖 native 匯入與 GPU QA，A35 角色／碰撞／Footpoint/事件/戰鬥接線；不得再以合成 Map999/1000 冒充正式村莊。

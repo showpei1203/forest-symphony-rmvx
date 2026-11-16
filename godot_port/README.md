@@ -1,6 +1,6 @@
 # Forest Symphony → Godot 4.7.2｜Phase 1
 
-**Status: WIP / NOT SEALED / NOT NATIVE-TESTED**. The RPG Maker VX source remains authoritative; this new folder is a separate Godot migration candidate, not a replacement for VX.
+**Status (2026-11-16): WIP / PHASE1 NOT SEALED. Godot 4.7.2 full native P532–P534 CI is PASS, but true private A35 artwork has NOT been integrated or GPU-verified on this branch, and original post-Apply 11-table database/505 runtime authority remains gated.** The original RPG Maker VX source is read-only.
 
 ## Scope
 Phase 1 must include original database-backed combat stats, equipment, inventory, skill costs/effects, 16-action Kaduki sprite player, ATB/SBS battle flow, and usable MENU/BATTLE interfaces. All script overrides and note tags must be traced before numerical equivalence is declared.
@@ -27,3 +27,14 @@ Only small, user-owned/cleared UI and sprites should be imported to private Driv
 - All formulas/ATB/AI/OD/cover/scene effects must be compared with current last-wins Ruby scripts before QA approval.
 
 Read `docs/PHASE1_MIGRATION_PLAN.md` and `docs/HANDOFF_20261114.md` before expanding.
+
+## P534｜Private A35 village scene staging (ART HOLD, not yet final FS gameplay)
+
+Owner-only A35 R8 R3 ZIP stays in Drive. The new namespace-isolated importer stages it only in an authorized **ephemeral** build environment, never on the user's PC as a permanent file:
+
+```bash
+python3 godot_port/tools/stage_private_a35_534.py --archive /private/a35_r8_r3.zip --dry-run
+python3 godot_port/tools/stage_private_a35_534.py --archive /private/a35_r8_r3.zip --output godot_port/a35_private
+```
+
+This validates archive SHA/CRC and unmodified Ground SHA, rewrites only Godot resource paths into `res://a35_private/`, and prevents private assets entering GitHub (`.gitignore`). With verified private assets present and Godot 4.7.2 import completed, the boot menu offers a **village art/physics preview only**, not native story+ACT integration. Without assets it refuses to pretend the map exists. [P534 Handoff](docs/HANDOFF_20261116_A35_BRIDGE_P534.md), [P534 Failure Log](docs/FAIL_LOG_A35_BRIDGE_P534_20261116.md), [native full code QA](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/43818163395).
