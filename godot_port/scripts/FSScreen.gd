@@ -4,6 +4,7 @@ const FS_DB = preload("res://scripts/FSDatabase.gd")
 const FS_BATTLE = preload("res://scripts/FSBattle.gd")
 const FS_MENU = preload("res://scripts/FSMenuModel.gd")
 const STORY_SANDBOX = preload("res://scripts/story/FSStorySandbox.gd")
+const PLAYABLE_SLICE = preload("res://scenes/story/FSPlayableSlice.tscn")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -20,6 +21,7 @@ var enemy_index: int = 0
 var battle_command_buttons: Array[Button] = []
 var selected_troop_id: int = 0
 var story_sandbox: FSStorySandbox
+var playable_slice: FSPlayableSlice
 
 func _ready() -> void:
     _install_system_cjk_font()
@@ -35,6 +37,7 @@ func _ready() -> void:
         return
     db = FS_DB.new()
     if not db.load_all():
+        _add_button("遊玩 Godot 地圖→事件→ACT戰鬥→劇情切片（合成資料）", _open_playable_slice)
         _add_button("開啟 Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
         title_label.text = "Forest Symphony｜原始資料未載入"
         status_label.text = "缺少啟動後 FS 正式資料與原 VX 權威證據。\n" + "\n".join(PackedStringArray(db.errors)) + "\n\n只匯入原始 RVData 不足以完成驗證；不使用假角色數值。"
@@ -186,6 +189,7 @@ func _show_menu() -> void:
     _add_button("裝備", _show_equipment)
     _add_button("編隊", _show_formation)
     _add_button("選擇原始敵方隊伍並進入 BATTLE", _show_troop_picker)
+    _add_button("Godot 地圖→事件→戰鬥→存讀 可玩切片（合成資料）", _open_playable_slice)
     _add_button("Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
 
 func _actor_selector(on_select: Callable) -> void:
@@ -300,6 +304,30 @@ func _formation_clicked(index: int) -> void:
         else:
             _show_log("交換編隊失敗")
     _show_formation()
+
+func _open_playable_slice() -> void:
+    if playable_slice != null:
+        return
+    if battle != null and battle.active:
+        _show_log("已進入原始戰鬥，不允許覆蓋其他戰鬥進度")
+        return
+    playable_slice=PLAYABLE_SLICE.instantiate()
+    playable_slice.name="LivePlayableSlice"
+    playable_slice.set_anchors_and_offsets_preset(
+        Control.PRESET_FULL_RECT)
+    playable_slice.exit_requested.connect(_close_playable_slice)
+    add_child(playable_slice)
+
+func _close_playable_slice() -> void:
+    if playable_slice==null:
+        return
+    if playable_slice.story.runner.active or (
+            playable_slice.battle_overlay!=null):
+        return
+    playable_slice.queue_free()
+    playable_slice=null
+    if battle!=null and db!=null:
+        _show_menu()
 
 func _open_story_sandbox() -> void:
     if story_sandbox != null:
