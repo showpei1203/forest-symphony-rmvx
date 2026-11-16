@@ -47,12 +47,12 @@ func _run()->void:
         var cells:Array[Vector2i]=navigator.get_route_cells(start,finish)
         if cells.size()!=known.size():
             _fail("Runtime road path differs from R10 tested path length "+str(control["from"]),89);return
-        var match:bool=true
+        var same_path:bool=true
         for j in range(cells.size()):
             if cells[j]!=Vector2i(int(known[j][0]),int(known[j][1])):
-                match=false
+                same_path=false
                 break
-        if not match:
+        if not same_path:
             _fail("Runtime path differs from actual Godot R10 original "+str(control["from"]),90);return
         var world_route:Array[Vector2]=navigator.get_world_route(_center(start),_center(finish))
         if world_route.size()!=cells.size():
