@@ -110,8 +110,8 @@ func _run()->void:
         var new_avg:float=_mean_score(cells,confidence)
         var length_ratio:float=float(path.size())/float(old_path.size())
         var gain:float=new_avg-old_avg
-        var pass:bool=path.size()>1 and gain>=0.02 and length_ratio<=2.35
-        if pass:successes+=1
+        var candidate_ok:bool=path.size()>1 and gain>=0.02 and length_ratio<=2.35
+        if candidate_ok:successes+=1
         if gain>=0.05:improved+=1
         var record:Dictionary={
             "from":old_route["from"],"to":old_route["to"],
@@ -120,7 +120,7 @@ func _run()->void:
             "old_mean_ground_road_confidence":snappedf(old_avg,0.0001),
             "new_mean_ground_road_confidence":snappedf(new_avg,0.0001),
             "road_score_gain":snappedf(gain,0.0001),
-            "connected":pass,"weighted_route_grid":cells
+            "connected":candidate_ok,"weighted_route_grid":cells
         }
         findings.append(record)
         print("FS_01_MAZE R10 NATIVE ROAD ",record["from"]," -> ",record["to"],
