@@ -412,3 +412,29 @@ jobs:
           path: ${{ runner.temp }}/fs-ivy-furnace-native-qa.png
           if-no-files-found: error
           retention-days: 30
+
+      - name: Render real Godot playable 2-map and live VX301 ACT battle screenshots
+        shell: bash
+        env:
+          FS_SLICE_BATTLE_QA_SCREENSHOT_PATH: ${{ runner.temp }}/fs-playable-slice-battle-native-qa.png
+          FS_SLICE_MAP_QA_SCREENSHOT_PATH: ${{ runner.temp }}/fs-playable-slice-map-native-qa.png
+        run: |
+          set -euo pipefail
+          test -n "$(fc-list : family | grep -i 'Noto Sans CJK' | head -1)"
+          xvfb-run -a -s "-screen 0 1088x832x24" timeout --signal=TERM --kill-after=5s 75s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --rendering-driver opengl3 --path godot_port --script res://tests/capture_fs_playable_slice_qa.gd
+          test -s "$FS_SLICE_BATTLE_QA_SCREENSHOT_PATH"
+          test -s "$FS_SLICE_MAP_QA_SCREENSHOT_PATH"
+      - name: Upload Godot ACT battle playable vertical slice screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-godot-p1-playable-slice-battle-native-qa
+          path: ${{ runner.temp }}/fs-playable-slice-battle-native-qa.png
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload Godot story map quest playable vertical slice screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-godot-p1-playable-slice-map-native-qa
+          path: ${{ runner.temp }}/fs-playable-slice-map-native-qa.png
+          if-no-files-found: error
+          retention-days: 30
