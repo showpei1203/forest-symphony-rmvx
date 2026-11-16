@@ -21,7 +21,10 @@ static func pack(world:FSGameState)->Dictionary:
     var canonical:String=JSON.stringify(payload)
     if canonical.to_utf8_buffer().size()>MAX_JSON_BYTES:
         return _fail("劇情檢查點超出安全尺寸")
-    var envelope:Dictionary={"payload":payload,
+    # Digest the exact encoded payload bytes, not JSON.stringify of a
+    # re-parsed Dictionary: Godot may parse integer JSON numbers as float,
+    # so reconstructing canonical JSON after parsing can change 50→50.0.
+    var envelope:Dictionary={"payload_json":canonical,
         "sha256":canonical.sha256_text()}
     return {"ok":true,"json":JSON.stringify(envelope),
         "sha256":str(envelope["sha256"])}
@@ -32,13 +35,18 @@ static func inspect(json_text:String)->Dictionary:
     var raw:Variant=JSON.parse_string(json_text)
     if not (raw is Dictionary):
         return _fail("檢查點不是 JSON 物件")
-    var payload:Variant=raw.get("payload",null)
+    var payload_json:Variant=raw.get("payload_json",null)
     var sha:Variant=raw.get("sha256",null)
-    if not (payload is Dictionary) or not (sha is String):
+    if not (payload_json is String) or not (sha is String):
         return _fail("缺少檢查點資料或 SHA256")
-    if str(sha).length()!=64 or str(sha)!=JSON.stringify(
-            payload).sha256_text():
+    if str(payload_json).to_utf8_buffer().size()>MAX_JSON_BYTES:
+        return _fail("檢查點內層資料超出安全尺寸")
+    if str(sha).length()!=64 or str(sha)!=str(
+            payload_json).sha256_text():
         return _fail("檢查點內容不一致或遭到修改")
+    var payload:Variant=JSON.parse_string(str(payload_json))
+    if not (payload is Dictionary):
+        return _fail("已驗證 SHA 的檢查點不是有效 JSON 物件")
     if payload.get("type",null)!=KIND or int(
             payload.get("version",0))!=VERSION:
         return _fail("存檔格式／版本不相容")
