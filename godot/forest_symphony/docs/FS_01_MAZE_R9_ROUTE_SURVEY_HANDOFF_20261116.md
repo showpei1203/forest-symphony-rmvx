@@ -1,3 +1,8 @@
+## Verified actual route visualization and observed limitation
+- [Godot actual-physics five-route OVERLAY (DERIVED annotation)](https://drive.google.com/file/d/1yIsGxa7OGJEIj6gVPeyro0vj2UyKqQ_C/view) owner-only; [Original actual Godot route survey JSON](https://drive.google.com/file/d/1SGTALKKlvWu8kFntKjBDD87zFyusYboG/view) has exact physical cell paths. Neither image overlay nor JSON is a newly painted road layer.
+- Human visual inspection of original full Godot 1x background + route overlay shows several **axis-aligned shortest-path cuts through visibly dense vegetation away from deliberately winding roads**. Five connected static-footprint paths do not establish suitable maze routes. Require separate authored/AI-assisted road semantic path cost, entrance/exit and native swept actor traversal before NAV promotion.
+- Keep distinct gates: R9 REAL PHYSICS CONNECTIVITY PASS 5/5; R9 ROAD SEMANTICS HOLD / FORMAL NAV HOLD / ART HOLD.
+
 # Forest Symphony | FS_01_MAZE R9 Actual Godot Footprint Route Survey | 2026-11-16
 
 ENGINE PHYSICS SURVEY PASS, 4640 grid samples, 148 actual river colliders, 5/5 candidate landmark routes, FORMAL MAZE NAV/ART HOLD.
