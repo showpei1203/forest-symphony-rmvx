@@ -29,6 +29,11 @@ func _run()->void:
     if not _check(battle.active and screen.battle_command_buttons.size()==4,
             "four actual Godot ACT commands and source battle started"):
         return
+    if not _check(screen.battle_command_grid!=null and
+            screen.battle_command_grid.columns==2 and
+            screen.battle_command_grid.get_child_count()==4,
+            "original 54x48 source action buttons must fit a 2 by 2 GridContainer"):
+        return
     var private_qa:bool=OS.get_environment("FS_PRIVATE_UI_QA")=="1"
     for button in screen.battle_command_buttons:
         if not _check(button.disabled and not screen._battle_actor_ready(),
