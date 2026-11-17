@@ -71,6 +71,7 @@ func _run() -> void:
     gate(actor.actor_sprite.sprite_frames.get_frame_count("attack_weighted") == 12, "body-12frames")
     gate(actor.play_motion(&"attack",&"attack_weighted"),"attack-start")
     var timing: Animation = actor.attack_clock.get_animation("attack_contact")
+    gate(timing.get_track_count() == 3, "three-track-clean-Body-Fist-Hit-clock")
     var frame_track: int = -1
     for track_id in range(timing.get_track_count()):
         if str(timing.track_get_path(track_id)) == "AnimatedSprite2D:frame":
