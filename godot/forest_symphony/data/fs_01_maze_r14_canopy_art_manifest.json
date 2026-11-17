@@ -1,0 +1,31 @@
+{
+  "phase": "R14-CANOPY-ART-CANDIDATE",
+  "source_scene_sha256": "569d0591dc5eac581f11a227aecc0e3ffd9503b1baefeaf94dd50fd023c23e88",
+  "candidate_scene_sha256": "82e5b7825891acb6f189a8ace21eaecdda85f7abd86552108624d246fb521f60",
+  "ground_sha256_immutable": "ac591877b05c00543e6756e44e6ba81f6fea7e36086049e35de81e2610e0c911",
+  "candidate_scene": "fs_01_maze_r14_canopy_ecology_80x58.tscn",
+  "source_object_count": 326,
+  "tree_objects": 310,
+  "tree_art_variant_assignments": 225,
+  "mirrored_tree_objects": 122,
+  "variants_count": 16,
+  "variant_use_counts": {
+    "r14_a35_birch_blush_122x170_birch_spring.png": 30,
+    "r14_a35_oak_summer_176x174_sun_gold.png": 9,
+    "r14_a35_oak_summer_176x174_new_leaf.png": 10,
+    "r14_a36b_river_willow_208x190_river_deep.png": 7,
+    "r14_a35_oak_summer_176x174_crown_tall.png": 15,
+    "r14_a35_oak_summer_176x174_wind_right.png": 23,
+    "r14_a36b_moss_pine_148x194_pine_cool.png": 17,
+    "r14_a35_oak_golden_176x174_deep_amber.png": 20,
+    "r14_a35_birch_cream_122x170_birch_bright.png": 10,
+    "r14_a35_oak_summer_176x174_crown_broad.png": 18,
+    "r14_a35_oak_golden_176x174_light_olive.png": 14,
+    "r14_a36b_river_willow_208x190_river_silver.png": 10,
+    "r14_a36b_moss_pine_148x194_pine_sunlit.png": 10,
+    "r14_a35_oak_summer_176x174_mist_emerald.png": 13,
+    "r14_a35_oak_summer_176x174_shade_fern.png": 10,
+    "r14_a35_oak_summer_176x174_wind_left.png": 9
+  },
+  "status": "ART HOLD / NATIVE GPU NOT YET VALIDATED"
+}
