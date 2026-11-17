@@ -1,3 +1,16 @@
+# CURRENT｜Forest Symphony FS_01_MAZE 幽葉迴廊 R13 | 2026-11-18
+
+**Godot 4.7.2 ONLY · R13 actual Player/entrance/north-exit/painted bridge ENGINE PASS · official GPU original 1× 4 frames PASS · ART HOLD · actual village cross-scene transition HOLD.**
+
+- **R13** independent scene `scenes/fs_01_maze_r13_playable_entrance_bridge_exit_80x58.tscn` derived reproducibly from R12 private owner-only ZIP, scene SHA256 `569d0591dc5eac581f11a227aecc0e3ffd9503b1baefeaf94dd50fd023c23e88`. Original R12 scene SHA and Ground SHA unchanged, 326 independent PAR/310 trees/148 river colliders intact.
+- Existing stone-earth bridge row29 x6…14 9/9 real body pass; actual south entrance cell (39,55), north exit (49,5). CharacterBody2D left-click R12 road-aware travel & movement; actual Godot 4.7.2 headless QA exit 0 tests real south→north walk, north-exit destination signal and bridge crossing.
+- Native AMD Radeon RX 6700 XT OpenGL 3.3 Godot four 2560×1856 original 1x GPU frames verified; actor-hidden R12/R13 4,751,360 identical pixels, 0 changed. Native GPU evidence ZIP SHA256 `4c36e29289177c680517cace7872daaf4bfb7ad06ae9265e7669e7d7ea307cec`.
+- **Still HOLD:** destination scene instantiation/return & save/load, forest HD-2D Ground3 art and river appearance, remaining ten maps. Source-only script PASS and real native runtime/GPU are distinct evidence gates.
+- [R13 Handoff](docs/FS_01_MAZE_R13_PLAYABLE_TOPOLOGY_HANDOFF_20261118.md) | [Failure Log](docs/FS_01_MAZE_R13_PLAYABLE_FAILURE_LOG_20261118.md) | [Topological bridge & exits](scripts/fs_01_maze_r13_topology.gd) | [Real playable Player](scripts/fs_01_maze_r13_walkable_player.gd) | [Native gameplay QA](tests/test_fs_01_maze_r13_playable_native.gd) | [GPU capture source](tests/capture_fs_01_maze_r13_native.gd).
+- Original R12 parent complete ZIP: [Private Drive R12 baseline](https://drive.google.com/file/d/1VikZtZc0YWhHFNMjylNGXFEbN2_oW6qR/view); do NOT reset to prior R8/VX, overwrite A36C or alter combat/village branches.
+
+---
+
 # CURRENT | Forest Symphony 12 HD-2D maps / First Dungeon FS_01_MAZE R12 | 2026-11-16
 
 **ENGINE Godot 4.7.2 ONLY · 6 canonical biomes x maze/village = 12 maps. First forest village art HOLD; first forest maze R12 actual Godot native source/GPU/real Player road navigation PASS, formal maze entrance-exit and final ART HOLD. Other 10 planned, zero formal completed map seals.**
