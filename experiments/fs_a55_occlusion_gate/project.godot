@@ -1,0 +1,10 @@
+; FS A55 synthetic native Godot 4.7.2 smoke, no licensed game assets
+config_version=5
+
+[application]
+config/name="FS A55 Visibility Occlusion Logic Smoke"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
