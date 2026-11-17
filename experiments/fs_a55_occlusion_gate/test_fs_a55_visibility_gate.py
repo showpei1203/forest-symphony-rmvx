@@ -87,6 +87,14 @@ class A55VisibilityRegression(unittest.TestCase):
         contract["example_frames"].append(dict(contract["example_frames"][0]))
         self.assertIn("duplicate_frame", validate_contract(contract))
 
+    def test_art_pass_requires_body_mask_evidence(self):
+        contract = json.loads((HERE / "a55_visibility_manifest_reference.json").read_text(encoding="utf-8"))
+        contract["example_frames"][0]["native_art_status"] = "ART_PASS"
+        self.assertIn("art_pass_without_body_mask_qa_provenance", validate_contract(contract))
+        contract["example_frames"][0]["body_mask_qa_pass"] = True
+        contract["example_frames"][0]["source_qa_hash"] = "verified-example-only"
+        self.assertNotIn("art_pass_without_body_mask_qa_provenance", validate_contract(contract))
+
     def test_no_source_image_modification(self):
         """Only synthetic fixtures are generated; actual FS artwork is read-only."""
         masks, _ = synthetic_case(5, corrected=True)
