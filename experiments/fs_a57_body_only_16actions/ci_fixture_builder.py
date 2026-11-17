@@ -33,4 +33,17 @@ s=player.read_text(encoding="utf-8")
 real="af2b94a424ab613fa5a8ff45125f0398da3a20432cdeaa744f87f9f1b1a9ac44"
 if s.count(real)!=1:raise SystemExit("Expected real hash exactly once")
 player.write_text(s.replace(real,sha),encoding="utf-8")
+# Separate synthetic three-pose WAITING atlas; never use actual A53 pixels in GitHub CI.
+from PIL import Image
+waiting=Image.new("RGBA",(192,64),(0,0,0,0))
+f0=sheet.crop((0,0,64,64))
+for pose in range(3):
+    waiting.alpha_composite(f0,(pose*64,0))
+waiting_path=assets/"actor01_a57_waiting_3pose.png"
+waiting.save(waiting_path)
+waiting_sha=hashlib.sha256(waiting_path.read_bytes()).hexdigest()
+player_text=player.read_text(encoding="utf-8")
+original_waiting_sha="d5599785d6d76fe2307c49549d21e5b75930a99842b919a1339bd5ec605ed6d3"
+if player_text.count(original_waiting_sha)!=1:raise SystemExit("Expected one real waiting hash")
+player.write_text(player_text.replace(original_waiting_sha,waiting_sha),encoding="utf-8")
 print("A57_SYNTHETIC_CI_FIXTURE_READY; not real FS art; source contract separately retained")
