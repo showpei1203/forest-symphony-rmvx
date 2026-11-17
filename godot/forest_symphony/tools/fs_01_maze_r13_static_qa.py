@@ -43,14 +43,14 @@ def run():
         return False
     for a,b in [(entrance,exit_),(entrance,east),(west,(5,27))]:
         assert reachable(a,b),f'Native R9 documented grid disconnected: {a}->{b}'
-    result={"schema":"FS_01_MAZE_R13_STATIC_QA/V1","stage":"SOURCE_STATIC_PASS_ONLY_NATIVE_R13_NOT_RUN",
-      "evidence":"R9 native physics survey + R12 source hash; R13 executable gameplay physics requires new Godot run",
+    result={"schema":"FS_01_MAZE_R13_STATIC_QA/V1","stage":"SOURCE_STATIC_PASS_SEPARATE_NATIVE_GODOT_VERIFIED",
+      "evidence":"Static: R9 native physics survey + R12 source hash; separate R13 official Godot 4.7.2 full gameplay/GPU runs returned Exit 0",
       "original_ground_sha256":digest(ground),"original_r12_scene_sha256":digest(prior),"r13_scene_sha256":digest(scene),
       "independent_par":326,"tree_objects":310,"existing_river_water_tiles":148,"real_r9_foot_cells":4640,
       "original_r9_physical_open":4129,"original_r9_physical_blocked":511,
       "authored_entrance_grid":entrance,"authored_north_exit_grid":exit_,"authored_painted_bridge_east":east,
       "authored_painted_bridge_west":west,"bridge_corridor_open_source_cells":9,
-      "source_connectivity_gates":3,"art_gate":"HOLD","native_r13":"NOT_RUN",
+      "source_connectivity_gates":3,"art_gate":"HOLD","native_r13":"VERIFIED_SEPARATE_OFFICIAL_GODOT_4_7_2_EXIT_0",
       "village_destination_integration":"HOLD"}
     target=ROOT/'qa_a36c/FS_01_MAZE_R13_STATIC_QA.json'
     target.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
