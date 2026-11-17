@@ -26,12 +26,17 @@ func _run()->void:
             "original 120x48 image atlas uses 72x6 lower strip, not full image"):
         return
     var a=ART.new()
-    if not check(not a.has_source() and a.texture("system","GaugeHP.png")==null,
-            "public repo must not contain original private images"):
+    var private_qa:bool=OS.get_environment("FS_PRIVATE_UI_QA")=="1"
+    if private_qa:
+        if not check(a.has_source() and a.texture("system","GaugeHP.png")!=null,
+                "owner-only source art must be valid when explicitly staged"):
+            return
+    elif not check(not a.has_source() and a.texture("system","GaugeHP.png")==null,
+            "public CI must never contain private original images"):
         return
     var panel=PANEL.new()
-    if not check(not panel.install_art(a),
-            "missing PRIVATE original art cannot claim approved rendering"):
+    if not check(panel.install_art(a)==private_qa,
+            "authentic source panel only activates with verified owner-only art"):
         return
     panel.set_values({"hp":75,"maxhp":120,"mp":20,"maxmp":40,
         "od":30,"od_max":60})

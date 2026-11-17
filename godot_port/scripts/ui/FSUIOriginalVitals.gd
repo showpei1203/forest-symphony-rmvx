@@ -70,7 +70,7 @@ func _source_fill(texture:Texture2D,where_y:float,rate:float)->void:
     if texture==null or part.size.x<=0.0:
         return
     var destination:=Rect2(Vector2(FILL_X,where_y),part.size)
-    draw_texture_rect_region(texture,destination,part,false)
+    draw_texture_rect_region(texture,destination,part)
 
 func _draw()->void:
     if source_bg==null:
