@@ -1,0 +1,47 @@
+{
+  "schema": "fs-01-maze-r13-playable-topology/v1",
+  "canonical_scene_id": "FS_01_MAZE",
+  "canonical_name": "幽葉迴廊",
+  "engine": "Godot 4.7.2 official ed1daf0bf",
+  "based_on_private_drive_zip_id": "1VikZtZc0YWhHFNMjylNGXFEbN2_oW6qR",
+  "based_on_R12_sha256": "cf1d01ca564eaba05d7ff900314ae82b385dfab7a74b7d5010f5004e5aa21106",
+  "original_R12_scene_sha256": "54224083a741bf4d451c9d44674d48fae68e399eac856c31b31c15c10457c392",
+  "original_ground_sha256": "ac591877b05c00543e6756e44e6ba81f6fea7e36086049e35de81e2610e0c911",
+  "r13_scene": "res://scenes/fs_01_maze_r13_playable_entrance_bridge_exit_80x58.tscn",
+  "r13_scene_sha256": "569d0591dc5eac581f11a227aecc0e3ffd9503b1baefeaf94dd50fd023c23e88",
+  "entrance_grid": [
+    39,
+    55
+  ],
+  "exit_grid": [
+    49,
+    5
+  ],
+  "painted_bridge_west": [
+    6,
+    29
+  ],
+  "painted_bridge_east": [
+    14,
+    29
+  ],
+  "painted_bridge_corridor_cells": 9,
+  "original_independent_par": 326,
+  "original_trees": 310,
+  "unchanged_river_collision_cells": 148,
+  "r12_native_foot_cells": 4640,
+  "r12_native_walkable_cells": 4129,
+  "r12_native_blocked_cells": 511,
+  "r13_static_qa": "PASS",
+  "r13_editor_import": "PASS_EXIT_0",
+  "r13_native_player_entrance_to_exit": "PASS_EXIT_0",
+  "r13_native_exit_signal": "PASS_EXIT_0",
+  "r13_native_bridge_player_physics": "PASS_EXIT_0",
+  "r13_original_gpu": "PASS_4_OFFICIAL_ORIGINAL_2560x1856_1X_FRAMES_4751360_IDENTICAL_R12_CONTROL_PIXELS",
+  "r13_original_gpu_evidence_sha256": "4c36e29289177c680517cace7872daaf4bfb7ad06ae9265e7669e7d7ea307cec",
+  "r13_original_gpu_evidence_bytes": 37438022,
+  "r13_original_gpu_evidence_files": 5,
+  "destination_scene_transition": "HOLD",
+  "art": "HOLD",
+  "other_10_maps": "PLANNED"
+}
