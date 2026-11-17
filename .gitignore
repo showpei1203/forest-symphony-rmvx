@@ -11,3 +11,7 @@ Save*.rvdata
 # Private owner-only A35 Ground/PAR staging; never push original artwork.
 godot_port/a35_private/
 godot_port/.a35-stage-*/
+
+# P535 source-exact private VX UI graphics (owner-only Google Drive, no GitHub)
+godot_port/assets/ui/
+godot_port/assets/.ui-staging-*/

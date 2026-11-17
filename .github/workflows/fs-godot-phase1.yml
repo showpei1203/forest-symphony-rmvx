@@ -240,6 +240,16 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_private_a35_gate_534.gd
+      - name: Test source-exact owner-only VX UI ZIP staging safety (202 synthetic sprites)
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s godot_port/tests -p 'test_private_ui_stage_535.py' -v
+      - name: Test Godot native original-asset gate and reactive actor HP MP ATB HUD
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_original_ui_535.gd
       - name: Test actual playable two-map VX chest to ACT battle to victory branch portal quest and memory save
         shell: bash
         run: |

@@ -6,6 +6,8 @@ const FS_MENU = preload("res://scripts/FSMenuModel.gd")
 const STORY_SANDBOX = preload("res://scripts/story/FSStorySandbox.gd")
 const PLAYABLE_SLICE = preload("res://scenes/story/FSPlayableSlice.tscn")
 const A35_PRIVATE_GATE = preload("res://scripts/story/FSPrivateA35Gate.gd")
+const UI_ART = preload("res://scripts/ui/FSUIArtLibrary.gd")
+const LIVE_HUD = preload("res://scripts/ui/FSUIBattleHUD.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -24,8 +26,11 @@ var selected_troop_id: int = 0
 var story_sandbox: FSStorySandbox
 var playable_slice: FSPlayableSlice
 var a35_preview: Control
+var ui_art: FSUIArtLibrary
+var ui_hud: FSUIBattleHUD
 
 func _ready() -> void:
+    ui_art=UI_ART.new()
     _install_system_cjk_font()
     _build_shell()
     # Explicit synthetic/native QA fixture injection, never a fallback
@@ -103,6 +108,11 @@ func _build_shell() -> void:
         button.text = tab
         button.pressed.connect(func() -> void: _change(tab))
         tabs.add_child(button)
+    ui_hud=LIVE_HUD.new()
+    ui_hud.name="FSOriginalArtBattleHUD"
+    ui_hud.set_art(ui_art)
+    ui_hud.visible=false
+    layout.add_child(ui_hud)
     status_label = Label.new()
     # Real native OpenGL QA exposed horizontal clipping of Ivy charge
     # details at 544x416 original VX aspect. Never force users to read
@@ -129,6 +139,8 @@ func _process(delta: float) -> void:
         return
     battle.advance_atb(delta)
     _refresh_battle_status()
+    if ui_hud!=null and ui_hud.visible:
+        ui_hud.refresh(battle.party)
     _update_battle_command_buttons()
 
 func _change(tab: String) -> void:
@@ -154,6 +166,8 @@ func _add_button(text_value: String, callback: Callable) -> void:
     var button := Button.new()
     button.text = text_value
     button.focus_mode = Control.FOCUS_ALL
+    # Only semantic ID-linked icons; unknown source atlas indices stay blank.
+    # This is a private, SHA-gated original VX IconSet (24px atlas).
     button.pressed.connect(callback)
     body.add_child(button)
 
@@ -183,10 +197,12 @@ func _set_original_background(file_name: String) -> void:
     # Only load source-exact pixels after private Drive image assembly.
     # Do not claim visual parity from a missing or approximate asset.
     var path: String = "res://assets/ui/system/" + file_name
-    original_background.texture = load(path) as Texture2D if ResourceLoader.exists(path) else null
+    original_background.texture = ui_art.texture("system",file_name) if ui_art!=null else null
 
 func _show_menu() -> void:
     view_name = "MENU"
+    if ui_hud!=null:
+        ui_hud.visible=false
     _set_original_background("MenuBack_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / MENU"
@@ -201,6 +217,23 @@ func _show_menu() -> void:
     _add_button("Godot 地圖／事件測試場（非原始 FS 地圖）", _open_story_sandbox)
     _offer_a35_private_preview()
 
+
+func _icon_last_button(table_name:String,record_id:int)->void:
+    # The actual original database icon_index, never guessed from menu order.
+    if ui_art==null or db==null:
+        return
+    var record:Dictionary=db.record(table_name,record_id)
+    if not record.has("icon_index"):
+        return
+    var graphic:Texture2D=ui_art.icon(int(record["icon_index"]))
+    if graphic==null:
+        return
+    if body.get_child_count()>0 and body.get_child(
+            body.get_child_count()-1) is Button:
+        var button:Button=body.get_child(body.get_child_count()-1)
+        button.icon=graphic
+        button.expand_icon=false
+
 func _actor_selector(on_select: Callable) -> void:
     # Clickable actor tabs for true party ID/level; MENU never shows all 800 skills.
     var selected_actor: int = actor_index
@@ -213,6 +246,8 @@ func _actor_selector(on_select: Callable) -> void:
                 on_select.call())
 
 func _show_status() -> void:
+    if ui_hud!=null:
+        ui_hud.visible=false
     _set_original_background("MenuBack_status_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / 角色狀態"
@@ -224,6 +259,8 @@ func _show_status() -> void:
     _add_button("返回選單", _show_menu)
 
 func _show_skills() -> void:
+    if ui_hud!=null:
+        ui_hud.visible=false
     _set_original_background("MenuBack_skill.png")
     _clear_body()
     title_label.text = "Forest Symphony / 技能"
@@ -242,6 +279,8 @@ func _show_skills() -> void:
     _add_button("返回選單", _show_menu)
 
 func _show_items() -> void:
+    if ui_hud!=null:
+        ui_hud.visible=false
     _set_original_background("MenuBack_item.png")
     _clear_body()
     title_label.text = "Forest Symphony / 物品"
@@ -254,10 +293,13 @@ func _show_items() -> void:
         _add_button("%s (#%d) ×%d｜%s" % [
             row["name"],row["id"],row["count"],row["description"]],
             func() -> void: _select_item_target(item_id,false))
+        _icon_last_button("items",item_id)
     _add_text("只執行已核對的單體 HP／MP 回復；其他效果拒絕且不消耗")
     _add_button("返回選單", _show_menu)
 
 func _show_equipment() -> void:
+    if ui_hud!=null:
+        ui_hud.visible=false
     _set_original_background("MenuBack_equip.png")
     _clear_body()
     title_label.text = "Forest Symphony / 裝備"
@@ -293,6 +335,8 @@ func _show_equipment_candidates(slot: int) -> void:
     _add_button("返回裝備", _show_equipment)
 
 func _show_formation() -> void:
+    if ui_hud!=null:
+        ui_hud.visible=false
     _set_original_background("MenuBack_party.png")
     _clear_body()
     title_label.text = "Forest Symphony / 編隊"
@@ -487,6 +531,9 @@ func _show_battle() -> void:
         battle.start()
     # Source #230 defaults to Wait during active command/target selection.
     battle.source_atb_wait = false
+    if ui_hud!=null:
+        ui_hud.visible=true
+        ui_hud.bind_party(battle.party)
     _refresh_battle_status()
     _add_text("ATB 就緒 → 選指令 → ACT 蓄力 → 執行 → 重置（敵方 AI／特殊行動仍待移植）")
     _actor_selector(_show_battle)
