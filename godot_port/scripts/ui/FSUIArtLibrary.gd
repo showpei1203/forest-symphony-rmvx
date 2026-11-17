@@ -27,7 +27,17 @@ const SOURCE_LOCKS:Dictionary={
     "menu/menu_米亞.png":"3adaf0a83fc091526382c78e7af32f5ac8191393a646854869829b0317fa3594",
     "menu/menu_艾卓.png":"93d8a97437502f3759813e9d7e0ae4a4b0e115ae02be04163c4661f74c86fc1e",
     "menu/menu_艾薇.png":"ff5c1d02a34a881c78b6bd3f0d5891721d255874c212dfd85dfb5e2ec19601bf",
-    "menu/menu_薇娜.png":"4b8220abada5c06ab60cf2c0fa8d7a2d316d0018b928c98fee510a994baf6dda"
+    "menu/menu_薇娜.png":"4b8220abada5c06ab60cf2c0fa8d7a2d316d0018b928c98fee510a994baf6dda",
+    "menu/Battle01.png":"4f12bbe245e73648c302f532c4013be3ca37cafb5bf367224a33360ce4f3aea3",
+    "menu/Battle01a.png":"82b68c569455d62c8a338f5e44d93b0bc2c0bfd3458c2571a9f2b0d360f7a370",
+    "menu/Battle02.png":"f4c47422edc12446c92a317b2cce30db0b418fc74f89303c296cc4da0fc09bc8",
+    "menu/Battle02a.png":"f01b2b0f6d67dc487a617ff7208d4b82d842aca91999b0ee6439ab611593123e",
+    "menu/Battle03.png":"a4f2f04ad78e1e0a56d3399c4c7a06acde946237785509ac679ea7c969a020b8",
+    "menu/Battle03a.png":"dbc55a5c19744a6a80b4b6c5f0343eae4df6cedb429ea26e13c4ed9b3f029a17",
+    "menu/Battle04.png":"6ee5fdfaf36d0d3db92402b3ea0cceb5653d439d4f46ded99d88475f55adef97",
+    "menu/Battle04a.png":"22a38b8190795eb80956b23ff24c6aa6a2f829dc282625e842c689c21029c619",
+    "menu/Battle05.png":"1b2b2475e0792a25f4f51f76e3b828b87b90cb5e181fc3422e42af3058e5de2d",
+    "menu/Battle05a.png":"452b02babff7740d82a7706d7c14eb25bc9f72daff8988d4e8b3730407d8d720"
 }
 var _entries:Dictionary={}
 var _loaded:bool=false

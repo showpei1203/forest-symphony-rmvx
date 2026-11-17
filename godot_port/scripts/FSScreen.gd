@@ -28,6 +28,7 @@ var playable_slice: FSPlayableSlice
 var a35_preview: Control
 var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
+var battle_command_art:Dictionary={}
 
 func _ready() -> void:
     ui_art=UI_ART.new()
@@ -183,6 +184,26 @@ func _add_battle_command(label: String, callback: Callable) -> void:
     button.text = label
     button.focus_mode = Control.FOCUS_ALL
     button.disabled = not _battle_actor_ready()
+    # Direct source image inspection: 01 Attack, 02 Skill, 03 Defend,
+    # 04 Item, 05 Escape. Escape is art only until source battle rule exists.
+    var source_id:String=""
+    match label:
+        "普通攻擊（選擇敵人）":source_id="01"
+        "技能":source_id="02"
+        "防禦":source_id="03"
+        "物品":source_id="04"
+    if not source_id.is_empty() and ui_art!=null:
+        var stem:String="Battle"+source_id
+        var active:Texture2D=ui_art.texture("menu",stem+".png")
+        var inactive:Texture2D=ui_art.texture("menu",stem+"a.png")
+        if active!=null and inactive!=null and (
+                Vector2i(active.get_size())==Vector2i(54,48)) and (
+                Vector2i(inactive.get_size())==Vector2i(54,48)):
+            battle_command_art[button.get_instance_id()]={
+                "active":active,"inactive":inactive}
+            button.icon=inactive if button.disabled else active
+            button.expand_icon=false
+            button.icon_alignment=HORIZONTAL_ALIGNMENT_LEFT
     button.pressed.connect(callback)
     body.add_child(button)
     battle_command_buttons.append(button)
@@ -192,6 +213,10 @@ func _update_battle_command_buttons() -> void:
     for button in battle_command_buttons:
         if is_instance_valid(button):
             button.disabled = not enabled
+            var key:int=button.get_instance_id()
+            if battle_command_art.has(key):
+                var pair:Dictionary=battle_command_art[key]
+                button.icon=pair["active"] if enabled else pair["inactive"]
 
 func _set_original_background(file_name: String) -> void:
     # Only load source-exact pixels after private Drive image assembly.
@@ -574,6 +599,7 @@ func _show_battle() -> void:
     original_background.texture = null
     _clear_body()
     battle_command_buttons.clear()
+    battle_command_art.clear()
     title_label.text = "Forest Symphony / BATTLE (P1)"
     if battle.enemies.is_empty():
         if selected_troop_id <= 0:
