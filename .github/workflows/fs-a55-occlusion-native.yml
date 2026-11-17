@@ -1,0 +1,77 @@
+name: FS A55 Occlusion Native and Pixel Gates
+
+on:
+  push:
+    branches: [feature/fs-a55-visibility-occlusion-gate-20261117]
+    paths:
+      - 'experiments/fs_a55_occlusion_gate/**'
+      - '.github/workflows/fs-a55-occlusion-native.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visibility-python-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image verification dependency
+        run: python -m pip install --disable-pip-version-check 'Pillow>=10,<14'
+      - name: Run negative and positive occlusion regression
+        run: python experiments/fs_a55_occlusion_gate/test_fs_a55_visibility_gate.py
+      - name: Validate reference-only manifest and emit synthetic previews
+        run: |
+          python experiments/fs_a55_occlusion_gate/fs_a55_visibility_gate.py \
+            --contract experiments/fs_a55_occlusion_gate/a55_visibility_manifest_reference.json \
+            --selftest \
+            --output .a55-qa > .a55-qa-result.json
+          cat .a55-qa-result.json
+      - name: Retain only synthetic QA images, not licensed FS sprites
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: A55-synthetic-occlusion-proof
+          path: |
+            .a55-qa/
+            .a55-qa-result.json
+          if-no-files-found: warn
+
+  godot-native-logic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and verify official Godot 4.7.2 Linux executable
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --retry 3 --retry-delay 2 --fail --location \
+            -o godot-linux.zip \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          echo 'cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  godot-linux.zip' | sha256sum -c -
+          unzip -q godot-linux.zip
+          chmod +x Godot_v4.7.2-stable_linux.x86_64
+          ./Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Godot project import
+        run: |
+          timeout 90 ./Godot_v4.7.2-stable_linux.x86_64 --headless \
+            --path experiments/fs_a55_occlusion_gate --editor --import
+      - name: Execute real Godot 4.7.2 scene-tree visibility tests
+        run: |
+          set -o pipefail
+          timeout 90 ./Godot_v4.7.2-stable_linux.x86_64 --headless \
+            --path experiments/fs_a55_occlusion_gate \
+            --script res://a55_native_smoke.gd | tee a55-native-log.txt
+          grep -q 'A55_NATIVE_QA_RESULT PASS' a55-native-log.txt
+      - name: Upload native logic log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: A55-Godot-4.7.2-native-logic-log
+          path: a55-native-log.txt
+          if-no-files-found: warn
