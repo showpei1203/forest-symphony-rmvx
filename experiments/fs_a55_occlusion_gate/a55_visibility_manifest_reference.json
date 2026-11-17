@@ -1,0 +1,79 @@
+{
+  "version": "fs-a55-visibility-manifest-v1",
+  "status": "reference_only",
+  "source_note": "Concepts extracted from user's 2026-11-17 example screenshot; not an FS artist-approved pose or generated FS asset",
+  "apply_to": "Future shield-bearing Forest Symphony actor/monster NW attack only after canonical-source review",
+  "preserve_existing": [
+    "A51_R4",
+    "A52",
+    "A53",
+    "A54"
+  ],
+  "coordinate_system": "project-defined per action; pixels in example are NOT FS thresholds",
+  "fields_required": [
+    "view",
+    "action",
+    "frame",
+    "occluder",
+    "part_visibility",
+    "pixel_ownership",
+    "guide_must_exclude",
+    "native_art_status"
+  ],
+  "example_frames": [
+    {
+      "view": "NW",
+      "action": "attack",
+      "frame": 5,
+      "occluder": "shield",
+      "part_visibility": {
+        "sword_hand": "fully_occluded",
+        "sword_forearm": "fully_occluded",
+        "fist": "fully_occluded",
+        "blade": "partially_occluded",
+        "shield": "visible"
+      },
+      "pixel_ownership": {
+        "body": "canonical actor Body source",
+        "weapon": "independent equipment layer",
+        "occluder": "shield region"
+      },
+      "guide_must_exclude": [
+        "sword_hand",
+        "sword_forearm",
+        "fist"
+      ],
+      "guide_must_include": [
+        "blade segment extending past shield silhouette"
+      ],
+      "native_art_status": "NOT_RUN"
+    },
+    {
+      "view": "NW",
+      "action": "attack",
+      "frame": 6,
+      "occluder": "shield",
+      "part_visibility": {
+        "sword_hand": "fully_occluded",
+        "sword_forearm": "fully_occluded",
+        "fist": "fully_occluded",
+        "blade": "partially_occluded",
+        "shield": "visible"
+      },
+      "pixel_ownership": {
+        "body": "canonical actor Body source",
+        "weapon": "independent equipment layer",
+        "occluder": "shield region"
+      },
+      "guide_must_exclude": [
+        "sword_hand",
+        "sword_forearm",
+        "fist"
+      ],
+      "guide_must_include": [
+        "blade segment extending past shield silhouette"
+      ],
+      "native_art_status": "NOT_RUN"
+    }
+  ]
+}
