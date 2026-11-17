@@ -68,10 +68,27 @@ jobs:
             --path experiments/fs_a55_occlusion_gate \
             --script res://a55_native_smoke.gd | tee a55-native-log.txt
           grep -q 'A55_NATIVE_QA_RESULT PASS' a55-native-log.txt
-      - name: Upload native logic log
+      - name: Native GPU F5 F6 before-after rendering under Xvfb
+        shell: bash
+        run: |
+          set -o pipefail
+          if ! command -v xvfb-run >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y xvfb
+          fi
+          timeout 90 xvfb-run -a -s '-screen 0 1024x768x24' \
+            ./Godot_v4.7.2-stable_linux.x86_64 \
+            --path experiments/fs_a55_occlusion_gate \
+            --rendering-method gl_compatibility \
+            --script res://a55_native_gpu_occlusion_qa.gd | tee a55-gpu-log.txt
+          grep -q 'A55_GPU_QA_RESULT PASS' a55-gpu-log.txt
+      - name: Upload native logs and synthetic GPU frames
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: A55-Godot-4.7.2-native-logic-log
-          path: a55-native-log.txt
+          name: A55-Godot-4.7.2-native-GPU-proof
+          path: |
+            a55-native-log.txt
+            a55-gpu-log.txt
+            experiments/fs_a55_occlusion_gate/qa_output/
           if-no-files-found: warn
