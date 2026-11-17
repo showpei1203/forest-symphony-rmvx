@@ -25,6 +25,23 @@ jobs:
       - name: Run standalone positive/negative witness
         working-directory: experiments/fs_a56_real_occlusion
         run: python a56_real_body_occlusion.py --selftest
+      - name: A56 R2 shield clearance parameter smoke (no private pixels)
+        working-directory: experiments/fs_a56_real_occlusion
+        run: |
+          python - <<'PY'
+          from PIL import Image
+          from a56_r2_shield_clearance import shield_r2, blade_r2, head_overlap_proxy, V2
+          from a56_real_body_occlusion import alpha_edges, leakage
+          assert V2 == {'dx':3,'dy':3,'rx':7,'ry':9}
+          for xy in [(40.6,40.5),(47.1,37.4),(48.1,42.7)]:
+              shield, mask = shield_r2(xy)
+              tip = blade_r2(xy)
+              assert alpha_edges(shield) == 0
+              assert alpha_edges(tip) == 0
+              assert leakage(tip.getchannel('A'),mask) >= 8
+              assert head_overlap_proxy(Image.new('RGBA',(64,64)),mask) == 0
+          print('A56_R2_SYNTHETIC_PARAMETER_PASS')
+          PY
       - name: Confirm private source is not committed
         shell: bash
         run: |
