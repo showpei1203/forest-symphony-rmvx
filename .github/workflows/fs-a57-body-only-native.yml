@@ -27,9 +27,9 @@ jobs:
           set -euo pipefail
           mkdir -p a57-ci-project/{assets,scenes,scripts}
           cp experiments/fs_a57_body_only_16actions/project.godot a57-ci-project/project.godot
-          cp experiments/fs_a57_body_only_16actions/action_catalog_16.json a57-ci-project/assets/action_catalog_16.json
-          cp experiments/fs_a57_body_only_16actions/a57_body_action_player.gd a57-ci-project/scripts/a57_body_action_player.gd
-          cp experiments/fs_a57_body_only_16actions/a57_native_smoke.gd a57-ci-project/scripts/a57_native_smoke.gd
+          cp experiments/fs_a57_body_only_16actions/r2/action_catalog_16.json a57-ci-project/assets/action_catalog_16.json
+          cp experiments/fs_a57_body_only_16actions/r2/a57_body_action_player.gd a57-ci-project/scripts/a57_body_action_player.gd
+          cp experiments/fs_a57_body_only_16actions/r2/a57_native_smoke.gd a57-ci-project/scripts/a57_native_smoke.gd
           cp experiments/fs_a57_body_only_16actions/A57BodyOnlyDemo.tscn a57-ci-project/scenes/A57BodyOnlyDemo.tscn
           python experiments/fs_a57_body_only_16actions/ci_fixture_builder.py a57-ci-project
           test ! -f experiments/fs_a57_body_only_16actions/actor01_a53_body_12frames.png
@@ -46,7 +46,7 @@ jobs:
           ./Godot_v4.7.2-stable_linux.x86_64 --version
       - name: Native editor import for Body-only project
         run: timeout 90 ./Godot_v4.7.2-stable_linux.x86_64 --headless --path a57-ci-project --editor --import
-      - name: Native F7 contact, hitstop, cancel, 2x, anchor QA
+      - name: Native two-action Attack and Waiting, contact, hitstop, cancel, 2x, anchors
         shell: bash
         run: |
           set -o pipefail
