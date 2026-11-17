@@ -1,3 +1,18 @@
+# CURRENT | Forest Symphony 12-map ART-ONLY line | FS_01_MAZE R14 Ground3+Canopy | 2026-11-18
+
+**Godot 4.7.2 ONLY · ART HOLD / PREVIEW CANDIDATE · STATIC QA PASS · R14 NATIVE GPU NOT RUN.**
+**SCOPE LOCK: author ART-APPROVED Ground/PAR maps only. Do NOT develop teleport, save/load, NPC, gameplay, event system, combat, or new navigation on this map art branch.** R13 prior native navigation is a base only.
+
+- **NEW R14 full standalone private Godot candidate**: https://drive.google.com/file/d/1-t1VZ9TQXWKZQaAqtN46fe4v686ddUgy/view (204 files, 56,021,217 bytes, SHA256 `f4a63734f584630461e514d239ee413445b1568d81c57ca0814f9ec884d8042b`, ZIP CRC PASS; owner-only cloud metadata verified).
+- **NEW R14 delta patch**: https://drive.google.com/file/d/1WgNbVLZPNLizN6-EBJVgZFjUwJsvCZ90/view (30 files, 14,139,295 bytes, SHA256 `79cac1097770352177892a878f0b4a52a2017704d747e31bdbb0ecdadce04ae8`, ZIP CRC PASS; owner-only cloud metadata verified).
+- New R14 Godot scene: `scenes/fs_01_maze_r14_ground3_canopy_80x58.tscn` for Ground3+canopy, plus PAR-only alternate `scenes/fs_01_maze_r14_canopy_ecology_80x58.tscn`. Original R13 source scene/ground untouched.
+- Ground3 reprocessed continuous source without rerouting; 16 new WHOLE-source transparent species canopy/silhouette PNGs; 225 tree instance visual variants, 122 mirrored; 326 complete PAR owners/310 trees retained. All baseline footpoint and collider fields unchanged.
+- **CAUTION:** R14 preview is CPU compositor derivative, NOT native Godot GPU output. Native cold build and original 1x GPU screenshots BLOCKED because Desktop Commander offline during R14. Do not claim art pass or native QA based on source checks. Original Ground was authored at 1478×1064 and scaled up; smoothing cannot replace truly high resolution native art.
+- [R14 ART Handoff](docs/FS_01_MAZE_R14_ART_HANDOFF_20261118.md) | [R14 Failure Log](docs/FS_01_MAZE_R14_ART_FAILURE_LOG_20261118.md) | [R14 source QA](data/fs_01_maze_r14_art_qa.json) | [Builder](tools/r14/build_r14_canopy_art.py) | [Ground3 builder](tools/r14/build_r14_ground3.py).
+- **NEXT:** Only visual production. Validate native art 1x as soon as available; meaningfully improve grove shapes, riverbank/water artistry, village house consistency and Ground/PAR, formally obtain ART approval; then FS_02 snow biome and all 12 maps. Do not return to system features.
+
+---
+
 # CURRENT｜Forest Symphony FS_01_MAZE 幽葉迴廊 R13 | 2026-11-18
 
 **Godot 4.7.2 ONLY · R13 PLAYER/BRIDGE/EXIT NATIVE PASS · official GPU 4 original frames PASS · R13 complete ZIP local cold rebuild PASS (386 files), CLOUD-PROVIDER READBACK NOT VERIFIED · ART/WORLD TRANSITION HOLD.**
