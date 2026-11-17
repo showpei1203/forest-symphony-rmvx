@@ -118,3 +118,9 @@
 - 新 SHA256+CRC ZIP 安全 staging、A35 namespace path rewrite、真私人 Ground HASH gate、Godot 主畫面只有來源實際就緒才有苔光村 Preview。Synthetic P532 existing full flow PASS。
 - 切記：正式 A35 source staging + native GPU 合併 **NOT RUN**；A35 ART HOLD；世界故事/事件/ACT 真場景接線未完成；11 post-Apply DB / 505 runtime authority 未完成；Phase1 SEAL NO。
 - P535：私有臨時原圖 native 匯入與 GPU QA，A35 角色／碰撞／Footpoint/事件/戰鬥接線；不得再以合成 Map999/1000 冒充正式村莊。
+
+
+## User 2026-11-18 explicit priority override: BATTLE + MENU + original FS UI artwork FIRST
+- Completed P535 private source original archive 202 PNG (8,371,041 bytes owner-only Drive ID 1OCeiV5ZZyxBUrZypIxI8UJv2ytHywbnT). Original code archive hash C08EA693... and private source SHA per PNG. No source images public.
+- Godot 4.7.2 original UI import gate, source IconSet, six portrait hookups, live HP/MP/ATB battle HUD, native code QA SUCCESS #44134508271. Handoff docs/HANDOFF_20261118_UI_ART_535.md and FailureLog docs/FAIL_LOG_UI_ART_535_20261118.md.
+- P536 priority: original private PNG + real Godot native GPU / VX visual 1:1; P537 original full BattleScape, multi-frame 6/12+ actors/monsters and ACT FX; P538 all MENU source artwork and functionality. A35 village/forest integration deferred, not erased. Keep original VX read-only. Phase1 SEAL NO.
