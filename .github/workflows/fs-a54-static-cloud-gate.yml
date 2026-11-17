@@ -1,0 +1,37 @@
+name: FS A54 Clean GPU QA Static Contract
+on:
+  push:
+    branches:
+      - fix/fs-a54-a53-clean-gpu-regression-20261117
+    paths:
+      - 'experiments/fs_a54_clean_gpu_regression/**'
+      - '.github/workflows/fs-a54-static-cloud-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-clean-qa-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository branch
+        uses: actions/checkout@v4
+      - name: Check Python syntax without writing bytecode
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          code = Path("experiments/fs_a54_clean_gpu_regression/a54_asset_contract_gate.py").read_text(encoding="utf-8")
+          ast.parse(code)
+          print("A54_PYTHON_AST_PASS")
+          PY
+      - name: Exercise fail-closed selftest
+        run: |
+          python experiments/fs_a54_clean_gpu_regression/a54_asset_contract_gate.py --selftest
+      - name: Check repaired A53 GDScript asset contract
+        run: |
+          python experiments/fs_a54_clean_gpu_regression/a54_asset_contract_gate.py \
+            --qa experiments/fs_a54_clean_gpu_regression/a53_clean_gpu_qa_fixed.gd \
+            --assets-json experiments/fs_a54_clean_gpu_regression/a53_clean_assets_inventory.json
