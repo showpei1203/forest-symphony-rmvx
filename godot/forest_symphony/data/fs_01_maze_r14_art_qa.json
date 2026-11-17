@@ -1,0 +1,19 @@
+{
+  "stage": "FS_01_MAZE R14 Ground3 + Whole-PAR Canopy VARIANTS",
+  "QA": "STATIC SOURCE/ALPHA/SCENE/POSITION CONTRACT PASS; Godot native NOT RUN",
+  "base_scene_sha256": "569d0591dc5eac581f11a227aecc0e3ffd9503b1baefeaf94dd50fd023c23e88",
+  "new_scene_sha256": "c8b3c69bbd7501ec417c87bb51ad39ad689e1ea6b987f575b05bdfa201df4334",
+  "base_ground_unchanged_sha256": "ac591877b05c00543e6756e44e6ba81f6fea7e36086049e35de81e2610e0c911",
+  "ground3_sha256": "8c38ab303c0c89d451303f131b1ec0e6cda7d64a754f49255d6f9c876168cc59",
+  "ground3_changed_pixels": 4597036,
+  "retained_par": 326,
+  "trees": 310,
+  "whole_source_tree_sprite_variants": 16,
+  "variant_tree_instances": 225,
+  "horizontal_mirrors": 122,
+  "source_tree_physics_and_coordinates_unchanged": true,
+  "art": "HOLD",
+  "native_gpu": "NOT_RUN",
+  "native_physics": "NOT_RUN",
+  "reason": "Remote Godot device offline at time of R14 test; must cold rebuild and capture actual GPU before release"
+}
