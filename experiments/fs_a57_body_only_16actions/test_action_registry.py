@@ -25,4 +25,10 @@ assert lookup["close_ranged_attack"]["status"]=="TECHNICAL_ART_HOLD"
 assert lookup["dodging"]["status"]=="REJECTED_NEEDS_NEW_POSE"
 assert lookup["moving_to_close_attack"]["status"]=="HISTORICAL_USER_PASS"
 assert all(x["status"]!="FORMAL_USER_ART_PASS" for x in rows if x["id"]!="moving_to_close_attack")
+if "pilot_supported_actions" in doc:
+    assert doc["pilot_supported_actions"]==["close_ranged_attack","waiting"]
+    assert lookup["waiting"]["status"]=="TECHNICAL_ART_HOLD"
+    assert lookup["waiting"]["atlas"]==[3,1]
+    assert lookup["waiting"]["frame_size"]==[64,64]
+    assert lookup["waiting"]["candidate_sha256"]=="d5599785d6d76fe2307c49549d21e5b75930a99842b919a1339bd5ec605ed6d3"
 print("A57_CATALOG_16_ACTION_CONTRACT_PASS")
