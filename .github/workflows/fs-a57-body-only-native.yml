@@ -1,0 +1,63 @@
+name: FS A57 Body-Only 16-Action Runtime
+on:
+  push:
+    branches: [feature/fs-a57-body-only-16action-20261118]
+    paths:
+      - 'experiments/fs_a57_body_only_16actions/**'
+      - '.github/workflows/fs-a57-body-only-native.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  catalog-and-godot-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install synthetic fixture dependency
+        run: python -m pip install --disable-pip-version-check 'Pillow>=10,<14'
+      - name: Assert complete action inventory and true non-baked equipment contract
+        run: python experiments/fs_a57_body_only_16actions/test_action_registry.py experiments/fs_a57_body_only_16actions/action_catalog_16.json
+      - name: Assemble isolated source-safe native test scene
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p a57-ci-project/{assets,scenes,scripts}
+          cp experiments/fs_a57_body_only_16actions/project.godot a57-ci-project/project.godot
+          cp experiments/fs_a57_body_only_16actions/action_catalog_16.json a57-ci-project/assets/action_catalog_16.json
+          cp experiments/fs_a57_body_only_16actions/a57_body_action_player.gd a57-ci-project/scripts/a57_body_action_player.gd
+          cp experiments/fs_a57_body_only_16actions/a57_native_smoke.gd a57-ci-project/scripts/a57_native_smoke.gd
+          cp experiments/fs_a57_body_only_16actions/A57BodyOnlyDemo.tscn a57-ci-project/scenes/A57BodyOnlyDemo.tscn
+          python experiments/fs_a57_body_only_16actions/ci_fixture_builder.py a57-ci-project
+          test ! -f experiments/fs_a57_body_only_16actions/actor01_a53_body_12frames.png
+          echo 'A57_PRIVATE_A53_NOT_UPLOADED_PASS'
+      - name: Download pinned Godot 4.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --retry 3 --retry-delay 2 --fail --location -o godot-linux.zip \
+            https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          echo 'cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  godot-linux.zip' | sha256sum -c -
+          unzip -q godot-linux.zip
+          chmod +x Godot_v4.7.2-stable_linux.x86_64
+          ./Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Native editor import for Body-only project
+        run: timeout 90 ./Godot_v4.7.2-stable_linux.x86_64 --headless --path a57-ci-project --editor --import
+      - name: Native F7 contact, hitstop, cancel, 2x, anchor QA
+        shell: bash
+        run: |
+          set -o pipefail
+          timeout 90 ./Godot_v4.7.2-stable_linux.x86_64 --headless \
+            --path a57-ci-project \
+            --script res://scripts/a57_native_smoke.gd | tee a57-native-log.txt
+          grep -q 'A57_NATIVE_RESULT PASS' a57-native-log.txt
+      - name: Retain native smoke log only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: A57-Source-Safe-Godot472-Logic-Log
+          path: a57-native-log.txt
+          if-no-files-found: warn
