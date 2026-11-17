@@ -124,3 +124,9 @@
 - Completed P535 private source original archive 202 PNG (8,371,041 bytes owner-only Drive ID 1OCeiV5ZZyxBUrZypIxI8UJv2ytHywbnT). Original code archive hash C08EA693... and private source SHA per PNG. No source images public.
 - Godot 4.7.2 original UI import gate, source IconSet, six portrait hookups, live HP/MP/ATB battle HUD, native code QA SUCCESS #44134508271. Handoff docs/HANDOFF_20261118_UI_ART_535.md and FailureLog docs/FAIL_LOG_UI_ART_535_20261118.md.
 - P536 priority: original private PNG + real Godot native GPU / VX visual 1:1; P537 original full BattleScape, multi-frame 6/12+ actors/monsters and ACT FX; P538 all MENU source artwork and functionality. A35 village/forest integration deferred, not erased. Keep original VX read-only. Phase1 SEAL NO.
+
+
+## P536 原版 UI 真圖 Godot native 進展（2026-11-18）
+- 最新 Handoff: [P536](HANDOFF_20261118_P536_ORIGINAL_UI_NATIVE.md)，[FAILURE](FAIL_LOG_UI_ART_536_20261118.md)。原版 202 PNG/私有 ZIP 真正 staged 進 Godot 4.7.2；原生 Editor Import PASS、真 OpenGL MENU/STATUS/BATTLE × (544x416 / 1088x832) 6/6 PASS，私人 SHA 證據 https://drive.google.com/file/d/17BwXCHAlhAEDZBUyH8fntmhPZiAyBGV5/view 。
+- 修正「整張 Gauge sprite atlas」與「STATUS 立繪文字互疊」，source strip 72×6 + Btskin 135×40 live HP/MP/OD，獨立原始 SHA 鎖；代碼完整 CI 83/83 PASS https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44189891079 。
+- P537 仍優先原版 BATTLE Stage + 多幀角色/敵人 + 武器/FX；P538 主選單與技能/裝備/物品全美術；A35 真圖事件後排，不得以合成場冒充正式 FS。原 VX compare parity 尚無、ART HOLD、Phase1 SEAL NO。

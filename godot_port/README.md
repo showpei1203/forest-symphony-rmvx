@@ -41,3 +41,7 @@ This validates archive SHA/CRC and unmodified Ground SHA, rewrites only Godot re
 
 ## P535｜Source-original BATTLE / MENU / UI artwork priority (2026-11-18)
 202 original FS Menu/System/Windows PNGs sealed privately in Drive: https://drive.google.com/file/d/1OCeiV5ZZyxBUrZypIxI8UJv2ytHywbnT/view (provider shared=false, CRC/SHA PASS). The SHA-locked stage_private_ui_535.py imports only to gitignored assets/ui in an authorized ephemeral workspace. FSUIArtLibrary handles true original 24px IconSet, original MENU backgrounds and six original character portraits, FSUIBattleHUD displays live HP/MP/ATB with original HUD ornaments if present. Full Godot CI #44134508271 SUCCESS; actual native GPU source-asset parity NOT RUN; Phase1 SEAL NO. See docs/HANDOFF_20261118_UI_ART_535.md.
+
+## P536｜原始 FS UI PNG 真正 Godot 4.7.2 native GPU 6/6 PASS（2026-11-18）
+
+從 owner-only Drive 的 202 PNG ZIP 在隔離工作環境 stage，Godot 4.7.2 native editor import + OpenGL 544×416 和 1088×832 的 MENU/STATUS/BATTLE 6 張源圖片真 GPU capture PASS。修復 original GaugeHP/MP/OD 120×48 atlas 全圖顯示問題，改由 Btskin 135×40 搭配 72×6 真 source strip HP/MP/OD 動態填充，STATUS 立繪與數值並排，並以 source-locked SHA 校驗。Godot public GitHub full CI #44189891079 83/83 PASS。真正原 VX 完整同畫面 parity/正式戰鬥數值/多幀動畫仍 HOLD，Phase1 SEAL NO。[完整 P536 Handoff](docs/HANDOFF_20261118_P536_ORIGINAL_UI_NATIVE.md)，[Failure Log](docs/FAIL_LOG_UI_ART_536_20261118.md)。Private QA ZIP：https://drive.google.com/file/d/17BwXCHAlhAEDZBUyH8fntmhPZiAyBGV5/view ，shared=false。
