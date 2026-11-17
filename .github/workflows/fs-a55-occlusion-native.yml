@@ -29,16 +29,16 @@ jobs:
           python experiments/fs_a55_occlusion_gate/fs_a55_visibility_gate.py \
             --contract experiments/fs_a55_occlusion_gate/a55_visibility_manifest_reference.json \
             --selftest \
-            --output .a55-qa > .a55-qa-result.json
-          cat .a55-qa-result.json
+            --output a55-qa-output > a55-qa-result.json
+          cat a55-qa-result.json
       - name: Retain only synthetic QA images, not licensed FS sprites
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: A55-synthetic-occlusion-proof
           path: |
-            .a55-qa/
-            .a55-qa-result.json
+            a55-qa-output/
+            a55-qa-result.json
           if-no-files-found: warn
 
   godot-native-logic:
@@ -80,6 +80,7 @@ jobs:
             ./Godot_v4.7.2-stable_linux.x86_64 \
             --path experiments/fs_a55_occlusion_gate \
             --rendering-method gl_compatibility \
+            --audio-driver Dummy \
             --script res://a55_native_gpu_occlusion_qa.gd | tee a55-gpu-log.txt
           grep -q 'A55_GPU_QA_RESULT PASS' a55-gpu-log.txt
       - name: Upload native logs and synthetic GPU frames
