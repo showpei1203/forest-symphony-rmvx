@@ -234,6 +234,31 @@ func _icon_last_button(table_name:String,record_id:int)->void:
         button.icon=graphic
         button.expand_icon=false
 
+func _show_actor_portrait(index:int)->void:
+    if ui_art==null or battle==null or index<0 or index>=battle.party.size():
+        return
+    var actor_name:String=str(battle.party[index].get("name",""))
+    # Explicit mapping from the original six FS portrait filenames.
+    # Do not match random demo actors or forge a portrait in their place.
+    var allowed:Dictionary={
+        "喬伊":"menu_喬伊.png", "泰勒":"menu_泰勒.png",
+        "米亞":"menu_米亞.png", "艾卓":"menu_艾卓.png",
+        "艾薇":"menu_艾薇.png", "薇娜":"menu_薇娜.png"}
+    if not allowed.has(actor_name):
+        return
+    var portrait:Texture2D=ui_art.texture("menu",str(allowed[actor_name]))
+    if portrait==null:
+        return
+    var frame:=TextureRect.new()
+    frame.name="FSOriginalPortrait_"+str(index)
+    frame.texture=portrait
+    frame.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+    frame.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    frame.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+    frame.custom_minimum_size=Vector2(126,156)
+    frame.size_flags_horizontal=Control.SIZE_SHRINK_BEGIN
+    body.add_child(frame)
+
 func _actor_selector(on_select: Callable) -> void:
     # Clickable actor tabs for true party ID/level; MENU never shows all 800 skills.
     var selected_actor: int = actor_index
@@ -251,6 +276,8 @@ func _show_status() -> void:
     _set_original_background("MenuBack_status_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / 角色狀態"
+    _actor_selector(_show_status)
+    _show_actor_portrait(actor_index)
     for row in menu_model.party():
         _add_text("%s  Lv.%d  HP %d/%d  MP %d/%d" % [
             row["name"],row["level"],row["hp"],row["maxhp"],row["mp"],row["maxmp"]])
@@ -267,6 +294,7 @@ func _show_skills() -> void:
     _actor_selector(_show_skills)
     if actor_index < 0 or actor_index >= battle.party.size():
         return
+    _show_actor_portrait(actor_index)
     _add_text("目前角色已習得技能（依原 Class.learnings + 等級）")
     var rows: Array[Dictionary] = menu_model.known_skills(actor_index)
     if rows.is_empty():
@@ -306,6 +334,7 @@ func _show_equipment() -> void:
     _actor_selector(_show_equipment)
     if actor_index < 0 or actor_index >= battle.party.size():
         return
+    _show_actor_portrait(actor_index)
     for row in menu_model.equipment_rows(actor_index):
         var slot: int = int(row["slot"])
         _add_button("%s：%s%s" % [

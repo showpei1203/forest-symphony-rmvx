@@ -17,12 +17,28 @@ func _decorative_texture(parent:Node,filename:String)->void:
     var image:Texture2D=art.texture("system",filename)
     if image==null:
         return
-    var control:=TextureRect.new()
-    control.texture=image
-    control.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
-    control.stretch_mode=TextureRect.STRETCH_KEEP
-    control.custom_minimum_size=Vector2(image.get_width(),min(image.get_height(),40))
-    parent.add_child(control)
+    var visual:=TextureRect.new()
+    visual.texture=image
+    visual.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+    visual.stretch_mode=TextureRect.STRETCH_KEEP
+    visual.custom_minimum_size=Vector2(image.get_width(),min(image.get_height(),40))
+    parent.add_child(visual)
+
+func _gauge_ornament(parent:Node,filename:String)->void:
+    # Reuse source UI pixels at their verified resolution. This decoration
+    # has NO gameplay authority: the adjacent ProgressBar is data-driven.
+    if art==null:
+        return
+    var image:Texture2D=art.texture("system",filename)
+    if image==null:
+        return
+    var view:=TextureRect.new()
+    view.texture=image
+    view.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+    view.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+    view.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    view.custom_minimum_size=Vector2(54,21)
+    parent.add_child(view)
 
 func bind_party(party:Array)->void:
     if _count==party.size():
@@ -45,13 +61,18 @@ func bind_party(party:Array)->void:
         for metric in ["HP","MP","ATB"]:
             var label:=Label.new()
             card.add_child(label)
+            var gauge_row:=HBoxContainer.new()
+            card.add_child(gauge_row)
+            var source_file:String="GaugeHP.png" if metric=="HP" else (
+                "GaugeMP.png" if metric=="MP" else "atb_bar_skin.png")
+            _gauge_ornament(gauge_row,source_file)
             var bar:=ProgressBar.new()
-            bar.custom_minimum_size=Vector2(135,8)
+            bar.custom_minimum_size=Vector2(78,8)
             bar.show_percentage=false
             bar.min_value=0.0
             bar.max_value=100.0
             bar.value=0.0
-            card.add_child(bar)
+            gauge_row.add_child(bar)
             gauges[metric]={"label":label,"bar":bar}
         _records.append({"name":name_label,"gauges":gauges})
     refresh(party)
