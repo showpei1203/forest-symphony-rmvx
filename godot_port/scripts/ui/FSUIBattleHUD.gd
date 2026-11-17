@@ -36,8 +36,15 @@ func bind_party(party:Array)->void:
             original.free()
             original=null
         var gauges:Dictionary={}
+        var summary:Label=null
+        if original_ok:
+            summary=Label.new()
+            summary.add_theme_font_size_override("font_size",11)
+            card.add_child(summary)
         for metric in ["HP","MP","ATB"]:
             var label:=Label.new()
+            if original_ok and metric!="ATB":
+                label.visible=false
             card.add_child(label)
             var bar:=ProgressBar.new()
             bar.custom_minimum_size=Vector2(135,7)
@@ -51,7 +58,7 @@ func bind_party(party:Array)->void:
                 bar.visible=false
             card.add_child(bar)
             gauges[metric]={"label":label,"bar":bar}
-        _records.append({"name":name_label,"gauges":gauges,"original":original})
+        _records.append({"name":name_label,"gauges":gauges,"original":original,"summary":summary})
     refresh(party)
 
 func refresh(party:Array)->void:
@@ -75,6 +82,11 @@ func refresh(party:Array)->void:
             bar.value=clampf(100.0*float(current)/float(maximum),0.0,100.0)
             var caption:Label=datum["label"]
             caption.text="%s %d/%d" % [metric,current,maximum]
+        var summary:Label=record["summary"]
+        if summary!=null:
+            summary.text="HP %d/%d  MP %d/%d" % [
+                int(actor.get("hp",0)),int(actor.get("maxhp",0)),
+                int(actor.get("mp",0)),int(actor.get("maxmp",0))]
         var atb:Dictionary=gauges["ATB"]
         var count:int=clampi(int(actor.get("source_atb_count",0)),0,1000)
         var atb_bar:ProgressBar=atb["bar"]

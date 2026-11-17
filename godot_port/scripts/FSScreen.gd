@@ -29,6 +29,7 @@ var a35_preview: Control
 var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
 var battle_command_art:Dictionary={}
+var battle_command_grid:GridContainer
 
 func _ready() -> void:
     ui_art=UI_ART.new()
@@ -205,7 +206,12 @@ func _add_battle_command(label: String, callback: Callable) -> void:
             button.expand_icon=false
             button.icon_alignment=HORIZONTAL_ALIGNMENT_LEFT
     button.pressed.connect(callback)
-    body.add_child(button)
+    button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    button.custom_minimum_size=Vector2(0,48)
+    if battle_command_grid!=null and is_instance_valid(battle_command_grid):
+        battle_command_grid.add_child(button)
+    else:
+        body.add_child(button)
     battle_command_buttons.append(button)
 
 func _update_battle_command_buttons() -> void:
@@ -598,6 +604,7 @@ func _show_battle() -> void:
     # Blank source-exact MENU background rather than displaying an incorrect battle map.
     original_background.texture = null
     _clear_body()
+    battle_command_grid=null
     battle_command_buttons.clear()
     battle_command_art.clear()
     title_label.text = "Forest Symphony / BATTLE (P1)"
@@ -629,6 +636,14 @@ func _show_battle() -> void:
     _add_text("ATB 就緒 → 選指令 → ACT 蓄力 → 執行 → 重置（敵方 AI／特殊行動仍待移植）")
     _actor_selector(_show_battle)
     _add_text("目前操作角色：" + str(battle.party[actor_index].get("name","?")) if actor_index >= 0 and actor_index < battle.party.size() else "尚無角色")
+    # 2x2 original 54x48 source PNG buttons, preserving four true Godot ACT commands.
+    battle_command_grid=GridContainer.new()
+    battle_command_grid.name="FSOriginalBattleCommands"
+    battle_command_grid.columns=2
+    battle_command_grid.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    battle_command_grid.add_theme_constant_override("h_separation",4)
+    battle_command_grid.add_theme_constant_override("v_separation",3)
+    body.add_child(battle_command_grid)
     _add_battle_command("普通攻擊（選擇敵人）", _player_attack)
     _add_battle_command("防禦", _player_guard)
     _add_battle_command("技能", _skill_action)
