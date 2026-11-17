@@ -1,5 +1,5 @@
 extends SceneTree
-## FS A54 clean Godot GPU regression test: rendering verification of actual revised Body/Weapon/FX.
+## FS A54 clean Godot GPU regression test: BODY/FIST/HIT 3-track with ICON equipment. Native run not yet verified.
 var failures: Array[String] = []
 var hits: Array[int] = []
 var ended: Array[int] = []
