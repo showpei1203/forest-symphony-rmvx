@@ -1,0 +1,332 @@
+{
+  "schema": "FS_A57_BODY_ONLY_16_ACTIONS_V1",
+  "engine": "Godot 4.7.2",
+  "visual_reference": "FS original SBS 45 degree (SE), explicit separate world-walk angles",
+  "policy": "Body_only_empty_hands_or_gripping_pose; weapons_shields_projectiles_FX_program_owned",
+  "approval": "catalog statuses preserved and independent, never auto-promote ART",
+  "source_priority": "2026-11-18 user correction -> A11 ACTIVE MASTER -> FS native source -> 2026-11-01 16-action reference -> per-action newer approved corrections",
+  "items": [
+    {
+      "row": 1,
+      "id": "walking_down",
+      "label": "Walking Down",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "source": "WORLD_WALK",
+      "status": "NOT_STARTED",
+      "production_priority": 0,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 2,
+      "id": "walking_left",
+      "label": "Walking to the Left",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "source": "WORLD_WALK",
+      "status": "NOT_STARTED",
+      "production_priority": 0,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 3,
+      "id": "walking_right",
+      "label": "Walking to the Right",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "source": "WORLD_WALK",
+      "status": "NOT_STARTED",
+      "production_priority": 0,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 4,
+      "id": "walking_up",
+      "label": "Walking Up",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "source": "WORLD_WALK",
+      "status": "NOT_STARTED",
+      "production_priority": 0,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 5,
+      "id": "waiting",
+      "label": "Waiting",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "source": "A63_W3B",
+      "status": "TECHNICAL_ART_HOLD",
+      "production_priority": 1,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT",
+      "source_semantics_note": "A63 W3B lateral left-center-right-center; supersedes old generic vertical breathing",
+      "a57_candidate": "A53_BODY_F0_DETERMINISTIC_ROW_SHIFT_3POSE",
+      "source_body_sha256": "af2b94a424ab613fa5a8ff45125f0398da3a20432cdeaa744f87f9f1b1a9ac44",
+      "candidate_sha256": "d5599785d6d76fe2307c49549d21e5b75930a99842b919a1339bd5ec605ed6d3",
+      "frame_size": [
+        64,
+        64
+      ],
+      "atlas": [
+        3,
+        1
+      ],
+      "phase_seconds": 0.175,
+      "runtime": "PREVIEW_ONLY_ENGINE_NOT_RUN",
+      "source_original": "A53 F0, NOT A63 W3B original 48px output"
+    },
+    {
+      "row": 6,
+      "id": "damage",
+      "label": "Damage",
+      "mode": "ONCE",
+      "play_order": [
+        0,
+        1,
+        2
+      ],
+      "source": "FS_NATIVE_REFERENCE",
+      "status": "NOT_STARTED",
+      "production_priority": 2,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 7,
+      "id": "critical_damaged",
+      "label": "Critic Damaged",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "source": "A64_C3",
+      "status": "TECHNICAL_ART_HOLD",
+      "production_priority": 3,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 8,
+      "id": "moving_to_close_attack",
+      "label": "Moving to Close Attack",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "source": "A62",
+      "status": "HISTORICAL_USER_PASS",
+      "production_priority": 1,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT",
+      "source_dimension_note": "Historical A62 48x48 approved; not transplanted to A53 64x64 without identity conversion"
+    },
+    {
+      "row": 9,
+      "id": "victory_pose",
+      "label": "Victory Pose",
+      "mode": "ONCE_HOLD",
+      "play_order": [
+        0,
+        1,
+        2
+      ],
+      "source": "FS_NATIVE_REFERENCE",
+      "status": "NOT_STARTED",
+      "production_priority": 4,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 10,
+      "id": "dodging",
+      "label": "Dodging",
+      "mode": "ONCE",
+      "play_order": [
+        0,
+        1,
+        2
+      ],
+      "source": "A32_FAILED_TRIAL",
+      "status": "REJECTED_NEEDS_NEW_POSE",
+      "production_priority": 2,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 11,
+      "id": "nothing",
+      "label": "Nothing",
+      "mode": "EMPTY",
+      "play_order": [],
+      "source": "FS_NATIVE_REFERENCE",
+      "status": "EMPTY",
+      "production_priority": 0,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 12,
+      "id": "death",
+      "label": "Death",
+      "mode": "ONCE_HOLD",
+      "play_order": [
+        0,
+        1,
+        2
+      ],
+      "source": "FS_NATIVE_REFERENCE",
+      "status": "NOT_STARTED",
+      "production_priority": 4,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT",
+      "source_semantics_note": "Reference row already prone; do not invent falling sequence from it"
+    },
+    {
+      "row": 13,
+      "id": "front_jump_close_attack",
+      "label": "Front Jump / Close Attack",
+      "mode": "ONCE",
+      "play_order": [
+        0,
+        1,
+        2
+      ],
+      "source": "FS_NATIVE_REFERENCE",
+      "status": "NOT_STARTED",
+      "production_priority": 5,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 14,
+      "id": "ranged_attack_i",
+      "label": "Ranged Attack I",
+      "mode": "ONCE",
+      "play_order": [
+        0,
+        1,
+        2
+      ],
+      "source": "FS_NATIVE_REFERENCE",
+      "status": "NOT_STARTED",
+      "production_priority": 3,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    },
+    {
+      "row": 15,
+      "id": "close_ranged_attack",
+      "label": "Close / Ranged Attack",
+      "mode": "ONCE",
+      "play_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source": "A53",
+      "status": "TECHNICAL_ART_HOLD",
+      "production_priority": 0,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT",
+      "frame_size": [
+        64,
+        64
+      ],
+      "atlas": [
+        4,
+        3
+      ],
+      "source_body_sha256": "af2b94a424ab613fa5a8ff45125f0398da3a20432cdeaa744f87f9f1b1a9ac44",
+      "frame_seconds": 0.09,
+      "contact": {
+        "frame": 7,
+        "second": 0.63,
+        "hitstop_ms": 70,
+        "actual_damage": "EXTERNAL_GAMEPLAY_ONLY"
+      }
+    },
+    {
+      "row": 16,
+      "id": "magi_skill_use",
+      "label": "Magi Skill Use",
+      "mode": "LOOP",
+      "play_order": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "source": "A65_V3B",
+      "status": "TECHNICAL_ART_HOLD",
+      "production_priority": 2,
+      "equipment_art": "EXTERNAL_RUNTIME_ONLY",
+      "body_pose": "NO_WEAPON_SHIELD_FX_BAKED",
+      "godot_native": "NOT_RUN_EXCEPT_A53_PILOT"
+    }
+  ],
+  "pilot_supported_actions": [
+    "close_ranged_attack",
+    "waiting"
+  ]
+}
