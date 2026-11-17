@@ -10,11 +10,11 @@ def run():
     scene='scenes/fs_01_maze_r13_playable_entrance_bridge_exit_80x58.tscn'
     prior='scenes/fs_01_maze_r12_live_road_navigation_80x58.tscn'
     ground='private_assets/a36_ground_only_2560x1856.png'
-    report=json.loads((ROOT/'qa_a36c/FS_01_MAZE_R9_ACTUAL_PHYSICS_ROUTE_SURVEY.json').read_text())
-    semantic=json.loads((ROOT/'data/a36_terrain_semantic_candidates.json').read_text())
+    report=json.loads((ROOT/'qa_a36c/FS_01_MAZE_R9_ACTUAL_PHYSICS_ROUTE_SURVEY.json').read_text(encoding='utf-8'))
+    semantic=json.loads((ROOT/'data/a36_terrain_semantic_candidates.json').read_text(encoding='utf-8'))
     assert_eq(digest(ground),'ac591877b05c00543e6756e44e6ba81f6fea7e36086049e35de81e2610e0c911','Ground immutable')
     assert_eq(digest(prior),'54224083a741bf4d451c9d44674d48fae68e399eac856c31b31c15c10457c392','R12 scene immutable')
-    sc=(ROOT/scene).read_text()
+    sc=(ROOT/scene).read_text(encoding='utf-8')
     assert sc.count('source_object_id = ')==326, 'Independent actual PAR regression'
     assert sc.count('source_semantic = "tree"')==310, 'Tree regression'
     for node in ('MazeTopology','Entrance','Exit','BridgeEast','BridgeWest','RoadNavigator','WaterSemanticHazards'):
@@ -53,6 +53,6 @@ def run():
       "source_connectivity_gates":3,"art_gate":"HOLD","native_r13":"VERIFIED_SEPARATE_OFFICIAL_GODOT_4_7_2_EXIT_0",
       "village_destination_integration":"HOLD"}
     target=ROOT/'qa_a36c/FS_01_MAZE_R13_STATIC_QA.json'
-    target.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    target.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 if __name__=='__main__':run()
