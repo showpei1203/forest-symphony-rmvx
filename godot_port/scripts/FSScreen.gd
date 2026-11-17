@@ -78,7 +78,7 @@ func _install_system_cjk_font() -> void:
         "PingFang TC","WenQuanYi Micro Hei"])
     var global_theme := Theme.new()
     global_theme.default_font = face
-    global_theme.default_font_size = 16
+    global_theme.default_font_size = 12
     theme = global_theme
 
 func _build_shell() -> void:
@@ -95,11 +95,11 @@ func _build_shell() -> void:
     add_child(original_background)
     var layout := VBoxContainer.new()
     layout.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-    layout.add_theme_constant_override("separation", 7)
+    layout.add_theme_constant_override("separation", 4)
     add_child(layout)
     title_label = Label.new()
     title_label.text = "Forest Symphony / Godot P1 Candidate"
-    title_label.add_theme_font_size_override("font_size", 20)
+    title_label.add_theme_font_size_override("font_size", 15)
     layout.add_child(title_label)
     var tabs := HBoxContainer.new()
     layout.add_child(tabs)
@@ -125,7 +125,7 @@ func _build_shell() -> void:
     layout.add_child(scroll)
     body = VBoxContainer.new()
     body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-    body.add_theme_constant_override("separation", 6)
+    body.add_theme_constant_override("separation", 3)
     scroll.add_child(body)
     log_label = Label.new()
     log_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -276,13 +276,49 @@ func _show_status() -> void:
     _set_original_background("MenuBack_status_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / 角色狀態"
+    status_label.text="角色資料以當前 FSDatabase／FSBattle 為準，原圖另依來源 SHA 驗證"
     _actor_selector(_show_status)
-    _show_actor_portrait(actor_index)
-    for row in menu_model.party():
-        _add_text("%s  Lv.%d  HP %d/%d  MP %d/%d" % [
-            row["name"],row["level"],row["hp"],row["maxhp"],row["mp"],row["maxmp"]])
-        _add_text("ATK %d DEF %d SPI %d AGI %d HIT %d EVA %d CRI %d" % [
-            row["atk"],row["def"],row["spi"],row["agi"],row["hit"],row["eva"],row["cri"]])
+    if battle==null or menu_model==null or (
+            actor_index<0 or actor_index>=battle.party.size()):
+        _add_button("返回選單",_show_menu)
+        return
+    var row_holder:=HBoxContainer.new()
+    row_holder.add_theme_constant_override("separation",10)
+    body.add_child(row_holder)
+    var image_name:String=str(battle.party[actor_index].get("name",""))
+    var portraits:Dictionary={
+        "喬伊":"menu_喬伊.png","泰勒":"menu_泰勒.png","米亞":"menu_米亞.png",
+        "艾卓":"menu_艾卓.png","艾薇":"menu_艾薇.png","薇娜":"menu_薇娜.png"}
+    if ui_art!=null and portraits.has(image_name):
+        var image:Texture2D=ui_art.texture("menu",str(portraits[image_name]))
+        if image!=null:
+            var portrait:=TextureRect.new()
+            portrait.name="FSOriginalPortrait_"+str(actor_index)
+            portrait.texture=image
+            portrait.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+            portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+            portrait.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+            portrait.custom_minimum_size=Vector2(112,140)
+            row_holder.add_child(portrait)
+    var text_column:=VBoxContainer.new()
+    text_column.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+    row_holder.add_child(text_column)
+    var source_rows:Array=menu_model.party()
+    if actor_index<source_rows.size():
+        var stats:Dictionary=source_rows[actor_index]
+        for text_line in [
+            "%s  Lv.%d" % [stats.get("name","?"),stats.get("level",0)],
+            "HP %d/%d  MP %d/%d" % [stats.get("hp",0),stats.get("maxhp",0),
+                stats.get("mp",0),stats.get("maxmp",0)],
+            "ATK %d  DEF %d  SPI %d" % [stats.get("atk",0),
+                stats.get("def",0),stats.get("spi",0)],
+            "AGI %d  HIT %d  EVA %d  CRI %d" % [
+                stats.get("agi",0),stats.get("hit",0),
+                stats.get("eva",0),stats.get("cri",0)]]:
+            var caption:=Label.new()
+            caption.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+            caption.text=text_line
+            text_column.add_child(caption)
     _add_button("返回選單", _show_menu)
 
 func _show_skills() -> void:
