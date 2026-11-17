@@ -1,0 +1,20 @@
+{
+  "source": "Google Drive / FS_A53_ATTACK_BAREHAND_FS_CANONICAL_20261116/godot_a53_icon_only_clean/assets",
+  "source_folder_id": "1IRIy7err19LcTawIMX-nhY28RZf4O_BI",
+  "captured_on": "2026-11-17",
+  "description": "Filename-only inventory, no private image pixels, no credentials",
+  "file_names": [
+    "actor01_animation_manifest.json",
+    "a53_icon_weapon_profiles.json",
+    "actor01_a53_hand_and_fist_anchors.json",
+    "FS_original_Iconset.png",
+    "actor01_a53_body_only_composite_reference.png",
+    "actor01_a53_body_12frames.png",
+    "actor01_run_a35_8frames.png",
+    "actor01_idle_r2_raw_8phases.png",
+    "actor01_idle_r1_raw_8phases.png",
+    "actor01_idle_r1_calm_curated_8phases.png",
+    "actor01_attack_lunge_8frames.png",
+    "actor01_a62_approved_idle_source_64.png"
+  ]
+}
