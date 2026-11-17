@@ -83,6 +83,9 @@ def validate_contract(contract: dict[str, Any]) -> list[str]:
             failures.append("missing_pixel_ownership")
         if item.get("native_art_status") not in {"NOT_RUN", "ART_HOLD", "ENGINE_PASS", "ART_PASS"}:
             failures.append("unknown_art_status")
+        if item.get("native_art_status") == "ART_PASS":
+            if item.get("body_mask_qa_pass") is not True or not item.get("source_qa_hash"):
+                failures.append("art_pass_without_body_mask_qa_provenance")
     return failures
 
 
