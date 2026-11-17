@@ -32,6 +32,27 @@ jobs:
           unzip -q /tmp/godot.zip -d /tmp/fs-godot-engine
           chmod +x /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64
           /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Make pinned Godot 4.7.2 engine available for isolated private UI QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-p536-public-godot472-engine
+          path: /tmp/godot.zip
+          if-no-files-found: error
+          retention-days: 1
+      - name: Package only public Godot candidate code for owner-only asset QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          zip -q -r /tmp/fs-p536-public-source.zip godot_port \
+            -x '*/.godot/*' -x '*/assets/ui/*' -x '*/a35_private/*'
+          unzip -l /tmp/fs-p536-public-source.zip | head -18
+      - name: Publish public-only Godot candidate code archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-p536-public-source
+          path: /tmp/fs-p536-public-source.zip
+          if-no-files-found: error
+          retention-days: 1
       - name: Import project (headless)
         shell: bash
         run: |
