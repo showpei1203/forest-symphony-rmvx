@@ -45,3 +45,7 @@ This validates archive SHA/CRC and unmodified Ground SHA, rewrites only Godot re
 ## P536｜原始 FS UI PNG 真正 Godot 4.7.2 native GPU 6/6 PASS（2026-11-18）
 
 從 owner-only Drive 的 202 PNG ZIP 在隔離工作環境 stage，Godot 4.7.2 native editor import + OpenGL 544×416 和 1088×832 的 MENU/STATUS/BATTLE 6 張源圖片真 GPU capture PASS。修復 original GaugeHP/MP/OD 120×48 atlas 全圖顯示問題，改由 Btskin 135×40 搭配 72×6 真 source strip HP/MP/OD 動態填充，STATUS 立繪與數值並排，並以 source-locked SHA 校驗。Godot public GitHub full CI #44189891079 83/83 PASS。真正原 VX 完整同畫面 parity/正式戰鬥數值/多幀動畫仍 HOLD，Phase1 SEAL NO。[完整 P536 Handoff](docs/HANDOFF_20261118_P536_ORIGINAL_UI_NATIVE.md)，[Failure Log](docs/FAIL_LOG_UI_ART_536_20261118.md)。Private QA ZIP：https://drive.google.com/file/d/17BwXCHAlhAEDZBUyH8fntmhPZiAyBGV5/view ，shared=false。
+
+## P537｜原版 54×48 戰鬥指令 2×2、真 ATB 變色與 native Godot 真原圖 6/6（2026-11-18）
+
+Source original `Graphics/Menu/Battle01..05`（攻擊／技能／防禦／道具／逃跑）與各 `a` 版灰圖均已 source SHA 固定；FSScreen 正式接 Attack/Skill/Defend/Item 01–04，並由真 `FSBattle.ready_actors()` 控制灰色 disabled→彩色 enabled；05 Escape 尚沒有已驗證原遊戲機制因此只封存美術不偽造指令。4 張 source art 已改用 2×2 Grid，544×416 真 OpenGL 可同時看到。隔離 PRIVATE source 真 202 PNG Godot Editor Import + 原生角色 ATB 測試與 6 張 GPU PNG（兩種解析度×inactive/ready/select_target）PASS，私人證據：https://drive.google.com/file/d/1CM3cQRXFT_-9TJm4v0t_Z2qDE58lvXiE/view 。本輪仍缺 BattleScape/角色動畫/原版資料 parity，ART HOLD, Phase1 SEAL NO。[P537 Handoff](docs/HANDOFF_20261118_P537_BATTLE_ICONS_NATIVE.md)／[Failure Log](docs/FAIL_LOG_UI_ART_537_20261118.md)。

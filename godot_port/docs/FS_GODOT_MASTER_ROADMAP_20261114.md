@@ -130,3 +130,9 @@
 - 最新 Handoff: [P536](HANDOFF_20261118_P536_ORIGINAL_UI_NATIVE.md)，[FAILURE](FAIL_LOG_UI_ART_536_20261118.md)。原版 202 PNG/私有 ZIP 真正 staged 進 Godot 4.7.2；原生 Editor Import PASS、真 OpenGL MENU/STATUS/BATTLE × (544x416 / 1088x832) 6/6 PASS，私人 SHA 證據 https://drive.google.com/file/d/17BwXCHAlhAEDZBUyH8fntmhPZiAyBGV5/view 。
 - 修正「整張 Gauge sprite atlas」與「STATUS 立繪文字互疊」，source strip 72×6 + Btskin 135×40 live HP/MP/OD，獨立原始 SHA 鎖；代碼完整 CI 83/83 PASS https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44189891079 。
 - P537 仍優先原版 BATTLE Stage + 多幀角色/敵人 + 武器/FX；P538 主選單與技能/裝備/物品全美術；A35 真圖事件後排，不得以合成場冒充正式 FS。原 VX compare parity 尚無、ART HOLD、Phase1 SEAL NO。
+
+
+## P537｜原版 BATTLE 指令圖片正式接入真 ATB（2026-11-18）
+- [Handoff](HANDOFF_20261118_P537_BATTLE_ICONS_NATIVE.md) [Failure Log](FAIL_LOG_UI_ART_537_20261118.md)：原源 Battle01/02/03/04 對應 Attack/Skill/Defend/Item，原 54x48 + a 灰版全 source hash locked；真 ATB 未 READY 灰色、READY 彩色，禁止偷跑 ACT；2×2 Grid 讓 544×416 四張都可見。Escape #05 仍需原版 source rule witness，不捏造玩法。
+- 真 202 原圖片＋ Godot 4.7.2 隔離 native 6/6 GPU：https://drive.google.com/file/d/1CM3cQRXFT_-9TJm4v0t_Z2qDE58lvXiE/view 。Native / ART SOURCE PASS，正式 Original BattleScape/角色敵人多幀動作/VX pixel-parity HOLD，Phase1 SEAL NO。
+- Next P537B actual original battle background, separate A52/A54 character animation Body/Weapon/FX/ACT/Hitstop; P538 main MENU original button/skin composition; A35 forest map after BATTLE/MENU art.

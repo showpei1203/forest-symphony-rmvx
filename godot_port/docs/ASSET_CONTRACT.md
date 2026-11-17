@@ -21,3 +21,7 @@ Unconverted input images remain frozen and source-hashed; use importer-side conf
 
 ## P535 actual source UI archive
 Owner-only source archive: https://drive.google.com/file/d/1OCeiV5ZZyxBUrZypIxI8UJv2ytHywbnT/view (202 PNG, 8,371,041 bytes, CRC PASS, SHA256 c08ea693542e30f66586c6031016e7d7765f52c61ea5515c001e00079aeee9f6). Full per-original PNG hash/dimensions internal manifest. Godot importer: tools/stage_private_ui_535.py; runtime library: scripts/ui/FSUIArtLibrary.gd. Original menu backgrounds, 6 namesake portraits, original 24px icon atlas, and original HUD source ornaments have source-gated code paths. Need native visual matching/9-slice/gauge frame semantics; final original-image/art seal NOT RUN. Never upload source PNG/ZIP to GitHub.
+
+## P537 original BATTLE command artwork source contract
+- True original `Graphics/Menu/Battle01` Attack / 02 Skill / 03 Defend / 04 Item / 05 Escape; normal and a variants, all 54x48 PNG, source SHA checks under `FSUIArtLibrary.SOURCE_LOCKS`. Actual BUTTON mapping uses 01–04 with true `FSBattle.ready_actors` active/disabled switching. Escape #05 is art-only pending source command authority, not a runnable action.
+- First real GPU screenshot found vertical layout clipped at 544x416; 2x2 Grid fixed it, verified by source-native Godot OpenGL 6 PNG private ZIP id 1CM3cQRXFT_-9TJm4v0t_Z2qDE58lvXiE. Main BattleScape/animation/parity ART HOLD; original PNG private Drive ONLY.
