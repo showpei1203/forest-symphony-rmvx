@@ -81,10 +81,22 @@ func apply_frame(view: String, action: String, frame: int) -> bool:
         _last_error = "A55 frame absent from visibility contract: " + k
         return false
     var d: Dictionary = _lookup[k]
-    if not preview_mode and str(d.get("native_art_status", "")) != "ART_PASS":
-        _last_error = "A55 unapproved art cannot run as production"
-        return false
+    if not preview_mode:
+        if str(d.get("native_art_status", "")) != "ART_PASS":
+            _last_error = "A55 unapproved art cannot run as production"
+            return false
+        if not bool(d.get("body_mask_qa_pass", false)) or str(d.get("source_qa_hash", "")).is_empty():
+            _last_error = "A55 missing Body pixel occlusion QA provenance"
+            return false
     var vis: Dictionary = d.get("part_visibility", {})
+    if not preview_mode:
+        if _shield is Sprite2D and (_shield as Sprite2D).texture == null:
+            _last_error = "A55 shield has no approved texture"
+            return false
+        if str(vis.get("blade", "")) == "partially_occluded":
+            if _tip is Sprite2D and (_tip as Sprite2D).texture == null:
+                _last_error = "A55 visible blade tip texture is missing"
+                return false
     var exclusions: Array = d.get("guide_must_exclude", [])
     var hand_hidden: bool = str(vis.get("sword_hand", "")) == "fully_occluded"
     if hand_hidden:
