@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/a57_body_action_player.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/actor01_a53_body_12frames.png" id="2_atlas"]
+
+[node name="BodyOnlyActor" type="Node2D"]
+script = ExtResource("1_script")
+start_automatically = true
+
+[node name="Body" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_atlas")
+hframes = 4
+vframes = 3
+
+[node name="RightHandAnchor" type="Marker2D" parent="."]
+
+[node name="Weapon" type="Sprite2D" parent="RightHandAnchor"]
+visible = false
+texture_filter = 1
+
+[node name="ShieldMount" type="Marker2D" parent="."]
+
+[node name="Shield" type="Sprite2D" parent="ShieldMount"]
+visible = false
+texture_filter = 1
+
+[node name="Effects" type="Node2D" parent="."]
