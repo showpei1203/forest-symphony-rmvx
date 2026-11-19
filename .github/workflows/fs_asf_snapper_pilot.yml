@@ -39,8 +39,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Actual upstream source reports an implicit block ~6.9px, below ASF's >=8px gate.
+          # Scale ONLY for this upstream demo pilot; this is NOT a repair to FS Actor01.
+          python -c "from PIL import Image; i=Image.open('upstream/asf/src/pixel-looks/kael-picture.png'); i.resize((i.width*2,i.height*2),Image.Resampling.NEAREST).save('out/kael_2x_reference.png')"
           python upstream/asf/skills/generate2dsprite/scripts/pixel_look.py master \
-            --image upstream/asf/src/pixel-looks/kael-picture.png \
+            --image out/kael_2x_reference.png \
             --name fs_pilot --output-dir out/asf_master | tee out/ASF_MASTER_STDOUT.log
           test -s out/asf_master/fs_pilot.png
       - name: Run REAL ASF deterministic idle/breath animation
