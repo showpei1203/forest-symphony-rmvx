@@ -1,0 +1,83 @@
+name: FS ASF Pixel Snapper real smoke pilot
+
+on:
+  push:
+    branches:
+      - research/fs-asf-pixelsnapper-20261119
+    paths:
+      - .github/workflows/fs_asf_snapper_pilot.yml
+      - experiments/fs_asf_snapper_pilot/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-real-tools:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image processing dependencies and upstream tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install "numpy>=1.26" "Pillow>=10.1" "scipy>=1.11"
+          git clone --depth=1 https://github.com/0x0funky/agent-sprite-forge.git upstream/asf
+          git clone --depth=1 https://github.com/Hugo-Dz/spritefusion-pixel-snapper.git upstream/snapper
+          (cd upstream/snapper && cargo build --release --locked)
+          python -V
+          upstream/snapper/target/release/spritefusion-pixel-snapper --version
+          test -s upstream/asf/src/pixel-looks/kael-picture.png
+          mkdir -p out
+          git -C upstream/asf rev-parse HEAD > out/ASF_COMMIT.txt
+          git -C upstream/snapper rev-parse HEAD > out/SNAPPER_COMMIT.txt
+      - name: Run REAL ASF pixel-look master, no model or imitation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python upstream/asf/skills/generate2dsprite/scripts/pixel_look.py master \
+            --image upstream/asf/src/pixel-looks/kael-picture.png \
+            --name fs_pilot --output-dir out/asf_master | tee out/ASF_MASTER_STDOUT.log
+          test -s out/asf_master/fs_pilot.png
+      - name: Run REAL ASF deterministic idle/breath animation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python upstream/asf/skills/video2dsprite/scripts/pixel_motion.py breath \
+            --sprite out/asf_master/fs_pilot.png \
+            --name fs_pilot_idle --output-dir out/asf_idle | tee out/ASF_IDLE_STDOUT.log
+      - name: Run REAL Sprite Fusion Pixel Snapper on the ASF master
+        shell: bash
+        run: |
+          set -euo pipefail
+          upstream/snapper/target/release/spritefusion-pixel-snapper \
+            out/asf_master/fs_pilot.png out/snapper_on_master.png 48 --pixel-size 1 | tee out/SNAPPER_STDOUT.log
+          upstream/snapper/target/release/spritefusion-pixel-snapper \
+            upstream/asf/src/pixel-looks/kael-picture.png out/snapper_direct_from_fake_pixel.png 48 --pixel-size 20 \
+            | tee out/SNAPPER_DIRECT_STDOUT.log
+      - name: Produce pixel metrics and REAL comparison sheet
+        shell: bash
+        run: |
+          set -euo pipefail
+          python experiments/fs_asf_snapper_pilot/qa_report.py \
+            --input upstream/asf/src/pixel-looks/kael-picture.png \
+            --master out/asf_master/fs_pilot.png \
+            --snap out/snapper_on_master.png \
+            --idle out/asf_idle \
+            --out out/qa \
+            --asf-commit "$(cat out/ASF_COMMIT.txt)" \
+            --snapper-commit "$(cat out/SNAPPER_COMMIT.txt)"
+          cat out/qa/qa_report.json
+      - name: Archive real output / real logs, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FS_ASF_PIXEL_SNAPPER_UPSTREAM_SMOKE_REAL
+          path: |
+            out/
+          retention-days: 30
+          if-no-files-found: warn
