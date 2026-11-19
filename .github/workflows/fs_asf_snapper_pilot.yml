@@ -75,6 +75,15 @@ jobs:
             --asf-commit "$(cat out/ASF_COMMIT.txt)" \
             --snapper-commit "$(cat out/SNAPPER_COMMIT.txt)"
           cat out/qa/qa_report.json
+      - name: Package exact tested tool executables for PRIVATE FS A57 verification in isolated workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar czf out/ASF_SNAPPER_TESTED_TOOLS.tar.gz -C upstream \
+            asf/skills/generate2dsprite/scripts \
+            asf/skills/video2dsprite/scripts \
+            snapper/target/release/spritefusion-pixel-snapper
+          sha256sum out/ASF_SNAPPER_TESTED_TOOLS.tar.gz | tee out/ASF_SNAPPER_TOOLS_SHA256.txt
       - name: Archive real output / real logs, even on failure
         if: always()
         uses: actions/upload-artifact@v4
