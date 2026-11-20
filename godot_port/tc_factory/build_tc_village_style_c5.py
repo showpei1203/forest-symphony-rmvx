@@ -40,15 +40,11 @@ def derive_cottage(src_png):
     )
     r,g,b,a=whole.split()
     # Restrained dark/cool palette shift relative to historical GOLDEN master:
-    # different character but matching material/roof family.
-    import numpy as np
-    arr=np.asarray(whole).copy().astype(np.int16)
-    rgb=arr[:,:,:3]
-    rgb[:,:,0] = (rgb[:,:,0]*94)//100
-    rgb[:,:,1] = (rgb[:,:,1]*94)//100
-    rgb[:,:,2] = (rgb[:,:,2]*97)//100
-    arr[:,:,:3]=rgb.clip(0,255)
-    return Image.fromarray(arr.astype("uint8"),"RGBA")
+    # different character but matching material/roof family, without new deps.
+    r=r.point([min(255,round(i*0.94)) for i in range(256)])
+    g=g.point([min(255,round(i*0.94)) for i in range(256)])
+    b=b.point([min(255,round(i*0.97)) for i in range(256)])
+    return Image.merge("RGBA",(r,g,b,a))
 
 def build(out,source=pilot.SOURCE):
     out.mkdir(parents=True,exist_ok=True)
