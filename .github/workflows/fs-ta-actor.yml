@@ -1,0 +1,27 @@
+name: FS T-A Actor 12-frame Godot 4.7.2 native rig
+on:
+  push:
+    branches:
+      - feat/fs-pixellab-ta-actor-20261121
+    paths:
+      - "godot_port/scripts/animation/FSTAActorMotionRig.gd"
+      - "godot_port/tests/test_fs_ta_actor_motion_rig.gd"
+      - ".github/workflows/fs-ta-actor.yml"
+  workflow_dispatch:
+jobs:
+  ta-native-rig:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get EXACT official Godot 4.7.2 (not VX)
+        run: |
+          curl -fsSL --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Import original FS project
+        run: /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --editor --quit
+      - name: Run T-A three-layer 12-frame animation timing test
+        run: |
+          /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd
