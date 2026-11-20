@@ -15,3 +15,7 @@ godot_port/.a35-stage-*/
 # P535 source-exact private VX UI graphics (owner-only Google Drive, no GitHub)
 godot_port/assets/ui/
 godot_port/assets/.ui-staging-*/
+
+# A52 original actor art: owner-only Drive, never public GitHub
+godot_port/assets/ta_actor01/
+godot_port/assets/.ta-actor-stage-*/

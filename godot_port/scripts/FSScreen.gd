@@ -8,6 +8,7 @@ const PLAYABLE_SLICE = preload("res://scenes/story/FSPlayableSlice.tscn")
 const A35_PRIVATE_GATE = preload("res://scripts/story/FSPrivateA35Gate.gd")
 const UI_ART = preload("res://scripts/ui/FSUIArtLibrary.gd")
 const LIVE_HUD = preload("res://scripts/ui/FSUIBattleHUD.gd")
+const ACTOR01_PRESENTATION = preload("res://scripts/ui/FSBattleActor01Presenter.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -28,6 +29,7 @@ var playable_slice: FSPlayableSlice
 var a35_preview: Control
 var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
+var actor01_presentation: FSBattleActor01Presenter
 var battle_command_art:Dictionary={}
 var battle_command_grid:GridContainer
 
@@ -133,6 +135,9 @@ func _build_shell() -> void:
     log_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
     log_label.text = "狀態：來源資料等待驗證"
     layout.add_child(log_label)
+    # Overlay only: never reduce legacy 544x416 2x2 command area.
+    actor01_presentation=ACTOR01_PRESENTATION.new()
+    add_child(actor01_presentation)
 
 func _process(delta: float) -> void:
     # The actual source Tankentai source-frame gauge now ticks in real gameplay
@@ -143,6 +148,8 @@ func _process(delta: float) -> void:
     _refresh_battle_status()
     if ui_hud!=null and ui_hud.visible:
         ui_hud.refresh(battle.party)
+    if actor01_presentation!=null:
+        actor01_presentation.sync_from_battle(battle)
     _update_battle_command_buttons()
 
 func _change(tab: String) -> void:
@@ -232,6 +239,8 @@ func _set_original_background(file_name: String) -> void:
 
 func _show_menu() -> void:
     view_name = "MENU"
+    if actor01_presentation!=null:
+        actor01_presentation.cancel_visual()
     if ui_hud!=null:
         ui_hud.visible=false
     _set_original_background("MenuBack_a.png")
@@ -834,6 +843,8 @@ func _do_player_attack(target: Dictionary) -> void:
         if not battle.queue_actor_action(actor_index,"attack",index):
             _show_log("攻擊指令被拒絕：ATB 未就緒、已有指令或目標不合法")
     _show_battle()
+    if actor01_presentation!=null:
+        actor01_presentation.sync_from_battle(battle)
 
 func _player_guard() -> void:
     if not _battle_actor_ready():
