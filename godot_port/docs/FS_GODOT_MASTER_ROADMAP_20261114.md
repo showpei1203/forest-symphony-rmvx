@@ -136,3 +136,9 @@
 - [Handoff](HANDOFF_20261118_P537_BATTLE_ICONS_NATIVE.md) [Failure Log](FAIL_LOG_UI_ART_537_20261118.md)：原源 Battle01/02/03/04 對應 Attack/Skill/Defend/Item，原 54x48 + a 灰版全 source hash locked；真 ATB 未 READY 灰色、READY 彩色，禁止偷跑 ACT；2×2 Grid 讓 544×416 四張都可見。Escape #05 仍需原版 source rule witness，不捏造玩法。
 - 真 202 原圖片＋ Godot 4.7.2 隔離 native 6/6 GPU：https://drive.google.com/file/d/1CM3cQRXFT_-9TJm4v0t_Z2qDE58lvXiE/view 。Native / ART SOURCE PASS，正式 Original BattleScape/角色敵人多幀動作/VX pixel-parity HOLD，Phase1 SEAL NO。
 - Next P537B actual original battle background, separate A52/A54 character animation Body/Weapon/FX/ACT/Hitstop; P538 main MENU original button/skin composition; A35 forest map after BATTLE/MENU art.
+
+
+## P537B (2026-11-21): A52 original 12-frame ACTOR01 attack integrated into live Battle UI (source-gated)
+- Continue BATTLE visuals first; original MENU second; A35 maps later. Cross-branch pin T-A 072db87, original A52 45° Body/Weapon/FX 256x192×3, F7 t=.630; do not copy ART HOLD RUN weapon placeholder.
+- New Godot ACT queue serial-driven actor01 visual presenter / 3-layer rig, source SHA lock / private stage script, native tests, see docs/HANDOFF_20261121_P537B_ACTOR01_BATTLE_VISUAL.md and FAIL_LOG_20261121_P537B_ACTOR01_BATTLE_VISUAL.md.
+- Critical hold: cosmetic contact is NOT final gameplay ACT hit-time, no original private GPU image has been captured in this main battle branch yet. Real post-Apply DB and enemy visuals unresolved; Phase1 SEAL NO.
