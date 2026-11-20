@@ -142,3 +142,7 @@
 - Continue BATTLE visuals first; original MENU second; A35 maps later. Cross-branch pin T-A 072db87, original A52 45° Body/Weapon/FX 256x192×3, F7 t=.630; do not copy ART HOLD RUN weapon placeholder.
 - New Godot ACT queue serial-driven actor01 visual presenter / 3-layer rig, source SHA lock / private stage script, native tests, see docs/HANDOFF_20261121_P537B_ACTOR01_BATTLE_VISUAL.md and FAIL_LOG_20261121_P537B_ACTOR01_BATTLE_VISUAL.md.
 - Critical hold: cosmetic contact is NOT final gameplay ACT hit-time, no original private GPU image has been captured in this main battle branch yet. Real post-Apply DB and enemy visuals unresolved; Phase1 SEAL NO.
+
+
+## P537C 2026-11-21 BATTLE original enemy sources and Actor01 presentation cleanup
+Priority BATTLE original actor/enemy scene first, then MENU, then A35 map. Source-battler private archive 167 original PNG, owner-only Drive ID `1xd1ZIxLt-xPQ4NKqx3MoRpysdHYBJ1So`, SHA `4d2f629ea643187d2b96999798214c1fdf75a1ec969df1c29561bf7bfa1ee9e3`. Added SHA-gated batch import and native Sprite Stage from exact Enemy.battler_name; source hue unsupported fails closed. A52 F11 now hides rather than freeze. Handoff `docs/HANDOFF_20261121_P537C_BATTLE_ORIGINAL_BATTLERS.md`, FailureLog `docs/FAIL_LOG_20261121_P537C_BATTLE_ORIGINAL_BATTLERS.md`. Native public CI pass is separate from owner-only real GPU. P537C real private OpenGL original actor+enemy screenshot still NOT RUN; A52 visual t=.630 not aligned with gameplay ACT. Phase1 SEAL NO.

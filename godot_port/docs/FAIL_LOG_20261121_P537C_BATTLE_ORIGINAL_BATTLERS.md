@@ -1,0 +1,8 @@
+# P537C｜2026-11-21 BATTLE artwork source audit / Failure Log
+- REAL: from original VX `Graphics/Battlers` 167 raw PNGs packed to owner-only Drive https://drive.google.com/file/d/1xd1ZIxLt-xPQ4NKqx3MoRpysdHYBJ1So/view ; bytes 183658, full SHA256 4d2f629ea643187d2b96999798214c1fdf75a1ec969df1c29561bf7bfa1ee9e3, ZIP CRC PASS, Drive verified shared=false.
+- Source filename trust: Enemy ID 1 does NOT imply `$001.png`. Image requires `enemy_stats.battler_name` from original DB, and source name present in SHA manifest; unsupported VX battler_hue !=0 does not render (no invented palette). Missing/invalid PNG fails closed.
+- Source real A52 frame audit confirmed 12 body frames; Weapon absent at F0 and F11 but present F1–F10; FX F5–F9. Source F7 alpha pixels Body610 Weapon71 FX38, Body/Weapon overlap 8. Art has real 3-layer source pixels; no claim of same scene Godot GPU proof.
+- Native public QA: Python generated synthetic 167 records/ZipSlip/sha/no-overwrite; Godot enemy stage synthetic image Controls, living/dead hide and FSScreen source-absent gate. Source original PNG never included in public CI.
+- Original actor A52 still presentation-only; 0.63sec contact is not synchronized to real gameplay damage. End F11 frozen visual resolved by hiding after 1.06sec; source ACT hitstop 70ms still metadata, not applied to damage.
+- NOT RUN: stage real source A52+Battlers in same private Godot GPU, 6 screenshots; original 11 postApply DB / 505 aliases; original BattleScape; original VX screenshot direct comparison. Reproducible private source-only capture script exists but not executed.
+- Source origin E: read-only, binary only owner-only Drive. A35 map defer and T-A RUN candidate ART HOLD unchanged. Phase1 SEAL NO, ART HOLD.
