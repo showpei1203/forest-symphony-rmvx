@@ -1,0 +1,170 @@
+{
+  "schema": "fs-tb-attack-v3-keypose-plan",
+  "status": "PREFLIGHT_ONLY_NO_ANIMATION",
+  "method": "PixelLab estimate-skeleton + animate-with-skeleton-v3; fall back to Text-v3 12f when necessary",
+  "asset": "PMD0001",
+  "action": "ATTACK_PHYSICAL_LUNGE_BITE",
+  "not_actions": [
+    "LAVA_SPIT",
+    "CAST",
+    "SKILL"
+  ],
+  "source_id": "1jDRbwUfk-Y_5wk_8JVSXMygTun2OfSAR",
+  "source_64_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+  "first_frame_96_sha256": "e0b01e658d2659fa5c9a01c60c29a4e07cf525a0d5987aa677d09c7a0ed73c72",
+  "first_frame_png": "PMD0001_ATTACK_V3_FIRST_FRAME_96.png",
+  "transparent_canvas": [
+    96,
+    96
+  ],
+  "source_position": [
+    16,
+    24
+  ],
+  "source_frame_bbox_96": [
+    29,
+    51,
+    67,
+    83
+  ],
+  "feet_pivot_96": [
+    48,
+    83
+  ],
+  "view": "source 3/4 right-facing, 45degree ART verification pending",
+  "pixel_scale": "no interpolation, no photo/painting, original sprite nearest pixel",
+  "target": {
+    "frame_count": 11,
+    "frame_size": [
+      96,
+      96
+    ],
+    "atlas_columns": 4,
+    "atlas_rows": 3,
+    "atlas_dimensions": [
+      384,
+      288
+    ],
+    "loop": false
+  },
+  "native_reference": {
+    "drive_id": "1QWdMHbu1VTQ85kaOEXSankeSsIY6FvOS",
+    "native_count": 11,
+    "native_frame_size": [
+      64,
+      72
+    ],
+    "durations_ticks": [
+      4,
+      2,
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4
+    ],
+    "event_indices": {
+      "rush_frame": 2,
+      "hit_frame": 5,
+      "return_frame": 7
+    }
+  },
+  "frames": [
+    {
+      "index": 0,
+      "stage": "NEUTRAL",
+      "pose": "source image exact lock; low crouch, closed mouth, four limbs visible",
+      "duration_tick": 4,
+      "event": null
+    },
+    {
+      "index": 1,
+      "stage": "ANTICIPATION",
+      "pose": "hind knees tuck, head lowers slightly, elbows change angle; feet anchor",
+      "duration_tick": 2,
+      "event": null
+    },
+    {
+      "index": 2,
+      "stage": "RUSH_START",
+      "pose": "hind legs extend; front legs lift, true articulation; head maintains 3/4 southeast",
+      "duration_tick": 4,
+      "event": "rush_frame"
+    },
+    {
+      "index": 3,
+      "stage": "LEAP",
+      "pose": "front limbs reach forward; hind limbs trail; keep toes intact",
+      "duration_tick": 2,
+      "event": null
+    },
+    {
+      "index": 4,
+      "stage": "BITE_WINDUP",
+      "pose": "head leans forward, jaw starts opening; front leg leads",
+      "duration_tick": 2,
+      "event": null
+    },
+    {
+      "index": 5,
+      "stage": "HIT",
+      "pose": "clearly opened jaw and contact thrust; distinct from frames 4 and 6; NO fireball",
+      "duration_tick": 2,
+      "event": "hit_frame"
+    },
+    {
+      "index": 6,
+      "stage": "FOLLOW_THROUGH",
+      "pose": "jaw begins closing, shoulders and front paws shift",
+      "duration_tick": 2,
+      "event": null
+    },
+    {
+      "index": 7,
+      "stage": "RETURN",
+      "pose": "front paws plant, hind legs tuck, root moves back",
+      "duration_tick": 2,
+      "event": "return_frame"
+    },
+    {
+      "index": 8,
+      "stage": "LANDING",
+      "pose": "four feet grounded, stable body angle, not identical to frame 7",
+      "duration_tick": 2,
+      "event": null
+    },
+    {
+      "index": 9,
+      "stage": "RECOVER",
+      "pose": "final small shoulder/head return, closed mouth",
+      "duration_tick": 2,
+      "event": null
+    },
+    {
+      "index": 10,
+      "stage": "NEUTRAL_END",
+      "pose": "same identity and angle as first frame; restore footpoint",
+      "duration_tick": 4,
+      "event": null
+    }
+  ],
+  "generation": {
+    "actual_calls": 0,
+    "job_id": null,
+    "actual_generations": 0,
+    "note": "first-frame padding plus schema only; NO API generation"
+  },
+  "art_blockers": [
+    "NO_INDEPENDENT_LEG_MOTION",
+    "MOUTH_DOES_NOT_OPEN_AT_HIT",
+    "CHARACTER_IDENTITY_DRIFT",
+    "45_VIEW_DRIFT",
+    "FRAME_CROP",
+    "FX_SUBSTITUTES_FOR_ATTACK"
+  ],
+  "prompt": "Animate exactly the attached original lava frog into a short physical lunge-and-bite ATTACK, 3/4 top-down view facing southeast. Eleven frames follow the keypose plan: crouch anticipation, visible hind-leg kick-off, forward leap with separate foreleg and hindleg poses, clearly opened jaw on frame 5 HIT, four-paw landing, settle back to original stance. Keep the basalt shell, orange lava cracks, eyes, toes, body proportions and local color palette identical to the first frame. Four independently moving legs; no whole-body scale-only trick. Maintain transparency, crisp native pixel art and consistent feet pivot. No flying fireball, no second character, no text, no horizon, no extra limbs, no cropped feet or duplicate mouth. Frame 0 is the exact source."
+}
