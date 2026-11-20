@@ -24,16 +24,18 @@ SOURCE_IDS = {
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
-def paste_owner_rgba(src: Image.Image, box: tuple[int,int,int,int], owner: dict) -> Image.Image:
-    """Only source-owned, semantically upper pixels; final RGB comes from MASTER."""
+def paste_owner_rgba(sprite: Image.Image, box: tuple[int,int,int,int], owner: dict) -> Image.Image:
+    """Use independent source-owner alpha. RGB is sampled from the frozen MASTER."""
     x, y, w, h = (int(owner[k]) for k in ("x", "y", "w", "h"))
+    if sprite.size != (w,h):
+        raise ValueError("Owner sprite size mismatch: " + str(owner["id"]))
     fx, fy = map(int, owner["foot"])
     left, top = max(x, box[0]), max(y, box[1])
     right, bottom = min(x+w, box[2]), min(y+h, box[3], fy - (22 if owner["type"] == "house" else 9))
     alpha = Image.new("L", (W,H), 0)
     if right <= left or bottom <= top:
         return alpha
-    original = src.getchannel("A").crop((left, top, right, bottom))
+    original = sprite.getchannel("A").crop((left-x, top-y, right-x, bottom-y))
     alpha.paste(original, (left-box[0], top-box[1]))
     return alpha
 
@@ -118,8 +120,11 @@ def build(out: Path, source: Path=SOURCE):
     overlay_dir=out/"occlusion_owners"
     overlay_dir.mkdir(exist_ok=True)
     for i,o in enumerate(chosen):
-        alpha=paste_owner_rgba(original_par,CROP,o)
-        # Use actual local composited PAR alpha as source, not flattened background.
+        source_owner = source / "SOURCE_INDEPENDENT_RGBA" / str(o["filename"])
+        if not source_owner.is_file() or sha(source_owner) != o["sha256"]:
+            raise ValueError("Independent source owner missing or mutated: " + str(o["id"]))
+        alpha=paste_owner_rgba(Image.open(source_owner).convert("RGBA"),CROP,o)
+        # Alpha comes from an independent complete object. RGB comes only from MASTER.
         if not alpha.getbbox():
             continue
         mask=compose_mask_from_master(master,alpha)
@@ -129,8 +134,7 @@ def build(out: Path, source: Path=SOURCE):
         owners.append({"id":o["id"],"type":o["type"],"foot_y":int(o["foot"][1])-CROP[1],
                        "foot_x":int(o["foot"][0])-CROP[0],"file":filename,
                        "bbox":list(alpha.getbbox()),"sha256":sha(overlay_dir/filename),
-                       "occlusion_pixels":sum(v for count,v in alpha.histogram()[1:] for _ in ()) if False else
-                       sum(alpha.histogram()[1:])})
+                       "occlusion_pixels":sum(alpha.histogram()[1:])})
     runtime=compose_mask_from_master(master,union_alpha)
     runtime.save(runtime_path)
     if not owners:
@@ -158,7 +162,7 @@ def build(out: Path, source: Path=SOURCE):
         "semantic_occlusion_count":len(owners),
         "image_sha256":{p.name:sha(p) for p in (master_path,ground_path,complete_path,full_path,runtime_path)},
         "source_registration":"STATIC_PASS_RECOMPOSE_RGB_IDENTICAL",
-        "known_failure":"Occlusion object masks cropped from composite PAR bounds can include overlapping neighboring owners. Requires source-independent mask QA; no formal ART PASS.",
+        "known_failure":"Source-independent alpha verified; roof/canopy occlusion correctness still requires native actor/1x and art approval.",
         "excluded":"No transfers, save/load, gameplay or NAV refactor."
     }
     (out/"TC_PILOT_SOURCE_QA.json").write_text(json.dumps(qa,ensure_ascii=False,indent=2),encoding="utf8")
