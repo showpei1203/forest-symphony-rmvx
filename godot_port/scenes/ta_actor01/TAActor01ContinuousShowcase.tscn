@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/animation/FSTAActor01ContinuousShowcase.gd" id="1_demo"]
+
+[node name="TAActor01StandaloneContinuousShowcase" type="Node2D"]
+
+[node name="Actor01" type="Node2D" parent="."]
+position = Vector2(272, 208)
+script = ExtResource("1_demo")
+auto_load_private = true
+run_loops_before_attack = 2
+auto_play = true
