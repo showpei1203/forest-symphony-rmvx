@@ -29,7 +29,7 @@
 - 母體 Attack 程序化候選 GIF：[Attack GIF](https://drive.google.com/file/d/11DvfuJ2luTPVf5H4ocsJQoVBn4u64M0m/view)
 - Godot 可載入獨立工程完整 ZIP：[Godot Candidate](https://drive.google.com/file/d/1iH3rdqN7KdACcFfxCI3CpHaqQ-BKHS4b/view)
 - [FAMILY_MANIFEST.json](https://drive.google.com/file/d/1wR9gJye1CoflBqskEv5QRE6AzPPus9OZ/view) | [QA_SUMMARY.json](https://drive.google.com/file/d/1Kw5sAckxse1D1kQ5_CZpIEBM3gvkRlyj/view)
-- ZIP：16 entries, CRC OK; SHA256 `483166cecfbc4f34d4df0166c45724c02b87d300734f19de2b45feb7763daddf`.
+- ZIP：16 entries, CRC OK; SHA256 `e85f111c7b61390a818d526f873e348d0680887b36de3472b76e1bfb746f9a36`.
 - GitHub 程式：`godot_port/tools/pixellab_tb/build_tb_monster.py`、`godot_port/experiments/pixellab_tb/*` （僅程式及說明，不提交私有PNG）。
 
 ## 4. QA 與人工 Gate
