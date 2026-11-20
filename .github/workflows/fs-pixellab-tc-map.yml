@@ -57,7 +57,7 @@ jobs:
       - name: Native 1x T-C layered art and actor roof/canopy framebuffer captures
         env:
           LIBGL_ALWAYS_SOFTWARE: "1"
-          FS_TC_OUTPUT_DIR: "godot_port/tc_factory/generated"
+          FS_TC_OUTPUT_DIR: ""
         run: |
           set -euo pipefail
           timeout 100s xvfb-run -a -s "-screen 0 1280x1024x24" \
