@@ -62,7 +62,7 @@ func _add_atlas_animation(frames: SpriteFrames, name: String, source: String, co
     for i in count:
         var region_texture := AtlasTexture.new()
         region_texture.atlas = source_texture
-        region_texture.region = Rect2(float((i % cols)*64),float((i / cols)*64),64.0,64.0)
+        region_texture.region = Rect2(float((i % cols)*64),float(int(i / cols)*64),64.0,64.0)
         region_texture.filter_clip = true
         frames.add_frame(name,region_texture)
 
