@@ -1,3 +1,40 @@
+# T-C CURRENT｜C5 全村建築風格統一候選｜2026-11-21（Asia/Taipei）
+
+**狀態：真正施工＋Godot 4.7.2 原生 GPU/屋舍碰撞/條件遮蔽 PASS；正式兩張地圖仍 ART HOLD。**  
+**只使用指定分支：** `feat/fs-pixellab-tc-map-20261121`。不覆寫 A35 R2/R3、A35 R8 R3、Maze R12/R14 原始場景及素材；Godot，不回 VX。GitHub 只提交程式與紀錄，Drive 保存 PNG / 原始 QA ZIP，不存使用者 PC。
+
+## C5｜當輪已交付的可觀察成果
+
+- **新全圖 1280×928／40×29 格**：`godot_port/tc_factory/build_tc_village_style_c5.py`。從 A36G 歷史真正 PixelLab 來源 `A36G_PIXELLAB_INTEGRATED_HOUSE_R2_RGBA.png` SHA256 `964fe9bf9fe4048bc4b96fab573285cc9a2042faeefe38f1fde9501a23ccb699`，對**完整單棟** 284×259 source 作水平鏡像、Nearest resize 至 229×209 以及節制色調變化（不拼屋頂），生成一個真正獨立、可驗來源的右側木造精靈屋 candidate：`TC_C5_INDEPENDENT_WHOLE_HOUSE_RGBA.png` SHA256 `d9e970f9ce794861cd12a6a317856339e0e3e114093f64721cd9436aea0cf1c1`。
+- 右側舊異風格建築 `A36F_ELF_COTTAGE_B` 的原有 PAR 位置在**獨立 C5 分支**以人工定義清除 mask 取代，新屋整棟位於 `origin=(795,390)`；保持原 C4 Ground／自然道路不變。C4 與 Production 底圖 source 並未覆寫。幾何相容完整 1280×928。
+- 同源輸出 `MASTER.png`、`Authoring_GroundOnly.png`、`Authoring_CompletePAR.png`、`Runtime_FullGround.png`、`Runtime_OcclusionPAR.png`；新屋獨立 `occlusion_owners/owner_c5_whole_cottage.png`，所有舊 owner 的 RGB 依新 MASTER 重取樣，未拿錯舊 MASTER 做新屋遮蔽。STATIC compositor RGB 完全一致；修正 C4 `world_grid` metadata 誤植為 **[40,29]**。
+- 右側木屋正式形狀使用整體來源之 `blocking_footprint_px` 作**幾何縮放+鏡像**得到新碰撞 `[810,535,1003,588]`，Godot Native 兩個真 `StaticBody2D` footprint；源段不偷用早已不含獨立 PNG 的舊右側屋舍。新屋周遭 PAR 以清除舊房屋及保留原始 Ground 手段過渡，消除原本嚴重的圓形青綠色屋頂與左側木造房屋錯配。
+- 工程：`godot_port/tc_factory/TCVillageStyleC5.tscn`、`capture_tc_style_c5_native.gd`、`build_tc_village_style_c5.py`；CI `.github/workflows/fs-pixellab-tc-map.yml` 完全獨立於 Phase1，仍跑 C1/C4 regression，新增 C5 真 Godot 1× scene、碰撞及角色遮蔽、C4/C5 原生 A/B 比較。
+- GitHub 本輪實測 commit **`d6f2ec817bd76c2fc36f395587fd3fe41d6f80a6`**（僅更動 artifact packaging，C5 工程來源與 `e5e50c447fd0b02885761133667a7a78522f5b72` 測試相同）。正式成功 [Godot Actions run 44835522347](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44835522347)，`completed/success`，包含 **Godot 4.7.2** 原生 1280×928 full framebuffer、兩棟屋舍及 path point-query。
+- 原生 QA `TC_C5_GODOT_NATIVE_QA.json`：`engine=4.7.2-stable (official)`; renderer `opengl3`; `real_framebuffer=[1280,928]`; `occlusion_owners=14`; `independent_house_static_bodies=2`; `original_cottage_hit=1`; `new_harmonized_house_hit=1`; `road_open_hit=0`; `roof_behind_actor_roi_changed_pixels=204`; `front_footpoint_clear=true`; `native_C4_C5_roi_changed_px=37699`. 不將點查詢稱為完整角色導航測試。
+- 真 Godot 原生 `TC_C5_VILLAGE_GODOT472_NATIVE_BEHIND_1X.png` 與 `TC_C5_VILLAGE_GODOT472_NATIVE_UNCOVERED_1X.png`；`TC_C4_C5_TWO_NATIVE_FRAMES_AB.png` 只是兩張真 Godot 1× 圖的衍生左右比較，不是單張原生 framebuffer。
+- 原始 C1 / C4 已在歷史獨立私有 Drive 保存。本輪不修改舊 A35 R2/R3、Godot Phase1 系統、事件、戰鬥、傳送、存讀檔、迷宮 NAV。
+
+## C5 私人 Drive 上傳及雙重驗證（雲端權威）
+
+**[FS_TC_C5_WHOLE_BUILDING_HARMONIZED_VILLAGE_GODOT472_QA_PRIVATE_20261121.zip](https://drive.google.com/file/d/1rTW2Qm8qnphSlFfJ80TyTEUhEMCjp6PL/view)**。  
+Drive id `1rTW2Qm8qnphSlFfJ80TyTEUhEMCjp6PL`，provider metadata readback **62,982,114 bytes、shared=false、user owner only**。外層 Github artifact ZIP CRC PASS；內層 `FS_TC_C5_PRIVATE_DRIVE_TRANSFER.zip` **47 entries，ZIP CRC PASS，SHA256 `a2294bddaf378a24cf501ee4542357ef53c536b9f566f2d0ea51275457824180`**。GitHub artifact `14677734959` 僅保留 1 天，是傳送渠道，不是最後留存位置；因 Drive 單次傳輸限制 100MB，僅封存 C5 full candidate + 全部 QA，舊 C4 封包另外留存，不重複囤積。
+
+## C5 美術驗收及 Failure Log｜絕不假 PASS
+
+1. **TECH PASS**：1280×928 尺寸與五圖來源、47文件寫入、兩棟屋舍原生碰撞、同位置角色屋頂遮蔽與未遮蔽的 native 1× 計算皆完成；C4→C5 真原生 37,699 changed ROI pixels。
+2. **ART HOLD（重大）**：C5 已解除「圓形青綠屋頂 VS 木造屋頂」的明顯風格衝突，但兩棟木屋仍來自同一 PixelLab 歷史屋舍影像的全棟鏡像／縮放。建築獨立性與同源風格的多樣化 **尚未**符合正式封版標準。視角 3/4、光照方向與屋舍重複性需整體審美核准；不能僅因綠燈 CI 宣稱正式 FS_01_VILLAGE ART PASS。
+3. **ART HOLD（森林）**：歷史 193 樹 owner 的獨立 PNG 多數只在私人 A35/R12 完整來源，公開 A36G branch 只有 3 個 SOURCE_INDEPENDENT_RGBA。現階段已在場的連續森林深度 12 strips 都是受控真來源，卻未逐樹驗證 physics/occlusion。**禁止從 flatten map 切出假樹**，只記錄限制並轉到下一個完整施工單位。
+4. **ART HOLD（迷宮）**：FS_01_MAZE R12 真私人 2560×1856 工程依舊未本輪改動；其 Ground 曾由 1478×1064 NEAREST 放大，有比例及森林重複紋理問題。新 32×32 原生正規 Master 必須另開不可覆寫候選再 native QA；不能拿這次 1280×928 村落成績冒充迷宮 PASS。
+5. **PIXELLAB_NEW_JOB_NOT_RUN**：本輪沒有新的 PixelLab Map Workshop / Create Tiles Pro / Object Creator / Style References API 實際生成或扣款；C5 只使用已封存的真 PixelLab 歷史來源，沒有新 job ID、seed、費用。獨立設計的完整右側房子最終應由一致 Style References 生成，而非依靠第一棟屋子的鏡像永久封版。
+6. **非阻斷：老屋清除區少量剩餘植被 alpha**，影像觀察需下一輪 1× ROI 人體遮蔽評估。清除的是舊建築源區域，其餘地面完整。遵守小瑕疵最多兩修，不要在葉子上消耗整個路線。
+
+## 下一個完整施工單位（不是重新研究）
+
+**C6：森林／村落真正多樣化一整塊 8×8（256×256）相接區域**。鎖定 FS 核准色盤與 32×32，使用已保留 source anchors 完成原生地表、自然道路邊緣、完整不同樹型、通透前後遮蔽。優先換**整塊**自然過渡而非糾結樹葉尖角，固定同源 MASTER→四圖→真 Godot 1×+物理 QA。若 PixelLab 付費工具仍無已接入操作，不能冒稱生成；先利用原已封存且可核實的獨立素材，並把 PixelLab 真新設計列為 blocker。與 C5 同時保留完整村落候選，C6 通過後才推進 FS_01_MAZE 原生 32×32 Ground 整區段替換。所有正式 Art Seal 暫 HOLD。
+
+---
+
 ## C4 VERIFIED｜2026-11-21 06:55 TPE｜新於以上 M1 紀錄，以下結果優先
 
 **C4 COMMIT (HEAD AS TESTED):** `0de4ef85e1555622edeee3a078f2acbd8f18f7f9`
