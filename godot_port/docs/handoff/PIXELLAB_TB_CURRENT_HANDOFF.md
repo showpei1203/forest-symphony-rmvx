@@ -77,3 +77,14 @@
 - [11F V3 Keypose Contract](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/pixellab_tb/TB_ATTACK_V3_KEYPOSE_CONTRACT.json) 與 [96px source-first builder](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/tools/pixellab_tb/build_v3_keypose_input.py) 已提交。以原生事件 Rush F2 / Hit F5 / Return F7 為權威，構成蹲伏→蹬地→跳擊／咬擊→四肢落地。原先不相干的火球排除普通 Attack，另作 Cast/Skill。
 - PixelLab Skeleton v3 正式目標 **11F × 96×96 → 384×288 4×3 atlas**。Text v3 僅作替代，需用偶數 12F 並重新映射事件。**這是生成輸入及逐幀契約，並非聲稱已得到真正的 11F 新攻擊**。
 - 本次仍 PixelLab 0 generations、native Godot NOT_RUN，Attack ART FAIL。下一個完整閉環：真的生成新 11F → native Godot 動態顯示 → 人工 ART gate。
+
+
+---
+
+### T-B R3 V4 實際輸出（2026-11-21）
+- 重新生成 **PMD0001_ATTACK_V4_11F_384x288.png**：11 幀、每幀 96×96；F0/F10 與已確認 64px 母圖擺進 96px 畫布完全一致；10 種獨立畫面，背甲身份維持。**源圖 SHA256**：`fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c`；**Atlas SHA256**：`08327c031e3962c50623aeb15f11961b5c7795c8794ad359dafb54e7315686d7`。
+- 此版使用 **independent keypoint deform**，三組腳部足點分別變化，嘴部開合而非只有 whole-body 尺寸晃動；保留 F2 Rush／F5 Hit／F7 Return，沒有噴射火球。**它仍是程序化重定向，不是新 PixelLab AI 輸出**。
+- Python QA **16/16 PASS**（包括三個攻擊關鍵幀對比整隻平移至少有 70 px 變化）；**Godot Native NOT_RUN，ART HOLD**。視覺上仍有腿部拉伸、嘴部接縫，不能宣稱正式合格；無新增 PixelLab 消耗（0 jobs／0 generations）。
+- [V4 動畫 GIF](https://drive.google.com/file/d/17PRN7eSUSKXguNdtC2G4xxEoSSbfVFol/view)｜[11F Atlas](https://drive.google.com/file/d/1cuLHQ64Dx1QLFF1CpXVUwTjdG6nhPwRN/view)｜[逐幀 Contact](https://drive.google.com/file/d/1kpCc-1TK5n4uJ3ntYhItvkfmadKi7uYB/view)｜[私人 Godot 4.7.2 比較工程](https://drive.google.com/file/d/1Fhnc4q6_gnc-2cySRdeJ8uyYf4eqtmLt/view)（12 檔 ZIP CRC PASS，SHA256 `0625508b4c6aed76bb6348cd4540d8ebbc7cb79edbd3699613aa036e52ec8d17`）
+- [R3 詳細 Failure/QA/Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/handoff/PIXELLAB_TB_ATTACK_V4_REWORK_20261121.md)；GitHub 同分支已新增 source-locked builder、QA script、Godot scene、headless validator。私有 raster 沒有放入公開 GitHub，PC 沒有被修改。
+- NEXT_MACRO_UNIT：先驗證 Godot 4.7.2 native 與 V4 美術；繼而用已鎖定 PixelLab V3 姿勢契約生成真正有清楚骨架的 Attack（需可授權 API 與實際費用／job ID）；最後才進第二個不同樣本。**前輪拒收的 V1 一律維持 ART FAIL，不可回升。**
