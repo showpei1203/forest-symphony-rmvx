@@ -54,6 +54,26 @@ jobs:
               im.load()
               print('FULL 1x source verified',n,im.mode)
           PY
+      - name: Author whole C5 woodland cottage replacement, no roof stitching
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/build_tc_village_style_c5.py --out godot_port/tc_factory/generated_style             | tee /tmp/fs_tc_c5_build.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+          d=Path('godot_port/tc_factory/generated_style')
+          j=json.loads((d/'TC_PILOT_SOURCE_QA.json').read_text())
+          assert j['source_ground_preserved'] and j['canvas']==[1280,928]
+          assert j['world_grid']==[40,29]
+          assert len(json.loads((d/'TC_PILOT_COLLISION.json').read_text())['colliders'])==2
+          assert j['source_registration']=='STATIC_PASS_MASTER_GROUND_COMPLETEPAR_SAME_SOURCE'
+          for n in ('MASTER.png','Runtime_FullGround.png','Authoring_GroundOnly.png',
+                    'Authoring_CompletePAR.png','Runtime_OcclusionPAR.png'):
+              im=Image.open(d/n);im.load()
+              assert im.size==(1280,928),(n,im.size)
+          print('C5 WHOLE-VILLAGE MASTER FIRST SOURCE-REGISTERED PASS')
+          PY
       - name: Download official pinned Godot 4.7.2
         run: |
           set -euo pipefail
@@ -93,6 +113,41 @@ jobs:
               --script res://tc_factory/capture_tc_full_village_native.gd
           test -s godot_port/tc_factory/generated_full/TC_FULL_VILLAGE_GODOT472_NATIVE_1X.png
           test -s godot_port/tc_factory/generated_full/TC_FULL_VILLAGE_NATIVE_QA.json
+      - name: Verify C5 whole-building harmonized forest village in native Godot 4.7.2
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          timeout 100s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/capture_tc_style_c5_native.gd
+          test -s godot_port/tc_factory/generated_style/TC_C5_VILLAGE_GODOT472_NATIVE_BEHIND_1X.png
+          test -s godot_port/tc_factory/generated_style/TC_C5_VILLAGE_GODOT472_NATIVE_UNCOVERED_1X.png
+          test -s godot_port/tc_factory/generated_style/TC_C5_GODOT_NATIVE_QA.json
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from PIL import Image, ImageChops
+          a=Path('godot_port/tc_factory/generated_full/TC_FULL_VILLAGE_GODOT472_NATIVE_1X.png')
+          b=Path('godot_port/tc_factory/generated_style/TC_C5_VILLAGE_GODOT472_NATIVE_BEHIND_1X.png')
+          x=Image.open(a).convert('RGB');y=Image.open(b).convert('RGB')
+          assert x.size==y.size==(1280,928)
+          # A/B contact sheet is derived from TWO ACTUAL ENGINE GPU captures.
+          sheet=Image.new('RGB',(2560,928),(22,24,20))
+          sheet.paste(x,(0,0));sheet.paste(y,(1280,0))
+          sheet.save(b.parent/'TC_C4_C5_TWO_NATIVE_FRAMES_AB.png',optimize=True)
+          delta=ImageChops.difference(x,y)
+          roi=(740,340,1050,650)
+          changed=sum(sum(1 for i in row if i!=(0,0,0)) for row in
+              [list(delta.crop(roi).getdata())[i:i+310] for i in range(0,310*310,310)])
+          assert changed>1000, changed
+          j=json.loads((b.parent/'TC_C5_GODOT_NATIVE_QA.json').read_text())
+          j['native_C4_C5_roi_changed_px']=changed
+          j['C4_C5_AB_kind']='derived two Godot 4.7.2 ORIGINAL native 1x frames'
+          (b.parent/'TC_C5_GODOT_NATIVE_QA.json').write_text(json.dumps(j,indent=2))
+          print('C5 FULL 1X NATIVE COTTAGE VISUAL DELTA',changed)
+          PY
       - name: Package generated candidate and native QA for owner-only Drive transfer
         if: always()
         run: |
@@ -101,7 +156,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import hashlib,zipfile
-          roots=[Path('generated'),Path('generated_full')]; out=Path('/tmp/FS_TC_C1_C2_PRIVATE_DRIVE_TRANSFER.zip')
+          roots=[Path('generated'),Path('generated_full'),Path('generated_style')]; out=Path('/tmp/FS_TC_C5_PRIVATE_DRIVE_TRANSFER.zip')
           files=sorted(f for src in roots for f in src.rglob('*') if f.is_file() and f.name!='.gitignore')
           if not files:
               print('No generated files, upload step will fail normally.')
@@ -117,7 +172,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fs-tc-pilot-private-drive-transfer
-          path: /tmp/FS_TC_C1_C2_PRIVATE_DRIVE_TRANSFER.zip
+          name: fs-tc-c5-private-drive-transfer
+          path: /tmp/FS_TC_C5_PRIVATE_DRIVE_TRANSFER.zip
           if-no-files-found: warn
           retention-days: 1
