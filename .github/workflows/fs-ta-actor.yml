@@ -10,6 +10,7 @@ on:
       - "godot_port/scripts/animation/FSTAActor01Preview.gd"
       - "godot_port/scenes/ta_actor01/TAActor01Preview.tscn"
       - "godot_port/tests/test_fs_ta_actor_preview.gd"
+      - "godot_port/tools/ta_actor01_run_weapon.py"
   workflow_dispatch:
 jobs:
   ta-native-rig:
@@ -28,6 +29,10 @@ jobs:
       - name: Check private-asset staging preview scene
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_preview.gd
+      - name: Test isolated deterministic A52-sword to RUN12 retarget (synthetic only)
+        run: |
+          python3 -m pip install 'Pillow==12.3.0'
+          python3 godot_port/tools/ta_actor01_run_weapon.py --self-test
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

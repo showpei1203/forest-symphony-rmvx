@@ -51,6 +51,16 @@ func layers() -> Array[Sprite2D]:
     _ensure_layers()
     return _layers
 
+func _contains_visible_pixels(texture: Texture2D) -> bool:
+    var img: Image = texture.get_image()
+    if img == null:
+        return false
+    for y in img.get_height():
+        for x in img.get_width():
+            if img.get_pixel(x,y).a > 0.01:
+                return true
+    return false
+
 func configure_atlases(run_body: Texture2D, run_weapon: Texture2D, run_fx: Texture2D,
         attack_body: Texture2D, attack_weapon: Texture2D, attack_fx: Texture2D) -> bool:
     _ensure_layers()
@@ -61,6 +71,12 @@ func configure_atlases(run_body: Texture2D, run_weapon: Texture2D, run_fx: Textu
             if texture == null or texture.get_size() != Vector2(ATLAS_SIZE):
                 motion_failed.emit("All six layer atlases must be 256x192")
                 return false
+    # Do not allow the old transparent RUN weapon placeholder to pass as equipped.
+    # FX may legitimately be empty for a non-impact RUN motion.
+    for group in [run_textures, attack_textures]:
+        if not _contains_visible_pixels(group[0]) or not _contains_visible_pixels(group[1]):
+            motion_failed.emit("Body/Weapon atlas is visually empty")
+            return false
     _atlases = {"run":run_textures, "attack":attack_textures}
     playing = false
     motion = ""

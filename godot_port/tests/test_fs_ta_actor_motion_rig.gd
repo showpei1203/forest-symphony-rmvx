@@ -37,6 +37,13 @@ func _run() -> void:
     if not _assert(errors.size() == 1, "missing atlases is reported"): return
     errors.clear()
     var atlas: Texture2D = _atlas(0.02)
+    var blank := Image.create_empty(256, 192, false, Image.FORMAT_RGBA8)
+    blank.fill(Color(0,0,0,0))
+    var empty_weapon: Texture2D = ImageTexture.create_from_image(blank)
+    if not _assert(not rig.configure_atlases(atlas,empty_weapon,atlas,atlas,atlas,atlas),
+        "transparent RUN sword blocked before playback"): return
+    if not _assert(errors.size() == 1, "missing equipped sword reported"): return
+    errors.clear()
     if not _assert(rig.configure_atlases(atlas, atlas, atlas, atlas, atlas, atlas), "six layers configured"): return
     if not _assert(rig.layers().size() == 3, "body/weapon/fx remain separate"): return
     if not _assert(rig.start_motion("run"), "RUN starts"): return
