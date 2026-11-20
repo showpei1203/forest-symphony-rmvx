@@ -2,12 +2,13 @@
 """Source-locked QA for PMD0001 V4, deliberately NOT an ART PASS validator."""
 from pathlib import Path
 from PIL import Image
-import hashlib, json
+import hashlib, json, os
 import numpy as np
 
 HERE=Path(__file__).resolve().parent
-O=HERE/'v4_articulated'
-A=np.asarray(Image.open(HERE.parent/'assets/PMD0001_STATIC_64.png').convert('RGBA'))
+O=Path(os.environ.get('TB_ATTACK_V4_OUTPUT',str(HERE/'v4_articulated')))
+SOURCE=Path(os.environ.get('TB_PMD0001_SOURCE',str(HERE.parent/'assets/PMD0001_STATIC_64.png')))
+A=np.asarray(Image.open(SOURCE).convert('RGBA'))
 S=np.asarray(Image.open(O/'PMD0001_ATTACK_V4_11F_384x288.png').convert('RGBA'))
 M=json.loads((O/'PMD0001_ATTACK_V4_MANIFEST.json').read_text(encoding='utf8'))
 assert S.shape==(288,384,4) and len(M['poses'])==11
@@ -17,7 +18,7 @@ def ok(check,cond):
  checks.append((check,bool(cond)))
  assert cond,check
 
-ok('source_hash_matches_frozen_authority',hashlib.sha256((HERE.parent/'assets/PMD0001_STATIC_64.png').read_bytes()).hexdigest()==M['source_sha256'])
+ok('source_hash_matches_frozen_authority',hashlib.sha256(SOURCE.read_bytes()).hexdigest()==M['source_sha256'])
 exact=np.zeros((96,96,4),dtype=np.uint8);exact[24:88,16:80,:]=A
 ok('frame0_exact_approved_source',np.array_equal(f[0],exact))
 ok('frame10_exact_approved_source',np.array_equal(f[10],exact))
@@ -39,7 +40,7 @@ for i in [3,5,7]:
  ok(f'F{i}_not_pure_rigid_translate_{different}_pixels',int(different)>=70)
 # source alpha remains transparent far from frog
 ok('source_alpha_not_baked',np.all(f[0][0,0]==0))
-ok('all_source_images_are_unchanged_by_builder',hashlib.sha256((HERE.parent/'assets/PMD0001_STATIC_64.png').read_bytes()).hexdigest()=='fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c')
+ok('all_source_images_are_unchanged_by_builder',hashlib.sha256(SOURCE.read_bytes()).hexdigest()=='fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c')
 
 report={'status':'TECHNICAL_QA_PASS_ART_HOLD','count':len(checks),'checks':[{'name':n,'passed':v} for n,v in checks], 'native_godot':'NOT_RUN','pixel_lab_generation_jobs':0,'art': 'HOLD'}
 (O/'PMD0001_ATTACK_V4_QA.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
