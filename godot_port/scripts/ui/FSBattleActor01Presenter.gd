@@ -32,6 +32,7 @@ func _ready()->void:
     rig.position=Vector2(50,48)
     add_child(rig)
     rig.contact_reached.connect(_on_visual_contact)
+    rig.motion_finished.connect(_on_visual_finished)
     private_source_ready=load_private_attack()
     visible=false
 
@@ -39,6 +40,10 @@ func _on_visual_contact(time_sec:float,frame:int)->void:
     contact_count+=1
     visual_contact.emit(time_sec,frame)
     # No HP, MP, action_queue or hitstop mutation here. Presentation only.
+
+func _on_visual_finished(_motion:String)->void:
+    # An accepted original animation may finish; never leave F11 frozen.
+    visible=false
 
 func load_private_attack()->bool:
     var actual:Array[Texture2D]=[]
@@ -75,6 +80,9 @@ func sync_from_battle(battle:FSBattle)->void:
         # Actor ID 1 ONLY; not first party slot if formation changes.
         if int(battle.party[index].get("id",0))!=1:
             continue
+        if int(battle.party[index].get("hp",0))<=0:
+            cancel_visual()
+            return
         if last_attack_serial==serial:
             return
         last_attack_serial=serial

@@ -52,8 +52,8 @@ func _run()->void:
             int(battle.party[0]["mp"])==mp_before),
             "A52 contact must be one-shot and VISUAL ONLY; no early damage/cost"):return
     visual.rig.advance_seconds(0.43)
-    if not check(not visual.rig.playing and visual.contact_count==1,
-            "A52 finish did not preserve 1.06s and one contact"):return
+    if not check(not visual.rig.playing and not visual.visible and visual.contact_count==1,
+            "A52 finish must hide final pose after 1.06s and one contact"):return
     visual.cancel_visual()
     if not check(not visual.visible and not visual.rig.playing,
             "visual cancel must not mutate combat state"):return
