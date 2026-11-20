@@ -34,7 +34,7 @@ Updated: **2026-11-21 Asia/Taipei**. Owner: T-A character/motion branch.
 
 ## QA gates, do not conflate
 - **SOURCE SHA / IMAGE FORMAT:** PASS on input PNG SHA and candidate atlas 256×192 / 12 distinguishable cells. Approved source identity preserved in source selection; candidate full animation visual remains HOLD.
-- **NEW GODOT ENGINE RIG (synthetic in-memory atlas):** PASS in official GitHub Actions Godot 4.7.2 run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44830768516 : layers, loop, F7 0.63 contact once, cancel. This runner was from first rig commit. After scene preview commits, verify newer run separately.
+- **NEW GODOT ENGINE RIG (synthetic in-memory atlas):** PASS in official GitHub Actions Godot 4.7.2 run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44830768516 : layers, loop, F7 0.63 contact once, cancel. This runner was from first rig commit. The **preview scene + rig** follow-up official Godot 4.7.2 native run also PASSED: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44831183948 (fresh editor import + scene resource import + 12-frame layered rig/timing). This continues to use **synthetic/in-memory test textures**, NOT real private Drive art.
 - **GODOT NATIVE REAL PRIVATE PIXELS:** NOT RUN (no authorized private Drive-to-runner staging); original A52 prior proof does not count as new T-A candidate art proof.
 - **ART:** HOLD: A35 F6/F7 remains suspect, four newly interpolated in-betweens need whole-motion review, RUN has no validated equipped sword, 12 distinct frames is not same as 12 valid run poses; ATTACK is existing approved A52 reused, not a second fresh animation.
 - **M4 REPRODUCIBILITY:** NOT RUN.
