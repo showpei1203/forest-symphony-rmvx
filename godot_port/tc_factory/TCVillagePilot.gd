@@ -6,6 +6,7 @@ var floor_image: Sprite2D
 var actor: Node2D
 var overlays: Array[Dictionary] = []
 var owners_loaded := 0
+var house_colliders_loaded := 0
 
 func _ready() -> void:
     texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -46,7 +47,40 @@ func _ready() -> void:
         overlays.append({"node":sprite,"foot_y":float(owner["foot_y"]),
                          "bbox":owner["bbox"]})
     owners_loaded = overlays.size()
+    _build_house_colliders()
     set_test_actor_foot(Vector2(305, 280))
+
+func _build_house_colliders() -> void:
+    var source := FileAccess.open(generated_dir + "TC_PILOT_COLLISION.json", FileAccess.READ)
+    if source == null:
+        push_error("T-C original house footprint metadata missing.")
+        return
+    var manifest: Variant = JSON.parse_string(source.get_as_text())
+    if not (manifest is Dictionary):
+        push_error("T-C original house collision JSON invalid.")
+        return
+    for entry in manifest.get("colliders", []):
+        var r: Array = entry.get("bbox",[])
+        if r.size() != 4:
+            continue
+        var left := float(r[0])
+        var top := float(r[1])
+        var right := float(r[2])
+        var bottom := float(r[3])
+        if right <= left or bottom <= top:
+            continue
+        var body := StaticBody2D.new()
+        body.name = "Original_Manifest_House_Footprint"
+        body.collision_layer = 1
+        body.collision_mask = 0
+        add_child(body)
+        var box := CollisionShape2D.new()
+        var rect := RectangleShape2D.new()
+        rect.size = Vector2(right-left,bottom-top)
+        box.shape = rect
+        box.position = Vector2((left+right)*0.5,(top+bottom)*0.5)
+        body.add_child(box)
+        house_colliders_loaded += 1
 
 func _block(x:float,y:float,w:float,h:float,c:Color) -> void:
     var rect := ColorRect.new()
