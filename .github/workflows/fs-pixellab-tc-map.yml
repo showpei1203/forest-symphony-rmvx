@@ -1,0 +1,97 @@
+name: FS PixelLab T-C Map Art Pilot (Godot 4.7.2)
+on:
+  push:
+    branches:
+      - feat/fs-pixellab-tc-map-20261121
+    paths:
+      - "godot_port/tc_factory/**"
+      - ".github/workflows/fs-pixellab-tc-map.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fs-tc-map
+  cancel-in-progress: true
+jobs:
+  native-art-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install exact generator dependencies and 1x virtual display
+        run: |
+          python3 -m pip install --disable-pip-version-check Pillow==12.0.0
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1 libxcursor1 libxrandr2 libxi6 libxinerama1
+      - name: Build REAL historical-source A36G T-C pilot and four independent images
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/build_tc_village_pilot.py --out godot_port/tc_factory/generated \
+            | tee /tmp/fs_tc_build_stdout.json
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          p=Path('godot_port/tc_factory/generated')
+          expect=['MASTER.png','Authoring_GroundOnly.png','Authoring_CompletePAR.png',
+                  'Runtime_FullGround.png','Runtime_OcclusionPAR.png']
+          for name in expect:
+              im=Image.open(p/name); im.load()
+              assert im.size == (544,416),(name,im.size)
+              print('verified', name,im.mode,im.size)
+          assert len(list((p/'occlusion_owners').glob('*.png')))>=7
+          PY
+      - name: Download official pinned Godot 4.7.2
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/godot472.zip \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          mkdir -p /tmp/fs_tc_godot
+          unzip -q /tmp/godot472.zip -d /tmp/fs_tc_godot
+          chmod +x /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Import ephemeral generated art in native Godot 4.7.2
+        run: |
+          set -euo pipefail
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+            --headless --path godot_port --editor --quit
+      - name: Native 1x T-C layered art and actor roof/canopy framebuffer captures
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          FS_TC_OUTPUT_DIR: "godot_port/tc_factory/generated"
+        run: |
+          set -euo pipefail
+          timeout 100s xvfb-run -a -s "-screen 0 1280x1024x24" \
+            /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/test_tc_village_native.gd
+          test -s godot_port/tc_factory/generated/TC_NATIVE_BEHIND_1X.png
+          test -s godot_port/tc_factory/generated/TC_NATIVE_FRONT_1X.png
+          test -s godot_port/tc_factory/generated/TC_GODOT_NATIVE_QA.json
+      - name: Package generated candidate and native QA for owner-only Drive transfer
+        if: always()
+        run: |
+          set -euo pipefail
+          cd godot_port/tc_factory
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib,zipfile
+          src=Path('generated'); out=Path('/tmp/FS_TC_C1_C2_PRIVATE_DRIVE_TRANSFER.zip')
+          files=sorted(f for f in src.rglob('*') if f.is_file() and f.name!='.gitignore')
+          if not files:
+              print('No generated files, upload step will fail normally.')
+              raise SystemExit(0)
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=8) as z:
+              for f in files:z.write(f,arcname=str(f.relative_to(src)))
+          with zipfile.ZipFile(out) as z:
+              assert z.testzip() is None
+          print('STAGING_TRANSFER_ZIP_SHA256',hashlib.sha256(out.read_bytes()).hexdigest())
+          print('STAGING_TRANSFER_ZIP_ENTRIES',len(files))
+          PY
+      - name: Temporary transfer package (move immediately to owner-only Drive)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-tc-pilot-private-drive-transfer
+          path: /tmp/FS_TC_C1_C2_PRIVATE_DRIVE_TRANSFER.zip
+          if-no-files-found: warn
+          retention-days: 1
