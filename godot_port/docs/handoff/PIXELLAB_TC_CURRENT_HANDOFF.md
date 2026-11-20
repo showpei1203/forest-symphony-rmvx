@@ -31,6 +31,12 @@
 - **舊 A35 R8 R3、迷宮 R12/R14 的正式美術狀態一律 ART HOLD。** T-C 全圖是獨立候選，不可自動替換正式 Godot map。
 - Maze 既存真工程已成功從私人 Drive 複查來源：`FS_01_MAZE_R12_LIVE_ROAD_NAV_FULL_GODOT_PRIVATE_20261116.zip`，113,804,051 bytes、241 entries、ZIP CRC GOOD，原生 1× 圖 2560×1856；沒有覆寫或編輯，R14 較新的候選也尚未 native GPU PASS。
 
+### 追加根因：FS_01_MAZE 原生來源 Ground 規格（已實讀私人 R12 工程）
+
+私人 R12 ZIP `data/fs_01_maze_a36c_r7_reconciled_manifest.json` 明列：`source_ground.size=[1478,1064]`、`runtime_ground.size=[2560,1856]`、轉換為 `PIL.Image.resize NEAREST`，且 **非等比例縮放約 0.7%**，原紀錄已標註 `ART HOLD`。所有 326 個場景 PAR 由 `res://private_assets/independent_par/*.png` 裝配，保有原生腳點、資產 SHA、310 棵樹、2 屋、6 燈、1 井、7 石，原始 Godot 角色/水碰撞/導航既有通過證據不宜重做。這是讀取真 ZIP Manifest 和 scene/script 所得，不是猜測。
+
+**施工決策**：迷宮 GROUND_ART_ROOT 必須使用 PixelLab Map Workshop/Create Tiles Pro 的連續同源 32×32 native tile 素材方案重做大區段，禁止把 1478×1064 再拉大當成合格 pixel-perfect 2560×1856；PAR 326 個真獨立源保留並先校準到新 Ground，不從整張合成圖去切假 sprites。所有全域 NAV 與原生碰撞證據保留，改動只針對美術。
+
 ### FAILURE LOG 決策與下一個「完整施工單位」
 
 1. `TC_MAJOR_ARCHITECTURE_STYLE_CONFLICT`：**BLOCKER**。停止局部拼房；用一致的 FS 核准參考調用 PixelLab Object Creator + Style References，輸出**整棟**右側屋/工坊、獨立源 alpha 和精確 pivot，整體替換右側風格錯誤建築；禁止拼不同屋頂塊。沒有 PixelLab 工具/API 連線時不得偽稱已完成生成。
