@@ -102,7 +102,7 @@ func _run() -> void:
         "actor_roi_changed":png_pixels_change,
         "native_qa":"TECH_GATE_PASS_NOT_ART_PASS",
         "house_collision_hits":blocked_count,"open_road_collision_hits":free_count,
-        "house_native_physics":"PASS_ORIGINAL_MANIFEST_ONLY"
+        "house_native_physics":"PASS_ORIGINAL_MANIFEST_ONLY",
         "art_gate":"HOLD",
         "rendering_backend":RenderingServer.get_current_rendering_driver_name()
     }
