@@ -70,3 +70,10 @@
 - [完整 Failure Log](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/handoff/PIXELLAB_TB_ATTACK_R2_FAILURE_LOG_20261121.md)｜[私人比較圖](https://drive.google.com/file/d/1axA8UO5tsupoZKK7psZTdhGFTuhQKucp/view)｜[Godot 對照工程ZIP](https://drive.google.com/file/d/1p2rZLZFVIEpPgYbpogX42YMhjyMD2upf/view)
 - ZIP 18檔 CRC PASS，SHA256 `a0f63b7883acc963d5c9df929f627ff1fa35d07c6290aeaa352bebdeaab03ea6`；**Godot 4.7.2 native NOT_RUN，正式新 Attack NOT_CREATED，本次 PixelLab 0 generations**。
 - NEXT：以原生 11F 當姿勢/時間參考，對既有已核准母體建立真正蓄力→蹬地→命中→收招的分段 keypose；再進 PixelLab 骨架/文字動畫及原生 Gate。三階和 Idle 保留，不因攻擊失敗重做。
+
+
+### R2.1 正式替代製法已準備：普通 Attack = 前撲咬擊，噴火另列 Skill
+- 已用上一版已鎖定 `PMD0001_STATIC_64.png` 不經重繪放到 **96×96 透明畫布**；原像素位置平移 +16,+24，bbox (29,51,67,83)，空間足夠讓四肢伸展及前撲，單張來源 SHA256 `e0b01e658d2659fa5c9a01c60c29a4e07cf525a0d5987aa677d09c7a0ed73c72`。已存[私人 Drive First Frame](https://drive.google.com/file/d/1HlUptfEOtd9EZIZ9G9QkGevIreIJLTnb/view)。
+- [11F V3 Keypose Contract](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/pixellab_tb/TB_ATTACK_V3_KEYPOSE_CONTRACT.json) 與 [96px source-first builder](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/tools/pixellab_tb/build_v3_keypose_input.py) 已提交。以原生事件 Rush F2 / Hit F5 / Return F7 為權威，構成蹲伏→蹬地→跳擊／咬擊→四肢落地。原先不相干的火球排除普通 Attack，另作 Cast/Skill。
+- PixelLab Skeleton v3 正式目標 **11F × 96×96 → 384×288 4×3 atlas**。Text v3 僅作替代，需用偶數 12F 並重新映射事件。**這是生成輸入及逐幀契約，並非聲稱已得到真正的 11F 新攻擊**。
+- 本次仍 PixelLab 0 generations、native Godot NOT_RUN，Attack ART FAIL。下一個完整閉環：真的生成新 11F → native Godot 動態顯示 → 人工 ART gate。
