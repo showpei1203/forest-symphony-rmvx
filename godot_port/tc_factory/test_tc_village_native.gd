@@ -14,7 +14,6 @@ func _run() -> void:
     viewport.size = Vector2i(544,416)
     viewport.disable_3d = true
     viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-    viewport.own_world_2d = true
     root.add_child(viewport)
     var sample := SOURCE_SCENE.instantiate()
     viewport.add_child(sample)
