@@ -1,5 +1,19 @@
 # T-A｜ACTOR01 RUN12 / ATTACK12 candidate motion manifest
 
+## R3 actual private GPU visual source proof
+
+- SOURCE: all 6 private 256×192 original/candidate atlases, Body/Weapon/FX independent in true Godot SubViewport 64×64.
+- ENGINE: official Godot 4.7.2 stable, OpenGL 4.5 Mesa llvmpipe (software GPU), process EXIT 0.
+- RENDER: 12 RUN + 12 ATTACK, 24/24 private source frames saved (NOT synthetic).
+- PIXEL QA: RUN all 12 frames exactly identical to original RGBA composite; ATTACK all alpha values identical with only 59 RGB pixel differences (5 frames during FX blend). See owner-private QA JSON in ZIP.
+- Full native 24 frames and GIFs incl QA log: https://drive.google.com/file/d/1iNuBTTvC0Zyfs3yHp1Lovobu8vnMU0CF/view
+- 1× RUN / ATTACK: https://drive.google.com/file/d/13M9gUrwemvWTbYEQTXRKUEajZ_CJTTcl/view and https://drive.google.com/file/d/1k4U4YffBJCeeGAC4fU6a4UGwqr6hb7KH/view
+- 4× montage: https://drive.google.com/file/d/1qBH5X8t5zUY8gMxkqn1-xcnMpGCsK-9K/view
+- Reproducible Godot native capture script: godot_port/tests/capture_ta_actor01_private_source.gd, private files must be supplied in res://assets/ta_actor01. No private PNG committed.
+- Rig timing 0.63sec + hitstop metadata previously validated in synthetic native CI, not full live original private gameplay. **ART HOLD** (A35 F6/F7) and PixelLab v3 not run. Avoid falsely marking overall T-A complete.
+
+---
+
 ## R2 最新 RUN12 真實持劍候選
 
 R1 的空白 Weapon 僅是歷史紀錄；最新 R2 新增完整 12 幀分離 Weapon，原圖由 A52 真實 PixelLab sword F5 平移而來，完全沒有新生成 job。12 個 weapon frame 全部含原 sword 像素、均與人物 overlap、無剪裁。

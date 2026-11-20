@@ -1,5 +1,32 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R3 2026-11-21｜私人真實原圖 Godot 4.7.2 Native GPU PROOF（最新）
+
+### REAL DELTA (not mocked)
+- GitHub public CI downloaded the exact official Godot 4.7.2 stable binary; engine-only artifact run: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44833614643
+- Godot executable was securely copied to an **isolated cloud execution container**, verified version 4.7.2.stable.official.ed1daf0bf. No user PC asset repo used.
+- From owner-private Drive, the actual approved A35-derived RUN Body, R2 A52-weapon-retarget RUN Weapon, transparent RUN FX by design, and unchanged A52 ATTACK Body/Weapon/FX were separately staged. All six 256x192 source PNGs and SHA hashes verified before render.
+- Native renderer: OpenGL 4.5 / Mesa llvmpipe software GPU, Godot 4.7.2 official. 24/24 **actual private source** rendered 64x64 PNGs (12 RUN + 12 ATTACK), process EXIT0.
+- GPU vs alpha-composite original PNG comparison: **RUN 12/12 all 0 RGBA pixel mismatches**; ATTACK 0 alpha mismatches over all 12 frames, only **59 RGB pixel differences total** in 5 frames (F5-F9), concentrated on FX overlaps; do not incorrectly claim zero RGB mismatch for ATTACK.
+- Source-oriented native capture tool committed: godot_port/tests/capture_ta_actor01_private_source.gd; requires the six private PNG assets to be staged, fails closed without them. Does not expose source PNGs to GitHub. See private QA ZIP including 24 native frame PNGs, native 4× animations, source SHA/metrics JSON and native GPU log.
+- **Owner-private QA ZIP (readback verified):** https://drive.google.com/file/d/1iNuBTTvC0Zyfs3yHp1Lovobu8vnMU0CF/view
+- GPU RUN 1× Atlas: https://drive.google.com/file/d/13M9gUrwemvWTbYEQTXRKUEajZ_CJTTcl/view
+- GPU ATTACK 1× Atlas: https://drive.google.com/file/d/1k4U4YffBJCeeGAC4fU6a4UGwqr6hb7KH/view
+- Native 24-frame comparison at 2×: https://drive.google.com/file/d/18NRzyFQNEdLbRQqyzyZM17eM0ds1jOPW/view
+- Native 24-frame comparison at 4×: https://drive.google.com/file/d/1qBH5X8t5zUY8gMxkqn1-xcnMpGCsK-9K/view
+- Attack F7 4× GPU-vs-CPU pixels: https://drive.google.com/file/d/1Ro1jsX8wV5lu89276aDNZtoEp5VvbXWi/view
+
+### QA UPDATED, 3 gates kept separate
+- Source SHA / format / RUN Weapon 12/12 connected: **PASS**.
+- Official Godot 4.7.2 **real private asset 24/24 native frame GPU rendering: PASS**, with 59 Attack FX RGB-blend mismatch pixels duly recorded. The original public native rig timing CI remains PASS (run 44833193171); that CI uses synthetic textures.
+- Original approved private asset **continuous live runtime through the actual FS gameplay scene**: **NOT RUN**. This standalone proof intentionally steps 24 frames, rather than proving in-game ATB choreography and full frame-rate timing. Attack presentation F7 t=0.63sec and 70ms Hitstop had been tested in rig CI but not revalidated with private assets under actual gameplay.
+- **ART: HOLD**. RUN A35 F6/F7 known pose defect and optical-flow-inbetween motion semantics remain; real pixel render cannot magically correct running motion. The user has not approved the 1× full loop.
+- New PixelLab V3: **NOT RUN**; new job NONE; new model spend 0. Original A52 ATTACK artwork unmodified.
+- M4 second fresh sample **NOT RUN**.
+- Next macro unit: full 12-frame run newly produced or corrected with genuine PixelLab V3/Skeleton V3, correct alternating legs and approved sword, then validate full continuous in-engine gameplay motion and 0.63sec attack marker with authentic sources, ART approval. Do not return to one-pixel fixes.
+
+---
+
 ## 2026-11-21 R2 最新增量｜完整 12 幀 RUN 持劍候選
 
 **狀態：M1 完整候選已補齊 Body/Weapon/FX，M2 Godot ENGINE PASS，ART HOLD。**

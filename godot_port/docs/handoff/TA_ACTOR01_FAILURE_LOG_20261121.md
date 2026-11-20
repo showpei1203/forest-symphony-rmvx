@@ -1,5 +1,14 @@
 # T-A Failure Log / 2026-11-21
 
+## R3 Native GPU evidence and blocking gates
+
+- TA-04 R1 'no private Godot GPU proof': **RESOLVED for per-frame native GPU rendering**. 24 actual source frames imported and rendered in official Godot 4.7.2; 24/24 PNG generated, EXIT0. **Still NOT RUN: full original private continuous gameplay loop/ATB hit-time integration.** Owner-private QA ZIP https://drive.google.com/file/d/1iNuBTTvC0Zyfs3yHp1Lovobu8vnMU0CF/view
+- TA-08 FX color delta: 59 RGB pixels across ATTACK F5-F9 differ from CPU Pillow composite (mainly alpha blend differences), 0 alpha mismatches; nonblocking for silhouette, flag for 1× art inspection. No unverified claim of zero pixel difference.
+- TA-09 official engine retrieval: earlier download from GitHub in local container failed due outbound network restriction. Switched strategy to **public GitHub Actions engine-only artifact**, downloaded through authorized connector, no user PC changes. One strategy change, **RESOLVED**.
+- Remaining blocking art: A35 RUN F6/F7 original defect, new V3 RUN not yet generated, 4 optical-flow frames awaiting motion art QA. Zero frame-only cosmetic repair loops. Status ART HOLD, not an engine blockage.
+
+---
+
 ## R2 後續驗證及阻斷變化（下面保留 R1 歷史問題表）
 
 - TA-02 R1 空白 RUN Weapon：**幾何問題已解除**。R2 已建立 A52 真實來源剛性手部對位的 12 幀 Weapon，12/12 與 Body alpha 相接、12/12 無裁切，像素 SHA 可重製。**整體美術／持劍姿勢仍 ART HOLD，未完成原圖原生 Godot 動態驗收**。
