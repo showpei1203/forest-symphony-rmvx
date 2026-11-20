@@ -30,8 +30,8 @@ def paste_owner_rgba(sprite: Image.Image, box: tuple[int,int,int,int], owner: di
     if sprite.size != (w,h):
         raise ValueError("Owner sprite size mismatch: " + str(owner["id"]))
     fx, fy = map(int, owner["foot"])
-    left, top = max(x, box[0]), max(y, box[1])
-    right, bottom = min(x+w, box[2]), min(y+h, box[3], fy - (22 if owner["type"] == "house" else 9))
+    left, top = max(x, box[0]), max(y, box[1], int(owner.get("slice_y0",y)))
+    right, bottom = min(x+w, box[2]), min(y+h, box[3], int(owner.get("slice_y1",y+h)), fy - (22 if owner["type"] == "house" else 9))
     alpha = Image.new("L", (W,H), 0)
     if right <= left or bottom <= top:
         return alpha
@@ -96,35 +96,49 @@ def build(out: Path, source: Path=SOURCE):
     master.save(master_path)
     master.save(full_path)
 
-    # D is NOT B. Occlusion is a set of semantic ROOF/CANOPY owner masks,
-    # sampled from the MASTER's precise RGB. Conditionally shown by actor footpoint.
-    # For this pilot, cover a REAL house and diverse standalone tree candidates.
-    objs = []
-    for o in scene["objects"]:
-        if o.get("type") not in ("house","tree"):
-            continue
-        if not all(k in o for k in ("x","y","w","h","foot")):
-            continue
-        x,y,w,h=(int(o[k]) for k in ("x","y","w","h"))
-        if x+w < CROP[0] or y+h < CROP[1] or x > CROP[2] or y > CROP[3]:
-            continue
-        objs.append(o)
-    houses=[o for o in objs if o["type"]=="house"]
-    trees=sorted((o for o in objs if o["type"]=="tree"),key=lambda o:
-        (abs(int(o["foot"][0])-545)+abs(int(o["foot"][1])-320),str(o["id"])))
-    chosen=houses[:1] + trees[:16]
-    if not houses or len(trees)<6:
-        raise ValueError("Missing actual PixelLab house/forest sample objects; stop instead of inventing.")
+    # D is NOT B. Only source-verified independent alpha may be actor occlusion.
+    # Most 193 former A36G tree images are PRIVATE and missing from this public repo;
+    # never invent individual source masks from the flattened PAR. We derive independent
+    # canopy segments from the one existing original PixelLab west-forest source instead.
+    houses = [o for o in scene["objects"] if o.get("type")=="house"
+              and o.get("id")=="A36G_ELF_HOUSE_AND_WORKSHOP"]
+    if len(houses)!=1:
+        raise ValueError("Original complete PixelLab cottage source not found.")
+    house = houses[0]
+    forest_file = "A36G_PIXELLAB_WEST_FOREST_R3B_ROAD_SAFE_RGBA.png"
+    forest_path = source / "SOURCE_INDEPENDENT_RGBA" / forest_file
+    forest = Image.open(forest_path).convert("RGBA")
+    if forest.size != (464,576):
+        raise ValueError("Original forest source not 464x576.")
+    forest_blueprint = scene.get("forest_region_blueprint", {})
+    forest_hash = forest_blueprint.get("compiled_SHA256")
+    if forest_hash and sha(forest_path) != forest_hash:
+        raise ValueError("Independent forest source SHA mismatch.")
+    strips=[]
+    # 12 ordered independently-owned bands, one original continuous source.
+    # These are depth strips, NOT 12 distinct biological tree identities.
+    for i in range(12):
+        y0=115+(351*i)//12
+        y1=115+(351*(i+1))//12
+        strips.append({
+            "id":"A36G_PIXELLAB_WEST_FOREST_DEPTH_%02d"%i,
+            "type":"forest_group", "x":-112, "y":-110,
+            "w":464,"h":576,"foot":[315,y1+9],
+            "slice_y0":y0, "slice_y1":y1,
+            "filename":forest_file, "source_sha256":sha(forest_path)})
+    chosen=houses+strips
     union_alpha=Image.new("L",(W,H),0)
     owners=[]
     overlay_dir=out/"occlusion_owners"
     overlay_dir.mkdir(exist_ok=True)
     for i,o in enumerate(chosen):
         source_owner = source / "SOURCE_INDEPENDENT_RGBA" / str(o["filename"])
-        if not source_owner.is_file() or sha(source_owner) != o["sha256"]:
-            raise ValueError("Independent source owner missing or mutated: " + str(o["id"]))
+        if not source_owner.is_file():
+            raise ValueError("Independent source owner missing: " + str(o["id"]))
+        expected = o.get("sha256",o.get("source_sha256"))
+        if expected and sha(source_owner) != expected:
+            raise ValueError("Independent source owner SHA mismatch: " + str(o["id"]))
         alpha=paste_owner_rgba(Image.open(source_owner).convert("RGBA"),CROP,o)
-        # Alpha comes from an independent complete object. RGB comes only from MASTER.
         if not alpha.getbbox():
             continue
         mask=compose_mask_from_master(master,alpha)
@@ -134,7 +148,10 @@ def build(out: Path, source: Path=SOURCE):
         owners.append({"id":o["id"],"type":o["type"],"foot_y":int(o["foot"][1])-CROP[1],
                        "foot_x":int(o["foot"][0])-CROP[0],"file":filename,
                        "bbox":list(alpha.getbbox()),"sha256":sha(overlay_dir/filename),
+                       "source_sha256":sha(source_owner),
                        "occlusion_pixels":sum(alpha.histogram()[1:])})
+    if len(owners)<7 or not any(o["type"]=="house" for o in owners):
+        raise ValueError("Independent house/canopy masks insufficient for a complete pilot.")
     runtime=compose_mask_from_master(master,union_alpha)
     runtime.save(runtime_path)
     if not owners:
@@ -158,7 +175,8 @@ def build(out: Path, source: Path=SOURCE):
         "source_sha256":{k:sha(source/v) for k,v in SOURCE_IDS.items()},
         "art_delta":{"floor_flower_clusters":clusters,"flower_pixels":flower_pixels},
         "owners":{"house":len([o for o in owners if o["type"]=="house"]),
-                  "tree":len([o for o in owners if o["type"]=="tree"])},
+                  "tree":0, "independent_forest_depth_strips":len([o for o in owners if o["type"]=="forest_group"])},
+        "source_inventory_warning":"193 historical tree identities are present in the original PAR/manifest but their independent alpha PNGs are private and unavailable in this public worktree. Do not infer individual tree occlusion owners.",
         "semantic_occlusion_count":len(owners),
         "image_sha256":{p.name:sha(p) for p in (master_path,ground_path,complete_path,full_path,runtime_path)},
         "source_registration":"STATIC_PASS_RECOMPOSE_RGB_IDENTICAL",
