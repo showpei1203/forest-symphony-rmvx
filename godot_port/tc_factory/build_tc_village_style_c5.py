@@ -51,6 +51,7 @@ def build(out,source=pilot.SOURCE):
     pilot.W,pilot.H=W,H
     pilot.CROP=(0,0,W,H)
     baseline=pilot.build(out,source)
+    baseline_master=Image.open(out/"MASTER.png").convert("RGB").copy()
     manifest=json.loads((source/pilot.SOURCE_IDS["manifest"]).read_text("utf-8"))
     house=next(x for x in manifest["objects"] if x.get("id")==SRC_COTTAGE_ID)
     historical_hut=next(x for x in manifest["objects"] if x.get("id")==HISTORICAL_HUT_ID)
@@ -153,11 +154,16 @@ def build(out,source=pilot.SOURCE):
     original_full=Image.open(out/"Authoring_GroundOnly.png").convert("RGBA")
     assert ImageChops.difference(original_full,ground).getbbox() is None
     # Compare against baseline A36G (with same authored floor embellishment)
-    original_par=Image.open(source/pilot.SOURCE_IDS["par"]).convert("RGBA")
-    original_comp=Image.alpha_composite(ground,original_par).convert("RGB")
-    changed=ImageChops.difference(master,original_comp).getbbox()
-    if changed is None or changed[0]>740 or changed[2]<990:
-        raise AssertionError("New full-cottage visual delta not detected")
+    delta=ImageChops.difference(master,baseline_master)
+    changed=delta.getbbox()
+    style_roi=(740,340,1040,630)
+    roi=delta.crop(style_roi)
+    changed_px=sum(1 for color in roi.getdata() if color!=(0,0,0))
+    if changed is None or changed_px < 1000:
+        raise AssertionError("New whole-building style ROI changed fewer than 1000 pixels: "+str(changed_px))
+    # Changes must be strictly limited to the isolated new building clearing.
+    if changed[0] < style_roi[0] or changed[1] < style_roi[1] or changed[2] > style_roi[2] or changed[3] > style_roi[3]:
+        raise AssertionError("Source floor or other forest/house areas outside C5 ROI changed: "+str(changed))
     # A single isolated house; no body parts or roof stitches in this variant.
     qa=json.loads((out/"TC_PILOT_SOURCE_QA.json").read_text("utf-8"))
     qa.update({
@@ -176,6 +182,7 @@ def build(out,source=pilot.SOURCE):
       "replacement_building_collision":[rx0,ry0,rx1,ry1],
       "new_building_overlay_owner":mask_name,
       "whole_map_delta_bbox":list(changed),
+      "style_roi_changed_px":changed_px,
       "authors_comment":"Style coherence candidate, not a newly generated PixelLab house; art requires 1x native review.",
       "image_sha256":{name:digest(out/name) for name in
          ("MASTER.png","Authoring_GroundOnly.png","Authoring_CompletePAR.png",
