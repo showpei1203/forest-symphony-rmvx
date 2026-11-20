@@ -20,6 +20,23 @@ func _run() -> void:
     await process_frame
     await process_frame
     await process_frame
+    await physics_frame
+    if sample.house_colliders_loaded != 1:
+        push_error("T-C actual source house StaticBody2D missing.")
+        quit(1)
+        return
+    var blocked_q := PhysicsPointQueryParameters2D.new()
+    blocked_q.position = Vector2(305,300)
+    blocked_q.collision_mask = 1
+    var road_q := PhysicsPointQueryParameters2D.new()
+    road_q.position = Vector2(65,378)
+    road_q.collision_mask = 1
+    var blocked_count := viewport.world_2d.direct_space_state.intersect_point(blocked_q).size()
+    var free_count := viewport.world_2d.direct_space_state.intersect_point(road_q).size()
+    if blocked_count < 1 or free_count > 0:
+        push_error("T-C native source cottage facade/root collision gate FAIL.")
+        quit(1)
+        return
     if sample.owners_loaded < 7 or sample.floor_image.texture == null:
         push_error("T-C native source/owner gate failed.")
         quit(1)
@@ -84,6 +101,8 @@ func _run() -> void:
         "front_visible":front_count,
         "actor_roi_changed":png_pixels_change,
         "native_qa":"TECH_GATE_PASS_NOT_ART_PASS",
+        "house_collision_hits":blocked_count,"open_road_collision_hits":free_count,
+        "house_native_physics":"PASS_ORIGINAL_MANIFEST_ONLY"
         "art_gate":"HOLD",
         "rendering_backend":RenderingServer.get_current_rendering_driver_name()
     }
