@@ -1,7 +1,7 @@
 extends Node2D
 ## Independent T-C art pilot; actual FS baseline scenes are never modified.
 ## Pixel source is generated from the historical PixelLab A36G input with exact XY.
-const GENERATED := "res://tc_factory/generated/"
+@export var generated_dir: String = "res://tc_factory/generated/"
 var floor_image: Sprite2D
 var actor: Node2D
 var overlays: Array[Dictionary] = []
@@ -13,7 +13,7 @@ func _ready() -> void:
     floor_image.name = "Runtime_FullGround"
     floor_image.centered = false
     floor_image.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-    floor_image.texture = load(GENERATED + "Runtime_FullGround.png")
+    floor_image.texture = load(generated_dir + "Runtime_FullGround.png")
     if floor_image.texture == null:
         push_error("T-C generated source missing. Run build_tc_village_pilot.py first.")
         return
@@ -24,7 +24,7 @@ func _ready() -> void:
     actor.z_index = 0
     add_child(actor)
     _build_test_actor()
-    var file := FileAccess.open(GENERATED + "TC_PILOT_OCCLUSION_OWNERS.json", FileAccess.READ)
+    var file := FileAccess.open(generated_dir + "TC_PILOT_OCCLUSION_OWNERS.json", FileAccess.READ)
     if file == null:
         push_error("T-C occlusion owner manifest missing.")
         return
@@ -37,7 +37,7 @@ func _ready() -> void:
         sprite.name = str(owner["id"])
         sprite.centered = false
         sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-        sprite.texture = load(GENERATED + "occlusion_owners/" + str(owner["file"]))
+        sprite.texture = load(generated_dir + "occlusion_owners/" + str(owner["file"]))
         if sprite.texture == null:
             push_error("T-C owner layer missing: " + str(owner["file"]))
             return
