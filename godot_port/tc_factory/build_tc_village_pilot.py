@@ -166,6 +166,18 @@ def build(out: Path, source: Path=SOURCE):
         raise AssertionError("Occlusion PAR incorrectly covers entire CompletePAR")
     if sum(runtime.getchannel("A").histogram()[1:]) == 0:
         raise AssertionError("No actual canopy/roof occlusion")
+    # Original A36G authored cottage footprint, NOT a guessed 1x image rectangle.
+    house_rect=house.get("blocking_footprint_px")
+    if not (isinstance(house_rect,list) and len(house_rect)==4):
+        raise ValueError("PixelLab cottage footprint absent; no fabricated collision.")
+    x0,y0,x1,y1=map(int,house_rect)
+    if not (x0<x1 and y0<y1):
+        raise ValueError("Invalid source cottage collision footprint.")
+    collider={"id":str(house["id"]),"type":"house_facade","bbox":[x0-CROP[0],y0-CROP[1],x1-CROP[0],y1-CROP[1]],
+              "source_manifest_sha256":sha(source/SOURCE_IDS["manifest"])}
+    collision={"colliders":[collider],"source":"A36G original blocking_footprint_px",
+               "native_gate":"PENDING_GODOT_REAL_PHYSICS", "forest_collision":"HOLD_PRIVATE_TREE_ROOT_SOURCES"}
+    (out/"TC_PILOT_COLLISION.json").write_text(json.dumps(collision,ensure_ascii=False,indent=2),encoding="utf8")
     qa={
         "target":"T-C", "phase":"C1/C2 independent candidate", "art_gate":"ART_HOLD",
         "native_godot":"NOT_RUN_BY_GENERATOR",
@@ -178,6 +190,7 @@ def build(out: Path, source: Path=SOURCE):
                   "tree":0, "independent_forest_depth_strips":len([o for o in owners if o["type"]=="forest_group"])},
         "source_inventory_warning":"193 historical tree identities are present in the original PAR/manifest but their independent alpha PNGs are private and unavailable in this public worktree. Do not infer individual tree occlusion owners.",
         "semantic_occlusion_count":len(owners),
+        "candidate_physics_colliders":{"verified_source_house":1,"tree_root":0},
         "image_sha256":{p.name:sha(p) for p in (master_path,ground_path,complete_path,full_path,runtime_path)},
         "source_registration":"STATIC_PASS_RECOMPOSE_RGB_IDENTICAL",
         "known_failure":"Source-independent alpha verified; roof/canopy occlusion correctness still requires native actor/1x and art approval.",
