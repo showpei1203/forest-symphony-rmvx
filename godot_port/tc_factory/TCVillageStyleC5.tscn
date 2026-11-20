@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tc_factory/TCVillagePilot.gd" id="1"]
+
+[node name="FS_01_VILLAGE_TC_C5_FULL_WHOLE_HOUSE_CANDIDATE" type="Node2D"]
+script = ExtResource("1")
+generated_dir = "res://tc_factory/generated_style/"
