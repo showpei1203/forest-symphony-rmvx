@@ -1,3 +1,51 @@
+## C4 VERIFIED｜2026-11-21 06:55 TPE｜新於以上 M1 紀錄，以下結果優先
+
+**C4 COMMIT (HEAD AS TESTED):** `0de4ef85e1555622edeee3a078f2acbd8f18f7f9`
+**C4 GODOT 4.7.2 CI:** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44832598287 ，GitHub provider `status=completed`, `conclusion=success`，包含原生真實 GPU 全圖與遮蔽/碰撞測試。不覆寫現有正式 A35/R12/R14。
+**C4 PRIVATE ART + QA ZIP:** https://drive.google.com/file/d/1O9ooTnyg-sVeWSW514u2fgQ2JRbdK1uD/view
+- Drive id: `1O9ooTnyg-sVeWSW514u2fgQ2JRbdK1uD`; 實際 Google Drive readback `size=60349840`, `shared=false`，`user owner only`，私人 My Drive/root。
+- 上述檔案含外層 GitHub artifact ZIP 和內層完整 art/QA ZIP；已在雲端 container 做雙層 ZIP CRC 驗證，內層 **81 項**（含 Godot 原生 screenshot）。
+- GitHub Actions 暫存 transfer artifact `14677561436`（1 日保留），並非正式存檔。正式私人資產為上述 Drive。
+
+### 本輪完整產物：Village C1 小樣 + C3/C4 全村候選
+
+| 施工單位 | Source Master | GroundOnly | CompletePAR | Runtime FullGround | Runtime OcclusionPAR | 原生 QA |
+|---|---:|---:|---:|---:|---:|---|
+| C1/C2 test pilot | 544×416 | PASS 靜態 | PASS 靜態 | PASS 靜態 | PASS 靜態 | Godot **4.7.2 PASS** |
+| C3/C4 `FS_01_VILLAGE` **全圖候選** | **1280×928** | PASS 靜態 | PASS 靜態 | PASS 靜態 | PASS 靜態 | Godot **4.7.2 GPU 1× PASS** |
+| FS_01_MAZE 原生 R12 基準（未改動） | 2560×1856 | 舊基準 | 舊基準 | 舊基準 | 舊基準 | 既有 R12 舊測 PASS，**本輪未重測** |
+
+- `generated/TC_GODOT_NATIVE_QA.json`: `engine=4.7.2-stable (official)`, `framebuffer_px=[544,416]`, `owners_loaded=12`, `behind_visible=1`, `front_visible=0`, `actor_roi_changed=true`。同座標 1× 真原生 A/B 實圖變化 **204px**，來源於 Godot GPU 原生 screenshot，非合成插畫。
+- `generated/TC_PILOT_SOURCE_QA.json`: `world_grid=[17,13]`、`STATIC_PASS_RECOMPOSE_RGB_IDENTICAL`，房屋 1 + 真 PixelLab 連續森林 11 depth strips，沒有偽造獨立樹木 source masks。
+- `generated_full/TC_PILOT_SOURCE_QA.json`: `canvas=[1280,928]`，`STATIC_PASS_RECOMPOSE_RGB_IDENTICAL`，房屋 1 + 真森林 12 depth strips，完整 Master／Ground／PAR 五圖供美術驗收。注意此 JSON 的 `world_grid=[17,13]` 目前是第一版未同步的 metadata 殘值，**全圖實際 40×29 tiles**（1280／32=40、928／32=29），列入非阻斷資料缺陷，待下一宏觀區段一併改正。
+- `generated_full/TC_FULL_VILLAGE_NATIVE_QA.json`: `real_framebuffer=[1280,928]`, `gate=FULL_SCENE_GPU_1X_PASS_NOT_ART_PASS`，`owners_loaded=13`，獨立場景真正運行；`house_collision_hits=1`, `open_road_collision_hits=0`。
+- 兩種解析度均使用**既有真來源**屋舍 `blocking_footprint_px=[379,389,618,454]` 創建 `StaticBody2D` + `CollisionShape2D`，Godot 原生 physics-space point-query PASS；**森林樹幹、水域和全區 path collision 未在新 T-C 證明**，不能拿房屋 PASS 冒充全圖 collision PASS。
+- 程式擴展實績：`build_tc_village_full.py`, `TCVillageFullCandidate.tscn`, `capture_tc_full_village_native.gd`、`TC_PILOT_COLLISION.json`，新 CI 同時跑 C1 小樣與 C3 full 1× GPU；沒有碰傳送、存讀檔或既有 Godot Phase1 遊戲主線。
+- **PixelLab 新工作：NOT RUN，沒有 API job、seed、模型、新料金。** 現成 A36G 的房屋與森林是歷史上真 PixelLab 成品；本輪新建的是組圖、美術來源遮罩、背景植被、引擎分層及驗證，而非假冒 Create Tiles Pro/Map Workshop 新模型生成。
+
+### Visual Art Review（有讀取真 Godot 圖，非虛構 QA）
+
+- **G2 靜態像素來源 / 1× 完圖：已 PASS TECH**，可復現。
+- **G3 條件屋頂遮蔽：sample PASS TECH**，full scene GPU 載入與 footprint physical check PASS。未將森林每棵樹 alpha 冒名聲稱通過（193 tree records 的獨立素材絕大多數只在私人來源，未輸入本 GitHub T-C builder）。
+- **G1/G6 美術：ART HOLD**。原生 full screenshot 視覺檢查指出右側圓形的青綠巨屋頂與左側木造屋舍材質、視角、建築語法不一致，屬**重大風格錯誤**；亦有樹冠重複/過密拼貼，不因 CI success 升 Art PASS。
+- **舊 A35 R8 R3、迷宮 R12/R14 的正式美術狀態一律 ART HOLD。** T-C 全圖是獨立候選，不可自動替換正式 Godot map。
+- Maze 既存真工程已成功從私人 Drive 複查來源：`FS_01_MAZE_R12_LIVE_ROAD_NAV_FULL_GODOT_PRIVATE_20261116.zip`，113,804,051 bytes、241 entries、ZIP CRC GOOD，原生 1× 圖 2560×1856；沒有覆寫或編輯，R14 較新的候選也尚未 native GPU PASS。
+
+### FAILURE LOG 決策與下一個「完整施工單位」
+
+1. `TC_MAJOR_ARCHITECTURE_STYLE_CONFLICT`：**BLOCKER**。停止局部拼房；用一致的 FS 核准參考調用 PixelLab Object Creator + Style References，輸出**整棟**右側屋/工坊、獨立源 alpha 和精確 pivot，整體替換右側風格錯誤建築；禁止拼不同屋頂塊。沒有 PixelLab 工具/API 連線時不得偽稱已完成生成。
+2. `TC_FOREST_ECOLOGY_CLONE`：**BLOCKER**。改用 PixelLab Create Tiles Pro 的自然草/路 32×32 與 Map Workshop 語意地形，跨區使用連續森林場景來源，避免 193 棵重複複製樹。重製整個樹林過渡區，而非反覆微調單個像素。
+3. `TC_TREE_PRIVATE_ALPHA_MISSING`：森林全區的源 alpha/物理 root tree 來源不完整，獨立真文件 only 3 in public GitHub；不可由 flattened PAR 估計冒充真正 mask。下一輪改用已下載私人 FS 原生 Maze、A35 scene 的獨立 alpha，先校驗 source hashes，並在 Drive 保存。
+4. `TC_FULL_WORLD_GRID_METADATA`：**non-blocking**，全圖 QA `world_grid` 舊值誤報 17×13，真尺寸 40×29；下一輪一起修正，不消耗專門美術迭代。
+5. **最高下一完整單位**：完成「**整個右側屋舍與周圍 8×8 格地表／森林過渡**」同一構圖、同一來源、四圖契約＋原生角色遮蔽＋collision；接著延伸至迷宮完整森林區段，保留所有 2560×1856 既存導航工程。每項非阻斷小瑕疵最多兩修，大面積視覺錯誤換方法，不封 Art PASS。
+
+### SHO-39 / storage
+
+- Linear SHO-39 已實際寫入第一個 T-C 施工同步 comment，id `b87e0242-2b50-41ca-8e70-ceaebfd10825`。C4 完整成果需再更新 comment。
+- GitHub code `0de4ef85...` 與此 handoff；資產在 owner-only 私人 Drive `1O9ooTny...`，GitHub temporary one-day CI artifacts 僅供傳送；**未存至使用者 PC**。
+
+---
+
 # Forest Symphony｜T-C 地圖美術工廠｜CURRENT HANDOFF
 
 - Date: 2026-11-21 Asia/Taipei
