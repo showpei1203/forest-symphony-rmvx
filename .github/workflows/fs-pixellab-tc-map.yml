@@ -40,6 +40,20 @@ jobs:
               print('verified', name,im.mode,im.size)
           assert len(list((p/'occlusion_owners').glob('*.png')))>=7
           PY
+      - name: Build full native-sized 1280x928 elven village Ground/PAR master-first candidate
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/build_tc_village_full.py --out godot_port/tc_factory/generated_full
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          d=Path('godot_port/tc_factory/generated_full')
+          for n in ('MASTER.png','Authoring_GroundOnly.png','Authoring_CompletePAR.png','Runtime_FullGround.png','Runtime_OcclusionPAR.png'):
+              im=Image.open(d/n)
+              assert im.size == (1280,928), (n,im.size)
+              im.load()
+              print('FULL 1x source verified',n,im.mode)
+          PY
       - name: Download official pinned Godot 4.7.2
         run: |
           set -euo pipefail
@@ -67,6 +81,18 @@ jobs:
           test -s godot_port/tc_factory/generated/TC_NATIVE_BEHIND_1X.png
           test -s godot_port/tc_factory/generated/TC_NATIVE_FRONT_1X.png
           test -s godot_port/tc_factory/generated/TC_GODOT_NATIVE_QA.json
+      - name: Capture full village original Godot 4.7.2 1280x928 native 1x frame
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+          FS_TC_OUTPUT_DIR: ""
+        run: |
+          set -euo pipefail
+          timeout 100s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/capture_tc_full_village_native.gd
+          test -s godot_port/tc_factory/generated_full/TC_FULL_VILLAGE_GODOT472_NATIVE_1X.png
+          test -s godot_port/tc_factory/generated_full/TC_FULL_VILLAGE_NATIVE_QA.json
       - name: Package generated candidate and native QA for owner-only Drive transfer
         if: always()
         run: |
@@ -75,13 +101,13 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import hashlib,zipfile
-          src=Path('generated'); out=Path('/tmp/FS_TC_C1_C2_PRIVATE_DRIVE_TRANSFER.zip')
-          files=sorted(f for f in src.rglob('*') if f.is_file() and f.name!='.gitignore')
+          roots=[Path('generated'),Path('generated_full')]; out=Path('/tmp/FS_TC_C1_C2_PRIVATE_DRIVE_TRANSFER.zip')
+          files=sorted(f for src in roots for f in src.rglob('*') if f.is_file() and f.name!='.gitignore')
           if not files:
               print('No generated files, upload step will fail normally.')
               raise SystemExit(0)
           with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=8) as z:
-              for f in files:z.write(f,arcname=str(f.relative_to(src)))
+              for f in files:z.write(f,arcname=str(f))
           with zipfile.ZipFile(out) as z:
               assert z.testzip() is None
           print('STAGING_TRANSFER_ZIP_SHA256',hashlib.sha256(out.read_bytes()).hexdigest())
