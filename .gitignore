@@ -19,3 +19,7 @@ godot_port/assets/.ui-staging-*/
 # A52 original actor art: owner-only Drive, never public GitHub
 godot_port/assets/ta_actor01/
 godot_port/assets/.ta-actor-stage-*/
+
+# P537C original VX Battlers owner-only private ZIP staging
+godot_port/assets/battlers/
+godot_port/assets/.battlers-stage-*/

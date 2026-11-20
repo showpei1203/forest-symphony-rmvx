@@ -9,6 +9,7 @@ const A35_PRIVATE_GATE = preload("res://scripts/story/FSPrivateA35Gate.gd")
 const UI_ART = preload("res://scripts/ui/FSUIArtLibrary.gd")
 const LIVE_HUD = preload("res://scripts/ui/FSUIBattleHUD.gd")
 const ACTOR01_PRESENTATION = preload("res://scripts/ui/FSBattleActor01Presenter.gd")
+const ENEMY_STAGE = preload("res://scripts/ui/FSBattleOriginalEnemyStage.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -30,6 +31,7 @@ var a35_preview: Control
 var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
 var actor01_presentation: FSBattleActor01Presenter
+var enemy_stage: FSBattleOriginalEnemyStage
 var battle_command_art:Dictionary={}
 var battle_command_grid:GridContainer
 
@@ -138,6 +140,9 @@ func _build_shell() -> void:
     # Overlay only: never reduce legacy 544x416 2x2 command area.
     actor01_presentation=ACTOR01_PRESENTATION.new()
     add_child(actor01_presentation)
+    enemy_stage=ENEMY_STAGE.new()
+    enemy_stage.name="FSBattleStageOriginalEnemies"
+    add_child(enemy_stage)
 
 func _process(delta: float) -> void:
     # The actual source Tankentai source-frame gauge now ticks in real gameplay
@@ -150,6 +155,8 @@ func _process(delta: float) -> void:
         ui_hud.refresh(battle.party)
     if actor01_presentation!=null:
         actor01_presentation.sync_from_battle(battle)
+    if enemy_stage!=null:
+        enemy_stage.refresh(battle.enemies)
     _update_battle_command_buttons()
 
 func _change(tab: String) -> void:
@@ -239,6 +246,8 @@ func _set_original_background(file_name: String) -> void:
 
 func _show_menu() -> void:
     view_name = "MENU"
+    if enemy_stage!=null:
+        enemy_stage.clear_enemies()
     if actor01_presentation!=null:
         actor01_presentation.cancel_visual()
     if ui_hud!=null:
@@ -636,6 +645,8 @@ func _show_battle() -> void:
             return
     if not battle.active:
         battle.start()
+    if enemy_stage!=null:
+        enemy_stage.bind_real(battle)
     # Source #230 defaults to Wait during active command/target selection.
     battle.source_atb_wait = false
     if ui_hud!=null:

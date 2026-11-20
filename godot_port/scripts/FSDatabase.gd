@@ -273,6 +273,7 @@ func enemy_stats(enemy_id: int) -> Dictionary:
     result["gold"] = int(enemy.get("gold",0))
     result["actions"] = enemy.get("actions",[])
     result["battler_name"] = str(enemy.get("battler_name",""))
+    result["battler_hue"] = int(enemy.get("battler_hue",0))  # Original VX hue; unported shifts fail closed.
     result["note"] = str(enemy.get("note",""))
     # #013 Game_Battler#element_set returns []; #016 Game_Enemy does not
     # override it. Later dynamic RGSS2 aliases still need original VX
