@@ -42,14 +42,24 @@ func _run() -> void:
         push_error("T-C failed to save behind preview.")
         quit(1)
         return
+    # First verify foot-rule transition, then compare same actor pixel coordinates.
     sample.set_test_actor_foot(Vector2(305,390))
     await process_frame
     await process_frame
     var front_count: int = sample.visible_occlusion_owners()
+    if front_count > behind_count:
+        push_error("T-C footpoint front visibility regression.")
+        quit(1)
+        return
+    sample.set_test_actor_foot(Vector2(305,280))
+    for layer in sample.overlays:
+        (layer["node"] as Sprite2D).visible = false
+    await process_frame
+    await process_frame
     var front := viewport.get_texture().get_image()
     rc = front.save_png(output.path_join("TC_NATIVE_FRONT_1X.png"))
-    if rc != OK or front_count > behind_count:
-        push_error("T-C front visibility regression.")
+    if rc != OK:
+        push_error("T-C failed to save unoccluded same-pose preview.")
         quit(1)
         return
     var png_pixels_change := false
