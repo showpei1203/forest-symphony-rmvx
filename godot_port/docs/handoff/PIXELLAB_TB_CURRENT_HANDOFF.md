@@ -62,3 +62,11 @@
 - 本次隔離環境工作檔在 ChatGPT sandbox，**未建立使用者 Windows PC 資料庫**。
 - 實際成果持久化於上述私人 Drive + T-B 專屬 GitHub 分支；保留所有原始 PMD 舊工程不變；T-A、T-C、main 不動。
 - WRITE→READBACK：GitHub 程式碼與 Drive folder/manifest 已回讀；完整 Godot native **未驗證**。
+
+
+## 2026-11-21 R2 重要後續：Attack 正式 ART FAIL
+- 使用者拒收上一版 Attack；已做像素還原：8 幀中的 **6 幀**可由全身壓縮/移動/扭斜完全重現，其餘兩幀僅額外疊加少量火球。此方法的關節、嘴部和命中語意有阻斷問題，**不再沿用**。
+- 已從私人 Drive 取回 PMD0001 原生 G9 11F×8方向 Attack，解出 2 組 11F 透明 atlas 和 GIF、XML Rush2/Hit5/Return7，作為**動作參考而非正式美術成品**。
+- [完整 Failure Log](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/handoff/PIXELLAB_TB_ATTACK_R2_FAILURE_LOG_20261121.md)｜[私人比較圖](https://drive.google.com/file/d/1axA8UO5tsupoZKK7psZTdhGFTuhQKucp/view)｜[Godot 對照工程ZIP](https://drive.google.com/file/d/1p2rZLZFVIEpPgYbpogX42YMhjyMD2upf/view)
+- ZIP 18檔 CRC PASS，SHA256 `a0f63b7883acc963d5c9df929f627ff1fa35d07c6290aeaa352bebdeaab03ea6`；**Godot 4.7.2 native NOT_RUN，正式新 Attack NOT_CREATED，本次 PixelLab 0 generations**。
+- NEXT：以原生 11F 當姿勢/時間參考，對既有已核准母體建立真正蓄力→蹬地→命中→收招的分段 keypose；再進 PixelLab 骨架/文字動畫及原生 Gate。三階和 Idle 保留，不因攻擊失敗重做。
