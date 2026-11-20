@@ -18,6 +18,23 @@ func _run() -> void:
     await process_frame
     await process_frame
     await process_frame
+    await physics_frame
+    if scene.house_colliders_loaded != 1:
+        push_error("T-C full original house physics body missing.")
+        quit(1)
+        return
+    var blocking := PhysicsPointQueryParameters2D.new()
+    blocking.position = Vector2(500,425)
+    blocking.collision_mask = 1
+    var open_road := PhysicsPointQueryParameters2D.new()
+    open_road.position = Vector2(120,680)
+    open_road.collision_mask = 1
+    var blocking_hits := v.world_2d.direct_space_state.intersect_point(blocking).size()
+    var free_hits := v.world_2d.direct_space_state.intersect_point(open_road).size()
+    if blocking_hits < 1 or free_hits > 0:
+        push_error("T-C full source cottage StaticBody2D physics mismatch.")
+        quit(1)
+        return
     if scene.owners_loaded < 7 or scene.floor_image.texture == null:
         push_error("T-C Full 1280x928 source or semantic owner assets unavailable.")
         quit(1)
@@ -49,7 +66,8 @@ func _run() -> void:
         "actor_behind_house_visible_owners":scene.visible_occlusion_owners(),
         "gate":"FULL_SCENE_GPU_1X_PASS_NOT_ART_PASS",
         "art_gate":"ART_HOLD",
-        "collision_gate":"NOT_PRODUCTION_CERTIFIED"
+        "collision_gate":"ORIGINAL_HOUSE_FOOTPRINT_GODOT_NATIVE_PASS_OTHER_COLLISIONS_HOLD",
+        "house_collision_hits":blocking_hits,"open_road_collision_hits":free_hits
     }
     var output := FileAccess.open(out.path_join("TC_FULL_VILLAGE_NATIVE_QA.json"), FileAccess.WRITE)
     if output == null:
