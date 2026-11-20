@@ -1,5 +1,22 @@
 # T-A｜ACTOR01 RUN12 / ATTACK12 candidate motion manifest
 
+## R2 最新 RUN12 真實持劍候選
+
+R1 的空白 Weapon 僅是歷史紀錄；最新 R2 新增完整 12 幀分離 Weapon，原圖由 A52 真實 PixelLab sword F5 平移而來，完全沒有新生成 job。12 個 weapon frame 全部含原 sword 像素、均與人物 overlap、無剪裁。
+
+- Body SHA256: fab73bc51109ad0b896333899c82ff80a7f5340d0ee25e4d0f7e94f6fd9f0bfb
+- A52 原 Weapon SHA256: 6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b
+- R2 Weapon SHA256: ff3be6c132da2d8ac285ef60db48be195549b155f22ea5ac490c86a85f120eb7
+- R2 FX SHA256: ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7
+- Hand anchors F0..F11: (38,48),(37,49),(37,49),(42,41),(42,42),(38,47),(37,47),(38,48),(39,49),(40,48),(38,49),(38,49)
+- Reproducible tool: godot_port/tools/ta_actor01_run_weapon.py, locks both original source SHA.
+- New weapon: https://drive.google.com/file/d/1zSNUKTpGR5FXd8ni1RXtdLmspILHD-cU/view
+- New 1×/3× QA: https://drive.google.com/file/d/1y1qXJeLuzaS6dGSOcbDRE5iVHZuBuOzB/view and https://drive.google.com/file/d/1xplRRIJtrTkDUtwiMLzKIK7Tjr4KMBYt/view
+- Godot 4.7.2 synthetic native CI PASS: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44833193171
+- Real original private art Godot GPU NOT RUN; ART HOLD, old A35 F6/F7 unrepaired. No new PixelLab v3 model job; zero new units.
+
+---
+
 - Date: 2026-11-21 (Asia/Taipei)
 - State: **ART HOLD; not fresh PixelLab v3 art**.
 - Actor identity: original A62 white-haired Actor01, 45-degree 3/4 battle.

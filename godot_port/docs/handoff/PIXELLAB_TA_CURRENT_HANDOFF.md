@@ -1,4 +1,29 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
+
+## 2026-11-21 R2 最新增量｜完整 12 幀 RUN 持劍候選
+
+**狀態：M1 完整候選已補齊 Body/Weapon/FX，M2 Godot ENGINE PASS，ART HOLD。**
+R1 武器為透明佔位的記錄在下方保留作為歷史；R2 已有原始 A52 真實長劍素材之 12 幀獨立 Weapon atlas。
+
+- RUN Body 沿用 A35 8 幀真實 PixelLab 素材，加 4 幀光流補間，SHA256：fab73bc51109ad0b896333899c82ff80a7f5340d0ee25e4d0f7e94f6fd9f0bfb
+- RUN Weapon：A52 真實 PixelLab 長劍 F5 原樣平移（不重新繪畫或生成），對齊 12 幀的握劍 hand anchor；來源 A52 Weapon SHA256：6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b；新圖 SHA256：ff3be6c132da2d8ac285ef60db48be195549b155f22ea5ac490c86a85f120eb7。
+- RUN FX 獨立透明是因為跑步時沒有攻擊特效，並非缺少武器。FX SHA256：ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7。
+- 全部 12/12 影格武器有可見像素，12/12 武器和人物 alpha 區域重疊；重疊像素分別為 12、8、13、10、11、28、30、17、16、11、11、11；全部武器沒有裁切或碰邊。
+- 已把方法寫成來源 SHA 鎖定的可重用建構器：godot_port/tools/ta_actor01_run_weapon.py。相同原圖重新跑出完全相同武器 SHA256；原圖更換即拒絕。
+- 新 Godot 4.7.2 FSTAActorMotionRig 增加 Body/Weapon 不可為全透明的防呆驗證；RUN FX 可空。專屬 GitHub Actions 原生 + Python mock self-test 成功：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44833193171
+- **驗收界線**：真實 PNG 來源、格式、武器接觸幾何已核對；公開 CI 只驗證 synthetic atlas 的 Godot engine，不代表真正私人素材 GPU 1× 動態渲染通過。A35 F6/F7 的腿部美術問題尚未解除；ART HOLD，M4 NOT RUN。
+- 這輪 PixelLab Animate with Text V3／Skeleton V3 均 NOT RUN；新模型 job NONE，新增費用 0；A52 ATTACK 原始 12 幀保留不動。
+- **下一個大單位**：一次生成或骨架修復 RUN12 完整換腳／原武器整組，接入 Godot 私人 6 PNG，產生真正 1× GPU 動態 QA，再評估 ART Gate，不修零碎單影格。
+
+私人 Drive 素材 / QA（均已 upload + list/readback）：
+- https://drive.google.com/drive/folders/1Di5InlU4yuiFMsMzcHw21YPiqTKLUmeT
+- RUN12 R2 Weapon：https://drive.google.com/file/d/1zSNUKTpGR5FXd8ni1RXtdLmspILHD-cU/view
+- RUN12 R2 FX：https://drive.google.com/file/d/1CpTeXJFvGcZgDG6hy-mLIwUdKNEXrrVG/view
+- 1× 對照：https://drive.google.com/file/d/1y1qXJeLuzaS6dGSOcbDRE5iVHZuBuOzB/view
+- 3× 對照：https://drive.google.com/file/d/1xplRRIJtrTkDUtwiMLzKIK7Tjr4KMBYt/view
+- 合成畫面 QA（非遊戲素材）：https://drive.google.com/file/d/1vuJGkQoBGYALtOh2i06Ci2KlaX_5_PFm/view
+
+---
 Updated: **2026-11-21 Asia/Taipei**. Owner: T-A character/motion branch.
 
 **TARGET:** T-A / ACTOR01, 45° 3/4 battle-view white hair. **STAGE:** M1 real 12-frame candidate + M2 runtime-engineer wiring; M3 blocking artwork remains. **STATUS:** ART_HOLD (NOT VERIFIED_PASS).
