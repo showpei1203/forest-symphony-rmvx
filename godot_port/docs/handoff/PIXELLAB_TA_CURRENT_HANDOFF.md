@@ -1,5 +1,32 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R4 2026-11-21｜真實原始素材 60Hz 連續 Godot 4.7.2 渲染（最新）
+
+**TARGET T-A ACTOR01. M1=complete candidate; M2=isolated real-source full-motion native proof PASS; M3=ART HOLD; M4=NOT RUN.**
+
+### REAL DELTA
+- New Godot actual sequence controller: godot_port/scripts/animation/FSTAActor01ContinuousShowcase.gd . A standalone scene at godot_port/scenes/ta_actor01/TAActor01ContinuousShowcase.tscn allows 12-frame RUN for two complete loops, then preserved original A52 ATTACK12. Three Body/Weapon/FX layers. Source exact private SHA locks. No gameplay HP/MP or battle queue authority mutation, no changes to T-B/T-C/main/VX/A52.
+- Synthetic native Godot 4.7.2 CI, including full RUN x2 → ATTACK, one-shot visual contact at F7 / attack-local 0.630sec, cancel, big delta: **PASS** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44837631706 . Code commit f6136606a50457158139d0bd174d21cd0caf7adf.
+- Actual private owner-source native Godot capture was executed SEPARATELY in isolated cloud using official Godot 4.7.2 and Mesa llvmpipe OpenGL 4.5: **181/181 PNG** 64×64 real rendered frames, 60Hz deterministic stepped 0...3.0sec, both motion frame IDs 0..11 seen. Real six original/candidate private 256×192 PNG inputs SHA verified, no private images uploaded to GitHub.
+- RUN loop x2 → ATTACK at first 60Hz capture t=1.933333sec; ATTACK completes at t=2.983333sec. Original F7 presentation contact emits ONE event exactly 0.630sec into attack; first 60Hz frame observation at global 2.566666sec, tick154. This is one stable single presentation clock, not proof of full live FSBattle queue choreography.
+- True GPU pixels vs original CPU alpha composites: **0 alpha mismatch pixels / 181 frames**, 382 RGB blend differences total (attack FX overlays). Do NOT claim exact RGB equality. User-approved art remains ART HOLD.
+- Exact source SHA: RUN Body fab73bc51109ad0b896333899c82ff80a7f5340d0ee25e4d0f7e94f6fd9f0bfb; RUN Weapon ff3be6c132da2d8ac285ef60db48be195549b155f22ea5ac490c86a85f120eb7; RUN FX ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7; ATTACK Body a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f; ATTACK Weapon 6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b; ATTACK FX 46f02a3c06958a380e8333e86929a69cea7cfd6c7eec55fe616de0b6d9bec73c.
+- Source-locked private capture script: godot_port/tests/capture_ta_actor01_continuous_private.gd. Capture proven at real source, unlike public synthetic CI.
+
+### VERIFIED CLOUD ARTIFACTS
+- Private Drive ZIP **181 native PNG frames + timeline JSON + actual source 60fps MP4 + annotated 4x GIF + QA + Godot logs + reproduction scripts; ZIP CRC PASS**: https://drive.google.com/file/d/1W7WHwgtAGFKaRE2RR_SPdWV4AKf3rOxk/view
+- 60Hz native selected frames with RUN loops & F7 contact at tick 154, owner-private QA: https://drive.google.com/file/d/1LBFpHdDNE7MHVFbXBeFYNEbT_skqIeDv/view
+- Private folder: https://drive.google.com/drive/folders/1Di5InlU4yuiFMsMzcHw21YPiqTKLUmeT . Upload/readback verified. No user PC asset repository.
+
+### GATES / IMPORTANT LIMITATIONS
+- SHA provenance, 12-frame atlas/independent layers, true GPU render 181/181, standalone full-motion timing and once-only F7 0.630sec **PASS**.
+- Formal existing FSBattle ACT action queue control and integrated game battle: **NOT RUN**. The source gameplay branch already contains FSBattleActor01Presenter; read-only observed, deliberately not overwritten to avoid conflict.
+- A35 original RUN F6/F7 alternating boot stance remains **ART HOLD**, four optical-flow inbetween frames do not constitute new model art. User ART acceptance NOT RUN.
+- PixelLab Text v3/Skeleton v3 new job **NOT RUN**, model charge **0 new units**, no fabricated job. M4 second character/motion **NOT RUN**.
+- NEXT MACRO UNIT: genuine PixelLab v3 or Skeleton v3 FULL corrected RUN12 grounded in approved white-haired 45-degree Actor01 and A52 sword; after visual validation, source-based active FSBattle queue hookup and owner ART acceptance. Do not waste loops on individual pixel polish.
+
+---
+
 ## R3 2026-11-21｜私人真實原圖 Godot 4.7.2 Native GPU PROOF（最新）
 
 ### REAL DELTA (not mocked)

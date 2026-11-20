@@ -1,5 +1,16 @@
 # T-A Failure Log / 2026-11-21
 
+## R4 blockers and native results
+
+- TA-04 PRIVATE GPU CONTINUOUS PROOF: **RESOLVED** for standalone scene. Actual original private six atlases in Godot 4.7.2, 181/181 frames continuous 60Hz capture, separate from synthetic CI. Private ZIP: https://drive.google.com/file/d/1W7WHwgtAGFKaRE2RR_SPdWV4AKf3rOxk/view .
+- TA-08 NEW INTEGRATION GAP: Existing official FSBattle real action queue live scene + original actor approach/attack choreography not yet wired from T-A independently; main phase1 branch has a presenter already. **NOT RUN** without touching other's branch.
+- TA-09 NATIVE BLEND DIFFERENCE: Real native 181-frame alpha mismatch = 0; 382 RGB mismatches across attack FX blends and repeated frames. Non-blocking for independent motion timing, record real QA rather than overclaim zero.
+- TA-01 RUN F6/F7 pose + four non-PixelLab optical-flow intermediates: unresolved **ART HOLD**, requires alternate full-run PixelLab/Skeleton v3 model. No microscopic repeated edits.
+- TA-03 PixelLab provider credential/API not accessible; new PixelLab job **NOT RUN**, new cost 0. A52 attack source unchanged, source SHA verified.
+- M4 second separate actor/animation **NOT RUN**. Original 45° identity, run/attack 64px and multi-layer restrictions preserved.
+
+---
+
 ## R3 Native GPU evidence and blocking gates
 
 - TA-04 R1 'no private Godot GPU proof': **RESOLVED for per-frame native GPU rendering**. 24 actual source frames imported and rendered in official Godot 4.7.2; 24/24 PNG generated, EXIT0. **Still NOT RUN: full original private continuous gameplay loop/ATB hit-time integration.** Owner-private QA ZIP https://drive.google.com/file/d/1iNuBTTvC0Zyfs3yHp1Lovobu8vnMU0CF/view

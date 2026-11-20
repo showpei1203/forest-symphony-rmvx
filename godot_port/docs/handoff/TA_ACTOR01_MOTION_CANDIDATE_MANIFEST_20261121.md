@@ -1,5 +1,18 @@
 # T-A｜ACTOR01 RUN12 / ATTACK12 candidate motion manifest
 
+## R4 native full-motion source manifest
+
+- Staged original approved A35 optical-flow candidate RUN Body, A52 sword retarget RUN Weapon and empty RUN FX intentionally, plus three entirely preserved A52 ATTACK original atlas layers.
+- One new continuous Godot scene, independent full RUN12 x2 to ATTACK12 at real Godot source GL rendered 60Hz 181 frames, each frame 64x64, all 12 frame IDs of each motion observed, complete 2.98 simulated seconds.
+- Godot 4.7.2 official ed1daf0bf, OpenGL Mesa llvmpipe isolated runtime, exact six source SHA check. Native simulated 60Hz capture output 181/181, alpha mismatch 0, RGB blend diff total 382; contact once F7 local 0.630 sec, sampled global t=2.566666 sec.
+- Private full 181 native PNG + source 60fps MP4 + annotated GIF + source/Godot manifest + CRC ZIP: https://drive.google.com/file/d/1W7WHwgtAGFKaRE2RR_SPdWV4AKf3rOxk/view
+- Source private QA storyboard: https://drive.google.com/file/d/1LBFpHdDNE7MHVFbXBeFYNEbT_skqIeDv/view
+- Actual code: godot_port/scripts/animation/FSTAActor01ContinuousShowcase.gd, godot_port/scenes/ta_actor01/TAActor01ContinuousShowcase.tscn, godot_port/tests/capture_ta_actor01_continuous_private.gd.
+- Public synthetic regressions Godot 4.7.2 native PASS: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44837631706 .
+- STATUS: real source native continuous PASS, source geometry PASS, actual FS full battle queue NOT RUN, human RUN ART HOLD, new PixelLab v3 NOT RUN, M4 NOT RUN. New PixelLab cost 0.
+
+---
+
 ## R3 actual private GPU visual source proof
 
 - SOURCE: all 6 private 256×192 original/candidate atlases, Body/Weapon/FX independent in true Godot SubViewport 64×64.
