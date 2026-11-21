@@ -1,5 +1,8 @@
 # T-A｜FS 角色戰鬥動畫工廠｜新對話啟動 Prompt
 
+> 2026-11-22 LATEST R11B USER OVERRIDE: use complete official LPC original on user-authorized E, approved ACTOR01 A62 white-hair identity, NO WEAPON, no stretching arms or symbols. Godot 4.7.2 R11B real native 73/73 source frames, 12/12 connected full body, empty Weapon/FX. Full source SHA commit 86a3719ee4a7e2e9fb27c7c152e29a741d3e930a. Still ART HOLD because real LPC only cardinal views and current front-right fusion is not fully hand-painted 45 degree. MUST READ godot_port/docs/authority/FS_TA_R11B_LPC_UNARMED_DIAGONAL_20261122.md. Never use R8/R9 as animation source again.
+
+
 > IMPORTANT R10 USER OVERRIDE 2026-11-21: COMPLETE upstream official LPC source downloaded and verified at E:\LPC_Original_20261121 (explicit user authorization). User rejected R8/R9 elastic limbs and mysterious symbols. Current Actor01 ATTACK task is WEAPONLESS with all Weapon/FX transparent, preserving A62 approved white-haired identity. Source must use authentic full-body LPC poses, and adapt honestly to 45-degree camera since upstream has only four cardinal directions. Read godot_port/docs/authority/FS_TA_R10_FULL_LPC_UNARMED_AUTHORITY_20261121.md. R10 first source study is ART HOLD; Godot R10 native not yet run. Do not add sword or claim animation art success.
 
 
