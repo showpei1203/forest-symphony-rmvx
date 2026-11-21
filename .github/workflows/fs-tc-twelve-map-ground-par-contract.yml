@@ -1,0 +1,44 @@
+name: FS T-C Twelve Maps Ground-first Full-PAR Quality Contract
+on:
+  push:
+    branches: [feat/fs-pixellab-tc-map-20261121]
+    paths:
+      - "godot_port/tc_factory/biomes/fs_validate_ground_complete_par.py"
+      - "godot_port/tc_factory/biomes/test_fs_validate_ground_complete_par.py"
+      - ".github/workflows/fs-tc-twelve-map-ground-par-contract.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fs-tc-twelve-map-contract
+  cancel-in-progress: true
+jobs:
+  source-contract-units:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python pixel source QA library
+        run: python3 -m pip install Pillow==12.0.0
+      - name: Verify synthetic Ground-first and CompletePAR source image contract
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/biomes/test_fs_validate_ground_complete_par.py
+      - name: Review all six biome and twelve formal map IDs from T-C ledger
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("godot_port/tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json")
+          j=json.loads(p.read_text(encoding="utf8"))
+          assert len(j["scenes"])==12
+          assert len({x["biome_id"] for x in j["scenes"]})==6
+          assert len({x["scene_id"] for x in j["scenes"]})==12
+          assert all(x["formal_art_gate"]=="HOLD" for x in j["scenes"])
+          assert j["ground_first_par_all_objects"]=="MANDATORY_FOR_ALL_12"
+          assert j["counts"]["formally_art_sealed"]==0
+          assert j["scenes"][0]["scene_id"]=="FS_01_MAZE"
+          assert j["scenes"][-1]["scene_id"]=="FS_06_VILLAGE"
+          print("PASS: All six official biome pairs and twelve map names; no fabricated ART PASS")
+          PY
