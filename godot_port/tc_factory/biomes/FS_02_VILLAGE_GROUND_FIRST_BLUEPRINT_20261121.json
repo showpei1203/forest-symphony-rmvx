@@ -61,7 +61,7 @@
     "known_issue": "some small standing rocks and frost shrubs on candidate may be non-ground; formal Ground-only art purity unconfirmed"
   },
   "stage_2_full_par": {
-    "status": "NOT_GENERATED",
+    "status": "D4_SOURCE_GENERATED_ALPHA_TECH_CANDIDATE_ART_HOLD",
     "rule": "INCLUDE ALL non-ground whole objects regardless of whether they would block actor; no actor occlusion extraction",
     "palette_style": "same background snow and icy pale blue, cool silver-gray wood/stone and restrained amber lantern highlights",
     "complete_object_families": [
@@ -83,18 +83,51 @@
       "do not regenerate Ground; do not use original PNG as full image background",
       "no colliders or actor occlusion subset at authoring"
     ],
-    "planned_placement": "two snow lodges adjacent to the crossroads while keeping central walking plaza clear; full snowy conifers mostly on periphery; all complete objects inside map except natural forest continuation beyond borders"
+    "planned_placement": "two snow lodges adjacent to the crossroads while keeping central walking plaza clear; full snowy conifers mostly on periphery; all complete objects inside map except natural forest continuation beyond borders",
+    "actual_source_size": [
+      1473,
+      1068
+    ],
+    "crop_original_xyxy": [
+      95,
+      71,
+      1375,
+      999
+    ],
+    "raw_source_SHA256": "f8799684c508c9f4bb8047e21eee98cecfe246b50d3397521325e26da1636895",
+    "raw_crop_SHA256": "3717e0a4076d788befa1b2afb85f786b2abdc99e4a6c4fa8792e4d3024aa257a",
+    "alpha_clean_candidate_SHA256": "44aee78ef02329018237e9750ee22012c08cea443ae4bf6f977bfc8af36238f3",
+    "actual_non_ground_families_seen": [
+      "snow-covered fir trees",
+      "three complete differentiated snow cottages",
+      "freestanding lantern posts",
+      "snow-fences",
+      "raised stone and ice cliffs",
+      "snow village sign and decoration",
+      "wood crates and banners"
+    ],
+    "private_Drive": {
+      "source_zip": "https://drive.google.com/file/d/1ZNxOAya0UZe8y8DC1KEfhOCJXDCSo9Uh/view",
+      "raw_par": "https://drive.google.com/file/d/13p62_ZjVAS7FvZKzBj1XydCwqrKLmULn/view",
+      "clean_par": "https://drive.google.com/file/d/1-H6ZO1eRhRpy27DdJYwh35ywIq-0l5ym/view",
+      "composite": "https://drive.google.com/file/d/1C3pw0Xn5BTGCTNbIuoPZ6S-VNpxPulNw/view"
+    },
+    "failures": [
+      "190971 source cropped PAR pixels alpha=1..8 are colored transparency artifacts",
+      "content clamped at world crop boundaries: high alpha at top=731,bottom=357,left=593,right=480 (no complete owner guarantee)",
+      "no validated individual-object manifest or actual Godot rendering; PENDING"
+    ]
   },
   "qa_gates": {
     "stage_1_source_png_dimensions": "PASS",
     "stage_1_32px_grid_dimensions": "PASS",
     "stage_1_visual_pure_ground": "HOLD",
-    "stage_2_par_png_generated": "NOT_RUN_FAILED_IMAGEGEN_INFOGRAPHIC_OUTPUT",
-    "stage_2_par_alpha": "NOT_RUN",
-    "stage_2_par_all_objects": "NOT_RUN",
-    "stage_3_alpha_composite": "NOT_RUN",
+    "stage_2_par_png_generated": "PASS_RGBA_SOURCE",
+    "stage_2_par_alpha": "RAW_ALPHA_CONTAMINATION_CLEAN_CANDIDATE",
+    "stage_2_par_all_objects": "CATEGORY_VISUAL_CANDIDATE_NOT_MANIFEST_COMPLETE",
+    "stage_3_alpha_composite": "PASS_PILLOW_REAL_PIXELS",
     "stage_4_Godot_4_7_2_native": "NOT_RUN",
-    "formal_art_gate": "HOLD"
+    "formal_art_gate": "HOLD_BOUNDARY_AND_ALPHA"
   },
   "private_drive_QA_zip": "https://drive.google.com/file/d/1d4LoyX3FSYRA9iy9aCU5WJ_N0RYz8XOY/view"
 }
