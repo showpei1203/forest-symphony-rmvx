@@ -57,3 +57,10 @@ P0_STORAGE: 雲端 WRITE→READBACK 與 PC 暫存狀態
 
 ## 透明限制
 三個獨立聊天視窗不會自動互相看見尚未雲端保存的內容。本聊天不會在使用者離開後自行持續執行或監測。只有總控同步時主動讀 GitHub/Drive/Linear，或另行經明確安排的排程機制，才能看到更新。
+
+## 固定比較基準與查核誠信（2026-11-21 同步補充）
+- 三個實驗分支的共同**固定起點**是 GitHub commit `4a2a50e3aacb3115dbb3418b6e229b8a34c430d0`。未來計算「新增 commits／檔案變動」必須用此 SHA 與各分支比較，而不是持續更新的總控 research 分支，否則會產生虛假的 behind 數字。
+- 每次「總控同步」讀取三個分支**當下 HEAD commit SHA**與 CURRENT_HANDOFF，並保存 SHA／新增檔案／Drive 真實 metadata／Linear 讀取時間。
+- Drive metadata READBACK 只確認 ID、大小、權限與存在，不等於直接重新校驗私人 ZIP bytes／PNG 色彩或人工 ART Gate；施工線提供的 SHA/CRC 是聲明證據，需要另做獨立 byte QA 才可稱總控獨立證實。
+- 有 GitHub Actions native PASS 只證明該 run 的指定 revision、測試輸入和 renderer 在該環境成功。Mesa llvmpipe 是軟體 OpenGL，不得說成使用者 RX 6700 XT 本地 GPU。
+- 若任何 Handoff 承認 Windows %TEMP% 或其他 PC 暫存，應記錄是否使用用戶本人 PC／事前授權／清理與驗證。未核實前標 `P0_TEMP_CLEANUP_UNVERIFIED`，不直接臆測清除或違規。
