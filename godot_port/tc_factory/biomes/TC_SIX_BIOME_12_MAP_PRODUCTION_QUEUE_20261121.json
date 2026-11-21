@@ -1,0 +1,311 @@
+{
+  "version": "T_C_SIX_BIOME_12_MAP_STATUS_v1_20261121",
+  "authority": "Existing FS 2026-11-14 Drive World Bible and 2026-11-16 Active Master; T-C branch tracker only; DO NOT overwrite canonical world IDs",
+  "ground_first_par_all_objects": "MANDATORY_FOR_ALL_12",
+  "not_a_canonical_scene_catalog": true,
+  "source_refs": {
+    "world_plan": "https://docs.google.com/document/d/1SjVPK3J5exwp0fC3bRMHjoWo2vne_pck/edit",
+    "world_active_master": "https://docs.google.com/document/d/11SzPGsNakKL7U0Gzo0LFN806gJU_82sP/edit",
+    "sop": "https://docs.google.com/document/d/1zWXO6Z8SHobSK2jfI-M6-p6JDb81BniIH_4UCLiJhIw/edit"
+  },
+  "counts": {
+    "terrain_families": 6,
+    "scenes": 12,
+    "formally_art_sealed": 0,
+    "ground_source_generated_this_round": 1
+  },
+  "scenes": [
+    {
+      "scene_id": "FS_01_MAZE",
+      "scene_name": "幽葉迴廊",
+      "biome_id": "VERDANT_ELF_FOREST",
+      "biome_name": "蒼翠精靈林",
+      "role": "MAZE",
+      "stage": "R12_EXISTING_NATIVE_SOURCE_TECH_PASS_FORMAL_ART_HOLD",
+      "ground_material_family": [
+        "苔毯",
+        "自然土徑",
+        "蕨類",
+        "卵石"
+      ],
+      "complete_par_family": [
+        "巨橡",
+        "白樺",
+        "木石屋",
+        "路燈",
+        "木橋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "HISTORIC_R12_ONLY",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_01_VILLAGE",
+      "scene_name": "苔光村",
+      "biome_id": "VERDANT_ELF_FOREST",
+      "biome_name": "蒼翠精靈林",
+      "role": "VILLAGE",
+      "stage": "D2_GROUND_PAR_46x33_COMPOSITE_TECH_PASS_FORMAL_ART_HOLD",
+      "ground_material_family": [
+        "苔毯",
+        "自然土徑",
+        "蕨類",
+        "卵石"
+      ],
+      "complete_par_family": [
+        "巨橡",
+        "白樺",
+        "木石屋",
+        "路燈",
+        "木橋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_02_MAZE",
+      "scene_name": "冰脊迷谷",
+      "biome_id": "FROST_SNOWFIELD",
+      "biome_name": "凜霜雪原",
+      "role": "MAZE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "積雪",
+        "凍土",
+        "碎冰",
+        "冷色岩面"
+      ],
+      "complete_par_family": [
+        "冷杉",
+        "冰柱",
+        "覆雪房屋",
+        "暖爐煙囪"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_02_VILLAGE",
+      "scene_name": "霜燈聚落",
+      "biome_id": "FROST_SNOWFIELD",
+      "biome_name": "凜霜雪原",
+      "role": "VILLAGE",
+      "stage": "D3_GROUND_SOURCE_CANDIDATE_1280x928_PAR_NOT_GENERATED_ART_HOLD",
+      "ground_material_family": [
+        "積雪",
+        "凍土",
+        "碎冰",
+        "冷色岩面"
+      ],
+      "complete_par_family": [
+        "冷杉",
+        "冰柱",
+        "覆雪房屋",
+        "暖爐煙囪"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD",
+      "source": {
+        "Ground_Drive": "https://drive.google.com/file/d/1YQt0dkI2AR9VFYMMrFYP3h4KUPJ_ka9T/view",
+        "full_source_QA_Drive": "https://drive.google.com/file/d/1d4LoyX3FSYRA9iy9aCU5WJ_N0RYz8XOY/view",
+        "ground_source_sha256": "475f7883c1fe23245198198029da3ac37dc479176e3dc8ddc8a81aba4054f5ea",
+        "target_world_grid": [
+          40,
+          29
+        ],
+        "source_original_size": [
+          1470,
+          1070
+        ],
+        "crop_original_xyxy": [
+          95,
+          71,
+          1375,
+          999
+        ],
+        "ground_image_size": [
+          1280,
+          928
+        ],
+        "source_type": "new AI Ground-only candidate; PAR NULL",
+        "full_PAR": null,
+        "Ground_visual_purity": "ART_HOLD_POTENTIAL_STANDING_ROCK_AND_SHRUB_CONTAMINATION"
+      }
+    },
+    {
+      "scene_id": "FS_03_MAZE",
+      "scene_name": "風沙裂谷",
+      "biome_id": "WIND_ERODED_GOLD_SANDS",
+      "biome_name": "風蝕金砂",
+      "role": "MAZE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "沙丘",
+        "砂岩",
+        "乾涸河道",
+        "礫地"
+      ],
+      "complete_par_family": [
+        "岩柱",
+        "棕櫚",
+        "砂岩民居",
+        "布棚"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_03_VILLAGE",
+      "scene_name": "星井綠洲",
+      "biome_id": "WIND_ERODED_GOLD_SANDS",
+      "biome_name": "風蝕金砂",
+      "role": "VILLAGE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "沙丘",
+        "砂岩",
+        "乾涸河道",
+        "礫地"
+      ],
+      "complete_par_family": [
+        "岩柱",
+        "棕櫚",
+        "砂岩民居",
+        "布棚"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_04_MAZE",
+      "scene_name": "熔脈裂橋",
+      "biome_id": "CRIMSON_VOLCANO",
+      "biome_name": "赤焰火山",
+      "role": "MAZE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "玄武岩",
+        "火山灰",
+        "熔岩岸",
+        "礦渣"
+      ],
+      "complete_par_family": [
+        "熔爐",
+        "斷崖岩柱",
+        "鐵橋",
+        "工坊屋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_04_VILLAGE",
+      "scene_name": "灰鑄工坊城",
+      "biome_id": "CRIMSON_VOLCANO",
+      "biome_name": "赤焰火山",
+      "role": "VILLAGE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "玄武岩",
+        "火山灰",
+        "熔岩岸",
+        "礦渣"
+      ],
+      "complete_par_family": [
+        "熔爐",
+        "斷崖岩柱",
+        "鐵橋",
+        "工坊屋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_05_MAZE",
+      "scene_name": "泥潭迷水",
+      "biome_id": "MISTY_MARSH",
+      "biome_name": "幽霧水澤",
+      "role": "MAZE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "泥炭",
+        "淺水",
+        "木棧",
+        "浮萍"
+      ],
+      "complete_par_family": [
+        "紅樹根",
+        "蘆葦",
+        "木船埠",
+        "高腳屋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_05_VILLAGE",
+      "scene_name": "蘆燈水上村",
+      "biome_id": "MISTY_MARSH",
+      "biome_name": "幽霧水澤",
+      "role": "VILLAGE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "泥炭",
+        "淺水",
+        "木棧",
+        "浮萍"
+      ],
+      "complete_par_family": [
+        "紅樹根",
+        "蘆葦",
+        "木船埠",
+        "高腳屋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_06_MAZE",
+      "scene_name": "星盤斷空",
+      "biome_id": "STARRY_CRYSTAL_ISLES",
+      "biome_name": "星晶浮島",
+      "role": "MAZE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "碎晶",
+        "白石",
+        "星紋",
+        "浮空草坪"
+      ],
+      "complete_par_family": [
+        "晶簇",
+        "觀測塔",
+        "石橋",
+        "晶石圓頂屋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    },
+    {
+      "scene_id": "FS_06_VILLAGE",
+      "scene_name": "虹晶臺地村",
+      "biome_id": "STARRY_CRYSTAL_ISLES",
+      "biome_name": "星晶浮島",
+      "role": "VILLAGE",
+      "stage": "PLANNED_NOT_GENERATED",
+      "ground_material_family": [
+        "碎晶",
+        "白石",
+        "星紋",
+        "浮空草坪"
+      ],
+      "complete_par_family": [
+        "晶簇",
+        "觀測塔",
+        "石橋",
+        "晶石圓頂屋"
+      ],
+      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "formal_art_gate": "HOLD"
+    }
+  ]
+}
