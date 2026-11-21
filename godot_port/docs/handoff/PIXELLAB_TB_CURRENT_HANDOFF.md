@@ -123,3 +123,12 @@
 - [Private 72-entry ZIP](https://drive.google.com/file/d/1LhXel6vpyKAGxVb0BMTIdIKoPIueBGxy/view) CRC PASS, SHA256 7e944f9f6b313ab8e6797849f3c2276ed5375c62abc4618fe1f820f1eb207003. [11-frame generated PixelLab sheet](https://drive.google.com/file/d/1ylrrncc6pPf58NpM9NSZhcWXvnTQ6XUl/view), [actual Godot 11-frame native contact](https://drive.google.com/file/d/1LD7eFRdglOx2JoU1TIAFOUWBWHbQ1dkS/view), [Native slow GIF](https://drive.google.com/file/d/1ljDFksnS-cyVNWcNZ4CefGATrpb3QQth/view).
 - **NEXT COMPLETE UNIT**: keep V6 PixelLab body/legs; author 3 truly open-mouth F4/F5/F6 keyposes using masked local inpainting or hand-drawn separate jaw hinge (not global warp), then Godot full 11-native and 45° human Art Gate. Once whole first chain passes, test second unlike specimen; log per job costs.
 - R6 images and 11 viewport screenshots are PRIVATE Drive only; scripts and handoffs GitHub T-B branch only; no permanent asset repository on user's PC. T-A/T-C/main untouched.
+
+ 
+---
+## 2026-11-21 User acceptance supersedes earlier R6 ART HOLD for PMD0001 Attack
+- Owner explicitly reviewed and said: **「這個攻擊動畫很好，繼續」**. Treat **PMD0001 ATTACK V6 = USER_ART_ACCEPTED** at the quality level shown in [original V6 native slow GIF](https://drive.google.com/file/d/1ljDFksnS-cyVNWcNZ4CefGATrpb3QQth/view). This is user's creative approval, not an assertion that every pixel is technically perfect.
+- Preserve the original 11-frame PixelLab V6 exact file and all cost/source/job records; **DO NOT reroll F4/F5/F6 just to open the jaw wider**. Earlier F6 two-pixel island is NON_BLOCKING; original F0/F10 source difference is recorded, not a reason for additional rerolls. Do not overwrite user-approved V6.
+- Broader first-family approval still distinguishes evolution static three-stage, Idle provider and actual 45-degree battle camera; only ATTACK V6 user accepted.
+- NEXT: complete the release registry and full three-stage+Idle+Attack preview of first family, then use P1E MIT-provenance independent non-frog bat as B2 controlled style-transfer test, not another frog or recolor. Keep new B2 ID separate from PMD0001-3 until its original art and species are approved.
+- This user-approved ART milestone supersedes the earlier ART HOLD comments specifically for ATTACK. All historical Failure Logs remain immutable.
