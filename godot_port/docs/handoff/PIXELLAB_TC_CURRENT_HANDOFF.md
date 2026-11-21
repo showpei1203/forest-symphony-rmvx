@@ -1,3 +1,21 @@
+# T-C CURRENT｜D5 冰脊迷谷 Ground-first 新雪谷來源｜2026-11-22（台北）
+
+**進度真實：本輪成功新生成 FS_02_MAZE 真雪谷 Ground 地表，原圖及不縮放 46×33 候選已存私人 Drive；正式 80×58 未達標，CompletePAR NOT_GENERATED，Godot 4.7.2 Native NOT_RUN，ART 0/12 HOLD。** 此段優先於下方歷史 D4/D3/C8；使用者最新 Ground first → ALL non-ground Complete PAR 規則不可再偏離。
+
+## D5 已完成（真 PNG，不是進度示意圖）
+
+- `FS_02_MAZE 冰脊迷谷` 地形凜霜雪原，正式目標 **80×58 @32px = 2560×1856**。新的 Ground-only 真生成圖 1473×1068 RGB **SHA256 `140dfdc865a7ed299e5bbc8ec8045b2c865ff16ccdc1b7125aa9f0ef6d27071c`**，純雪路、彎曲分支、凍湖與冰裂，未見村莊房屋、樹木、路燈、中央噴泉等非地表物件。這次改正前兩次誤生成「雪村 Master」失敗。
+- 只裁 `(0,6,1472,1062)` 原像素成 **1472×1056／46×33 格**可檢視候選，零重採樣，SHA256 `3b5dd011b38213ff5d6f2fe82c2d2d5dcae26204f0f64d2a98ebc05772188b4c`。**不是正式 80×58 來源；不能 nearest 放大稱作真正 32px 美術。**
+- 三份 Google Drive 私人來源已 **WRITE→READBACK metadata**，均 `shared=false`／owner-only：[原始 Ground 1473×1068](https://drive.google.com/file/d/1_pjneuKesT8_5EELIn2nX9xuFW4YsTia/view)、[46×33 Ground 候選](https://drive.google.com/file/d/17mUgD3av2eNfUJPYX01gOUfGzazfK1sT/view)、[原圖＋Grid QA＋Failure Log 全封包](https://drive.google.com/file/d/1hLXgbMYBG0lawzZwTOb_Iv4i8Ju3GtsS/view)。ZIP **9,050,368 bytes／5 entries／CRC PASS／SHA256 `ff87c0a1443de3cae930886a8351ec301b8529376bd57a81fd9592a6198b7199`**。GitHub 不存私有 PNG，不操作使用者 PC。
+- 詳細 [D5 source QA 和後續完整施工](TC_D5_FS_02_MAZE_GROUND_FIRST_SOURCE_20261122.md)。已更新 [T-C 12-map 状態表](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json)：FS_02_MAZE `D5_GROUND_46x33_CANDIDATE`，原正式 80×58 `NOT_MET`，PAR null，正式 ART `HOLD`。
+- **D5 新 PAR 嘗試兩次均失敗**：圖像生成器輸出「標記 QA PASS/Drive 上傳完成」的圖文資訊圖，不是透明 RGBA 遊戲素材，不能當真正 PAR；無任何新 FS_02_MAZE 完整透明 PAR、無同圖合成，勿偽造 PASS。這次 D5 不執行角色遮蔽／碰撞分解，符合使用者完整 Ground＋全部非地表 PAR 生產規範。
+
+## 下一個宏觀施工單位
+
+優先將雪谷完整 Ground **原生產出到 2560×1856／80×58 格**，能保留蜿蜒雪路與分岔，不以 46×33 比例拉大假冒；再以同一來源／Blueprint 真正生成透明 ALL_NON_GROUND PAR（冷杉完整樹、岩柱、冰柱、巨石、棧橋等），不挑遮人素材。不再產生 QA 資訊圖，不再拼裝個別樹木。QA 只在真 Ground 與真 PAR 存在後進行圖層配對、32px 格對齊、Alpha、Godot 4.7.2 1×，最後人工 ART Gate。正式目前 0/12 地圖美術封版。
+
+---
+
 # T-C CURRENT｜D4 雪原霜燈聚落完整 Ground＋PAR；十二地圖共用 Gate｜2026-11-21
 
 **真實新增：FS_02_VILLAGE D4 新 PAR 成功單獨生成、與 D3 Ground 獨立合成，來源完整私人 Drive 保存，12 圖 QA 共用程式 + GitHub Actions PASS；正式藝術 0/12 仍 HOLD。FS_02_MAZE Ground 新生成兩次不合規已拒收。**
