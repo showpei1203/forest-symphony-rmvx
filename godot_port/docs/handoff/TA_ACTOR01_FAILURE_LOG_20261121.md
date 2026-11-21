@@ -1,5 +1,15 @@
 # T-A Failure Log / 2026-11-21
 
+
+## R5B follow-up (latest 2026-11-21)
+- TA-10 / **ART BLOCKER / R5a REJECT**: R5a reconstruction discarded original A35 suspect F6/F7 and retained F0-F5, but direct F5->F0 optical loop produced **86 silhouette-alpha seam mismatches** vs R4 older 20. Exactly **1 whole-motion strategy attempt**, then switched to A62 foot-neutral bridge (R5B). R5a was not sold as an approved result.
+- TA-11 / **ART HOLD / R5B candidate**: Source-locked, 12 unique poses (6 authentic PixelLab F0-F5 + 1 approved A62 idle + 5 non-model optical transitions), all 12 weapon overlays physically contact Body and are not cropped. New seam **62 alpha mismatches**: better than R5a, still worse than old 20; A62 transition may cause an unnatural stopped beat. **No claim of motion-art PASS or full model-created RUN12**. Do not continue optical-loop micro-tuning indefinitely; a real PixelLab / skeleton model approach is next.
+- TA-12 / **NATIVE R5B PASS**: Actual owner-private six sheets rendered 181/181 frames using official Godot 4.7.2 Mesa OpenGL in isolated cloud. RUN native vs source composited image **0 RGBA differences** (12 frames); ATTACK **0 alpha mismatches and 59 RGB overlap/blend differences** (12 frames). 24 unique native (motion, frame) combinations. Public CI synthetic source SHA lock run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44872901830 . Native ZIP https://drive.google.com/file/d/1iGvTqTxRpyHY--TgXdAoeRt5iOHvNpAq/view.
+- TA-03 PixelLab API **NOT CONNECTED**, new job NOT RUN, new charges 0. TA-08 actual live FSBattle R5B character+ACT state bridge NOT RUN. M4 second different actor/action NOT RUN.
+- Most important distinction: **new 181 native frames can make an imperfect gait clearer, not automatically make it good**. Preserve ART HOLD and do not merge into accepted A52.
+
+---
+
 ## R4 blockers and native results
 
 - TA-04 PRIVATE GPU CONTINUOUS PROOF: **RESOLVED** for standalone scene. Actual original private six atlases in Godot 4.7.2, 181/181 frames continuous 60Hz capture, separate from synthetic CI. Private ZIP: https://drive.google.com/file/d/1W7WHwgtAGFKaRE2RR_SPdWV4AKf3rOxk/view .

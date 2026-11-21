@@ -1,5 +1,19 @@
 # T-A｜ACTOR01 RUN12 / ATTACK12 candidate motion manifest
 
+
+## R5B private owner source complete 12-frame gait candidate (2026-11-21)
+
+- **Candidate R5B is NOT approved**, does NOT replace R4, and is NOT a fresh PixelLab model generation. A35 original F6/F7 are excluded; uses A35 real original F0,F1,F2,F3,F4,F5 + A62 approved IDLE neutral bridge + 5 source-color optical frames. R5a direct-loop method REJECTED (alpha seam=86). R5B alpha seam=62 vs older R4=20 => ART HOLD.
+- New Body256×192 12 unique poses SHA256 122f306454157084115b8348d3c4b6af7aceadbe096b64a3bd28557e5ea34027.
+- New Weapon256×192 A52 original rigid per-frame retarget SHA256 c829788d1ffe309488a9be6f9d8d937932b5b9fb82d89a12e192770a82dd68cd.
+- New RUN FX empty by design SHA256 ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7.
+- Locked A35, A62 and A52 source hashes documented in latest PIXELLAB_TA_CURRENT_HANDOFF.md.
+- Owner-private true Godot 4.7.2 181 frame 60 Hz real native QA ZIP https://drive.google.com/file/d/1iGvTqTxRpyHY--TgXdAoeRt5iOHvNpAq/view and 24-frame 4× storyboard https://drive.google.com/file/d/1DTlmHDumz1EpPmhQkkYPEEfAZvGWGL0y/view.
+- New code generator godot_port/tools/ta_actor01_run_r5b.py, private GPU harness godot_port/tests/capture_ta_actor01_r5b_private.gd. Public synthetic CI SHA guard https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44872901830 ; verify final conclusion independently.
+- PixelLab Text v3, Skeleton v3 NOT RUN, job NONE, cost 0. A52 attack 12 remains EXACT; no in-game battle queue integration or human ART PASS claimed.
+
+---
+
 ## R4 native full-motion source manifest
 
 - Staged original approved A35 optical-flow candidate RUN Body, A52 sword retarget RUN Weapon and empty RUN FX intentionally, plus three entirely preserved A52 ATTACK original atlas layers.

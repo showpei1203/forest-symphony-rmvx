@@ -1,5 +1,42 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+
+## R5B｜2026-11-21｜完整 RUN12 原圖重編＋A62 中立步態橋接＋181/181 真 Godot 4.7.2 GPU（目前最新）
+
+**TARGET:** T-A ACTOR01. **M1:** New full run candidate R5B created and separately preserved. **M2:** Standalone owner-private R5B 60Hz real-source GPU proof PASS. **M3:** ART HOLD; natural gait and in-game FSBattle remain NOT RUN. **M4:** Second different character/action NOT RUN.
+
+### REAL delta since R4
+1. Examined actual original A35 8-frame source: A35 F6/F7 had earlier ART HOLD with exaggerated stride. **R5a** regenerated all 12 by retaining authentic F0-F5 + 6 code optical frames, but direct F5→F0 transition had **86 alpha silhouette difference pixels**, worse than R4 original seam **20**. R5a was **REJECTED as a gait loop**, not promoted.
+2. Changed the **complete-loop strategy** to **R5B**: 6 UNMODIFIED A35 original real PixelLab poses F0..F5 + 1 original approved A62 IDLE neutral in the foot-switch portion + 5 CV2 nearest-source-color algorithmic in-betweens. Output Body 256×192 RGBA 12 UNIQUE poses, weapon from original A52 F5 12 rigid hand-targeted original blade (independent layer), RUN FX empty by design. **Still not new PixelLab creation**. R5B seam alpha silhouette delta **62** vs original R4 **20**, so its continuity isn't approved! There may be an unnatural standstill beat around A62; ART HOLD.
+3. Original A52 ATTACK12 six private inputs preserved SHA exact. New self-contained deterministic source-locked rebuild tool: godot_port/tools/ta_actor01_run_r5b.py. Anti-source-swap SHA tests, 12 independent frames. R5B real native GPU capture script: godot_port/tests/capture_ta_actor01_r5b_private.gd. These T-A-only code files and CI trigger added without modifying main, phase1 gameplay, T-B or T-C.
+4. Actual owner-private **Godot 4.7.2 stable official** + Xvfb Mesa llvmpipe GL compatibility rendered **181/181 native 64×64 PNG frames** with R5B RUN x2 followed by unchanged A52 ATTACK. 24/24 distinct (motion,frame) pairs. Owner-source native RUN GPU vs Pillow source composition **0 RGBA pixel mismatches** across 12 unique frames; ATTACK **0 alpha pixel mismatches** and **59 RGB composite mismatch pixels** across 5 of its 12 unique frames, matching R3 known FX blending. This proves R5B renderability; time sequencing was **standalone source-based playback**, NOT the actual FSBattle live ACT queue.
+5. Engine CI: link to current workflow run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44872901830 ; **check its actual conclusion before claiming CI PASS**. The owner's original private GPU capture was independently executed, EXIT0, not public CI. Do not publish original PNGs in public GitHub.
+
+### SOURCE SHA / MANIFEST
+- A35 RUN8 original PixelLab: ec0c7a59fb5983f13b1b3385323218edf0e77c23890db074c18c6e114e74408b
+- A62 approved idle (bridge): 70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e
+- A52 original sword: 6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b
+- R5B new Body 12 frames: 122f306454157084115b8348d3c4b6af7aceadbe096b64a3bd28557e5ea34027
+- R5B new Weapon 12 frames: c829788d1ffe309488a9be6f9d8d937932b5b9fb82d89a12e192770a82dd68cd
+- R5B RUN FX transparent by intentional design: ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7
+- A52 attack Body/Weapon/FX source unchanged from R4. Official build uses source PixelLab generations from historical A35 and A52; this round new PixelLab Animate Text v3 / Skeleton v3 **NOT RUN**. New paid job NONE, cost 0.
+
+### PRIVATE owner-cloud artifacts, upload + folder readback verified
+- R5B original PNG Body: https://drive.google.com/file/d/1ftppVAF6LGb-0R9u0AR1qqXbma9M_muw/view
+- R5B original PNG Weapon: https://drive.google.com/file/d/11kEvmrDbMe__OncpMdXx7GNh7uJdOVvO/view
+- R5B 24-frame native 4× PNG storyboard: https://drive.google.com/file/d/1DTlmHDumz1EpPmhQkkYPEEfAZvGWGL0y/view
+- R5B **full actual QA ZIP** (193 entries, 181 GPU frames + 60fps MP4 + 30fps GIF + logs + standalone source code + SHA manifest, CRC PASS): https://drive.google.com/file/d/1iGvTqTxRpyHY--TgXdAoeRt5iOHvNpAq/view . Local ZIP SHA256 1e1d5caacfd1afc7ddd119e134017e288c26ce1d4299e76d6cf46a9877822651 .
+- Folder readback: https://drive.google.com/drive/folders/1Di5InlU4yuiFMsMzcHw21YPiqTKLUmeT . Original, approved A52 assets are retained in original private Drive locations. No user PC project or file touched.
+
+### SEPARATE QA GATES and NEXT MACRO
+- **SOURCE SHA PASS**; 12 unique frames and separate Body/Weapon/FX, 256×192 dimensions PASS.
+- **Standalone private owner-source Godot 4.7.2 GPU PASS 181/181**, with nonzero ATTACK FX RGB blend differences transparently recorded.
+- **ART HOLD**: the new complete-loop strategy replaces bad A35 F6/F7 but R5B neutral bridging may stop running and has 62 silhouette seam pixels, so it does NOT count as a corrected professionally approved RUN12. PixelLab generation API not connected, no fresh model-backed 12-frame run created. The user's final visual approval NOT RUN.
+- **Actual Godot FSBattle ACT queue + this new R5B** NOT RUN, do not conflate standalone playback and battle integration.
+- **NEXT_MACRO_UNIT:** stop source-image optical-flow redesign now. Using a connected, credentialed PixelLab Animate Text v3/Skeleton v3 route, make a genuine independent 12-frame left-right alternating cycle from approved A62, preserving identity, separate original A52 sword and 45° angle; one whole candidate -> Godot source GPU native -> final human ART gate. If no PixelLab provider available, mark the blocker, do not falsely declare new generation or endlessly repeat mid-frame arithmetic.
+
+---
+
 ## R4 2026-11-21｜真實原始素材 60Hz 連續 Godot 4.7.2 渲染（最新）
 
 **TARGET T-A ACTOR01. M1=complete candidate; M2=isolated real-source full-motion native proof PASS; M3=ART HOLD; M4=NOT RUN.**
