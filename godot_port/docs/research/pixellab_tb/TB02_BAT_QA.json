@@ -1,0 +1,203 @@
+{
+  "schema": "fs-tb02-bat-technical-qa-v1",
+  "source_id": "TB02_LEAF_BAT",
+  "engine": "Godot 4.7.2",
+  "results": {
+    "stage1_dims": {
+      "pass": true,
+      "details": {
+        "expected": [
+          96,
+          96
+        ],
+        "actual": [
+          96,
+          96
+        ]
+      }
+    },
+    "stage1_nonempty": {
+      "pass": true,
+      "details": {
+        "visible_pixels": 2707,
+        "bbox": [
+          1,
+          19,
+          95,
+          77
+        ]
+      }
+    },
+    "stage2_dims": {
+      "pass": true,
+      "details": {
+        "expected": [
+          128,
+          128
+        ],
+        "actual": [
+          128,
+          128
+        ]
+      }
+    },
+    "stage2_nonempty": {
+      "pass": true,
+      "details": {
+        "visible_pixels": 5374,
+        "bbox": [
+          1,
+          19,
+          127,
+          103
+        ]
+      }
+    },
+    "stage3_dims": {
+      "pass": true,
+      "details": {
+        "expected": [
+          160,
+          160
+        ],
+        "actual": [
+          160,
+          160
+        ]
+      }
+    },
+    "stage3_nonempty": {
+      "pass": true,
+      "details": {
+        "visible_pixels": 8841,
+        "bbox": [
+          0,
+          10,
+          159,
+          130
+        ]
+      }
+    },
+    "stage1_2_morphology": {
+      "pass": true,
+      "details": {
+        "silhouette_iou": 0.46661,
+        "threshold": 0.75,
+        "opaque_area_ratio": 1.9852
+      }
+    },
+    "stage2_3_morphology": {
+      "pass": true,
+      "details": {
+        "silhouette_iou": 0.52817,
+        "threshold": 0.75,
+        "opaque_area_ratio": 1.6451
+      }
+    },
+    "idle_atlas_dimensions": {
+      "pass": true,
+      "details": {
+        "actual": [
+          384,
+          192
+        ],
+        "expected": [
+          384,
+          192
+        ]
+      }
+    },
+    "idle_distinct_frames": {
+      "pass": true,
+      "details": {
+        "expected": 8,
+        "distinct": 8
+      }
+    },
+    "idle_nonempty_frames": {
+      "pass": true,
+      "details": {
+        "nonempty": 8
+      }
+    },
+    "attack_atlas_dimensions": {
+      "pass": true,
+      "details": {
+        "actual": [
+          512,
+          384
+        ],
+        "expected": [
+          512,
+          384
+        ]
+      }
+    },
+    "attack_distinct_frames": {
+      "pass": true,
+      "details": {
+        "expected": 11,
+        "distinct": 11
+      }
+    },
+    "attack_nonempty_frames": {
+      "pass": true,
+      "details": {
+        "nonempty": 11
+      }
+    },
+    "event_compatibility": {
+      "pass": true,
+      "details": {
+        "event_indices": [
+          2,
+          5,
+          7
+        ]
+      }
+    },
+    "documented_cost": {
+      "pass": true,
+      "details": {
+        "sum": 22.0,
+        "declared": 22.0
+      }
+    }
+  },
+  "warnings": [
+    {
+      "kind": "STAGE_EDGE_TOUCH",
+      "stage": 3,
+      "pixels": 2
+    }
+  ],
+  "features": {
+    "idle_edge_contact_by_frame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "attack_edge_contact_by_frame": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "checked_total": 16,
+  "passed_total": 16,
+  "technical_pass": true,
+  "art_approved": false
+}

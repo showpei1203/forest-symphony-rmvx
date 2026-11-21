@@ -1,0 +1,96 @@
+{
+  "schema": "fs-tb-factory-second-specimen-r7-20261121",
+  "family": "TB02_LEAF_BAT",
+  "species": "leaf-wing forest bat, no frog anatomy",
+  "status": {
+    "technical": "PASS",
+    "art": "PENDING_USER_REVIEW",
+    "attacks_clip": false,
+    "first_family_PMD0001_attack_v6": "USER_ART_ACCEPTED"
+  },
+  "first_family_godot_retest": "PASS",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "native_capture": {
+    "stages": 3,
+    "idle_frames": 8,
+    "attack_frames": 11,
+    "renderer": "OpenGL Compatibility Mesa llvmpipe, in isolated Linux container",
+    "hit_event": "F5 exact-once, F2 Rush F7 Return"
+  },
+  "sheets": {
+    "idle": "384x192 / 8 frames 96x96",
+    "attack": "512x384 / 11 frames 128x128, padded from exact Stage1"
+  },
+  "provider_jobs": [
+    {
+      "stage": "young+4 candidates",
+      "provider": "generate-with-style-v2",
+      "job": "2f226aea-61d0-4db2-a49c-ab617d6b1c1b",
+      "generations": 10.0,
+      "result": "CANDIDATE"
+    },
+    {
+      "stage": "middle attempt1",
+      "provider": "edit-image-pixen",
+      "job": "ae2b1e16-5a04-4c67-83c1-7faf96bd10c6",
+      "generations": 1.0,
+      "result": "REJECTED_EVOLUTION_TOO_SIMILAR"
+    },
+    {
+      "stage": "middle approved candidate",
+      "provider": "edit-image-pixen",
+      "job": "e9c4d096-673d-44b4-8a28-a96e4d422679",
+      "generations": 1.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "ancient final",
+      "provider": "edit-image-pixen",
+      "job": "1ce20fda-4af6-4a3c-a1ff-1cf1bcb5537a",
+      "generations": 1.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "mother Idle",
+      "provider": "animate-with-skeleton-v3",
+      "job": "2475d037-ee79-4033-a403-35eea4abe47e",
+      "generation_id": "83d7f67f-52e6-45c8-86f7-f315f1daae35",
+      "generations": 3.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "mother Attack",
+      "provider": "animate-with-skeleton-v3",
+      "job": "34b4b03b-aa08-4c43-9629-eb3c263e2ae6",
+      "generation_id": "6e02dad7-d19f-4041-962b-f0568b1efbb2",
+      "generations": 3.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "mother Attack pad128 no-wing-crop v2",
+      "provider": "animate-with-skeleton-v3",
+      "job": "75368d39-ba66-42fd-b90c-b1b19833258d",
+      "generation_id": "8c9dfea5-dd81-4e14-953b-df2d4ae2f41a",
+      "generations": 3.0,
+      "result": "TECH_CANDIDATE"
+    }
+  ],
+  "costs": {
+    "tb02_generations": 22.0,
+    "frog_attack_v6_generations": 3.0,
+    "usd_equivalent": "not reported"
+  },
+  "failures": {
+    "stage2_first_edit": "silhouette IoU 0.858; rejected; billed 1 gen",
+    "first_bat_attack_96px": "10 of 11 images touched border; rejected as ART blocker; billed 3 gen",
+    "bat_stage3_left_canvas": "two opaque edge pixels; nonblocking pending review"
+  },
+  "asset_shas": {
+    "BAT_STAGE1.png": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+    "BAT_STAGE2.png": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+    "BAT_STAGE3.png": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+    "TB02_BAT_IDLE_8F.png": "5153e58ccf29dee9d924937fb185169f45e2d0f748a36373cc2f53d4eb72e0a2",
+    "TB02_BAT_ATTACK_11F_PAD128.png": "0a4327d1a951673f2fea6ce982f5b9790a9398066d614d9a85809d9daad5da58"
+  },
+  "storage": "Private Drive PNG/GIF/ZIP; GitHub T-B scripts/docs; no persistent user Windows PC content"
+}

@@ -1,0 +1,189 @@
+{
+  "schema": "fs-monster-factory-family-v2",
+  "id": "TB02_LEAF_BAT",
+  "family": "Forest leaf-wing bat",
+  "source": {
+    "P1E_bat_semantic_reference_sha256": "321582743a4aa6b2e5105221b46da0fa29729bcfce63356a6bd078c3a22983b1",
+    "visual_source": "PixelLab from approved PMD0001 style, no pixel copy from P1E 16px",
+    "style_sha256": "e0b01e658d2659fa5c9a01c60c29a4e07cf525a0d5987aa677d09c7a0ed73c72"
+  },
+  "target": "Godot 4.7.2; south-east 3/4 low top-down; no backgrounds; private",
+  "stages": [
+    {
+      "name": "Leaf bat / young",
+      "path": "assets/monsters/tb02/BAT_STAGE1.png",
+      "size": [
+        96,
+        96
+      ]
+    },
+    {
+      "name": "Leaf bat / forest guardian",
+      "path": "assets/monsters/tb02/BAT_STAGE2.png",
+      "size": [
+        128,
+        128
+      ]
+    },
+    {
+      "name": "Leaf bat / ancient crown",
+      "path": "assets/monsters/tb02/BAT_STAGE3.png",
+      "size": [
+        160,
+        160
+      ]
+    }
+  ],
+  "idle": {
+    "path": "assets/monsters/tb02/TB02_BAT_IDLE_8F.png",
+    "cell": [
+      96,
+      96
+    ],
+    "frames": 8,
+    "columns": 4,
+    "speed_fps": 8
+  },
+  "attack": {
+    "path": "assets/monsters/tb02/TB02_BAT_ATTACK_11F_PAD128.png",
+    "cell": [
+      128,
+      128
+    ],
+    "frames": 11,
+    "columns": 4,
+    "rush": 2,
+    "hit": 5,
+    "return": 7,
+    "duration_ticks": [
+      4,
+      2,
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4
+    ]
+  },
+  "provider_jobs": [
+    {
+      "stage": "young+4 candidates",
+      "provider": "generate-with-style-v2",
+      "job": "2f226aea-61d0-4db2-a49c-ab617d6b1c1b",
+      "generations": 10.0,
+      "result": "CANDIDATE"
+    },
+    {
+      "stage": "middle attempt1",
+      "provider": "edit-image-pixen",
+      "job": "ae2b1e16-5a04-4c67-83c1-7faf96bd10c6",
+      "generations": 1.0,
+      "result": "REJECTED_EVOLUTION_TOO_SIMILAR"
+    },
+    {
+      "stage": "middle approved candidate",
+      "provider": "edit-image-pixen",
+      "job": "e9c4d096-673d-44b4-8a28-a96e4d422679",
+      "generations": 1.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "ancient final",
+      "provider": "edit-image-pixen",
+      "job": "1ce20fda-4af6-4a3c-a1ff-1cf1bcb5537a",
+      "generations": 1.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "mother Idle",
+      "provider": "animate-with-skeleton-v3",
+      "job": "2475d037-ee79-4033-a403-35eea4abe47e",
+      "generation_id": "83d7f67f-52e6-45c8-86f7-f315f1daae35",
+      "generations": 3.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "mother Attack",
+      "provider": "animate-with-skeleton-v3",
+      "job": "34b4b03b-aa08-4c43-9629-eb3c263e2ae6",
+      "generation_id": "6e02dad7-d19f-4041-962b-f0568b1efbb2",
+      "generations": 3.0,
+      "result": "ART_CANDIDATE"
+    },
+    {
+      "stage": "mother Attack pad128 no-wing-crop v2",
+      "provider": "animate-with-skeleton-v3",
+      "job": "75368d39-ba66-42fd-b90c-b1b19833258d",
+      "generation_id": "8c9dfea5-dd81-4e14-953b-df2d4ae2f41a",
+      "generations": 3.0,
+      "result": "TECH_CANDIDATE"
+    }
+  ],
+  "cost_this_family_generations": 22.0,
+  "technical_status": "PENDING_128_NATIVE",
+  "art_status": "ART_HOLD_NOT_USER_REVIEWED",
+  "engine_native_status": "NOT_RUN",
+  "assets": {
+    "BAT_STAGE1.png": {
+      "sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+      "dimensions": [
+        96,
+        96
+      ],
+      "size_bytes": 3799
+    },
+    "BAT_STAGE2.png": {
+      "sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "dimensions": [
+        128,
+        128
+      ],
+      "size_bytes": 6054
+    },
+    "BAT_STAGE3.png": {
+      "sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "dimensions": [
+        160,
+        160
+      ],
+      "size_bytes": 8589
+    },
+    "TB02_BAT_IDLE_8F.png": {
+      "sha256": "5153e58ccf29dee9d924937fb185169f45e2d0f748a36373cc2f53d4eb72e0a2",
+      "dimensions": [
+        384,
+        192
+      ],
+      "size_bytes": 20040
+    },
+    "TB02_BAT_ATTACK_11F.png": {
+      "sha256": "312de0efd525277d1ae522fd72502b466a3396b42203bae503baa12ac231fcc1",
+      "dimensions": [
+        384,
+        288
+      ],
+      "size_bytes": 33340
+    },
+    "TB02_BAT_ATTACK_11F_PAD128.png": {
+      "sha256": "0a4327d1a951673f2fea6ce982f5b9790a9398066d614d9a85809d9daad5da58",
+      "dimensions": [
+        512,
+        384
+      ],
+      "size_bytes": 32255
+    }
+  },
+  "reject": {
+    "middle_stage_96px": "TB02_BAT_STAGE2_ATTEMPT1.png",
+    "reason": "98? see objectively 0.858 IoU vs stage1, less morphology than intended"
+  },
+  "attack_original_96px_rejected_but_preserved": {
+    "path": "assets/monsters/tb02/TB02_BAT_ATTACK_11F.png",
+    "job": "34b4b03b-aa08-4c43-9629-eb3c263e2ae6",
+    "reason": "10 of 11 frames touch canvas edges; likely wing clipping"
+  }
+}
