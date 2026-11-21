@@ -1,3 +1,41 @@
+# T-C CURRENT｜D4 雪原霜燈聚落完整 Ground＋PAR；十二地圖共用 Gate｜2026-11-21
+
+**真實新增：FS_02_VILLAGE D4 新 PAR 成功單獨生成、與 D3 Ground 獨立合成，來源完整私人 Drive 保存，12 圖 QA 共用程式 + GitHub Actions PASS；正式藝術 0/12 仍 HOLD。FS_02_MAZE Ground 新生成兩次不合規已拒收。**
+最高優先規則：**先生 Ground，再生完整透明 PAR；PAR 是非地表的一切，不問會不會擋角色**。不 Master 逆切、也不局部選屋簷或樹冠遮罩。
+
+## 實際成功的 D4 雪原村莊全新來源
+
+- Ground D3 先獨立生成、已鎖定 RGB 1280×928 SHA `475f7883c1fe23245198198029da3ac37dc479176e3dc8ddc8a81aba4054f5ea`，這輪實際未修改。
+- D4 **真正新生成**獨立透明 RGBA 全非地表 PAR：原圖 1473×1068，source SHA `f8799684c508c9f4bb8047e21eee98cecfe246b50d3397521325e26da1636895`；同 D3 原地表 `(95,71,1375,999)` 像素裁切到 1280×928（40×29，32px），無 resize。原始 PAR 中含三棟完整不同雪屋、完整冷杉、冰柱、岩塊、木柵、旗幟、路燈、石拱及村莊雜物，沒有因角色遮蔽語義剔除。
+- Pillow 真逐像素 `Image.alpha_composite(Ground, PAR)`：1280×928 靜態合成與視覺對照 PASS，色彩風格與雪地路網整體協調，**非 Godot native GPU**。透明原版與技術清理版分開封存，不覆蓋原圖。
+- D4 原始 crop PAR SHA `3717e0a4076d788befa1b2afb85f786b2abdc99e4a6c4fa8792e4d3024aa257a`，alpha 清理候選 SHA `44aee78ef02329018237e9750ee22012c08cea443ae4bf6f977bfc8af36238f3`，合成 QA 圖 SHA `62baac926a41178edd072ed3d977b7225fdbe83a2516e8e7689a0b64efbc4378`。
+
+## D4 Failure Log：不造假通過
+
+- Alpha raw 原始技術問題：alpha=0 482,226 px；1..8 雜點 **190,971 px**；240..254 約 **419,163 px**；255 僅 **46 px**。另存 alpha≤8 歸零、alpha≥240 變255 的技術修正版，**不能改報原圖已完美透明**。
+- 世界裁切邊緣真 opaque PAR 像素：上731、下357、左593、右480（alpha>224）。**PAR 完整物件可能有裁邊**，Art HOLD。視覺品相改善不等於每件屋/樹均封版、也不等於獨立物件 source manifest 192/192（D1 舊來源的 192/192 不能借到 D4）。
+- D4 Godot 4.7.2 **NOT_RUN**。D1/C8 早先的 native CI 不可冒稱 D4 Native PASS。FS_02_VILLAGE source pairing TECH PASS，formal ART HOLD。
+- 兩次嘗試 **FS_02_MAZE「冰脊迷谷」真正 GroundOnly 生圖**，image generation 都生成有村屋、樹、晶泉的「雪村完整 Master」，違反 Ground-only，已拒收不作迷宮來源、不上傳為進度。FS_02_MAZE 仍 PLANNED，需真正雪谷岔路而非雪村十字廣場。
+
+## D4 Private Google Drive WRITE→READBACK
+
+- **[正式 D4 完整來源＋QA 14.19MB ZIP](https://drive.google.com/file/d/1ZNxOAya0UZe8y8DC1KEfhOCJXDCSo9Uh/view)**，14,185,535 bytes、9 entries ZIP CRC PASS，SHA256 `32d0ca6354e09408aba1a5edc1b94b05f1c4b3ea6ded9664550b9648dd4580ef`。
+- **[獨立原始透明 PAR](https://drive.google.com/file/d/13p62_ZjVAS7FvZKzBj1XydCwqrKLmULn/view)**、**[Alpha 修正版 PAR](https://drive.google.com/file/d/1-H6ZO1eRhRpy27DdJYwh35ywIq-0l5ym/view)**、**[Ground＋PAR 完整合成](https://drive.google.com/file/d/1C3pw0Xn5BTGCTNbIuoPZ6S-VNpxPulNw/view)**。四項讀回都 `shared=false`、僅 user owner；舊 Ground 繼續保存在 [D3 Drive](https://drive.google.com/file/d/1YQt0dkI2AR9VFYMMrFYP3h4KUPJ_ka9T/view)。
+- 新共用 Gate 真實跑 D4 source，獨立 QA JSON：https://drive.google.com/file/d/1ygi9H6kQglXJJEiSyL-k4_19z0B1bvJN/view，1x 雙圖對比：https://drive.google.com/file/d/18QjB6mT2WvevN8g5SzMrPdlBFzIGw3D-/view；全部私人。
+- GitHub [D4 原生來源／Alpha QA 完整紀錄](TC_D4_FS_02_VILLAGE_GROUND_COMPLETEPAR_NEW_SOURCE_QA_20261121.md)。專屬 branch `feat/fs-pixellab-tc-map-20261121`；沒有操作或存檔至 user PC；沒有把任何新的私有圖像上傳公開 GitHub。
+
+## 十二張共同自動 QA 真工程，不再依賴主觀假 PASS
+
+- 真程式 `godot_port/tc_factory/biomes/fs_validate_ground_complete_par.py`：任何六大地形、12 場景一律接受獨立 Ground+CompletePAR，驗 SHA lock、32px 整數網格、原生世界尺寸、RGBA alpha histogram、四邊非透明物件裁切風險、逐像素 Ground+PAR 合成。**不做 actor occlusion/subset，不依據技術合成就解開 ART HOLD**。
+- 單元測試 `godot_port/tc_factory/biomes/test_fs_validate_ground_complete_par.py` 確實在 GitHub Actions [run **44921313899**](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44921313899) **completed/success**；檢查 6 biome／12 scene ID、SHA fail-close、alpha 及正式 0/12 ART PASS。
+- 使用者正式 SOP Google Drive：https://docs.google.com/document/d/1zWXO6Z8SHobSK2jfI-M6-p6JDb81BniIH_4UCLiJhIw/edit；已追加 D4 完整來源和兩次失敗解釋，readback verified 55 段。專屬 [12-map tracker](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) + [FS_02_VILLAGE Blueprint](../../tc_factory/biomes/FS_02_VILLAGE_GROUND_FIRST_BLUEPRINT_20261121.json) 已更新，正式 ART PASS **0/12**。
+
+## 下一個完整藝術單位
+
+**不要重開雪村遮擋或修單顆冷杉**。要解決的是可靠地按指定場景生成 **FS_02_MAZE 冰脊迷谷的一次性完整 Ground-only**：曲折雪路、冰裂、背風坡、分岔、環線，沒有房屋/冷杉/石拱/水晶祭壇；先通過 Ground source audit，再使用同 Blueprint 生成含所有非地表物件的完整透明 PAR。迷宮尺寸正式目標 **80×58 tile，2560×1856**，絕不能把低解析度原圖直接非均勻 nearest 放大稱為原生 32px 高品質場景。若圖像工具繼續生成雪村 Master，就 fail-close 換生成器或 Style Lock，不把失敗圖充當成品。後續地形按世界設定 03 風蝕金砂、04 赤焰火山、05 幽霧水澤、06 星晶浮島各一村一迷宮逐一施工。
+
+---
+
 # T-C CURRENT｜D3 六地形×迷宮／村莊十二圖生產啟動｜2026-11-21（Asia/Taipei）
 
 **本輪已實際上傳 SOP + 六地形追蹤檔 + 新雪原 Ground 候選；02_VILLAGE PAR 尚未成功，正式所有地圖仍 ART HOLD。** 最高規則不變：**先生完整 Ground，再生同世界座標 CompletePAR；PAR 收納所有非 Ground 物件，與是否遮擋角色無關。** 不從 Master 逆向裁層、不在本工廠處理 NPC/事件/戰鬥或角色遮擋細節。
