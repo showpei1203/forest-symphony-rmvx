@@ -39,8 +39,16 @@ func _run()->void:
         _fail("explicit private source authorization flag required")
         return
     output=OS.get_environment("FS_P537C_QA_DIR")
-    if not output.begins_with("/tmp/") or not DirAccess.dir_exists_absolute(output):
-        _fail("owner-authorized Linux temp output directory /tmp/... required")
+    # Private QA on Linux uses /tmp; authorized Windows owner machine
+    # writes only into its G: Google Drive cloud folder, never C:/E:.
+    var normalized:String=output.replace("\\","/")
+    var linux_private:bool=OS.get_name()!="Windows" and output.begins_with("/tmp/")
+    var windows_private:bool=OS.get_name()=="Windows" and (
+        normalized.begins_with("G:/") and
+        normalized.contains("/FS_PRIVATE_P537D_GODOT_NATIVE_QA_20261121/native_gpu"))
+    if (not linux_private and not windows_private) or not (
+            DirAccess.dir_exists_absolute(output)):
+        _fail("owner-authorized private Linux /tmp or Windows G: Drive QA dir required")
         return
     width=OS.get_environment("FS_P537C_QA_WIDTH").to_int()
     if width not in [544,1088]:
