@@ -22,6 +22,7 @@
 - A52 attack Body/Weapon/FX source unchanged from R4. Official build uses source PixelLab generations from historical A35 and A52; this round new PixelLab Animate Text v3 / Skeleton v3 **NOT RUN**. New paid job NONE, cost 0.
 
 ### PRIVATE owner-cloud artifacts, upload + folder readback verified
+- R5B actual Godot 4.7.2 continuous 60Hz MP4, directly viewable owner-private Drive: https://drive.google.com/file/d/1OUi9zMAseCKKYnk1yyN1yGH0SOmriVuP/view
 - R5B original PNG Body: https://drive.google.com/file/d/1ftppVAF6LGb-0R9u0AR1qqXbma9M_muw/view
 - R5B original PNG Weapon: https://drive.google.com/file/d/11kEvmrDbMe__OncpMdXx7GNh7uJdOVvO/view
 - R5B 24-frame native 4× PNG storyboard: https://drive.google.com/file/d/1DTlmHDumz1EpPmhQkkYPEEfAZvGWGL0y/view
