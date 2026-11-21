@@ -1,0 +1,142 @@
+name: FS PixelLab T-C C8 Two Real Houses (Godot 4.7.2)
+on:
+  push:
+    branches:
+      - feat/fs-pixellab-tc-map-20261121
+    paths:
+      - "godot_port/tc_factory/build_tc_village_house_c8.py"
+      - "godot_port/tc_factory/TCVillageIndependentHouseC8.tscn"
+      - "godot_port/tc_factory/capture_tc_house_c8_native.gd"
+      - ".github/workflows/fs-pixellab-tc-c8.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fs-tc-c8-unique-cottage
+  cancel-in-progress: true
+
+jobs:
+  godot-4-7-2-c8-independent-house:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned image dependencies and native virtual GPU display
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check Pillow==12.0.0
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1 libxcursor1 libxrandr2 libxi6 libxinerama1
+      - name: Build C8 full 1280x928 independent right house from original PixelLab R5 complete source
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/build_tc_village_house_c8.py \
+            --out godot_port/tc_factory/generated_house | tee /tmp/fs_tc_c8_source_build.json
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image,ImageChops
+          import json
+          d=Path('godot_port/tc_factory/generated_house')
+          qa=json.loads((d/'TC_C8_SOURCE_QA.json').read_text())
+          assert qa['independent_2_houses'] is True
+          assert qa['old_mirrored_house_owner_removed'] is True
+          assert qa['source_legacy_art_approved'] is False
+          assert qa['source_legacy_layer_approved'] is False
+          assert qa['source_owners_total']==17
+          assert qa['C7_independent_region_owners_preserved']==3
+          assert qa['C8_changed_region_pixels']>=1000
+          assert qa['master_ground_par_registration']=='STATIC_PASS'
+          coll=json.loads((d/'TC_PILOT_COLLISION.json').read_text())
+          assert len(coll['colliders'])==2
+          assert qa['new_house_footprint_px']==[826,530,969,583]
+          for n in ('MASTER.png','Authoring_GroundOnly.png','Authoring_CompletePAR.png',
+                    'Runtime_FullGround.png','Runtime_OcclusionPAR.png'):
+              im=Image.open(d/n);im.load()
+              assert im.size==(1280,928),(n,im.size)
+          a=Image.open(d/'MASTER.png').convert('RGB')
+          b=Image.open(d/'Authoring_GroundOnly.png').convert('RGBA')
+          c=Image.open(d/'Authoring_CompletePAR.png').convert('RGBA')
+          assert ImageChops.difference(a,Image.alpha_composite(b,c).convert('RGB')).getbbox() is None
+          print('C8 TWO DIFFERENT COMPLETE HOUSE ORIGINAL SOURCE / LAYER / FOOTPRINT STATIC QA PASS')
+          PY
+      - name: Install official exact Godot 4.7.2 stable
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/godot472.zip \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          mkdir -p /tmp/fs_tc_godot
+          unzip -q /tmp/godot472.zip -d /tmp/fs_tc_godot
+          chmod +x /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Cold import all C8 complete source sprites into Godot 4.7.2
+        run: |
+          set -euo pipefail
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+            --headless --path godot_port --editor --quit
+      - name: Native exact 1x C8 true different house GPU/occlusion/physics
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          timeout 110s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/capture_tc_house_c8_native.gd
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image,ImageChops
+          d=Path('godot_port/tc_factory/generated_house')
+          j=json.loads((d/'TC_C8_GODOT_NATIVE_QA.json').read_text())
+          assert j['engine'].startswith('4.7.2'),j
+          assert j['real_native_framebuffer']==[1280,928]
+          assert j['separate_full_house_StaticBody2D']==2
+          assert j['C7_tree_source_root_bodies']==2
+          assert j['independent_source_occlusion_owners']==17
+          assert j['independent_right_roof_actor_native_A_B_roi_pixels']>=15
+          assert j['actor_front_uncovered']
+          expected={
+              'left_original_complete_house':1,
+              'right_independent_complete_house':1,
+              'C7_broadleaf_root':1,
+              'C7_conifer_root':1,
+              'C7_lamp_not_blocking':0,
+              'original_road_not_blocked':0,
+              'new_cottage_front_not_blocked':0}
+          assert j['semantic_collision_hits']==expected,j['semantic_collision_hits']
+          im=Image.open(d/'TC_C8_GODOT472_NATIVE_FULL_1X.png').convert('RGB')
+          assert im.size==(1280,928)
+          im.crop((740,340,1040,650)).save(d/'TC_C8_GODOT472_NATIVE_RIGHTHOUSE_1X.png')
+          print('C8 GODOT4.7.2 1x NATIVE TRUE INDEPENDENT TWO COMPLETE BUILDINGS PASS')
+          PY
+      - name: Stage only C8 private generated real art and native QA, no old failed source
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import zipfile,hashlib
+          from pathlib import Path
+          d=Path('godot_port/tc_factory/generated_house')
+          out=Path('/tmp/FS_TC_C8_TWO_INDEPENDENT_HOUSES_PRIVATE.zip')
+          paths=sorted(f for f in d.rglob('*') if f.is_file()
+              and f.name!='.gitignore'
+              and not f.name.endswith('.import')
+              and not f.name.startswith('TC_C6_'))
+          if not paths:raise SystemExit(0)
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=7) as z:
+              for f in paths:z.write(f,arcname=str(f.relative_to(d)))
+          with zipfile.ZipFile(out) as z:
+              assert z.testzip() is None
+              print('C8 PRIVATE ZIP ENTRIES',len(z.namelist()))
+          print('C8 PRIVATE ZIP BYTES',out.stat().st_size)
+          print('C8 PRIVATE ZIP SHA256',hashlib.sha256(out.read_bytes()).hexdigest())
+          assert out.stat().st_size <100_000_000,'Split only C8 if over Drive connector max'
+          PY
+      - name: One-day C8 private transfer to owner-only Google Drive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-tc-c8-private-drive-transfer
+          path: /tmp/FS_TC_C8_TWO_INDEPENDENT_HOUSES_PRIVATE.zip
+          if-no-files-found: warn
+          retention-days: 1
