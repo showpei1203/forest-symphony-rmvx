@@ -1,3 +1,27 @@
+# T-C CURRENT | C7 真正 FS 獨立源美術整組替換 | 2026-11-21 TPE
+
+**C7 施工/Godot 4.7.2 真實 GPU 1×、遮蔽及 source-semantic collision PASS。正式 FS_01_VILLAGE、FS_01_MAZE 仍 ART HOLD。** 專屬分支 feat/fs-pixellab-tc-map-20261121；這一節比下方歷史 C6/C5 紀錄新。
+
+## 實際新檔與來源核對
+- 程式：godot_port/tc_factory/build_tc_village_source_c7.py、TCVillageSourceC7.gd/.tscn、capture_tc_source_c7_native.gd、.github/workflows/fs-pixellab-tc-c7.yml；沒有變動原 A35、MAZE R12/R14、VX、NAV、傳送/存讀檔或 Phase1 主工程。
+- 舊 C6 手工卡通樹石全部替換為五件原 FS A36G R4 完整獨立 RGBA：A36F_west_waymarker_ORIGINAL_RGBA.png、A36F_DENSE_TREE_143_RGBA.png、A36F_DENSE_TREE_071_RGBA.png、A36F_north_rock_ORIGINAL_RGBA.png、A36F_UNDERSTORY_028_RGBA.png。
+- 正式原始文件在 public GitHub experiments/route_b_25d_20261031_stage16/A36G_R4_R3_6REGIONS_20261104/SOURCE_INDEPENDENT_RGBA；真 A36G_R4_SCENE_MANIFEST.json SHA256 4334c82e263fc2917ed640eb7ef433016523690a13e3104ce3bc745ee5f438dd。逐一核對 source id、filename、sha256、原尺寸、footpoint、blocking。
+- 完整村落 1280×928 (40×29 tiles)，替換單位仍 8×8／256×256 [640,160,896,416]。保留 C6 Ground 及 C5 CompletePAR，重新構造 MASTER/Authoring_GroundOnly/Authoring_CompletePAR/Runtime_FullGround/Runtime_OcclusionPAR；C6 手繪藝術 0 remaining，區域外 bit-exact，C6→C7 改變 7317 RGB pixels；source registration STATIC PASS。
+- 原 14 個 C5 owner + 3 個真正 C7 原始 source occluder = 17。2 棵樹 source.blocking true，窄 10×10 腳跟 root collider；路標/石塊/灌木 source.blocking false 不會被誤當成牆。原兩屋舍 body 保留。此測試並非 193 原樹完整 collision/NAV。
+
+## Verified Godot 4.7.2 原生測試與私人存檔
+- 最終 GitHub Actions run 44873943982 : https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44873943982  status=completed, conclusion=success, tested commit 38c0d3e238a2e9c6e11f496bc3beab02cacc6038。
+- 真原生 GPU 1× framebuffer [1280,928]、Godot 4.7.2-stable official/opengl3。原屋碰撞 hit=(1,1)、新來源兩樹根 hit=(1,1)、路標/石/既有道路空點 hit=(0,0,0)，全部 7 項 point-query PASS。原燈柱同位置 actor 遮蔽/未遮蔽 A/B 真 GPU 改變 229 px；actor 移到前方不被擋。整村圖 TC_C7_GODOT472_NATIVE_FULL_1X.png；區域裁切與 3× nearest 預覽另附，預覽不是原生 3×。
+- 正式私人 Drive C7 ZIP：https://drive.google.com/file/d/19ez90LzcrGfJGV-ezh2xmUkf-djQ4dh0/view ；Drive id 19ez90LzcrGfJGV-ezh2xmUkf-djQ4dh0，provider metadata READBACK size=78698410 bytes、shared=false、user owner only。外層 GH transfer ZIP + 內層 44 entries 兩層 CRC PASS；內層 SHA256 1d8722c6349db7b5ec98ac16b55135fa01c82733e1acd1ec8336e7b852849ca2。GitHub artifact 14694707796 僅 1 日轉送；正式圖片/QA 在私人 Drive，無操作 user's PC。
+
+## Failure Log、ART HOLD 與下一個整體單位
+- 首輪 CI run 44873757489 的 Godot 原生 7 項結果已 PASS，但之後 Python check 誤以為 Godot JSON Dictionary values 保留固定排序，使報表 assertion false-negative；改按 key 逐欄比對後 CI run 44873943982 全成功。
+- C7 真原生 1× 人工審查：源自 FS 的葉片/松形/路燈/石塊遠比 C6 簡化卡通物件融入原森林，屬有效整組來源替換。然而不代表村落全圖已 ART PASS。
+- Village ART HOLD：右側 C5 屋舍仍是左屋完整 source 的 mirror+nearest 變體，缺乏真正不同完整建築；歷史 193 原 tree 並未全部做完整 root/NAV。Maze ART HOLD：R12 原 1478×1064 Ground 放大到 2560×1856 的 native 32px 著色/紋理仍未重建。
+- PixelLab new Map Workshop / Object Creator / Create Tiles Pro / Style References jobs 本次皆 NOT RUN。原始舊 FS 美術來源可核實，不可誤稱新 API 生成/收費。
+- 下一個 C8 宏觀施工：右側一整棟真正獨立且同風格 FS 屋舍與工坊，使用已驗私人 R12 完整 A34 source 或確實接通的 PixelLab 新生成。保留 C7 全圖與兩屋碰撞骨架，完成後 full Godot 4.7.2 1× native A/B、遮蔽/碰撞、私人 Drive、Github QA+Handoff、Linear。村落主要藝術解鎖後，再完成 Maze native 32×32 Ground。小瑕疵最多兩修，重大問題換來源。
+
+---
 # T-C C6 CURRENT｜8×8 林間道路過渡區｜2026-11-21（Asia/Taipei）
 
 **C6 已真正施工／Godot 4.7.2 1× GPU + 物件根部碰撞／條件遮蔽 PASS；最終 ART 仍 HOLD。**  
