@@ -12,7 +12,8 @@
     "terrain_families": 6,
     "scenes": 12,
     "formally_art_sealed": 0,
-    "ground_source_generated_this_round": 1
+    "ground_source_generated_this_round": 1,
+    "new_COMPLETE_PAR_candidates_this_round": 1
   },
   "scenes": [
     {
@@ -89,7 +90,7 @@
       "biome_id": "FROST_SNOWFIELD",
       "biome_name": "凜霜雪原",
       "role": "VILLAGE",
-      "stage": "D3_GROUND_SOURCE_CANDIDATE_1280x928_PAR_NOT_GENERATED_ART_HOLD",
+      "stage": "D4_GROUND_FIRST_COMPLETE_PAR_NEW_SOURCE_1280x928_COMPOSITE_TECH_PASS_ART_HOLD",
       "ground_material_family": [
         "積雪",
         "凍土",
@@ -126,8 +127,21 @@
           1280,
           928
         ],
-        "source_type": "new AI Ground-only candidate; PAR NULL",
-        "full_PAR": null,
+        "source_type": "D3 new AI Ground + D4 independently image-generated complete non-ground PAR candidate",
+        "full_PAR": {
+          "status": "GENERATED_TRUE_RGBA_TECH_CANDIDATE",
+          "raw_PAR_Drive": "https://drive.google.com/file/d/13p62_ZjVAS7FvZKzBj1XydCwqrKLmULn/view",
+          "alpha_clean_PAR_Drive": "https://drive.google.com/file/d/1-H6ZO1eRhRpy27DdJYwh35ywIq-0l5ym/view",
+          "full_pair_QA_Drive": "https://drive.google.com/file/d/1ZNxOAya0UZe8y8DC1KEfhOCJXDCSo9Uh/view",
+          "composite_Drive": "https://drive.google.com/file/d/1C3pw0Xn5BTGCTNbIuoPZ6S-VNpxPulNw/view",
+          "full_PAR_raw_SHA256": "3717e0a4076d788befa1b2afb85f786b2abdc99e4a6c4fa8792e4d3024aa257a",
+          "full_PAR_tech_clean_SHA256": "44aee78ef02329018237e9750ee22012c08cea443ae4bf6f977bfc8af36238f3",
+          "non_ground_semantics": "ALL_CATEGORY_ART_CANDIDATE_NO_MASK_FILTER",
+          "crop_alpha_clips_objects": true,
+          "raw_PAR_alpha_contaminated": true,
+          "Godot_native_for_D4": "NOT_RUN",
+          "art_gate": "HOLD"
+        },
         "Ground_visual_purity": "ART_HOLD_POTENTIAL_STANDING_ROCK_AND_SHRUB_CONTAMINATION"
       }
     },
