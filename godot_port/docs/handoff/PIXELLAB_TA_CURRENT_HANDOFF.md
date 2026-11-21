@@ -1,5 +1,14 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R10 2026-11-21 — COMPLETE OFFICIAL LPC SOURCE + FIRST UNARMED ACTOR01 ORIGINAL-POSE STUDY (LATEST)
+
+User explicitly authorized downloading the complete LPC upstream original to E: or Drive, rejected R8/R9 rubber arms and signs, and requested NO WEAPON. Verified official current upstream master commit 86a3719ee4a7e2e9fb27c7c152e29a741d3e930a. Downloaded from official codeload to E:\LPC_Original_20261121\Universal_LPC_FULL_86a3719e.zip: 150940625 bytes, SHA256 C3E73FAFE062A80DCABA6CEF3DCA367B988F6E09D983AA5C9AB3FF05673185DC. Zip complete CRC test NONE, 95613 entries / 89359 files; unpacked exactly 89359, including 88130 PNG. Original README, LICENSE, CREDITS and folders present. Source root E:\LPC_Original_20261121\Universal-LPC-Spritesheet-Character-Generator-86a3719ee4a7e2e9fb27c7c152e29a741d3e930a. THIS is the full pinned upstream, not old partial 11-layer P1C or full Git history.
+
+Constructed first R10 NO WEAPON 12x64x64 Body/Weapon/FX using six original actual LPC male/slash 4-dir row-right whole-body keyposes (not stretched limbs), preserving original approved A62 head and white hair SHA70a8e6..., new green garment palette; expanded to 12 time slots with original holds, not 12 freshly illustrated poses. Both Weapon/FX RGBA atlases entirely transparent. Actual R10 body SHA256 819313100674a1c55a6bd93a250a2ab07df4c0b2fbca4126331b439b46d2d33f, QA 4x contact sheet and GIF, generation script and exact source-manifest in owner-authorized E:\LPC_Original_20261121\FS_R10_ACTOR01_UNARMED_SOURCE_STUDY. GitHub reproducer godot_port/tools/ta_r10_lpc_actor01_unarmed.py. SOURCE QA PASS only; human ART HOLD, 45-degree hand-drawn adaptation NOT DONE, Godot R10 native GPU NOT RUN. Four native LPC directions are CARDINAL; cannot claim native 45-degree poses. Strict new authority godot_port/docs/authority/FS_TA_R10_FULL_LPC_UNARMED_AUTHORITY_20261121.md.
+
+---
+
+
 **CI gate note / current validated commit:** GitHub first public CI run 44918945179 FAILED specifically because the source-free R9 --self-test module imported a private default /mnt/data output folder at top level on hosted runner. Fixed by deferring OUT.mkdir to production main(); neither private art nor generated output changed. New GitHub public Godot 4.7.2 CI: **SUCCESS** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44919186389 . Geometry native cloud proof remains separate from public synthetic CI. Current private R9 authority is https://docs.google.com/document/d/19vnoZ8Kf5c8Fhxtn8JPXZdiCIEiNsIOJ/edit .
 
 ## R9 2026-11-21 | R8 RUBBER-ARM / UNIDENTIFIED MARKS REJECTED; FIXED BONE SOURCE CANDIDATE (LATEST)

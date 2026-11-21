@@ -1,5 +1,8 @@
 # T-A｜FS 角色戰鬥動畫工廠｜新對話啟動 Prompt
 
+> IMPORTANT R10 USER OVERRIDE 2026-11-21: COMPLETE upstream official LPC source downloaded and verified at E:\LPC_Original_20261121 (explicit user authorization). User rejected R8/R9 elastic limbs and mysterious symbols. Current Actor01 ATTACK task is WEAPONLESS with all Weapon/FX transparent, preserving A62 approved white-haired identity. Source must use authentic full-body LPC poses, and adapt honestly to 45-degree camera since upstream has only four cardinal directions. Read godot_port/docs/authority/FS_TA_R10_FULL_LPC_UNARMED_AUTHORITY_20261121.md. R10 first source study is ART HOLD; Godot R10 native not yet run. Do not add sword or claim animation art success.
+
+
 > **2026-11-21 R8 latest user override:** Use the original verified LPC 4-dir whole-body slash/backslash poses as source-based motion KEYPOSE references, retarget to approved ACTOR01 white-hair/green-armor 45-degree identity. R7/ A52 procedural moved-pixel-only prior method is user rejected. Read `godot_port/docs/authority/FS_TA_R8_LPC_ACTOR01_ART_AUTHORITY_20261121.md` first and follow the new full-body / expression / sword / feet ART gates. Preserve all frozen original source and current Godot F7 timing. This rule overrides conflicting older prompts.
 
 
