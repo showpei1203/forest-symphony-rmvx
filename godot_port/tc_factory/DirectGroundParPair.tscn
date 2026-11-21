@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tc_factory/direct_ground_par_pair.gd" id="1"]
+
+[node name="FS_TC_D1_TRUE_GROUND_FIRST_AND_COMPLETE_PAR" type="Node2D"]
+script = ExtResource("1")
