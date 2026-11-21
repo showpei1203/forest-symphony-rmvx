@@ -1,3 +1,32 @@
+# T-C C6 CURRENT｜8×8 林間道路過渡區｜2026-11-21（Asia/Taipei）
+
+**C6 已真正施工／Godot 4.7.2 1× GPU + 物件根部碰撞／條件遮蔽 PASS；最終 ART 仍 HOLD。**  
+工作分支 feat/fs-pixellab-tc-map-20261121。這節為最新權威，後方 C5 內容保留歷史證據。原正式 A35 R2/R3、A35 R8 R3、MAZE R12/R14，以及事件、戰鬥、傳送、NAV、存讀檔均不修改；只用 Godot。
+
+## 已完成工程
+- 實作：godot_port/tc_factory/build_tc_village_region_c6.py、TCVillageRegionC6.gd、TCVillageRegionC6.tscn、capture_tc_region_c6_native.gd、.github/workflows/fs-pixellab-tc-c6.yml。僅 GH generator/scene/test/Handoff，真正 PNG 只存私人 Drive。
+- **完整 8×8 tile／256×256 pixel 區段** [640,160,896,416]，tile origin [20,5]，保留完整 1280×928（40×29）村落和全部既有屋舍／主要森林來源。
+- MASTER / Authoring_GroundOnly / Authoring_CompletePAR / Runtime_FullGround / Runtime_OcclusionPAR 在相同 XY、RGB 來源重組；C5 其餘區域 bit-exact；C6 5,823 RGB changed pixels。新增林間微地形、47 road-edge tufts、41 flowers、踏腳石。保留 C5 14 原有 owners，新增 C6 3 source independent masks，17 owners。
+- 五個可重建 1× 獨立 RGBA 物件：一個森林石碑、兩種不同尺寸幼樹、兩個低石塊。其中 3 個真根部碰撞由 TC_C6_ROOT_FOOTPRINTS.json source 來；C5 2 屋舍 collider 原樣保留。**這些 1× 物件是程式手繪，不是新的 PixelLab API 正式生成。**
+- ART review 的 C6 8×8 區段不是全村正式 ART PASS：新手繪幼樹/石碑 **風格過度簡化且與既有細緻森林不一致**。屬重大風格阻斷，禁止宣稱美術完成。
+
+## WRITE → READBACK → VERIFY 已完成
+- Godot Actions **[run 44872886638](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44872886638)**：GitHub provider status=completed, conclusion=success；實測程式 commit **f68bfe8d216a59adc31e8191d87638ccf396bb4c**。
+- 真 Godot 4.7.2 official GPU 1280×928 全村 native framebuffer：TC_C6_GODOT472_NATIVE_FULL_1X.png；依 native framebuffer 精確裁切的 TC_C6_GODOT472_NATIVE_REGION_1X.png；TC_C6_GODOT472_NATIVE_REGION_3X_REVIEW.png 是最近鄰放大的人工審查圖，不是原生 3× 截圖。
+- 原生 QA TC_C6_GODOT_NATIVE_QA.json：engine=4.7.2-stable (official)，region 256×256，17 semantic owners、2 C5 house StaticBody2D、3 C6 sprite-root StaticBody2D；waystone hit=1、alder hit=1、rowan hit=1、原道路 hit=0、兩原房屋仍 hit=1。**同一足點石碑擋角與不擋角的真原生畫面差 204 pixels**；角色到石碑前方遮蔽關閉 PASS。並未驗證原 193 棵樹逐棵根部/NAV。
+- **[私人 Drive C6 美術＋Godot QA ZIP](https://drive.google.com/file/d/1Hx77deDCUJe3JstjnOKJ4mm-2Uj1jXLu/view)**。Drive id 1Hx77deDCUJe3JstjnOKJ4mm-2Uj1jXLu；Google metadata readback size=69,755,419 bytes、shared=false、user owner only。外層 GH transfer ZIP 與內層 **40 files** 已雙層 ZIP CRC PASS；內層 SHA256 **425bc8bdf4c8bd156daa05a903d6b9748d91fca844e0bb69757c8aaf6729b08d**；artifact id 14694881670 保留一天，只作傳送。不使用 owner's PC。
+
+## FAILURE LOG：含修復與真 ART 阻斷
+1. 首次 native test GitHub [run 44872615732](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44872615732) 失敗：腳本將 Texture2D.get_size() 的 Vector2 與 Vector2i 比較，拋錯並超時 124。已將比較改為 Vector2(1280,928)，新 CI run 44872886638 完整成功。非藝術問題。
+2. **重大美術 HOLD：** C6 程式繪製的幼樹、石碑是平面像素色塊，與原本精緻 A36G/FS 森林在深度、光源、葉片有明顯不協調。這不是小細節，禁止以 5,823 px 修改或原生 QA 綠燈冒稱 Art PASS。**下一輪替換「整組」新物件源材，不在卡通葉片上打轉。**
+3. 歷史 193 tree 真獨立 alpha 資產仍多在私人來源，不將 flattened PAR 裁出來假冒真 tree owner。新 3 個 1× 原生 root passed 不等於全森林 collision PASS。
+4. C5 右屋依舊是原完整木屋 mirror+resize，ART HOLD。幽葉迴廊原 1478×1064 Ground nearest 拉伸至 2560×1856 舊問題仍 ART HOLD，本輪未動它。
+
+## 下一完整 C7 施工單位
+**整套 8×8 林間道路物件的同風格來源替換**。以核准的 FS 32×32、3/4 Style References 與真正獨立大樹／石物件，進行 PixelLab Object Creator / Map Workshop 真實生成或從已核准私人獨立來源直接整組替換。沒有可用 PixelLab API 時如實標示 NOT RUN，不偽造 job ID。保留這次已 PASS 的同源五圖與原生遮蔽/碰撞管線，換整組素材再跑全村真正 Godot 4.7.2 1× 與視覺 ART review。未核准前不合併 A35。
+
+---
+
 # T-C CURRENT｜C5 全村建築風格統一候選｜2026-11-21（Asia/Taipei）
 
 **狀態：真正施工＋Godot 4.7.2 原生 GPU/屋舍碰撞/條件遮蔽 PASS；正式兩張地圖仍 ART HOLD。**  
