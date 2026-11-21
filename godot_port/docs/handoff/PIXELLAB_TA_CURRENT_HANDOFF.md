@@ -1,5 +1,46 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R7 | 2026-11-21 | Internet-referenced full-body overhead sword strike & facial acting (LATEST)
+
+User rejected R6: face not expressive and backswing not high enough. R7 changes the COMPLETE 12-frame attack candidate, not just a single-pixel detail. T-A branch only; retains unmodified A52 originals and R6 candidate in Drive/GitHub.
+
+Technique / animation sources studied:
+- HEMA Roof / Vom Tag high guard (sword raised above head or shoulder): https://www.hema101.com/post/beginner-s-guide-to-fencing-with-the-longsword
+- Kendo swing shoulder/elbow/wrist, blade tip arc: https://kendojidai.com/2021/02/01/shinzato-chikano/
+- Kendo leg/back/shoulder power transfer: https://kendonotes.wordpress.com/2022/05/16/time-sequence-breakdown-of-the-small-men-uchi/
+- Pixel sword anticipation / impact / followthrough: https://www.slynyrd.com/blog/2018/9/8/pixelblog-9-melee-attacks
+- Game animation follow-through and expressive head: https://www.gamedeveloper.com/production/the-12-principles-of-animation-in-video-games
+Reference adaptation is to Actor01's one-handed 45-degree 3/4 fantasy sword, not literal 2-handed Kendo technique.
+
+REAL DELTA:
+- F1..F3 raises hand + elbow progressively, F4 REAL HIGH GUARD. F4 hand target (50,19) versus R6 approximate y37 (18px higher). Actual R6 F4 source sword top y15, R7 pixel top y5 (10px upward). F5 lowers into F6..F8 original R6 full-body forward cut, F7 original A52 FX contact preserved.
+- Facial acting anchored to actual approved face-skin pixels: F1-F3 focus, F4-F5 clenched teeth, F6-F8 exertion/open mouth, F9-F10 breath recovery; F0/F11 exact neutral. Face pixels actually differ across all F1..F10 (10/10), but 1x emotional readability still ART HOLD.
+- Right shoulder/elbow/hand geometrically linked, independent original A52-sourced sword recolored by NONE, rigid pivot-rotated and reattached. No extra fake FX stripe over white hair; no cut edges. Feet Y51..63 exactly unchanged. Three independent 256x192, 12x64x64 atlases.
+- Source SHA locked reproducible Python implementation: godot_port/tools/ta_actor01_attack_r7_high_guard_expression.py, taken by authorized Google Drive raw-file fetch, no private raster image committed to GitHub.
+- This is procedural pixel-art source reposing based on already genuine A52/R6 model sprites, NOT fresh PixelLab Text v3/Skeleton v3 generation. New job NONE, actual new model spend 0.
+- True PRIVATE original-source Godot 4.7.2 60Hz GPU capture PASSED 181/181 native 64px PNGs; Xvfb + Mesa OpenGL4.5 llvmpipe. First standalone --headless Dummy GPU failed at tick0, fixed with Xvfb OpenGL. Rig source F7 0.63sec timing metadata untouched. Full real FSBattle ATB queue scene NOT RUN.
+
+SHA256 outputs:
+BODY fe38faefe88ffc131368e6e6a902dc502ae94e494802554b51274b3b4e365f92
+WEAPON 3a09aaaa82fff6f597150afcc5f7131d91437d011a96a3b3efb2dc9a64502dfd
+FX ab805496de7fdab088a01458e4825f28afae868ba9e4650464086a29cbdf196a
+
+Drive original-private assets (upload READBACK):
+- BODY https://drive.google.com/file/d/1CjCqaUJqowbHrCiG-A7IlyGbKgAsczbr/view
+- WEAPON https://drive.google.com/file/d/1_g-NYxe2aJqzZMx5JAGh6pC5c9KF0TZo/view
+- FX https://drive.google.com/file/d/139TYJBkVoBykJBQlWojxLMdnHSRW6eLI/view
+- source-locked reproducible Python source https://drive.google.com/file/d/1Md9B0fa-hBlTuyPsXe1FlboJbUbEupLB/view
+- 12 frame original-source native 4x PNG comparison https://drive.google.com/file/d/1XBdSCdiEvqiZOV0AcPhjugJs7TG7V59u/view
+- Synchronized R6 versus R7 true native 60 FPS MP4 https://drive.google.com/file/d/1MJfB_3d2sRLr9kN8te_aM86EOxg8iBkj/view
+- Synchronized native action GIF https://drive.google.com/file/d/1HTlvrrPe5th7ZDkE-mAZQGPbQSykMvpc/view
+- FINAL private 195-file native source/frames/source code/QA ZIP https://drive.google.com/file/d/1RLpMnw_RwgCq3pBNbaI9CvUN8fPV82hn/view
+- FINAL ZIP SHA256 ea689fe622e03cb8092f43596e67a9082c3b4d82d41112fd13ef6f4f6d462569 CRC PASS.
+
+GATES: source SHA/provenance PASS; real Godot 4.7.2 181/181 GPU PASS; geometric high-guard/expression pixel deltas PASS; actual user ART HOLD, 1x face subtle; integrated full battle NOT RUN; second sample NOT RUN. Original A52 untouched. Next full unit: owner 1x full animation art judgment, model-based Skeleton v3 if connected to improve naturalness, then actual FS battle ACTION playback integration with source authority kept.
+
+---
+
+
 
 ## R6｜2026-11-21｜修復「只有劍動、頭與軀幹不動」根本缺陷（當前最新）
 

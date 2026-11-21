@@ -1,5 +1,14 @@
 # T-A Failure Log / 2026-11-21
 
+## R7 user-critical failures addressed (latest)
+- TA-10 R6 expression stiff: F1-F10 new eyebrow, gritted mouth, shouted open mouth and recovery; 10/10 real face pixel changes, ART HOLD pending 1x owner signoff.
+- TA-11 R6 backswing amplitude too small: R7 F4 right hand y19 (about 18px higher than R6) and ACTUAL native sword top y5 (R6 y15; 10px more overhead). Source-proven body/weapon connectivity, no crop. Artistic naturalness HOLD.
+- TA-12 first R7 draft extra turquoise swing arc across hair: rejected in first full-cycle inspection, removed from final candidate. Original A52 F7 impact FX preserved.
+- TA-13 --headless Dummy renderer returned null GPU texture, frame0 FAIL. Switched same genuine Godot 4.7.2 to Xvfb/Mesa OpenGL4.5, 181/181 PASS. Do not misreport the failed trial as pass.
+- Model API: fresh PixelLab V3 NOT RUN, cost 0. 64px face readability and full live FSBattle ACT integration remain HOLD/NOT RUN separately. Verified final Drive ZIP https://drive.google.com/file/d/1RLpMnw_RwgCq3pBNbaI9CvUN8fPV82hn/view
+---
+
+
 
 ## R6 root-cause diagnosis and non-fake repair
 
