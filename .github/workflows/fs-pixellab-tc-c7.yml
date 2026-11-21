@@ -95,7 +95,12 @@ jobs:
           assert j['semantic_independent_owners']==17
           assert j['original_lamp_occlusion_changed_actor_roi_px']>=10
           assert j['front_actor_visible']
-          assert list(j['point_query_hits'].values())==[1,1,1,1,0,0,0]
+          expect={
+              'C5_house_original':1,'C5_house_two':1,
+              'C7_broadleaf_source_root':1,'C7_conifer_source_root':1,
+              'C7_lamp_nonblocking':0,'C7_rock_nonblocking':0,
+              'C6_existing_road_open':0}
+          assert j['point_query_hits']==expect,j['point_query_hits']
           old=Image.open(d/'TC_C7_GODOT472_NATIVE_FULL_1X.png').convert('RGB')
           assert old.size==(1280,928)
           real=old.crop((640,160,896,416))
