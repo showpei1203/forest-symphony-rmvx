@@ -88,3 +88,14 @@
 - [V4 動畫 GIF](https://drive.google.com/file/d/17PRN7eSUSKXguNdtC2G4xxEoSSbfVFol/view)｜[11F Atlas](https://drive.google.com/file/d/1cuLHQ64Dx1QLFF1CpXVUwTjdG6nhPwRN/view)｜[逐幀 Contact](https://drive.google.com/file/d/1kpCc-1TK5n4uJ3ntYhItvkfmadKi7uYB/view)｜[私人 Godot 4.7.2 比較工程](https://drive.google.com/file/d/1Fhnc4q6_gnc-2cySRdeJ8uyYf4eqtmLt/view)（12 檔 ZIP CRC PASS，SHA256 `0625508b4c6aed76bb6348cd4540d8ebbc7cb79edbd3699613aa036e52ec8d17`）
 - [R3 詳細 Failure/QA/Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/handoff/PIXELLAB_TB_ATTACK_V4_REWORK_20261121.md)；GitHub 同分支已新增 source-locked builder、QA script、Godot scene、headless validator。私有 raster 沒有放入公開 GitHub，PC 沒有被修改。
 - NEXT_MACRO_UNIT：先驗證 Godot 4.7.2 native 與 V4 美術；繼而用已鎖定 PixelLab V3 姿勢契約生成真正有清楚骨架的 Attack（需可授權 API 與實際費用／job ID）；最後才進第二個不同樣本。**前輪拒收的 V1 一律維持 ART FAIL，不可回升。**
+
+
+---
+
+## R4 (2026-11-21) | Godot 4.7.2 Native SCRIPT QA PASS, PMD art HOLD
+- Full [R4 Handoff + Failure Log](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/handoff/PIXELLAB_TB_R4_NATIVE_TIMELINE_HANDOFF_20261121.md). Implemented deterministic 11-frame / 28-tick attack F2 Rush / F5 Hit / F7 Return, exact-once hit with frame skipping, cancellation and repeat. Existing FS battle damage code unchanged.
+- [Real native Godot 4.7.2 CI run #44872832030](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44872832030) completed/success. Job 136750948876, engine version 4.7.2.stable.official.ed1daf0bf, log marker TB_TIMELINE_NATIVE_PASS (R2,H5,T7,DONE, fast-forward, cancel, 60 Hz). **This native run uses synthetic nonprivate PNG. It is NOT the native verification of the private PMD art.**
+- Private real-file Python regression 19/19 PASS. PMD0001 static 64px has 826 RGB colors. A shared 32-color transparent V4 variant was generated, with exact alpha-mask preservation. Art gate remains HOLD because of leg stretches and jaw seams, and the 32-color version is not approved.
+- [Private Godot 4.7.2 R4 ZIP](https://drive.google.com/file/d/1sXZy5VfR3dUyJVl6myYmWJNmpilbrTzv/view) 22 files, CRC PASS, SHA256 9d37acde4ec5267c40f0dad3c6a8177d93fb9ca732deebe65755b90e87d6bfa7; [32-color frame comparison](https://drive.google.com/file/d/1ju4hXZjcz7saCtu3H4N1PZUFv0rjmvgz/view); [QA JSON](https://drive.google.com/file/d/1VUwGHiLIM2HVb1_VAJJ3-15JbSM5il5F/view).
+- Gate summary: Godot native SCRIPT (synthetic) PASS; Godot native REAL PMD PNG NOT_RUN; ART HOLD; PixelLab new generation 0 jobs / 0 generations; second family NOT_RUN.
+- NEXT COMPLETE UNIT: use true four-limb and independently drawn lower-jaw keyposes (PixelLab or authorized tool), keeping F2/F5/F7 events; run native Godot 4.7.2 with PRIVATE real PNG and human Art Gate. Do not repeat rigid-body/RBF warping; no private art in public GitHub, no files created on user's PC.
