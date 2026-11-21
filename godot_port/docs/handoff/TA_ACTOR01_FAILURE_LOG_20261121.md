@@ -1,6 +1,20 @@
 # T-A Failure Log / 2026-11-21
 
 
+## R6 root-cause diagnosis and non-fake repair
+
+**TA-13 / MAJOR ART BLOCKER (user reported): A52 ATTACK visually moves arm/weapon but does not significantly articulate head/shoulders/chest.** This systemic flaw survived earlier R3-R5 GPU/CI PASS because those tests only checked timing/texture format, not whole-body motion.
+
+- R6 corrective route: one new complete 12-frame ATTACK, hip-anchored head/torso rotations from genuine A52 artist pixels, multiple keyposture phases instead of a F7 single-frame micro-adjustment. Original Body/Weapon/FX SHA preserved. Original impact FX F7 and frozen 0.630sec unchanged.
+- Measured F7 candidate delta: head y14..31 changed 293 pixels; chest y32..44 changed 260; total Body 567; unchanged boots y51..63. Original arm/weapon-only problem addressed at measurable silhouette level.
+- New automatic anti-regression guard in godot_port/tools/ta_actor01_attack_body_gate.py rejects static head or static chest at F3/F4/F7/F8; synthetic CI only tests the guard, actual R6 private QA is in Drive. It MUST NOT be promoted to independent ART PASS.
+- R6 181/181 native GPU PASS; before A52 native and new R6 native comparison is preserved. Real PixelLab Skeleton V3 not available; output only procedural retarget. New model expense 0.
+- New R6 candidate may still look mechanically deformed/too much head pitch because it is nearest-neighbor source warp, not physically reauthored torso pixels. **ART HOLD** awaiting entire-motion review. If rejected, next route must be proper PixelLab Skeleton V3 or artist-specified 12 complete full-body keyposes; no more engine-only QA being presented as artistic progress.
+- Private zip: https://drive.google.com/file/d/1OL6d8d8vzemJmPaDxERaxGc1l3KZd5wa/view (196 files, ZIP CRC PASS). Original body source never overwritten. Other T-A R5B RUN defects remain separately logged.
+
+---
+
+
 ## R5B follow-up (latest 2026-11-21)
 - TA-10 / **ART BLOCKER / R5a REJECT**: R5a reconstruction discarded original A35 suspect F6/F7 and retained F0-F5, but direct F5->F0 optical loop produced **86 silhouette-alpha seam mismatches** vs R4 older 20. Exactly **1 whole-motion strategy attempt**, then switched to A62 foot-neutral bridge (R5B). R5a was not sold as an approved result.
 - TA-11 / **ART HOLD / R5B candidate**: Source-locked, 12 unique poses (6 authentic PixelLab F0-F5 + 1 approved A62 idle + 5 non-model optical transitions), all 12 weapon overlays physically contact Body and are not cropped. New seam **62 alpha mismatches**: better than R5a, still worse than old 20; A62 transition may cause an unnatural stopped beat. **No claim of motion-art PASS or full model-created RUN12**. Do not continue optical-loop micro-tuning indefinitely; a real PixelLab / skeleton model approach is next.

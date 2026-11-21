@@ -1,6 +1,39 @@
 # T-A｜ACTOR01 RUN12 / ATTACK12 candidate motion manifest
 
 
+## R6 COMPLETE ATTACK full-head+torso correction (latest, supersedes A52 reuse in R5B candidate only)
+
+User correctly rejected the static head/chest original A52 attack. R6 is a **new isolated candidate ATTACK12 256×192 ×3 layers**, not an overwrite or new paid PixelLab job. Before/after are TRUE original-owner-private source Godot 4.7.2 GPU renders (181/181 60Hz). The new geometry is measurable but full artistic dynamics remain ART HOLD.
+
+### Verified R6 source and artifacts
+- Original UNMODIFIED approved A52 ATTACK Body SHA256: a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f
+- Original A52 weapon SHA256: 6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b
+- Original A52 FX SHA256: 46f02a3c06958a380e8333e86929a69cea7cfd6c7eec55fe616de0b6d9bec73c
+- R6 new Body candidate SHA256: 573a1a707bee819408e3e75c24a07387dbb56e56ab172a04f9d36943c3b3e53d
+- R6 new Weapon candidate SHA256: 47d0623084372068f38f30ceedf3cefe232b8a41927f90c38604af43b54755b6
+- R6 FX independently layered SHA256: ab805496de7fdab088a01458e4825f28afae868ba9e4650464086a29cbdf196a
+- All three 256×192 RGBA, 12×64×64, Body/Weapon/FX. F0/F11 exact original poses, feet y51..63 100% unchanged.
+- At original A52 F7 / presentation time 0.630s: **293 head-region changed pixels** in y14..31; **260 torso-region changed pixels** y32..44; **567 total body changed pixels**; **0 changed feet pixels**; F7 approved A52 attack FX unchanged. Whole original F7 head centroid moves approximately 4.478 pixels and chest centroid 1.308 pixels. Geometry change proves the old static head/torso defect was addressed, NOT art naturalness.
+- F8/F9/F10 original A52 detached recovery sword fixed with -3/-2/-3 px source-blade retarget; 12/12 frame source body/weapon contact when weapon is visible (10 weapon-on frames) by alpha overlap. F0/F11 no drawn blade as in original.
+- Stage: **R6 candidate from original A52 procedural articulated torso/head rotation / vertical squash / shoulder twist**. Not a new PixelLab image generation; NOT an actual new skeleton-authored frame. Price/spend 0. R5B RUN remains separately ART HOLD; no changes to original A52, main, or phase1 battle.
+- **Real source Godot 4.7.2**: Official executable 4.7.2.stable.official.ed1daf0bf, native OpenGL 4.5 Mesa llvmpipe, 181/181 60Hz frames EXIT0, comparing A52 original GPU versus R6 candidate GPU at exactly same action ticks. This is standalone source-private engine QA, NOT full integrated FS ACT/ATB gameplay.
+- Godot R6 QA ZIP **196 files, 813,320 bytes, ZIP CRC PASS**, containing 181 genuine native PNGs, the 60fps A52-vs-R6 comparison MP4, slower original/modified native GIF, 1×/4× comparison, private source manifests, detailed verification JSON, logs and generation script. SHA256: 82998fac77a77eaa5894f4625c0a1dfadf72c01f50db84f3c258f550dd303f0d .
+- Private Drive ZIP: https://drive.google.com/file/d/1OL6d8d8vzemJmPaDxERaxGc1l3KZd5wa/view
+- Direct private Drive slow original-vs-new real Godot GPU GIF: https://drive.google.com/file/d/1DiltvPJCGjQgJtKBBPFIQTobvXULedk0/view
+- Private 4× original-vs-new keypose comparison PNG: https://drive.google.com/file/d/1zaxPU7UY0GHA3l4TRqj7k9djVXX0A-AE/view
+- Private R6 Body: https://drive.google.com/file/d/1ukhU0eg3L__ZX6gvmx6tx-UGIG9vWm0W/view
+- Private R6 Weapon: https://drive.google.com/file/d/1EPKsnCVOjYSq2syRdloG4HIVmEZ9fx2w/view
+- Private R6 FX: https://drive.google.com/file/d/1gZcS4kWCIdEcKVT7otttCRDPxWjgUVdb/view
+- Reproduction generator in public text-only GitHub: godot_port/tools/ta_actor01_attack_r6_fullbody.py, source SHA-locked. New regression gate: godot_port/tools/ta_actor01_attack_body_gate.py; must block static-head/static-chest instead of treating engine frame count as animation quality.
+- **VISUAL ART HOLD** until original identity/proportions, deliberate rotation, sword followthrough, upper/lower torso silhouette and 45° angle are reviewed. A procedure modifying 293+260 pixels is a necessary geometric advance, NOT a sufficient full-body high-quality sprite-sheet art PASS.
+
+- Attack timing remains F7 at 0.630sec and 70ms Hitstop metadata (unchanged rig), no real ATB HP/MP coupling or source damage changes.
+- Relative frame angles in R6 source-generated whole-body candidate: 0,-5,-9,-12,-13,-8,+7,+18,+15,+9,+4,0 degrees (hip-anchored; feet untouched). This ensures a distinct windup, impact forward drive, and recovery, not just weapon pivot.
+- The original A52 remains stored and source-verified, no upstream overwrite. R5B RUN remains separately on ART HOLD.
+
+---
+
+
 ## R5B private owner source complete 12-frame gait candidate (2026-11-21)
 
 - **Candidate R5B is NOT approved**, does NOT replace R4, and is NOT a fresh PixelLab model generation. A35 original F6/F7 are excluded; uses A35 real original F0,F1,F2,F3,F4,F5 + A62 approved IDLE neutral bridge + 5 source-color optical frames. R5a direct-loop method REJECTED (alpha seam=86). R5B alpha seam=62 vs older R4=20 => ART HOLD.
