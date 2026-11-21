@@ -1,5 +1,18 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R8 NEW USER OVERRIDE｜LPC skeleton x approved ACTOR01 identity (2026-11-21)
+
+**This takes priority over R1-R7 methods and replaces their procedural-pixel-rotation as the default.** The current user specifically rejected R7 and requested true LPC original paper-doll whole-body motion reference while preserving the already approved white-haired, dark-green ACTOR01 art, face, and one-handed sword identity. Original LPC 11 layer 24 frame archive and 18-animation composite archive were actually downloaded and source ZIP SHA verified. They have four CARDINAL directions only, not preapproved 45 degree frames. Never say LPC has true 45 degree native slash; translation to approved 3/4 is an ART gate.
+
+**The formal rule is now in:** `godot_port/docs/authority/FS_TA_R8_LPC_ACTOR01_ART_AUTHORITY_20261121.md` and the same owner-private Drive document https://docs.google.com/document/d/1QiSgz3-E6f1ufP7O8CTE5_FNohNe0jAB/edit . Scope only T-A, never rewrite other workstreams.
+
+**P0 physical acting:** full foot stance, hip yaw, torso/shoulder turn, elbow, wrist, head/eyes, face and one-handed sword in one connected 12-frame action; no more motionless legs or only-weapon wrist arc. **P0 source:** authentic LPC `custom:slash_128/right`, `custom:backslash_128/right`, normal slash/backslash visible full-pose reference; 11 independent original slots verified for `slash_128` ONLY; other LPC motions have composite source, not a claimed independent 147-layer copy. User-approved Actor01 identity always wins over LPC costume/shape. Godot 4.7.2 F7 visual 0.630s and 70ms hitstop metadata unchanged. 12x64 RGB pixel art Body/Weapon/FX atlas256x192, SHA/permissions traced and original unchanged. Private sprites and QA Drive only; source/policy code GitHub; no user PC.
+
+**Status at this transition:** R7 ART REJECTED BY USER. R8 policy: SOURCE VERIFIED. R8 retargeted new ART: IN PROGRESS / NOT YET APPROVED. No new PixelLab v3 job claimed. Future Handoffs must give actual image/Godot 1x evidence and source-based pose map; engine-only PASS never means ART PASS.
+
+---
+
+
 ## R7 | 2026-11-21 | Internet-referenced full-body overhead sword strike & facial acting (LATEST)
 
 User rejected R6: face not expressive and backswing not high enough. R7 changes the COMPLETE 12-frame attack candidate, not just a single-pixel detail. T-A branch only; retains unmodified A52 originals and R6 candidate in Drive/GitHub.

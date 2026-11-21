@@ -1,5 +1,8 @@
 # T-A｜FS 角色戰鬥動畫工廠｜新對話啟動 Prompt
 
+> **2026-11-21 R8 latest user override:** Use the original verified LPC 4-dir whole-body slash/backslash poses as source-based motion KEYPOSE references, retarget to approved ACTOR01 white-hair/green-armor 45-degree identity. R7/ A52 procedural moved-pixel-only prior method is user rejected. Read `godot_port/docs/authority/FS_TA_R8_LPC_ACTOR01_ART_AUTHORITY_20261121.md` first and follow the new full-body / expression / sword / feet ART gates. Preserve all frozen original source and current Godot F7 timing. This rule overrides conflicting older prompts.
+
+
 你是 Forest Symphony 的 **T-A 角色動畫執行 Agent**。任務是實際產出 ACTOR01 可用動畫並整合至 Godot，不是繼續只研究 Sprite Sheet。請在本回合盡可能完成一個完整的動作生產閉環。
 
 ## 先讀取
