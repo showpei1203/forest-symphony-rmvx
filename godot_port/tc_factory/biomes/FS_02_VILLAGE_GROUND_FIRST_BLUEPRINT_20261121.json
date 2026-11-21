@@ -1,0 +1,100 @@
+{
+  "schema": "FS_TC_SNOW_VILLAGE_GROUND_FIRST_FULL_PAR_BLUEPRINT_20261121",
+  "canonical_scene_id": "FS_02_VILLAGE",
+  "canonical_scene_name": "霜燈聚落",
+  "biome_id": "FROST_SNOWFIELD",
+  "biome_name": "凜霜雪原",
+  "world_bible": "FS_SIX_BIOMES_WORLD_ART_PLAN_20261114.md in private Google Drive",
+  "source_parent_canonical": "2026-11-16 FS_12_MAP_ACTIVE_MASTER; do not rename/overwrite older scene masters",
+  "art_camera": {
+    "style": "crisp top-down 3/4 sprite pixel art",
+    "lighting_direction": "upper left",
+    "world_tile_px": 32,
+    "world_grid": [
+      40,
+      29
+    ],
+    "canvas_px": [
+      1280,
+      928
+    ],
+    "canvas_color": "opaque RGB on Ground, transparent RGBA on PAR"
+  },
+  "stage_1_ground": {
+    "required_classification": "ALL AND ONLY FLAT TERRAIN; ground first and never combined with non-ground objects",
+    "include": [
+      "accumulated snow",
+      "frozen soil",
+      "cracked flat ice",
+      "cold-color rock surfaces that are terrain",
+      "natural packed-snow roads",
+      "frozen ponds or low ice surface",
+      "flat frostgrass/very small pebbles"
+    ],
+    "exclude_to_par": [
+      "upright stone cliffs and spires",
+      "ice pillars",
+      "large boulders",
+      "trees and branches",
+      "fences",
+      "roof/door/walls of houses",
+      "signposts",
+      "lanterns",
+      "raised bushes/rock props",
+      "bridges and rails"
+    ],
+    "source_candidate_original_size": [
+      1470,
+      1070
+    ],
+    "crop_original_xyxy": [
+      95,
+      71,
+      1375,
+      999
+    ],
+    "candidate_ground_sha256": "475f7883c1fe23245198198029da3ac37dc479176e3dc8ddc8a81aba4054f5ea",
+    "source_original_sha256": "bb2bdbc0a50fab85689180669b36b59b858a98863d44d9a127aa26e628dbc9b3",
+    "source_provenance": "new independent AI Ground image, not paid PixelLab API",
+    "ground_url": "https://drive.google.com/file/d/1YQt0dkI2AR9VFYMMrFYP3h4KUPJ_ka9T/view",
+    "state": "CANDIDATE_SOURCE_QA_PASS_GROUND_SEMANTIC_ART_HOLD",
+    "known_issue": "some small standing rocks and frost shrubs on candidate may be non-ground; formal Ground-only art purity unconfirmed"
+  },
+  "stage_2_full_par": {
+    "status": "NOT_GENERATED",
+    "rule": "INCLUDE ALL non-ground whole objects regardless of whether they would block actor; no actor occlusion extraction",
+    "palette_style": "same background snow and icy pale blue, cool silver-gray wood/stone and restrained amber lantern highlights",
+    "complete_object_families": [
+      "snow-covered fir trees and trunk/roots",
+      "snow-roof timber and stone lodges, shops, chimneys",
+      "freestanding ice pillars",
+      "raised boulders and cliffs",
+      "street lantern poles and warm lamp houses",
+      "fences/railings",
+      "wood bridges",
+      "village signs, crates, barrels, street decoration",
+      "all other non-ground environment props"
+    ],
+    "hard_requirements": [
+      "exact 1280x928 same world XY as candidate Ground",
+      "true alpha=0 background, no fake checkerboard",
+      "same scene orientation and camera, no image re-crop or resize after art generation",
+      "two independent complete snow village buildings with separate forms",
+      "do not regenerate Ground; do not use original PNG as full image background",
+      "no colliders or actor occlusion subset at authoring"
+    ],
+    "planned_placement": "two snow lodges adjacent to the crossroads while keeping central walking plaza clear; full snowy conifers mostly on periphery; all complete objects inside map except natural forest continuation beyond borders"
+  },
+  "qa_gates": {
+    "stage_1_source_png_dimensions": "PASS",
+    "stage_1_32px_grid_dimensions": "PASS",
+    "stage_1_visual_pure_ground": "HOLD",
+    "stage_2_par_png_generated": "NOT_RUN_FAILED_IMAGEGEN_INFOGRAPHIC_OUTPUT",
+    "stage_2_par_alpha": "NOT_RUN",
+    "stage_2_par_all_objects": "NOT_RUN",
+    "stage_3_alpha_composite": "NOT_RUN",
+    "stage_4_Godot_4_7_2_native": "NOT_RUN",
+    "formal_art_gate": "HOLD"
+  },
+  "private_drive_QA_zip": "https://drive.google.com/file/d/1d4LoyX3FSYRA9iy9aCU5WJ_N0RYz8XOY/view"
+}
