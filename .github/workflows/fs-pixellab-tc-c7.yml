@@ -1,0 +1,140 @@
+name: FS PixelLab T-C C7 Verified FS Art (Godot 4.7.2)
+on:
+  push:
+    branches:
+      - feat/fs-pixellab-tc-map-20261121
+    paths:
+      - "godot_port/tc_factory/build_tc_village_source_c7.py"
+      - "godot_port/tc_factory/TCVillageSourceC7.gd"
+      - "godot_port/tc_factory/TCVillageSourceC7.tscn"
+      - "godot_port/tc_factory/capture_tc_source_c7_native.gd"
+      - ".github/workflows/fs-pixellab-tc-c7.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fs-tc-c7-source
+  cancel-in-progress: true
+
+jobs:
+  real-source-4-7-2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pinned Pillow and GPU test host dependencies
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check Pillow==12.0.0
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1 libxcursor1 libxrandr2 libxi6 libxinerama1
+      - name: Author entire 8x8 C7 from FIVE SHA-verified independent FS A36G-R4 sources
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/build_tc_village_source_c7.py \
+            --out godot_port/tc_factory/generated_source | tee /tmp/fs_tc_c7_output.json
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,hashlib
+          from PIL import Image,ImageChops
+          d=Path('godot_port/tc_factory/generated_source')
+          j=json.loads((d/'TC_C7_SOURCE_QA.json').read_text())
+          assert j['original_sha_verified_sources']==5
+          assert j['C6_handdrawn_props_remaining']==0
+          assert j['C5_house_colliders_preserved']==2
+          assert j['new_blocking_tree_roots']==2
+          assert j['new_nonblocking_original_landmarks_and_shrubs']==3
+          assert j['source_consistent_semantic_owners']==17
+          assert j['full_scene_8x8_region_other_pixels_unchanged'] is True
+          assert len(json.loads((d/'TC_C7_ROOT_FOOTPRINTS.json').read_text())['colliders'])==2
+          for name in ('MASTER.png','Authoring_GroundOnly.png','Authoring_CompletePAR.png',
+                       'Runtime_FullGround.png','Runtime_OcclusionPAR.png'):
+              im=Image.open(d/name);im.load()
+              assert im.size==(1280,928),(name,im.size)
+          master=Image.open(d/'MASTER.png').convert('RGB')
+          ground=Image.open(d/'Authoring_GroundOnly.png').convert('RGBA')
+          complete=Image.open(d/'Authoring_CompletePAR.png').convert('RGBA')
+          assert ImageChops.difference(master,Image.alpha_composite(ground,complete).convert('RGB')).getbbox() is None
+          assert len(list((d/'c7_independent_fs_origins').glob('*.png')))==5
+          print('C7 VERIFIED TRUE FS SOURCE-OBJECTS MASTER / LAYERS: PASS')
+          PY
+      - name: Download official pinned Godot 4.7.2 stable
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/godot472.zip \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          mkdir -p /tmp/fs_tc_godot
+          unzip -q /tmp/godot472.zip -d /tmp/fs_tc_godot
+          chmod +x /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Native Godot 4.7.2 editor cold import
+        run: |
+          set -euo pipefail
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+            --headless --path godot_port --editor --quit
+      - name: Test C7 1280x928 native GPU, source alpha and exact original-blocking semantics
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          timeout 110s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/capture_tc_source_c7_native.gd
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from PIL import Image,ImageChops
+          d=Path('godot_port/tc_factory/generated_source')
+          j=json.loads((d/'TC_C7_NATIVE_QA.json').read_text())
+          assert j['engine'].startswith('4.7.2'),j
+          assert j['actual_framebuffer']==[1280,928]
+          assert j['source_region_tiles']==[8,8]
+          assert j['existing_C5_house_physics']==2
+          assert j['new_original_source_tree_root_physics']==2
+          assert j['semantic_independent_owners']==17
+          assert j['original_lamp_occlusion_changed_actor_roi_px']>=10
+          assert j['front_actor_visible']
+          assert list(j['point_query_hits'].values())==[1,1,1,1,0,0,0]
+          old=Image.open(d/'TC_C7_GODOT472_NATIVE_FULL_1X.png').convert('RGB')
+          assert old.size==(1280,928)
+          real=old.crop((640,160,896,416))
+          real.save(d/'TC_C7_NATIVE_REGION_1X.png')
+          real.resize((768,768),Image.Resampling.NEAREST).save(
+              d/'TC_C7_NATIVE_REGION_3X_REVIEW_NOT_ORIGINAL.png')
+          prev=Image.open(d/'TC_C7_PREVIOUS_C6_REGION_1X.png').convert('RGB')
+          delta=ImageChops.difference(real,prev)
+          assert delta.getbbox() is not None,'C7 new real source art invisible in actual Godot GPU'
+          print('C7 FULL REAL GODOT 4.7.2 NATIVE GPU / TRUE TREE COLLISION / LAMP OCCLUSION PASS')
+          PY
+      - name: Package ONLY final C7 source, full 1x GPU, and QA for private Drive
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile,hashlib
+          d=Path('godot_port/tc_factory/generated_source')
+          out=Path('/tmp/FS_TC_C7_NATIVE_SOURCE_PRIVATE.zip')
+          files=sorted(p for p in d.rglob('*') if p.is_file()
+                       and p.name!='.gitignore' and not p.name.endswith('.import')
+                       and not p.name.startswith('TC_C6_'))
+          if not files:
+              raise SystemExit(0)
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=7) as z:
+              for p in files:z.write(p,arcname=str(p.relative_to(d)))
+          with zipfile.ZipFile(out) as z:
+              assert z.testzip() is None
+              print('C7 TRUE SOURCE+GPU ZIP ENTRIES',len(z.namelist()))
+          print('C7 TRUE SOURCE+GPU ZIP SIZE',out.stat().st_size)
+          print('C7 TRUE SOURCE+GPU ZIP SHA256',hashlib.sha256(out.read_bytes()).hexdigest())
+          assert out.stat().st_size<100_000_000,'Drive per-upload file limit; split if larger'
+          PY
+      - name: One-day GitHub transfer staging for owner-only Drive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-tc-c7-private-drive-transfer
+          path: /tmp/FS_TC_C7_NATIVE_SOURCE_PRIVATE.zip
+          if-no-files-found: warn
+          retention-days: 1
