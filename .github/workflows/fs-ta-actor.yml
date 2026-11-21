@@ -12,6 +12,8 @@ on:
       - "godot_port/tests/test_fs_ta_actor_preview.gd"
       - "godot_port/tools/ta_actor01_run_weapon.py"
       - "godot_port/tools/ta_actor01_attack_r6_fullbody.py"
+      - "godot_port/tools/ta_r8_lpc_actor01_retarget.py"
+      - "godot_port/docs/handoff/TA_ACTOR01_R8_LPC_SOURCE_POSE_MANIFEST_20261121.json"
       - "godot_port/tools/ta_actor01_attack_r7_high_guard_expression.py"
       - "godot_port/tools/ta_actor01_attack_body_gate.py"
       - "godot_port/tools/ta_actor01_run_r5b.py"
@@ -58,6 +60,21 @@ jobs:
           python3 -m py_compile godot_port/tools/ta_actor01_attack_r6_fullbody.py
       - name: Verify R7 high-guard facial-acting generator syntax (private assets not in public runner)
         run: python3 -m py_compile godot_port/tools/ta_actor01_attack_r7_high_guard_expression.py
+      - name: R8 exact-source LPC pose retarget tool syntax and format contract (no private images in CI)
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r8_lpc_actor01_retarget.py
+          python3 - <<'PY'
+          import json
+          with open('godot_port/docs/handoff/TA_ACTOR01_R8_LPC_SOURCE_POSE_MANIFEST_20261121.json',encoding='utf-8') as file:
+              report=json.load(file)
+          assert report['frame_count']==12
+          assert report['grid']==[4,3] and report['atlas']==[256,192]
+          assert len(report['pose_phase'])==12 and report['pose_phase'][7]=='contact'
+          assert report['frame7_contact_seconds']==0.630
+          assert report['view']=='45_degree_3_4_artist_adaptation_NOT_native_LPC_angle'
+          assert report['owner_art_gate']=='HOLD'
+          print('R8_LPC_POSE_CONTRACT_12FRAME_SYNTAX_PASS ART_HOLD')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd
