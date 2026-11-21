@@ -19,8 +19,8 @@ def api(path,payload=None):
  except urllib.error.HTTPError as e:raise RuntimeError(str(e.code)+" "+e.read().decode("utf8","replace")[:1200])
 def sha(path):return hashlib.sha256(pathlib.Path(path).read_bytes()).hexdigest()
 prompts={
-2:"Evolve THIS EXACT plum-violet leaf-wing bat into a visually STRONGLY NEW MEDIUM form. Bigger bat head and body, additional dark-violet neck mantle and two distinct horn-like leaf crests behind ears; the emerald wings now have bold forked pointed tips AND small second leaflet along each wing edge. Deliberately add height and layered spurs, noticeably different silhouette. Preserve same paired wings, face and amber eyes. No simple recolor, no frog features, no scenery. Crisp transparent pixel art 3/4 southeast.",
-3:"Evolve THIS SAME medium leaf bat into ancient FINAL form with unmistakably larger and higher feathered antler/leaf crown rising above both ears, two additional layered secondary green leaf-wing lobes, thorn-like spurs from outer wings, a LARGE glowing emerald chest crystal, muscular plum body. Keep same pair amber eyes and violet bat face, identity and 3/4 southeast view. Structural evolution not recolor, 160 square transparent pixel art, one creature only."}
+2:"Evolve this exact purple forest bat to a clearly different medium stage: larger purple torso, long leaf horns above ears, strongly forked wing tips, secondary green leaflets on both wing edges, long fangs and same golden eyes. Preserve bat face and family colors. Distinct silhouette, not recolor. Transparent crisp pixel art, 3/4 southeast view, no frog, no background.",
+3:"Evolve the same purple leaf bat to an ancient final form: gigantic doubled green leaf wings, thorns on wing tips, tall antler-like leaf crown and large green chest gem. Keep same bat head and golden eyes, purple body. Dramatic structural change, no recolor, no frog, no additional character. Transparent crisp pixel art, 3/4 southeast view."}
 source=w/("BAT_STAGE%d.png"%(args.stage-1))
 if not source.is_file():raise FileNotFoundError(source)
 if args.submit:
