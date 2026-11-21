@@ -1,5 +1,17 @@
 # T-A｜ACTOR01 RUN12 / ATTACK12 candidate motion manifest
 
+## R8 latest | LPC verified full-pose motion skeleton + ACTOR01 approved identity
+
+**User explicitly rejected R7.** R8 uses real 24frame 11-layer LPC slash x 4 CARDINAL directions and separate LPC 18-action composite / backslash motion references. It does NOT claim to contain native LPC 45° pose frames, a fully restored original 147-layer source, or a new PixelLab job. 12 approved-ACTOR01-style pose retarget is a whole-action **ART HOLD** candidate, not a replacement of original A52. See new formal source-to-pose authority file `godot_port/docs/authority/FS_TA_R8_LPC_ACTOR01_ART_AUTHORITY_20261121.md` and original-source pose manifest included in private ZIP https://drive.google.com/file/d/1l0BLyGjJYzREVdmuDtp1SvekLGEGv4YO/view.
+
+- Art identity SHA A62 `70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e`, A52 original 3 SHAs preserved; R8 Body SHA `45c564864e38200429ebcfeb6c301ab49af94a43c0547b7ab4c0ab694d7f8ff8`, Weapon `2644df69b66cc44a5c9d600f3afc6ad82109217bfca43d53a6347636bf7beeb8`, FX `110ba1a509686a47e690e254e294c293c71f58672c16c38ace08cd8ea5dbc210`.
+- 12 full physical phases neutral, set step, coil, raise, high guard, hip drive, accelerate, F7 contact, follow-through, recovery, settle, neutral. Source keypoints and Pose Map JSON inside private ZIP. 0.630 sec contact and 70ms Hitstop presentation metadata, no HP/MP integration claim.
+- Official Godot 4.7.2 REAL private R7/R8 split-render 12+67 native GPU PNGs PASS, 0 alpha mismatch but 56 RGB blend differences in key pose comparison. Video and rendering source are inside QA ZIP. Current full artwork **ART HOLD** due mechanical right sleeve/elbow and lack of natural artist-authored movement. No fake new model.
+- Private Drive Body https://drive.google.com/file/d/1eJwVEyc18xbo5SaygA3_uRa7TXoNv48O/view, Weapon https://drive.google.com/file/d/1mzI76lXZ2QxOj1ftwZrjdHPgguSFMg4K/view, FX https://drive.google.com/file/d/14Bd7Vq8ESZhRzNFrHwPXGW3tTq7i-8eG/view, true Godot 4× comparison https://drive.google.com/file/d/1gOYMZwe5obVGWKzmvfXNp7rnuS2gJzEI/view, full 93-file QA/PNG/GIF/MP4/code ZIP https://drive.google.com/file/d/1l0BLyGjJYzREVdmuDtp1SvekLGEGv4YO/view.
+
+---
+
+
 
 ## R6 COMPLETE ATTACK full-head+torso correction (latest, supersedes A52 reuse in R5B candidate only)
 

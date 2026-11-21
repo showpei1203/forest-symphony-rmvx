@@ -1,0 +1,90 @@
+{
+  "version": "R8_2026-11-21",
+  "status": "M1_FULL_12FRAME_CANDIDATE_M2_GODOT_PRIVATE_SOURCE_PASS_ART_HOLD",
+  "actor_id": "ACTOR01",
+  "engine": "Godot 4.7.2",
+  "view": "45_degree_3_4_artist_adaptation_NOT_native_LPC_angle",
+  "frame_count": 12,
+  "frame_size": [
+    64,
+    64
+  ],
+  "grid": [
+    4,
+    3
+  ],
+  "atlas": [
+    256,
+    192
+  ],
+  "lpc_source_cardinal": "right",
+  "lpc_pose_count_per_direction": 6,
+  "lpc_11_layer_zip_sha": "5fbfc15c36e122d7bd38dcaafe2ca03f53e83330bd72338c1d6be18a2f3de582",
+  "lpc_18_action_composite_zip_sha": "e6d57dbb38e86a80001edd676754b4b432d710fd481841d531c181a97f9de0c7",
+  "r8_body_sha": "45c564864e38200429ebcfeb6c301ab49af94a43c0547b7ab4c0ab694d7f8ff8",
+  "r8_weapon_sha": "2644df69b66cc44a5c9d600f3afc6ad82109217bfca43d53a6347636bf7beeb8",
+  "r8_fx_sha": "110ba1a509686a47e690e254e294c293c71f58672c16c38ace08cd8ea5dbc210",
+  "lpc_original_right_upper_hand_x": [
+    39,
+    40,
+    42,
+    43,
+    55,
+    52
+  ],
+  "pose_phase": [
+    "neutral",
+    "set_step",
+    "coil",
+    "raise_guard",
+    "high_guard",
+    "hip_drive",
+    "accelerate",
+    "contact",
+    "follow_through",
+    "recovery",
+    "settle",
+    "neutral"
+  ],
+  "pose_lpc_f": [
+    0,
+    0,
+    1,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+    5,
+    1,
+    0
+  ],
+  "pose_face": [
+    "neutral",
+    "focus",
+    "focus",
+    "clench",
+    "clench",
+    "exert",
+    "exert",
+    "shout",
+    "shout",
+    "recover",
+    "recover",
+    "neutral"
+  ],
+  "frame7_contact_seconds": 0.63,
+  "impact_effect_source_pixel_exact": true,
+  "new_pixellab_model": "NOT_RUN",
+  "native_gpu_qa": {
+    "real_source_side_by_side_keyposes": 12,
+    "real_source_60fps_frames": 67,
+    "alpha_mismatch": 0,
+    "rgb_mismatch": 56,
+    "one_visual_contact": true
+  },
+  "owner_art_gate": "HOLD",
+  "drive_qa_zip": "https://drive.google.com/file/d/1l0BLyGjJYzREVdmuDtp1SvekLGEGv4YO/view",
+  "source_generator": "bundled in owner-private QA ZIP (source images kept owner-private)"
+}

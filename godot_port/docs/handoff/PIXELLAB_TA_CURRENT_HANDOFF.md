@@ -1,5 +1,34 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R8 LATEST | 2026-11-21 | VERIFIED LPC POSE REFERENCES → APPROVED ACTOR01 identity; first 12-frame retarget MADE
+
+**USER DESIGN OVERRIDE:** R7 attack was REJECTED. Replaced art authority with authentic LPC whole-body motion pose references plus unchanged approved white-haired green-outfit ACTOR01 identity. Formal GitHub policy `godot_port/docs/authority/FS_TA_R8_LPC_ACTOR01_ART_AUTHORITY_20261121.md` and owner-private Drive policy https://docs.google.com/document/d/1QiSgz3-E6f1ufP7O8CTE5_FNohNe0jAB/edit are already saved, verified and apply before every new round. No substitution of armored LPC art for Actor01. No return to partial R7 pixel twisting.
+
+### Truly executed R8 construction, NOT only analysis
+- Downloaded and SHA-checked **entire owner-private P1C LPC source** 42,949,107 bytes / ZIP SHA256 `5fbfc15c36e122d7bd38dcaafe2ca03f53e83330bd72338c1d6be18a2f3de582`; original 11 independently editable slots of `custom:slash_128`, exactly 4 CARDINAL directions × 6 poses × 128 cell. Used source `body_slash_64.png` right-facing hand/foot morphology. Owner-private source https://drive.google.com/file/d/1C0vaqsFkYxfIhxXUK8-0r0raqCdTrkFp/view
+- Also downloaded and SHA-checked the 2,201,550-byte **P1 18-motions source composite** SHA256 `e6d57dbb38e86a80001edd676754b4b432d710fd481841d531c181a97f9de0c7`, containing `custom_backslash_128`, slash, halfslash, attack_slash, combat_idle. It is composite evidence, **not** the missing 147 original independent LPC layers. https://drive.google.com/file/d/1HpZ33mefXE2lD0sghYUJoy4a56pfUr2H/view
+- R8 builds an entire 12-frame 64×64 one-handed diagonal slash with a new **source-based motion mapping**: neutral, set step, hip coil, raise, high guard, hip drive, acceleration, F7 contact, followthrough, recover, settle, neutral. New poses transform approved white-hair/head+chest and paint an articulated Actor01 green sleeve/arm, select A52 source leg stances and alter facial pixels. Exactly original A52 sword source material/approved face, outfit palette. 3 independent 256×192 RGBA atlases, original A52/R7 untouched. **Artist-authored 45° adaptation**, do not claim LPC supplied native diagonal 45° frames or PixelLab V3 new animation.
+- Original A52 Body SHA `a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f`, Weapon `6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b`, FX `46f02a3c06958a380e8333e86929a69cea7cfd6c7eec55fe616de0b6d9bec73c`; A62 `70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e` verified. Body F0 and F11 identical original A52 neutral; F7 impact FX pixel-exact preserved; F7 is VISUAL ONLY at 0.630 sec.
+- Output SHA256: Body `45c564864e38200429ebcfeb6c301ab49af94a43c0547b7ab4c0ab694d7f8ff8`; Weapon `2644df69b66cc44a5c9d600f3afc6ad82109217bfca43d53a6347636bf7beeb8`; FX `110ba1a509686a47e690e254e294c293c71f58672c16c38ace08cd8ea5dbc210`.
+
+### Actual Godot 4.7.2 native + private RAW source proof
+- Isolated cloud official 4.7.2.stable.official.ed1daf0bf, Mesa OpenGL 4.5 llvmpipe via Xvfb. **R8 vs R7 both REAL source atlases** from private Drive/local authorized artifact, native SubViewport. 12/12 R7/R8 side-by-side 128×64 GPU pose shots, **67/67 real 60 Hz GPU timeline frames**, exit 0, one F7 visual contact at elapsed 0.630 sec; no battle damage or MP mutation. R7 vs R8 α pixels match CPU source composite in all 12 pose shots, RGB source/native differ 56 pixels total (blend). Not synthetic CI; actual present project main FSBattle combat integration still NOT RUN.
+- R8 complete private QA ZIP **93 files, 399,573 bytes, ZIP CRC PASS, SHA256 `a996c145cadbee7199c3a6a205238230e8647805d30b14effb9f897bb5f2a017`** includes 79 original native GPU PNGs, 12-pose montage 1×/4×, 60 FPS MP4, motion GIF, 3 full new layer PNG atlases, source-lock original generator Python (PRIVATE ZIP, not uploaded as code file to GitHub), JSON pose mapping/QA, original 4.7.2 GPU capture GDScript and log. Drive WRITE + folder LIST READBACK confirmed:
+  - Body: https://drive.google.com/file/d/1eJwVEyc18xbo5SaygA3_uRa7TXoNv48O/view
+  - Weapon: https://drive.google.com/file/d/1mzI76lXZ2QxOj1ftwZrjdHPgguSFMg4K/view
+  - FX: https://drive.google.com/file/d/14Bd7Vq8ESZhRzNFrHwPXGW3tTq7i-8eG/view
+  - True GPU 4× R7/R8 comparison: https://drive.google.com/file/d/1gOYMZwe5obVGWKzmvfXNp7rnuS2gJzEI/view
+  - **FULL R8 NATIVE QA ZIP**: https://drive.google.com/file/d/1l0BLyGjJYzREVdmuDtp1SvekLGEGv4YO/view
+
+### PASS/HOLD/NOT RUN (do not overstate)
+- SOURCE ZIP/hash/license lineage: PASS; **no new paid PixelLab model**, 0 units; LPC data are original 4 cardinal only, 45° must be human-approved. First full 12×64x64 draft: M1 CANDIDATE BUILT. Godot source 79 actual GPU frames plus timeline and 1 contact: M2 NATIVE PASS.
+- **S6 USER ART ACCEPTANCE: ART HOLD.** Procedural drawn sleeve/elbow may look too mechanical; body turn/face/45° and foot weight shift still need artistic revision. R7 was rejected and is comparison only. One complete R8 strategy pass, no repeated micro-pixel loops. Do not merge into existing production Actor01.
+- Actual FSBattle queue-integrated character playback, M4 second character/animation, PixelLab V3: NOT RUN.
+- NEXT MACRO UNIT: artist/skeleton-v3 whole-body repaint from this *specific* verified LPC 12-pose storyboard, not more software-only GPU verification; then actual in-game Godot ACT presentation and owner Art Gate. No user PC writes this round, originals not overwritten.
+
+---
+
+
 ## R8 NEW USER OVERRIDE｜LPC skeleton x approved ACTOR01 identity (2026-11-21)
 
 **This takes priority over R1-R7 methods and replaces their procedural-pixel-rotation as the default.** The current user specifically rejected R7 and requested true LPC original paper-doll whole-body motion reference while preserving the already approved white-haired, dark-green ACTOR01 art, face, and one-handed sword identity. Original LPC 11 layer 24 frame archive and 18-animation composite archive were actually downloaded and source ZIP SHA verified. They have four CARDINAL directions only, not preapproved 45 degree frames. Never say LPC has true 45 degree native slash; translation to approved 3/4 is an ART gate.

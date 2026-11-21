@@ -1,5 +1,16 @@
 # T-A Failure Log / 2026-11-21
 
+## R8 USER REJECTION → WHOLE-BODY SOURCE SWITCH (latest, 2026-11-21)
+
+- **TA-14 R7 rejected by user / P0 ART**: original R7 procedural high-guard pose still lacks coherent shoulder/elbow/hip/foot integration. DO NOT recycle R6/R7 arm-only deform as another complete animation. New authority is original LPC pose source plus Actor01 unchanged visual DNA. Status R7 REJECTED, not V7 Art Pass.
+- **TA-15 authentic LPC source reacquired / resolved**: P1C 11 independent source slots ×24 cardinal frames 128px, ZIP source SHA `5fbfc15c36e122d7bd38dcaafe2ca03f53e83330bd72338c1d6be18a2f3de582`; P1 18-action composite SHA `e6d57dbb38e86a80001edd676754b4b432d710fd481841d531c181a97f9de0c7`. ALL true source files examined; cardinal only, no direct native 45°. Missing 147-slot original remains BLOCKED; no mock source.
+- **TA-16 R8 first new complete 12-pose ART HOLD**: Real LPC right-facing slash silhouette/hand/feet measurements used as pose references, high-guard 45° bridging artist-specific, original ACTOR01 Body/Weapon/FX identity. Three native-ready 256x192 atlases and true 12-key frame native comparison delivered. R8 elbow/sleeve procedural geometry remains stiff and stance shift needs artist-level review. This is **NOT** PixelLab v3 generation, **NOT** a newly approved visual asset; don’t mistake source-locked procedure for aesthetic acceptance.
+- **TA-17 R8 native evidence PASS in isolation ONLY**: official Godot 4.7.2 Mesa Xvfb, 12/12 key pose, 67/67 real 60Hz source frames, exactly 1 visual contact at 0.630 sec, 0 alpha mismatch 56 RGB difference vs CPU, true sources staged private. Full 93-member ZIP https://drive.google.com/file/d/1l0BLyGjJYzREVdmuDtp1SvekLGEGv4YO/view. Original FSBattle / ATB real in-game presentation NOT RUN; R7 old is rejected, no main merge.
+- **STORAGE**: formal Drive+GitHub R8 authority written and read back, all 3 private atlases/4× montage/full ZIP saved owner-private Drive and folder readback verified; public Github policy/manifest/failure/handoff T-A branch only. No user PC output. Next repair must replace whole action with artist/Skeleton-v3 source-backed keyposes, not another tiny animation tweak.
+
+---
+
+
 ## R7 user-critical failures addressed (latest)
 - TA-10 R6 expression stiff: F1-F10 new eyebrow, gritted mouth, shouted open mouth and recovery; 10/10 real face pixel changes, ART HOLD pending 1x owner signoff.
 - TA-11 R6 backswing amplitude too small: R7 F4 right hand y19 (about 18px higher than R6) and ACTUAL native sword top y5 (R6 y15; 10px more overhead). Source-proven body/weapon connectivity, no crop. Artistic naturalness HOLD.
