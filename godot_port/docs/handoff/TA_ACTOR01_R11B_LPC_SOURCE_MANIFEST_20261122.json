@@ -1,0 +1,95 @@
+{
+  "project": "FS T-A R11B",
+  "status": "ART_HOLD - partial 3/4 composited original LPC not hand-painted 45",
+  "official_upstream_commit": "86a3719ee4a7e2e9fb27c7c152e29a741d3e930a",
+  "action": "backslash",
+  "source_grids": "4 cardinal directions, 13 source frames each",
+  "native_lpc_45_degree_frames": false,
+  "no_weapon": true,
+  "weapon_pixels": 0,
+  "fx_pixels": 0,
+  "A62_approved_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_files": {
+    "skin": {
+      "relative": "body/bodies/male/backslash.png",
+      "sha256": "bcdf000ae13e79322799036441a10d01369e7bc5bff23255a9aea622835e8a56"
+    },
+    "tunic": {
+      "relative": "torso/clothes/longsleeve/longsleeve/male/backslash.png",
+      "sha256": "4ce70704baa9b7c5f5726770e92a6ee9345443d69154bdf909f41cba1893a6da"
+    },
+    "trousers": {
+      "relative": "legs/pants/male/backslash.png",
+      "sha256": "2b60e6fd8b0a62e80dbaefdf927289498e9583876665456cf1b3471cc9d90421"
+    },
+    "boots": {
+      "relative": "feet/boots/basic/male/backslash.png",
+      "sha256": "0bbb55d45d99c20fb305d2eb6f92e0770f5c0feba8957f11c7ce0dab569b4561"
+    }
+  },
+  "source_frame_columns": [
+    12,
+    0,
+    1,
+    2,
+    3,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    12
+  ],
+  "source_front_row": 2,
+  "source_right_row": 3,
+  "composite_method": "authentic unwarped LPC source pixels, source-right limbs + source-front near chest and near leg, approved exact A62 face/hair",
+  "phase": [
+    "idle",
+    "anticipation",
+    "step",
+    "coil",
+    "guard",
+    "release",
+    "accelerate",
+    "contact",
+    "followthrough",
+    "recovery",
+    "settle",
+    "idle"
+  ],
+  "frame7_contact_seconds": 0.63,
+  "shape": [
+    256,
+    192
+  ],
+  "frame": [
+    64,
+    64
+  ],
+  "output_sha256": {
+    "R11B_ACTOR01_UNARMED_BODY_12x64.png": "fcd2c7ee0c16acca95cb1497e75514c1ec9fe0c7907e380ce01514ea24540018",
+    "R11B_WEAPON_EMPTY_ZERO_ALPHA.png": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7",
+    "R11B_FX_EMPTY_ZERO_ALPHA.png": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7"
+  },
+  "islands_removed_per_frame": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    3,
+    3,
+    3
+  ],
+  "issues": [
+    "3/4 composite is SOURCE-BASED REFERENCE, not approved manually painted 45-degree sprite",
+    "source F11 held and duplicate native pose, some shoulder seams need human-pixel-art repaint",
+    "64px face expression currently unchanged",
+    "not a Godot full battle proof"
+  ]
+}
