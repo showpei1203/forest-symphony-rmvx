@@ -31,7 +31,7 @@ func _run() -> void:
     if scene.floor_image.texture == null:
         push_error("C6 full native 1x source texture missing")
         quit(1); return
-    if scene.floor_image.texture.get_size() != Vector2i(1280,928):
+    if scene.floor_image.texture.get_size() != Vector2(1280,928):
         push_error("C6 source pixels were scaled or clipped")
         quit(1); return
     if scene.house_colliders_loaded!=2 or scene.c6_root_colliders_loaded!=3:
