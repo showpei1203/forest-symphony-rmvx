@@ -1,0 +1,57 @@
+name: FS T-B Godot 4.7.2 Attack Timeline (synthetic atlas only)
+on:
+  push:
+    branches:
+      - feat/fs-pixellab-tb-monster-20261121
+    paths:
+      - .github/workflows/fs-tb-native-timeline-472.yml
+      - godot_port/experiments/pixellab_tb/**
+      - godot_port/tools/pixellab_tb/**
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-timeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout experiment branch
+        uses: actions/checkout@v4
+      - name: Fetch official Godot 4.7.2 (no local PC)
+        shell: bash
+        run: |
+          set -euo pipefail
+          url=https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          mkdir -p "$RUNNER_TEMP/fs-tb/godot"
+          curl -fSL --retry 3 "$url" -o "$RUNNER_TEMP/fs-tb/godot.zip"
+          unzip -q "$RUNNER_TEMP/fs-tb/godot.zip" -d "$RUNNER_TEMP/fs-tb/godot"
+          executable="$RUNNER_TEMP/fs-tb/godot/Godot_v4.7.2-stable_linux.x86_64"
+          chmod +x "$executable"
+          "$executable" --version | tee "$RUNNER_TEMP/fs-tb/version.txt"
+          grep -q 4.7.2 "$RUNNER_TEMP/fs-tb/version.txt"
+          echo "GODOT_BIN=$executable" >> "$GITHUB_ENV"
+      - name: Assemble isolated runtime with generated non-private textures
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest="$RUNNER_TEMP/fs-tb/project"
+          mkdir -p "$dest/assets/monsters/tb" "$dest/tests"
+          cp godot_port/experiments/pixellab_tb/tb_attack_timeline.gd "$dest/"
+          cp godot_port/experiments/pixellab_tb/tests/tb_attack_timeline_native_validator.gd "$dest/tests/"
+          cat > "$dest/project.godot" <<'EOF'
+          config_version=5
+          [application]
+          config/name="FS TB Godot Native Timeline Synthetic QA"
+          [rendering]
+          renderer/rendering_method="gl_compatibility"
+          EOF
+          python3 godot_port/tools/pixellab_tb/generate_synthetic_tb_atlas.py --out "$dest/assets/monsters/tb/PMD0001_ATTACK_V4_11F_384x288.png"
+          echo "TB_PROJECT=$dest" >> "$GITHUB_ENV"
+      - name: Run Godot 4.7.2 headless (logic QA, NOT art QA)
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$GODOT_BIN" --headless --path "$TB_PROJECT" --import --quit
+          "$GODOT_BIN" --headless --path "$TB_PROJECT" --script res://tests/tb_attack_timeline_native_validator.gd | tee "$RUNNER_TEMP/fs-tb/native.log"
+          grep -q 'TB_TIMELINE_NATIVE_PASS' "$RUNNER_TEMP/fs-tb/native.log"
+          echo 'PASS: Godot 4.7.2 timeline logic against SYNTHETIC images. Real PMD art NOT_RUN.'
