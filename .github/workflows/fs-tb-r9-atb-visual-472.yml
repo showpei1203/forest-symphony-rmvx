@@ -7,6 +7,8 @@ on:
       - godot_port/experiments/pixellab_tb/FS_TBMonsterBattlePresentation.gd
       - godot_port/experiments/pixellab_tb/tests/test_tb_r9_private_native.gd
       - godot_port/tests/test_tb_r9_real_enemy_battle_visual.gd
+      - godot_port/tests/test_tb_r9_fs_screen_optin.gd
+      - godot_port/scripts/FSScreen.gd
   workflow_dispatch:
 permissions:
   contents: read
@@ -60,4 +62,6 @@ jobs:
           grep -q 'FS enemy source ATB/ACT auto attack/skill' "$RUNNER_TEMP/enemy_atb.log"
           "$GODOT_BIN" --headless --path godot_port --script res://tests/test_tb_r9_real_enemy_battle_visual.gd 2>&1 | tee "$RUNNER_TEMP/r9_battle.log"
           grep -q 'FS_TB_R9_REAL_FS_ATB_ACT_472_PASS' "$RUNNER_TEMP/r9_battle.log"
-          echo 'R9 real FS battle source + synthetic R8 art, native 4.7.2 PASS. Real R8 private art validated off-public CI.'
+          "$GODOT_BIN" --headless --path godot_port --script res://tests/test_tb_r9_fs_screen_optin.gd 2>&1 | tee "$RUNNER_TEMP/r9_ui.log"
+          grep -q 'FS_TB_R9_FS_SCREEN_OPTIN_472_PASS' "$RUNNER_TEMP/r9_ui.log"
+          echo 'R9 real FS battle + FSScreen opt-in UI using synthetic art, native 4.7.2 PASS. Real private R8 art validated separately.'
