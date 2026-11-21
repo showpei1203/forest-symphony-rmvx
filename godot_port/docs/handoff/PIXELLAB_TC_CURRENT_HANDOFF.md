@@ -1,3 +1,27 @@
+# T-C CURRENT | C8 兩棟真正不同的完整木造精靈屋 | 2026-11-21 TPE
+
+**C8 實際施工與 Godot 4.7.2 1× 原生 GPU／碰撞／遮蔽 PASS；正式 FS_01_VILLAGE + FS_01_MAZE 仍 ART HOLD。** 專屬 feat/fs-pixellab-tc-map-20261121。以本段為當輪最新權威，C7/C6/C5 留在下方不刪除。
+
+## C8 真施工內容與原始完整美術
+- 新檔：godot_port/tc_factory/build_tc_village_house_c8.py、TCVillageIndependentHouseC8.tscn、capture_tc_house_c8_native.gd、.github/workflows/fs-pixellab-tc-c8.yml。保留 C7 全村 1280×928 的真 FS 樹、路燈、草地、道路、左屋，不回 VX，不更動已封版 A35／MAZE／Phase1／NAV／存讀檔。
+- 重要發現：歷史 A36G R5 R2（2026-11-04）有原始獨立完整 PixelLab SINGLE GABLE 右屋來源：experiments/route_b_25d_20261031_stage16/A36G_R5_R2_HOUSE_STYLE_20261104/SOURCE_INDEPENDENT_RGBA/A36G_R5_PIXELLAB_RIGHT_HOUSE_SINGLE_GABLE_R2_RGBA.png，**SHA256 4794a89cb06029112e6581c85a47bdcf6a84b7f636e05755825a989793585206**，尺寸 256×272，完整 alpha bbox [21,23,188,220]，真獨立完整單屋頂設計，並非左屋翻轉。
+- 並未重新啟動/重複付費生成 PixelLab，新 API job NOT RUN。特別警戒：R5 過去 TRUE FS GROUND/PAR 與整體原版美術 STYLE FAIL，不可把 R5 失敗的整套 Ground/PAR 拿來當成功來源。本輪只取該原始 PNG 與舊 R5 documented author-footprint，重新從 C7 已驗證的正確 Master-first 同源產線重建。
+- 移除 C5 右側鏡像整棟 owner 及對應遮蔽，加入真正來源 R5 單棟完整源 PNG，在 C8 新位置 (791,371)，author foot (917,591)、屋基碰撞 [826,530,969,583]。保留左屋原始完整 source 與 2 棟真 StaticBody2D；原 C7 17 owners 數維持，因為以一棟真右屋取代原鏡像屋，而不是把兩棟疊在一起。C7 兩新樹的根部 collider 完整保留。
+- 正式五圖仍 1280×928：MASTER／Authoring_GroundOnly／Authoring_CompletePAR／Runtime_FullGround／Runtime_OcclusionPAR；GroundOnly 不變，僅換完整第二屋 PAR 與 RGB Master 同源 occlusion；相對 C7 changed RGB = **26,655 pixels**，bbox 僅 [805,394,1014,591]，原森林/道路與第一棟屋保持。來源 SHA 與靜態重組 all PASS。
+
+## 真 Godot 4.7.2 原生及私人雲端封存
+- **正式 CI 成功** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44874487911 ，GitHub status=completed/conclusion=success，tested original code commit **c08c55ae50e0cf659b71c2229877d7ebf2f6a132**。真正 Godot 4.7.2-stable official/OpenGL3 1280×928 native framebuffer：TC_C8_GODOT472_NATIVE_FULL_1X.png，以及同位置 actor uncovered 原生對照、右屋原比例 crop。
+- TC_C8_GODOT_NATIVE_QA.json：原獨立屋舍2真 body、C7 原始樹根2 body、總17 source occlusion owners；七項 point-query：左屋1、全新獨立右屋1、兩樹根1/1、路燈0、道路0、屋前空地0，all PASS。真正右屋 roof 遮蔽及 uncovered A/B 同足點 ROI 差 **204px**；人物移至屋前遮蔽正確消失。這不是只拿 HTML 截圖或靜態 PNG 檢查。
+- **私人正式 Drive C8 ZIP** https://drive.google.com/file/d/1xYFx6Mmx4PeSP4zMLdiYm1ZeF0J4bVbn/view ，Google provider metadata readback **82,042,571 bytes、shared=false、owner-only**。外層 GitHub artifact ZIP 1 entry、內層 **49 entries**，兩層 ZIP CRC PASS；內層 SHA256 **3acee1e1a233b68348557231946d299f36cf131973337ab0dc30718c59569a9e**。GitHub artifact id 14695765704 僅 1 日傳輸，長期只有私人 Drive；只往 GitHub 寫程式、Scene、Handoff，無操作使用者 PC。
+- 全場主觀 1× 現場目測：相較 C7 左右同一棟屋鏡像，C8 兩間現在具有真正不同結構（左屋帶側邊工坊、右屋單棟），屋頂與材質同風格更自然。仍不能宣稱正式 FS 兩圖美術通過。
+
+## Failure Log、持續 HOLD 與下個大單位
+- 歷史 R5 失敗風格不能因新 C8 engine success 就洗白：R5 原版完全不同的 Ground/PAR Layer scheme 曾被使用者拒絕。C8 只復用原始 R5 完整 RGBA 物件，明確保留 ART HOLD，尚未和原始 FS Graphics/Parallaxes/ground3.png SHA ddc1f21e1d23dcb8258a20baa2acb106d1c0e56683a4dc280faedc23bcd47a13 做直接美術批准；True FS Ground/Par 遮蔽契約仍是正式最終 Gate。
+- 原始193棵樹根部全域移動/NAV 非本次測試；MAZE 原始 1478×1064 nearest 放大到 2560×1856 的原生32px美術欠缺也尚未處理。不冒充完整 Art PASS。
+- 新 PixelLab Object Creator/Create Tiles Pro/Map Workshop/Style References 本輪均 NOT RUN：僅使用歷史真來源且有 SHA，無虛構新支出／job id。
+- 下一完整 C9：**正式 FS_01_VILLAGE 與原 approved ground3/par3 全圖 style-source 及語意對齊 Gate**，以已保存 Ground3/Par3 hash 及最新原生 Godot 1× 視覺核對，維持真正 original fullground copy only required occlusion，而非將 76.5% 的失敗 R5 CompletePAR 當 runtime occlusion。對重要阻斷直接換一整個來源單位，無需修葉片。之後進入 MAZE 80×58 真 native 32px Ground，而非繼續拉伸源圖；每段都 QA、Failure Log、Handoff、Drive、Linear。正式 Godot 4.7.2，絕不回 VX。
+
+---
 # T-C CURRENT | C7 真正 FS 獨立源美術整組替換 | 2026-11-21 TPE
 
 **C7 施工/Godot 4.7.2 真實 GPU 1×、遮蔽及 source-semantic collision PASS。正式 FS_01_VILLAGE、FS_01_MAZE 仍 ART HOLD。** 專屬分支 feat/fs-pixellab-tc-map-20261121；這一節比下方歷史 C6/C5 紀錄新。
