@@ -8,6 +8,8 @@ const PLAYABLE_SLICE = preload("res://scenes/story/FSPlayableSlice.tscn")
 const A35_PRIVATE_GATE = preload("res://scripts/story/FSPrivateA35Gate.gd")
 const UI_ART = preload("res://scripts/ui/FSUIArtLibrary.gd")
 const LIVE_HUD = preload("res://scripts/ui/FSUIBattleHUD.gd")
+# T-B opt-in sprite presentation: no proprietary art enters public GitHub.
+const TB_VISUAL = preload("res://experiments/pixellab_tb/FS_TBMonsterBattlePresentation.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -30,6 +32,10 @@ var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
 var battle_command_art:Dictionary={}
 var battle_command_grid:GridContainer
+# Explicitly tagged original-enemy visual only. No guessed VX enemy ID mapping.
+var tb_monster_view: Node2D = null
+# Test-only synthetic art bypass; do not enable for production or private-art QA.
+var tb_monster_visual_synthetic_qa: bool = false
 
 func _ready() -> void:
     ui_art=UI_ART.new()
@@ -155,6 +161,9 @@ func _change(tab: String) -> void:
         _show_menu()
 
 func _clear_body() -> void:
+    if tb_monster_view != null and is_instance_valid(tb_monster_view):
+        tb_monster_view.unbind_battle()
+    tb_monster_view = null
     for n in body.get_children():
         body.remove_child(n)
         n.queue_free()
@@ -634,6 +643,7 @@ func _show_battle() -> void:
         ui_hud.bind_party(battle.party)
     _refresh_battle_status()
     _add_text("ATB 就緒 → 選指令 → ACT 蓄力 → 執行 → 重置（敵方 AI／特殊行動仍待移植）")
+    _mount_tb_monster_visual_if_authorized()
     _actor_selector(_show_battle)
     _add_text("目前操作角色：" + str(battle.party[actor_index].get("name","?")) if actor_index >= 0 and actor_index < battle.party.size() else "尚無角色")
     # 2x2 original 54x48 source PNG buttons, preserving four true Godot ACT commands.
@@ -650,6 +660,36 @@ func _show_battle() -> void:
     _add_battle_command("物品", _item_action)
     _add_button("返回 MENU", _show_menu)
     _update_battle_command_buttons()
+
+# T-B presentation opt-in, not a production BattleScape or enemy-ID mapping.
+# The original VX DB does not yet contain a verified TB02 enemy ID. The
+# battle record must carry an explicit fs_monster_visual_id from an authorized
+# private data profile. If absent/invalid, legacy UI is unchanged.
+func _mount_tb_monster_visual_if_authorized() -> void:
+    if battle == null or body == null:
+        return
+    for index in range(battle.enemies.size()):
+        if str(battle.enemies[index].get("fs_monster_visual_id","")) != "TB02_LEAF_BAT":
+            continue
+        var stage := Control.new()
+        stage.name = "FSTBMonsterBattleStageR9"
+        stage.custom_minimum_size = Vector2(500, 170)
+        stage.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+        stage.clip_contents = true
+        body.add_child(stage)
+        var view := TB_VISUAL.new()
+        view.name = "FS_TB02_SourceLocked_Bite_View"
+        view.position = Vector2(248, 80)
+        view.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+        # A CI-only nonprivate fixture can be enabled explicitly. All regular
+        # gameplay requires the exact private R8 PNG SHA in the project assets.
+        view.allow_synthetic_qa_art = tb_monster_visual_synthetic_qa
+        stage.add_child(view)
+        if view.bind_battle(battle, index):
+            tb_monster_view = view
+        else:
+            stage.queue_free()
+        return
 
 func _refresh_battle_status() -> void:
     if battle == null:
