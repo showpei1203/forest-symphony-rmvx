@@ -1,0 +1,16 @@
+# Forest Symphony T-A R11B | Official LPC full body, unarmed ACTOR01, 3/4 source-based angle
+Updated 2026-11-22. This authority supersedes R8/R9 rubber-arm or weapon examples for the actor motion line. Godot 4.7.2 only. DO NOT modify main, T-B, T-C, the historical A52 art or original approved A62 identity.
+
+USER HARD REQUIREMENT: completely remake ATTACK animation from real LPC paper-doll body motion. Keep original approved ACTOR01 white hair, facial identity and dark-green outfit appearance. NO SWORD, SHIELD, WEAPON, FX, or debug symbols. Body/Weapon/FX separate atlas 256x192, 12x64x64 frames, Weapon/FX both alpha ZERO.
+
+OFFICIAL LPC PINNED SOURCE: https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator at master SHA 86a3719ee4a7e2e9fb27c7c152e29a741d3e930a dated 2026-11-20. User specifically authorized E drive as storage destination. ZIP E:\LPC_Original_20261121\Universal_LPC_FULL_86a3719e.zip, 150,940,625 bytes SHA256 C3E73FAFE062A80DCABA6CEF3DCA367B988F6E09D983AA5C9AB3FF05673185DC. 89,359 extracted files, 88,130 PNG. LICENSE and CREDITS preserved; mixed-license private source NEVER uploaded to public GitHub. User-approved A62 exact SHA256 70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e.
+
+ANIMATION METHOD R11B: LPC male original backslash 13 source columns, row2 frontal torso/near leg and row3 lateral motion arm/feet in exact nonstretched source pixels. Time-slot mapping [12,0,1,2,3,6,7,9,10,11,12,12]. White-haired A62 face and head source pixels preserved. No stretched/linear fake arm cylinders or painted stray markers. This IS NOT real original LPC diagonal 45°: upstream only has four cardinal directions. Source composited 3/4 is a reference candidate; full handcrafted 45° keyframes and expression refinement still needed.
+
+R11 PRE-REPAIR DEFECT: disconnected 3-pixel foot mark F0,F8,F9,F10,F11. R11B fail-closed removes only <=3px isolated islands, refuses any larger disconnected limb. All 12 poses exactly one 8-connected human silhouette. R11B Body SHA256 fcd2c7ee0c16acca95cb1497e75514c1ec9fe0c7907e380ce01514ea24540018. F0=F11 exact. Weapon/FX zero pixels.
+
+NATIVE QA: official Windows Godot 4.7.2 real SubViewport OpenGL, 73/73 GPU 64px captures at 60Hz, every frame index F0..F11, F7 local visual contact at 0.630 seconds ONCE; all 12 screenshots source-vs-native exact RGBA mismatch ZERO. This is only a motion presentation test, NOT integrated FS battle/ATB/damage proof.
+
+DELIVERY: E:\LPC_Original_20261121\FS_R11B_ACTOR01_UNARMED_45_STUDY\FS_TA_ACTOR01_R11B_UNARMED_LPC_GODOT472_73FRAME_QA.zip, 242,390 bytes, 91 members, ZIP CRC PASS, SHA256 7a878c581342faecc46ed56a224c52c61e46a87d0351f854ea6e0dac180755ef. Contains real 73 GPU source frames, contact sheets, 60Hz GIF, script, Godot test, logs, and source-locked manifest. Private art remains E/Drive, GitHub code/authority only.
+
+STATUS: SOURCE PASS, connected-body PASS, unarmed PASS, original Godot 4.7.2 GPU PASS. HUMAN VISUAL ART HOLD. Shoulder/hip/near-far depth still needs hand re-art for genuine FS 45°, facial expression currently static. No paid PixelLab job and no formal full battle test. Do not claim accepted artwork until user visually approves 1x and full animation, and do not re-add weapons until a new user directive.
