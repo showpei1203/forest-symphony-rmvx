@@ -24,7 +24,7 @@ func _ready() -> void:
     bg.size=Vector2(1220,780)
     add_child(bg)
     text("Forest Symphony / T-B Factory / second-family benchmark",Vector2(28,19),27)
-    text("TB02 Leaf Bat  |  3 stages, new 14-joint wing rig  |  ART REVIEW PENDING",Vector2(30,61),17)
+    text("TB02 Leaf Bat  |  3 stages, new 14-joint wing rig  |  R8 BITE ART REVIEW PENDING",Vector2(30,61),17)
     var static_pos=[Vector2(200,240),Vector2(600,240),Vector2(1010,240)]
     var static_scale=[2.6,2.25,1.95]
     var arr=dat["stages"] as Array
@@ -41,7 +41,7 @@ func _ready() -> void:
         text(str(arr[i]["name"]),Vector2(55+i*399,392),16)
         text("%dx%d original sprite"%[t.get_width(),t.get_height()],Vector2(55+i*399,415),14)
     text("Mother Idle / PixelLab 8-frame wing flap",Vector2(100,484),16)
-    text("Mother Attack / PixelLab 11-frame dive claw",Vector2(640,484),16)
+    text("Mother Attack / 11-frame mouth BITE (no arm)",Vector2(640,484),16)
     var idata=dat["idle"] as Dictionary
     var src=load("res://"+str(idata["path"])) as Texture2D
     if src!=null:

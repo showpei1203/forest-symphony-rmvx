@@ -45,7 +45,7 @@
     "speed_fps": 8
   },
   "attack": {
-    "path": "assets/monsters/tb02/TB02_BAT_ATTACK_11F_PAD128.png",
+    "path": "assets/monsters/tb02/TB02_BAT_ATTACK_BITE_R8_FINAL_11F_PAD128.png",
     "cell": [
       128,
       128
@@ -67,7 +67,13 @@
       2,
       2,
       4
-    ]
+    ],
+    "action": "head_lunge_mouth_bite_fang_snap_no_arm",
+    "hit_contact_local": [
+      14,
+      0
+    ],
+    "source_sha256": "b258678a7a4b59251b13126ed905c47afd9b9dffd0a618fbb64f584ad9ceeee7"
   },
   "provider_jobs": [
     {
@@ -121,12 +127,20 @@
       "generation_id": "8c9dfea5-dd81-4e14-953b-df2d4ae2f41a",
       "generations": 3.0,
       "result": "TECH_CANDIDATE"
+    },
+    {
+      "stage": "mother Attack v3 source-locked mouth-only bite",
+      "provider": "animate-with-skeleton-v3",
+      "job": "ef8135ef-2a6e-4992-8125-6c4ca2fb631a",
+      "generation_id": "6ca82361-d5b6-4506-a13f-34acdd75787d",
+      "generations": 3.0,
+      "result": "TECH_AND_SEMANTIC_PASS_ART_REVIEW_PENDING"
     }
   ],
-  "cost_this_family_generations": 22.0,
-  "technical_status": "PENDING_128_NATIVE",
-  "art_status": "ART_HOLD_NOT_USER_REVIEWED",
-  "engine_native_status": "NOT_RUN",
+  "cost_this_family_generations": 25.0,
+  "technical_status": "GODOT_4_7_2_NATIVE_11_ATTACK_8_IDLE_AND_FIRST_FAMILY_REGRESSION_PASS",
+  "art_status": "R8_MOUTH_BITE_ART_REVIEW_PENDING",
+  "engine_native_status": "PASS_19_NATIVE_SCREENSHOTS_AND_HIT_EXACT_ONCE",
   "assets": {
     "BAT_STAGE1.png": {
       "sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
@@ -185,5 +199,31 @@
     "path": "assets/monsters/tb02/TB02_BAT_ATTACK_11F.png",
     "job": "34b4b03b-aa08-4c43-9629-eb3c263e2ae6",
     "reason": "10 of 11 frames touch canvas edges; likely wing clipping"
+  },
+  "attack_original_r7": {
+    "path": "assets/monsters/tb02/TB02_BAT_ATTACK_11F_PAD128.png",
+    "cell": [
+      128,
+      128
+    ],
+    "frames": 11,
+    "columns": 4,
+    "rush": 2,
+    "hit": 5,
+    "return": 7,
+    "duration_ticks": [
+      4,
+      2,
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4
+    ],
+    "status": "ART_REJECTED_BY_USER_ARM_FROM_TORSO"
   }
 }

@@ -18,7 +18,7 @@ const TOTAL_TICKS := 28
 const RUSH_FRAME := 2
 const HIT_FRAME := 5
 const RETURN_FRAME := 7
-const CONTACT := Vector2(29, 12)  # frame F5 jaw tip relative to centered 96x96 cell
+var bite_contact := Vector2(14, 0)  # TB02 R8 frame F5 mouth, local to centered 128px cell
 
 var texture_path := PNG_PATH
 var sprite: AnimatedSprite2D
@@ -103,7 +103,7 @@ func _enter_frame(i: int) -> void:
         rush_started.emit(i)
     elif i == HIT_FRAME and not _next_event_seen["hit"]:
         _next_event_seen["hit"] = true
-        hit_requested.emit(i, CONTACT)
+        hit_requested.emit(i, bite_contact)
     elif i == RETURN_FRAME and not _next_event_seen["return"]:
         _next_event_seen["return"] = true
         return_started.emit(i)

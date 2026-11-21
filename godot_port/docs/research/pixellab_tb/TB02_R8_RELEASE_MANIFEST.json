@@ -1,0 +1,45 @@
+{
+  "project": "Forest Symphony",
+  "lane": "T-B",
+  "stage": "TB02_LEAF_BAT_R8_BITE",
+  "Godot": "4.7.2.stable.official.ed1daf0bf",
+  "render": "Mesa llvmpipe OpenGL Xvfb",
+  "user_request": "攻擊需要改成用嘴巴攻擊，現在這樣很像身體突然長出一隻手",
+  "provider_job": "ef8135ef-2a6e-4992-8125-6c4ca2fb631a",
+  "generation_id": "6ca82361-d5b6-4506-a13f-34acdd75787d",
+  "actual_generations_this_round": 3.0,
+  "previous_second_family_generations": 22.0,
+  "cumulative_second_family_generations": 25.0,
+  "official_source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+  "r8_provider_atlas_sha256": "b258678a7a4b59251b13126ed905c47afd9b9dffd0a618fbb64f584ad9ceeee7",
+  "sha256_r7_rejected": "0a4327d1a951673f2fea6ce982f5b9790a9398066d614d9a85809d9daad5da58",
+  "mouth_dark_f5_before": 21,
+  "mouth_dark_f5_after": 101,
+  "fang_f5_before": 0,
+  "fang_f5_after": 5,
+  "forelimb_protrusion_pixels_f5_before": 30,
+  "forelimb_protrusion_pixels_f5_after": 0,
+  "qa_pass": 11,
+  "qa_total": 11,
+  "godot_logic": "PASS",
+  "godot_frame_captures": {
+    "idle": 8,
+    "attack": 11,
+    "status": "PASS"
+  },
+  "first_family_native_regression": "PASS",
+  "godot_contact_offset_local": [
+    14,
+    0
+  ],
+  "timeline_events": {
+    "rush": 2,
+    "bite_hit": 5,
+    "recover": 7
+  },
+  "art": "ART_REVIEW_PENDING",
+  "engine_camera": "isolated_3_4_benchmark_not_yet_fs_production_battle",
+  "private_drive_only_for_raster": true,
+  "GitHub_public": "code_and_docs_only",
+  "owner_PC": "transient_remote_API_execution_only; cleanup_required"
+}

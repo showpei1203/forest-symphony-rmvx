@@ -12,10 +12,12 @@ func test()->void:
     assert(scene.attack.sprite.sprite_frames.get_frame_count("attack")==11)
     assert(scene.attack.sprite.sprite_frames.get_frame_texture("attack",5).get_size()==Vector2(128,128))
     var hits=[]
-    scene.attack.hit_requested.connect(func(i:int,_p:Vector2):hits.append(i))
+    var contacts=[]
+    scene.attack.hit_requested.connect(func(i:int,p:Vector2):hits.append(i); contacts.append(p))
     scene.attack.play_attack()
     scene.attack.advance_seconds(0.6)
     assert(hits.size()==1 and hits[0]==5)
+    assert(contacts.size()==1 and contacts[0]==Vector2(14,0))
     assert(not scene.attack.active)
-    print("TB_SECOND_BAT_NATIVE_472_PASS 3STAGE 8IDLE 11ATTACK HIT_EXACT_ONCE")
+    print("TB02_R8_MOUTH_BITE_NATIVE_472_PASS 3STAGE 8IDLE 11ATTACK HIT_EXACT_ONCE")
     quit(0)
