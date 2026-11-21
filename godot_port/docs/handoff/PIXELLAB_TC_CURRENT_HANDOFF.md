@@ -1,3 +1,28 @@
+# T-C NOW｜D1 使用者糾正後的唯一 Ground → CompletePAR 路線｜2026-11-21
+
+**路線權威：使用者 2026-11-21 當次糾正高於全部歷史實驗。先獨立生成 GROUND.png，鎖 SHA，後以同一場景與風格生成包含所有非 Ground 物件的完整 PAR.png。不能先合成 Master 再逆向切圖，不能把 PAR 限縮為角色遮蔽區，也不應以分辨 actor-occlusion/collision 阻礙產圖。**
+
+Drive 已直接重讀：SHARED_GAME_ASSET_GENERATION_AUTHORITY 文內 7 Map authoring split model 清楚規定 PAR / All Non-Ground Objects，包含 houses / trees / shrubs / rocks / lanterns / bridges / fences 等，不問是否遮人；Actor-Occlusion Mask optional, NOT required complete PAR。另已讀 FS_GROUND_ONLY_PIPELINE_V2_執行規格_20261030 及 R17_DIRECT_GROUND_PAR_AUTHORITY，以及現行 A11 (其中舊 Master-first 過程依這次使用者最新修正覆寫 T-C 產線方式)。
+
+## 已實做 D1 整張 40×29 / 1280×928 兩階段產線 TEST PASS
+- 新程式 godot_port/tc_factory/fs_ground_first_all_par_factory.py。獨立 CLI `ground --out ...` 僅從早已獨立的 FS A36G R4 Ground-only 源圖產出 RGB GROUND.png 並寫入 01_GROUND_LOCK.json（當時 PAR 尚不存在）；第二個 CLI `par --out ...` 必先驗 GROUND Lock SHA，才從完整 A36G R4 scene manifest 的每個非地表 source RGBA 產出透明全圖 PAR.png。禁止從混合 Master 當 Ground；完整 PNG 合成 COMPOSITE_PREVIEW.png 僅供畫面 QA。
+- 原 A36G R4 192／192 件原始獨立來源全部加入 PAR（森林群 44、樹 59、灌木 83、路標等 4、房屋 2）。逐一驗 id、filename、size、source SHA；包含非阻擋岩石與灌木，**零件因角色遮擋語意被排除**。這是直接全物件 PAR 而非原 C4～C8 selective occlusion。
+- 新 Godot 場景 godot_port/tc_factory/DirectGroundParPair.tscn、direct_ground_par_pair.gd、capture_direct_ground_par_native.gd，只載入兩張 PNG 全尺寸、同 [0,0]、Nearest，沒有 actor occlusion list/collider。真正 Godot 4.7.2 OpenGL3 Native 1× GPU framebuffer PASS。
+- 新 .github/workflows/fs-tc-ground-first-full-par.yml 將 Ground 與 PAR 分成**兩個單獨 GitHub Actions STEP**。第一步檢查 PAR/Composite 都不存在；第二步只接受原鎖定 Ground 並驗 192/192 PAR 全物件，接著正式 Godot 4.7.2 1× 顯示。
+- 最終 GitHub Actions https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44915862594 ，status=completed/conclusion=success，實測 code commit a6746663bd456776a5866ada20b457ce21c66141。
+- 正式 QA D1 原 Ground 與 PAR 都 1280×928 同座標；GROUND RGB、PAR RGBA alpha extrema(0,255)。完整二階段源物件 ledger、逐項 SHA、source manifest、1× Native 截圖均在 Drive。這是**現有來源的整張產線驗證**，不是新的 AI 地圖生成／PixelLab API job。
+- **私人 Google Drive D1 ZIP** https://drive.google.com/file/d/1Nh8oHQ5H2amZTe_eHBav_f_ePe-hIz2d/view ：Google provider metadata readback 8,959,782 bytes、shared=false、owner only；外層 1 ZIP + 內層 8 entries，雙層 CRC PASS；內層 ZIP SHA256 1d742d2e03d7a0a900d8aba9618fa90f237a8ae8fc081d39980079164d4733ee。長期保存於私人 Drive，Github artifact 14712270367 只暫存一天，使用者 PC 不被操作。
+
+## 新 AI Ground 嘗試（與真正 D1 正式技術驗證嚴格分開）
+- 已利用 in-chat image generation NEW 生成一張**獨立純地表 Ground**（無樹／房屋／路標），來源尺寸 1473×1068 RGB；在工作容器中只做同像素中心裁切 [96,70,1376,998] 得 1280×928 RGB Ground Art Candidate，無 resize、無反向挖物件。
+- 已實際儲存僅供這次對話審查之 Ground/原來源/QA ZIP，狀態 ART_PENDING；由於圖像工具接連將後續 PAR 指令誤生成**兩張美術流程 infographic**，並非透明可編輯 PAR，已嚴格拒收。**該新 Ground 的 PAR = NOT_GENERATED，新地圖可交付雙圖 = HOLD，不能把 infographic 的假 checkmark 當成正式生成成功或假稱上傳 Drive。** 由於該 imagegen Ground candidate 是本對話生成的容器檔案、目前此工具集未提供直接從容器 bytes 上傳 owner-only Drive 的路由，尚未獲長期雲端保存 readback；它不能冒充已完整交接的 D1 Drive 包。
+
+## 下一個大單位 D2：不是修樹／碰撞
+- 直接研究/串接能按**兩次獨立原生圖像生成**輸出可編輯 PNG 的 PixelLab Ground-only → PAR-all workflow，使用同一 World Blueprint / Style Lock；如果 Pixellab paid API connector/額度未接入，保持 NOT_RUN，不猜 job ID、不扣款。
+- 目標先成功交付單張獨立新 Ground + 真透明全物件 PAR，兩圖同一 32px 世界座標、相同風格／門口／樹位；User visual approval 才升級 FS_01_VILLAGE；然後 FS_01_MAZE 80×58 全圖按相同兩階段輸出。只驗 Ground/Par 源純度、對位、全物件包含、1× 全圖，不再在產圖階段逐棵樹選遮擋範圍。
+- 正式 ART HOLD 未解除；任何舊 C8 的 2 house / 17 occlusion owners 等視為歷史實驗，不是現在的產線方法。務必先讀更新過的 T_C_MAP_LAUNCH_PROMPT.md。每輪 Handoff、Failure Log、Linear SHO-39、Drive WRITE→READBACK→VERIFY。
+
+---
 # T-C CURRENT | C8 兩棟真正不同的完整木造精靈屋 | 2026-11-21 TPE
 
 **C8 實際施工與 Godot 4.7.2 1× 原生 GPU／碰撞／遮蔽 PASS；正式 FS_01_VILLAGE + FS_01_MAZE 仍 ART HOLD。** 專屬 feat/fs-pixellab-tc-map-20261121。以本段為當輪最新權威，C7/C6/C5 留在下方不刪除。
