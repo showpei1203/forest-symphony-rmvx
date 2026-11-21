@@ -13,7 +13,8 @@
     "scenes": 12,
     "formally_art_sealed": 0,
     "ground_source_generated_this_round": 1,
-    "new_COMPLETE_PAR_candidates_this_round": 1
+    "new_COMPLETE_PAR_candidates_this_round": 1,
+    "failed_GroundOnly_attempts_FS_02_MAZE": 2
   },
   "scenes": [
     {
@@ -68,7 +69,7 @@
       "biome_id": "FROST_SNOWFIELD",
       "biome_name": "凜霜雪原",
       "role": "MAZE",
-      "stage": "PLANNED_NOT_GENERATED",
+      "stage": "PLANNED_GROUND_ATTEMPTED_2X_REJECTED_WRONG_SCENE_NOT_GENERATED",
       "ground_material_family": [
         "積雪",
         "凍土",
@@ -82,7 +83,15 @@
         "暖爐煙囪"
       ],
       "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
-      "formal_art_gate": "HOLD"
+      "formal_art_gate": "HOLD",
+      "ground_attempts": {
+        "count": 2,
+        "requested": "GroundOnly snow maze winding ice roads and branches; no raised non-ground",
+        "actual": "full snow village composited Master with buildings trees and central fountain",
+        "qa": "REJECT_NOT_GROUND_ART_SOURCE",
+        "published_to_private_source_Drive": false,
+        "usable_source_Ground": false
+      }
     },
     {
       "scene_id": "FS_02_VILLAGE",
