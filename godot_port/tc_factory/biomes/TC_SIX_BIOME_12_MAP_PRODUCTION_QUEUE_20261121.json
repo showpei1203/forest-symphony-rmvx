@@ -14,7 +14,9 @@
     "formally_art_sealed": 0,
     "ground_source_generated_this_round": 1,
     "new_COMPLETE_PAR_candidates_this_round": 1,
-    "failed_GroundOnly_attempts_FS_02_MAZE": 2
+    "failed_GroundOnly_attempts_FS_02_MAZE": 2,
+    "Ground_candidates_FS_02_MAZE": 1,
+    "failed_PAR_generation_attempts_FS_02_MAZE": 2
   },
   "scenes": [
     {
@@ -69,7 +71,7 @@
       "biome_id": "FROST_SNOWFIELD",
       "biome_name": "凜霜雪原",
       "role": "MAZE",
-      "stage": "PLANNED_GROUND_ATTEMPTED_2X_REJECTED_WRONG_SCENE_NOT_GENERATED",
+      "stage": "D5_NEW_GROUND_SOURCE_46x33_1X_CANDIDATE_80x58_NOT_MET_PAR_NOT_GENERATED_ART_HOLD",
       "ground_material_family": [
         "積雪",
         "凍土",
@@ -90,7 +92,48 @@
         "actual": "full snow village composited Master with buildings trees and central fountain",
         "qa": "REJECT_NOT_GROUND_ART_SOURCE",
         "published_to_private_source_Drive": false,
-        "usable_source_Ground": false
+        "usable_source_Ground": false,
+        "ground_only_success_after_previous_rejections": true,
+        "PAR_bad_infographic_rejected_this_round": 2,
+        "PAR_generated": false
+      },
+      "Ground_source": {
+        "original_size_px": [
+          1473,
+          1068
+        ],
+        "original_sha256": "140dfdc865a7ed299e5bbc8ec8045b2c865ff16ccdc1b7125aa9f0ef6d27071c",
+        "native_crop_xyxy": [
+          0,
+          6,
+          1472,
+          1062
+        ],
+        "native_crop_px": [
+          1472,
+          1056
+        ],
+        "grid_32px": [
+          46,
+          33
+        ],
+        "crop_sha256": "3b5dd011b38213ff5d6f2fe82c2d2d5dcae26204f0f64d2a98ebc05772188b4c",
+        "required_final_grid": [
+          80,
+          58
+        ],
+        "required_final_size_px": [
+          2560,
+          1856
+        ],
+        "Ground_source_only": true,
+        "Ground_PNG_private": "https://drive.google.com/file/d/17mUgD3av2eNfUJPYX01gOUfGzazfK1sT/view",
+        "original_source_private": "https://drive.google.com/file/d/1_pjneuKesT8_5EELIn2nX9xuFW4YsTia/view",
+        "QA_private": "https://drive.google.com/file/d/1hLXgbMYBG0lawzZwTOb_Iv4i8Ju3GtsS/view",
+        "Full_CompletePAR": null,
+        "ground_80x58": "NOT_MET",
+        "Godot_native": "NOT_RUN",
+        "art_gate": "HOLD"
       }
     },
     {
