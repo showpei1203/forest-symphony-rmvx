@@ -1,0 +1,151 @@
+name: FS T-C D1 Ground FIRST + ALL Objects PAR (Godot 4.7.2)
+on:
+  push:
+    branches:
+      - feat/fs-pixellab-tc-map-20261121
+    paths:
+      - "godot_port/tc_factory/fs_ground_first_all_par_factory.py"
+      - "godot_port/tc_factory/direct_ground_par_pair.gd"
+      - "godot_port/tc_factory/DirectGroundParPair.tscn"
+      - "godot_port/tc_factory/capture_direct_ground_par_native.gd"
+      - ".github/workflows/fs-tc-ground-first-full-par.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fs-tc-ground-first-par-all
+  cancel-in-progress: true
+
+jobs:
+  two-stage-complete-scene:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned 1x image tooling and native GPU display
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check Pillow==12.0.0
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1 libxcursor1 libxrandr2 libxi6 libxinerama1
+      - name: 01 PRODUCE GROUND FIRST - no PAR permitted
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/fs_ground_first_all_par_factory.py ground \
+            --out godot_port/tc_factory/generated_direct
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from PIL import Image
+          d=Path('godot_port/tc_factory/generated_direct')
+          assert (d/'GROUND.png').is_file()
+          assert not (d/'PAR.png').exists(), 'D1 source order violated: PAR pre-existed Ground stage'
+          assert not (d/'COMPOSITE_PREVIEW.png').exists()
+          data=json.loads((d/'01_GROUND_LOCK.json').read_text())
+          assert data['stage']=='GROUND_PRODUCED_LOCKED'
+          assert data['no_reverse_master_segmentation'] is True
+          assert data['par_source_generation']=='NOT_STARTED_AT_THIS_STAGE'
+          im=Image.open(d/'GROUND.png')
+          assert im.size==(1280,928) and im.mode=='RGB'
+          print('D1 GROUND GENERATION LOCK PASS: GROUND exists while PAR does not')
+          PY
+      - name: 02 ONLY NOW GENERATE FULL PAR with ALL 192 non-Ground sources
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/fs_ground_first_all_par_factory.py par \
+            --out godot_port/tc_factory/generated_direct
+          python3 godot_port/tc_factory/fs_ground_first_all_par_factory.py verify \
+            --out godot_port/tc_factory/generated_direct
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageChops
+          import json, hashlib
+          d=Path('godot_port/tc_factory/generated_direct')
+          qa=json.loads((d/'03_TWO_STAGE_QA.json').read_text())
+          ledger=json.loads((d/'02_COMPLETE_PAR_OBJECT_LEDGER.json').read_text())
+          assert qa['PAR_all_192_authored_non_ground_source_objects']
+          assert ledger['object_count']==192
+          assert sum(ledger['type_counts'].values())==192
+          assert ledger['type_counts']['house']==2
+          assert ledger['type_counts']['forest_group']==44
+          assert ledger['type_counts']['tree']==59
+          assert ledger['type_counts']['shrub']==83
+          assert ledger['type_counts']['landmark']==4
+          assert qa['PAR_no_semantic_occluder_selection'] and qa['PAR_nonblocking_rocks_and_shrubs_included']
+          assert not ledger['excluded_due_to_actor_occlusion']
+          g=Image.open(d/'GROUND.png').convert('RGBA')
+          p=Image.open(d/'PAR.png').convert('RGBA')
+          c=Image.open(d/'COMPOSITE_PREVIEW.png').convert('RGB')
+          assert g.size==p.size==c.size==(1280,928)
+          assert p.getchannel('A').getextrema()==(0,255)
+          assert ImageChops.difference(Image.alpha_composite(g,p).convert('RGB'),c).getbbox() is None
+          print('D1 GROUND THEN PAR COMPLETE 192/192: SOURCE/TRANSPARENCY/ALIGNED PASS')
+          PY
+      - name: Install official exact Godot 4.7.2 stable
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/godot472.zip \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          mkdir -p /tmp/fs_tc_godot
+          unzip -q /tmp/godot472.zip -d /tmp/fs_tc_godot
+          chmod +x /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Godot 4.7.2 cold editor import GROUND and FULL PAR (2 separate PNGs)
+        run: |
+          set -euo pipefail
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+            --headless --path godot_port --editor --quit
+      - name: Native Godot 4.7.2 exact 1x GROUND + ALL PAR render, no actor mask filtering
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          timeout 110s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/capture_direct_ground_par_native.gd
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+          d=Path('godot_port/tc_factory/generated_direct')
+          qa=json.loads((d/'D1_GODOT_NATIVE_QA.json').read_text())
+          assert qa['engine'].startswith('4.7.2')
+          assert qa['real_framebuffer']==[1280,928]
+          assert qa['ground_par_origin']==[0,0]
+          assert qa['par_contains_every_non_ground_according_to_compiler']
+          assert qa['actor_occlusion_subset']=='NOT_CREATED_NOT_SELECTED'
+          assert qa['collision_and_passability']=='NOT_PART_OF_THIS_TWO_LAYER_DELIVERY'
+          im=Image.open(d/'D1_GODOT472_NATIVE_GROUND_PLUS_FULL_PAR_1X.png')
+          assert im.size==(1280,928)
+          print('D1 DIRECT TWO-STAGE GROUND+ALL-PAR Godot 4.7.2 native 1x PASS')
+          PY
+      - name: Seal private Two Stage Ground+ALL PAR image package (not new PixelLab)
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile,hashlib
+          src=Path('godot_port/tc_factory/generated_direct')
+          dest=Path('/tmp/FS_TC_D1_GROUND_FIRST_ALL_PAR_PRIVATE.zip')
+          allowed=[p for p in src.rglob('*') if p.is_file() and p.name!='.gitignore'
+                   and not p.name.endswith('.import')]
+          if not allowed:raise SystemExit(0)
+          with zipfile.ZipFile(dest,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=7) as z:
+              for f in sorted(allowed):z.write(f,arcname=str(f.relative_to(src)))
+          with zipfile.ZipFile(dest) as z:
+              assert z.testzip() is None
+              print('D1 source QA ZIP entries',len(z.namelist()))
+          print('D1 source QA ZIP bytes',dest.stat().st_size)
+          print('D1 source QA ZIP SHA256',hashlib.sha256(dest.read_bytes()).hexdigest())
+          assert dest.stat().st_size<100_000_000
+          PY
+      - name: Temporary one-day transfer to private Google Drive (not final storage)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-tc-d1-ground-first-full-par-private-transfer
+          path: /tmp/FS_TC_D1_GROUND_FIRST_ALL_PAR_PRIVATE.zip
+          if-no-files-found: warn
+          retention-days: 1
