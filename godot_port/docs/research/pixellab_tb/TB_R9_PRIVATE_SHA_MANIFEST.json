@@ -1,0 +1,94 @@
+{
+  "authority": "2026-11-22 T-B R9",
+  "branch": "feat/fs-pixellab-tb-monster-20261121",
+  "status": "FS_SOURCE_QUEUE_NATIVE_PASS; PRIVATE_R8_ART_NATIVE_PASS; FULL_PRODUCTION_BATTLESCAPE_PENDING",
+  "pixel_lab_new_generations": 0,
+  "source_r8_attack_sha256": "b258678a7a4b59251b13126ed905c47afd9b9dffd0a618fbb64f584ad9ceeee7",
+  "files": [
+    {
+      "path": "QA/GITHUB_ACTIONS_NATIVE_GATE.txt",
+      "bytes": 1038,
+      "sha256": "50087f027e230f36a424029eac73bc96905e226a2dccc9c4de22f02a8b0b2a10"
+    },
+    {
+      "path": "QA/import.log",
+      "bytes": 2703,
+      "sha256": "5781ddd549a3d0c9cd155d579105d131ac222e8f80f1780140af272a7c68ba9c"
+    },
+    {
+      "path": "QA/native.log",
+      "bytes": 448,
+      "sha256": "f173a93772aa467eb0493662160db65f2a7037ea9a2e09dcf0ca2700b9e1a2d1"
+    },
+    {
+      "path": "QA/native_capture.log",
+      "bytes": 1387,
+      "sha256": "7b86cac3c965e6612c4896b05a35a925de4f3ba68d96aede705685eb33ef1a31"
+    },
+    {
+      "path": "docs/PIXELLAB_TB_R9_FAILURE_LOG_20261122.md",
+      "bytes": 1349,
+      "sha256": "93bb92fcf8fc83589018f6df78f3d2ee30e86ba4e710614ba27a84fadbc0b814"
+    },
+    {
+      "path": "docs/PIXELLAB_TB_R9_HANDOFF_20261122.md",
+      "bytes": 4876,
+      "sha256": "3267f2bd88e65d66e402144bc5fadadc97570b7a9d75c037879a59688eb66b25"
+    },
+    {
+      "path": "github_source/godot_port/experiments/pixellab_tb/FS_TBMonsterBattlePresentation.gd",
+      "bytes": 7252,
+      "sha256": "d11220147d50804c72663f44fb56d73cbb1ae9aa1f6c75fbcbe1b04abeee62b9"
+    },
+    {
+      "path": "github_source/godot_port/tests/test_tb_r9_fs_screen_optin.gd",
+      "bytes": 2867,
+      "sha256": "58732a7b300ec9f5380491a722f2e886d6253c4b1aefd567dc26513781409d27"
+    },
+    {
+      "path": "github_source/godot_port/tests/test_tb_r9_real_enemy_battle_visual.gd",
+      "bytes": 3930,
+      "sha256": "5e82d6c7742f2339ea5a36861710b3deee70c433f33917b481a2d7175e83e738"
+    },
+    {
+      "path": "private_godot472/assets/monsters/tb02/TB02_BAT_ATTACK_BITE_R8_FINAL_11F_PAD128.png",
+      "bytes": 32718,
+      "sha256": "b258678a7a4b59251b13126ed905c47afd9b9dffd0a618fbb64f584ad9ceeee7"
+    },
+    {
+      "path": "private_godot472/assets/monsters/tb02/TB02_BAT_IDLE_8F.png",
+      "bytes": 20040,
+      "sha256": "5153e58ccf29dee9d924937fb185169f45e2d0f748a36373cc2f53d4eb72e0a2"
+    },
+    {
+      "path": "private_godot472/experiments/pixellab_tb/FS_TBMonsterBattlePresentation.gd",
+      "bytes": 7252,
+      "sha256": "d11220147d50804c72663f44fb56d73cbb1ae9aa1f6c75fbcbe1b04abeee62b9"
+    },
+    {
+      "path": "private_godot472/experiments/pixellab_tb/tb_attack_timeline_parametric.gd",
+      "bytes": 4099,
+      "sha256": "21dd7bc447f54cf72d9380874e531d37bb4912b48ad024ddd1c08afa5f1bd84d"
+    },
+    {
+      "path": "private_godot472/experiments/pixellab_tb/tests/test_tb_r9_private_capture.gd",
+      "bytes": 2675,
+      "sha256": "9f6648b8f2fcca5d207eb65323c12d2be00e6a8c745571c131684258ed32c7c2"
+    },
+    {
+      "path": "private_godot472/experiments/pixellab_tb/tests/test_tb_r9_private_native.gd",
+      "bytes": 3128,
+      "sha256": "21707fcbd9b1762bf6642635cd96c87ab415c3f06a996583e0480849a3e5c01e"
+    },
+    {
+      "path": "private_godot472/out/TB_R9_GODOT_472_PRIVATE_BITE_F5_544x416.png",
+      "bytes": 23897,
+      "sha256": "aff716a2eb29221039738ba5a2b7b49eb0617cb37e6c44b134c1ae2191df4563"
+    },
+    {
+      "path": "private_godot472/project.godot",
+      "bytes": 275,
+      "sha256": "24a6f22e81ffb23694a6454d7a6ba383140c91a6dbc2cd6398d68022af0887c4"
+    }
+  ]
+}
