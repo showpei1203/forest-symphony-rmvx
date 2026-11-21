@@ -36,6 +36,9 @@ var battle_command_art:Dictionary={}
 var battle_command_grid:GridContainer
 
 func _ready() -> void:
+    # Full-window Godot Control: without this the 45-degree actor and
+    # original Battlers are rendered offscreen at a zero-width origin.
+    set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     ui_art=UI_ART.new()
     _install_system_cjk_font()
     _build_shell()
@@ -246,6 +249,7 @@ func _set_original_background(file_name: String) -> void:
 
 func _show_menu() -> void:
     view_name = "MENU"
+    status_label.visible=true
     if enemy_stage!=null:
         enemy_stage.clear_enemies()
     if actor01_presentation!=null:
@@ -616,6 +620,10 @@ func _start_selected_troop(troop_id: int) -> void:
 
 func _show_battle() -> void:
     view_name = "BATTLE"
+    # The original gauges already show live HP/MP/ATB. The long debug
+    # report is retained in status_label.text, but must not displace
+    # the original 2x2 ACT buttons beneath the 544x416 viewport.
+    status_label.visible=false
     if battle == null:
         return
     # Actual battlefield layers are selected by the original BattleScape authority.
@@ -653,7 +661,7 @@ func _show_battle() -> void:
         ui_hud.visible=true
         ui_hud.bind_party(battle.party)
     _refresh_battle_status()
-    _add_text("ATB 就緒 → 選指令 → ACT 蓄力 → 執行 → 重置（敵方 AI／特殊行動仍待移植）")
+    # No developer banner across original enemy source portrait.
     _actor_selector(_show_battle)
     _add_text("目前操作角色：" + str(battle.party[actor_index].get("name","?")) if actor_index >= 0 and actor_index < battle.party.size() else "尚無角色")
     # 2x2 original 54x48 source PNG buttons, preserving four true Godot ACT commands.

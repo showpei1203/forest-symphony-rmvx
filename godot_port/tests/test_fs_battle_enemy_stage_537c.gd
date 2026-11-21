@@ -57,6 +57,9 @@ func _run()->void:
     screen.world=world
     screen.battle=battle
     screen._show_battle()
+    if not check(screen.size.x>=530.0 and not screen.status_label.visible,
+            "battle screen must fill game window and keep source 2x2 commands visible"):
+        return
     if not check(screen.enemy_stage!=null and not screen.enemy_stage.visible,
             "public original BATTLE should remain fail-closed without private assets"):
         return

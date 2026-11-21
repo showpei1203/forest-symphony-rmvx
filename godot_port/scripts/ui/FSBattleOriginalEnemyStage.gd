@@ -15,8 +15,9 @@ func _ready()->void:
     set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
     offset_left=-318.0
     offset_right=-116.0
-    offset_top=91.0
-    offset_bottom=192.0
+    # Keep original enemy artwork and label above command-selector rows.
+    offset_top=60.0
+    offset_bottom=161.0
     clip_contents=true
     _layout=HBoxContainer.new()
     _layout.name="FSSourceEnemySprites"

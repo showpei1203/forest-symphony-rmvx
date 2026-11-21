@@ -34,6 +34,32 @@ func _snapshot(label:String)->bool:
     f.close()
     return true
 
+func _pixel_roi(logical:Rect2,logical_width:float)->Rect2i:
+    var scale:float=float(width)/maxf(1.0,logical_width)
+    return Rect2i(Vector2i(int(round(logical.position.x*scale)),
+        int(round(logical.position.y*scale))),
+        Vector2i(int(round(logical.size.x*scale)),
+        int(round(logical.size.y*scale))))
+
+func _visible_pixel_changes(before:Image,after:Image,roi:Rect2i)->int:
+    if before==null or after==null or before.get_size()!=after.get_size():
+        return 0
+    var total:int=0
+    for y in range(maxi(0,roi.position.y),
+            mini(before.get_height(),roi.position.y+roi.size.y)):
+        for x in range(maxi(0,roi.position.x),
+                mini(before.get_width(),roi.position.x+roi.size.x)):
+            var a:Color=before.get_pixel(x,y)
+            var b:Color=after.get_pixel(x,y)
+            if (absf(a.r-b.r)+absf(a.g-b.g)+absf(a.b-b.b))>0.12:
+                total+=1
+    return total
+
+func _inside_viewport(roi:Rect2i)->bool:
+    return roi.position.x>=0 and roi.position.y>=0 and (
+        roi.position.x+roi.size.x<=width and (
+        roi.position.y+roi.size.y<=int(float(width)*416.0/544.0)))
+
 func _run()->void:
     if OS.get_environment("FS_PRIVATE_SOURCE_QA")!="1":
         _fail("explicit private source authorization flag required")
@@ -89,6 +115,29 @@ func _run()->void:
         return
     screen.set_process(false)
     screen.actor01_presentation.rig.set_process(false)
+    await process_frame
+    if screen.size.x<530.0 or screen.size.y<400.0:
+        _fail("viewport-root missing full-rect Control anchors; original sprites offscreen")
+        return
+    var image_rect:Rect2=screen.enemy_stage.enemy_views[0]["image"].get_global_rect()
+    var enemy_roi:Rect2i=_pixel_roi(image_rect,screen.size.x)
+    if not _inside_viewport(enemy_roi):
+        _fail("source enemy art must be INSIDE visible viewport, not just in scene tree")
+        return
+    # GPU pixel witness: temporarily hide only genuine source Battler.
+    # Text/ATB/actor remain fixed; pixel differences must come from the PNG.
+    screen.enemy_stage.visible=false
+    await process_frame
+    await process_frame
+    var enemy_blank:Image=root.get_texture().get_image()
+    screen.enemy_stage.visible=true
+    await process_frame
+    await process_frame
+    var enemy_ink:Image=root.get_texture().get_image()
+    var enemy_changes:int=_visible_pixel_changes(enemy_blank,enemy_ink,enemy_roi)
+    if enemy_changes<48:
+        _fail("original Battler resource exists but GPU displays zero original pixels")
+        return
     if not await _snapshot("original_enemy"):
         return
     screen._process(2.0)
@@ -97,6 +146,7 @@ func _run()->void:
         return
     if not await _snapshot("atb_ready"):
         return
+    var actor_blank:Image=root.get_texture().get_image()
     var enemy_hp:int=int(battle.enemies[0]["hp"])
     screen._do_player_attack(battle.enemies[0])
     var visual=screen.actor01_presentation
@@ -110,5 +160,24 @@ func _run()->void:
         return
     if not await _snapshot("a52_f7_contact"):
         return
+    var rig_roi:Rect2i=_pixel_roi(Rect2(
+        visual.rig.global_position-Vector2(32.0,32.0),Vector2(64.0,64.0)),
+        screen.size.x)
+    if not _inside_viewport(rig_roi):
+        _fail("original 64x64 A52 rig is outside actual GPU viewport")
+        return
+    var actor_ink:Image=root.get_texture().get_image()
+    var actor_changes:int=_visible_pixel_changes(actor_blank,actor_ink,rig_roi)
+    if actor_changes<48:
+        _fail("original A52 Body/Weapon/FX stage exists but no visible GPU source pixels")
+        return
+    # Check all four source Battle01-04 buttons still render without clipping.
+    for button in screen.battle_command_buttons:
+        if not button.is_visible_in_tree() or not (
+                Rect2(Vector2.ZERO,screen.size).encloses(button.get_global_rect())):
+            _fail("original 2x2 ACT buttons clipped from 544x416 screen")
+            return
+    print("P537D native GPU source-pixel witness, enemy ink changes="+str(
+        enemy_changes)+", A52 F7 ink changes="+str(actor_changes))
     print("P537C genuine original VX Battler + A52 Body/Weapon/FX: native Godot 4.7.2 GPU 3/3 frames PASS at "+str(width)+" px; synthetic combat Enemy/Actor DB fixture, NOT original VX 1:1 battle parity")
     quit(0)
