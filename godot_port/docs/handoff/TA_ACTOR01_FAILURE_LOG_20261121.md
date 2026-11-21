@@ -1,5 +1,16 @@
 # T-A Failure Log / 2026-11-21
 
+## R11B new failures / gates 2026-11-22
+
+TA-19: R11 source-fusion created disconnected three-pixel foot artifact (x31 y46-48) in F0 and F8-F11, total 15 pixels. R11B removed ONLY components <=3px and blocks larger detached body. 12/12 remaining frames exactly one 8-connected human silhouette. PASS.
+TA-20: User prohibits ALL weapons. Independent Weapon and FX atlases full transparent, actual Godot source verified 0 opaque pixels, zero strange guide signs or blade art. PASS.
+TA-21: Official LPC original has only FOUR CARDINAL angles. R11B front/right pixel-source fuse still shoulder and depth artifacts and a mostly static expression, NOT artist-approved 45-degree sprite. ART HOLD, requires genuine full-body pixel redrawing, not new rubber arms.
+TA-22: Official Godot 4.7.2 Windows 60Hz real input 73/73 native OpenGL frames, all 12 motion IDs observed, visual contact F7 0.630 once, all 12 CPU-vs-GPU source RGBA pixel diffs ZERO. Engine PASS only, live FS gameplay NOT RUN. QA ZIP owner-authorized E: 91 members, CRC PASS, SHA256 7a878c581342faecc46ed56a224c52c61e46a87d0351f854ea6e0dac180755ef.
+R11B source SHA fcd2c7ee0c16acca95cb1497e75514c1ec9fe0c7907e380ce01514ea24540018. Old A52 and R8/R9 remain untouched. No PixelLab V3 API job/cost.
+
+---
+
+
 **CI gate note / current validated commit:** GitHub first public CI run 44918945179 FAILED specifically because the source-free R9 --self-test module imported a private default /mnt/data output folder at top level on hosted runner. Fixed by deferring OUT.mkdir to production main(); neither private art nor generated output changed. New GitHub public Godot 4.7.2 CI: **SUCCESS** https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44919186389 . Geometry native cloud proof remains separate from public synthetic CI. Current private R9 authority is https://docs.google.com/document/d/19vnoZ8Kf5c8Fhxtn8JPXZdiCIEiNsIOJ/edit .
 
 ## R9 2026-11-21 | USER BLOCKERS, actual root cause & attempted repair
