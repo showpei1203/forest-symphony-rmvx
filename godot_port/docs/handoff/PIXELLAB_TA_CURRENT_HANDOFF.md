@@ -1,5 +1,24 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R9 2026-11-21 | R8 RUBBER-ARM / UNIDENTIFIED MARKS REJECTED; FIXED BONE SOURCE CANDIDATE (LATEST)
+
+**User's R8 visual rejection is binding:** old `R8` sleeve scaled as a variable-length line and invented gold shoulder-ring glyph. Old FX from A52 became a detached turquoise parenthesis for the new blade path. R8 is REJECTED; R9 is a new separate candidate, NOT art-approved and NOT merged into original A52 or accepted gameplay. Preserve the authentic LPC full-body stance source and approved ACTOR01 identity with no outfit replacement.
+
+**Actual implementation:** `godot_port/tools/ta_r9_lpc_fixed_bone.py` is exact reproducible source: shoulder→elbow upper bone **10px**, elbow→wrist forearm **10px** via two-circle inverse kinematics with unreachable hand rejection; nearest-neighbor fixed-width sleeve capsules, silhouette stable by confirmed original A52 pixels, original face/hair foreground masking; NONE of R8's decorative gold ring/cross markers. Sword is sourced from authentic A52 F1 connected blade and 1:1 rotation only (no scaling). All 10 active arm poses pass floating bone-length=10.0000 each. All sword frame bboxes strictly remain within the 64px canvas, 0 isolated stray component pixels were found after crop. This is geometric, NOT human art PASS.
+
+**Visual FX policy:** the original source A52 F7 turquoise crescent (bbox x50..62,y26..39) floats disconnected after adapting R8/9's sword path. R9 explicitly DISABLES this glyph in its independent FX atlas; F7 0.630sec visual contact EVENT remains unchanged in Godot; original A52 FX source unchanged/hash locked, **new approved impact FX is NOT YET BUILT**. Do not misrepresent empty FX as a finished impact effect. Original source images untouched. Godot 4.7.2 ONLY.
+
+**Private Godot native proof:** same isolated private R8 versus R9 genuine 6 atlas sources; Godot 4.7.2.stable.official.ed1daf0bf, Xvfb Mesa OpenGL native 12/12 keypose capture and 67/67 60Hz GPU PNG, exactly **1** presentation-only F7 contact; no full FSBattle integrated combat test. Official 4.7.2 engine logs and 95-file private ZIP CRC-verified (354469 bytes) SHA256 `f1aae86880d94dba373fe51c607560b5e42245f8b0d69303573ccdcb916270d9`.
+
+**Artifacts:** Source-verified private R9 final ZIP https://drive.google.com/file/d/1H5-vcqIF_Kv155iLJ7U6hO60AW0EI6Tk/view ; native R8-vs-R9 12key 4x PNG https://drive.google.com/file/d/1J_a-x7xGQQdBZhm9fzf0VZ_lfQ0HpIMK/view ; Body https://drive.google.com/file/d/1zKRVB5rE_iKY1PFPpapZVJvYddkzOMQs/view ; Weapon https://drive.google.com/file/d/1_YpONrLeSOL0aVlmiNScVYL0A3WFSA7Q/view ; FX transparent https://drive.google.com/file/d/104nxGoxJSKydp_LnxPrAKrCex0HVLpN1/view . All source files remain private and the full generator in public GitHub is only text. No user's PC storage, PixelLab new job NONE, spending 0.
+
+**R9 SHA256:** Body 98b712ad3eed01cc35ed8cd9e8985cc881e58e2e1d7c45fb9402ff08d3d96801; Weapon 645de27ed22ca6e4afcc16b5352ea3432104c2324cf2811915d2eb3c2a9f936f; FX ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7.
+
+**GATES:** SOURCE SHA PASS, 10x fixed bone-length inverse kinematics PASS, zero introduced ring/unknown symbol, weapon 1:1 no-scaling PASS, Godot native timeline PASS. **HUMAN ART HOLD**: shoulder-elbow transition could still feel puppeted; F7 weapon/FX integration unfinished, original true live FSBattle action queue NOT RUN. Do NOT declare R9 accepted until artist-facing 1× motion approved. Next complete macro unit: hand-paint or use proper skeleton-driven arm sprites with bone lengths locked and composition/occlusion, re-author FX at sword tip; then perform in-game FSBattle action QA.
+
+---
+
+
 ## R8 LATEST | 2026-11-21 | VERIFIED LPC POSE REFERENCES → APPROVED ACTOR01 identity; first 12-frame retarget MADE
 
 **USER DESIGN OVERRIDE:** R7 attack was REJECTED. Replaced art authority with authentic LPC whole-body motion pose references plus unchanged approved white-haired green-outfit ACTOR01 identity. Formal GitHub policy `godot_port/docs/authority/FS_TA_R8_LPC_ACTOR01_ART_AUTHORITY_20261121.md` and owner-private Drive policy https://docs.google.com/document/d/1QiSgz3-E6f1ufP7O8CTE5_FNohNe0jAB/edit are already saved, verified and apply before every new round. No substitution of armored LPC art for Actor01. No return to partial R7 pixel twisting.

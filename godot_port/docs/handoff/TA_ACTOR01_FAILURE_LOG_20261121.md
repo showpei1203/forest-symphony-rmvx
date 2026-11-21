@@ -1,5 +1,17 @@
 # T-A Failure Log / 2026-11-21
 
+## R9 2026-11-21 | USER BLOCKERS, actual root cause & attempted repair
+
+- **TA-14 R8 REJECTED: Rubber arm**. Root cause explicit R8 `animated_body()` method drew arbitrary-length shoulder→elbow→hand lines using unbounded pose landmarks, no segment-length constraints. R9 redesigned to circle-intersection **10px/10px** fixed IK and unreachable target hard failure, not stretched arms. Public source-free test plus actual private 10 active frames PASS. **Structural pass only; all-art HOLD**.
+- **TA-15 R8 REJECTED: invented gold badge/logo**. Root cause R8 injected a gold ring and shiny shoulder emblem around the IK shoulder. R9 removed all added gold ring/cross markers, keeps only original A52 costume pixels. Original ACTOR01 true shoulder costume details not erased. Human ART HOLD.
+- **TA-16 Detached crescent arc**. Root cause original A52 FX F7 crop does not spatially match newly retargeted F7 sword blade; previous R8 showed it floating like a symbol. R9 disables detached source FX atlas but preserves original file SHA and F7 0.630 sec timing event. Correct source-based hit FX **NOT YET AUTHORED**. This is an explicit ART blocker, not a PASS claim.
+- **TA-17 Sword stretch/clipping**. R8 `reorient_sword` used affine matrix with `dl/bl` scaling, which varied the original sword length as user noticed. R9 source sword uses rigid rotation, no scale. Candidate weapon has no out-of-bounds frame and 0 detached tiny components; **geometric pass**.
+- **TA-18 Natural arm/shoulder acting**. R9 fixed bone geometry currently remains visibly stylized/capsule-based and could look stiff. **ART HOLD** until a human-approved full-frame rigid authored arm and face silhouette is completed. Godot native 12/12 plus 67/67 timeline is an ENGINE proof, not an ART approval.
+- Native source ZIP https://drive.google.com/file/d/1H5-vcqIF_Kv155iLJ7U6hO60AW0EI6Tk/view ; source code in T-A branch; no private PNG in public GitHub; no new PixelLab call.
+
+---
+
+
 ## R8 USER REJECTION → WHOLE-BODY SOURCE SWITCH (latest, 2026-11-21)
 
 - **TA-14 R7 rejected by user / P0 ART**: original R7 procedural high-guard pose still lacks coherent shoulder/elbow/hip/foot integration. DO NOT recycle R6/R7 arm-only deform as another complete animation. New authority is original LPC pose source plus Actor01 unchanged visual DNA. Status R7 REJECTED, not V7 Art Pass.

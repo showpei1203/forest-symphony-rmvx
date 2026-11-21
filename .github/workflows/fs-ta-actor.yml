@@ -13,6 +13,8 @@ on:
       - "godot_port/tools/ta_actor01_run_weapon.py"
       - "godot_port/tools/ta_actor01_attack_r6_fullbody.py"
       - "godot_port/tools/ta_r8_lpc_actor01_retarget.py"
+      - "godot_port/tools/ta_r9_lpc_fixed_bone.py"
+      - "godot_port/tests/capture_ta_r9_private_native.gd"
       - "godot_port/docs/handoff/TA_ACTOR01_R8_LPC_SOURCE_POSE_MANIFEST_20261121.json"
       - "godot_port/tools/ta_actor01_attack_r7_high_guard_expression.py"
       - "godot_port/tools/ta_actor01_attack_body_gate.py"
@@ -75,6 +77,10 @@ jobs:
           assert report['owner_art_gate']=='HOLD'
           print('R8_LPC_POSE_CONTRACT_12FRAME_SYNTAX_PASS ART_HOLD')
           PY
+      - name: R9 fixed upper+forearm bone IK and unreachable-hand negative regression (source-free)
+        run: |
+          python3 godot_port/tools/ta_r9_lpc_fixed_bone.py --self-test
+          python3 -m py_compile godot_port/tools/ta_r9_lpc_fixed_bone.py
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd
