@@ -1,3 +1,29 @@
+# T-C CURRENT｜D3 六地形×迷宮／村莊十二圖生產啟動｜2026-11-21（Asia/Taipei）
+
+**本輪已實際上傳 SOP + 六地形追蹤檔 + 新雪原 Ground 候選；02_VILLAGE PAR 尚未成功，正式所有地圖仍 ART HOLD。** 最高規則不變：**先生完整 Ground，再生同世界座標 CompletePAR；PAR 收納所有非 Ground 物件，與是否遮擋角色無關。** 不從 Master 逆向裁層、不在本工廠處理 NPC/事件/戰鬥或角色遮擋細節。
+
+## 本輪確實完成
+
+1. **SOP 已在兩處正式保存**：GitHub [FS_TC_GROUND_FIRST_COMPLETE_PAR_12_MAP_SOP_20261121.md](FS_TC_GROUND_FIRST_COMPLETE_PAR_12_MAP_SOP_20261121.md)；Drive [可編輯正式文件](https://docs.google.com/document/d/1zWXO6Z8SHobSK2jfI-M6-p6JDb81BniIH_4UCLiJhIw/edit)，Google Docs API 寫入後已讀回 46 段、標題與章節及 GitHub 來源連結。包含 D2 46×33 真透明 PAR 與 Ground 實際配對方法、Alpha 色彩污染、40×29 裁切失敗、完整新圖輸出限制、正式 Handoff 及雲端 SHA 原則。
+2. **已重新讀 Drive 2026-11-14 正式世界設定** [FS_SIX_BIOMES_WORLD_ART_PLAN_20261114](https://docs.google.com/document/d/1SjVPK3J5exwp0fC3bRMHjoWo2vne_pck/edit)，及 [2026-11-16 12-map Active Master](https://docs.google.com/document/d/11SzPGsNakKL7U0Gzo0LFN806gJU_82sP/edit)，原名／場景 ID 固定不換：蒼翠精靈林 FS_01_MAZE 幽葉迴廊／FS_01_VILLAGE 苔光村；凜霜雪原 FS_02_MAZE 冰脊迷谷／FS_02_VILLAGE 霜燈聚落；風蝕金砂 FS_03_MAZE 風沙裂谷／FS_03_VILLAGE 星井綠洲；赤焰火山 FS_04_MAZE 熔脈裂橋／FS_04_VILLAGE 灰鑄工坊城；幽霧水澤 FS_05_MAZE 泥潭迷水／FS_05_VILLAGE 蘆燈水上村；星晶浮島 FS_06_MAZE 星盤斷空／FS_06_VILLAGE 虹晶臺地村。
+3. T-C GitHub 新文字台帳 [TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json)，是六大地形十二圖的施工追蹤檔，**不是另一套可覆蓋舊正式設定的 canonical Scene Manifest**。已明確保留森林兩圖既有技術候選／ART HOLD、雪原第一張 Ground 候選、其餘十張未造；**正式 ART SEALED = 0/12**。
+4. 新獨立雪原圖片：FS_02_VILLAGE「霜燈聚落」**GROUND-FIRST 候選**，原始新生成 RGB 圖 1470×1070 SHA256 `bb2bdbc0a50fab85689180669b36b59b858a98863d44d9a127aa26e628dbc9b3`；用 `(95,71,1375,999)` 原像素裁切出 1280×928／40×29 32px 格，**無縮放**，Ground 候選 SHA256 `475f7883c1fe23245198198029da3ac37dc479176e3dc8ddc8a81aba4054f5ea`。保存 40×29 32px 格線 QA，5 檔 source/ground/grid/QA/blueprint ZIP CRC PASS，source+PNG READBACK。
+5. 私人 Drive 檔： [Ground 1280×928](https://drive.google.com/file/d/1YQt0dkI2AR9VFYMMrFYP3h4KUPJ_ka9T/view)（2,075,805 bytes）、[未裁原始圖 1470×1070](https://drive.google.com/file/d/11TWOaksX413DsIMCN5Nmm1TfCCQRlYyK/view)（2,912,203 bytes）、[32px 格線 QA](https://drive.google.com/file/d/174ytM0lTie-i1YINZVg364_A62dYlbql/view)（2,024,066 bytes）、[完整 Source QA ZIP](https://drive.google.com/file/d/1d4LoyX3FSYRA9iy9aCU5WJ_N0RYz8XOY/view)（6,982,939 bytes，SHA256 `d21c285a8915dd51e5db7ff53a9f3a8cae3409a6523e091df3bd3590c0e1b154`，CRC PASS）。Google Drive API 四項 readback 全部 `shared=false`／user owner-only。圖片不放公共 GitHub，也未碰使用者 PC。
+6. 專屬雪原藝術規格在 [FS_02_VILLAGE_GROUND_FIRST_BLUEPRINT_20261121.json](../../tc_factory/biomes/FS_02_VILLAGE_GROUND_FIRST_BLUEPRINT_20261121.json)：世界 ID／材質／非地表物件規定／Ground 初稿 SHA／PAR 預期完整物件家族、來源座標、驗收狀態。依 2026-11-14 世界美術設定，Ground=積雪、凍土、碎冰、冷色岩地面、雪路；PAR=全部冷杉、冰柱、覆雪房、暖爐煙囪、岩塊、燈柱、欄杆、橋梁、裝飾，不因 blocking/occlusion 移除。
+
+## Failure Log 及誠實 Gate
+
+- **D3 PAR 仍 NOT_GENERATED**：嘗試生成完整雪村透明 PAR 時，圖像工具錯誤輸出「進度海報／資訊圖」，不是 RGBA 遊戲素材，已拒收，不能為圖面內容背書或當地圖 QA。下一輪需使用可可靠輸出原生同尺寸透明圖層的工具／製程；不把海報冒稱 source。
+- **D3 Ground SOURCE CANDIDATE，不是 Ground ART PASS**：圖中若干小型立體岩塊／立體灌木疑似不該留 Ground，需要以成圖規則確認、必要時重生 Ground，不可在整張圖做 Master 逆切。新圖片只有 RGB、尺寸、裁切、SHA、存儲 PASS，**沒有**完成嚴格 Ground purity 人工藝術驗收。
+- **新雪原尚無完整 PAR / 新雪原 Godot 4.7.2 native NOT_RUN**。先前 D1 全物件 192／192 CI 不是 D3 的 native 結果；不得互相移花接木。雪原 1/2 圖層只是 Ground 候選，不宣稱完整場景通過。
+- 過去 FS_01_VILLAGE D2 46×33 Ground + CompletePAR 同圖合成 TECH PASS，美術/真正原 40×29 裁切 ART HOLD；FS_01_MAZE 技術場景 ART HOLD，不覆蓋。
+- 六地形正式完成地圖數 **0/12**，新 D3 雪原 source 候選 **1張**；不要把工程追蹤、SOP、進度海報算作美術完成。
+
+## 下一個宏觀單位（保持六地形12圖，不糾結單棵樹）
+
+先把已封存雪原 **FS_02_VILLAGE** Ground 語義純淨度審核並以**同一張已產生 Ground**生成真正獨立、透明、完整非地表 PAR（所有屋舍、完整冷杉、冰柱、路燈等），一次美術驗收；若上游工具只出海報，停止假輸出，改來源/模型/流程，不再微調遮蔽。配對完成後，直接開始同地形 **FS_02_MAZE 冰脊迷谷** 的完整 80×58 Ground-first，繼續地形 03 風蝕金砂、04 赤焰火山、05 幽霧水澤、06 星晶浮島。所有階段只有圖片實出、SHA、Drive WRITE→READBACK、Art/Engine 各自 QA 才能升級狀態。
+
+---
 # T-C CURRENT｜D2 真正新生成 Ground＋透明完整 PAR 之合成與 QA｜2026-11-21
 
 **新 Ground／PAR 真實合成成功，宏觀美術評估方向正面；46×33 source pair TECH COMPOSITE PASS，但透明 Alpha 原圖有污染、1280×928 裁切物件，正式 ART HOLD。Godot 4.7.2 原生 NOT_RUN。** 使用者最新唯一規則：Ground 獨立先生成，完整 PAR 後生成，收納除 Ground 之外的所有非地表物件，絕不篩選角色遮蔽物。
