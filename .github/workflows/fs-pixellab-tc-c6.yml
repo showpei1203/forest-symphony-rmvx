@@ -1,0 +1,132 @@
+name: FS PixelLab T-C C6 Woodland Seam (Godot 4.7.2)
+on:
+  push:
+    branches:
+      - feat/fs-pixellab-tc-map-20261121
+    paths:
+      - "godot_port/tc_factory/build_tc_village_region_c6.py"
+      - "godot_port/tc_factory/TCVillageRegionC6.gd"
+      - "godot_port/tc_factory/TCVillageRegionC6.tscn"
+      - "godot_port/tc_factory/capture_tc_region_c6_native.gd"
+      - ".github/workflows/fs-pixellab-tc-c6.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fs-tc-c6
+  cancel-in-progress: true
+
+jobs:
+  godot472-native-c6-woodland:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install image assembler and native GPU test display
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check Pillow==12.0.0
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1 libxcursor1 libxrandr2 libxi6 libxinerama1
+      - name: Build COMPLETE C6 8x8 tile forest-road transition from verified C5 source
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/build_tc_village_region_c6.py --out godot_port/tc_factory/generated_region \
+            | tee /tmp/fs_tc_c6_source_build.json
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from PIL import Image,ImageChops
+          d=Path('godot_port/tc_factory/generated_region')
+          j=json.loads((d/'TC_PILOT_SOURCE_QA.json').read_text())
+          assert j['region_px']==[640,160,896,416]
+          assert j['region_grid']==[8,8]
+          assert j['world_grid']==[40,29]
+          assert j['source_ground_outside_region']=='BIT_EXACT'
+          assert j['region_changed_px']>=1500
+          assert j['independent_c6_sprite_count']==5
+          assert j['new_prop_root_colliders']==3
+          assert j['source_registration']=='STATIC_PASS_MASTER_GROUND_COMPLETEPAR_SAME_SOURCE'
+          assert len(json.loads((d/'TC_C6_ROOT_FOOTPRINTS.json').read_text())['colliders'])==3
+          for n in ('MASTER.png','Authoring_GroundOnly.png','Authoring_CompletePAR.png',
+                    'Runtime_FullGround.png','Runtime_OcclusionPAR.png'):
+              a=Image.open(d/n);a.load()
+              assert a.size==(1280,928),(n,a.size)
+          a=Image.open(d/'MASTER.png').convert('RGB')
+          b=Image.open(d/'Runtime_FullGround.png').convert('RGB')
+          assert ImageChops.difference(a,b).getbbox() is None
+          print('C6 STATIC VERIFY: 8x8 region, 5 authored independent props, 3 root bodies, source registration PASS')
+          PY
+      - name: Download official pinned Godot 4.7.2 stable
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/godot472.zip \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          mkdir -p /tmp/fs_tc_godot
+          unzip -q /tmp/godot472.zip -d /tmp/fs_tc_godot
+          chmod +x /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Import C6 real 32px assets into exact Godot 4.7.2
+        run: |
+          set -euo pipefail
+          /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+            --headless --path godot_port --editor --quit
+      - name: Run real 1x C6 woodland scene, semantic canopy and physical roots
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          timeout 110s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/fs_tc_godot/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/capture_tc_region_c6_native.gd
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import json
+          d=Path('godot_port/tc_factory/generated_region')
+          j=json.loads((d/'TC_C6_GODOT_NATIVE_QA.json').read_text())
+          assert j['engine'].startswith('4.7.2'),j
+          assert j['full_framebuffer_px']==[1280,928]
+          assert j['C5_houses_real_StaticBody2D']==2
+          assert j['C6_new_source_authored_root_StaticBody2D']==3
+          assert j['open_existing_road_hit']==0
+          assert j['native_same_footpoint_actor_waystone_changed_pixels']>=20
+          assert j['actor_front_of_waystone_clear']
+          source=Image.open(d/'TC_C6_GODOT472_NATIVE_FULL_1X.png').convert('RGB')
+          assert source.size==(1280,928)
+          a=source.crop((640,160,896,416))
+          a.save(d/'TC_C6_GODOT472_NATIVE_REGION_1X.png')
+          a.resize((768,768),Image.Resampling.NEAREST).save(
+              d/'TC_C6_GODOT472_NATIVE_REGION_3X_REVIEW.png')
+          print('C6 NATIVE GPU/PHYSICS 1x 8x8 REGION PASS')
+          PY
+      - name: Package ONLY C6 private full source + 1x native QA within 100MB Drive limit
+        if: always()
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile,hashlib
+          d=Path('godot_port/tc_factory/generated_region')
+          out=Path('/tmp/FS_TC_C6_NATIVE_8x8_WOODLAND_PRIVATE.zip')
+          paths=sorted(x for x in d.rglob('*') if x.is_file() and x.suffix != '.import' and x.name!='.gitignore')
+          if not paths:
+              print('No C6 generated source available');raise SystemExit(0)
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=7) as z:
+              for p in paths:z.write(p,arcname=str(p.relative_to(d)))
+          with zipfile.ZipFile(out) as z:
+              assert z.testzip() is None
+              print('C6 ZIP entries',len(z.namelist()))
+          print('C6 ZIP bytes',out.stat().st_size)
+          print('C6 ZIP SHA256',hashlib.sha256(out.read_bytes()).hexdigest())
+          assert out.stat().st_size < 100_000_000,'Use smaller transfer set if over Drive size cap'
+          PY
+      - name: Temporary private C6 transfer package (save to owner-only Drive)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-tc-c6-private-drive-transfer
+          path: /tmp/FS_TC_C6_NATIVE_8x8_WOODLAND_PRIVATE.zip
+          if-no-files-found: warn
+          retention-days: 1
