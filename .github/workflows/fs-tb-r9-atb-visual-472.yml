@@ -1,0 +1,63 @@
+name: FS TB R9 Real ATB/ACT Visual Presentation Gate (Godot 4.7.2)
+on:
+  push:
+    branches: [feat/fs-pixellab-tb-monster-20261121]
+    paths:
+      - .github/workflows/fs-tb-r9-atb-visual-472.yml
+      - godot_port/experiments/pixellab_tb/FS_TBMonsterBattlePresentation.gd
+      - godot_port/experiments/pixellab_tb/tests/test_tb_r9_private_native.gd
+      - godot_port/tests/test_tb_r9_real_enemy_battle_visual.gd
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-fs-combat:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download official Godot 4.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fSL --retry 3 https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip -o "$RUNNER_TEMP/godot.zip"
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          chmod +x "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64"
+          echo "GODOT_BIN=$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/Godot_v4.7.2-stable_linux.x86_64" --version | tee "$RUNNER_TEMP/tb_version.txt"
+          grep -q '4.7.2.stable' "$RUNNER_TEMP/tb_version.txt"
+      - name: Generate nonprivate R9 synthetic sprite sheets
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p godot_port/assets/monsters/tb02
+          python3 - <<'PY'
+          import struct,zlib,pathlib
+          out=pathlib.Path('godot_port/assets/monsters/tb02')
+          def chunk(n,b):return struct.pack('!I',len(b))+n+b+struct.pack('!I',zlib.crc32(n+b)&0xffffffff)
+          def png(p,w,h):
+              data=bytearray()
+              for y in range(h):
+                  data.append(0)
+                  for x in range(w):
+                      filled=(x%128>10 and x%128<118 and y%128>10 and y%128<118)
+                      data.extend((75,106,98,255) if filled else (0,0,0,0))
+              p.write_bytes(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('!IIBBBBB',w,h,8,6,0,0,0))+chunk(b'IDAT',zlib.compress(data,6))+chunk(b'IEND',b''))
+          png(out/'TB02_BAT_IDLE_8F.png',384,192)
+          png(out/'TB02_BAT_ATTACK_BITE_R8_FINAL_11F_PAD128.png',512,384)
+          print('TB_R9_SYNTHETIC_CI_ASSETS_ONLY')
+          PY
+      - name: Import full real FS Godot project
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$GODOT_BIN" --headless --path godot_port --import --quit
+      - name: Native actual FS enemy AI ATB/ACT and R9 visual bridge regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$GODOT_BIN" --headless --path godot_port --script res://tests/test_fs_enemy_atb_queue.gd 2>&1 | tee "$RUNNER_TEMP/enemy_atb.log"
+          grep -q 'FS enemy source ATB/ACT auto attack/skill' "$RUNNER_TEMP/enemy_atb.log"
+          "$GODOT_BIN" --headless --path godot_port --script res://tests/test_tb_r9_real_enemy_battle_visual.gd 2>&1 | tee "$RUNNER_TEMP/r9_battle.log"
+          grep -q 'FS_TB_R9_REAL_FS_ATB_ACT_472_PASS' "$RUNNER_TEMP/r9_battle.log"
+          echo 'R9 real FS battle source + synthetic R8 art, native 4.7.2 PASS. Real R8 private art validated off-public CI.'
