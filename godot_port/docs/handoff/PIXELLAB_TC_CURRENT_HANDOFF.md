@@ -1,3 +1,17 @@
+# T-C CURRENT｜D2 真正新生成 Ground＋透明完整 PAR 之合成與 QA｜2026-11-21
+
+**新 Ground／PAR 真實合成成功，宏觀美術評估方向正面；46×33 source pair TECH COMPOSITE PASS，但透明 Alpha 原圖有污染、1280×928 裁切物件，正式 ART HOLD。Godot 4.7.2 原生 NOT_RUN。** 使用者最新唯一規則：Ground 獨立先生成，完整 PAR 後生成，收納除 Ground 之外的所有非地表物件，絕不篩選角色遮蔽物。
+
+- 完整紀錄：[`TC_D2_GROUND_PAR_NEW_GENERATION_PAIR_QA_20261121.md`](../handoff/TC_D2_GROUND_PAR_NEW_GENERATION_PAIR_QA_20261121.md)；包括原圖 SHA、兩個 PAR 版本、Alpha 分佈、像素同尺寸原點、32×32 全圖、失敗紀錄和 Gate。GitHub 只保存 code＋QA＋Handoff，素材在私人 Drive，無使用者 PC 寫入。
+- **原始兩張生成畫布各 1473×1068**，同一 XY、不混入 Master；為保留全部房屋樹木、不縮放，作為 46×33（1472×1056）完整地圖候選，僅從 Ground 及 PAR 同時裁右 1 px、下 12 px。Ground.png 46×33 SHA `226a0733dc92cd0023ddcd4a86afff9d8a469cc658b0a5e884c5667bcce36af1`；原生 PAR SHA `0a52c590e85086b29af37754bdbc9206d2aab96ec9d98e0c82f5d4d4dbd2f574`。
+- 技術 Alpha 清理試驗：原 PAR 大量 alpha 1..8 的紅黃綠雜色；新增候選修正 alpha≤8→0、alpha≥240→255，不改可見 RGB，原 PAR 原封不動保留。清理後 SHA `80b6aee06908c3e8160881af28a3faa9cf0d3d09c85bac3f0b538de45e9e406c`，完整合成 SHA `09137573db960dead52bc599e859a7f5134b65366f13e371df39a1cd3f91e7a8`。Pillow 真逐像素 alpha composite PASS；原生 Godot 4.7.2 NOT_RUN，不能誤寫 PASS。
+- Google Drive READBACK owner-only：**[Ground](https://drive.google.com/file/d/1zop1sxdXiTfee_rpiSQCJXu5Uotikt4y/view)**、**[原始完整 PAR](https://drive.google.com/file/d/17lUUXnCCNk4pQGWUGiRciSJW9qAVGbrl/view)**、**[Alpha 技術清理 PAR](https://drive.google.com/file/d/1nywEe4sG-KTtWFTpPC7VCoQjD_ANa6Lv/view)**、**[完整合成圖](https://drive.google.com/file/d/1cASgC0jbjiXbFOf_HSJPTanjgBHUfUrU/view)**。四個檔案均 verified shared=false/user owner。
+- **1280×928（40×29）只算裁切展示，非正式藝術過關**：來源同座標中央裁切會讓原 PAR 上緣 872、左 544、右 654 個近全不透明像素撞到邊界，切斷完整森林／房屋物件。故正常新完整地圖保留 46×33，既有 FS_01_VILLAGE 若必須 40×29，應在產圖最開始建立 1280×928 World Blueprint 再一起生 Ground→PAR，不要硬裁合格的完整場景。
+- 視覺檢查：原新 Ground 地表、兩棟獨立精靈屋、中央水晶噴泉與森林色調協調，符合「一次生成同風格」的大方向。但未逐個源物件驗 alpha 完整、原 FS ground3 風格匹配、Game native，保留 ART HOLD。
+- **下一完整單位**：直接沿用這套整圖 Ground-first→CompletePAR 兩階段製程，針對原生 1280×928 世界格一次生成同座標新 Ground＋乾淨透明 PAR；或確認 46×33 作為真正新地圖。不要做個別屋簷、樹冠選擇性遮蔽，不重開 C4～C8 微修。必要才安排 Godot 4.7.2 原生導入，不能讓碰撞設定反客為主。
+
+---
+
 # T-C NOW｜D1 使用者糾正後的唯一 Ground → CompletePAR 路線｜2026-11-21
 
 **路線權威：使用者 2026-11-21 當次糾正高於全部歷史實驗。先獨立生成 GROUND.png，鎖 SHA，後以同一場景與風格生成包含所有非 Ground 物件的完整 PAR.png。不能先合成 Master 再逆向切圖，不能把 PAR 限縮為角色遮蔽區，也不應以分辨 actor-occlusion/collision 阻礙產圖。**
