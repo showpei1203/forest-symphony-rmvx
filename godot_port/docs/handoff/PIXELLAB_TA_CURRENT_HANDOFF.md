@@ -1,5 +1,18 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R11B NEW LATEST 2026-11-22 | official complete LPC, ACTOR01 unarmed 3/4 source-based study
+
+User rejected rubber limbs and strange signs, requested a NEW LPC-based 45-degree attack with NO WEAPON. Full official LPC source commit 86a3719ee4a7e2e9fb27c7c152e29a741d3e930a at E:\LPC_Original_20261121 (user authorized E) ZIP 150940625 bytes SHA256 C3E73FAFE062A80DCABA6CEF3DCA367B988F6E09D983AA5C9AB3FF05673185DC. Real full source 89359 files incl 88130 PNG, LICENSE/CREDITS preserved. Original A62 white-haired identity SHA256 70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e.
+
+R11B generator uses REAL original LPC backslash 13 frame per four-cardinal-direction body, chest/near leg from front, whole arm/side motion from right, original A62 face, no stretch or artificial arm. 12 source map [12,0,1,2,3,6,7,9,10,11,12,12]. Weapon and FX absolutely zero alpha, no weapon. Original A52/R8/R9 unchanged.
+R11 was found to have disjoint 3-pixel leg artifacts at five frames (15 total). R11B now clears <=3px islands, fails for larger disconnected limb; ALL 12 frames one 8-connected silhouette. R11B Body SHA256 fcd2c7ee0c16acca95cb1497e75514c1ec9fe0c7907e380ce01514ea24540018.
+TRUE owner-PC Godot 4.7.2 OpenGL native 64px 60Hz captures 73/73 (12 poses, visual F7 0.630 seconds once). Source-to-GPU all 12 full RGBA exact diff=0; alpha diff=0; 0 Weapon/FX. Isolated motion test only, not live FSBattle/ATB/damage.
+Private owner E ZIP E:\LPC_Original_20261121\FS_R11B_ACTOR01_UNARMED_45_STUDY\FS_TA_ACTOR01_R11B_UNARMED_LPC_GODOT472_73FRAME_QA.zip, size 242390, 91 files, CRC PASS, SHA256 7a878c581342faecc46ed56a224c52c61e46a87d0351f854ea6e0dac180755ef. Native preview GIF and 1x/4x contact there. Source-only scripts and manifest here in T-A GitHub, full original LPC art remains E, no unlicensed GitHub upload.
+**HONEST STATUS: ART HOLD.** Original LPC has only 4 cardinal directions. Current original-source 3/4 mix IS NOT a newly hand-painted real 45-degree animation. Dynamic face and shoulders/hips silhouette still need manual art. No paid PixelLab job. No production merge. User visual art approval is still needed. New rule godot_port/docs/authority/FS_TA_R11B_LPC_UNARMED_DIAGONAL_20261122.md.
+
+---
+
+
 ## R10 2026-11-21 — COMPLETE OFFICIAL LPC SOURCE + FIRST UNARMED ACTOR01 ORIGINAL-POSE STUDY (LATEST)
 
 User explicitly authorized downloading the complete LPC upstream original to E: or Drive, rejected R8/R9 rubber arms and signs, and requested NO WEAPON. Verified official current upstream master commit 86a3719ee4a7e2e9fb27c7c152e29a741d3e930a. Downloaded from official codeload to E:\LPC_Original_20261121\Universal_LPC_FULL_86a3719e.zip: 150940625 bytes, SHA256 C3E73FAFE062A80DCABA6CEF3DCA367B988F6E09D983AA5C9AB3FF05673185DC. Zip complete CRC test NONE, 95613 entries / 89359 files; unpacked exactly 89359, including 88130 PNG. Original README, LICENSE, CREDITS and folders present. Source root E:\LPC_Original_20261121\Universal-LPC-Spritesheet-Character-Generator-86a3719ee4a7e2e9fb27c7c152e29a741d3e930a. THIS is the full pinned upstream, not old partial 11-layer P1C or full Git history.
