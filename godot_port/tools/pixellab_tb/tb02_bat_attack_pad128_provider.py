@@ -11,8 +11,12 @@ a=p.parse_args();w=pathlib.Path(a.work);w.mkdir(parents=True,exist_ok=True)
 source=w/'BAT_STAGE1_PAD128.png';
 if not source.is_file():
  raw=Image.open(w/'BAT_STAGE1.png').convert('RGBA');pad=Image.new('RGBA',(128,128));pad.alpha_composite(raw,(16,16));pad.save(source)
-expected='cb6116ce40a3744e7596fbfc981c36e2d353ec93f9cfc40770742cc720586b66'
-assert source.is_file() and hashlib.sha256(source.read_bytes()).hexdigest()==expected,'Source identity lock mismatch'
+# Pillow versions can encode identical RGBA pixels with different lossless PNG byte streams.
+raw_source=w/'BAT_STAGE1.png'
+assert hashlib.sha256(raw_source.read_bytes()).hexdigest()=='208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2','Source identity lock mismatch'
+expected_rgba=Image.new('RGBA',(128,128));expected_rgba.alpha_composite(Image.open(raw_source).convert('RGBA'),(16,16))
+assert Image.open(source).convert('RGBA').tobytes()==expected_rgba.tobytes(),'Padded first frame pixel identity mismatch'
+expected=hashlib.sha256(source.read_bytes()).hexdigest()
 token=os.getenv('PIXELLAB_API_TOKEN')
 if not token:raise RuntimeError('PixelLab token not connected')
 def api(path,obj=None):
