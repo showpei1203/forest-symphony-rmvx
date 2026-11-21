@@ -24,7 +24,7 @@ def label(mask, _neighborhood=None):
       if mask[ny,nx] and not labels[ny,nx]:
        labels[ny,nx]=index;stack.append((ny,nx))
  return labels,index
-ROOT=Path(os.environ.get('TA_R9_SOURCE_DIR','/mnt/data')); OUT=Path(os.environ.get('TA_R9_OUTPUT_DIR',str(ROOT/'TA_R9_FIXED_ARM'))); OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(os.environ.get('TA_R9_SOURCE_DIR','/mnt/data')); OUT=Path(os.environ.get('TA_R9_OUTPUT_DIR',str(ROOT/'TA_R9_FIXED_ARM')))
 BODY=ROOT/'actor01_a52_body_12frames.png'; WEAPON=ROOT/'actor01_a52_weapon_12frames.png'; FX=ROOT/'actor01_a52_fx_12frames.png'
 LPC=ROOT/'TSG_P1C_LIBRESPRITE_LPC_11L_24F_EDITOR_20261024.zip'
 KNOWN={
@@ -170,6 +170,7 @@ def compose(frameb, framew, framefx):
 def main():
  global orig,sword_src,orig_fx
  assert_sources()
+ OUT.mkdir(parents=True,exist_ok=True)
  orig=Image.open(BODY).convert('RGBA')
  sword_src=frame(Image.open(WEAPON).convert('RGBA'),1)
  orig_fx=Image.open(FX).convert('RGBA')
