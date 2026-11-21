@@ -20,6 +20,12 @@
   - True GPU 4× R7/R8 comparison: https://drive.google.com/file/d/1gOYMZwe5obVGWKzmvfXNp7rnuS2gJzEI/view
   - **FULL R8 NATIVE QA ZIP**: https://drive.google.com/file/d/1l0BLyGjJYzREVdmuDtp1SvekLGEGv4YO/view
 
+### R8 source-and-CI postscript
+- The ENTIRE deterministic real-source retargeting Python generator (no private PNG bytes) is now checked into this dedicated GitHub branch: `godot_port/tools/ta_r8_lpc_actor01_retarget.py`, with environment-configurable `TA_R8_INPUT_ROOT` and `TA_R8_OUTPUT_DIR`. GitHub source/code commit `d801208a7ab7f844ec404204e493b7f66ac65ff3`.
+- R8 source pose mapping/locked SHA contract: `godot_port/docs/handoff/TA_ACTOR01_R8_LPC_SOURCE_POSE_MANIFEST_20261121.json`. The complete raw source generator itself also remains owner-private Drive at https://drive.google.com/file/d/1AzJR99ZKOtg2BmW991z-XeISjy8aI1UB/view and in the QA ZIP.
+- CI workflow added a **synthetic public source-code syntax / 12-frame pose-contract validation** on official Godot 4.7.2 test branch. Triggered run https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44917155442 ; verify this run's status before claiming CI PASS. The actual private PNG GPU proof is the separate isolated local/cloud real source log in the archived ZIP, not a public GitHub action with licensed sprites.
+- R8 text-only generator may be reused from GitHub if the six original/approved private sources are supplied from Drive and verify exact SHA. No user PC writes authorized or performed.
+
 ### PASS/HOLD/NOT RUN (do not overstate)
 - SOURCE ZIP/hash/license lineage: PASS; **no new paid PixelLab model**, 0 units; LPC data are original 4 cardinal only, 45° must be human-approved. First full 12×64x64 draft: M1 CANDIDATE BUILT. Godot source 79 actual GPU frames plus timeline and 1 contact: M2 NATIVE PASS.
 - **S6 USER ART ACCEPTANCE: ART HOLD.** Procedural drawn sleeve/elbow may look too mechanical; body turn/face/45° and foot weight shift still need artistic revision. R7 was rejected and is comparison only. One complete R8 strategy pass, no repeated micro-pixel loops. Do not merge into existing production Actor01.
