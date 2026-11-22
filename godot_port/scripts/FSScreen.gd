@@ -261,25 +261,26 @@ func _add_battle_command(label: String, callback: Callable) -> void:
 
 func _update_battle_command_buttons() -> void:
     var enabled: bool = _battle_actor_ready()
+    var seal_flags:Array=[true,true,true,true]
+    if battle!=null and db!=null and actor_index>=0 and (
+            actor_index<battle.party.size()):
+        # Original #312 reads RPG::State.note every frame, not cached booleans.
+        var quote:Dictionary=FSOriginalActionSeal.flags(
+            battle.party[actor_index],db)
+        seal_flags=quote.get("blocked",[true,true,true,true])
     if original_commands!=null and original_commands.source_enabled:
-        var sealed:Array=[]
-        if actor_index>=0 and actor_index<battle.party.size():
-            var actor:Dictionary=battle.party[actor_index]
-            # #312 checks a_seal?,s_seal?,g_seal?,i_seal?.
-            # These keys are not full 505-alias battle-state parity yet;
-            # FSActionQueue remains the final source-ready authority.
-            sealed=[bool(actor.get("a_seal",false)),
-                bool(actor.get("s_seal",false)),
-                bool(actor.get("g_seal",false)),
-                bool(actor.get("i_seal",false))]
-        original_commands.refresh_state(enabled,sealed)
-    for button in battle_command_buttons:
+        original_commands.refresh_state(enabled,seal_flags)
+    # The fallback 2x2 Godot UI must follow the SAME source authority.
+    var fallback_order:Array=[0,2,1,3] # Attack/Guard/Skill/Item
+    for i in range(battle_command_buttons.size()):
+        var button:Button=battle_command_buttons[i]
         if is_instance_valid(button):
-            button.disabled = not enabled
+            button.disabled = not enabled or (
+                bool(seal_flags[fallback_order[i]]))
             var key:int=button.get_instance_id()
             if battle_command_art.has(key):
                 var pair:Dictionary=battle_command_art[key]
-                button.icon=pair["active"] if enabled else pair["inactive"]
+                button.icon=pair["inactive"] if button.disabled else pair["active"]
 
 func _restore_developer_shell()->void:
     if title_label!=null:
@@ -305,6 +306,12 @@ func _hide_developer_shell_for_original_battle()->void:
 
 func _source_battle_command(index:int)->void:
     if not _battle_actor_ready():
+        return
+    # Revalidate the source State at dispatch, not only in hover/refresh.
+    if index>=0 and index<4 and (db==null or not (
+            FSOriginalActionSeal.can_use(
+                battle.party[actor_index],db,
+                FSOriginalActionSeal.KINDS[index]))):
         return
     # Source #268 order, wrapped by #312 command seal. Escape remains HOLD.
     match index:
