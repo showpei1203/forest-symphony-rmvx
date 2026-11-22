@@ -68,3 +68,30 @@
 - 未來由使用者完成 Google AI Studio 初次同意，再於免費專案建立 Gemini API Key，確認沒有 billing linked、免費額度適用後，方可在 Cherry Studio Gemini provider 以 UI 填入 Key，選擇標示 Free Tier 的模型，做無敏感資料的小型連線測試。
 - 免費 API 對話內容可能用於 Google 產品改善；不得自動附上私人 FS 原始圖、客戶資料、內部敏感文件。正式素材以 Google Drive / GitHub 為來源。正式檢索依然使用 Qwen3 Embedding 本地模型。
 - 可靠來源： https://developers.google.com/gemini-code-assist/docs/deprecations/code-assist-individuals ; https://www.cherryai.com/docs/en/pre-basic/providers/google-gemini/ ; https://ai.google.dev/gemini-api/docs/pricing
+
+## 9. Gemini API 完成連線與 QA（2026-11-22 18:xx 台灣，取代上節的「尚未設定」狀態）
+狀態：**GEMINI_PROVIDER_ENABLED / GEMINI_3_5_FLASH_LITE_CHERRY_CHAT_PASS / NO_CODEX / FREE_TIER_CONFIRMED**
+
+- 使用者本人完成 Google AI Studio 的首次授權並建立 Gemini API Key；AI Studio 專案畫面為 **Free Tier**，沒有啟動付費 Billing。金鑰保存在使用者電腦的 Cherry Studio Gemini 供應商設定中；**金鑰全文未寫入本 Handoff、GitHub 或對話正文**。
+- Cherry Studio 2.2.3：原生 Gemini provider 啟用（綠色），官方 API Host 維持 `https://generativelanguage.googleapis.com`。
+- 同步 Google API 可用模型後，僅加入兩個常用文字模型：
+  1. `gemini-3.5-flash`，較進階分析；
+  2. `gemini-3.5-flash-lite`，日常對話、快速工作。
+- Google 官方 pricing 目前兩者的標準 Free Tier 文字輸入／輸出均標示 Free of charge；仍有速率、每日及可用地區等限制。API Free Tier **不是 Google AI Pro 訂閱抵用額度**。
+- 由本機 PowerShell 使用 Google 官方 API /v1beta 及 `x-goog-api-key` header 驗證：
+  - 列舉模型成功，包含 `models/gemini-3.5-flash` 和 `models/gemini-3.5-flash-lite`。
+  - Google REST `gemini-3.5-flash-lite:generateContent` harmless prompt → `READY`，**PASS**。
+  - Google REST `gemini-3.5-flash:generateContent` harmless prompt → `READY.`，**PASS**（該次回應約 24 秒）。
+- Cherry Studio 最初的新增模型引導檢驗 `Gemini 3.5 Flash` 失敗，UI 泛用錯誤為「模型請求失敗，無法連線到伺服器，請檢查網路或代理設定」。由於上列直接 HTTPS API 均成功，不能把它歸因於金鑰失效；可能是首次驗證逾時／Cherry 應用層問題，**原因未完成根因證明**。
+- 隨後在 Cherry Studio 手動啟用 Gemini provider，切換聊天模型到 `Gemini 3.5 Flash Lite`，實際送出不含任何 FS／客戶資料的測試訊息：
+  - Prompt：「請只回答：連線成功。這是測試訊息，不需讀取任何檔案。」
+  - Cherry Studio 真實對話輸出：「連線成功。」→ **CHERRY_CHAT_PASS**。
+- Cherry Studio「設定 → 預設模型」已設定：
+  - 預設助理模型 → **Gemini 3.5 Flash Lite / Gemini**；
+  - 快速模型 → **Gemini 3.5 Flash Lite / Gemini**；
+  - 翻譯模型 → **Gemini 3.5 Flash Lite / Gemini**；
+  - 繪圖模型保持未指定（避免自動選用非免費影像生成服務）。
+- 先前對話出現「自動產生對話名稱失敗，需要 CherryAI 登入」提示，是當時 **快速模型仍指向未登入的 CherryAI/Qwen**；上述設定已改成 Gemini Lite，但自動標題的新一輪端到端測試 **未執行**，不冒稱已通過。
+- **隱私邊界**：Gemini Free Tier 請求可能用於產品改善；未附加 `FS_技術規範` 知識庫、Google Drive 私人素材、保險客戶資料。未開啟 Codex、未新購 API 額度。真正 Godot / FS 美術施工和 CI 本輪未觸及。
+- 本機金鑰剪貼簿內容已以一般測試文字覆寫（不需再從聊天中分享金鑰）。後續若要做 FS 規範問答，須由使用者明確決定是否將公開／不敏感的規範片段送往 Google Free API；保持預設不自動上傳。
+- 官方來源：`https://ai.google.dev/gemini-api/docs/pricing`、`https://www.cherryai.com/docs/en/pre-basic/providers/google-gemini/`。
