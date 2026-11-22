@@ -18,6 +18,12 @@ on:
       - "godot_port/tools/ta_r13_lpc8_actor01_unarmed_attack.py"
       - "godot_port/tools/ta_r14_8dir_two_joint_actor01_unarmed.py"
       - "godot_port/tools/ta_r15_8dir_actor01_punch_kinematics.py"
+      - "godot_port/tools/ta_r16_8dir_actor01_shoulder_depth.py"
+      - "godot_port/tools/ta_r16_8dir_native_qa_pack.py"
+      - "godot_port/tests/capture_ta_r16_unarmed_native.gd"
+      - "godot_port/docs/handoff/TA_R16_8DIR_SHOULDER_SOURCE_MANIFEST_20261122.json"
+      - "godot_port/docs/handoff/TA_R16_NATIVE_GODOT_QA_20261122.json"
+      - "godot_port/docs/authority/FS_TA_R16_8DIR_SHOULDER_HAIR_DEPTH_20261122.md"
       - "godot_port/tools/ta_r15_8dir_native_qa_pack.py"
       - "godot_port/tests/capture_ta_r15_unarmed_native.gd"
       - "godot_port/docs/handoff/TA_R15_8DIR_UNARMED_SOURCE_MANIFEST_20261122.json"
@@ -236,6 +242,37 @@ jobs:
           assert q['weapon_pixels']==q['fx_pixels']==0
           assert q['result']=='ENGINE_QA_PASS_ART_HOLD'
           print('R15_CH_ESTIMATION_AND_SOURCE_NATIVE_MANIFEST_STATIC_CI_PASS / private real Godot QA on owner E')
+          PY
+      - name: R16 real eight-dir LPC source shoulder without hair and stable original feet
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r16_8dir_actor01_shoulder_depth.py godot_port/tools/ta_r16_8dir_native_qa_pack.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('godot_port/docs/handoff')
+          m=json.loads((root/'TA_R16_8DIR_SHOULDER_SOURCE_MANIFEST_20261122.json').read_text(encoding='utf8'))
+          q=json.loads((root/'TA_R16_NATIVE_GODOT_QA_20261122.json').read_text(encoding='utf8'))
+          assert m['source_original_8dir_anatomy'] is True and m['source_directions']==8
+          assert m['source_native_attack'] is False
+          assert m['weapon_pixels']==0 and m['fx_pixels']==0
+          assert m['frame_count']==12 and m['unique_poses']==11
+          assert m['status'].startswith('ART_HOLD')
+          assert m['headless_shoulders_stay_attached'] is True
+          assert m['native_8dir_source_boots_remain_anchored'] is True
+          assert m['sprite_sha256']=='9344325b4bd62ba1b1bf6cdf044cc61b17d56fe3af7c14018e9cfd9ae0c04f62'
+          rows=m['animation']
+          assert len(rows)==12
+          assert all(p['headless_body_components']==1 and p['shoulder_overlap_before_hair']>=2 and p['feet_original_source_pixels_untouched'] for p in rows)
+          assert sum(p['debris_removed'] for p in rows)==0
+          assert rows[7]['shoulder_overlap_before_hair']==7
+          assert rows[7]['near_arm_foreground_pixels']>=15
+          assert q['native_frame_count']==73 and q['fps']==60
+          assert not any(q['source_vs_gpu_exact_RGBA_byte_mismatches'])
+          assert q['source_near_arm_shoulder_contact_before_hair'] is True
+          assert q['lpc_source_foot_rows_anchored_without_slide'] is True
+          assert q['weapon_pixels']==q['fx_pixels']==0
+          assert q['result']=='ENGINE_QA_PASS_ART_HOLD'
+          print('R16_SOURCED_SHOULDER_BEFORE_HAIR_AND_NATIVE_STATIC_MANIFEST_PASS; real native images private')
           PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
