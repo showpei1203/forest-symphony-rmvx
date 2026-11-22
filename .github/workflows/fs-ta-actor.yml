@@ -13,6 +13,11 @@ on:
       - "godot_port/tools/ta_actor01_run_weapon.py"
       - "godot_port/tools/ta_actor01_attack_r6_fullbody.py"
       - "godot_port/tools/ta_r11b_lpc_actor01_unarmed.py"
+      - "godot_port/tools/ta_r12_actor01_lpc_unarmed_3q.py"
+      - "godot_port/tools/ta_r12_unarmed_qa_pack.py"
+      - "godot_port/tests/capture_ta_r12_unarmed_native.gd"
+      - "godot_port/docs/handoff/TA_ACTOR01_R12_LPC_SOURCE_MANIFEST_20261122.json"
+      - "godot_port/docs/handoff/TA_ACTOR01_R12_NATIVE_QA_20261122.json"
       - "godot_port/tools/ta_r11b_qa_pack.py"
       - "godot_port/docs/handoff/TA_ACTOR01_R11B_LPC_SOURCE_MANIFEST_20261122.json"
       - "godot_port/tests/capture_ta_r11b_unarmed_native.gd"
@@ -98,6 +103,28 @@ jobs:
           assert d['status'].startswith('ART_HOLD')
           assert len(d['islands_removed_per_frame'])==12 and sum(d['islands_removed_per_frame'])==15
           print('R11B_SYNTHETIC_CI_SOURCE_CONTRACT_PASS; private real native QA stored on owner E')
+          PY
+      - name: R12 original LPC, zero-weapon and truthful art status CI contract (no private art)
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r12_actor01_lpc_unarmed_3q.py godot_port/tools/ta_r12_unarmed_qa_pack.py
+          python3 - <<'PY'
+          import json
+          p='godot_port/docs/handoff/'
+          m=json.load(open(p+'TA_ACTOR01_R12_LPC_SOURCE_MANIFEST_20261122.json',encoding='utf-8'))
+          q=json.load(open(p+'TA_ACTOR01_R12_NATIVE_QA_20261122.json',encoding='utf-8'))
+          assert m['official_upstream_commit']=='86a3719ee4a7e2e9fb27c7c152e29a741d3e930a'
+          assert m['source_frame_columns']==[12,0,1,2,3,6,7,8,9,10,11,12]
+          assert m['no_weapon'] and m['weapon_pixels']==0 and m['fx_pixels']==0
+          assert m['native_lpc_45_degree_frames'] is False
+          assert m['status'].startswith('ART_HOLD')
+          assert len(m['facial_acting_stages'])==12
+          assert all(x==0 for x in m['islands_removed_per_frame'])
+          assert q['real_native_frames']==73 and q['all_12_poses_single_connected_body']
+          assert q['weapon_rgba_opaque_count']==0 and q['fx_rgba_opaque_count']==0
+          assert not any(q['source_vs_gpu_exact_RGBA_mismatches_per_pose'])
+          assert not any(q['source_vs_gpu_alpha_mismatches_per_pose'])
+          assert q['native_source_image_sha256']=='d72366a8945dd0a2824252746b03aa98e209c8aceddffb0d7e30555c1dcb69bb'
+          print('R12_SOURCE_MANIFEST_STATIC_CI_PASS / private GPU real source QA separately recorded')
           PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
