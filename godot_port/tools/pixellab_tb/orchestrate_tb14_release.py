@@ -25,7 +25,7 @@ while time.monotonic()<deadline:
         if n%3==0:print('TB14_RELEASE_WATCH',n,'of18',flush=True)
     time.sleep(9)
 assert done,'No fake release: PixelLab work incomplete'
-URL='https://raw.githubusercontent.com/showpei1203/forest-symphony-rmvx/e2649b9d43215ff11d0a4f21695858732586f487/godot_port/tools/pixellab_tb/build_tb14_art_release.py'
+URL='https://raw.githubusercontent.com/showpei1203/forest-symphony-rmvx/bec0fda3ab0ca1f89acd26d36e586b7618513881/godot_port/tools/pixellab_tb/build_tb14_art_release.py'
 PY=P/'fs_tb14_release.py'
 PY.write_bytes(urllib.request.urlopen(URL,timeout=50).read())
 compile(PY.read_text(encoding='utf-8'),str(PY),'exec')
