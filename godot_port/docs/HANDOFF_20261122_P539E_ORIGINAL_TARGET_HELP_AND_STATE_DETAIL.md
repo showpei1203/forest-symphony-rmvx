@@ -18,7 +18,7 @@
 - Godot 4.7.2.stable.official.ed1daf0bf Win64，AMD RX6700XT OpenGL 3.3，原圖私有 G: Drive 專案。
 - GPU 源畫面 14/14 PASS：兩解析度各 idle、ATB_READY、源 #462 target+State detail、A52 F7、錯朝向before/正朝向after、#381 Source Iconset。#462動態顯示物理畫面像素差 544=40548、1088=162295；原 #381 Iconset 336/1346；原 #269 Btskin 13060/52244；上一輪修好 A52三層反方向仍是792/3176像素差。
 - 原生完整 Godot官方 CI #44996910206 95/95 steps SUCCESS failed0：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44996910206
-- Google Drive owner-only 真原圖及QA ZIP：https://drive.google.com/file/d/1znQPh_XiT64zp6EmfW9GEk-4b2YJYzZb/view，6,372,214 bytes，SHA256 e1d855f9b0900b1aa88a9ceb569aa4d74a9ef2417b77f05f271ef436738dbce3，30 entries、ZIP CRC PASS，14 final GPU + 2失敗前畫面 + 原生 logs + 源 #269/312/372/381/462 SHA manifest。Google Drive provider 確認 shared=false、permission owner only。Folder https://drive.google.com/drive/folders/1dT30Xgr4sRkjD0AGBvgD0NJZVvtv17xJ
+- Google Drive owner-only 真原圖及QA ZIP：https://drive.google.com/file/d/1znQPh_XiT64zp6EmfW9GEk-4b2YJYzZb/view，6,372,214 bytes，SHA256 e1d855f9b0900b1aa88a9ceb569aa4d74a9ef2417b77f05f271ef436738dbce3，30 entries、ZIP CRC PASS，14 final GPU + 2失敗前畫面 + 13份原生 logs + 源 #269/312/372/381/462 SHA manifest。Google Drive provider 確認 shared=false、permission owner only。Folder https://drive.google.com/drive/folders/1dT30Xgr4sRkjD0AGBvgD0NJZVvtv17xJ
 - 原圖修正後 544：https://drive.google.com/file/d/16Rl47a-KLLiwZUaJFKymnOVi0dqG6qgF/view；1088：https://drive.google.com/file/d/1edgk9Mgk1q_JMM2-fu4XkGoEz-UTlZku/view。
 
 ## 不能假稱完全原版的 HOLD
