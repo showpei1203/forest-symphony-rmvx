@@ -404,7 +404,7 @@ proof={'release_name':zipname,'sha256':sha(target.read_bytes()),'bytes':target.s
        'new_exported_animation_frames':156,
        'real_provider_raw_frames_returned':sum(int(J[f'{k}:{st}:{act}']['frame_count_original_ai'])
            for k,st,act in ([(k,st,'revive') for k in ('bat','frog') for st in (1,2,3)]+
-                            [('frost',st,act) for st in (1,2,3) for act in ('idle','attack','hurt','ko')]),
+                            [('frost',st,act) for st in (1,2,3) for act in ('idle','attack','hurt','ko')])),
        'new_original_species':'TB03_GLACIER_JACKAL','new_source_images':3,
        'new_frost_motions':12,'new_revive_ko_to_idle_revisions':6,
        'new_procedural_evolutions':2,'new_procedural_evolution_frames':32,
