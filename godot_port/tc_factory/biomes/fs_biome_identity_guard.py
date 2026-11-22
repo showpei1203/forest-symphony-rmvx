@@ -32,7 +32,8 @@ def analyze(path:Path,biome:str)->dict:
         bad=(basalt<0.40 or lava<0.008 or lava>0.28 or warm>0.40)
     return {
         "requested_biome":biome,"source":str(path),
-        "warm_pixel_fraction":round(warm,6),"cool_pixel_fraction":round(icy,6),\n        "basalt_dark_fraction":round(basalt,6),"orange_lava_fraction":round(lava,6),
+        "warm_pixel_fraction":round(warm,6),"cool_pixel_fraction":round(icy,6),
+        "basalt_dark_fraction":round(basalt,6),"orange_lava_fraction":round(lava,6),
         "biome_identity_gate":"FAIL_WRONG_BIOME" if bad else "PASS_COARSE_BIOME_PALETTE_ONLY",
         "art_gate":"HOLD",
         "Ground_vs_complete_PAR":"NOT_VERIFIED_BY_COLOR",
