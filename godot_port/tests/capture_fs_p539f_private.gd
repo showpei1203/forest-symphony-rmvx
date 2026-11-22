@@ -52,7 +52,7 @@ func _run()->void:
     private_out=OS.get_environment("FS_P539F_QA_DIR")
     var normalized:String=private_out.replace("\\","/")
     if not normalized.begins_with("G:/") or not normalized.contains(
-            "/FS_PRIVATE_P539F_TARGET_HELP_DETAIL_20261122/") or (
+            "/FS_PRIVATE_P539F_ORIGINAL_INFO_BOOT_WITNESS_20261122/") or (
             not DirAccess.dir_exists_absolute(private_out)):
         _fail("private Godot GPU output must be owner G: cloud FS_P539F")
         return
