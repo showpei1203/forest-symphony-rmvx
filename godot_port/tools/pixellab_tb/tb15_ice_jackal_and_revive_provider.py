@@ -256,16 +256,39 @@ def accept(key,resp):
     if qa!='PASS':
         raise RuntimeError('Provider result failed sprite technical QA '+key+' '+str(edges))
 deadline=start+a.deadline_minutes*60
-for kind,st,act in TASKS:
-    key=f'{kind}:{st}:{act}'
-    if J.get(key,{}).get('status')=='completed':
-        assert J[key]['qa']=='PASS' and (W/kind/J[key]['atlas']).is_file()
-        continue
-    if time.monotonic()>deadline:raise TimeoutError('Provider deadline; ledger preserved')
-    # Sequential per family is deliberately bounded to avoid shared remote subscription's HTTP 429 cap
-    if J.get(key,{}).get('status')!='submitted':submit(kind,st,act)
-    done=poll_one(J[key]['job_id'],limit=400)
-    accept(key,done)
+MAX_ACTIVE=6
+failstatus=('failed','qa_failed','ART_TECH_HOLD')
+while time.monotonic()<deadline:
+    done=sum(int(J.get(f'{kind}:{st}:{act}',{}).get('status')=='completed'
+        and J[f'{kind}:{st}:{act}'].get('qa')=='PASS') for kind,st,act in TASKS)
+    if done==18:break
+    for kind,st,act in TASKS:
+        key=f'{kind}:{st}:{act}'
+        rec=J.get(key,{})
+        if rec.get('status') in ('submitted','processing'):
+            try:
+                result=retry('/background-jobs/'+rec['job_id'])
+                status=result.get('status')
+                if status=='completed':accept(key,result)
+                elif status=='failed':
+                    rec.update(status='failed',error=str(result.get('last_response'))[:500])
+                    persist();raise RuntimeError('PixelLab failed '+key)
+            except urllib.error.URLError as ex:
+                milestone('POLL_NETWORK_RETRY',key,str(ex)[:100])
+    active=sum(J.get(f'{kind}:{st}:{act}',{}).get('status') in ('submitted','processing')
+         for kind,st,act in TASKS)
+    for kind,st,act in TASKS:
+        if active>=MAX_ACTIVE:break
+        key=f'{kind}:{st}:{act}'
+        if key not in J:
+            submit(kind,st,act)
+            active+=1
+    for kind,st,act in TASKS:
+        key=f'{kind}:{st}:{act}'
+        if J.get(key,{}).get('status') in failstatus:
+            raise RuntimeError('Source-locked art hard failure '+key+'; do not release')
+    milestone('PROGRESS',done,'of18','active',active)
+    time.sleep(7)
 assert len([1 for kind,st,act in TASKS if J[f'{kind}:{st}:{act}']['status']=='completed' and J[f'{kind}:{st}:{act}']['qa']=='PASS'])==18
 assert len([1 for i in (1,2,3) if J[f'frost:{i}:source']['status']=='completed'])==3
 print('FS_TB_R15_REAL_PIXEL_LAB_ALL_PASS clips=18 provider_animated_slots=156 new_species_sources=3',flush=True)
