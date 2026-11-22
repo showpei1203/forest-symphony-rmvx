@@ -8,3 +8,9 @@
 6. **P0 STORAGE**: Genuine private Google Drive ZIP now verified via Drive metadata (shared=false), file count/CRC and SHA256 `07ade104008f376b077aaea2fdc7395986f7cf12ec023791e81169b0f3355575`. Temporary user-device staging still to be deleted after readback; R10–R13 preserved. Close after running `cleanup_tb14_ephemeral.py`.
 
 No combat system, T-A, T-C or main modifications. No public GitHub raster files.
+
+
+## P0 / replay closure
+- **P0 temp cleanup CLOSED/VERIFIED**: after true Google Drive owner-only metadata and byte-size readback, cleaned seven named R14 ephemeral outputs and revalidated original ZIP SHA256. All R10-R13 sources and the user-owned Drive originals preserved.
+- **Replay fixed**: patched release orchestration's pinned builder commit to verified `bec0fda3ab0ca1f89acd26d36e586b7618513881`; now source-controlled R14 replay no longer selects the first crashed namespace-shadow version.
+- Open sole review blockers: R14 new ART gating (Bat Revive locked-facing, Frog Revive orientation and Evolve FX style); no PixelLab provider or Godot engine blockers.
