@@ -1,5 +1,14 @@
 # T-A Failure Log / 2026-11-21
 
+## TA-30 | R13 confirmed real 8-dir LPC body and authored attack from source | 2026-11-22
+
+Source correction TA-29 remains fixed: four-cardinal Universal LPC standard is not entire LPC art. Original genuine 8×9 LPC diagonal walk with independently layered torso, arms and head ORA used to re-author 12-frame unarmed ACTOR01 from 45° forward-right source row7. Original 8-direction ATTACK sprite was NOT found, so NEVER label our re-authored ATTACK as original source LPC attack. Source authored generator and native Godot scripts in T-A branch, mixed-license source remains owner E. No stretched limbs and no disconnected parts; zero Weapon/FX.
+Verified actual owner Windows Godot4.7.2 OpenGL real 64px input 73/73 60Hz frames, 12/12 original-source-vs-GPU full RGBA exact mismatch ZERO, F7 0.630 once. Distinct body pose count 11 + F11=F0. Body SHA 04478beeececa0e52e617bf70ca00679bdd77ec8a0c687e50c9a6f7e7010812e.
+Private E QA ZIP 261925 bytes, 90 members CRC PASS SHA f875f8015d8a515e21c280c862e8560c2c3178149fab36001436067815196c7b. ART HOLD because shoulder/arm motions look rigid and 1× facial/diagonal perspective not approved. Live battle integration NOT RUN. Future art should re-paint from actual 8-dir anatomy, no more R12 four-dir fusion or rubber arm line.
+
+---
+
+
 ## TA-29 | Serious research/source mistake: Universal LPC FOUR != entire LPC ecosystem FOUR — 2026-11-22
 
 The user repeatedly pointed out official/expanded LPC contains diagonal EIGHT-DIRECTION artwork. Earlier assistant repeatedly stated "LPC only four directions" based on ONE Universal-LPC standard generator. False generalization. This drove R10/R11/R12 wrong 4dir front-right compositing that never matched FS 45 degree camera. R13 independently verified online original LPC diagonal walk/run 9 frames × 8 direction rows, original PNG and editable layered ORA, properly downloaded and CRC/SHA checked to E:\LPC_Original_20261121\LPC_8DIR_ORIGINAL_DIAGONAL. ZIP 2939150 bytes SHA256 278bba048b4f25b8c8d9601b2cc27402c298cf1c68c554be9e68c8e11c2ee716. Male PNG 576×512 SHA256 2e8c83857c9456f3c336d058f4152d0e1b57b9b9eecd2ba9b0d2ffde8bcc6261. Original source contains NO verified attack frames, so attack-specific source remains open/ART HOLD. Real 8dir walk/run source PASS and new research authority committed. Do not conflate standard generator's 4 directions with all LPC art again. Legacy R12 art remains superseded as 45 reference. No actual R13 attack art or native test claimed.
