@@ -1,3 +1,19 @@
+# T-C CURRENT｜D14 FS_04_VILLAGE 第二張獨立真透明完整 PAR + Godot 4.7.2 Native 工具實測｜2026-11-22
+
+**最新成果（優先於以下 D13/D12/D11 歷史）：** 在 D11 原 Ground 不變下，D14 重新生成整張工坊城**只有非地表物件**的 `1474×1067 RGB` 白底來源。新的 deterministic white-background matte 已成功轉成真正 `1474×1067 RGBA`（Alpha=0 **734965** pixels、Alpha255 **830440**），不從含 Ground 的 Master 反切。新全圖物件風格更清晰，已製作和 D13 的完整 Ground+PAR 靜態合成對照；已實際封存 7 檔 ZIP 和來源、預覽、QA 至私人 Drive，readback owner-only。
+
+**品質狀態：原尺寸仍未達 1280×928／40×29 原生 1x。** 白底 source 1474×1067，強裁會失去 **106197（12.785%）** 高不透明物件像素；完整縮小版只是 TECH PREVIEW。**D14 真人工 ART HOLD；十二圖 0/12；這批私有美術的 Godot 4.7.2 native NOT_RUN。**
+
+- [D14 私人 7 檔完整來源 QA ZIP（11706995 bytes，CRC PASS）](https://drive.google.com/file/d/1oZU9YY02lZTK5Vd3vlP60e_j6252tf_v/view)
+- [D14 原始白底非地表](https://drive.google.com/file/d/16dnEC5xXPlPZOJ7dY5J4LCQ8blXI80Pu/view)，[D14 新全物件真透明 PAR](https://drive.google.com/file/d/1z4jFTtpQ5MGOmMeAI7k-qtWmku_XtMF9/view)，[Ground+PAR 合成技術預覽](https://drive.google.com/file/d/12MCDzxl3NcOPrV8mAK6aLdgTG-bWrqrO/view)
+- [D14 D13/D14 四圖對比](https://drive.google.com/file/d/14cM9AwYzHiC7G5GImBQA3mx4yBmUMah6/view)，[詳細新來源／Alpha／Godot／Failure Log](TC_D14_FS_04_VILLAGE_WHITE_PLATE_TRUE_RGBA_NATIVE_PROBE_QA_20261122.md)
+- **真 Godot 4.7.2 引擎測試**：[原生 1× 雙圖層合成 CI #44997754667 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44997754667)，不過僅用 synthetic 圖，不是 D13/D14 私有圖片，勿誤稱新美術 native PASS。既有 D1 雙圖設計沿用、不新造另一套地圖框架。
+- [白底轉透明背景防錯 CI #44998273527 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44998273527)，可維持原 RGB 白底來源、真 Alpha、拒收 RGB 全景 Master／空白及 Ground SHA 篡改；此工具並不負責原生畫布或美術驗收。
+- **D13 SHA 錯誤已修正**：原 1× crop `5ba2083578b9acdc3c4e2c58208420c4900de4258420a9f47c177ef3e7db6d4f`，縮圖 `0bc33afa55684df60c0301391e945f182a30776cb2b7fae4db7f1f99081a4aff`，同 Drive 真 source QA，原圖均未改動。
+- 下個完整單位：依同一 FS_04_VILLAGE Blueprint 一次性生成 **native 1280×928、完整、無裁物件、真透明** PAR，參照 D14 整城風格與 D11 Ground 世界座標，再用 D14 native probe 對真 source 在 Godot 4.7.2 驗收。不要反切 Master、不要判斷角色遮蔽、不要以 TECH 預覽當 ART PASS。
+
+---
+
 # T-C CURRENT｜D13 FS_04_VILLAGE 已生成真正透明完整非地表 PAR 美術候選｜2026-11-22
 
 **最新真成果（優先於 D12/D11 歷史）：** 新獨立工坊城全物件 PAR 圖檔已生成，原生來源 `1474×1067 RGBA`，**alpha=0 真透明像素 715393**，非 Ground/Master 逆切，涵蓋工坊、熔爐、煙囪、鐵橋、礦車、吊車、石柱、旗幟、路燈。原 D11 1280×928 RGB Ground 維持 SHA `ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d` 不變。
