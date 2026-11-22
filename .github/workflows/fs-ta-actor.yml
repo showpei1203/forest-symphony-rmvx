@@ -17,6 +17,12 @@ on:
       - "godot_port/tools/ta_r13_verify_lpc_8_direction_source.py"
       - "godot_port/tools/ta_r13_lpc8_actor01_unarmed_attack.py"
       - "godot_port/tools/ta_r14_8dir_two_joint_actor01_unarmed.py"
+      - "godot_port/tools/ta_r15_8dir_actor01_punch_kinematics.py"
+      - "godot_port/tools/ta_r15_8dir_native_qa_pack.py"
+      - "godot_port/tests/capture_ta_r15_unarmed_native.gd"
+      - "godot_port/docs/handoff/TA_R15_8DIR_UNARMED_SOURCE_MANIFEST_20261122.json"
+      - "godot_port/docs/handoff/TA_R15_8DIR_UNARMED_NATIVE_QA_20261122.json"
+      - "godot_port/docs/authority/FS_TA_R15_8DIR_CHEST_LEVEL_PUNCH_ART_AUTHORITY_20261122.md"
       - "godot_port/tools/ta_r14_8dir_native_qa_pack.py"
       - "godot_port/tests/capture_ta_r14_unarmed_native.gd"
       - "godot_port/docs/handoff/TA_R14_LPC8_TWO_JOINT_SOURCE_MANIFEST_20261122.json"
@@ -201,6 +207,35 @@ jobs:
           assert q['weapon_pixels']==0 and q['fx_pixels']==0
           assert q['result']=='ENGINE_QA_PASS_ART_HOLD'
           print('R14_SOURCE_AND_NATIVE_MANIFEST_STATIC_CONTRACT_PASS; true GPU originals owner E')
+          PY
+      - name: R15 original LPC 8-dir chest-level fist & no-weapon source contract
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r15_8dir_actor01_punch_kinematics.py godot_port/tools/ta_r15_8dir_native_qa_pack.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('godot_port/docs/handoff')
+          m=json.loads((root/'TA_R15_8DIR_UNARMED_SOURCE_MANIFEST_20261122.json').read_text(encoding='utf8'))
+          q=json.loads((root/'TA_R15_8DIR_UNARMED_NATIVE_QA_20261122.json').read_text(encoding='utf8'))
+          assert m['source_original_8dir_anatomy'] is True and m['source_directions']==8
+          assert m['source_native_attack'] is False
+          assert m['weapon_pixels']==m['fx_pixels']==0
+          assert m['status'].startswith('ART_HOLD')
+          assert m['frame_count']==12 and m['unique_poses']==11
+          assert m['front_upper_length']==m['back_upper_length']==8.0
+          assert m['sprite_sha256']=='dba04b8c0375635789799340e2e6b74df9a9b7410817cb4f52dbef2b549cd675'
+          w=m['front_wrist_screen_trajectory']
+          assert len(w)==12 and w[0]==w[11]
+          assert w[5][0]+3<=w[6][0] and w[6][0]+2<=w[7][0]
+          assert 49<=w[7][0]<=55 and 29<=w[7][1]<=35
+          assert w[8][0]<w[7][0] and w[9][0]<w[8][0]
+          assert q['native_frame_count']==73
+          assert not any(q['source_vs_gpu_exact_RGBA_byte_mismatches'])
+          assert q['contact_wrist_y_shift_downward_px']>3
+          assert q['kinematic_forward_and_recoil_gates_pass'] is True
+          assert q['weapon_pixels']==q['fx_pixels']==0
+          assert q['result']=='ENGINE_QA_PASS_ART_HOLD'
+          print('R15_CH_ESTIMATION_AND_SOURCE_NATIVE_MANIFEST_STATIC_CI_PASS / private real Godot QA on owner E')
           PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
