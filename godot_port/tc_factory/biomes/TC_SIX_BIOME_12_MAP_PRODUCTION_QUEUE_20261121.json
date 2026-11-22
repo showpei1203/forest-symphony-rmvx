@@ -21,7 +21,8 @@
     "Ground_PAR_pair_candidates_static_pass": 3,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
-    "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1
+    "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
+    "failed_GroundOnly_attempts_FS_03_MAZE": 1
   },
   "scenes": [
     {
@@ -245,7 +246,7 @@
       "biome_id": "WIND_ERODED_GOLD_SANDS",
       "biome_name": "風蝕金砂",
       "role": "MAZE",
-      "stage": "PLANNED_NOT_GENERATED",
+      "stage": "D8_GROUND_ONLY_ATTEMPT_REJECTED_WRONG_OASIS_VILLAGE_FULL_COMPOSITE",
       "ground_material_family": [
         "沙丘",
         "砂岩",
@@ -259,7 +260,18 @@
         "布棚"
       ],
       "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
-      "formal_art_gate": "HOLD"
+      "formal_art_gate": "HOLD",
+      "failed_ground_generation": {
+        "attempt_count": 1,
+        "intended": "wind-eroded desert maze pure GroundOnly with meandering ravines, split paths, dried stream, no upright object / no houses / no market / no fountain",
+        "received": "1477x1065 RGB full desert oasis village illustration with houses, market tents, palms, illuminated fountain and bridges; object-heavy scene not a GroundOnly maze",
+        "received_source_sha256": "6aa8bf06e5e934e709ed1583f8e0be9216288306265ed02d9fc8eafd70afa25c",
+        "reject_reason": "wrong scene type / non-ground contamination, do not count as actual FS_03_MAZE Ground",
+        "source_accepted": false,
+        "source_uploaded_to_drive": false,
+        "CompletePAR": null,
+        "next": "new native GroundOnly desert maze independent of oasis village, then ALL non-ground transparent PAR"
+      }
     },
     {
       "scene_id": "FS_03_VILLAGE",
