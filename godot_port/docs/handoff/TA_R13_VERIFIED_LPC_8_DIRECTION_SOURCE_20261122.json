@@ -1,0 +1,36 @@
+{
+  "source_page": "https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle",
+  "author": "Wolthera van Hövell tot Westerflier (TheraHedwig)",
+  "source_original_zip": "E:\\LPC_Original_20261121\\LPC_8DIR_ORIGINAL_DIAGONAL\\LPC_diagonalwalknruncycle.zip",
+  "source_archive_sha256": "278bba048b4f25b8c8d9601b2cc27402c298cf1c68c554be9e68c8e11c2ee716",
+  "archive_members": 13,
+  "archive_crc_pass": true,
+  "original_male_diagonal_png": "E:\\LPC_Original_20261121\\LPC_8DIR_ORIGINAL_DIAGONAL\\extracted\\LPC_male_diagonal_walkcycle.png",
+  "male_diagonal_png_sha256": "2e8c83857c9456f3c336d058f4152d0e1b57b9b9eecd2ba9b0d2ffde8bcc6261",
+  "male_diagonal_png_shape": [
+    576,
+    512
+  ],
+  "original_tile_size": [
+    64,
+    64
+  ],
+  "original_direction_rows": 8,
+  "original_frames_per_direction": 9,
+  "diagonal_rows_for_reference": [
+    1,
+    3,
+    5,
+    7
+  ],
+  "contains_diagonal_walk": true,
+  "contains_8_direction_attack": false,
+  "editable_ORA_original_layers": 3,
+  "editable_ORA_original_layer_names": [
+    "data/layer0.png",
+    "data/layer1.png",
+    "data/layer2.png"
+  ],
+  "source_license": "CC BY-SA 3.0/GPL 3.0/OGA-BY 3.0; preserve credits and compatible derivative terms",
+  "status": "SOURCE VERIFIED, 45-degree attack art still not confirmed."
+}
