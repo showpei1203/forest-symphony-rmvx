@@ -14,6 +14,7 @@ const SOURCE_SCAPES=preload("res://scripts/ui/FSOriginalBattleScapeStage.gd")
 const SOURCE_COMMANDS=preload("res://scripts/ui/FSOriginalBattleCommandLayer.gd")
 const STATUS_269=preload("res://scripts/ui/FSBattleSourceHUD269.gd")
 const STATES_381=preload("res://scripts/ui/FSBattleSourceStateHUD381.gd")
+const HELP_462=preload("res://scripts/ui/FSBattleSourceTargetHelp462.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -40,6 +41,7 @@ var original_scape: FSOriginalBattleScapeStage
 var original_commands: FSOriginalBattleCommandLayer
 var source_skin_hud: FSBattleSourceHUD269
 var source_state_hud: FSBattleSourceStateHUD381
+var source_target_help: FSBattleSourceTargetHelp462
 var tab_bar:HBoxContainer
 var developer_scroll:ScrollContainer
 var battle_command_art:Dictionary={}
@@ -231,6 +233,8 @@ func _clear_body() -> void:
     _restore_developer_shell()
     if original_commands!=null:
         original_commands.visible=false
+    # Source target help is a transient WINDOW, not a permanent enemy label.
+    source_target_help=null
     for n in body.get_children():
         body.remove_child(n)
         n.queue_free()
@@ -959,31 +963,60 @@ func _atb_status_fragment(battler: Dictionary) -> String:
         return "ATB:就緒"
     return "ATB:%d%%" % pct
 
+func _install_source_target_help()->void:
+    if db==null or body==null:
+        return
+    source_target_help=HELP_462.new()
+    source_target_help.name="FSOriginal462SelectionHelp"
+    body.add_child(source_target_help)
+    source_target_help.install(db)
+
+func _preview_source_target(target:Dictionary,is_enemy:bool)->void:
+    if source_target_help==null or not is_instance_valid(source_target_help):
+        return
+    # Existing FSTargetPriority remains the authority for legal choices.
+    # Read-only #462 help is never allowed to enqueue an ACT action.
+    source_target_help.select(target,is_enemy)
+
 func _select_enemy_target(callback: Callable,skill_id: int = 0) -> void:
     battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 選擇敵方目標"
+    _install_source_target_help()
     var allowed: Dictionary = FSTargetPriority.player_enemy_candidates(
         battle,skill_id)
     if not bool(allowed.get("ok",false)):
         _add_text("無法確認原版目標優先權：" + str(allowed.get("reason","")))
     else:
+        var first:bool=true
         for index in allowed.get("indices",[]):
             var target: Dictionary = battle.enemies[int(index)]
+            if first:
+                _preview_source_target(target,true)
+                first=false
             _add_button("%s HP %d/%d" % [
                 target.get("name","?"),target.get("hp",0),target.get("maxhp",0)],
                 func() -> void: callback.call(target))
+            var button:Button=body.get_child(body.get_child_count()-1)
+            button.mouse_entered.connect(
+                func()->void:_preview_source_target(target,true))
     _add_button("返回", _show_battle)
 
 func _select_ally_target(callback: Callable) -> void:
     battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 選擇我方目標"
+    _install_source_target_help()
     for index in range(battle.party.size()):
         var target: Dictionary = battle.party[index]
+        if source_target_help!=null and source_target_help.active_target.is_empty():
+            _preview_source_target(target,false)
         _add_button("%s HP %d/%d" % [
             target.get("name","?"),target.get("hp",0),target.get("maxhp",0)],
             func() -> void: callback.call(target))
+        var button:Button=body.get_child(body.get_child_count()-1)
+        button.mouse_entered.connect(
+            func()->void:_preview_source_target(target,false))
     _add_button("返回", _show_battle)
 
 func _player_attack() -> void:

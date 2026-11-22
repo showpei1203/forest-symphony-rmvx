@@ -55,6 +55,92 @@ static func source_metadata(state:Dictionary)->Dictionary:
     return {"id":id,"icon":icon,"priority":priority,"name":label,
         "force_show":force,"hidden":(hidden and not force) or (icon<=0 and not force)}
 
+# #381 lines 429-531 + 579-628: read the original actor's live
+# state-stack and remaining-turn tables, never invent an expiry time.
+const PARAMETER_STATE_DETAIL:Dictionary={
+    54:"攻擊+20%",55:"防禦+20%",56:"精神+20%",57:"敏捷+20%",
+    58:"攻擊-20%",59:"防禦-20%",60:"精神-20%",61:"敏捷-20%"}
+
+static func source_max_stack(state:Dictionary)->int:
+    var source_note:String=str(state.get("note",""))
+    var matcher:=RegEx.new()
+    if matcher.compile("(?i)<\\s*(?:MAX_STACK|max stack)\\s*(\\d+)\\s*>")==OK:
+        var found:RegExMatch=matcher.search(source_note)
+        if found!=null:
+            return maxi(1,int(found.get_string(1)))
+    return maxi(1,int(state.get("max_stack",1)))
+
+static func _source_table_count(battler:Dictionary,field:String,id:int,
+        fallback:int)->int:
+    var table:Variant=battler.get(field,null)
+    if table is Dictionary:
+        if table.has(id):return int(table[id])
+        if table.has(str(id)):return int(table[str(id)])
+    elif table is Array:
+        if id<table.size():return int(table[id])
+    return fallback
+
+static func source_stack(battler:Dictionary,state:Dictionary)->int:
+    var id:int=int(state.get("id",0))
+    if id<=0 or not (id in battler.get("states",[])):
+        return 0
+    # Source #381 state_stack = MAX of all verified stack providers,
+    # falling back to one when no state-stack provider is present.
+    var a:int=_source_table_count(battler,"state_stack",id,1)
+    var b:int=_source_table_count(battler,"fs_state_stack",id,1)
+    return maxi(1,maxi(a,b))
+
+static func source_turns(battler:Dictionary,state:Dictionary)->int:
+    var id:int=int(state.get("id",0))
+    if id<=0 or not (id in battler.get("states",[])):
+        return 0
+    return maxi(0,_source_table_count(battler,"state_turns",id,0))
+
+static func source_detail(battler:Dictionary,state:Dictionary)->Dictionary:
+    var meta:Dictionary=source_metadata(state)
+    if meta.is_empty():return {}
+    var maximum:int=source_max_stack(state)
+    var stack:int=source_stack(battler,state)
+    var turns:int=source_turns(battler,state)
+    var note:String=str(state.get("note",""))
+    var custom:String=_tag_value(note,"(?:hud_detail_text|HUD詳細文字)")
+    var force_detail:bool=_tag(note,"(?:hud_detail|HUD詳細)")
+    var show_turns:bool=_tag(note,"(?:hud_show_turns|HUD顯示回合)")
+    var parts:Array[String]=[]
+    if not str(meta["name"]).is_empty():
+        parts.append(str(meta["name"]))
+    var sid:int=int(meta["id"])
+    if PARAMETER_STATE_DETAIL.has(sid):
+        parts.append(str(PARAMETER_STATE_DETAIL[sid]))
+    if maximum>1 or stack>1:
+        parts.append("層數%d/%d" % [stack,maximum] if maximum>1 else (
+            "層數%d" % stack))
+    if turns>0:
+        parts.append("剩%d回合" % turns)
+    if not custom.is_empty():
+        parts.append(custom)
+    var qualified:bool=maximum>1 or stack>1 or turns>0 or (
+        force_detail or not custom.is_empty() or
+        PARAMETER_STATE_DETAIL.has(sid))
+    return {"id":sid,"icon":int(meta["icon"]),"name":str(meta["name"]),
+        "max_stack":maximum,"stack":stack,"turns":turns,
+        "show_turns":show_turns,"qualified":qualified,
+        "text":"｜".join(PackedStringArray(parts))}
+
+static func detail_rows(battler:Dictionary,source_db:FSDatabase,
+        max_rows:int=12)->Dictionary:
+    var visible:Dictionary=visible_states(battler,source_db)
+    if not bool(visible.get("ok",false)):
+        return {"ok":false,"rows":[],"reason":str(visible.get("reason",""))}
+    var rows:Array[Dictionary]=[]
+    for state in visible["states"]:
+        var record:Dictionary=source_db.record("states",int(state["id"]))
+        var detail:Dictionary=source_detail(battler,record)
+        if bool(detail.get("qualified",false)):
+            rows.append(detail)
+        if rows.size()>=max_rows:break
+    return {"ok":true,"rows":rows,"reason":""}
+
 static func visible_states(battler:Dictionary,source_db:FSDatabase)->Dictionary:
     if source_db==null or not (battler.get("states",null) is Array):
         return {"ok":false,"reason":"battler states missing","states":[]}
@@ -156,8 +242,14 @@ func refresh(party:Array,enemies:Array,actor_anchors:Dictionary,
                     errors.append("unverified icon atlas index for State "+str(
                         state["id"]))
                     continue
+                var actual:Dictionary=db.record("states",int(state["id"]))
+                var extra:Dictionary=source_detail(unit,actual)
                 entries.append({"position":origin+Vector2(j*ICON_SPACING,0),
                     "icon":index,"state_id":state["id"],
+                    "stack":int(extra.get("stack",1)),
+                    "max_stack":int(extra.get("max_stack",1)),
+                    "turns":int(extra.get("turns",0)),
+                    "auto_release_prob":int(actual.get("auto_release_prob",0)),
                     "kind":"enemy" if bool(group["enemy"]) else "actor"})
             if int(slots["overflow"])>0:
                 entries.append({"position":origin+Vector2((MAX_ICONS-1)*
@@ -184,6 +276,28 @@ func _draw()->void:
                 Rect2((icon%ICON_SOURCE_COLUMNS)*ICON_SOURCE_CELL,
                     int(icon/ICON_SOURCE_COLUMNS)*ICON_SOURCE_CELL,
                     ICON_SOURCE_CELL,ICON_SOURCE_CELL))
+            var stack:int=int(entry.get("stack",1))
+            var maximum:int=int(entry.get("max_stack",1))
+            var turns:int=int(entry.get("turns",0))
+            var badge_value:int=0
+            var badge_color:Color=Color(1,226.0/255.0,72.0/255.0)
+            var badge_back:Color=Color(72.0/255.0,48.0/255.0,0,225.0/255.0)
+            # Source #381 lines 1255-1272: stack dominates timed turns.
+            if maximum>1 and stack>1:
+                badge_value=stack
+            elif maximum<=1 and turns>0 and (
+                    int(entry.get("auto_release_prob",0))>0):
+                badge_value=turns
+                badge_color=Color(96.0/255.0,232.0/255.0,1)
+                badge_back=Color(0,42.0/255.0,72.0/255.0,230.0/255.0)
+            if badge_value>0:
+                var badge_rect:=Rect2(pos+Vector2(7,6),Vector2(13,14))
+                draw_rect(badge_rect,badge_back)
+                var badge_font:Font=get_theme_default_font()
+                if badge_font!=null:
+                    draw_string(badge_font,pos+Vector2(7,17),
+                        str(badge_value),HORIZONTAL_ALIGNMENT_CENTER,
+                        13,13,badge_color)
         else:
             var count:int=int(entry.get("overflow",0))
             var font:Font=get_theme_default_font()
