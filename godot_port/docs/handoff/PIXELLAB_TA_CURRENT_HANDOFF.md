@@ -1,5 +1,15 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R17 LATEST | 2026-11-22 | Full 12-frame source-based unarmed boxing alternate, actual native Godot QA PASS / ART HOLD
+
+Actually generated new R17 private Body/Weapon/FX (12 frames at 64px; Body 256×192, 11 unique + F11=F0). Reposed front/back elbow, upper chest pre-load and drive, selectively compacted only distal original source skin contour; no newly drawn arm connector, sword or FX. Original true 8dir LPC ORA WALK anatomy, original A62 approved white hair/face/green identity preserved. R17 original Body SHA `1a3001f87278b9244e7282cf0baa110ce10dfd0b159badcb76c4d911e1981587`.
+
+REAL owner Windows RX 6700 XT official Godot 4.7.2 OpenGL: 73/73 native 60Hz 64px captures, 12/12 key-pose exact full RGBA byte equality, single visual F7 0.630s contact event. Isolated sprite presenter, not live FSBattle. QA ZIP 249356 bytes / 91 entries / CRC PASS / SHA `1140ca1b3b9ed358ffa9466e3726c583c2c09fb161274e375e6f26dd884d05cb`. Owner E private original binary; 13 R17 files copied to Google Drive Desktop G mount with source/dest SHA equality; cloud presence to be verified separately. See `godot_port/docs/authority/FS_TA_R17_FULL_BOXING_ART_HOLD_20261122.md` and `godot_port/docs/handoff/TA_R17_FAILURE_LOG_20261122.md`.
+
+**ART HOLD:** actual visual R16 vs R17 4x comparison still shows elongated palm/stump at F7 and limited 1x face acting, weight transfer not credible enough. Do NOT promote, do NOT merge to FS Battle, no new PixelLab paid job. Continue with visually coherent full-body/fist redrawing, not more tiny structural checks. No prior R16 overwrite.
+
+---
+
 ## R16 LATEST | 2026-11-22 | Real 8-dir LPC, unarmed Actor01, actual SHOULDER-HAIR DEPTH repair and waist-anchor native QA
 
 User expects actual artwork, not endless R9/4-direction/geometry-only fixes. R15 original Godot 4x still visually appeared to show a disconnected near fist/sleeve at A62 hair. R16 is a new candidate built from the VERIFIED original LPC eight-direction diagonal 9x8 walk ORA torso/arms/head, preserving exact approved A62 white-haired identity and true 64px, no weapon/FX. Original 8dir art is WALK/RUN, not verified native 8dir ATTACK, current 12-frame attack is reauthored and remains ART HOLD.
