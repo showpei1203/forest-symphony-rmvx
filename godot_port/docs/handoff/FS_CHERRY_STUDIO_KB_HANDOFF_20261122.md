@@ -60,3 +60,11 @@
 
 ## 7. 檔案與實際進度聲明
 本輪沒有執行 Godot、沒有生成角色/怪物/地圖素材、沒有做 T-A/T-B/T-C 原生 ART QA，也沒有改寫既有 FS 程式。成果限於 **Cherry Studio 安裝、5份規範匯入、33向量本地索引及實際檢索 QA**。
+
+## 8. Gemini 整合後續檢查（2026-11-22）
+- Windows Cherry Studio 2.2.3 「設定 → 模型供應商」已實際確認存在原生 `Gemini` provider，API host 為 `https://generativelanguage.googleapis.com`，**尚無 API Key、沒有開啟供應商**。
+- 官方不支援將個人 Google AI Pro 訂閱配額直接轉成第三方 Gemini API 配額。Google 官方自 2026-06-18 停止 Gemini CLI 個人帳號（含 AI Pro / Ultra）直接登入使用，故不要用 Gemini CLI 個人 OAuth 轉接規避。
+- 目前已在桌面 Chrome 開啟 `https://aistudio.google.com/api-keys`，自動導向 AI Studio 首次使用 onboarding，要求使用者本人勾選年齡與條款；**未代替本人勾選條款、未建立或取得 API Key、未啟用付費 billing、未傳送 FS 文件至 Gemini**。
+- 未來由使用者完成 Google AI Studio 初次同意，再於免費專案建立 Gemini API Key，確認沒有 billing linked、免費額度適用後，方可在 Cherry Studio Gemini provider 以 UI 填入 Key，選擇標示 Free Tier 的模型，做無敏感資料的小型連線測試。
+- 免費 API 對話內容可能用於 Google 產品改善；不得自動附上私人 FS 原始圖、客戶資料、內部敏感文件。正式素材以 Google Drive / GitHub 為來源。正式檢索依然使用 Qwen3 Embedding 本地模型。
+- 可靠來源： https://developers.google.com/gemini-code-assist/docs/deprecations/code-assist-individuals ; https://www.cherryai.com/docs/en/pre-basic/providers/google-gemini/ ; https://ai.google.dev/gemini-api/docs/pricing
