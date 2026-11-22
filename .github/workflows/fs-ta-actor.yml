@@ -14,6 +14,9 @@ on:
       - "godot_port/tools/ta_actor01_attack_r6_fullbody.py"
       - "godot_port/tools/ta_r11b_lpc_actor01_unarmed.py"
       - "godot_port/tools/ta_r12_actor01_lpc_unarmed_3q.py"
+      - "godot_port/tools/ta_r13_verify_lpc_8_direction_source.py"
+      - "godot_port/docs/handoff/TA_R13_VERIFIED_LPC_8_DIRECTION_SOURCE_20261122.json"
+      - "godot_port/docs/authority/FS_TA_R13_VERIFIED_LPC_EIGHT_DIRECTION_CORRECTION_20261122.md"
       - "godot_port/tools/ta_r12_unarmed_qa_pack.py"
       - "godot_port/tests/capture_ta_r12_unarmed_native.gd"
       - "godot_port/docs/handoff/TA_ACTOR01_R12_LPC_SOURCE_MANIFEST_20261122.json"
@@ -125,6 +128,23 @@ jobs:
           assert not any(q['source_vs_gpu_alpha_mismatches_per_pose'])
           assert q['native_source_image_sha256']=='d72366a8945dd0a2824252746b03aa98e209c8aceddffb0d7e30555c1dcb69bb'
           print('R12_SOURCE_MANIFEST_STATIC_CI_PASS / private GPU real source QA separately recorded')
+          PY
+      - name: R13 eight-direction LPC provenance and attack-scope honesty
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r13_verify_lpc_8_direction_source.py
+          python3 - <<'PY'
+          import json
+          p='godot_port/docs/handoff/TA_R13_VERIFIED_LPC_8_DIRECTION_SOURCE_20261122.json'
+          d=json.load(open(p,encoding='utf-8'))
+          assert d['source_archive_sha256']=='278bba048b4f25b8c8d9601b2cc27402c298cf1c68c554be9e68c8e11c2ee716'
+          assert d['archive_crc_pass'] and d['archive_members']==13
+          assert d['male_diagonal_png_shape']==[576,512]
+          assert d['original_tile_size']==[64,64]
+          assert d['original_direction_rows']==8 and d['original_frames_per_direction']==9
+          assert d['contains_diagonal_walk'] is True
+          assert d['contains_8_direction_attack'] is False
+          assert d['editable_ORA_original_layers']>=1
+          print('R13_LPC_8DIR_SOURCE_CONTRACT_PASS, verified WALK not ATTACK')
           PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
