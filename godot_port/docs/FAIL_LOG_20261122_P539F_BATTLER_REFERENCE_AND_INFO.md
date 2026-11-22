@@ -9,3 +9,5 @@ R6 私有GPU script修測試時重複宣告 var enemy causing GDScript Parse Err
 R7 原 VX boot-final：私人 ZIP有原 505 Ruby 與11 raw RVData資料SHA，但並非真 post FS_DB_AUTOSET.apply_all runtime；所需 fs_boot_final_runtime_witness.json未找到，預期E: FS project於目前遠端未掛載，無法有權威讀回，不得宣稱正式DB通過。
 
 正式驗證：Godot4.7.2完整CI https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44998957776 completed SUCCESS 96/96 steps failed0。真原始source GPU16/16，544特殊信息物理差33712、1088差133517，私有 G Drive https://drive.google.com/drive/folders/1tWSHFtaIoPsohfL6pavJVCSCHnqACLRk。正式私人ZIP FS_P539F_ORIGINAL_381_SPECIAL_INFO_BOOT_RAW_SOURCE_PRIVATE_QA_20261122.zip 7189128bytes SHA 2f97554ac38a4c12c0e433d4c7489feabf13a37e221a9afd016a829dc6176237，37 entries CRC PASS。ART HOLD／Phase1 SEAL NO。
+
+P539F 完整原版來源 QA ZIP 已以 Google Drive provider readback 確認只有 owner 權限（shared=false）：https://drive.google.com/file/d/1yfdT-Ra63t2fIl3U2LNULQr7Rh8d6Jha/view，7,189,128 bytes，SHA256 2f97554ac38a4c12c0e433d4c7489feabf13a37e221a9afd016a829dc6176237，ZIP CRC PASS 37 entries。不得將 private 原圖上傳 GitHub。

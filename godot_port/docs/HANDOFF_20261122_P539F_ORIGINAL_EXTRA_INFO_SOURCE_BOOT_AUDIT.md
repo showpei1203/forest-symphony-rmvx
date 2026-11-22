@@ -29,3 +29,5 @@
 ## 後續主要路線
 - 下一施工批應直接轉 P538 完整原版 MENU bundle，以原VX原始 UI/script一起搬到 Godot，不再陷入 #381單一 icon 微修。與此平行追查原VX boot-final runtime witness 來源（E: 沒掛載時不能偽造）。保持原SOURCE→實際程式→Native QA→原圖檢視→FailureLog→GitHub及Drive Handoff。
 - 總狀態 ART HOLD、Phase1 SEAL NO。
+
+P539F 完整原版來源 QA ZIP 已以 Google Drive provider readback 確認只有 owner 權限（shared=false）：https://drive.google.com/file/d/1yfdT-Ra63t2fIl3U2LNULQr7Rh8d6Jha/view，7,189,128 bytes，SHA256 2f97554ac38a4c12c0e433d4c7489feabf13a37e221a9afd016a829dc6176237，ZIP CRC PASS 37 entries。不得將 private 原圖上傳 GitHub。
