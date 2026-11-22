@@ -1,0 +1,7 @@
+# P539 Full source integration - Failure Log 2026-11-22
+## Resolved safety finding
+First actual source import REFUSED on 3 human-transcription errors in the expected Classes, Items, Armors RVData SHA strings. Actual E: originals verified against previous read-only audit, fixed in public importer commit a911ac93cfb052feb9b907407748193df5b9fd52. Source files were never modified, hash gate never bypassed.
+## Verified deliverables
+Complete 505 original Ruby + 11 RVData, 518 ZIP entries CRC PASS, 5,342,988 bytes, SHA a7089ef45dfe4c92260932ffc4c0f21934b43ac0b296eb8ca53c828e4af2e106, owner-only Drive https://drive.google.com/file/d/1wYjxv4CZ7NUv2axlrjWqNplT_tA6Rug0/view. Godot 4.7.2 native original-source Registry test exit0. Full GitHub native CI #44986992752 90/90 success.
+## Still blocked
+Ruby RGSS2 cannot directly run in Godot. All original source available as an exact ordered private archive, NOT translated/executed. Source #312 action-seal alias wraps source #268 UI, #264 BattleScape is layered, multiple Scene_Battle and Scene_Menu overrides. Lexical index is NOT runtime proof of final alias/conditional/boot FS_DB_AUTOSET.apply_all. The existing original-source 2x2 Godot Battle icons need full original 5-vertical layout parity; do not attempt isolated per-button rework. BattleScape final original background, ACT hitstop/HP timing, boot-final 11 tables and VX same-screen QA remain HOLD; Phase1 SEAL NO.
