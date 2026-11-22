@@ -22,7 +22,9 @@
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
-    "failed_GroundOnly_attempts_FS_03_MAZE": 1
+    "failed_GroundOnly_attempts_FS_03_MAZE": 1,
+    "new_ground_source_candidates_FS_03_MAZE": 1,
+    "failed_complete_PAR_attempts_FS_03_MAZE": 3
   },
   "scenes": [
     {
@@ -246,7 +248,7 @@
       "biome_id": "WIND_ERODED_GOLD_SANDS",
       "biome_name": "風蝕金砂",
       "role": "MAZE",
-      "stage": "D8_GROUND_ONLY_ATTEMPT_REJECTED_WRONG_OASIS_VILLAGE_FULL_COMPOSITE",
+      "stage": "D9_NEW_DESERT_MAZE_GROUND_46x33_NATIVE_PIXEL_SOURCE_CANDIDATE_PAR_NOT_GENERATED_ART_HOLD",
       "ground_material_family": [
         "沙丘",
         "砂岩",
@@ -271,6 +273,48 @@
         "source_uploaded_to_drive": false,
         "CompletePAR": null,
         "next": "new native GroundOnly desert maze independent of oasis village, then ALL non-ground transparent PAR"
+      },
+      "ground_source": {
+        "status": "NEW_INDEPENDENT_GROUND_ACTUAL_RGB",
+        "original_size_px": [
+          1477,
+          1065
+        ],
+        "original_sha256": "b9ddee18bf3eb4386363a2d6321b0ad745c64cb1149b862489d4160defaa9e59",
+        "crop_xyxy": [
+          2,
+          4,
+          1474,
+          1060
+        ],
+        "crop_dimensions": [
+          1472,
+          1056
+        ],
+        "tiles_32px": [
+          46,
+          33
+        ],
+        "candidate_sha256": "2e78610422ff373f07382b2bcb4980d3f11bf63c3e078cf489e2bc42f55b66fd",
+        "ground_32px_exact_crop_without_resize": true,
+        "required_final_dimensions": [
+          2560,
+          1856
+        ],
+        "required_final_grid": [
+          80,
+          58
+        ],
+        "object_visual_review": "No shops, houses, market, pond or palms; meandering roads and loops. Some upright sandstone cliff faces remain in Ground, ART HOLD",
+        "art_gate": "HOLD",
+        "source_drive": "https://drive.google.com/file/d/1LUumF1zF--hjBfREqpAlNoMUHQtbzMs-/view",
+        "crop_drive": "https://drive.google.com/file/d/1KoPtJ47HDSDtYEmt2s_sMd0pwh7jdC16/view",
+        "source_qa_zip_drive": "https://drive.google.com/file/d/1HC6r2i0Dcd3mLizGZRG9HzGUtMSh8Yc4/view",
+        "CompletePAR": null,
+        "PAR_attempts_rejected": 3,
+        "PAR_reject_reason": "Three images RGBA but alpha0=0, generated incompatible full composite scenes, not independent transparent all non-ground PAR",
+        "Ground_PAR_pair": "NOT_RUN",
+        "Godot_native": "NOT_RUN"
       }
     },
     {
