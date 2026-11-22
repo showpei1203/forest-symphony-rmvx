@@ -1,0 +1,99 @@
+{
+  "schema": "FS_TC_D11_VOLCANO_GROUND_FIRST_COMPLETE_PAR_BLUEPRINT_20261122",
+  "scene_id": "FS_04_VILLAGE",
+  "scene_name": "灰鑄工坊城",
+  "biome_id": "CRIMSON_VOLCANO",
+  "biome_name": "赤焰火山",
+  "higher_authority": "User Drive Forest Symphony SIX_BIOMES_WORLD_ART_PLAN + Ground FIRST then full CompletePAR ALL non-ground",
+  "target": {
+    "tile_px": 32,
+    "grid": [
+      40,
+      29
+    ],
+    "canvas": [
+      1280,
+      928
+    ],
+    "view": "top-down 3/4",
+    "graphics": "pixel-art, unified volcanic basalt, gray ash, orange molten fissures"
+  },
+  "first_Ground_generation": {
+    "source": "new independent ImageGen Ground ONLY; not a PixelLab paid API run",
+    "original_size": [
+      1477,
+      1065
+    ],
+    "raw_original_sha256": "ecd256d48aaa7c4fc33b0c0f19bd5b516c998239c779e927468aa4ebc3d33af4",
+    "same_pixel_crop_40x29": [
+      98,
+      68,
+      1378,
+      996
+    ],
+    "Ground_RGB_size": [
+      1280,
+      928
+    ],
+    "Ground_RGB_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
+    "crop_resampling": "NONE_NATIVE_1X",
+    "reference_context_crop_46x33": [
+      2,
+      4,
+      1474,
+      1060
+    ],
+    "reference_context_size": [
+      1472,
+      1056
+    ],
+    "visual_ground_families": [
+      "black basalt flats and ash",
+      "basalt cobblestone roads",
+      "flat magma seams",
+      "lava rivers/lakes as ground/water surfaces",
+      "central basalt-paved circular plaza",
+      "buildable empty forge lots"
+    ],
+    "no_major_non_ground_elements_detected": [
+      "forge buildings",
+      "smokestacks",
+      "iron bridges",
+      "workshop towers",
+      "standing statues"
+    ],
+    "art_purity": "HOLD_FOR_BORDER_BASALT_RAISED_CLIFFS",
+    "GroundDrive": "https://drive.google.com/file/d/1O8lKij4P8JgxczP2Q1Ykt-RKnhyk56RL/view",
+    "originalDrive": "https://drive.google.com/file/d/1fmrna0wMmv24LRxokUNn3b6mNEOd1aRb/view",
+    "contextDrive": "https://drive.google.com/file/d/1BKyxcOfGPglyw-0pnChwVXUhYjsD0siN/view",
+    "qaDrive": "https://drive.google.com/file/d/11jWGIU54Lk8eyfwLGJs-YbKZU1W6ezIM/view"
+  },
+  "second_COMPLETE_PAR": {
+    "status": "NOT_GENERATED",
+    "rule": "ALL non-ground objects in one independent transparent RGBA PNG regardless of actor occlusion, no roads/lava floor or complete Master; do not reverse-cut Master",
+    "family": [
+      "forge houses and taverns",
+      "smelters and glowing furnace equipment",
+      "chimneys and smoke pipes",
+      "forged iron bridges and railings",
+      "tall basalt pillars and standing cliffs",
+      "complete workshop building silhouettes",
+      "cranes and ore carts",
+      "lantern posts, banners, workshop crates, forge tools"
+    ],
+    "same_world_xy": "must match first Ground source world axes; no crop mismatch, no redraw Ground",
+    "true_alpha_zero_background": "MANDATORY",
+    "failed_attempts": 5,
+    "failed_summary": "1 RGB full town, 4 RGBA opaque full town, all zero alpha=0 pixels; PAR rejected, no composite made",
+    "art_gate": "HOLD"
+  },
+  "technical_status": {
+    "Ground_1280x928_RGB_source": "PASS",
+    "volcanic_palette_identity": "CANDIDATE_CONFIRMED_DARK_BASALT_AND_LAVA",
+    "Complete_PAR": "NOT_GENERATED",
+    "Ground_PAR_composite": "NOT_RUN",
+    "Godot4_7_2_native": "NOT_RUN",
+    "formal_art_seal": "HOLD"
+  },
+  "private_archive": "https://drive.google.com/file/d/11jWGIU54Lk8eyfwLGJs-YbKZU1W6ezIM/view"
+}
