@@ -26,7 +26,7 @@ func _run()->void:
         "note":"<target_priority:0>"}
     state[51]={"id":51,"name":"出血","icon_index":20,
         "note":"<target_priority:0>"}
-    state[77]={"id":77,"name":"法術護盾","icon_index":17,
+    state[77]={"id":77,"name":"法術護盾","priority":9,"icon_index":17,
         "note":"<mana_shield 200:50><hud_detail_text:防護維持><target_priority:0>"}
     db.tables["states"]=state
     var enemy:Dictionary={
