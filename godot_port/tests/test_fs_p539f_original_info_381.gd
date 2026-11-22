@@ -86,6 +86,26 @@ func _run()->void:
             not screen.refresh_live()),
             "#381 source selected target dynamic read-only refresh must track live provider"):
         return
+    # Regression: GDScript Dictionary.clear() on a referenced battler
+    # destroyed that battler in P539F-R2. Both live redraw and switching
+    # selection must release only the VIEW's pointer.
+    if not require(int(enemy.get("hp",-1))==300 and int(
+            enemy.get("mp",-1))==60 and enemy.get("states",[])==[50,77] and (
+            str(enemy.get("name",""))=="來源測試敵人"),
+            "live HUD refresh mutated or cleared the real Game_Battler"):
+        return
+    var other:Dictionary=enemy.duplicate(true)
+    other["name"]="第二個目標"
+    other["hp"]=250
+    if not require(screen.select(other,true) and int(
+            enemy.get("hp",-1))==300 and enemy.get("states",[])==[50,77],
+            "switching selected battler must not call Dictionary.clear on previous enemy"):
+        return
+    screen.clear_source()
+    if not require(int(other.get("hp",-1))==250 and (
+            str(other.get("name",""))=="第二個目標"),
+            "closing target Help must not clear the last selected battler"):
+        return
     if not require(int(enemy["hp"])==300 and int(enemy["mp"])==60,
             "info panel must never change combat HP/MP/ATB"):
         return

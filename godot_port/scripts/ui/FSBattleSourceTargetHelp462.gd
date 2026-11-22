@@ -89,7 +89,10 @@ func install(source:FSDatabase)->bool:
     return true
 
 func clear_source()->void:
-    active_target.clear()
+    # Dictionary values are reference-like. Clearing the previous target
+    # would DELETE the actual Game_Battler source payload during a live
+    # HUD refresh or a target switch. Only drop our own reference.
+    active_target={}
     source_warnings.clear()
     detail_lines.clear()
     info_lines.clear()
@@ -101,7 +104,10 @@ func clear_source()->void:
     queue_redraw()
 
 func select(target:Dictionary,is_enemy:bool)->bool:
-    active_target.clear()
+    # Dictionary values are reference-like. Clearing the previous target
+    # would DELETE the actual Game_Battler source payload during a live
+    # HUD refresh or a target switch. Only drop our own reference.
+    active_target={}
     detail_lines.clear()
     info_lines.clear()
     detail_signature=""
