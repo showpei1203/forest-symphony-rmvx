@@ -1,0 +1,182 @@
+{
+  "project": "FS T-A R13 true-eight-direction-anatomy attack REDRAW study",
+  "verified_original_8dir_attack_sprite": false,
+  "explicitly_reauthored_attack": true,
+  "art_gate": "ART_HOLD",
+  "source_diagonal_ora": "LPC_male_diagonal_walkcycle.ora",
+  "source_ora_sha": "63c990cbf5c882415414a67819de6350a094d130477ac3533c938306483b349c",
+  "source_character_a62_sha": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_original_animation": "DIAGONAL WALK (9x8), ATTACK ARM PIVOTS REAUTHORED",
+  "source_diagonal_direction_row": 7,
+  "source_original_frames": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    7,
+    5,
+    2,
+    0
+  ],
+  "frame_count": 12,
+  "sheet_size": [
+    256,
+    192
+  ],
+  "tile": [
+    64,
+    64
+  ],
+  "no_weapon": true,
+  "weapon_opaque_pixels": 0,
+  "fx_opaque_pixels": 0,
+  "isolated_px_cleaned": 0,
+  "frame_details": [
+    {
+      "f": 0,
+      "source_lpc_row": 7,
+      "source_walk_frame": 0,
+      "angle_front": 0,
+      "angle_back": 0,
+      "pose": "ready",
+      "face": "neutral",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 604
+    },
+    {
+      "f": 1,
+      "source_lpc_row": 7,
+      "source_walk_frame": 1,
+      "angle_front": 8,
+      "angle_back": -7,
+      "pose": "anticipation",
+      "face": "focus",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 604
+    },
+    {
+      "f": 2,
+      "source_lpc_row": 7,
+      "source_walk_frame": 2,
+      "angle_front": 28,
+      "angle_back": -20,
+      "pose": "wind_up",
+      "face": "focus",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 652
+    },
+    {
+      "f": 3,
+      "source_lpc_row": 7,
+      "source_walk_frame": 3,
+      "angle_front": 48,
+      "angle_back": -36,
+      "pose": "load",
+      "face": "focus",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 672
+    },
+    {
+      "f": 4,
+      "source_lpc_row": 7,
+      "source_walk_frame": 4,
+      "angle_front": 70,
+      "angle_back": -45,
+      "pose": "drive",
+      "face": "grit",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 639
+    },
+    {
+      "f": 5,
+      "source_lpc_row": 7,
+      "source_walk_frame": 6,
+      "angle_front": 83,
+      "angle_back": -30,
+      "pose": "accelerate",
+      "face": "grit",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 618
+    },
+    {
+      "f": 6,
+      "source_lpc_row": 7,
+      "source_walk_frame": 7,
+      "angle_front": 96,
+      "angle_back": -14,
+      "pose": "extend",
+      "face": "exert",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 649
+    },
+    {
+      "f": 7,
+      "source_lpc_row": 7,
+      "source_walk_frame": 8,
+      "angle_front": 108,
+      "angle_back": 10,
+      "pose": "contact",
+      "face": "exert",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 628
+    },
+    {
+      "f": 8,
+      "source_lpc_row": 7,
+      "source_walk_frame": 7,
+      "angle_front": 70,
+      "angle_back": 22,
+      "pose": "follow_through",
+      "face": "exert",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 654
+    },
+    {
+      "f": 9,
+      "source_lpc_row": 7,
+      "source_walk_frame": 5,
+      "angle_front": 35,
+      "angle_back": 7,
+      "pose": "return",
+      "face": "recovery",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 603
+    },
+    {
+      "f": 10,
+      "source_lpc_row": 7,
+      "source_walk_frame": 2,
+      "angle_front": 12,
+      "angle_back": -5,
+      "pose": "recover",
+      "face": "recovery",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 615
+    },
+    {
+      "f": 11,
+      "source_lpc_row": 7,
+      "source_walk_frame": 0,
+      "angle_front": 0,
+      "angle_back": 0,
+      "pose": "ready",
+      "face": "neutral",
+      "cleaned_isolated_px": 0,
+      "connected_body_px": 604
+    }
+  ],
+  "sprite_sha": "04478beeececa0e52e617bf70ca00679bdd77ec8a0c687e50c9a6f7e7010812e",
+  "weapon_sha": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7",
+  "fx_sha": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7",
+  "visual_contact_local_seconds": 0.63,
+  "remaining_gates": [
+    "source is 8dir walk, action poses intentionally reauthored, not genuine source attack",
+    "real 1x face/body 3/4 aesthetic review",
+    "true native Godot playback before integration",
+    "do not call ART PASS without human approval"
+  ]
+}
