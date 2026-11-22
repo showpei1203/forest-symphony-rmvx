@@ -21,8 +21,13 @@ func synthetic_atlas()->Texture2D:
 func _run()->void:
     var visual=PRESENTER.new()
     root.add_child(visual)
-    if not check(not visual.private_source_ready and not visual.visible and visual.rig!=null,
-            "public GitHub must not claim owner-only A52 att PNG is installed"):return
+    var private_a52_staged:bool=FileAccess.file_exists(
+        "res://assets/ta_actor01/attack_body.png")
+    # Public GitHub CI has NO A52 file; owner GPU QA has SHA-pinned originals.
+    # Both modes must satisfy the same private-source strict gate.
+    if not check(visual.private_source_ready==private_a52_staged and (
+            not visual.visible) and visual.rig!=null,
+            "A52 source-gating must agree with private original files or public absence"):return
     if not check(visual.rig.layers().size()==3 and visual.rig.FRAME_COUNT==12 and (
             visual.rig.ATTACK_CONTACT_SEC==0.630), "T-A 3-layer 12-frame source timing lost"):return
     # P539D: all three original animation layers must inherit the SAME
