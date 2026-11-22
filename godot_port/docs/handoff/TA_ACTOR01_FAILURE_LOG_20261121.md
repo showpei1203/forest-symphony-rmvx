@@ -1,5 +1,16 @@
 # T-A Failure Log / 2026-11-21
 
+## TA-35/36/37 | R16 actual original near-arm hair occlusion, REAL waist source overlap and QA failures | 2026-11-22
+
+TA-35 SOURCE WAIST DETACH FIRST R16 FAIL: naive source upper torso pixel position shift created F6 two headless sprite components 282 and 207 pixels. Discovered by new BEFORE-HAIR full-actor source-only connected component QA. Fixed WITHOUT fake rubber connector: original authentic LPC waist/hip source rows y>=42 underpainting plus shifted upper chest rows y<=46, real source boots y>=52 absolutely unchanged. Headless single 8-connected body now 12/12; no debris removed. This shows tests after hair can mask anatomical failures.
+TA-36 INITIAL SHOULDER CHECKER FALSE FAIL: required literal same-pixel alpha torso+front arm overlap and F7 erroneously reported zero. Real separately painted source layers can touch edge-to-edge without pixel occupancy overlap. Revised to 8-neighbor original near-shoulder SOURCE sprite contact within x32-48 y28-47; F7 contact 7 source pixels, all 12 frames >=2. Head/white-hair NOT allowed to count as connector. True diagonal near arm displayed foreground at white-hair right/lower edge from REAL original source arm pixels only, no new sleeve marker line. Does NOT claim overall human art PASS.
+TA-37 INITIAL ZIP FAIL: inherited R14_VS_R16 file name while generating R15_VS_R16 native comparison. Fixed pack include, rebuilt 91-member CRC PASS SHA256 bb546d8f1a49c961107af4fa31adf771c7f1689393db456dd31800f50b4e9f2f (255759 bytes). Body SHA 9344325b4bd62ba1b1bf6cdf044cc61b17d56fe3af7c14018e9cfd9ae0c04f62.
+Actual owner Windows Godot 4.7.2 private-original Body 73/73 source GPU frames @60Hz, 12/12 complete RGBA exact zero difference; F7 visual 0.630 once; no weapons/FX. Full FS Battle ATB/HP/damage and visual naturalness NOT verified. Real QA on approved E and SHA-verified copy into mounted private Google Drive G:\ under FS_GameAsset_Backups/FS_SBS_Character_Actions_20261101/T_A_R16_LPC8_ACTOR01_UNARMED_20261122, pending file-level cloud verification. This original LPC source is eight-dir WALK/diagonal, not original attack.
+**ART HOLD** pending original 64px human review of fist geometry, torso twist and full 12-frame timing; no main or other branch changes.
+
+---
+
+
 ## TA-33/34 | R15 R14 high-hairline fist false body-continuity pass and QA ZIP path failure 2026-11-22
 
 TA-33 VISUAL ORIGINAL F7 R14: despite 12/12 source 8-connected sprite images, screenshot showed a hand/fist above face apparently attached to HAIR rather than anatomical shoulder. This is a consequential blind spot in earlier body-connected QA. R15 remapped original source rigid shoulder/elbow pivots with explicit F5→F7 punch x progression and F8→F9 recoil and kept F7 projected fist y29..35. Projected R14 F7 [54.164,27.605] near hair; R15 F7 [52.325,31.142] lower by ~3.54 screen-space pixels. These are IK geometry estimates, not actual hand-mask shoulder proof; visual ART HOLD.
