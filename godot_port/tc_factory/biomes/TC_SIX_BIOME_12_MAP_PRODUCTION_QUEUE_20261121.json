@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 5,
+    "Ground_PAR_pair_candidates_static_pass": 6,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -29,7 +29,7 @@
     "failed_Ground_generation_FS_04_VILLAGE": 1,
     "new_ground_source_candidates_FS_04_VILLAGE": 1,
     "failed_complete_PAR_generation_attempts_FS_04_VILLAGE": 6,
-    "new_complete_PAR_candidates_FS_04_VILLAGE": 1
+    "new_complete_PAR_candidates_FS_04_VILLAGE": 2
   },
   "scenes": [
     {
@@ -487,7 +487,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "VILLAGE",
-      "stage": "D13_INDEPENDENT_TRUE_RGBA_NON_GROUND_PAR_SOURCE_1474x1067_STATIC_PAIR_TECH_CANDIDATES_FORMAL_ART_HOLD",
+      "stage": "D14_SECOND_INDEPENDENT_WHITE_RGB_PLATE_CONVERTED_TRUE_RGBA_1474x1067_STATIC_PREVIEW_HOLD_NATIVE_SIZE_NOT_MET",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -500,7 +500,7 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "native_Godot_4_7_2_for_current_stage": "D14_PROBE_SYNTHETIC_CI_PASS_ACTUAL_PRIVATE_D13_D14_NOT_RUN",
       "formal_art_gate": "HOLD",
       "ground_generation_failure": {
         "count": 1,
@@ -584,13 +584,41 @@
           "formal_art_gate": "HOLD",
           "source_drive": "https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view",
           "QA_ZIP_Drive": "https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view",
-          "composite_preview_drive": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view"
+          "composite_preview_drive": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view",
+          "D14_alternative_true_alpha": {
+            "stage": "D14_SECOND_INDEPENDENT_WHITE_RGB_NON_GROUND_OBJECT_PLATE_THEN_DETERMINISTIC_TRUE_RGBA",
+            "original_white_plate_size": [
+              1474,
+              1067
+            ],
+            "original_white_plate_sha256": "26aed5dc5bb03004961ac54f13cfb41f9d825396808d6eb12517e04b50171adb",
+            "source_file_is_RGB_white_plate": true,
+            "original_is_just_all_non_ground_objects": true,
+            "derived_true_RGBA_PAR_source_size": [
+              1474,
+              1067
+            ],
+            "derived_PAR_sha256": "85b8f750e584d74492bea4c409a76e0b26bbe41edfca303241b26db40a9a0760",
+            "alpha_zero_pixels": 734965,
+            "alpha_255_pixels": 830440,
+            "original_1280x928_native": false,
+            "crop_object_alpha_gt224_loss_pct": 12.785,
+            "resample_tech_PAR_sha256": "f69b80119e8aa15c1d119a6b0faca98b7ce6880efaf3e9ac1ff324935606dccb",
+            "composite_tech_preview_sha256": "b84dfd9ed0bce13206e783f976f743345edb655fc0350edfac530e09eed5687b",
+            "Godot_native_real_art": "NOT_RUN",
+            "Godot472_two_layer_native_synthetic_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44997754667",
+            "white_plate_background_converter_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44998273527",
+            "formal_art_gate": "HOLD",
+            "private_archival_zip": "https://drive.google.com/file/d/1oZU9YY02lZTK5Vd3vlP60e_j6252tf_v/view",
+            "true_RGBA_PAR_private": "https://drive.google.com/file/d/1z4jFTtpQ5MGOmMeAI7k-qtWmku_XtMF9/view",
+            "composite_private": "https://drive.google.com/file/d/12MCDzxl3NcOPrV8mAK6aLdgTG-bWrqrO/view"
+          }
         },
         "par_generation_attempts_rejected": 6,
         "rejection_evidence": "1 RGB full-city image and 4 RGBA full-city images all with alpha=0 pixel count 0; not transparent CompletePAR",
-        "Ground_PAR_pair": "D13_PIL_STATIC_PAIR_TECH_PASS_BUT_PAR_RESAMPLED_OR_CROPPED_ART_HOLD",
-        "Godot_native": "NOT_RUN",
-        "art_gate": "HOLD_NATIVE_SOURCE_40x29_AND_ALPHA_AND_POSITION_QA",
+        "Ground_PAR_pair": "D14_SECOND_SEPARATE_RGB_OBJECT_SOURCE_CONVERTED_RGBA_STATIC_PAIR_PASS_PREVIEW_NON_NATIVE_ART_HOLD",
+        "Godot_native": "NOT_RUN_ON_D14_PRIVATE_ART; SYNTHETIC_NATIVE_PROBE_CI_PASS",
+        "art_gate": "HOLD_NEED_NATIVE_1280x928_WITHOUT_RESAMPLE_AND_TRUE_SOURCE_XY",
         "owner_only_drive": {
           "D11_complete_source_and_failure_QA": "https://drive.google.com/file/d/11jWGIU54Lk8eyfwLGJs-YbKZU1W6ezIM/view",
           "Ground_40x29": "https://drive.google.com/file/d/1O8lKij4P8JgxczP2Q1Ykt-RKnhyk56RL/view",
@@ -598,7 +626,10 @@
           "complete_context_46x33": "https://drive.google.com/file/d/1BKyxcOfGPglyw-0pnChwVXUhYjsD0siN/view",
           "D13_new_PAR_raw": "https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view",
           "D13_QA_ZIP": "https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view",
-          "D13_preview": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view"
+          "D13_preview": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view",
+          "D14_private_QA_zip": "https://drive.google.com/file/d/1oZU9YY02lZTK5Vd3vlP60e_j6252tf_v/view",
+          "D14_true_RGBA": "https://drive.google.com/file/d/1z4jFTtpQ5MGOmMeAI7k-qtWmku_XtMF9/view",
+          "D14_composite": "https://drive.google.com/file/d/12MCDzxl3NcOPrV8mAK6aLdgTG-bWrqrO/view"
         }
       }
     },
