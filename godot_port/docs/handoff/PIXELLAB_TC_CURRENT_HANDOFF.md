@@ -21,6 +21,13 @@
 - **[D8 完整十三檔圖片／原始 Ground＋PAR／兩版合成／Alpha QA／Failure Log ZIP](https://drive.google.com/file/d/1SO1aVJu3KNDZIlAmgcOHc5nosSwJ0Q4w/view)**，25,638,287 bytes／13 files／ZIP CRC PASS，SHA256 `84cdd9771c8fd2ebaf68378b218fcee324c79f7b5fa0c0159797777cfc5d9410`。
 - [D8 原始 PAR 真 RGBA](https://drive.google.com/file/d/1ojHRduBZIFyyys21Fz8irKNTLNV3I3C5/view)、[PAR 技術 Alpha 清理候選](https://drive.google.com/file/d/18v6Tnr-vomNMVgyUGjQz2LVLZF6lssez/view)、[整圖真合成 1280×928](https://drive.google.com/file/d/1eJPmH9j4c_DjkKM8Bkx2bRQmzGznObfU/view)、[46×33 參考](https://drive.google.com/file/d/1Zet8TxzEEYDg_NjWac-apIo6UJvExj0G/view)。五件檔案皆 Google provider metadata `shared=false`、user owner only。新私有圖像不進公共 GitHub，未操作 user PC。
 
+## D8 接續 FS_03_MAZE 真 Ground 初試失敗（未接受為素材）
+
+- 已實際嘗試生成同一地形另一張圖 **FS_03_MAZE「風沙裂谷」**的純 Ground：正式要求是彎曲砂岩峽谷通道／分岔／乾涸河道等平面地貌，**不可有房子／噴泉／攤位／完整樹等非地表物件**。
+- 生成器錯回 **1477×1065 RGB 的完整星井綠洲村莊 Master 風格畫面**，有屋、噴泉、市集、棕櫚和立體建築，SHA `6aa8bf06e5e934e709ed1583f8e0be9216288306265ed02d9fc8eafd70afa25c`；FAIL_WRONG_SCENE_AND_NOT_GROUND。
+- 此錯圖不會提交為合法 Ground，也沒有上傳雲端作為地圖源，更不會生成假的 PAR 配對；已記入 12-map tracker `FS_03_MAZE` 的 **REJECTED**。D8 真正成功的 **FS_03_VILLAGE 地表＋透明完整 PAR** 不受影響。
+- 為避免再繞回微修，下一個真正工程單位需要更嚴格的 **Ground-only scene-type control** 或改用可維持同 Blueprint/獨立 source 輸出的生圖工具，不能用本輪錯 Master 原圖反切 PAR 或 Ground。
+
 ## 下一個完整施工單位
 
 開始 **FS_03_MAZE 風沙裂谷** 的獨立全圖 Ground-only → 同場景完整透明 PAR，迷宮必須是沙岩斷層、蜿蜒岔路/環線，不能又生成村莊中央石板廣場，且 Ground 裡不能混入高聳岩柱/整棵棕櫚/建築。正式大地圖目標 80×58／2560×1856，低解析來源不能拉伸假稱原生完成。其後 04 火山、05 水澤、06 星晶浮島；現階段聚焦大量美術 Ground/CompletePAR 生產，不再重複個別樹冠遮擋微修。所有失敗按實際 Gate 記錄。
