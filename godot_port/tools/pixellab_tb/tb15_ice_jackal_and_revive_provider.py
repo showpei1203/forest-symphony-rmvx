@@ -213,9 +213,13 @@ def submit(kind,st,act):
     first,last,sourcehash,source_name=first_last(kind,st,act)
     n=10 if act=='revive' else 8
     if max(first.size)**2*n>524288:raise RuntimeError('PixelLab requested clip violates image budget')
-    payload={'first_frame':b64(first),'frame_count':n,'action':action_desc(kind,st,act),
+    reroll_count=len(REJECTED.get(key,[]))
+    action=action_desc(kind,st,act)
+    if reroll_count:
+        action=(action+' Keep ALL original body parts inside the central 75 percent of canvas; avoid extended effects at image edge.')[:500]
+    payload={'first_frame':b64(first),'frame_count':n,'action':action,
              'no_background':True,'seed':202615600+(0 if kind=='bat' else 100 if kind=='frog' else 300)+st*20+
-             {'revive':1,'idle':2,'attack':3,'hurt':4,'ko':5}[act]}
+             {'revive':1,'idle':2,'attack':3,'hurt':4,'ko':5}[act]+reroll_count*104729}
     if last is not None:payload['last_frame']=b64(last)
     req=retry('/animate-with-text-v3',payload)
     jid=req.get('background_job_id');assert jid,req
@@ -254,7 +258,7 @@ def accept(key,resp):
     filename=dest/name
     atlas_sha=save_raw(filename,out)
     qa='PASS' if len(set(hashes))>=4 and min(area)>0 and max(edges)==0 else 'ART_TECH_HOLD'
-    rec.update(status='completed',qa=qa,atlas=name,sheet_sha256=atlas_sha,
+    rec.update(status='completed' if qa=='PASS' else 'qa_failed',qa=qa,atlas=name,sheet_sha256=atlas_sha,
                generation_id=gid,usage=resp.get('usage'),first_frame_exact_source=True,
                last_frame_exact_source=last is not None,
                unique_frames=len(set(hashes)),border_counts=edges,
@@ -262,7 +266,34 @@ def accept(key,resp):
                provider_frame_sha256=[sha(im.tobytes()) for im in original])
     milestone('ANIM_COMPLETE',key,qa,len(set(hashes)),str(resp.get('usage')))
     if qa!='PASS':
-        raise RuntimeError('Provider result failed sprite technical QA '+key+' '+str(edges))
+        print('FS_R15_REJECTED_QUALITY',key,'edges',edges,'RETRY_BOUND_2',flush=True)
+        return
+# Persist rejected real provider results and costs without falsely treating their sprites as accepted.
+REJECTPATH=W/'R15_REJECTED_PROVIDER_QA.json'
+REJECTED=json.loads(REJECTPATH.read_text(encoding='utf-8')) if REJECTPATH.exists() else {}
+def quarantine(key,rec):
+    history=REJECTED.setdefault(key,[])
+    if len(history)>=2:
+        raise RuntimeError('Two PixelLab rerolls exhausted for art clip '+key+', keep ART HOLD and original data')
+    old=rec.copy()
+    orig=W/rec['kind']/rec['atlas']
+    if orig.is_file():
+        folder=W/'REJECTED_ART'
+        folder.mkdir(exist_ok=True)
+        target=folder/f"{key.replace(':','_')}_FAILED_TRY{len(history)+1}.png"
+        orig.replace(target)
+        old['rejected_art_location']=str(target)
+    history.append(old)
+    REJECTPATH.write_text(json.dumps(REJECTED,ensure_ascii=False,indent=2),encoding='utf-8')
+    del J[key]
+    persist()
+    print('FS_R15_REAL_PROVIDER_ART_REJECT',key,'attempt',len(history),'cost',old.get('usage'),flush=True)
+# Reruns reuse the exact source-frame and seed lineages while choosing different RNG noise and
+# an explicit contained-silhouette constraint. No forged frame edits and no rejected file loss.
+for k,rec in list(J.items()):
+    if rec.get('qa')=='ART_TECH_HOLD' or rec.get('status')=='qa_failed':
+        quarantine(k,rec)
+
 deadline=start+a.deadline_minutes*60
 MAX_ACTIVE=6
 failstatus=('failed','qa_failed','ART_TECH_HOLD')
@@ -283,6 +314,9 @@ while time.monotonic()<deadline:
                     persist();raise RuntimeError('PixelLab failed '+key)
             except urllib.error.URLError as ex:
                 milestone('POLL_NETWORK_RETRY',key,str(ex)[:100])
+    for key,rec in list(J.items()):
+        if rec.get('qa')=='ART_TECH_HOLD' or rec.get('status')=='qa_failed':
+            quarantine(key,rec)
     active=sum(J.get(f'{kind}:{st}:{act}',{}).get('status') in ('submitted','processing')
          for kind,st,act in TASKS)
     for kind,st,act in TASKS:
