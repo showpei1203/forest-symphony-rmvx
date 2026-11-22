@@ -176,6 +176,21 @@ func refresh_live()->bool:
     select(target,is_enemy)
     return detail_signature!=previous or source_warnings!=previous_warnings
 
+static func detail_rect(area_width:float,rows:int)->Rect2:
+    # The original 381 status window draws up to six InfoRows FIRST.
+    # With 4..6 lines the P539E x16..410 rectangle crossed original
+    # actor portrait bounds (x9..144 at y249+). Put the long panel on
+    # the source enemy/right side, x>=152, without moving the target
+    # buttons or shrinking original #269 Btskin.
+    var left:float=float(DETAIL_COMMAND_LEFT)
+    var width:float=float(DETAIL_COMMAND_SAFE_RIGHT-DETAIL_COMMAND_LEFT)
+    if rows>3:
+        left=maxf(152.0,area_width-348.0)
+        width=340.0
+    width=maxf(1.0,minf(width,area_width-left-8.0))
+    return Rect2(Vector2(left,float(DETAIL_RENDER_Y)),
+        Vector2(width,8.0+float(rows*DETAIL_ROW_HEIGHT)))
+
 func _draw()->void:
     if not visible or not bool(header.get("ok",false)):
         return
@@ -206,16 +221,12 @@ func _draw()->void:
     # #381 state-detail panel; source #462 command-safe width is x16..410.
     if detail_lines.is_empty():
         return
-    var left:float=float(DETAIL_COMMAND_LEFT)
-    var width:float=minf(float(
-        DETAIL_COMMAND_SAFE_RIGHT-DETAIL_COMMAND_LEFT),area_width-left-12.0)
     var rows:int=mini(detail_lines.size(),DETAIL_MAX_INFO_ROWS)
-    var height:float=8.0+float(rows*DETAIL_ROW_HEIGHT)
-    draw_rect(Rect2(Vector2(left,float(DETAIL_RENDER_Y)),Vector2(width,height)),
-        Color(0,0,0,176.0/255.0))
-    draw_rect(Rect2(Vector2(left,float(DETAIL_RENDER_Y)),Vector2(width,height)),
-        Color(1,1,1,72.0/255.0),false,1.0)
+    var panel:Rect2=detail_rect(area_width,rows)
+    draw_rect(panel,Color(0,0,0,176.0/255.0))
+    draw_rect(panel,Color(1,1,1,72.0/255.0),false,1.0)
     for i in range(rows):
-        draw_string(font,Vector2(left+8,float(DETAIL_RENDER_Y+17+i*DETAIL_ROW_HEIGHT)),
-            detail_lines[i],HORIZONTAL_ALIGNMENT_LEFT,width-16.0,
-            14,Color(0.93,0.96,1.0))
+        draw_string(font,Vector2(panel.position.x+8.0,
+                panel.position.y+17.0+float(i*DETAIL_ROW_HEIGHT)),
+            detail_lines[i],HORIZONTAL_ALIGNMENT_LEFT,
+            panel.size.x-16.0,14,Color(0.93,0.96,1.0))

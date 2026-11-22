@@ -65,6 +65,14 @@ func _run()->void:
     if not require(enemy==read_before,
             "original #381 HUD quote must never mutate live source combat Dictionary"):
         return
+    var short_panel:Rect2=HELP.detail_rect(528.0,2)
+    var long_panel:Rect2=HELP.detail_rect(528.0,6)
+    if not require(short_panel.end.y<249.0 and (
+            long_panel.position.x>=152.0) and (
+            long_panel.end.x<=528.0) and (
+            long_panel.end.y<300.0),
+            "544 original 269 portrait x9..144 y249+ must not be covered by six InfoRows"):
+        return
     var screen=HELP.new()
     root.add_child(screen)
     if not require(screen.install(db) and screen.select(enemy,true),
