@@ -1,0 +1,1669 @@
+{
+  "schema": "FS_TB_R12_TWO_EVOLUTION_FAMILIES_SEVEN_ACTIONS",
+  "engine": "Godot 4.7.2",
+  "mode": "ART_ONLY_NO_BATTLE_ENGINE_INTEGRATION",
+  "families": [
+    {
+      "family_id": "TB02_LEAF_BAT",
+      "kind": "bat",
+      "stages": [
+        {
+          "index": 1,
+          "name": "Leaf Bat Young",
+          "source_path": "assets/monsters/tb02/BAT_STAGE1.png",
+          "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+          "source_size": [
+            96,
+            96
+          ],
+          "motions": {
+            "idle": {
+              "path": "assets/monsters/tb02/BAT_STAGE1_IDLE_8F_96px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                96,
+                96
+              ],
+              "fps": 8,
+              "loop": true,
+              "sha256": "5153e58ccf29dee9d924937fb185169f45e2d0f748a36373cc2f53d4eb72e0a2",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                2701,
+                2745,
+                2887,
+                2718,
+                2500,
+                2442,
+                2534,
+                2705
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 8,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "attack": {
+              "path": "assets/monsters/tb02/BAT_STAGE1_ATTACK_11F_128px.png",
+              "frames": 11,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "b258678a7a4b59251b13126ed905c47afd9b9dffd0a618fbb64f584ad9ceeee7",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                2705,
+                2686,
+                2769,
+                2906,
+                2930,
+                2921,
+                2821,
+                2774,
+                2754,
+                2794,
+                2805
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 11,
+              "tech_qa": "PASS",
+              "art_status": "OWNER_ACCEPTED"
+            },
+            "hurt": {
+              "path": "assets/monsters/tb02/BAT_STAGE1_HURT_6F_128px.png",
+              "frames": 6,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 9,
+              "loop": false,
+              "sha256": "a2d09316ac41ba1774a26ad4106b5257f72558b788289a68bd565525dba7b7e7",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                2668,
+                2609,
+                2546,
+                2668,
+                2722,
+                2705
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 6,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "ko": {
+              "path": "assets/monsters/tb02/BAT_STAGE1_KO_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 7,
+              "loop": false,
+              "sha256": "e7823bc614e90164e4f4a6e4bd4e3e27492e2ff58c7f4c2ad951c9a651ff7635",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                2691,
+                2545,
+                2276,
+                2007,
+                1917,
+                1840,
+                1841,
+                1924
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 8,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "guard": {
+              "path": "assets/monsters/tb02/BAT_STAGE1_GUARD_7F_128px.png",
+              "frames": 7,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 8,
+              "loop": false,
+              "sha256": "2a4ddb3bf503360293f8435d0ee6c8adb40bed6c0c7cb0a488b8c671ba0e2534",
+              "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+              "provider_job_id": "be59b159-3b70-4fcf-a23d-d54322735f9d",
+              "generation_id": "25d2d7e4-f7ef-4bf6-b85d-ecf49c675d9b",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 7,
+              "alpha_pixel_count": [
+                2695,
+                2643,
+                2373,
+                2266,
+                2411,
+                2621,
+                2746
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "skill": {
+              "path": "assets/monsters/tb02/BAT_STAGE1_SKILL_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "3110d1b8c818388d8392bd4cace9fae340708548efd8d616446bfc725c6faf30",
+              "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+              "provider_job_id": "8bf85d1f-48a9-4f22-8c53-b70001754dcd",
+              "generation_id": "82eb36dc-53a3-48b9-9452-c1ee0b5eed4e",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 8,
+              "alpha_pixel_count": [
+                2715,
+                2756,
+                2810,
+                2849,
+                2848,
+                2813,
+                2739,
+                2740
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "fly": {
+              "path": "assets/monsters/tb02/BAT_STAGE1_FLY_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 9,
+              "loop": true,
+              "sha256": "1e67022fb141b6804b38ff6e69a982401eded5a3dbc416f33a1d2fd32e4a3392",
+              "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+              "provider_job_id": "8eb5deff-e0f0-403b-a417-0a783c6f7114",
+              "generation_id": "e7ef63ae-7b5c-4e5e-bab0-2da04f83043d",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 8,
+              "alpha_pixel_count": [
+                2705,
+                2792,
+                2828,
+                2722,
+                2620,
+                2594,
+                2651,
+                2677
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            }
+          }
+        },
+        {
+          "index": 2,
+          "name": "Forest Guardian",
+          "source_path": "assets/monsters/tb02/BAT_STAGE2.png",
+          "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+          "source_size": [
+            128,
+            128
+          ],
+          "motions": {
+            "idle": {
+              "path": "assets/monsters/tb02/BAT_STAGE2_IDLE_8F_160px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                160,
+                160
+              ],
+              "fps": 8,
+              "loop": true,
+              "sha256": "b7e8efbf0de04a485b9882b61b78197e0fae5d07fd69dfc57d7c9f6c76045437",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                5361,
+                5339,
+                5505,
+                5360,
+                5147,
+                5022,
+                5157,
+                5229
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 8,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "attack": {
+              "path": "assets/monsters/tb02/BAT_STAGE2_ATTACK_11F_160px.png",
+              "frames": 11,
+              "columns": 4,
+              "cell": [
+                160,
+                160
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "a3268fff074f47dadb9b4cb1e94808bb9786cd3a6ac26e3e7129704241935eb6",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                5475,
+                5425,
+                5520,
+                5572,
+                5552,
+                5547,
+                5491,
+                5508,
+                5516,
+                5508,
+                5534
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 11,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "hurt": {
+              "path": "assets/monsters/tb02/BAT_STAGE2_HURT_6F_160px.png",
+              "frames": 6,
+              "columns": 4,
+              "cell": [
+                160,
+                160
+              ],
+              "fps": 9,
+              "loop": false,
+              "sha256": "fece755104aa969272c47d22106fd5cf27ca945a87babbf4859aa324db56dbdb",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                5347,
+                5112,
+                4904,
+                5142,
+                5462,
+                5484
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 6,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "ko": {
+              "path": "assets/monsters/tb02/BAT_STAGE2_KO_8F_160px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                160,
+                160
+              ],
+              "fps": 7,
+              "loop": false,
+              "sha256": "9f3e84bb6663856c5a14434ddb95aa0518b6395bc3345f0540959bb8bbd53595",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                5304,
+                4998,
+                4415,
+                3777,
+                3466,
+                3321,
+                3334,
+                3324
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 8,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "guard": {
+              "path": "assets/monsters/tb02/BAT_STAGE2_GUARD_7F_160px.png",
+              "frames": 7,
+              "columns": 4,
+              "cell": [
+                160,
+                160
+              ],
+              "fps": 8,
+              "loop": false,
+              "sha256": "c5ed78e1209a6a900fb42bf4ddcc3cecb3aa5d1839efb1ccec58054c292f89c3",
+              "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+              "provider_job_id": "40d0b933-b508-46e0-9781-ce154bd57216",
+              "generation_id": "1c5ed611-1ad4-43ba-a68b-d963b44b0a61",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 7,
+              "alpha_pixel_count": [
+                5366,
+                5098,
+                4511,
+                4508,
+                4723,
+                5178,
+                5470
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "skill": {
+              "path": "assets/monsters/tb02/BAT_STAGE2_SKILL_8F_160px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                160,
+                160
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "9b5df26413bfea5b33a2bcac1b7563131e84ec99006606815d1f4ccad91673b8",
+              "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+              "provider_job_id": "35f3c520-fb16-4f22-bc6d-defe44a907b4",
+              "generation_id": "9440ec20-fa6b-4ccf-b71d-8e70290a81de",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 8,
+              "alpha_pixel_count": [
+                5424,
+                5466,
+                5498,
+                5561,
+                5617,
+                5447,
+                5404,
+                5410
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "fly": {
+              "path": "assets/monsters/tb02/BAT_STAGE2_FLY_8F_160px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                160,
+                160
+              ],
+              "fps": 9,
+              "loop": true,
+              "sha256": "9d26617a1d331e9b2e78b61c607b1458de5cbc00e90cdfa37f08ae320cc5e49c",
+              "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+              "provider_job_id": "c9db1fdf-3aee-429f-9ee2-4c9b9f00ecfe",
+              "generation_id": "cf31bcdb-365e-4150-8a2c-649f1b373f00",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 8,
+              "alpha_pixel_count": [
+                5362,
+                5417,
+                5591,
+                5485,
+                5136,
+                5060,
+                5252,
+                5398
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            }
+          }
+        },
+        {
+          "index": 3,
+          "name": "Ancient Crown",
+          "source_path": "assets/monsters/tb02/BAT_STAGE3.png",
+          "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+          "source_size": [
+            160,
+            160
+          ],
+          "motions": {
+            "idle": {
+              "path": "assets/monsters/tb02/BAT_STAGE3_IDLE_8F_192px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                192,
+                192
+              ],
+              "fps": 8,
+              "loop": true,
+              "sha256": "11fece881d247479cd6b902c84e56b97fb795f9a978c8dfed0bed3a625671c29",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                8820,
+                8991,
+                9274,
+                8860,
+                8445,
+                8045,
+                8318,
+                8548
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 8,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "attack": {
+              "path": "assets/monsters/tb02/BAT_STAGE3_ATTACK_11F_224px.png",
+              "frames": 11,
+              "columns": 4,
+              "cell": [
+                224,
+                224
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "265a73fd59c08dcb9a235c9abb6bf5c1faa2d25a3ce252773ce8a1e4f2068aba",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                9125,
+                8999,
+                9078,
+                9200,
+                9264,
+                9215,
+                9151,
+                9123,
+                9125,
+                9186,
+                9181
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 11,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "hurt": {
+              "path": "assets/monsters/tb02/BAT_STAGE3_HURT_6F_224px.png",
+              "frames": 6,
+              "columns": 4,
+              "cell": [
+                224,
+                224
+              ],
+              "fps": 9,
+              "loop": false,
+              "sha256": "8bb0f86cdc4d8356281a2fa52ae25328ad882af6387dea2f94e9915acad62fd4",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                8806,
+                8486,
+                8036,
+                8422,
+                8981,
+                8824
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 6,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "ko": {
+              "path": "assets/monsters/tb02/BAT_STAGE3_KO_8F_224px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                224,
+                224
+              ],
+              "fps": 7,
+              "loop": false,
+              "sha256": "7fd1c61d3a5586ad83ab122e99be10e6bc9135d2bfdc448ef5aa9f98b133fa9b",
+              "source_locked": true,
+              "nonempty_alpha_pixels": [
+                8833,
+                8719,
+                7049,
+                6314,
+                5689,
+                5321,
+                5327,
+                5797
+              ],
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "unique_frames": 8,
+              "tech_qa": "PASS",
+              "art_status": "CANDIDATE_REVIEW_PENDING"
+            },
+            "guard": {
+              "path": "assets/monsters/tb02/BAT_STAGE3_GUARD_7F_224px.png",
+              "frames": 7,
+              "columns": 4,
+              "cell": [
+                224,
+                224
+              ],
+              "fps": 8,
+              "loop": false,
+              "sha256": "d6bdcb4b7a1990be24640858fe39c805258b92201f390ae89cc5bb50359f335c",
+              "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+              "provider_job_id": "f04c6083-c6ea-4931-bb73-db207a37d980",
+              "generation_id": "3f1bbf59-4bba-4c36-bbdb-f4cb8bfbc7ff",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 7,
+              "alpha_pixel_count": [
+                8908,
+                8026,
+                7472,
+                7249,
+                7517,
+                8133,
+                8949
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "skill": {
+              "path": "assets/monsters/tb02/BAT_STAGE3_SKILL_8F_224px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                224,
+                224
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "231ac3b7473096cf05fa2a537b2cbdf3af38b286439e9a87881553001b000a75",
+              "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+              "provider_job_id": "25b426dd-995a-4c95-802a-9d11275d0abb",
+              "generation_id": "74c415f0-35e0-4ae5-99f8-d29108bb1ae4",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 8,
+              "alpha_pixel_count": [
+                8725,
+                8892,
+                9292,
+                9467,
+                9409,
+                9181,
+                8693,
+                8716
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "fly": {
+              "path": "assets/monsters/tb02/BAT_STAGE3_FLY_8F_224px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                224,
+                224
+              ],
+              "fps": 9,
+              "loop": true,
+              "sha256": "cdefbd3d4e11fe9cbf9e7f430a514d131f9da6caf070ca7f1261b837dcc8be8e",
+              "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+              "provider_job_id": "0908245a-4aec-4e61-8d08-7d6e3d034a91",
+              "generation_id": "cdb9d53e-0d87-44b3-9bef-90fed78dbe54",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 8,
+              "alpha_pixel_count": [
+                8839,
+                8812,
+                8818,
+                8788,
+                8347,
+                8228,
+                8506,
+                8714
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "family_id": "PMD_LAVA_FROG",
+      "kind": "frog",
+      "stages": [
+        {
+          "index": 1,
+          "name": "Lava Frog Young",
+          "source_path": "assets/monsters/pmd/PMD0001_STATIC_64.png",
+          "source_size": [
+            64,
+            64
+          ],
+          "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+          "motions": {
+            "idle": {
+              "path": "assets/monsters/pmd/PMD0001_IDLE_3F_192x64.png",
+              "frames": 3,
+              "columns": 3,
+              "cell": [
+                64,
+                64
+              ],
+              "fps": 8,
+              "loop": true,
+              "sha256": "403cb7517ae144e0f8d25c8c431a3aecb906b6ef8f239f8836d9ad25dfdd690f",
+              "frame_unique": 3,
+              "border_counts": [
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PREVIOUSLY_VALIDATED",
+              "art_status": "LEGACY_SOURCE_ACCEPTED"
+            },
+            "attack": {
+              "path": "assets/monsters/pmd/PMD0001_ATTACK_V6_PIXELLAB_11F_384x288.png",
+              "frames": 11,
+              "columns": 4,
+              "cell": [
+                96,
+                96
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "9cd50cc5d5bf9aa21e505307e5dac9581a2473d23b49483590ed3632949d2162",
+              "frame_unique": 11,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PREVIOUSLY_VALIDATED",
+              "art_status": "USER_ART_ACCEPTED"
+            },
+            "hurt": {
+              "path": "assets/monsters/pmd/PMD0001_HURT_6F_128px.png",
+              "frames": 6,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 9,
+              "loop": false,
+              "sha256": "ef7fa07bccc6b55cdc668e6434b409f3260cc70276c24a36718bd76bf69c9fd6",
+              "frame_unique": 6,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "b76460cc-c70c-46ed-bec7-a438cd811824",
+              "generation_id": "74c16f09-09d5-4c44-a9da-fcc5e93c572f",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c"
+            },
+            "ko": {
+              "path": "assets/monsters/pmd/PMD0001_KO_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 7,
+              "loop": false,
+              "sha256": "b9152fc9931aac9d49ebedc3f8a98e57c6b94e4592ae611d9a47a92757b119d7",
+              "frame_unique": 8,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "4a0bf880-a038-4d28-a8ba-9a64071c5f7e",
+              "generation_id": "b485dd24-e69d-4403-ac0f-92e3cc88a770",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c"
+            },
+            "guard": {
+              "path": "assets/monsters/pmd/PMD0001_GUARD_7F_128px.png",
+              "frames": 7,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 8,
+              "loop": false,
+              "sha256": "e72adb1e0c2ed357d8d68b059a35abe2529db99ecefc2f6608e4a66e72d30daa",
+              "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+              "provider_job_id": "7d253422-6a58-471e-8220-77d54d49ee2a",
+              "generation_id": "acdeeaca-da85-4c93-837e-2fd4bb76c242",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 7,
+              "alpha_pixel_count": [
+                794,
+                790,
+                806,
+                827,
+                826,
+                800,
+                792
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "skill": {
+              "path": "assets/monsters/pmd/PMD0001_SKILL_9F_128px.png",
+              "frames": 9,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "84dfdc9f2bb340ad07e91649dfa0cf2fe364f3d292749166af069df6e39ca185",
+              "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+              "provider_job_id": "41df5888-987d-4871-baef-ad933cbe8df2",
+              "generation_id": "24faab53-c7cd-4852-9d00-d336e74f3e9a",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 9,
+              "alpha_pixel_count": [
+                774,
+                780,
+                805,
+                840,
+                852,
+                887,
+                873,
+                789,
+                782
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "hop": {
+              "path": "assets/monsters/pmd/PMD0001_HOP_10F_128px.png",
+              "frames": 10,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": true,
+              "sha256": "c7d2b9313527e01de36a28b1fcff861f90bfa9d56a3359cbea3e4d8be61ff3ff",
+              "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+              "provider_job_id": "8aa7dbd1-c3bf-4aea-a9a8-f0bec33394d8",
+              "generation_id": "439f3029-0323-4a04-92f3-4949de5e4770",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 10,
+              "alpha_pixel_count": [
+                795,
+                834,
+                835,
+                808,
+                744,
+                778,
+                796,
+                812,
+                794,
+                794
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            }
+          }
+        },
+        {
+          "index": 2,
+          "name": "Magma Frog Guardian",
+          "source_path": "assets/monsters/pmd/PMD0002_STATIC_64.png",
+          "source_size": [
+            64,
+            64
+          ],
+          "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+          "motions": {
+            "idle": {
+              "path": "assets/monsters/pmd/PMD0002_IDLE_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 8,
+              "loop": true,
+              "sha256": "e5dccad693b447d41bc1a2c675be831144ffd54389cf3680e6a5a7f71cb8c9a5",
+              "frame_unique": 8,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "f9493547-3999-4dc2-bda6-8da237107d10",
+              "generation_id": "1f59b067-2779-43b5-96c1-a66b1482f7fc",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+            },
+            "attack": {
+              "path": "assets/monsters/pmd/PMD0002_ATTACK_11F_128px.png",
+              "frames": 11,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "9e024b5b2accb06b37c6a98f166f927dd549fb1f9096d111b8b3621e9f429bc0",
+              "frame_unique": 11,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "7eb2621a-4597-46ce-ab1e-1e973cc3be76",
+              "generation_id": "76978ab3-7a23-4992-816d-4e4401acea39",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+            },
+            "hurt": {
+              "path": "assets/monsters/pmd/PMD0002_HURT_6F_128px.png",
+              "frames": 6,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 9,
+              "loop": false,
+              "sha256": "6195e0860ec1c8389139bd8d53e8b9fb77ebdc4bc11e1cbad1ff10b0159e1ec9",
+              "frame_unique": 6,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "303aa95e-21c5-49d9-83e7-0c6c4d799bff",
+              "generation_id": "dd4df556-ebbc-4ffd-9ea9-0927fc1e5c53",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+            },
+            "ko": {
+              "path": "assets/monsters/pmd/PMD0002_KO_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 7,
+              "loop": false,
+              "sha256": "742e94add46517bbd51d9fbff0eaf72fd219a1c273e96db7846112d504aa7b42",
+              "frame_unique": 8,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "9871397f-9a23-4db2-8c40-f4e414ccc1eb",
+              "generation_id": "7d0c5bcf-7e09-4e8a-b40b-054f187537dd",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+            },
+            "guard": {
+              "path": "assets/monsters/pmd/PMD0002_GUARD_7F_128px.png",
+              "frames": 7,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 8,
+              "loop": false,
+              "sha256": "46ddae0e3e2a5043b381e9a9e038498a9aac889dc92df2c08834f6406204ea23",
+              "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+              "provider_job_id": "4c9317f8-df33-4df5-ac53-636eeac15e1d",
+              "generation_id": "008a4e97-57b9-4e50-8444-cd706621b836",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 7,
+              "alpha_pixel_count": [
+                1430,
+                1487,
+                1534,
+                1553,
+                1559,
+                1545,
+                1464
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "skill": {
+              "path": "assets/monsters/pmd/PMD0002_SKILL_9F_128px.png",
+              "frames": 9,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "568961e848bbdf8a25b540da45be7bb6afdb81effdb1bc16ef50cfb0afa2ad17",
+              "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+              "provider_job_id": "c32b6e3d-954d-4655-9fe7-d5a5436ba22f",
+              "generation_id": "4c7fae04-2b76-4a6c-92d5-15b0aa79b093",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 9,
+              "alpha_pixel_count": [
+                1412,
+                1382,
+                1418,
+                1384,
+                1391,
+                1390,
+                1399,
+                1394,
+                1392
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "hop": {
+              "path": "assets/monsters/pmd/PMD0002_HOP_10F_128px.png",
+              "frames": 10,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": true,
+              "sha256": "a300a0c154d3d108be14312d1bdbcea4ca74bf20fde69fbcc063ff4ffa1c491d",
+              "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+              "provider_job_id": "700c4340-7fdb-460b-ac48-e419530e0e6e",
+              "generation_id": "bb8bad50-e29c-4aac-ae7c-7657cbbeadd9",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 10,
+              "alpha_pixel_count": [
+                1418,
+                1426,
+                1444,
+                1424,
+                1299,
+                1349,
+                1431,
+                1430,
+                1432,
+                1429
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            }
+          }
+        },
+        {
+          "index": 3,
+          "name": "Ancient Lava Toad",
+          "source_path": "assets/monsters/pmd/PMD0003_STATIC_64.png",
+          "source_size": [
+            64,
+            64
+          ],
+          "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+          "motions": {
+            "idle": {
+              "path": "assets/monsters/pmd/PMD0003_IDLE_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 8,
+              "loop": true,
+              "sha256": "dc213446b416dae7771eb0ee7faed48a8e984097bad6e5b6112e88b3d3b7db4d",
+              "frame_unique": 8,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "3eba14c4-09a5-4fd1-ab08-1a409b7b9acf",
+              "generation_id": "2bb506ca-9d79-4fc2-a630-06a8a81da71a",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+            },
+            "attack": {
+              "path": "assets/monsters/pmd/PMD0003_ATTACK_11F_128px.png",
+              "frames": 11,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "7d9a4c900355675a9f4f82d7e31d453d70844cea6453f73e2cad8d2aa31b36bc",
+              "frame_unique": 11,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "1e94f413-f555-4522-a8c9-dfcf159c3187",
+              "generation_id": "11edce38-29ac-46ad-9f36-d69c8d571e1a",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+            },
+            "hurt": {
+              "path": "assets/monsters/pmd/PMD0003_HURT_6F_128px.png",
+              "frames": 6,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 9,
+              "loop": false,
+              "sha256": "9c112e0b50e5f23cbc2910441146def3cdca0a7bab23e7c692504968f930f1f5",
+              "frame_unique": 6,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "fdfc9bba-6147-46ad-9ad9-712138d112fd",
+              "generation_id": "9337135e-68cd-41e1-875d-4f399c1872f2",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+            },
+            "ko": {
+              "path": "assets/monsters/pmd/PMD0003_KO_8F_128px.png",
+              "frames": 8,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 7,
+              "loop": false,
+              "sha256": "b145a49cf60422b7589ca38d4d087f2aa4b812d82a75c52035d92bf2bd3ea382",
+              "frame_unique": 8,
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "technical_qa": "PASS",
+              "art_status": "ART_REVIEW_PENDING",
+              "provider_job_id": "da11ae2b-24b3-4b28-84bc-1b2e6c8fb1d8",
+              "generation_id": "61a2491e-eb52-4bbd-8c92-b69852c78b88",
+              "provider_usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+            },
+            "guard": {
+              "path": "assets/monsters/pmd/PMD0003_GUARD_7F_128px.png",
+              "frames": 7,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 8,
+              "loop": false,
+              "sha256": "264c98ae94125295f4cfe0a0c45683d0b27fca38059a28cd650b38f7b841a1f9",
+              "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+              "provider_job_id": "438591de-ace5-49f5-bafd-701c73f5183a",
+              "generation_id": "a99cf487-cce1-40c5-bbb4-0149d3b69744",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 7,
+              "alpha_pixel_count": [
+                1915,
+                1904,
+                1849,
+                1869,
+                1862,
+                1856,
+                1908
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "skill": {
+              "path": "assets/monsters/pmd/PMD0003_SKILL_9F_128px.png",
+              "frames": 9,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": false,
+              "sha256": "8e6cce4da6436a620aa50174388e7f08f18c4b4a96cfd47c08be8c704f155a5f",
+              "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+              "provider_job_id": "d1e336fd-9b4a-426d-86a6-bb2234017dc7",
+              "generation_id": "a91fb6fc-be82-48a1-9e1f-a465a5c56d17",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 9,
+              "alpha_pixel_count": [
+                1854,
+                1833,
+                1869,
+                1860,
+                1854,
+                1913,
+                2005,
+                1987,
+                1939
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            },
+            "hop": {
+              "path": "assets/monsters/pmd/PMD0003_HOP_10F_128px.png",
+              "frames": 10,
+              "columns": 4,
+              "cell": [
+                128,
+                128
+              ],
+              "fps": 10,
+              "loop": true,
+              "sha256": "e08544234493a8cdac357eb083761eaf34ba4e925c43d5adfbd1c19ba20fd332",
+              "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+              "provider_job_id": "baa14794-67c1-41fb-a38e-752eb9c5c413",
+              "generation_id": "eb08f17c-8d99-4b45-9812-c21070b9a3ec",
+              "usage": {
+                "type": "generations",
+                "generations": 3
+              },
+              "border_counts": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "frame_unique": 10,
+              "alpha_pixel_count": [
+                1940,
+                1934,
+                1914,
+                1947,
+                1806,
+                1817,
+                1830,
+                1949,
+                1947,
+                1943
+              ],
+              "technical_qa": "PASS",
+              "art_status": "OWNER_ART_REVIEW_PENDING"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "stage_count": 6,
+  "clip_count": 42,
+  "total_frames": 340,
+  "new_pixel_lab_jobs": 18,
+  "new_provider_generations": 54.0,
+  "unapproved_new_art": 18,
+  "technical_qa": "PASS",
+  "human_art_gate": "OWNER_REVIEW_PENDING",
+  "issues": [],
+  "control_note": "Real source-locked PixelLab atlases. DO NOT overwrite previously approved attack V6 / R8. Only battle-independent gallery."
+}

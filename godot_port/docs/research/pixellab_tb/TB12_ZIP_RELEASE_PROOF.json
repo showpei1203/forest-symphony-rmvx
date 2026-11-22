@@ -1,0 +1,15 @@
+{
+  "name": "FS_TB_R12_TWO_FAMILIES_7_ACTION_ART_FACTORY_PRIVATE_20261122.zip",
+  "sha256": "a06510611f4b765b352a45bf8abf425d48ad2d688a78c45c5a20f1c06d938c82",
+  "zip_crc": "PASS",
+  "file_count": 137,
+  "bytes": 2938340,
+  "clip_count": 42,
+  "frames": 340,
+  "stages": 6,
+  "new_jobs": 18,
+  "new_provider_generations": 54,
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "technical_qa": "PASS",
+  "art_gate": "OWNER_REVIEW_PENDING"
+}

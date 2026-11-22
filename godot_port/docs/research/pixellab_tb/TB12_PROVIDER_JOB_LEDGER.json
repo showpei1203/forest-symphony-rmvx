@@ -1,0 +1,808 @@
+{
+  "bat": {
+    "1_guard": {
+      "stage": 1,
+      "action": "guard",
+      "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+      "source_padded_sha256": "f6336b3927fea390342e89f13a6792cd03cfea5da1f3cc33c2abb7b329ab43e7",
+      "cell": [
+        128,
+        128
+      ],
+      "expected_frames": 7,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611321,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "DEFEND: bat folds both broad leaf wings inward around chest and bends head down as a defensive shield, then unfolds to hover; no attack, arm or hands; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 1 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. ",
+      "status": "completed",
+      "job_id": "be59b159-3b70-4fcf-a23d-d54322735f9d",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE1_GUARD_7F_128px.png",
+      "sheet_sha256": "2a4ddb3bf503360293f8435d0ee6c8adb40bed6c0c7cb0a488b8c671ba0e2534",
+      "generation_id": "25d2d7e4-f7ef-4bf6-b85d-ecf49c675d9b",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 7,
+      "opaque_area": [
+        2695,
+        2643,
+        2373,
+        2266,
+        2411,
+        2621,
+        2746
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "1_skill": {
+      "stage": 1,
+      "action": "skill",
+      "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+      "source_padded_sha256": "f6336b3927fea390342e89f13a6792cd03cfea5da1f3cc33c2abb7b329ab43e7",
+      "cell": [
+        128,
+        128
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611322,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "SPELL CAST: levitate slightly with a raised head and spread leaf wings, inner emerald veins pulse softly then return to idle. No detached or external projectiles, retain same body and chest core; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 1 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. ",
+      "status": "completed",
+      "job_id": "8bf85d1f-48a9-4f22-8c53-b70001754dcd",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE1_SKILL_8F_128px.png",
+      "sheet_sha256": "3110d1b8c818388d8392bd4cace9fae340708548efd8d616446bfc725c6faf30",
+      "generation_id": "82eb36dc-53a3-48b9-9452-c1ee0b5eed4e",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        2715,
+        2756,
+        2810,
+        2849,
+        2848,
+        2813,
+        2739,
+        2740
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "1_fly": {
+      "stage": 1,
+      "action": "fly",
+      "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+      "source_padded_sha256": "f6336b3927fea390342e89f13a6792cd03cfea5da1f3cc33c2abb7b329ab43e7",
+      "cell": [
+        128,
+        128
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611323,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "FLIGHT: cyclic wing power stroke with small forward drift, bat stays 3/4 southeast, legs tucked, two wings attached to shoulders, no camera turnaround; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 1 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. ",
+      "status": "completed",
+      "job_id": "8eb5deff-e0f0-403b-a417-0a783c6f7114",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE1_FLY_8F_128px.png",
+      "sheet_sha256": "1e67022fb141b6804b38ff6e69a982401eded5a3dbc416f33a1d2fd32e4a3392",
+      "generation_id": "e7ef63ae-7b5c-4e5e-bab0-2da04f83043d",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        2705,
+        2792,
+        2828,
+        2722,
+        2620,
+        2594,
+        2651,
+        2677
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "2_guard": {
+      "stage": 2,
+      "action": "guard",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_padded_sha256": "1eba0110060ce038b1892547a12adce48ca62b24fd6b0baff80dee31ebeae02e",
+      "cell": [
+        160,
+        160
+      ],
+      "expected_frames": 7,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611338,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "DEFEND: bat folds both broad leaf wings inward around chest and bends head down as a defensive shield, then unfolds to hover; no attack, arm or hands; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 2 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve leaf crest and curled tail with green leaf bud. ",
+      "status": "completed",
+      "job_id": "40d0b933-b508-46e0-9781-ce154bd57216",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE2_GUARD_7F_160px.png",
+      "sheet_sha256": "c5ed78e1209a6a900fb42bf4ddcc3cecb3aa5d1839efb1ccec58054c292f89c3",
+      "generation_id": "1c5ed611-1ad4-43ba-a68b-d963b44b0a61",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 7,
+      "opaque_area": [
+        5366,
+        5098,
+        4511,
+        4508,
+        4723,
+        5178,
+        5470
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "2_skill": {
+      "stage": 2,
+      "action": "skill",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_padded_sha256": "1eba0110060ce038b1892547a12adce48ca62b24fd6b0baff80dee31ebeae02e",
+      "cell": [
+        160,
+        160
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611339,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "SPELL CAST: levitate slightly with a raised head and spread leaf wings, inner emerald veins pulse softly then return to idle. No detached or external projectiles, retain same body and chest core; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 2 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve leaf crest and curled tail with green leaf bud. ",
+      "status": "completed",
+      "job_id": "35f3c520-fb16-4f22-bc6d-defe44a907b4",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE2_SKILL_8F_160px.png",
+      "sheet_sha256": "9b5df26413bfea5b33a2bcac1b7563131e84ec99006606815d1f4ccad91673b8",
+      "generation_id": "9440ec20-fa6b-4ccf-b71d-8e70290a81de",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        5424,
+        5466,
+        5498,
+        5561,
+        5617,
+        5447,
+        5404,
+        5410
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "2_fly": {
+      "stage": 2,
+      "action": "fly",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_padded_sha256": "1eba0110060ce038b1892547a12adce48ca62b24fd6b0baff80dee31ebeae02e",
+      "cell": [
+        160,
+        160
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611340,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "FLIGHT: cyclic wing power stroke with small forward drift, bat stays 3/4 southeast, legs tucked, two wings attached to shoulders, no camera turnaround; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 2 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve leaf crest and curled tail with green leaf bud. ",
+      "status": "completed",
+      "job_id": "c9db1fdf-3aee-429f-9ee2-4c9b9f00ecfe",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE2_FLY_8F_160px.png",
+      "sheet_sha256": "9d26617a1d331e9b2e78b61c607b1458de5cbc00e90cdfa37f08ae320cc5e49c",
+      "generation_id": "cf31bcdb-365e-4150-8a2c-649f1b373f00",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        5362,
+        5417,
+        5591,
+        5485,
+        5136,
+        5060,
+        5252,
+        5398
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "3_guard": {
+      "stage": 3,
+      "action": "guard",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "9186fdf54e9f1fa338379abffc049796de3fa8d66a36b70eb65230aca9a3afc5",
+      "cell": [
+        224,
+        224
+      ],
+      "expected_frames": 7,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611355,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "DEFEND: bat folds both broad leaf wings inward around chest and bends head down as a defensive shield, then unfolds to hover; no attack, arm or hands; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "f04c6083-c6ea-4931-bb73-db207a37d980",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_GUARD_7F_224px.png",
+      "sheet_sha256": "d6bdcb4b7a1990be24640858fe39c805258b92201f390ae89cc5bb50359f335c",
+      "generation_id": "3f1bbf59-4bba-4c36-bbdb-f4cb8bfbc7ff",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 7,
+      "opaque_area": [
+        8908,
+        8026,
+        7472,
+        7249,
+        7517,
+        8133,
+        8949
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "3_skill": {
+      "stage": 3,
+      "action": "skill",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "9186fdf54e9f1fa338379abffc049796de3fa8d66a36b70eb65230aca9a3afc5",
+      "cell": [
+        224,
+        224
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611356,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "SPELL CAST: levitate slightly with a raised head and spread leaf wings, inner emerald veins pulse softly then return to idle. No detached or external projectiles, retain same body and chest core; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "25b426dd-995a-4c95-802a-9d11275d0abb",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_SKILL_8F_224px.png",
+      "sheet_sha256": "231ac3b7473096cf05fa2a537b2cbdf3af38b286439e9a87881553001b000a75",
+      "generation_id": "74c415f0-35e0-4ae5-99f8-d29108bb1ae4",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        8725,
+        8892,
+        9292,
+        9467,
+        9409,
+        9181,
+        8693,
+        8716
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "3_fly_R12_429_record": {
+      "stage": 3,
+      "action": "fly",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "9186fdf54e9f1fa338379abffc049796de3fa8d66a36b70eb65230aca9a3afc5",
+      "cell": [
+        224,
+        224
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611357,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "FLIGHT: cyclic wing power stroke with small forward drift, bat stays 3/4 southeast, legs tucked, two wings attached to shoulders, no camera turnaround; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "submit_failed",
+      "error": "PixelLab HTTP 429 {\"detail\":\"Maximum 8 concurrent background jobs allowed (Tier 1). You have 8 active jobs.\"}"
+    },
+    "3_fly": {
+      "stage": 3,
+      "action": "fly",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "9186fdf54e9f1fa338379abffc049796de3fa8d66a36b70eb65230aca9a3afc5",
+      "cell": [
+        224,
+        224
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611357,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "FLIGHT: cyclic wing power stroke with small forward drift, bat stays 3/4 southeast, legs tucked, two wings attached to shoulders, no camera turnaround; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "0908245a-4aec-4e61-8d08-7d6e3d034a91",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_FLY_8F_224px.png",
+      "sheet_sha256": "cdefbd3d4e11fe9cbf9e7f430a514d131f9da6caf070ca7f1261b837dcc8be8e",
+      "generation_id": "cdb9d53e-0d87-44b3-9bef-90fed78dbe54",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        8839,
+        8812,
+        8818,
+        8788,
+        8347,
+        8228,
+        8506,
+        8714
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    }
+  },
+  "frog": {
+    "1_guard": {
+      "stage": 1,
+      "action": "guard",
+      "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+      "input_sha256": "4a3ec97fb3a466695401a7402bb4e7d8cab485cbcc977abd85b102a46645df07",
+      "prompt": "DEFENSIVE GUARD: hunker low on all four frog feet, lower head behind original rock shell shielding the body, freeze briefly then return. Same lava frog, same basalt plates, no external shield, no claw attack.",
+      "seed": 202612014,
+      "frames": 7,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "7d253422-6a58-471e-8220-77d54d49ee2a",
+      "submitted_usage": null,
+      "atlas_name": "PMD0001_GUARD_7F_128px.png",
+      "generation_id": "acdeeaca-da85-4c93-837e-2fd4bb76c242",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "e72adb1e0c2ed357d8d68b059a35abe2529db99ecefc2f6608e4a66e72d30daa",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 7,
+      "qa": "PASS"
+    },
+    "1_skill": {
+      "stage": 1,
+      "action": "skill",
+      "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+      "input_sha256": "4a3ec97fb3a466695401a7402bb4e7d8cab485cbcc977abd85b102a46645df07",
+      "prompt": "MAGMA SKILL CHARGE: original basalt shell cracks PULSE brighter orange, crouch, raise head as molten heat gathers entirely within its own body, then settle back down. Absolutely NO additional creature, detached magic projectile, or hands.",
+      "seed": 202612015,
+      "frames": 9,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "41df5888-987d-4871-baef-ad933cbe8df2",
+      "submitted_usage": null,
+      "atlas_name": "PMD0001_SKILL_9F_128px.png",
+      "generation_id": "24faab53-c7cd-4852-9d00-d336e74f3e9a",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "84dfdc9f2bb340ad07e91649dfa0cf2fe364f3d292749166af069df6e39ca185",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 9,
+      "qa": "PASS"
+    },
+    "1_hop": {
+      "stage": 1,
+      "action": "hop",
+      "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+      "input_sha256": "4a3ec97fb3a466695401a7402bb4e7d8cab485cbcc977abd85b102a46645df07",
+      "prompt": "LOCOMOTION HOP: four-legged lava frog crouches, pushes off with powerful hind feet, leaps a short distance toward SE in 3/4 angle, lands on all four feet and recovers. Preserve connected limbs, same lava shell, no duplicated frog.",
+      "seed": 202612016,
+      "frames": 10,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "8aa7dbd1-c3bf-4aea-a9a8-f0bec33394d8",
+      "submitted_usage": null,
+      "atlas_name": "PMD0001_HOP_10F_128px.png",
+      "generation_id": "439f3029-0323-4a04-92f3-4949de5e4770",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "c7d2b9313527e01de36a28b1fcff861f90bfa9d56a3359cbea3e4d8be61ff3ff",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 10,
+      "qa": "PASS"
+    },
+    "2_guard": {
+      "stage": 2,
+      "action": "guard",
+      "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+      "input_sha256": "e85fa2c81630cd7f18e027836b9047a6ccc41ad44f345c09ed61e41ad8ace1a9",
+      "prompt": "DEFENSIVE GUARD: hunker low on all four frog feet, lower head behind original rock shell shielding the body, freeze briefly then return. Same lava frog, same basalt plates, no external shield, no claw attack.",
+      "seed": 202612024,
+      "frames": 7,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "4c9317f8-df33-4df5-ac53-636eeac15e1d",
+      "submitted_usage": null,
+      "atlas_name": "PMD0002_GUARD_7F_128px.png",
+      "generation_id": "008a4e97-57b9-4e50-8444-cd706621b836",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "46ddae0e3e2a5043b381e9a9e038498a9aac889dc92df2c08834f6406204ea23",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 7,
+      "qa": "PASS"
+    },
+    "2_skill": {
+      "stage": 2,
+      "action": "skill",
+      "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+      "input_sha256": "e85fa2c81630cd7f18e027836b9047a6ccc41ad44f345c09ed61e41ad8ace1a9",
+      "prompt": "MAGMA SKILL CHARGE: original basalt shell cracks PULSE brighter orange, crouch, raise head as molten heat gathers entirely within its own body, then settle back down. Absolutely NO additional creature, detached magic projectile, or hands.",
+      "seed": 202612025,
+      "frames": 9,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "c32b6e3d-954d-4655-9fe7-d5a5436ba22f",
+      "submitted_usage": null,
+      "atlas_name": "PMD0002_SKILL_9F_128px.png",
+      "generation_id": "4c7fae04-2b76-4a6c-92d5-15b0aa79b093",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "568961e848bbdf8a25b540da45be7bb6afdb81effdb1bc16ef50cfb0afa2ad17",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 9,
+      "qa": "PASS"
+    },
+    "2_hop": {
+      "stage": 2,
+      "action": "hop",
+      "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+      "input_sha256": "e85fa2c81630cd7f18e027836b9047a6ccc41ad44f345c09ed61e41ad8ace1a9",
+      "prompt": "LOCOMOTION HOP: four-legged lava frog crouches, pushes off with powerful hind feet, leaps a short distance toward SE in 3/4 angle, lands on all four feet and recovers. Preserve connected limbs, same lava shell, no duplicated frog.",
+      "seed": 202612026,
+      "frames": 10,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "700c4340-7fdb-460b-ac48-e419530e0e6e",
+      "submitted_usage": null,
+      "atlas_name": "PMD0002_HOP_10F_128px.png",
+      "generation_id": "bb8bad50-e29c-4aac-ae7c-7657cbbeadd9",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "a300a0c154d3d108be14312d1bdbcea4ca74bf20fde69fbcc063ff4ffa1c491d",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 10,
+      "qa": "PASS"
+    },
+    "3_guard": {
+      "stage": 3,
+      "action": "guard",
+      "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+      "input_sha256": "d6db33bd26bee20b93f7d3ba8090ab915af207ca2b69822e53dfc723cadf770b",
+      "prompt": "DEFENSIVE GUARD: hunker low on all four frog feet, lower head behind original rock shell shielding the body, freeze briefly then return. Same lava frog, same basalt plates, no external shield, no claw attack.",
+      "seed": 202612034,
+      "frames": 7,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "438591de-ace5-49f5-bafd-701c73f5183a",
+      "submitted_usage": null,
+      "atlas_name": "PMD0003_GUARD_7F_128px.png",
+      "generation_id": "a99cf487-cce1-40c5-bbb4-0149d3b69744",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "264c98ae94125295f4cfe0a0c45683d0b27fca38059a28cd650b38f7b841a1f9",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 7,
+      "qa": "PASS"
+    },
+    "3_skill": {
+      "stage": 3,
+      "action": "skill",
+      "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+      "input_sha256": "d6db33bd26bee20b93f7d3ba8090ab915af207ca2b69822e53dfc723cadf770b",
+      "prompt": "MAGMA SKILL CHARGE: original basalt shell cracks PULSE brighter orange, crouch, raise head as molten heat gathers entirely within its own body, then settle back down. Absolutely NO additional creature, detached magic projectile, or hands.",
+      "seed": 202612035,
+      "frames": 9,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "d1e336fd-9b4a-426d-86a6-bb2234017dc7",
+      "submitted_usage": null,
+      "atlas_name": "PMD0003_SKILL_9F_128px.png",
+      "generation_id": "a91fb6fc-be82-48a1-9e1f-a465a5c56d17",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "8e6cce4da6436a620aa50174388e7f08f18c4b4a96cfd47c08be8c704f155a5f",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 9,
+      "qa": "PASS"
+    },
+    "3_hop": {
+      "stage": 3,
+      "action": "hop",
+      "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+      "input_sha256": "d6db33bd26bee20b93f7d3ba8090ab915af207ca2b69822e53dfc723cadf770b",
+      "prompt": "LOCOMOTION HOP: four-legged lava frog crouches, pushes off with powerful hind feet, leaps a short distance toward SE in 3/4 angle, lands on all four feet and recovers. Preserve connected limbs, same lava shell, no duplicated frog.",
+      "seed": 202612036,
+      "frames": 10,
+      "cell": [
+        128,
+        128
+      ],
+      "status": "completed",
+      "source_identity": "source_sha256_immutable",
+      "art_gate": "REVIEW_PENDING",
+      "job_id": "baa14794-67c1-41fb-a38e-752eb9c5c413",
+      "submitted_usage": null,
+      "atlas_name": "PMD0003_HOP_10F_128px.png",
+      "generation_id": "eb08f17c-8d99-4b45-9812-c21070b9a3ec",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "sheet_sha256": "e08544234493a8cdac357eb083761eaf34ba4e925c43d5adfbd1c19ba20fd332",
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 10,
+      "qa": "PASS"
+    }
+  }
+}
