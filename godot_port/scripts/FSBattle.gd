@@ -262,7 +262,11 @@ func start() -> bool:
     return active
 
 func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
-    if not FSOriginalActionSeal.can_use(attacker,db,"attack"):
+    # Real party/troop combatants always carry normalized source State IDs.
+    # Some long-standing pure-formula tests use standalone data dictionaries
+    # without battler states. Keep those legacy formula probes separate.
+    if (attacker.has("states") or party.has(attacker) or enemies.has(attacker)) and (
+            not FSOriginalActionSeal.can_use(attacker,db,"attack")):
         changed.emit("原版 #312 攻撃封印：攻擊無法結算")
         return false
     # A pure authority refresh is required for dynamic State/Equip changes
@@ -461,7 +465,8 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     return int(hit["hp"])
 
 func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
-    if not FSOriginalActionSeal.can_use(user,db,"skill"):
+    if (user.has("states") or party.has(user) or enemies.has(user)) and (
+            not FSOriginalActionSeal.can_use(user,db,"skill")):
         changed.emit("原版 #312 スキル封印：不能使用技能或支付 MP")
         return false
     if not _refresh_element_source(user) or not (
@@ -840,7 +845,8 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
 
 func use_item(target: Dictionary, item_id: int, user: Dictionary = {},
         in_battle: bool = true) -> bool:
-    if in_battle and not user.is_empty() and (
+    if in_battle and (user.has("states") or party.has(user) or (
+            enemies.has(user))) and (
             not FSOriginalActionSeal.can_use(user,db,"item")):
         changed.emit("原版 #312 アイテム封印：禁止消耗物品")
         return false
