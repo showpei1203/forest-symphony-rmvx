@@ -300,6 +300,27 @@ jobs:
           assert q['real_live_FSBattle']=='NOT_RUN'
           print('R17_SOURCE_STATIC_MANIFEST_PASS / original GPU artifact separately owner private / ART_HOLD')
           PY
+      - name: R19 Paper Doll source-contract negative gate (known rejected art)
+        run: |
+          python3 -m py_compile godot_port/tools/ta_actor_paper_doll_source_gate.py
+          python3 godot_port/tools/ta_actor_paper_doll_source_gate.py --r19-manifest godot_port/docs/handoff/TA_R19_FIVE_KEYPOSE_SOURCE_MANIFEST_20261122.json
+          python3 - <<'PY'
+          import importlib.util,json
+          p='godot_port/tools/ta_actor_paper_doll_source_gate.py'
+          spec=importlib.util.spec_from_file_location('paper_doll_gate',p)
+          mod=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+          j=json.load(open('godot_port/docs/handoff/TA_R19_FIVE_KEYPOSE_SOURCE_MANIFEST_20261122.json',encoding='utf-8'))
+          outcome=mod.reject_r19(j)
+          assert outcome['art_status']=='ART_REJECTED'
+          assert outcome['status']=='SOURCE_LAYER_BLOCKED'
+          assert not outcome['production_allowed']
+          assert 'FORBIDDEN_BODY_RECREATION' in outcome['missing_or_invalid']
+          assert 'MISSING_LAYER:torso_outfit' in outcome['missing_or_invalid']
+          assert 'MISSING_LAYER:legs_pants' in outcome['missing_or_invalid']
+          assert 'MISSING_LAYER:feet_boots' in outcome['missing_or_invalid']
+          print('R19_SOURCE_LAYER_REJECTION_GUARD_CONFIRMED; NO ART PASS')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd
