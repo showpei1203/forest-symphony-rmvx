@@ -30,6 +30,12 @@ func _ready()->void:
     rig=RIG.new()
     rig.name="TAActor01ThreeLayers"
     rig.position=Vector2(50,48)
+    # P539D owner visual correction: the earlier A52 45-degree portrait
+    # faces the WRONG horizontal side in the battle composition.
+    # Mirror the COMPLETE Body/Weapon/FX rig as ONE assembly, around its
+    # fixed cell centre. Not a 180-degree upside-down sprite rotation.
+    # The source atlases stay byte-exact; visual orientation only.
+    rig.scale=Vector2(-1.0,1.0)
     add_child(rig)
     rig.contact_reached.connect(_on_visual_contact)
     rig.motion_finished.connect(_on_visual_finished)

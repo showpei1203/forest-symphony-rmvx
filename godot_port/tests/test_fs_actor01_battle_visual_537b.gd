@@ -25,6 +25,16 @@ func _run()->void:
             "public GitHub must not claim owner-only A52 att PNG is installed"):return
     if not check(visual.rig.layers().size()==3 and visual.rig.FRAME_COUNT==12 and (
             visual.rig.ATTACK_CONTACT_SEC==0.630), "T-A 3-layer 12-frame source timing lost"):return
+    # P539D: all three original animation layers must inherit the SAME
+    # horizontal reflection; using 180-degree Node2D rotation is WRONG.
+    if not check(is_equal_approx(visual.rig.scale.x,-1.0) and
+            is_equal_approx(visual.rig.scale.y,1.0) and
+            visual.rig.transform.determinant()<0.0 and (
+            visual.rig.rotation==0.0) and (
+            visual.rig.layers()[0].get_parent()==visual.rig) and (
+            visual.rig.layers()[1].get_parent()==visual.rig) and (
+            visual.rig.layers()[2].get_parent()==visual.rig),
+            "Actor01 A52 must face opposite horizontal direction with Body/Weapon/FX aligned, not upside down"):return
     var atlas=synthetic_atlas()
     if not check(visual.rig.configure_attack_only(atlas,atlas,atlas),
             "isolated Godot motion rig fixture cannot configure"):return
