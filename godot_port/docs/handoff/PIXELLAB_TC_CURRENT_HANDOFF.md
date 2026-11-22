@@ -1,3 +1,22 @@
+# T-C CURRENT｜D7 風蝕金砂「星井綠洲」Ground-first 新來源｜2026-11-22
+
+**本輪新增實體藝術來源：FS_03_VILLAGE 砂漠 Ground 1280×928 候選已產出，原始 1477×1065 圖、32px grid 與 source QA 已完整存入私人 Drive；PAR 錯畫成雪原且完全無 Alpha＝0 透明區，兩次均拒收。Ground 裡有直立崖壁與灌木，正式 Art HOLD、Godot 4.7.2 NOT_RUN、12 張正式封版仍 0／12。** 此節為最新權威，後方 D6/D5 為歷史。
+
+## Ground-first 真成果
+
+- 世界官方 [六地形 World Bible](https://docs.google.com/document/d/1SjVPK3J5exwp0fC3bRMHjoWo2vne_pck/edit)：FS_03_VILLAGE 星井綠洲，地形風蝕金砂，Ground 沙丘／砂岩／乾河道／礫地，完整 PAR 所有非地表岩柱／整棵棕櫚／砂岩房屋／布棚／路燈／立體岩石。**先 Ground、再完整 PAR，不判斷哪些會遮人物**。
+- 新 Ground 原圖 1477×1065 RGB SHA `8f8c0ac66359bf8bc47e00beb889a4e66c5f2c9d339b00f9cf05957818556f91`；1× 精確裁 `(98,68,1378,996)` 得 1280×928（40×29），SHA `ac3688112874cd45a38f484b8c37dbc0b8f6abd41b67cc0c578bc95f0935aa97`，不插值/放大；另出格線 QA，原 Ground RGB 不被後續改寫。
+- 視覺內容有中央砂岩廣場、綠洲池、砂地道路與乾涸河道；粗略地形身分 warm fraction 0.949892、cool fraction 0.039116，成功與雪原區分。**但地面出現高聳直立砂岩崖壁與立體灌木，正式 GroundOnly purity ART HOLD**，不能叫符合正式全部非地表去 PAR。
+- 新完整 **PAR NOT_GENERATED**：兩次工具都錯輸出全新冰雪迷宮，且兩張 RGBA alpha 分別 (51..250)、(1..251)，**完全沒有 alpha=0 透明像素**，不符合透明 desert PAR 與同 Ground 地形。這兩張錯圖已拒收，沒有上傳為私有正式素材，也沒有做 Master 逆切。
+- Google Drive 私人 **[D7 Ground/source/QA ZIP](https://drive.google.com/file/d/1tFCb_V0VaxWFgKrewGIs3sIEcZ-DN7yi/view)** 8,009,029 bytes／5 entries／ZIP CRC PASS、SHA `c491c51279ee558371893df95a5b8a32a346ed35092bb371a0d7297b1e6603b6`；[原始圖](https://drive.google.com/file/d/1OQmMo0pBq7WE0RwcsRkALqDDaLXrThjA/view)、[Ground 40×29 候選](https://drive.google.com/file/d/1dYmk2I49wp0gCCWxAh5k0JiStzwNtCM4/view)，三檔 Google provider metadata readback `shared=false` / user owner only。沒有操作 user PC、沒有在公開 Github 上傳私有 PNG。
+- 新 [正式 D7 詳細 QA](TC_D7_FS_03_VILLAGE_GROUND_FIRST_SOURCE_20261122.md)、[D7 FS_03_VILLAGE Blueprint](../../tc_factory/biomes/FS_03_VILLAGE_GROUND_FIRST_BLUEPRINT_20261122.json)、[12-map 登記](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json)；地形防錯 `fs_biome_identity_guard.py` 搭配 `test_fs_biome_identity_guard.py` 與 Github Actions run [44987584378](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44987584378)，4/4 synthetic QA SUCCESS。顏色匹配不能解除 Art HOLD。
+
+## 下一完整施工單位
+
+**將「星井綠洲」同一張地圖生成真正純地表 1280×928 Ground，之後生成真透明完整 PAR，才能正式合成。** 現在圖像工具反覆回傳冰雪來源或合成圖；先改善/更換能指定兩個獨立 source、控制原生尺寸、真透明 Alpha 的生成供應者，不用人工局部抽遮蔽修補。若工具權限未接通就記錄 NOT_RUN，絕不虛構 PixelLab 或其他 API 成功。此工作線只做美術圖層與必要原生 QA，事件/戰鬥/NPC 交其他線；六地形既有進度照史實維護。
+
+---
+
 # T-C CURRENT｜D6 冰脊迷谷 Ground-first + 真完整透明 PAR 完成候選｜2026-11-22
 
 **D6 實際成果：冰脊迷谷 FS_02_MAZE 新的真透明完整 PAR 已生成，已和前輪獨立 Ground 以相同 1472×1056 世界原點合成。技術配對／逐像素原生尺寸 PNG PASS；正式 80×58／2560×1856 尚未達到，Art HOLD，Godot 4.7.2 native 本輪 NOT_RUN。** 這是最新權威，後方 D5/D4 為歷史。使用者不變要求：**Ground 先生成，全部非 Ground 的完整物件再產生 PAR，不辨識遮住角色與否。**
