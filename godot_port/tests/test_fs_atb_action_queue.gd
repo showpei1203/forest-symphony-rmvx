@@ -47,12 +47,13 @@ func _run() -> void:
     battle.party.append({
         "id":1,"actor":true,"name":"Actor01","skills":[1,2,3],
         "agi":20,"atk":20,"def":4,"spi":5,"hp":200,"maxhp":500,
-        "mp":100,"maxmp":100,"guarding":false,
+        "mp":100,"maxmp":100,"guarding":false,"states":[],
         "equipment":[0,0,0,0,0],"two_swords_style":false
     })
     battle.enemies.append({
         "id":1,"actor":false,"name":"Enemy","agi":10,"atk":10,
-        "def":2,"spi":3,"hp":1000,"maxhp":1000,"mp":0,"maxmp":0
+        "def":2,"spi":3,"hp":1000,"maxhp":1000,"mp":0,"maxmp":0,
+        "states":[]
     })
     battle.source_atb_rolls_for_test = {"actor:0":0,"enemy:0":0}
     if not _check(battle.start(),"can begin synthetic source-shaped battle"): return
