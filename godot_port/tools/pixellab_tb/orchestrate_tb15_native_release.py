@@ -28,7 +28,7 @@ while time.monotonic()<limit:
     time.sleep(8)
 else:raise RuntimeError('R15 timed out with evidence retained in TEMP, no fake Drive upload')
 BUILDER=Path(os.environ['TEMP'])/'fs_tb15_builder.py'
-BUILDER.write_bytes(urllib.request.urlopen('https://raw.githubusercontent.com/showpei1203/forest-symphony-rmvx/589aa2ca1c1ae9b1898065e8c72ecddba5cc724b/godot_port/tools/pixellab_tb/build_tb15_art_release.py',timeout=60).read())
+BUILDER.write_bytes(urllib.request.urlopen('https://raw.githubusercontent.com/showpei1203/forest-symphony-rmvx/8bd7f67f6fdce1b3b281fb83f00889610cecbc3c/godot_port/tools/pixellab_tb/build_tb15_art_release.py',timeout=60).read())
 compile(BUILDER.read_text(encoding='utf-8'),str(BUILDER),'exec')
 print('FS_TB15_BUILDER_SOURCE_READY',len(BUILDER.read_bytes()),flush=True)
 run=[sys.executable,str(BUILDER),
