@@ -129,10 +129,19 @@ func _run()->void:
             screen.body.get_child_count()>=3),
             "source target help must share scroll target UI, never block choices"):
         return
-    screen._show_battle()
+    # Exercise the actual ORIGINAL 462 help -> clickable target -> #312
+    # queue flow. Hover-only preview must not damage; real click enqueues
+    # exactly once, must clear temporary UI, and still no early HP loss.
+    var target_button:Button=screen.body.get_child(1)
+    if not check(target_button.visible and not target_button.disabled,
+            "Source #462 target button must remain usable after chrome cleanup"):
+        return
+    target_button.pressed.emit()
     if not check(screen.source_target_help==null and (
-            not battle.source_atb_wait),
-            "source target help must fully clear on exit, source ATB resume"):
+            not battle.source_atb_wait) and (
+            battle.action_queue.pending.size()==1) and (
+            int(battle.enemies[0]["hp"])==before_hp),
+            "Source #462 click must enqueue one real #312 ACT, clear help, no early HP mutation"):
         return
     print("P539E Godot 4.7.2 original #462 target header and #381 stack/turn/detail, source #269 instant atlas digits, real selectable ATB target and capture fail-close PASS")
     quit(0)
