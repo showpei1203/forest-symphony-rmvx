@@ -145,7 +145,9 @@ func select(target:Dictionary,is_enemy:bool)->bool:
         # the same State IDs. One source problem is one warning, not two
         # duplicate diagnostics in the on-screen Help.
         var warning:String=str(quote.get("reason",""))
-        if not source_warnings.has(warning):
+        if source_warnings.is_empty():
+            # If InfoRows already rejected the same source battler,
+            # don't present a second redundant State-detail warning.
             source_warnings.append(warning)
     else:
         for record in quote["rows"]:
