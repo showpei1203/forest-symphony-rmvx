@@ -23,9 +23,9 @@ func _run()->void:
     var db:FSDatabase=DATA.database()
     var states:Array=[]
     states.resize(34)
-    states[30]={"id":30,"name":"燃燒","note":"<MAX_STACK 5><hud_priority:7><hud_detail_text:持續灼傷>",
+    states[30]={"id":30,"name":"燃燒","note":"<MAX_STACK 5><hud_priority:7><hud_detail_text:持續灼傷><target_priority:0>",
         "icon_index":21,"priority":1,"auto_release_prob":0}
-    states[31]={"id":31,"name":"麻痺","note":"<hud_show_turns><hud_detail>",
+    states[31]={"id":31,"name":"麻痺","note":"<hud_show_turns><hud_detail><target_priority:0>",
         "icon_index":22,"priority":3,"auto_release_prob":30}
     states[32]={"id":32,"name":"不可見","note":"<HUD隱藏>",
         "icon_index":23,"priority":10}
@@ -90,6 +90,9 @@ func _run()->void:
     var battle=BATTLE.new(db,world)
     if not check(battle.add_actor(1) and battle.add_enemy(1) and (
             battle.start()),"original source-shaped synthetic battle setup"):return
+    # #372 must NOT guess targetability for arbitrary State.note.
+    # Both active synthetic states include explicit target_priority:0,
+    # allowing target selection without disabling original source safety.
     # Inject precisely source-shaped State and target name; no private enemy
     # pixel claims or real source 11 postApply data on public GitHub.
     battle.enemies[0]["name"]="來源敵人"
