@@ -175,7 +175,7 @@ M.update(schema='FS_TB_R15_THREE_FAMILIES_9_EVOLUTION_FORMS_84_MOTIONS_PLUS_6_TR
          new_pixel_lab_jobs=18,new_pixel_lab_exported_frame_slots=156,
          third_family_stages=3,third_family_motions=12,new_revive_corrections=6,
          new_procedural_evolution_clips=2,new_procedural_evolution_frames=32,
-         technical_qa='PENDING_NATIVE','human_art_gate':'OWNER_ART_REVIEW_PENDING',
+         technical_qa='PENDING_NATIVE',human_art_gate='OWNER_ART_REVIEW_PENDING',
          source_note='Exact historical R14 original atlases retained. Six revised 10F KO->Idle anchored PixelLab revives replace old 11F manifest pointers without deleting original atlas. Third Ice Jackal lineage PixelLab Pixen stage1 then exact source-chained Edit Image stages2/3. Six-stage R15 animation output has F0/F(last) exact user source anchor images. Third family currently 4 genuine action types per form, not yet full 12. Two further transitions are deterministic pixel effects, not AI morphs.')
 (G/'TB15_MONSTER_FAMILY_MANIFEST.json').write_text(json.dumps(M,ensure_ascii=False,indent=2),encoding='utf-8')
 (REPORT/'R15_PROVIDER_LEDGER.json').write_text(json.dumps(J,ensure_ascii=False,indent=2),encoding='utf-8')
