@@ -69,7 +69,7 @@
     "qaDrive": "https://drive.google.com/file/d/11jWGIU54Lk8eyfwLGJs-YbKZU1W6ezIM/view"
   },
   "second_COMPLETE_PAR": {
-    "status": "NOT_GENERATED",
+    "status": "D13_INDEPENDENT_TRUE_RGBA_SOURCE_CANDIDATE_1474x1067_NOT_NATIVE_1280x928_ART_HOLD",
     "rule": "ALL non-ground objects in one independent transparent RGBA PNG regardless of actor occlusion, no roads/lava floor or complete Master; do not reverse-cut Master",
     "family": [
       "forge houses and taverns",
@@ -83,15 +83,26 @@
     ],
     "same_world_xy": "must match first Ground source world axes; no crop mismatch, no redraw Ground",
     "true_alpha_zero_background": "MANDATORY",
-    "failed_attempts": 5,
+    "failed_attempts": 6,
     "failed_summary": "1 RGB full town, 4 RGBA opaque full town, all zero alpha=0 pixels; PAR rejected, no composite made",
-    "art_gate": "HOLD"
+    "art_gate": "HOLD",
+    "source_original_RGBA_size": [
+      1474,
+      1067
+    ],
+    "source_original_sha256": "b6d529b66d9ec71c87991e7e63abeb85f9d145e056e7bf675cd8ac0de3678f72",
+    "real_alpha_zero_pixels": 715393,
+    "tech_candidate_1280x928": "RESAMPLED_LANCZOS_NOT_NATIVE_1X",
+    "native_crop_1280x928": "CROPPED_PROPS_ART_HOLD",
+    "world_xy": "VISUAL_PREVIEW_ONLY_NOT_VERIFIED",
+    "original_source_drive": "https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view",
+    "D13_private_QA": "https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view"
   },
   "technical_status": {
     "Ground_1280x928_RGB_source": "PASS",
     "volcanic_palette_identity": "CANDIDATE_CONFIRMED_DARK_BASALT_AND_LAVA",
-    "Complete_PAR": "NOT_GENERATED",
-    "Ground_PAR_composite": "NOT_RUN",
+    "Complete_PAR": "D13_REAL_RGBA_SOURCE_CANDIDATE_1474x1067",
+    "Ground_PAR_composite": "D13_PIL_COMPOSITE_PASS_TECH_CANDIDATES_RESAMPLED_AND_CROP_NOT_ART_PASS",
     "Godot4_7_2_native": "NOT_RUN",
     "formal_art_seal": "HOLD"
   },
