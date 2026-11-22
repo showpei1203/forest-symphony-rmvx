@@ -1,3 +1,32 @@
+# T-C CURRENT｜D8 星井綠洲 Ground-first＋真透明完整 PAR 已成功合成｜2026-11-22
+
+**這一輪有實際全新美術來源：FS_03_VILLAGE 星井綠洲 D8 的獨立透明 CompletePAR 生成成功，與既有 D7 沙漠 Ground 來源在相同世界座標合成為 1280×928／40×29 完整村莊候選。兩圖 Pixel Alpha 合成 TECH PASS，正式全圖 ART HOLD，Godot 4.7.2 native NOT_RUN。** 本段最新權威優於下方歷史 D7。仍嚴守使用者 Ground-only first、再 ALL_NON_GROUND PAR；不推理何物會遮擋角色，也不從 Master 反切。
+
+## 真新產圖／可驗證原檔
+
+- Ground 不變：D7 先生成 1477×1065 RGB 原圖 SHA `8f8c0ac66359bf8bc47e00beb889a4e66c5f2c9d339b00f9cf05957818556f91`；本輪再驗 byte-level，40×29 原裁 Ground SHA `ac3688112874cd45a38f484b8c37dbc0b8f6abd41b67cc0c578bc95f0935aa97`，未覆寫 Ground。
+- D8 獨立新 ImageGen 真透明沙漠 PAR，1477×1065 **RGBA** SHA `47e3225ddb6399b19647265220783197d06d57729e15c4ca13a2fbf182929988`，有不同砂岩房、完整棕櫚、藍紅布棚、市集、燈柱、水井、招牌、岩柱與全部非地表裝飾。原生 Alpha=0 真背景存在，不是 D7 兩張錯誤冰雪圖。
+- 同原世界座標 `crop=(98,68,1378,996)` 得 1280×928／40×29，無重採樣；真 raw PAR SHA `4fe7eacf0ba79f123963de2d03e15d14f4e2980287c0213d6744d3833c78c4b6`，另 clean-alpha 技術候選 SHA `16e9b4ba8ecf201fd43185ac7092fe1603433069b86eb1ecc213797b696f85f2`，真 CLEAN COMPOSITE SHA `bd616d80613727233037b6c5f4baf28e22d009772ff979fc3147afa1eda757ba`。
+- 46×33、1472×1056 的原場景「少量裁邊視覺參考」也已保存，避免忘記完整原始物件構圖；**這不是 FS_03_VILLAGE 正式大小**。
+
+## 真 Alpha／Art Gate
+
+- raw 40×29 PAR：alpha0 `548,678` pixels、alpha1..8 `185,051`、alpha240..254 `357,713`、alpha255 `206`。**原圖 Alpha 不乾淨**，只製作可溯源的 alpha≤8→0、alpha≥240→255 技術後製，未覆寫原始圖、未改 RGB。
+- 40×29 來源裁邊 alpha≥225 的像素分布 top402、bottom164、left485、right265。樹木、屋緣可能被截斷，**ART HOLD**；另 D7 Ground 本就含本應在 PAR 的直立砂岩崖壁／大灌木，**Ground 純度 ART HOLD**。
+- D8 真 Ground+CompletePAR 逐像素 PIL 合成 PASS，眼見暖色風格與不同建築搭配良好，但**沒有獨立 source owner Manifest 證明逐物件全數可編輯，也沒有 Godot 4.7.2 真 native 審核**。不能把靜態合成 PASS 說成 ART PASS。正式十二圖 0/12。
+- [D8 詳細 QA、失敗記錄與後續規格](TC_D8_FS_03_VILLAGE_GROUND_FIRST_COMPLETE_PAR_PAIR_20261122.md) 已寫入專屬 GitHub 分支；[12-map 進度](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) 和 [風蝕金砂 Blueprint](../../tc_factory/biomes/FS_03_VILLAGE_GROUND_FIRST_BLUEPRINT_20261122.json) 現登記 D8 TRUE RGBA PAR，而非舊的 D7 PAR NULL。
+
+## 私人雲端 WRITE→READBACK
+
+- **[D8 完整十三檔圖片／原始 Ground＋PAR／兩版合成／Alpha QA／Failure Log ZIP](https://drive.google.com/file/d/1SO1aVJu3KNDZIlAmgcOHc5nosSwJ0Q4w/view)**，25,638,287 bytes／13 files／ZIP CRC PASS，SHA256 `84cdd9771c8fd2ebaf68378b218fcee324c79f7b5fa0c0159797777cfc5d9410`。
+- [D8 原始 PAR 真 RGBA](https://drive.google.com/file/d/1ojHRduBZIFyyys21Fz8irKNTLNV3I3C5/view)、[PAR 技術 Alpha 清理候選](https://drive.google.com/file/d/18v6Tnr-vomNMVgyUGjQz2LVLZF6lssez/view)、[整圖真合成 1280×928](https://drive.google.com/file/d/1eJPmH9j4c_DjkKM8Bkx2bRQmzGznObfU/view)、[46×33 參考](https://drive.google.com/file/d/1Zet8TxzEEYDg_NjWac-apIo6UJvExj0G/view)。五件檔案皆 Google provider metadata `shared=false`、user owner only。新私有圖像不進公共 GitHub，未操作 user PC。
+
+## 下一個完整施工單位
+
+開始 **FS_03_MAZE 風沙裂谷** 的獨立全圖 Ground-only → 同場景完整透明 PAR，迷宮必須是沙岩斷層、蜿蜒岔路/環線，不能又生成村莊中央石板廣場，且 Ground 裡不能混入高聳岩柱/整棵棕櫚/建築。正式大地圖目標 80×58／2560×1856，低解析來源不能拉伸假稱原生完成。其後 04 火山、05 水澤、06 星晶浮島；現階段聚焦大量美術 Ground/CompletePAR 生產，不再重複個別樹冠遮擋微修。所有失敗按實際 Gate 記錄。
+
+---
+
 # T-C CURRENT｜D7 風蝕金砂「星井綠洲」Ground-first 新來源｜2026-11-22
 
 **本輪新增實體藝術來源：FS_03_VILLAGE 砂漠 Ground 1280×928 候選已產出，原始 1477×1065 圖、32px grid 與 source QA 已完整存入私人 Drive；PAR 錯畫成雪原且完全無 Alpha＝0 透明區，兩次均拒收。Ground 裡有直立崖壁與灌木，正式 Art HOLD、Godot 4.7.2 NOT_RUN、12 張正式封版仍 0／12。** 此節為最新權威，後方 D6/D5 為歷史。
