@@ -126,17 +126,8 @@ if 'frost:1:source' not in J or J['frost:1:source']['status']!='completed':
     milestone('STAGE1_SOURCE',obj.get('usage'),pic.name)
 # Each later form DERIVES from the exact previous source; not three unrelated AI generations.
 DESCRIPTIONS={
- 2:('EVOLVE this SAME exact ice-jackal puppy to a visibly mature muscular mid-stage CRYSTAL WOLF: '
-    'keep the SAME icy blue eyes, navy muzzle, distinctive silver-blue fur, triangular ears and thick dark-tipped tail, '
-    'SAME four canine legs and same southeast facing 3/4 camera. Broader torso and long limbs, larger translucent cyan '
-    'forehead crystal plus two new icy shoulder shards, brighter cold-blue chest mane. One complete animal, not two wolves, '
-    'no bat wings, no frog, no extra legs, no forest floor, no shadow; transparent background. Crisp 16-color JRPG pixels.'),
- 3:('EVOLVE this SAME mid-stage Crystal Wolf into enormous legendary GLACIER FENRIR elder wolf: '
-    'distinct SAME blue eyes, dark navy muzzle, silver blue fur, four canine paws and signature thick tail, '
-    'southeast 3/4 battle sprite. Dramatic larger mane, giant stepped icy crystal crown horn rising from forehead, '
-    'three crystalline shards protrude from BOTH shoulders, broad wolf-like chest, frosty turquoise markings '
-    'along the original spine. Make unmistakably final stage without species change. '
-    'No antlers, no wings, no humanoid anatomy, no additional paws, one creature only, transparent BG, 16-color crisp pixels.')
+ 2:('EVOLVE SAME original silver-blue ice jackal into adult CRYSTAL WOLF. Preserve icy-blue eyes, navy muzzle, upright ears, silver-blue fur, four attached canine paws, dark-tipped thick tail and southeast three-quarter camera. Taller muscular body, longer four legs, larger cyan forehead crystal, two new icy shoulder shards, deeper ice-blue mane. Single complete wolf, crisp 16-color pixel art, transparent background, no duplicate, no wings, no extra legs.'),
+ 3:('EVOLVE SAME original Crystal Wolf into legendary huge GLACIER FENRIR: preserve same eyes, muzzle, fur, triangular ears, thick dark-tipped tail and four canine paws. Fixed southeast three-quarter battle camera. Dramatic broad chest, shaggy giant silver-blue mane, soaring stepped blue ice crystal crown on forehead and enlarged icy shoulder spikes. Single wolf, one head, four attached paws, no wings, no antlers, transparent, crisp JRPG pixel art.')
 }
 for st in (2,3):
     key=f'frost:{st}:source';prior=FROST/f'FROST_JACKAL_STAGE{st-1}_SOURCE_{[128,160][st-2]}.png'
