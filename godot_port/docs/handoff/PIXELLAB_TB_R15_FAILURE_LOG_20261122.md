@@ -29,3 +29,13 @@ No battle code, FSBattle/ATB/ACT, gameplay UI, main, T-A or T-C changes. Stage i
 - Genuine PixelLab Frog S1 Revive first job reported **3.0 generations**, but two of ten exported frames contacted canvas boundary (frame indexes **7 and 8**). QA rejected the result as `ART_TECH_HOLD`, **not** as a pass.
 - The original rejected PNG and complete first provider job/cost metadata are kept under `%TEMP%/fs_tb15_provider/REJECTED_ART` and `R15_REJECTED_PROVIDER_QA.json` pending private release. Source-controlled retry patch `c0d5c075be34d05b9cd6a5b5b479af3ba69dc1fa` permits **at most two** documented regenerated candidates, with distinct seed and a contained-silhouette prompt. Accepted output must have zero edge clipping. Extra rejected-generation cost must not be hidden from final accounting.
 - Running actual revised provider job `d2802e41-aae7-4f3e-8be3-f6f250208ceb` at time of this update. Do not state final acceptance before QA.
+
+
+## R15-006 Python native package syntax & reproducibility [FIXED]
+- After all 18 real PixelLab jobs completed, first auto-packager failed during `compile` on invalid keyword syntax `human_art_gate:'OWNER_ART_REVIEW_PENDING'`. Corrected actual `human_art_gate='OWNER_ART_REVIEW_PENDING'`. Second parsing attempt found unmatched closing bracket for proof raw-frame generator; corrected with exact nested generator close. **No new PixelLab jobs incurred by Python fixes**. Corrected release builder commit `8bd7f67f6fdce1b3b281fb83f00889610cecbc3c`; official Godot 4.7.2 editor and native script actually reran to successful R15 private 90-clip release.
+- Do not pin the older broken release builder in `orchestrate_tb15_native_release.py`: correct pin should be `8bd7f67f6fdce1b3b281fb83f00889610cecbc3c`.
+
+## R15-007 true owner visual QA (not detectable by Godot) [ART HOLD mitigated by R15P]
+- Opened actual R15 THREE STAGE Frog / Bat/ Frost contact sheets and saw Frog revised PixelLab Revive produce oversized **detached flames / mutant red masses**, despite zero alpha clipping and successful engine. Must **reject R15 Frog AI Revive as visual art**. Also third Glacier Jackal family all three KO clips stay too upright, must create physically collapsed sprite.
+- **R15P** uses 8 authentic preexisting KO frames in reverse, then first 3 real idle frames. All 3 Frogs: 11F, 0 new PixelLab, no hallucinated magma. R15 original ZIP and all true jobs retained. R15P official Godot 4.7.2 test **90 clips/805 slots native PASS**, owner-only private ZIP SHA256 `a8088f4e76e3f63d7b9a58857213d138ecb2e43a5af92547f4b2222f77fd04f7`.
+- All new monster art remains **OWNER_ART_REVIEW_PENDING**, old R15 Frog AI Revives and Wolf KO explicit **ART HOLD**, no claim of user acceptance.
