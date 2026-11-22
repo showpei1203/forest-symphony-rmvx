@@ -40,3 +40,9 @@ See `PIXELLAB_TB_R13_FAILURE_LOG_20261122.md`. First Godot orchestration encount
 
 ## Next full ART macro unit
 Produce **Charge/Release, Revive and evolution transformation**, with species-specific original source, at most two attempts per nonblocking cosmetic issue. Add a third distinct monster family benchmark **only after inspection of the now-complete 9-action two-family batch**. Maintain old 54 atlases immutable and publish only Drive private raster and GitHub code/QA/Handoff.
+
+
+## R13 final post-release readback and cleanup (2026-11-22)
+- Additional animated preview matrices from **true original 8-frame PixelLab atlases**, resized NEAREST for review only (not new Sprite Sheet source): [Leaf Bat Stun/Taunt all 3 stages](https://drive.google.com/file/d/1L9tbWsuY2XfWEiHsEIzU0Q9YJ56mhhcf/view) (514,282 bytes) and [Lava Frog Stun/Taunt all 3 stages](https://drive.google.com/file/d/1UbN2HRU54wAERMz1Mc4rHdFZzpXy-Sig/view) (389,913 bytes). Both returned actual private Drive file IDs with `shared=false`.
+- **P0 TEMP CLEANUP VERIFIED**: after Drive ZIP and both animated GIFs readback, ran source-controlled `cleanup_tb13_ephemeral.py`: removed 117 strictly R13-created ephemeral files including standalone staging, generated PNGs and job temp ledgers. Kept original R10/R11 staging and the R13 PRIVATE Drive artifacts. Release ZIP SHA256 **eebd4d0e1bb12252d8ae1bea8fef87227ce7b9719a71f0da1539b19ea79492d7** and 190-entry CRC **reverified after cleanup**. Owner PC has **no permanent R13 art repository**.
+- Release **R13 TECH PASS** remains unchanged; the two animations' **human ART GATE remains pending**; no gameplay integration.
