@@ -25,7 +25,8 @@
     "failed_GroundOnly_attempts_FS_03_MAZE": 1,
     "new_ground_source_candidates_FS_03_MAZE": 1,
     "failed_complete_PAR_attempts_FS_03_MAZE": 3,
-    "new_complete_PAR_candidates_FS_03_MAZE": 1
+    "new_complete_PAR_candidates_FS_03_MAZE": 1,
+    "failed_Ground_generation_FS_04_VILLAGE": 1
   },
   "scenes": [
     {
@@ -483,7 +484,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "VILLAGE",
-      "stage": "PLANNED_NOT_GENERATED",
+      "stage": "D11_GROUND_ONLY_ATTEMPT_REJECTED_WRONG_DESERT_BIOME_NOT_GENERATED",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -497,7 +498,18 @@
         "工坊屋"
       ],
       "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
-      "formal_art_gate": "HOLD"
+      "formal_art_gate": "HOLD",
+      "ground_generation_failure": {
+        "count": 1,
+        "expected": "FS_04_VILLAGE 灰鑄工坊城, black basalt and gray volcanic ash, glowing lava banks, pure flat terrain, NO houses/trees/ruins/bridges",
+        "actual": "1477x1065 RGB warm sandstone DESERT maze with cacti, purple crystals, wooden bridges, ruins and mine props; no volcanic lava",
+        "received_source_sha256": "c730e9138043668c1ea1d745a8efab0024e3b065fa29bf4489d0bd253f13b208",
+        "accepted_as_Ground": false,
+        "added_to_private_scene_drive": false,
+        "produced_CompletePAR": false,
+        "biome_identity_gate": "FAIL_WRONG_BIOME",
+        "formal_art_gate": "HOLD"
+      }
     },
     {
       "scene_id": "FS_05_MAZE",
