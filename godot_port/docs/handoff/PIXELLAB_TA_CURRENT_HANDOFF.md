@@ -1,5 +1,15 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R18 retrospective correction | 2026-11-22 | ART REJECTED, abandon procedural limb-rotation line
+
+Owner explicitly rejected R16/R17 artwork, not just asked for minor touch-ups. Root cause: original LPC 8dir diagonal WALK poses were repeatedly repositioned as if that produces boxing attack animation. Fist, full-body power transfer and natural 1x sprite acting never passed. Official source/native CI 73/73 never proved art; R16/R17 retrospective art status changed from HOLD to REJECTED.
+
+R18A and R18B were actual newly built 12-frame body candidate (separate hand-keyed pose silhouettes with original SHA-protected A62 white head, zero Weapon/FX). R18A initial F0-F11 shoe offset assertion FAILED and was fixed. R18B ran actual Windows Godot 4.7.2 RX 6700 XT 73/73 native 60Hz frames, 12/12 source vs render full RGBA zero mismatch, visual F7 0.630s once, source BODY SHA `a6ee6180b05b6e7940d1cbb294bde34be1e15deea63e229fed4ef4218a2f33d4`. Private 92-file QA ZIP CRC PASS SHA `f82235e2251467dda54b9e20e9831619811f2feaa904269c698bcebc2cd6120e`, real 13-item private [Drive folder](https://drive.google.com/drive/folders/1OQGma8keUxoHMT7wKG-5rr-VPOyPa1tV) readback. **But both R18A/R18B are visually REJECTED**: stiff boots/weight transfer and bar-like fist/arm, no realistic torso rotation. These are debug/rejected comparisons only, not new production art or ATB integration. No paid PixelLab, no main/T-B/T-C/A52 modification.
+
+**NEW HARD AUTHORITY**: `godot_port/docs/authority/FS_TA_ART_REJECTION_AND_KEYPOSE_RESTART_20261122.md`. Start FIVE individually repainted 45° 64px art key poses (guard, load, drive, clenched impact, recovery) with full-body leg+hip+chest+fist action, verify 1× motion and user art approval BEFORE generating all 12, running Godot CI or adding to formal Battle. Do not repeat microfix limb geometry. Original LPC 8dir WALK is reference, NOT native attack.
+
+---
+
 ## R17 LATEST | 2026-11-22 | Full 12-frame source-based unarmed boxing alternate, actual native Godot QA PASS / ART HOLD
 
 Actually generated new R17 private Body/Weapon/FX (12 frames at 64px; Body 256×192, 11 unique + F11=F0). Reposed front/back elbow, upper chest pre-load and drive, selectively compacted only distal original source skin contour; no newly drawn arm connector, sword or FX. Original true 8dir LPC ORA WALK anatomy, original A62 approved white hair/face/green identity preserved. R17 original Body SHA `1a3001f87278b9244e7282cf0baa110ce10dfd0b159badcb76c4d911e1981587`.

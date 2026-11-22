@@ -1,0 +1,27 @@
+{
+  "status": "ENGINE_PASS_ART_REJECTED",
+  "native_frames": 73,
+  "fps": 60,
+  "source_gpu_mismatch": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "F7_visual_event_once": true,
+  "body_sha": "a6ee6180b05b6e7940d1cbb294bde34be1e15deea63e229fed4ef4218a2f33d4",
+  "full_fs_battle": "NOT_RUN",
+  "art_objections": [
+    "R18 legs/boots simplified and stiff",
+    "F7 upper arm elongated and lacks shoulder chest torque",
+    "Full-body motion and native 1x expression do not pass"
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "version": "R18-artist-keypose-draft",
+  "status": "ART_HOLD_UNAPPROVED",
+  "source_a62_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "body_sha256": "a6ee6180b05b6e7940d1cbb294bde34be1e15deea63e229fed4ef4218a2f33d4",
+  "frame_count": 12,
+  "unique_frames": 11,
+  "F0_matches_F11": true,
+  "weapon_pixels": 0,
+  "fx_pixels": 0,
+  "source_8dir_walk_was_not_source_attack": true,
+  "body_source": "independent keyed pixel redraw; ORIGINAL A62 HEAD PIXELS preserved without modifications",
+  "pose_keyframes": [
+    {
+      "h": [
+        0,
+        0
+      ],
+      "c": 0,
+      "hip": 0,
+      "farE": [
+        26,
+        38
+      ],
+      "farF": [
+        27,
+        34
+      ],
+      "nearE": [
+        40,
+        38
+      ],
+      "nearF": [
+        39,
+        34
+      ],
+      "feet": [
+        0,
+        0
+      ],
+      "phase": "guard"
+    },
+    {
+      "h": [
+        0,
+        0
+      ],
+      "c": -1,
+      "hip": -1,
+      "farE": [
+        25,
+        38
+      ],
+      "farF": [
+        27,
+        33
+      ],
+      "nearE": [
+        39,
+        38
+      ],
+      "nearF": [
+        39,
+        34
+      ],
+      "feet": [
+        -1,
+        -1
+      ],
+      "phase": "brace"
+    },
+    {
+      "h": [
+        -1,
+        0
+      ],
+      "c": -2,
+      "hip": -1,
+      "farE": [
+        24,
+        37
+      ],
+      "farF": [
+        27,
+        33
+      ],
+      "nearE": [
+        37,
+        39
+      ],
+      "nearF": [
+        35,
+        38
+      ],
+      "feet": [
+        -1,
+        -1
+      ],
+      "phase": "load"
+    },
+    {
+      "h": [
+        -1,
+        1
+      ],
+      "c": -3,
+      "hip": -2,
+      "farE": [
+        24,
+        38
+      ],
+      "farF": [
+        26,
+        33
+      ],
+      "nearE": [
+        36,
+        39
+      ],
+      "nearF": [
+        33,
+        39
+      ],
+      "feet": [
+        -1,
+        -1
+      ],
+      "phase": "coil"
+    },
+    {
+      "h": [
+        -1,
+        1
+      ],
+      "c": -3,
+      "hip": -2,
+      "farE": [
+        25,
+        38
+      ],
+      "farF": [
+        27,
+        33
+      ],
+      "nearE": [
+        37,
+        40
+      ],
+      "nearF": [
+        35,
+        39
+      ],
+      "feet": [
+        -1,
+        -1
+      ],
+      "phase": "max_load"
+    },
+    {
+      "h": [
+        0,
+        1
+      ],
+      "c": -1,
+      "hip": -1,
+      "farE": [
+        26,
+        38
+      ],
+      "farF": [
+        28,
+        33
+      ],
+      "nearE": [
+        42,
+        38
+      ],
+      "nearF": [
+        44,
+        36
+      ],
+      "feet": [
+        0,
+        0
+      ],
+      "phase": "drive"
+    },
+    {
+      "h": [
+        1,
+        0
+      ],
+      "c": 1,
+      "hip": 1,
+      "farE": [
+        29,
+        38
+      ],
+      "farF": [
+        31,
+        34
+      ],
+      "nearE": [
+        44,
+        36
+      ],
+      "nearF": [
+        49,
+        33
+      ],
+      "feet": [
+        0,
+        2
+      ],
+      "phase": "accelerate"
+    },
+    {
+      "h": [
+        2,
+        -1
+      ],
+      "c": 3,
+      "hip": 2,
+      "farE": [
+        30,
+        38
+      ],
+      "farF": [
+        32,
+        34
+      ],
+      "nearE": [
+        46,
+        35
+      ],
+      "nearF": [
+        54,
+        31
+      ],
+      "feet": [
+        -1,
+        3
+      ],
+      "phase": "contact"
+    },
+    {
+      "h": [
+        1,
+        0
+      ],
+      "c": 1,
+      "hip": 1,
+      "farE": [
+        28,
+        38
+      ],
+      "farF": [
+        30,
+        34
+      ],
+      "nearE": [
+        43,
+        38
+      ],
+      "nearF": [
+        48,
+        33
+      ],
+      "feet": [
+        0,
+        2
+      ],
+      "phase": "recoil"
+    },
+    {
+      "h": [
+        0,
+        0
+      ],
+      "c": 0,
+      "hip": 0,
+      "farE": [
+        26,
+        38
+      ],
+      "farF": [
+        28,
+        34
+      ],
+      "nearE": [
+        41,
+        38
+      ],
+      "nearF": [
+        41,
+        35
+      ],
+      "feet": [
+        0,
+        1
+      ],
+      "phase": "retract"
+    },
+    {
+      "h": [
+        0,
+        0
+      ],
+      "c": 0,
+      "hip": 0,
+      "farE": [
+        26,
+        37
+      ],
+      "farF": [
+        27,
+        34
+      ],
+      "nearE": [
+        40,
+        38
+      ],
+      "nearF": [
+        39,
+        34
+      ],
+      "feet": [
+        0,
+        0
+      ],
+      "phase": "recover"
+    },
+    {
+      "h": [
+        0,
+        0
+      ],
+      "c": 0,
+      "hip": 0,
+      "farE": [
+        26,
+        38
+      ],
+      "farF": [
+        27,
+        34
+      ],
+      "nearE": [
+        40,
+        38
+      ],
+      "nearF": [
+        39,
+        34
+      ],
+      "feet": [
+        0,
+        0
+      ],
+      "phase": "guard"
+    }
+  ],
+  "qa_scope": "Source generation only. Native Godot must be run before any claim of engine PASS",
+  "art_scope": "Needs real visual human approval; absolutely not production-ready"
+}
