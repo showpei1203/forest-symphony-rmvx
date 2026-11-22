@@ -1,3 +1,29 @@
+# T-C CURRENT｜D6 冰脊迷谷 Ground-first + 真完整透明 PAR 完成候選｜2026-11-22
+
+**D6 實際成果：冰脊迷谷 FS_02_MAZE 新的真透明完整 PAR 已生成，已和前輪獨立 Ground 以相同 1472×1056 世界原點合成。技術配對／逐像素原生尺寸 PNG PASS；正式 80×58／2560×1856 尚未達到，Art HOLD，Godot 4.7.2 native 本輪 NOT_RUN。** 這是最新權威，後方 D5/D4 為歷史。使用者不變要求：**Ground 先生成，全部非 Ground 的完整物件再產生 PAR，不辨識遮住角色與否。**
+
+## 這次真的產出哪些圖片（不是資訊圖）
+
+- 原 Ground：D5 獨立新生成 1473×1068 RGB SHA `140dfdc865a7ed299e5bbc8ec8045b2c865ff16ccdc1b7125aa9f0ef6d27071c`，無變動，純雪谷地表、岔路及凍湖。
+- **D6 真正第二階段 imagegen RGBA 非地表 PAR**：原始 1473×1068，SHA `7273b56dc7343d7ad5bd8318e1149e2a4ba2cf4603dcd16b2bfb60f81c62b041`，有整棵冷杉、冰柱、立體岩壁、木橋、石質遺跡、雪岩與圍籬。**不依是否遮擋人物篩選素材**。
+- 兩來源都採同 `crop=(0,6,1472,1062)` 無縮放，輸出 1472×1056＝**46×33 格** `GROUND.png` 和 `PAR_RAW.png`。 Ground SHA `3b5dd011b38213ff5d6f2fe82c2d2d5dcae26204f0f64d2a98ebc05772188b4c`，原 PAR SHA `aa3f537ecd2a7b5172886d89922c8bc5127d43c2b6fd1b56f6c937a708da562f`，技術清理 Alpha 候選 SHA `497a7bedf36ef3f2d0ac7771b9326cb5422eb0c78315d3dd7e4b2bbae35ea5fb`。以 Pillow 真逐像素合成 RAW + CLEAN 並驗 RGB 完全一致，合成 CLEAN SHA `87ff1af3e395b79bbebd8464beb31dee4bad365e88800f6a8e21eacce0b1b9e3`。
+- 真實合成圖完整雪谷風格宏觀相容，沒有因老式部件逐棵拚貼造成顯著屋樹風格不一。然而 **原 PAR Alpha 1..8 雜點 633,931 pixels**、近全不透明 240..254 有 422,111 pixels，另外已保留 RAW 及清理候選（alpha≤8 歸0、≥240 歸255，不能說原素材自然乾淨）。
+- 高 Alpha 裁邊碰觸 top711 / bottom101 / left587 / right595 像素，可能屬自然延續森林，也可能截斷樹木。沒有原生精確物件 manifest，不可宣稱每棵根部與木橋完美對位，沒有原生 Godot 測試。
+- 本輪**清楚超越 D5 PAR NOT_GENERATED**：它是真 RGBA，不是之前兩張把假 QA PASS 畫在畫面裡的資訊圖。正式整圖仍是 **46×33 模型／風格候選**，不是現有 FS_02_MAZE **80×58** 的完整交付。
+
+## D6 私人雲端 WRITE→READBACK 已證實
+
+- **[正式十檔 Ground／兩份 PAR／兩份合成／原來源／QA ZIP](https://drive.google.com/file/d/1p6idITcOncKfiGxfUZYINM6nbtq4q99J/view)**，21,989,010 bytes／10 entries／ZIP CRC PASS，SHA256 `c985c746b67f8d565e29df34ffbbcff8b327cebb7288ada0a9353880d3899dae`。
+- [Ground 單檔](https://drive.google.com/file/d/1HUH0EBXxkoPMjE8hteTgVxf600cQ7j_s/view)、[PAR 原始真 RGBA](https://drive.google.com/file/d/15Tf49Fkntu9Jlc2VT1Ns696bW_MsogoC/view)、[PAR Alpha 修正候選](https://drive.google.com/file/d/138rGgGh7Xv3_yiWRMsVOqYE2CP6ul7lC/view)、[完整合成圖](https://drive.google.com/file/d/1sIBHnqNnNgKRmHlW7oMK14k0yypYEonU/view)。五個檔案均 Google provider metadata READBACK `shared=false`、user owner-only，未向公用 GitHub 公開 PNG，也沒碰 user PC。
+- [D6 詳細資料／Failure Log／後續 QA](TC_D6_FS_02_MAZE_GROUND_FIRST_COMPLETE_PAR_PAIR_20261122.md)，[T-C 十二場景追蹤表](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) 已登記 FS_02_MAZE Ground＋PAR 真配對 static-pass、Art HOLD。
+- 這輪沒有新的 PixelLab API 付費作業，純 imagegen D6 新來源；PAR 完整非地表是 AI 目視整組而不是 192 個獨立來源物件。D1 old 192/192 CI 不是 D6 新圖 QA 的證明，Godot native 4.7.2 **NOT_RUN**。
+
+## 下一個完整施工單位（不再修單獨樹葉）
+
+要繼續真正 **80×58 / 2560×1856** 之 Ground-first 全圖原生生成與 CompletePAR 配對，使用 D6 雪谷「兩圖整體風格」作 style reference，不能直接把 46×33 整圖 nearest 放大當原生地圖。兩張 Ground/PAR 必須可獨立檢查出畫、Alpha、畫布對位後才標完成。之後按世界設定走 03 風蝕金砂、04 赤焰火山、05 幽霧水澤、06 星晶浮島各一村一迷宮。正式 ART 仍 **0/12**，新圖技術測試過關不解除。
+
+---
+
 # T-C CURRENT｜D5 冰脊迷谷 Ground-first 新雪谷來源｜2026-11-22（台北）
 
 **進度真實：本輪成功新生成 FS_02_MAZE 真雪谷 Ground 地表，原圖及不縮放 46×33 候選已存私人 Drive；正式 80×58 未達標，CompletePAR NOT_GENERATED，Godot 4.7.2 Native NOT_RUN，ART 0/12 HOLD。** 此段優先於下方歷史 D4/D3/C8；使用者最新 Ground first → ALL non-ground Complete PAR 規則不可再偏離。
