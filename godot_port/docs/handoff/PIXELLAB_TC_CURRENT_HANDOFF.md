@@ -1,3 +1,23 @@
+# T-C CURRENT｜D10 FS_03_MAZE 風沙裂谷獨立真透明 CompletePAR 已完成雙圖候選｜2026-11-22
+
+**新成果：D10 真正產出有 Alpha=0 透明背景的 PAR，與 D9 不變的砂岩迷宮 Ground 依同一像素裁切合成成功，46×33 來源候選已存私人 Google Drive、原圖 SHA／四圖預覽／完整 QA 已驗證；正式 80×58 尚未達成、Alpha 雜點／橋樑落點與角色通路待美術驗收，ART HOLD、Godot 4.7.2 NATIVE NOT_RUN。** 最新權威，後面 D9/D8 為歷史。
+
+## D10 真實完整雙圖階段與來源
+
+- Ground first：原來源 D9 真 RGB 1477×1065 SHA `b9ddee18bf3eb4386363a2d6321b0ad745c64cb1149b862489d4160defaa9e59`，46×33 Ground SHA `2e78610422ff373f07382b2bcb4980d3f11bf63c3e078cf489e2bc42f55b66fd`，這輪沒有重新產 Ground。
+- 獨立第二階段 **真正透明完整 PAR**，原圖 1477×1065 RGBA SHA `2c71dae5d32b9ff0465d9863f5de74fc6561f58e6f1e84f00141696cd4426768`；包含立體砂岩柱、整棵棕櫚、仙人掌、拱門、橋、遺跡、化石與旗幟，不依是否遮玩家而抽選；不是從 Master 逆切。
+- Ground/PAR 以 **同一 crop [2,4,1474,1060]** 不縮放產出 1472×1056／46×33；PAR raw crop SHA `811cebe3a1e57b9fd470e412dbd382e8310e5e4ace536bdb7ec1be146ce5cb37`、獨立 alpha clean candidate SHA `149bee6b2d3ed8b2b6687fbd769523908a2e885610d5774205904843a351a174`、真原像素合成 clean SHA `873303bdd35095ab230c0f7ac07355b957b146cb0fa6e64217337e3bed50a169`。
+- 原生真透明 pixels **883,411 alpha=0**，證明不再是 D9 三次無透明像素的整張 Master；但 **206,896 alpha1..8** 雜色及 **364,768 alpha240..254** 近全透明／不透明轉換，ART HOLD。alpha clean 只將 ≤8 歸0、≥240 歸255，不改 RGB，原始 PAR 保留。
+- 靜態合成與四圖對照已實測；**落點不保證**：即使同畫布、同 crop，因兩張是分別生成的圖，橋樑可能沒有真正跨過 Ground 裂谷／接到道路，不能將同尺寸當語義 registration PASS。邊緣不透明物件 alpha≥225 pixel hits top250/bottom461/left319/right688，可能截掉完整物件。**正式迷宮仍要 80×58／2560×1856 原生，不能最近鄰拉大。**
+- Google Drive **[十檔 Ground／真 PAR／合成／QA 私人 ZIP](https://drive.google.com/file/d/1JG8UpKDYCvMlxWghZSxxk1sKvnlvdpxa/view)** 20,827,804 bytes／ZIP CRC PASS／SHA `eaca8acea98383897433cbdc21c5c14b96f97ac611c93184566dd30bc655c2d0`。個別 [raw PAR](https://drive.google.com/file/d/182WGOsWuA0cPO106lLS1I2O3uq9hTCqI/view)、[clean PAR](https://drive.google.com/file/d/1x0AoC0-qJy3N2Q34WMcs6C7KXEWyfftf/view)、[全圖合成](https://drive.google.com/file/d/1jhTW5JeNQkjRJY-r0B1tfXqAFD4bXTIL/view)、[四圖對照](https://drive.google.com/file/d/1ykZHCfxt9mm-eSMFrIAkmk7hl_x1_8WM/view)，五檔 Google API readback 均 `shared=false`／only user owner。未把 PNG 上傳公開 GitHub，沒有操作使用者 PC。
+- 詳細 [D10 完整 QA＋Failure Log](TC_D10_FS_03_MAZE_GROUND_FIRST_COMPLETE_PAR_PAIR_20261122.md)，[12-scene 台帳](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) 已從 D9 PAR NOT_GENERATED 更新 D10 實際真 RGBA 來源＋靜態合成候選，正式 Art-Sealed **0/12**，Godot 4.7.2 Native **NOT_RUN**。
+
+## 下一宏觀施工單位（避開錯誤的微修模式）
+
+開始 **04 赤焰火山**，FS_04_VILLAGE「灰鑄工坊城」先獨立 Ground，再 CompletePAR 所有非地表，與沙漠完全不同的火山玄武岩／火山灰／熔岩岸／礦渣、熔爐／工坊屋／鍛造設施；再 FS_04_MAZE「熔脈裂橋」，接著 05 幽霧水澤、06 星晶浮島。每一張都按同一 Source-first Ground→all-non-ground PAR，不篩選遮角色、不以靜態合成 PASS 冒充 12圖 Art Passed。等有真正 80×58 來源／世界對位方案再處理迷宮正式封版，不要重修個別屋頂或樹冠。
+
+---
+
 # T-C CURRENT｜D9「風沙裂谷」真正 Ground source 及 PAR 失敗診斷｜2026-11-22
 
 **本輪確實產生風沙裂谷 FS_03_MAZE 的獨立砂谷 Ground 原始 PNG，原圖＋46×33 原像素候選＋QA 六檔私人封存；PAR 連續三次輸出非透明全場景，全部拒收。正式 80×58／2560×1856 未達成，正式 ART HOLD 0/12，Godot 4.7.2 native NOT_RUN。** 這一段優先於下方 D8/D7 的歷史交接。
