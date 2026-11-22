@@ -1,5 +1,14 @@
 # T-A Failure Log / 2026-11-21
 
+## TA-33/34 | R15 R14 high-hairline fist false body-continuity pass and QA ZIP path failure 2026-11-22
+
+TA-33 VISUAL ORIGINAL F7 R14: despite 12/12 source 8-connected sprite images, screenshot showed a hand/fist above face apparently attached to HAIR rather than anatomical shoulder. This is a consequential blind spot in earlier body-connected QA. R15 remapped original source rigid shoulder/elbow pivots with explicit F5→F7 punch x progression and F8→F9 recoil and kept F7 projected fist y29..35. Projected R14 F7 [54.164,27.605] near hair; R15 F7 [52.325,31.142] lower by ~3.54 screen-space pixels. These are IK geometry estimates, not actual hand-mask shoulder proof; visual ART HOLD.
+TA-34 FIRST R15 QA PACK FAILED: inherited stale generated comparison file name R13_VS_R15 instead of actual R14_VS_R15. No data falsified. Fixed include and reran: 91-item private ZIP CRC PASS, 250953 bytes SHA b513bc18db9e05aab786b44fbf319e0611b6c011d455133ef486ef150706dfdc. Correct real native Godot 4.7.2 73/73 frames, all 12 source/native RGBA comparisons ZERO differences, 0 weapon/FX, F7 visual 0.630 once. Body SHA dba04b8c0375635789799340e2e6b74df9a9b7410817cb4f52dbef2b549cd675. Independent presenter not full FSBattle.
+R15 45-degree true original human base 8dir LPC WALK, reauthored ATTACK. No sprite 8dir source-native attack claim. Owner-private E archive only. Next must actual pixel-art retouch and 1x acceptance, not claim ART PASS from geometric measurements.
+
+---
+
+
 ## TA-31/32 | R14 native 8dir limb rig correction and first face-QA failure, 2026-11-22
 
 TA-31 R13 remaining user-rejected visual issue: whole original LPC side-arm sprite was rigidly rotated at shoulder, creating visually stiff, unflected forearm. R14 NEW two-joint orig-src arm rig splits each upper and lower original diagonal arm at native elbows, pivots shoulder and elbow separately, original shoulder-to-elbow 8px invariant both arms in all 12 poses. Independent source-pixel limbs, 0 nonuniform stretch, source 8dir diagonal torso/feet, A62 approved white-haired head with neutral/focus/grit/shout/breath. 11 distinct poses with exact F0/F11 seam, no detached body pixels; zero weapon/FX. Structural QA PASS, ART HOLD pending human acceptance of 1× actual pose aesthetics.
