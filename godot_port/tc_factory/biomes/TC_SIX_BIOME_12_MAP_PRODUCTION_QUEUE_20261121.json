@@ -16,7 +16,9 @@
     "new_COMPLETE_PAR_candidates_this_round": 1,
     "failed_GroundOnly_attempts_FS_02_MAZE": 2,
     "Ground_candidates_FS_02_MAZE": 1,
-    "failed_PAR_generation_attempts_FS_02_MAZE": 2
+    "failed_PAR_generation_attempts_FS_02_MAZE": 2,
+    "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
+    "Ground_PAR_pair_candidates_static_pass": 2
   },
   "scenes": [
     {
@@ -71,7 +73,7 @@
       "biome_id": "FROST_SNOWFIELD",
       "biome_name": "凜霜雪原",
       "role": "MAZE",
-      "stage": "D5_NEW_GROUND_SOURCE_46x33_1X_CANDIDATE_80x58_NOT_MET_PAR_NOT_GENERATED_ART_HOLD",
+      "stage": "D6_NEW_GROUND_FIRST_ALL_NON_GROUND_PAR_PAIR_46x33_STATIC_PASS_80x58_ART_HOLD",
       "ground_material_family": [
         "積雪",
         "凍土",
@@ -95,7 +97,8 @@
         "usable_source_Ground": false,
         "ground_only_success_after_previous_rejections": true,
         "PAR_bad_infographic_rejected_this_round": 2,
-        "PAR_generated": false
+        "PAR_generated": true,
+        "new_PAR_D6_real_source": true
       },
       "Ground_source": {
         "original_size_px": [
@@ -130,10 +133,46 @@
         "Ground_PNG_private": "https://drive.google.com/file/d/17mUgD3av2eNfUJPYX01gOUfGzazfK1sT/view",
         "original_source_private": "https://drive.google.com/file/d/1_pjneuKesT8_5EELIn2nX9xuFW4YsTia/view",
         "QA_private": "https://drive.google.com/file/d/1hLXgbMYBG0lawzZwTOb_Iv4i8Ju3GtsS/view",
-        "Full_CompletePAR": null,
+        "Full_CompletePAR": {
+          "status": "D6_NEW_IMAGEGEN_ACTUAL_RGBA_NOT_INFOGRAPHIC",
+          "source_dimensions": [
+            1473,
+            1068
+          ],
+          "source_SHA256": "7273b56dc7343d7ad5bd8318e1149e2a4ba2cf4603dcd16b2bfb60f81c62b041",
+          "crop_xyxy": [
+            0,
+            6,
+            1472,
+            1062
+          ],
+          "image_size": [
+            1472,
+            1056
+          ],
+          "crop_SHA256": "aa3f537ecd2a7b5172886d89922c8bc5127d43c2b6fd1b56f6c937a708da562f",
+          "clean_PAR_SHA256": "497a7bedf36ef3f2d0ac7771b9326cb5422eb0c78315d3dd7e4b2bbae35ea5fb",
+          "composite_clean_SHA256": "87ff1af3e395b79bbebd8464beb31dee4bad365e88800f6a8e21eacce0b1b9e3",
+          "alpha_1_to_8": 633931,
+          "alpha_240_to_254": 422111,
+          "cropped_alpha_opaque_at_edges": {
+            "top": 711,
+            "bottom": 101,
+            "left": 587,
+            "right": 595
+          },
+          "status_provisional": "STATIC_PAIR_PIXEL_EXACT_PASS_NOT_ALL_OBJECT_SOURCE_MANIFEST",
+          "new_par_original_source": "REAL_SEPARATELY_GENERATED",
+          "Godot_native": "NOT_RUN",
+          "formal_art_gate": "HOLD",
+          "Ground_PAR_QA_private_Drive": "https://drive.google.com/file/d/1p6idITcOncKfiGxfUZYINM6nbtq4q99J/view",
+          "raw_PAR_Drive": "https://drive.google.com/file/d/15Tf49Fkntu9Jlc2VT1Ns696bW_MsogoC/view",
+          "clean_PAR_Drive": "https://drive.google.com/file/d/138rGgGh7Xv3_yiWRMsVOqYE2CP6ul7lC/view",
+          "composite_Drive": "https://drive.google.com/file/d/1sIBHnqNnNgKRmHlW7oMK14k0yypYEonU/view"
+        },
         "ground_80x58": "NOT_MET",
         "Godot_native": "NOT_RUN",
-        "art_gate": "HOLD"
+        "art_gate": "HOLD_ALPHA_CROP_SOURCE_AND_NOT_80x58"
       }
     },
     {
