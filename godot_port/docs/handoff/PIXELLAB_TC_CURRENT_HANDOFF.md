@@ -1,3 +1,17 @@
+# T-C CURRENT｜D11 赤焰火山「灰鑄工坊城」真 Ground-only 候選出圖｜2026-11-22
+
+**實際施工新成果：FS_04_VILLAGE「灰鑄工坊城」已新生成真正火山玄武岩／熔岩 Ground，原始 1477×1065 與不縮放 1280×928（40×29）及 46×33 全構圖備份已上傳私人 Drive。完整透明 PAR 連續五次失敗（RGB一張、RGBA四張皆沒有任何 Alpha=0），全部拒收，正式 ART HOLD、Godot 4.7.2 NATIVE NOT_RUN；十二張地圖正式 ART 仍 0／12。** 此段優先於下面較早 D11 首次沙漠誤圖及 D10 歷史。
+
+- 使用者最高規則：**先獨立生成純 GROUND，再用同一場景完整生成含所有非地表物件的透明 PAR；不判斷是否遮人、不逆切 MASTER，也不因角色碰撞細節阻礙整圖製作。**
+- 真火山 Ground：原始 RGB 1477×1065，SHA `ecd256d48aaa7c4fc33b0c0f19bd5b516c998239c779e927468aa4ebc3d33af4`。黑色玄武岩、灰色火山灰鋪面、熔岩裂隙、放射式道路與中央圓形廣場，沒有主要房屋、煙囪、熔爐或鐵橋。精確 crop `[98,68,1378,996]` 得 1280×928／40×29，原生不縮放，SHA `ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d`。Ground 邊緣岩層高度感尚待美術純度審核，**不是最終 ART PASS**。
+- 完整 PAR 失敗 5 次：一張 RGB 不透明 Master，另外四張雖 RGBA，但 alpha range `144–249`、`184–248`、`218–249`、`156–248`，全部 **alpha=0 pixels 0**，仍是畫滿地面、熔岩、建築的整張火山城。錯圖拒收、不交付為 PAR、不反切 MASTER、沒有合成 PASS。
+- **Google Drive 私人封存並 READBACK**：[D11 六檔 Ground原圖／40×29／46×33／Grid QA／Failure Log ZIP](https://drive.google.com/file/d/11jWGIU54Lk8eyfwLGJs-YbKZU1W6ezIM/view)，11,777,655 bytes、6 files ZIP CRC PASS、SHA `80e74d17f3db3b0af26a523339a85fae23e6eae4ed1f1058114a63a3b59107f0`；[Ground 40×29](https://drive.google.com/file/d/1O8lKij4P8JgxczP2Q1Ykt-RKnhyk56RL/view)、[原始 1477×1065](https://drive.google.com/file/d/1fmrna0wMmv24LRxokUNn3b6mNEOd1aRb/view)、[46×33 參考](https://drive.google.com/file/d/1BKyxcOfGPglyw-0pnChwVXUhYjsD0siN/view)。四項均 readback `shared=false`、user owner only；圖只存 Drive，不碰使用者 PC。
+- 實際 [D11 詳細來源、失敗與完整下一施工單位](TC_D11_FS_04_VILLAGE_VOLCANO_GROUND_FIRST_SOURCE_QA_20261122.md)，[場景 Blueprint](../../tc_factory/biomes/FS_04_VILLAGE_GROUND_FIRST_BLUEPRINT_20261122.json)、[12 地圖台帳](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) 均已更新，正式封版 **0/12**。
+- 防重複畫錯地形：既有 `fs_biome_identity_guard.py` 新增火山玄武岩/熔岩粗辨識，和 `test_fs_biome_identity_guard.py` **8/8 synthetic PASS**，真 [GitHub Actions #44994736999](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44994736999) completed/success；**只辨地形，不能冒稱 Art PASS**。
+- 下一完整單位：**保留這張 Ground**，改用真正可控 Alpha=0、參照同一 Ground 位置／風格的生成來源，產生一張「所有非地表物件一次生成」的獨立 transparent PAR（工坊、熔爐、煙囪、鐵橋、岩柱、旗幟、燈柱、礦車等）。若新工具仍只產全景 Master，拒收並換路線；不修單顆樹、不拆玩家遮擋。等真雙圖才能做原生 Godot4.7.2 QA。其後同色盤 FS_04_MAZE 熔脈裂橋及 05水澤/06星晶。
+
+---
+
 # T-C CURRENT｜D10 FS_03_MAZE 風沙裂谷獨立真透明 CompletePAR 已完成雙圖候選｜2026-11-22
 
 **新成果：D10 真正產出有 Alpha=0 透明背景的 PAR，與 D9 不變的砂岩迷宮 Ground 依同一像素裁切合成成功，46×33 來源候選已存私人 Google Drive、原圖 SHA／四圖預覽／完整 QA 已驗證；正式 80×58 尚未達成、Alpha 雜點／橋樑落點與角色通路待美術驗收，ART HOLD、Godot 4.7.2 NATIVE NOT_RUN。** 最新權威，後面 D9/D8 為歷史。
