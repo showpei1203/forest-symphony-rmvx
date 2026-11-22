@@ -1,0 +1,664 @@
+{
+  "version": "FS-T-A-R14",
+  "status": "ART_HOLD_TWO_JOINT_SOURCE_BASED_REDRAW",
+  "source_native_attack": false,
+  "source_original_8dir_anatomy": true,
+  "source_directions": 8,
+  "source_original_ora_sha": "63c990cbf5c882415414a67819de6350a094d130477ac3533c938306483b349c",
+  "source_approved_A62_sha": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "eight_direction_source_row": 7,
+  "12x64": true,
+  "frame_count": 12,
+  "unique_poses": 11,
+  "contact_visual_time": 0.63,
+  "weapon_pixels": 0,
+  "fx_pixels": 0,
+  "front_upper_length": 8.0,
+  "back_upper_length": 8.0,
+  "animation": [
+    {
+      "frame": 0,
+      "source_walk_frame": 0,
+      "phase": "guard",
+      "emotion": "neutral",
+      "face_changed_pixels": 0,
+      "body_pixels": 604,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          39.0,
+          43.0
+        ],
+        "elbow_offset": [
+          0,
+          0
+        ],
+        "upper_deg": 0,
+        "forearm_deg": 0,
+        "upper_len": 8.0,
+        "elbow_bend": 0
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          25.0,
+          42.0
+        ],
+        "elbow_offset": [
+          0,
+          0
+        ],
+        "upper_deg": 0,
+        "forearm_deg": 0,
+        "upper_len": 8.0,
+        "elbow_bend": 0
+      }
+    },
+    {
+      "frame": 1,
+      "source_walk_frame": 1,
+      "phase": "anticipate",
+      "emotion": "focus",
+      "face_changed_pixels": 2,
+      "body_pixels": 578,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          37.89,
+          42.92
+        ],
+        "elbow_offset": [
+          -1,
+          0
+        ],
+        "upper_deg": -8,
+        "forearm_deg": -23,
+        "upper_len": 8.0,
+        "elbow_bend": -15
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          23.61,
+          41.88
+        ],
+        "elbow_offset": [
+          -1,
+          0
+        ],
+        "upper_deg": -10,
+        "forearm_deg": 2,
+        "upper_len": 8.0,
+        "elbow_bend": 12
+      }
+    },
+    {
+      "frame": 2,
+      "source_walk_frame": 2,
+      "phase": "cock",
+      "emotion": "focus",
+      "face_changed_pixels": 2,
+      "body_pixels": 574,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          36.93,
+          42.73
+        ],
+        "elbow_offset": [
+          -2,
+          0
+        ],
+        "upper_deg": -15,
+        "forearm_deg": -53,
+        "upper_len": 8.0,
+        "elbow_bend": -38
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          22.93,
+          41.73
+        ],
+        "elbow_offset": [
+          -2,
+          0
+        ],
+        "upper_deg": -15,
+        "forearm_deg": 8,
+        "upper_len": 8.0,
+        "elbow_bend": 23
+      }
+    },
+    {
+      "frame": 3,
+      "source_walk_frame": 3,
+      "phase": "load",
+      "emotion": "focus",
+      "face_changed_pixels": 2,
+      "body_pixels": 625,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          36.26,
+          42.52
+        ],
+        "elbow_offset": [
+          -3,
+          0
+        ],
+        "upper_deg": -20,
+        "forearm_deg": -75,
+        "upper_len": 8.0,
+        "elbow_bend": -55
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          22.0,
+          41.42
+        ],
+        "elbow_offset": [
+          -3,
+          -1
+        ],
+        "upper_deg": -22,
+        "forearm_deg": 12,
+        "upper_len": 8.0,
+        "elbow_bend": 34
+      }
+    },
+    {
+      "frame": 4,
+      "source_walk_frame": 4,
+      "phase": "brace",
+      "emotion": "grit",
+      "face_changed_pixels": 4,
+      "body_pixels": 581,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          38.44,
+          42.98
+        ],
+        "elbow_offset": [
+          -1,
+          0
+        ],
+        "upper_deg": -4,
+        "forearm_deg": -62,
+        "upper_len": 8.0,
+        "elbow_bend": -58
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          20.41,
+          40.55
+        ],
+        "elbow_offset": [
+          -5,
+          -1
+        ],
+        "upper_deg": -35,
+        "forearm_deg": 10,
+        "upper_len": 8.0,
+        "elbow_bend": 45
+      }
+    },
+    {
+      "frame": 5,
+      "source_walk_frame": 6,
+      "phase": "drive",
+      "emotion": "grit",
+      "face_changed_pixels": 4,
+      "body_pixels": 589,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          43.0,
+          41.93
+        ],
+        "elbow_offset": [
+          4,
+          -1
+        ],
+        "upper_deg": 30,
+        "forearm_deg": -18,
+        "upper_len": 8.0,
+        "elbow_bend": -48
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          21.37,
+          41.13
+        ],
+        "elbow_offset": [
+          -4,
+          -1
+        ],
+        "upper_deg": -27,
+        "forearm_deg": 11,
+        "upper_len": 8.0,
+        "elbow_bend": 38
+      }
+    },
+    {
+      "frame": 6,
+      "source_walk_frame": 7,
+      "phase": "extend",
+      "emotion": "shout",
+      "face_changed_pixels": 5,
+      "body_pixels": 614,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          46.25,
+          38.38
+        ],
+        "elbow_offset": [
+          7,
+          -5
+        ],
+        "upper_deg": 65,
+        "forearm_deg": 40,
+        "upper_len": 8.0,
+        "elbow_bend": -25
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          22.93,
+          41.73
+        ],
+        "elbow_offset": [
+          -2,
+          0
+        ],
+        "upper_deg": -15,
+        "forearm_deg": 5,
+        "upper_len": 8.0,
+        "elbow_bend": 20
+      }
+    },
+    {
+      "frame": 7,
+      "source_walk_frame": 8,
+      "phase": "contact",
+      "emotion": "shout",
+      "face_changed_pixels": 5,
+      "body_pixels": 622,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          46.73,
+          37.07
+        ],
+        "elbow_offset": [
+          8,
+          -6
+        ],
+        "upper_deg": 75,
+        "forearm_deg": 65,
+        "upper_len": 8.0,
+        "elbow_bend": -10
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          24.3,
+          41.97
+        ],
+        "elbow_offset": [
+          -1,
+          0
+        ],
+        "upper_deg": -5,
+        "forearm_deg": 5,
+        "upper_len": 8.0,
+        "elbow_bend": 10
+      }
+    },
+    {
+      "frame": 8,
+      "source_walk_frame": 7,
+      "phase": "recoil",
+      "emotion": "shout",
+      "face_changed_pixels": 5,
+      "body_pixels": 641,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          44.66,
+          40.66
+        ],
+        "elbow_offset": [
+          6,
+          -2
+        ],
+        "upper_deg": 45,
+        "forearm_deg": 10,
+        "upper_len": 8.0,
+        "elbow_bend": -35
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          27.07,
+          41.73
+        ],
+        "elbow_offset": [
+          2,
+          0
+        ],
+        "upper_deg": 15,
+        "forearm_deg": 10,
+        "upper_len": 8.0,
+        "elbow_bend": -5
+      }
+    },
+    {
+      "frame": 9,
+      "source_walk_frame": 5,
+      "phase": "withdraw",
+      "emotion": "breath",
+      "face_changed_pixels": 1,
+      "body_pixels": 567,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          40.66,
+          42.83
+        ],
+        "elbow_offset": [
+          2,
+          0
+        ],
+        "upper_deg": 12,
+        "forearm_deg": -48,
+        "upper_len": 8.0,
+        "elbow_bend": -60
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          26.39,
+          41.88
+        ],
+        "elbow_offset": [
+          1,
+          0
+        ],
+        "upper_deg": 10,
+        "forearm_deg": 10,
+        "upper_len": 8.0,
+        "elbow_bend": 0
+      }
+    },
+    {
+      "frame": 10,
+      "source_walk_frame": 2,
+      "phase": "guard",
+      "emotion": "breath",
+      "face_changed_pixels": 1,
+      "body_pixels": 598,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          39.56,
+          42.98
+        ],
+        "elbow_offset": [
+          1,
+          0
+        ],
+        "upper_deg": 4,
+        "forearm_deg": -21,
+        "upper_len": 8.0,
+        "elbow_bend": -25
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          25.0,
+          42.0
+        ],
+        "elbow_offset": [
+          0,
+          0
+        ],
+        "upper_deg": 0,
+        "forearm_deg": 0,
+        "upper_len": 8.0,
+        "elbow_bend": 0
+      }
+    },
+    {
+      "frame": 11,
+      "source_walk_frame": 0,
+      "phase": "guard",
+      "emotion": "neutral",
+      "face_changed_pixels": 0,
+      "body_pixels": 604,
+      "debris_removed": 0,
+      "front": {
+        "shoulder": [
+          39,
+          35
+        ],
+        "elbow_original": [
+          39,
+          43
+        ],
+        "elbow_target": [
+          39.0,
+          43.0
+        ],
+        "elbow_offset": [
+          0,
+          0
+        ],
+        "upper_deg": 0,
+        "forearm_deg": 0,
+        "upper_len": 8.0,
+        "elbow_bend": 0
+      },
+      "back": {
+        "shoulder": [
+          25,
+          34
+        ],
+        "elbow_original": [
+          25,
+          42
+        ],
+        "elbow_target": [
+          25.0,
+          42.0
+        ],
+        "elbow_offset": [
+          0,
+          0
+        ],
+        "upper_deg": 0,
+        "forearm_deg": 0,
+        "upper_len": 8.0,
+        "elbow_bend": 0
+      }
+    }
+  ],
+  "sprite_sha256": "9456aec56f867377a9cea93bdfb86b9b9597efe36a66518a73ce93b2a9e60497",
+  "weapon_sha256": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7",
+  "fx_sha256": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7",
+  "remaining": [
+    "Original LPC is 8-dir WALK, attack is NEW procedural two-joint REDRAW, not original diagonal attack",
+    "Human visual inspection of wrist/elbow and expression required",
+    "Not real FS battle integrated"
+  ]
+}
