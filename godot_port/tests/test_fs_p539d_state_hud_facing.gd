@@ -57,9 +57,14 @@ func _run()->void:
     var stage=HUD.new()
     root.add_child(stage)
     var source_art=ART.new()
-    if not require(not stage.install(source_art,db) and (
-            not stage.source_enabled) and not stage.visible,
-            "public CI never contains or fakes private original 384px Iconset"):return
+    var private_images_available:bool=source_art.has_source()
+    # Native owner GPU QA intentionally stages authentic source Iconset.
+    # Public GitHub CI never does. Both modes must obey exact source gate.
+    var installed:bool=stage.install(source_art,db)
+    if not require(installed==private_images_available and (
+            stage.source_enabled==private_images_available) and (
+            not stage.visible),
+            "private original Iconset must install; public synthetic mode must fail closed"):return
     var presenter=PRESENTER.new()
     root.add_child(presenter)
     if not require(presenter.rig.transform.determinant()<0 and (
