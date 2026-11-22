@@ -32,7 +32,9 @@ var source_ready:bool=false
 var target_is_enemy:bool=false
 var header:Dictionary={}
 var detail_lines:Array[String]=[]
+var info_lines:Array[String]=[]
 var source_warnings:Array[String]=[]
+var detail_signature:String=""
 
 func _ready()->void:
     name="FSOriginal462TargetHelpAnd381StatusDetail"
@@ -90,6 +92,8 @@ func clear_source()->void:
     active_target.clear()
     source_warnings.clear()
     detail_lines.clear()
+    info_lines.clear()
+    detail_signature=""
     header.clear()
     visible=false
     source_ready=false
@@ -99,6 +103,8 @@ func clear_source()->void:
 func select(target:Dictionary,is_enemy:bool)->bool:
     active_target.clear()
     detail_lines.clear()
+    info_lines.clear()
+    detail_signature=""
     source_warnings.clear()
     header.clear()
     if not source_ready or source_db==null:
@@ -110,6 +116,20 @@ func select(target:Dictionary,is_enemy:bool)->bool:
         return false
     active_target=target
     target_is_enemy=is_enemy
+    # #381 original line 1617 draws ExtraInfoRows BEFORE state details.
+    # Never invent values for a missing ManaShield/Robot/Break provider.
+    var extras:Dictionary=FSOriginalBattleInfo381.extra_info_rows(
+        target,source_db)
+    if not bool(extras.get("ok",false)):
+        source_warnings.append(str(extras.get("reason","")))
+    else:
+        for row in extras["rows"]:
+            if detail_lines.size()>=DETAIL_MAX_INFO_ROWS:
+                break
+            var rendered:String=str(row.get("label",""))+"　"+str(
+                row.get("value",""))
+            info_lines.append(rendered)
+            detail_lines.append(rendered)
     var quote:Dictionary=FSBattleSourceStateHUD381.detail_rows(
         target,source_db,DETAIL_MAX_STATE_ROWS)
     if not bool(quote.get("ok",false)):
@@ -121,6 +141,9 @@ func select(target:Dictionary,is_enemy:bool)->bool:
             if detail_lines.size()>=DETAIL_MAX_INFO_ROWS:
                 break
             detail_lines.append(str(record.get("text","")))
+    # The source Ruby #381 polls quick signatures (states/stacks/turns)
+    # and all extra info rows; updates must track REAL provider changes.
+    detail_signature=JSON.stringify([header,info_lines,detail_lines])
     # Control is embedded in the selection list; reserve genuine source
     # target-help space without overlapping the original battler artwork.
     custom_minimum_size=Vector2(528,float(
@@ -128,6 +151,17 @@ func select(target:Dictionary,is_enemy:bool)->bool:
     visible=true
     queue_redraw()
     return true
+
+func refresh_live()->bool:
+    if not source_ready or not visible or active_target.is_empty():
+        return false
+    var previous:String=detail_signature
+    var previous_warnings:Array[String]=source_warnings.duplicate()
+    # Select performs a read-only source quote; no ATB, ACT or MP side effect.
+    var target:Dictionary=active_target
+    var is_enemy:bool=target_is_enemy
+    select(target,is_enemy)
+    return detail_signature!=previous or source_warnings!=previous_warnings
 
 func _draw()->void:
     if not visible or not bool(header.get("ok",false)):

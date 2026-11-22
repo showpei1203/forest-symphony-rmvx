@@ -192,6 +192,10 @@ func _process(delta: float) -> void:
     if enemy_stage!=null:
         enemy_stage.refresh(battle.enemies)
     _refresh_source_state_hud()
+    if source_target_help!=null and is_instance_valid(
+            source_target_help) and source_target_help.visible and (
+            Engine.get_process_frames()%12==0):
+        source_target_help.refresh_live()
     _update_battle_command_buttons()
 
 func _refresh_source_state_hud()->void:
