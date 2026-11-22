@@ -262,6 +262,9 @@ func start() -> bool:
     return active
 
 func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
+    if not FSOriginalActionSeal.can_use(attacker,db,"attack"):
+        changed.emit("原版 #312 攻撃封印：攻擊無法結算")
+        return false
     # A pure authority refresh is required for dynamic State/Equip changes
     # even if the original combat action was queued one ATB frame earlier.
     # Never draw RNG or mutate HP before the FINAL source quote validates.
@@ -458,6 +461,9 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
     return int(hit["hp"])
 
 func skill_preflight(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
+    if not FSOriginalActionSeal.can_use(user,db,"skill"):
+        changed.emit("原版 #312 スキル封印：不能使用技能或支付 MP")
+        return false
     if not _refresh_element_source(user) or not (
             _refresh_element_source(target)) or not (
             _refresh_ivy_pain_source(user)) or not (
@@ -834,6 +840,10 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
 
 func use_item(target: Dictionary, item_id: int, user: Dictionary = {},
         in_battle: bool = true) -> bool:
+    if in_battle and not user.is_empty() and (
+            not FSOriginalActionSeal.can_use(user,db,"item")):
+        changed.emit("原版 #312 アイテム封印：禁止消耗物品")
+        return false
     # Implement ONLY the verified stock VX simple recovery subset.
     # Final FS MasterSetup/runtime/skill-cost aliases still need real VX traces.
     # Unsupported tag/state/common-event/parameter/item never consumes inventory.

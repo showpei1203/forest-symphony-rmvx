@@ -31,6 +31,11 @@ func request(battle, index: int, kind: String, target_index: int = -1,
         return false
     var key: String = _key(index)
     var actor: Dictionary = battle.party[index]
+    # Original #312 Game_BattleAction.valid? must be checked before ACT.
+    if not FSOriginalActionSeal.can_use(actor,battle.db,kind):
+        battle.changed.emit("原版 #312 行動封印：%s 無法排入 %s" % [
+            str(actor.get("name","角色")),kind])
+        return false
     if pending.has(key) or int(actor.get("hp",0)) <= 0 or not bool(
             actor.get("source_at_active",false)):
         return false
@@ -184,6 +189,10 @@ func schedule_enemy(battle) -> bool:
             continue
         var kind: String = str(choice["kind"])
         var obj: int = int(choice.get("object_id",0))
+        if not FSOriginalActionSeal.can_use(enemy,battle.db,kind):
+            # Enemy uses the same original Game_Battler State-note gate.
+            enemy_refusals[key]="source #312 enemy command is sealed"
+            continue
         var side: String = str(choice.get("target_side","none"))
         var target_index: int = int(choice.get("target_index",-1))
         var target: Dictionary = {}
@@ -230,7 +239,10 @@ func _resolve_enemy_ready(battle) -> int:
         var target: Dictionary = _enemy_target(battle,entry)
         enemy_pending.erase(key) # Pop before any battle signals/reentrancy.
         var success: bool = false
-        if kind == "guard":
+        if not FSOriginalActionSeal.can_use(enemy,battle.db,kind):
+            # State may have changed DURING enemy ACT charge. No effect.
+            success=false
+        elif kind == "guard":
             enemy["guarding"] = true
             success = true
         elif not target.is_empty() and int(target.get("hp",0)) > 0 and (
@@ -296,7 +308,11 @@ func resolve_ready(battle) -> int:
         # Pop before executing to prevent duplicate completion/reentrancy.
         pending.erase(key)
         var success: bool = false
-        if kind == "guard":
+        # Source #312 valid? is evaluated again at actual ACT resolution.
+        # A newly sealed command is canceled without HP/MP/item/RNG effects.
+        if not FSOriginalActionSeal.can_use(actor,battle.db,kind):
+            success=false
+        elif kind == "guard":
             actor["guarding"] = true
             success = true
             battle.changed.emit("%s 防禦姿態成立" % actor.get("name","角色"))

@@ -12,6 +12,7 @@ const ACTOR01_PRESENTATION = preload("res://scripts/ui/FSBattleActor01Presenter.
 const ENEMY_STAGE = preload("res://scripts/ui/FSBattleOriginalEnemyStage.gd")
 const SOURCE_SCAPES=preload("res://scripts/ui/FSOriginalBattleScapeStage.gd")
 const SOURCE_COMMANDS=preload("res://scripts/ui/FSOriginalBattleCommandLayer.gd")
+const STATUS_269=preload("res://scripts/ui/FSBattleSourceHUD269.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -36,6 +37,7 @@ var actor01_presentation: FSBattleActor01Presenter
 var enemy_stage: FSBattleOriginalEnemyStage
 var original_scape: FSOriginalBattleScapeStage
 var original_commands: FSOriginalBattleCommandLayer
+var source_skin_hud: FSBattleSourceHUD269
 var tab_bar:HBoxContainer
 var developer_scroll:ScrollContainer
 var battle_command_art:Dictionary={}
@@ -158,6 +160,9 @@ func _build_shell() -> void:
     enemy_stage=ENEMY_STAGE.new()
     enemy_stage.name="FSBattleStageOriginalEnemies"
     add_child(enemy_stage)
+    source_skin_hud=STATUS_269.new()
+    source_skin_hud.name="FSOriginal269BattleStatusSkin"
+    add_child(source_skin_hud)
     original_commands=SOURCE_COMMANDS.new()
     original_commands.name="FSOriginalBattleCommandOverlay232_268_312"
     original_commands.command_requested.connect(_source_battle_command)
@@ -172,6 +177,8 @@ func _process(delta: float) -> void:
     _refresh_battle_status()
     if ui_hud!=null and ui_hud.visible:
         ui_hud.refresh(battle.party)
+    if source_skin_hud!=null and source_skin_hud.visible:
+        source_skin_hud.refresh(battle.party)
     if actor01_presentation!=null:
         actor01_presentation.sync_from_battle(battle)
     if enemy_stage!=null:
@@ -320,6 +327,8 @@ func _show_menu() -> void:
         original_scape.clear_scape()
     if original_commands!=null:
         original_commands.visible=false
+    if source_skin_hud!=null:
+        source_skin_hud.clear_source()
     if enemy_stage!=null:
         enemy_stage.clear_enemies()
     if actor01_presentation!=null:
@@ -734,6 +743,11 @@ func _show_battle() -> void:
     if ui_hud!=null:
         ui_hud.visible=true
         ui_hud.bind_party(battle.party)
+    if source_skin_hud!=null and source_skin_hud.install(ui_art,battle.party):
+        # #269 exact source bottom-status coordinates and source sprites
+        # replace candidate top Godot HFlow, never render both at once.
+        if ui_hud!=null:
+            ui_hud.visible=false
     _refresh_battle_status()
     # No developer banner across original enemy source portrait.
     _actor_selector(_show_battle)

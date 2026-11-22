@@ -64,6 +64,9 @@ func _run()->void:
         float(requested_width)*416.0/544.0))
     root.content_scale_aspect=Window.CONTENT_SCALE_ASPECT_KEEP
     var db=DB.database()
+    # Private source HUD269 is not a generic test-name banner. Use one
+    # actual FS portrait identity, but keep ALL battle numeric DB synthetic.
+    db.tables["actors"][1]["name"]="喬伊"
     # Only combat stats/Enemy1 record are synthetic source-shaped data.
     # Original BATTLE command pixels and seven source Scape images are real.
     var enemy:Dictionary=db.record("enemies",1)
@@ -98,6 +101,11 @@ func _run()->void:
     if not commands.source_buttons[4].disabled:
         _fail("source Escape artwork must NOT run unverified gameplay")
         return
+    if scene.source_skin_hud==null or (
+            not scene.source_skin_hud.source_enabled) or (
+            not scene.source_skin_hud.visible) or scene.ui_hud.visible:
+        _fail("source #269 original HUD/portrait not replacing generic top HFlow")
+        return
     if scene.title_label.visible or scene.tab_bar.visible or (
             scene.developer_scroll.visible) or scene.log_label.visible:
         _fail("old Godot debug tabs/status and return MENU overlay original battle")
@@ -130,6 +138,23 @@ func _run()->void:
     if backdrop_ink<250:
         _fail("source original new_back01+ffog pixels not visible on physical GPU")
         return
+    # Original 135x135 portrait + #269 bottom-source Btskin status
+    # need REAL GPU pixels (not just Texture2D installed and node visible).
+    scene.source_skin_hud.visible=false
+    await process_frame
+    await process_frame
+    var hud_baseline:Image=root.get_texture().get_image()
+    scene.source_skin_hud.visible=true
+    await process_frame
+    await process_frame
+    var hud_actual:Image=root.get_texture().get_image()
+    var ratio:float=float(requested_width)/544.0
+    var hud_rect:Rect2i=Rect2i(Vector2i(int(9.0*ratio),
+        int(249.0*ratio)),Vector2i(int(135.0*ratio),int(162.0*ratio)))
+    var hud_pixels:int=_pixel_delta(hud_baseline,hud_actual,hud_rect)
+    if hud_pixels<300:
+        _fail("original #269 source portrait/skin did not affect actual GPU")
+        return
     if not await _snapshot("source_troop12_idle"):
         return
     scene._process(2.0)
@@ -154,5 +179,6 @@ func _run()->void:
     print("P539B PRIVATE ORIGINAL 7-SOURCE SCAPE+FIVE SOURCE COMMANDS+"
         +"A52 BODY/WEAPON/FX+SOURCE ENEMY: Godot 4.7.2 native GPU 3/3 "
         +str(requested_width)+" px PASS; source backdrop pixels="
-        +str(backdrop_ink)+". Synthetic combat DB; not final 505-alias parity.")
+        +str(backdrop_ink)+", source #269 HUD pixels="
+        +str(hud_pixels)+". Synthetic combat DB; not final 505-alias parity.")
     quit(0)
