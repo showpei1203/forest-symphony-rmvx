@@ -1,5 +1,18 @@
 # T-A Failure Log / 2026-11-21
 
+## R12 failures and real tested fixes, 2026-11-22
+
+TA-23 | R11B bad recovery poses: R11B F8..F11 returned to one nearly same neutral pose; R12 now uses LPC actual 13-key backslash indices [12,0,1,2,3,6,7,8,9,10,11,12], distinct F8 F9 F10 recovery, no stretched arms. SOURCE CANDIDATE MADE; natural visual transitions still ART HOLD.
+TA-24 | R12 F0/F11 source seam first trial FAIL: hip dithering was frame-index dependent. Fixed by making blend mask x+y position-only; rerun original-source Body F0=F11 exact, 12 single connected human silhouettes PASS. Do not claim original failed code passed.
+TA-25 | New facial source pixel acting: neutral/focus/grit/exert/recover in original A62 3/4 face, using ONLY real flesh pixels and tiny original approved dark tones. Source code and stage manifest saved; human native 1x expression readability remains ART HOLD.
+TA-26 | First QA bundler FileNotFoundError at old Godot script name "capture_r11b_unarmed.gd". Corrected to R12 name, rerun ZIP CRC PASS and exactly 91 members. No source image data changed by packaging correction.
+TA-27 | Official Godot 4.7.2 Windows real Body/Weapon/FX source SubViewport, 73/73 frames, 60Hz, source-vs-GPU full RGBA 0 difference for all 12 poses, 0 alpha mismatch, F7 presentation event at 0.630 sec exactly once, independent Weapon/FX both empty. **ENGINE PASS ONLY; full battle and artist-approved 45° NOT RUN/PASS**.
+TA-28 | R12 original owner private ZIP on authorized E, 253112 bytes, 91 files, ZIP CRC PASS, sha256 eb06ec721516fc7f7957d5e707746134c793104bd973d370f6072c5a709a5926. Source Body SHA d72366a8945dd0a2824252746b03aa98e209c8aceddffb0d7e30555c1dcb69bb. GitHub stores only source code and manifests, not original mixed-license LPC art.
+R12 human ART status HOLD, unresolved diagonal 45 shoulder/torso appearance, and face expressiveness at 1x. No sword, no FX, no extra symbols; user rules preserved.
+
+---
+
+
 ## R11B new failures / gates 2026-11-22
 
 TA-19: R11 source-fusion created disconnected three-pixel foot artifact (x31 y46-48) in F0 and F8-F11, total 15 pixels. R11B removed ONLY components <=3px and blocks larger detached body. 12/12 remaining frames exactly one 8-connected human silhouette. PASS.
