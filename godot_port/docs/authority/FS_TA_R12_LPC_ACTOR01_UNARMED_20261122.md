@@ -1,4 +1,7 @@
 # Forest Symphony T-A R12 | zero-weapon LPC source motion + Actor01 identity
+
+> SUPERSEDED SOURCE CLAIM 2026-11-22: This historical R12 4-cardinal source compositor is NOT authoritative for 45° anatomy. The broader LPC asset ecosystem DOES contain original eight-direction animations; owner E has verified 9×8 real LPC diagonal walk original and editable ORA. See godot_port/docs/authority/FS_TA_R13_VERIFIED_LPC_EIGHT_DIRECTION_CORRECTION_20261122.md. Legacy "only four directions" statements refer solely to the STANDARD Universal LPC generator, never the entire LPC collection. This 8dir walk/run source does not prove an 8dir attack archive yet. R12 stays ART HOLD and is not a newly painted diagonal attack.
+
 Date: 2026-11-22. Priority: latest user direction, over R8/R9 and R11B. Godot 4.7.2 only. ART HOLD until user artist approval.
 
 Goal is NOT only GPU proof. Reconstruct full-body 3/4 45-degree unarmed ACTOR01 attack from original LPC whole-body animation, retaining SHA-approved white hair/face/green clothing and no weapon. Do not reintroduce swords, shields, FX, debug dots, rubber-arm linear bars, or original R9 procedural elastic lines. No production merge until full visual acceptance.
