@@ -1,0 +1,352 @@
+{
+  "2_idle": {
+    "stage": 2,
+    "action": "idle",
+    "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+    "input_sha256": "e85fa2c81630cd7f18e027836b9047a6ccc41ad44f345c09ed61e41ad8ace1a9",
+    "prompt": "stationary breathing and subtle shell-rise idle, weight shifting over four frog feet, lava fissures glowing softly. Keep one head and four connected legs.",
+    "seed": 202611920,
+    "frames": 8,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "f9493547-3999-4dc2-bda6-8da237107d10",
+    "submitted_usage": null,
+    "atlas_name": "PMD0002_IDLE_8F_128px.png",
+    "generation_id": "1f59b067-2779-43b5-96c1-a66b1482f7fc",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "e5dccad693b447d41bc1a2c675be831144ffd54389cf3680e6a5a7f71cb8c9a5",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 8,
+    "qa": "PASS"
+  },
+  "2_attack": {
+    "stage": 2,
+    "action": "attack",
+    "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+    "input_sha256": "e85fa2c81630cd7f18e027836b9047a6ccc41ad44f345c09ed61e41ad8ace1a9",
+    "prompt": "physical quadruped crouch then jump toward SE, snap an OPEN JAW BITE with visible dark mouth, all FOUR articulated frog feet push off, land and recover; no new limbs, no magic fireball.",
+    "seed": 202611921,
+    "frames": 11,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "7eb2621a-4597-46ce-ab1e-1e973cc3be76",
+    "submitted_usage": null,
+    "atlas_name": "PMD0002_ATTACK_11F_128px.png",
+    "generation_id": "76978ab3-7a23-4992-816d-4e4401acea39",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "9e024b5b2accb06b37c6a98f166f927dd549fb1f9096d111b8b3621e9f429bc0",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 11,
+    "qa": "PASS"
+  },
+  "3_idle": {
+    "stage": 3,
+    "action": "idle",
+    "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+    "input_sha256": "d6db33bd26bee20b93f7d3ba8090ab915af207ca2b69822e53dfc723cadf770b",
+    "prompt": "stationary breathing and subtle shell-rise idle, weight shifting over four frog feet, lava fissures glowing softly. Keep one head and four connected legs.",
+    "seed": 202611930,
+    "frames": 8,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "3eba14c4-09a5-4fd1-ab08-1a409b7b9acf",
+    "submitted_usage": null,
+    "atlas_name": "PMD0003_IDLE_8F_128px.png",
+    "generation_id": "2bb506ca-9d79-4fc2-a630-06a8a81da71a",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "dc213446b416dae7771eb0ee7faed48a8e984097bad6e5b6112e88b3d3b7db4d",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 8,
+    "qa": "PASS"
+  },
+  "3_attack": {
+    "stage": 3,
+    "action": "attack",
+    "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+    "input_sha256": "d6db33bd26bee20b93f7d3ba8090ab915af207ca2b69822e53dfc723cadf770b",
+    "prompt": "physical quadruped crouch then jump toward SE, snap an OPEN JAW BITE with visible dark mouth, all FOUR articulated frog feet push off, land and recover; no new limbs, no magic fireball.",
+    "seed": 202611931,
+    "frames": 11,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "1e94f413-f555-4522-a8c9-dfcf159c3187",
+    "submitted_usage": null,
+    "atlas_name": "PMD0003_ATTACK_11F_128px.png",
+    "generation_id": "11edce38-29ac-46ad-9f36-d69c8d571e1a",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "7d9a4c900355675a9f4f82d7e31d453d70844cea6453f73e2cad8d2aa31b36bc",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 11,
+    "qa": "PASS"
+  },
+  "2_hurt": {
+    "stage": 2,
+    "action": "hurt",
+    "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+    "input_sha256": "e85fa2c81630cd7f18e027836b9047a6ccc41ad44f345c09ed61e41ad8ace1a9",
+    "prompt": "sharp recoil after impact then recovery; four feet stay attached, head ducks and molten back shell remains same, no splitting or disappearing.",
+    "seed": 202611922,
+    "frames": 6,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "303aa95e-21c5-49d9-83e7-0c6c4d799bff",
+    "submitted_usage": null,
+    "atlas_name": "PMD0002_HURT_6F_128px.png",
+    "generation_id": "dd4df556-ebbc-4ffd-9ea9-0927fc1e5c53",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "6195e0860ec1c8389139bd8d53e8b9fb77ebdc4bc11e1cbad1ff10b0159e1ec9",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 6,
+    "qa": "PASS"
+  },
+  "2_ko": {
+    "stage": 2,
+    "action": "ko",
+    "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+    "input_sha256": "e85fa2c81630cd7f18e027836b9047a6ccc41ad44f345c09ed61e41ad8ace1a9",
+    "prompt": "collapse into defeated four-legged crouch then remain down, eyelid closes and shell sinks, all 4 limbs connected, no flames/projectiles or extra creatures.",
+    "seed": 202611923,
+    "frames": 8,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "9871397f-9a23-4db2-8c40-f4e414ccc1eb",
+    "submitted_usage": null,
+    "atlas_name": "PMD0002_KO_8F_128px.png",
+    "generation_id": "7d0c5bcf-7e09-4e8a-b40b-054f187537dd",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "742e94add46517bbd51d9fbff0eaf72fd219a1c273e96db7846112d504aa7b42",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 8,
+    "qa": "PASS"
+  },
+  "3_hurt": {
+    "stage": 3,
+    "action": "hurt",
+    "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+    "input_sha256": "d6db33bd26bee20b93f7d3ba8090ab915af207ca2b69822e53dfc723cadf770b",
+    "prompt": "sharp recoil after impact then recovery; four feet stay attached, head ducks and molten back shell remains same, no splitting or disappearing.",
+    "seed": 202611932,
+    "frames": 6,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "fdfc9bba-6147-46ad-9ad9-712138d112fd",
+    "submitted_usage": null,
+    "atlas_name": "PMD0003_HURT_6F_128px.png",
+    "generation_id": "9337135e-68cd-41e1-875d-4f399c1872f2",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "9c112e0b50e5f23cbc2910441146def3cdca0a7bab23e7c692504968f930f1f5",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 6,
+    "qa": "PASS"
+  },
+  "3_ko": {
+    "stage": 3,
+    "action": "ko",
+    "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+    "input_sha256": "d6db33bd26bee20b93f7d3ba8090ab915af207ca2b69822e53dfc723cadf770b",
+    "prompt": "collapse into defeated four-legged crouch then remain down, eyelid closes and shell sinks, all 4 limbs connected, no flames/projectiles or extra creatures.",
+    "seed": 202611933,
+    "frames": 8,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "da11ae2b-24b3-4b28-84bc-1b2e6c8fb1d8",
+    "submitted_usage": null,
+    "atlas_name": "PMD0003_KO_8F_128px.png",
+    "generation_id": "61a2491e-eb52-4bbd-8c92-b69852c78b88",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "b145a49cf60422b7589ca38d4d087f2aa4b812d82a75c52035d92bf2bd3ea382",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 8,
+    "qa": "PASS"
+  },
+  "1_hurt": {
+    "stage": 1,
+    "action": "hurt",
+    "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+    "input_sha256": "4a3ec97fb3a466695401a7402bb4e7d8cab485cbcc977abd85b102a46645df07",
+    "prompt": "sharp recoil after impact then recovery; four feet stay attached, head ducks and molten back shell remains same, no splitting or disappearing.",
+    "seed": 202611912,
+    "frames": 6,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "b76460cc-c70c-46ed-bec7-a438cd811824",
+    "submitted_usage": null,
+    "atlas_name": "PMD0001_HURT_6F_128px.png",
+    "generation_id": "74c16f09-09d5-4c44-a9da-fcc5e93c572f",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "ef7fa07bccc6b55cdc668e6434b409f3260cc70276c24a36718bd76bf69c9fd6",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 6,
+    "qa": "PASS"
+  },
+  "1_ko": {
+    "stage": 1,
+    "action": "ko",
+    "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+    "input_sha256": "4a3ec97fb3a466695401a7402bb4e7d8cab485cbcc977abd85b102a46645df07",
+    "prompt": "collapse into defeated four-legged crouch then remain down, eyelid closes and shell sinks, all 4 limbs connected, no flames/projectiles or extra creatures.",
+    "seed": 202611913,
+    "frames": 8,
+    "cell": [
+      128,
+      128
+    ],
+    "status": "completed",
+    "job_id": "4a0bf880-a038-4d28-a8ba-9a64071c5f7e",
+    "submitted_usage": null,
+    "atlas_name": "PMD0001_KO_8F_128px.png",
+    "generation_id": "b485dd24-e69d-4403-ac0f-92e3cc88a770",
+    "usage": {
+      "type": "generations",
+      "generations": 3
+    },
+    "sheet_sha256": "b9152fc9931aac9d49ebedc3f8a98e57c6b94e4592ae611d9a47a92757b119d7",
+    "border_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "unique_frames": 8,
+    "qa": "PASS"
+  }
+}

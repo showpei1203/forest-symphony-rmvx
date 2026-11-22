@@ -1,0 +1,445 @@
+{
+  "schema": "fs-tb11-original-lava-frog-family-v1",
+  "family_id": "PMD_LAVA_FROG",
+  "target_engine": "Godot 4.7.2",
+  "art_gate": "OWNER_REVIEW_NEEDED_FOR_NEW_ANIMATIONS",
+  "battle_engine_modifications": false,
+  "original_approved": "PMD0001_ATTACK_V6_PIXELLAB_11F_384x288.png",
+  "stages": [
+    {
+      "index": 1,
+      "name": "Lava Frog Young",
+      "source_path": "assets/monsters/pmd/PMD0001_STATIC_64.png",
+      "source_size": [
+        64,
+        64
+      ],
+      "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+      "motions": {
+        "idle": {
+          "path": "assets/monsters/pmd/PMD0001_IDLE_3F_192x64.png",
+          "frames": 3,
+          "columns": 3,
+          "cell": [
+            64,
+            64
+          ],
+          "fps": 8,
+          "loop": true,
+          "sha256": "403cb7517ae144e0f8d25c8c431a3aecb906b6ef8f239f8836d9ad25dfdd690f",
+          "frame_unique": 3,
+          "border_counts": [
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PREVIOUSLY_VALIDATED",
+          "art_status": "LEGACY_SOURCE_ACCEPTED"
+        },
+        "attack": {
+          "path": "assets/monsters/pmd/PMD0001_ATTACK_V6_PIXELLAB_11F_384x288.png",
+          "frames": 11,
+          "columns": 4,
+          "cell": [
+            96,
+            96
+          ],
+          "fps": 10,
+          "loop": false,
+          "sha256": "9cd50cc5d5bf9aa21e505307e5dac9581a2473d23b49483590ed3632949d2162",
+          "frame_unique": 11,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PREVIOUSLY_VALIDATED",
+          "art_status": "USER_ART_ACCEPTED"
+        },
+        "hurt": {
+          "path": "assets/monsters/pmd/PMD0001_HURT_6F_128px.png",
+          "frames": 6,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 9,
+          "loop": false,
+          "sha256": "ef7fa07bccc6b55cdc668e6434b409f3260cc70276c24a36718bd76bf69c9fd6",
+          "frame_unique": 6,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "b76460cc-c70c-46ed-bec7-a438cd811824",
+          "generation_id": "74c16f09-09d5-4c44-a9da-fcc5e93c572f",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c"
+        },
+        "ko": {
+          "path": "assets/monsters/pmd/PMD0001_KO_8F_128px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 7,
+          "loop": false,
+          "sha256": "b9152fc9931aac9d49ebedc3f8a98e57c6b94e4592ae611d9a47a92757b119d7",
+          "frame_unique": 8,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "4a0bf880-a038-4d28-a8ba-9a64071c5f7e",
+          "generation_id": "b485dd24-e69d-4403-ac0f-92e3cc88a770",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c"
+        }
+      }
+    },
+    {
+      "index": 2,
+      "name": "Magma Frog Guardian",
+      "source_path": "assets/monsters/pmd/PMD0002_STATIC_64.png",
+      "source_size": [
+        64,
+        64
+      ],
+      "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+      "motions": {
+        "idle": {
+          "path": "assets/monsters/pmd/PMD0002_IDLE_8F_128px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 8,
+          "loop": true,
+          "sha256": "e5dccad693b447d41bc1a2c675be831144ffd54389cf3680e6a5a7f71cb8c9a5",
+          "frame_unique": 8,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "f9493547-3999-4dc2-bda6-8da237107d10",
+          "generation_id": "1f59b067-2779-43b5-96c1-a66b1482f7fc",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+        },
+        "attack": {
+          "path": "assets/monsters/pmd/PMD0002_ATTACK_11F_128px.png",
+          "frames": 11,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 10,
+          "loop": false,
+          "sha256": "9e024b5b2accb06b37c6a98f166f927dd549fb1f9096d111b8b3621e9f429bc0",
+          "frame_unique": 11,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "7eb2621a-4597-46ce-ab1e-1e973cc3be76",
+          "generation_id": "76978ab3-7a23-4992-816d-4e4401acea39",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+        },
+        "hurt": {
+          "path": "assets/monsters/pmd/PMD0002_HURT_6F_128px.png",
+          "frames": 6,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 9,
+          "loop": false,
+          "sha256": "6195e0860ec1c8389139bd8d53e8b9fb77ebdc4bc11e1cbad1ff10b0159e1ec9",
+          "frame_unique": 6,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "303aa95e-21c5-49d9-83e7-0c6c4d799bff",
+          "generation_id": "dd4df556-ebbc-4ffd-9ea9-0927fc1e5c53",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+        },
+        "ko": {
+          "path": "assets/monsters/pmd/PMD0002_KO_8F_128px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 7,
+          "loop": false,
+          "sha256": "742e94add46517bbd51d9fbff0eaf72fd219a1c273e96db7846112d504aa7b42",
+          "frame_unique": 8,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "9871397f-9a23-4db2-8c40-f4e414ccc1eb",
+          "generation_id": "7d0c5bcf-7e09-4e8a-b40b-054f187537dd",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f"
+        }
+      }
+    },
+    {
+      "index": 3,
+      "name": "Ancient Lava Toad",
+      "source_path": "assets/monsters/pmd/PMD0003_STATIC_64.png",
+      "source_size": [
+        64,
+        64
+      ],
+      "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+      "motions": {
+        "idle": {
+          "path": "assets/monsters/pmd/PMD0003_IDLE_8F_128px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 8,
+          "loop": true,
+          "sha256": "dc213446b416dae7771eb0ee7faed48a8e984097bad6e5b6112e88b3d3b7db4d",
+          "frame_unique": 8,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "3eba14c4-09a5-4fd1-ab08-1a409b7b9acf",
+          "generation_id": "2bb506ca-9d79-4fc2-a630-06a8a81da71a",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+        },
+        "attack": {
+          "path": "assets/monsters/pmd/PMD0003_ATTACK_11F_128px.png",
+          "frames": 11,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 10,
+          "loop": false,
+          "sha256": "7d9a4c900355675a9f4f82d7e31d453d70844cea6453f73e2cad8d2aa31b36bc",
+          "frame_unique": 11,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "1e94f413-f555-4522-a8c9-dfcf159c3187",
+          "generation_id": "11edce38-29ac-46ad-9f36-d69c8d571e1a",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+        },
+        "hurt": {
+          "path": "assets/monsters/pmd/PMD0003_HURT_6F_128px.png",
+          "frames": 6,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 9,
+          "loop": false,
+          "sha256": "9c112e0b50e5f23cbc2910441146def3cdca0a7bab23e7c692504968f930f1f5",
+          "frame_unique": 6,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "fdfc9bba-6147-46ad-9ad9-712138d112fd",
+          "generation_id": "9337135e-68cd-41e1-875d-4f399c1872f2",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+        },
+        "ko": {
+          "path": "assets/monsters/pmd/PMD0003_KO_8F_128px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 7,
+          "loop": false,
+          "sha256": "b145a49cf60422b7589ca38d4d087f2aa4b812d82a75c52035d92bf2bd3ea382",
+          "frame_unique": 8,
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "technical_qa": "PASS",
+          "art_status": "ART_REVIEW_PENDING",
+          "provider_job_id": "da11ae2b-24b3-4b28-84bc-1b2e6c8fb1d8",
+          "generation_id": "61a2491e-eb52-4bbd-8c92-b69852c78b88",
+          "provider_usage": {
+            "type": "generations",
+            "generations": 3
+          },
+          "source_sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb"
+        }
+      }
+    }
+  ],
+  "motion_count": 12,
+  "total_frames": 94,
+  "qa_hold": [],
+  "new_jobs_count": 10,
+  "new_generation_cost": 30.0,
+  "missing": [
+    {
+      "stage": 1,
+      "action": "guard"
+    },
+    {
+      "stage": 1,
+      "action": "skill"
+    },
+    {
+      "stage": 2,
+      "action": "guard"
+    },
+    {
+      "stage": 2,
+      "action": "skill"
+    },
+    {
+      "stage": 3,
+      "action": "guard"
+    },
+    {
+      "stage": 3,
+      "action": "skill"
+    }
+  ]
+}

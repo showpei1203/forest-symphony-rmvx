@@ -1,0 +1,243 @@
+{
+  "rows": [
+    {
+      "stage": 1,
+      "action": "idle",
+      "frames": 3,
+      "qa": "PREVIOUSLY_VALIDATED",
+      "source": "PMD0001_STATIC_64.png",
+      "atlas": "PMD0001_IDLE_3F_192x64.png",
+      "sha": "403cb7517ae144e0f8d25c8c431a3aecb906b6ef8f239f8836d9ad25dfdd690f",
+      "border": [
+        0,
+        0,
+        0
+      ],
+      "unique": 3
+    },
+    {
+      "stage": 1,
+      "action": "attack",
+      "frames": 11,
+      "qa": "PREVIOUSLY_VALIDATED",
+      "source": "PMD0001_STATIC_64.png",
+      "atlas": "PMD0001_ATTACK_V6_PIXELLAB_11F_384x288.png",
+      "sha": "9cd50cc5d5bf9aa21e505307e5dac9581a2473d23b49483590ed3632949d2162",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 11
+    },
+    {
+      "stage": 1,
+      "action": "hurt",
+      "frames": 6,
+      "qa": "PASS",
+      "source": "PMD0001_STATIC_64.png",
+      "atlas": "PMD0001_HURT_6F_128px.png",
+      "sha": "ef7fa07bccc6b55cdc668e6434b409f3260cc70276c24a36718bd76bf69c9fd6",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 6
+    },
+    {
+      "stage": 1,
+      "action": "ko",
+      "frames": 8,
+      "qa": "PASS",
+      "source": "PMD0001_STATIC_64.png",
+      "atlas": "PMD0001_KO_8F_128px.png",
+      "sha": "b9152fc9931aac9d49ebedc3f8a98e57c6b94e4592ae611d9a47a92757b119d7",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 8
+    },
+    {
+      "stage": 2,
+      "action": "idle",
+      "frames": 8,
+      "qa": "PASS",
+      "source": "PMD0002_STATIC_64.png",
+      "atlas": "PMD0002_IDLE_8F_128px.png",
+      "sha": "e5dccad693b447d41bc1a2c675be831144ffd54389cf3680e6a5a7f71cb8c9a5",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 8
+    },
+    {
+      "stage": 2,
+      "action": "attack",
+      "frames": 11,
+      "qa": "PASS",
+      "source": "PMD0002_STATIC_64.png",
+      "atlas": "PMD0002_ATTACK_11F_128px.png",
+      "sha": "9e024b5b2accb06b37c6a98f166f927dd549fb1f9096d111b8b3621e9f429bc0",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 11
+    },
+    {
+      "stage": 2,
+      "action": "hurt",
+      "frames": 6,
+      "qa": "PASS",
+      "source": "PMD0002_STATIC_64.png",
+      "atlas": "PMD0002_HURT_6F_128px.png",
+      "sha": "6195e0860ec1c8389139bd8d53e8b9fb77ebdc4bc11e1cbad1ff10b0159e1ec9",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 6
+    },
+    {
+      "stage": 2,
+      "action": "ko",
+      "frames": 8,
+      "qa": "PASS",
+      "source": "PMD0002_STATIC_64.png",
+      "atlas": "PMD0002_KO_8F_128px.png",
+      "sha": "742e94add46517bbd51d9fbff0eaf72fd219a1c273e96db7846112d504aa7b42",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 8
+    },
+    {
+      "stage": 3,
+      "action": "idle",
+      "frames": 8,
+      "qa": "PASS",
+      "source": "PMD0003_STATIC_64.png",
+      "atlas": "PMD0003_IDLE_8F_128px.png",
+      "sha": "dc213446b416dae7771eb0ee7faed48a8e984097bad6e5b6112e88b3d3b7db4d",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 8
+    },
+    {
+      "stage": 3,
+      "action": "attack",
+      "frames": 11,
+      "qa": "PASS",
+      "source": "PMD0003_STATIC_64.png",
+      "atlas": "PMD0003_ATTACK_11F_128px.png",
+      "sha": "7d9a4c900355675a9f4f82d7e31d453d70844cea6453f73e2cad8d2aa31b36bc",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 11
+    },
+    {
+      "stage": 3,
+      "action": "hurt",
+      "frames": 6,
+      "qa": "PASS",
+      "source": "PMD0003_STATIC_64.png",
+      "atlas": "PMD0003_HURT_6F_128px.png",
+      "sha": "9c112e0b50e5f23cbc2910441146def3cdca0a7bab23e7c692504968f930f1f5",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 6
+    },
+    {
+      "stage": 3,
+      "action": "ko",
+      "frames": 8,
+      "qa": "PASS",
+      "source": "PMD0003_STATIC_64.png",
+      "atlas": "PMD0003_KO_8F_128px.png",
+      "sha": "b145a49cf60422b7589ca38d4d087f2aa4b812d82a75c52035d92bf2bd3ea382",
+      "border": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique": 8
+    }
+  ],
+  "issues": []
+}
