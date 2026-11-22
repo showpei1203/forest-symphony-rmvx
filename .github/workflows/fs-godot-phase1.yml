@@ -282,6 +282,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_original_battle_icons_537.gd
+      - name: P539D original #381 State HUD visible-priority/overflow and source A52 opposite-facing native Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_p539d_state_hud_facing.gd
       - name: P539C original #312 State-note seals and #269 Btskin source HUD native Godot
         shell: bash
         run: |

@@ -13,6 +13,7 @@ const ENEMY_STAGE = preload("res://scripts/ui/FSBattleOriginalEnemyStage.gd")
 const SOURCE_SCAPES=preload("res://scripts/ui/FSOriginalBattleScapeStage.gd")
 const SOURCE_COMMANDS=preload("res://scripts/ui/FSOriginalBattleCommandLayer.gd")
 const STATUS_269=preload("res://scripts/ui/FSBattleSourceHUD269.gd")
+const STATES_381=preload("res://scripts/ui/FSBattleSourceStateHUD381.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -38,6 +39,7 @@ var enemy_stage: FSBattleOriginalEnemyStage
 var original_scape: FSOriginalBattleScapeStage
 var original_commands: FSOriginalBattleCommandLayer
 var source_skin_hud: FSBattleSourceHUD269
+var source_state_hud: FSBattleSourceStateHUD381
 var tab_bar:HBoxContainer
 var developer_scroll:ScrollContainer
 var battle_command_art:Dictionary={}
@@ -163,6 +165,10 @@ func _build_shell() -> void:
     source_skin_hud=STATUS_269.new()
     source_skin_hud.name="FSOriginal269BattleStatusSkin"
     add_child(source_skin_hud)
+    # 381 is the real actor/enemy overlay; #462 help window disables its
+    # own duplicated state icons by default.
+    source_state_hud=STATES_381.new()
+    add_child(source_state_hud)
     original_commands=SOURCE_COMMANDS.new()
     original_commands.name="FSOriginalBattleCommandOverlay232_268_312"
     original_commands.command_requested.connect(_source_battle_command)
@@ -183,7 +189,29 @@ func _process(delta: float) -> void:
         actor01_presentation.sync_from_battle(battle)
     if enemy_stage!=null:
         enemy_stage.refresh(battle.enemies)
+    _refresh_source_state_hud()
     _update_battle_command_buttons()
+
+func _refresh_source_state_hud()->void:
+    if source_state_hud==null or not source_state_hud.source_enabled or (
+            battle==null):
+        return
+    var actors:Dictionary={}
+    # Only the genuine source actor01 rig has a physical Sprite2D anchor.
+    # Do not invent anchors for other actors whose animations are ART HOLD.
+    if actor01_presentation!=null and actor01_presentation.visible and (
+            actor01_presentation.rig!=null):
+        for index in range(battle.party.size()):
+            if int(battle.party[index].get("id",0))==1:
+                actors[index]=actor01_presentation.rig.global_position
+    var enemies:Dictionary={}
+    if enemy_stage!=null:
+        for row in enemy_stage.enemy_views:
+            var i:int=int(row.get("index",-1))
+            var control:Control=row.get("image")
+            if i>=0 and control!=null and control.visible:
+                enemies[i]=control.get_global_rect().get_center()
+    source_state_hud.refresh(battle.party,battle.enemies,actors,enemies)
 
 func _change(tab: String) -> void:
     view_name = tab
@@ -336,6 +364,8 @@ func _show_menu() -> void:
         original_commands.visible=false
     if source_skin_hud!=null:
         source_skin_hud.clear_source()
+    if source_state_hud!=null:
+        source_state_hud.clear_source()
     if enemy_stage!=null:
         enemy_stage.clear_enemies()
     if actor01_presentation!=null:
@@ -750,6 +780,9 @@ func _show_battle() -> void:
     if ui_hud!=null:
         ui_hud.visible=true
         ui_hud.bind_party(battle.party)
+    if source_state_hud!=null:
+        source_state_hud.install(ui_art,db)
+        _refresh_source_state_hud()
     if source_skin_hud!=null and source_skin_hud.install(ui_art,battle.party):
         # #269 exact source bottom-status coordinates and source sprites
         # replace candidate top Godot HFlow, never render both at once.
