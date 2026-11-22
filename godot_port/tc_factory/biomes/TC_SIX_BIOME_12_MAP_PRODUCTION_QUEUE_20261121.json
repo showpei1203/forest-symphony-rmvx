@@ -18,9 +18,10 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 2,
+    "Ground_PAR_pair_candidates_static_pass": 3,
     "ground_source_candidates_FS_03_VILLAGE": 1,
-    "failed_PAR_generation_attempts_FS_03_VILLAGE": 2
+    "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
+    "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1
   },
   "scenes": [
     {
@@ -266,7 +267,7 @@
       "biome_id": "WIND_ERODED_GOLD_SANDS",
       "biome_name": "風蝕金砂",
       "role": "VILLAGE",
-      "stage": "D7_NEW_DESERT_GROUND_40x29_SOURCE_CANDIDATE_SEMANTIC_ART_HOLD_PAR_NOT_GENERATED",
+      "stage": "D8_SAME_SCENE_TRUE_INDEPENDENT_GROUND_FIRST_FULL_TRANSPARENT_PAR_STATIC_PAIR_PASS_ART_HOLD",
       "ground_material_family": [
         "沙丘",
         "砂岩",
@@ -304,11 +305,58 @@
         "source_private_Drive": "https://drive.google.com/file/d/1OQmMo0pBq7WE0RwcsRkALqDDaLXrThjA/view",
         "QA_private_Drive": "https://drive.google.com/file/d/1tFCb_V0VaxWFgKrewGIs3sIEcZ-DN7yi/view",
         "Ground_purity": "HOLD_UPRIGHT_CLIFF_FACES_AND_SOME_BUSHES",
-        "CompletePAR": null,
+        "CompletePAR": {
+          "status": "D8_NEW_DESERT_REAL_INDEPENDENT_RGBA_PAR_GENERATED_TRUE_ALPHA_ZERO",
+          "original_image_size": [
+            1477,
+            1065
+          ],
+          "original_image_sha256": "47e3225ddb6399b19647265220783197d06d57729e15c4ca13a2fbf182929988",
+          "common_crop_xyxy": [
+            98,
+            68,
+            1378,
+            996
+          ],
+          "crop_size": [
+            1280,
+            928
+          ],
+          "grid_32px": [
+            40,
+            29
+          ],
+          "raw_sha256": "4fe7eacf0ba79f123963de2d03e15d14f4e2980287c0213d6744d3833c78c4b6",
+          "clean_sha256": "16e9b4ba8ecf201fd43185ac7092fe1603433069b86eb1ecc213797b696f85f2",
+          "raw_composite_sha256": "f20dc99a6019bfa08a53ff5659bba5e92ec1e107fe2cf37ee0bc0f8a00b3e8c5",
+          "clean_composite_sha256": "bd616d80613727233037b6c5f4baf28e22d009772ff979fc3147afa1eda757ba",
+          "source_alpha_zero_pixels": 548678,
+          "alpha_one_to_eight_contamination_pixels": 185051,
+          "source_cut_object_edge_alpha_hits": {
+            "top": 402,
+            "bottom": 164,
+            "left": 485,
+            "right": 265
+          },
+          "Ground_still_unmodified_sha256": "ac3688112874cd45a38f484b8c37dbc0b8f6abd41b67cc0c578bc95f0935aa97",
+          "all_non_ground_families": "INCLUDED_BY_IMAGE_VISUAL_CANDIDATE_NOT_INDEPENDENT_SOURCE_MANIFEST",
+          "authoring_purity": "HOLD_D7_GROUND_HAS_RAISED_SANDSTONE_CLIFFS_AND_SHRUBS",
+          "PAR_alpha_purity": "HOLD_SOURCE_ALPHA_CONTAMINATION",
+          "source_crop_full_objects": "HOLD_CROPPED_BORDERS",
+          "native_Godot_4_7_2": "NOT_RUN",
+          "formal_art_gate": "HOLD",
+          "owner_only_drive": {
+            "archive": "https://drive.google.com/file/d/1SO1aVJu3KNDZIlAmgcOHc5nosSwJ0Q4w/view",
+            "raw_par": "https://drive.google.com/file/d/1ojHRduBZIFyyys21Fz8irKNTLNV3I3C5/view",
+            "cleaned_par": "https://drive.google.com/file/d/18v6Tnr-vomNMVgyUGjQz2LVLZF6lssez/view",
+            "composite": "https://drive.google.com/file/d/1eJPmH9j4c_DjkKM8Bkx2bRQmzGznObfU/view"
+          }
+        },
         "failed_PAR_attempts": 2,
         "PAR_failure": "wrong winter maze and zero fully transparent pixels in resulting RGBA images",
         "Godot_native": "NOT_RUN",
-        "art_gate": "HOLD"
+        "art_gate": "HOLD_GROUND_PURITY_PAR_EDGE_ALPHA",
+        "pairing_QA": "PIL_PIXEL_COMPOSITE_PASS_40x29"
       }
     },
     {
