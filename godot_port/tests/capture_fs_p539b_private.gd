@@ -98,6 +98,10 @@ func _run()->void:
     if not commands.source_buttons[4].disabled:
         _fail("source Escape artwork must NOT run unverified gameplay")
         return
+    if scene.title_label.visible or scene.tab_bar.visible or (
+            scene.developer_scroll.visible) or scene.log_label.visible:
+        _fail("old Godot debug tabs/status and return MENU overlay original battle")
+        return
     if not scene.actor01_presentation.private_source_ready or (
             scene.enemy_stage.enemy_views.size()!=1):
         _fail("source A52 actor + original source Battler missing")

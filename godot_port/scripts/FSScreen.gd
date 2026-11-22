@@ -36,6 +36,8 @@ var actor01_presentation: FSBattleActor01Presenter
 var enemy_stage: FSBattleOriginalEnemyStage
 var original_scape: FSOriginalBattleScapeStage
 var original_commands: FSOriginalBattleCommandLayer
+var tab_bar:HBoxContainer
+var developer_scroll:ScrollContainer
 var battle_command_art:Dictionary={}
 var battle_command_grid:GridContainer
 
@@ -119,6 +121,7 @@ func _build_shell() -> void:
     title_label.add_theme_font_size_override("font_size", 15)
     layout.add_child(title_label)
     var tabs := HBoxContainer.new()
+    tab_bar=tabs
     layout.add_child(tabs)
     for tab in ["MENU", "BATTLE"]:
         var button := Button.new()
@@ -138,6 +141,7 @@ func _build_shell() -> void:
     status_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     layout.add_child(status_label)
     var scroll := ScrollContainer.new()
+    developer_scroll=scroll
     scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
     layout.add_child(scroll)
     body = VBoxContainer.new()
@@ -184,6 +188,9 @@ func _change(tab: String) -> void:
         _show_menu()
 
 func _clear_body() -> void:
+    # Source-compatible battle UI hides only the temporary debug chrome.
+    # Any real target/skill/item submenu restores usable Godot controls.
+    _restore_developer_shell()
     if original_commands!=null:
         original_commands.visible=false
     for n in body.get_children():
@@ -266,6 +273,28 @@ func _update_battle_command_buttons() -> void:
             if battle_command_art.has(key):
                 var pair:Dictionary=battle_command_art[key]
                 button.icon=pair["active"] if enabled else pair["inactive"]
+
+func _restore_developer_shell()->void:
+    if title_label!=null:
+        title_label.visible=true
+    if tab_bar!=null:
+        tab_bar.visible=true
+    if developer_scroll!=null:
+        developer_scroll.visible=true
+    if log_label!=null:
+        log_label.visible=true
+
+func _hide_developer_shell_for_original_battle()->void:
+    # Original #232/#268 has Sprite commands, NOT Godot test tabs,
+    # 'Return MENU' or a giant text selector across the battle arena.
+    if title_label!=null:
+        title_label.visible=false
+    if tab_bar!=null:
+        tab_bar.visible=false
+    if developer_scroll!=null:
+        developer_scroll.visible=false
+    if log_label!=null:
+        log_label.visible=false
 
 func _source_battle_command(index:int)->void:
     if not _battle_actor_ready():
@@ -724,8 +753,9 @@ func _show_battle() -> void:
     _add_button("返回 MENU", _show_menu)
     if original_commands!=null and original_commands.bind_original(ui_art):
         # Source owns FIVE staggered, vertical Battle01..05 sprites.
-        # Keep old functional 2x2 fallback ONLY if no owner originals.
+        # Hide the candidate 2x2 input and development-only text overlays.
         battle_command_grid.visible=false
+        _hide_developer_shell_for_original_battle()
     _update_battle_command_buttons()
 
 func _refresh_battle_status() -> void:
