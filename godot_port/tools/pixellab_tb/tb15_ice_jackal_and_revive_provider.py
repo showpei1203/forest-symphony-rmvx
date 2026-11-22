@@ -100,8 +100,17 @@ def get_frames(resp,n):
     for field in ('images','frames','output_images'):
         images=[imagedecode(v) for v in (obj.get(field) or [])]
         if images and all(im is not None for im in images):
-            if len(images)!=n:raise RuntimeError(f'Expected {n} frames, returned {len(images)}')
-            return images,obj.get('generation_id')
+            # PixelLab animate-with-text-v3 may return requested frame_count PLUS the input frame.
+            # All returned frames are real provider raster. Sample n indices incl BOTH endpoints;
+            # do not reroll, repeat, stretch or falsely claim n+1 requested frames.
+            returned=len(images)
+            if returned==n+1:
+                selected=[round(k*(returned-1)/(n-1)) for k in range(n)]
+                assert len(set(selected))==n and selected[0]==0 and selected[-1]==returned-1
+                images=[images[k] for k in selected]
+            elif returned!=n:
+                raise RuntimeError(f'Expected {n} (or {n+1} input-echo) frames; got {returned}')
+            return images,obj.get('generation_id'),returned
     raise RuntimeError('No authentic animation frames in provider response')
 start=time.monotonic()
 def milestone(*msg):print('FS_R15',*msg,flush=True);persist()
@@ -218,7 +227,7 @@ def submit(kind,st,act):
     milestone('ANIM_SUBMIT',key,jid)
 def accept(key,resp):
     rec=J[key];n=rec['frames'];kind=rec['kind'];st=rec['stage'];act=rec['action']
-    images,gid=get_frames(resp,n)
+    images,gid,returned_count=get_frames(resp,n)
     cell=rec['cell']
     if any(i.size!=(cell,cell) for i in images):raise RuntimeError('provider violated output dimension '+key)
     original=images[:]
@@ -249,7 +258,8 @@ def accept(key,resp):
                generation_id=gid,usage=resp.get('usage'),first_frame_exact_source=True,
                last_frame_exact_source=last is not None,
                unique_frames=len(set(hashes)),border_counts=edges,
-               frame_count_original_ai=n,provider_frame_sha256=[sha(im.tobytes()) for im in original])
+               frame_count_original_ai=returned_count,export_frames=n,provider_excess_frame_dropped=returned_count-n,
+               provider_frame_sha256=[sha(im.tobytes()) for im in original])
     milestone('ANIM_COMPLETE',key,qa,len(set(hashes)),str(resp.get('usage')))
     if qa!='PASS':
         raise RuntimeError('Provider result failed sprite technical QA '+key+' '+str(edges))
