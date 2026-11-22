@@ -127,9 +127,9 @@ EVOS=[]
 for fi,kind in enumerate(('bat','frog')):
     stages=M['families'][fi]['stages']
     for source_i in (0,1):
-        a=stages[source_i];b=stages[source_i+1]
+        src_stage=stages[source_i];dst_stage=stages[source_i+1]
         cell=224 if kind=='bat' else 128
-        frames=transition_frames(G/a['source_path'],G/b['source_path'],cell,kind,seed=202614500+fi*100+source_i)
+        frames=transition_frames(G/src_stage['source_path'],G/dst_stage['source_path'],cell,kind,seed=202614500+fi*100+source_i)
         atlas=Image.new('RGBA',(4*cell,4*cell))
         bounds=[];uniques=[]
         for i,fr in enumerate(frames):
@@ -146,7 +146,7 @@ for fi,kind in enumerate(('bat','frog')):
         EVOS.append({'family_id':M['families'][fi]['family_id'],'kind':kind,
                      'from_stage':source_i+1,'to_stage':source_i+2,'path':f'assets/monsters/{folder}/{name}',
                      'frames':16,'columns':4,'cell':[cell,cell],'fps':12,'loop':False,'sha256':sha(p.read_bytes()),
-                     'from_source_sha256':a['source_sha256'],'to_source_sha256':b['source_sha256'],
+                     'from_source_sha256':src_stage['source_sha256'],'to_source_sha256':dst_stage['source_sha256'],
                      'first_and_last_exact_original_source_rgba':True,
                      'render_method':'PROCEDURAL_SOURCE_LOCKED_TRANSITION_FX_NOT_PIXEL_LAB',
                      'border_counts':bounds,'unique_frames':len(set(uniques)),'technical_qa':'PASS',
