@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 4,
+    "Ground_PAR_pair_candidates_static_pass": 5,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -28,7 +28,8 @@
     "new_complete_PAR_candidates_FS_03_MAZE": 1,
     "failed_Ground_generation_FS_04_VILLAGE": 1,
     "new_ground_source_candidates_FS_04_VILLAGE": 1,
-    "failed_complete_PAR_generation_attempts_FS_04_VILLAGE": 5
+    "failed_complete_PAR_generation_attempts_FS_04_VILLAGE": 6,
+    "new_complete_PAR_candidates_FS_04_VILLAGE": 1
   },
   "scenes": [
     {
@@ -486,7 +487,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "VILLAGE",
-      "stage": "D11_NEW_TRUE_VOLCANO_GROUND_40x29_SOURCE_CANDIDATE_PAR_NOT_GENERATED_ART_HOLD",
+      "stage": "D13_INDEPENDENT_TRUE_RGBA_NON_GROUND_PAR_SOURCE_1474x1067_STATIC_PAIR_TECH_CANDIDATES_FORMAL_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -542,17 +543,62 @@
         },
         "visual_source": "New independent in-chat imagegen Ground-only image, no buildings/furnaces/bridges",
         "source_art_purity": "HOLD basalt cliff edges may be raised non-ground",
-        "CompletePAR": null,
-        "par_generation_attempts_rejected": 5,
+        "CompletePAR": {
+          "status": "D13_NEW_INDEPENDENT_TRUE_RGBA_ALL_NON_GROUND_PAR_SOURCE_NOT_NATIVE_40x29",
+          "source_size": [
+            1474,
+            1067
+          ],
+          "source_sha256": "b6d529b66d9ec71c87991e7e63abeb85f9d145e056e7bf675cd8ac0de3678f72",
+          "alpha_zero_pixels": 715393,
+          "alpha_1_to_8": 121578,
+          "alpha_240_to_254": 641638,
+          "native_crop": {
+            "crop": [
+              97,
+              69,
+              1377,
+              997
+            ],
+            "size": [
+              1280,
+              928
+            ],
+            "sha256": "05ef52636c3df0ced5f600fb6075a991164d6e5fab671ead95f7b33e03f68a62",
+            "resampling": "NONE",
+            "edge_props_clipped": true
+          },
+          "resampled_tech_candidate": {
+            "size": [
+              1280,
+              928
+            ],
+            "sha256": "6ec03d35f23faa083d9df84cb7da78fa72bc0c264e0eec8b203b4c0eaee0e445",
+            "resampling": "LANCZOS",
+            "is_native_1x": false,
+            "alpha_zero_pixels": 541780
+          },
+          "ground_sha_lock": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
+          "world_xy": "HOLD_VISUAL_ONLY",
+          "Godot_4_7_2_native": "NOT_RUN",
+          "formal_art_gate": "HOLD",
+          "source_drive": "https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view",
+          "QA_ZIP_Drive": "https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view",
+          "composite_preview_drive": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view"
+        },
+        "par_generation_attempts_rejected": 6,
         "rejection_evidence": "1 RGB full-city image and 4 RGBA full-city images all with alpha=0 pixel count 0; not transparent CompletePAR",
-        "Ground_PAR_pair": "NOT_RUN",
+        "Ground_PAR_pair": "D13_PIL_STATIC_PAIR_TECH_PASS_BUT_PAR_RESAMPLED_OR_CROPPED_ART_HOLD",
         "Godot_native": "NOT_RUN",
-        "art_gate": "HOLD",
+        "art_gate": "HOLD_NATIVE_SOURCE_40x29_AND_ALPHA_AND_POSITION_QA",
         "owner_only_drive": {
           "D11_complete_source_and_failure_QA": "https://drive.google.com/file/d/11jWGIU54Lk8eyfwLGJs-YbKZU1W6ezIM/view",
           "Ground_40x29": "https://drive.google.com/file/d/1O8lKij4P8JgxczP2Q1Ykt-RKnhyk56RL/view",
           "original_1477x1065": "https://drive.google.com/file/d/1fmrna0wMmv24LRxokUNn3b6mNEOd1aRb/view",
-          "complete_context_46x33": "https://drive.google.com/file/d/1BKyxcOfGPglyw-0pnChwVXUhYjsD0siN/view"
+          "complete_context_46x33": "https://drive.google.com/file/d/1BKyxcOfGPglyw-0pnChwVXUhYjsD0siN/view",
+          "D13_new_PAR_raw": "https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view",
+          "D13_QA_ZIP": "https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view",
+          "D13_preview": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view"
         }
       }
     },
