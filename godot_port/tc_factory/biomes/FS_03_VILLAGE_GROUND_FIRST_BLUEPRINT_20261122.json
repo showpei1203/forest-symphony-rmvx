@@ -1,0 +1,87 @@
+{
+  "schema": "FS_TC_D7_FS_03_VILLAGE_GROUND_FIRST_ALL_PAR_BLUEPRINT_20261122",
+  "scene_id": "FS_03_VILLAGE",
+  "scene_name": "星井綠洲",
+  "biome_id": "WIND_ERODED_GOLD_SANDS",
+  "biome_name": "風蝕金砂",
+  "drive_authority": "https://docs.google.com/document/d/1SjVPK3J5exwp0fC3bRMHjoWo2vne_pck/edit",
+  "image_contract": "Ground generated FIRST as opaque RGB, PAR later as separate transparent RGBA ALL non-ground objects. Never reverse-extract from flattened Master; character occlusion is not a PAR filter.",
+  "target": {
+    "tile_px": 32,
+    "grid": [
+      40,
+      29
+    ],
+    "canvas_px": [
+      1280,
+      928
+    ],
+    "camera": "top-down three-quarter",
+    "lighting": "upper-left warm light",
+    "style": "FS unified pixel-art, cohesive authored Ground then whole transparent prop PAR"
+  },
+  "first_stage_ground": {
+    "source_kind": "new separate rendered Ground image, not new PixelLab API job",
+    "original_size_px": [
+      1477,
+      1065
+    ],
+    "crop_xyxy": [
+      98,
+      68,
+      1378,
+      996
+    ],
+    "output_canvas_px": [
+      1280,
+      928
+    ],
+    "native_pixels_unscaled": true,
+    "original_source_sha256": "8f8c0ac66359bf8bc47e00beb889a4e66c5f2c9d339b00f9cf05957818556f91",
+    "output_sha256": "ac3688112874cd45a38f484b8c37dbc0b8f6abd41b67cc0c578bc95f0935aa97",
+    "source_png": "https://drive.google.com/file/d/1OQmMo0pBq7WE0RwcsRkALqDDaLXrThjA/view",
+    "candidate_ground_png": "https://drive.google.com/file/d/1dYmk2I49wp0gCCWxAh5k0JiStzwNtCM4/view",
+    "source_QA_zip": "https://drive.google.com/file/d/1tFCb_V0VaxWFgKrewGIs3sIEcZ-DN7yi/view",
+    "visual_terrain": [
+      "golden sand dunes",
+      "sandstone path",
+      "dried river bed",
+      "stone plaza",
+      "turquoise oasis pond",
+      "low flat herbs"
+    ],
+    "visual_layer_purity": "ART_HOLD: some tall sandstone cliff faces / bushes incorrectly present in Ground; needs new Ground-only generation",
+    "biome_palette_sample_warm_fraction": 0.949892,
+    "biome_palette_sample_cool_fraction": 0.039116,
+    "palette_identity_gate": "PASS_COARSE_BIOME_ONLY",
+    "layer_semantic_art_gate": "HOLD",
+    "known_crop_risk": "source ground cliff faces continue to edges; treat as terrain border only, ensure all raised object assets are PAR in later master"
+  },
+  "second_stage_complete_PAR": {
+    "status": "NOT_GENERATED",
+    "source_requirements": "Generate same 1280x928 world coordinates with actually transparent alpha=0 background; all non-ground objects independent source, same style; do not include Ground as illustration background",
+    "families": [
+      "whole sandstone houses, distinct roof styles",
+      "tall sandstone pillars and raised cliff walls",
+      "whole date palms and sparse oasis trees",
+      "woven fabric market tents",
+      "complete fences and trade signposts",
+      "raised stone wells and baskets",
+      "bridges and railings",
+      "waterfront lanterns, crates and desert village decoration"
+    ],
+    "space_placement": "preserve center plaza, footpath connections, turquoise pond; authentic grounding and no collision semantics needed to author PAR",
+    "source_candidate": null,
+    "blocker": "Two attempts produced unrelated ice maze scenes; rejected for wrong biome; alpha minima 51 and 1, zero alpha pixels both 0",
+    "image_tool_retry_policy": "Do not accept any image unless same desert biome, genuine alpha=0 pixels, and consistent same image registration"
+  },
+  "current_gate": {
+    "Ground_source_file": "CREATED_PRIVATE_DRIVE_VERIFIED",
+    "full_Ground_art": "HOLD_NON_GROUND_CLIFFS",
+    "PAR": "NOT_GENERATED",
+    "Ground_PAR_pair": "NOT_RUN",
+    "Godot_4_7_2_native": "NOT_RUN",
+    "formal_ART": "HOLD"
+  },
+  "next_complete_unit": "Rebuild genuinely Ground-only unified desert world without raised cliff faces then generate full transparent non-ground PAR in one coherent style lock; if output model still returns snow use different capable generator, not a misleading GIF/infographic."
+}
