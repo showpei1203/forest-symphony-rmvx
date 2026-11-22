@@ -1,0 +1,45 @@
+{
+  "status": "ENGINE_QA_PASS_ART_HOLD",
+  "true_original_eight_dir_body_source": true,
+  "true_original_eight_dir_ATTACK_source": false,
+  "attack_art": "new rigid pivot pose redraw based on diagonal LPC walk ORIGINAL arm layers",
+  "engine": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "native_60hz_frames": 73,
+  "native_12poses_source_rgba_byte_differences": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "loop_first_last_equal": true,
+  "unique_poses": 11,
+  "weapon_pixels": 0,
+  "fx_pixels": 0,
+  "owner_original_lpc_sha": "63c990cbf5c882415414a67819de6350a094d130477ac3533c938306483b349c",
+  "private_body_sha256": "04478beeececa0e52e617bf70ca00679bdd77ec8a0c687e50c9a6f7e7010812e",
+  "f7_contact_exact_once": true,
+  "source_color_version": "Approved A62 head + recolored 8-dir LPC shoulder/torso/lower limbs",
+  "art_blockers": [
+    "Reauthored attack not verified source-native 8-dir attack",
+    "Need human review face/shoulder anatomy and natural forward punch at 1x",
+    "Not in real FS battle ATB/damage"
+  ]
+}
