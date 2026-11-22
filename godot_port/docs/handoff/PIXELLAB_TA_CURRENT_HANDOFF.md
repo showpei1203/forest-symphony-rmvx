@@ -1,5 +1,18 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R13 ACTUAL ATTACK CONSTRUCTION LATEST | 2026-11-22 | TRUE 8-DIR LPC ANATOMY + RE-AUTHORED WEAPONLESS ATTACK, Godot PASS / ART HOLD
+
+Following 8dir source verification R13, T-A has NOW actually constructed a NEW 12-frame ACTOR01 UNARMED ATTACK candidate from genuine original LPC diagonal artwork. This supersedes earlier text in this same Handoff which says "R13 attack NOT YET CREATED" (that was correct at the earlier research checkpoint only). User rightly insisted original LPC 8-dir source exists. Pin REAL artist ORA LPC_male_diagonal_walkcycle.ora with 3 layers torso/arms/head, 9×8 direction source; use forward-right diagonal row7, NOT old R12 4-direction splice. Source owner E:\LPC_Original_20261121\LPC_8DIR_ORIGINAL_DIAGONAL . Original archive SHA278bba048b4f25b8c8d9601b2cc27402c298cf1c68c554be9e68c8e11c2ee716, 13 members CRC pass. Source is 8-dir WALK, NOT SOURCE-NATIVE ATTACK: R13 attack is newly authored by moving true original complete arm shapes around 45° shoulders (rigid nearest neighbour, no stretching) and original diagonal pelvis/feet, applying approved A62 white-haired face original SHA70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e. Entirely zero weapon/FX layers.
+
+Concrete R13 artwork: godot_port/tools/ta_r13_lpc8_actor01_unarmed_attack.py, manifest godot_port/docs/handoff/TA_R13_TRUE_8DIR_UNARMED_ATTACK_MANIFEST_20261122.json. Real private Body256×192 12×64 frames SHA256 04478beeececa0e52e617bf70ca00679bdd77ec8a0c687e50c9a6f7e7010812e. 11 distinct attack frames + F0/F11 exact idle loop, no disconnected parts, no sword shield or FX. Original A52 and older R12 are not modified.
+
+ACTUAL official Windows Godot 4.7.2 native OpenGL private source 73/73 60Hz captured 64px PNG frames; 12/12 source native screenshot RGBA byte mismatch ZERO; visual F7 t=0.630 once; weapon and FX alpha=0. Actual native 60Hz GIF created FROM the 73 screen captures, not invented artwork. Owner E R13 path E:\LPC_Original_20261121\FS_R13_ACTOR01_EIGHTDIR_UNARMED_45_ART\ and zip FS_TA_R13_REAL_8DIR_UNARMED_73_NATIVE_QA_20261122.zip, 261925 bytes, 90 entries CRC PASS, SHA256 f875f8015d8a515e21c280c862e8560c2c3178149fab36001436067815196c7b. Reproducer and GDScript godot_port/tools/ta_r13_lpc8_native_qa_pack.py and godot_port/tests/capture_ta_r13_lpc8_unarmed_native.gd; QA manifest godot_port/docs/handoff/TA_R13_8DIR_UNARMED_NATIVE_QA_20261122.json.
+
+HUMAN ART HOLD: visually stiff shoulder pivots, need natural 45° re-paint, arm/fist articulation and facial readability at original 1×. This is NOT a source-native LPC 8-direction ATTACK asset, only a newly created ATTACK using authentic original LPC 8-direction WALK BODY. Full original FS gameplay ATB damage not run. No PixelLab run/cost. New absolute latest rule godot_port/docs/authority/FS_TA_R13_LPC8_UNARMED_ATTACK_REAUTHORED_20261122.md. Do not re-add sword or return to old 4-way splice.
+
+---
+
+
 ## R13 LATEST — VERIFIED REAL EIGHT-DIRECTION LPC ORIGINAL — 2026-11-22
 
 USER WAS RIGHT: LPC wider original art ecosystem DOES include real diagonal/eight-direction pixel sprites. Our prior blanket "LPC only four directions" claims across R10-R12 were WRONG, and the repeated decision to fuse front+side because "no native diagonal LPC exists" is invalid. This is formally superseded by godot_port/docs/authority/FS_TA_R13_VERIFIED_LPC_EIGHT_DIRECTION_CORRECTION_20261122.md .
