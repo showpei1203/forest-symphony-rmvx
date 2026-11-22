@@ -225,17 +225,17 @@ func _run()->void:
     extended_states[51]=source_state_51
     extended_states[77]=source_state_77
     db.tables["states"]=extended_states
-    var enemy:Dictionary=battle.enemies[0]
-    enemy["states"]=[30,31,50,77]
-    enemy["state_stack"]={30:2,50:2}
-    enemy["state_turns"]={31:3}
-    enemy["note"]="<atb_dynamic_resist><atb_resist_start:1><break_threshold:5><break_resist:20><target_priority:3>"
-    FSATBResistance.setup(enemy)
-    enemy["fs_boss_shield_remaining"]=120
-    enemy["fs_break_recover_amount"]=2
-    enemy["fs_state_resist_source_verified"]=true
-    enemy["fs_state_resist_levels"]={51:1}
-    enemy["fs_state_resist_rates"]={51:66}
+    var info_enemy:Dictionary=battle.enemies[0]
+    info_enemy["states"]=[30,31,50,77]
+    info_enemy["state_stack"]={30:2,50:2}
+    info_enemy["state_turns"]={31:3}
+    info_enemy["note"]="<atb_dynamic_resist><atb_resist_start:1><break_threshold:5><break_resist:20><target_priority:3>"
+    FSATBResistance.setup(info_enemy)
+    info_enemy["fs_boss_shield_remaining"]=120
+    info_enemy["fs_break_recover_amount"]=2
+    info_enemy["fs_state_resist_source_verified"]=true
+    info_enemy["fs_state_resist_levels"]={51:1}
+    info_enemy["fs_state_resist_rates"]={51:66}
     var old_info_image:Image=root.get_texture().get_image()
     if not target_help.refresh_live() or (
             target_help.info_lines.size()!=5) or (
@@ -258,8 +258,8 @@ func _run()->void:
         return
     if not await _snapshot("source381_verified_special_battle_info"):
         return
-    if int(enemy["hp"])!=pre_select_hp or not battle.action_queue.pending.is_empty():
-        _fail("source #381 info redraw damaged the enemy or queued a hidden ACT")
+    if int(info_enemy["hp"])!=pre_select_hp or not battle.action_queue.pending.is_empty():
+        _fail("source #381 info redraw damaged the info_enemy or queued a hidden ACT")
         return
     scene._show_battle()
     if scene.source_target_help!=null or battle.source_atb_wait:
