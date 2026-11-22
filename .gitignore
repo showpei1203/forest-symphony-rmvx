@@ -23,3 +23,7 @@ godot_port/assets/.ta-actor-stage-*/
 # P537C original VX Battlers owner-only private ZIP staging
 godot_port/assets/battlers/
 godot_port/assets/.battlers-stage-*/
+
+# Original 505 RGSS2 private full-program bridge + raw original 11 RVData
+godot_port/assets/source_authority/
+godot_port/.source-unified-stage-*/
