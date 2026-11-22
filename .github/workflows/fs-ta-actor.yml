@@ -16,6 +16,12 @@ on:
       - "godot_port/tools/ta_r12_actor01_lpc_unarmed_3q.py"
       - "godot_port/tools/ta_r13_verify_lpc_8_direction_source.py"
       - "godot_port/tools/ta_r13_lpc8_actor01_unarmed_attack.py"
+      - "godot_port/tools/ta_r14_8dir_two_joint_actor01_unarmed.py"
+      - "godot_port/tools/ta_r14_8dir_native_qa_pack.py"
+      - "godot_port/tests/capture_ta_r14_unarmed_native.gd"
+      - "godot_port/docs/handoff/TA_R14_LPC8_TWO_JOINT_SOURCE_MANIFEST_20261122.json"
+      - "godot_port/docs/handoff/TA_R14_LPC8_TWO_JOINT_NATIVE_QA_20261122.json"
+      - "godot_port/docs/authority/FS_TA_R14_LPC8_TWO_JOINT_UNARMED_AUTHORITY_20261122.md"
       - "godot_port/tools/ta_r13_lpc8_native_qa_pack.py"
       - "godot_port/tests/capture_ta_r13_lpc8_unarmed_native.gd"
       - "godot_port/docs/handoff/TA_R13_TRUE_8DIR_UNARMED_ATTACK_MANIFEST_20261122.json"
@@ -172,6 +178,29 @@ jobs:
           assert q['weapon_pixels']==0 and q['fx_pixels']==0
           assert q['status']=='ENGINE_QA_PASS_ART_HOLD'
           print('R13_EIGHT_DIR_REAUTHORED_UNARMED_STATIC_CI_PASS, real private native QA remains owner E')
+          PY
+      - name: R14 two-joint native 8-dir LPC no-weapon static source contract
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r14_8dir_two_joint_actor01_unarmed.py godot_port/tools/ta_r14_8dir_native_qa_pack.py
+          python3 - <<'PY'
+          import json
+          p='godot_port/docs/handoff/'
+          m=json.load(open(p+'TA_R14_LPC8_TWO_JOINT_SOURCE_MANIFEST_20261122.json',encoding='utf8'))
+          q=json.load(open(p+'TA_R14_LPC8_TWO_JOINT_NATIVE_QA_20261122.json',encoding='utf8'))
+          assert m['source_original_8dir_anatomy'] is True and m['source_directions']==8
+          assert m['source_native_attack'] is False
+          assert m['weapon_pixels']==0 and m['fx_pixels']==0
+          assert m['frame_count']==12 and m['unique_poses']==11
+          assert m['contact_visual_time']==0.630 and m['front_upper_length']==m['back_upper_length']==8.0
+          assert m['status'].startswith('ART_HOLD')
+          assert len(m['animation'])==12 and sum(x['debris_removed'] for x in m['animation'])==0
+          assert [x['face_changed_pixels'] for x in m['animation']]==[0,2,2,2,4,4,5,5,5,1,1,0]
+          assert m['sprite_sha256']=='9456aec56f867377a9cea93bdfb86b9b9597efe36a66518a73ce93b2a9e60497'
+          assert q['native_frame_count']==73 and q['all_body_continuous']
+          assert not any(q['source_vs_gpu_exact_RGBA_byte_mismatches'])
+          assert q['weapon_pixels']==0 and q['fx_pixels']==0
+          assert q['result']=='ENGINE_QA_PASS_ART_HOLD'
+          print('R14_SOURCE_AND_NATIVE_MANIFEST_STATIC_CONTRACT_PASS; true GPU originals owner E')
           PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
