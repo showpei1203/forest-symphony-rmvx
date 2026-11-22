@@ -22,3 +22,9 @@
 1. 重新生成真正有倒地趴下/側躺末幀的霜晶狼三階 KO，先檢查身體、視角、晶角與四足不能脫落，再重做受影響的 KO↔Revive 對位。限制迭代與留 Failure Log。
 2. 完成 Wolf 三階剩下 8 種動作各階共 24 張新 Sprite Sheets；延用 Stage1/2/3 現有來源與 PixelLab 真動畫管線，不牽扯戰鬥系統與 T-A/T-C。
 3. 原生 Godot 4.7.2 動態 Gallery QA、私人 Drive CRC/SHA/Owner 和 Handoff。勿以碰巧成功執行的技術檢查代替美術審核。
+
+
+## R15/R15P completed cloud-proof and Windows TEMP cleanup
+- Live Google Drive file metadata shows both final ZIPs under original private folder, with owner-only `shared=false`; R15P SHA256 `a8088f4e76e3f63d7b9a58857213d138ecb2e43a5af92547f4b2222f77fd04f7`, 373 files, 9,643,175 bytes. R15 SHA256 `5cd880690a13181ae9a5cb4b1a82ab453263d1969ca9f991c550c9bdcd968f6c`, 354 files, 9,302,874 bytes.
+- Owner Windows `cleanup_tb15_r15p_ephemeral.py` **executed successfully**; 9 explicitly named only R15/R15P TEMP items deleted after verifying both ZIP CRC, SHA, archival of rejected provider image and billed usage, contacts and Godot evidence. Verified ZIP hashes and contents **again after cleanup**. R10–R14 source files untouched. **P0_TEMP_CLEANUP_VERIFIED**.
+- All Godot art-only native QA PASS does NOT mean final owner art PASS, especially third-family KO.
