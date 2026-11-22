@@ -168,16 +168,28 @@ baseslots=sum(int(q['frames']) for family in M['families'] for st in family['sta
 eclips=len(M['evolutions']);eslots=sum(x['frames'] for x in M['evolutions'])
 assert (baseclips,baseslots,eclips,eslots)==(84,706,6,96),(baseclips,baseslots,eclips,eslots)
 assert baseclips+eclips==90 and baseslots+eslots==802
+M['actions_per_stage']=None  # Third family currently 4 actions, earlier two families 12 each
 M.update(schema='FS_TB_R15_THREE_FAMILIES_9_EVOLUTION_FORMS_84_MOTIONS_PLUS_6_TRANSITIONS',
          stage_count=9,baseline_clip_count=84,evolution_transition_clip_count=6,clip_count=90,total_frames=802,
          actions_per_family={'bat':12,'frog':12,'frost':4},
-         new_pixel_lab_jobs=18,new_pixel_lab_provider_frame_slots=156,
+         new_pixel_lab_jobs=18,new_pixel_lab_exported_frame_slots=156,
          third_family_stages=3,third_family_motions=12,new_revive_corrections=6,
          new_procedural_evolution_clips=2,new_procedural_evolution_frames=32,
          technical_qa='PENDING_NATIVE','human_art_gate':'OWNER_ART_REVIEW_PENDING',
          source_note='Exact historical R14 original atlases retained. Six revised 10F KO->Idle anchored PixelLab revives replace old 11F manifest pointers without deleting original atlas. Third Ice Jackal lineage PixelLab Pixen stage1 then exact source-chained Edit Image stages2/3. Six-stage R15 animation output has F0/F(last) exact user source anchor images. Third family currently 4 genuine action types per form, not yet full 12. Two further transitions are deterministic pixel effects, not AI morphs.')
 (G/'TB15_MONSTER_FAMILY_MANIFEST.json').write_text(json.dumps(M,ensure_ascii=False,indent=2),encoding='utf-8')
 (REPORT/'R15_PROVIDER_LEDGER.json').write_text(json.dumps(J,ensure_ascii=False,indent=2),encoding='utf-8')
+# Retain real rejected PixelLab response art and billed usage, NEVER throw it away with TEMP.
+rejected=W/'R15_REJECTED_PROVIDER_QA.json'
+if rejected.is_file():
+    shutil.copyfile(rejected,REPORT/'R15_REJECTED_PROVIDER_QA.json')
+    rejected_dir=W/'REJECTED_ART'
+    if rejected_dir.is_dir():
+        qdir=REPORT/'R15_REJECTED_ART'
+        qdir.mkdir(exist_ok=True,parents=True)
+        for pp in rejected_dir.glob('*.png'):
+            shutil.copyfile(pp,qdir/pp.name)
+
 (REPORT/'R15_SOURCE_AND_REVIVE_QA.json').write_text(json.dumps({'R14_zip_sha256':HASH14,
     'revive_corrections':REVLOG,'third_stage_motions':NEW_MOTION,'third_stage_source_lock':[
       {'stage':s['index'],'source_sha256':s['source_sha256'],'parent_source_sha256':s.get('source_derivation_sha256')} for s in WOLFFAMILY['stages']],
@@ -389,7 +401,10 @@ assert sha(archive.read_bytes())==sha(target.read_bytes())
 proof={'release_name':zipname,'sha256':sha(target.read_bytes()),'bytes':target.stat().st_size,
        'zip_entries':entries,'zip_crc':'PASS','baseline_r14_sha256':HASH14,'native_godot_version':ver.stdout.strip(),
        'marker':marker,'new_pixel_lab_animation_jobs':18,
-       'new_pixel_lab_original_animation_frames':156,
+       'new_exported_animation_frames':156,
+       'real_provider_raw_frames_returned':sum(int(J[f'{k}:{st}:{act}']['frame_count_original_ai'])
+           for k,st,act in ([(k,st,'revive') for k in ('bat','frog') for st in (1,2,3)]+
+                            [('frost',st,act) for st in (1,2,3) for act in ('idle','attack','hurt','ko')]),
        'new_original_species':'TB03_GLACIER_JACKAL','new_source_images':3,
        'new_frost_motions':12,'new_revive_ko_to_idle_revisions':6,
        'new_procedural_evolutions':2,'new_procedural_evolution_frames':32,
