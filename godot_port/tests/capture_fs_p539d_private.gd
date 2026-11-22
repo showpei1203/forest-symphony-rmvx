@@ -210,6 +210,16 @@ func _run()->void:
     db.tables["states"]=new_states
     battle.enemies[0]["states"]=[30]
     scene._refresh_source_state_hud()
+    # Compare SOURCE #381 actual enemy badge anchor against its feet
+    # baseline. Rendering 20px over the monster's face is an ART FAIL.
+    var image_rect:Rect2=scene.enemy_stage.enemy_views[0]["image"].get_global_rect()
+    var feet:Vector2=Vector2(image_rect.get_center().x,image_rect.end.y)
+    var badge_pos:Vector2=scene.source_state_hud.entries[0]["position"] if (
+        scene.source_state_hud!=null and not scene.source_state_hud.entries.is_empty()
+    ) else Vector2(-999,-999)
+    if badge_pos.distance_to(feet+Vector2(-35,0))>1.0:
+        _fail("#381 state icon incorrectly covers enemy face; source battler_y must be feet")
+        return
     if scene.source_state_hud==null or (
             not scene.source_state_hud.source_enabled) or (
             scene.source_state_hud.entries.size()!=1):

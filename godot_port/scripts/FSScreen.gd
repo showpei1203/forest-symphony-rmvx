@@ -210,7 +210,10 @@ func _refresh_source_state_hud()->void:
             var i:int=int(row.get("index",-1))
             var control:Control=row.get("image")
             if i>=0 and control!=null and control.visible:
-                enemies[i]=control.get_global_rect().get_center()
+                # Original #381 battler_y means the CHARACTER FEET position.
+                # Using the displayed TextureRect centre covered monster faces.
+                enemies[i]=FSBattleSourceStateHUD381.enemy_anchor_from_rect(
+                    control.get_global_rect())
     source_state_hud.refresh(battle.party,battle.enemies,actors,enemies)
 
 func _change(tab: String) -> void:

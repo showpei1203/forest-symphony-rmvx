@@ -54,6 +54,12 @@ func _run()->void:
             and HUD.MAX_ICONS==4 and HUD.ICON_SIZE==20 and (
             HUD.ICON_SPACING==20) and HUD.ICON_OPACITY==180,
             "original #381 actor(-16,+20,oy20), enemy(+45,+20,ox80,oy20)"):return
+    if not require(HUD.enemy_anchor_from_rect(
+            Rect2(226,60,64,78))==Vector2(258,138) and (
+            HUD.source_top_left(
+                HUD.enemy_anchor_from_rect(Rect2(226,60,64,78)),true
+            )==Vector2(223,138)),
+            "#381 badge must anchor to monster FEET, never cover its face at centre y99"):return
     var stage=HUD.new()
     root.add_child(stage)
     var source_art=ART.new()

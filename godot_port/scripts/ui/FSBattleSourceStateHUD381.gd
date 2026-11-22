@@ -85,6 +85,11 @@ static func visible_slots(states:Array)->Dictionary:
         shown=states.slice(0,MAX_ICONS)
     return {"shown":shown,"overflow":overflow}
 
+static func enemy_anchor_from_rect(bounds:Rect2)->Vector2:
+    # RGSS2 battler screen_y/position_y is the feet baseline, not the
+    # centre of a displayed sprite. Convert our TextureRect accordingly.
+    return Vector2(bounds.get_center().x,bounds.end.y)
+
 static func source_top_left(anchor:Vector2,is_enemy:bool)->Vector2:
     # Original actor sprite: self.x = bx-16, self.ox=0,
     # self.y = by+20, self.oy=20.
