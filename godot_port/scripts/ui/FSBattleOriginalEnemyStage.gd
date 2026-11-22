@@ -83,8 +83,14 @@ func bind_real(battle:FSBattle)->int:
         clear_enemies()
         return 0
     # Reject unsupported source hue. No arbitrary palette approximations.
-    return rebuild(battle.enemies,func(enemy:Dictionary)->Texture2D:
+    var installed:int=rebuild(battle.enemies,func(enemy:Dictionary)->Texture2D:
         return art.texture_for_enemy(enemy))
+    # #462 displays enemy name in target help only. Do not leave the old
+    # permanent Godot debug-name label covering #381 State badges.
+    for view in enemy_views:
+        var caption:Label=view["caption"]
+        caption.visible=false
+    return installed
 
 func refresh(enemies:Array)->void:
     var count:int=0

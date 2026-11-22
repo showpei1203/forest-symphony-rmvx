@@ -114,6 +114,10 @@ func _run()->void:
             scene.enemy_stage.enemy_views.size()!=1):
         _fail("source A52 actor + original source Battler missing")
         return
+    for view in scene.enemy_stage.enemy_views:
+        if view["caption"].visible:
+            _fail("#462 target-help enemy name cannot be permanently stamped across original #381 status icons")
+            return
     for btn in commands.source_buttons:
         var bounds:Rect2=btn.get_global_rect()
         if not Rect2(Vector2.ZERO,Vector2(544,416)).encloses(bounds):
