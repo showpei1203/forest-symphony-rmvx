@@ -31,18 +31,18 @@ URL='https://raw.githubusercontent.com/showpei1203/forest-symphony-rmvx/feat/fs-
 BUILDER=ROOT/'tb13_build.py'
 BUILDER.write_bytes(urllib.request.urlopen(URL,timeout=45).read())
 proc=subprocess.run([sys.executable,str(BUILDER),'--base_zip',str(ZIP12),'--bat_dir',str(BAT),'--frog_dir',str(FROG),'--staging',str(STAGE),'--drive_dir',str(DRIVE)],
-                    capture_output=True,text=True,timeout=160)
+                    capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=160)
 print('TB13_BUILD_RESULT',proc.returncode,proc.stdout[-1200:],proc.stderr[-2400:],flush=True)
 assert proc.returncode==0,'R13 Python art QA/builder failed; do not publish'
 G=STAGE/'godot'
-r=subprocess.run([str(BINARY),'--version'],capture_output=True,text=True,timeout=25)
+r=subprocess.run([str(BINARY),'--version'],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=25)
 version=(r.stdout+r.stderr).strip()
 print('ENGINE_VERIFIED',version,flush=True)
 assert '4.7.2' in version
-imp=subprocess.run([str(BINARY),'--headless','--path',str(G),'--editor','--quit'],capture_output=True,text=True,timeout=150)
+imp=subprocess.run([str(BINARY),'--headless','--path',str(G),'--editor','--quit'],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=150)
 print('GODOT_IMPORT',imp.returncode,imp.stdout[-1200:],imp.stderr[-1600:],flush=True)
 assert imp.returncode==0
-test=subprocess.run([str(BINARY),'--headless','--path',str(G),'--script','res://tests/test_tb13_gallery_native.gd'],capture_output=True,text=True,timeout=130)
+test=subprocess.run([str(BINARY),'--headless','--path',str(G),'--script','res://tests/test_tb13_gallery_native.gd'],capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=130)
 log=test.stdout+'\nSTDERR\n'+test.stderr
 (STAGE/'reports'/'R13_GODOT472_NATIVE_QA.log').write_text(log,encoding='utf-8')
 print('GODOT_R13_NATIVE',test.returncode,log[-2000:],flush=True)
