@@ -1,5 +1,14 @@
 # T-A Failure Log / 2026-11-21
 
+## TA-31/32 | R14 native 8dir limb rig correction and first face-QA failure, 2026-11-22
+
+TA-31 R13 remaining user-rejected visual issue: whole original LPC side-arm sprite was rigidly rotated at shoulder, creating visually stiff, unflected forearm. R14 NEW two-joint orig-src arm rig splits each upper and lower original diagonal arm at native elbows, pivots shoulder and elbow separately, original shoulder-to-elbow 8px invariant both arms in all 12 poses. Independent source-pixel limbs, 0 nonuniform stretch, source 8dir diagonal torso/feet, A62 approved white-haired head with neutral/focus/grit/shout/breath. 11 distinct poses with exact F0/F11 seam, no detached body pixels; zero weapon/FX. Structural QA PASS, ART HOLD pending human acceptance of 1× actual pose aesthetics.
+TA-32 R14 FIRST RUN FAIL: cosmetic face QA formula counted modified RGBA channel bytes and integer-divided by four, which marked legitimate 1-pixel edits as 0. Corrected to compare per-pixel original RGBA tuples. Source QA rerun passed 10 non-neutral stages with face-changed pixel counts [0,2,2,2,4,4,5,5,5,1,1,0]. This is proof pixels changed, NOT proof face readable at 1×. Do not hide original failed assertion.
+Godot Windows official 4.7.2 OpenGL real native SOURCE 73/73 frames, all 12 keys zero source-vs-GPU RGBA mismatches, 0 weapon/FX. F7 visual 0.630 exactly once. Actual native pack 91 members, CRC PASS, 258698 bytes, SHA256 2cc06ce2e562588363a0d984f89c29d0ea7439c0c3262994eb505b71729df00b. Body SHA256 9456aec56f867377a9cea93bdfb86b9b9597efe36a66518a73ce93b2a9e60497. Owner-private E:\LPC_Original_20261121\FS_R14_ACTOR01_EIGHTDIR_TWO_JOINT_UNARMED_45 only. REAL FS combat NOT RUN; human ART HOLD. Original full 8dir attack source not verified; source 8dir WALK from original ORA.
+
+---
+
+
 ## TA-30 | R13 confirmed real 8-dir LPC body and authored attack from source | 2026-11-22
 
 Source correction TA-29 remains fixed: four-cardinal Universal LPC standard is not entire LPC art. Original genuine 8×9 LPC diagonal walk with independently layered torso, arms and head ORA used to re-author 12-frame unarmed ACTOR01 from 45° forward-right source row7. Original 8-direction ATTACK sprite was NOT found, so NEVER label our re-authored ATTACK as original source LPC attack. Source authored generator and native Godot scripts in T-A branch, mixed-license source remains owner E. No stretched limbs and no disconnected parts; zero Weapon/FX.
