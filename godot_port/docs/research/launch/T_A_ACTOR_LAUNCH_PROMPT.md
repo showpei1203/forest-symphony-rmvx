@@ -1,5 +1,8 @@
 # T-A｜FS 角色戰鬥動畫工廠｜新對話啟動 Prompt
 
+> LATEST 2026-11-22 T-A R12: Weaponless full-body Actor01 using user-authorized official LPC pinned source on E, original approved A62 identity. Do NOT return to R8/R9 or add weapon/FX. New 12 unique time-slot poses use authentic LPC backslash source map [12,0,1,2,3,6,7,8,9,10,11,12], exact F0/F11, one connected character each frame, fixed anatomical source limb shapes, original face-pixel neutral/focus/grit/exert/recovery acting. True Godot 4.7.2 Windows source GPU 73/73 PASS and 12/12 zero pixel readback mismatches. Human 45-degree artist acceptance ART HOLD; source LPC ONLY four cardinal directions; cannot claim finished natural 45-degree painted art. Current authority godot_port/docs/authority/FS_TA_R12_LPC_ACTOR01_UNARMED_20261122.md and current Handoff R12 section. Real QA privately preserved E:\LPC_Original_20261121\FS_R12_ACTOR01_UNARMED_45_STUDY. Work towards visually sound shoulder/hip/face at 1x and full battle action only once art approved.
+
+
 > 2026-11-22 LATEST R11B USER OVERRIDE: use complete official LPC original on user-authorized E, approved ACTOR01 A62 white-hair identity, NO WEAPON, no stretching arms or symbols. Godot 4.7.2 R11B real native 73/73 source frames, 12/12 connected full body, empty Weapon/FX. Full source SHA commit 86a3719ee4a7e2e9fb27c7c152e29a741d3e930a. Still ART HOLD because real LPC only cardinal views and current front-right fusion is not fully hand-painted 45 degree. MUST READ godot_port/docs/authority/FS_TA_R11B_LPC_UNARMED_DIAGONAL_20261122.md. Never use R8/R9 as animation source again.
 
 
