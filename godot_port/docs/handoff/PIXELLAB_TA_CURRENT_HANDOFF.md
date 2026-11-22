@@ -1,5 +1,15 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R20 LATEST | 2026-11-22 | A62 TRUE FULL BODY 48px SOURCE LOCK | PARITY PASS, NATIVE MODULAR SOURCE BLOCKED
+
+R19 visual fail traced to non-source polygon abdomen. Actual A62 source ZIP recovered from Drive: `A62_SOURCE_F0_48.png`, 48×48, SHA256 `0ca4ce9f55a718882b801114602c14e3d288ea4371806fe8afcb3d9b64510c37`, all 575 visible original pixels preserved. Original F0 and provider-generated F0 differ by 47 RGBA pixels. The 64×64 reference previously used is NOT a pixel-identical 48x48 pad of source, so never mix 32/48/64 identity without approval.
+
+Produced new **source-exact** 7-part visible pixel ownership .ora (head, near/far arm visible, chest/abdomen original, belt original, pants original, boots original); all layers reconstruct A62 F0 RGBA exactly, 0 changed pixels. ORA ZIP checks PASS, 575/575 alpha ownership PASS, negative fake RGB/false modular layer PASS. **This is a decomposed single original flattened F0, not native LPC source modules**; hidden original pixels not obtainable by simple segmentation. R20 has no new attack frames, no artistic approval or engine QA. Complete outfit source for 45degree 8dir attack missing => SOURCE_LAYER_BLOCKED. The correct F0 identity has been restored WITHOUT inventing a stomach.
+
+PRIVATE [Drive R20 Art Source Folder](https://drive.google.com/drive/folders/1xUplinX5tyL2CTRG7am_BZrpDgoFUoe-), [ZIP 31,470 bytes /18 members /CRC PASS /SHA 3701ef97...](https://drive.google.com/file/d/14R0rvUeds1CxQVxoAj7tluCRTG8Mht6s/view), original A62 source full png and seven visible parts. Repro builder + full validator saved. Current rule: `godot_port/docs/authority/FS_TA_R20_A62_SOURCE_LOCK_PAPER_DOLL_AUDIT_20261122.md`. Do not resume R19 procedural art, do not claim 7 masks are original LPC costume authoring layers. A52/A62 originals, main and T-B/T-C remain intact.
+
+---
+
 ## R19 SOURCE CONTRACT ERROR | 2026-11-22 | ART_REJECTED + SOURCE_LAYER_BLOCKED (supersedes R19 pending)
 
 Owner rejected R19 belly/waist proportions and asked whether the paper-doll compositor was used. **No**: R19 script copied only A62 approved head crop, and painted torso, green shirt, belt, arms, pants, boots using standalone Pillow polygons. This violated A62 full-body master retention and modular LPC outfit sourcing. Verified actual LPC original diagonal WALK ORA stack only torso/arms/head layers; full corresponding forest-green outfit/boots for this 45° attack NOT verified. R19A/B art must NOT be used as attack baseline. Do not run R20 or 12-frame expansion by filling missing source parts with fake shapes. Forest Symphony Tankentai independent Weapon sheet is a distinct system; Weapon/FX=0 never establishes full source-paper-doll art.

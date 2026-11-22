@@ -1,0 +1,20 @@
+{
+  "result": "SOURCE_VISIBLE_PIXEL_PARITY_PASS_ONLY",
+  "art_status": "R20_BASELINE_ONLY_NOT_NEW_ART",
+  "formal_paper_doll_ready": false,
+  "godot_native_attack": "NOT_RUN",
+  "approved_attack_12_frames": false,
+  "source_sha256": "0ca4ce9f55a718882b801114602c14e3d288ea4371806fe8afcb3d9b64510c37",
+  "source_rgba_pixels_verified": 575,
+  "original_size": [
+    48,
+    48
+  ],
+  "ora_layer_count": 7,
+  "source_to_rebuilt_rgba_diff_pixels": 0,
+  "missing_source": [
+    "same-direction same-pose original outfit and sleeves",
+    "source underpaint for occluded body and apparel",
+    "matching original pants/boots animation for 45degree ATTACK"
+  ]
+}

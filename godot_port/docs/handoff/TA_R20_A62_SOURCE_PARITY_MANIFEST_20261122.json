@@ -1,0 +1,67 @@
+{
+  "asset": "FS ACTOR01 A62 source-only full-body F0, not official approved outfit-component library",
+  "source": "FS_A62_NATURAL_RUN_3FRAMES_GIF_QA_HANDOFF_20261102.zip / A62_SOURCE_F0_48.png",
+  "source_drive_file_id": "OWNER_PRIVATE_A62_SOURCE_ZIP",
+  "source_sha256": "0ca4ce9f55a718882b801114602c14e3d288ea4371806fe8afcb3d9b64510c37",
+  "original_source_dimensions": [
+    48,
+    48
+  ],
+  "source_opaque_pixels": 575,
+  "provider_F0_sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+  "provider_source_F0_identical": false,
+  "source_to_provider_rgba_diff_pixels": 47,
+  "reassembled_48RGBA_exact": true,
+  "reassembled_sha256": "b4a9a8a8ad435164756b1b3c677aac8ed450ad84cb819e45d3ee879cba604e5e",
+  "layer_counts": {
+    "hair_face_visible": {
+      "source_exact_alpha_pixels": 316,
+      "sha256": "d705160ee337e549c37cbcc2bcb8fed9b9f1154b3fc2d6e79dc8eac750ee96a5"
+    },
+    "far_sleeve_visible": {
+      "source_exact_alpha_pixels": 55,
+      "sha256": "3f420729296d34ce2e60e9962498d9464e0cafd87e9c9ae593bffec68fc4bd78"
+    },
+    "near_sleeve_visible": {
+      "source_exact_alpha_pixels": 16,
+      "sha256": "6db8cc19f96375a0f47e56af0a4980b2fb1fdba099c4eb58ff6294aa8877589d"
+    },
+    "torso_and_abdomen_original": {
+      "source_exact_alpha_pixels": 77,
+      "sha256": "3eb3c5b7a2c6c9a0c16d0d04c254af37841b6a603a44490a2fc2c2bfe253529f"
+    },
+    "belt_and_waist_original": {
+      "source_exact_alpha_pixels": 33,
+      "sha256": "077195cf52b390a7545d391a914df1f345aa62830d489c6a22f1342bd39877f8"
+    },
+    "trousers_original": {
+      "source_exact_alpha_pixels": 52,
+      "sha256": "ddf3cbe017bc26900bedf474a3342aca803b5fdbac6530db539fee80c6bd6cfa"
+    },
+    "boots_original": {
+      "source_exact_alpha_pixels": 26,
+      "sha256": "12d391ee759722145c425c0788b02d59c0b08ee09511209e7c4d0f1990c10ad6"
+    }
+  },
+  "complete_modular_lpc_source_verified": false,
+  "layer_type": "single-raster visible-pixel dissection, NO original underpaint / NO source-LPC individual clothing items",
+  "art_status": "R20_BASELINE_ONLY_NOT_NEW_ART",
+  "official_attack_pose": "BLOCKED: missing source-compatible original 45degree attack clothing and hidden pixels",
+  "source_paperdoll_modules": {
+    "head": "A62 F0 full raster visible head, historical identity candidate",
+    "body": "A62 F0 full raster visible torso, not isolated upstream body source",
+    "torso_outfit": "NOT_VERIFIED independent same-pose source",
+    "near_arm_outfit": "NOT_VERIFIED independent same-pose source",
+    "far_arm_outfit": "NOT_VERIFIED independent same-pose source",
+    "pants": "NOT_VERIFIED independent same-pose source",
+    "boots": "NOT_VERIFIED independent same-pose source",
+    "weapon": "NOT_GENERATED; independent Tankentai SBS",
+    "fx": "NOT_GENERATED"
+  },
+  "not_done": [
+    "new 5 hand-drawn attack keyframes",
+    "true LPC source clothing composites",
+    "Godot battle integration",
+    "human artistic approval"
+  ]
+}

@@ -321,6 +321,23 @@ jobs:
           assert 'MISSING_LAYER:feet_boots' in outcome['missing_or_invalid']
           print('R19_SOURCE_LAYER_REJECTION_GUARD_CONFIRMED; NO ART PASS')
           PY
+      - name: R20 A62 source parity manifest / never promote source layers as art
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r20_a62_source_lock.py godot_port/tools/ta_r20_a62_source_validator.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          m=json.loads(Path('godot_port/docs/handoff/TA_R20_A62_SOURCE_PARITY_MANIFEST_20261122.json').read_text(encoding='utf-8'))
+          q=json.loads(Path('godot_port/docs/handoff/TA_R20_A62_SOURCE_PARITY_QA_20261122.json').read_text(encoding='utf-8'))
+          assert m['source_sha256']=='0ca4ce9f55a718882b801114602c14e3d288ea4371806fe8afcb3d9b64510c37'
+          assert m['original_source_dimensions']==[48,48] and m['source_opaque_pixels']==575
+          assert m['reassembled_48RGBA_exact'] and m['complete_modular_lpc_source_verified'] is False
+          assert m['art_status']=='R20_BASELINE_ONLY_NOT_NEW_ART'
+          assert q['result']=='SOURCE_VISIBLE_PIXEL_PARITY_PASS_ONLY'
+          assert q['formal_paper_doll_ready'] is False and q['source_to_rebuilt_rgba_diff_pixels']==0
+          assert q['godot_native_attack']=='NOT_RUN'
+          print('R20_SOURCE_METADATA_GATE_PASS; PAPER_DOLL_SOURCE_BLOCKED, ART_NOT_APPROVED')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd
