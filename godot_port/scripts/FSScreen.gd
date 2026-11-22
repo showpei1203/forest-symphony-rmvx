@@ -10,6 +10,8 @@ const UI_ART = preload("res://scripts/ui/FSUIArtLibrary.gd")
 const LIVE_HUD = preload("res://scripts/ui/FSUIBattleHUD.gd")
 const ACTOR01_PRESENTATION = preload("res://scripts/ui/FSBattleActor01Presenter.gd")
 const ENEMY_STAGE = preload("res://scripts/ui/FSBattleOriginalEnemyStage.gd")
+const SOURCE_SCAPES=preload("res://scripts/ui/FSOriginalBattleScapeStage.gd")
+const SOURCE_COMMANDS=preload("res://scripts/ui/FSOriginalBattleCommandLayer.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -32,6 +34,8 @@ var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
 var actor01_presentation: FSBattleActor01Presenter
 var enemy_stage: FSBattleOriginalEnemyStage
+var original_scape: FSOriginalBattleScapeStage
+var original_commands: FSOriginalBattleCommandLayer
 var battle_command_art:Dictionary={}
 var battle_command_grid:GridContainer
 
@@ -102,6 +106,10 @@ func _build_shell() -> void:
     original_background.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED
     original_background.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
     add_child(original_background)
+    # Original #264 BattleScape sits below HUD/ACT/actor/enemy planes.
+    original_scape=SOURCE_SCAPES.new()
+    original_scape.name="FSOriginalBattleScape264"
+    add_child(original_scape)
     var layout := VBoxContainer.new()
     layout.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
     layout.add_theme_constant_override("separation", 4)
@@ -146,6 +154,10 @@ func _build_shell() -> void:
     enemy_stage=ENEMY_STAGE.new()
     enemy_stage.name="FSBattleStageOriginalEnemies"
     add_child(enemy_stage)
+    original_commands=SOURCE_COMMANDS.new()
+    original_commands.name="FSOriginalBattleCommandOverlay232_268_312"
+    original_commands.command_requested.connect(_source_battle_command)
+    add_child(original_commands)
 
 func _process(delta: float) -> void:
     # The actual source Tankentai source-frame gauge now ticks in real gameplay
@@ -172,6 +184,8 @@ func _change(tab: String) -> void:
         _show_menu()
 
 func _clear_body() -> void:
+    if original_commands!=null:
+        original_commands.visible=false
     for n in body.get_children():
         body.remove_child(n)
         n.queue_free()
@@ -233,6 +247,18 @@ func _add_battle_command(label: String, callback: Callable) -> void:
 
 func _update_battle_command_buttons() -> void:
     var enabled: bool = _battle_actor_ready()
+    if original_commands!=null and original_commands.source_enabled:
+        var sealed:Array=[]
+        if actor_index>=0 and actor_index<battle.party.size():
+            var actor:Dictionary=battle.party[actor_index]
+            # #312 checks a_seal?,s_seal?,g_seal?,i_seal?.
+            # These keys are not full 505-alias battle-state parity yet;
+            # FSActionQueue remains the final source-ready authority.
+            sealed=[bool(actor.get("a_seal",false)),
+                bool(actor.get("s_seal",false)),
+                bool(actor.get("g_seal",false)),
+                bool(actor.get("i_seal",false))]
+        original_commands.refresh_state(enabled,sealed)
     for button in battle_command_buttons:
         if is_instance_valid(button):
             button.disabled = not enabled
@@ -240,6 +266,17 @@ func _update_battle_command_buttons() -> void:
             if battle_command_art.has(key):
                 var pair:Dictionary=battle_command_art[key]
                 button.icon=pair["active"] if enabled else pair["inactive"]
+
+func _source_battle_command(index:int)->void:
+    if not _battle_actor_ready():
+        return
+    # Source #268 order, wrapped by #312 command seal. Escape remains HOLD.
+    match index:
+        0:_player_attack()
+        1:_skill_action()
+        2:_player_guard()
+        3:_item_action()
+        4:_show_log("原版逃跑尚未完成 VX Event301 相容與來源驗證")
 
 func _set_original_background(file_name: String) -> void:
     # Only load source-exact pixels after private Drive image assembly.
@@ -250,6 +287,10 @@ func _set_original_background(file_name: String) -> void:
 func _show_menu() -> void:
     view_name = "MENU"
     status_label.visible=true
+    if original_scape!=null:
+        original_scape.clear_scape()
+    if original_commands!=null:
+        original_commands.visible=false
     if enemy_stage!=null:
         enemy_stage.clear_enemies()
     if actor01_presentation!=null:
@@ -629,6 +670,10 @@ func _show_battle() -> void:
     # Actual battlefield layers are selected by the original BattleScape authority.
     # Blank source-exact MENU background rather than displaying an incorrect battle map.
     original_background.texture = null
+    if original_scape!=null:
+        # True #264: troop mapping wins before variable 1000, area and map.
+        # The source ZIP is private; no fabricated BattleScape backdrop.
+        original_scape.bind_source(world,selected_troop_id)
     _clear_body()
     battle_command_grid=null
     battle_command_buttons.clear()
@@ -677,6 +722,10 @@ func _show_battle() -> void:
     _add_battle_command("技能", _skill_action)
     _add_battle_command("物品", _item_action)
     _add_button("返回 MENU", _show_menu)
+    if original_commands!=null and original_commands.bind_original(ui_art):
+        # Source owns FIVE staggered, vertical Battle01..05 sprites.
+        # Keep old functional 2x2 fallback ONLY if no owner originals.
+        battle_command_grid.visible=false
     _update_battle_command_buttons()
 
 func _refresh_battle_status() -> void:

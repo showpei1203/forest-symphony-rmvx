@@ -27,3 +27,8 @@ godot_port/assets/.battlers-stage-*/
 # Original 505 RGSS2 private full-program bridge + raw original 11 RVData
 godot_port/assets/source_authority/
 godot_port/.source-unified-stage-*/
+
+# Entire-source P539B: only source-authenticated 7 original BattleScape
+# PNG/JPG staged privately, including truthful missing Bridge and BlueSky.
+godot_port/assets/battle_scapes/
+godot_port/assets/.scapes-*/
