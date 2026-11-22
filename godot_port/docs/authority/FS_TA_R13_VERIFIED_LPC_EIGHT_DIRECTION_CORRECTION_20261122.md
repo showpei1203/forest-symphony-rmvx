@@ -1,5 +1,8 @@
 # Forest Symphony T-A R13 | VERIFIED LPC 8-DIRECTION SOURCE — R10-R12 CORRECTION
 
+> **LATER 2026-11-22 ART UPDATE:** Source verification claims in this document remain correct (8-dir diagonal walk/run verified; genuine 8-dir attack original not found). However its earlier statement "R13 attack NOT YET CREATED" is NOW OBSOLETE because a *newly authored* 12-frame ACTOR01 UNARMED ATTACK candidate from genuine original LPC diagonal torso/arms ORA HAS been produced and real native GPU tested. It is not a source-native 8-dir attack, but it is physically created, Body SHA 04478beeececa0e52e617bf70ca00679bdd77ec8a0c687e50c9a6f7e7010812e, Godot4.7.2 native 73/73, ART HOLD. Read godot_port/docs/authority/FS_TA_R13_LPC8_UNARMED_ATTACK_REAUTHORED_20261122.md for latest rule.
+
+
 Date: 2026-11-22. Highest-priority latest T-A source fact. User repeatedly reported LPC artwork with diagonal/eight-direction content. PRIOR BROAD "LPC only four directions" was WRONG. STOP REPEATING THIS CLAIM.
 
 ## Exactly sourced facts
