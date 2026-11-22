@@ -1,5 +1,20 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R15 LATEST 2026-11-22 | Correct actual R14 high/hairline fist, eight-dir original LPC unarmed 45 candidate, native 73 PNG PASS, ART HOLD
+
+R14 retrospective ART blocker verified from real enlarged Godot F7: the fist rises too high and visually appears to join white hair instead of the shoulder. 12/12 contiguous connected silhouette checks were misleading: source image connectivity is not anatomical arm/shoulder correctness. Mark R14 F7 visually rejected as production art. Keep originals, no main/T-B/T-C changes.
+
+R15 actual new 12-frame original-LPC eight-direction BODY candidate builds on R14's source-locked ORIGINAL ORA layered two-joint arm/forearm, but explicitly reroutes fist to jaw/upper-chest height and adds hard screen-space kinematic bounds and motion direction QA. F5 wrist estimate (39.554,35.820) -> F6 (48.407,33.100) -> F7 CONTACT (52.325,31.142), then F8 (48.915,33.370) -> F9 (42.080,36.652). Previous R14 F7 estimate ~ (54.164,27.605); R15 F7 lowered ~3.54px so no projected hairline impact. These are arm-joint geometry ESTIMATES, NOT verified true 1x anatomical arm-pixel connectivity or artist visual PASS. Approved white-haired A62 identity sha70a8e6..., original eight-dir row7 torso/legs, no stretching, zero weapons/FX. Original LPC eight-direction ART is WALK/RUN only; the attack is new generated art, not a verified original attack sprite.
+
+R15 source Body 256x192 12x64 RGBA SHA dba04b8c0375635789799340e2e6b74df9a9b7410817cb4f52dbef2b549cd675. Exactly 11 distinct + original F11=F0, 12/12 single 8-connected body, 0 removed debris, zero Weapon/FX pixels. Source godot_port/tools/ta_r15_8dir_actor01_punch_kinematics.py, manifest godot_port/docs/handoff/TA_R15_8DIR_UNARMED_SOURCE_MANIFEST_20261122.json.
+
+**ACTUAL official Godot 4.7.2 native 73/73 Windows OpenGL 64px GPU frames at 60Hz**, all 12 poses, F7 visual 0.630sec event once, 12/12 source vs GPU full RGBA bytes exactly equal; isolated sprite viewer only. Real QA: godot_port/tests/capture_ta_r15_unarmed_native.gd, godot_port/docs/handoff/TA_R15_8DIR_UNARMED_NATIVE_QA_20261122.json and source-only pack tool godot_port/tools/ta_r15_8dir_native_qa_pack.py. Owner-authorized PC E:\LPC_Original_20261121\FS_R15_ACTOR01_EIGHTDIR_TWO_JOINT_UNARMED_45 . Native GIF R15_GODOT472_ACTUAL_73_FRAMES_60HZ.gif, true native 1x/4x contacts, R14 source vs R15 native 12pose 4x comparison. ZIP FS_TA_R15_8DIR_TWO_JOINT_UNARMED_NATIVE_73FRAMES_QA_20261122.zip 250953 bytes, 91 entries ZIP CRC PASS SHA b513bc18db9e05aab786b44fbf319e0611b6c011d455133ef486ef150706dfdc. Owner E PRIVATE image/ZIP (not claimed Drive binary).
+
+R15 FAIL first pack attempt used stale screenshot R13_VS_R15 filename despite having generated R14_VS_R15; fixed correct filename and repacked ZIP 91 entries CRC pass. Source editor's geometric gate itself PASS, but **ART HOLD** because wrist silhouette / green sleeve attachment, torso rotation, 1x original expressive acting, near-far leg stepping need human acceptance. No real original FS combat gameplay, no original 8-dir attack source, no paid PixelLab. Formal newest source rule godot_port/docs/authority/FS_TA_R15_8DIR_CHEST_LEVEL_PUNCH_ART_AUTHORITY_20261122.md.
+
+---
+
+
 ## R14 LATEST | 2026-11-22 | TWO-JOINT REAL EIGHT-DIR LPC UNARMED ACTOR01 + 73 REAL GODOT FRAMES
 
 Current owner goal: authentic 8-direction LPC diagonal body, retain approved A62 white hair/face/green outfit, NEW attack without weapon/FX or rubber limb deformation. User is away from PC, no user action required. R14 is created on dedicated T-A branch only, older A52/R8-R13 unmodified.
