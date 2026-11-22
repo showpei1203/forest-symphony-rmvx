@@ -1,0 +1,37 @@
+name: FS T-C Biome Identity Guard (no Art PASS claim)
+on:
+  push:
+    branches: [feat/fs-pixellab-tc-map-20261121]
+    paths:
+      - "godot_port/tc_factory/biomes/fs_biome_identity_guard.py"
+      - "godot_port/tc_factory/biomes/test_fs_biome_identity_guard.py"
+      - ".github/workflows/fs-tc-biome-identity-guard.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: fs-tc-biome-identity
+  cancel-in-progress: true
+jobs:
+  reject-incorrect-biome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Pillow
+        run: python3 -m pip install Pillow==12.0.0
+      - name: Verify four snow-vs-desert mismatch tests
+        run: python3 godot_port/tc_factory/biomes/test_fs_biome_identity_guard.py
+      - name: Verify the scene tracker never confuses the desert with snow
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          f=Path('godot_port/tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json')
+          a=json.loads(f.read_text('utf8'))
+          assert len(a['scenes'])==12
+          d=next(x for x in a['scenes'] if x['scene_id']=='FS_03_VILLAGE')
+          assert d['biome_id']=='WIND_ERODED_GOLD_SANDS'
+          assert d['formal_art_gate']=='HOLD'
+          print('Biome guard PASS; no desert Ground art approval implied')
+          PY
