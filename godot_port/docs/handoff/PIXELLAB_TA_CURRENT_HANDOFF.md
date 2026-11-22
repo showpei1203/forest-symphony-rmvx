@@ -1,5 +1,13 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R19 SOURCE CONTRACT ERROR | 2026-11-22 | ART_REJECTED + SOURCE_LAYER_BLOCKED (supersedes R19 pending)
+
+Owner rejected R19 belly/waist proportions and asked whether the paper-doll compositor was used. **No**: R19 script copied only A62 approved head crop, and painted torso, green shirt, belt, arms, pants, boots using standalone Pillow polygons. This violated A62 full-body master retention and modular LPC outfit sourcing. Verified actual LPC original diagonal WALK ORA stack only torso/arms/head layers; full corresponding forest-green outfit/boots for this 45° attack NOT verified. R19A/B art must NOT be used as attack baseline. Do not run R20 or 12-frame expansion by filling missing source parts with fake shapes. Forest Symphony Tankentai independent Weapon sheet is a distinct system; Weapon/FX=0 never establishes full source-paper-doll art.
+
+NEW AUTHORITY: `godot_port/docs/authority/FS_TA_PAPER_DOLL_SOURCE_CONTRACT_20261122.md`. NEW GUARD `godot_port/tools/ta_actor_paper_doll_source_gate.py`, negative audit of existing R19 source manifest. First locate actual same pose/direction layer provenance body, torso outfit, near/far sleeves, pants, boots plus approved A62 head/body; otherwise SOURCE_LAYER_BLOCKED. All original R16-R19 artifacts remain evidence, NOT production art. Historical R19 lines below are superseded where they say art pending. A52/main/T-B/T-C unaffected.
+
+---
+
 ## R19 LATEST | 2026-11-22 | Five independently redrawn 64×64 boxing key poses | ART GATE PENDING
 
 Following owner's full rejection of R16-R18, actually generated **F0 GUARD / F3 COIL / F5 DRIVE / F7 IMPACT / F9 RECOVER** as five source-coordinate-authored 64px opaque/transparent pixel silhouettes, each a complete separately hand-placed torso, both legs/boots, front/back arms and compact fist. Preserved byte-identical A62 hair/face pixel source (approved SHA `70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e`) over independent 45° body art. No re-use of prior R16-R18 rotation scripts and no claiming LPC original 8-dir WALK is a native ATTACK.
