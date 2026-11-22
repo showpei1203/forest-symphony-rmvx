@@ -19,11 +19,15 @@ func texture_for_fixture(_enemy:Dictionary)->Texture2D:
     return ImageTexture.create_from_image(image)
 func _run()->void:
     var loader=ART.new()
-    if not check(not loader.has_source(),"private owner-only Battlers must not be in GitHub CI"):
+    var owner_original_staged:bool=FileAccess.file_exists(
+        "res://assets/battlers/$001.png")
+    if not check(loader.has_source()==owner_original_staged,
+            "public CI is asset-free, owner GPU has SHA-pinned real Battler source"):
         return
-    if not check(loader.texture_for_enemy({
-            "battler_name":"$001","battler_hue":0})==null,
-            "no source PNG in public CI must mean no original enemy art"):return
+    var source_image:Texture2D=loader.texture_for_enemy({
+        "battler_name":"$001","battler_hue":0})
+    if not check((source_image!=null)==owner_original_staged,
+            "private real original source only, public must fail closed"):return
     if not check(not ART._safe_name("../../evil.png") and not (
             ART._safe_name("$001/evil.png")) and (
             ART._safe_name("$騎狼矮人.png")),
@@ -51,6 +55,15 @@ func _run()->void:
     battle.add_actor(1)
     battle.add_enemy(1)
     battle.start()
+    if owner_original_staged:
+        # Original source #462 name is in target help, not a permanent
+        # debug caption covering the original #381 enemy State badges.
+        battle.enemies[0]["battler_name"]="$001"
+        battle.enemies[0]["battler_hue"]=0
+        if not check(node.bind_real(battle)==1 and (
+                not node.enemy_views[0]["caption"].visible),
+                "owner-private original Battler must have NO permanent debug-name label"):return
+        node.clear_enemies()
     var screen=SCREEN.new()
     root.add_child(screen)
     screen.db=data
