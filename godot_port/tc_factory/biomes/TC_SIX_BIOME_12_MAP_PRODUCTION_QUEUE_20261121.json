@@ -18,7 +18,9 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 2
+    "Ground_PAR_pair_candidates_static_pass": 2,
+    "ground_source_candidates_FS_03_VILLAGE": 1,
+    "failed_PAR_generation_attempts_FS_03_VILLAGE": 2
   },
   "scenes": [
     {
@@ -264,7 +266,7 @@
       "biome_id": "WIND_ERODED_GOLD_SANDS",
       "biome_name": "風蝕金砂",
       "role": "VILLAGE",
-      "stage": "PLANNED_NOT_GENERATED",
+      "stage": "D7_NEW_DESERT_GROUND_40x29_SOURCE_CANDIDATE_SEMANTIC_ART_HOLD_PAR_NOT_GENERATED",
       "ground_material_family": [
         "沙丘",
         "砂岩",
@@ -278,7 +280,36 @@
         "布棚"
       ],
       "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
-      "formal_art_gate": "HOLD"
+      "formal_art_gate": "HOLD",
+      "source": {
+        "source_dimensions": [
+          1477,
+          1065
+        ],
+        "ground_dimensions": [
+          1280,
+          928
+        ],
+        "source_crop_xyxy": [
+          98,
+          68,
+          1378,
+          996
+        ],
+        "ground_is_native_unscaled_px": true,
+        "ground_sha256": "ac3688112874cd45a38f484b8c37dbc0b8f6abd41b67cc0c578bc95f0935aa97",
+        "source_sha256": "8f8c0ac66359bf8bc47e00beb889a4e66c5f2c9d339b00f9cf05957818556f91",
+        "warm_desert_pixel_fraction": 0.949892,
+        "Ground_private_Drive": "https://drive.google.com/file/d/1dYmk2I49wp0gCCWxAh5k0JiStzwNtCM4/view",
+        "source_private_Drive": "https://drive.google.com/file/d/1OQmMo0pBq7WE0RwcsRkALqDDaLXrThjA/view",
+        "QA_private_Drive": "https://drive.google.com/file/d/1tFCb_V0VaxWFgKrewGIs3sIEcZ-DN7yi/view",
+        "Ground_purity": "HOLD_UPRIGHT_CLIFF_FACES_AND_SOME_BUSHES",
+        "CompletePAR": null,
+        "failed_PAR_attempts": 2,
+        "PAR_failure": "wrong winter maze and zero fully transparent pixels in resulting RGBA images",
+        "Godot_native": "NOT_RUN",
+        "art_gate": "HOLD"
+      }
     },
     {
       "scene_id": "FS_04_MAZE",
