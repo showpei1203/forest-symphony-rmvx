@@ -1,5 +1,11 @@
 # T-A Failure Log / 2026-11-21
 
+## TA-29 | Serious research/source mistake: Universal LPC FOUR != entire LPC ecosystem FOUR — 2026-11-22
+
+The user repeatedly pointed out official/expanded LPC contains diagonal EIGHT-DIRECTION artwork. Earlier assistant repeatedly stated "LPC only four directions" based on ONE Universal-LPC standard generator. False generalization. This drove R10/R11/R12 wrong 4dir front-right compositing that never matched FS 45 degree camera. R13 independently verified online original LPC diagonal walk/run 9 frames × 8 direction rows, original PNG and editable layered ORA, properly downloaded and CRC/SHA checked to E:\LPC_Original_20261121\LPC_8DIR_ORIGINAL_DIAGONAL. ZIP 2939150 bytes SHA256 278bba048b4f25b8c8d9601b2cc27402c298cf1c68c554be9e68c8e11c2ee716. Male PNG 576×512 SHA256 2e8c83857c9456f3c336d058f4152d0e1b57b9b9eecd2ba9b0d2ffde8bcc6261. Original source contains NO verified attack frames, so attack-specific source remains open/ART HOLD. Real 8dir walk/run source PASS and new research authority committed. Do not conflate standard generator's 4 directions with all LPC art again. Legacy R12 art remains superseded as 45 reference. No actual R13 attack art or native test claimed.
+
+---
+
 ## R12 failures and real tested fixes, 2026-11-22
 
 TA-23 | R11B bad recovery poses: R11B F8..F11 returned to one nearly same neutral pose; R12 now uses LPC actual 13-key backslash indices [12,0,1,2,3,6,7,8,9,10,11,12], distinct F8 F9 F10 recovery, no stretched arms. SOURCE CANDIDATE MADE; natural visual transitions still ART HOLD.
