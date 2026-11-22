@@ -1,0 +1,61 @@
+{
+  "result": "ENGINE_QA_PASS_ART_HOLD",
+  "godot_build": {
+    "build": "official",
+    "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "hex": 263938,
+    "major": 4,
+    "minor": 7,
+    "patch": 2,
+    "status": "stable",
+    "string": "4.7.2-stable (official)",
+    "timestamp": 0
+  },
+  "native_frame_count": 73,
+  "fps": 60,
+  "source_vs_gpu_exact_RGBA_byte_mismatches": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "original_source_is_eight_direction_diagonal_walk": true,
+  "original_source_is_eight_direction_attack": false,
+  "newly_reauthored_attack_with_fixed_upper_and_forearm": true,
+  "front_upper_source_bone_length_px": 8,
+  "back_upper_source_bone_length_px": 8,
+  "emotion_source_pixel_changes": [
+    0,
+    2,
+    2,
+    2,
+    4,
+    4,
+    5,
+    5,
+    5,
+    1,
+    1,
+    0
+  ],
+  "all_body_continuous": true,
+  "stray_removed_pixels": 0,
+  "weapon_pixels": 0,
+  "fx_pixels": 0,
+  "actual_f7_0_630_visual_event_once": true,
+  "real_live_FSBattle": "NOT_RUN",
+  "art_hold_reason": "Forearm/elbow source-pixel pivot is technical candidate; 1x readability, motion momentum, shoulder attachment need human acceptance",
+  "sha256": {
+    "R14_ACTOR01_8DIR_TWO_JOINT_UNARMED_BODY.png": "9456aec56f867377a9cea93bdfb86b9b9597efe36a66518a73ce93b2a9e60497",
+    "R14_WEAPON_ALPHA_ZERO.png": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7",
+    "R14_FX_ALPHA_ZERO.png": "ef58c9f85c4dd5bf843466dffb5c06114c7286fa4d11f19191367e468799e2a7"
+  }
+}
