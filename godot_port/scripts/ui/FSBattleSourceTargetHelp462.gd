@@ -127,7 +127,9 @@ func select(target:Dictionary,is_enemy:bool)->bool:
     var extras:Dictionary=FSOriginalBattleInfo381.extra_info_rows(
         target,source_db)
     if not bool(extras.get("ok",false)):
-        source_warnings.append(str(extras.get("reason","")))
+        var warning:String=str(extras.get("reason",""))
+        if not source_warnings.has(warning):
+            source_warnings.append(warning)
     else:
         for row in extras["rows"]:
             if detail_lines.size()>=DETAIL_MAX_INFO_ROWS:
@@ -139,9 +141,12 @@ func select(target:Dictionary,is_enemy:bool)->bool:
     var quote:Dictionary=FSBattleSourceStateHUD381.detail_rows(
         target,source_db,DETAIL_MAX_STATE_ROWS)
     if not bool(quote.get("ok",false)):
-        # The original battle data has not been validated. Refuse to draw
-        # fabricated state detail, but keep name/help from the real target.
-        source_warnings.append(str(quote.get("reason","")))
+        # Both the source InfoRows and the StateDetail adapter validate
+        # the same State IDs. One source problem is one warning, not two
+        # duplicate diagnostics in the on-screen Help.
+        var warning:String=str(quote.get("reason",""))
+        if not source_warnings.has(warning):
+            source_warnings.append(warning)
     else:
         for record in quote["rows"]:
             if detail_lines.size()>=DETAIL_MAX_INFO_ROWS:
