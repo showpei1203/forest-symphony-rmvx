@@ -1,5 +1,15 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R13 LATEST — VERIFIED REAL EIGHT-DIRECTION LPC ORIGINAL — 2026-11-22
+
+USER WAS RIGHT: LPC wider original art ecosystem DOES include real diagonal/eight-direction pixel sprites. Our prior blanket "LPC only four directions" claims across R10-R12 were WRONG, and the repeated decision to fuse front+side because "no native diagonal LPC exists" is invalid. This is formally superseded by godot_port/docs/authority/FS_TA_R13_VERIFIED_LPC_EIGHT_DIRECTION_CORRECTION_20261122.md .
+
+Actually downloaded ORIGINAL diagonal LPC source, OpenGameArt https://opengameart.org/content/lpc-runcycle-and-diagonal-walkcycle ; author Wolthera van Hövell tot Westerflier (TheraHedwig). User authorized E: E:\LPC_Original_20261121\LPC_8DIR_ORIGINAL_DIAGONAL\LPC_diagonalwalknruncycle.zip, real bytes 2939150, SHA256 278bba048b4f25b8c8d9601b2cc27402c298cf1c68c554be9e68c8e11c2ee716, 13 archived members CRC PASS, extracted. Verified male diagonal walk 576x512 = 9 source poses × 8 ORIGINAL direction rows, PNG SHA256 2e8c83857c9456f3c336d058f4152d0e1b57b9b9eecd2ba9b0d2ffde8bcc6261. Editable ORA has 3 original layers. Four actual diagonal rows [1,3,5,7] rendered to owner-private original source contact and entire 8-row contact. Original source audit and manifest tracked in T-A GitHub; no copyrighted original PNG uploaded publicly.
+
+SOURCE SCOPE: verified zip has EIGHT-DIR WALK and RUN only, NOT eight-dir ATTACK. Do not claim verified diagonal attack frames yet; find/verify them separately or redraw attack atop authentic 8-dir diagonal body and realistic full-arm gestures. Existing R12 4-cardinal front/right composite is now HISTORICAL ART HOLD, not authoritative 45-degree master. For all new FS actor art use real diagonal source anatomy, A62 approved white-haired identity, no weapon/no FX/no magic symbols/no rubber arms, original F7 visual 0.630 event and Godot 4.7.2 QA after creating real new attack frames. New ART must be reviewed in 1x before declaring PASS. The 8-dir source proof is PASS; no R13 native 12-frame attack has been produced yet.
+
+---
+
 ## R12 LATEST | 2026-11-22 | Original LPC whole-body ATTACK, unarmed, improved 3/4 pose blend, dynamic-face pixel acting
 
 User's latest instructions remain the HARD RULE: use the COMPLETE actual original paper doll LPC source action as the basis for ACTOR01, preserve approved A62 white-haired identity, NEVER add any weapon, sword, arc, debug mark or rubber-arm line. User authorized E storage. ORIGINAL full LPC upstream snapshot pinned SHA86a3719ee4a7e2e9fb27c7c152e29a741d3e930a at E:\LPC_Original_20261121, 89,359 files. The upstream contains only FOUR CARDINAL directions; this is still a source-adapted 3/4 angle candidate, NOT a genuinely hand-painted 45-degree complete art acceptance.
