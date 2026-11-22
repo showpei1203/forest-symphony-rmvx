@@ -1,3 +1,16 @@
+# T-C CURRENT｜D13 FS_04_VILLAGE 已生成真正透明完整非地表 PAR 美術候選｜2026-11-22
+
+**最新真成果（優先於 D12/D11 歷史）：** 新獨立工坊城全物件 PAR 圖檔已生成，原生來源 `1474×1067 RGBA`，**alpha=0 真透明像素 715393**，非 Ground/Master 逆切，涵蓋工坊、熔爐、煙囪、鐵橋、礦車、吊車、石柱、旗幟、路燈。原 D11 1280×928 RGB Ground 維持 SHA `ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d` 不變。
+
+**正式 ART 仍 0/12 HOLD，Godot 4.7.2 原生 NOT_RUN。** 新 PAR 來源不是正式 1280×928（40×29）1× 尺寸；真 1× 裁切雖可配對但截建築邊緣，整圖下縮技術候選雖能保留全物件並與原 Ground 靜態合成，但不符合 native 1× 原生美術要求。Raw PAR 有 alpha1..8=121578、alpha240..254=641638；另存 clean-alpha 候選，未修改原圖。世界落點仍需人工/原生 Godot 驗證，不把靜態合成當 ART PASS。
+
+- [D13 私人真來源、兩種 1280×928 PAR 候選、合成圖、完整 QA 十二檔 ZIP（22,036,770 bytes、CRC PASS）](https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view)；私人 owner-only metadata READBACK 完成。
+- [獨立原圖 PAR](https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view)，[1280×928 靜態合成](https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view)，[完整來源及 Failure Log](TC_D13_FS_04_VILLAGE_INDEPENDENT_RGBA_PAR_SOURCE_QA_20261122.md)。
+- D12 [可控 Alpha 備援程式及合成保護 CI](TC_D12_INDEPENDENT_CHROMA_COMPLETEPAR_ALPHA_BRIDGE_20261122.md)、[GitHub Actions #44995939096](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44995939096) PASS，為 synthetic tests，**不是 D13 native／ART PASS**。D13 已直接生成真透明 RGBA，不須從 Master key-out。
+- 下一完整美術單位：參照既有 Ground 及 D13 完整工坊城風格，取得**原生 1280×928 且邊緣物件不裁斷、對位準確**的第二階段獨立 CompletePAR；QA 後才跑 Godot 4.7.2 原生、美術確認。Ground 不重新生成；不分析遮擋角色、不反切 Master、不修單顆樹。
+
+---
+
 # T-C CURRENT｜D11 赤焰火山「灰鑄工坊城」真 Ground-only 候選出圖｜2026-11-22
 
 > **D11 封存後增補（透明模式最後一次再試）：仍 FAIL。** 第六張輸出 `1477×1065 RGBA`，alpha min/max `209/248`、**alpha=0 count 0**，SHA `4fb03231f912096edb4f4b6496cb0bd628f95d42a881c9387d8e8ad3b946fcf1`，仍是整張全景火山城而非透明 PAR。拒收，不納入先前 5 次失敗的六檔私人 QA ZIP（該 ZIP 維持原核驗 SHA），不冒稱已有 CompletePAR。此出圖方式在本輪停止重試；下個單位須使用確實可控透明背景、同來源 XY 的另一條生成流程。\n\n**實際施工新成果：FS_04_VILLAGE「灰鑄工坊城」已新生成真正火山玄武岩／熔岩 Ground，原始 1477×1065 與不縮放 1280×928（40×29）及 46×33 全構圖備份已上傳私人 Drive。完整透明 PAR 連續五次失敗（RGB一張、RGBA四張皆沒有任何 Alpha=0），全部拒收，正式 ART HOLD、Godot 4.7.2 NATIVE NOT_RUN；十二張地圖正式 ART 仍 0／12。** 此段優先於下面較早 D11 首次沙漠誤圖及 D10 歷史。
