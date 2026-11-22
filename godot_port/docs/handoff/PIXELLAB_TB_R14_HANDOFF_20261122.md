@@ -47,3 +47,9 @@ Latest R13 CURRENT Handoff remains authoritative. **No battle engine, ACT/ATB, H
 
 ## Next macro unit
 **Correct the blocking Bat Revive 45° rotation**, and check Frog Revive semantic stance, with at most two bounded art iterations before escalation; run real Godot art-only visual review. Then start **third genuinely distinct monster family full three-stage template**, avoiding battle-system detour. Preserve R14 archive unchanged as a historical candidate.
+
+
+## R14 post-release storage closure
+- **P0 owner Windows TEMP CLEANUP VERIFIED** after actual private Google Drive file metadata readback: source-controlled `cleanup_tb14_ephemeral.py` removed seven named R14 temporary outputs (two work directories + five specific files), retained R10-R13 original staging and all private Drive assets. Rechecked full private ZIP SHA256 **07ade104008f376b077aaea2fdc7395986f7cf12ec023791e81169b0f3355575**, original Drive release untouched.
+- `orchestrate_tb14_release.py` pinned corrected builder commit `bec0fda3ab0ca1f89acd26d36e586b7618513881`, fixing initial wrapper's old failing pin.
+- **Final technical state**: R14 76/76 native headless PASS, 680 frame slots; R14 ART REVIEW PENDING. Distinguish quality gate from technical gate in all public communication.
