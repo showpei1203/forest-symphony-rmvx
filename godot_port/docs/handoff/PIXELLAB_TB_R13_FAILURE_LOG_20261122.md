@@ -8,3 +8,8 @@
 6. **Private storage**: ZIP CRC PASS, 190 files, 3,984,990 bytes SHA256 `eebd4d0e1bb12252d8ae1bea8fef87227ce7b9719a71f0da1539b19ea79492d7`, synced to private Google Drive folder with actual returned file ID `1PGNJZfHKsL66zl1G1K-l-r4X6lYq_dEN`; Drive metadata `shared=false`. On-device files only temporary; cleanup pending exact verification.
 
 NO T-A/T-C/main nor combat system modifications. PixelLab 12 new completed jobs, 36 provider-reported generations. 
+
+
+## Recovery closure
+- **Closed TEMP_CLEANUP_PENDING**: the exact 190-file R13 private Drive ZIP had its SHA256 and CRC rechecked, the new contact sheets + both final GIF review files were confirmed private in Google Drive. Then the source-controlled narrowly-scoped cleanup removed **117** temporary files (original R10/R11 asset files preserved). Release still matches expected SHA256 `eebd4d0e1bb12252d8ae1bea8fef87227ce7b9719a71f0da1539b19ea79492d7`.
+- No remaining provider or native engine blocker for R13 technical release. **Human art quality gate for 12 new clips still OPEN**.
