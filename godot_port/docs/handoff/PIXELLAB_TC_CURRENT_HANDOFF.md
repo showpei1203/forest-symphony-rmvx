@@ -18,6 +18,13 @@
 - [D6 詳細資料／Failure Log／後續 QA](TC_D6_FS_02_MAZE_GROUND_FIRST_COMPLETE_PAR_PAIR_20261122.md)，[T-C 十二場景追蹤表](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) 已登記 FS_02_MAZE Ground＋PAR 真配對 static-pass、Art HOLD。
 - 這輪沒有新的 PixelLab API 付費作業，純 imagegen D6 新來源；PAR 完整非地表是 AI 目視整組而不是 192 個獨立來源物件。D1 old 192/192 CI 不是 D6 新圖 QA 的證明，Godot native 4.7.2 **NOT_RUN**。
 
+## D6 後續尺寸輸出兩次阻斷（2026-11-22）
+
+- **80×58 / 2560×1856 全新純 Ground 的工具嘗試 FAIL**：圖像生成器改產出標有 Ground/PAR/QA PASS 的資訊圖，實際下載是 1473×1068 RGB **資訊海報**，沒有獨立原生尺寸 Ground 文件；拒收，不上傳私人 Drive、不替換已封存 D6 Ground/PAR。
+- **下一地形風蝕金砂 FS_03_VILLAGE 純 Ground 嘗試 FAIL**：生成器依然產出冰脊迷谷的資訊圖而非砂地原生地表，拒收，正式十二圖狀態仍以 D6 為最新確實素材。不可把這些畫在圖上的 PASS、上傳文字當作真測試或真 Drive 寫入。
+- 新的外部生圖整合尚未**連接**，不能假稱已可藉此執行正式生成。可以選擇串接能控制 output size/alpha 的專業圖像模型工具後重試；原 Ground-first／CompletePAR 規則、私人 Drive 圖像保存及 GitHub 文檔交接仍維持。
+- **D6 46×33 真 RAW PNG/QA 已確實存放 Private Drive，狀態維持 Candidate 技術 PASS、Art HOLD；不因後續尺寸嘗試錯誤而退回 D5 PAR 未生成。**
+
 ## 下一個完整施工單位（不再修單獨樹葉）
 
 要繼續真正 **80×58 / 2560×1856** 之 Ground-first 全圖原生生成與 CompletePAR 配對，使用 D6 雪谷「兩圖整體風格」作 style reference，不能直接把 46×33 整圖 nearest 放大當原生地圖。兩張 Ground/PAR 必須可獨立檢查出畫、Alpha、畫布對位後才標完成。之後按世界設定走 03 風蝕金砂、04 赤焰火山、05 幽霧水澤、06 星晶浮島各一村一迷宮。正式 ART 仍 **0/12**，新圖技術測試過關不解除。
