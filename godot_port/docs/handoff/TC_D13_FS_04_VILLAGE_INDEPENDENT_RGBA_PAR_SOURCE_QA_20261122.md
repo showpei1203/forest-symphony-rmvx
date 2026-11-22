@@ -63,3 +63,7 @@ Uploaded source, ZIP, preview, PAR variants and QA JSON verified via Google Driv
 4. Source original was separately generated from textual scene/spatial guidance, not direct pixel-coordinate conditioning on exact D11 Ground, so **exact same-source XY is not proven**.
 
 **NEXT FULL UNIT**: obtain a properly native aligned 1280×928 transparent **complete** non-ground scene with no clipped props; use D13 as strong composition/style reference and locked D11 Ground as world reference. Do not regenerate Ground. Inspect image, same-size 1× alpha composite, Godot 4.7.2 native then Human ART Gate. After actual acceptance continue `FS_04_MAZE` and 05/06 terrain pairs. Keep per-stage private Drive raw+QA, GitHub Handoff, and Linear SHO-39, total formal ART remains 0/12.
+
+## 6. Subsequent native-canvas regeneration attempt: REJECTED
+
+After D13 source/QA private archive, a further native 1280×928 art-repair generation was requested with current Ground and foreground reference; the image-generation interface instead produced a **1536×1024 infographic/project dashboard**, not any standalone foreground sprite layer. This is **FAIL_WRONG_MEDIA_AND_SOURCE**, not a new CompletePAR. Its infographic was deliberately not added to private art ZIP, source tracker, or public repository. No extra Art PASS claimed. Keep the last verified D13 independent true RGBA foreground as source candidate; do not retry same blind image-generation prompt pattern.
