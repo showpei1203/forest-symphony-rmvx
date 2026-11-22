@@ -1,3 +1,22 @@
+# T-C CURRENT｜D9「風沙裂谷」真正 Ground source 及 PAR 失敗診斷｜2026-11-22
+
+**本輪確實產生風沙裂谷 FS_03_MAZE 的獨立砂谷 Ground 原始 PNG，原圖＋46×33 原像素候選＋QA 六檔私人封存；PAR 連續三次輸出非透明全場景，全部拒收。正式 80×58／2560×1856 未達成，正式 ART HOLD 0/12，Godot 4.7.2 native NOT_RUN。** 這一段優先於下方 D8/D7 的歷史交接。
+
+## 真 Ground 生產與 QA
+
+- 新原生 Ground-only 構圖：蜿蜒砂路、多個岔口、迴路、裂紋、砂岩臺地；沒有綠洲村房屋、噴泉、市集或棕櫚。**來源 RGB 1477×1065** SHA256 `b9ddee18bf3eb4386363a2d6321b0ad745c64cb1149b862489d4160defaa9e59`。
+- 原圖 crop `[2,4,1474,1060]` 後 **1472×1056／46×33 格、32px 不縮放**，SHA256 `2e78610422ff373f07382b2bcb4980d3f11bf63c3e078cf489e2bc42f55b66fd`。這不是正式 FS_03_MAZE 的 80×58 source，美術純度仍有峽谷立體崖壁混入 Ground 的待辦，不能以技術截圖冒充 Art PASS。
+- 三個新 PAR imagegen 嘗試全 FAIL：各自 RGBA 1477×1065，alpha extrema **(205,249)／(181,248)／(214,249)**，**三張 alpha=0 像素均為 0**，且畫的是整張不同峽谷場景，並非與 locked Ground 同源 XY 的透明全非地表 PAR。拒收、不 Master 逆切、不冒稱合成成功。
+- 已寫 [正式 D9 六檔 QA／Failed PAR 完整紀錄](TC_D9_FS_03_MAZE_GROUND_FIRST_SOURCE_QA_20261122.md)，更新 [十二張正式地圖進度表](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json)。
+- **[Google Drive D9 原圖、Ground-only、Grid QA、Failure Log 六檔 ZIP](https://drive.google.com/file/d/1HC6r2i0Dcd3mLizGZRG9HzGUtMSh8Yc4/view)**：10,819,294 bytes、ZIP CRC PASS、SHA `3cf8250c084b9498233748eccaff664b9bfd1f63a50976ddbbf5ad6bc56c5227`；[原始 RGB Ground](https://drive.google.com/file/d/1LUumF1zF--hjBfREqpAlNoMUHQtbzMs-/view)；[46×33 裁切候選](https://drive.google.com/file/d/1KoPtJ47HDSDtYEmt2s_sMd0pwh7jdC16/view)。三件均 Google Drive metadata READBACK **shared=false、permissions user owner only**。沒有操作使用者 PC，沒有把私有 PNG 上傳公開 Github。
+- **施工規則不變**：先完整 Ground，後將**所有非地表物件**生成為獨立、透明的 CompletePAR，不判斷角色遮擋，不從 Master 反切。現在的瓶頸是要換/連接能真支援 Alpha=0／同一 Blueprint／指定尺寸的完整生圖供應者；沒有接通不得說有新 PixelLab/fal API job。
+
+## 下一完整單位
+
+取得能成功分離 Ground+完整 PAR 的真正圖像生成來源，先完成 FS_03_MAZE 對 80×58 原生世界格的輸出和真正透明 PAR。若生成器再返回全景 RGBA 但沒有透明背景，立即 Gate FAIL，不再重複同一失敗。此後按 04 火山、05 水澤、06 星晶兩張場景每系量產；只有圖片實出且 1× Godot/Art gate 通過才可宣布封版。正式目前 0/12。
+
+---
+
 # T-C CURRENT｜D8 星井綠洲 Ground-first＋真透明完整 PAR 已成功合成｜2026-11-22
 
 **這一輪有實際全新美術來源：FS_03_VILLAGE 星井綠洲 D8 的獨立透明 CompletePAR 生成成功，與既有 D7 沙漠 Ground 來源在相同世界座標合成為 1280×928／40×29 完整村莊候選。兩圖 Pixel Alpha 合成 TECH PASS，正式全圖 ART HOLD，Godot 4.7.2 native NOT_RUN。** 本段最新權威優於下方歷史 D7。仍嚴守使用者 Ground-only first、再 ALL_NON_GROUND PAR；不推理何物會遮擋角色，也不從 Master 反切。
