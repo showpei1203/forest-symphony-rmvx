@@ -73,8 +73,13 @@ func _run()->void:
     if not check(screen.size.x>=530.0 and not screen.status_label.visible,
             "battle screen must fill game window and keep source 2x2 commands visible"):
         return
-    if not check(screen.enemy_stage!=null and not screen.enemy_stage.visible,
-            "public original BATTLE should remain fail-closed without private assets"):
+    if not check(screen.enemy_stage!=null and (
+            screen.enemy_stage.visible==owner_original_staged),
+            "owner-private source Battler should render; public CI stays hidden"):
+        return
+    if owner_original_staged and not check(
+            not screen.enemy_stage.enemy_views[0]["caption"].visible,
+            "original target-help name cannot cover enemy State HUD"):
         return
     print("P537C native real FSBattle enemy stage, source name-only lookup, dead-enemy hide, public private-source gate PASS; synthetic texture fixture ONLY")
     quit(0)
