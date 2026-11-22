@@ -77,7 +77,14 @@ def locked_revive_sources(kind,st):
     s=family['stages'][st-1]
     start=zframe(s['motions']['ko'],s['motions']['ko']['frames']-1)
     end=zframe(s['motions']['idle'],0)
-    assert start.size==end.size and start.size[0]==start.size[1]
+    # R14 KO and Idle use different pixel canvas sizes on Bat Stages1/3 and Frog Stage1.
+    # Preserve every original idle RGBA source pixel, only center on the KO canvas.
+    assert start.width==start.height and end.width==end.height and start.width>=end.width
+    if start.size!=end.size:
+        canvas=Image.new('RGBA',start.size)
+        canvas.alpha_composite(end,((start.width-end.width)//2,(start.height-end.height)//2))
+        end=canvas
+    assert start.size==end.size
     return start,end,s
 def poll_one(jobid,limit=260):
     t=time.monotonic()
