@@ -1,5 +1,22 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R12 LATEST | 2026-11-22 | Original LPC whole-body ATTACK, unarmed, improved 3/4 pose blend, dynamic-face pixel acting
+
+User's latest instructions remain the HARD RULE: use the COMPLETE actual original paper doll LPC source action as the basis for ACTOR01, preserve approved A62 white-haired identity, NEVER add any weapon, sword, arc, debug mark or rubber-arm line. User authorized E storage. ORIGINAL full LPC upstream snapshot pinned SHA86a3719ee4a7e2e9fb27c7c152e29a741d3e930a at E:\LPC_Original_20261121, 89,359 files. The upstream contains only FOUR CARDINAL directions; this is still a source-adapted 3/4 angle candidate, NOT a genuinely hand-painted 45-degree complete art acceptance.
+
+REAL R12 new art source: use all original full-body authentic LPC backslash 13-key source poses, source index map [12,0,1,2,3,6,7,8,9,10,11,12] (R11B repeated most recovery poses; R12 uses distinct original recovery poses). Same original A62 face/hair SHA70a8e6..., facial in-place pixel phases neutral/focus/grit/exert/recover (1x visibility still ART HOLD). New pixel-safe opaque-overlap curved chest/hip blend; preserves authentic whole side arm/legs with no stretch and no detached symbols. Entirely empty independent Weapon and FX. Original A52 and R8/R9/R11B preserved. Every one of the 12 poses is exactly ONE 8-connected character silhouette; F0/F11 exact loop seam.
+
+R12 Body 256x192, 12x64 RGBA, SHA256 d72366a8945dd0a2824252746b03aa98e209c8aceddffb0d7e30555c1dcb69bb. Source reproducer godot_port/tools/ta_r12_actor01_lpc_unarmed_3q.py; source-manifest godot_port/docs/handoff/TA_ACTOR01_R12_LPC_SOURCE_MANIFEST_20261122.json; real native QA godot_port/docs/handoff/TA_ACTOR01_R12_NATIVE_QA_20261122.json. Source-only software in GitHub on this T-A branch, owner-private PNG stays E.
+
+ACTUAL official Windows Godot 4.7.2 original-source 64px GPU 60Hz: 73/73 PNG outputs, all 12 action poses sampled, presentation-only F7/0.630sec contact once. Source vs rendered native 12/12 EXACT RGBA zero mismatches, alpha zero mismatches. 12/12 body components exactly one silhouette; Weapon/FX alpha zero. Not true FS battle/ATB/damage integration. Official local QA ZIP E:\LPC_Original_20261121\FS_R12_ACTOR01_UNARMED_45_STUDY\FS_TA_ACTOR01_R12_UNARMED_LPC_GODOT472_73FRAME_QA.zip; 253112 bytes, 91 files, CRC PASS, SHA256 eb06ec721516fc7f7957d5e707746134c793104bd973d370f6072c5a709a5926. Native GIF: E:\LPC_Original_20261121\FS_R12_ACTOR01_UNARMED_45_STUDY\R12_GODOT472_TRUE_NATIVE_60HZ.gif. 1x original native contact + 4x storyboard in same folder.
+
+Honest blockers: **ART HOLD** because shoulder connection and 45-degree front/side depth still not completely artist-redrawn; tiny face-pixel changes are not yet guaranteed legible at native 1x, full FS battle NOT RUN; no fresh paid PixelLab job. Fix these blockers as ONE full twelve-frame art unit, no further unbounded local pixel micro-adjustments.
+
+Run failures recorded: initial R12 generator loop equality assertion FAIL because hip dither used frame index; changed to x+y position-only and passed. First R12 QA ZIP failed due stale "capture_r11b_unarmed.gd" include name, corrected to R12 and rerun full 91-member ZIP PASS. Never falsely claim first failed trial PASS. Formal rule godot_port/docs/authority/FS_TA_R12_LPC_ACTOR01_UNARMED_20261122.md.
+
+---
+
+
 ## R11B NEW LATEST 2026-11-22 | official complete LPC, ACTOR01 unarmed 3/4 source-based study
 
 User rejected rubber limbs and strange signs, requested a NEW LPC-based 45-degree attack with NO WEAPON. Full official LPC source commit 86a3719ee4a7e2e9fb27c7c152e29a741d3e930a at E:\LPC_Original_20261121 (user authorized E) ZIP 150940625 bytes SHA256 C3E73FAFE062A80DCABA6CEF3DCA367B988F6E09D983AA5C9AB3FF05673185DC. Real full source 89359 files incl 88130 PNG, LICENSE/CREDITS preserved. Original A62 white-haired identity SHA256 70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e.
