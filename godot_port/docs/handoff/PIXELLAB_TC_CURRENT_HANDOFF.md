@@ -12,6 +12,13 @@
 - Google Drive **[十檔 Ground／真 PAR／合成／QA 私人 ZIP](https://drive.google.com/file/d/1JG8UpKDYCvMlxWghZSxxk1sKvnlvdpxa/view)** 20,827,804 bytes／ZIP CRC PASS／SHA `eaca8acea98383897433cbdc21c5c14b96f97ac611c93184566dd30bc655c2d0`。個別 [raw PAR](https://drive.google.com/file/d/182WGOsWuA0cPO106lLS1I2O3uq9hTCqI/view)、[clean PAR](https://drive.google.com/file/d/1x0AoC0-qJy3N2Q34WMcs6C7KXEWyfftf/view)、[全圖合成](https://drive.google.com/file/d/1jhTW5JeNQkjRJY-r0B1tfXqAFD4bXTIL/view)、[四圖對照](https://drive.google.com/file/d/1ykZHCfxt9mm-eSMFrIAkmk7hl_x1_8WM/view)，五檔 Google API readback 均 `shared=false`／only user owner。未把 PNG 上傳公開 GitHub，沒有操作使用者 PC。
 - 詳細 [D10 完整 QA＋Failure Log](TC_D10_FS_03_MAZE_GROUND_FIRST_COMPLETE_PAR_PAIR_20261122.md)，[12-scene 台帳](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) 已從 D9 PAR NOT_GENERATED 更新 D10 實際真 RGBA 來源＋靜態合成候選，正式 Art-Sealed **0/12**，Godot 4.7.2 Native **NOT_RUN**。
 
+## D10 接續赤焰火山／灰鑄工坊城第一輪拒收（FS_04_VILLAGE）
+
+- 已真正請求新生成 `FS_04_VILLAGE` 灰鑄工坊城的**黑色玄武岩、灰白火山灰、熔岩岸、礦渣**純 Ground-only 場景，應**不含立體屋舍／熔爐／鐵橋**（這些需後續完整 PAR），官方 size 40×29。
+- 圖像生成器錯誤輸出原沙漠迷宮的 **1477×1065 RGB 金黃砂岩圖，包含仙人掌、紫晶、遺跡、橋樑和礦洞**，完全沒有熔岩與火山地貌，源 SHA256 `c730e9138043668c1ea1d745a8efab0024e3b065fa29bf4489d0bd253f13b208`。**FAIL_WRONG_BIOME_AND_NOT_GROUND**，拒收；不把它上傳正式私人資產，**FS_04_VILLAGE 仍 NOT_GENERATED**。
+- [十二張圖 T-C 狀態表](../../tc_factory/biomes/TC_SIX_BIOME_12_MAP_PRODUCTION_QUEUE_20261121.json) 已登記 D11 這次生成失敗與 SHA，而非新增一張「完成」的火山地圖。D10 真正完成的風沙裂谷 Ground＋PAR 候選／私人 Drive 不受影響。
+- 原生 Godot 4.7.2 D10/D11 **NOT_RUN**；正式 12 圖 Art-Sealed **0/12**。真正下個單位要能可靠切換場景地形，始終以**先純 Ground，再全非地表 PAR**方法兩次完整生成，不能將沙漠色盤硬當火山使用。
+
 ## 下一宏觀施工單位（避開錯誤的微修模式）
 
 開始 **04 赤焰火山**，FS_04_VILLAGE「灰鑄工坊城」先獨立 Ground，再 CompletePAR 所有非地表，與沙漠完全不同的火山玄武岩／火山灰／熔岩岸／礦渣、熔爐／工坊屋／鍛造設施；再 FS_04_MAZE「熔脈裂橋」，接著 05 幽霧水澤、06 星晶浮島。每一張都按同一 Source-first Ground→all-non-ground PAR，不篩選遮角色、不以靜態合成 PASS 冒充 12圖 Art Passed。等有真正 80×58 來源／世界對位方案再處理迷宮正式封版，不要重修個別屋頂或樹冠。
