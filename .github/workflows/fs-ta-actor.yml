@@ -15,6 +15,12 @@ on:
       - "godot_port/tools/ta_r11b_lpc_actor01_unarmed.py"
       - "godot_port/tools/ta_r12_actor01_lpc_unarmed_3q.py"
       - "godot_port/tools/ta_r13_verify_lpc_8_direction_source.py"
+      - "godot_port/tools/ta_r13_lpc8_actor01_unarmed_attack.py"
+      - "godot_port/tools/ta_r13_lpc8_native_qa_pack.py"
+      - "godot_port/tests/capture_ta_r13_lpc8_unarmed_native.gd"
+      - "godot_port/docs/handoff/TA_R13_TRUE_8DIR_UNARMED_ATTACK_MANIFEST_20261122.json"
+      - "godot_port/docs/handoff/TA_R13_8DIR_UNARMED_NATIVE_QA_20261122.json"
+      - "godot_port/docs/authority/FS_TA_R13_LPC8_UNARMED_ATTACK_REAUTHORED_20261122.md"
       - "godot_port/docs/handoff/TA_R13_VERIFIED_LPC_8_DIRECTION_SOURCE_20261122.json"
       - "godot_port/docs/authority/FS_TA_R13_VERIFIED_LPC_EIGHT_DIRECTION_CORRECTION_20261122.md"
       - "godot_port/tools/ta_r12_unarmed_qa_pack.py"
@@ -145,6 +151,27 @@ jobs:
           assert d['contains_8_direction_attack'] is False
           assert d['editable_ORA_original_layers']>=1
           print('R13_LPC_8DIR_SOURCE_CONTRACT_PASS, verified WALK not ATTACK')
+          PY
+      - name: R13 real 8-dir LPC ORA based original unarmed attack source contract
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r13_lpc8_actor01_unarmed_attack.py godot_port/tools/ta_r13_lpc8_native_qa_pack.py
+          python3 - <<'PY'
+          import json
+          p='godot_port/docs/handoff/'
+          d=json.load(open(p+'TA_R13_TRUE_8DIR_UNARMED_ATTACK_MANIFEST_20261122.json',encoding='utf8'))
+          q=json.load(open(p+'TA_R13_8DIR_UNARMED_NATIVE_QA_20261122.json',encoding='utf8'))
+          assert d['verified_original_8dir_attack_sprite'] is False
+          assert d['explicitly_reauthored_attack'] is True
+          assert d['no_weapon'] and d['weapon_opaque_pixels']==0 and d['fx_opaque_pixels']==0
+          assert d['source_diagonal_direction_row']==7 and len(d['source_original_frames'])==12
+          assert d['sprite_sha']=='04478beeececa0e52e617bf70ca00679bdd77ec8a0c687e50c9a6f7e7010812e'
+          assert d['visual_contact_local_seconds']==0.63
+          assert d['frame_count']==12 and d['sheet_size']==[256,192]
+          assert q['native_60hz_frames']==73 and q['unique_poses']==11
+          assert all(v==0 for v in q['native_12poses_source_rgba_byte_differences'])
+          assert q['weapon_pixels']==0 and q['fx_pixels']==0
+          assert q['status']=='ENGINE_QA_PASS_ART_HOLD'
+          print('R13_EIGHT_DIR_REAUTHORED_UNARMED_STATIC_CI_PASS, real private native QA remains owner E')
           PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
