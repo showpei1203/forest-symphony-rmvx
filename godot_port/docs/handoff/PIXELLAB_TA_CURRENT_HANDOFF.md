@@ -1,5 +1,17 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R19 LATEST | 2026-11-22 | Five independently redrawn 64×64 boxing key poses | ART GATE PENDING
+
+Following owner's full rejection of R16-R18, actually generated **F0 GUARD / F3 COIL / F5 DRIVE / F7 IMPACT / F9 RECOVER** as five source-coordinate-authored 64px opaque/transparent pixel silhouettes, each a complete separately hand-placed torso, both legs/boots, front/back arms and compact fist. Preserved byte-identical A62 hair/face pixel source (approved SHA `70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e`) over independent 45° body art. No re-use of prior R16-R18 rotation scripts and no claiming LPC original 8-dir WALK is a native ATTACK.
+
+R19A first five-key render was inspected at real 1× and 4×: rear guard hand under hair/torso was barely visible and the chest twist understated. Preserved draft. R19B repainted rear offhand in front of lower cheek/behind character's eyes and added per-pose individually drawn chest folds, generated new all-five 64×64 PNGs, a 320×64 5-cell sheet, actual 1×/4×/8× contact boards, and 5-key blocking GIF. Source and image file validation PASS: five unique poses, 64×64 alpha-only each, source atlas matches all five exact RGBA. **This is NOT human visual ART PASS**: boxer silhouette / F7 elbow may still be stiff; owner art gate is pending.
+
+Private owner E source and artifacts: `E:\LPC_Original_20261121\FS_R19_ACTOR01_FIVE_HAND_PAINTED_BOXING_KEYS` and source generator `E:\LPC_Original_20261121\FS_R19_FIVE_HAND_PAINTED_KEYPOSES.py`. QA ZIP 20 entries, 92569 bytes, SHA256 `cc1cc02e143bf6c2c3488950e8b2b2d4bcdf46c25b27abda80af39e31d2c3377`, CRC PASS. 18 primary files verified SHA equal at Google Drive Desktop G mount; independent cloud metadata confirmation still needed. No weapons/FX or completed 12-frame atlas: five-art-key gate FIRST. No Godot run, no formal FS Battle / ATB. A52/A62, main and T-B/T-C untouched. PixelLab paid API NOT_RUN.
+
+R19 failure log: initial script SyntaxError on final POSES list terminator, fixed; then R19A posterior hand occlusion issue observed and repainted in R19B. Still ART GATE PENDING; require human approval of exact 1× moving silhouette BEFORE next seven attack frames and real engine tests. Relevant source: `godot_port/tools/ta_r19_five_key_boxing_redraw.py`, `godot_port/docs/handoff/TA_R19_FIVE_KEYPOSE_SOURCE_MANIFEST_20261122.json`, `godot_port/docs/handoff/TA_R19_FAILURE_LOG_20261122.md`.
+
+---
+
 ## R18 retrospective correction | 2026-11-22 | ART REJECTED, abandon procedural limb-rotation line
 
 Owner explicitly rejected R16/R17 artwork, not just asked for minor touch-ups. Root cause: original LPC 8dir diagonal WALK poses were repeatedly repositioned as if that produces boxing attack animation. Fist, full-body power transfer and natural 1x sprite acting never passed. Official source/native CI 73/73 never proved art; R16/R17 retrospective art status changed from HOLD to REJECTED.

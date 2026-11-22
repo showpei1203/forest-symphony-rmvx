@@ -1,0 +1,46 @@
+{
+  "version": "T-A-R19-FIVE-KEY-ART-CANDIDATE",
+  "status": "ART_GATE_PENDING_1X_OWNER_APPROVAL",
+  "source_A62_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_head": "A62 x17..46 y15..34 unchanged pixels, offsets <=2px",
+  "art_authorship": "five individually coordinate-authored original 64px silhouettes; NO rotated WALK source/rig interpolations",
+  "keys": [
+    {
+      "name": "F0_GUARD",
+      "sha256": "e08eb10872ccbe4689071c3d3bf6d650d0d043b40df469af8162280259f26fbd",
+      "intent": "same approved A62 head, front guard raised"
+    },
+    {
+      "name": "F3_COIL",
+      "sha256": "006e60bb22c5c4213600b54e64fb99203b5d0d8e454f17ab1302a5f4aa1d752e",
+      "intent": "coiled chest and deep back-knee load"
+    },
+    {
+      "name": "F5_DRIVE",
+      "sha256": "351faf19f813146dd8a857c14cc9605f5b623947e91d229d665c4ffdf826f3b7",
+      "intent": "hip fires first, near arm angled forward, far hand guarding"
+    },
+    {
+      "name": "F7_IMPACT",
+      "sha256": "7c5a7ba4beffe2f1fcc4360647529f33a39f701f99d2337830abbadededb5704",
+      "intent": "extended fist, shoulder drives through, far fist remains tight"
+    },
+    {
+      "name": "F9_RECOVER",
+      "sha256": "41ff9511db3830c06704b3f64e6d314a51e2b1dd12ad8d417eaa48eefa38d735",
+      "intent": "fist back to face, feet recover"
+    }
+  ],
+  "sheet_size": [
+    320,
+    64
+  ],
+  "sheet_sha256": "a3394a6229f25f2887c92cd99c2132c1c3b0c2568b01865af7e0fa10fd889c04",
+  "characters": 5,
+  "weapon_fx": "not produced: keypose art gate only",
+  "godot_qa": "NOT_RUN: artwork first",
+  "full_FSBattle": "NOT_RUN",
+  "original_eight_direction_attack": "NOT_FOUND, original LPC 8dir WALK references only",
+  "banned": "R16/R17/R18 procedural limb rotation or narrow geometry fixes",
+  "do_not_promote": true
+}

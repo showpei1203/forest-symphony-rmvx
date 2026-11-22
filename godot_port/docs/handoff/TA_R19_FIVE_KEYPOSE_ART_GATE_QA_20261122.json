@@ -1,0 +1,87 @@
+{
+  "status": "ART_CANDIDATE_PENDING_OWNER_1X_REVIEW",
+  "source_manifest_sha": "f394da1cc002e753ba47cb387d099a53f952d037d3045c9aecadc64e6fe15e9b",
+  "source_A62_sha": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "all_5_actual_native_64": true,
+  "all_five_poses_unique": true,
+  "all_alpha_binary": true,
+  "output_sheet_size": [
+    320,
+    64
+  ],
+  "original_facial_identity": "approved A62 exact head pixels copied into each pose; lower guard overlay may cover cheeks, art review required",
+  "five_poses": [
+    {
+      "pose": "F0_GUARD",
+      "sha256": "e08eb10872ccbe4689071c3d3bf6d650d0d043b40df469af8162280259f26fbd",
+      "bbox": [
+        21,
+        15,
+        45,
+        52
+      ],
+      "opaque_pixels": 648,
+      "changed_rgba_vs_first": 22
+    },
+    {
+      "pose": "F3_COIL",
+      "sha256": "006e60bb22c5c4213600b54e64fb99203b5d0d8e454f17ab1302a5f4aa1d752e",
+      "bbox": [
+        19,
+        16,
+        43,
+        54
+      ],
+      "opaque_pixels": 652,
+      "changed_rgba_vs_first": 19
+    },
+    {
+      "pose": "F5_DRIVE",
+      "sha256": "351faf19f813146dd8a857c14cc9605f5b623947e91d229d665c4ffdf826f3b7",
+      "bbox": [
+        20,
+        15,
+        56,
+        53
+      ],
+      "opaque_pixels": 743,
+      "changed_rgba_vs_first": 27
+    },
+    {
+      "pose": "F7_IMPACT",
+      "sha256": "7c5a7ba4beffe2f1fcc4360647529f33a39f701f99d2337830abbadededb5704",
+      "bbox": [
+        20,
+        14,
+        60,
+        52
+      ],
+      "opaque_pixels": 786,
+      "changed_rgba_vs_first": 29
+    },
+    {
+      "pose": "F9_RECOVER",
+      "sha256": "41ff9511db3830c06704b3f64e6d314a51e2b1dd12ad8d417eaa48eefa38d735",
+      "bbox": [
+        21,
+        15,
+        47,
+        53
+      ],
+      "opaque_pixels": 677,
+      "changed_rgba_vs_first": 23
+    }
+  ],
+  "review": "MUST visually assess at native 1x and slowed 4x; key poses are preliminary, not approved",
+  "engine": "NOT_RUN_PER_ART_GATE",
+  "official_FSBattle": "NOT_RUN",
+  "full_12_frame": "NOT_PRODUCED_PER_KEYPOSE_GATE",
+  "weapon_fx": "NOT_PRODUCED",
+  "paid_PixelLab": "NOT_RUN",
+  "source_scope": "private original reference E / private Drive; GitHub only source and manifest",
+  "art_risks": [
+    "far fist at left cheek may visually crowd A62 facial area",
+    "F7 extended forearm can still read stiff at 1x",
+    "five blocking poses need human visual approval"
+  ]
+}
