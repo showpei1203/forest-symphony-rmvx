@@ -564,7 +564,7 @@
               1280,
               928
             ],
-            "sha256": "05ef52636c3df0ced5f600fb6075a991164d6e5fab671ead95f7b33e03f68a62",
+            "sha256": "5ba2083578b9acdc3c4e2c58208420c4900de4258420a9f47c177ef3e7db6d4f",
             "resampling": "NONE",
             "edge_props_clipped": true
           },
@@ -573,7 +573,7 @@
               1280,
               928
             ],
-            "sha256": "6ec03d35f23faa083d9df84cb7da78fa72bc0c264e0eec8b203b4c0eaee0e445",
+            "sha256": "0bc33afa55684df60c0301391e945f182a30776cb2b7fae4db7f1f99081a4aff",
             "resampling": "LANCZOS",
             "is_native_1x": false,
             "alpha_zero_pixels": 541780
