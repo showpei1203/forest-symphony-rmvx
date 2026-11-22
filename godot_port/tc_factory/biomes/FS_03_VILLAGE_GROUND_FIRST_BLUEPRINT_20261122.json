@@ -58,7 +58,7 @@
     "known_crop_risk": "source ground cliff faces continue to edges; treat as terrain border only, ensure all raised object assets are PAR in later master"
   },
   "second_stage_complete_PAR": {
-    "status": "NOT_GENERATED",
+    "status": "D8_TRUE_NEW_DESERT_RGBA_PAR_GENERATED_AND_PIXEL_PAIRED_CANDIDATE",
     "source_requirements": "Generate same 1280x928 world coordinates with actually transparent alpha=0 background; all non-ground objects independent source, same style; do not include Ground as illustration background",
     "families": [
       "whole sandstone houses, distinct roof styles",
@@ -71,17 +71,43 @@
       "waterfront lanterns, crates and desert village decoration"
     ],
     "space_placement": "preserve center plaza, footpath connections, turquoise pond; authentic grounding and no collision semantics needed to author PAR",
-    "source_candidate": null,
-    "blocker": "Two attempts produced unrelated ice maze scenes; rejected for wrong biome; alpha minima 51 and 1, zero alpha pixels both 0",
-    "image_tool_retry_policy": "Do not accept any image unless same desert biome, genuine alpha=0 pixels, and consistent same image registration"
+    "source_candidate": "https://drive.google.com/file/d/1ojHRduBZIFyyys21Fz8irKNTLNV3I3C5/view",
+    "blocker": "D7 Ground visually has upright sandstone cliffs and shrubs, D8 PAR low-alpha artifact and world crop touches raised objects, lacks individual object manifest, no Godot native",
+    "image_tool_retry_policy": "Do not accept any image unless same desert biome, genuine alpha=0 pixels, and consistent same image registration",
+    "source_image_size": [
+      1477,
+      1065
+    ],
+    "source_sha256": "47e3225ddb6399b19647265220783197d06d57729e15c4ca13a2fbf182929988",
+    "crop_xyxy": [
+      98,
+      68,
+      1378,
+      996
+    ],
+    "raw_par_sha256": "4fe7eacf0ba79f123963de2d03e15d14f4e2980287c0213d6744d3833c78c4b6",
+    "tech_clean_par_sha256": "16e9b4ba8ecf201fd43185ac7092fe1603433069b86eb1ecc213797b696f85f2",
+    "raw_alpha_zero_pixels": 548678,
+    "raw_alpha_contaminated_1_to_8": 185051,
+    "raw_alpha_near_full_240_to_254": 357713,
+    "roi_edge_alpha_hits": {
+      "top": 402,
+      "bottom": 164,
+      "left": 485,
+      "right": 265
+    },
+    "stage": "COMPLETEPAR_ALL_NON_GROUND_VISUAL_CANDIDATE_GROUND_PAR_PIXEL_EXACT",
+    "clean_candidate": "https://drive.google.com/file/d/18v6Tnr-vomNMVgyUGjQz2LVLZF6lssez/view",
+    "composite": "https://drive.google.com/file/d/1eJPmH9j4c_DjkKM8Bkx2bRQmzGznObfU/view",
+    "QA_zip": "https://drive.google.com/file/d/1SO1aVJu3KNDZIlAmgcOHc5nosSwJ0Q4w/view"
   },
   "current_gate": {
-    "Ground_source_file": "CREATED_PRIVATE_DRIVE_VERIFIED",
-    "full_Ground_art": "HOLD_NON_GROUND_CLIFFS",
-    "PAR": "NOT_GENERATED",
-    "Ground_PAR_pair": "NOT_RUN",
+    "Ground_source_file": "CREATED_GROUND_UNMODIFIED_SOURCE_SHA_PASS",
+    "full_Ground_art": "HOLD_UPRIGHT_GROUND_OBJECTS",
+    "PAR": "D8_REAL_SEPARATE_RGBA_FULL_NON_GROUND_CANDIDATE",
+    "Ground_PAR_pair": "PIL_1X_PIXEL_EXACT_PASS",
     "Godot_4_7_2_native": "NOT_RUN",
-    "formal_ART": "HOLD"
+    "formal_ART": "HOLD_CROP_ALPHA_GROUND_SEMANTICS"
   },
-  "next_complete_unit": "Rebuild genuinely Ground-only unified desert world without raised cliff faces then generate full transparent non-ground PAR in one coherent style lock; if output model still returns snow use different capable generator, not a misleading GIF/infographic."
+  "next_complete_unit": "Start FS_03_MAZE wind-eroded ravine native Ground-only maze, then all-non-ground transparent PAR; confirm both target grid sizes and never reuse village layout."
 }
