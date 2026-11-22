@@ -963,6 +963,25 @@ func _atb_status_fragment(battler: Dictionary) -> String:
         return "ATB:就緒"
     return "ATB:%d%%" % pct
 
+func _source_target_selection_shell()->void:
+    # Real original #462 has no permanent Godot developer title/tab/log.
+    # Keep only the functional target-choice ScrollContainer, not the
+    # old prototype chrome. Synthetic public CI keeps its fallback shell.
+    if ui_art==null or not ui_art.has_source():
+        return
+    title_label.visible=false
+    tab_bar.visible=false
+    status_label.visible=false
+    log_label.visible=false
+    developer_scroll.visible=true
+
+func _source_target_button_layout()->void:
+    if body.get_child_count()<=0:
+        return
+    var choice:Control=body.get_child(body.get_child_count()-1)
+    choice.size_flags_horizontal=Control.SIZE_SHRINK_END
+    choice.custom_minimum_size=Vector2(160,25)
+
 func _install_source_target_help()->void:
     if db==null or body==null:
         return
@@ -983,6 +1002,7 @@ func _select_enemy_target(callback: Callable,skill_id: int = 0) -> void:
     _clear_body()
     title_label.text = "Forest Symphony / 選擇敵方目標"
     _install_source_target_help()
+    _source_target_selection_shell()
     var allowed: Dictionary = FSTargetPriority.player_enemy_candidates(
         battle,skill_id)
     if not bool(allowed.get("ok",false)):
@@ -1000,13 +1020,16 @@ func _select_enemy_target(callback: Callable,skill_id: int = 0) -> void:
             var button:Button=body.get_child(body.get_child_count()-1)
             button.mouse_entered.connect(
                 func()->void:_preview_source_target(target,true))
+            _source_target_button_layout()
     _add_button("返回", _show_battle)
+    _source_target_button_layout()
 
 func _select_ally_target(callback: Callable) -> void:
     battle.source_atb_wait = true
     _clear_body()
     title_label.text = "Forest Symphony / 選擇我方目標"
     _install_source_target_help()
+    _source_target_selection_shell()
     for index in range(battle.party.size()):
         var target: Dictionary = battle.party[index]
         if source_target_help!=null and source_target_help.active_target.is_empty():
@@ -1017,7 +1040,9 @@ func _select_ally_target(callback: Callable) -> void:
         var button:Button=body.get_child(body.get_child_count()-1)
         button.mouse_entered.connect(
             func()->void:_preview_source_target(target,false))
+        _source_target_button_layout()
     _add_button("返回", _show_battle)
+    _source_target_button_layout()
 
 func _player_attack() -> void:
     if not _battle_actor_ready():

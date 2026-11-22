@@ -117,6 +117,14 @@ func _run()->void:
             int(battle.enemies[0]["hp"])==before_hp),
             "real target selection must expose source #462 & #381 but never auto-attack"):
         return
+    # In owner original-art mode, user-facing target help must hide only
+    # prototype tab/header chrome while keeping target buttons actionable.
+    if screen.ui_art!=null and screen.ui_art.has_source():
+        if not check(not screen.title_label.visible and (
+                not screen.tab_bar.visible) and (
+                screen.developer_scroll.visible),
+                "source target help must not cover real enemy with debug top tabs"):
+            return
     if not check(screen.source_target_help.get_parent()==screen.body and (
             screen.body.get_child_count()>=3),
             "source target help must share scroll target UI, never block choices"):

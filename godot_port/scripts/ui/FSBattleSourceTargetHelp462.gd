@@ -24,6 +24,7 @@ const DETAIL_MAX_INFO_ROWS:int=6
 const SHOW_HELP_STATE_ICONS:bool=false
 const SOURCE_NAME_SAFE_WIDTH:int=370
 const SOURCE_HEADER_HEIGHT:int=34
+const DETAIL_RENDER_Y:int=175 # dynamic bottom-safe layout for #462 when source enemy at y65..142
 const OUTER_MARGIN:int=8
 var source_db:FSDatabase
 var active_target:Dictionary={}
@@ -120,8 +121,10 @@ func select(target:Dictionary,is_enemy:bool)->bool:
             if detail_lines.size()>=DETAIL_MAX_INFO_ROWS:
                 break
             detail_lines.append(str(record.get("text","")))
+    # Control is embedded in the selection list; reserve genuine source
+    # target-help space without overlapping the original battler artwork.
     custom_minimum_size=Vector2(528,float(
-        maxi(60,44+detail_lines.size()*DETAIL_ROW_HEIGHT)))
+        maxi(189,DETAIL_RENDER_Y+8+detail_lines.size()*DETAIL_ROW_HEIGHT)))
     visible=true
     queue_redraw()
     return true
@@ -161,11 +164,11 @@ func _draw()->void:
         DETAIL_COMMAND_SAFE_RIGHT-DETAIL_COMMAND_LEFT),area_width-left-12.0)
     var rows:int=mini(detail_lines.size(),DETAIL_MAX_INFO_ROWS)
     var height:float=8.0+float(rows*DETAIL_ROW_HEIGHT)
-    draw_rect(Rect2(Vector2(left,40),Vector2(width,height)),
+    draw_rect(Rect2(Vector2(left,float(DETAIL_RENDER_Y)),Vector2(width,height)),
         Color(0,0,0,176.0/255.0))
-    draw_rect(Rect2(Vector2(left,40),Vector2(width,height)),
+    draw_rect(Rect2(Vector2(left,float(DETAIL_RENDER_Y)),Vector2(width,height)),
         Color(1,1,1,72.0/255.0),false,1.0)
     for i in range(rows):
-        draw_string(font,Vector2(left+8,57+i*DETAIL_ROW_HEIGHT),
+        draw_string(font,Vector2(left+8,float(DETAIL_RENDER_Y+17+i*DETAIL_ROW_HEIGHT)),
             detail_lines[i],HORIZONTAL_ALIGNMENT_LEFT,width-16.0,
             14,Color(0.93,0.96,1.0))
