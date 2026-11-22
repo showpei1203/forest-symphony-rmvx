@@ -1,0 +1,562 @@
+{
+  "batchA": {
+    "2_idle": {
+      "stage": 2,
+      "action": "idle",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_padded_sha256": "1eba0110060ce038b1892547a12adce48ca62b24fd6b0baff80dee31ebeae02e",
+      "cell": [
+        160,
+        160
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611334,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "gentle wing FLAP hovering in the air, body gently bobbing, wing membranes fold and unfold while remaining attached to the shoulders, normal closed mouth, same bat species; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 2 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve leaf crest and curled tail with green leaf bud. ",
+      "status": "completed",
+      "job_id": "ce69bf83-053e-47f6-b547-214731cf61ed",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE2_IDLE_8F_160px.png",
+      "sheet_sha256": "b7e8efbf0de04a485b9882b61b78197e0fae5d07fd69dfc57d7c9f6c76045437",
+      "generation_id": "7255800c-87ad-4dd5-a695-f1578c20cfef",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        5361,
+        5339,
+        5505,
+        5360,
+        5147,
+        5022,
+        5157,
+        5229
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "2_attack": {
+      "stage": 2,
+      "action": "attack",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_padded_sha256": "1eba0110060ce038b1892547a12adce48ca62b24fd6b0baff80dee31ebeae02e",
+      "cell": [
+        160,
+        160
+      ],
+      "expected_frames": 11,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611335,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "MOUTH BITE ONLY: recoil, short SE head-first dive, wide open dark mouth showing two white fangs, snap jaws on frame 5, recover; wings are only balance; no hand or claw strikes; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 2 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve leaf crest and curled tail with green leaf bud. ",
+      "status": "completed",
+      "job_id": "83d1d82a-77a5-47c2-94a4-c6d5d0046b32",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE2_ATTACK_11F_160px.png",
+      "sheet_sha256": "a3268fff074f47dadb9b4cb1e94808bb9786cd3a6ac26e3e7129704241935eb6",
+      "generation_id": "23134ed4-122d-42cf-873e-eb8b9de0d104",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 11,
+      "opaque_area": [
+        5475,
+        5425,
+        5520,
+        5572,
+        5552,
+        5547,
+        5491,
+        5508,
+        5516,
+        5508,
+        5534
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "3_idle": {
+      "stage": 3,
+      "action": "idle",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "2e45ebf153f13d275b68d86cf29b410ca6e57d7479b7347ef7728ef848c3523b",
+      "cell": [
+        192,
+        192
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611351,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "gentle wing FLAP hovering in the air, body gently bobbing, wing membranes fold and unfold while remaining attached to the shoulders, normal closed mouth, same bat species; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "efa7031c-a0f6-4930-a48b-b041bcbd0405",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_IDLE_8F_192px.png",
+      "sheet_sha256": "11fece881d247479cd6b902c84e56b97fb795f9a978c8dfed0bed3a625671c29",
+      "generation_id": "049df91b-3b04-4dbb-bccc-a9dbf6640fd9",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        8820,
+        8991,
+        9274,
+        8860,
+        8445,
+        8045,
+        8318,
+        8548
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "1_hurt": {
+      "stage": 1,
+      "action": "hurt",
+      "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+      "source_padded_sha256": "f6336b3927fea390342e89f13a6792cd03cfea5da1f3cc33c2abb7b329ab43e7",
+      "cell": [
+        128,
+        128
+      ],
+      "expected_frames": 6,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611319,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "HURT FLINCH: a visible hit shakes and recoils head and body backward and wings fold defensively, then rebounds to hover; no new appendages, no explosions; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 1 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. ",
+      "status": "completed",
+      "job_id": "a41d54b8-fbb7-4a2d-9498-5fa1f52616a1",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE1_HURT_6F_128px.png",
+      "sheet_sha256": "a2d09316ac41ba1774a26ad4106b5257f72558b788289a68bd565525dba7b7e7",
+      "generation_id": "4bc558d5-ffa1-4982-9546-f6e4111314db",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 6,
+      "opaque_area": [
+        2668,
+        2609,
+        2546,
+        2668,
+        2722,
+        2705
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "1_ko": {
+      "stage": 1,
+      "action": "ko",
+      "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+      "source_padded_sha256": "f6336b3927fea390342e89f13a6792cd03cfea5da1f3cc33c2abb7b329ab43e7",
+      "cell": [
+        128,
+        128
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611320,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "KNOCK OUT / DEFEAT: wings lose lift and fold downward as the bat droops and slumps, eyes close, remains collapsed motionless on final frames; no disappearing, splitting, extra objects; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 1 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. ",
+      "status": "completed",
+      "job_id": "8ab067e4-bd25-458d-9feb-d2cf14d30539",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE1_KO_8F_128px.png",
+      "sheet_sha256": "e7823bc614e90164e4f4a6e4bd4e3e27492e2ff58c7f4c2ad951c9a651ff7635",
+      "generation_id": "c89b38b3-8e25-44e6-885e-6b63bd73209a",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        2691,
+        2545,
+        2276,
+        2007,
+        1917,
+        1840,
+        1841,
+        1924
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "3_attack_r10A_edge_hold": {
+      "stage": 3,
+      "action": "attack",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "2e45ebf153f13d275b68d86cf29b410ca6e57d7479b7347ef7728ef848c3523b",
+      "cell": [
+        192,
+        192
+      ],
+      "expected_frames": 11,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611352,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "MOUTH BITE ONLY: recoil, short SE head-first dive, wide open dark mouth showing two white fangs, snap jaws on frame 5, recover; wings are only balance; no hand or claw strikes; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "0740b6df-4589-47ef-b361-826db46a8ce8",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_ATTACK_11F_192px.png",
+      "sheet_sha256": "75ed6638c262e3bade3503e2354af3e6c09faef718f54b0536b27115962a1895",
+      "generation_id": "860e3b63-787f-4a68-af60-46a20e389592",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 11,
+      "opaque_area": [
+        9102,
+        8936,
+        9054,
+        9169,
+        9283,
+        9183,
+        9140,
+        9132,
+        9130,
+        9125,
+        9126
+      ],
+      "no_clipping": false,
+      "technical_qa": "HOLD"
+    },
+    "3_attack": {
+      "stage": 3,
+      "action": "attack",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "9186fdf54e9f1fa338379abffc049796de3fa8d66a36b70eb65230aca9a3afc5",
+      "cell": [
+        224,
+        224
+      ],
+      "expected_frames": 11,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611352,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "MOUTH BITE ONLY: recoil, short SE head-first dive, wide open dark mouth showing two white fangs, snap jaws on frame 5, recover; wings are only balance; no hand or claw strikes; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "a70147d2-5ef5-49d8-b3d6-53ba533f2fe1",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_ATTACK_11F_224px.png",
+      "sheet_sha256": "265a73fd59c08dcb9a235c9abb6bf5c1faa2d25a3ce252773ce8a1e4f2068aba",
+      "generation_id": "687550b0-0f5f-4c35-b656-d7efafea6693",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 11,
+      "opaque_area": [
+        9125,
+        8999,
+        9078,
+        9200,
+        9264,
+        9215,
+        9151,
+        9123,
+        9125,
+        9186,
+        9181
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    }
+  },
+  "batchB": {
+    "2_hurt": {
+      "stage": 2,
+      "action": "hurt",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_padded_sha256": "1eba0110060ce038b1892547a12adce48ca62b24fd6b0baff80dee31ebeae02e",
+      "cell": [
+        160,
+        160
+      ],
+      "expected_frames": 6,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611336,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "HURT FLINCH: a visible hit shakes and recoils head and body backward and wings fold defensively, then rebounds to hover; no new appendages, no explosions; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 2 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve leaf crest and curled tail with green leaf bud. ",
+      "status": "completed",
+      "job_id": "228ad8ce-d0dd-4021-871e-1c8ffa921cd6",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE2_HURT_6F_160px.png",
+      "sheet_sha256": "fece755104aa969272c47d22106fd5cf27ca945a87babbf4859aa324db56dbdb",
+      "generation_id": "13a42d82-a8cf-4b0d-b9e6-8af4c38bbb05",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 6,
+      "opaque_area": [
+        5347,
+        5112,
+        4904,
+        5142,
+        5462,
+        5484
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "2_ko": {
+      "stage": 2,
+      "action": "ko",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_padded_sha256": "1eba0110060ce038b1892547a12adce48ca62b24fd6b0baff80dee31ebeae02e",
+      "cell": [
+        160,
+        160
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611337,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "KNOCK OUT / DEFEAT: wings lose lift and fold downward as the bat droops and slumps, eyes close, remains collapsed motionless on final frames; no disappearing, splitting, extra objects; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 2 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve leaf crest and curled tail with green leaf bud. ",
+      "status": "completed",
+      "job_id": "d26fafad-69d4-4e09-9636-39a927c761a6",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE2_KO_8F_160px.png",
+      "sheet_sha256": "9f3e84bb6663856c5a14434ddb95aa0518b6395bc3345f0540959bb8bbd53595",
+      "generation_id": "01e742a9-7a05-4255-b785-6b122f9ca4fe",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        5304,
+        4998,
+        4415,
+        3777,
+        3466,
+        3321,
+        3334,
+        3324
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "3_hurt": {
+      "stage": 3,
+      "action": "hurt",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "9186fdf54e9f1fa338379abffc049796de3fa8d66a36b70eb65230aca9a3afc5",
+      "cell": [
+        224,
+        224
+      ],
+      "expected_frames": 6,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611353,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "HURT FLINCH: a visible hit shakes and recoils head and body backward and wings fold defensively, then rebounds to hover; no new appendages, no explosions; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "f01d8b21-8fd8-4f74-b3ed-f5b9f1a730d8",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_HURT_6F_224px.png",
+      "sheet_sha256": "8bb0f86cdc4d8356281a2fa52ae25328ad882af6387dea2f94e9915acad62fd4",
+      "generation_id": "9098d5f6-11af-4502-90b7-5003f568d5a9",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 6,
+      "opaque_area": [
+        8806,
+        8486,
+        8036,
+        8422,
+        8981,
+        8824
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    },
+    "3_ko": {
+      "stage": 3,
+      "action": "ko",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_padded_sha256": "9186fdf54e9f1fa338379abffc049796de3fa8d66a36b70eb65230aca9a3afc5",
+      "cell": [
+        224,
+        224
+      ],
+      "expected_frames": 8,
+      "frames_sha_lock": null,
+      "endpoint": "animate-with-skeleton-v3",
+      "seed": 202611354,
+      "model": "PixelLab Skeleton v3",
+      "action_prompt": "KNOCK OUT / DEFEAT: wings lose lift and fold downward as the bat droops and slumps, eyes close, remains collapsed motionless on final frames; no disappearing, splitting, extra objects; preserve EXACT original identity, attached wings, two short tucked legs, no human arms, no hands, no dismemberment.",
+      "description": "SAME SINGLE FOREST LEAF BAT, stage 3 of 3, plum violet body, paired emerald leaf-vein wings, gold eyes, two pointed ears, SE 3/4 view; no background or extra character. Preserve tall leaf-horn crown and glowing emerald chest crystal. ",
+      "status": "completed",
+      "job_id": "53d6c3fc-eabc-408b-bf2a-f51d4d3eb419",
+      "submit_usage": null,
+      "atlas_name": "BAT_STAGE3_KO_8F_224px.png",
+      "sheet_sha256": "7fd1c61d3a5586ad83ab122e99be10e6bc9135d2bfdc448ef5aa9f98b133fa9b",
+      "generation_id": "b1a14c92-d762-4411-85ee-a676401811bb",
+      "usage": {
+        "type": "generations",
+        "generations": 3
+      },
+      "border_counts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unique_frames": 8,
+      "opaque_area": [
+        8833,
+        8719,
+        7049,
+        6314,
+        5689,
+        5321,
+        5327,
+        5797
+      ],
+      "no_clipping": true,
+      "technical_qa": "PASS"
+    }
+  }
+}

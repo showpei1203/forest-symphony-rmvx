@@ -1,0 +1,528 @@
+{
+  "schema": "fs-tb10-family-art-v1",
+  "family_id": "TB02_LEAF_BAT",
+  "engine": "Godot 4.7.2",
+  "original_view": "south-east 3/4",
+  "owner_approved": [
+    "BAT_STAGE1_ATTACK_11F_128px.png"
+  ],
+  "stages": [
+    {
+      "index": 1,
+      "name": "Leaf Bat Young",
+      "source_path": "assets/monsters/tb02/BAT_STAGE1.png",
+      "source_sha256": "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+      "source_size": [
+        96,
+        96
+      ],
+      "motions": {
+        "idle": {
+          "path": "assets/monsters/tb02/BAT_STAGE1_IDLE_8F_96px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            96,
+            96
+          ],
+          "fps": 8,
+          "loop": true,
+          "sha256": "5153e58ccf29dee9d924937fb185169f45e2d0f748a36373cc2f53d4eb72e0a2",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            2701,
+            2745,
+            2887,
+            2718,
+            2500,
+            2442,
+            2534,
+            2705
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 8,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "attack": {
+          "path": "assets/monsters/tb02/BAT_STAGE1_ATTACK_11F_128px.png",
+          "frames": 11,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 10,
+          "loop": false,
+          "sha256": "b258678a7a4b59251b13126ed905c47afd9b9dffd0a618fbb64f584ad9ceeee7",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            2705,
+            2686,
+            2769,
+            2906,
+            2930,
+            2921,
+            2821,
+            2774,
+            2754,
+            2794,
+            2805
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 11,
+          "tech_qa": "PASS",
+          "art_status": "OWNER_ACCEPTED"
+        },
+        "hurt": {
+          "path": "assets/monsters/tb02/BAT_STAGE1_HURT_6F_128px.png",
+          "frames": 6,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 9,
+          "loop": false,
+          "sha256": "a2d09316ac41ba1774a26ad4106b5257f72558b788289a68bd565525dba7b7e7",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            2668,
+            2609,
+            2546,
+            2668,
+            2722,
+            2705
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 6,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "ko": {
+          "path": "assets/monsters/tb02/BAT_STAGE1_KO_8F_128px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            128,
+            128
+          ],
+          "fps": 7,
+          "loop": false,
+          "sha256": "e7823bc614e90164e4f4a6e4bd4e3e27492e2ff58c7f4c2ad951c9a651ff7635",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            2691,
+            2545,
+            2276,
+            2007,
+            1917,
+            1840,
+            1841,
+            1924
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 8,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        }
+      }
+    },
+    {
+      "index": 2,
+      "name": "Forest Guardian",
+      "source_path": "assets/monsters/tb02/BAT_STAGE2.png",
+      "source_sha256": "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+      "source_size": [
+        128,
+        128
+      ],
+      "motions": {
+        "idle": {
+          "path": "assets/monsters/tb02/BAT_STAGE2_IDLE_8F_160px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            160,
+            160
+          ],
+          "fps": 8,
+          "loop": true,
+          "sha256": "b7e8efbf0de04a485b9882b61b78197e0fae5d07fd69dfc57d7c9f6c76045437",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            5361,
+            5339,
+            5505,
+            5360,
+            5147,
+            5022,
+            5157,
+            5229
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 8,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "attack": {
+          "path": "assets/monsters/tb02/BAT_STAGE2_ATTACK_11F_160px.png",
+          "frames": 11,
+          "columns": 4,
+          "cell": [
+            160,
+            160
+          ],
+          "fps": 10,
+          "loop": false,
+          "sha256": "a3268fff074f47dadb9b4cb1e94808bb9786cd3a6ac26e3e7129704241935eb6",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            5475,
+            5425,
+            5520,
+            5572,
+            5552,
+            5547,
+            5491,
+            5508,
+            5516,
+            5508,
+            5534
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 11,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "hurt": {
+          "path": "assets/monsters/tb02/BAT_STAGE2_HURT_6F_160px.png",
+          "frames": 6,
+          "columns": 4,
+          "cell": [
+            160,
+            160
+          ],
+          "fps": 9,
+          "loop": false,
+          "sha256": "fece755104aa969272c47d22106fd5cf27ca945a87babbf4859aa324db56dbdb",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            5347,
+            5112,
+            4904,
+            5142,
+            5462,
+            5484
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 6,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "ko": {
+          "path": "assets/monsters/tb02/BAT_STAGE2_KO_8F_160px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            160,
+            160
+          ],
+          "fps": 7,
+          "loop": false,
+          "sha256": "9f3e84bb6663856c5a14434ddb95aa0518b6395bc3345f0540959bb8bbd53595",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            5304,
+            4998,
+            4415,
+            3777,
+            3466,
+            3321,
+            3334,
+            3324
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 8,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        }
+      }
+    },
+    {
+      "index": 3,
+      "name": "Ancient Crown",
+      "source_path": "assets/monsters/tb02/BAT_STAGE3.png",
+      "source_sha256": "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3",
+      "source_size": [
+        160,
+        160
+      ],
+      "motions": {
+        "idle": {
+          "path": "assets/monsters/tb02/BAT_STAGE3_IDLE_8F_192px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            192,
+            192
+          ],
+          "fps": 8,
+          "loop": true,
+          "sha256": "11fece881d247479cd6b902c84e56b97fb795f9a978c8dfed0bed3a625671c29",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            8820,
+            8991,
+            9274,
+            8860,
+            8445,
+            8045,
+            8318,
+            8548
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 8,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "attack": {
+          "path": "assets/monsters/tb02/BAT_STAGE3_ATTACK_11F_224px.png",
+          "frames": 11,
+          "columns": 4,
+          "cell": [
+            224,
+            224
+          ],
+          "fps": 10,
+          "loop": false,
+          "sha256": "265a73fd59c08dcb9a235c9abb6bf5c1faa2d25a3ce252773ce8a1e4f2068aba",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            9125,
+            8999,
+            9078,
+            9200,
+            9264,
+            9215,
+            9151,
+            9123,
+            9125,
+            9186,
+            9181
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 11,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "hurt": {
+          "path": "assets/monsters/tb02/BAT_STAGE3_HURT_6F_224px.png",
+          "frames": 6,
+          "columns": 4,
+          "cell": [
+            224,
+            224
+          ],
+          "fps": 9,
+          "loop": false,
+          "sha256": "8bb0f86cdc4d8356281a2fa52ae25328ad882af6387dea2f94e9915acad62fd4",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            8806,
+            8486,
+            8036,
+            8422,
+            8981,
+            8824
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 6,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        },
+        "ko": {
+          "path": "assets/monsters/tb02/BAT_STAGE3_KO_8F_224px.png",
+          "frames": 8,
+          "columns": 4,
+          "cell": [
+            224,
+            224
+          ],
+          "fps": 7,
+          "loop": false,
+          "sha256": "7fd1c61d3a5586ad83ab122e99be10e6bc9135d2bfdc448ef5aa9f98b133fa9b",
+          "source_locked": true,
+          "nonempty_alpha_pixels": [
+            8833,
+            8719,
+            7049,
+            6314,
+            5689,
+            5321,
+            5327,
+            5797
+          ],
+          "border_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unique_frames": 8,
+          "tech_qa": "PASS",
+          "art_status": "CANDIDATE_REVIEW_PENDING"
+        }
+      }
+    }
+  ],
+  "art_gate": "TECH_QA_IS_NOT_OWNER_ART_APPROVAL",
+  "battle_system_changes": false,
+  "motions_technically_passed": 12,
+  "motions_present": 12,
+  "missing_actions": [
+    {
+      "stage": 1,
+      "action": "guard"
+    },
+    {
+      "stage": 1,
+      "action": "skill"
+    },
+    {
+      "stage": 1,
+      "action": "fly"
+    },
+    {
+      "stage": 2,
+      "action": "guard"
+    },
+    {
+      "stage": 2,
+      "action": "skill"
+    },
+    {
+      "stage": 2,
+      "action": "fly"
+    },
+    {
+      "stage": 3,
+      "action": "guard"
+    },
+    {
+      "stage": 3,
+      "action": "skill"
+    },
+    {
+      "stage": 3,
+      "action": "fly"
+    }
+  ],
+  "blocking_issues": []
+}

@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-22",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "family": "TB02_LEAF_BAT",
+  "new_unique_animation_sets": 10,
+  "total_animation_sets": 12,
+  "total_frame_cells": 99,
+  "technical_qa": "12/12 PASS",
+  "true_pixelLab_jobs": 11,
+  "successful_jobs": 10,
+  "rejected_edge_touch_jobs": 1,
+  "new_generations_billed": 33.0,
+  "previous_family_generations": 25,
+  "cumulative_family_generations": 58.0,
+  "usd_price": "not evidenced by provider; do not claim",
+  "art_status": "NEW_MOTIONS_ART_REVIEW_PENDING; STAGE1_R8_ATTACK_USER_ACCEPTED",
+  "family_source_sha256": [
+    "208e28e4f7732233c75456e9e5de671f5616fb68ef735165219a4b3aa2a959a2",
+    "1b98c93ab8827b07d3b1c4ba7a92063fb800054d23a3256beab81e226864faac",
+    "13491e632d9ed453e2c77c4799a3d63bd382b4433cf6135a1afdb0ed2a8d00f3"
+  ],
+  "stage3_rejected_job": "0740b6df-4589-47ef-b361-826db46a8ce8",
+  "stage3_rejected_reason": "3 translucent/opaque border pixels at attack F5 of 192px; possible right wing crop",
+  "stage3_corrected_job": "a70147d2-5ef5-49d8-b3d6-53ba533f2fe1",
+  "stage3_corrected_sha256": "265a73fd59c08dcb9a235c9abb6bf5c1faa2d25a3ce252773ce8a1e4f2068aba",
+  "no_battle_system_integration": true,
+  "native_test": "FS_TB_R10_NATIVE_ART_GALLERY_GODOT472_PASS stages=3 available_motions=12",
+  "native_capture": "FS_TB_R10_3STAGE_REAL_NATIVE_CAPTURE_PASS (1280,768) Mesa llvmpipe Xvfb",
+  "missing_next_actions": [
+    {
+      "stage": 1,
+      "action": "guard"
+    },
+    {
+      "stage": 1,
+      "action": "skill"
+    },
+    {
+      "stage": 1,
+      "action": "fly"
+    },
+    {
+      "stage": 2,
+      "action": "guard"
+    },
+    {
+      "stage": 2,
+      "action": "skill"
+    },
+    {
+      "stage": 2,
+      "action": "fly"
+    },
+    {
+      "stage": 3,
+      "action": "guard"
+    },
+    {
+      "stage": 3,
+      "action": "skill"
+    },
+    {
+      "stage": 3,
+      "action": "fly"
+    }
+  ]
+}
