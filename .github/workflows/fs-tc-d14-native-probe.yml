@@ -60,6 +60,7 @@ jobs:
           set -euo pipefail
           d="godot_port/tc_factory/generated_d14_synthetic"
           sha=$(python3 -c 'import json; print(json.load(open("godot_port/tc_factory/generated_d14_synthetic/FS_TC_D14_FIXTURE_MANIFEST.json"))["ground_sha256"])')
+          parsha=$(sha256sum "$d/SYNTHETIC_ALL_NON_GROUND_PAR.png" | cut -d' ' -f1)
           timeout 120s xvfb-run -a -s "-screen 0 1600x1200x24" \
             /tmp/Godot_v4.7.2-stable_linux.x86_64 \
               --rendering-method gl_compatibility --path godot_port \
@@ -68,6 +69,7 @@ jobs:
                  --ground="$PWD/$d/SYNTHETIC_GROUND.png" \
                  --par="$PWD/$d/SYNTHETIC_ALL_NON_GROUND_PAR.png" \
                  --ground-sha="$sha" \
+                 --par-sha="$parsha" \
                  --out="$PWD/$d/native_out"
           python3 - <<'PY'
           import json,hashlib
@@ -79,12 +81,49 @@ jobs:
           assert Image.open(p).size==(1280,928)
           assert q["native_engine"].startswith("4.7.2")
           assert q["technical_native_layer_render"]=="PASS"
+          assert q["par_sha256_lock_verified"] is True
+          assert q["par_alpha_zero_pixels"]>0
+          assert q["par_alpha_visible_pixels"]>0
           assert q["exact_world_xy_origin"]==[0,0]
           assert q["art_gate"]=="HOLD"
           assert q["render_png_sha256"]==hashlib.sha256(p.read_bytes()).hexdigest()
           assert q["scene_id"]=="FS_TC_SYNTHETIC"
           print("TRUE Godot 4.7.2 native GL synthetic layer test PASS, actual D13 art STILL NOT_RUN")
           PY
+      - name: Wrong PAR SHA and opaque Master MUST fail in native Godot
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          d="godot_port/tc_factory/generated_d14_synthetic"
+          runner="/tmp/Godot_v4.7.2-stable_linux.x86_64"
+          for reason in wrong_hash opaque_master; do
+            test_par="$PWD/$d/SYNTHETIC_ALL_NON_GROUND_PAR.png"
+            par_hash="0000000000000000000000000000000000000000000000000000000000000000"
+            if [ "$reason" = "opaque_master" ]; then
+              python3 - <<'PY'
+          from PIL import Image
+          Image.new('RGB',(1280,928),(90,80,72)).save('godot_port/tc_factory/generated_d14_synthetic/SYNTHETIC_OPAQUE_MASTER.png')
+          PY
+              test_par="$PWD/$d/SYNTHETIC_OPAQUE_MASTER.png"
+              par_hash=$(sha256sum "$test_par" | cut -d' ' -f1)
+            fi
+            if timeout 120s xvfb-run -a -s "-screen 0 1600x1200x24" \
+                "$runner" --rendering-method gl_compatibility --path godot_port \
+                --script res://tc_factory/native_complete_par_probe.gd -- \
+                --scene-id=FS_TC_SYNTHETIC --ground="$PWD/$d/SYNTHETIC_GROUND.png" \
+                --par="$test_par" --par-sha="$par_hash" \
+                --out="$PWD/$d/native_reject_$reason" > "/tmp/d19_$reason.log" 2>&1; then
+              echo "CRITICAL: native Godot incorrectly accepted $reason"; exit 1
+            fi
+            if [ "$reason" = "wrong_hash" ]; then
+              grep -q 'Locked independent PAR SHA256 mismatch' "/tmp/d19_$reason.log"
+            else
+              grep -q 'Opaque Master rejected' "/tmp/d19_$reason.log"
+            fi
+            test ! -f "$d/native_reject_$reason/FS_TC_D14_GODOT472_NATIVE_1X_PAIR.png"
+          done
+          echo "D19 negative cases PASS; no native scene screenshot produced"
       - name: Wrong-size input MUST fail closed
         env:
           LIBGL_ALWAYS_SOFTWARE: "1"
