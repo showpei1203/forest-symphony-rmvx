@@ -133,7 +133,7 @@ def build(r18:Path,stagepaths:list[Path],out:Path,staging:Path,proof:Path,mock=F
         assert old in t,('native source marker missing',old)
         t=t.replace(old,new)
     t=t.replace('assert(spr.sprite_frames.get_frame_count("skill")==12)',
-      'assert(spr.sprite_frames.get_frame_count("skill")==12)\\n        assert(not spr.sprite_frames.get_animation_loop("skill"))')
+      'assert(spr.sprite_frames.get_frame_count("skill")==12)\n        assert(not spr.sprite_frames.get_animation_loop("skill"))')
     assert 'get_animation_loop("skill")' in t
     assert NEW_MARK in t and 'count==96 and slots==838' in t
     (G/'tests/test_tb19_frost_skill_native.gd').write_text(t,encoding='utf-8')
