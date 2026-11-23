@@ -73,10 +73,10 @@ def provider(token,route,body=None):
         except urllib.error.HTTPError as e:
             if e.code in (429,502,503,504) and i<attempts-1:
                 time.sleep(5*(i+1));continue
-            raise SkilltimeError(f'PixelLab fixed endpoint HTTP {e.code}') from None
+            raise RuntimeError(f'PixelLab fixed endpoint HTTP {e.code}') from None
         except urllib.error.URLError:
             if i<attempts-1:time.sleep(5*(i+1));continue
-            raise SkilltimeError('PixelLab fixed endpoint unreachable') from None
+            raise RuntimeError('PixelLab fixed endpoint unreachable') from None
 
 def parse_frames(result,source):
     resp=result.get('last_response') or {}
@@ -95,19 +95,20 @@ def parse_frames(result,source):
     hashes=[sha(x.tobytes()) for x in out]
     assert len(set(hashes))>=8,'too few unique real in-between frames'
     assert out[0].tobytes()==out[-1].tobytes()==source.tobytes()
-    # Evidence of changing connected paws/silhouette, not artistic guarantee of plausible gait.
-    feet=[];alpha=[]
-    b0=source.getchannel('A').getbbox(); foot_start=round(b0[1]+0.62*(b0[3]-b0[1]))
-    for f in out:
-        a=f.getchannel('A').crop((0,foot_start,f.width,f.height))
-        alpha.append(a.tobytes())
-        feet.append(sha(a.tobytes()))
-    assert len(set(feet))>=5,'lower-body silhouette does not articulate sufficiently'
+    # SKILL can hold paws still; a physical-run foot-gait gate is INAPPLICABLE.
+    # Record both upper-body icy effect changes and foot masks for provenance only;
+    # texture differences are NOT evidence of valid magic or artistic approval.
+    b0=source.getchannel('A').getbbox()
+    foot_start=round(b0[1]+0.62*(b0[3]-b0[1]))
+    upper_end=round(b0[1]+0.66*(b0[3]-b0[1]))
+    feet=[sha(f.getchannel('A').crop((0,foot_start,f.width,f.height)).tobytes()) for f in out]
+    upper=[sha(f.crop((0,0,f.width,upper_end)).tobytes()) for f in out]
     return originals,out,{'frame_qa':'PASS','frame_rgba_shas':hashes,'alpha_boxes':boxes,
                            'raw_returned':len(originals),'selected_raw_indices':chosen,
                            'foot_region_start_y':foot_start,'foot_alpha_unique_frames':len(set(feet)),
+                           'upper_body_unique_frames':len(set(upper)),
                            'first_last_exact_idle_source':True,
-                           'semantic_gait_visual':'ART_REVIEW_PENDING_NOT_PROVED_BY_ALPHA'}
+                           'semantic_ice_skill_visual':'OWNER_ART_REVIEW_PENDING_NOT_PROVED_BY_PIXELS'}
 
 def atlas_of(frames):
     c=frames[0].width
@@ -160,8 +161,8 @@ def _png(im):
     b=io.BytesIO();im.save(b,format='PNG');return b.getvalue()
 
 def run_stage(stage):
-    skillid=os.getenv('GITHUB_RUN_ID','')
-    assert skillid.isdigit() and 6<=len(skillid)<=20,'Fixed owner Windows runner only'
+    runid=os.getenv('GITHUB_RUN_ID','')
+    assert runid.isdigit() and 6<=len(runid)<=20,'Fixed owner Windows runner only'
     assert DRIVE.is_dir(),'No original private Drive mount; stop before paid request'
     tok=os.getenv('PIXELLAB_API_TOKEN')
     assert tok and len(tok)>20,'PixelLab auth HOLD, no token contents logged'
@@ -170,7 +171,7 @@ def run_stage(stage):
     ledger_path=DRIVE/f'R19_SKILL_STAGE{stage}_JOB_JOURNAL_PRIVATE.json'
     output_path=DRIVE/f'R19_SKILL_STAGE{stage}_TRUE_PIXELLAB_12F_PRIVATE.zip'
     if output_path.exists():
-        raise SkilltimeError('R19 stage source ZIP already exists; REFUSE NEW PAID JOB')
+        raise RuntimeError('R19 stage source ZIP already exists; REFUSE NEW PAID JOB')
     prompt_txt=prompt(stage)  # validates BEFORE submission
     with zipfile.ZipFile(source_zip) as z:
         im,st=source_frame(z,stage)
@@ -187,11 +188,11 @@ def run_stage(stage):
         res=provider(tok,'/animate-with-text-v3',body)
         jid=res.get('background_job_id')
         assert isinstance(jid,str) and len(jid)>16,'Provider did not return real job ID; do not retry blindly'
-        l={'task':'FS_TB_R19_TRUE_GAIT_STAGE','stage':stage,'source_r18_sha256':SRC_SHA,
+        l={'task':'FS_TB_R19_TRUE_ICE_SKILL_STAGE','stage':stage,'source_r18_sha256':SRC_SHA,
            'source_stage_sha256':st['source_sha256'],'idle_atlas_sha256':st['motions']['idle']['sha256'],
            'prompt':prompt_txt,'seed':body['seed'],'endpoint':'animate-with-text-v3',
            'job_id':jid,'requested_frames':12,'status':'SUBMITTED',
-           'reported_usage':None,'new_native_godot':'NOT_SKILL_ART_ONLY',
+           'reported_usage':None,'new_native_godot':'NOT_RUN_ART_ONLY',
            'art_gate':'OWNER_ART_REVIEW_PENDING'}
         # Critical durable journal BEFORE first poll, prevents duplicate paid submission.
         dump(ledger_path,l)
@@ -202,7 +203,7 @@ def run_stage(stage):
         result=provider(tok,'/background-jobs/'+jid)
         state=result.get('status')
         if state=='completed':break
-        if state=='failed':raise SkilltimeError('Provider reported failed; source journal retained, no resubmit')
+        if state=='failed':raise RuntimeError('Provider reported failed; source journal retained, no resubmit')
         time.sleep(6)
     else:raise TimeoutError('R19 provider polling limit; job journal survives; NO REBILL')
     usage=result.get('usage') or {}
@@ -229,7 +230,7 @@ def run_stage(stage):
              raw_frame_sha256=[sha(_png(x)) for x in raw],
              selected_frame_count=12,qa=qa)
     # Build complete archival artifact ENTIRELY in owner TEMP before cloud move.
-    root=pathlib.Path(tempfile.gettempdir())/('fs_tb_r19_stage'+str(stage)+'_'+skillid)
+    root=pathlib.Path(tempfile.gettempdir())/('fs_tb_r19_stage'+str(stage)+'_'+runid)
     assert not root.exists(),'R19 source staging temp already exists'
     root.mkdir()
     try:
@@ -252,9 +253,9 @@ def run_stage(stage):
             +' zip_sha256='+sha(cloud)+' bytes='+str(len(cloud))+' raw_frames='+str(len(raw))
             +' foot_alpha_unique='+str(qa['foot_alpha_unique_frames'])+' source_private=YES',flush=True)
     finally:
-        if root.exists() and root.name=='fs_tb_r19_stage'+str(stage)+'_'+skillid:shutil.rmtree(root)
+        if root.exists() and root.name=='fs_tb_r19_stage'+str(stage)+'_'+runid:shutil.rmtree(root)
         tmp=root.with_suffix('.zip')
-        if tmp.exists() and tmp.name=='fs_tb_r19_stage'+str(stage)+'_'+skillid+'.zip':tmp.unlink()
+        if tmp.exists() and tmp.name=='fs_tb_r19_stage'+str(stage)+'_'+runid+'.zip':tmp.unlink()
         assert not root.exists(),'Temp cleanup failed'
 
 if __name__=='__main__':
