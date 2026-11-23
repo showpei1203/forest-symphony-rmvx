@@ -13,7 +13,7 @@
 ## M2｜官方真 Godot QA
 - `test_fs_p538d_original_party_slots.gd` 全部 assertion 通過；完整官方 pinned **Godot 4.7.2 CI** [run #45285372065](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45285372065) 在 `da785dc4f13f954e529e9b792bd2c213f746387b` **100/100 steps SUCCESS**。這是 QA steps，**非 100 個已完成 FS 原版功能**。保留先前 P538A/B/C MENU、Battle、ACT、ATB、地圖、事件、Boss 完整回歸。
 - 以上 PASS 包含合成尺寸 Texture 的 source-frame geometry、party actions、denied equipment。**不包括新私有 source-art 的 Godot 原生真畫面**，不能偷換成藝術 PASS。
-- 最新 private capture harness commit `ea4975a` 的後續完整 native import/CI status，核查 GitHub Actions 後才註冊，勿引用較早 run 代替。
+- **後續正式驗證**：包含最新 private capture harness 提交 `ea4975a9159d38b636b1df9ce8256b9a5781cfed` 的完整 GitHub Actions [#45285924622](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45285924622) **100／100 steps SUCCESS**；新的 private capture 腳本因 owner-only PNG 不在公用 CI，**僅提交未實拍**，不因 public CI pass 而宣稱 private original visual PASS。
 
 ## M3｜實際失敗
 - P538C source UI 的實際遮擋錯誤：文字按鈕擋原版上場欄位，Reserve 行切入原字標；修正 `c193b91a`，來源位置圖實測。
