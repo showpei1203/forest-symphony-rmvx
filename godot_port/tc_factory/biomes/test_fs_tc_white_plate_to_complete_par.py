@@ -26,8 +26,11 @@ def main():
         brush.rectangle((60,120,450,420),fill=(74,68,84))
         brush.rectangle((770,160,1150,490),fill=(97,82,103))
         brush.rectangle((550,550,920,800),fill=(165,84,36))
-        # Enclosed WHITE detail is NOT connected to canvas exterior and should remain visible.
+        # Small enclosed WHITE detail should remain opaque even in D15 repair mode.
         brush.ellipse((100,175,145,220),fill=(252,252,252))
+        # A large enclosed empty courtyard under a structure is background,
+        # not a decorative white piece, and is separated by a dark border.
+        brush.rectangle((190,175,335,310),fill=(254,254,254))
         src.save(plate)
         v=convert(ground,plate,root/"native",lock,make_technical_preview=True)
         native=Image.open(root/"native/PAR_ALL_NON_GROUND_WHITE_KEY_SOURCE_NATIVE_SIZE.png")
@@ -39,6 +42,18 @@ def main():
         assert v["original_native_1280x928"] is True and v["formal_ART_GATE"]=="HOLD"
         assert v["resampled_source_not_native_1x"] is False
         assert sha(ground)==lock
+        assert native.getpixel((220,200))[3] == 255, "D14 baseline should expose the white-void bug"
+        repaired = convert(
+            ground, plate, root/"D15_repaired", lock,
+            make_technical_preview=True,repair_large_enclosed_background=True)
+        fixed = Image.open(root/"D15_repaired/PAR_ALL_NON_GROUND_WHITE_KEY_SOURCE_NATIVE_SIZE.png")
+        assert fixed.getpixel((220,200))[3] == 0, "D15 must remove large enclosed empty white"
+        assert fixed.getpixel((122,192))[3] == 255, "D15 must preserve isolated small white detail"
+        assert fixed.getpixel((80,140))[3] == 255, "D15 may not erase dark architecture"
+        assert repaired["D15_enclosed_background_islands_removed"] >= 1
+        assert repaired["alpha"]["alpha_zero"] > v["alpha"]["alpha_zero"]
+        assert repaired["formal_ART_GATE"] == "HOLD"
+        assert sha(ground) == lock and sha(plate) == repaired["source_RGB_sha256"]
         # Native source MUST NOT be claimed when a larger 1474x1067 source was scaled.
         large=src.resize((1474,1067),Image.Resampling.NEAREST)
         large.save(plate)
@@ -59,7 +74,7 @@ def main():
         src.save(plate)
         # Never overwrite originals or mutate the user's Ground.
         assert sha(ground)==lock
-    print("D14 white key PASS synthetic: alpha, enclosed white, Master/blank/corner rejects, SHA lock, exact-vs-resampled labeling, Art HOLD")
+    print("D15 white key PASS synthetic: remove large enclosed white BG, preserve small highlights, immutable sources, rejects, no Art PASS")
 
 
 if __name__=="__main__":
