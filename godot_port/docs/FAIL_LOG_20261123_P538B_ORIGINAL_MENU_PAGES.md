@@ -12,7 +12,7 @@ Branch: `feature/fs-godot-phase1`. Applies to Godot migration only, not T-A/T-B/
 - `FSScreen.gd` presents source pages but **keeps** `FSMenuModel` as gameplay/data authority for equipment legality, inventory, party and formation. Source page navigation preserves existing battle/ATB/HUD logic and legacy page fallback.
 - Dedicated `test_fs_p538b_original_pages.gd` plus CI gate; private screenshot harness `capture_fs_p538b_private.gd` requires owner-only source and pre-existing authorized PRIVATE QA output; never run on user PC automatically.
 - CI `45114810650`, head `46e242a`, **SUCCESS**, 98/98 completed steps (includes P538B native and all retained regression tests). https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45114810650
-- After that success, strengthened second actor sample (id2, synthetic level7), 544×416/1088×832 viewport-layout assertions, and added the private capture harness; **a newer CI run must pass before claiming these new changes are native verified**.
+- Strengthened M4 native second actor sample (id2, synthetic level7) and 544×416/1088×832 native layout tests were verified by FINAL full CI #45115275149 at `224a72353cd2d0fcddecc4fb211175251a2299b5`, **SUCCESS 98/98 steps**: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115275149 . Private-original screenshot harness was added but not executed, remains ART HOLD.
 
 ## M3 actual failure/repair policy
 - P538B first fully tested candidate (head `46e242a`) had **zero observed Godot native CI failures**. Do not invent a bug/fix to fill M3.
