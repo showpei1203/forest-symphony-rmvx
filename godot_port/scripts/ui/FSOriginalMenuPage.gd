@@ -59,6 +59,16 @@ const SOURCE_ROW_RECTS={
     "equipment":Rect2(17,230,274,170),
     "equipment_candidates":Rect2(17,230,274,170)
 }
+# Measured from the PRIVATE 544x416 owner-original MenuBack_party.png:
+# source slot frames top at about y=69, NOT P538C's y=103.
+# Bounds remain candidate until same-state native screenshot acceptance.
+const PARTY_CURRENT_SLOTS=[
+    Rect2(77,73,41,62),
+    Rect2(127,73,41,62),
+    Rect2(177,73,41,62)
+]
+# The Reserve Squad inscription occupies y=328..360; never cover it.
+const PARTY_RESERVE_RECT:=Rect2(18,362,354,37)
 
 func configure(provider:FSUIArtLibrary, model:FSMenuModel,
         category:String, selected_actor:int, first_formation:int=-1,
@@ -252,34 +262,68 @@ func _actor_nav()->void:
         actor_buttons.append(button)
 
 func _render_formation(first:int)->void:
-    # Actual MenuBack_party has three numbered upper current-squad slots
-    # and a separate lower reserve band; do not paste a huge generic panel
-    # over them. The menu_model remains the ONLY swap authority.
+    # Original MenuBack_party.png already paints three vertical numbered
+    # slots and a Reserve Squad caption. Never draw fake cards over them.
+    # Real original 252x312 portraits are fitted INSIDE each source slot.
     var party:Array[Dictionary]=_menu.party()
-    _row_color=Color(0.07,0.18,0.2)
-    for i in range(mini(party.size(),3)):
-        var index:int=i
-        var selection:String=("▶" if i==first else "")
-        var button:=_button(self,selection+str(party[i].get("name","?")),
-            func()->void:formation_requested.emit(index))
-        button.name="FSOriginalCurrentSlot_"+str(index)
-        button.position=Vector2(66+i*47,103)
-        button.size=Vector2(45,27)
-        button.custom_minimum_size=button.size
-        button.add_theme_font_size_override("font_size",10)
     _row_color=Color(0.92,0.97,0.95)
-    var area:=VBoxContainer.new()
-    area.name="FSOriginalReserveSquad"
-    area.position=Vector2(22,333)
-    area.size=Vector2(285,62)
-    add_child(area)
+    for i in range(mini(party.size(),PARTY_CURRENT_SLOTS.size())):
+        var member:int=i
+        var source_slot:Rect2=PARTY_CURRENT_SLOTS[i]
+        var name:String=str(party[i].get("name","?"))
+        var tex:Texture2D=null
+        if PORTRAITS.has(name):
+            tex=_art.texture("menu",str(PORTRAITS[name]))
+        if tex!=null:
+            var image_button:=TextureButton.new()
+            image_button.name="FSOriginalCurrentSlot_"+str(i)
+            image_button.texture_normal=tex
+            image_button.texture_hover=tex
+            image_button.texture_pressed=tex
+            image_button.ignore_texture_size=true
+            image_button.stretch_mode=TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+            image_button.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR
+            image_button.position=source_slot.position
+            image_button.size=source_slot.size
+            image_button.tooltip_text=str(i+1)+". "+name+"（點選交換）"
+            image_button.modulate=Color(1.0,0.95,0.72) if (
+                i==first) else Color.WHITE
+            image_button.pressed.connect(
+                func()->void:formation_requested.emit(member))
+            add_child(image_button)
+        else:
+            # Unknown names are NOT silently replaced with an unrelated
+            # actor portrait. Preserve slot art and offer text navigation.
+            var placeholder:=_button(self,name,
+                func()->void:formation_requested.emit(member))
+            placeholder.name="FSOriginalCurrentSlot_"+str(i)
+            placeholder.position=source_slot.position
+            placeholder.size=source_slot.size
+            placeholder.custom_minimum_size=source_slot.size
+            placeholder.add_theme_font_size_override("font_size",10)
+    # Keep the reserved squad text UNDER its original label (y=328..360).
+    # Horizontal scrolling handles more than three reserve members.
+    var scroller:=ScrollContainer.new()
+    scroller.name="FSOriginalReserveSquad"
+    scroller.position=PARTY_RESERVE_RECT.position
+    scroller.size=PARTY_RESERVE_RECT.size
+    scroller.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_AUTO
+    scroller.vertical_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+    add_child(scroller)
+    var reserve:=HBoxContainer.new()
+    reserve.name="FSOriginalReserveRows"
+    reserve.add_theme_constant_override("separation",4)
+    scroller.add_child(reserve)
     for i in range(3,party.size()):
-        var index:int=i
-        _button(area,str(i+1)+". "+str(party[i].get("name","?")),
-            func()->void:formation_requested.emit(index))
+        var member:int=i
+        var reserve_button:=_button(reserve,
+            str(i+1)+". "+str(party[i].get("name","?")),
+            func()->void:formation_requested.emit(member))
+        reserve_button.custom_minimum_size=Vector2(102,29)
     if first>=0 and first<party.size():
         var hint:=_new_label(self,"交換："+str(party[first].get("name","")),11)
-        hint.position=Vector2(16,194)
+        hint.name="FSOriginalFormationSelectedHint"
+        hint.position=Vector2(16,181)
         hint.size=Vector2(280,24)
 
 func _status(list:VBoxContainer)->void:
