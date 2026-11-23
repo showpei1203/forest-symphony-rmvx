@@ -190,3 +190,13 @@ P539F 完整原版來源 QA ZIP 已以 Google Drive provider readback 確認只�
 ## 2026-11-23 P538A MENU source integration / next P538B
 P539F next-unit text above is now HISTORICAL: P538A was actually built on feature/fs-godot-phase1, not merely planned. 8 source Menu01..08 icons 50×20 and SHA-locked source MenuBack_b, five real existing menu routes, three disabled unsupported routes, original 60x20 subpage tabs. M1 source candidate, M2 14 source original Godot 4.7.2 OpenGL Mesa llvmpipe screens 544/1088, M3 fixed CI native P537C battle regression and second actor synthetic fixture indexing, M4 original source portraits Joey/Mia separately. Official CI #45101720647 completed success 97/97, private Drive owner-only original 14 frame proof https://drive.google.com/file/d/19x7wqwVbXInCR2OWWbbx9OGkafXrJ05B/view SHA c3fdeff4d3558231a7c6217ebbd1e95a05ffdc814a58f262803c71a519050001.
 P538B next: original full STATUS/SKILLS/ITEMS/EQUIP/FORMATION subpage composition with approved source art/UI windows, original live function coupling, both resolutions and second actor. Current developer chrome remains, no VX 1:1 same-state or owner AMD GPU P538A verified. Missing final 11 postApply DB and 505 effective alias runtime HOLD; Phase1 SEAL NO. See CURRENT_HANDOFF.md and HANDOFF_20261123_P538A_ORIGINAL_MENU_NATIVE.md.
+
+
+## P538B｜2026-11-23 原始 MENU 全頁功能候選與 PRIVATE 視覺 Gate
+
+- **已實際施工（M1）**：原版 SHA 原圖入口 + `FSOriginalMenuPage` 五個完整功能頁：Status / Skills / Items / Equip / Formation，附物品選對象、裝備候選/換裝和隊伍交換；資料全部透過既有 `FSMenuModel`，不得重寫 ATB/ACT/裝備/背包，沒有私人圖片入公開 Repo。
+- **Godot4.7.2 native（M2）**：初版完整 CI [45114810650](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45114810650) 98/98 SUCCESS（包括 P538B 和戰鬥、劇情回歸）；加強的第二 synthetic Actor2 Lv7 / 544與1088測試須以其後 GitHub Actions 成功結果為準。
+- **M3**：本輪第一套完整原生回歸未觀測到 FAIL，不編造修復。既有 P538A 戰鬥 debug chrome 不可退化。
+- **M4**：兩位不同 ID/等級的 synthetic 角色資料與原圖喬伊／米亞 identity，私有源圖的 10 張/解析度 capture harness 已編寫，但尚未 stage 真實 PRIVATE UI ZIP，故 SOURCE VISUAL QA 不是 PASS。
+- **Gates**：MENU 行為候選≠VX 原始同狀態 parity；私人原圖 native 544/1088、WindowSkin、原 VX 比圖、使用者 Art Gate，以及原11 postApply資料/505 effective alias 未完成，**ART HOLD / Phase1 SEAL NO**。Quest/Save/System及未驗證 sub tabs 保持 disabled。完整交接 [P538B Handoff](HANDOFF_20261123_P538B_ORIGINAL_MENU_PAGES.md)，[Failure Log](FAIL_LOG_20261123_P538B_ORIGINAL_MENU_PAGES.md)。
+- **後續完整施工**：在核准的隔離私有雲端一次性執行 20 張 source UI 圖／對照＋真來源第二角色與操作，修正原版子頁 WindowSkin 與窗格定位，再由私人 Drive WRITE→READBACK→SHA 保存，並獨立解決 VX postApply DB witness。不得以漂亮的 synthetic 畫面代替原版 Gate。
