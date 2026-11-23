@@ -69,6 +69,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_p538b_original_pages.gd
+      - name: P538C source-authentic page rectangles and operations with generated geometry fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_p538c_source_window_geometry.gd
       - name: Run synthetic VX event commands
         shell: bash
         run: |
