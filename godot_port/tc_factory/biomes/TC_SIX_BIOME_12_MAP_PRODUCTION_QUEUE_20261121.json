@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 9,
+    "Ground_PAR_pair_candidates_static_pass": 10,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -32,7 +32,7 @@
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
     "ground_source_candidates_FS_04_MAZE": 2,
-    "complete_PAR_candidates_FS_04_MAZE": 2
+    "complete_PAR_candidates_FS_04_MAZE": 3
   },
   "scenes": [
     {
@@ -468,7 +468,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D17_NATIVE_40X29_COHESIVE_GROUND_ONLY_CROP_AND_INDEPENDENT_REPOSITIONED_1X_COMPLETEPAR_TECH_HOLD",
+      "stage": "D18_NEW_INDEPENDENT_RGBA_SOURCE_WHOLE_ALPHA_ISLANDS_COMPLETEPAR_NATIVE_40x29_TECH_PASS_VISUAL_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -481,8 +481,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D17_PRIVATE_NOT_RUN_PREVIOUS_SYNTHETIC_CI_PASS_ONLY",
-      "formal_art_gate": "HOLD_POLYGON_CUTS_FOOTPOINT_ALIGNMENT_AND_NATIVE",
+      "native_Godot_4_7_2_for_current_stage": "D18_PRIVATE_REAL_ART_NOT_RUN_BRIDGE_NOT_ALLOWLISTED",
+      "formal_art_gate": "HOLD_SMOKE_FRAME_BOUNDARY_BRIDGE_FOOTPOINT_AND_USER_ART",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -554,6 +554,37 @@
         "drive_par": "https://drive.google.com/file/d/1syxXfi7ykoO_s8m4KoE-R6WhnYD-2xb2/view",
         "drive_composite": "https://drive.google.com/file/d/1QU0MOktXjbYnQ3Iwf5OLXlRtiNtvQ5r0/view",
         "github_CI_synthetic": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115468630"
+      },
+      "D18": {
+        "new_original_independent_non_ground_source_size": [
+          1474,
+          1067
+        ],
+        "new_original_independent_non_ground_source_sha256": "a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780",
+        "old_D17_frozen_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "native_par_size": [
+          1280,
+          928
+        ],
+        "new_complete_par_sha256": "8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e",
+        "real_composite_sha256": "2e618991676241471271640c7641679857a23b857a7b0048b8338ea991dff620",
+        "authored_non_ground_components": 6,
+        "original_significant_alpha_gt8_pixels_preserved": 641682,
+        "polygon_trimmed_pixels": 0,
+        "low_alpha_noise_threshold": "<=8 transparent",
+        "original_source_excluded_isolated_tiny_alpha_gt8_pixels": 138,
+        "foreground_overlap_pixels": 868,
+        "true_alpha_zero_pixels": 547026,
+        "cold_rebuild_pixel_identity": "PASS",
+        "target_art_gate": "HOLD",
+        "actual_Godot472_private_art_native": "NOT_RUN",
+        "private_zip": "https://drive.google.com/file/d/1pHr699q2mqtI8TPrtb3trX2z0h5cYLUH/view",
+        "private_source": "https://drive.google.com/file/d/1Rdo7WObmlwx4zicWRdS3wpO8T6SAMayO/view",
+        "private_par": "https://drive.google.com/file/d/1HbMxtnvKQMif4V_r7jOX7UyLRUpznCbd/view",
+        "private_composite": "https://drive.google.com/file/d/14Ws84SnxYSLjOsPVTahT7B86UTCy0Ael/view",
+        "private_QA": "https://drive.google.com/file/d/1-0zc1cKXvpzRCmycV7uaOjHVKbgcgQCB/view",
+        "synthetic_gh_ci": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45129375477",
+        "scene_production_rule": "GROUND_FIRST_THEN_ALL_NON_GROUND_PAR_NOT_MASTER"
       }
     },
     {
