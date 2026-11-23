@@ -1,0 +1,50 @@
+{
+  "schema": "fs-handoff-evidence/v1",
+  "target": "T-A",
+  "stage": "M1",
+  "claim": "ACTIVE",
+  "branch": "feat/fs-pixellab-ta-actor-20261121",
+  "source": {
+    "asset_id": "",
+    "sha256": "",
+    "drive_url": "",
+    "license_checked": false
+  },
+  "artifacts": {
+    "github_commit_url": "",
+    "drive_url": "",
+    "native_log_url": "",
+    "godot_preview_url": ""
+  },
+  "actual_delta": "",
+  "skills_loaded": [],
+  "tools_invoked": [],
+  "model_jobs": [],
+  "qa": {
+    "source": "NOT_RUN",
+    "technical": "NOT_RUN",
+    "godot_native": "NOT_RUN",
+    "owner_art": "HOLD",
+    "full_gameplay": "NOT_RUN",
+    "cloud_readback": "NOT_RUN"
+  },
+  "owner_approval": {
+    "explicit": false,
+    "evidence_url": ""
+  },
+  "pc_temp": {
+    "used": false,
+    "preapproved": false,
+    "cleanup_verified": false,
+    "note": "No owner PC temporary working files claimed"
+  },
+  "failure_log_url": "",
+  "next_macro_unit": "",
+  "independent_verification": {
+    "reviewer": "",
+    "checked_at": "",
+    "github_readback": false,
+    "drive_readback": false,
+    "native_marker_checked": false
+  }
+}
