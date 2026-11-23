@@ -246,7 +246,7 @@ func _clear_body() -> void:
     _restore_developer_shell()
     if source_menu_overlay!=null:
         source_menu_overlay.visible=false
-    if status_label!=null:
+    if status_label!=null and view_name!="BATTLE":
         status_label.visible=true
     if original_commands!=null:
         original_commands.visible=false

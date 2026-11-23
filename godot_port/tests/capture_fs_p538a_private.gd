@@ -37,9 +37,13 @@ func _run()->void:
         quit(2)
         return
     var db=DATA.database()
+    # Two independent actor portraits are real source art; numbers are QA.
+    db.tables["actors"][1]["name"]="喬伊"
+    db.tables["actors"][2]["name"]="米亞"
     var world=DATA.initial_state()
     var battle=BATTLE.new(db,world)
     battle.add_actor(1)
+    battle.add_actor(2)
     root.size=Vector2i(544,416) if OS.get_environment("FS_UI_QA_WIDTH")=="544" else Vector2i(1088,832)
     var screen=SCREEN.new()
     screen.db=db
@@ -61,5 +65,14 @@ func _run()->void:
             "formation":screen._show_formation()
         if not await _frame(view):
             return
-    print("P538A PRIVATE ORIGINAL MENU SIX PAGES GPU PASS; VX SAME-STATE PIXEL PARITY HOLD")
+    # M4 second sample: different source-locked protagonist portrait/actor.
+    screen.actor_index=1
+    screen._show_status()
+    if screen.body.find_child("FSOriginalPortrait_1",true,false)==null:
+        push_error("P538A second original protagonist Mia source portrait missing")
+        quit(10)
+        return
+    if not await _frame("status_mia_second_actor"):
+        return
+    print("P538A PRIVATE ORIGINAL MENU SIX PAGES + SECOND ACTOR GPU PASS; VX SAME-STATE PIXEL PARITY HOLD")
     quit(0)
