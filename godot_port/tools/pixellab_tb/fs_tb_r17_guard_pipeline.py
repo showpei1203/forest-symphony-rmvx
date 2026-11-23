@@ -83,7 +83,7 @@ def prompt(stage:int)->str:
          'Fixed southeast 3/4 JRPG pixel battle camera. F0 original pose; F1-F3 duck head '
          'and bend all four connected legs low. F4-F5 hold defensive crouch, ears alert. '
          'F6-F7 rise to SAME original pose. Preserve navy muzzle, cyan ice crystal, blue eyes, '
-         'ears, paws, thick tail and same identity. Entire body centered inside margins. '
+         'ears, paws, thick tail and same identity. Keep inside margins. '
          'No shield, extra limbs, other wolf, magic, projectiles, camera turn, or background.')
     assert len(out)<=495,(stage,len(out))
     return out
