@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 10,
+    "Ground_PAR_pair_candidates_static_pass": 11,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -32,7 +32,7 @@
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
     "ground_source_candidates_FS_04_MAZE": 2,
-    "complete_PAR_candidates_FS_04_MAZE": 3
+    "complete_PAR_candidates_FS_04_MAZE": 4
   },
   "scenes": [
     {
@@ -468,7 +468,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D18_NEW_INDEPENDENT_RGBA_SOURCE_WHOLE_ALPHA_ISLANDS_COMPLETEPAR_NATIVE_40x29_TECH_PASS_VISUAL_HOLD",
+      "stage": "D19_INTACT_ALL_NON_GROUND_1X_SAFE_EDGE_RELAYOUT_GODOT_NATIVE_TOOL_CI_PASS_PRIVATE_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -481,8 +481,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D18_PRIVATE_REAL_ART_NOT_RUN_BRIDGE_NOT_ALLOWLISTED",
-      "formal_art_gate": "HOLD_SMOKE_FRAME_BOUNDARY_BRIDGE_FOOTPOINT_AND_USER_ART",
+      "native_Godot_4_7_2_for_current_stage": "D19_PRIVATE_NOT_RUN_NATIVE_GODOT472_SYNTHETIC_CI_PASS",
+      "formal_art_gate": "HOLD_PRIVATE_NATIVE_BRIDGE_ACCESS_AND_INCREASED_FOREGROUND_OVERLAP",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -585,6 +585,37 @@
         "private_QA": "https://drive.google.com/file/d/1-0zc1cKXvpzRCmycV7uaOjHVKbgcgQCB/view",
         "synthetic_gh_ci": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45129375477",
         "scene_production_rule": "GROUND_FIRST_THEN_ALL_NON_GROUND_PAR_NOT_MASTER"
+      },
+      "D19": {
+        "phase": "D19_SAFE_EDGE_WHOLE_SCENE_M3_REPAIR",
+        "ground_source_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "original_independent_par_sha256": "a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780",
+        "par_output_sha256": "cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1",
+        "static_qa_composite_sha256": "c9da92ee753970cbcf528a96cefbec2b8fe7088a0bb80ddffbb528b0cef9428a",
+        "native_size": [
+          1280,
+          928
+        ],
+        "preserved_six_significant_source_alpha_pixels": 641682,
+        "polygon_trim_pixels": 0,
+        "D18_outer_4px_alpha_gt224": 250,
+        "D19_outer_4px_alpha_gt224": 0,
+        "D18_overlap_pixels": 868,
+        "D19_overlap_pixels": 1596,
+        "bridge_world_xy": [
+          554,
+          334
+        ],
+        "true_D19_private_Godot4_7_2_native": "NOT_RUN",
+        "native_Godot4_7_2_synthetic_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133019030",
+        "synthetic_layout_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133395097",
+        "private_QA_zip": "https://drive.google.com/file/d/1osgVoSOLtuWua-7jUnVebD_XsdlLIqNk/view",
+        "private_PAR": "https://drive.google.com/file/d/1QvEN7_DxSB3pvlDW70TDmIeCTD44I6XL/view",
+        "private_static_composite": "https://drive.google.com/file/d/1vRH8svAtheYP_-UbB_WUjNh0sI0A0xAW/view",
+        "private_scene_AB": "https://drive.google.com/file/d/1K59hTfpDrl-I_Fqj_n03gw0cb-qrw5eI/view",
+        "private_QA_json": "https://drive.google.com/file/d/11grlCFFQwpdaeIhtTeL_9hPubtmEA17D/view",
+        "art_gate": "HOLD_NOT_A_PASS",
+        "integration": "NOT_RUN"
       }
     },
     {
