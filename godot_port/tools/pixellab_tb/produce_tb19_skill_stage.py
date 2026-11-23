@@ -2,9 +2,9 @@
 """FS T-B R19 | Exactly ONE source-locked paid PixelLab 12-frame quadruped SKILL.
 
 Exclusively callable from an audited, fixed-stage GitHub PC Bridge wrapper on owner's
-Windows skillner. No Issue/user-supplied prompts, paths, URLs or commands. Source R18
+Windows runner. No Issue/user-supplied prompts, paths, URLs or commands. Source R18
 private ZIP sha pinned. Checkpoint job ID BEFORE polling to avoid accidental rebill.
-Private G: Drive owner folder is the sole persistent location; TEMP cleaned per skill.
+Private G: Drive owner folder is the sole persistent location; TEMP cleaned per run.
 """
 from __future__ import annotations
 import argparse, base64, hashlib, io, json, os, pathlib, shutil, sys, tempfile, time, urllib.error, urllib.request, zipfile
@@ -12,7 +12,7 @@ from PIL import Image
 
 SRC_SHA='8cc85ea1ca326ce854b3432a46c63fb311aaba3ca5628d101e10a54fc03cae6c'
 SRC_BYTES=12626646
-SRC_NAME='FS_TB_R18_GLACIER_JACKAL_3GUARD_NATIVE_VERIFIED_PRIVATE_20261123.zip'
+SRC_NAME='FS_TB_R18_GLACIER_JACKAL_3RUN_12F_NATIVE_VERIFIED_PRIVATE_20261123.zip'
 PARENT_ID='10qOSm1id3o5oisfVQxhlC_4ncJaF0Yd3'
 DRIVE=(pathlib.Path('G:/.shortcut-targets-by-id')/PARENT_ID/'FS_PIXELLAB_TB_MONSTER_20261121_PRIVATE')
 ROOT=('https://api.pixellab.ai/v2')
@@ -159,9 +159,9 @@ def selftest():
 def _png(im):
     b=io.BytesIO();im.save(b,format='PNG');return b.getvalue()
 
-def skill(stage):
+def run_stage(stage):
     skillid=os.getenv('GITHUB_SKILL_ID','')
-    assert skillid.isdigit() and 6<=len(skillid)<=20,'Fixed owner Windows skillner only'
+    assert skillid.isdigit() and 6<=len(skillid)<=20,'Fixed owner Windows runner only'
     assert DRIVE.is_dir(),'No original private Drive mount; stop before paid request'
     tok=os.getenv('PIXELLAB_API_TOKEN')
     assert tok and len(tok)>20,'PixelLab auth HOLD, no token contents logged'
@@ -204,7 +204,7 @@ def skill(stage):
         if state=='completed':break
         if state=='failed':raise SkilltimeError('Provider reported failed; source journal retained, no resubmit')
         time.sleep(6)
-    else:raise TimeoutError('R19 R19 provider polling limit; job journal survives; NO REBILL')
+    else:raise TimeoutError('R19 provider polling limit; job journal survives; NO REBILL')
     usage=result.get('usage') or {}
     cost=float(usage.get('generations',0))
     # Record actual reported generations BEFORE any images/QA parsing.
@@ -267,4 +267,4 @@ if __name__=='__main__':
         selftest()
     else:
         assert args.stage in (1,2,3)
-        skill(args.stage)
+        run_stage(args.stage)
