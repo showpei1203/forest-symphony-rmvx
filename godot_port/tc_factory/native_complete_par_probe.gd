@@ -23,6 +23,7 @@ func _run() -> void:
     var par_path: String = str(params.get("par", ""))
     var out_dir: String = str(params.get("out", ""))
     var ground_sha: String = str(params.get("ground-sha", ""))
+    var par_sha: String = str(params.get("par-sha", ""))
     if ground_path.is_empty() or par_path.is_empty() or out_dir.is_empty():
         _stop("Explicit --ground, --par and --out required; no implicit sample art")
         return
@@ -39,6 +40,9 @@ func _run() -> void:
     if not ground_sha.is_empty() and FileAccess.get_sha256(ground_path) != ground_sha.to_lower():
         _stop("Locked Ground SHA256 mismatch; never silently replace the map")
         return
+    if not par_sha.is_empty() and FileAccess.get_sha256(par_path) != par_sha.to_lower():
+        _stop("Locked independent PAR SHA256 mismatch; wrong scene or image")
+        return
     var ground: Image = Image.load_from_file(ground_path)
     var par: Image = Image.load_from_file(par_path)
     if ground == null or par == null or ground.is_empty() or par.is_empty():
@@ -46,6 +50,23 @@ func _run() -> void:
         return
     if ground.get_size() != TARGET or par.get_size() != TARGET:
         _stop("Native 1x 1280x928 world shape required: G=" + str(ground.get_size()) + " PAR=" + str(par.get_size()))
+        return
+    # A valid CompletePAR MUST have actual transparent and visible pixels;
+    # RGB opaque Master and empty alpha plates are not scene art.
+    var alpha_zero_pixels: int = 0
+    var alpha_visible_pixels: int = 0
+    for py in range(TARGET.y):
+        for px in range(TARGET.x):
+            var opacity: float = par.get_pixel(px, py).a
+            if opacity <= 0.0001:
+                alpha_zero_pixels += 1
+            if opacity > 0.01:
+                alpha_visible_pixels += 1
+    if alpha_zero_pixels == 0:
+        _stop("Opaque Master rejected: CompletePAR must have real zero-alpha pixels")
+        return
+    if alpha_visible_pixels == 0:
+        _stop("Empty CompletePAR rejected: no visible non-ground objects")
         return
     if DirAccess.make_dir_recursive_absolute(out_dir) != OK:
         _stop("Cannot create QA output directory")
@@ -104,6 +125,9 @@ func _run() -> void:
         "par_texture": [par.get_width(), par.get_height()],
         "ground_sha256": FileAccess.get_sha256(ground_path),
         "par_sha256": FileAccess.get_sha256(par_path),
+        "par_sha256_lock_verified": not par_sha.is_empty(),
+        "par_alpha_zero_pixels": alpha_zero_pixels,
+        "par_alpha_visible_pixels": alpha_visible_pixels,
         "render_png_sha256": FileAccess.get_sha256(png_path),
         "exact_world_xy_origin": [0, 0],
         "sprite_texture_filter": "NEAREST",
