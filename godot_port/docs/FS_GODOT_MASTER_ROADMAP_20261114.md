@@ -200,3 +200,13 @@ P538B next: original full STATUS/SKILLS/ITEMS/EQUIP/FORMATION subpage compositio
 - **M4**：兩位不同 ID/等級的 synthetic 角色資料與原圖喬伊／米亞 identity，私有源圖的 10 張/解析度 capture harness 已編寫，但尚未 stage 真實 PRIVATE UI ZIP，故 SOURCE VISUAL QA 不是 PASS。
 - **Gates**：MENU 行為候選≠VX 原始同狀態 parity；私人原圖 native 544/1088、WindowSkin、原 VX 比圖、使用者 Art Gate，以及原11 postApply資料/505 effective alias 未完成，**ART HOLD / Phase1 SEAL NO**。Quest/Save/System及未驗證 sub tabs 保持 disabled。完整交接 [P538B Handoff](HANDOFF_20261123_P538B_ORIGINAL_MENU_PAGES.md)，[Failure Log](FAIL_LOG_20261123_P538B_ORIGINAL_MENU_PAGES.md)。
 - **後續完整施工**：在核准的隔離私有雲端一次性執行 20 張 source UI 圖／對照＋真來源第二角色與操作，修正原版子頁 WindowSkin 與窗格定位，再由私人 Drive WRITE→READBACK→SHA 保存，並獨立解決 VX postApply DB witness。不得以漂亮的 synthetic 畫面代替原版 Gate。
+
+
+## P538C｜2026-11-23 真正來源原始頁窗格校正、可見拒絕與原生 QA
+- 來源優先：下載 Owner-only 202 原始 PNG ZIP 到 ChatGPT 隔離雲端環境，SHA/CRC PASS；從真 `MenuBack_status_a/skill/item/equip/party` 找到 P538B 統一白色 Panel 蓋住五頁內建原圖窗格的錯誤。
+- **M1 實作**：`FSOriginalMenuPage` 使用每頁不同的來源 544×416 配置，透明窗格取代不當白 Panel；Current Squad 三槽／Reserve Squad 分層，四角色隊伍交換；MENU 隱藏 developer log 導致拒絕裝備或道具操作不顯示的問題已修。原有 FSMenuModel/FSBattle 不重寫。
+- **M2 native 完整 PASS**：Godot 4.7.2 官方 Actions [#45129180313](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45129180313) **99/99 steps SUCCESS**，新 `test_fs_p538c_source_window_geometry.gd` 以 synthetic single-colour textures 實證五頁窗格、544／1088 控制元件、四角色操作及 item debit 禁止，所有既有戰鬥／ATB／ACT／地圖回歸 PASS。此 fixture **不是來源原 PNG native 影像**。
+- **M3**：#45128951564 native FAIL（SceneTree 動態改 viewport 卻未同步 FSScreen Control 尺寸），#45129180313 FIX PASS，實際修正 commit `074c8e2`；另外真 source ART 錯位 commit `db31135`，顯示拒絕 commit `1d2d8a0`。
+- **M4 私人 Drive 真來源**：5 張原圖 544×416 + 10 張 60×20 來源 tabs Verified；5×544 原圖框選示意、5×1088 離線最近鄰放大及 manifest/FAIL (12 件) 保存 [P538C PRIVATE source layout ZIP](https://drive.google.com/file/d/13EQhnMU8iYBDsjMEdO3A9Mp0iFjwb0SE/view)，723,848 bytes、SHA256 `78a0313020038deeb90e5a7978753b7a37d40616f6d3a42f29d42486fa04216d`、Drive 已回讀、owner-only shared=false。M4 第二 native fixtures 喬伊/米亞/艾薇/泰勒與 current-reserve swap PASS。
+- **明示 Gate**：本輪私人真 source PNG **Godot viewport capture NOT RUN**（缺合法同機 private art+Godot executable）；原 VX 同狀態、11 postApply、505 effective runtime、用戶原畫核准 **HOLD**，Phase1 SEAL NO。離線原圖框選不替代 Godot source-native screenshot。
+- 後續完整單位 P538D：在獲授權的隔離 private Godot 環境實拍原始 202 原圖 544／1088 10 頁，按原版 VX 來源畫面對照和修正；私人 Drive 寫入／回讀 SHA。詳見 [P538C Handoff](HANDOFF_20261123_P538C_SOURCE_UI_GEOMETRY.md)、[Failure Log](FAIL_LOG_20261123_P538C_SOURCE_UI_GEOMETRY.md)。
