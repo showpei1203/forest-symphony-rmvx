@@ -246,7 +246,7 @@ def run_stage(stage):
         dump(ledger_path,l)
         print('FS_TB_R20_STAGE_PROVIDER_ARCHIVE_PASS stage='+str(stage)+' generations='+str(cost)
             +' zip_sha256='+sha(cloud)+' bytes='+str(len(cloud))+' raw_frames='+str(len(raw))
-            +' foot_alpha_unique='+str(qa['foot_alpha_unique_frames'])+' source_private=YES',flush=True)
+            +' head_pixel_unique='+str(qa['head_pixel_unique_frames'])+' source_private=YES',flush=True)
     finally:
         if root.exists() and root.name=='fs_tb_r20_stage'+str(stage)+'_'+runid:shutil.rmtree(root)
         tmp=root.with_suffix('.zip')
