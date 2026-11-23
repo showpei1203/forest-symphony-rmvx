@@ -278,6 +278,9 @@ func run_native_test()->void:
     manifest.write_text(dump(M),encoding='utf-8')
     if (G/'.godot').is_dir():shutil.rmtree(G/'.godot')
     output=Path(a.out_zip) if a.out_zip else root.parent/ZIP_NAME
+    # Do not embed a stale prior run's ZIP hash evidence into a new archive.
+    stale_proof=R/'R16_PACKAGE_PROOF.json'
+    if stale_proof.exists():stale_proof.unlink()
     paths=[x for x in root.rglob('*') if x.is_file() and '.godot' not in x.parts]
     with zipfile.ZipFile(output,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for path in sorted(paths):z.write(path,path.relative_to(root).as_posix())
