@@ -73,6 +73,10 @@ func _run()->void:
     var page=screen.source_page_overlay
     for dimensions in [Vector2i(544,416),Vector2i(1088,832)]:
         root.size=dimensions
+        # SceneTree script runs without a normal Window resize/layout loop.
+        # Explicitly propagate the viewport geometry to its root Control.
+        screen.size=Vector2(dimensions)
+        screen._layout_source_menu()
         await process_frame
         for item in ["status","skills","items","equipment","formation"]:
             match item:
@@ -89,7 +93,7 @@ func _run()->void:
                 maxf(0.0,float(dimensions.x-544)*0.5),
                 maxf(0.0,float(dimensions.y-416)*0.5))
             if not check(page.position==expected,
-                    item+" screen 1x/2x centered source window"):
+                    item+" screen 1x/2x centered source window; got="+str(page.position)+" expected="+str(expected)+" control="+str(screen.size)):
                 return
             if item!="formation":
                 var panel:PanelContainer=page.get_node(
