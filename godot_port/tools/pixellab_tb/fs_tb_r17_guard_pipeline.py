@@ -134,7 +134,7 @@ def create_project(root:Path,records:list[dict],ledger:list[dict]):
     nd.update(schema='FS_TB_R17_FROST_GUARD_3STAGE_REAL_PIXEL_LAB_V3',
               clip_count=96,total_frames=862,baseline_clip_count=90,
               third_family_motions=18,actions_per_family={'bat':12,'frog':12,'frost':6},
-              new_pixel_lab_jobs=3,new_provider_generations=sum(float(x['usage'].get('generations',0)) for x in ledger),
+              new_pixel_lab_jobs=3,new_provider_generations=sum(float(x['reported_usage'].get('generations',0)) for x in ledger),
               new_true_provider_frame_slots=24,technical_qa='NATIVE_NOT_RUN',
               human_art_gate='OWNER_ART_REVIEW_PENDING',integration_qa='NOT_RUN_ART_ONLY',
               source_r16_zip_sha256=SRC_SHA)
