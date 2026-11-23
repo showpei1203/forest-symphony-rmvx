@@ -1,3 +1,18 @@
+# T-C CURRENT｜D15 灰鑄工坊城 CompletePAR 封閉白底島修復、私人來源及 QA｜2026-11-23
+
+**本輪實際新成果（優先於 D14/D13/D11 歷史）**：重用 D14 獨立全非地表白底 RGB 原圖，不重做 Ground，不從 Master 逆切，修正原 white-key 演算法漏掉的**五塊大型封閉白底**，D15 另存真透明 `1474×1067 RGBA` PAR，SHA `1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9`，Alpha=0 **734965 → 776139**。右側橋區合成近白色像素 **20781 → 336**，主要火山道路與熔岩露出。Ground 原 `1280×928` SHA `ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d` **完全未改動**。
+
+**正式限制：PAR 仍是 1474×1067 原尺寸，不是符合 40×29 的 1280×928 原作者新圖。** 目前整張 1280×928 預覽採 LANCZOS 下縮且明確標 TECH ONLY；強裁會切掉 106197 個高不透明物件像素。**D15 私有圖片 Godot 4.7.2 真原生 NOT_RUN，VISUAL ART HOLD、正式 ART PASS 仍 0/12。** M1 真完整 PAR 技術修正版 PASS；M2 私有 Godot NOT_RUN；M3 白洞阻斷修正 TECH PASS；M4 第二樣本 NOT_RUN。
+
+- [D15 8 檔私人來源、真 PAR、前後對照與 QA ZIP](https://drive.google.com/file/d/1E8bf_o8UquJQYP3UoayzibCks6f4phKW/view)，13,580,705 bytes，CRC PASS，SHA `76523e688a050abb956ad8dda9e71bcb47d4171bd474c1e810bc385f18220571`。
+- [D15 新真透明原尺寸 PAR](https://drive.google.com/file/d/1aOF1RIUpHjyJdXnB30bxD3XxEtZZ3kEV/view)；[真合成 TECH 預覽](https://drive.google.com/file/d/1O4CiQ_K5PHKyFDht_BfSJTz25Wi2GcRt/view)；[D14/D15 視覺對照](https://drive.google.com/file/d/1b2Y7bfikStctKgZR6geR0VcOoenZHmeD/view)；[完整來源 QA JSON](https://drive.google.com/file/d/1C3HD6mAfqt-V2rv7fxhypFybO4vMiGoO/view)。
+- 更新既有 `fs_tc_white_plate_to_complete_par.py` 的可選 `--repair-large-enclosed-background`，沒有重寫已通過工具；新增大型背景 vs 小型白色裝飾反例測試。[新白底透明化 CI #45101082116：SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45101082116)，[初次測試資料設計錯誤 #45100966246：FAIL](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45100966246) 已明確記錄，實際暗部物件像素與 Ground 保留。
+- [D15 完整 Handoff／來源／Failure Log／後續施工規格](TC_D15_FS_04_VILLAGE_WHITE_VOID_REPAIR_SOURCE_QA_20261123.md)。正式圖檔保存 Drive，非公開 GitHub；私人 Drive readback owner-only。
+- **最高規則差異記錄**：舊 PixelLab Roadmap 含 Master-first 四層的過時方案；使用者最新 + Drive 正式 SOP 優先 `先獨立 Ground → 同世界座標全部非地表獨立透明 PAR`，不反切 Master、不判斷遮擋玩家、不要用 NAV/事件當施工進度。
+- **下一完整單位**：不重生 Ground，真正取得**原生 1280×928、完整物件不裁邊、1× 像素對位**的 PAR；再利用既有 Godot 4.7.2 native probe 在可授權私有來源的路由跑真渲染，做人工 ART Gate。沒有核准的私有來源傳輸／Bridge 任務則標 M2 HOLD，不能把 synthetic Godot CI 借來。
+
+---
+
 # T-C CURRENT｜D14 FS_04_VILLAGE 第二張獨立真透明完整 PAR + Godot 4.7.2 Native 工具實測｜2026-11-22
 
 **最新成果（優先於以下 D13/D12/D11 歷史）：** 在 D11 原 Ground 不變下，D14 重新生成整張工坊城**只有非地表物件**的 `1474×1067 RGB` 白底來源。新的 deterministic white-background matte 已成功轉成真正 `1474×1067 RGBA`（Alpha=0 **734965** pixels、Alpha255 **830440**），不從含 Ground 的 Master 反切。新全圖物件風格更清晰，已製作和 D13 的完整 Ground+PAR 靜態合成對照；已實際封存 7 檔 ZIP 和來源、預覽、QA 至私人 Drive，readback owner-only。
