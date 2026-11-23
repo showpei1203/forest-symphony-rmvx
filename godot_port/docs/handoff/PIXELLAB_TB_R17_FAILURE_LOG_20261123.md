@@ -36,3 +36,7 @@
 
 ## R17 future regression guard
 - Add an **offline pre-submit schema check for every expected ledger field** (not only prompt length): require `reported_usage` contract before releasing producer source, and create_project dry-run with synthetic successful records before live provider jobs. Preserve original provider job IDs, raw outputs, cost and immutable source under any packaging exception. A failed release assembler must NEVER trigger new paid provider calls by default.
+
+## R17-F03 | Producer ledger schema permanently corrected in source [FIXED, NO NEW API]
+- After private R17 M1 recovery and independent native proof, fixed the exact original generator source line `x['usage'].get('generations',0)` to use the real ledger field `x['reported_usage'].get('generations',0)` on the T-B branch. Source fix commit `83c635d2979e58ee1a730e834d50cce073f8b238`. Same exact correction in private bridge source commit `dbb331e59c65f03872c65f57786d1df704186bde`.
+- **Historical origin of final formal R17 art remains the offline source-recovery, not an unrecorded paid replay.** No additional provider jobs generated from this repair. The old wrapper's expected script SHA intentionally stays pinned to the previously verified generator, so changed source fails closed before any API submission; do NOT update the wrapper to re-enable the already completed paid R17 batch. A future Locomotion paid unit requires its own independent audited wrapper, offline full ledgers schema tests and source-specific budget.
