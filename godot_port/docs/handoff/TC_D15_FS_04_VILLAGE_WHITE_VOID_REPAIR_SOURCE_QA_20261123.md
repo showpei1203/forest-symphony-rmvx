@@ -28,7 +28,7 @@ D14 白底摳圖的已知缺陷：只有**連通圖像外邊界**的白色背景
 - 修正程式 commit `cad165d40349868d34ad03abb6e4b44deb814f2e`，測試資料修正 commit `f602ba263c141f84473a9b4ab14a8de4eef846d6`；已從 Actions 讀回實際成功 job steps，不借用其他的 PASS。
 - 本地實際私人 D14 PNG 來源再測，原 Ground SHA 鎖檢查、白洞遮罩、原非白色像素不變、完整 Alpha histogram、靜態 `PIL Image.alpha_composite`、橋樑 ROI、中間檔案 SHA、8 檔 ZIP CRC 皆完成。**原生 Godot4.7.2 D15 私有素材 NOT_RUN**；先前 #44997754667 成功的是 synthetic 測試，不可充數。
 
-## 3. Google Drive 私人封存（已上傳，需 READBACK）
+## 3. Google Drive 私人封存（已完成 WRITE→READBACK，shared=false、owner-only）
 - [D15 8 檔來源 / 新 PAR / 靜態合成 / 前後圖 / QA / Failure Log ZIP](https://drive.google.com/file/d/1E8bf_o8UquJQYP3UoayzibCks6f4phKW/view)：**13,580,705 bytes，8 entries，ZIP CRC PASS**，SHA256 `76523e688a050abb956ad8dda9e71bcb47d4171bd474c1e810bc385f18220571`。
 - [真 D15 PAR RGBA 原尺寸](https://drive.google.com/file/d/1aOF1RIUpHjyJdXnB30bxD3XxEtZZ3kEV/view)
 - [1280×928 Ground+PAR 合成（**RESAMPLED TECH ONLY，不是原生 1×**）](https://drive.google.com/file/d/1O4CiQ_K5PHKyFDht_BfSJTz25Wi2GcRt/view)
