@@ -1335,6 +1335,10 @@ func _use_item_from_ui(item_id: int, target: Dictionary, in_battle: bool) -> voi
 
 func _show_log(message: String) -> void:
     log_label.text = message
+    # P538C source page hides the developer log; denied equipment or
+    # unverified item usage must be visible to the player, not silent.
+    if source_page_overlay!=null and source_page_overlay.visible:
+        source_page_overlay.show_feedback(message)
 
 func _on_battle_finished(victory: bool) -> void:
     _show_log("戰鬥結束：" + ("勝利" if victory else "失敗"))
