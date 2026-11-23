@@ -195,7 +195,7 @@ P538B next: original full STATUS/SKILLS/ITEMS/EQUIP/FORMATION subpage compositio
 ## P538B｜2026-11-23 原始 MENU 全頁功能候選與 PRIVATE 視覺 Gate
 
 - **已實際施工（M1）**：原版 SHA 原圖入口 + `FSOriginalMenuPage` 五個完整功能頁：Status / Skills / Items / Equip / Formation，附物品選對象、裝備候選/換裝和隊伍交換；資料全部透過既有 `FSMenuModel`，不得重寫 ATB/ACT/裝備/背包，沒有私人圖片入公開 Repo。
-- **Godot4.7.2 native（M2）**：初版完整 CI [45114810650](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45114810650) 98/98 SUCCESS（包括 P538B 和戰鬥、劇情回歸）；加強的第二 synthetic Actor2 Lv7 / 544與1088測試須以其後 GitHub Actions 成功結果為準。
+- **Godot4.7.2 native（M2）**：初版完整 CI [45114810650](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45114810650) 98/98 SUCCESS（包括 P538B 和戰鬥、劇情回歸）；加強的第二 synthetic Actor2 Lv7 / 544與1088測試已由 [最終 native CI #45115275149](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115275149) 98/98 SUCCESS 驗證；PRIVATE 原始圖截圖另行 HOLD。
 - **M3**：本輪第一套完整原生回歸未觀測到 FAIL，不編造修復。既有 P538A 戰鬥 debug chrome 不可退化。
 - **M4**：兩位不同 ID/等級的 synthetic 角色資料與原圖喬伊／米亞 identity，私有源圖的 10 張/解析度 capture harness 已編寫，但尚未 stage 真實 PRIVATE UI ZIP，故 SOURCE VISUAL QA 不是 PASS。
 - **Gates**：MENU 行為候選≠VX 原始同狀態 parity；私人原圖 native 544/1088、WindowSkin、原 VX 比圖、使用者 Art Gate，以及原11 postApply資料/505 effective alias 未完成，**ART HOLD / Phase1 SEAL NO**。Quest/Save/System及未驗證 sub tabs 保持 disabled。完整交接 [P538B Handoff](HANDOFF_20261123_P538B_ORIGINAL_MENU_PAGES.md)，[Failure Log](FAIL_LOG_20261123_P538B_ORIGINAL_MENU_PAGES.md)。
