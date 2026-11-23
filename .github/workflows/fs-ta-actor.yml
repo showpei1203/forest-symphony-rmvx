@@ -338,6 +338,30 @@ jobs:
           assert q['godot_native_attack']=='NOT_RUN'
           print('R20_SOURCE_METADATA_GATE_PASS; PAPER_DOLL_SOURCE_BLOCKED, ART_NOT_APPROVED')
           PY
+      - name: R21 approved-A62-64 source lineage and native private QA metadata contract
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r21_source_locked_run_attack.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('godot_port/docs/handoff')
+          m=json.loads((p/'TA_R21_SOURCE_LINEAGE_MANIFEST_20261123.json').read_text(encoding='utf-8'))
+          q=json.loads((p/'TA_R21_NATIVE_QA_20261123.json').read_text(encoding='utf-8'))
+          assert m['approved_A62_64_source_sha256']=='70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e'
+          assert m['A62_48_provider_F0_sha256']=='a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba'
+          assert m['pre_provider48_vs_approved48_changed_pixels']==47 and m['approved64_matches_padded_providerF0_rgba']
+          assert m['A52_original_body_sha256']=='a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f'
+          assert m['atlas_size']==[256,192] and m['run_phase_source_columns']==[0,1,0,2]*3
+          assert m['run_source_poses_distinct']==3 and m['attack_frames_distinct']==11
+          assert m['weapon_pixels']==m['fx_pixels']==0 and m['full_FS_battle_integration']=='NOT_RUN'
+          assert 'HOLD' in m['art_status'] and m['new_paid_API_request']=='NOT_RUN'
+          assert q['native_screenshot_count']==24 and q['M2_native_godot_actual_original_private_pixel_frames']
+          assert q['user_ART_PASS'] is False and q['lpc_individual_outfit_components']=='HOLD_NOT_VERIFIED'
+          for action in ('RUN','ATTACK'):
+              assert q['native_renderer_mismatch'][action]['premultiplied_tolerant_mismatch_per_frame']==[0]*12
+          assert q['platform'].startswith('sandbox isolated Xvfb')
+          print('R21_PUBLIC_METADATA_CONTRACT_PASS; native private frame evidence is in Drive, ART_HOLD')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

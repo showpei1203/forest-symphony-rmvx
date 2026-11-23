@@ -1,0 +1,22 @@
+# Forest Symphony T-A R21: real A62 source lineage, RUN/ATTACK native proof
+2026-11-23 | T-A private art lane | ENGINE QA PASS, ART HOLD, main-game integration NOT_RUN
+
+## M1: critical source identity correction
+The original A52 private zip contains actual approved 64x64 full-body A62 F0 with SHA256 70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e. It is exactly the historical provider result A62_PROVIDER_RAW_F0.png (48x48, SHA256 a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba) padded on all four sides by 8 transparent pixels; full RGBA pixel equality. The R20 source A62_SOURCE_F0_48.png SHA256 0ca4ce9f55a718882b801114602c14e3d288ea4371806fe8afcb3d9b64510c37 was PRE-provider and differs by 47 pixels. The R20 ORA is valid for its own pre-provider input only, not the approved 64px action baseline.
+
+No new character artwork was generated in R21. RUN Body 256x192 has twelve 64x64 playback slots with THREE genuine A62 provider pose images repeated [0,1,0,2] x3. ATTACK Body is byte-identical to original paid PixelLab A52 Body 256x192 SHA256 a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f (11 unique poses, F0=F11). Both have matching approved original F0. Separate Weapon and FX sheets 256x192 are entirely alpha 0, honoring current UNARMED instruction. No polygon-generated belly, sleeve, boot or fake LPC source modules.
+
+## M2: actual Godot 4.7.2 isolated GPU tests
+Reused frozen A52 private Godot scene, with copied R21 assets and new narrowly scoped RUN/ATTACK native verification scripts. Official Godot 4.7.2.stable.official.ed1daf0bf downloaded from already-existing short-lived T-A CI artifact; tests executed in assistant isolated Linux Xvfb/Mesa llvmpipe OpenGL, NOT owner Windows GPU and NOT full migrated Forest Symphony Battle. Native 24 original GPU screenshots (12 RUN + 12 ATTACK) show source-to-render premultiplied-tolerant RGBA mismatch 0/12 each, no clipping; RUN 13 frame_changed signals in 1.09s; ATTACK F7 event 0.630s exactly once, 70ms hitstop and return to idle.
+
+## M3: fixed blockers, actual negative tests
+Recovered real A62 provider 48px source instead of pre-provider F0. First pure-headless OpenGL capture hung on RenderingServer.frame_post_draw; rerouted via Xvfb. Initial RUN script mistakenly treated source pose ordinal 2 as atlas slot 2 instead of 3 at F3/F7/F11, fixed and native rerun PASS. Mutating A52 Body and substituting the wrong pre-provider F0 both trigger expected source-checker rejection.
+
+## M4: format reuse, not art reproducibility
+Used same 12x64 Body/Weapon/FX atlas contract and native capture checks on TWO action families, RUN and ATTACK. This proves deterministic export and renderer compatibility only; RUN has just three unique actual poses, and ATTACK A52 source was originally sword-grip art. Hiding its weapon does NOT turn it into natural clenched-fist punching. Full original Godot FS ACT/ATB/damage integration NOT_RUN. Natural 1x ART=HOLD, source-native LPC 45-degree outfit/hidden component layers not verified. Do not merge to main, A52/A54, T-B or T-C. No new paid PixelLab, no Codex, no Desktop Remote.
+
+## Private results and scope
+[Private R21 folder](https://drive.google.com/drive/folders/1pv4vLrtlAA8XKcKAXwQVaoec2ZDHwgv2), [full 501-item ZIP](https://drive.google.com/file/d/1Yr8HFNeiP7vLaAJo4wyBVrje9CQHJ9pr/view) 1,861,506 bytes SHA256 aa48c5d9dced6bccf09eb6a52493b93b4215a9a03260b7b7a751b4a513407634 CRC+per-file SHA verified, [GPU 1x comparison](https://drive.google.com/file/d/16O1T_9JqlU-xHbcCq3dwoUzG507sJ0Ep/view), [native GIF](https://drive.google.com/file/d/17Vw0Wbd-TuL0r2Rx-AYqiZfPSJF01FY0/view), [real native QA JSON](https://drive.google.com/file/d/1XV8ybQR4zKZAgVoftACS--sPaXkjY99_/view). All 12 Drive items server-readback private (shared=false). GitHub contains source-only scripts, manifests, failure log and native evidence SHA, no private art PNG.
+
+## NEXT actual macro unit
+Make a visually coherent *NEW* unarmed whole-body punching animation using approved A62 full identity source with a genuine art process, natural fists, torso-hip momentum, matching fabric topology and 1x owner review BEFORE FSBattle integration. Source-native independent 45deg LPC clothing parts remain HOLD. Any PixelLab paid generation requires new explicit cost authorization. Do NOT invent missing costume pixels with procedural rectangles or count this R21 legacy sword pose as an ART_PASS.

@@ -1,4 +1,7 @@
 # FS T-A R20｜A62 全身來源保真與紙娃娃真相稽核
+
+> R21 2026-11-23 HISTORICAL CORRECTION: The R20 source A62_SOURCE_F0_48.png is PRE-provider and is NOT the approved 64px character baseline. Approved A62 64px F0 = A62_PROVIDER_RAW_F0.png (48px) padded by eight transparent pixels, RGBA exact, original source differs by 47 RGBA pixels. The R20 7-mask image parity test remains valid for its PRE-provider input only. For current T-A art reference use FS_TA_R21_A62_CORRECT_F0_SOURCE_CONTRACT_20261123.md, preserving the original R20 audit as a separate historical record.
+
 2026-11-22; replaces R19 pending and source-only contract where results differ.
 STATE = **VISIBLE_PIXEL_SOURCE_PARITY_PASS; COMPLETE_LPC_PAPER_DOLL_SOURCE_BLOCKED; ART_NOT_APPROVED**.
 

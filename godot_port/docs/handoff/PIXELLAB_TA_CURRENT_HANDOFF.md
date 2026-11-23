@@ -1,5 +1,21 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R21 LATEST | 2026-11-23 | Correct A62 64px F0 source restored; real native RUN/ATTACK source replay, ART HOLD
+
+SOURCE identity correction: approved A62 64x64 PNG SHA 70a8e6... in A52 private zip is pixel-exact A62_PROVIDER_RAW_F0 48px plus 8px transparent border; the R20 pre-provider A62_SOURCE_F0_48 differed by 47 RGBA pixels. Old R20 7 visible ownership layers are historically valid only for the pre-provider source, NOT the approved combat identity.
+
+M1: complete 12-slot Body 256x192 for RUN (three true provider poses repeated 0,1,0,2 x3) and ATTACK (original unchanged A52 Body, 11 unique poses). Same approved original F0; independent Weapon and FX zero-alpha layers. No invented polygons, no newly generated 12 unique boxing frames.
+
+M2: OFFICIAL Godot 4.7.2 isolated Linux Xvfb Mesa llvmpipe REAL private source GPU: RUN 12/12, ATTACK 12/12 source vs renderer exact premultiplied RGBA, 24 private native captures. RUN 13 frame changed events in 1.09s; ATTACK F7 0.63s single event, 70ms Hitstop, idle return. This is original isolated A52 actor test, NOT migrated original FS full Battle. Owner PC GPU NOT_USED.
+
+M3: fixed mismatched R20 F0, frame_post_draw headless hang by Xvfb, RUN F3/F7/F11 atlas ordinal mapping. Two source-mutation negative tests PASS. M4 second action reuse of same atlas and native QA contract TECH PASS only, art reproducibility UNPROVEN.
+
+**ART HOLD/FAIL**: RUN only 3 unique poses and no human approval, ATTACK originally holds sword; blank Weapon/FX does not create a believable fist punch. True independent 45degree LPC outfit hidden pixels still missing; main FS ACT/ATB integration NOT_RUN. PixelLab paid job NOT_RUN, Codex 0, Desktop Remote 0, no user PC writes. No changes to A52/A54, T-B/T-C or main.
+
+[Private R21 folder](https://drive.google.com/drive/folders/1pv4vLrtlAA8XKcKAXwQVaoec2ZDHwgv2) / [501-item native QA ZIP](https://drive.google.com/file/d/1Yr8HFNeiP7vLaAJo4wyBVrje9CQHJ9pr/view) SHA aa48c5d9... / [GPU GIF](https://drive.google.com/file/d/17Vw0Wbd-TuL0r2Rx-AYqiZfPSJF01FY0/view) / [Source identity and status authority](../authority/FS_TA_R21_A62_CORRECT_F0_SOURCE_CONTRACT_20261123.md). Next macro unit: actual new source-locked unarmed art with closed fists and human 1x review, not old sword/rig repurpose.
+
+---
+
 ## R20 LATEST | 2026-11-22 | A62 TRUE FULL BODY 48px SOURCE LOCK | PARITY PASS, NATIVE MODULAR SOURCE BLOCKED
 
 R19 visual fail traced to non-source polygon abdomen. Actual A62 source ZIP recovered from Drive: `A62_SOURCE_F0_48.png`, 48×48, SHA256 `0ca4ce9f55a718882b801114602c14e3d288ea4371806fe8afcb3d9b64510c37`, all 575 visible original pixels preserved. Original F0 and provider-generated F0 differ by 47 RGBA pixels. The 64×64 reference previously used is NOT a pixel-identical 48x48 pad of source, so never mix 32/48/64 identity without approval.

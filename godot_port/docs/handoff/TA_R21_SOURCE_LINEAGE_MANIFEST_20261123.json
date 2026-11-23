@@ -1,0 +1,61 @@
+{
+  "stage": "R21_SOURCE_LOCKED_M1_FULL_RUN_ATTACK_CANDIDATE",
+  "authority": "T-A R20 source lock superseded only in A62 approved F0 selection, no claim of new original layered LPC costume",
+  "input_a52_zip_sha256": "a7ee69534b99a44cfdcfd12591b5b48d2ade6b91f2e5a8e3f8d47c5a807d7c07",
+  "input_a62_zip_sha256": "71062dee924ea38bd595ee3454c8d29f046ae9707014ac5b0e3424c8c9a548ba",
+  "approved_A62_64_source_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "A62_48_provider_F0_sha256": "a58685cdecfc73bb5bb798a453735bc6c247b53406ee6190886b9cbe00a7d9ba",
+  "A62_pre_provider_source_48_sha256": "0ca4ce9f55a718882b801114602c14e3d288ea4371806fe8afcb3d9b64510c37",
+  "approved64_matches_padded_providerF0_rgba": true,
+  "pre_provider48_vs_approved48_changed_pixels": 47,
+  "A52_original_body_sha256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "run_body_sha256": "d7d340fcd87642d62bfee96a468e8b037210fe00176006fb06fefb00de1cfda3",
+  "attack_body_sha256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "image_frame_size": [
+    64,
+    64
+  ],
+  "atlas_size": [
+    256,
+    192
+  ],
+  "run_phase_source_columns": [
+    0,
+    1,
+    0,
+    2,
+    0,
+    1,
+    0,
+    2,
+    0,
+    1,
+    0,
+    2
+  ],
+  "run_source_poses_distinct": 3,
+  "run12_is_repeat_of_3_source_poses": true,
+  "attack_frames_distinct": 11,
+  "attack_pose_source_original_vendor_A52": true,
+  "F0_F11_attack_RGBA_equal": true,
+  "weapon_pixels": 0,
+  "fx_pixels": 0,
+  "attack_frame_index_contact": 7,
+  "attack_event_time_seconds": 0.63,
+  "hitstop_seconds": 0.07,
+  "art_status": "HOLD_A62_RUN_AND_A52_UNARMED_ATTACK_NOT_OWNER_APPROVED",
+  "source_status": "ORIGINAL_PIXELS_LOCKED_AND_ALIGNED",
+  "paperdoll_status": "WEAPON_FX_SEPARATED_ONLY_LPC_OUTFIT_MODULES_NOT_VERIFIED",
+  "new_paid_API_request": "NOT_RUN",
+  "full_FS_battle_integration": "NOT_RUN",
+  "native_engine": "PENDING_EXECUTION",
+  "run_risks": [
+    "only three unique real RUN poses, repeated twelve slots",
+    "F1/F2 model render can change face/clothing within original provider output",
+    "original 45degree style visually unapproved"
+  ],
+  "attack_risks": [
+    "reused historic sword-holding A52 BODY without sword; authentic unarmed punch gesture not established",
+    "old A52 native demo is not migrated original FS Battle"
+  ]
+}
