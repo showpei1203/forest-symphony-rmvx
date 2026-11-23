@@ -223,7 +223,7 @@ def run_stage(stage):
     l.update(status='COMPLETED_SOURCE_QA_PASS',generation_id=(result.get('last_response') or {}).get('generation_id'),
              raw_returned_frames=len(raw),atlas_png_sha256=sha(raw_bytes),
              raw_frame_sha256=[sha(_png(x)) for x in raw],
-             selected_frame_count=12,qa=qa)
+             selected_frame_count=8,qa=qa)
     # Build complete archival artifact ENTIRELY in owner TEMP before cloud move.
     root=pathlib.Path(tempfile.gettempdir())/('fs_tb_r20_stage'+str(stage)+'_'+runid)
     assert not root.exists(),'R20 source staging temp already exists'
