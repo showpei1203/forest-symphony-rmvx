@@ -1,3 +1,15 @@
+# T-C CURRENT｜D17 FS_04_MAZE 原生 40×29 新連續 Ground＋全非地表 PAR 真雙圖｜2026-11-23
+
+**D17 最新來源成果（優先於以下 D16/D15 舊交接）**：針對 D16 地表有人工羽化拼接與重複紋理的宏觀缺陷，新創作**完整 Ground-only** 火山地表 `1474×1067 RGB`，只做 `(90,70,1370,998)` 1× 等像素裁切，先凍結 Ground `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`。使用**獨立 D15 非地表原圖**且沿用 D16 工廠工具，以 1× 不拉伸重佈六組工坊、熔爐、旗幟、吊車、燈、右側熔岩橋梁，生成全場景 `1280×928 RGBA PAR` SHA `e455aa491415b453235a11ca0eade3ef2578c937ec7d1f4a6613ccb02bf96334`，alpha-zero **862818**；靜態合成 SHA `0213f24d428d00ffa2a7cf233b33ea09e5367270bded24529c9f639edcda3144`。原 D11/D15/D16 原件與正式來源均未改。
+
+- [**D17 完整原圖／Ground／PAR／真靜態合成／QA／程式 13 檔 ZIP（17,262,967 bytes，CRC PASS）**](https://drive.google.com/file/d/1mxfxme7PZbdFd7XmwwVGOclSClL1lyls/view)；[新 Ground](https://drive.google.com/file/d/1fHMcvGb6W3AaZvI07uN-GsSrLe0h5c2k/view)、[新 PAR](https://drive.google.com/file/d/1syxXfi7ykoO_s8m4KoE-R6WhnYD-2xb2/view)、[真實合成](https://drive.google.com/file/d/1QU0MOktXjbYnQ3Iwf5OLXlRtiNtvQ5r0/view)、[D16/D17 A/B](https://drive.google.com/file/d/1CG_g2voyl8sL7agIqHTSQHgm2dXHH1d-/view)。重要 Drive 項目均已 READBACK：shared=false，權限僅 owner。
+- [D17 完整 Handoff + Failure Log](TC_D17_FS_04_MAZE_GROUND_FIRST_COMPLETEPAR_SOURCE_QA_20261123.md)；[D17 GitHub Actions #45115468630](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115468630) **SUCCESS：SYNTHETIC Ground-first / 1× 來源驗證**，不等於 D17 私有圖真正 Godot native。
+- **Gate：** SOURCE/STRUCTURE 及 Python 真實靜態 QA **TECH PASS**；D17 真私有素材 Godot4.7.2 原生 **NOT_RUN/HOLD**（未通過授權私有素材進入現有 Godot 原生執行環境）；VISUAL ART **HOLD**（沿用 D16 Polygon 物件裁邊仍損失 16915 source-positive pixels、867 同一畫布不透明重疊像素、橋與工坊足點尚未 ART Gate）；INTEGRATION **NOT_RUN**；正式 ART **0/12**。
+- **規範優先：** 使用者最新 Ground FIRST → 所有非地表獨立 CompletePAR，拒絕混合 Master 逆切及角色遮蔽子集。額外圖片生成器這輪產生錯誤全景 Master，已拒收，不以自動化流程回收其建築。下一完整單位：讓此**已鎖 D17 Ground**配到真正一次創作、原生 1280×928、無切斷建物的完整 PAR，接著由經核准管道執行真 Godot 4.7.2 1× 截圖與人工 ART，禁止把 synthetic CI 當真人工/原生通過。
+- GitHub 仍使用同一 T-C 隔離 `feat/fs-tc-d12-chroma-par-20261122` Draft PR #17，不影響 T-A/T-B/另一條 T-C；正式圖片只在私人 Drive，沒有 Windows 檔案修改，也沒有 Codex／Desktop Remote 呼叫。
+
+---
+
 # T-C CURRENT｜D16 FS_04_MAZE「熔脈裂橋」第二場景 1280×928 Ground-first + PAR 技術候選｜2026-11-23
 
 **最新真成果（覆蓋下面 D15/D14 歷史的進度，未覆寫舊成果）：** 因 D15 原始 1474×1067 全物件 PAR 不能只靠刪除透明 seam 直接無損壓入 1280×928（寬最多 71/194px，高 0/139px），依宏觀 Roadmap 開展第二火山樣本 FS_04_MAZE。已實際創建 **Ground-first 1280×928 RGB**（D11 Ground-only 來源的全場景再配置）→ 鎖 Ground SHA → 使用 D15 *已獨立生成的所有非地表美術* 批量 1× 重排六組全物件於 **獨立 1280×928 RGBA PAR** → 真正 Image.alpha_composite 靜態 QA，無 Master 逆切、無拉伸到目標假裝原生、原 D11/D15 source 完全不動。
