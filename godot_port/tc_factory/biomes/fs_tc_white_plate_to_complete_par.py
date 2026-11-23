@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 import numpy as np
 from PIL import Image
-from scipy.ndimage import binary_propagation
+from scipy.ndimage import binary_propagation, binary_dilation, label
 
 
 def sha(path: Path) -> str:
@@ -34,6 +34,7 @@ def alpha_counts(alpha: Image.Image) -> dict:
 def convert(
     ground_path: Path, plate_path: Path, out: Path, expected_ground_sha: str,
     scene_id: str="FS_04_VILLAGE", make_technical_preview: bool=False,
+    repair_large_enclosed_background: bool=False,
 ) -> dict:
     ground_path, plate_path, out = map(Path, (ground_path, plate_path, out))
     if ground_path.resolve() == plate_path.resolve():
@@ -61,10 +62,35 @@ def convert(
         if not near_white[y,x]:
             raise ValueError("REJECT plate with opaque corner; no reliably white outside")
     connected_white = binary_propagation(edge, mask=near_white)
+    # D15: large all-white islands enclosed by railings or arch supports
+    # are still BACKGROUND. Keep small enclosed white highlights unchanged.
+    # This operates ONLY on independent non-ground RGB plates, never Masters.
+    removed_islands = []
+    enclosed_white = np.zeros(low.shape, dtype=bool)
+    repaired_fringe = np.zeros(low.shape, dtype=bool)
+    if repair_large_enclosed_background:
+        islands, count = label(near_white & ~connected_white)
+        sizes = np.bincount(islands.ravel())
+        weights = np.bincount(islands.ravel(), weights=low.ravel())
+        chosen = [i for i in range(1, count + 1)
+                  if sizes[i] >= 800 and weights[i] / sizes[i] >= 247]
+        enclosed_white = np.isin(islands, chosen)
+        removed_islands = [int(sizes[i]) for i in chosen]
+        # The few surrounding white antialias fringe pixels are not props.
+        # Unmatte these only when directly neighboring a large white void.
+        repaired_fringe = (binary_dilation(enclosed_white, iterations=3)
+                           & ~enclosed_white & (low >= 215)
+                           & ((high - low) <= 38))
     alpha = np.full(low.shape, 255, dtype=np.uint8)
     fraction = np.clip((245-low)/14.0,0.0,1.0)
     alpha[connected_white] = np.round(255*fraction[connected_white]).astype(np.uint8)
     alpha[connected_white & (low>=245)] = 0
+    if repair_large_enclosed_background:
+        alpha[enclosed_white] = 0
+        ramp = np.clip((245.0 - low.astype(np.float32)) / 22.0, 0, 1)
+        alpha[repaired_fringe] = np.minimum(
+            alpha[repaired_fringe],
+            np.round(255.0 * ramp[repaired_fringe]).astype(np.uint8))
     visible = int(np.count_nonzero(alpha>224))
     zeros = int(np.count_nonzero(alpha==0))
     if zeros < alpha.size // 4 or visible < alpha.size // 100:
@@ -72,9 +98,9 @@ def convert(
     rgba = np.empty((rgb.shape[0],rgb.shape[1],4),dtype=np.uint8)
     rgba[:,:,:3] = rgb
     rgba[:,:,3] = alpha
-    # Decontaminate only pixels with a border-connected white matte.
+    # Decontaminate antialias fringes of known white background, never props.
     a = alpha.astype(np.float32)/255.0
-    fringe = connected_white & (a>0.0) & (a<1.0)
+    fringe = (connected_white | repaired_fringe) & (a>0.0) & (a<1.0)
     if np.any(fringe):
         af = a[fringe,None]
         colors = np.asarray(rgb[fringe],dtype=np.float32)
@@ -93,7 +119,11 @@ def convert(
         "output_par_native_source_size":[ps[0],ps[1]],
         "par_sha256":sha(dest),"alpha":alpha_counts(result.getchannel("A")),
         "original_native_1280x928": ps == gs,
-        "matte_only_border_connected_white":True,
+        "matte_only_border_connected_white":not repair_large_enclosed_background,
+        "D15_large_enclosed_white_background_repair": repair_large_enclosed_background,
+        "D15_enclosed_background_islands_removed": len(removed_islands),
+        "D15_enclosed_island_area_pixels": removed_islands,
+        "D15_guard_small_enclosed_white_details": True,
         "ground_not_subtracted_or_reverse_cut":True,
         "semantic_world_registration":"HUMAN_REVIEW_REQUIRED",
         "Godot_4_7_2_native":"NOT_RUN",
@@ -126,7 +156,9 @@ if __name__=="__main__":
     ap.add_argument("--ground-sha256",required=True)
     ap.add_argument("--scene-id",default="FS_04_VILLAGE")
     ap.add_argument("--technical-preview",action="store_true")
+    ap.add_argument("--repair-large-enclosed-background", action="store_true")
     a=ap.parse_args()
     print(json.dumps(convert(
         a.ground,a.plate,a.out,a.ground_sha256,
-        scene_id=a.scene_id,make_technical_preview=a.technical_preview),ensure_ascii=False))
+        scene_id=a.scene_id,make_technical_preview=a.technical_preview,
+        repair_large_enclosed_background=a.repair_large_enclosed_background),ensure_ascii=False))
