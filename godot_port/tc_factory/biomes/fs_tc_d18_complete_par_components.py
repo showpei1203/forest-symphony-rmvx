@@ -47,7 +47,9 @@ def sha256(path: Path) -> str:
 
 
 def render(ground_path: Path, original_par_path: Path, out_dir: Path,
-           ground_sha256: str, par_source_sha256: str) -> dict:
+           ground_sha256: str, par_source_sha256: str,
+           placements: dict[str, tuple[int, int]] | None = None,
+           phase: str = "D18_INTACT_ALPHA_ISLANDS_ALL_NON_GROUND") -> dict:
     ground_path, original_par_path, out_dir = (
         Path(ground_path), Path(original_par_path), Path(out_dir))
     if ground_path.resolve() == original_par_path.resolve():
@@ -69,6 +71,9 @@ def render(ground_path: Path, original_par_path: Path, out_dir: Path,
     alpha = np.asarray(original.getchannel("A"))
     if not np.any(alpha == 0):
         raise ValueError("Opaque Master rejected; must be true transparent PAR")
+    active_positions = POSITIONS if placements is None else placements
+    if set(active_positions) != set(POSITIONS):
+        raise ValueError("All 6 independent object families must have positions")
     names = list(POSITIONS)
     labels, count = label(alpha > MIN_ALPHA, structure=np.ones((3, 3), dtype=bool))
     counts = np.bincount(labels.ravel())[1:]
@@ -104,7 +109,7 @@ def render(ground_path: Path, original_par_path: Path, out_dir: Path,
         visible = raw[:, :, 3] > MIN_ALPHA
         if int(np.count_nonzero(visible)) != source_count:
             raise ValueError("Source-positive pixels lost by segmentation")
-        x, y = POSITIONS[name]
+        x, y = active_positions[name]
         height, width = visible.shape
         if not (0 <= x and 0 <= y and x + width <= CANVAS[0] and y + height <= CANVAS[1]):
             raise ValueError("Incomplete whole object falls outside world canvas: " + name)
@@ -132,7 +137,7 @@ def render(ground_path: Path, original_par_path: Path, out_dir: Path,
         "right_4px_high_alpha": int(np.count_nonzero(a[:, -4:] > 224)),
     }
     report = {
-        "scene_id": SCENE_ID, "phase": "D18_INTACT_ALPHA_ISLANDS_ALL_NON_GROUND",
+        "scene_id": SCENE_ID, "phase": phase,
         "original_par_source_sha256": sha256(original_par_path),
         "locked_ground_sha256": sha256(ground_path),
         "PAR_sha256": sha256(dest), "composite_sha256": sha256(combined),
