@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 7,
+    "Ground_PAR_pair_candidates_static_pass": 8,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -30,7 +30,9 @@
     "new_ground_source_candidates_FS_04_VILLAGE": 1,
     "failed_complete_PAR_generation_attempts_FS_04_VILLAGE": 6,
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
-    "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1
+    "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
+    "ground_source_candidates_FS_04_MAZE": 1,
+    "complete_PAR_candidates_FS_04_MAZE": 1
   },
   "scenes": [
     {
@@ -466,7 +468,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "PLANNED_NOT_GENERATED",
+      "stage": "D16_GROUND_FIRST_FULL_1280x928_RGB_AND_INDEPENDENT_1280x928_RGBA_COMPLETE_PAR_TECH_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -479,8 +481,45 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
-      "formal_art_gate": "HOLD"
+      "native_Godot_4_7_2_for_current_stage": "D16_REAL_PRIVATE_PAIR_NOT_RUN; HISTORIC_NATIVE_SYNTHETIC_ONLY",
+      "formal_art_gate": "HOLD_VISIBLE_GROUND_PATCH_MATTE_AND_POLYGON_PROP_CROPS",
+      "Ground_source": {
+        "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
+        "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
+        "source_type": "APPROVED_D11_GROUND_ONLY_RGB_NOT_MIXED_MASTER",
+        "new_rgb_size": [
+          1280,
+          928
+        ],
+        "new_rgb_sha256": "6c5f9d8bfbeeb96ec8da2c43cd19cc74159208853ace4963affe1f31e03136a9",
+        "stage_one_lock": "GROUND_SHA_LOCKED_BEFORE_PAR",
+        "owner_drive": "https://drive.google.com/file/d/1lyl6X9dDOeeNL0xToShRX1NzgYUd-DGN/view",
+        "form_art": "HOLD_TEXTURE_FEATHERING_ROAD_CONTINUITY"
+      },
+      "CompletePAR_source": {
+        "status": "D16_ALL_PLACED_NON_GROUND_GROUPS_FROM_EXISTING_INDEPENDENT_D15_PAR_1X",
+        "source_locked_sha256": "1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9",
+        "source_type": "INDEPENDENT_D15_RGBA_NOT_GROUND_AND_NOT_MASTER",
+        "canvas": [
+          1280,
+          928
+        ],
+        "pixel_scale": "1x_no_resampling",
+        "groups": 6,
+        "alpha_zero_pixels": 865221,
+        "overlaps_opaque_pixels": 2224,
+        "new_rgba_sha256": "fc3333e32f80fb980fbeaabcae02bf6fa942a5079b13eca2fa906a06b1715e6a",
+        "composite_qa_sha256": "83f7a3275a4f02bd111dae99020f1d5df1ed8fdc7ea667f9f34831bbd46ee78c",
+        "private_source_zip": "https://drive.google.com/file/d/14Tk-mbngKeENcFfdF3vdIE9OMVifchfm/view",
+        "ground": "https://drive.google.com/file/d/1lyl6X9dDOeeNL0xToShRX1NzgYUd-DGN/view",
+        "complete_par": "https://drive.google.com/file/d/1_CjVpdp4aXUxGGzqnULrk_P-OgRGwXpg/view",
+        "composite_qa": "https://drive.google.com/file/d/1eB0mGISovFixesr18xspquONdjCaD9GX/view",
+        "source_manifest": "https://drive.google.com/file/d/1XKXTuyQnYewh1hhIJS2_kb2tAouj2QnD/view",
+        "synthetic_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45112426928",
+        "godot_native_real_source": "NOT_RUN",
+        "visual_art": "HOLD",
+        "danger": "M1 technical only: polygon crop/cobble ghosting and bridge footprint, user art not passed"
+      }
     },
     {
       "scene_id": "FS_04_VILLAGE",
