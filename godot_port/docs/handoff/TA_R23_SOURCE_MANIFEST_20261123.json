@@ -1,0 +1,227 @@
+{
+  "stage": "R23_A62_FULLBODY_VISIBLE_LAYER_COMPOSITOR_SOURCE_APPROVED",
+  "source_body_sha256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "source_F0_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_alpha_only": [
+    0,
+    255
+  ],
+  "frame_size": [
+    64,
+    64
+  ],
+  "grid": [
+    4,
+    3
+  ],
+  "atlas_size": [
+    256,
+    192
+  ],
+  "source_frames": 12,
+  "source_unique_poses": 11,
+  "provenance": "real original A52 paid PixelLab output; full original body RGBA unchanged",
+  "layer_type": "7 exclusive visible-pixel ownership masks PER SOURCE FRAME, NOT actual original LPC hidden clothing layers",
+  "mask_names": [
+    "head_hair_visible",
+    "far_arm_sleeve_visible",
+    "near_arm_sleeve_visible",
+    "torso_coat_belly_visible",
+    "belt_waist_visible",
+    "pants_visible",
+    "boots_visible"
+  ],
+  "mask_atlases": [
+    {
+      "layer": "head_hair_visible",
+      "png_sha256": "e456f1d39dedc677feee6d414086f4242c18d0beff3ddd9b1dc4673a64fae357",
+      "opaque_pixels": 3638
+    },
+    {
+      "layer": "far_arm_sleeve_visible",
+      "png_sha256": "ac2f25f24436f14310a8e544635d32dbea1648d2c939b737edd761e6248dabd2",
+      "opaque_pixels": 756
+    },
+    {
+      "layer": "near_arm_sleeve_visible",
+      "png_sha256": "797f9a65ed360cd1da00239786e7172bab99c9f1bb6251e543e6ab7d238d6c76",
+      "opaque_pixels": 481
+    },
+    {
+      "layer": "torso_coat_belly_visible",
+      "png_sha256": "bc4f2dae41ab6d2e1dcd7ff87a681e0a1a0118ee72ffccc89d1589882ba4f1b4",
+      "opaque_pixels": 1003
+    },
+    {
+      "layer": "belt_waist_visible",
+      "png_sha256": "ebe58d458ce556dee671d9c491c189fe33b0761f6874e737a06a259d832646ef",
+      "opaque_pixels": 768
+    },
+    {
+      "layer": "pants_visible",
+      "png_sha256": "7deea723fd532c9e486eae43a1528a34ed50db4b0f1d9e8f1b255b6fd279df6e",
+      "opaque_pixels": 255
+    },
+    {
+      "layer": "boots_visible",
+      "png_sha256": "31b67ed3176e5242d9a1abfb548f8bc8393a74648bba5f13eb612810bac3fdf3",
+      "opaque_pixels": 50
+    }
+  ],
+  "counts_by_frame": [
+    {
+      "head_hair_visible": 304,
+      "far_arm_sleeve_visible": 66,
+      "near_arm_sleeve_visible": 27,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 68,
+      "pants_visible": 22,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 304,
+      "far_arm_sleeve_visible": 66,
+      "near_arm_sleeve_visible": 37,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 66,
+      "pants_visible": 22,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 305,
+      "far_arm_sleeve_visible": 55,
+      "near_arm_sleeve_visible": 38,
+      "torso_coat_belly_visible": 82,
+      "belt_waist_visible": 61,
+      "pants_visible": 22,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 303,
+      "far_arm_sleeve_visible": 55,
+      "near_arm_sleeve_visible": 34,
+      "torso_coat_belly_visible": 78,
+      "belt_waist_visible": 56,
+      "pants_visible": 16,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 304,
+      "far_arm_sleeve_visible": 56,
+      "near_arm_sleeve_visible": 36,
+      "torso_coat_belly_visible": 80,
+      "belt_waist_visible": 56,
+      "pants_visible": 18,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 303,
+      "far_arm_sleeve_visible": 66,
+      "near_arm_sleeve_visible": 50,
+      "torso_coat_belly_visible": 83,
+      "belt_waist_visible": 57,
+      "pants_visible": 16,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 299,
+      "far_arm_sleeve_visible": 72,
+      "near_arm_sleeve_visible": 63,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 68,
+      "pants_visible": 22,
+      "boots_visible": 2
+    },
+    {
+      "head_hair_visible": 302,
+      "far_arm_sleeve_visible": 69,
+      "near_arm_sleeve_visible": 59,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 65,
+      "pants_visible": 25,
+      "boots_visible": 5
+    },
+    {
+      "head_hair_visible": 304,
+      "far_arm_sleeve_visible": 60,
+      "near_arm_sleeve_visible": 48,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 67,
+      "pants_visible": 23,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 303,
+      "far_arm_sleeve_visible": 59,
+      "near_arm_sleeve_visible": 35,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 68,
+      "pants_visible": 25,
+      "boots_visible": 7
+    },
+    {
+      "head_hair_visible": 303,
+      "far_arm_sleeve_visible": 66,
+      "near_arm_sleeve_visible": 27,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 68,
+      "pants_visible": 22,
+      "boots_visible": 4
+    },
+    {
+      "head_hair_visible": 304,
+      "far_arm_sleeve_visible": 66,
+      "near_arm_sleeve_visible": 27,
+      "torso_coat_belly_visible": 85,
+      "belt_waist_visible": 68,
+      "pants_visible": 22,
+      "boots_visible": 4
+    }
+  ],
+  "output_R23_source_recompose_rgba_diff_per_frame": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "original_body_altered_pixels": 0,
+  "new_art_pixels": 0,
+  "real_original_LPC_hidden_clothes": false,
+  "real_45degree_LPC_unarmed_source": false,
+  "new_arm_underpaint": false,
+  "new_natural_boxing_art": "NOT_GENERATED",
+  "actual_art_quality": "HOLD",
+  "production_ready": false,
+  "full_formal_FSBattle": "NOT_RUN",
+  "concept_art": {
+    "available": true,
+    "source_verified": false,
+    "production_image_accepted": false,
+    "original_size": [
+      2172,
+      724
+    ],
+    "mode": "RGB",
+    "intended_original_character_size": [
+      64,
+      64
+    ],
+    "not_valid_source_atlas": true,
+    "is_5_pose_concept_only": true,
+    "fail_reasons": [
+      "not original A62 full body pixel source",
+      "logical source silhouette and head scale differ",
+      "no five 64x64 independently verified source frames",
+      "background is baked checkerboard, not transparent original asset"
+    ]
+  },
+  "Godot_native": "PENDING_REAL_TEST"
+}

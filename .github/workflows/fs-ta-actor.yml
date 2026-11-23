@@ -391,6 +391,31 @@ jobs:
           assert s['negative_mutated_original_body_pixel']=='REJECTED_BY_INSPECT_ZIP_AS_EXPECTED'
           print('R22_SOURCE_RETIMED_TECH_METADATA_PASS; HISTORIC SWORD ANATOMY/ART HOLD')
           PY
+      - name: R23 true seven-visible-layer original source contract, private native proof receipt only
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r23_source_visible_layers.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('godot_port/docs/handoff')
+          m=json.loads((p/'TA_R23_SOURCE_MANIFEST_20261123.json').read_text(encoding='utf8'))
+          q=json.loads((p/'TA_R23_NATIVE_AND_SOURCE_QA_20261123.json').read_text(encoding='utf8'))
+          assert m['source_body_sha256']=='a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f'
+          assert m['source_F0_sha256']=='70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e'
+          assert m['source_frames']==12 and m['source_unique_poses']==11
+          assert len(m['mask_names'])==7 and len(m['mask_atlases'])==7
+          assert m['output_R23_source_recompose_rgba_diff_per_frame']==[0]*12
+          assert m['original_body_altered_pixels']==0 and m['new_art_pixels']==0
+          assert not m['real_original_LPC_hidden_clothes'] and not m['production_ready']
+          assert not m['concept_art']['production_image_accepted']
+          assert q['native_screenshot_count']==12 and q['native_source_gpu_diff_each_frame']==[0]*12
+          assert q['negative_hide_real_visible_torso_layer_F07_bad_pixels']==85
+          assert q['M2_native_layers_actual_GPU']=='PASS'
+          assert q['real_native_Godot_full_FSBattle']=='NOT_RUN' and q['human_art_acceptance']=='HOLD'
+          assert q['source_native_45degree_clothing_underpaint']=='MISSING / NOT VERIFIED'
+          assert q['actual_new_boxing_frames']=='NOT_GENERATED'
+          print('R23_ORIGINAL_7_LAYER_CONTRACT_PASS (real GPU in private Drive; ART_HOLD)')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

@@ -1,5 +1,18 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R23 LATEST | 2026-11-23 | Correct A62 source 7 VISIBLE layers, 12 ORA pose files, actual independent 7-sprite GODOT 4.7.2 native 12/12, ART HOLD
+
+**Actually constructed:** from original approved A62 64px F0 SHA 70a8e6... and A52 original 12x64 Body SHA a10ea14..., generated 7 exclusive visible-pixel owner atlases (head/hair, far sleeve, near sleeve, whole original coat/torso/belly, belt, pants, boots), 12 independent source-owned ORA editable files, and a Godot SubViewport renderer with 7 separate Sprite2Ds. All reconstructed whole bodies match original A52 12/12 original RGBA exactly, ZERO added art pixel.
+
+**Real M2 native GPU QA:** official Godot 4.7.2 isolated Linux Xvfb Mesa llvmpipe OpenGL, 12/12 actual 7-layer native captures match original A52 source (zero pixel diff). **M3:** disable the original visible torso/belly coat layer at F07 -> 85 real GPU source pixel differences; restore -> zero. Source tamper / drop layer negatives correctly rejected. M4 F07 and other original source frames through same compositor proven technical reproducibility, not new art reproduction.
+
+**CRITICAL NON-PROMOTION:** seven masks are exclusive original flattened VISIBLE pixel ownership, NOT real LPC original hide-under-coat arm/belly pieces or individual poseable clothing source modules. Although 12 edit-ready ORAs exist, independent skeletal manipulation remains blocked by missing underpaint. A newly made 5-key pixel-looking 2172x724 concept was rejected/quarantined because it is NOT authentic original 64px A62 proportions/face/costume, has baked checkerboard, NOT made playable. No genuinely new clenched-fist boxing 12 poses, ART HOLD. Prior R22 retiming sword-holding art remains only technical timing. Formal full original FSBattle/ACT/ATB NOT_RUN. No paid PixelLab, no Windows Orca GUI permissions, Codex 0, Desktop Remote 0. Original A52/A62, main and T-B/T-C untouched.
+
+[Private 12-file R23 Drive folder](https://drive.google.com/drive/folders/1FwtnP_zZOOe3SeEAsoXaoJO5OjjpsbbH) | [Complete 91-item original art + 12 ORA + Godot native archive](https://drive.google.com/file/d/1mj7pcxEt53uj1CmPpOISqRYLCalKJCXQ/view), 1,546,143B sha333965... exactly cloud SHA/bytes/CRC | [Godot 1x](https://drive.google.com/file/d/125wWAnbMGR-Yz5yc65vjfMTQLritJ1VM/view) | [Godot GIF](https://drive.google.com/file/d/1Le4Mhp7l_CW5BPOuaq0LZD-hY-fACGWZ/view) | [F07 mask evidence](https://drive.google.com/file/d/1u7M-64uN7cZN13efu_Z76iiktKEz355L/view). Authority: FS_TA_R23_VISIBLE_LAYER_NATIVE_EXACT_ART_HOLD_20261123.md.
+
+**NEXT FULL UNIT:** true artist-authored A62 64px faithful 45-degree natural unarmed 5 key poses, original outfit underpaint/pose-fidelity, owner 1x art gate, then 12-frame original art and native FSBattle. No fake extra R22 retiming or R19 polygon belly.
+
+---
 ## R22 LATEST | 2026-11-23 | TWO REAL 12-SLOT UNARMED FULL-BODY RE-TIMINGS, native Godot 4.7.2 PASS, ART HOLD
 
 **No new art fabricated and original A62 character source preserved.** Used original A52 full-body 12 poses unchanged *per RGBA frame*; only changed timing/index assignment. R22A F7=source F4 reaches exposed right hand at (45,36.5), up 6.5px vs R21 y43 F7. R22B F7=source F5 (47,39), up 4px. A has 8 and B 9 unique original whole-body poses, each Body 256x192 / 12x64, Weapon and FX alpha-zero. No invented belly, no pseudo outfit paper-doll.
