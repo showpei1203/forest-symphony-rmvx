@@ -10,7 +10,7 @@ Scope: **Godot main migration only** on `feature/fs-godot-phase1`. Not T-A anima
 
 ## M2 native Godot QA
 - Official source-only Godot 4.7.2 CI https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45114810650 **SUCCESS**, 98/98 job steps. This head at `46e242a` includes native project import, P538A/P538B menu tests and existing source-combat, ATB, BATTLE, event, map regression.
-- New M4 tests and private-only capture script were committed after that CI; inspect the most recent CI for their real outcome before elevating status. The capture script itself MUST remain **NOT RUN** without staged owner-only original images.
+- **Final native validation after M4 additions:** official Godot 4.7.2 CI #45115275149, head `224a72353cd2d0fcddecc4fb211175251a2299b5` **SUCCESS 98/98**, including independent synthetic second actor level7 and 544/1088 native layout gate. https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115275149 . The private-only capture harness script is committed but remains **NOT RUN** without staged owner-only original images.
 - `test_fs_p538b_original_pages.gd` tests all five pages, absent private art fail-closed, actor switching, item targets and failed unverified item consumption, equipment UI and actual shared party formation. M4 additions test distinct synthetic Actor#2 (name 米亞, level 7, original-art identity when source present) and both 544×416 and 1088×832 layout coordinates.
 
 ## M3 defects and corrections
