@@ -1,3 +1,15 @@
+# T-C CURRENT｜D19 FS_04_MAZE 原生 1× 全景安全邊界 PAR + 雙 SHA Godot QA｜2026-11-23
+
+**最新真成果（優先於以下 D18／D17 紀錄）**：在**完全不修改** D17 Ground SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 和 D18 原作者完整獨立非地表來源 SHA `a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780` 的前提下，保留六個完整連通物件群、不裁 Polygon、不 resize，做整張 `1280×928 RGBA` CompletePAR 的新世界配置。鐵橋 `(554,334)` **固定**；D18 四邊 4px 高不透明貼邊 **250→0**，六組重要來源像素 **641682 全保留**。新的 PAR SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`，真 Ground+PAR 靜態合成 SHA `c9da92ee753970cbcf528a96cefbec2b8fe7088a0bb80ddffbb528b0cef9428a`。但六物件交疊 **868→1596**，不能直接升級美術；官方 **ART 仍0/12 HOLD**。
+
+- [**D19 私人十二檔完整 QA/來源 ZIP，14,432,637 bytes，CRC PASS**](https://drive.google.com/file/d/1osgVoSOLtuWua-7jUnVebD_XsdlLIqNk/view)；[D19 新原生 PAR](https://drive.google.com/file/d/1QvEN7_DxSB3pvlDW70TDmIeCTD44I6XL/view)／[Ground+PAR 靜態合成](https://drive.google.com/file/d/1vRH8svAtheYP_-UbB_WUjNh0sI0A0xAW/view)／[完整 32px Grid+六群 BBox 視覺 QA](https://drive.google.com/file/d/1k06RyynDHhcA2Ait_HUnVZSWRskahvIk/view)／[D18/D19 對照](https://drive.google.com/file/d/1K59hTfpDrl-I_Fqj_n03gw0cb-qrw5eI/view)。已 metadata **READBACK：shared=false owner-only**。
+- [D19 完整來源、補強 Godot 原生、Failure Log 與真 Gate](TC_D19_FS_04_MAZE_SAFE_EDGE_1X_NATIVE_PROBE_QA_20261123.md)。沿用 D18 renderer 的 **可選** placements，D18 default 不變。[D19 CI #45133395097 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133395097) 回歸涵蓋 D18 預設、D19 六物件、SHA、錯來源拒收。
+- 既有 `native_complete_par_probe.gd` 已補 `--par-sha` 第二原圖鎖定、Alpha 全域統計和不透明 Master/空白 PAR 拒收；[**Godot 4.7.2 真原生引擎測試 CI #45133019030 SUCCESS**](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133019030) 已實際啟動引擎/cold-import/兩張 **SYNTHETIC** PNG 原生渲染及三種錯誤拒收。**不能稱 D19 私人美術 Godot 原生 PASS**。
+- **M2 D19 私人素材 Godot 原生仍 NOT_RUN/HOLD**：此隔離環境沒有 Godot 4.7.2 bin、官方下載 DNS 不通，現有私人 PC Bridge 白名單沒有 T-C 私人 Drive PNG → Windows 隔離原生 QA 的核准任務。**不擅自越權傳輸圖片或執行任意 Windows 指令**。下個完整宏觀施工單位：審核安全、窄白名單的私人來源導入／Godot 4.7.2 真正 D18/D19 同源原生對照；之後人工評估邊界 vs 交疊取捨以及橋頭足點，才做 ART PASS。
+- **正式工作線規則不變**：Ground FIRST → 所有非地表獨立 CompletePAR，不判斷角色遮擋，不逆切 Master、不動 T-A/T-B；D18 私人原圖與舊版 PAR 均保留。Desktop Remote 0、Codex 0、Windows E: 未改。
+
+---
+
 # T-C CURRENT｜D18 FS_04_MAZE 完整獨立非地表 PAR｜六組完整輪廓、零多邊形裁除｜2026-11-23
 
 **最新本輪真施工（優先於 D17/D16/D15 歷史）**：D17 原生 1280×928 Ground RGB 不動，SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`。新生成獨立非地表 RGBA 原作者 1474×1067，SHA `a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780`，包含完整工坊/市場、獨立鐵橋、南方工坊、熔爐與兩組獨立裝飾。依 Alpha 連通輪廓 **原始 1× 不縮放** 把六組完整物件配置到 D17 世界，**不從 Master 反切、不裁 Polygon、不按遮人選 PAR**。實際輸出 `1280×928 RGBA CompletePAR` SHA `8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e`；獨立 Ground+PAR 真靜態合成 SHA `2e618991676241471271640c7641679857a23b857a7b0048b8338ea991dff620`。
