@@ -114,6 +114,8 @@ def build(r18:Path,stagepaths:list[Path],out:Path,staging:Path,proof:Path,mock=F
     g=g.replace('TB18_MONSTER_FAMILY_MANIFEST.json','TB19_MONSTER_FAMILY_MANIFEST.json')
     g=g.replace('R18: 3 ORIGINAL PIXELLAB RUN 12F ANIMATIONS','R19: 3 ORIGINAL PIXELLAB ICE SKILL 12F ANIMATIONS')
     g=g.replace('"run"','"skill"')
+    g=g.replace('ani.set_animation_loop("skill",true)','ani.set_animation_loop("skill",false)')
+    assert 'ani.set_animation_loop("skill",false)' in g
     assert '"skill"' in g and '"run"' not in g
     (G/'tb19_frost_skill_gallery.gd').write_text(g,encoding='utf-8')
     sc=(G/'tb18_frost_run_gallery.tscn').read_text(encoding='utf-8')
@@ -130,6 +132,9 @@ def build(r18:Path,stagepaths:list[Path],out:Path,staging:Path,proof:Path,mock=F
       ('"run"','"skill"'),(OLD_MARK,NEW_MARK)]:
         assert old in t,('native source marker missing',old)
         t=t.replace(old,new)
+    t=t.replace('assert(spr.sprite_frames.get_frame_count("skill")==12)',
+      'assert(spr.sprite_frames.get_frame_count("skill")==12)\\n        assert(not spr.sprite_frames.get_animation_loop("skill"))')
+    assert 'get_animation_loop("skill")' in t
     assert NEW_MARK in t and 'count==96 and slots==838' in t
     (G/'tests/test_tb19_frost_skill_native.gd').write_text(t,encoding='utf-8')
     # Actual provider frame samples only, nearest-neighbor contact/GIF.
