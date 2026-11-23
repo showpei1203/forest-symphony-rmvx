@@ -37,7 +37,26 @@ const SOURCE_LOCKS:Dictionary={
     "menu/Battle04.png":"6ee5fdfaf36d0d3db92402b3ea0cceb5653d439d4f46ded99d88475f55adef97",
     "menu/Battle04a.png":"22a38b8190795eb80956b23ff24c6aa6a2f829dc282625e842c689c21029c619",
     "menu/Battle05.png":"1b2b2475e0792a25f4f51f76e3b828b87b90cb5e181fc3422e42af3058e5de2d",
-    "menu/Battle05a.png":"452b02babff7740d82a7706d7c14eb25bc9f72daff8988d4e8b3730407d8d720"
+    "menu/Battle05a.png":"452b02babff7740d82a7706d7c14eb25bc9f72daff8988d4e8b3730407d8d720",
+    "system/MenuBack_b.png":"5b9db441132cada7d06e71ef643a453efcb72b3cda63ddfa4bfc9a552eb2332a",
+    "menu/Menu01.png":"d7190866f8a0652f4a7665ea91bee314062731b952398f2cce9c7530a4ecfc8c",
+    "menu/Menu02.png":"254f6bceaf378f436241fcdfed3bab02b36bee0123aec8298a3df5fb468eaa48",
+    "menu/Menu03.png":"e5744b3c316b4efe9d711df2505224ef4095b85d5d712d26c4a32b91cf67a8ac",
+    "menu/Menu04.png":"27747ce76ab02bbbf4ce23afec017923d5eadf448fed1350a07fbcd1b4f53651",
+    "menu/Menu05.png":"bc840be3d2ee1a2086e468febdf6460644f28143068d8bd2c4012bc377b51f25",
+    "menu/Menu06.png":"9670ec4c8b4f639a3afcb07149fffe3d6750fcfbb1c2ae429e550a55ca1ad552",
+    "menu/Menu07.png":"a3749bc763864a9198881dba1474d61e31e54968cd1b537d157633e94ad49b0e",
+    "menu/Menu08.png":"fd4f1b4155cfe85824a1a5906d24bd1c5999548e62b35df7dc8775ee125f98b9",
+    "menu/Status01.png":"04521d4a23e35636dffad8b7afc5d2e0ba86c5ca69db04a6125840e02c8c4958",
+    "menu/Status02.png":"40c33e7d5585b615b96607d2087642cc8f05ab307d0c087d70029ee5784bd5b7",
+    "menu/Skill01.png":"48802ad4316d31fe58851a0a6129adc72e9f0e2e77aedb0ea13f78c0ad7201ae",
+    "menu/Skill02.png":"2653b7a871de0165d2e67d3a26beb72e824db044a23625a005303035ab18a8f1",
+    "menu/Skill03.png":"411e80aabfd62090dcdddd283350b37ea2a62d13177145258ce0bb2aab13a8c5",
+    "menu/Item01.png":"a266209d5e2ab32a76479bc6bfbcec1f70f4ce80c3d7ce7f0f8aacf8dbb0f71a",
+    "menu/Item02.png":"8441e0c279f9605ed80200693733733c10dcfef7159d385a0eabb5bfd912b1e5",
+    "menu/Item03.png":"8122cb76708f1572d756788e7cf55830c346282b48d46ca7fce4707bd7c2a01e",
+    "menu/Equip01.png":"813ea58c200f3ad9679a05e644059ba0fa60d3e854e3a7039a0965f6f889bbb4",
+    "menu/Equip02.png":"b5bd67dc0a6a3d8f1a7becfdaa611a0abff8379c20146959a08279efe1b6a20d"
 }
 var _entries:Dictionary={}
 var _loaded:bool=false

@@ -59,6 +59,11 @@ jobs:
         run: |
           set -euo pipefail
           /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --editor --quit
+      - name: P538A source-original MENU eight icons, five real actions, four page tabs
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_p538a_original_menu.gd
       - name: Run synthetic VX event commands
         shell: bash
         run: |

@@ -15,6 +15,7 @@ const SOURCE_COMMANDS=preload("res://scripts/ui/FSOriginalBattleCommandLayer.gd"
 const STATUS_269=preload("res://scripts/ui/FSBattleSourceHUD269.gd")
 const STATES_381=preload("res://scripts/ui/FSBattleSourceStateHUD381.gd")
 const HELP_462=preload("res://scripts/ui/FSBattleSourceTargetHelp462.gd")
+const SOURCE_MENU=preload("res://scripts/ui/FSOriginalMenuOverlay.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -42,6 +43,7 @@ var original_commands: FSOriginalBattleCommandLayer
 var source_skin_hud: FSBattleSourceHUD269
 var source_state_hud: FSBattleSourceStateHUD381
 var source_target_help: FSBattleSourceTargetHelp462
+var source_menu_overlay:FSOriginalMenuOverlay
 var tab_bar:HBoxContainer
 var developer_scroll:ScrollContainer
 var battle_command_art:Dictionary={}
@@ -175,6 +177,13 @@ func _build_shell() -> void:
     original_commands.name="FSOriginalBattleCommandOverlay232_268_312"
     original_commands.command_requested.connect(_source_battle_command)
     add_child(original_commands)
+    source_menu_overlay=SOURCE_MENU.new()
+    source_menu_overlay.name="FSOriginalMenu202"
+    source_menu_overlay.visible=false
+    source_menu_overlay.command_requested.connect(_source_menu_command)
+    add_child(source_menu_overlay)
+    resized.connect(_layout_source_menu)
+    _layout_source_menu()
 
 func _process(delta: float) -> void:
     # The actual source Tankentai source-frame gauge now ticks in real gameplay
@@ -235,6 +244,10 @@ func _clear_body() -> void:
     # Source-compatible battle UI hides only the temporary debug chrome.
     # Any real target/skill/item submenu restores usable Godot controls.
     _restore_developer_shell()
+    if source_menu_overlay!=null:
+        source_menu_overlay.visible=false
+    if status_label!=null:
+        status_label.visible=true
     if original_commands!=null:
         original_commands.visible=false
     # Source target help is a transient WINDOW, not a permanent enemy label.
@@ -321,6 +334,59 @@ func _update_battle_command_buttons() -> void:
                 var pair:Dictionary=battle_command_art[key]
                 button.icon=pair["inactive"] if button.disabled else pair["active"]
 
+func _layout_source_menu()->void:
+    if source_menu_overlay==null:
+        return
+    # Original VX image is source-native 544x416, including at 1088x832.
+    # Its real pixels stay at 1:1, aligned to centred original background.
+    var offset:Vector2=(size-Vector2(544,416))*0.5
+    source_menu_overlay.position=Vector2(maxf(0.0,offset.x),
+        maxf(0.0,offset.y))
+    source_menu_overlay.size=Vector2(544,416)
+
+func _source_menu_command(which:int)->void:
+    # Original UI art order verified from all eight source Menu PNGs.
+    # Quest/Save/System have no authoritative migrated runtime and never run.
+    match which:
+        0:_show_items()
+        1:_show_status()
+        2:_show_skills()
+        3:_show_equipment()
+        4:_show_formation()
+        _:_show_log("原始 FS 任務／儲存／系統尚未通過來源相容驗證")
+
+func _source_page_tabs(category:String)->void:
+    # Original tabs are 60x20. Only the verified first functional tab is
+    # active; additional source art is visible but never lies about a menu.
+    var source_tabs:Dictionary={
+        "status":["Status01.png","Status02.png"],
+        "skills":["Skill01.png","Skill02.png","Skill03.png"],
+        "items":["Item01.png","Item02.png","Item03.png"],
+        "equipment":["Equip01.png","Equip02.png"]}
+    if ui_art==null or not source_tabs.has(category):
+        return
+    var pictures:Array[Texture2D]=[]
+    for file_name in source_tabs[category]:
+        var image:Texture2D=ui_art.texture("menu",file_name)
+        if image==null or Vector2i(image.get_size())!=Vector2i(60,20):
+            return
+        pictures.append(image)
+    var strip:=HBoxContainer.new()
+    strip.name="FSOriginal_"+category+"_tabs"
+    strip.add_theme_constant_override("separation",8)
+    body.add_child(strip)
+    for i in range(pictures.size()):
+        var panel:=TextureRect.new()
+        panel.name="OriginalSourceTab_"+str(i)
+        panel.texture=pictures[i]
+        panel.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
+        panel.custom_minimum_size=Vector2(60,20)
+        panel.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+        panel.stretch_mode=TextureRect.STRETCH_KEEP_CENTERED
+        panel.modulate=Color.WHITE if i==0 else Color(0.5,0.5,0.5,0.7)
+        panel.tooltip_text="已完成" if i==0 else "原版來源圖已保存，功能待移植"
+        strip.add_child(panel)
+
 func _restore_developer_shell()->void:
     if title_label!=null:
         title_label.visible=true
@@ -386,7 +452,19 @@ func _show_menu() -> void:
     _set_original_background("MenuBack_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / MENU"
-    status_label.text = "角色 / 技能 / 物品 / 裝備 / 狀態 / 編隊（原始 UI 影像待私有素材導入）"
+    if source_menu_overlay!=null and menu_model!=null and (
+            source_menu_overlay.configure(ui_art,menu_model.party(),
+                db!=null and db.boot_final_verified)):
+        _set_original_background("MenuBack_b.png")
+        source_menu_overlay.visible=true
+        _layout_source_menu()
+        title_label.visible=false
+        tab_bar.visible=false
+        status_label.visible=false
+        developer_scroll.visible=false
+        log_label.visible=false
+        return
+    status_label.text = "角色 / 技能 / 物品 / 裝備 / 狀態 / 編隊（原始 UI 尚未通過來源驗證）"
     _add_button("隊伍與狀態", _show_status)
     _add_button("已習得技能", _show_skills)
     _add_button("持有道具", _show_items)
@@ -456,6 +534,7 @@ func _show_status() -> void:
     _set_original_background("MenuBack_status_a.png")
     _clear_body()
     title_label.text = "Forest Symphony / 角色狀態"
+    _source_page_tabs("status")
     status_label.text="角色資料以當前 FSDatabase／FSBattle 為準，原圖另依來源 SHA 驗證"
     _actor_selector(_show_status)
     if battle==null or menu_model==null or (
@@ -507,6 +586,7 @@ func _show_skills() -> void:
     _set_original_background("MenuBack_skill.png")
     _clear_body()
     title_label.text = "Forest Symphony / 技能"
+    _source_page_tabs("skills")
     _actor_selector(_show_skills)
     if actor_index < 0 or actor_index >= battle.party.size():
         return
@@ -528,6 +608,7 @@ func _show_items() -> void:
     _set_original_background("MenuBack_item.png")
     _clear_body()
     title_label.text = "Forest Symphony / 物品"
+    _source_page_tabs("items")
     _add_text("背包：來源道具 ID + 名稱 + 持有數")
     var rows: Array[Dictionary] = menu_model.inventory_rows("item")
     if rows.is_empty():
@@ -547,6 +628,7 @@ func _show_equipment() -> void:
     _set_original_background("MenuBack_equip.png")
     _clear_body()
     title_label.text = "Forest Symphony / 裝備"
+    _source_page_tabs("equipment")
     _actor_selector(_show_equipment)
     if actor_index < 0 or actor_index >= battle.party.size():
         return
