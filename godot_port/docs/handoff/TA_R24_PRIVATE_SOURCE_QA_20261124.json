@@ -1,0 +1,8 @@
+{
+  "source_A62_SHA_lock": "PASS",
+  "real_A52_sword_source_crop_exact_RGBA": "PASS",
+  "negative_mutate_sword_pixel": "REJECTED",
+  "negative_mutate_A62_body": "REJECTED",
+  "true_original_LPC_hidden_garment_source": "MISSING",
+  "art_quality": "HOLD"
+}

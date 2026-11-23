@@ -1,0 +1,23 @@
+{
+  "source_A52_zip_sha256": "a7ee69534b99a44cfdcfd12591b5b48d2ade6b91f2e5a8e3f8d47c5a807d7c07",
+  "approved_F0_png_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_A52_body_sha256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "original_weapon_atlas_sha256": "6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b",
+  "blade_from_original_weapon_frame_index": 1,
+  "source_atlas_crop_xyxy": [
+    38,
+    24,
+    45,
+    45
+  ],
+  "sword_grip_cropped_xy": [
+    3,
+    19
+  ],
+  "cropped_sword_sha256": "c706185c3bc7aa55cf5222a3ee8efac5701aaeed0cfa5b621ef99f894ba6fdce",
+  "body_source_pixel_mutations": 0,
+  "blade_source_pixel_mutations": 0,
+  "source_native_original_LPC_hidden_layers_available": false,
+  "production_art_approved": false,
+  "godot_actual_FS_gameplay": "NOT_RUN"
+}

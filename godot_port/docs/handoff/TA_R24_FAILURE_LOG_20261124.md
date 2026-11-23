@@ -1,0 +1,15 @@
+# FS T-A R24 Failure Log | 2026-11-24
+
+## Scope correction from R23 and latest user request
+- Prior R23 seven layer masks preserve only VISIBLE original source pixels, not articulated/original hidden cloth. User correctly noted attack motion was too small, looking like holding something rather than swinging. The newest explicit direction is to demonstrate a proper **weapon slash**, superseding the old R16-R23 **unarmed** ATTACK constraint for this new isolated experiment only. Do not overwrite old branches/approved source art; do not prematurely merge armed mode into main game's attack contract.
+- Built independent Skeleton2D + actual 8 Bone2D: pelvis, chest, near upper arm/forearm/wrist, far guard arm, both legs. Original A62 whole body is visible but STATIC; dynamic animated skin/cloth is not yet rigged. A52 original sword is sourced exactly from frame 1, not redrawn.
+
+## Observed blockers and actual fixes
+1. INITIAL Godot native run printed `No Bone2D children ... Cannot calculate bone length or angle reliably`, and `Condition det == 0` from Transform2D inversion while registering a *partially built* bone tree. Rebuilt detached skeleton **before** adding to SceneTree, assigned explicit nonzero `rest = transform`, disabled `auto_calculate_length_and_angle`; reran native engine and warnings/errors disappeared. Preserve before/after logs, no false initial clean-pass.
+2. Linux isolated Xvfb reports a V-Sync change warning (driver does not support changing it), not a project logic error. The initial ALSA no-device error from the sandbox was eliminated by requesting Godot `--audio-driver Dummy` in final runs. No user PC was used.
+3. Source change negative tests: modify original source sword pixel and A62 body pixel, hash/provenance verifier rejects both. They were altered only in a TEMP directory; original private A52/A62 artifacts were never modified.
+4. Original 64px A62 body is not skinned/weighted to the new moving bones because source-native original hidden sleeves/torso material is **missing**. Overlay diagnostic hand/arm bones and original A52 sword moving around body demonstrate kinematic control but NOT completed art. Tiny pixel arm appearance/hand connection, sword pose coherence and game silhouette still **ART HOLD**. Do not repeat R19 polygon belly or pretend 7 visible masks supply hidden clothing.
+5. Godot isolated native scene is not original FS ATB/ACT/HP gameplay. Contact signal at 0.630s and 70ms hitstop are mechanical isolated contract only. No external API or PixelLab cost, no Desktop Remote/Codex or changes to user Windows.
+
+## Next complete unit
+- Build actual weighted underpaint/body parts for all relevant poses (or source-verified PixelLab joint art) and bind them to this already-working R24 Skeleton2D and sword Grip Bone. Native 1× / 4× art pass for high guard / giant swing / contact F7 / followthrough; when ART passes, integrate to original FS Battle actor, ATB, hit FX and damage QA. Do not claim all DONE from source event tests.

@@ -1,5 +1,16 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R24 LATEST | 2026-11-24 | REAL Skeleton2D/Bone2D-driven LARGE SWORD SLASH | Native Godot 4.7.2 PASS, ART HOLD
+
+Owner latest feedback changes this new experimental ATTACK from previous unarmed to LARGE ARMED SLASH; old historical R16-R23 unarmed tests remain preserved and are NOT converted into production automatically. R23 only partitioned visible pixels, not a poseable source paper doll. Actual new R24 independent rig has Skeleton2D + 8 Bone2D (pelvis, chest, near shoulder/elbow/wrist, far arm, lead/rear leg), analytic 2-bone IK and actual original A52 sword attached to wrist grip, REAL 12-key AnimationPlayer. Original A62 approved 64x64 BODY remains STATIC as source identity, never fake weight/underpaint.
+
+M1 two full kinetic profiles: overhead 278deg, diagonal 250deg; F4->F7 tip travels 55.14/55.62px, F7->F9 35.65/28.34px, 128px safe weapon canvas; preserve original 64px A62 char. M2 REAL isolated Godot 4.7.2 Linux Xvfb/Mesa OpenGL 24 native PNG and 128 PASS assertions, two actually animated Bone2D profiles, real single F7 0.63 sec contact, 70ms Hitstop, no clip. M3 first run warnings det=0 due initial bone rest and partial SceneTree registration, corrected by building whole detached hierarchy and explicit Bone2D rest. Source mutation negative tests reject private A52 weapon and A62 body pixel changes. M4 diagonal second full 12-key independent playback PASS.
+
+**ART HOLD**: BODY source is STILL STATIC; debug arm joint overlay and moving original sword show mechanical skeleton motion, not real weighted/animated paper doll skin. Original hidden sleeve/cloth/torso underpaint missing, 1x natural torso/guard slash artist not approved. Cannot merge. Full original FS Battle/ATB/HP integration NOT RUN. No user PC/Remote/Codex/PixelLab fee, main/T-B/T-C/A52/A62 original unchanged.
+
+[R24 private 19-file Drive](https://drive.google.com/drive/folders/1gvojm4M5eBZOIvskmGJH3FW1SuxKhqYK) | [52-file reproducible original art+Godot QA ZIP](https://drive.google.com/file/d/1hy43QLVCDOnf9tsxsrx6xHLMqOl0Lwcm/view) SHA256 c206d7ff6... 144235B 24 native captures, CRC PASS | [overhead GIF](https://drive.google.com/file/d/1hPWse6uvw_fvwmmnGVIiCO5EPvIs_cAd/view) | [diagonal GIF](https://drive.google.com/file/d/10syXS2BZEGlCyDcI-oXjlYawkslvmX5h/view) | [actual Godot F3/F5/F7/F9 compare](https://drive.google.com/file/d/1k3JUU5STDrqqwsrNqfNpqajsXWFFwuK2/view). Authority: FS_TA_R24_REAL_BONE2D_LARGE_SLASH_SOURCE_AND_ART_GATE_20261124.md. Next: genuine source-part underpaint & bone-skinned body/arms, human 1x visual gate, then main FS Battle.
+
+---
 ## R23 LATEST | 2026-11-23 | Correct A62 source 7 VISIBLE layers, 12 ORA pose files, actual independent 7-sprite GODOT 4.7.2 native 12/12, ART HOLD
 
 **Actually constructed:** from original approved A62 64px F0 SHA 70a8e6... and A52 original 12x64 Body SHA a10ea14..., generated 7 exclusive visible-pixel owner atlases (head/hair, far sleeve, near sleeve, whole original coat/torso/belly, belt, pants, boots), 12 independent source-owned ORA editable files, and a Godot SubViewport renderer with 7 separate Sprite2Ds. All reconstructed whole bodies match original A52 12/12 original RGBA exactly, ZERO added art pixel.

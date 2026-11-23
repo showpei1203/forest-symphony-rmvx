@@ -30,6 +30,9 @@
 - 若僅 RGB/技術 PASS 而藝術不合格，結果 **ART HOLD**，不能報完成。
 
 ## 正式目標 T-A｜ACTOR01 12 幀戰鬥動作（優先 P2）
+
+> **R24 分支最新補充（2026-11-24）：** T-A isolated Bone2D bone-chain ARMED SLASH 機械工程已完成兩組 12-key／24 原生影格及 F7/Hitstop QA；主角目前仍是靜態 A62 參考圖，尚未真正將可見服裝層綁定活動骨架，原生隱藏衣裝 underpaint 缺件，ART HOLD。最新使用者說明「動作太小，不像揮砍」覆蓋這個新增攻擊實驗的舊版 UNARMED 限定；不覆寫歷史拳擊線。下階段 A1/A2 要做真正可變形的來源服裝／手臂綁骨架與新獨立鍵姿，而不是 R22 重排舊影格。正式 FS Battle/ATB 仍 NOT RUN。詳見 R24 Authority/Handoff 及私人 Drive。
+
 **目的**：使用 PixelLab + Godot 已存在的 A52/A54 技術，產出白髮主角同身份、45° 戰鬥視角、具有真正步態／攻擊的可用 sprite sheet。
 
 ### 步驟

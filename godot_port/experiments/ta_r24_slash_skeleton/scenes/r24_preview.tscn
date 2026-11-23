@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/fs_slash_skeleton_r24.gd" id="1_script"]
+[node name="FS_R24_SlashSkeletonPreview" type="Node2D"]
+script = ExtResource("1_script")
+position = Vector2(32, 32)
+autoplay_preview = true
+preview_repeat = true

@@ -416,6 +416,24 @@ jobs:
           assert q['actual_new_boxing_frames']=='NOT_GENERATED'
           print('R23_ORIGINAL_7_LAYER_CONTRACT_PASS (real GPU in private Drive; ART_HOLD)')
           PY
+      - name: R24 real Bone2D slash private native receipt (source-only GitHub gate, ART HOLD)
+        run: |
+          python3 -m py_compile godot_port/experiments/ta_r24_slash_skeleton/tools/build_r24_private_assets.py godot_port/experiments/ta_r24_slash_skeleton/tools/verify_r24_private_source.py godot_port/experiments/ta_r24_slash_skeleton/tools/verify_r24_public_contract.py
+          python3 godot_port/experiments/ta_r24_slash_skeleton/tools/verify_r24_public_contract.py godot_port/docs/handoff/TA_R24_NATIVE_QA_20261124.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('godot_port/docs/handoff')
+          s=json.loads((base/'TA_R24_PRIVATE_SOURCE_MANIFEST_20261124.json').read_text(encoding='utf-8'))
+          q=json.loads((base/'TA_R24_PRIVATE_SOURCE_QA_20261124.json').read_text(encoding='utf-8'))
+          assert s['approved_F0_png_sha256']=='70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e'
+          assert s['original_weapon_atlas_sha256']=='6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b'
+          assert q['source_A62_SHA_lock']=='PASS' and q['real_A52_sword_source_crop_exact_RGBA']=='PASS'
+          assert q['negative_mutate_sword_pixel']=='REJECTED'
+          assert q['negative_mutate_A62_body']=='REJECTED'
+          assert s['production_art_approved'] is False and s['source_native_original_LPC_hidden_layers_available'] is False
+          print('R24_SOURCE_STATIC_RECEIPT_PASS, real source pixels in owner-private Drive, ART_HOLD')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

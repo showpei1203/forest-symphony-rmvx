@@ -1,0 +1,280 @@
+{
+  "stage": "R24_M1_SKELETON_KINEMATICS_M2_GODOT_NATIVE_M3_BONE_REST_FIXED_M4_SECOND_SLASH",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "native_mode": "isolated Linux Xvfb Mesa llvmpipe OpenGL",
+  "actual_Bone2D_chain": true,
+  "bone_count": 8,
+  "actual_AnimationPlayer": true,
+  "native_screenshots": 24,
+  "source_A62_full_body_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_sword_atlas_sha256": "6d274e0b1c410d1427059abe5cd4e72ae1a75a0bd43a28fc7664afe68c4a560b",
+  "source_sword_cut_sha256": "c706185c3bc7aa55cf5222a3ee8efac5701aaeed0cfa5b621ef99f894ba6fdce",
+  "profiles": [
+    {
+      "name": "overhead_arched_slash",
+      "native_frames": 12,
+      "actual_animated_bone_playback": true,
+      "angular_sweep_degrees": 278.0,
+      "tip_windup_to_contact_px": 55.141,
+      "tip_contact_to_followthrough_px": 35.654,
+      "real_hit_event_once": true,
+      "event_at_seconds": 0.63,
+      "hitstop_events_pass": true,
+      "target_hand_coordinate_full_trace": [
+        [
+          71.9999923706055,
+          69.0
+        ],
+        [
+          70.0,
+          66.0
+        ],
+        [
+          65.9999923706055,
+          61.0000038146973
+        ],
+        [
+          63.0,
+          55.9999961853027
+        ],
+        [
+          65.0000076293945,
+          53.9999961853027
+        ],
+        [
+          70.0,
+          57.0
+        ],
+        [
+          75.0,
+          61.0
+        ],
+        [
+          79.0,
+          65.0
+        ],
+        [
+          78.0,
+          70.0000076293945
+        ],
+        [
+          74.0,
+          73.9999923706055
+        ],
+        [
+          72.0,
+          70.9999923706055
+        ],
+        [
+          71.9999923706055,
+          69.0
+        ]
+      ],
+      "tip_coordinate_full_trace": [
+        [
+          76.9784851074219,
+          50.4200477600098
+        ],
+        [
+          65.0215148925781,
+          47.4200477600098
+        ],
+        [
+          52.3985214233398,
+          47.3985290527344
+        ],
+        [
+          44.4200477600098,
+          51.0215110778809
+        ],
+        [
+          46.0568542480469,
+          50.6598052978516
+        ],
+        [
+          65.0215148925781,
+          38.4200477600098
+        ],
+        [
+          89.294677734375,
+          48.1290168762207
+        ],
+        [
+          97.0753402709961,
+          71.5788879394531
+        ],
+        [
+          83.9440536499023,
+          88.2939453125
+        ],
+        [
+          68.0559387207031,
+          92.2939300537109
+        ],
+        [
+          87.756706237793,
+          82.032958984375
+        ],
+        [
+          76.9784851074219,
+          50.4200477600098
+        ]
+      ]
+    },
+    {
+      "name": "diagonal_slash",
+      "native_frames": 12,
+      "actual_animated_bone_playback": true,
+      "angular_sweep_degrees": 250.0,
+      "tip_windup_to_contact_px": 55.622,
+      "tip_contact_to_followthrough_px": 28.337,
+      "real_hit_event_once": true,
+      "event_at_seconds": 0.63,
+      "hitstop_events_pass": true,
+      "target_hand_coordinate_full_trace": [
+        [
+          71.9999923706055,
+          69.0
+        ],
+        [
+          69.0,
+          65.9999923706055
+        ],
+        [
+          64.9999923706055,
+          61.0000038146973
+        ],
+        [
+          64.0,
+          57.0
+        ],
+        [
+          66.0,
+          55.9999961853027
+        ],
+        [
+          71.0,
+          58.9999961853027
+        ],
+        [
+          76.0,
+          62.0000076293945
+        ],
+        [
+          80.0,
+          65.9999923706055
+        ],
+        [
+          79.0000076293945,
+          70.0
+        ],
+        [
+          75.0000076293945,
+          73.0000076293945
+        ],
+        [
+          71.9999923706055,
+          70.9999923706055
+        ],
+        [
+          71.9999923706055,
+          69.0
+        ]
+      ],
+      "tip_coordinate_full_trace": [
+        [
+          76.9784851074219,
+          50.4200477600098
+        ],
+        [
+          67.3235321044922,
+          46.8378028869629
+        ],
+        [
+          55.9695243835449,
+          44.0161666870117
+        ],
+        [
+          48.2432975769043,
+          45.9670372009277
+        ],
+        [
+          49.341667175293,
+          46.3823089599609
+        ],
+        [
+          72.6764755249023,
+          39.8378105163574
+        ],
+        [
+          94.0753479003906,
+          55.4211196899414
+        ],
+        [
+          95.756706237793,
+          77.032958984375
+        ],
+        [
+          82.3401947021484,
+          88.9431610107422
+        ],
+        [
+          71.6598129272461,
+          91.9431610107422
+        ],
+        [
+          88.658317565918,
+          80.6176834106445
+        ],
+        [
+          76.9784851074219,
+          50.4200477600098
+        ]
+      ]
+    }
+  ],
+  "real_70ms_hitstop_elapsed_ms": 72,
+  "engine_assertions_passed": 128,
+  "remaining_native_warning": "VSync cannot be changed on Mesa llvmpipe",
+  "godot_native_script_errors": 0,
+  "new_art_pixels": 0,
+  "source_A62_pixels_preserved": true,
+  "original_sword_source_pixels_preserved": true,
+  "underpaint": "MISSING",
+  "body_currently_skeletal_skinned": false,
+  "visually_approved": false,
+  "full_FS_Battle_ATB_integration": "NOT_RUN",
+  "new_paid_PixelLab_job": "NOT_RUN",
+  "desktop_remote_calls": 0,
+  "codex_calls": 0,
+  "owner_windows_used": false,
+  "source_test": "PASS",
+  "native_kinematics_engine": "PASS",
+  "art_gate": "HOLD",
+  "private_native_png_sha256": {
+    "diagonal_slash_F00_NATIVE.png": "85aa6411bdfaf5804d436579a4d89c0e3bf72e02e97429ce029c4470471fcc69",
+    "diagonal_slash_F01_NATIVE.png": "e2cea1b3fcbd844d2c8d739d4a8fb809b3e96b53d4e81bfb7659bd2da2a541f7",
+    "diagonal_slash_F02_NATIVE.png": "d2c3fb2bf959ada42c7378f75bd11a1220daf53c925272caf77630d36727e046",
+    "diagonal_slash_F03_NATIVE.png": "42768188b72099b83bb84f85c39752754481ee1b719426aebf515a45830ec814",
+    "diagonal_slash_F04_NATIVE.png": "70b200b2dad2ae88cf9328dadf61be5261c71c87a83d0f28a28f2aaa2a0ab324",
+    "diagonal_slash_F05_NATIVE.png": "ad801c3c08d18c4b83c6c82518e9555c2d7b4f6b23cb2e6f6192e048943c1683",
+    "diagonal_slash_F06_NATIVE.png": "c2f768fe084c7f13591650413ce098e9259996b2b39f9de360eacc487c97d557",
+    "diagonal_slash_F07_NATIVE.png": "57080372cd393a443a7613827f6cfa66a659dfa70734a21d1c94e0c47159ebb8",
+    "diagonal_slash_F08_NATIVE.png": "f46a68aecca7a8a1f7ffceb46d4f89aa0f6e488a11ed9d3b62d47bec6ac10d2b",
+    "diagonal_slash_F09_NATIVE.png": "30dca6de6836efd8aac7d21544d08b19f3b04b4cf4463dc076003f322ef5a236",
+    "diagonal_slash_F10_NATIVE.png": "1c15c50dd124d6755ca479c687a3f0abab487ead651b63b77f0f0ab1d1dceec8",
+    "diagonal_slash_F11_NATIVE.png": "85aa6411bdfaf5804d436579a4d89c0e3bf72e02e97429ce029c4470471fcc69",
+    "overhead_arched_slash_F00_NATIVE.png": "85aa6411bdfaf5804d436579a4d89c0e3bf72e02e97429ce029c4470471fcc69",
+    "overhead_arched_slash_F01_NATIVE.png": "3bb45705295afe3b0e4719618643e97f53da6aabdaeaf4cdbd3464e568668e6f",
+    "overhead_arched_slash_F02_NATIVE.png": "eaed6bc40d78e3437afc0b909d490b1441541d08ade8f075c05e4ad2cbb85ea4",
+    "overhead_arched_slash_F03_NATIVE.png": "9ee3a4924bc3d47fe9edce45607d479d14d94dcf57cf4174f72f093cf7d093c1",
+    "overhead_arched_slash_F04_NATIVE.png": "6415ada9db45cab07a60937c03b90d7cb4d939bd93176c30c8671a0688239858",
+    "overhead_arched_slash_F05_NATIVE.png": "07f593fa44494332bdd6778df8a9bb5e4069803b8f882843d74e059aede90b9f",
+    "overhead_arched_slash_F06_NATIVE.png": "dcdb95a78ad0633339546ffd7054acfa7e809380145eb94cc4d94cfefe8fe5ff",
+    "overhead_arched_slash_F07_NATIVE.png": "bd371d4243598b183d9ffe35543fbfcc5e75329b24db492aa7c44d947480af40",
+    "overhead_arched_slash_F08_NATIVE.png": "44604e13f00d2258f049eaa3ab0e333adf126f237e77b47d424a7d6f1184e263",
+    "overhead_arched_slash_F09_NATIVE.png": "0a406e49eaf51bb37e8012354268a68a1d1cca6c23e8507368e4fa9ff7c6e68b",
+    "overhead_arched_slash_F10_NATIVE.png": "1b292a09d24872fba89bd508a5302faeeac6fb90cd6b297c7efd81ab190088d5",
+    "overhead_arched_slash_F11_NATIVE.png": "85aa6411bdfaf5804d436579a4d89c0e3bf72e02e97429ce029c4470471fcc69"
+  }
+}
