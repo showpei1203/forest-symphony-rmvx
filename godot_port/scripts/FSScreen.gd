@@ -16,6 +16,7 @@ const STATUS_269=preload("res://scripts/ui/FSBattleSourceHUD269.gd")
 const STATES_381=preload("res://scripts/ui/FSBattleSourceStateHUD381.gd")
 const HELP_462=preload("res://scripts/ui/FSBattleSourceTargetHelp462.gd")
 const SOURCE_MENU=preload("res://scripts/ui/FSOriginalMenuOverlay.gd")
+const SOURCE_PAGES=preload("res://scripts/ui/FSOriginalMenuPage.gd")
 var db: FSDatabase
 var battle: FSBattle
 var world: FSGameState
@@ -44,6 +45,7 @@ var source_skin_hud: FSBattleSourceHUD269
 var source_state_hud: FSBattleSourceStateHUD381
 var source_target_help: FSBattleSourceTargetHelp462
 var source_menu_overlay:FSOriginalMenuOverlay
+var source_page_overlay:FSOriginalMenuPage
 var tab_bar:HBoxContainer
 var developer_scroll:ScrollContainer
 var battle_command_art:Dictionary={}
@@ -182,6 +184,17 @@ func _build_shell() -> void:
     source_menu_overlay.visible=false
     source_menu_overlay.command_requested.connect(_source_menu_command)
     add_child(source_menu_overlay)
+    source_page_overlay=SOURCE_PAGES.new()
+    source_page_overlay.name="FSOriginalMenuPageP538B"
+    source_page_overlay.visible=false
+    source_page_overlay.return_requested.connect(_source_page_return)
+    source_page_overlay.actor_requested.connect(_source_page_actor)
+    source_page_overlay.item_requested.connect(_source_page_item)
+    source_page_overlay.item_target_requested.connect(_source_page_item_target)
+    source_page_overlay.slot_requested.connect(_show_equipment_candidates)
+    source_page_overlay.equipment_selected.connect(_source_page_equipment_selected)
+    source_page_overlay.formation_requested.connect(_formation_clicked)
+    add_child(source_page_overlay)
     resized.connect(_layout_source_menu)
     _layout_source_menu()
 
@@ -246,6 +259,8 @@ func _clear_body() -> void:
     _restore_developer_shell()
     if source_menu_overlay!=null:
         source_menu_overlay.visible=false
+    if source_page_overlay!=null:
+        source_page_overlay.visible=false
     if status_label!=null and view_name!="BATTLE":
         status_label.visible=true
     if original_commands!=null:
@@ -343,6 +358,9 @@ func _layout_source_menu()->void:
     source_menu_overlay.position=Vector2(maxf(0.0,offset.x),
         maxf(0.0,offset.y))
     source_menu_overlay.size=Vector2(544,416)
+    if source_page_overlay!=null:
+        source_page_overlay.position=source_menu_overlay.position
+        source_page_overlay.size=Vector2(544,416)
 
 func _source_menu_command(which:int)->void:
     # Original UI art order verified from all eight source Menu PNGs.
@@ -408,6 +426,62 @@ func _hide_developer_shell_for_original_battle()->void:
         developer_scroll.visible=false
     if log_label!=null:
         log_label.visible=false
+
+func _present_source_page(category:String,subject_id:int=-1)->void:
+    # UI only: FSMenuModel continues to own all data/mutations. Missing or
+    # tampered original artwork leaves the existing functional fallback.
+    if source_page_overlay==null or ui_art==null or menu_model==null:
+        return
+    if not source_page_overlay.configure(ui_art,menu_model,category,
+            actor_index,formation_first,subject_id):
+        return
+    _set_original_background(str(
+        FSOriginalMenuPage.PAGE_BACKGROUNDS[category]))
+    _hide_developer_shell_for_original_battle()
+    if status_label!=null:
+        status_label.visible=false
+    source_page_overlay.visible=true
+    _layout_source_menu()
+
+func _source_page_return()->void:
+    if source_page_overlay!=null:
+        match source_page_overlay.page_kind:
+            "equipment_candidates":
+                _show_equipment()
+                return
+            "item_targets":
+                _show_items()
+                return
+    _show_menu()
+
+func _source_page_actor(index:int)->void:
+    if battle==null or index<0 or index>=battle.party.size():
+        return
+    actor_index=index
+    match source_page_overlay.page_kind:
+        "status":_show_status()
+        "skills":_show_skills()
+        "equipment":_show_equipment()
+        "equipment_candidates":_show_equipment()
+        _:_show_menu()
+
+func _source_page_item(item_id:int)->void:
+    if db==null or db.record("items",item_id).is_empty():
+        return
+    _present_source_page("item_targets",item_id)
+
+func _source_page_item_target(item_id:int,index:int)->void:
+    if battle==null or index<0 or index>=battle.party.size():
+        return
+    _use_item_from_ui(item_id,battle.party[index],false)
+
+func _source_page_equipment_selected(slot:int,item_id:int)->void:
+    if menu_model!=null and menu_model.change_equipment(
+            actor_index,slot,item_id):
+        _show_equipment()
+    else:
+        _show_log("裝備更換遭來源合法性/背包檢查拒絕")
+        _show_equipment_candidates(slot)
 
 func _source_battle_command(index:int)->void:
     if not _battle_actor_ready():
@@ -579,6 +653,7 @@ func _show_status() -> void:
             caption.text=text_line
             text_column.add_child(caption)
     _add_button("返回選單", _show_menu)
+    _present_source_page("status")
 
 func _show_skills() -> void:
     if ui_hud!=null:
@@ -601,6 +676,7 @@ func _show_skills() -> void:
             row["id"],row["name"],cost_text,row["description"]])
     _add_text("實際治療／狀態／自訂技能效果待完整 RGSS2 規則移植")
     _add_button("返回選單", _show_menu)
+    _present_source_page("skills")
 
 func _show_items() -> void:
     if ui_hud!=null:
@@ -621,6 +697,7 @@ func _show_items() -> void:
         _icon_last_button("items",item_id)
     _add_text("只執行已核對的單體 HP／MP 回復；其他效果拒絕且不消耗")
     _add_button("返回選單", _show_menu)
+    _present_source_page("items")
 
 func _show_equipment() -> void:
     if ui_hud!=null:
@@ -639,6 +716,7 @@ func _show_equipment() -> void:
             row["label"],row["name"],"（鎖定）" if row["locked"] else ""],
             func() -> void: _show_equipment_candidates(slot))
     _add_button("返回選單", _show_menu)
+    _present_source_page("equipment")
 
 func _show_equipment_candidates(slot: int) -> void:
     _set_original_background("MenuBack_equip.png")
@@ -660,6 +738,7 @@ func _show_equipment_candidates(slot: int) -> void:
                 else:
                     _show_log("裝備更換已拒絕：請檢查職業、欄位與庫存"))
     _add_button("返回裝備", _show_equipment)
+    _present_source_page("equipment_candidates",slot)
 
 func _show_formation() -> void:
     if ui_hud!=null:
@@ -674,6 +753,7 @@ func _show_formation() -> void:
         _add_button("%d. %s" % [i+1,battle.party[i].get("name","?")],
             func() -> void: _formation_clicked(index))
     _add_button("返回選單", _show_menu)
+    _present_source_page("formation")
 
 func _formation_clicked(index: int) -> void:
     if formation_first < 0:
