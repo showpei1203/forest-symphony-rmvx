@@ -26,3 +26,13 @@ Scope: T-A/T-B offline atlas QA and runtime format only; T-C Ground/PAR unchange
 - PC bridge #107 https://github.com/showpei1203/chatgpt-pc-bridge/issues/107
 - PC bridge #108 https://github.com/showpei1203/chatgpt-pc-bridge/issues/108
 - Full integration contract godot_port/docs/toolchains/FS_SPRITE_GEN_TOOLCHAIN_20261123.md
+
+
+## 2026-11-23 FINAL VERIFIED DELTA (supersedes initial native NOT_RUN)
+- TRUE owner Windows PC native QA: [Issue #113](https://github.com/showpei1203/chatgpt-pc-bridge/issues/113), [Actions SUCCESS 45172869465](https://github.com/showpei1203/chatgpt-pc-bridge/actions/runs/45172869465). Pinned tested FS code snapshot commit 4fb64b2219adf217d5ea829ba35c5b3b6a0a61b9.
+- Python fixture unittest **4/4 PASS** on owner PC in installed sprite-gen v4.3.0 Python venv.
+- REAL installed official Windows **Godot 4.7.2.stable.official.ed1daf0bf** console executable; test_importer.gd created real SpriteFrames from synthetic RGBA atlas via FSSpriteGenAtlas.gd: 2 frames, 12 FPS, ATTACK loop=false, confirmed PASS.
+- Exact native PASS marker: FS_SPRITE_GEN_FS_ADAPTER_NATIVE_PASS. PC Windows E: original sources untouched, private files not read, zero provider calls and Codex zero. Source and alpha QA are technical only.
+- Security negative [Issue #109](https://github.com/showpei1203/chatgpt-pc-bridge/issues/109) rejects extra command field, intended FAILED/secure.
+- **FORMAL STATUS:** TOOL_INSTALL PASS / PYTHON_QA PASS / GODOT472_SYNTHETIC_NATIVE PASS / REAL FS PRIVATE ART NOT_RUN HERE / OWNER ART HOLD / FSBattle-ATB-ACT FULL INTEGRATION NOT_RUN. No T-A, T-B or T-C art promoted.
+- The PC Bridge console binary was required to capture the native printed marker. Earlier attempts #110-#112 had Python PASS but version or GUI stdout marker capture issues; they do not count as Godot native PASS. Issue #113 is the authoritative one.
