@@ -1,5 +1,17 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R22 LATEST | 2026-11-23 | TWO REAL 12-SLOT UNARMED FULL-BODY RE-TIMINGS, native Godot 4.7.2 PASS, ART HOLD
+
+**No new art fabricated and original A62 character source preserved.** Used original A52 full-body 12 poses unchanged *per RGBA frame*; only changed timing/index assignment. R22A F7=source F4 reaches exposed right hand at (45,36.5), up 6.5px vs R21 y43 F7. R22B F7=source F5 (47,39), up 4px. A has 8 and B 9 unique original whole-body poses, each Body 256x192 / 12x64, Weapon and FX alpha-zero. No invented belly, no pseudo outfit paper-doll.
+
+Actual isolated Godot 4.7.2 Linux Xvfb Mesa llvmpipe native GPU two projects, 24 screenshots total; **each 12/12 source-GPU pixel mismatches 0**, no cut, F7 at 0.630s one event, 70ms Hitstop, back to idle. Both actual native QA PASS. Source provenance negative mutation test changes one copied torso pixel; complete validator rejects then restores. Private QA ZIP 738 members CRC PASS, cloud readback actual SHA 95679567... (3,266,546B); differs from pre-upload package SHA, reflected honestly in Failure Log/Receipt, critical members identical.
+
+**ART HOLD:** these are A52 legacy sword-holding gestures re-timed; still NOT a credible new clenched-fist boxer with proper near/far glove, torso/hip drive, 1× human approval or source-native LPC costume underpaint. R22A is *technical preferred* only. Main FS Battle integration NOT_RUN; user PC untouched, PixelLab charged 0, Codex 0, Desktop Remote 0. Avoid further cosmetic permutation cycles; next macro requires genuinely new full-body source-matched artwork.
+
+[Private 15-item R22 folder](https://drive.google.com/drive/folders/1XPmUUk0bb_9XYYQDkoj_LkB0Jye5UXVe) | [full 738-entry ZIP](https://drive.google.com/file/d/1kDoLVuhAiLzLM6QS2oftAHp1dkHZ9RtB/view) | [true native A/B art comparison](https://drive.google.com/file/d/1MP8vL2czYwP0a5Gc_7Pev8iElvjt_yjs/view). Formal authority `godot_port/docs/authority/FS_TA_R22_SOURCE_RETIMED_F7_ART_HOLD_20261123.md`. A52/A62 original and T-B/T-C/main unchanged.
+
+---
+
 ## R21 LATEST | 2026-11-23 | Correct A62 64px F0 source restored; real native RUN/ATTACK source replay, ART HOLD
 
 SOURCE identity correction: approved A62 64x64 PNG SHA 70a8e6... in A52 private zip is pixel-exact A62_PROVIDER_RAW_F0 48px plus 8px transparent border; the R20 pre-provider A62_SOURCE_F0_48 differed by 47 RGBA pixels. Old R20 7 visible ownership layers are historically valid only for the pre-provider source, NOT the approved combat identity.

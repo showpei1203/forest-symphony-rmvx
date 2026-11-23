@@ -1,0 +1,20 @@
+{
+  "name": "FS_TA_R22_TWO_REAL_NATIVE_F7_CONTACT_VARIANTS_PRIVATE_20261123.zip",
+  "entries": 738,
+  "zip_crc_pass": true,
+  "art": "HOLD",
+  "godot_native": "PASS isolated R22A and R22B",
+  "source_local_archive_at_creation": {
+    "size_bytes": 3194281,
+    "sha256": "d8c67f3ba791eb0a4363cfdc942efd8432b5c30d55ddca0ec2ba881656f2e31e"
+  },
+  "verified_drive_download": {
+    "size_bytes": 3266546,
+    "sha256": "9567956740de1d8238533c4cb3b17a786c7e3332b480af7919e50bb555161a8f",
+    "zip_member_count": 738,
+    "zip_crc_pass": true,
+    "critical_art_and_QA_members_sha_equal": true
+  },
+  "cloud_vs_staging_archive_sha_match": false,
+  "discrepancy": "Drive archive re-fetched has same 738 ZIP entries and CRC but different overall bytes/size than pre-upload package; critical source/QA members have matching SHA; treat official cloud ZIP SHA as observed hash, do not claim global SHA equality"
+}

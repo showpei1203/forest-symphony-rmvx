@@ -1,0 +1,99 @@
+{
+  "label": "R22 source-based full-body boxing timing experiment, NOT new attack artwork",
+  "input_sha256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "approved_F0_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_frame_origin": "original authentic whole-body A52 paid PixelLab 12-frame model body",
+  "all_body_pixels_from_original_provider_frames": true,
+  "changed_torso_pixels_relative_to_source_frame": 0,
+  "complete_original_LPC_paperdoll_costume_layers": false,
+  "new_PixelLab_job": "NOT_RUN",
+  "paid_cost": 0,
+  "contact_event_seconds": 0.63,
+  "hitstop_seconds": 0.07,
+  "target_frame": 7,
+  "variants": {
+    "R21_ORIGINAL": {
+      "source_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "f7_original_frame": 7,
+      "distinct_full_body_poses": 11,
+      "contact_fist_skin_xy": [
+        46,
+        43.0
+      ],
+      "contact_vs_original_skin_y_advance": 0.0,
+      "contact_full_body_rgba_delta_vs_R21": 0,
+      "source_atlas_png_sha256": "8438749dcb7e9bd7768cfb965ca9b16a36e79f6f7952c28f721cbc5e5d005fce",
+      "F0_F11_approved_source_RGBA_exact": true,
+      "art_status": "ART_REJECTED_FOR_BOXING"
+    },
+    "R22A_JAB": {
+      "source_order": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9,
+        0
+      ],
+      "f7_original_frame": 4,
+      "distinct_full_body_poses": 8,
+      "contact_fist_skin_xy": [
+        45,
+        36.5
+      ],
+      "contact_vs_original_skin_y_advance": 6.5,
+      "contact_full_body_rgba_delta_vs_R21": 287,
+      "source_atlas_png_sha256": "7f40a78266875887fa68d2b0d8467e405821e0a05bc510b7a8c7655faafa5b63",
+      "F0_F11_approved_source_RGBA_exact": true,
+      "art_status": "ART_HOLD"
+    },
+    "R22B_CROSS": {
+      "source_order": [
+        0,
+        1,
+        2,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        0
+      ],
+      "f7_original_frame": 5,
+      "distinct_full_body_poses": 9,
+      "contact_fist_skin_xy": [
+        47,
+        39.0
+      ],
+      "contact_vs_original_skin_y_advance": 4.0,
+      "contact_full_body_rgba_delta_vs_R21": 276,
+      "source_atlas_png_sha256": "0b1b92c515f358bca2a0aed108c6ec7f91b9fe463cad1a4aae11a510bd188f5f",
+      "F0_F11_approved_source_RGBA_exact": true,
+      "art_status": "ART_HOLD"
+    }
+  },
+  "new_art_approved": false,
+  "original_FSBattle_integration": "NOT_RUN"
+}

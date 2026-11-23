@@ -362,6 +362,35 @@ jobs:
           assert q['platform'].startswith('sandbox isolated Xvfb')
           print('R21_PUBLIC_METADATA_CONTRACT_PASS; native private frame evidence is in Drive, ART_HOLD')
           PY
+      - name: R22 SOURCE-ONLY native proof metadata gates, refuse art promotion
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r22_source_retime.py godot_port/tools/ta_r22_source_retime_validator.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('godot_port/docs/handoff')
+          m=json.loads((p/'TA_R22_SOURCE_RETIME_MANIFEST_20261123.json').read_text(encoding='utf-8'))
+          q=json.loads((p/'TA_R22_NATIVE_QA_20261123.json').read_text(encoding='utf-8'))
+          s=json.loads((p/'TA_R22_SOURCE_QA_20261123.json').read_text(encoding='utf-8'))
+          assert m['input_sha256']=='a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f'
+          assert m['approved_F0_sha256']=='70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e'
+          assert m['all_body_pixels_from_original_provider_frames'] and not m['complete_original_LPC_paperdoll_costume_layers']
+          assert m['variants']['R22A_JAB']['source_order']==[0,1,2,1,2,2,3,4,5,6,9,0]
+          assert m['variants']['R22B_CROSS']['source_order']==[0,1,2,1,2,3,4,5,6,7,9,0]
+          assert m['variants']['R22A_JAB']['contact_vs_original_skin_y_advance']>=6
+          assert m['variants']['R22B_CROSS']['contact_vs_original_skin_y_advance']==4
+          assert m['new_art_approved'] is False and m['original_FSBattle_integration']=='NOT_RUN'
+          assert q['human_art_status']=='HOLD' and not q['owner_windows_used']
+          assert q['full_migrated_FS_gameplay']=='NOT_RUN'
+          for k in ('R22A_JAB','R22B_CROSS'):
+              assert q['variants'][k]['native_captured_frames']==12
+              assert q['variants'][k]['actual_native_rgba_diff_per_frame']==[0]*12
+              assert q['variants'][k]['one_hit_event'] and q['variants'][k]['hitstop_seconds']==0.07
+              assert not q['variants'][k]['art_approved']
+              assert s[k]['added_art_pixels']==0
+          assert s['negative_mutated_original_body_pixel']=='REJECTED_BY_INSPECT_ZIP_AS_EXPECTED'
+          print('R22_SOURCE_RETIMED_TECH_METADATA_PASS; HISTORIC SWORD ANATOMY/ART HOLD')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

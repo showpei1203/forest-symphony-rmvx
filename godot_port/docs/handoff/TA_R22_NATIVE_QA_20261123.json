@@ -1,0 +1,101 @@
+{
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "platform": "isolated Linux Xvfb Mesa llvmpipe OpenGL",
+  "owner_windows_used": false,
+  "full_migrated_FS_gameplay": "NOT_RUN",
+  "human_art_status": "HOLD",
+  "source_art": "unmodified original A52 full-body PixelLab frames, only temporal retiming",
+  "new_model_job": "NOT_RUN",
+  "PixelLab_cost": 0,
+  "variants": {
+    "R22A_JAB": {
+      "native_captured_frames": 12,
+      "actual_native_rgba_diff_per_frame": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "run_generated_24_native_captures_total": true,
+      "native_png_sha256": [
+        "dbbdae7defdf368031f1c81b477869f1332cca92d5c9ca4f53c995ba09da527b",
+        "8c3b05e5bbfc3ad7192c8fae3f9a97626c7e0d104685e1171179b4bd4dcc74cb",
+        "dfb2fcc040206ac382c948f3256f0ed8982ee1f07e9253a584f7560ef8b77bd4",
+        "8c3b05e5bbfc3ad7192c8fae3f9a97626c7e0d104685e1171179b4bd4dcc74cb",
+        "dfb2fcc040206ac382c948f3256f0ed8982ee1f07e9253a584f7560ef8b77bd4",
+        "dfb2fcc040206ac382c948f3256f0ed8982ee1f07e9253a584f7560ef8b77bd4",
+        "6aac5cb557ae9520d65cb2d39321221b072d0c2100695105b5db918e1317dafd",
+        "78e511c1f9d2702d7e29672e1466b719d480ca776aff926b7ba395553c856d2e",
+        "63da2e01ac611d3578ae12ca6ff6d096f8504ae3d8be1118fea049a72fef4306",
+        "acbcb0e795e2be5b4b494630a1956034f0fefe98af6e4f39735747be1166787c",
+        "3141e1eaef1241fdd28c8a83f6e96fdb6bbeab0b40479cc6b9025b3514beeeff",
+        "dbbdae7defdf368031f1c81b477869f1332cca92d5c9ca4f53c995ba09da527b"
+      ],
+      "f7_event_second": 0.63,
+      "hitstop_seconds": 0.07,
+      "one_hit_event": true,
+      "returned_idle": true,
+      "weapon_fx_blank": true,
+      "full_source_atlas_SHA256": "7f40a78266875887fa68d2b0d8467e405821e0a05bc510b7a8c7655faafa5b63",
+      "art_approved": false,
+      "art_remaining_blockers": [
+        "original sword-holding art provenance, natural closed fist not proven",
+        "full torso/hip boxing torque visually unverified",
+        "source-native layered LPC underpaint not present"
+      ]
+    },
+    "R22B_CROSS": {
+      "native_captured_frames": 12,
+      "actual_native_rgba_diff_per_frame": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "run_generated_24_native_captures_total": true,
+      "native_png_sha256": [
+        "dbbdae7defdf368031f1c81b477869f1332cca92d5c9ca4f53c995ba09da527b",
+        "8c3b05e5bbfc3ad7192c8fae3f9a97626c7e0d104685e1171179b4bd4dcc74cb",
+        "dfb2fcc040206ac382c948f3256f0ed8982ee1f07e9253a584f7560ef8b77bd4",
+        "8c3b05e5bbfc3ad7192c8fae3f9a97626c7e0d104685e1171179b4bd4dcc74cb",
+        "dfb2fcc040206ac382c948f3256f0ed8982ee1f07e9253a584f7560ef8b77bd4",
+        "6aac5cb557ae9520d65cb2d39321221b072d0c2100695105b5db918e1317dafd",
+        "78e511c1f9d2702d7e29672e1466b719d480ca776aff926b7ba395553c856d2e",
+        "63da2e01ac611d3578ae12ca6ff6d096f8504ae3d8be1118fea049a72fef4306",
+        "acbcb0e795e2be5b4b494630a1956034f0fefe98af6e4f39735747be1166787c",
+        "9fd64748d7516fe78a4d63d39a3aeeb2e9fa3f33bf49c43e334f15d72896c395",
+        "3141e1eaef1241fdd28c8a83f6e96fdb6bbeab0b40479cc6b9025b3514beeeff",
+        "dbbdae7defdf368031f1c81b477869f1332cca92d5c9ca4f53c995ba09da527b"
+      ],
+      "f7_event_second": 0.63,
+      "hitstop_seconds": 0.07,
+      "one_hit_event": true,
+      "returned_idle": true,
+      "weapon_fx_blank": true,
+      "full_source_atlas_SHA256": "0b1b92c515f358bca2a0aed108c6ec7f91b9fe463cad1a4aae11a510bd188f5f",
+      "art_approved": false,
+      "art_remaining_blockers": [
+        "original sword-holding art provenance, natural closed fist not proven",
+        "full torso/hip boxing torque visually unverified",
+        "source-native layered LPC underpaint not present"
+      ]
+    }
+  },
+  "negative_source_tampering": "REJECTED_BY_COMPLETE_SOURCE_VALIDATOR"
+}

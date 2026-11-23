@@ -1,0 +1,21 @@
+{
+  "R22A_JAB": {
+    "frame_count": 12,
+    "source_fullbody_retimed_pixels": 49152,
+    "added_art_pixels": 0,
+    "original_full_body_source_only": true,
+    "weapon_alpha_pixels": 0,
+    "fx_alpha_pixels": 0
+  },
+  "R22B_CROSS": {
+    "frame_count": 12,
+    "source_fullbody_retimed_pixels": 49152,
+    "added_art_pixels": 0,
+    "original_full_body_source_only": true,
+    "weapon_alpha_pixels": 0,
+    "fx_alpha_pixels": 0
+  },
+  "negative_mutated_original_body_pixel": "REJECTED_BY_INSPECT_ZIP_AS_EXPECTED",
+  "art_approval": "HOLD",
+  "full_original_FS_battle_integration": "NOT_RUN"
+}
