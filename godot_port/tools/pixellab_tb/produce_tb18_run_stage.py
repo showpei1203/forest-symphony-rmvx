@@ -132,6 +132,7 @@ def selftest():
     # Fully offline! Validate all stage prompts, actual R17 ZIP source contracts,
     # ledger contract and atlas packing BEFORE any paid provider job.
     src=pathlib.Path('/mnt/data')/SRC_NAME
+    if not src.exists():src=DRIVE/SRC_NAME
     assert src.exists() and src.stat().st_size==SRC_BYTES and sha(src.read_bytes())==SRC_SHA
     with zipfile.ZipFile(src) as z:
         assert z.testzip() is None and len(z.namelist())==430
