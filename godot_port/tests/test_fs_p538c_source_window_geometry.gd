@@ -94,7 +94,7 @@ func _run()->void:
             if item!="formation":
                 var panel:PanelContainer=page.get_node(
                     "FSOriginalPageFunctionalWindow")
-                var area:Rect2=page.SOURCE_ROW_RECTS[item]
+                var area:Rect2=FSOriginalMenuPage.SOURCE_ROW_RECTS[item]
                 if not check(panel.position==area.position and
                         panel.size==area.size and
                         panel.get_theme_stylebox("panel") is StyleBoxEmpty,
