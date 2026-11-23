@@ -1,0 +1,32 @@
+name: FS T-C D16 Volcano Maze Ground-First CompletePAR (SYNTHETIC)
+on:
+  push:
+    branches:
+      - feat/fs-tc-d12-chroma-par-20261122
+    paths:
+      - "godot_port/tc_factory/biomes/fs_tc_d16_volcano_maze_factory.py"
+      - "godot_port/tc_factory/biomes/test_fs_tc_d16_volcano_maze_factory.py"
+      - ".github/workflows/fs-tc-d16-volcano-maze.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strict-source-and-structural-pair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned image test libraries in ephemeral CI only
+        run: python3 -m pip install --disable-pip-version-check Pillow==12.0.0 numpy==2.3.5 scipy==1.17.0
+      - name: Validate Ground-first lock, separate all-PAR, real alpha, fixed 40x29 canvas, and fail-closed errors
+        run: python3 godot_port/tc_factory/biomes/test_fs_tc_d16_volcano_maze_factory.py
+      - name: Never misclassify synthetic tests as private artwork or Godot PASS
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          c=Path("godot_port/tc_factory/biomes/fs_tc_d16_volcano_maze_factory.py").read_text()
+          assert "'private_art_Godot_4_7_2_native':'NOT_RUN'" in c
+          assert "'formal_ART_PASS':'HOLD_0_OF_12'" in c
+          assert "NO RESIZE" not in c or "1x" in c
+          print("D16 SOURCE QA synthetic only; actual private PNG ART + Godot native remain HOLD")
+          PY
