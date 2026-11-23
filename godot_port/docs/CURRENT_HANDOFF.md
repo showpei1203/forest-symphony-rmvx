@@ -1,7 +1,19 @@
 # Forest Symphony Godot｜CURRENT_HANDOFF
-Updated 2026-11-23 Asia/Taipei. Scope ONLY: Godot migration feature/fs-godot-phase1; not historical VX docs/CURRENT_HANDOFF.md and not T-A/T-B/T-C factories.
+Updated 2026-11-23 Asia/Taipei. ACTIVE: Godot migration `feature/fs-godot-phase1`. T-A/T-B/T-C experiments separate.
 
-## Latest verified (P538A)
+## Latest P538B｜SOURCE MENU full functional pages (candidate; PRIVATE ART HOLD)
+- **M1 completed as code candidate**: `FSOriginalMenuPage.gd` added for STATUS/SKILLS/ITEMS/EQUIPMENT/FORMATION plus ITEM TARGET / EQUIPMENT OPTIONS, using source SHA-locked 544×416 Menu backgrounds, original Status/Skill/Item/Equip 60×20 tabs, original actor portraits if present. No original PNG committed publicly. `FSScreen.gd` routes actions to existing `FSMenuModel/FSBattle` and maintains all old functional fallback/BATTLE logic.
+- **M2 confirmed as of commit 46e242a**: official Godot4.7.2 Linux native full CI #45114810650 SUCCESS, **98/98 job steps**, including new P538B menu QA and complete existing Battle/ACT/ATB/Event/Map regression: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45114810650 . Subsequent stronger M4 544/1088 layout + second actor test and source-private capture harness committed after that run; these additions require a later successful CI to claim completed native coverage.
+- **M3**: no P538B failure observed in that 98-step full CI. Do not fabricate a bug. P538A actual Battle regression and fixture repair remain in historical Failure Log.
+- **M4**: second distinct synthetic Mia(id2, level7) versus Joey(id1), two viewport sizes 544×416 and 1088×832 now have native test entry. New `capture_fs_p538b_private.gd` can capture ten source-art views for EACH size in an approved isolated PRIVATE QA environment; **not run this session**; its code being committed is not a GPU screenshot PASS.
+- **Source**: 202 original private PNGs (8,371,041 bytes, owner-only shared=false) metadata readback https://drive.google.com/file/d/1OCeiV5ZZyxBUrZypIxI8UJv2ytHywbnT/view; prior private P538A QA ZIP 1,965,809 bytes, owner-only https://drive.google.com/file/d/19x7wqwVbXInCR2OWWbbx9OGkafXrJ05B/view is historical, not P538B acceptance evidence.
+- **Handoff/Fail**: `HANDOFF_20261123_P538B_ORIGINAL_MENU_PAGES.md`, `FAIL_LOG_20261123_P538B_ORIGINAL_MENU_PAGES.md`. Code commits `f15e0fb`, `6d28eaa`, `0802272`, `46e242a`, `d806165`, `d0bb5e7`. Original source/UI remain authority.
+- **Open HOLD**: private P538B original-art 544/1088 Godot screenshots and visual inspection, VX same-state windowskin/pixel parity, original 11 postApply DB/505 effective RGSS2 runtime, Rx6700XT physical GPU, unported sub-tab actions and Quest/Save/System. ART HOLD; Phase1 SEAL NO.
+- **Tools**: GitHub/Drive connector + GitHub-hosted pinned official Godot CI; no PC writes, no PC Bridge job, Codex 0, Desktop Remote 0. FS Skill read directly from GitHub, not automatically Windows imported. No unauthorized Windows GUI/CLI.
+- **Next complete unit**: P538B PRIVATE source-native visual acceptance on permissioned isolated cloud plus second original actor/alternative item/equip/formation states; upload screenshot+QA ZIP to owner-only Drive and **read back**; inspect same-state actual VX, reconcile source windowskin and layout; independently collect real boot-final 11-table witness. Never overstate Code CI as Art/Source parity.
+
+## Previous P538A snapshot (preserved historical record)
+Latest verified (P538A)
 Original MENU source real art and operations: original 50×20 Menu01–08, SHA-locked 544×416 MenuBack_b, 5 existing FSMenuModel function routes, 3 source-unsupported Quest/Save/System keys intentionally disabled. Four source 60×20 subpage tab groups present; subpage complete composition still pending. Old P539F Battle #381/#462, actor/enemy rigs, BATTLE command overlay retained.
 - Godot 4.7.2 CI #45101720647 97/97 steps SUCCESS; prior CI #45101117251 FAIL (MENU show status in BATTLE) actually repaired in 8b44b26, independent actor02 synthetic fixture repaired in 6d09937.
 - Original private 202 PNG owner-only https://drive.google.com/file/d/1OCeiV5ZZyxBUrZypIxI8UJv2ytHywbnT/view.
