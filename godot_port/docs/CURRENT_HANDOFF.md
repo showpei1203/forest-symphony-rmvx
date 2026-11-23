@@ -13,7 +13,8 @@ Updated 2026-11-23 Asia/Taipei. ACTIVE: Godot migration `feature/fs-godot-phase1
 - **Next complete unit**: P538B PRIVATE source-native visual acceptance on permissioned isolated cloud plus second original actor/alternative item/equip/formation states; upload screenshot+QA ZIP to owner-only Drive and **read back**; inspect same-state actual VX, reconcile source windowskin and layout; independently collect real boot-final 11-table witness. Never overstate Code CI as Art/Source parity.
 
 ## Previous P538A snapshot (preserved historical record)
-Latest verified (P538A)
+
+### Latest verified (P538A)
 Original MENU source real art and operations: original 50×20 Menu01–08, SHA-locked 544×416 MenuBack_b, 5 existing FSMenuModel function routes, 3 source-unsupported Quest/Save/System keys intentionally disabled. Four source 60×20 subpage tab groups present; subpage complete composition still pending. Old P539F Battle #381/#462, actor/enemy rigs, BATTLE command overlay retained.
 - Godot 4.7.2 CI #45101720647 97/97 steps SUCCESS; prior CI #45101117251 FAIL (MENU show status in BATTLE) actually repaired in 8b44b26, independent actor02 synthetic fixture repaired in 6d09937.
 - Original private 202 PNG owner-only https://drive.google.com/file/d/1OCeiV5ZZyxBUrZypIxI8UJv2ytHywbnT/view.
