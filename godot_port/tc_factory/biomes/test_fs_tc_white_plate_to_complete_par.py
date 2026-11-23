@@ -27,7 +27,7 @@ def main():
         brush.rectangle((770,160,1150,490),fill=(97,82,103))
         brush.rectangle((550,550,920,800),fill=(165,84,36))
         # Small enclosed WHITE detail should remain opaque even in D15 repair mode.
-        brush.ellipse((100,175,145,220),fill=(252,252,252))
+        brush.ellipse((112,182,132,202),fill=(252,252,252))
         # A large enclosed empty courtyard under a structure is background,
         # not a decorative white piece, and is separated by a dark border.
         brush.rectangle((190,175,335,310),fill=(254,254,254))
