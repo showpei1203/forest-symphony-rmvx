@@ -65,15 +65,17 @@ def provider(token,route,body=None):
     req=urllib.request.Request(ROOT+route,
         data=json.dumps(body,separators=(',',':')).encode() if body is not None else None,
         headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
-    for i in range(3):
+    # Billable POST must NEVER be auto-retried: response loss could duplicate charges.
+    attempts=1 if body is not None else 3
+    for i in range(attempts):
         try:
             with urllib.request.urlopen(req,timeout=45) as r:return json.load(r)
         except urllib.error.HTTPError as e:
-            if e.code in (429,502,503,504) and i<2:
+            if e.code in (429,502,503,504) and i<attempts-1:
                 time.sleep(5*(i+1));continue
             raise RuntimeError(f'PixelLab fixed endpoint HTTP {e.code}') from None
         except urllib.error.URLError:
-            if i<2:time.sleep(5*(i+1));continue
+            if i<attempts-1:time.sleep(5*(i+1));continue
             raise RuntimeError('PixelLab fixed endpoint unreachable') from None
 
 def parse_frames(result,source):
