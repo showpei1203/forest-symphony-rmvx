@@ -480,8 +480,10 @@ func _source_page_equipment_selected(slot:int,item_id:int)->void:
             actor_index,slot,item_id):
         _show_equipment()
     else:
-        _show_log("裝備更換遭來源合法性/背包檢查拒絕")
+        # Rebuild candidate page FIRST, otherwise configure() deletes
+        # the old source-page feedback label and silences the refusal.
         _show_equipment_candidates(slot)
+        _show_log("裝備更換遭來源合法性/背包檢查拒絕")
 
 func _source_battle_command(index:int)->void:
     if not _battle_actor_ready():
