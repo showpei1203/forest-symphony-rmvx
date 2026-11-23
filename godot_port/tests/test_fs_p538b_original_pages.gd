@@ -25,6 +25,7 @@ func _run()->void:
     var actor_two:Dictionary=db.tables["actors"][1].duplicate(true)
     actor_two["id"]=2
     actor_two["name"]="米亞"
+    actor_two["initial_level"]=7  # independent actor/source fixture, no post-Apply claim
     db.tables["actors"].append(actor_two)
     var world=DATA.initial_state()
     world.party_actor_ids.append(2)
@@ -84,6 +85,27 @@ func _run()->void:
         if not check(world.amount("item",1)==amount_before and
                 screen.source_page_overlay.page_kind=="items",
                 "unverified synthetic item cannot be consumed"):
+            return
+    # M4 second independent source-shaped dataset: different actor ID,
+    # original portrait identity, level and two viewport sizes.
+    if not check(int(battle.party[1].get("level",0))==7,
+            "second actor must be independently distinguishable"):
+        return
+    screen.actor_index=1
+    for resolution in [Vector2i(544,416),Vector2i(1088,832)]:
+        root.size=resolution
+        await process_frame
+        screen._show_status()
+        if private_mode:
+            var expected:=Vector2(
+                maxf(0.0,float(resolution.x-544)*0.5),
+                maxf(0.0,float(resolution.y-416)*0.5))
+            if not check(screen.source_page_overlay.position==expected and
+                    screen.source_page_overlay.displayed_portrait!=null,
+                    "source image/native layout and second actor at "+str(resolution)):
+                return
+        elif not check(not screen.source_page_overlay.visible,
+                "source art absent at "+str(resolution)):
             return
     screen._show_formation()
     screen._formation_clicked(0)
