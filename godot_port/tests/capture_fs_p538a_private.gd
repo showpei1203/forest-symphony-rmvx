@@ -39,7 +39,10 @@ func _run()->void:
     var db=DATA.database()
     # Two independent actor portraits are real source art; numbers are QA.
     db.tables["actors"][1]["name"]="喬伊"
-    db.tables["actors"][2]["name"]="米亞"
+    var actor_two:Dictionary=db.tables["actors"][1].duplicate(true)
+    actor_two["id"]=2
+    actor_two["name"]="米亞"
+    db.tables["actors"].append(actor_two)
     var world=DATA.initial_state()
     var battle=BATTLE.new(db,world)
     battle.add_actor(1)
