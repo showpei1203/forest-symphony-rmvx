@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 8,
+    "Ground_PAR_pair_candidates_static_pass": 9,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -31,8 +31,8 @@
     "failed_complete_PAR_generation_attempts_FS_04_VILLAGE": 6,
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
-    "ground_source_candidates_FS_04_MAZE": 1,
-    "complete_PAR_candidates_FS_04_MAZE": 1
+    "ground_source_candidates_FS_04_MAZE": 2,
+    "complete_PAR_candidates_FS_04_MAZE": 2
   },
   "scenes": [
     {
@@ -468,7 +468,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D16_GROUND_FIRST_FULL_1280x928_RGB_AND_INDEPENDENT_1280x928_RGBA_COMPLETE_PAR_TECH_ART_HOLD",
+      "stage": "D17_NATIVE_40X29_COHESIVE_GROUND_ONLY_CROP_AND_INDEPENDENT_REPOSITIONED_1X_COMPLETEPAR_TECH_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -481,8 +481,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D16_REAL_PRIVATE_PAIR_NOT_RUN; HISTORIC_NATIVE_SYNTHETIC_ONLY",
-      "formal_art_gate": "HOLD_VISIBLE_GROUND_PATCH_MATTE_AND_POLYGON_PROP_CROPS",
+      "native_Godot_4_7_2_for_current_stage": "D17_PRIVATE_NOT_RUN_PREVIOUS_SYNTHETIC_CI_PASS_ONLY",
+      "formal_art_gate": "HOLD_POLYGON_CUTS_FOOTPOINT_ALIGNMENT_AND_NATIVE",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -519,6 +519,41 @@
         "godot_native_real_source": "NOT_RUN",
         "visual_art": "HOLD",
         "danger": "M1 technical only: polygon crop/cobble ghosting and bridge footprint, user art not passed"
+      },
+      "D17": {
+        "ground_original_sha256": "30f375d138cccf19e582543b52bff60e9c1f78dfee7b52a8dc93d4aca8632d34",
+        "ground_source_size": [
+          1474,
+          1067
+        ],
+        "ground_crop_same_pixels": [
+          90,
+          70,
+          1370,
+          998
+        ],
+        "native_canvas": [
+          1280,
+          928
+        ],
+        "ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "independent_par_original_sha256": "1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9",
+        "par_sha256": "e455aa491415b453235a11ca0eade3ef2578c937ec7d1f4a6613ccb02bf96334",
+        "composite_sha256": "0213f24d428d00ffa2a7cf233b33ea09e5367270bded24529c9f639edcda3144",
+        "par_alpha_zero_pixels": 862818,
+        "foreground_groups": 6,
+        "trimmed_source_alpha_positive_pixels": 16915,
+        "opaque_overlap_pixels": 867,
+        "origin": "GROUND_FIRST_THEN_COMPLETEPAR_INDEPENDENT_SOURCE_1X_NO_RESIZE",
+        "native_private_art": "NOT_RUN",
+        "visual_art": "HOLD",
+        "integration": "NOT_RUN",
+        "art_pass": "0/12",
+        "drive_zip": "https://drive.google.com/file/d/1mxfxme7PZbdFd7XmwwVGOclSClL1lyls/view",
+        "drive_ground": "https://drive.google.com/file/d/1fHMcvGb6W3AaZvI07uN-GsSrLe0h5c2k/view",
+        "drive_par": "https://drive.google.com/file/d/1syxXfi7ykoO_s8m4KoE-R6WhnYD-2xb2/view",
+        "drive_composite": "https://drive.google.com/file/d/1QU0MOktXjbYnQ3Iwf5OLXlRtiNtvQ5r0/view",
+        "github_CI_synthetic": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115468630"
       }
     },
     {
