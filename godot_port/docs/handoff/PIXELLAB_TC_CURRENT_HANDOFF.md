@@ -1,3 +1,17 @@
+# T-C CURRENT｜D16 FS_04_MAZE「熔脈裂橋」第二場景 1280×928 Ground-first + PAR 技術候選｜2026-11-23
+
+**最新真成果（覆蓋下面 D15/D14 歷史的進度，未覆寫舊成果）：** 因 D15 原始 1474×1067 全物件 PAR 不能只靠刪除透明 seam 直接無損壓入 1280×928（寬最多 71/194px，高 0/139px），依宏觀 Roadmap 開展第二火山樣本 FS_04_MAZE。已實際創建 **Ground-first 1280×928 RGB**（D11 Ground-only 來源的全場景再配置）→ 鎖 Ground SHA → 使用 D15 *已獨立生成的所有非地表美術* 批量 1× 重排六組全物件於 **獨立 1280×928 RGBA PAR** → 真正 Image.alpha_composite 靜態 QA，無 Master 逆切、無拉伸到目標假裝原生、原 D11/D15 source 完全不動。
+
+**工程 SOURCE/STRUCTURE 技術 PASS，VISUAL ART HOLD。** D16 原地圖道路拼接痕、素材多邊形截斷、鐵橋與熔岩岸接點不一致；這是 **現有素材技術重組**，不是一次式 AI 在原生畫布完整生成成功。**D16 真私有素材 Godot 4.7.2 Native NOT_RUN；正式 ART 仍 0/12。**
+
+- [D16 10 檔私有素材、Ground、PAR、合成、SHA / 物件台帳 / Failure Log / 重建程式 ZIP](https://drive.google.com/file/d/14Tk-mbngKeENcFfdF3vdIE9OMVifchfm/view)：11,296,467 bytes、ZIP CRC PASS，私人 owner-only READBACK。
+- [新 Ground](https://drive.google.com/file/d/1lyl6X9dDOeeNL0xToShRX1NzgYUd-DGN/view) SHA `6c5f9d8bfbeeb96ec8da2c43cd19cc74159208853ace4963affe1f31e03136a9`， [新 PAR](https://drive.google.com/file/d/1_CjVpdp4aXUxGGzqnULrk_P-OgRGwXpg/view) SHA `fc3333e32f80fb980fbeaabcae02bf6fa942a5079b13eca2fa906a06b1715e6a`， [靜態合成](https://drive.google.com/file/d/1eB0mGISovFixesr18xspquONdjCaD9GX/view) SHA `83f7a3275a4f02bd111dae99020f1d5df1ed8fdc7ea667f9f34831bbd46ee78c`。
+- [GitHub Actions #45112426928](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45112426928) SUCCESS（**synthetic 結構回歸**，不是這批私有美術 Godot native）；[D16 完整 Handoff / Failure Log](TC_D16_FS_04_MAZE_COMPLETE_PAIR_TECH_QA_20261123.md)。
+- D15 FS_04_VILLAGE 原 Ground / 第三版 PAR 均保留、不合併 Draft PR #17；新素材僅私人 Drive。舊 Master-first Roadmap 條目與最新使用者 Ground-first + ALL NON-GROUND PAR 規範衝突，以後者為準。
+- 下一完整單位：針對 FS_04_MAZE 生成**真正原生世界 1280×928、美術自然連續、橋路/熔岩精確接點**的獨立高品質 Ground/PAR 兩圖，拒絕繼續裁拼掉物件；再使用經授權的私有素材路由跑真 Godot 4.7.2 1× QA，修正阻斷後才評 USER ART Gate。M4 現為第二場景技術候選，不是量產 PASS。
+
+---
+
 # T-C CURRENT｜D15 灰鑄工坊城 CompletePAR 封閉白底島修復、私人來源及 QA｜2026-11-23
 
 **本輪實際新成果（優先於 D14/D13/D11 歷史）**：重用 D14 獨立全非地表白底 RGB 原圖，不重做 Ground，不從 Master 逆切，修正原 white-key 演算法漏掉的**五塊大型封閉白底**，D15 另存真透明 `1474×1067 RGBA` PAR，SHA `1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9`，Alpha=0 **734965 → 776139**。右側橋區合成近白色像素 **20781 → 336**，主要火山道路與熔岩露出。Ground 原 `1280×928` SHA `ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d` **完全未改動**。
