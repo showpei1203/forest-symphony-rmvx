@@ -29,7 +29,7 @@
 - [官方私有 Drive 原生日誌](https://drive.google.com/file/d/1szEjFDy_hWXmewFC0fpmB87Ud5-v2pU9/view)，585 bytes、SHA256 `58ac2673eac5311d09f6fb9443ed5a13f418c5f853bb23ae3d35671be255afb3`；已從 Drive 實際下載驗證原始 log SHA/成功標記。**不是**舊 R17 native proof；沒有非 headless GPU 截圖，不宣稱完整 FSBattle / ATB / ACT 或劇情整合。
 
 ## R18 M3｜正式 Cloud-only 提升與 P0 完整性
-- 原生測試完後，使用固定[原生驗證升版程式](../..//tools/pixellab_tb/promote_tb18_native_art.py)只把同一份已通過 M2 的 M1 manifest 改為 `NATIVE_4_7_2_WINDOWS_VERIFIED`，內嵌 exact Windows log + 原生證明檔；所有舊／新 PNG 與三份真 Provider ZIP **逐檔 SHA 相同**，未重新生成素材，追加 provider generations **0**。
+- 原生測試完後，使用固定[原生驗證升版程式](../../tools/pixellab_tb/promote_tb18_native_art.py)只把同一份已通過 M2 的 M1 manifest 改為 `NATIVE_4_7_2_WINDOWS_VERIFIED`，內嵌 exact Windows log + 原生證明檔；所有舊／新 PNG 與三份真 Provider ZIP **逐檔 SHA 相同**，未重新生成素材，追加 provider generations **0**。
 - **最新 R18 完整正式私人封包：** [448 entries、12,626,646 bytes](https://drive.google.com/file/d/1UAaekoyo-HLqNYK8gDHppMCzLIVCMPyp/view)，SHA256 `8cc85ea1ca326ce854b3432a46c63fb311aaba3ca5628d101e10a54fc03cae6c`，ZIP CRC PASS。Google Drive API 確認 parent `10qOSm1id3o5oisfVQxhlC_4ncJaF0Yd3`、`shared=false`、唯一 `user:owner` 權限；**重新透過 Google Drive connector 下載完整 ZIP 後**又驗證 448 entries/完整 CRC/SHA/native marker/Manifest **PASS**。
 - [正式 Release 證明 JSON](https://drive.google.com/file/d/1TGdajg2DOJfHj3Khk6UNTVoV5VkInp_R/view) | [M1 歷史原始證明](https://drive.google.com/file/d/1y0O_iUKjueRjst-a6wj66nfadKGwMVQq/view)。R17 source、R18 3 stage provider zip、R18 M1 均留私人 Drive 供回溯。
 - Windows 上每個 native/生成程序只建立以 numeric GitHub RunID 名稱的工作 TEMP 並於成功/例外清理；正式 E: 及其他專案資料從未更動。無 Desktop Remote、Codex。
