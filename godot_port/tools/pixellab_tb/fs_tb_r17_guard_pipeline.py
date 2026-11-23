@@ -79,13 +79,15 @@ def query(token:str,path:str,body=None):
             raise RuntimeError('PixelLab network request unavailable') from None
 def prompt(stage:int)->str:
     names={1:'Glacier Jackal pup',2:'Crystal Wolf Guardian',3:'Ancient Glacier Fenrir'}
-    out=(f'ONE SAME original four-legged silver-blue {names[stage]} defending. Fixed southeast 3/4 JRPG pixel battle view. '
-         'Start from same source still. Lower muzzle slightly, bend the FOUR attached legs into an unmistakable '
-         'protective crouch F1-F3. Brace and HOLD low tense guard F4-F5 with icy mane/forehead crystal and navy '
-         'muzzle unchanged. Slowly stand to EXACT original stance F7. Same paws, ears, blue eyes, thick tail. '
-         'No shields, weapons, other animals, extra limbs, fire, projectile, spin, background or camera movement.')
-    assert len(out)<520
+    out=(f'The SAME four-legged silver-blue {names[stage]} takes a GUARD stance, not attack. '
+         'Fixed southeast 3/4 JRPG pixel battle camera. F0 original pose; F1-F3 duck head '
+         'and bend all four connected legs low. F4-F5 hold defensive crouch, ears alert. '
+         'F6-F7 rise to SAME original pose. Preserve navy muzzle, cyan ice crystal, blue eyes, '
+         'ears, paws, thick tail and same identity. Entire body centered inside margins. '
+         'No shield, extra limbs, other wolf, magic, projectiles, camera turn, or background.')
+    assert len(out)<=495,(stage,len(out))
     return out
+
 def provider_frames(done:dict,frames:int):
     response=done.get('last_response') or {}
     raw=response.get('images') or response.get('frames') or response.get('output_images') or []
@@ -301,6 +303,8 @@ def main():
     root=Path(tempfile.gettempdir())/('fs_tb_r17_guard_'+uid)
     assert not root.exists(),'never use an existing local temp project'
     root.mkdir(parents=True)
+    # Validate ALL three prompts before authorizing the very first paid job.
+    checked_prompts={i:prompt(i) for i in (1,2,3)}
     jobs=[];frames_by_stage={};records=[];submitted=0
     budget=0.0
     start=time.monotonic()
@@ -317,7 +321,7 @@ def main():
             st=frost['stages'][stage-1]
             source=sources[stage]
             body={'first_frame':encoded(source),'last_frame':encoded(source),
-                  'frame_count':8,'action':prompt(stage),
+                  'frame_count':8,'action':checked_prompts[stage],
                   'no_background':True,'seed':202617021+stage*211}
             job=query(token,'/animate-with-text-v3',body)
             jid=job.get('background_job_id')
