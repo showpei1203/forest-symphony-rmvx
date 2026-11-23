@@ -46,6 +46,19 @@ var source_tabs:Array[TextureButton]=[]
 var displayed_portrait:TextureRect
 var _art:FSUIArtLibrary
 var _menu:FSMenuModel
+var feedback_label:Label
+var _row_color:Color=Color(0.06,0.17,0.18)
+# P538C these bounds are inspected against private 544x416 native source PNG,
+# not inferred from the previous generic page shell. VX same-state pixel
+# parity remains an independent HOLD.
+const SOURCE_ROW_RECTS={
+    "status":Rect2(169,151,346,225),
+    "skills":Rect2(17,230,509,171),
+    "items":Rect2(17,230,277,170),
+    "item_targets":Rect2(17,230,277,170),
+    "equipment":Rect2(17,230,274,170),
+    "equipment_candidates":Rect2(17,230,274,170)
+}
 
 func configure(provider:FSUIArtLibrary, model:FSMenuModel,
         category:String, selected_actor:int, first_formation:int=-1,
@@ -70,6 +83,7 @@ func configure(provider:FSUIArtLibrary, model:FSMenuModel,
     actor_buttons.clear()
     source_tabs.clear()
     displayed_portrait=null
+    feedback_label=null
     _art=provider
     _menu=model
     actor_index=selected_actor
@@ -87,7 +101,7 @@ func _new_label(parent:Node,value:String,font_size:int=13)->Label:
     label.text=value
     label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
     label.add_theme_font_size_override("font_size",font_size)
-    label.add_theme_color_override("font_color",Color(0.08,0.18,0.2))
+    label.add_theme_color_override("font_color",_row_color)
     parent.add_child(label)
     return label
 
@@ -100,6 +114,20 @@ func _button(parent:Node,value:String,action:Callable,
     button.disabled=not enabled
     button.custom_minimum_size=Vector2(0,27)
     button.add_theme_font_size_override("font_size",12)
+    # Source window art already contains the actual panel, lines and frame.
+    # Avoid painting Godot's default opaque grey controls on top of it.
+    var normal:=StyleBoxFlat.new()
+    normal.bg_color=Color(0.08,0.19,0.22,0.16)
+    normal.set_content_margin_all(2)
+    var hover:=StyleBoxFlat.new()
+    hover.bg_color=Color(0.17,0.42,0.46,0.45)
+    hover.set_content_margin_all(2)
+    button.add_theme_stylebox_override("normal",normal)
+    button.add_theme_stylebox_override("hover",hover)
+    button.add_theme_stylebox_override("focus",hover)
+    button.add_theme_color_override("font_color",_row_color)
+    button.add_theme_color_override("font_hover_color",Color.WHITE)
+    button.add_theme_color_override("font_disabled_color",Color(0.47,0.55,0.58))
     if enabled:
         button.pressed.connect(action)
     parent.add_child(button)
@@ -108,16 +136,24 @@ func _button(parent:Node,value:String,action:Callable,
 
 func _render(tabs:Array[Texture2D],first_formation:int,
         subject_id:int)->void:
+    # Native original image geometry is specific to each page:
+    # Status large stone rectangle; Skill bottom full-width list;
+    # Item/Equip bottom left list + right description/stats;
+    # Party current and reserve are two different source boxes.
     var header:=HBoxContainer.new()
-    header.position=Vector2(145,49)
-    header.size=Vector2(356,26)
+    header.name="FSOriginalPageHeader"
+    header.position=Vector2(144,42)
+    header.size=Vector2(370,31)
     add_child(header)
-    _new_label(header,"Forest Symphony　"+str(TITLES[page_kind]),16)
+    _row_color=Color(0.08,0.18,0.2)
+    _new_label(header,str(TITLES[page_kind]),15)
     var back:=_button(header,"返回",func()->void:return_requested.emit())
     back.size_flags_horizontal=Control.SIZE_SHRINK_END
+    back.custom_minimum_size=Vector2(55,25)
+
     var strip:=HBoxContainer.new()
     strip.name="FSOriginalPageTabs"
-    strip.position=Vector2(144,82)
+    strip.position=Vector2(145,78)
     strip.add_theme_constant_override("separation",8)
     add_child(strip)
     for i in range(tabs.size()):
@@ -130,41 +166,55 @@ func _render(tabs:Array[Texture2D],first_formation:int,
         picture.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
         picture.custom_minimum_size=Vector2(TAB_SIZE)
         picture.disabled=i!=0
-        picture.tooltip_text="來源頁籤：已移植目前主頁" if i==0 else (
-            "原始素材已驗證；其他來源子功能尚未核准")
+        picture.tooltip_text="已保留來源圖片，僅驗證主頁" if i!=0 else "目前主頁"
         strip.add_child(picture)
         source_tabs.append(picture)
-    if not page_kind in ["items","item_targets","formation"]:
-        _actor_nav()
-    var panel:=PanelContainer.new()
-    panel.name="FSOriginalPageFunctionalWindow"
-    panel.position=Vector2(144,119)
-    panel.size=Vector2(355,247)
-    var style:=StyleBoxFlat.new()
-    style.bg_color=Color(0.95,0.98,0.97,0.78)
-    style.set_content_margin_all(6)
-    panel.add_theme_stylebox_override("panel",style)
-    add_child(panel)
-    var scroll:=ScrollContainer.new()
-    scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
-    panel.add_child(scroll)
-    var list:=VBoxContainer.new()
-    list.name="FSOriginalPageRows"
-    list.size_flags_horizontal=Control.SIZE_EXPAND_FILL
-    list.add_theme_constant_override("separation",3)
-    scroll.add_child(list)
-    match page_kind:
-        "status":_status(list)
-        "skills":_skills(list)
-        "items":_items(list)
-        "item_targets":_item_targets(list,subject_id)
-        "equipment":_equipment(list)
-        "equipment_candidates":_equipment_candidates(list,subject_id)
-        "formation":_formation(list,first_formation)
+    if page_kind=="formation":
+        _render_formation(first_formation)
+    else:
+        if page_kind in ["status","skills","equipment","equipment_candidates"]:
+            _actor_nav()
+        var panel:=PanelContainer.new()
+        panel.name="FSOriginalPageFunctionalWindow"
+        panel.mouse_filter=Control.MOUSE_FILTER_PASS
+        panel.position=SOURCE_ROW_RECTS[page_kind].position
+        panel.size=SOURCE_ROW_RECTS[page_kind].size
+        # Do NOT cover original source windows with a fabricated white panel.
+        panel.add_theme_stylebox_override("panel",StyleBoxEmpty.new())
+        add_child(panel)
+        var scroll:=ScrollContainer.new()
+        scroll.name="FSOriginalRowsScroll"
+        scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED
+        panel.add_child(scroll)
+        var list:=VBoxContainer.new()
+        list.name="FSOriginalPageRows"
+        list.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+        list.add_theme_constant_override("separation",2)
+        scroll.add_child(list)
+        _row_color=Color(0.07,0.18,0.2) if page_kind=="status" else (
+            Color(0.92,0.97,0.95))
+        match page_kind:
+            "status":_status(list)
+            "skills":_skills(list)
+            "items":_items(list)
+            "item_targets":_item_targets(list,subject_id)
+            "equipment":_equipment(list)
+            "equipment_candidates":_equipment_candidates(list,subject_id)
+    feedback_label=Label.new()
+    feedback_label.name="FSOriginalPageVisibleFeedback"
+    feedback_label.position=Vector2(17,402)
+    feedback_label.size=Vector2(510,13)
+    feedback_label.add_theme_font_size_override("font_size",10)
+    feedback_label.add_theme_color_override("font_color",Color(1.0,0.93,0.73))
+    feedback_label.visible=false
+    add_child(feedback_label)
     if not _menu.db.boot_final_verified:
-        var gate:=_new_label(self,"QA 資料尚非原版啟動後完整驗證資料",10)
-        gate.position=Vector2(145,379)
-        gate.size=Vector2(350,19)
+        show_feedback("合成 QA 數值，非原版 FS 啟動後正式資料")
+
+func show_feedback(message:String)->void:
+    if feedback_label!=null:
+        feedback_label.text=message
+        feedback_label.visible=not message.is_empty()
 
 func _actor_nav()->void:
     var party:Array[Dictionary]=_menu.party()
@@ -179,20 +229,58 @@ func _actor_nav()->void:
                 displayed_portrait.texture_filter=CanvasItem.TEXTURE_FILTER_NEAREST
                 displayed_portrait.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
                 displayed_portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-                displayed_portrait.position=Vector2(16,93)
-                displayed_portrait.size=Vector2(113,142)
+                displayed_portrait.position=Vector2(18,132) if (
+                    page_kind=="status") else Vector2(18,14)
+                displayed_portrait.size=Vector2(112,146) if (
+                    page_kind=="status") else Vector2(104,114)
                 add_child(displayed_portrait)
-    var nav:=VBoxContainer.new()
-    nav.position=Vector2(21,247)
-    nav.size=Vector2(110,122)
+    # Keep the actor selector ABOVE source bottom list windows, never
+    # occupy the source 17..526px skill and equipment row rectangles.
+    var nav:=HBoxContainer.new()
+    nav.name="FSOriginalActorSelection"
+    nav.position=Vector2(145,107)
+    nav.size=Vector2(376,28)
+    nav.add_theme_constant_override("separation",3)
     add_child(nav)
     for i in range(mini(party.size(),4)):
         var selected:int=i
         var name:String=str(party[i].get("name","?"))
-        var button:=_button(nav,("▶ " if i==actor_index else "　")+name,
+        var button:=_button(nav,("▶" if i==actor_index else " ") +name,
             func()->void:actor_requested.emit(selected))
-        button.custom_minimum_size=Vector2(107,22)
+        button.custom_minimum_size=Vector2(83,24)
+        button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
         actor_buttons.append(button)
+
+func _render_formation(first:int)->void:
+    # Actual MenuBack_party has three numbered upper current-squad slots
+    # and a separate lower reserve band; do not paste a huge generic panel
+    # over them. The menu_model remains the ONLY swap authority.
+    var party:Array[Dictionary]=_menu.party()
+    _row_color=Color(0.07,0.18,0.2)
+    for i in range(mini(party.size(),3)):
+        var index:int=i
+        var selection:String=("▶" if i==first else "")
+        var button:=_button(self,selection+str(party[i].get("name","?")),
+            func()->void:formation_requested.emit(index))
+        button.name="FSOriginalCurrentSlot_"+str(index)
+        button.position=Vector2(66+i*47,103)
+        button.size=Vector2(45,27)
+        button.custom_minimum_size=button.size
+        button.add_theme_font_size_override("font_size",10)
+    _row_color=Color(0.92,0.97,0.95)
+    var area:=VBoxContainer.new()
+    area.name="FSOriginalReserveSquad"
+    area.position=Vector2(22,333)
+    area.size=Vector2(285,62)
+    add_child(area)
+    for i in range(3,party.size()):
+        var index:int=i
+        _button(area,str(i+1)+". "+str(party[i].get("name","?")),
+            func()->void:formation_requested.emit(index))
+    if first>=0 and first<party.size():
+        var hint:=_new_label(self,"交換："+str(party[first].get("name","")),11)
+        hint.position=Vector2(16,194)
+        hint.size=Vector2(280,24)
 
 func _status(list:VBoxContainer)->void:
     var party:Array[Dictionary]=_menu.party()
