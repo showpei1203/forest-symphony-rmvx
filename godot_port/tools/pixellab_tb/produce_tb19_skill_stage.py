@@ -35,13 +35,13 @@ def dump(path,obj):
     path.parent.mkdir(parents=True,exist_ok=True)
     path.write_text(json.dumps(obj,indent=2,ensure_ascii=False),encoding='utf-8')
 def prompt(stage):
-    s=(f'SAME four-legged silver-blue {STAGE_N[stage]} CASTS one ICE SKILL, 12 frames. '
-       'Fixed southeast 3/4 JRPG battle camera; centered creature, static view. '
-       'F0 original pose; F1-F3 lower head and brace all four attached paws. '
-       'F4-F7 cyan frost crystal light grows on forehead and pushes forward in a short icy burst. '
-       'F8-F10 glow fades, muzzle lifts; F11 return to EXACT original pose. '
-       'Preserve icy eyes, navy muzzle, crystal crown, silver fur, four paws, ears and tail. '
-       'NO duplicate wolf, extra legs, wings, weapons, scenery, camera turn, or edge clipping.')
+    s=(f'SAME four-legged silver-blue {STAGE_N[stage]} casts ICE SKILL, 12 frames. '
+       'Fixed southeast 3/4 view, body centered, no camera motion. '
+       'F0 normal pose; F1-F3 head lowers, four attached paws brace. '
+       'F4-F7 cyan frost spark builds on forehead crystal, releases a SMALL icy burst. '
+       'F8-F10 frost fades, head lifts; F11 exactly original stance. '
+       'Preserve eyes, navy muzzle, silver fur, crystal crown, ears, four paws and tail. '
+       'NO extra wolves, limbs, wings, shields, scenery or clipping.')
     assert len(s)<=495,(stage,len(s))
     return s
 
@@ -160,7 +160,7 @@ def _png(im):
     b=io.BytesIO();im.save(b,format='PNG');return b.getvalue()
 
 def run_stage(stage):
-    skillid=os.getenv('GITHUB_SKILL_ID','')
+    skillid=os.getenv('GITHUB_RUN_ID','')
     assert skillid.isdigit() and 6<=len(skillid)<=20,'Fixed owner Windows runner only'
     assert DRIVE.is_dir(),'No original private Drive mount; stop before paid request'
     tok=os.getenv('PIXELLAB_API_TOKEN')
