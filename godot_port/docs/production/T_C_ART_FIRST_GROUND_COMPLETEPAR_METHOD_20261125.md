@@ -53,3 +53,12 @@
 - 不修改已安裝 Skills 的封裝版號；舊 `fs-map-ground-par` SKILL.md 的「截至 2026-11-22 D11 沒 PAR」為**歷史描述**，**不得用它蓋過 D20/D21 CURRENT_HANDOFF**。新對話先讀本方法與最新版 Handoff，必須持續區分 **TECH PASS／NATIVE PASS／ART HOLD／USER ART PASS**。
 
 **金句：**「好的地圖不是兩張 PNG 疊得起來，而是兩張分開生成時就屬於同一個世界。」
+
+
+## 六、2026-11-25 D22 真實「美術優先」產線回歸測試（此章為最新證據，不改原規則）
+
+**本輪真的新生成一張完整全非地表獨立 RGBA plate，而非沿用舊 PAR 重排當新美術。** 新原始影像 `1473×1068` SHA `7ab52f35107f468439436ff23e43ae879df6a90d9d55039e0fb761273fe32828`，有真正 `alpha=0 1,166,479` 個像素，含十個主要完整物件群。保留 D17 Ground 1280×928 SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`；全圖規劃改為左上工坊、右上吊車、右側熔岩裂橋、左下小工坊，中央道路留白。全十組物件原像素 1× 重排，沒有 Polygon 物件截斷；A/B 及 Raw/Matte 四版宏觀對照後採 B（A 物件重疊2713px、B 617px、D18 868px），外緣高 Alpha=0。修正模型來源 556 個紅色邊緣污染像素，原作者來源無損另存，絕不假稱所有 Alpha 保留或原模型直接產出 native 1280×928。
+
+[**D22 新私人來源＋PAR＋真 Godot 4.7.2 原生 QA 十七檔完整 ZIP**](https://drive.google.com/file/d/1LJtjHRHl5f8F5FtGBK5uep_f6f243mGQ/view)｜[新 PAR 1280×928](https://drive.google.com/file/d/1cFR_YREdTCd82uNWyI3RxYbfIoo8FRha/view)｜[實際 Godot 4.7.2 原生圖](https://drive.google.com/file/d/1R7KnV8-1cgChPaOMnFoblvU97j6X3v8X/view)｜[D18／D22 真原生 A/B](https://drive.google.com/file/d/1nIMAztQ5SEJ4g1upb6vVTsQkT3F470w4/view)｜[完整 D22 實證與 Failure Log](../handoff/TC_D22_ART_FIRST_FS_04_MAZE_NEW_COMPLETEPAR_NATIVE_QA_20261125.md)（後者在隔離實驗分支，主分支尚未合併）。
+
+**補足「成功」語意：** ART-FIRST 流程在 D22 再次實際產生雙圖可重現且 Native PASS；但是新 PAR 原模型仍是 1473×1068 再依世界座標 1× 重佈局、橋兩側實地接合/物件光向細節/既有 A35 美術比對尚未 USER ART 核准，正式封版仍 **0/12 HOLD**。下一輪優先原生 1× 真視覺的整張美術評審與新完整 PAR 作者化，不能把橋梁碰撞、遮蔽演算法當成 T-C 必備製圖工作。
