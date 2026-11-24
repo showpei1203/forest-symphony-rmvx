@@ -29,7 +29,13 @@ def rgba(data: bytes) -> Image.Image:
 
 def verify_sources(catalog: dict, archive: Path, derivatives_dir: Path) -> dict:
     assert catalog["schema"] == "FS_TB_PMD_SEQUENTIAL_REDESIGN_SOURCE_CONTRACT_V1"
-    assert catalog["next_id"] == "PMD0001"
+    verified = catalog["verified_ids"]
+    completed = catalog.get("completed_ids", [])
+    assert completed == verified[:len(completed)], "Out-of-order PMD completion"
+    if len(completed) < len(verified):
+        assert catalog["next_id"] == verified[len(completed)], "PMD next ID must advance one-by-one"
+    else:
+        assert catalog["next_id"] == f"PMD{int(verified[-1][3:])+1:04d}", "Next unverified PMD ID pending source"
     assert archive.is_file() and sha(archive.read_bytes()) == G11_SHA
     species = catalog["species"]
     assert len(species) == 3
