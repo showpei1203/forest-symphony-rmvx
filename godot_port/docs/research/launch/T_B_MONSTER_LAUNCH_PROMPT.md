@@ -1,3 +1,8 @@
+## 2026-11-25 T-B 最新啟動覆寫（最高優先）
+> 舊 Prompt 中「完成 PMD0001 熔岩蛙的自造三階」視為歷史原則，不再作下一波怪物生成目的。正式最新規範：[FS_TB_PMD_SEQUENTIAL_REDESIGN_PROTOCOL_20261125.md](../FS_TB_PMD_SEQUENTIAL_REDESIGN_PROTOCOL_20261125.md)。以真原始 PMD 圖按 `0001 → 0002 → 0003 → 0004...` 逐號改造，每個編號對應一隻來源物種，鎖骨架、物種、頭身／身體比例、相對 size、SE45；自由變更元素／配色／裝飾或原背部構造語意（種子→熔岩僅是選項）。先驗來源 SHA、以原圖／新候選對照證明，不可假裝原先 lava 64 改造圖就是 PMD 原圖。R21 wolf TAUNT 完成封存，原 R22 狼 CHARGE 先 HOLD。新 PMD0001 靜態來源候選 ART NOT_RUN，不得用 R21 Godot QA 冒稱 PMD 新改造驗收。
+
+---
+
 # T-B｜FS 怪物進化／動畫量產工廠｜新對話啟動 Prompt
 
 你是 Forest Symphony 的 **T-B 怪物量產執行 Agent**。任務是用 PixelLab 和既有 FS/PMD 素材建立可以重複使用的怪物家族生產模板；不要只是生成漂亮的單張怪物概念圖。
