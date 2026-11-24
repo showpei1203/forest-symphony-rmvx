@@ -1,3 +1,20 @@
+# T-C CURRENT｜D22 ART-FIRST 新獨立非地表 PAR 候選已實際生成＋原生 Godot PASS｜2026-11-25
+
+**本輪回到美術產出，最新優先於下面 D21 碰撞／遮擋／D20 舊圖的歷史段落**。以凍結 D17 火山迷宮 Ground 1280×928 RGB SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 為地圖基礎，**新獨立生成 Ground 不含其中的全非地表透明 PAR 原始圖** `1473×1068 RGBA` SHA `7ab52f35107f468439436ff23e43ae879df6a90d9d55039e0fb761273fe32828`。這不是混合 Ground Master，也不是角色遮擋遮罩。原圖10組主要完整連通物件以**1× 無縮放、無 polygon 截斷**重新配進 `1280×928 RGBA` 完整 PAR：D22-B SHA `a7cf732989afe88be6860a2cc1d27092ee9c2e94e696f315aa5bc4ce62033b95`、真 Alpha0 **847,920**；新真靜態合成 SHA `54acc8aa0ce8197ea8a7e1e68d9fc1b9ea4f4c157fb4736a574c8d4fa780be80`。
+
+**D22 真正美術進展**：把擁擠的 D18 鍛造/橋梁家族改成左上大工坊、右上吊車、右側獨立橋、左下小工坊，保留中心更大完整道路空間；前景物件互相重疊 D18 **868px → D22-B 617px**，外緣高不透明貼邊 D18 250 → D22-B 0。先試 A/B 宏觀位置與 raw/matte 四候選，A overlap 2713 故拒收，採 B。Matte 僅移除 556 source 紅色外緣污染像素並清 alpha<=8 / >=240，保留原始無編修來源；**不能說原始 Alpha 完全一致**。
+
+**真 Godot4.7.2 私人素材 1× Native PASS**：來源雙 SHA 驗證、1280×928 NEAREST 原生截圖，PNG SHA `add99e8071f50e002b8c5696deb68a0a6a06a7a0a94d67c67610c36fbb13e105`，對新 PIL 合成有 7862 個像素 RGB 取整差異，最大每通道1／255。生成原圖仍 1473×1068，採整物件 1× re-layout，**不是**模型直接原生 1280×928 一次完成。房屋比例/橋頭實際接地/視角風格/32px 遊戲美術相容，仍 **USER ART HOLD，十二圖 0/12**；完整遊戲整合/ACTOR01/碰撞全部 NOT_RUN，T-C 不再延伸 D21 runtime blocker。
+
+**實際私人備份**：
+- [D22 17檔完整 Ground、獨立 PAR 原始圖、新 PAR、Godot Native PNG、全部 A/B、QA + 可重建工廠 Python 封包（13,986,396 bytes ZIP CRC PASS）](https://drive.google.com/file/d/1LJtjHRHl5f8F5FtGBK5uep_f6f243mGQ/view)
+- [D22 真 PAR 1280×928](https://drive.google.com/file/d/1cFR_YREdTCd82uNWyI3RxYbfIoo8FRha/view)／[真 Godot native](https://drive.google.com/file/d/1R7KnV8-1cgChPaOMnFoblvU97j6X3v8X/view)／[D18 vs D22 native 整張 A/B](https://drive.google.com/file/d/1nIMAztQ5SEJ4g1upb6vVTsQkT3F470w4/view)／[完整 QA](https://drive.google.com/file/d/1Xla2K_Ty5Te-fKuR7r92OTit79nl5LHD/view)。已 metadata READBACK，私人 owner-only，不會把 PNG/ZIP 放公開 GitHub。
+- [D22 真來源／失敗與保留風險／驗收 Gate Handoff](TC_D22_ART_FIRST_FS_04_MAZE_NEW_COMPLETEPAR_NATIVE_QA_20261125.md)；[冷重建的 D22 Python 程式](../../tc_factory/biomes/fs_tc_d22_art_first_independent_par_layout.py)。以 [2026-11-25 ART-FIRST SOP](../production/T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md) 為最高製圖方法來源，**不改舊資料**。
+
+**下一完整美術單位**：對真正 **D18 vs D22 原生全景**先做整體 ART Review，若 D22 尚未達標，優先改**整張獨立 PAR 原生世界構圖**或回到完整 Ground 作者化，不做欄杆／碰撞／角色深度。至少第一張經使用者美術核准前，**ART 仍 0/12**。本輪 Desktop Remote／Codex／Windows PC Bridge 0，不動 Windows 原始專案、A35、T-A/T-B。
+
+---
+
 # T-C CURRENT｜2026-11-25 ART-FIRST 正式回歸製圖目標（方法更新，非新增美術 PASS）
 
 **這一節是最新使用者指示優先權，覆蓋下方 D21「下一階段投入碰撞／遮擋／存讀」的工作優先序；D21 已完成的 Godot QA 證據照樣保留，不覆寫歷史。**
