@@ -1,0 +1,39 @@
+{
+  "schema": "fs-audit-receipt/v1",
+  "verified_date": "2026-11-24",
+  "audited_lane": "T-B",
+  "milestone": "R19 Glacier Jackal source/native packaging",
+  "scope": "Independent full binary re-download and archive integrity cross-check plus pinned Godot native log; NOT a new visual evaluation or full FSBattle integration",
+  "owner_private_drive_file_id": "1tP_rrUA24VgyPNmCF4H87I2CNtXKv7Ng",
+  "format": "zip",
+  "bytes": 13923818,
+  "sha256": "c2e9dd7a05a8d4027eebc506693c3931c1566ac963efdfb900300cb286b42f0a",
+  "crc": "PASS",
+  "entries": 466,
+  "checked_manifest": "godot/TB19_MONSTER_FAMILY_MANIFEST.json",
+  "data_counts": {
+    "clip_count": 102,
+    "total_frames": 934
+  },
+  "embedded_native_log": "reports/R19_M2_WINDOWS_GODOT472_SKILL_QA_20261123.log",
+  "native_log_sha256": "54b252325297441cf50f8cd9ea74078f0700c4ad8ee7c57f37a67e1657bcd17f",
+  "actual_native_marker": "FS_TB_R19_GODOT472_NATIVE_ART_ONLY_PASS families=3 stages=9 motions=96 evolutions=6 clips=102 frames=934 frost_skill=3",
+  "native_engine": "Godot 4.7.2.stable.official.ed1daf0bf",
+  "native_log_reported_source_sha256": "bbabc2d4b2c39513f2b014d59916923892c78c34c23707fbf0b47e9b425c6108",
+  "native_run": "https://github.com/showpei1203/chatgpt-pc-bridge/actions/runs/45130577116",
+  "native_bridge_issue": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/106",
+  "discrepancy": "Bridge Issue #106 human summary still says Clips=99/Frames=898 (previous snapshot); exact authenticated Drive native log and TB19 manifest both say 102/934. Do not silently rewrite historical issue.",
+  "gates": {
+    "cloud_original_asset_integrity": "PASS",
+    "ZIP_CRC_and_manifest": "PASS",
+    "source_SHA_in_log_provenance": "PASS",
+    "historic_Godot_native_art_only": "PASS",
+    "user_visual_art": "AWAIT_USER_ART",
+    "real_FSBattle_ATB_ACT": "NOT_RUN",
+    "second_independent_workflow": "NOT_PROVEN_BY_THIS_RECEIPT",
+    "full_formal_gameplay_release": "HOLD"
+  },
+  "privacy": "Only derived counts/hashes and public test links appear in GitHub; full original asset remains in owner-only Drive, no private raster uploaded",
+  "execution": "Private artifact read in ChatGPT isolated environment; user Windows PC untouched; no PixelLab paid invocation; no Codex or Desktop Remote",
+  "note": "This is a real verified audit example for the new evidence gating framework, NOT a new sprite-generator production result."
+}

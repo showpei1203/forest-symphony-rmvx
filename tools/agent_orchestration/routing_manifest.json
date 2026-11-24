@@ -1,0 +1,225 @@
+{
+  "schema": "fs-routing/v1",
+  "effective_date": "2026-11-24",
+  "project": "Forest Symphony",
+  "repository": "showpei1203/forest-symphony-rmvx",
+  "formal_engine": "Godot 4.7.2",
+  "cloud_only": true,
+  "no_codex": true,
+  "desktop_remote_default": false,
+  "notes": "This governance package targets default branch main after PR #18 merge. Until merge, the feature branch is the staging authority, not an already-activated default.",
+  "read_first": [
+    {
+      "kind": "drive",
+      "url": "https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit",
+      "why": "global storage and user-PC constraints"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "AGENTS.md",
+      "why": "live repository orchestration entry"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "authority/FS_CURRENT_RULES_INDEX_20261107.md",
+      "why": "historical index with current Godot override"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md",
+      "why": "current Godot workflow precedence"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md",
+      "why": "project P0 storage"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": ".agents/skills/fs-rmvx-router/SKILL.md",
+      "why": "FS-specific routing skill; historical sections overridden"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "ASSET_GENERATION_PRECHECK.md",
+      "why": "mandatory for image/art work"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "tools/agent_orchestration/tool_skill_inventory.json",
+      "why": "installed-versus-actually-invoked tool/skill status"
+    }
+  ],
+  "tool_routing": [
+    {
+      "rank": 1,
+      "tool": "GitHub/Google Drive/Linear connectors",
+      "use": "cloud read-write, branch/Handoff/evidence",
+      "verification": "readback actual IDs/commit and status"
+    },
+    {
+      "rank": 2,
+      "tool": "approved MCP/API/CLI",
+      "use": "task-specific allowed actions",
+      "verification": "record exact operation and output, no inferred permissions"
+    },
+    {
+      "rank": 3,
+      "tool": "PC Bridge allowlist",
+      "use": "Windows native QA ONLY when necessary and P0 temporary-file conditions satisfied",
+      "verification": "review README, HANDOFF, Invoke-BridgeTask.ps1 and exact Issue/Actions"
+    },
+    {
+      "rank": 4,
+      "tool": "Orca restricted agent",
+      "use": "only verified read/control scope",
+      "verification": "actual permitted call and observable result; registration != use"
+    },
+    {
+      "rank": 5,
+      "tool": "Desktop Remote",
+      "use": "last resort, explicit user permission only",
+      "verification": "log reason and actions"
+    }
+  ],
+  "lanes": {
+    "T-C": {
+      "issue": "SHO-39",
+      "branch": "feat/fs-pixellab-tc-map-20261121",
+      "handoff": "godot_port/docs/handoff/PIXELLAB_TC_CURRENT_HANDOFF.md",
+      "launch": "godot_port/docs/research/launch/T_C_MAP_LAUNCH_PROMPT.md",
+      "skills": [
+        "fs-rmvx-router",
+        "fs-map-ground-par",
+        "fs-godot-testing",
+        "fs-handoff-qa"
+      ],
+      "contract": "GROUND first (terrain/grass/flowers) -> separately generate ALL non-ground objects once as true transparent CompletePAR; no actor-occlusion filtering; same XY/canvas; Godot review downstream. Older master-first is historical for newly requested T-C production.",
+      "current_snapshot": "2026-11-22 D11 volcano Ground yes, PAR alpha fails, 0/12 formally Art-Sealed, native NOT_RUN; live handoff always required",
+      "mandatory_gates": [
+        "source_identity",
+        "ground_purity",
+        "par_complete_alpha",
+        "xy_registration",
+        "godot472_native",
+        "owner_art",
+        "cloud_readback"
+      ]
+    },
+    "T-A": {
+      "issue": "SHO-38",
+      "branch": "feat/fs-pixellab-ta-actor-20261121",
+      "handoff": "godot_port/docs/handoff/PIXELLAB_TA_CURRENT_HANDOFF.md",
+      "launch": "godot_port/docs/research/launch/T_A_ACTOR_LAUNCH_PROMPT.md",
+      "skills": [
+        "fs-rmvx-router",
+        "fs-actor-paperdoll",
+        "fs-godot-testing",
+        "fs-handoff-qa"
+      ],
+      "contract": "ACTOR01 approved 64x64 identity, 45-degree view; real independently poseable body/garment and true hidden underpaint; Body/Weapon/FX, 12 frames per action; do not infer hidden parts from 7 visible-only masks.",
+      "current_snapshot": "2026-11-23 R23 visible-only seven-layer technical native pass; new boxing art and true underpaint ART HOLD; full battle NOT_RUN",
+      "mandatory_gates": [
+        "source_identity",
+        "genuine_paperdoll",
+        "motion_semantics",
+        "twelve_frames",
+        "godot472_native",
+        "owner_art",
+        "gameplay_battle",
+        "cloud_readback"
+      ]
+    },
+    "T-B": {
+      "issue": "SHO-37",
+      "branch": "feat/fs-pixellab-tb-monster-20261121",
+      "handoff": "godot_port/docs/handoff/PIXELLAB_TB_CURRENT_HANDOFF.md",
+      "launch": "godot_port/docs/research/launch/T_B_MONSTER_LAUNCH_PROMPT.md",
+      "skills": [
+        "fs-rmvx-router",
+        "fs-monster-evolution",
+        "fs-godot-testing",
+        "fs-handoff-qa"
+      ],
+      "contract": "Original licensed source identity, three visibly distinct evolution stages, true provider job provenance and single-payment ledger; no blind paid rerun; native art QA separate from owner visual/art and full FSBattle/ATB/ACT.",
+      "current_snapshot": "2026-11-23 R19 ice SKILL true provider 3 stages, native art-only PASS, owner art AWAIT, battle NOT_RUN",
+      "mandatory_gates": [
+        "source_identity",
+        "evolution_identity",
+        "paid_job_provenance",
+        "animation_native",
+        "owner_art",
+        "gameplay_battle",
+        "cloud_readback"
+      ]
+    },
+    "GODOT": {
+      "issue": null,
+      "branch": "feature/fs-godot-phase1",
+      "handoff": "godot_port/docs/CURRENT_HANDOFF.md",
+      "skills": [
+        "fs-rmvx-router",
+        "fs-godot-testing",
+        "fs-handoff-qa"
+      ],
+      "contract": "All new FS runtime/gameplay changes target Godot 4.7.2. Preserve legacy VX event compatibility as scoped requirement; don't switch to new VX build.",
+      "current_snapshot": "2026-11-24 P538D CURRENT_HANDOFF source-backed original formation-slot portraits and native UI work; inspect live branch HEAD/current handoff for actual latest. Old 34/34 is historical baseline only.",
+      "mandatory_gates": [
+        "source_identity",
+        "regression",
+        "native_godot472",
+        "gameplay_e2e",
+        "cloud_readback"
+      ]
+    },
+    "CONTROL": {
+      "issue": null,
+      "branch": "research/fs-pixellab-deep-study-20261121",
+      "handoff": "godot_port/docs/research/launch/FS_CONTROL_TOWER_STATUS.md",
+      "protocol": "godot_port/docs/research/launch/FS_CONTROL_TOWER_PROTOCOL.md",
+      "skills": [
+        "fs-rmvx-router",
+        "fs-handoff-qa",
+        "ai-pc-routing",
+        "skill-curation"
+      ],
+      "contract": "Only audits/synchronizes on explicit current invocation; never claims automatic continuous monitoring. Must read all live T-A/B/C branches and Linear.",
+      "current_snapshot": "2026-11-21 published tower status is stale relative to T-C D11, T-A R23, T-B R19",
+      "mandatory_gates": [
+        "branch_heads",
+        "per_lane_handoff",
+        "drive_metadata",
+        "native_evidence",
+        "art_gate",
+        "p0_storage"
+      ]
+    }
+  },
+  "status_vocabulary": [
+    "NOT_RUN",
+    "ACTIVE",
+    "BLOCKED",
+    "TECH_PASS",
+    "ART_HOLD",
+    "AWAIT_USER_ART",
+    "VERIFIED_PASS"
+  ],
+  "proof_template": "tools/agent_orchestration/proof_template.json",
+  "separate_gates": [
+    "source",
+    "technical",
+    "godot_native",
+    "owner_art",
+    "full_gameplay",
+    "cloud_write_readback"
+  ],
+  "activation_warning": "Finding a SKILL.md, PC registry entry or tool install does not prove automatic selection or actual use in a ChatGPT conversation.",
+  "governance_branch": "main"
+}

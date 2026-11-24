@@ -1,0 +1,95 @@
+{
+  "schema": "fs-tool-inventory/v1",
+  "checked_at": "2026-11-24",
+  "warning": "Inventory is historical evidence, never proof that another ChatGPT conversation automatically loads/uses tools. Each task must confirm current connection and reload actual SKILL.md.",
+  "skills": {
+    "project_current": {
+      "name": "fs-rmvx-router",
+      "source_repository": "showpei1203/forest-symphony-rmvx",
+      "source_path": ".agents/skills/fs-rmvx-router/SKILL.md",
+      "current_fix_branch": "feat/fs-unified-orchestration-20261124",
+      "content_verified": true,
+      "app_auto_activation_proven": false,
+      "note": "2026-11-24 Godot override on feature branch; historical master-first/VX text preserved for legacy"
+    },
+    "windows_shared_v010": {
+      "names": [
+        "ai-pc-routing",
+        "fs-handoff-qa",
+        "fs-map-ground-par",
+        "fs-actor-paperdoll",
+        "fs-monster-evolution",
+        "fs-godot-testing",
+        "research-verification",
+        "business-reasoning",
+        "skill-curation"
+      ],
+      "actual_installed_count": 9,
+      "installation_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/53",
+      "file_verification": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/54",
+      "orca_registry_proof": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/62",
+      "cherry_sandbox_verification": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/76",
+      "orca_actual_invocation_proven": false,
+      "cherry_agent_binding_proven": false,
+      "assumed_current_latest": false,
+      "action": "Use authoritative GitHub text; verify actual host read/invocation; installed v0.1 is not an automatic updated copy"
+    }
+  },
+  "tools": [
+    {
+      "name": "GitHub connector",
+      "status": "USED",
+      "evidence": "https://github.com/showpei1203/forest-symphony-rmvx/pull/18",
+      "route": "GitHub direct source read/write and PR/CI"
+    },
+    {
+      "name": "Google Drive connector",
+      "status": "USED",
+      "evidence": "https://drive.google.com/file/d/1tP_rrUA24VgyPNmCF4H87I2CNtXKv7Ng/view",
+      "route": "private original art and provenance; never expose private PNG publicly"
+    },
+    {
+      "name": "Linear connector",
+      "status": "USED_FOR_READBACK",
+      "evidence": "https://linear.app",
+      "route": "current SHO-37/38/39 work-tracking; live access must be rechecked"
+    },
+    {
+      "name": "PC Bridge",
+      "status": "ACTIVE_ALLOWLIST",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/113",
+      "route": "only approved bounded native tasks, P0 user-PC-temp approval before creating new PC work tree"
+    },
+    {
+      "name": "PixelLab",
+      "status": "TRUE_PROVIDER_USED_IN_TB",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/101",
+      "route": "true source locked T-B provider jobs, no default free rerun"
+    },
+    {
+      "name": "sprite-gen 4.3.0",
+      "status": "INSTALLED_NATIVE_SYNTHETIC_PASS_ONLY",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/113",
+      "route": "atlas curation / QA; real FS art end-to-end still NOT_RUN"
+    },
+    {
+      "name": "Orca",
+      "status": "DISCOVERED_ONLY_FOR_SKILLS",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/62",
+      "route": "do not claim agent actually selected nine skills"
+    },
+    {
+      "name": "Cherry Studio",
+      "status": "SKILL_SANDBOX_ONLY",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/76",
+      "route": "work-agent activation and GUI automation HOLD"
+    },
+    {
+      "name": "GPT Researcher",
+      "status": "MCP_SEARCH_SMOKE_ONLY",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/36",
+      "route": "do not claim it is the standard research pipeline"
+    }
+  ],
+  "priority": "Task-specific actual user input > global Drive P0 > latest live lane handoff > current FS Godot protocol > verified tool inventory > old saved state"
+}
