@@ -1,3 +1,20 @@
+# T-C CURRENT｜D20 FS_04_MAZE 真私人素材 Godot 4.7.2 原生 1× 雙版本 PASS｜2026-11-24
+
+**最高優先最新成果（以下 D19/D18 為歷史）**：已解決此前 GitHub source-only synthetic CI 無法驗證私有美術的阻斷！D17 鎖定 RGB Ground `1280×928` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` + **兩份真正 owner-private 完整 RGBA PAR**：
+- **D18 PAR** SHA `8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e`。
+- **D19 PAR** SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`。
+
+實際使用官方 Godot 4.7.2 stable（4.7.2.stable.official.ed1daf0bf），於隔離 Linux x86_64/Xvfb/Mesa OpenGL llvmpipe 環境跑**真正的私人 PNG**，各產一張 **1280×928 1× SubViewport framebuffer 截圖**，雙 SHA、Alpha 及獨立世界原點全部 PASS。截圖對照原先 PIL Alpha 合成：D18 有 15367 個像素、D19 有 15372 個像素 RGB 不同，**最大每通道差異僅 1/255**，無尺寸/整圖對位偏移。真正引擎負面測試：錯 PAR SHA、不透明 Master、全透明空白 PAR 均 exit=2、不產截圖。此前 M2 的「真私有素材 Godot NOT_RUN」狀態**已過時**，現在 M2 原生雙圖渲染 **PASS for D18 and D19**；Game full-project map traversal/collision/ATB／事件／存讀仍 **NOT_RUN**，User ART **HOLD，0/12**。
+
+- [**D20 真私人原生 QA 22檔完整 ZIP，15,378,529 bytes／CRC PASS／OWNER ONLY**](https://drive.google.com/file/d/19H-CgMvpgA1iFYODCYpW2PuYTmtJ9EQY/view)
+- [D18 Godot 原生 1280×928 截圖](https://drive.google.com/file/d/1eDyr2FwOk8Mdv3WEjiOe5isYkiWoU2qA/view)、[D19 Godot 原生 1280×928 截圖](https://drive.google.com/file/d/1KsAW1TktV0Weq-gx9u5s-nk5D3y6m8wS/view)、[真原生 1× 雙版本 A/B](https://drive.google.com/file/d/1XRgnE30gIznle8Ca2EAG7SSbwJTGYoz0/view)、[完整證據 QA JSON](https://drive.google.com/file/d/18Gs6WeRVPhGJFOSIy1svz9SbCk7_pSgT/view)。已 Google Drive metadata READBACK `shared=false` 且僅擁有者。
+- [D20 真來源、Godot 證據、Failure Log 及門檻詳表](TC_D20_FS_04_MAZE_REAL_PRIVATE_GODOT472_NATIVE_1X_QA_20261124.md)。
+- [Godot 官方 binary-only 暫存搬運 CI #45300766962 PASS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45300766962)：不含任何私人圖片；官方 Linux 執行檔由 GitHub Connector 收到隔離容器（SHAs/版本重驗），然後**於容器內讀 owner-private mounted images 真正渲染**。無需 Win Bridge 改白名單、無 Desktop Remote 或 Codex。
+- **美術阻斷仍真實存在**：D19 四側 4px 高不透明貼邊 250→0，前景互相交疊 D18 868→D19 1596；橋頭兩岸是否可走、煙霧頂部畫布接觸、底部建築足點、32×32 地圖視覺節奏、人眼 ART 未核准。D19 **不覆蓋** D18，兩套原圖和 Godot 截圖都保留。**ART PASS 仍0/12**。
+- **下一完整單位：**以這批**已成功真正原生**的兩圖截圖建立 FS_04_MAZE 遊戲內 1× 走位／橋梁落點與碰撞／角色圖層 smoke QA（盡量沿用既有 Godot 工程，不重寫），之後 A/B 視覺驗收。不要再在同一 blocker 上反覆安裝或重做 Ground。
+
+---
+
 # T-C CURRENT｜D19 FS_04_MAZE 原生 1× 全景安全邊界 PAR + 雙 SHA Godot QA｜2026-11-23
 
 **最新真成果（優先於以下 D18／D17 紀錄）**：在**完全不修改** D17 Ground SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 和 D18 原作者完整獨立非地表來源 SHA `a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780` 的前提下，保留六個完整連通物件群、不裁 Polygon、不 resize，做整張 `1280×928 RGBA` CompletePAR 的新世界配置。鐵橋 `(554,334)` **固定**；D18 四邊 4px 高不透明貼邊 **250→0**，六組重要來源像素 **641682 全保留**。新的 PAR SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`，真 Ground+PAR 靜態合成 SHA `c9da92ee753970cbcf528a96cefbec2b8fe7088a0bb80ddffbb528b0cef9428a`。但六物件交疊 **868→1596**，不能直接升級美術；官方 **ART 仍0/12 HOLD**。
