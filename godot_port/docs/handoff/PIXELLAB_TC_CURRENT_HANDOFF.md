@@ -1,3 +1,15 @@
+# T-C CURRENT｜2026-11-25 美術優先「Ground FIRST → 完整 PAR」正式方法同步（僅 SOP，不合併 D21 實驗分支）
+
+**最新使用者指令：停止把 T-C 地圖美術線導向橋梁碰撞、角色遮蔽、存讀與無限細節測試。T-C 要優先實際生成整張連續且美術合格的 Ground + 全部非地表獨立透明 PAR。**
+
+正式生產方法已上傳至本主分支：[`T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md`](../production/T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md)；Google Drive 同版正式方法：[ART-FIRST Ground/PAR 量產方法 v1.0](https://docs.google.com/document/d/1ao0YyDWoa6CbpTzVojLfifK60DDUuZhjxt2cqZ0fNbA/edit)，並補入 [原 Ground-first 全 PAR SOP](https://docs.google.com/document/d/1zWXO6Z8SHobSK2jfI-M6-p6JDb81BniIH_4UCLiJhIw/edit)。
+
+**後續分支成果現況（未 merge 至本 T-C 主分支，引用供學習而非暗中覆蓋）：** 專用隔離實驗分支 `feat/fs-tc-d12-chroma-par-20261122` 已在 D17 作者化完整 Ground-only 和 D18 新獨立透明全非地表 PAR 打通技術鏈；完整六組主要物件不再使用 polygon 裁切，解決 D17 16915 個來源有意義物件像素被割掉的問題；D20 真私有 Godot 4.7.2 原生雙圖 PASS。**但無人眼核准的 ART PASS，正式 12 圖計數仍 0/12；D21 碰撞／角色深度是後續 gameplay，不再繼續消耗本美術工廠產能**。此更新只改 SOP 和交接，未覆寫 D11 原 Ground、A35/R12、其他工作線或任何既有來源。
+
+**新對話必讀並遵循**：完整 Blueprint/Style Lock → 一次完整 Ground-only 鎖 SHA → 同世界座標另生真正 Alpha=0 全非地表 PAR（整房屋/橋/樹）→ 1× 原生 Composite+Godot → **人工整張視覺 ART 審核**；先封一張真正 ART PASS 再依六地形／村莊迷宮批量。正式圖片及 QA owner-only Drive，GitHub 僅程式/文件；本輪無新美術圖片產出，不能把方法完成算進 ART PASS。
+
+---
+
 # T-C CURRENT｜D11 赤焰火山「灰鑄工坊城」真 Ground-only 候選出圖｜2026-11-22
 
 > **D11 封存後增補（透明模式最後一次再試）：仍 FAIL。** 第六張輸出 `1477×1065 RGBA`，alpha min/max `209/248`、**alpha=0 count 0**，SHA `4fb03231f912096edb4f4b6496cb0bd628f95d42a881c9387d8e8ad3b946fcf1`，仍是整張全景火山城而非透明 PAR。拒收，不納入先前 5 次失敗的六檔私人 QA ZIP（該 ZIP 維持原核驗 SHA），不冒稱已有 CompletePAR。此出圖方式在本輪停止重試；下個單位須使用確實可控透明背景、同來源 XY 的另一條生成流程。\n\n**實際施工新成果：FS_04_VILLAGE「灰鑄工坊城」已新生成真正火山玄武岩／熔岩 Ground，原始 1477×1065 與不縮放 1280×928（40×29）及 46×33 全構圖備份已上傳私人 Drive。完整透明 PAR 連續五次失敗（RGB一張、RGBA四張皆沒有任何 Alpha=0），全部拒收，正式 ART HOLD、Godot 4.7.2 NATIVE NOT_RUN；十二張地圖正式 ART 仍 0／12。** 此段優先於下面較早 D11 首次沙漠誤圖及 D10 歷史。
