@@ -1,5 +1,8 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+> **Parallel Aether Pulsar V2 provider pilot (2026-11-24):** [adapter + test handoff](../../../tools/animation/aether_pulsar_v2/HANDOFF.md). 17/17 isolated JS helper tests PASS and exact GitHub readback; authentication BLOCKED, Orca binding/provider animation/Godot NOT_RUN, ART HOLD. This is not a numbered R25 successor, no original source or skeleton change, no paid calls. Use live R25 or any newer numbered authority for battle work.
+
+
 ## R25 LATEST | 2026-11-24 | ORIGINAL A62/A52 TORSO+ARMS ACTUALLY BOUND TO R24 Bone2D, real Godot 195 PASS, ART HOLD
 
 Previous R24 sword swung on eight real Bone2D while original A62 full-body stayed STATIC. **Now actual source sprites move:** R25 subclasses R24, attaches 9 separate source-only 64px Sprite2D visible-owner parts to chest, pelvis, far/near upper shoulder, elbow and wrist; real original A52 F00..F11 source head/torso/belt/legs atlases change through the animation and original F04/F05 donor near arm is split into 3 source-exact chips. F00/F11 original approved A62 full-body restored with **0 native RGBA diff**. Sword remains true original independent A52 art on R24 wrist. No RGB belly redraw or new source pixels.
