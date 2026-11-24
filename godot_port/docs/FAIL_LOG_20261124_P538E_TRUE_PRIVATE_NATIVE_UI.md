@@ -1,0 +1,25 @@
+# Forest Symphony Godot｜P538E Failure Log｜2026-11-24
+
+Workline `feature/fs-godot-phase1`, Godot 4.7.2 official, user-chosen VX→Godot; T-A/B/C unchanged. Source-original private UI ZIP SHA256 `c08ea693542e30f66586c6031016e7d7765f52c61ea5515c001e00079aeee9f6`.
+
+## R0 actual Godot private source screenshot failures (measured, no fake CI errors)
+- **Previous barrier removed:** official Godot 4.7.2 release GitHub direct download unavailable due isolated container DNS. Found latest **existing CI engine artifact ID 14872195477** and full project artifact ID 14872580349, downloaded with GitHub Connector, unzipped only inside isolated Linux; binary reports `4.7.2.stable.official.ed1daf0bf`. Original owner UI ZIP staged by existing `stage_private_ui_535.py` with source SHA, 202 import Godot PASS, Xvfb+Mesa llvmpipe native OpenGL PASS. This is real Godot, not offline image composition.
+- **Bug 1: STATUS unreadable**. Real original `MenuBack_status_a.png` window is near-black. P538D `_row_color=Color(0.07,0.18,0.2)` made STATUS stats nearly invisible. R0 screenshot STATUS ROI x169..334,y153..238 had **0 bright pixels**. FIX `FSOriginalMenuPage.gd` commit `f03bc2770a8d0a834bb926c66dede8be77ab342d` source row color `Color(0.92,0.97,0.95)`: R1 **706 bright text pixels**.
+- **Bug 2: original `Description` artwork damaged**. R0 SKILLS actor source portrait x18,y14 size 104×114 covered original `Description` banner y108..143. Compare against original unmodified `MenuBack_skill.png` in x0..146,y108..143: **1,358 overprinted RGB pixels** R0. FIX portrait x25,y16 size 82×88 end y104; R1 **0 overprinted source pixels**.
+- **Bug 3: Chinese heading wraps vertically**. P538D `FSOriginalPageHeader` HBox flexible heading got squeezed, actual R0 Godot original-image screenshots showed single glyph per line and overlapping tabs/portrait. FIX replace HBox with independent no-wrap source-safe heading x144,y23, back button x436,y73; actor nav moved to x213,y49 above original source tabs y78.
+- **Bug 4: synthetic source warning paints on source footer**. R0 feedback y402 overlays original footer border. FIX `feedback_label` to x254,y22 safe upper panel. Negative-control item/equip denial still routes to visible label.
+
+## Verified actual FAIL→FIX
+- **R0** run real isolated official Godot 4.7.2 on all 202 source SHA-verified PNGs + P538D source, true Xvfb/Mesa OpenGL 11 screenshot per 544 and 1088; screenshots visually inspected; four actual visual defects above.
+- **R1** local patched source was checked against GitHub **blob SHA `17cf6f434b0c8cce7a75ae6907dd6b1358ee19c0`** at commit f03bc277, not just similar text. Re-ran 11+11 true Godot source-image screenshots and measured contrast/Description overlay metrics. All 22 screenshots produced with no render script error.
+- **Independent P538E Godot source-only CI** `test_fs_p538e_original_ui_visual_regressions.gd` (new commit `728a37584b8ee53ef845756380b1a41a303d8f9e`, pinned engine) checks no-wrap header, back/actor/tabs safe geometry, bright STATUS row text, portrait below source caption, second actor, 544/1088. Final GitHub Actions [#45301488209](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45301488209) **SUCCESS 101/101 workflow steps**. This public CI uses source-dimension synthetic fixture only; genuine original screenshot acceptance is separate private Linux execution.
+
+## Evidence storage and P0
+- Authenticated owner-only Google Drive [FS_P538E_GODOT472_REAL_ORIGINAL_UI_NATIVE_20261124.zip](https://drive.google.com/file/d/16wtWALH4oJvrPIfxfAoYKGwoDwnK0GLp/view), ID `16wtWALH4oJvrPIfxfAoYKGwoDwnK0GLp`, 5,327,631 bytes SHA256 `f64212d6140e56c4eda6ea90409d454745b439bda4f96dddd448ab4af055b9ca`, 51 members, CRC PASS, `shared=false`. **Drive upload + real download SHA/CRC identical**.
+- R0 22 true Godot source pictures + R1 22 true Godot source pictures; 5 direct comparison PNG; manifest SHA, engine & source IDs, HOLD. Screenshots are actual `root.get_texture().get_image()` Godot engine output using original imported PNGs; not PIL-generated game frames. Comparisons assembled by Pillow solely to make before/after easier to inspect.
+- No new data/graphics committed to public GitHub. No user Windows PC writes, PC Bridge 0, Codex 0, Desktop Remote 0. The Godot executable and 202 PNG staging lived in ChatGPT temporary isolated Linux only, not installed on Windows.
+
+## Remaining HOLD (not secretly PASS)
+- VX original **same-state** screenshot 1:1, original Windowskin/font and true menu effect semantics. Real original authored images visible in Godot but visual parity to original VX as a live engine remains HOLD. 
+- 11 tables after actual VX `FS_DB_AUTOSET.apply_all`, full 505 RGSS2 effective runtime alias witness, RX6700XT physical GPU, user final art approval. Actor data synthetic. Quest/Save/System source unported. `Phase1 SEAL NO`.
+- Next P538F must prioritize boot-final original effective data/functional semantics and source VX parity; no more generic UI research where 44 real native screens already exist.
