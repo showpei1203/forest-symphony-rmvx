@@ -61,6 +61,11 @@ func load_all(folder: String = "res://data") -> bool:
                             errors.append(problem)
                         for problem in validate_witness_against_tables(witness_data,tables):
                             errors.append(problem)
+                        # P538F: independent table semantics must pass even
+                        # when an attacker re-hashes altered JSON and edits
+                        # witness counts to match. Counts are not provenance.
+                        for problem in validate_runtime_table_integrity(tables):
+                            errors.append(problem)
     if not errors.is_empty():
         # Never accidentally allow partial raw data through load_all() after
         # source-consistency failure. In-memory synthetic test tables bypass this.
@@ -121,6 +126,120 @@ static func validate_witness_against_tables(witness: Dictionary, loaded_tables: 
             # A runtime party may differ from the System starting roster if
             # the witness is captured after events. Require boot-time capture.
             problems.append("VX/Godot 初始隊伍不一致，需啟動後事件前 witness")
+    return problems
+
+# P538F: semantic integrity checks for the eleven post-Apply tables.
+# A structurally valid witness and matching per-file SHA are necessary but
+# cannot make broken references or corrupt RPG::Actor parameters executable.
+# This never repairs missing source data and never sets boot_final_verified.
+static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedStringArray:
+    var problems:=PackedStringArray()
+    for name in NAMES:
+        var data:Variant=loaded_tables.get(name,null)
+        if name=="system":
+            if not (data is Dictionary):
+                problems.append("FS 正式 System 資料不是字典")
+            continue
+        if not (data is Array):
+            problems.append("FS 正式資料表不是陣列："+name)
+            continue
+        var rows:Array=data
+        if rows.is_empty() or rows[0]!=null:
+            problems.append("VX 索引第 0 筆必須是 null："+name)
+        for i in range(1,rows.size()):
+            if rows[i]==null:
+                continue
+            if not (rows[i] is Dictionary) or int(rows[i].get("id",-1))!=i:
+                problems.append("VX 記錄 id 與索引不一致：%s[%d]" % [name,i])
+                break
+
+    var actors:Variant=loaded_tables.get("actors",null)
+    var classes:Variant=loaded_tables.get("classes",null)
+    var enemies:Variant=loaded_tables.get("enemies",null)
+    var troops:Variant=loaded_tables.get("troops",null)
+    var skills:Variant=loaded_tables.get("skills",null)
+    var sys:Variant=loaded_tables.get("system",null)
+    if not (actors is Array) or not (classes is Array):
+        return problems
+    for actor in actors:
+        if not (actor is Dictionary):
+            continue
+        var actor_id:int=int(actor.get("id",0))
+        var class_id:int=int(actor.get("class_id",0))
+        if class_id<=0 or class_id>=classes.size() or not (
+                classes[class_id] is Dictionary):
+            problems.append("FS Actor #%d 的來源職業不存在" % actor_id)
+        var params:Variant=actor.get("parameters",null)
+        if not (params is Dictionary):
+            problems.append("FS Actor #%d 缺少來源六維成長 Table" % actor_id)
+            continue
+        var x:Variant=params.get("xsize",null)
+        var y:Variant=params.get("ysize",null)
+        var z:Variant=params.get("zsize",1)
+        var raw:Variant=params.get("data_int16",null)
+        if not (x is int) or x!=6 or not (y is int) or y<1 or not (
+                z is int) or z!=1 or not (raw is Array):
+            problems.append("FS Actor #%d 成長 Table 維度不合法" % actor_id)
+            continue
+        if raw.size()!=x*y*z:
+            problems.append("FS Actor #%d 成長 Table 長度不符" % actor_id)
+            continue
+        for n in raw:
+            if not (n is int) or n<-32768 or n>32767:
+                problems.append("FS Actor #%d 成長 Table 含非法 int16" % actor_id)
+                break
+    if sys is Dictionary:
+        var party:Variant=sys.get("party_members",null)
+        if not (party is Array) or party.is_empty():
+            problems.append("FS System 原始出場隊伍不存在")
+        else:
+            var used:Dictionary={}
+            for member in party:
+                if not (member is int) or member<=0 or member>=actors.size() or (
+                        not actors[member] is Dictionary):
+                    problems.append("FS System 初始隊伍包含不存在 Actor")
+                elif used.has(member):
+                    problems.append("FS System 初始隊伍重複 Actor")
+                else:
+                    used[member]=true
+    if troops is Array and enemies is Array:
+        for troop in troops:
+            if not (troop is Dictionary):
+                continue
+            var members:Variant=troop.get("members",[])
+            if not (members is Array):
+                problems.append("FS Troop #%d members 格式錯誤" %
+                    int(troop.get("id",0)))
+                continue
+            for member in members:
+                if not (member is Dictionary):
+                    problems.append("FS Troop 成員不是 Enemy 權威記錄")
+                    break
+                var enemy_id:int=int(member.get("enemy_id",0))
+                if enemy_id<=0 or enemy_id>=enemies.size() or not (
+                        enemies[enemy_id] is Dictionary):
+                    problems.append("FS Troop #%d 引用了不存在 Enemy #%d" %
+                        [int(troop.get("id",0)),enemy_id])
+                    break
+    if skills is Array:
+        for klass in classes:
+            if not (klass is Dictionary):
+                continue
+            var learnings:Variant=klass.get("learnings",[])
+            if not (learnings is Array):
+                problems.append("FS Class #%d learnings 格式錯誤" %
+                    int(klass.get("id",0)))
+                continue
+            for learning in learnings:
+                if not (learning is Dictionary):
+                    problems.append("FS Class 的技能學習記錄格式錯誤")
+                    break
+                var skill_id:int=int(learning.get("skill_id",0))
+                if skill_id<=0 or skill_id>=skills.size() or not (
+                        skills[skill_id] is Dictionary):
+                    problems.append("FS Class #%d 引用不存在 Skill #%d" %
+                        [int(klass.get("id",0)),skill_id])
+                    break
     return problems
 
 static func validate_boot_manifest(manifest: Dictionary, actual_hashes: Dictionary) -> PackedStringArray:
