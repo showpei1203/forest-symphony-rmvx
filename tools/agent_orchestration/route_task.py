@@ -43,6 +43,12 @@ def infer_lane(task: str) -> str:
     for lane, terms in patterns.items():
         if any(word in text for word in terms):
             matches.append(lane)
+    # An explicit control-tower command outranks incidental names of audited lanes.
+    if "CONTROL" in matches and any(word in text for word in ("總控", "control tower")):
+        return "CONTROL"
+    # The word Godot often describes the engine of a T-A/B/C task, not another lane.
+    if "GODOT" in matches and len(matches) == 2:
+        matches.remove("GODOT")
     if len(matches) != 1:
         raise ValueError("Task lane is ambiguous or unknown; use --lane rather than guessing: " + ",".join(matches))
     return matches[0]
@@ -54,7 +60,7 @@ def route(lane: str, manifest: dict, task: str = "") -> dict:
     spec = manifest["lanes"][lane]
     repo = manifest["repository"]
     governance = manifest.get("governance_branch", "main")
-    files = [{"repository": repo, "branch": governance if entry["path"].startswith("authority/FS_UNIFIED_CONTROL_") else "main", "path": entry["path"]}
+    files = [{"repository": repo, "branch": governance, "path": entry["path"]}
              for entry in manifest["read_first"] if entry["kind"] == "github"]
     files.extend([
         {"repository": repo, "branch": spec["branch"], "path": spec["handoff"]},
