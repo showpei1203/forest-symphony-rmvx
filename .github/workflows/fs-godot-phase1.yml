@@ -79,6 +79,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_p538d_original_party_slots.gd
+      - name: P538E original source pixel discovered contrast and caption regressions native
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_p538e_original_ui_visual_regressions.gd
       - name: Run synthetic VX event commands
         shell: bash
         run: |
