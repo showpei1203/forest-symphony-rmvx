@@ -33,7 +33,8 @@
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
     "ground_source_candidates_FS_04_MAZE": 2,
     "complete_PAR_candidates_FS_04_MAZE": 4,
-    "native_private_fs_04_maze_variants_pass": 2
+    "native_private_fs_04_maze_variants_pass": 2,
+    "native_private_fs_04_maze_variants_provisional_physics_smoke_pass": 2
   },
   "scenes": [
     {
@@ -469,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D20_BOTH_OWNER_PRIVATE_D18_D19_REAL_GODOT472_NATIVE_1X_PASS_VISUAL_ART_HOLD",
+      "stage": "D21_TRUE_OWNER_PRIVATE_D18_D19_GODOT472_2D_PHYSICS_TWO_WAY_PROVISIONAL_BRIDGE_PASS_OCCLUSION_BLOCKER_FOUND_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -482,8 +483,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D20_ACTUAL_PRIVATE_D18_AND_D19_NATIVE_1X_RENDER_PASS",
-      "formal_art_gate": "HOLD_BRIDGE_FOOTPOINT_VISUAL_USER_ART_AND_COLLISION_NOT_TESTED",
+      "native_Godot_4_7_2_for_current_stage": "D21_D18_AND_D19_ACTUAL_PRIVATE_NATIVE_PHYSICS_PROVISIONAL_BRIDGE_SMOKE_PASS",
+      "formal_art_gate": "HOLD_OFFICIAL_COLLISION_MAP_REAL_ACTOR_OCCLUSION_FRONT_RAILING_AND_USER_ART",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -647,6 +648,50 @@
         "visual_art": "HOLD_USER_ART_REVIEW_REQUIRED",
         "formal_ART_PASS": "0/12",
         "no_private_art_public_GitHub": true
+      },
+      "D21": {
+        "engine": "4.7.2.stable.official.ed1daf0bf",
+        "engine_sha256": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+        "source_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "source_D18_par_sha256": "8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e",
+        "source_D19_par_sha256": "cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1",
+        "canvas": [
+          1280,
+          928
+        ],
+        "actor_type": "TEMPORARY_GODOT_CHARACTERBODY2D_NOT_REAL_ACTOR01",
+        "collision_type": "PROVISIONAL_TWO_STATICBODY2D_BRIDGE_RAIL_RECTS_NOT_CANONICAL_MAP",
+        "west_to_east_steps": {
+          "D18": 74,
+          "D19": 74
+        },
+        "east_to_west_steps": {
+          "D18": 74,
+          "D19": 74
+        },
+        "traversal_collision_count": 0,
+        "guard_north": "GODOT_KINEMATIC_COLLISION_PASS",
+        "guard_south": "GODOT_KINEMATIC_COLLISION_PASS",
+        "bridge_centerline_y": 500,
+        "actor_under_PAR_visible_pixels": {
+          "D18": 0,
+          "D19": 0
+        },
+        "actor_above_PAR_visible_pixels": {
+          "D18": 225,
+          "D19": 225
+        },
+        "runtime_bridge_z_workaround": "PROVISIONAL_SCOPE_PASS_NOT_APPROVED_FRONT_RAILING_SORT",
+        "source_or_original_art_modified": false,
+        "gameplay_integration": "NOT_RUN",
+        "canonical_map_collision": "NOT_AUTHORED",
+        "formal_ART_PASS": "0/12",
+        "private_full_QA_zip": "https://drive.google.com/file/d/1ojoEcCcZ2lndkR8JOEl4G18qys-HC4vW/view",
+        "private_native_four_panel": "https://drive.google.com/file/d/1AnnshQIzgvl1XeyVHV7eCqnCQLvvPgjl/view",
+        "private_occlusion_AB": "https://drive.google.com/file/d/1HShCa_attT1UXI4kIBNcQkiqH6lXVeqz/view",
+        "private_full_QA_JSON": "https://drive.google.com/file/d/1ka5u3-sTD3y5s9NMjOi7HOlJbtXpZ7I3/view",
+        "private_art_in_public_git": false,
+        "artifact_zip_sha256": "5f884d72f81dcef15fcbb529a43c686113a3b3bc90b276dc33f6b72b44f91a3e"
       }
     },
     {
