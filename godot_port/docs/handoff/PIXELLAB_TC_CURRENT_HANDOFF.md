@@ -1,3 +1,17 @@
+# T-C CURRENT｜D21 FS_04_MAZE 真私人 Godot 4.7.2 橋梁雙向物理／角色深度測試｜2026-11-24
+
+**D21 最新施工結果（優先於下方 D20/D19 歷史）**：沿用 D20 已鎖 D17 Ground `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`、D18 完整 PAR SHA `8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e` 和 D19 完整 PAR SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`，**一個源圖像素也未修改**。本輪已使用真官方 Godot 4.7.2 stable 在隔離 Linux x86_64+Mesa 以真私人 PNG 建立 `CharacterBody2D`＋兩條人工暫定 `StaticBody2D` 欄杆碰撞原型；兩版於臨時橋面 centerline y=500 各西→東、東→西 **74 物理步、零碰撞**，向北、向南離橋的碰撞都真正返回欄杆實體。來源雙 SHA／錯版本、錯 Ground 的原生 fail-close 測試 PASS。
+
+**本次真正發現的畫面阻斷：**由於橋面是 **CompletePAR 全非地表的完全不透明物件**，真 Godot 渲染角色在 PAR 下方時和沒有角色的截圖 SHA **完全相同（0 個可見像素）**；測試角色依**臨時橋面區域**切換至 PAR 前方後，兩版皆出現 **225** 個實際角色像素。第一輪 y=530 原生截圖顯示角色踩在前欄杆上，VISUAL FAIL，已依實圖調整到 y=500 重跑成功。這證明需要 Godot runtime 橋面角色深度邏輯，而**不改最新「Ground FIRST → 全部非地表 ONE 完整 PAR」美術規則**。臨時提高 z 仍存在前欄杆遮擋問題，**不是正式 ACTOR01 或整場景 ART PASS**。
+
+- [**D21 真私人 32 檔原生 2D Physics + 原始 Ground/PAR + 影格／負面／Failure Log 全 ZIP，50,695,229 bytes，CRC PASS**](https://drive.google.com/file/d/1ojoEcCcZ2lndkR8JOEl4G18qys-HC4vW/view)。[D18/D19 四圖真原生跨橋/欄杆 QA](https://drive.google.com/file/d/1AnnshQIzgvl1XeyVHV7eCqnCQLvvPgjl/view)、[角色 under-PAR vs above-PAR 真原生圖](https://drive.google.com/file/d/1HShCa_attT1UXI4kIBNcQkiqH6lXVeqz/view)、[暫定兩條欄杆圖層只供 QA](https://drive.google.com/file/d/18Vy0YUcaJq969F1-ASBeAUjTk4S8QIVh/view)、[完整 JSON](https://drive.google.com/file/d/1ka5u3-sTD3y5s9NMjOi7HOlJbtXpZ7I3/view)；正式私人 Drive metadata 讀回確認 owner-only。**圖片不進公開 GitHub**。
+- [D21 原生腳本 `native_bridge_walk_probe.gd`](../../tc_factory/native_bridge_walk_probe.gd)；[D21 全來源／QA／Handoff](TC_D21_FS_04_MAZE_PRIVATE_NATIVE_BRIDGE_COLLISION_DEPTH_QA_20261124.md)；[D21 獨立 Failure Log](TC_D21_BRIDGE_PHYSICS_FAILURE_LOG_20261124.md)。
+- **真正 Gate：** SOURCE SHA／Ground+PAR 同 XY **PASS**；真正 Godot 4.7.2 私人雙版本原生載入 **PASS**；**局部人工作者碰撞 corridor 的雙向 CharacterBody2D 橋梁走位／越欄阻擋 PASS（暫定幾何）**；橋面角色 `z=1` 遮擋 **FAIL**，橋面 `z=3` **暫定 workaround PASS**；正式全圖 collision / lava / ACTOR01 / 角色遮擋前側欄杆 / 原正式 Godot game-project scene integration **NOT_RUN／HOLD**；人工 VISUAL ART **HOLD**、12 圖正式 **0/12**。
+- **下一個完整施工單位 D22：**改用正式 FS Godot 地圖/角色系統，以作者明確核准的橋面行走範圍、前欄杆／熔岩／斷崖 collision 與角色動態深度建立 `FS_04_MAZE` 遊玩測試，對真 ACTOR01 做入橋/離橋/走位/讀存 smoke。別把本次 QA 兩條固定矩形自動當正式碰撞，也不要重生已凍結的 Ground／PAR。
+- GitHub 仍同隔離 T-C Draft PR #17，不覆蓋 T-A/T-B；**PC Bridge 0、Desktop Remote 0、Codex 0**，無 Windows E: 修改。
+
+---
+
 # T-C CURRENT｜D20 FS_04_MAZE 真私人素材 Godot 4.7.2 原生 1× 雙版本 PASS｜2026-11-24
 
 **最高優先最新成果（以下 D19/D18 為歷史）**：已解決此前 GitHub source-only synthetic CI 無法驗證私有美術的阻斷！D17 鎖定 RGB Ground `1280×928` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` + **兩份真正 owner-private 完整 RGBA PAR**：
