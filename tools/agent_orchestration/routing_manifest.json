@@ -49,6 +49,12 @@
       "repo": "showpei1203/forest-symphony-rmvx",
       "path": "ASSET_GENERATION_PRECHECK.md",
       "why": "mandatory for image/art work"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "tools/agent_orchestration/tool_skill_inventory.json",
+      "why": "installed-versus-actually-invoked tool/skill status"
     }
   ],
   "tool_routing": [
@@ -96,7 +102,7 @@
         "fs-handoff-qa"
       ],
       "contract": "GROUND first (terrain/grass/flowers) -> separately generate ALL non-ground objects once as true transparent CompletePAR; no actor-occlusion filtering; same XY/canvas; Godot review downstream. Older master-first is historical for newly requested T-C production.",
-      "current_snapshot": "2026-11-22 D11 volcano Ground candidate; PAR alpha failed; formal art-sealed 0/12; native NOT_RUN for D11",
+      "current_snapshot": "2026-11-22 D11 volcano Ground yes, PAR alpha fails, 0/12 formally Art-Sealed, native NOT_RUN; live handoff always required",
       "mandatory_gates": [
         "source_identity",
         "ground_purity",
@@ -164,7 +170,7 @@
         "fs-handoff-qa"
       ],
       "contract": "All new FS runtime/gameplay changes target Godot 4.7.2. Preserve legacy VX event compatibility as scoped requirement; don't switch to new VX build.",
-      "current_snapshot": "Historical 34/34 tests and end-to-end samples are checkpoints; live authoritative branch and current Handoff MUST be checked before new work.",
+      "current_snapshot": "2026-11-24 P538D CURRENT_HANDOFF source-backed original formation-slot portraits and native UI work; inspect live branch HEAD/current handoff for actual latest. Old 34/34 is historical baseline only.",
       "mandatory_gates": [
         "source_identity",
         "regression",
