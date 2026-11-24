@@ -32,7 +32,8 @@
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
     "ground_source_candidates_FS_04_MAZE": 2,
-    "complete_PAR_candidates_FS_04_MAZE": 4
+    "complete_PAR_candidates_FS_04_MAZE": 4,
+    "native_private_fs_04_maze_variants_pass": 2
   },
   "scenes": [
     {
@@ -468,7 +469,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D19_INTACT_ALL_NON_GROUND_1X_SAFE_EDGE_RELAYOUT_GODOT_NATIVE_TOOL_CI_PASS_PRIVATE_ART_HOLD",
+      "stage": "D20_BOTH_OWNER_PRIVATE_D18_D19_REAL_GODOT472_NATIVE_1X_PASS_VISUAL_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -481,8 +482,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D19_PRIVATE_NOT_RUN_NATIVE_GODOT472_SYNTHETIC_CI_PASS",
-      "formal_art_gate": "HOLD_PRIVATE_NATIVE_BRIDGE_ACCESS_AND_INCREASED_FOREGROUND_OVERLAP",
+      "native_Godot_4_7_2_for_current_stage": "D20_ACTUAL_PRIVATE_D18_AND_D19_NATIVE_1X_RENDER_PASS",
+      "formal_art_gate": "HOLD_BRIDGE_FOOTPOINT_VISUAL_USER_ART_AND_COLLISION_NOT_TESTED",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -616,6 +617,36 @@
         "private_QA_json": "https://drive.google.com/file/d/11grlCFFQwpdaeIhtTeL_9hPubtmEA17D/view",
         "art_gate": "HOLD_NOT_A_PASS",
         "integration": "NOT_RUN"
+      },
+      "D20": {
+        "official_engine": "4.7.2.stable.official.ed1daf0bf",
+        "actual_owner_private_Godot_native_render": "PASS_BOTH_D18_AND_D19",
+        "actual_environment": "isolated_linux_x86_64_xvfb_mesa_llvmpipe_opengl3",
+        "source_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "D18_par_sha256": "8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e",
+        "D19_par_sha256": "cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1",
+        "both_native_framebuffer": [
+          1280,
+          928
+        ],
+        "D18_native_render_png_sha256": "14cf4bfe3288d6fd7c39c48349a4a24282c13df1620c3280cfd9ea6aea638ede",
+        "D19_native_render_png_sha256": "a3d830b550e93ac49c4bdbec3d7c19489e41f7e5cd12a1b3d508350ce18b2e2a",
+        "D18_pixels_differ_from_PIL_composite": 15367,
+        "D19_pixels_differ_from_PIL_composite": 15372,
+        "maximum_RGB_channel_difference": 1,
+        "negative_wrong_SHA": "REJECTED_EXIT_2",
+        "negative_opaque_Master": "REJECTED_EXIT_2",
+        "negative_empty_PAR": "REJECTED_EXIT_2",
+        "private_zip_Drive": "https://drive.google.com/file/d/19H-CgMvpgA1iFYODCYpW2PuYTmtJ9EQY/view",
+        "private_D18_native": "https://drive.google.com/file/d/1eDyr2FwOk8Mdv3WEjiOe5isYkiWoU2qA/view",
+        "private_D19_native": "https://drive.google.com/file/d/1KsAW1TktV0Weq-gx9u5s-nk5D3y6m8wS/view",
+        "private_native_AB": "https://drive.google.com/file/d/1XRgnE30gIznle8Ca2EAG7SSbwJTGYoz0/view",
+        "engine_binary_only_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45300766962",
+        "engine_version_SHA256": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+        "actual_gameplay_integration": "NOT_RUN",
+        "visual_art": "HOLD_USER_ART_REVIEW_REQUIRED",
+        "formal_ART_PASS": "0/12",
+        "no_private_art_public_GitHub": true
       }
     },
     {
