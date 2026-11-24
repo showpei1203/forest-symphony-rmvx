@@ -31,6 +31,10 @@
 
 ## 正式目標 T-A｜ACTOR01 12 幀戰鬥動作（優先 P2）
 
+> **R26 正式進度（2026-11-25）：** 真正 PixelLab `estimate-skeleton` (18 關節，0.1 generations) + `animate-with-skeleton-v3` (四張 64px 新美術 F03/F05/F07/F09，3.0 generations) 已在核准 Windows PC Bridge #135/#136 實跑並保存私有 Drive；F00 精確核准 A62 原來源，五姿勢原生大小 320×64 Sprite Strip + 4× + GIF 真實預覽已出，**技術格式 PASS／使用者美術 ART_GATE 待驗**。舊 R19–R25 美術遭使用者否決。這份新圖不代表原生 LPC 隱藏衣裝來源取得，或正式 12 幀及 Godot Battle 測試已完成。先讓使用者預覽 https://drive.google.com/file/d/1YLgLubUxuqFE02ZEQ60a6kozJkOaixBN/view 與 https://drive.google.com/file/d/1jXbfhbaOxt2Cl9fNiJjyGcI_ZliT3nmq/view，F03/F07/F09 握柄、施力、收招已有美術疑慮，不得先升級或付費量產。真正生成證據、費用及下一步均見 CURRENT_HANDOFF／R26 Authority。**
+
+
+
 > **2026-11-24 最新用戶 ART VETO：** R19–R25 舊人物攻擊美術全數 `ART_REJECTED_FOR_PRODUCTION`。R24/R25 RIG/SOURCE/Godot native 技術紀錄留存但不得當作美術 PASS。正式新增美術必須先走 PixelLab v2 API 的 `estimate-skeleton → animate-with-skeleton-v3`（真實生成整體 45° 白髮綠衣 A62 人物，非舊圖 Python 切手臂）、對關節及握柄 `inpaint-v3`；先小樣本五姿勢 1× 用戶藝術 Gate，再進正式 12 幀／Godot 整合。現 PixelLab Orca／API 連線和付費授權在本對話未證實，故仍 `GENERATION HOLD`，絕不假報已用 PixelLab。權威：`godot_port/docs/authority/FS_TA_PIXEL_LAB_V3_OFFICIAL_REBUILD_PROTOCOL_20261124.md`。
 
 

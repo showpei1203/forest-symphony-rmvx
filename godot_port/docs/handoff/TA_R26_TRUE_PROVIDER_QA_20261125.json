@@ -1,0 +1,76 @@
+{
+  "technical_PNG_validation": "PASS",
+  "issues": [],
+  "warnings": [],
+  "source_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "body_frame_RGBA_sha256": [
+    "ac7849a1aedce533d044cf54bae5ba1e47072b5eeee53ae5621cd2010d12f7e7",
+    "01e85fafa2847ccf0a96585deea4c80ffcec48879dfe4c398f3c91678d757914",
+    "553ecf5110658bed9a4835cf0b48829f8bc45a92d4c7fe93df55375011ec6650",
+    "db3a05f944beec1c4cdeac21352e460af32641b700b6a4f1fa6d078ef567df8d",
+    "45d61102b79051b373f069951943b4507842a3d258d382f2ada6806c1ffbc621"
+  ],
+  "body_bounds": [
+    [
+      21,
+      15,
+      44,
+      50
+    ],
+    [
+      14,
+      15,
+      43,
+      50
+    ],
+    [
+      20,
+      15,
+      44,
+      50
+    ],
+    [
+      21,
+      15,
+      46,
+      50
+    ],
+    [
+      21,
+      15,
+      44,
+      50
+    ]
+  ],
+  "five_keyframes_distinct": 5,
+  "human_ART_gate": "PENDING_VISUAL_REVIEW",
+  "real_Godot_runtime": "NOT_RUN",
+  "formal_FS_Battle": "NOT_RUN",
+  "provider_model": "animate-with-skeleton-v3",
+  "provider_claim": "PROVIDER_RECEIPT_ATTACHED_NOT_CRYPTOGRAPHICALLY_VERIFIED",
+  "preview_files": [
+    "R26_5POSE_NATIVE_1X.png",
+    "R26_5POSE_NEAREST_4X.png",
+    "R26_KEYPOSE_PREVIEW.gif",
+    "R26_REVIEW_CONTACT.jpg"
+  ],
+  "actual_provider_model": "PixelLab animate-with-skeleton-v3",
+  "new_generated_frames": 4,
+  "original_F00_locked_RGBA": true,
+  "owner_actual_source": "A62 approved F00 64px",
+  "provider_charge_generations": 3.0,
+  "estimate_charge_generations": 0.1,
+  "total_usage_generations": 3.1,
+  "source_weapon_SHA256": "c706185c3bc7aa55cf5222a3ee8efac5701aaeed0cfa5b621ef99f894ba6fdce",
+  "sword_composite_method": "nearest original A52 sword overlay in private Drive, NOT PixelLab output, NOT Godot runtime",
+  "artist_QA_observations": {
+    "F03": "right-hand extension strongly to screen-left; may read as extended arm rather than powerful backswing",
+    "F05": "arm raised, but original independent sword handle connection should be reviewed at 1x",
+    "F07": "forward arm extension, weapon edge and body-weight transfer require owner review",
+    "F09": "original sword composite extends below character feet/ground; current follow-through not suitable as finished attack",
+    "body_palette": "similar green/charcoal costume and white hair; must still check identity frame-by-frame",
+    "overall": "ART_HOLD not approved; do not release 12-frame production assets without owner gate"
+  },
+  "godot_new_art_native": "NOT_RUN_PREVIEW_GATE",
+  "formal_forest_symphony_game_integration": "NOT_RUN"
+}

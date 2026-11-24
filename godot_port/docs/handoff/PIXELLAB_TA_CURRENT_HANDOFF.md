@@ -1,5 +1,17 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## R26 ACTUAL NEW PIXELLAB ART | 2026-11-25 | First real Skeleton v3 FOUR new A62 64px poses, 5×64 keypose sprite strip | FORMAT PASS, USER ART HOLD
+
+**True PixelLab provider work completed:** [Private PC Bridge #135](https://github.com/showpei1203/chatgpt-pc-bridge/issues/135) one source-locked /v2/estimate-skeleton 18 real joints, billed **0.1 generations**, followed by [#136](https://github.com/showpei1203/chatgpt-pc-bridge/issues/136) one source-locked `/v2/animate-with-skeleton-v3` animation job, billed **3.0 generations**, returned **four novel 64×64 transparent full-body character poses** F03/F05/F07/F09. F00 is exact approved A62 64×64 SHA `70a8e6...` unchanged; five distinct RGBA poses. Total **3.1 measured generations**, no duplicate call. All provider raw PNG/GIF, exact usage, 18-key start/4-key targets, journal and 63,216-byte CRC PASS real private source ZIP preserved [PRIVATE DRIVE](https://drive.google.com/drive/folders/10r8kphLlS0ludVAN0uPzMPdVpGd8eRYL). Actual archive [63KB ZIP](https://drive.google.com/file/d/12RpDnEbKBxv-3c3ULW7b6X6r4D7XAjOt/view) SHA 43e300... CRC PASS.
+
+**REAL preview now ready for owner:** [five new PixelLab pose contact](https://drive.google.com/file/d/1YLgLubUxuqFE02ZEQ60a6kozJkOaixBN/view), [1× original sprite sheet](https://drive.google.com/file/d/16gqSecMji0HIiqffZlsamyCCp9E_WNMu/view), [4× nearest](https://drive.google.com/file/d/1YEwtXeb97dDZobuBIHOmfbV0plkhn1JI/view), [true new sprite GIF](https://drive.google.com/file/d/1_vfLFuPD24_u2-mpnlKZFo0WL6aihkr5/view). Independent real `ta_r26_preview_gate.py ingest` on provider 5 real frames PASS: 64×64 transparent, 5 unique, F00 RGBA exact, alpha not clipped. **Actual sword technical composite** retained separately (A52 original 7×21 sword SHA c706... on R24 path, 128px canvas, offline, NOT GODOT): [contact](https://drive.google.com/file/d/1jXbfhbaOxt2Cl9fNiJjyGcI_ZliT3nmq/view) / [GIF](https://drive.google.com/file/d/1EYh6V4UuZV6eK6Lg8KqgBorgldsGC6ph/view).
+
+**Own visual QC ART HOLD:** F03 far-left extended arm, F07 gesture still reads ambiguous sword strike, F09 sword tip extends below boot level. Do NOT call this final Sword Slash. No new PixelLab fix job until owner reviews actual visuals. This is genuine PixelLab new art, not R25 source chop; but source-native hidden LPC outfit modules remain unverified, and sword hilt alignment not approved. New native Godot 4.7.2 QA NOT_RUN, formal FS ACT/ATB/HP NOT_RUN because art gate awaits owner. Main/T-B/T-C and A52/A62 original sources unchanged; Codex/Remote 0.
+
+[Formal R26 PixelLab proof and art audit](../authority/FS_TA_R26_TRUE_PIXELLAB_SKELETON_V3_FIVE_KEYPOSE_OWNER_ART_HOLD_20261125.md). Older R26 offline skeleton diagram ZIP is TECHNICAL GUIDE only, never claim it is the actual provider art. Future QA only after owner ART Gate.
+
+---
+
 ## R26 LATEST 2026-11-25 | REAL PixelLab connection recovered, 18-joint source estimated; four-frame original-generation pending
 
 **Real production change:** Latest owner direction is a five-key native A62 (F00 source + four genuinely new F03/F05/F07/F09) big *armed sword slash* preview FIRST, not further old source clipping. A62 immutable F00 SHA `70a8e6...`, 64x64 southeast 3/4. Proper native 1x / nearest 4x / animated GIF/user art gate before 12 frames or formal FS Battle.

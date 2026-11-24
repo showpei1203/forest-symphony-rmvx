@@ -455,6 +455,25 @@ jobs:
           assert m['actual_new_pixelLab_frames']==0 and m['remote_orca_runtime']=='UNAVAILABLE'
           print('R26_OFFLINE_PREVIEW_SOURCE_META_PASS; paid provider output separate and private')
           PY
+      - name: R26 real PixelLab Skeleton v3 four-key private source receipt, ART HOLD
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path('godot_port/docs/handoff/TA_R26_TRUE_PROVIDER_QA_20261125.json').read_text(encoding='utf8'))
+          assert q['actual_provider_model']=='PixelLab animate-with-skeleton-v3'
+          assert q['new_generated_frames']==4 and q['five_keyframes_distinct']==5
+          assert q['source_sha256']=='70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e'
+          assert q['original_F00_locked_RGBA'] and q['technical_PNG_validation']=='PASS'
+          assert not q['issues'] and not q['warnings']
+          assert q['estimate_charge_generations']==0.1
+          assert q['provider_charge_generations']==3.0
+          assert q['total_usage_generations']==3.1
+          assert q['human_ART_gate']=='PENDING_VISUAL_REVIEW'
+          assert q['godot_new_art_native']=='NOT_RUN_PREVIEW_GATE'
+          assert q['formal_forest_symphony_game_integration']=='NOT_RUN'
+          print('R26_REAL_PIXEL_LAB_FOUR_NEW_ART_SPRITES_METADATA_PASS / USER_ART_GATE_HOLD')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd
