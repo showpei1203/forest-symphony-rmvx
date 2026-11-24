@@ -30,6 +30,10 @@
 - 若僅 RGB/技術 PASS 而藝術不合格，結果 **ART HOLD**，不能報完成。
 
 ## 正式目標 T-A｜ACTOR01 12 幀戰鬥動作（優先 P2）
+
+> **2026-11-24 最新用戶 ART VETO：** R19–R25 舊人物攻擊美術全數 `ART_REJECTED_FOR_PRODUCTION`。R24/R25 RIG/SOURCE/Godot native 技術紀錄留存但不得當作美術 PASS。正式新增美術必須先走 PixelLab v2 API 的 `estimate-skeleton → animate-with-skeleton-v3`（真實生成整體 45° 白髮綠衣 A62 人物，非舊圖 Python 切手臂）、對關節及握柄 `inpaint-v3`；先小樣本五姿勢 1× 用戶藝術 Gate，再進正式 12 幀／Godot 整合。現 PixelLab Orca／API 連線和付費授權在本對話未證實，故仍 `GENERATION HOLD`，絕不假報已用 PixelLab。權威：`godot_port/docs/authority/FS_TA_PIXEL_LAB_V3_OFFICIAL_REBUILD_PROTOCOL_20261124.md`。
+
+
 > **R25 source-bound 附註（2026-11-24，後於 R24）：** 在正式 T-A 工作線已實際把 A52 核准人物來源的 9 個可見部件 Sprite2D 掛到原 R24 8 Bone2D（胸腹／近側肩肘腕／遠側手臂／頭／腰／腿等），來源完整 F0 0 pixel 差。Godot 4.7.2 原生 195 PASS + 32 PNG；隱藏武器的人物 F3→F7 確實改變 643/610 px。**這不是源生 LPC 可活動換裝素材**，因遮蔽袖子／手臂背面 underpaint 尚缺，F04 原始手只 1px，ART HOLD。原 FSBattle ACT/ATB 未跑。下一優先工程：真正新畫可活動 source-matched 袖子和手腕握柄，再連正式戰鬥，不能回到 R22 時序重排。R25 private Drive: https://drive.google.com/drive/folders/1CQSo09VKNLHB5_r5n0P_wqfQ-omWmeBs
 
 

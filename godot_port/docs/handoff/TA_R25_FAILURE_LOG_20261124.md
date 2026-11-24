@@ -1,5 +1,8 @@
 # FS T-A R25 Failure Log | 2026-11-24
 
+> **OWNER VISUAL REJECTION OVERRIDE (2026-11-24):** User reviewed art and explicitly judged it wholly unacceptable. The prior final line ART HOLD is **ART_REJECTED_FOR_PRODUCTION**. Source and isolated Godot mechanics proofs stay recorded as engineering PASS, but the previous approach (reusing A52 original source-visible chips; F04 only 1 hand pixel) is prohibited as a source of newly approved attacks. R25 made ZERO new PixelLab provider model calls and ZERO new painted art pixels. Corrective official-workflow authority: `FS_TA_PIXEL_LAB_V3_OFFICIAL_REBUILD_PROTOCOL_20261124.md`.
+
+
 1. Historical R24 body was a STATIC reference while sword Bone2D moved. R25 now actually attaches NINE source-visible clothing/body part sprites to the existing 8 Bone2D chain. Complete original LPC wardrobe underpaint STILL MISSING; these source masks are NOT true upstream independently paintable paper-doll modules, and transformation may open visible holes. ART HOLD remains.
 2. First native test FAILED 20 source-skin-swap assertions because R25 `_process()` hid manually posed original-part sprites whenever AnimationPlayer was idle, despite explicit `apply_key_pose(F1-F10)`. Corrected by `manual_pose` state, disabled only when actual AnimationPlayer starts; reran native all PASS. Original failure log retained.
 3. During expansion to all 12 true original A52 torso/head/legs mask frames, first source builder run failed because near-arm source atlas wasn't copied into release assets. Copied source-only original mask, then source rebuild CRC / full F0 parity passed. No source repaint.

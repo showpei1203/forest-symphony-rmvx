@@ -1,5 +1,15 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## 2026-11-24 LATEST OWNER ART REJECTION + OFFICIAL PIXELLAB V3 TECH CORRECTION
+
+**IMPORTANT:** Owner explicitly REJECTED R19–R25 attack VISUAL ART on 2026-11-24. Prior `ART HOLD` means `ART_REJECTED_FOR_PRODUCTION`, not partial approval. R25 has **ZERO newly generated art pixels and ZERO new PixelLab invocations**: it only repartitioned old A52 flattened visible RGB, including F04 hand 1 pixel, and moved the source fragments with Godot Bone2D. The 195 Godot assertions are honest ENGINE PASS, **not an ART PASS**. Never continue source chopping or geometric sprite-belly replacement as T-A art generation.
+
+**Verified actual modern PixelLab workflow:** PixelLab API v2 `estimate-skeleton` → `animate-with-skeleton-v3` (3–15 genuinely generated frames from ONE approved A62 character image and separate skeleton per frame); selectively `inpaint-v3` or `edit-animation-v2` to repair shoulder, gripping hand and wardrobe consistency. Make FIRST just five *real* full-body key poses, preserve native 64×64 45° source and 1× quality; owner ART Gate before 12-frame or Godot battle promotion. Keep independent A52 Sword/Weapon and FX under existing R24 code. **Do not misclassify PixelLab's per-frame pose generator as genuine modular LPC hidden costume source.**
+
+**Provider access 2026-11-24:** no PixelLab connected tool available DIRECTLY in this conversation. Historic Orca PixelLab setup not newly verified. No paid API call, no authority to spend, no new art generated in this protocol update. Do not use arbitrary Windows/GUI/Codex. All assets remain privately in Drive. Full official-source [authority](../authority/FS_TA_PIXEL_LAB_V3_OFFICIAL_REBUILD_PROTOCOL_20261124.md). Parallel Aether Pulsar pilot remains separate; no art acceptance.
+
+---
+
 > **Parallel Aether Pulsar V2 provider pilot (2026-11-24):** [adapter + test handoff](../../../tools/animation/aether_pulsar_v2/HANDOFF.md). 17/17 isolated JS helper tests PASS and exact GitHub readback; authentication BLOCKED, Orca binding/provider animation/Godot NOT_RUN, ART HOLD. This is not a numbered R25 successor, no original source or skeleton change, no paid calls. Use live R25 or any newer numbered authority for battle work.
 
 
