@@ -1,0 +1,84 @@
+{
+  "stage": "HEAD_MODEL_SPEC_ONLY_NOT_RENDERED",
+  "generation_spend": 0,
+  "provider_call": "NOT_RUN",
+  "approved_original_source_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "initial_18_joint_labels_verified": true,
+  "existing_R26_all_five_face_landmarks_frozen": true,
+  "F00_identity_unchanged": true,
+  "new_pose_count": 4,
+  "keyframes": [
+    {
+      "frame": "F03",
+      "relative_face_dx_px": -1,
+      "relative_face_dy_px": 1,
+      "note": "focus / slight downward turn",
+      "changed_joint_labels": [
+        "LEFT EAR",
+        "LEFT EYE",
+        "NECK",
+        "NOSE",
+        "RIGHT EAR",
+        "RIGHT EYE"
+      ],
+      "unchanged_other_body_joint_count": 12,
+      "face_geometry_unchanged": true,
+      "source_frame_was_not_modified": true
+    },
+    {
+      "frame": "F05",
+      "relative_face_dx_px": 0,
+      "relative_face_dy_px": -1,
+      "note": "lift gaze into acceleration",
+      "changed_joint_labels": [
+        "LEFT EAR",
+        "LEFT EYE",
+        "NECK",
+        "NOSE",
+        "RIGHT EAR",
+        "RIGHT EYE"
+      ],
+      "unchanged_other_body_joint_count": 12,
+      "face_geometry_unchanged": true,
+      "source_frame_was_not_modified": true
+    },
+    {
+      "frame": "F07",
+      "relative_face_dx_px": 1,
+      "relative_face_dy_px": 0,
+      "note": "turn with swing toward impact",
+      "changed_joint_labels": [
+        "LEFT EAR",
+        "LEFT EYE",
+        "NECK",
+        "NOSE",
+        "RIGHT EAR",
+        "RIGHT EYE"
+      ],
+      "unchanged_other_body_joint_count": 12,
+      "face_geometry_unchanged": true,
+      "source_frame_was_not_modified": true
+    },
+    {
+      "frame": "F09",
+      "relative_face_dx_px": 0,
+      "relative_face_dy_px": 1,
+      "note": "settle after follow-through",
+      "changed_joint_labels": [
+        "LEFT EAR",
+        "LEFT EYE",
+        "NECK",
+        "NOSE",
+        "RIGHT EAR",
+        "RIGHT EYE"
+      ],
+      "unchanged_other_body_joint_count": 12,
+      "face_geometry_unchanged": true,
+      "source_frame_was_not_modified": true
+    }
+  ],
+  "new_character_art": "NOT_GENERATED",
+  "face_expression_pixels": "NOT_EDITED",
+  "owner_art_gate": "NOT_RUN_RESEARCH_ONLY",
+  "rest_api_v3_payload_validation": "NOT_RUN_DO_NOT_POST"
+}

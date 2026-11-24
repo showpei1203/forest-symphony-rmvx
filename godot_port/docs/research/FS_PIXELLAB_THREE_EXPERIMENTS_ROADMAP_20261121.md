@@ -31,6 +31,10 @@
 
 ## 正式目標 T-A｜ACTOR01 12 幀戰鬥動作（優先 P2）
 
+> **R27（2026-11-25）最新研究／交接：** PixelLab v3 真實的 R26 五幀已保留、藝術仍待驗，生成總用量原為 3.1 generations，本輪新增 0。依實際 provider receipt，R26 四個攻擊姿勢的鼻／雙眼／雙耳五個 face landmarks 都與 F00 相同，僅 NECK 水平變動，解釋頭部動作不明顯。R27 未重畫圖，只在未來姿勢模型加入微幅 HEAD Pose（F03 -1,+1；F05 0,-1；F07 +1,0；F09 0,+1 像素），面部整群保持幾何、neck 半幅，另存表情語意標籤但不虛構 API 欄位。外部 Skill 研究與 R26 成功的 PC Bridge→PixelLab→Drive→QA 步驟保存於 `godot_port/docs/authority/FS_TA_R27_PIXEL_EXPRESSION_SKILLS_AND_R26_SUCCESS_PLAYBOOK_20261125.md`、`godot_port/docs/research/skills/fs-ta-pixel-expression/SKILL.md`；零花費的 DRYRUN 防錯 PASS，**模型生成／美術／Godot 新整合未執行**。先由使用者確認 R26 真圖，不擅自再花點數。
+
+
+
 > **R26 正式進度（2026-11-25）：** 真正 PixelLab `estimate-skeleton` (18 關節，0.1 generations) + `animate-with-skeleton-v3` (四張 64px 新美術 F03/F05/F07/F09，3.0 generations) 已在核准 Windows PC Bridge #135/#136 實跑並保存私有 Drive；F00 精確核准 A62 原來源，五姿勢原生大小 320×64 Sprite Strip + 4× + GIF 真實預覽已出，**技術格式 PASS／使用者美術 ART_GATE 待驗**。舊 R19–R25 美術遭使用者否決。這份新圖不代表原生 LPC 隱藏衣裝來源取得，或正式 12 幀及 Godot Battle 測試已完成。先讓使用者預覽 https://drive.google.com/file/d/1YLgLubUxuqFE02ZEQ60a6kozJkOaixBN/view 與 https://drive.google.com/file/d/1jXbfhbaOxt2Cl9fNiJjyGcI_ZliT3nmq/view，F03/F07/F09 握柄、施力、收招已有美術疑慮，不得先升級或付費量產。真正生成證據、費用及下一步均見 CURRENT_HANDOFF／R26 Authority。**
 
 

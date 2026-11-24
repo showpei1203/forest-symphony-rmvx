@@ -474,6 +474,25 @@ jobs:
           assert q['formal_forest_symphony_game_integration']=='NOT_RUN'
           print('R26_REAL_PIXEL_LAB_FOUR_NEW_ART_SPRITES_METADATA_PASS / USER_ART_GATE_HOLD')
           PY
+      - name: R27 head-motion model offline tests, no paid API, no art claim
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r27_head_motion_dryrun.py
+          python3 godot_port/tools/ta_r27_head_motion_dryrun.py --selftest
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('godot_port/docs/handoff')
+          q=json.loads((root/'TA_R27_DRYRUN_SELFTEST_20261125.json').read_text(encoding='utf8'))
+          a=json.loads((root/'TA_R27_R26_FACE_ANCHOR_AUDIT_20261125.json').read_text(encoding='utf8'))
+          m=json.loads((root/'TA_R27_HEAD_MOTION_MODEL_CANDIDATE_20261125.json').read_text(encoding='utf8'))
+          assert q['result']=='PASS' and q['missing_joint_guard']=='REJECTED' and q['bad_source_guard']=='REJECTED'
+          assert q['no_network_calls'] and q['art_pixels_changed']==0
+          assert a['existing_R26_all_five_face_landmarks_frozen'] and a['F00_identity_unchanged']
+          assert a['new_pose_count']==4 and a['generation_spend']==0 and a['provider_call']=='NOT_RUN'
+          assert m['new_pixellab_calls']==0 and m['new_art_frames']==0 and not m['expression_tag_is_API_payload']
+          assert m['status']=='DOCUMENTED_NOT_GENERATED_NOT_ART_APPROVED'
+          print('R27_HEAD_MODEL_METADATA_DRYRUN_PASS, PIXELLAB_NEW_ART_NOT_RUN, ART_HOLD')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

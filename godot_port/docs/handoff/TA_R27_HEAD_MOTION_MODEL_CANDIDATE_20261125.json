@@ -1,0 +1,73 @@
+{
+  "project": "Forest Symphony T-A ACTOR01",
+  "version": "R27_HEAD_MOTION_V0_RESEARCH_ONLY",
+  "date": "2026-11-25",
+  "status": "DOCUMENTED_NOT_GENERATED_NOT_ART_APPROVED",
+  "approved_source_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "frame_size": [
+    64,
+    64
+  ],
+  "perspective": "45deg south-east 3/4",
+  "source_F00": "EXACT_APPROVED_IMMUTABLE",
+  "input_pose_contract": "PixelLab v2 animate-with-skeleton-v3, 18 full joint labels",
+  "face_landmarks": [
+    "NOSE",
+    "LEFT EYE",
+    "RIGHT EYE",
+    "LEFT EAR",
+    "RIGHT EAR"
+  ],
+  "neck_anchor": "NECK follows 0.5 of proposed face translation but retains existing R26 motion",
+  "body_joints": "UNCHANGED_BY_THIS_HEAD_DRYRUN",
+  "keyframes": [
+    {
+      "frame": "F00",
+      "delta_face_xy_px": [
+        0,
+        0
+      ],
+      "expression_tag": "neutral"
+    },
+    {
+      "frame": "F03",
+      "delta_face_xy_px": [
+        -1,
+        1
+      ],
+      "expression_tag": "focused"
+    },
+    {
+      "frame": "F05",
+      "delta_face_xy_px": [
+        0,
+        -1
+      ],
+      "expression_tag": "effort"
+    },
+    {
+      "frame": "F07",
+      "delta_face_xy_px": [
+        1,
+        0
+      ],
+      "expression_tag": "impact_focus"
+    },
+    {
+      "frame": "F09",
+      "delta_face_xy_px": [
+        0,
+        1
+      ],
+      "expression_tag": "recover_neutral"
+    }
+  ],
+  "expression_tag_is_API_payload": false,
+  "head_pose_delta_is_signed_relative_to_existing_R26_four_target_poses": true,
+  "fixed_head_editor_setting_not_assumed_to_be_api_v3_field": true,
+  "original_R26_no_head_action_evidence": "5 face landmarks constant across all four target poses, only NECK X shifted",
+  "new_pixellab_calls": 0,
+  "new_art_frames": 0,
+  "owner_art_gate": "NOT_RUN",
+  "production_rule": "Do not submit this JSON directly; build actual v3 request from locked private provider schema when future owner-approved paid generation is authorized."
+}

@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "complete_18_joint_guard": "PASS",
+  "bad_source_guard": "REJECTED",
+  "missing_joint_guard": "REJECTED",
+  "no_network_calls": true,
+  "art_pixels_changed": 0,
+  "note": "synthetic fixture tests, not original R26 sprites or PixelLab generation"
+}
