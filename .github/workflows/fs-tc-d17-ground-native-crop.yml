@@ -1,0 +1,32 @@
+name: FS T-C D17 Ground-Only Native Crop and Independent PAR (Synthetic)
+on:
+  push:
+    branches:
+      - feat/fs-tc-d12-chroma-par-20261122
+    paths:
+      - "godot_port/tc_factory/biomes/fs_tc_d17_volcano_maze_factory.py"
+      - "godot_port/tc_factory/biomes/test_fs_tc_d17_volcano_maze_factory.py"
+      - ".github/workflows/fs-tc-d17-ground-native-crop.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  d17-strict-structural-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned CI image libraries
+        run: python3 -m pip install --disable-pip-version-check Pillow==12.0.0 numpy==2.3.5 scipy==1.17.0
+      - name: D17 original pixel crop, Ground-first SHA lock, independent 1x PAR and negative cases
+        run: python3 godot_port/tc_factory/biomes/test_fs_tc_d17_volcano_maze_factory.py
+      - name: No private-art Godot or ART gate can be certified by synthetic CI
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('godot_port/tc_factory/biomes/fs_tc_d17_volcano_maze_factory.py').read_text()
+          assert "'godot_4_7_2_private_native':'NOT_RUN'" in s
+          assert "'formal_art_pass':'0_OF_12_HOLD'" in s
+          assert "'art_gate':'HOLD_VISIBLE_SOURCE_POLYGON_CLIPS_AND_FOOTPOINT_ALIGNMENT'" in s
+          print('D17 synthetic structure only; actual art has separate private Drive evidence and remains ART HOLD')
+          PY

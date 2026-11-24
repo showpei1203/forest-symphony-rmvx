@@ -1,0 +1,36 @@
+name: FS T-C D19 Safe-Edge Full PAR QA (Synthetic, ART HOLD)
+on:
+  push:
+    branches:
+      - feat/fs-tc-d12-chroma-par-20261122
+    paths:
+      - "godot_port/tc_factory/biomes/fs_tc_d18_complete_par_components.py"
+      - "godot_port/tc_factory/biomes/fs_tc_d19_native_layout_qa.py"
+      - "godot_port/tc_factory/biomes/test_fs_tc_d19_native_layout_qa.py"
+      - ".github/workflows/fs-tc-d19-safe-edge-layout.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  whole-object-1x-and-border-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ephemeral Python image QA libraries
+        run: python3 -m pip install --disable-pip-version-check Pillow==12.0.0 numpy==2.3.5 scipy==1.17.0
+      - name: D18 default authoring regression must stay valid
+        run: python3 godot_port/tc_factory/biomes/test_fs_tc_d18_complete_par_components.py
+      - name: D19 strict 1x whole island + unchanged bridge + clean edges + invalid input rejects
+        run: python3 godot_port/tc_factory/biomes/test_fs_tc_d19_native_layout_qa.py
+      - name: Confirm real private-art and native status are never overwritten by synthetic QA
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('godot_port/tc_factory/biomes/fs_tc_d19_native_layout_qa.py').read_text()
+          assert "'Godot_4_7_2_actual_private_art_native':'NOT_RUN'" in p
+          assert "'human_ART_gate':'HOLD'" in p
+          assert "'formal_ART_PASS':'0/12'" in p
+          assert "D19_POSITIONS['B_WHOLE_BRIDGE']" in p
+          print('D19 synthetic CI PASS is NOT the actual D19 private PNG Godot 4.7.2 screenshot.')
+          PY

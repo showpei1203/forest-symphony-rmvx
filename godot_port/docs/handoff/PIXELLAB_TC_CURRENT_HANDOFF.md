@@ -1,3 +1,141 @@
+# T-C CURRENT｜2026-11-25 ART-FIRST 正式回歸製圖目標（方法更新，非新增美術 PASS）
+
+**這一節是最新使用者指示優先權，覆蓋下方 D21「下一階段投入碰撞／遮擋／存讀」的工作優先序；D21 已完成的 Godot QA 證據照樣保留，不覆寫歷史。**
+
+- **正式方法**：[`T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md`](../production/T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md)；[Google Drive 同版 ART-FIRST 方法](https://docs.google.com/document/d/1ao0YyDWoa6CbpTzVojLfifK60DDUuZhjxt2cqZ0fNbA/edit)；已補進 [Drive Ground-first SOP](https://docs.google.com/document/d/1zWXO6Z8SHobSK2jfI-M6-p6JDb81BniIH_4UCLiJhIw/edit)。
+- **真正有效的製圖原因**：D17 **一張連續 Ground-only** 比 D16 貼片自然；D18 **另生成獨立真透明完整非地表圖**、主要六組完整物件無 polygon 裁斷，比 D17 切掉 16,915 有意義來源像素更可靠。其前提是**同一 Blueprint/Style Lock/光向/視角/世界原點、Ground 先 SHA 凍結、全部非地表物件完整保留、只做原生 1× 靜態／Godot QA 合成**。
+- **不得過度宣稱**：D18/D19 **真私人 Godot Native PASS 是工程結果，不是美術核准**；D19 邊緣較乾淨但重疊 868→1596；房屋／橋梁接地、風格豐富度、自然群落及畫布邊界仍有 ART HOLD。正式十二圖 `formally_art_sealed=0`，不能稱已有「美術達標」的量產模板。
+- **下一個完整單位（最新指定）**：以 FS_04_MAZE **D17 鎖定 Ground＋D18 完整 PAR＋D20 真 Godot 1×** 作整張美術基準，只施工完整構圖／世界視覺阻斷，最多兩輪非阻斷微調；若不合格換完整 Ground／PAR 出圖方法。**先取得一張人眼明確 ART PASS，再複製製程至同色系村莊及其餘六地形**。T-C 不再開發 D22 暫定碰撞、角色前後層、事件、戰鬥或存讀；交另一條 Godot gameplay workline。兩張正式來源原圖保持 Drive owner-only，GitHub 僅保存 SOP／Manifest／QA。
+- **此回合是方法整理／交接，不是新圖片產出**。新對話必須先讀這一節與 ART-FIRST SOP，歷史 D21 可參考但不得覆蓋美術優先目標。保持 T-A／T-B／主線資產不變。
+
+---
+
+# T-C CURRENT｜D21 FS_04_MAZE 真私人 Godot 4.7.2 橋梁雙向物理／角色深度測試｜2026-11-24
+
+**D21 最新施工結果（優先於下方 D20/D19 歷史）**：沿用 D20 已鎖 D17 Ground `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`、D18 完整 PAR SHA `8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e` 和 D19 完整 PAR SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`，**一個源圖像素也未修改**。本輪已使用真官方 Godot 4.7.2 stable 在隔離 Linux x86_64+Mesa 以真私人 PNG 建立 `CharacterBody2D`＋兩條人工暫定 `StaticBody2D` 欄杆碰撞原型；兩版於臨時橋面 centerline y=500 各西→東、東→西 **74 物理步、零碰撞**，向北、向南離橋的碰撞都真正返回欄杆實體。來源雙 SHA／錯版本、錯 Ground 的原生 fail-close 測試 PASS。
+
+**本次真正發現的畫面阻斷：**由於橋面是 **CompletePAR 全非地表的完全不透明物件**，真 Godot 渲染角色在 PAR 下方時和沒有角色的截圖 SHA **完全相同（0 個可見像素）**；測試角色依**臨時橋面區域**切換至 PAR 前方後，兩版皆出現 **225** 個實際角色像素。第一輪 y=530 原生截圖顯示角色踩在前欄杆上，VISUAL FAIL，已依實圖調整到 y=500 重跑成功。這證明需要 Godot runtime 橋面角色深度邏輯，而**不改最新「Ground FIRST → 全部非地表 ONE 完整 PAR」美術規則**。臨時提高 z 仍存在前欄杆遮擋問題，**不是正式 ACTOR01 或整場景 ART PASS**。
+
+- [**D21 真私人 32 檔原生 2D Physics + 原始 Ground/PAR + 影格／負面／Failure Log 全 ZIP，50,695,229 bytes，CRC PASS**](https://drive.google.com/file/d/1ojoEcCcZ2lndkR8JOEl4G18qys-HC4vW/view)。[D18/D19 四圖真原生跨橋/欄杆 QA](https://drive.google.com/file/d/1AnnshQIzgvl1XeyVHV7eCqnCQLvvPgjl/view)、[角色 under-PAR vs above-PAR 真原生圖](https://drive.google.com/file/d/1HShCa_attT1UXI4kIBNcQkiqH6lXVeqz/view)、[暫定兩條欄杆圖層只供 QA](https://drive.google.com/file/d/18Vy0YUcaJq969F1-ASBeAUjTk4S8QIVh/view)、[完整 JSON](https://drive.google.com/file/d/1ka5u3-sTD3y5s9NMjOi7HOlJbtXpZ7I3/view)；正式私人 Drive metadata 讀回確認 owner-only。**圖片不進公開 GitHub**。
+- [D21 原生腳本 `native_bridge_walk_probe.gd`](../../tc_factory/native_bridge_walk_probe.gd)；[D21 全來源／QA／Handoff](TC_D21_FS_04_MAZE_PRIVATE_NATIVE_BRIDGE_COLLISION_DEPTH_QA_20261124.md)；[D21 獨立 Failure Log](TC_D21_BRIDGE_PHYSICS_FAILURE_LOG_20261124.md)。
+- **真正 Gate：** SOURCE SHA／Ground+PAR 同 XY **PASS**；真正 Godot 4.7.2 私人雙版本原生載入 **PASS**；**局部人工作者碰撞 corridor 的雙向 CharacterBody2D 橋梁走位／越欄阻擋 PASS（暫定幾何）**；橋面角色 `z=1` 遮擋 **FAIL**，橋面 `z=3` **暫定 workaround PASS**；正式全圖 collision / lava / ACTOR01 / 角色遮擋前側欄杆 / 原正式 Godot game-project scene integration **NOT_RUN／HOLD**；人工 VISUAL ART **HOLD**、12 圖正式 **0/12**。
+- **下一個完整施工單位 D22：**改用正式 FS Godot 地圖/角色系統，以作者明確核准的橋面行走範圍、前欄杆／熔岩／斷崖 collision 與角色動態深度建立 `FS_04_MAZE` 遊玩測試，對真 ACTOR01 做入橋/離橋/走位/讀存 smoke。別把本次 QA 兩條固定矩形自動當正式碰撞，也不要重生已凍結的 Ground／PAR。
+- GitHub 仍同隔離 T-C Draft PR #17，不覆蓋 T-A/T-B；**PC Bridge 0、Desktop Remote 0、Codex 0**，無 Windows E: 修改。
+
+---
+
+# T-C CURRENT｜D20 FS_04_MAZE 真私人素材 Godot 4.7.2 原生 1× 雙版本 PASS｜2026-11-24
+
+**最高優先最新成果（以下 D19/D18 為歷史）**：已解決此前 GitHub source-only synthetic CI 無法驗證私有美術的阻斷！D17 鎖定 RGB Ground `1280×928` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` + **兩份真正 owner-private 完整 RGBA PAR**：
+- **D18 PAR** SHA `8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e`。
+- **D19 PAR** SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`。
+
+實際使用官方 Godot 4.7.2 stable（4.7.2.stable.official.ed1daf0bf），於隔離 Linux x86_64/Xvfb/Mesa OpenGL llvmpipe 環境跑**真正的私人 PNG**，各產一張 **1280×928 1× SubViewport framebuffer 截圖**，雙 SHA、Alpha 及獨立世界原點全部 PASS。截圖對照原先 PIL Alpha 合成：D18 有 15367 個像素、D19 有 15372 個像素 RGB 不同，**最大每通道差異僅 1/255**，無尺寸/整圖對位偏移。真正引擎負面測試：錯 PAR SHA、不透明 Master、全透明空白 PAR 均 exit=2、不產截圖。此前 M2 的「真私有素材 Godot NOT_RUN」狀態**已過時**，現在 M2 原生雙圖渲染 **PASS for D18 and D19**；Game full-project map traversal/collision/ATB／事件／存讀仍 **NOT_RUN**，User ART **HOLD，0/12**。
+
+- [**D20 真私人原生 QA 22檔完整 ZIP，15,378,529 bytes／CRC PASS／OWNER ONLY**](https://drive.google.com/file/d/19H-CgMvpgA1iFYODCYpW2PuYTmtJ9EQY/view)
+- [D18 Godot 原生 1280×928 截圖](https://drive.google.com/file/d/1eDyr2FwOk8Mdv3WEjiOe5isYkiWoU2qA/view)、[D19 Godot 原生 1280×928 截圖](https://drive.google.com/file/d/1KsAW1TktV0Weq-gx9u5s-nk5D3y6m8wS/view)、[真原生 1× 雙版本 A/B](https://drive.google.com/file/d/1XRgnE30gIznle8Ca2EAG7SSbwJTGYoz0/view)、[完整證據 QA JSON](https://drive.google.com/file/d/18Gs6WeRVPhGJFOSIy1svz9SbCk7_pSgT/view)。已 Google Drive metadata READBACK `shared=false` 且僅擁有者。
+- [D20 真來源、Godot 證據、Failure Log 及門檻詳表](TC_D20_FS_04_MAZE_REAL_PRIVATE_GODOT472_NATIVE_1X_QA_20261124.md)。
+- [Godot 官方 binary-only 暫存搬運 CI #45300766962 PASS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45300766962)：不含任何私人圖片；官方 Linux 執行檔由 GitHub Connector 收到隔離容器（SHAs/版本重驗），然後**於容器內讀 owner-private mounted images 真正渲染**。無需 Win Bridge 改白名單、無 Desktop Remote 或 Codex。
+- **美術阻斷仍真實存在**：D19 四側 4px 高不透明貼邊 250→0，前景互相交疊 D18 868→D19 1596；橋頭兩岸是否可走、煙霧頂部畫布接觸、底部建築足點、32×32 地圖視覺節奏、人眼 ART 未核准。D19 **不覆蓋** D18，兩套原圖和 Godot 截圖都保留。**ART PASS 仍0/12**。
+- **下一完整單位：**以這批**已成功真正原生**的兩圖截圖建立 FS_04_MAZE 遊戲內 1× 走位／橋梁落點與碰撞／角色圖層 smoke QA（盡量沿用既有 Godot 工程，不重寫），之後 A/B 視覺驗收。不要再在同一 blocker 上反覆安裝或重做 Ground。
+
+---
+
+# T-C CURRENT｜D19 FS_04_MAZE 原生 1× 全景安全邊界 PAR + 雙 SHA Godot QA｜2026-11-23
+
+**最新真成果（優先於以下 D18／D17 紀錄）**：在**完全不修改** D17 Ground SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 和 D18 原作者完整獨立非地表來源 SHA `a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780` 的前提下，保留六個完整連通物件群、不裁 Polygon、不 resize，做整張 `1280×928 RGBA` CompletePAR 的新世界配置。鐵橋 `(554,334)` **固定**；D18 四邊 4px 高不透明貼邊 **250→0**，六組重要來源像素 **641682 全保留**。新的 PAR SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`，真 Ground+PAR 靜態合成 SHA `c9da92ee753970cbcf528a96cefbec2b8fe7088a0bb80ddffbb528b0cef9428a`。但六物件交疊 **868→1596**，不能直接升級美術；官方 **ART 仍0/12 HOLD**。
+
+- [**D19 私人十二檔完整 QA/來源 ZIP，14,432,637 bytes，CRC PASS**](https://drive.google.com/file/d/1osgVoSOLtuWua-7jUnVebD_XsdlLIqNk/view)；[D19 新原生 PAR](https://drive.google.com/file/d/1QvEN7_DxSB3pvlDW70TDmIeCTD44I6XL/view)／[Ground+PAR 靜態合成](https://drive.google.com/file/d/1vRH8svAtheYP_-UbB_WUjNh0sI0A0xAW/view)／[完整 32px Grid+六群 BBox 視覺 QA](https://drive.google.com/file/d/1k06RyynDHhcA2Ait_HUnVZSWRskahvIk/view)／[D18/D19 對照](https://drive.google.com/file/d/1K59hTfpDrl-I_Fqj_n03gw0cb-qrw5eI/view)。已 metadata **READBACK：shared=false owner-only**。
+- [D19 完整來源、補強 Godot 原生、Failure Log 與真 Gate](TC_D19_FS_04_MAZE_SAFE_EDGE_1X_NATIVE_PROBE_QA_20261123.md)。沿用 D18 renderer 的 **可選** placements，D18 default 不變。[D19 CI #45133395097 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133395097) 回歸涵蓋 D18 預設、D19 六物件、SHA、錯來源拒收。
+- 既有 `native_complete_par_probe.gd` 已補 `--par-sha` 第二原圖鎖定、Alpha 全域統計和不透明 Master/空白 PAR 拒收；[**Godot 4.7.2 真原生引擎測試 CI #45133019030 SUCCESS**](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133019030) 已實際啟動引擎/cold-import/兩張 **SYNTHETIC** PNG 原生渲染及三種錯誤拒收。**不能稱 D19 私人美術 Godot 原生 PASS**。
+- **M2 D19 私人素材 Godot 原生仍 NOT_RUN/HOLD**：此隔離環境沒有 Godot 4.7.2 bin、官方下載 DNS 不通，現有私人 PC Bridge 白名單沒有 T-C 私人 Drive PNG → Windows 隔離原生 QA 的核准任務。**不擅自越權傳輸圖片或執行任意 Windows 指令**。下個完整宏觀施工單位：審核安全、窄白名單的私人來源導入／Godot 4.7.2 真正 D18/D19 同源原生對照；之後人工評估邊界 vs 交疊取捨以及橋頭足點，才做 ART PASS。
+- **正式工作線規則不變**：Ground FIRST → 所有非地表獨立 CompletePAR，不判斷角色遮擋，不逆切 Master、不動 T-A/T-B；D18 私人原圖與舊版 PAR 均保留。Desktop Remote 0、Codex 0、Windows E: 未改。
+
+---
+
+# T-C CURRENT｜D18 FS_04_MAZE 完整獨立非地表 PAR｜六組完整輪廓、零多邊形裁除｜2026-11-23
+
+**最新本輪真施工（優先於 D17/D16/D15 歷史）**：D17 原生 1280×928 Ground RGB 不動，SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`。新生成獨立非地表 RGBA 原作者 1474×1067，SHA `a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780`，包含完整工坊/市場、獨立鐵橋、南方工坊、熔爐與兩組獨立裝飾。依 Alpha 連通輪廓 **原始 1× 不縮放** 把六組完整物件配置到 D17 世界，**不從 Master 反切、不裁 Polygon、不按遮人選 PAR**。實際輸出 `1280×928 RGBA CompletePAR` SHA `8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e`；獨立 Ground+PAR 真靜態合成 SHA `2e618991676241471271640c7641679857a23b857a7b0048b8338ea991dff620`。
+
+- **M1 真來源＋結構 TECH PASS**：六個最大前景來源 alpha>8 共 **641682** 個像素全保留，無任何 Polygon trimming（**D17 16915 → D18 0**），出圖 Alpha=0 **547026**；物件互相覆蓋 **868**px，原來源其餘 138 個微小 alpha>8 孤立雜訊沒有編入，alpha1..8 邊緣雜訊歸零，保留原圖供追查；並未宣稱「所有原始像素完全不變」。Ground 冷建 SHA 不變，原生冷建與第一次合成 **逐像素一致**。
+- **PRIVATE Drive [D18 完整10檔ZIP，10478887 bytes，ZIP CRC PASS](https://drive.google.com/file/d/1pHr699q2mqtI8TPrtb3trX2z0h5cYLUH/view)**。單檔：[獨立新原始 PAR](https://drive.google.com/file/d/1Rdo7WObmlwx4zicWRdS3wpO8T6SAMayO/view)、[新完整 1280×928 PAR](https://drive.google.com/file/d/1HbMxtnvKQMif4V_r7jOX7UyLRUpznCbd/view)、[合成](https://drive.google.com/file/d/14Ws84SnxYSLjOsPVTahT7B86UTCy0Ael/view)、[與 D17 的 AB](https://drive.google.com/file/d/1fyGgF2GuQpmHR9iOhPExTNvBUPJr25Xa/view)、[QA JSON](https://drive.google.com/file/d/1-0zc1cKXvpzRCmycV7uaOjHVKbgcgQCB/view)。已 metadata READBACK owner-only / `shared=false`。私人 PNG 不入公開 GitHub。
+- [D18 完整來源、六物件座標、Failure Log](TC_D18_FS_04_MAZE_INTACT_COMPLETEPAR_SOURCE_QA_20261123.md)，[D18 synthetic GitHub Actions #45129375477 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45129375477)。此 CI 僅 code/合成來源契約，不等於私有來源 Godot Native。
+- **M2 真私有 D18 Godot 4.7.2：NOT_RUN/HOLD**（現有私人 Windows PC Bridge allowlist 只有 T-A/T-B Godot task，**沒有**核准的 Drive 私人美術 → T-C 1× 原生渲染任務，不能擅自使用非白名單任意指令）。**M3 主要 D17 Polygon 物件截斷阻斷技術修復 PASS，但新原作者頂部煙霧貼邊、下緣建築緊貼畫布、橋頭精確接地與 868 前景重疊等視覺項目 ART HOLD。M4 FS_04_MAZE 第二技術樣本完成，正式 ART 0/12。遊戲整合 NOT_RUN。**
+- **下一完整單位**：在維持 D17 Ground SHA 的前提下，先於可授權、可讀取真私有 PNG 的 Godot 4.7.2 環境執行 D18 1× 原生畫面與整張視覺對位驗證，進入 USER ART Gate；若私有來源路由未批准，先按 AI Remote 安全規範設計審核專用只讀工作流程與防錯測試，不能自行開 GUI 或下載私人檔到未核准 Windows 目錄。
+- GitHub 仍保留 T-C 隔離分支 `feat/fs-tc-d12-chroma-par-20261122` Draft PR #17，未合併、不碰 T-A/T-B；Desktop Remote 0，Codex 0，使用者 Windows E: 未動。
+
+---
+
+# T-C CURRENT｜D17 FS_04_MAZE 原生 40×29 新連續 Ground＋全非地表 PAR 真雙圖｜2026-11-23
+
+**D17 最新來源成果（優先於以下 D16/D15 舊交接）**：針對 D16 地表有人工羽化拼接與重複紋理的宏觀缺陷，新創作**完整 Ground-only** 火山地表 `1474×1067 RGB`，只做 `(90,70,1370,998)` 1× 等像素裁切，先凍結 Ground `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`。使用**獨立 D15 非地表原圖**且沿用 D16 工廠工具，以 1× 不拉伸重佈六組工坊、熔爐、旗幟、吊車、燈、右側熔岩橋梁，生成全場景 `1280×928 RGBA PAR` SHA `e455aa491415b453235a11ca0eade3ef2578c937ec7d1f4a6613ccb02bf96334`，alpha-zero **862818**；靜態合成 SHA `0213f24d428d00ffa2a7cf233b33ea09e5367270bded24529c9f639edcda3144`。原 D11/D15/D16 原件與正式來源均未改。
+
+- [**D17 完整原圖／Ground／PAR／真靜態合成／QA／程式 13 檔 ZIP（17,262,967 bytes，CRC PASS）**](https://drive.google.com/file/d/1mxfxme7PZbdFd7XmwwVGOclSClL1lyls/view)；[新 Ground](https://drive.google.com/file/d/1fHMcvGb6W3AaZvI07uN-GsSrLe0h5c2k/view)、[新 PAR](https://drive.google.com/file/d/1syxXfi7ykoO_s8m4KoE-R6WhnYD-2xb2/view)、[真實合成](https://drive.google.com/file/d/1QU0MOktXjbYnQ3Iwf5OLXlRtiNtvQ5r0/view)、[D16/D17 A/B](https://drive.google.com/file/d/1CG_g2voyl8sL7agIqHTSQHgm2dXHH1d-/view)。重要 Drive 項目均已 READBACK：shared=false，權限僅 owner。
+- [D17 完整 Handoff + Failure Log](TC_D17_FS_04_MAZE_GROUND_FIRST_COMPLETEPAR_SOURCE_QA_20261123.md)；[D17 GitHub Actions #45115468630](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115468630) **SUCCESS：SYNTHETIC Ground-first / 1× 來源驗證**，不等於 D17 私有圖真正 Godot native。
+- **Gate：** SOURCE/STRUCTURE 及 Python 真實靜態 QA **TECH PASS**；D17 真私有素材 Godot4.7.2 原生 **NOT_RUN/HOLD**（未通過授權私有素材進入現有 Godot 原生執行環境）；VISUAL ART **HOLD**（沿用 D16 Polygon 物件裁邊仍損失 16915 source-positive pixels、867 同一畫布不透明重疊像素、橋與工坊足點尚未 ART Gate）；INTEGRATION **NOT_RUN**；正式 ART **0/12**。
+- **規範優先：** 使用者最新 Ground FIRST → 所有非地表獨立 CompletePAR，拒絕混合 Master 逆切及角色遮蔽子集。額外圖片生成器這輪產生錯誤全景 Master，已拒收，不以自動化流程回收其建築。下一完整單位：讓此**已鎖 D17 Ground**配到真正一次創作、原生 1280×928、無切斷建物的完整 PAR，接著由經核准管道執行真 Godot 4.7.2 1× 截圖與人工 ART，禁止把 synthetic CI 當真人工/原生通過。
+- GitHub 仍使用同一 T-C 隔離 `feat/fs-tc-d12-chroma-par-20261122` Draft PR #17，不影響 T-A/T-B/另一條 T-C；正式圖片只在私人 Drive，沒有 Windows 檔案修改，也沒有 Codex／Desktop Remote 呼叫。
+
+---
+
+# T-C CURRENT｜D16 FS_04_MAZE「熔脈裂橋」第二場景 1280×928 Ground-first + PAR 技術候選｜2026-11-23
+
+**最新真成果（覆蓋下面 D15/D14 歷史的進度，未覆寫舊成果）：** 因 D15 原始 1474×1067 全物件 PAR 不能只靠刪除透明 seam 直接無損壓入 1280×928（寬最多 71/194px，高 0/139px），依宏觀 Roadmap 開展第二火山樣本 FS_04_MAZE。已實際創建 **Ground-first 1280×928 RGB**（D11 Ground-only 來源的全場景再配置）→ 鎖 Ground SHA → 使用 D15 *已獨立生成的所有非地表美術* 批量 1× 重排六組全物件於 **獨立 1280×928 RGBA PAR** → 真正 Image.alpha_composite 靜態 QA，無 Master 逆切、無拉伸到目標假裝原生、原 D11/D15 source 完全不動。
+
+**工程 SOURCE/STRUCTURE 技術 PASS，VISUAL ART HOLD。** D16 原地圖道路拼接痕、素材多邊形截斷、鐵橋與熔岩岸接點不一致；這是 **現有素材技術重組**，不是一次式 AI 在原生畫布完整生成成功。**D16 真私有素材 Godot 4.7.2 Native NOT_RUN；正式 ART 仍 0/12。**
+
+- [D16 10 檔私有素材、Ground、PAR、合成、SHA / 物件台帳 / Failure Log / 重建程式 ZIP](https://drive.google.com/file/d/14Tk-mbngKeENcFfdF3vdIE9OMVifchfm/view)：11,296,467 bytes、ZIP CRC PASS，私人 owner-only READBACK。
+- [新 Ground](https://drive.google.com/file/d/1lyl6X9dDOeeNL0xToShRX1NzgYUd-DGN/view) SHA `6c5f9d8bfbeeb96ec8da2c43cd19cc74159208853ace4963affe1f31e03136a9`， [新 PAR](https://drive.google.com/file/d/1_CjVpdp4aXUxGGzqnULrk_P-OgRGwXpg/view) SHA `fc3333e32f80fb980fbeaabcae02bf6fa942a5079b13eca2fa906a06b1715e6a`， [靜態合成](https://drive.google.com/file/d/1eB0mGISovFixesr18xspquONdjCaD9GX/view) SHA `83f7a3275a4f02bd111dae99020f1d5df1ed8fdc7ea667f9f34831bbd46ee78c`。
+- [GitHub Actions #45112426928](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45112426928) SUCCESS（**synthetic 結構回歸**，不是這批私有美術 Godot native）；[D16 完整 Handoff / Failure Log](TC_D16_FS_04_MAZE_COMPLETE_PAIR_TECH_QA_20261123.md)。
+- D15 FS_04_VILLAGE 原 Ground / 第三版 PAR 均保留、不合併 Draft PR #17；新素材僅私人 Drive。舊 Master-first Roadmap 條目與最新使用者 Ground-first + ALL NON-GROUND PAR 規範衝突，以後者為準。
+- 下一完整單位：針對 FS_04_MAZE 生成**真正原生世界 1280×928、美術自然連續、橋路/熔岩精確接點**的獨立高品質 Ground/PAR 兩圖，拒絕繼續裁拼掉物件；再使用經授權的私有素材路由跑真 Godot 4.7.2 1× QA，修正阻斷後才評 USER ART Gate。M4 現為第二場景技術候選，不是量產 PASS。
+
+---
+
+# T-C CURRENT｜D15 灰鑄工坊城 CompletePAR 封閉白底島修復、私人來源及 QA｜2026-11-23
+
+**本輪實際新成果（優先於 D14/D13/D11 歷史）**：重用 D14 獨立全非地表白底 RGB 原圖，不重做 Ground，不從 Master 逆切，修正原 white-key 演算法漏掉的**五塊大型封閉白底**，D15 另存真透明 `1474×1067 RGBA` PAR，SHA `1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9`，Alpha=0 **734965 → 776139**。右側橋區合成近白色像素 **20781 → 336**，主要火山道路與熔岩露出。Ground 原 `1280×928` SHA `ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d` **完全未改動**。
+
+**正式限制：PAR 仍是 1474×1067 原尺寸，不是符合 40×29 的 1280×928 原作者新圖。** 目前整張 1280×928 預覽採 LANCZOS 下縮且明確標 TECH ONLY；強裁會切掉 106197 個高不透明物件像素。**D15 私有圖片 Godot 4.7.2 真原生 NOT_RUN，VISUAL ART HOLD、正式 ART PASS 仍 0/12。** M1 真完整 PAR 技術修正版 PASS；M2 私有 Godot NOT_RUN；M3 白洞阻斷修正 TECH PASS；M4 第二樣本 NOT_RUN。
+
+- [D15 8 檔私人來源、真 PAR、前後對照與 QA ZIP](https://drive.google.com/file/d/1E8bf_o8UquJQYP3UoayzibCks6f4phKW/view)，13,580,705 bytes，CRC PASS，SHA `76523e688a050abb956ad8dda9e71bcb47d4171bd474c1e810bc385f18220571`。
+- [D15 新真透明原尺寸 PAR](https://drive.google.com/file/d/1aOF1RIUpHjyJdXnB30bxD3XxEtZZ3kEV/view)；[真合成 TECH 預覽](https://drive.google.com/file/d/1O4CiQ_K5PHKyFDht_BfSJTz25Wi2GcRt/view)；[D14/D15 視覺對照](https://drive.google.com/file/d/1b2Y7bfikStctKgZR6geR0VcOoenZHmeD/view)；[完整來源 QA JSON](https://drive.google.com/file/d/1C3HD6mAfqt-V2rv7fxhypFybO4vMiGoO/view)。
+- 更新既有 `fs_tc_white_plate_to_complete_par.py` 的可選 `--repair-large-enclosed-background`，沒有重寫已通過工具；新增大型背景 vs 小型白色裝飾反例測試。[新白底透明化 CI #45101082116：SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45101082116)，[初次測試資料設計錯誤 #45100966246：FAIL](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45100966246) 已明確記錄，實際暗部物件像素與 Ground 保留。
+- [D15 完整 Handoff／來源／Failure Log／後續施工規格](TC_D15_FS_04_VILLAGE_WHITE_VOID_REPAIR_SOURCE_QA_20261123.md)。正式圖檔保存 Drive，非公開 GitHub；私人 Drive readback owner-only。
+- **最高規則差異記錄**：舊 PixelLab Roadmap 含 Master-first 四層的過時方案；使用者最新 + Drive 正式 SOP 優先 `先獨立 Ground → 同世界座標全部非地表獨立透明 PAR`，不反切 Master、不判斷遮擋玩家、不要用 NAV/事件當施工進度。
+- **下一完整單位**：不重生 Ground，真正取得**原生 1280×928、完整物件不裁邊、1× 像素對位**的 PAR；再利用既有 Godot 4.7.2 native probe 在可授權私有來源的路由跑真渲染，做人工 ART Gate。沒有核准的私有來源傳輸／Bridge 任務則標 M2 HOLD，不能把 synthetic Godot CI 借來。
+
+---
+
+# T-C CURRENT｜D14 FS_04_VILLAGE 第二張獨立真透明完整 PAR + Godot 4.7.2 Native 工具實測｜2026-11-22
+
+**最新成果（優先於以下 D13/D12/D11 歷史）：** 在 D11 原 Ground 不變下，D14 重新生成整張工坊城**只有非地表物件**的 `1474×1067 RGB` 白底來源。新的 deterministic white-background matte 已成功轉成真正 `1474×1067 RGBA`（Alpha=0 **734965** pixels、Alpha255 **830440**），不從含 Ground 的 Master 反切。新全圖物件風格更清晰，已製作和 D13 的完整 Ground+PAR 靜態合成對照；已實際封存 7 檔 ZIP 和來源、預覽、QA 至私人 Drive，readback owner-only。
+
+**品質狀態：原尺寸仍未達 1280×928／40×29 原生 1x。** 白底 source 1474×1067，強裁會失去 **106197（12.785%）** 高不透明物件像素；完整縮小版只是 TECH PREVIEW。**D14 真人工 ART HOLD；十二圖 0/12；這批私有美術的 Godot 4.7.2 native NOT_RUN。**
+
+- [D14 私人 7 檔完整來源 QA ZIP（11706995 bytes，CRC PASS）](https://drive.google.com/file/d/1oZU9YY02lZTK5Vd3vlP60e_j6252tf_v/view)
+- [D14 原始白底非地表](https://drive.google.com/file/d/16dnEC5xXPlPZOJ7dY5J4LCQ8blXI80Pu/view)，[D14 新全物件真透明 PAR](https://drive.google.com/file/d/1z4jFTtpQ5MGOmMeAI7k-qtWmku_XtMF9/view)，[Ground+PAR 合成技術預覽](https://drive.google.com/file/d/12MCDzxl3NcOPrV8mAK6aLdgTG-bWrqrO/view)
+- [D14 D13/D14 四圖對比](https://drive.google.com/file/d/14cM9AwYzHiC7G5GImBQA3mx4yBmUMah6/view)，[詳細新來源／Alpha／Godot／Failure Log](TC_D14_FS_04_VILLAGE_WHITE_PLATE_TRUE_RGBA_NATIVE_PROBE_QA_20261122.md)
+- **真 Godot 4.7.2 引擎測試**：[原生 1× 雙圖層合成 CI #44997754667 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44997754667)，不過僅用 synthetic 圖，不是 D13/D14 私有圖片，勿誤稱新美術 native PASS。既有 D1 雙圖設計沿用、不新造另一套地圖框架。
+- [白底轉透明背景防錯 CI #44998273527 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44998273527)，可維持原 RGB 白底來源、真 Alpha、拒收 RGB 全景 Master／空白及 Ground SHA 篡改；此工具並不負責原生畫布或美術驗收。
+- **D13 SHA 錯誤已修正**：原 1× crop `5ba2083578b9acdc3c4e2c58208420c4900de4258420a9f47c177ef3e7db6d4f`，縮圖 `0bc33afa55684df60c0301391e945f182a30776cb2b7fae4db7f1f99081a4aff`，同 Drive 真 source QA，原圖均未改動。
+- 下個完整單位：依同一 FS_04_VILLAGE Blueprint 一次性生成 **native 1280×928、完整、無裁物件、真透明** PAR，參照 D14 整城風格與 D11 Ground 世界座標，再用 D14 native probe 對真 source 在 Godot 4.7.2 驗收。不要反切 Master、不要判斷角色遮蔽、不要以 TECH 預覽當 ART PASS。
+
+---
+
+# T-C CURRENT｜D13 FS_04_VILLAGE 已生成真正透明完整非地表 PAR 美術候選｜2026-11-22
+
+**最新真成果（優先於 D12/D11 歷史）：** 新獨立工坊城全物件 PAR 圖檔已生成，原生來源 `1474×1067 RGBA`，**alpha=0 真透明像素 715393**，非 Ground/Master 逆切，涵蓋工坊、熔爐、煙囪、鐵橋、礦車、吊車、石柱、旗幟、路燈。原 D11 1280×928 RGB Ground 維持 SHA `ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d` 不變。
+
+**正式 ART 仍 0/12 HOLD，Godot 4.7.2 原生 NOT_RUN。** 新 PAR 來源不是正式 1280×928（40×29）1× 尺寸；真 1× 裁切雖可配對但截建築邊緣，整圖下縮技術候選雖能保留全物件並與原 Ground 靜態合成，但不符合 native 1× 原生美術要求。Raw PAR 有 alpha1..8=121578、alpha240..254=641638；另存 clean-alpha 候選，未修改原圖。世界落點仍需人工/原生 Godot 驗證，不把靜態合成當 ART PASS。
+
+- [D13 私人真來源、兩種 1280×928 PAR 候選、合成圖、完整 QA 十二檔 ZIP（22,036,770 bytes、CRC PASS）](https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view)；私人 owner-only metadata READBACK 完成。
+- [獨立原圖 PAR](https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view)，[1280×928 靜態合成](https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view)，[完整來源及 Failure Log](TC_D13_FS_04_VILLAGE_INDEPENDENT_RGBA_PAR_SOURCE_QA_20261122.md)。
+- D12 [可控 Alpha 備援程式及合成保護 CI](TC_D12_INDEPENDENT_CHROMA_COMPLETEPAR_ALPHA_BRIDGE_20261122.md)、[GitHub Actions #44995939096](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44995939096) PASS，為 synthetic tests，**不是 D13 native／ART PASS**。D13 已直接生成真透明 RGBA，不須從 Master key-out。
+- 下一完整美術單位：參照既有 Ground 及 D13 完整工坊城風格，取得**原生 1280×928 且邊緣物件不裁斷、對位準確**的第二階段獨立 CompletePAR；QA 後才跑 Godot 4.7.2 原生、美術確認。Ground 不重新生成；不分析遮擋角色、不反切 Master、不修單顆樹。
+
+---
+
 # T-C CURRENT｜D11 赤焰火山「灰鑄工坊城」真 Ground-only 候選出圖｜2026-11-22
 
 > **D11 封存後增補（透明模式最後一次再試）：仍 FAIL。** 第六張輸出 `1477×1065 RGBA`，alpha min/max `209/248`、**alpha=0 count 0**，SHA `4fb03231f912096edb4f4b6496cb0bd628f95d42a881c9387d8e8ad3b946fcf1`，仍是整張全景火山城而非透明 PAR。拒收，不納入先前 5 次失敗的六檔私人 QA ZIP（該 ZIP 維持原核驗 SHA），不冒稱已有 CompletePAR。此出圖方式在本輪停止重試；下個單位須使用確實可控透明背景、同來源 XY 的另一條生成流程。\n\n**實際施工新成果：FS_04_VILLAGE「灰鑄工坊城」已新生成真正火山玄武岩／熔岩 Ground，原始 1477×1065 與不縮放 1280×928（40×29）及 46×33 全構圖備份已上傳私人 Drive。完整透明 PAR 連續五次失敗（RGB一張、RGBA四張皆沒有任何 Alpha=0），全部拒收，正式 ART HOLD、Godot 4.7.2 NATIVE NOT_RUN；十二張地圖正式 ART 仍 0／12。** 此段優先於下面較早 D11 首次沙漠誤圖及 D10 歷史。

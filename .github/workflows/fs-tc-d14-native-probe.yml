@@ -1,0 +1,155 @@
+name: FS T-C D14 Godot 4.7.2 Native Two-Image Probe (Synthetic Only)
+on:
+  push:
+    branches:
+      - feat/fs-tc-d12-chroma-par-20261122
+    paths:
+      - "godot_port/tc_factory/native_complete_par_probe.gd"
+      - "godot_port/tc_factory/biomes/fs_tc_d14_native_probe_fixture.py"
+      - ".github/workflows/fs-tc-d14-native-probe.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-native-ground-completepar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow and headless rendering dependencies
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check Pillow==12.0.0
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1 libxcursor1 libxrandr2 libxi6 libxinerama1
+      - name: Generate 1280x928 two independent SYNTHETIC fixture PNGs
+        run: |
+          set -euo pipefail
+          python3 godot_port/tc_factory/biomes/fs_tc_d14_native_probe_fixture.py \
+            --out godot_port/tc_factory/generated_d14_synthetic
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from PIL import Image
+          d=Path("godot_port/tc_factory/generated_d14_synthetic")
+          j=json.loads((d/"FS_TC_D14_FIXTURE_MANIFEST.json").read_text())
+          assert Image.open(j["ground"]).size==(1280,928)
+          assert Image.open(j["par"]).size==(1280,928)
+          assert Image.open(j["par"]).getchannel("A").getextrema()==(0,255)
+          assert j["source_type"]=="SYNTHETIC_ART_UNFIT_FOR_GAME"
+          assert j["art_gate"]=="HOLD"
+          print("Synthetic 40x29 source contract input ready, NOT an art acceptance")
+          PY
+      - name: Download the official exact Godot 4.7.2
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/Godot472.zip \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          unzip -q /tmp/Godot472.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Godot 4.7.2 cold import original project
+        run: |
+          set -euo pipefail
+          timeout 90s /tmp/Godot_v4.7.2-stable_linux.x86_64 \
+            --headless --path godot_port --editor --quit
+      - name: Native 1x render actual separate two PNG fixture textures
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          d="godot_port/tc_factory/generated_d14_synthetic"
+          sha=$(python3 -c 'import json; print(json.load(open("godot_port/tc_factory/generated_d14_synthetic/FS_TC_D14_FIXTURE_MANIFEST.json"))["ground_sha256"])')
+          parsha=$(sha256sum "$d/SYNTHETIC_ALL_NON_GROUND_PAR.png" | cut -d' ' -f1)
+          timeout 120s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/native_complete_par_probe.gd \
+              -- --scene-id=FS_TC_SYNTHETIC \
+                 --ground="$PWD/$d/SYNTHETIC_GROUND.png" \
+                 --par="$PWD/$d/SYNTHETIC_ALL_NON_GROUND_PAR.png" \
+                 --ground-sha="$sha" \
+                 --par-sha="$parsha" \
+                 --out="$PWD/$d/native_out"
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          from PIL import Image
+          d=Path("godot_port/tc_factory/generated_d14_synthetic/native_out")
+          q=json.loads((d/"FS_TC_D14_GODOT472_NATIVE_1X_QA.json").read_text())
+          p=d/"FS_TC_D14_GODOT472_NATIVE_1X_PAIR.png"
+          assert Image.open(p).size==(1280,928)
+          assert q["native_engine"].startswith("4.7.2")
+          assert q["technical_native_layer_render"]=="PASS"
+          assert q["par_sha256_lock_verified"] is True
+          assert q["par_alpha_zero_pixels"]>0
+          assert q["par_alpha_visible_pixels"]>0
+          assert q["exact_world_xy_origin"]==[0,0]
+          assert q["art_gate"]=="HOLD"
+          assert q["render_png_sha256"]==hashlib.sha256(p.read_bytes()).hexdigest()
+          assert q["scene_id"]=="FS_TC_SYNTHETIC"
+          print("TRUE Godot 4.7.2 native GL synthetic layer test PASS, actual D13 art STILL NOT_RUN")
+          PY
+      - name: Wrong PAR SHA and opaque Master MUST fail in native Godot
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          d="godot_port/tc_factory/generated_d14_synthetic"
+          runner="/tmp/Godot_v4.7.2-stable_linux.x86_64"
+          for reason in wrong_hash opaque_master; do
+            test_par="$PWD/$d/SYNTHETIC_ALL_NON_GROUND_PAR.png"
+            par_hash="0000000000000000000000000000000000000000000000000000000000000000"
+            if [ "$reason" = "opaque_master" ]; then
+              python3 - <<'PY'
+          from PIL import Image
+          Image.new('RGB',(1280,928),(90,80,72)).save('godot_port/tc_factory/generated_d14_synthetic/SYNTHETIC_OPAQUE_MASTER.png')
+          PY
+              test_par="$PWD/$d/SYNTHETIC_OPAQUE_MASTER.png"
+              par_hash=$(sha256sum "$test_par" | cut -d' ' -f1)
+            fi
+            if timeout 120s xvfb-run -a -s "-screen 0 1600x1200x24" \
+                "$runner" --rendering-method gl_compatibility --path godot_port \
+                --script res://tc_factory/native_complete_par_probe.gd -- \
+                --scene-id=FS_TC_SYNTHETIC --ground="$PWD/$d/SYNTHETIC_GROUND.png" \
+                --par="$test_par" --par-sha="$par_hash" \
+                --out="$PWD/$d/native_reject_$reason" > "/tmp/d19_$reason.log" 2>&1; then
+              echo "CRITICAL: native Godot incorrectly accepted $reason"; exit 1
+            fi
+            if [ "$reason" = "wrong_hash" ]; then
+              grep -q 'Locked independent PAR SHA256 mismatch' "/tmp/d19_$reason.log"
+            else
+              grep -q 'Opaque Master rejected' "/tmp/d19_$reason.log"
+            fi
+            test ! -f "$d/native_reject_$reason/FS_TC_D14_GODOT472_NATIVE_1X_PAIR.png"
+          done
+          echo "D19 negative cases PASS; no native scene screenshot produced"
+      - name: Wrong-size input MUST fail closed
+        env:
+          LIBGL_ALWAYS_SOFTWARE: "1"
+        run: |
+          set -euo pipefail
+          d="godot_port/tc_factory/generated_d14_synthetic"
+          if timeout 120s xvfb-run -a -s "-screen 0 1600x1200x24" \
+            /tmp/Godot_v4.7.2-stable_linux.x86_64 \
+              --rendering-method gl_compatibility --path godot_port \
+              --script res://tc_factory/native_complete_par_probe.gd \
+              -- --scene-id=FS_TC_SYNTHETIC \
+                 --ground="$PWD/$d/SYNTHETIC_GROUND.png" \
+                 --par="$PWD/$d/SYNTHETIC_BAD_PAR_SIZE.png" \
+                 --out="$PWD/$d/native_bad" > /tmp/d14_bad.txt 2>&1; then
+            echo "CRITICAL: wrong-size PAR was accepted"
+            exit 1
+          fi
+          grep -q 'Native 1x 1280x928 world shape required' /tmp/d14_bad.txt
+          test ! -f "$d/native_bad/FS_TC_D14_GODOT472_NATIVE_1X_PAIR.png"
+          echo "Expected native size REJECTION PASS; no fake Godot QA output"
+      - name: 1-day synthetic QA artifact, not private D13 art
+        uses: actions/upload-artifact@v4
+        with:
+          name: fs-tc-d14-godot472-synthetic-two-layer-probe
+          path: |
+            godot_port/tc_factory/generated_d14_synthetic/native_out/
+            godot_port/tc_factory/generated_d14_synthetic/FS_TC_D14_FIXTURE_MANIFEST.json
+          retention-days: 1
+          if-no-files-found: error

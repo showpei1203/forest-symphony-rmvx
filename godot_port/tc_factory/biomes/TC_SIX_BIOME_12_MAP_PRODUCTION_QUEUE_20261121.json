@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 4,
+    "Ground_PAR_pair_candidates_static_pass": 11,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -28,7 +28,13 @@
     "new_complete_PAR_candidates_FS_03_MAZE": 1,
     "failed_Ground_generation_FS_04_VILLAGE": 1,
     "new_ground_source_candidates_FS_04_VILLAGE": 1,
-    "failed_complete_PAR_generation_attempts_FS_04_VILLAGE": 5
+    "failed_complete_PAR_generation_attempts_FS_04_VILLAGE": 6,
+    "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
+    "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
+    "ground_source_candidates_FS_04_MAZE": 2,
+    "complete_PAR_candidates_FS_04_MAZE": 4,
+    "native_private_fs_04_maze_variants_pass": 2,
+    "native_private_fs_04_maze_variants_provisional_physics_smoke_pass": 2
   },
   "scenes": [
     {
@@ -464,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "PLANNED_NOT_GENERATED",
+      "stage": "D21_TRUE_OWNER_PRIVATE_D18_D19_GODOT472_2D_PHYSICS_TWO_WAY_PROVISIONAL_BRIDGE_PASS_OCCLUSION_BLOCKER_FOUND_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -477,8 +483,216 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
-      "formal_art_gate": "HOLD"
+      "native_Godot_4_7_2_for_current_stage": "D21_D18_AND_D19_ACTUAL_PRIVATE_NATIVE_PHYSICS_PROVISIONAL_BRIDGE_SMOKE_PASS",
+      "formal_art_gate": "HOLD_OFFICIAL_COLLISION_MAP_REAL_ACTOR_OCCLUSION_FRONT_RAILING_AND_USER_ART",
+      "Ground_source": {
+        "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
+        "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
+        "source_type": "APPROVED_D11_GROUND_ONLY_RGB_NOT_MIXED_MASTER",
+        "new_rgb_size": [
+          1280,
+          928
+        ],
+        "new_rgb_sha256": "6c5f9d8bfbeeb96ec8da2c43cd19cc74159208853ace4963affe1f31e03136a9",
+        "stage_one_lock": "GROUND_SHA_LOCKED_BEFORE_PAR",
+        "owner_drive": "https://drive.google.com/file/d/1lyl6X9dDOeeNL0xToShRX1NzgYUd-DGN/view",
+        "form_art": "HOLD_TEXTURE_FEATHERING_ROAD_CONTINUITY"
+      },
+      "CompletePAR_source": {
+        "status": "D16_ALL_PLACED_NON_GROUND_GROUPS_FROM_EXISTING_INDEPENDENT_D15_PAR_1X",
+        "source_locked_sha256": "1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9",
+        "source_type": "INDEPENDENT_D15_RGBA_NOT_GROUND_AND_NOT_MASTER",
+        "canvas": [
+          1280,
+          928
+        ],
+        "pixel_scale": "1x_no_resampling",
+        "groups": 6,
+        "alpha_zero_pixels": 865221,
+        "overlaps_opaque_pixels": 2224,
+        "new_rgba_sha256": "fc3333e32f80fb980fbeaabcae02bf6fa942a5079b13eca2fa906a06b1715e6a",
+        "composite_qa_sha256": "83f7a3275a4f02bd111dae99020f1d5df1ed8fdc7ea667f9f34831bbd46ee78c",
+        "private_source_zip": "https://drive.google.com/file/d/14Tk-mbngKeENcFfdF3vdIE9OMVifchfm/view",
+        "ground": "https://drive.google.com/file/d/1lyl6X9dDOeeNL0xToShRX1NzgYUd-DGN/view",
+        "complete_par": "https://drive.google.com/file/d/1_CjVpdp4aXUxGGzqnULrk_P-OgRGwXpg/view",
+        "composite_qa": "https://drive.google.com/file/d/1eB0mGISovFixesr18xspquONdjCaD9GX/view",
+        "source_manifest": "https://drive.google.com/file/d/1XKXTuyQnYewh1hhIJS2_kb2tAouj2QnD/view",
+        "synthetic_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45112426928",
+        "godot_native_real_source": "NOT_RUN",
+        "visual_art": "HOLD",
+        "danger": "M1 technical only: polygon crop/cobble ghosting and bridge footprint, user art not passed"
+      },
+      "D17": {
+        "ground_original_sha256": "30f375d138cccf19e582543b52bff60e9c1f78dfee7b52a8dc93d4aca8632d34",
+        "ground_source_size": [
+          1474,
+          1067
+        ],
+        "ground_crop_same_pixels": [
+          90,
+          70,
+          1370,
+          998
+        ],
+        "native_canvas": [
+          1280,
+          928
+        ],
+        "ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "independent_par_original_sha256": "1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9",
+        "par_sha256": "e455aa491415b453235a11ca0eade3ef2578c937ec7d1f4a6613ccb02bf96334",
+        "composite_sha256": "0213f24d428d00ffa2a7cf233b33ea09e5367270bded24529c9f639edcda3144",
+        "par_alpha_zero_pixels": 862818,
+        "foreground_groups": 6,
+        "trimmed_source_alpha_positive_pixels": 16915,
+        "opaque_overlap_pixels": 867,
+        "origin": "GROUND_FIRST_THEN_COMPLETEPAR_INDEPENDENT_SOURCE_1X_NO_RESIZE",
+        "native_private_art": "NOT_RUN",
+        "visual_art": "HOLD",
+        "integration": "NOT_RUN",
+        "art_pass": "0/12",
+        "drive_zip": "https://drive.google.com/file/d/1mxfxme7PZbdFd7XmwwVGOclSClL1lyls/view",
+        "drive_ground": "https://drive.google.com/file/d/1fHMcvGb6W3AaZvI07uN-GsSrLe0h5c2k/view",
+        "drive_par": "https://drive.google.com/file/d/1syxXfi7ykoO_s8m4KoE-R6WhnYD-2xb2/view",
+        "drive_composite": "https://drive.google.com/file/d/1QU0MOktXjbYnQ3Iwf5OLXlRtiNtvQ5r0/view",
+        "github_CI_synthetic": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45115468630"
+      },
+      "D18": {
+        "new_original_independent_non_ground_source_size": [
+          1474,
+          1067
+        ],
+        "new_original_independent_non_ground_source_sha256": "a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780",
+        "old_D17_frozen_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "native_par_size": [
+          1280,
+          928
+        ],
+        "new_complete_par_sha256": "8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e",
+        "real_composite_sha256": "2e618991676241471271640c7641679857a23b857a7b0048b8338ea991dff620",
+        "authored_non_ground_components": 6,
+        "original_significant_alpha_gt8_pixels_preserved": 641682,
+        "polygon_trimmed_pixels": 0,
+        "low_alpha_noise_threshold": "<=8 transparent",
+        "original_source_excluded_isolated_tiny_alpha_gt8_pixels": 138,
+        "foreground_overlap_pixels": 868,
+        "true_alpha_zero_pixels": 547026,
+        "cold_rebuild_pixel_identity": "PASS",
+        "target_art_gate": "HOLD",
+        "actual_Godot472_private_art_native": "NOT_RUN",
+        "private_zip": "https://drive.google.com/file/d/1pHr699q2mqtI8TPrtb3trX2z0h5cYLUH/view",
+        "private_source": "https://drive.google.com/file/d/1Rdo7WObmlwx4zicWRdS3wpO8T6SAMayO/view",
+        "private_par": "https://drive.google.com/file/d/1HbMxtnvKQMif4V_r7jOX7UyLRUpznCbd/view",
+        "private_composite": "https://drive.google.com/file/d/14Ws84SnxYSLjOsPVTahT7B86UTCy0Ael/view",
+        "private_QA": "https://drive.google.com/file/d/1-0zc1cKXvpzRCmycV7uaOjHVKbgcgQCB/view",
+        "synthetic_gh_ci": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45129375477",
+        "scene_production_rule": "GROUND_FIRST_THEN_ALL_NON_GROUND_PAR_NOT_MASTER"
+      },
+      "D19": {
+        "phase": "D19_SAFE_EDGE_WHOLE_SCENE_M3_REPAIR",
+        "ground_source_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "original_independent_par_sha256": "a0c0f71b9db96d18ec4c8cbddee5f16366609206ec09bc474bbbe714a4dc7780",
+        "par_output_sha256": "cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1",
+        "static_qa_composite_sha256": "c9da92ee753970cbcf528a96cefbec2b8fe7088a0bb80ddffbb528b0cef9428a",
+        "native_size": [
+          1280,
+          928
+        ],
+        "preserved_six_significant_source_alpha_pixels": 641682,
+        "polygon_trim_pixels": 0,
+        "D18_outer_4px_alpha_gt224": 250,
+        "D19_outer_4px_alpha_gt224": 0,
+        "D18_overlap_pixels": 868,
+        "D19_overlap_pixels": 1596,
+        "bridge_world_xy": [
+          554,
+          334
+        ],
+        "true_D19_private_Godot4_7_2_native": "NOT_RUN",
+        "native_Godot4_7_2_synthetic_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133019030",
+        "synthetic_layout_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45133395097",
+        "private_QA_zip": "https://drive.google.com/file/d/1osgVoSOLtuWua-7jUnVebD_XsdlLIqNk/view",
+        "private_PAR": "https://drive.google.com/file/d/1QvEN7_DxSB3pvlDW70TDmIeCTD44I6XL/view",
+        "private_static_composite": "https://drive.google.com/file/d/1vRH8svAtheYP_-UbB_WUjNh0sI0A0xAW/view",
+        "private_scene_AB": "https://drive.google.com/file/d/1K59hTfpDrl-I_Fqj_n03gw0cb-qrw5eI/view",
+        "private_QA_json": "https://drive.google.com/file/d/11grlCFFQwpdaeIhtTeL_9hPubtmEA17D/view",
+        "art_gate": "HOLD_NOT_A_PASS",
+        "integration": "NOT_RUN"
+      },
+      "D20": {
+        "official_engine": "4.7.2.stable.official.ed1daf0bf",
+        "actual_owner_private_Godot_native_render": "PASS_BOTH_D18_AND_D19",
+        "actual_environment": "isolated_linux_x86_64_xvfb_mesa_llvmpipe_opengl3",
+        "source_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "D18_par_sha256": "8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e",
+        "D19_par_sha256": "cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1",
+        "both_native_framebuffer": [
+          1280,
+          928
+        ],
+        "D18_native_render_png_sha256": "14cf4bfe3288d6fd7c39c48349a4a24282c13df1620c3280cfd9ea6aea638ede",
+        "D19_native_render_png_sha256": "a3d830b550e93ac49c4bdbec3d7c19489e41f7e5cd12a1b3d508350ce18b2e2a",
+        "D18_pixels_differ_from_PIL_composite": 15367,
+        "D19_pixels_differ_from_PIL_composite": 15372,
+        "maximum_RGB_channel_difference": 1,
+        "negative_wrong_SHA": "REJECTED_EXIT_2",
+        "negative_opaque_Master": "REJECTED_EXIT_2",
+        "negative_empty_PAR": "REJECTED_EXIT_2",
+        "private_zip_Drive": "https://drive.google.com/file/d/19H-CgMvpgA1iFYODCYpW2PuYTmtJ9EQY/view",
+        "private_D18_native": "https://drive.google.com/file/d/1eDyr2FwOk8Mdv3WEjiOe5isYkiWoU2qA/view",
+        "private_D19_native": "https://drive.google.com/file/d/1KsAW1TktV0Weq-gx9u5s-nk5D3y6m8wS/view",
+        "private_native_AB": "https://drive.google.com/file/d/1XRgnE30gIznle8Ca2EAG7SSbwJTGYoz0/view",
+        "engine_binary_only_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45300766962",
+        "engine_version_SHA256": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+        "actual_gameplay_integration": "NOT_RUN",
+        "visual_art": "HOLD_USER_ART_REVIEW_REQUIRED",
+        "formal_ART_PASS": "0/12",
+        "no_private_art_public_GitHub": true
+      },
+      "D21": {
+        "engine": "4.7.2.stable.official.ed1daf0bf",
+        "engine_sha256": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+        "source_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "source_D18_par_sha256": "8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e",
+        "source_D19_par_sha256": "cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1",
+        "canvas": [
+          1280,
+          928
+        ],
+        "actor_type": "TEMPORARY_GODOT_CHARACTERBODY2D_NOT_REAL_ACTOR01",
+        "collision_type": "PROVISIONAL_TWO_STATICBODY2D_BRIDGE_RAIL_RECTS_NOT_CANONICAL_MAP",
+        "west_to_east_steps": {
+          "D18": 74,
+          "D19": 74
+        },
+        "east_to_west_steps": {
+          "D18": 74,
+          "D19": 74
+        },
+        "traversal_collision_count": 0,
+        "guard_north": "GODOT_KINEMATIC_COLLISION_PASS",
+        "guard_south": "GODOT_KINEMATIC_COLLISION_PASS",
+        "bridge_centerline_y": 500,
+        "actor_under_PAR_visible_pixels": {
+          "D18": 0,
+          "D19": 0
+        },
+        "actor_above_PAR_visible_pixels": {
+          "D18": 225,
+          "D19": 225
+        },
+        "runtime_bridge_z_workaround": "PROVISIONAL_SCOPE_PASS_NOT_APPROVED_FRONT_RAILING_SORT",
+        "source_or_original_art_modified": false,
+        "gameplay_integration": "NOT_RUN",
+        "canonical_map_collision": "NOT_AUTHORED",
+        "formal_ART_PASS": "0/12",
+        "private_full_QA_zip": "https://drive.google.com/file/d/1ojoEcCcZ2lndkR8JOEl4G18qys-HC4vW/view",
+        "private_native_four_panel": "https://drive.google.com/file/d/1AnnshQIzgvl1XeyVHV7eCqnCQLvvPgjl/view",
+        "private_occlusion_AB": "https://drive.google.com/file/d/1HShCa_attT1UXI4kIBNcQkiqH6lXVeqz/view",
+        "private_full_QA_JSON": "https://drive.google.com/file/d/1ka5u3-sTD3y5s9NMjOi7HOlJbtXpZ7I3/view",
+        "private_art_in_public_git": false,
+        "artifact_zip_sha256": "5f884d72f81dcef15fcbb529a43c686113a3b3bc90b276dc33f6b72b44f91a3e"
+      }
     },
     {
       "scene_id": "FS_04_VILLAGE",
@@ -486,7 +700,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "VILLAGE",
-      "stage": "D11_NEW_TRUE_VOLCANO_GROUND_40x29_SOURCE_CANDIDATE_PAR_NOT_GENERATED_ART_HOLD",
+      "stage": "D15_INDEPENDENT_D14_RGBA_SOURCE_ENCLOSED_WHITE_VOID_FIXED_TRUE_PAR_1474x1067_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -499,7 +713,7 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "NOT_RUN_FOR_CURRENT_STAGE",
+      "native_Godot_4_7_2_for_current_stage": "D15_PRIVATE_PAR_NOT_RUN_HISTORIC_D14_SYNTHETIC_ONLY",
       "formal_art_gate": "HOLD",
       "ground_generation_failure": {
         "count": 1,
@@ -542,17 +756,124 @@
         },
         "visual_source": "New independent in-chat imagegen Ground-only image, no buildings/furnaces/bridges",
         "source_art_purity": "HOLD basalt cliff edges may be raised non-ground",
-        "CompletePAR": null,
-        "par_generation_attempts_rejected": 5,
+        "CompletePAR": {
+          "status": "D13_NEW_INDEPENDENT_TRUE_RGBA_ALL_NON_GROUND_PAR_SOURCE_NOT_NATIVE_40x29",
+          "source_size": [
+            1474,
+            1067
+          ],
+          "source_sha256": "b6d529b66d9ec71c87991e7e63abeb85f9d145e056e7bf675cd8ac0de3678f72",
+          "alpha_zero_pixels": 715393,
+          "alpha_1_to_8": 121578,
+          "alpha_240_to_254": 641638,
+          "native_crop": {
+            "crop": [
+              97,
+              69,
+              1377,
+              997
+            ],
+            "size": [
+              1280,
+              928
+            ],
+            "sha256": "5ba2083578b9acdc3c4e2c58208420c4900de4258420a9f47c177ef3e7db6d4f",
+            "resampling": "NONE",
+            "edge_props_clipped": true
+          },
+          "resampled_tech_candidate": {
+            "size": [
+              1280,
+              928
+            ],
+            "sha256": "0bc33afa55684df60c0301391e945f182a30776cb2b7fae4db7f1f99081a4aff",
+            "resampling": "LANCZOS",
+            "is_native_1x": false,
+            "alpha_zero_pixels": 541780
+          },
+          "ground_sha_lock": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
+          "world_xy": "HOLD_VISUAL_ONLY",
+          "Godot_4_7_2_native": "NOT_RUN",
+          "formal_art_gate": "HOLD",
+          "source_drive": "https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view",
+          "QA_ZIP_Drive": "https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view",
+          "composite_preview_drive": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view",
+          "D14_alternative_true_alpha": {
+            "stage": "D14_SECOND_INDEPENDENT_WHITE_RGB_NON_GROUND_OBJECT_PLATE_THEN_DETERMINISTIC_TRUE_RGBA",
+            "original_white_plate_size": [
+              1474,
+              1067
+            ],
+            "original_white_plate_sha256": "26aed5dc5bb03004961ac54f13cfb41f9d825396808d6eb12517e04b50171adb",
+            "source_file_is_RGB_white_plate": true,
+            "original_is_just_all_non_ground_objects": true,
+            "derived_true_RGBA_PAR_source_size": [
+              1474,
+              1067
+            ],
+            "derived_PAR_sha256": "85b8f750e584d74492bea4c409a76e0b26bbe41edfca303241b26db40a9a0760",
+            "alpha_zero_pixels": 734965,
+            "alpha_255_pixels": 830440,
+            "original_1280x928_native": false,
+            "crop_object_alpha_gt224_loss_pct": 12.785,
+            "resample_tech_PAR_sha256": "f69b80119e8aa15c1d119a6b0faca98b7ce6880efaf3e9ac1ff324935606dccb",
+            "composite_tech_preview_sha256": "b84dfd9ed0bce13206e783f976f743345edb655fc0350edfac530e09eed5687b",
+            "Godot_native_real_art": "NOT_RUN",
+            "Godot472_two_layer_native_synthetic_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44997754667",
+            "white_plate_background_converter_CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/44998273527",
+            "formal_art_gate": "HOLD",
+            "private_archival_zip": "https://drive.google.com/file/d/1oZU9YY02lZTK5Vd3vlP60e_j6252tf_v/view",
+            "true_RGBA_PAR_private": "https://drive.google.com/file/d/1z4jFTtpQ5MGOmMeAI7k-qtWmku_XtMF9/view",
+            "composite_private": "https://drive.google.com/file/d/12MCDzxl3NcOPrV8mAK6aLdgTG-bWrqrO/view"
+          },
+          "D15_enclosed_white_repair": {
+            "source": "D14_INDEPENDENT_FULL_NON_GROUND_RGB_WHITE_PLATE",
+            "stage": "D15_TECH_ALPHA_REPAIR_OF_EXISTING_D14_INDEPENDENT_PAR_NOT_NEW_GENERATION",
+            "original_D14_RGB_SHA256": "26aed5dc5bb03004961ac54f13cfb41f9d825396808d6eb12517e04b50171adb",
+            "D11_locked_Ground_SHA256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
+            "new_D15_RGBA_sha256": "1063c9bd0180e771da32ffffbcc5c00b6e409bffbc603524c17001010ae0c3a9",
+            "true_source_size": [
+              1474,
+              1067
+            ],
+            "requested_target_size": [
+              1280,
+              928
+            ],
+            "native_target_met": false,
+            "large_closed_white_background_islands": 5,
+            "old_D14_alpha0": 734965,
+            "new_D15_alpha0": 776139,
+            "bridge_white_roi_before": 20781,
+            "bridge_white_roi_after": 336,
+            "preview_is_resampled_tech_only": true,
+            "Godot_4_7_2_on_real_D15": "NOT_RUN",
+            "ART_GATE": "HOLD",
+            "private_zip": "https://drive.google.com/file/d/1E8bf_o8UquJQYP3UoayzibCks6f4phKW/view",
+            "private_raw_par": "https://drive.google.com/file/d/1aOF1RIUpHjyJdXnB30bxD3XxEtZZ3kEV/view",
+            "private_composite_tech_only": "https://drive.google.com/file/d/1O4CiQ_K5PHKyFDht_BfSJTz25Wi2GcRt/view",
+            "private_QA_json": "https://drive.google.com/file/d/1C3HD6mAfqt-V2rv7fxhypFybO4vMiGoO/view",
+            "regression_ci": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45101082116"
+          }
+        },
+        "par_generation_attempts_rejected": 6,
         "rejection_evidence": "1 RGB full-city image and 4 RGBA full-city images all with alpha=0 pixel count 0; not transparent CompletePAR",
-        "Ground_PAR_pair": "NOT_RUN",
-        "Godot_native": "NOT_RUN",
-        "art_gate": "HOLD",
+        "Ground_PAR_pair": "D15_TECH_STATIC_COMPOSITE_WHITE_VOIDS_FIXED_RESAMPLED_NON_NATIVE_ART_HOLD",
+        "Godot_native": "D15_PRIVATE_NOT_RUN",
+        "art_gate": "HOLD_TARGET_NATIVE_1280x928_AND_OBJECT_FOOTPRINT_ALIGNMENT",
         "owner_only_drive": {
           "D11_complete_source_and_failure_QA": "https://drive.google.com/file/d/11jWGIU54Lk8eyfwLGJs-YbKZU1W6ezIM/view",
           "Ground_40x29": "https://drive.google.com/file/d/1O8lKij4P8JgxczP2Q1Ykt-RKnhyk56RL/view",
           "original_1477x1065": "https://drive.google.com/file/d/1fmrna0wMmv24LRxokUNn3b6mNEOd1aRb/view",
-          "complete_context_46x33": "https://drive.google.com/file/d/1BKyxcOfGPglyw-0pnChwVXUhYjsD0siN/view"
+          "complete_context_46x33": "https://drive.google.com/file/d/1BKyxcOfGPglyw-0pnChwVXUhYjsD0siN/view",
+          "D13_new_PAR_raw": "https://drive.google.com/file/d/1NuEbPwE4nJXZ1r6KLCaChxyAh4Pr58P-/view",
+          "D13_QA_ZIP": "https://drive.google.com/file/d/18IkobPFjRE4XqRFXZBLpX5-aqbz8H8IY/view",
+          "D13_preview": "https://drive.google.com/file/d/15VgqAHsx_CNVMDdfc-TABZsx5tnfR2Wp/view",
+          "D14_private_QA_zip": "https://drive.google.com/file/d/1oZU9YY02lZTK5Vd3vlP60e_j6252tf_v/view",
+          "D14_true_RGBA": "https://drive.google.com/file/d/1z4jFTtpQ5MGOmMeAI7k-qtWmku_XtMF9/view",
+          "D14_composite": "https://drive.google.com/file/d/12MCDzxl3NcOPrV8mAK6aLdgTG-bWrqrO/view",
+          "D15_raw_par": "https://drive.google.com/file/d/1aOF1RIUpHjyJdXnB30bxD3XxEtZZ3kEV/view",
+          "D15_full_QA_zip": "https://drive.google.com/file/d/1E8bf_o8UquJQYP3UoayzibCks6f4phKW/view"
         }
       }
     },
