@@ -1,3 +1,12 @@
+# T-C 主工作線快訊｜2026-11-25 D22 ART-FIRST 全圖美術候選（不合併實驗程式）
+
+- **正式製圖方法依 2026-11-25 ART-FIRST SOP，最新實物證據在獨立隔離 T-C 分支 `feat/fs-tc-d12-chroma-par-20261122`，尚未合併**。D17 Ground 已鎖且未修改；D22 新生成**完整獨立非地表透明 RGBA 原圖**，十個完整物件群以 1× 原像素重佈局成 1280×928 真 PAR，未從 Master 逆切，也沒有重做角色碰撞。
+- [D22 PRIVATE 17 檔來源＋Godot 真 1× ZIP](https://drive.google.com/file/d/1LJtjHRHl5f8F5FtGBK5uep_f6f243mGQ/view)、[D22 真 Godot 原生](https://drive.google.com/file/d/1R7KnV8-1cgChPaOMnFoblvU97j6X3v8X/view)、[D18/D22 全景對照](https://drive.google.com/file/d/1nIMAztQ5SEJ4g1upb6vVTsQkT3F470w4/view)；[分支 D22 Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/handoff/TC_D22_ART_FIRST_FS_04_MAZE_NEW_COMPLETEPAR_NATIVE_QA_20261125.md)。
+- D22-B 物件重疊 **617px**，比 D18 **868px** 少；外緣 5px 高不透明 0。新原始 PAR **1473×1068 不是原生 1280×928**，目前是 1× 全物件搬移，不得假冒原生成器已原生對位。真 Godot 4.7.2 D22 私有圖 native PASS，但**美術 ART HOLD，正式 0/12**；需要對完整道路、橋頭落地、房屋尺度、色彩與 A35/A36 風格做真正人眼整體驗收。
+- 本分支只增加**文件指向新技術候選**，沒有導入實驗分支的程式、私人圖片或改動正式 Ground。下一個單位仍是完整 Ground→PAR 的美術產線，不是角色物理/存讀測試。
+
+---
+
 # T-C CURRENT｜2026-11-25 美術優先「Ground FIRST → 完整 PAR」正式方法同步（僅 SOP，不合併 D21 實驗分支）
 
 **最新使用者指令：停止把 T-C 地圖美術線導向橋梁碰撞、角色遮蔽、存讀與無限細節測試。T-C 要優先實際生成整張連續且美術合格的 Ground + 全部非地表獨立透明 PAR。**
