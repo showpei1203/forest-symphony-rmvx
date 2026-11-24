@@ -2,7 +2,7 @@
   "schema": "fs-handoff-evidence/v1",
   "target": "T-A",
   "stage": "M1",
-  "claim": "ACTIVE",
+  "claim": "NOT_RUN",
   "branch": "feat/fs-pixellab-ta-actor-20261121",
   "source": {
     "asset_id": "",
@@ -14,7 +14,10 @@
     "github_commit_url": "",
     "drive_url": "",
     "native_log_url": "",
-    "godot_preview_url": ""
+    "godot_preview_url": "",
+    "native_run_url": "",
+    "native_marker": "",
+    "source_commit_sha": ""
   },
   "actual_delta": "",
   "skills_loaded": [],
