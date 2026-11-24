@@ -5,6 +5,21 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 
 # Forest Symphony | Project-first Agent Skill
 
+## CURRENT 2026-11-24 GODOT-FIRST OVERRIDE — READ FIRST
+
+**Formal new development engine = Godot 4.7.2**, NOT RPG Maker VX. Original VX/RGSS2, 32px grid and original Map050 remain preservation/source/compatibility information; they do not determine the current development target. Read [FS unified protocol](../../../authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md), [routing manifest](../../../tools/agent_orchestration/routing_manifest.json), and the latest branch-specific CURRENT_HANDOFF before following the historical rules below. Current user's explicit decisions supersede previous text. **This Skill is not guaranteed auto-loaded in another chat or Orca/Cherry: record each actual read/invocation.**
+
+T-C latest D11: separate complete true GROUND first; second an actual transparent PAR containing all non-ground items in one whole-scene generation. **Do not reconstitute a MASTER instead** merely because older sections call it current. Alpha=0 must genuinely exist. Authoring PAR includes ALL objects regardless of actor depth; derived runtime occlusion is a separate optional layer. Keep earlier master-first samples as their own historical experiment, not current T-C production.
+
+T-A latest R23: 64px true approved source, 45-degree combat view, 12 frames per requested animation, real articulated paperdoll with authored hidden underpaint; seven visible-only layers and retiming do not pass the art requirement.
+
+T-B latest R19: true 3-stage source-locked provider motions, independent native technical acceptance only; owner ART HOLD and full FSBattle/ATB/ACT NOT_RUN remain. Do not repeat previously charged jobs.
+
+P0: All durable output remains Drive/GitHub; no new clone/test workspace on owner's PC without explicit temporary-work authorization and verified cleanup. Codex disabled, PC Bridge strict allowlist; Desktop Remote by permission only. Formal acceptance must include sources, Godot native, owner art, gameplay, cloud readback and second-sample reuse separately.
+
+---
+
+
 > **現行規則入口（2026-11-07）**：先讀 [FS Current Rules Index](../../../authority/FS_CURRENT_RULES_INDEX_20261107.md) → P0 Storage → 共用製作 Authority → FS Precheck；先別讓舊 Handoff 的本機路徑或獨立兩張 AI 地圖生成覆蓋最新決議。
 
 ## P0 強制儲存規則（2026-11-07）
@@ -28,9 +43,9 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 
 
 ## Priority and classification
-- **Primary engine: RPG Maker VX (RGSS2)**, grid 32x32. The 544x416 value is a viewport, **not** the total canvas. Godot is a supplementary native rendering/QA adapter, not the authoritative engine.
+- **HISTORICAL ONLY (VX preservation)**: RPG Maker VX (RGSS2), grid 32x32, 544x416 viewport. **CURRENT** primary engine for NEW FS implementation is Godot 4.7.2, as specified by the live user instruction and FS unified protocol.
 - If the task mentions FS, Forest Symphony, RMVX, Ground/PAR, A36F/A36G, PMD or ACTOR sprite production, read this skill **before** the upstream generic router and all discipline skills.
-- Do not use a nested `project.godot` to reclassify the entire project as Godot.
+- For historic VX source analysis do not infer engine merely from a nested project.godot; for CURRENT new FS construction, explicitly use Godot 4.7.2 regardless of legacy paths.
 
 ## Mandatory authority and read sequence
 1. Drive SHARED_GAME_ASSET_GENERATION_AUTHORITY (2026-08-24).
