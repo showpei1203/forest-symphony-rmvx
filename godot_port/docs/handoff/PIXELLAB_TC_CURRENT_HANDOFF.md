@@ -1,3 +1,15 @@
+# T-C CURRENT｜2026-11-25 ART-FIRST 正式回歸製圖目標（方法更新，非新增美術 PASS）
+
+**這一節是最新使用者指示優先權，覆蓋下方 D21「下一階段投入碰撞／遮擋／存讀」的工作優先序；D21 已完成的 Godot QA 證據照樣保留，不覆寫歷史。**
+
+- **正式方法**：[`T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md`](../production/T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md)；[Google Drive 同版 ART-FIRST 方法](https://docs.google.com/document/d/1ao0YyDWoa6CbpTzVojLfifK60DDUuZhjxt2cqZ0fNbA/edit)；已補進 [Drive Ground-first SOP](https://docs.google.com/document/d/1zWXO6Z8SHobSK2jfI-M6-p6JDb81BniIH_4UCLiJhIw/edit)。
+- **真正有效的製圖原因**：D17 **一張連續 Ground-only** 比 D16 貼片自然；D18 **另生成獨立真透明完整非地表圖**、主要六組完整物件無 polygon 裁斷，比 D17 切掉 16,915 有意義來源像素更可靠。其前提是**同一 Blueprint/Style Lock/光向/視角/世界原點、Ground 先 SHA 凍結、全部非地表物件完整保留、只做原生 1× 靜態／Godot QA 合成**。
+- **不得過度宣稱**：D18/D19 **真私人 Godot Native PASS 是工程結果，不是美術核准**；D19 邊緣較乾淨但重疊 868→1596；房屋／橋梁接地、風格豐富度、自然群落及畫布邊界仍有 ART HOLD。正式十二圖 `formally_art_sealed=0`，不能稱已有「美術達標」的量產模板。
+- **下一個完整單位（最新指定）**：以 FS_04_MAZE **D17 鎖定 Ground＋D18 完整 PAR＋D20 真 Godot 1×** 作整張美術基準，只施工完整構圖／世界視覺阻斷，最多兩輪非阻斷微調；若不合格換完整 Ground／PAR 出圖方法。**先取得一張人眼明確 ART PASS，再複製製程至同色系村莊及其餘六地形**。T-C 不再開發 D22 暫定碰撞、角色前後層、事件、戰鬥或存讀；交另一條 Godot gameplay workline。兩張正式來源原圖保持 Drive owner-only，GitHub 僅保存 SOP／Manifest／QA。
+- **此回合是方法整理／交接，不是新圖片產出**。新對話必須先讀這一節與 ART-FIRST SOP，歷史 D21 可參考但不得覆蓋美術優先目標。保持 T-A／T-B／主線資產不變。
+
+---
+
 # T-C CURRENT｜D21 FS_04_MAZE 真私人 Godot 4.7.2 橋梁雙向物理／角色深度測試｜2026-11-24
 
 **D21 最新施工結果（優先於下方 D20/D19 歷史）**：沿用 D20 已鎖 D17 Ground `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`、D18 完整 PAR SHA `8534997f5d897a8ed586e01ac8d356682dd9e3bab8f84a6a5b00a0467112c52e` 和 D19 完整 PAR SHA `cee5cafadd2f57f7da577bff1d4d4b9fb950fb9c5b0be3caaad73c5bec5369e1`，**一個源圖像素也未修改**。本輪已使用真官方 Godot 4.7.2 stable 在隔離 Linux x86_64+Mesa 以真私人 PNG 建立 `CharacterBody2D`＋兩條人工暫定 `StaticBody2D` 欄杆碰撞原型；兩版於臨時橋面 centerline y=500 各西→東、東→西 **74 物理步、零碰撞**，向北、向南離橋的碰撞都真正返回欄杆實體。來源雙 SHA／錯版本、錯 Ground 的原生 fail-close 測試 PASS。
