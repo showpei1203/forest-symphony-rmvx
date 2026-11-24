@@ -7,7 +7,7 @@
   "cloud_only": true,
   "no_codex": true,
   "desktop_remote_default": false,
-  "notes": "Static routing only; MUST fetch current branch HEAD, CURRENT_HANDOFF, Drive provenance and Linear before execution. This does not grant any remote execution right.",
+  "notes": "Static routing only; MUST fetch current branch HEAD, CURRENT_HANDOFF, Drive provenance and Linear before execution. This does not grant any remote execution right. Governance docs live on the governance branch until merged; after merge switch to main.",
   "read_first": [
     {
       "kind": "drive",
@@ -202,5 +202,6 @@
     "full_gameplay",
     "cloud_write_readback"
   ],
-  "activation_warning": "Finding a SKILL.md, PC registry entry or tool install does not prove automatic selection or actual use in a ChatGPT conversation."
+  "activation_warning": "Finding a SKILL.md, PC registry entry or tool install does not prove automatic selection or actual use in a ChatGPT conversation.",
+  "governance_branch": "feat/fs-unified-orchestration-20261124"
 }
