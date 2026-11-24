@@ -17,7 +17,8 @@
     "godot_preview_url": "",
     "native_run_url": "",
     "native_marker": "",
-    "source_commit_sha": ""
+    "source_commit_sha": "",
+    "gameplay_run_url": ""
   },
   "actual_delta": "",
   "skills_loaded": [],
