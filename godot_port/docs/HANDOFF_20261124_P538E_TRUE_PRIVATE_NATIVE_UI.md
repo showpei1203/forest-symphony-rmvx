@@ -33,6 +33,7 @@ Previous P538D blockers were real but now removed without touching owner PC:
 - ZIP **5,327,631 bytes**, SHA256 **`f64212d6140e56c4eda6ea90409d454745b439bda4f96dddd448ab4af055b9ca`**, ZIP CRC PASS, **51 files**. Authenticated upload success followed by Google Drive metadata `shared=false` and **real Drive download hash/CRC readback** matching byte-for-byte.
 - **44 real ORIGINAL-sprite Godot screenshots:** R0 11×544 +11×1088, R1 11×544 +11×1088; plus 5 source-native before/after contact comparison PNG, QA JSON Manifest with hashes/engine provenance, README HOLD (51 total). Pages include MENU, STATUS, SKILLS, ITEMS, ITEM TARGETS, EQUIP, EQUIP CANDIDATES, FORMATION SIX ACTORS, SELECT FIRST, SWAP SIXTH, MIA actor2 STATUS. All image fingerprints included; code/manifest textual authority remains GitHub.
 - Real original PNG binaries are still only on owner Drive, **not** pushed into GitHub. No owner-PC process/storage or extra software installs. Source 202 images are unmodified.
+- **P0 cleanup VERIFIED after Drive upload/download SHA & CRC:** the isolated P538E private Godot project/workspace (including staged 202 original PNGs, rendered screenshots and engine binary), both downloaded public Actions artifact ZIPs and local P538E owner-private QA ZIP were deleted; filesystem confirms all three paths are absent. Only persistent code/docs on GitHub and private images/QA on owner Drive. No owner-PC directories or files changed.
 
 ## Explicit gates still HOLD
 
