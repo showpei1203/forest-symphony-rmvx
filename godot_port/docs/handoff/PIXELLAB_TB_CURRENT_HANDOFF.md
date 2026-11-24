@@ -1,3 +1,19 @@
+# CURRENT TOP PRIORITY (2026-11-25)｜T-B PMD0001→0002→0003→… 原始物種／骨架／體型改造（最新使用者權威）
+
+**最新 User instruction 覆寫本檔後文所有舊 NEXT 行為：** 怪物必須 **逐一按 PMD 編號**（PMD0001 開始）參考**真原始 PMD 生物物種、骨架、頭身／四肢／source relative size** 改造；**元素／屬性／配色／特徵意義自由替換**，如種子可變熔岩核心。**一個 PMD 編號 = 一個按原物種改造的怪物**，不是一隻 AI 新物種硬生三階；自然進化線若確有 PMD0001/0002/0003，則保留三者真正尺寸差與型態成長。
+
+**R22 Frost Wolf CHARGE 8F 舊優先指令 = SUPERSEDED / HOLD。** R21 3-stage TAUNT Godot4.7.2 native 108 clips/982 frames, owner-private 502-entry formal release [完整歷史封包](https://drive.google.com/file/d/1OZvzPtYRRdOyVBVjM2K6tq-Fh8zaj45V/view) 不變、不能重扣費；新 PMD 改造照片／Godot／Paid provider **本輪 NOT_RUN**，絕不可拿 R21 原生 QA 當新 PMD 藝術成果。
+
+**已實際 source inspect + offline QA PASS（0 Generations）**：真正 G11 原始 8方位 SE45 **DIR_1** [owner private原始 G11 ZIP](https://drive.google.com/file/d/1jh4qmzu3vVD8Cr2mkPgPgU189eLohMRd/view) SHA `47fbdaa5c7088c5612c4e53d262a70e64017e965160bd50e55fcf5c12dfe921f`;原始 0001→0003 SE45 Idle 原生 bbox **20×19／22×22／26×25**；另 64px 已改造熔岩蛙 bbox **38×32／48×45／59×49**，角色體型增長不同不能都當同一大小。新 [8-entry owner-only private source reference ZIP](https://drive.google.com/file/d/1p1itnEuUnbZkqe6pRy012tZk8GIR-Avh/view) 58,692 bytes SHA `d9d8d4fb292e0122d02acdba497ead947217fb4ec19be117bee1b1bfad32c004`；完整 Drive raw 再下載 SHA/CRC PASS、僅 user:owner。新原始 ID／source hard-gate Python `FS_TB_PMD_SEQUENTIAL_REAL_SOURCE_GATE_PASS`，跳號／兩足／未驗證 PMD0004 負測 3/3 REJECT，0 provider jobs。
+
+**正式規範/交接：** [PMD Source-Locked Sequential Redesign Protocol](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_TB_PMD_SEQUENTIAL_REDESIGN_PROTOCOL_20261125.md)｜[最新完整 PMD priority-reset Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/handoff/PIXELLAB_TB_PMD_SEQUENTIAL_PRIORITY_RESET_HANDOFF_20261125.md)｜[驗證程式](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/tools/pixellab_tb/fs_tb_pmd_source_gate.py)｜[來源三階 Metadata](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/tools/pixellab_tb/PMD_SEQUENTIAL_SOURCE_CATALOG_20261125.json)｜[PMD0001 預生成計畫](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/tools/pixellab_tb/PMD0001_FIRST_REDESIGN_PLAN_20261125.json)。
+
+**Canonical Skill 已更新：** `showpei1203/tankentai-sbs-godot` 的 `ai_agent_skills/.agents/skills/fs-monster-evolution/SKILL.md`，2026-11-25 提交；原本 Windows／Bridge v0.1.0 不可假裝自動升級。若舊 Skills 與此處衝突，優先最新使用者與本 PMD Protocol。PMD0004+ 原始來源尚未驗證→SOURCE HOLD。第三方 PMD 來源商業授權需另確認；私人原始像素不在公開 GitHub。
+
+**NEXT：PMD0001 以原始來源骨架、物種、頭身與尺寸為硬條件，生成／檢驗一隻完整靜態改造候選並做 1× ART 對照，然後嚴格依編號 PMD0002、PMD0003……；新 PixelLab 成本/新版 Godot Native 均 NOT_RUN。**
+
+---
+
 # Forest Symphony | T-B 怪物量產工廠 | CURRENT HANDOFF
 更新：2026-11-21（Asia/Taipei）｜分支：`feat/fs-pixellab-tb-monster-20261121`
 線別：**T-B / SHO-37**｜階段：**M1 第一條進化鏈候選已生成、M2 Godot 工程已建立但原生未執行**
