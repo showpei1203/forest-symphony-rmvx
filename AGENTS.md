@@ -4,6 +4,10 @@
 在任何會產生／保存檔案的任務前，**先讀** [00_GLOBAL_HARD_RULES_跨對話最高優先規範](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)。所有新開發成果、原始碼、圖片、工程／ZIP、研究、QA／LOG、截圖及 Handoff，永久保存目的地只能是 **Google Drive 或 GitHub**；私人／敏感資料只進有適當權限的 Drive 或私人儲存庫，嚴禁推送公開 GitHub。使用者 PC **不得**作為新的工作目錄／Git clone／成果庫／備份庫。必要安裝及其不可避免的 Runtime 環境檔例外。確實必須在 PC 建立臨時工作檔時，必須**事前說明原因、範圍、清除方法並取得使用者授權**，不是自動允許；完成雲端 WRITE→READBACK→VERIFY 後清除臨時檔。不要擅自刪除／遷移舊 PC 檔案。
 若舊腳本硬編碼輸出到 `C:\`／`D:\`／`E:\`／PC 同步磁碟 `G:\`，未改成真正的雲端路徑、或未取得上述臨時執行授權，不得直接執行。歷史 QA、封版、來源 SHA、專案技術規格仍有效；本規則只更新開發**工作檔案的持久儲存與驗收方式**，不變更正式功能、使用者裝置/App 自己的資料持久化需求。
 
+## CURRENT GODOT ROUTING OVERRIDE (2026-11-24)
+
+For new Forest Symphony construction, **Godot 4.7.2 is the formal engine**. Read [FS unified control protocol](authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md), the [FS routing manifest](tools/agent_orchestration/routing_manifest.json), then the matching LIVE lane CURRENT_HANDOFF and task-specific skills. Prior "VX primary engine" lines below are historical compatibility text only and cannot override the current user mandate. T-C now uses **independent full Ground first, complete transparent all-non-ground PAR second** (NOT master-first); see live T-C D11 Handoff. Do not conflate authoring PAR with optional runtime occlusion. T-A requires true independently poseable paperdoll/underpaint and 12-frame motion. Every tool/Skill invocation must be demonstrated by task evidence and separated from owner ART and full game QA. No new persistent PC clones; P0 remains highest authority. This governance branch is reviewed separately from the three art lanes.
+
 **所有 Agent（無論是畫面、PMD、腳本或測試）必須先讀 [FS Current Rules Index](authority/FS_CURRENT_RULES_INDEX_20261107.md)，再按 P0／Precheck／Skill 作業。** 任何仍寫本機保存、Ground-first/直接 Ground+PAR 雙圖「最新」或 GitHub 尚未連通的舊文本均由索引覆寫。
 
 ## P0: 新產物只保存至 Drive/GitHub（2026-11-07，新舊文件均適用）
