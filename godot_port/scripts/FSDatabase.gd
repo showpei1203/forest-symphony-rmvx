@@ -73,6 +73,18 @@ func load_all(folder: String = "res://data") -> bool:
     boot_final_verified = errors.is_empty()
     return boot_final_verified
 
+# JSON.parse_string represents JSON numbers as floats. Accept only finite,
+# integer-valued numbers in the exact JSON-safe range; never coerce bool/string.
+static func _integral_number(value:Variant)->bool:
+    if value is int:
+        return value>=-9007199254740991 and value<=9007199254740991
+    if value is float:
+        return is_finite(value) and absf(value)<=9007199254740991.0 and floorf(value)==value
+    return false
+
+static func _checked_id(value:Variant)->int:
+    return int(value) if _integral_number(value) else -1
+
 static func validate_runtime_witness(witness: Dictionary) -> PackedStringArray:
     var problems := PackedStringArray()
     if str(witness.get("stage","")) != "post_FS_DB_AUTOSET.apply_all":
@@ -82,6 +94,11 @@ static func validate_runtime_witness(witness: Dictionary) -> PackedStringArray:
     var roster: Variant = witness.get("party_actor_ids",null)
     if not (roster is Array) or roster.is_empty():
         problems.append("VX 執行證據缺少啟動後實際隊伍")
+    else:
+        for member in roster:
+            if _checked_id(member)<=0:
+                problems.append("VX 執行證據隊伍 ID 格式錯誤")
+                break
     var table_counts: Variant = witness.get("table_counts",null)
     if not (table_counts is Dictionary):
         problems.append("VX 執行證據缺少啟動後資料表計數")
@@ -89,7 +106,7 @@ static func validate_runtime_witness(witness: Dictionary) -> PackedStringArray:
         for name in NAMES:
             if name == "system":
                 continue
-            if int(table_counts.get(name,0)) <= 0:
+            if _checked_id(table_counts.get(name,0)) <= 0:
                 problems.append("VX 執行證據缺少資料表計數：" + name)
     return problems
 
@@ -112,7 +129,7 @@ static func validate_witness_against_tables(witness: Dictionary, loaded_tables: 
         for row in rows:
             if row != null:
                 actual_count += 1
-        if int(counts.get(name,-1)) != actual_count:
+        if _checked_id(counts.get(name,-1)) != actual_count:
             problems.append("VX/Godot 啟動後非空記錄數不一致：" + name)
     var sys: Variant = loaded_tables.get("system",null)
     if not (sys is Dictionary):
@@ -149,7 +166,7 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
         for i in range(1,rows.size()):
             if rows[i]==null:
                 continue
-            if not (rows[i] is Dictionary) or int(rows[i].get("id",-1))!=i:
+            if not (rows[i] is Dictionary) or _checked_id(rows[i].get("id",-1))!=i:
                 problems.append("VX 記錄 id 與索引不一致：%s[%d]" % [name,i])
                 break
 
@@ -164,8 +181,8 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
     for actor in actors:
         if not (actor is Dictionary):
             continue
-        var actor_id:int=int(actor.get("id",0))
-        var class_id:int=int(actor.get("class_id",0))
+        var actor_id:int=_checked_id(actor.get("id",0))
+        var class_id:int=_checked_id(actor.get("class_id",0))
         if class_id<=0 or class_id>=classes.size() or not (
                 classes[class_id] is Dictionary):
             problems.append("FS Actor #%d 的來源職業不存在" % actor_id)
@@ -177,15 +194,15 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
         var y:Variant=params.get("ysize",null)
         var z:Variant=params.get("zsize",1)
         var raw:Variant=params.get("data_int16",null)
-        if not (x is int) or x!=6 or not (y is int) or y<1 or not (
-                z is int) or z!=1 or not (raw is Array):
+        if not _integral_number(x) or x!=6 or not _integral_number(y) or y<1 or not (
+                _integral_number(z)) or z!=1 or not (raw is Array):
             problems.append("FS Actor #%d 成長 Table 維度不合法" % actor_id)
             continue
-        if raw.size()!=x*y*z:
+        if y!=float(raw.size())/6.0:
             problems.append("FS Actor #%d 成長 Table 長度不符" % actor_id)
             continue
         for n in raw:
-            if not (n is int) or n<-32768 or n>32767:
+            if not _integral_number(n) or n<-32768 or n>32767:
                 problems.append("FS Actor #%d 成長 Table 含非法 int16" % actor_id)
                 break
     if sys is Dictionary:
@@ -195,13 +212,14 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
         else:
             var used:Dictionary={}
             for member in party:
-                if not (member is int) or member<=0 or member>=actors.size() or (
-                        not actors[member] is Dictionary):
+                var member_id:int=_checked_id(member)
+                if member_id<=0 or member_id>=actors.size() or (
+                        not actors[member_id] is Dictionary):
                     problems.append("FS System 初始隊伍包含不存在 Actor")
-                elif used.has(member):
+                elif used.has(member_id):
                     problems.append("FS System 初始隊伍重複 Actor")
                 else:
-                    used[member]=true
+                    used[member_id]=true
     if troops is Array and enemies is Array:
         for troop in troops:
             if not (troop is Dictionary):
@@ -209,17 +227,17 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
             var members:Variant=troop.get("members",[])
             if not (members is Array):
                 problems.append("FS Troop #%d members 格式錯誤" %
-                    int(troop.get("id",0)))
+                    _checked_id(troop.get("id",0)))
                 continue
             for member in members:
                 if not (member is Dictionary):
                     problems.append("FS Troop 成員不是 Enemy 權威記錄")
                     break
-                var enemy_id:int=int(member.get("enemy_id",0))
+                var enemy_id:int=_checked_id(member.get("enemy_id",0))
                 if enemy_id<=0 or enemy_id>=enemies.size() or not (
                         enemies[enemy_id] is Dictionary):
                     problems.append("FS Troop #%d 引用了不存在 Enemy #%d" %
-                        [int(troop.get("id",0)),enemy_id])
+                        [_checked_id(troop.get("id",0)),enemy_id])
                     break
     if skills is Array:
         for klass in classes:
@@ -228,17 +246,17 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
             var learnings:Variant=klass.get("learnings",[])
             if not (learnings is Array):
                 problems.append("FS Class #%d learnings 格式錯誤" %
-                    int(klass.get("id",0)))
+                    _checked_id(klass.get("id",0)))
                 continue
             for learning in learnings:
                 if not (learning is Dictionary):
                     problems.append("FS Class 的技能學習記錄格式錯誤")
                     break
-                var skill_id:int=int(learning.get("skill_id",0))
+                var skill_id:int=_checked_id(learning.get("skill_id",0))
                 if skill_id<=0 or skill_id>=skills.size() or not (
                         skills[skill_id] is Dictionary):
                     problems.append("FS Class #%d 引用不存在 Skill #%d" %
-                        [int(klass.get("id",0)),skill_id])
+                        [_checked_id(klass.get("id",0)),skill_id])
                     break
     return problems
 
@@ -250,11 +268,11 @@ static func validate_boot_manifest(manifest: Dictionary, actual_hashes: Dictiona
         problems.append("啟動後權威資料格式版本不正確")
     if str(manifest.get("stage","")) != "post_FS_DB_AUTOSET.apply_all":
         problems.append("資料尚未確認是 FS_DB_AUTOSET.apply_all 之後的結果")
-    if int(manifest.get("rgss2_script_sections",0)) != 505:
+    if _checked_id(manifest.get("rgss2_script_sections",0)) != 505:
         problems.append("原始 RGSS2 載入順序尚未核對 505 段")
-    if int(manifest.get("master_setup_pages",0)) != 22:
+    if _checked_id(manifest.get("master_setup_pages",0)) != 22:
         problems.append("MasterSetup 22 段配置尚未核對")
-    if not bool(manifest.get("vx_runtime_trace_verified",false)):
+    if not (manifest.get("vx_runtime_trace_verified",false) is bool) or manifest.get("vx_runtime_trace_verified",false)!=true:
         problems.append("尚未完成 VX Runtime 來源數值比對")
     var witness: String = str(manifest.get("vx_runtime_witness_sha256",""))
     if not _looks_sha256(witness):
