@@ -30,6 +30,9 @@
 - 若僅 RGB/技術 PASS 而藝術不合格，結果 **ART HOLD**，不能報完成。
 
 ## 正式目標 T-A｜ACTOR01 12 幀戰鬥動作（優先 P2）
+> **R25 source-bound 附註（2026-11-24，後於 R24）：** 在正式 T-A 工作線已實際把 A52 核准人物來源的 9 個可見部件 Sprite2D 掛到原 R24 8 Bone2D（胸腹／近側肩肘腕／遠側手臂／頭／腰／腿等），來源完整 F0 0 pixel 差。Godot 4.7.2 原生 195 PASS + 32 PNG；隱藏武器的人物 F3→F7 確實改變 643/610 px。**這不是源生 LPC 可活動換裝素材**，因遮蔽袖子／手臂背面 underpaint 尚缺，F04 原始手只 1px，ART HOLD。原 FSBattle ACT/ATB 未跑。下一優先工程：真正新畫可活動 source-matched 袖子和手腕握柄，再連正式戰鬥，不能回到 R22 時序重排。R25 private Drive: https://drive.google.com/drive/folders/1CQSo09VKNLHB5_r5n0P_wqfQ-omWmeBs
+
+
 
 > **R24 分支最新補充（2026-11-24）：** T-A isolated Bone2D bone-chain ARMED SLASH 機械工程已完成兩組 12-key／24 原生影格及 F7/Hitstop QA；主角目前仍是靜態 A62 參考圖，尚未真正將可見服裝層綁定活動骨架，原生隱藏衣裝 underpaint 缺件，ART HOLD。最新使用者說明「動作太小，不像揮砍」覆蓋這個新增攻擊實驗的舊版 UNARMED 限定；不覆寫歷史拳擊線。下階段 A1/A2 要做真正可變形的來源服裝／手臂綁骨架與新獨立鍵姿，而不是 R22 重排舊影格。正式 FS Battle/ATB 仍 NOT RUN。詳見 R24 Authority/Handoff 及私人 Drive。
 

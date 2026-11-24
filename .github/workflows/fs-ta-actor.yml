@@ -434,6 +434,10 @@ jobs:
           assert s['production_art_approved'] is False and s['source_native_original_LPC_hidden_layers_available'] is False
           print('R24_SOURCE_STATIC_RECEIPT_PASS, real source pixels in owner-private Drive, ART_HOLD')
           PY
+      - name: R25 original-pixel bone-bound source QA receipt, ART HOLD
+        run: |
+          python3 -m py_compile godot_port/experiments/ta_r25_source_bound_sword/tools/build_r25_parts.py godot_port/experiments/ta_r25_source_bound_sword/tools/verify_r25_public_contract.py
+          python3 godot_port/experiments/ta_r25_source_bound_sword/tools/verify_r25_public_contract.py godot_port/docs/handoff/TA_R25_NATIVE_QA_20261124.json godot_port/docs/handoff/TA_R25_SOURCE_MANIFEST_20261124.json
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

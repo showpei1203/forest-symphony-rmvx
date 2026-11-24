@@ -1,0 +1,78 @@
+{
+  "source": "A52 exact R23 verified 7 visible owner source masks",
+  "approved_A62_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "A52_body_sha256": "a10ea14eddd3173c48a87a31227a6a017ba8092713f6d56f95cc5d82a46fd12f",
+  "source_F0_recombined_exact_rgba": true,
+  "source_F0_opaque_pixels": 576,
+  "donor_source_frames": [
+    4,
+    5
+  ],
+  "chips": {
+    "F04_upper": {
+      "name": "r25_A52_F04_near_upper.png",
+      "visible_pixels": 21,
+      "sha256": "4c4ec51da02566023e8e29e44f01a6bd39725f7a85b4a764a63885e92acaee3f"
+    },
+    "F04_forearm": {
+      "name": "r25_A52_F04_near_forearm.png",
+      "visible_pixels": 14,
+      "sha256": "ce5f237444e6c874df1ca24f959722f7f2ae1ea35e501a40a676992f4b11cd9a"
+    },
+    "F04_hand": {
+      "name": "r25_A52_F04_near_hand.png",
+      "visible_pixels": 1,
+      "sha256": "692b7d1109df03add7c65854f363c44f217e7082cc232ca1920eaf36d3ea0ea1"
+    },
+    "F05_upper": {
+      "name": "r25_A52_F05_near_upper.png",
+      "visible_pixels": 26,
+      "sha256": "f64df8022b0bf91917bf3cfa58bed03dff5c7f8e332be8a82ad449f4aad77e73"
+    },
+    "F05_forearm": {
+      "name": "r25_A52_F05_near_forearm.png",
+      "visible_pixels": 16,
+      "sha256": "3b183170f31ed682efdc9ddce9c7ed2981dae5e48c1c159172c4cd4907667535"
+    },
+    "F05_hand": {
+      "name": "r25_A52_F05_near_hand.png",
+      "visible_pixels": 8,
+      "sha256": "9000694f5fee7e6c0e939047154f5126c42cd52aa92f4450af5dd914ab8ee75e"
+    }
+  },
+  "parts": {
+    "head_hair": {
+      "file": "r25_orig_F00_head_hair.png",
+      "sha256": "245a539878ad0ea9c8902625f29ddb98925d3edf4b41907cd385c3e212abb522"
+    },
+    "torso_coat_belly": {
+      "file": "r25_orig_F00_torso_coat_belly.png",
+      "sha256": "083db4cfaea3b469ddee31052c847d93d71cbf77bb50f7c9c3c8a28e2be3e39d"
+    },
+    "near_arm_sleeve": {
+      "file": "r25_orig_F00_near_arm_sleeve.png",
+      "sha256": "eb233c4810b1b78aba883d02262a19852ae8f37f6685b9a5dfd251a2929e0e18"
+    },
+    "far_arm_sleeve": {
+      "file": "r25_orig_F00_far_arm_sleeve.png",
+      "sha256": "121ceec5ed82fff2c01f65f17764c569ab45bb2e55f1570697e01cad2b847468"
+    },
+    "belt_waist": {
+      "file": "r25_orig_F00_belt_waist.png",
+      "sha256": "fe580b64e151d82389a653ef5cad03bcf9ed2ffdd3c8a799a3608d9e5254ca5d"
+    },
+    "pants": {
+      "file": "r25_orig_F00_pants.png",
+      "sha256": "7d2fdefdacc394f9b1abcb423d1e0a0bd763d761f6ca3f194e6ced8195b14c2b"
+    },
+    "boots": {
+      "file": "r25_orig_F00_boots.png",
+      "sha256": "b03f071a01a2a67c317fbd30d7e983e001fdee57e271961bfb2b345a7621d3f4"
+    }
+  },
+  "new_art_pixels": 0,
+  "source_native_LPC_hidden_underpaint": "MISSING",
+  "fully_skinned_LPC": "FALSE",
+  "art_approved": false,
+  "torso_RGBA_repainted": false
+}
