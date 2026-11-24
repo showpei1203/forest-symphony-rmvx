@@ -17,6 +17,18 @@
     {
       "kind": "github",
       "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "AGENTS.md",
+      "why": "live repository orchestration entry"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
+      "path": "authority/FS_CURRENT_RULES_INDEX_20261107.md",
+      "why": "historical index with current Godot override"
+    },
+    {
+      "kind": "github",
+      "repo": "showpei1203/forest-symphony-rmvx",
       "path": "authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md",
       "why": "current Godot workflow precedence"
     },
