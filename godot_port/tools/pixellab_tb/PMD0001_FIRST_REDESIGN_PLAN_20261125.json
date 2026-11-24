@@ -1,0 +1,24 @@
+{
+  "schema": "FS_TB_PMD_FIRST_DESIGN_PLAN_V1",
+  "pmd_id": "PMD0001",
+  "original_pmd_source_sha256": "29ed9fc6369c99027dea6407966f85d6651618b1864a3d383804aa36f46090c8",
+  "native_direction_row": 1,
+  "body_plan": "quadruped",
+  "limb_count": 4,
+  "retain_structural_features": [
+    "head",
+    "torso",
+    "four_legs",
+    "dorsal_mass",
+    "tail_or_source_rear_outline"
+  ],
+  "new_attribute": "lava/fire (example design from existing prior derivative; may choose a different element per approved concept)",
+  "new_color_design": "basalt dark charcoal / molten orange / pale sandy belly",
+  "remodeled_back_feature": "original single seed/bulb remapped to one raised molten rock core with fissures",
+  "source_species_frame": "PMD0001 original native SE45 Idle first keyframe; front/rear body topology and proportions stay grounded",
+  "prior_derivative_reference": "PMD0001_STATIC_64.png, already-existing lava-themed candidate; do NOT claim new provider generation",
+  "generation_job_id": null,
+  "owner_art_approved": false,
+  "next_phase": "VISUAL_SOURCE_CONSTRAINED_REDESIGN_TEST_NOT_YET_PAID",
+  "notes": "PMD0001 one ID = one creature. PMD0002 should follow only after the first's static candidate passes identity & relative scale QA."
+}
