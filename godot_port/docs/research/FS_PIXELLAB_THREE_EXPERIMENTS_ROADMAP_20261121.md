@@ -1,3 +1,8 @@
+## T-B 最新改寫（2026-11-25）：PMD 順序改造優先
+> 此段為最新使用者權威，覆寫本 Roadmap 後文 T-B「一隻 PMD0001 自造三階」的歷史目標。請先讀 [PMD sequential source-locked redesign protocol](FS_TB_PMD_SEQUENTIAL_REDESIGN_PROTOCOL_20261125.md)。一個 PMD 編號對應一隻原 PMD 物種骨架／體型的改造怪物；編號 PMD0001、PMD0002、PMD0003……依序生成，保留骨架、物種與相對大小。配色／屬性／外觀細節可自由變更（例如原種子變熔岩核心）。R21 frost TAUNT 已正式封版，原定 R22 frost CHARGE/RELEASE 不再是下一優先。新 PMD0001 source audit 目前 PASS、但新美術生成及 ART 仍 NOT_RUN。禁止以歷史 Roadmap 文字覆寫這條最新規範。
+
+---
+
 # Forest Symphony｜PixelLab 三項正式實驗目標與宏觀施工規範
 制定：2026-11-21（Asia/Taipei）  
 狀態：**正式納入 Roadmap / SPEC APPROVED；三項實驗本身均未完成生成或 Godot 美術實測**。  
