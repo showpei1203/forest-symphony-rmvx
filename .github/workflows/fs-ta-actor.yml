@@ -438,6 +438,23 @@ jobs:
         run: |
           python3 -m py_compile godot_port/experiments/ta_r25_source_bound_sword/tools/build_r25_parts.py godot_port/experiments/ta_r25_source_bound_sword/tools/verify_r25_public_contract.py
           python3 godot_port/experiments/ta_r25_source_bound_sword/tools/verify_r25_public_contract.py godot_port/docs/handoff/TA_R25_NATIVE_QA_20261124.json godot_port/docs/handoff/TA_R25_SOURCE_MANIFEST_20261124.json
+      - name: R26 offline source-locked five-key preview gate (ART still pending provider)
+        run: |
+          python3 -m py_compile godot_port/tools/ta_r26_preview_gate.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('godot_port/docs/handoff')
+          q=json.loads((p/'TA_R26_OFFLINE_PREVIEW_SELFTEST_20261125.json').read_text(encoding='utf8'))
+          m=json.loads((p/'TA_R26_OFFLINE_ARCHIVE_MANIFEST_20261125.json').read_text(encoding='utf8'))
+          assert q['negative_duplicate_frames']=='REJECTED'
+          assert q['negative_tampered_F00']=='REJECTED'
+          assert q['actual_new_pixelLab_frames']==0
+          assert q['status']=='OFFLINE_PREVIEW_GATE_UNIT_TEST_PASS_ART_NOT_RUN'
+          assert m['source_verified'] and not m['art_approved']
+          assert m['actual_new_pixelLab_frames']==0 and m['remote_orca_runtime']=='UNAVAILABLE'
+          print('R26_OFFLINE_PREVIEW_SOURCE_META_PASS; paid provider output separate and private')
+          PY
       - name: Run T-A three-layer 12-frame animation timing test
         run: |
           /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_ta_actor_motion_rig.gd

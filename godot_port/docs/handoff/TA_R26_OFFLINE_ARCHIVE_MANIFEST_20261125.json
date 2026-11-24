@@ -1,0 +1,65 @@
+{
+  "artifact": "FS T-A R26 PixelLab preview gate",
+  "source_verified": true,
+  "actual_new_pixelLab_frames": 0,
+  "art_approved": false,
+  "remote_orca_runtime": "UNAVAILABLE",
+  "godot_native_new_art": "NOT_RUN",
+  "archive_files": [
+    {
+      "path": "R26_PREPARE_MANIFEST.json",
+      "bytes": 430,
+      "sha256": "1dceb24d5c03c72973bf6696e2e3694adb77e524e9749f114f130058b14afb9a"
+    },
+    {
+      "path": "README_R26.md",
+      "bytes": 3538,
+      "sha256": "a1dfcf192e7452e2350461f9971d3975a95bbf947e0ba0afdb119c55d17971af"
+    },
+    {
+      "path": "previews/R26_5POSE_NATIVE_1X.png",
+      "bytes": 2525,
+      "sha256": "e4d68301680fe2a15cec368dfb642f75de5e08014879928f689557268f0b5f41"
+    },
+    {
+      "path": "previews/R26_5POSE_NEAREST_4X.png",
+      "bytes": 5021,
+      "sha256": "cce6225db0d075cff92f6ca18effc2da3dfb4fbc67b5804db2c72a3967b39d0a"
+    },
+    {
+      "path": "previews/R26_KEYPOSE_PREVIEW.gif",
+      "bytes": 5386,
+      "sha256": "d759282fff69f776582b07355b78b636e1e3595536a5e0e1feb9f875e382b6d4"
+    },
+    {
+      "path": "previews/R26_REVIEW_CONTACT.jpg",
+      "bytes": 34719,
+      "sha256": "b246f60313f086073b2ec114d16bc7155eb8d5b90b074bb58bc1219aa027606c"
+    },
+    {
+      "path": "qa/R26_FAILURE_LOG.md",
+      "bytes": 1420,
+      "sha256": "bceb06fa381a6e3290f77406332125bd259a7102905ced7eaefc7d267644d1e8"
+    },
+    {
+      "path": "qa/R26_OFFLINE_SELFTEST.json",
+      "bytes": 307,
+      "sha256": "999f3121b9523e4546d9e3c5bf6130347d85644c373c5e26c5f73cf67dadc3cd"
+    },
+    {
+      "path": "source/A62_APPROVED_F00_64.png",
+      "bytes": 1420,
+      "sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e"
+    },
+    {
+      "path": "source/R26_POSE_BLUEPRINT_NOT_PIXELLAB_PAYLOAD.json",
+      "bytes": 1107,
+      "sha256": "4203be1f7f0a194aeccc006a09dfe2f5ae1b75887fe7c09c9c8095913c5e1f6b"
+    },
+    {
+      "path": "ta_r26_preview_gate.py",
+      "bytes": 10408,
+      "sha256": "129abe57e786c3b7a677f3650f9ba813f809af4c310ef7efb7347a014f253c9e"
+    }
+  ]
+}

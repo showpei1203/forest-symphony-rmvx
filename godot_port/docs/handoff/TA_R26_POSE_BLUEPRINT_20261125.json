@@ -1,0 +1,62 @@
+{
+  "original_SHA256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "status": "TECHNICAL_GUIDE_ONLY_NOT_NEW_ART",
+  "coordinate_units": "pixels on original A62 64px canvas; not API v3 native schema",
+  "poses": [
+    {
+      "frame": 0,
+      "hand": [
+        40,
+        37
+      ],
+      "hips_deg": 0,
+      "chest_deg": 0,
+      "blade_deg": -75,
+      "phase": "ready"
+    },
+    {
+      "frame": 3,
+      "hand": [
+        31,
+        24
+      ],
+      "hips_deg": -8,
+      "chest_deg": -11,
+      "blade_deg": -165,
+      "phase": "windup"
+    },
+    {
+      "frame": 5,
+      "hand": [
+        38,
+        25
+      ],
+      "hips_deg": -4,
+      "chest_deg": -6,
+      "blade_deg": -105,
+      "phase": "drive"
+    },
+    {
+      "frame": 7,
+      "hand": [
+        47,
+        33
+      ],
+      "hips_deg": 10,
+      "chest_deg": 19,
+      "blade_deg": 20,
+      "phase": "impact"
+    },
+    {
+      "frame": 9,
+      "hand": [
+        42,
+        42
+      ],
+      "hips_deg": 8,
+      "chest_deg": 10,
+      "blade_deg": 108,
+      "phase": "followthrough"
+    }
+  ]
+}

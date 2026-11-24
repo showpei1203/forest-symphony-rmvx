@@ -1,0 +1,8 @@
+{
+  "source_SHA": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "negative_duplicate_frames": "REJECTED",
+  "negative_tampered_F00": "REJECTED",
+  "nonprovider_pose_blueprint": "PASS",
+  "actual_new_pixelLab_frames": 0,
+  "status": "OFFLINE_PREVIEW_GATE_UNIT_TEST_PASS_ART_NOT_RUN"
+}
