@@ -1,0 +1,248 @@
+{
+  "schema": "FS_TB_PMD_SEQUENTIAL_REDESIGN_SOURCE_CONTRACT_V1",
+  "effective_date": "2026-11-25",
+  "authority": "latest user instruction supersedes R21 planned CHARGE/R22 priority",
+  "workflow": "PMD0001 -> PMD0002 -> PMD0003 -> ...; one verified PMD source number -> one adapted monster identity; connect evolution only where original source supports it",
+  "source_type": "original PMD native SE45 sprite + previous owner-private derivative for comparison; NO new paid provider generation",
+  "source_archive_g11_sha256": "47fbdaa5c7088c5612c4e53d262a70e64017e965160bd50e55fcf5c12dfe921f",
+  "source_archive_bytes": 2559391,
+  "source_archive_entries": 742,
+  "verified_ids": [
+    "PMD0001",
+    "PMD0002",
+    "PMD0003"
+  ],
+  "source_verified_range": [
+    "PMD0001",
+    "PMD0003"
+  ],
+  "next_id": "PMD0001",
+  "id_0004_onward": "SOURCE_NOT_YET_VERIFIED_NO_GENERATION",
+  "reference_size_ratios_prior_derivative_body_width_vs_pmd0001": [
+    1.0,
+    1.2632,
+    1.5526
+  ],
+  "reference_size_ratios_prior_derivative_body_height_vs_pmd0001": [
+    1.0,
+    1.4062,
+    1.5312
+  ],
+  "new_pipeline_priority": "B0 PMD reference -> B1 original static redesign -> 1x ART gate -> genuine action animations -> Godot native -> next PMD ID",
+  "new_provider_jobs": 0,
+  "technical_reference_qa": "PASS",
+  "new_art_generated": "NO",
+  "owner_redesign_art_qa": "NOT_RUN",
+  "main_battle_integration": "NOT_RUN",
+  "older_R21_immutable": "YES",
+  "original_PMD_rights_status": "PENDING_LICENSE_ATTRIBUTION_FOR_PUBLIC_OR_COMMERCIAL_RELEASE",
+  "species": [
+    {
+      "pmd_id": "PMD0001",
+      "source": {
+        "archive_name": "PMD_G11_SE45_0001_0003_COMPLETE_NATIVE_20261103.zip",
+        "archive_sha256": "47fbdaa5c7088c5612c4e53d262a70e64017e965160bd50e55fcf5c12dfe921f",
+        "path": "SE45_KEYFRAMES/PMD0001/Idle/ORIGINAL_PMD0001_Idle_1.png",
+        "sha256": "29ed9fc6369c99027dea6407966f85d6651618b1864a3d383804aa36f46090c8",
+        "frame_size": [
+          32,
+          40
+        ],
+        "rgba_bbox": [
+          6,
+          7,
+          26,
+          26
+        ],
+        "body_size": [
+          20,
+          19
+        ],
+        "facing": "SE45",
+        "native_direction_row": 1
+      },
+      "prior_derivative": {
+        "path": "PMD0001_STATIC_64.png",
+        "sha256": "fc7be3a93d4940a3a9c6d0fb19ffeaa7715a6b98c2e549e37b92b774df73f46c",
+        "canvas_size": [
+          64,
+          64
+        ],
+        "rgba_bbox": [
+          13,
+          27,
+          51,
+          59
+        ],
+        "body_size": [
+          38,
+          32
+        ],
+        "body_coverage": [
+          0.5938,
+          0.5
+        ],
+        "status": "PREEXISTING_LAVA_FROG_VARIANT_NOT_NEWLY_GENERATED"
+      },
+      "skeleton_reference": "compact four-legged quadruped",
+      "back_feature_reference": "single raised seed/bulb",
+      "allowed_transformations": [
+        "element",
+        "palette",
+        "surface_material",
+        "back_feature_semantics",
+        "ornament",
+        "eye_and_markings"
+      ],
+      "locked": [
+        "pmd_number",
+        "base_species_quadruped",
+        "relative_body_head_proportion",
+        "limb_count_and_attachment",
+        "growth_rank",
+        "original_SE45_view",
+        "relative_size_rank",
+        "foot_anchor"
+      ],
+      "art_gate": "OWNER_ART_REVIEW_PENDING"
+    },
+    {
+      "pmd_id": "PMD0002",
+      "source": {
+        "archive_name": "PMD_G11_SE45_0001_0003_COMPLETE_NATIVE_20261103.zip",
+        "archive_sha256": "47fbdaa5c7088c5612c4e53d262a70e64017e965160bd50e55fcf5c12dfe921f",
+        "path": "SE45_KEYFRAMES/PMD0002/Idle/ORIGINAL_PMD0002_Idle_1.png",
+        "sha256": "e52e369e1b1f417682aed49ac3b491d0fa4b7c85ebab4a78044a21752f451d40",
+        "frame_size": [
+          32,
+          32
+        ],
+        "rgba_bbox": [
+          5,
+          2,
+          27,
+          24
+        ],
+        "body_size": [
+          22,
+          22
+        ],
+        "facing": "SE45",
+        "native_direction_row": 1
+      },
+      "prior_derivative": {
+        "path": "PMD0002_STATIC_64.png",
+        "sha256": "b862486cb5a6039b6afdf78dba33f60ba4f632562a0a5294867df2bf0dff699f",
+        "canvas_size": [
+          64,
+          64
+        ],
+        "rgba_bbox": [
+          8,
+          14,
+          56,
+          59
+        ],
+        "body_size": [
+          48,
+          45
+        ],
+        "body_coverage": [
+          0.75,
+          0.7031
+        ],
+        "status": "PREEXISTING_LAVA_FROG_VARIANT_NOT_NEWLY_GENERATED"
+      },
+      "skeleton_reference": "stronger long-bodied four-legged quadruped",
+      "back_feature_reference": "larger upright bud",
+      "allowed_transformations": [
+        "element",
+        "palette",
+        "surface_material",
+        "back_feature_semantics",
+        "ornament",
+        "eye_and_markings"
+      ],
+      "locked": [
+        "pmd_number",
+        "base_species_quadruped",
+        "relative_body_head_proportion",
+        "limb_count_and_attachment",
+        "growth_rank",
+        "original_SE45_view",
+        "relative_size_rank",
+        "foot_anchor"
+      ],
+      "art_gate": "OWNER_ART_REVIEW_PENDING"
+    },
+    {
+      "pmd_id": "PMD0003",
+      "source": {
+        "archive_name": "PMD_G11_SE45_0001_0003_COMPLETE_NATIVE_20261103.zip",
+        "archive_sha256": "47fbdaa5c7088c5612c4e53d262a70e64017e965160bd50e55fcf5c12dfe921f",
+        "path": "SE45_KEYFRAMES/PMD0003/Idle/ORIGINAL_PMD0003_Idle_1.png",
+        "sha256": "f0338d766ac7b2379f9b0e523bb83a5ce852cc6cbf427defcbf087aade8c652b",
+        "frame_size": [
+          32,
+          32
+        ],
+        "rgba_bbox": [
+          5,
+          0,
+          31,
+          25
+        ],
+        "body_size": [
+          26,
+          25
+        ],
+        "facing": "SE45",
+        "native_direction_row": 1
+      },
+      "prior_derivative": {
+        "path": "PMD0003_STATIC_64.png",
+        "sha256": "787c895b294e35c93de94dbcc786d9e3291a7083de5997673c8ab10b592893bb",
+        "canvas_size": [
+          64,
+          64
+        ],
+        "rgba_bbox": [
+          2,
+          10,
+          61,
+          59
+        ],
+        "body_size": [
+          59,
+          49
+        ],
+        "body_coverage": [
+          0.9219,
+          0.7656
+        ],
+        "status": "PREEXISTING_LAVA_FROG_VARIANT_NOT_NEWLY_GENERATED"
+      },
+      "skeleton_reference": "large heavy broad-backed four-legged quadruped",
+      "back_feature_reference": "large elevated flower/canopy structure",
+      "allowed_transformations": [
+        "element",
+        "palette",
+        "surface_material",
+        "back_feature_semantics",
+        "ornament",
+        "eye_and_markings"
+      ],
+      "locked": [
+        "pmd_number",
+        "base_species_quadruped",
+        "relative_body_head_proportion",
+        "limb_count_and_attachment",
+        "growth_rank",
+        "original_SE45_view",
+        "relative_size_rank",
+        "foot_anchor"
+      ],
+      "art_gate": "OWNER_ART_REVIEW_PENDING"
+    }
+  ]
+}
