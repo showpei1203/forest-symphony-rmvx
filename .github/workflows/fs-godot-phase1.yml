@@ -170,6 +170,11 @@ jobs:
         run: |
           set -euo pipefail
           timeout --signal=TERM --kill-after=5s 50s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_boot_authority_guard.gd
+      - name: P538F semantic after-Apply 11-table integrity and forbidden broken VX references
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/fs-godot-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_p538f_boot_final_integrity.gd
       - name: Self-test static RGSS2 authority scanner (never executes Ruby)
         shell: bash
         run: |
