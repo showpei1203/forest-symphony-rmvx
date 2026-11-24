@@ -1,5 +1,11 @@
 name: FS EGM boot parity pilot
 on:
+  pull_request:
+    branches: [feature/fs-godot-phase1]
+    paths:
+      - 'godot_port/**'
+      - '.github/workflows/fs-egm-boot-pilot.yml'
+      - '.github/workflows/fs-godot-phase1.yml'
   push:
     branches: [feat/fs-godot-egm-p538f-audit-20261125]
     paths:
