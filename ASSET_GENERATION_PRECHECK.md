@@ -1,5 +1,13 @@
 # Forest Symphony — Asset Generation Precheck
 
+## CURRENT 2026-11-24 T-C PRODUCTION OVERRIDE
+
+**New production for T-C Godot 4.7.2 uses CURRENT T-C D11 user instruction:** (1) generate and preserve ONE complete true terrain-only GROUND with grass/flowers/floors, (2) generate a matching **truly transparent** full-canvas CompletePAR containing **all non-ground scene objects** in one independent art pass, without filtering for things in front of the actor. PAR must have actual alpha-zero background and the same canvas/placement anchors. No opaque full-scene substitute is accepted, and visually aligned XY, original authoring layers, and Godot art/native QA remain separately required. Do NOT turn the current T-C task back into a mandatory one-MASTER-first extraction workflow or assume a separately generated PAR is source-registered merely because dimensions match.
+
+The historical 2026-11-07 Master-first trial and its specific VX Map050/203 gates are preserved as historical/other scoped evidence, not binding NEW T-C production. Read [FS unified protocol](authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md) and latest [T-C handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tc-map-20261121/godot_port/docs/handoff/PIXELLAB_TC_CURRENT_HANDOFF.md) before generating. For T-A/T-B read their own CURRENT_HANDOFF; T-A full 12F requires genuine independent paperdoll underpaint. Account-global Drive cloud-only P0 remains mandatory.
+
+---
+
 ## 2026-11-07 FS 新版本強制優先（P0 + Master-first）
 開工前先讀 [P0 Cloud-only](docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)：成果與證據存 Drive/GitHub，PC 僅必要安裝/最短實機臨時副本；不准把 E: 目錄/快取當輸出庫。
 **FS 新精靈村 ACTIVE 方法**：一張完整高品質 MASTER 作唯一 RGB/world-XY 權威，AI Ground-only 只作底下地表補繪候選，AI PAR 只作物件語意遮罩候選。作者層 `GroundOnly+CompletePAR`、Runtime 層 `FullGround+OcclusionPAR` 分開；每個可見前景像素從同一 MASTER XY 取樣。真實 RPG Maker VX Map050、203 開關、可走格進出遮擋／空地負例和 USER ART Gate 全部必須另驗證。合成零差是建構式技術指標，不等於完整語意或美術 PASS。
