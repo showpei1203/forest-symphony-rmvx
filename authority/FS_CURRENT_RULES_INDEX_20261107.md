@@ -1,5 +1,7 @@
 # Forest Symphony｜CURRENT RULES INDEX & PRECEDENCE｜2026-11-07
 
+> **2026-11-24 覆寫（新 Godot 工程）**：本 2026-11-07 索引是歷史/素材保存入口。新 Forest Symphony 施工正式以 Godot 4.7.2 和 [FS unified control protocol](FS_UNIFIED_CONTROL_PROTOCOL_20261124.md) 為準。尤其 T-C 依最新 D11 採「先真 Ground 再獨立一次生成完整透明 all-non-ground PAR」，不是本文件 2026-11-07 的 Master-first。原本 VX 203/Map050、master-first 及 3 Keyframe 紀錄保留歷史有效性，但不能覆蓋新 T-C/T-A/T-B 工程，且 3 Keyframe 不等於完整 12F 成品。P0 雲端存放仍是最高優先。
+
 > **唯一現行規則入口。** 此索引與 [P0 Cloud-only](../docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md) 對 FS 專案持續適用。舊版 Handoff、舊 Agent Skill 與版本流程若牴觸，以此索引、使用者最新指令、實際已驗證的版本為準。保留所有歷史原文和 SHA/失敗紀錄，不以新政策改寫已發生的測試結果。
 
 ## 優先權（必須依序執行）
