@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 11,
+    "Ground_PAR_pair_candidates_static_pass": 12,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -32,8 +32,8 @@
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
     "ground_source_candidates_FS_04_MAZE": 2,
-    "complete_PAR_candidates_FS_04_MAZE": 4,
-    "native_private_fs_04_maze_variants_pass": 2,
+    "complete_PAR_candidates_FS_04_MAZE": 5,
+    "native_private_fs_04_maze_variants_pass": 3,
     "native_private_fs_04_maze_variants_provisional_physics_smoke_pass": 2
   },
   "scenes": [
@@ -470,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D21_TRUE_OWNER_PRIVATE_D18_D19_GODOT472_2D_PHYSICS_TWO_WAY_PROVISIONAL_BRIDGE_PASS_OCCLUSION_BLOCKER_FOUND_ART_HOLD",
+      "stage": "D22_ART_FIRST_NEW_INDEPENDENT_ALL_NON_GROUND_PAR_REAL_GODOT472_NATIVE_PASS_HUMAN_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -483,8 +483,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D21_D18_AND_D19_ACTUAL_PRIVATE_NATIVE_PHYSICS_PROVISIONAL_BRIDGE_SMOKE_PASS",
-      "formal_art_gate": "HOLD_OFFICIAL_COLLISION_MAP_REAL_ACTOR_OCCLUSION_FRONT_RAILING_AND_USER_ART",
+      "native_Godot_4_7_2_for_current_stage": "D22_TRUE_OWNER_PRIVATE_GROUND_AND_NEW_PAR_NATIVE_1X_PASS",
+      "formal_art_gate": "HOLD_ART_AUTHOR_WORLD_COHERENCE_BRIDGE_FOOTPOINT_AND_OWNER_ACCEPTANCE",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -692,6 +692,51 @@
         "private_full_QA_JSON": "https://drive.google.com/file/d/1ka5u3-sTD3y5s9NMjOi7HOlJbtXpZ7I3/view",
         "private_art_in_public_git": false,
         "artifact_zip_sha256": "5f884d72f81dcef15fcbb529a43c686113a3b3bc90b276dc33f6b72b44f91a3e"
+      },
+      "D22": {
+        "scene_id": "FS_04_MAZE",
+        "phase": "D22_ART_FIRST_WORLD_COMPOSITION_REAUTHOR",
+        "inherited_D17_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "independent_all_non_ground_source_size": [
+          1473,
+          1068
+        ],
+        "independent_all_non_ground_source_sha256": "7ab52f35107f468439436ff23e43ae879df6a90d9d55039e0fb761273fe32828",
+        "generated_source_alpha_zero": 1166479,
+        "new_native_relayout_completePAR_size": [
+          1280,
+          928
+        ],
+        "new_native_relayout_completePAR_SHA256": "a7cf732989afe88be6860a2cc1d27092ee9c2e94e696f315aa5bc4ce62033b95",
+        "new_completePAR_alpha_zero": 847920,
+        "whole_source_significant_components_relaid": 10,
+        "original_PNG_saved_unchanged": true,
+        "polygon_object_cut": 0,
+        "explicit_edge_neon_matte_removed_pixels": 556,
+        "source_alpha_cleanup": "alpha<=8->0 alpha>=240->255; original author source preserved",
+        "old_D18_component_overlap_pixels": 868,
+        "new_D22_B_overlap_pixels": 617,
+        "old_D18_high_alpha_border_pixels": 250,
+        "new_D22_B_high_alpha_border_pixels": 0,
+        "D22_candidate_source_class": "SINGLE_INDEPENDENT_ALL_NON_GROUND_RGBA_PLATE_NO_GROUND",
+        "source_original_direct_native_1280x928": false,
+        "1x_full_component_relayout": true,
+        "generator_source_direct_same_world_xy": "NOT_PROVEN_REQUIRE_USER_ART_GATE",
+        "static_ground_PAR_composite_sha256": "54acc8aa0ce8197ea8a7e1e68d9fc1b9ea4f4c157fb4736a574c8d4fa780be80",
+        "actual_godot_version": "4.7.2.stable.official.ed1daf0bf",
+        "actual_private_Godot_native_1x": "PASS",
+        "actual_Godot_native_screenshot_sha256": "add99e8071f50e002b8c5696deb68a0a6a06a7a0a94d67c67610c36fbb13e105",
+        "native_PIL_max_RGB_diff": 1,
+        "native_PIL_diff_pixels": 7862,
+        "actual_private_drive_zip": "https://drive.google.com/file/d/1LJtjHRHl5f8F5FtGBK5uep_f6f243mGQ/view",
+        "private_author_original": "https://drive.google.com/file/d/1ubIk8bkztE9Bq61HmFt7p5lhtwRZ3mvp/view",
+        "private_new_complete_PAR": "https://drive.google.com/file/d/1cFR_YREdTCd82uNWyI3RxYbfIoo8FRha/view",
+        "private_godot_native": "https://drive.google.com/file/d/1R7KnV8-1cgChPaOMnFoblvU97j6X3v8X/view",
+        "private_A_B_native_comparison": "https://drive.google.com/file/d/1nIMAztQ5SEJ4g1upb6vVTsQkT3F470w4/view",
+        "art_gate": "HOLD_OWNER_REVIEW",
+        "formal_art_pass": "0/12",
+        "gameplay_integration": "NOT_RUN",
+        "actor_bridge_physics": "NOT_D22_SCOPE"
       }
     },
     {
