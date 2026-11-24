@@ -79,6 +79,8 @@ def validate_bundle(folder):
         if not isinstance(rows, list):
             errors.append("table not array: " + name)
             continue
+        if not rows or rows[0] is not None:
+            errors.append("VX source array index zero not null: " + name)
         actual = sum(row is not None for row in rows)
         if counts.get(name) != actual:
             errors.append("post-Apply record count mismatch: " + name)
@@ -101,6 +103,17 @@ def validate_bundle(folder):
                     actors[actor_id] is None):
                 errors.append("party actor reference missing")
                 break
+    # Source System party must resolve to unique actually loaded actors.
+    # Matching SHA and witness counts alone did not check duplicate IDs.
+    if isinstance(system, dict):
+        seen_party = set()
+        party = system.get("party_members", [])
+        if isinstance(party, list):
+            for actor_id in party:
+                if isinstance(actor_id, int) and actor_id in seen_party:
+                    errors.append("duplicate initial party actor: " + str(actor_id))
+                elif isinstance(actor_id, int):
+                    seen_party.add(actor_id)
     actors = tables.get("actors", [])
     classes = tables.get("classes", [])
     if isinstance(actors, list) and isinstance(classes, list):
@@ -125,6 +138,25 @@ def validate_bundle(folder):
                     any(type(value) is not int or value < -32768 or value > 32767
                         for value in values)):
                 errors.append("actor %s has invalid parameter Table" % actor.get("id"))
+    # The post-Apply class learnings must point to live Skills; a fabricated
+    # witness with correct counts cannot authorize an absent skill.
+    skills = tables.get("skills", [])
+    if isinstance(classes, list) and isinstance(skills, list):
+        for klass in classes:
+            if not isinstance(klass, dict):
+                continue
+            learnings = klass.get("learnings", [])
+            if not isinstance(learnings, list):
+                errors.append("class learnings not array: " + str(klass.get("id")))
+                continue
+            for learning in learnings:
+                skill_id = learning.get("skill_id") if isinstance(learning, dict) else None
+                if (type(skill_id) is not int or skill_id <= 0 or
+                        skill_id >= len(skills) or
+                        not isinstance(skills[skill_id], dict)):
+                    errors.append("class %s learns missing skill %s" %
+                                  (klass.get("id"), skill_id))
+                    break
     troops = tables.get("troops", [])
     enemies = tables.get("enemies", [])
     if isinstance(troops, list) and isinstance(enemies, list):
@@ -171,6 +203,22 @@ def _self_test():
             "vx_runtime_witness_sha256": sha256(wp),
             "database_sha256": {name: sha256(root / (name + ".json")) for name in NAMES},
         }
+        (root / "fs_boot_final_authority.json").write_text(
+            json.dumps(manifest), encoding="utf-8")
+        assert validate_bundle(root) == [], validate_bundle(root)
+        # Recompute all digest evidence for a semantic corruption: SHA then
+        # matches, so only the new cross-table guard can detect the failure.
+        data["classes"][1]["learnings"] = [{"skill_id": 999}]
+        (root / "classes.json").write_text(
+            json.dumps(data["classes"]), encoding="utf-8")
+        manifest["database_sha256"]["classes"] = sha256(root / "classes.json")
+        (root / "fs_boot_final_authority.json").write_text(
+            json.dumps(manifest), encoding="utf-8")
+        assert any("learns missing skill" in e for e in validate_bundle(root))
+        data["classes"][1]["learnings"] = []
+        (root / "classes.json").write_text(
+            json.dumps(data["classes"]), encoding="utf-8")
+        manifest["database_sha256"]["classes"] = sha256(root / "classes.json")
         (root / "fs_boot_final_authority.json").write_text(
             json.dumps(manifest), encoding="utf-8")
         assert validate_bundle(root) == [], validate_bundle(root)
