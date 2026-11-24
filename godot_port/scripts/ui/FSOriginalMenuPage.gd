@@ -150,16 +150,23 @@ func _render(tabs:Array[Texture2D],first_formation:int,
     # Status large stone rectangle; Skill bottom full-width list;
     # Item/Equip bottom left list + right description/stats;
     # Party current and reserve are two different source boxes.
-    var header:=HBoxContainer.new()
-    header.name="FSOriginalPageHeader"
-    header.position=Vector2(144,42)
-    header.size=Vector2(370,31)
-    add_child(header)
-    _row_color=Color(0.08,0.18,0.2)
-    _new_label(header,str(TITLES[page_kind]),15)
-    var back:=_button(header,"返回",func()->void:return_requested.emit())
-    back.size_flags_horizontal=Control.SIZE_SHRINK_END
-    back.custom_minimum_size=Vector2(55,25)
+    # Source artwork fills the entire 544x416 screen. A dynamic HBox once
+    # squeezed the Chinese heading to a single character column (real
+    # owner-source 544px screenshot P538E R0). Give title / back separate
+    # explicit source-safe rectangles, not a generic flex header.
+    _row_color=Color(0.92,0.98,0.96)
+    if page_kind!="formation":
+        var heading:=_new_label(self,str(TITLES[page_kind]),16)
+        heading.name="FSOriginalPageHeader"
+        heading.autowrap_mode=TextServer.AUTOWRAP_OFF
+        heading.position=Vector2(144,23)
+        heading.size=Vector2(145,27)
+        heading.clip_text=true
+    var back:=_button(self,"返回",func()->void:return_requested.emit())
+    back.name="FSOriginalPageReturn"
+    back.position=Vector2(436,73) if page_kind!="formation" else Vector2(394,32)
+    back.size=Vector2(65,24)
+    back.custom_minimum_size=Vector2(65,24)
 
     var strip:=HBoxContainer.new()
     strip.name="FSOriginalPageTabs"
@@ -201,8 +208,9 @@ func _render(tabs:Array[Texture2D],first_formation:int,
         list.size_flags_horizontal=Control.SIZE_EXPAND_FILL
         list.add_theme_constant_override("separation",2)
         scroll.add_child(list)
-        _row_color=Color(0.07,0.18,0.2) if page_kind=="status" else (
-            Color(0.92,0.97,0.95))
+        # Original STATUS window is near-black. P538D screenshot proved
+        # dark-on-dark statistics were unreadable, even though CI passed.
+        _row_color=Color(0.92,0.97,0.95)
         match page_kind:
             "status":_status(list)
             "skills":_skills(list)
@@ -212,8 +220,10 @@ func _render(tabs:Array[Texture2D],first_formation:int,
             "equipment_candidates":_equipment_candidates(list,subject_id)
     feedback_label=Label.new()
     feedback_label.name="FSOriginalPageVisibleFeedback"
-    feedback_label.position=Vector2(17,402)
-    feedback_label.size=Vector2(510,13)
+    # Draw warnings inside the upper safe panel, not across the source
+    # footer frame and its original decorative border.
+    feedback_label.position=Vector2(254,22)
+    feedback_label.size=Vector2(268,19)
     feedback_label.add_theme_font_size_override("font_size",10)
     feedback_label.add_theme_color_override("font_color",Color(1.0,0.93,0.73))
     feedback_label.visible=false
@@ -240,16 +250,18 @@ func _actor_nav()->void:
                 displayed_portrait.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
                 displayed_portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
                 displayed_portrait.position=Vector2(18,132) if (
-                    page_kind=="status") else Vector2(18,14)
+                    page_kind=="status") else Vector2(25,16)
                 displayed_portrait.size=Vector2(112,146) if (
-                    page_kind=="status") else Vector2(104,114)
+                    page_kind=="status") else Vector2(82,88)
                 add_child(displayed_portrait)
     # Keep the actor selector ABOVE source bottom list windows, never
     # occupy the source 17..526px skill and equipment row rectangles.
     var nav:=HBoxContainer.new()
     nav.name="FSOriginalActorSelection"
-    nav.position=Vector2(145,107)
-    nav.size=Vector2(376,28)
+    # Actor tabs used to print over STATUS black window / source divider.
+    # Keep them above the source-locked 60x20 page tabs (y=78).
+    nav.position=Vector2(213,49)
+    nav.size=Vector2(309,25)
     nav.add_theme_constant_override("separation",3)
     add_child(nav)
     for i in range(mini(party.size(),4)):
@@ -257,7 +269,7 @@ func _actor_nav()->void:
         var name:String=str(party[i].get("name","?"))
         var button:=_button(nav,("▶" if i==actor_index else " ") +name,
             func()->void:actor_requested.emit(selected))
-        button.custom_minimum_size=Vector2(83,24)
+        button.custom_minimum_size=Vector2(73,22)
         button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
         actor_buttons.append(button)
 
