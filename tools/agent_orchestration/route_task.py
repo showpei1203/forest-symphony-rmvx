@@ -53,7 +53,8 @@ def route(lane: str, manifest: dict, task: str = "") -> dict:
         raise ValueError("Unknown lane: fail closed")
     spec = manifest["lanes"][lane]
     repo = manifest["repository"]
-    files = [{"repository": repo, "branch": "main", "path": entry["path"]}
+    governance = manifest.get("governance_branch", "main")
+    files = [{"repository": repo, "branch": governance if entry["path"].startswith("authority/FS_UNIFIED_CONTROL_") else "main", "path": entry["path"]}
              for entry in manifest["read_first"] if entry["kind"] == "github"]
     files.extend([
         {"repository": repo, "branch": spec["branch"], "path": spec["handoff"]},
