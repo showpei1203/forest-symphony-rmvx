@@ -2,12 +2,15 @@ name: FS unified routing and evidence guard
 on:
   push:
     branches:
+      - main
       - feat/fs-unified-orchestration-20261124
     paths:
       - '.github/workflows/fs-unified-orchestration-test.yml'
       - 'tools/agent_orchestration/**'
       - '.agents/skills/fs-rmvx-router/SKILL.md'
       - 'AGENTS.md'
+      - 'ASSET_GENERATION_PRECHECK.md'
+      - 'docs/FS_CHATGPT_PROJECT_BOOTSTRAP_20261124.md'
       - 'authority/FS_CURRENT_RULES_INDEX_20261107.md'
       - 'authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md'
   pull_request:
