@@ -81,8 +81,38 @@
   "provider_new_art": 0,
   "weapon": false,
   "fx": false,
-  "private_native": "NOT_RUN",
+  "private_native": {
+    "status": "PASS",
+    "scope": "REAL_ATTACK8_OTHER_ACTIONS_SYNTHETIC",
+    "issue": 249,
+    "run": 45659469231,
+    "job": 139365067700,
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "archive_sha256": "a3cadcb6148bfffd89ae63d08ec30dc7547d192967dfcf980d4f3e83c483fc54",
+    "visual": "NOT_RUN",
+    "gameplay": "NOT_RUN"
+  },
   "art": "HOLD",
   "gameplay": "NOT_RUN",
-  "drive_upload": "NOT_VERIFIED"
+  "drive_upload": {
+    "status": "PASS",
+    "private": true,
+    "file_id": "1ovhQzR-9B0iVsdeUbNC11fr9rHlYUwot",
+    "size": 162213,
+    "sha256_verified_on_windows": true
+  },
+  "motion_geometry": {
+    "rgba_frames": 8,
+    "distinct_silhouettes": 6,
+    "identical_silhouette_groups": [
+      [
+        1,
+        2,
+        8
+      ]
+    ],
+    "single_connected_bodies": 8,
+    "grounded_frames": 8,
+    "report_drive_id": "1wPeVJNxQt0dT-9zAx2IcFNXivBnm8Po_"
+  }
 }
