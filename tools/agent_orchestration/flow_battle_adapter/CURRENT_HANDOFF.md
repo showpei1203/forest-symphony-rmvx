@@ -1,7 +1,14 @@
-# Flow V4.1 CURRENT_HANDOFF — 2026-11-26
+# Flow V4.2 CURRENT_HANDOFF — 2026-11-26
 本節取代下方舊 gate 狀態；原始 V3 不變，禁止長劍，DODGE 向後跳且朝向不變。
 
-## 最新實際增量
+## V4.2 戰鬥事件 producer：native PASS，UI 尚未接入
+- 獨立整合分支 feat/fs-flow-v4-outcomes-20261126，基底 Phase1 bc88b10d37d4e3a9816cdfa6932e7aaefaf33666，commit b0affe9f719c53d1a3da4c818a66787af5631037；正式主線未變更。
+- FSBattle 新增 target_outcome_resolved；只在既有 attack/use_skill 成功結算路徑發出，命中/落空/迴避明確區分，包含特殊 141/145 已結算分支；選定與實際承傷者分開，Ivy Cover 用 transferred.guard；Dictionary identity/陣營/slot 不依 DB ID；serial 單調、事件唯讀純 scalar snapshot，不暴露戰鬥 Dictionary，不改傷害/MP/ATB/ACT。
+- Official Godot 4.7.2 CI 45711247503 SUCCESS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45711247503 。兩個新測試 marker FLOW_V4_OUTCOME_PASS cases=11 events=7；FLOW_V4_COVER_OUTCOME_PASS cases=3。既有 test_fs_battle_accuracy_205 與 test_fs_ivy_cover_native_522 同時 PASS。測試含重複 DB ID 的兩個目標、UI changed refresh 無重發、invalid RNG/拒絕技能無事件、已付 MP miss/evade、HP hit、死亡事件先於 finished、護衛真實承傷與 miss 不轉移。不是 AOE 新機制，未做完整 Phase1 全套回歸；技能護衛/141/145 事件自身的獨立新測試尚缺。
+- 下一步優先完成 FSScreen/renderer subscriber：一次性 serial gate、真實 slot 綁定、HIT/EVADE/MISS 映射、取消/死亡/finished cleanup、收尾復位；不得讀舊 fs_last_action_result 判定新動作，不以動畫驅動戰鬥數值。之後 native 真圖戰鬥 replay、GPU/ART、export 與完整 source regression；無 merge 授權。
+- 整體 gameplay / UI hookup 仍 HOLD，producer subset PASS；不可把新事件當成實際整合完成。
+
+## V4.1 動畫引擎實際增量
 - V4 原 CI 45709676853 取消：Godot 原生 Animation 類別名稱衝突，編譯錯誤後測試卡住。修正 AnimationSprite alias、45 秒 timeout、CI 錯誤掃描；commit 955a42ca48623d30e7bb993d304aacc8a5e16559，native synthetic 45710662960 SUCCESS。
 - 6f3d39c143f78ac4e2ee7d7f6e337b1201a3f118 再加強 shell fail-closed 判定。最新 synthetic 45710784540 SUCCESS，public-only engine/source transport 45710785860 SUCCESS。短期 artifact 僅原本公開 source 與官方引擎，無私有圖；1 天保留。環境不能直接連 github.com，故改用 connector transport，未使用使用者 PC。
 - 私有 V3 ZIP 重新由 Drive 取得，SHA/CRC/112 檔、5 atlas/source/frame SHA、40/40 RGBA parity 通過。隔離 cloud native Godot 4.7.2，public transport SHA256 符合，55 私有 motion files 暫存於隔離環境。editor import exit 0、real replay exit 0，實際 marker: FLOW_BATTLE_ADAPTER_PASS scope=REAL_V3 actions=5 directions=4 host_unchanged=true。
@@ -16,10 +23,11 @@
 | GPU / visual playback capture | NOT_RUN |
 | Back-hop body art | HOLD，原姿勢前傾 |
 | Export | HOLD，45 raw PNG loading export warnings |
-| Actual combat hookup / gameplay | NOT_RUN |
+| Actual combat outcome producer | PASS，獨立分支 4 native tests |
+| Actual combat UI hookup / gameplay | NOT_RUN |
 | Independent EGM review / merge | NOT_RUN / HOLD |
 
-## 下一施工單位
+## V4.1 歷史施工計畫（producer 已完成，下一步見上）
 以 Phase1 bc88b10d37d4e3a9816cdfa6932e7aaefaf33666 為基底隔離新增 authoritative target outcome producer：只在攻擊/技能已結算後發出一次，使用實際承傷目標（含 Ivy Cover 轉移）而非原指定目標；miss 與 evade 分開、拒絕動作不發出；序號及 battle membership 防重複；不改 damage/MP/ATB/ACT。再做 UI subscriber、返回站位與死亡/戰鬥結束、多目標和完整 source regression。不可用 fs_last_action_result 輪詢。匯出資源載入需另行解決，原美術 HOLD 不替換主線素材。
 
 ## 舊交接（歷史）
