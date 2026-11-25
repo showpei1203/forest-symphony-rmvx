@@ -1,0 +1,10 @@
+config_version=5
+[application]
+config/name="FS Flow Motion Factory"
+run/main_scene="res://FactoryPreview.tscn"
+[display]
+window/size/viewport_width=640
+window/size/viewport_height=480
+[rendering]
+renderer/rendering_method="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0
