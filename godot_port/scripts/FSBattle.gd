@@ -970,7 +970,7 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     return true
 
 func advance_atb(delta: float) -> void:
-    if not active or not source_atb_initialized or delta <= 0.0 or force_actions.busy:
+    if not active or not source_atb_initialized or delta <= 0.0 or force_actions.busy or action_queue.resolving:
         return
     if force_actions.enabled and troop_force_pages.enabled and not troop_force_pages.blocked_reason.is_empty():
         return
