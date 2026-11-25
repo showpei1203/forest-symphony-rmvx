@@ -92,6 +92,8 @@ func request_event(battle,side: int,index: int,kind: String,target_index: int,ob
     # Keep the earliest event position, but the latest validated payload.
     var pos: int = _find(ready,entry["subject"])
     if pos>=0:
+        if ready[pos].has("page_ticket"):
+            return false # Pending interpreter command owns this action until settlement.
         ready[pos] = entry
         return true
     pos = _find(staged,entry["subject"])
@@ -121,6 +123,9 @@ func request_vx339(battle,params: Array) -> bool:
         action_id if action_type==1 else 0)
     if entry.is_empty() or not troop_slot.is_empty():
         return false
+    var pos: int = _find(ready,entry["subject"])
+    if pos>=0 and ready[pos].has("page_ticket"):
+        return false
     troop_slot = entry
     return true
 
@@ -143,6 +148,7 @@ func prepare_troop(battle) -> bool:
     var entry: Dictionary = troop_slot
     troop_slot = {}
     if not _valid(battle,entry):
+        _record(entry,false,-1,"troop slot no longer valid")
         return false
     var pos: int = _find(ready,entry["subject"])
     if pos>=0:
@@ -159,7 +165,7 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
     while not ready.is_empty():
         var entry: Dictionary = ready.pop_front()
         if not _valid(battle,entry):
-            completed.append({"kind":entry["kind"],"success":false,"reason":"target or subject no longer valid"})
+            _record(entry,false,-1,"target or subject no longer valid")
             continue
         var subject: Dictionary = entry["subject"]
         var target: Dictionary = entry["target"]
@@ -172,7 +178,7 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
         busy = true
         var object_id: int = int(entry["object_id"])
         if (kind=="attack" and not battle.attack_preflight(subject,target)) or (kind=="skill" and not battle.skill_preflight(subject,target,object_id)):
-            completed.append({"kind":kind,"success":false,"reason":"source action preflight"})
+            _record(entry,false,index,"source action preflight")
             busy = false
             continue
         # Only remove the superseded ordinary command, never other members.
@@ -197,7 +203,14 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
         if success:
             subject["source_act_active"] = true
             battle.finish_source_atb_action(subject,kind,object_id)
-        completed.append({"kind":kind,"actor":entry["actor"],"index":index,"object_id":object_id,"success":success})
+        _record(entry,success,index,"" if success else "execution refused")
         busy = false
         return 1
     return 0
+
+func _record(entry: Dictionary,success: bool,index: int,reason: String) -> void:
+    var receipt: Dictionary={"kind":entry["kind"],"actor":entry["actor"],"index":index,
+        "object_id":entry["object_id"],"success":success,"reason":reason}
+    if entry.has("page_ticket"):
+        receipt["page_ticket"]=int(entry["page_ticket"])
+    completed.append(receipt)
