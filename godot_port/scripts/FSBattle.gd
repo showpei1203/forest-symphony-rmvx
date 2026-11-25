@@ -1059,7 +1059,9 @@ func configure_source_force_pages(pages: Array) -> bool:
 
 func configure_source_startup_pages(pages:Array,verified_common_lists:Dictionary)->bool:
     if not active or not source_atb_initialized or troop_force_pages.enabled or source_atb_frame_count!=0 or (
-            not action_queue.completed.is_empty()) or not force_actions.completed.is_empty():
+            pending_actor>=0 or not action_queue.pending.is_empty() or not action_queue.enemy_pending.is_empty()) or (
+            not action_queue.completed.is_empty()) or not force_actions.completed.is_empty() or (
+            not force_actions.ready.is_empty() or not force_actions.staged.is_empty() or not force_actions.troop_slot.is_empty()):
         return false
     return troop_startup_plan.configure(pages,verified_common_lists)
 
