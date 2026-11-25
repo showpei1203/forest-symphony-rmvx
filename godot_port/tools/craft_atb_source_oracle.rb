@@ -95,5 +95,52 @@ end
 urgent=[['damage',1,20,[]],['heal',7,-20,[]],['revive',9,0,[]],['cleanse',7,0,[4]],['enemy_remove',1,20,[4]]].map do |id,scope,damage,states|
   {id:id,scope:scope,damage:damage,minus:states,urgent:FS_ENEMY_ACTION_DIST.urgent_friend_skill?(Skill.new(scope,damage,states))}
 end
-File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},urgent:urgent}))
+# Execute the actual later #234 override and its #230 fallback.
+s230=pinned('exported_scripts/230__id55188000__ATB_Configurations.rb','3fe73b99012548f9f3e1d3ed3ec76a337be4713d')
+s234=pinned('exported_scripts/234__id12422743__Tankentai_Notetags_Add-on_v1.1.rb','b5f8b92bcd5343948fc65061ab43af29b8aba819')
+s231=pinned('exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb','4065ea4be1bc6fa5c5154034c89d626bc30d29fa')
+class OriginalStateNote
+  attr_reader :note
+  def initialize(note); @note=note; end
+end
+OriginalStateNote.class_eval(excerpt(s230,380,383),'#230 damage',380)
+OriginalStateNote.class_eval(excerpt(s230,389,391),'#230 lower bound',389)
+OriginalStateNote.class_eval(excerpt(s234,211,212),'#234 regex',211)
+OriginalStateNote.class_eval(excerpt(s234,230,236),'#234 note methods',230)
+OriginalStateNote.class_eval(excerpt(s234,1001,1024),'#234 overrides',1001)
+notes=['','<ATB DAMAGE:-14%>','<ATBDAMAGE+5>','<ATB DAMAGE : -14>','<-negative atb>','<+ATB MINUS DAMAGE>','<-ATBMINUSDAMAGE>','<negative atb>','<-negative atb><+negative atb>','<ATB DAMAGE:-14><ATB DAMAGE:5>','<ATB  DAMAGE:-14>','<atb damage: -14%><-negative atb>']
+note_cases=notes.map do |note|
+  state=OriginalStateNote.new(note)
+  {note:note,damage:state.atb_damage,allows_negative:state.atb_minus_damage}
+end
+# Scoped actual add_state alias chain: base attachment/shield behavior stubbed,
+# source #231 gauge effect and #374 bonus method are executed unchanged.
+class Game_Battler
+  attr_accessor :bonus
+  def add_state(id); end
+  def state?(id); true; end
+  def albert_setup_mana_shield(id); end
+  def albert_combo_atb_bonus_percent; @bonus; end
+end
+Game_Battler.class_eval(excerpt(s231,1844,1859),'#231 base State',1844)
+Game_Battler.class_eval(excerpt(s374,2271,2311),'#374 State bonus',2271)
+pipelines=[
+  ['debt','<ATB DAMAGE:-14>',50,0],
+  ['floor','<ATB DAMAGE:-14><-negative atb>',50,0],
+  ['base_and_bonus','<ATB DAMAGE:-14>',50,50],
+  ['floor_and_bonus','<ATB DAMAGE:-14><-negative atb>',50,50],
+  ['positive_cap','<ATB DAMAGE:+8>',980,50],
+  ['zero_noop','',-90,50],
+  ['bonus_truncate','<ATB DAMAGE:-7>',500,33],
+  ['negative_bonus','<ATB DAMAGE:-14>',50,-50]
+].map do |id,note,before,bonus|
+  $data_states=[nil,nil,nil,nil,OriginalStateNote.new(note)]
+  b=Game_Enemy.new
+  b.at_count=before;b.act_count=73;b.act_active=true;b.at_active=false;b.atb_count_up=false
+  b.level=2;b.floor=10;b.max=4;b.recover=1;b.enabled=true;b.bonus=bonus
+  b.add_state(4)
+  {id:id,note:note,before:before,bonus:bonus,expected:[b.at_count,b.level,b.act_count,b.act_active,b.at_active,b.atb_count_up]}
+end
+File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},urgent:urgent,notes:note_cases,pipelines:pipelines}))
+puts "CRAFT_NOTE_ORACLE_PASS; Notes=#{note_cases.length}; StatePipelines=#{pipelines.length}; FullVXRuntime=False"
 puts "CRAFT_ORACLE_PASS; Cases=#{cases.length}; Force=2; Urgent=#{urgent.length}; OriginalVXRuntime=False"
