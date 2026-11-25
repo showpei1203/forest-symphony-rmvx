@@ -174,5 +174,23 @@ func _run() -> void:
     u.advance_atb(1.0/60.0)
     _check(u.troop_force_pages.fired.is_empty() and not u.troop_force_pages.blocked_reason.is_empty() and
         int(u.party[0]["mp"])==100 and int(u.enemies[0]["hp"])==40,"unported effect refuses without payment")
+    # A lethal skill emits the story-facing finished signal only after
+    # its own page receipt has been recorded and acknowledged.
+    var lethal=_fixture()
+    lethal.db.tables["skills"]=s.db.tables["skills"].duplicate(true)
+    lethal.party[0]["skills"]=[1]
+    lethal.force_actions.enabled=true
+    _check(lethal.configure_source_force_pages([skill_page]),"lethal skill page")
+    var outcomes:Array=[]
+    lethal.finished.connect(func(victory:bool)->void:
+        outcomes.append({"victory":victory,"fired":lethal.troop_force_pages.fired.has(0),
+            "receipts":lethal.force_actions.completed.size(),"busy":lethal.force_actions.busy}))
+    lethal.enemies[0]["hp"]=5
+    lethal.advance_atb(1.0/60.0)
+    _check(outcomes.size()==1 and outcomes[0]=={"victory":true,"fired":true,"receipts":1,"busy":false},
+        "victory emitted after exact page settlement")
+    _check(not lethal.active and int(lethal.party[0]["mp"])==75,"lethal skill pays exactly once")
+    lethal.advance_atb(1.0)
+    _check(outcomes.size()==1,"no repeated victory")
     print("CRAFT_TROOP_PAGE_NATIVE_SUMMARY; Checks="+str(checks)+"; Failures="+str(failures)+"; ProductionBridgeWired=False; OriginalVXRuntime=False")
     quit(0 if failures==0 else 1)
