@@ -141,6 +141,22 @@ pipelines=[
   b.add_state(4)
   {id:id,note:note,before:before,bonus:bonus,expected:[b.at_count,b.level,b.act_count,b.act_active,b.at_active,b.atb_count_up]}
 end
-File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},urgent:urgent,notes:note_cases,pipelines:pipelines}))
+# Execute the actual troop-slot promotion, not a hand-written duplicate.
+class Scene_Battle
+  attr_accessor :ordinary,:cleanup
+  def set_fixture(ordinary); @action_battlers=ordinary; @ordinary=ordinary; @cleanup=[]; end
+  def force_action_cleanup(member); @cleanup << member.id; end
+end
+Scene_Battle.class_eval(excerpt(s231,679,689),'#231 prepare troop slot',679)
+Troop.class_eval { attr_accessor :forcing_battler }
+$game_temp.in_battle=true
+scene=Scene_Battle.new([a,b])
+scene.set_fixture([a,b])
+$game_troop.forcing_battler=a
+scene.prepare_forcing_atb
+raise 'troop promotion mismatch' unless scene.forcing.map(&:id)==['B','A'] && scene.ordinary.map(&:id)==['B'] && scene.cleanup==['A'] && $game_troop.forcing_battler.nil?
+force_schedule={event_order:['A','B'],troop_order:scene.forcing.map(&:id),ordinary:scene.ordinary.map(&:id),cleanup:scene.cleanup}
+puts "CRAFT_FORCE_TROOP_ORACLE_PASS; Order=B,A; Cleanup=A"
+File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines}))
 puts "CRAFT_NOTE_ORACLE_PASS; Notes=#{note_cases.length}; StatePipelines=#{pipelines.length}; FullVXRuntime=False"
 puts "CRAFT_ORACLE_PASS; Cases=#{cases.length}; Force=2; Urgent=#{urgent.length}; OriginalVXRuntime=False"
