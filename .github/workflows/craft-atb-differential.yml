@@ -9,6 +9,7 @@ on:
       - 'godot_port/scripts/FSStateATBAuthority.gd'
       - 'godot_port/scripts/FSForceActionQueue.gd'
       - 'godot_port/tests/test_craft_force_action.gd'
+      - 'godot_port/tests/test_craft_force_resources.gd'
       - 'godot_port/scripts/FSTroopForcePages.gd'
       - 'godot_port/tests/test_craft_troop_force_pages.gd'
       - 'godot_port/scripts/FSBattle.gd'
@@ -64,6 +65,12 @@ jobs:
           bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
           timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_troop_force_pages.gd -- "$RUNNER_TEMP/craft-oracle.json" | tee "$RUNNER_TEMP/pages.log"
           grep -E 'CRAFT_TROOP_PAGE_NATIVE_SUMMARY; Checks=[0-9]+; Failures=0; ProductionBridgeWired=False; OriginalVXRuntime=False' "$RUNNER_TEMP/pages.log"
+      - name: Forced skills and item resource transactions
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_resources.gd | tee "$RUNNER_TEMP/resources.log"
+          grep -E 'CRAFT_FORCE_RESOURCE_SUMMARY; Checks=[0-9]+; Failures=0; ForcedBypass=False; OriginalVXRuntime=False' "$RUNNER_TEMP/resources.log"
       - name: Existing Godot combat regression suite
         run: |
           bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
