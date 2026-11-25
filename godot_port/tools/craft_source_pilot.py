@@ -44,9 +44,14 @@ def install(root):
     # Native Authenticode trust check on the exact hash-pinned executable.
     for p in (cli,gui):
         env=os.environ.copy();env["CRAFT_FIXED_SIGNATURE_PATH"]=str(p)
-        ps="$s=Get-AuthenticodeSignature -LiteralPath $env:CRAFT_FIXED_SIGNATURE_PATH; Write-Output ($s.Status.ToString()+'|'+$s.SignerCertificate.Thumbprint)"
-        status=run(["powershell.exe","-NoProfile","-NonInteractive","-Command",ps],root,env).decode().strip()
-        check(status=="Valid|"+THUMB,"signature")
+        ps="$ErrorActionPreference='Stop'; try { $s=Get-AuthenticodeSignature -LiteralPath $env:CRAFT_FIXED_SIGNATURE_PATH; $thumb='NONE'; if ($null -ne $s.SignerCertificate) { $thumb=$s.SignerCertificate.Thumbprint }; [Console]::WriteLine(([string]$s.Status)+'|'+$thumb) } catch { [Console]::WriteLine('SIGNATURE_QUERY_ERROR|'+$_.Exception.GetType().Name); exit 2 }"
+        import base64
+        encoded=base64.b64encode(ps.encode("utf-16-le")).decode("ascii")
+        proc=subprocess.run(["powershell.exe","-NoProfile","-NonInteractive","-EncodedCommand",encoded],cwd=root,env=env,capture_output=True,timeout=30)
+        status=proc.stdout.decode("ascii","replace").strip()
+        safe=status if re.fullmatch(r"(?:Valid|NotSigned|HashMismatch|NotTrusted|UnknownError|NotSupportedFileFormat|Incompatible|SIGNATURE_QUERY_ERROR)\|[A-Za-z0-9_]{1,100}",status) else "UNCLASSIFIED"
+        print("CRAFT_CLOUD_SIGNATURE; Role="+("CLI" if p==cli else "GUI")+"; Status="+safe+"; Exit="+str(proc.returncode),flush=True)
+        check(proc.returncode==0 and status=="Valid|"+THUMB,"signature")
     return cli
 def source_bytes(repo,path,blob):
     raw=run(["git","cat-file","blob",blob],repo)
