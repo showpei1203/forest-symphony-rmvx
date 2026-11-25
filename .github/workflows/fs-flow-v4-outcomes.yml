@@ -28,6 +28,18 @@ jobs:
             timeout 75s "$G" --headless --path godot_port --script "res://tests/$test.gd" 2>&1 | tee "/tmp/$test.log"
             if grep -E 'SCRIPT ERROR|Parse Error' "/tmp/$test.log"; then exit 1; fi
           done
-          grep -F 'FLOW_V4_UI_PASS cases=12' /tmp/test_fs_flow_v4_ui.log
+          grep -F 'FLOW_V4_UI_PASS cases=12 scope=SYNTHETIC' /tmp/test_fs_flow_v4_ui.log
           grep -F 'FLOW_V4_OUTCOME_PASS cases=11 events=7' /tmp/test_fs_flow_v4_outcomes.log
           grep -F 'FLOW_V4_COVER_OUTCOME_PASS cases=3' /tmp/test_fs_flow_v4_cover_outcomes.log
+      - name: Transport committed Godot text and public fixtures only
+        run: |
+          set -euo pipefail
+          test ! -e godot_port/motions
+          git archive HEAD godot_port -o /tmp/fs-flow-v43-project.zip
+          sha256sum /tmp/fs-flow-v43-project.zip
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: fs-flow-v43-committed-project
+          path: /tmp/fs-flow-v43-project.zip
+          retention-days: 1
+          if-no-files-found: error

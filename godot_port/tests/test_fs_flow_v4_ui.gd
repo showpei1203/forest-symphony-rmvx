@@ -6,6 +6,9 @@ func _frames() -> SpriteFrames:
     root.add_child(body)
     body.hide()
     for action in ["attack","run","damage","dodge","cast"]:
+        if "--real-v3" in OS.get_cmdline_user_args():
+            if not body.load_motion(action): return null
+            continue
         var img:=Image.create_empty(256,128,false,Image.FORMAT_RGBA8)
         for i in range(8):
             var y:int=19 if action=="dodge" and i==3 else 24
@@ -42,7 +45,7 @@ func _run() -> void:
     var serial:int=p.last_serial
     p._on_outcome({"serial":serial,"result":"hit","source_side":"party","source_slot":0,"source_id":1,"action":"attack"})
     if not _check(p.played==1,"duplicate ignored"): return
-    p.adapter.animation_player.advance_ms(640)
+    p.adapter.animation_player.advance_ms(4000)
     if not _check(not p.visible and p.adapter.animation_player.position==Vector2.ZERO,"attack finish reset"): return
     b.accuracy.scripted_rolls=[95]
     b.attack(enemy,actor)
@@ -52,12 +55,13 @@ func _run() -> void:
     if not _check(p.played==2 and p.last_action=="dodge" and p.visible,"enemy evade routed"): return
     var anchor: Vector2=p.global_position
     var source: Vector2=ui._flow_enemy_anchor(0)
-    p.adapter.animation_player.advance_ms(320)
+    for i in range(4):
+        p.adapter.animation_player.advance_ms(p.adapter.animation_player.current_frame_duration_ms())
     var delta:Vector2=p.adapter.animation_player.global_position-anchor
     if not _check(delta.length()>23.9 and delta.dot(source-anchor)<0 and p.global_position==anchor,"backstep away under mirrored parent"): return
-    p.adapter.animation_player.advance_ms(320)
+    p.adapter.animation_player.advance_ms(4000)
     if not _check(not p.visible and p.adapter.animation_player.position==Vector2.ZERO,"dodge reset"): return
-    b.accuracy.scripted_rolls=[0,99,99,0,3]
+    b.accuracy.scripted_rolls=[0,99,0,3]
     b.attack(enemy,actor)
     if not _check(p.played==3 and p.last_action=="damage","positive damage routed"): return
     b.accuracy.scripted_rolls=[50]
@@ -76,5 +80,5 @@ func _run() -> void:
     b.accuracy.scripted_rolls=[0,99,99,0,9]
     b.attack(actor,enemy)
     if not _check(not b.active and not p.visible and p.adapter.animation_player.position==Vector2.ZERO,"finish cleanup"): return
-    print("FLOW_V4_UI_PASS cases=12")
+    print("FLOW_V4_UI_PASS cases=12 scope=%s" % ("REAL_V3" if "--real-v3" in OS.get_cmdline_user_args() else "SYNTHETIC"))
     quit(0)
