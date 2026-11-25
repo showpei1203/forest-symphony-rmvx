@@ -1,6 +1,6 @@
 # Forest Symphony | Unified Control and Verified Delivery | 2026-11-24
 
-STATUS: Governance and routing pilot on feat/fs-unified-orchestration-20261124.
+STATUS: This protocol is present on main; workline acceptance and runtime activation remain separately gated. Historical governance pilot branch: feat/fs-unified-orchestration-20261124.
 This is NOT an automatic agent, a scheduled worker, or an art/gameplay completion claim.
 
 ## Effective authority and conflict resolution
@@ -11,7 +11,7 @@ New development engine: GODOT 4.7.2. VX/RGSS2 survives only as source material a
 
 T-C CURRENT USER DECISION: FIRST make a complete TRUE GROUND (terrain, floor, grass, flowers); SECOND separately generate one complete TRUE TRANSPARENT PAR containing ALL NON-GROUND buildings, trees, rocks, props and so on, with no occlusion membership filtering. Preserve shared canvas, pixel geometry, style and explicit compositing/QA. This is the new T-C factory contract, overriding the 2026-11-07 new-village Master-first pipeline *for new T-C generation*. Keep Master-first documents as historical or specifically scoped previous experiments. If the second output is an opaque full scene, it is NOT a PAR and must fail. Later runtime occlusion may be a derived subset, never a reason to omit objects from the delivered authoring PAR.
 
-T-A: approved ACTOR01 identity, 45-degree battle view, real poseable paper-doll source with separately authored hidden underpaint; preserve Body/Weapon/FX, 12 frames per requested motion, 64x64 where current task requires. R23 seven visible-only source masks have technical proof but are NOT independently poseable underlying anatomy: never claim missing belly/arms undercoat are solved.
+T-A: approved ACTOR01 identity, 45-degree battle view, real poseable paper-doll source with separately authored hidden underpaint; preserve Body/Weapon/FX, 12 frames where explicitly required by the current paperdoll contract, 64x64 where current task requires; source-pinned Flow/recovered clips retain their approved actual frame count and timing. R23 seven visible-only source masks have technical proof but are NOT independently poseable underlying anatomy: never claim missing belly/arms undercoat are solved.
 
 T-B: true source-locked monster identity and three-stage evolution, approved provider jobs only, cost ledger, no blind paid retry. R19 native test proves art-only sprite clips, not user art approval or FSBattle/ATB/ACT integration.
 
@@ -19,8 +19,8 @@ T-B: true source-locked monster identity and three-stage evolution, approved pro
 
 1. Classify exactly one owner lane T-C / T-A / T-B / GODOT / CONTROL; if ambiguous and still useful, choose CONTROL for triage, DO NOT execute mutations based on a guess.
 2. Read current global Drive P0, this protocol, FS routing SKILL.md, project precheck for applicable work, and PC tool routing protocol if a Windows operation is actually needed. Explicitly record which Skill text was truly read, not merely installed or present.
-3. Fetch the chosen lane's actual branch HEAD, CURRENT_HANDOFF, its latest addendum/source + Failure Log, current relevant Roadmap, and linked private Google Drive evidence as permitted. Resolve contradictory lines by explicit dated/current verified authority, preserving older text as history.
-4. Select least-privilege route: direct GitHub/Drive/Linear connectors -> authorized MCP/API -> allowlisted PC Bridge ONLY if Windows execution is essential and P0 permits -> verified restricted Orca agent -> user-authorized Desktop Remote last. No Codex and no arbitrary shell via PC Bridge. The tool-choice table grants no new access rights.
+3. Fetch the chosen lane's actual branch HEAD, CURRENT_HANDOFF, its latest addendum/source + Failure Log, current relevant Roadmap, and linked private Google Drive evidence as permitted. Resolve contradictory lines by explicit dated/current verified authority, preserving older text as history. Handoff is progress/evidence, not an independent policy author; any claimed policy change needs explicit user decision or canonical authority.
+4. Select least-privilege route: direct GitHub/Drive/Linear connectors -> authorized MCP/API -> allowlisted PC Bridge ONLY if Windows execution is essential and P0 permits -> verified restricted Orca agent where available -> Desktop Remote for authorized web/GUI or inefficient/unreliable Runner work, per current owner standing authorization. Explicit restrictions and high-risk confirmations remain. No Codex and no arbitrary shell via PC Bridge. The tool-choice table grants no new access rights.
 5. Deliver ONE macro unit (M1 full candidate -> M2 actual Godot native -> M3 blocking fixes -> M4 repeat second distinct case). Avoid revisiting already paid provider jobs or modifying approved sources.
 6. Produce source SHA/rights, actual tool and model calls, live native runner marker, owner visual judgment, complete gameplay integration result, separate STATUS gates, Failure Log, and cloud WRITE -> READBACK evidence.
 7. Update only the lane-owned files/branch, with Handoff. CONTROL alone owns central tower status. Every new chat must explicitly fetch fresh remote sources; a checked-in Skill does NOT mean ChatGPT, Orca or Cherry automatically loads or invokes it.
