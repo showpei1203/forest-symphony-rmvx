@@ -1,0 +1,28 @@
+name: FS VX capture kit structural QA
+on:
+  pull_request:
+    paths:
+      - 'godot_port/tools/fs_vx_capture_probe.rb'
+      - 'godot_port/tools/stage_fs_vx_capture.rb'
+      - 'godot_port/tools/decode_fs_vx_capture.py'
+      - 'godot_port/tools/test_fs_vx_capture_kit.rb'
+      - '.github/workflows/craft-vx-capture-kit.yml'
+permissions:
+  contents: read
+jobs:
+  capture-kit:
+    if: github.head_ref == 'feat/fs-craft-source-pilot-20261126' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Verify capture kit with synthetic boot only
+        run: |
+          set -euo pipefail
+          ruby -c godot_port/tools/fs_vx_capture_probe.rb
+          ruby godot_port/tools/test_fs_vx_capture_kit.rb | tee "$RUNNER_TEMP/kit.log"
+          grep -F 'FS_VX_CAPTURE_KIT_PASS; Checks=16; Synthetic=True; OriginalVXRuntime=False' "$RUNNER_TEMP/kit.log"
+          python3 -I -B godot_port/tools/verify_boot_final_bundle.py --self-test
