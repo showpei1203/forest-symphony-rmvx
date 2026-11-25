@@ -985,7 +985,11 @@ func advance_atb(delta: float) -> void:
         if not active:
             break
         if force_actions.enabled:
-            troop_force_pages.tick(self)
+            if troop_force_pages.enabled and not troop_force_pages.blocked_reason.is_empty():
+                return
+            if troop_force_pages.tick(self)<0:
+                changed.emit(troop_force_pages.blocked_reason)
+                return
             force_actions.drain_event(self)
             force_actions.prepare_troop(self)
         if not source_atb_wait:
