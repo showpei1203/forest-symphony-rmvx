@@ -2,7 +2,7 @@ extends RefCounted
 class_name FSForceActionQueue
 
 # Candidate #462 event FIFO + #231 single troop forcing slot.
-# Opt-in only. Full forced skill/item validity, random/last target,
+# Opt-in only. Resource-checked skill/item subset; full forced validity, random/last target,
 # animation-active and command-window cleanup remain outside scope.
 var enabled: bool = false
 var busy: bool = false
@@ -25,7 +25,7 @@ func _subject_index(battle, entry: Dictionary) -> int:
     return _index(members,entry["subject"])
 
 func _target_index(battle, entry: Dictionary) -> int:
-    var members: Array[Dictionary] = battle.enemies if entry["actor"] else battle.party
+    var members: Array[Dictionary] = battle.party if entry["target_actor"] else battle.enemies
     return _index(members,entry["target"])
 
 func _valid(battle,entry: Dictionary) -> bool:
@@ -35,20 +35,47 @@ func _valid(battle,entry: Dictionary) -> bool:
         return false # Do not bypass the existing source authority gate.
     if entry["kind"]=="guard":
         return true
-    return _exists(entry["target"]) and _target_index(battle,entry)>=0 and (
-        not bool(entry["target"].get("fs_boss_phase_effects_pending",false)))
+    if not _exists(entry["target"]) or _target_index(battle,entry)<0 or bool(entry["target"].get("fs_boss_phase_effects_pending",false)):
+        return false
+    var obj: int = int(entry["object_id"])
+    if entry["kind"]=="skill":
+        var skill: Dictionary = battle.db.record("skills",obj)
+        var scope: int = int(skill.get("scope",0))
+        if skill.is_empty() or scope not in [1,7] or (
+                bool(entry["target_actor"]) != (bool(entry["actor"]) if scope==7 else not bool(entry["actor"]))):
+            return false
+        if entry["actor"] and obj not in entry["subject"].get("skills",[]):
+            return false
+        var quote: Dictionary = FSSkillCostRules.preview(skill,entry["subject"])
+        return bool(quote.get("ok",false)) and int(entry["subject"].get("mp",0))>=int(quote.get("mp",0))
+    if entry["kind"]=="item":
+        return bool(entry["actor"]) and bool(entry["target_actor"]) and (
+            int(battle.inventory.get("item:%d"%obj,0))>0) and bool(
+            FSItemRules.preview(battle.db.record("items",obj),entry["subject"],entry["target"],true).get("ok",false))
+    return true
 
-func _make(battle,side: int,index: int,kind: String,target_index: int) -> Dictionary:
+func _make(battle,side: int,index: int,kind: String,target_index: int,object_id: int = 0) -> Dictionary:
     if not enabled or not battle.active or not battle.source_atb_initialized or side not in [0,1]:
         return {}
-    if kind not in ["attack","guard"] or index<0 or target_index<0:
+    if kind not in ["attack","guard","skill","item"] or index<0 or target_index<0 or (kind in ["skill","item"] and object_id<=0):
         return {}
     var members: Array[Dictionary] = battle.party if side==1 else battle.enemies
-    var targets: Array[Dictionary] = battle.enemies if side==1 else battle.party
-    if index>=members.size() or (kind=="attack" and target_index>=targets.size()):
+    var target_actor: bool = side==0
+    if kind=="skill":
+        var skill: Dictionary = battle.db.record("skills",object_id)
+        if int(skill.get("scope",0)) not in [1,7]:
+            return {}
+        target_actor = side==1 if int(skill["scope"])==7 else side==0
+    elif kind=="item":
+        if side!=1:
+            return {}
+        target_actor = true
+    var targets: Array[Dictionary] = battle.party if target_actor else battle.enemies
+    if index>=members.size() or (kind!="guard" and target_index>=targets.size()):
         return {}
     var entry: Dictionary = {"actor":side==1,"subject":members[index],"kind":kind,
-        "target":targets[target_index] if kind=="attack" else {}}
+        "target_actor":target_actor,"object_id":object_id,
+        "target":targets[target_index] if kind!="guard" else {}}
     return entry if _valid(battle,entry) else {}
 
 func _find(entries: Array[Dictionary],subject: Dictionary) -> int:
@@ -57,8 +84,8 @@ func _find(entries: Array[Dictionary],subject: Dictionary) -> int:
             return i
     return -1
 
-func request_event(battle,side: int,index: int,kind: String,target_index: int) -> bool:
-    var entry: Dictionary = _make(battle,side,index,kind,target_index)
+func request_event(battle,side: int,index: int,kind: String,target_index: int,object_id: int = 0) -> bool:
+    var entry: Dictionary = _make(battle,side,index,kind,target_index,object_id)
     if entry.is_empty():
         return false
     # #462 setup_action overwrites the battler's one action object.
@@ -77,7 +104,7 @@ func request_event(battle,side: int,index: int,kind: String,target_index: int) -
 func request_vx339(battle,params: Array) -> bool:
     # #28 command_339: [side, member index, kind, action id, target].
     # The original iterator supports all-members; deliberately HOLD it,
-    # and random/last targeting, escape/wait, skill and item.
+    # and random/last targeting, escape/wait. #28 supports skills, not items.
     if params.size()!=5:
         return false
     for value in params:
@@ -85,10 +112,13 @@ func request_vx339(battle,params: Array) -> bool:
                 not is_finite(float(value))) or absf(float(value))>1000000.0 or (
                 float(value)!=float(int(value))):
             return false
-    if int(params[2])!=0 or int(params[3]) not in [0,1]:
+    var action_type: int = int(params[2])
+    var action_id: int = int(params[3])
+    if action_type not in [0,1] or (action_type==0 and action_id not in [0,1]) or (action_type==1 and action_id<=0):
         return false
-    var entry: Dictionary = _make(battle,int(params[0]),int(params[1]),
-        "attack" if int(params[3])==0 else "guard",int(params[4]))
+    var kind: String = "skill" if action_type==1 else ("attack" if action_id==0 else "guard")
+    var entry: Dictionary = _make(battle,int(params[0]),int(params[1]),kind,int(params[4]),
+        action_id if action_type==1 else 0)
     if entry.is_empty() or not troop_slot.is_empty():
         return false
     troop_slot = entry
@@ -140,8 +170,9 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
             ready.push_front(entry)
             return 0
         busy = true
-        if kind=="attack" and not battle.attack_preflight(subject,target):
-            completed.append({"kind":kind,"success":false,"reason":"source attack preflight"})
+        var object_id: int = int(entry["object_id"])
+        if (kind=="attack" and not battle.attack_preflight(subject,target)) or (kind=="skill" and not battle.skill_preflight(subject,target,object_id)):
+            completed.append({"kind":kind,"success":false,"reason":"source action preflight"})
             busy = false
             continue
         # Only remove the superseded ordinary command, never other members.
@@ -154,6 +185,10 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
         if kind=="guard":
             subject["guarding"] = true
             success = true
+        elif kind=="skill":
+            success = battle.use_skill(subject,target,object_id)
+        elif kind=="item":
+            success = battle.use_item(target,object_id,subject,true)
         else:
             subject["guarding"] = false
             battle.attack(subject,target)
@@ -161,8 +196,8 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
                 target.get("fs_last_action_result","blocked")) in ["hit","miss","evade"]
         if success:
             subject["source_act_active"] = true
-            battle.finish_source_atb_action(subject,kind,0)
-        completed.append({"kind":kind,"actor":entry["actor"],"index":index,"success":success})
+            battle.finish_source_atb_action(subject,kind,object_id)
+        completed.append({"kind":kind,"actor":entry["actor"],"index":index,"object_id":object_id,"success":success})
         busy = false
         return 1
     return 0
