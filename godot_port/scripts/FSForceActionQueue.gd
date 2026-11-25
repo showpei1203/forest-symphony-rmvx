@@ -166,6 +166,8 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
         var entry: Dictionary = ready.pop_front()
         if not _valid(battle,entry):
             _record(entry,false,-1,"target or subject no longer valid")
+            if entry.has("page_ticket"):
+                return 0 # Page HOLD takes precedence over unrelated queued actions.
             continue
         var subject: Dictionary = entry["subject"]
         var target: Dictionary = entry["target"]
@@ -180,6 +182,8 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
         if (kind=="attack" and not battle.attack_preflight(subject,target)) or (kind=="skill" and not battle.skill_preflight(subject,target,object_id)):
             _record(entry,false,index,"source action preflight")
             busy = false
+            if entry.has("page_ticket"):
+                return 0
             continue
         # Only remove the superseded ordinary command, never other members.
         if entry["actor"]:
