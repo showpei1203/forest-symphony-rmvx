@@ -997,6 +997,12 @@ func advance_atb(delta: float) -> void:
                 return
             force_actions.drain_event(self)
             force_actions.prepare_troop(self)
+            # Slot promotion can fail before resolve_one (e.g. MP changed).
+            # A page failure must halt before other queued or normal actions.
+            if troop_force_pages.enabled and troop_force_pages.settle(self)<0:
+                changed.emit(troop_force_pages.blocked_reason)
+                source_force_page_blocked.emit(troop_force_pages.blocked_reason)
+                return
         if not source_atb_wait:
             action_queue.cancel_interrupted(self)
             var forced_resolved: int = force_actions.resolve_one(self)
