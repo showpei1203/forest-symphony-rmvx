@@ -9,11 +9,14 @@ GUI_SHA="5937c281c36ddce51370684c3c01383508fc1e014597ace35bc6014a9d529656"
 THUMB="CD9016D1FE805AB0B9B35CEF48F21E3049670183"
 CASES=[
 ("VX230","exported_scripts/230__id55188000__ATB_Configurations.rb","3fe73b99012548f9f3e1d3ed3ec76a337be4713d",[(158,63)]),
-("VX231","exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb","4065ea4be1bc6fa5c5154034c89d626bc30d29fa",[(175,50),(2117,42),(2226,19)]),
-("VX377","exported_scripts/377__id65670378__FS_ATB_DynamicResistance_v1.0.0.rb","d14c274006d00f793017e9910d1e390ec5f9aeef",[(34,93)]),
-("GD_BATTLE","godot_port/scripts/FSBattle.gd","60e42f4455c86bdee9d34d030632b88593fc8e1f",[(960,70)]),
+("VX231","exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb","4065ea4be1bc6fa5c5154034c89d626bc30d29fa",[(175,50),(678,42),(2117,42),(2226,19)]),
+("VX377","exported_scripts/377__id65670378__FS_ATB_DynamicResistance_v1.0.0.rb","d14c274006d00f793017e9910d1e390ec5f9aeef",[(34,93),(326,11),(664,111),(816,41)]),
+("GD_BATTLE","godot_port/scripts/FSBattle.gd","60e42f4455c86bdee9d34d030632b88593fc8e1f",[(960,70),(1032,42)]),
 ("GD_QUEUE","godot_port/scripts/FSActionQueue.gd","876b46507f6f9daf5d88a56c405876cd5ae6438d",[(279,70)]),
 ("GD_ATB","godot_port/scripts/FSTankentaiATBCore.gd","806bbe2aa5e5f8f3fabaa98935db7d2b833bec5a",[(128,95)]),
+("VX406","exported_scripts/406__id23791037__FS_EnemyActionDistribution_FinalAuthority_v1.1.rb","06408e5ae0049fedc52289ff83f30ba091b0e1ef",[(165,90)]),
+("VX462","exported_scripts/462__id68170006__FS_ForceAction_Bridge.rb","12659af67fa778134cb6b5d91e1519db126ad08d",[(109,46),(177,42)]),
+("GD_RESIST","godot_port/scripts/FSATBResistance.gd","c879c317528beb5ffa0631d0085bab765c862da9",[(0,106)]),
 ]
 def sha(x): return hashlib.sha256(x).hexdigest()
 def check(ok,reason):
@@ -92,5 +95,5 @@ def main():
             check(target.read_bytes()==raw,"source mutation")
         # Only receipts for already-public sources; never expose config, raw code or host paths.
         for r in receipts: print("CRAFT_FS_EVIDENCE; "+json.dumps(r,sort_keys=True),flush=True)
-        print("CRAFT_FS_SOURCE_PASS; Files=6; Pages="+str(len(receipts))+"; OriginalRuntimeExecuted=False; GodotExecuted=False",flush=True)
+        print("CRAFT_FS_SOURCE_PASS; Files="+str(len(CASES))+"; Pages="+str(len(receipts))+"; OriginalRuntimeExecuted=False; GodotExecuted=False",flush=True)
 if __name__=="__main__":main()
