@@ -21,6 +21,30 @@ func _parent(id:int=1)->Dictionary:
         "enemy_valid":false,"actor_valid":false,"switch_valid":false},
         "list":[_cmd(122,0,[29,29,0,0,3]),_cmd(117,0,[id]),_cmd(0,0)]}
 
+# JSON numbers are floats on import, whereas native IDs are ints.
+# Compare typed semantic fields explicitly rather than Array[Dictionary]
+# identity/equality (which also differs for typed and untyped arrays).
+func _trace_equal(actual:Variant,expected:Variant)->bool:
+    if not actual is Array or not expected is Array or actual.size()!=expected.size():
+        return false
+    for i in range(actual.size()):
+        var a:Dictionary=actual[i]
+        var e:Dictionary=expected[i]
+        if a.get("kind","")!=e.get("kind",""):
+            return false
+        if a["kind"]=="switch":
+            if int(a["id"])!=int(e["id"]) or typeof(a["value"])!=TYPE_BOOL or a["value"]!=e["value"]:
+                return false
+        elif a["kind"]=="force":
+            if a["params"].size()!=e["params"].size():
+                return false
+            for k in range(a["params"].size()):
+                if int(a["params"][k])!=int(e["params"][k]):
+                    return false
+        else:
+            return false
+    return true
+
 func _run()->void:
     var args:=OS.get_cmdline_user_args()
     if args.size()!=1:
@@ -40,7 +64,7 @@ func _run()->void:
         var world=WORLD.new()
         _check(plan.compile(commands),"compile source shape")
         var result:Dictionary=plan.preview(row["actors"],row["party"])
-        _check(result["ok"] and result["intents"]==row["expected"],"exact Ruby branch/write/force intent trace")
+        _check(result["ok"] and _trace_equal(result["intents"],row["expected"]),"exact Ruby branch/write/force intent trace")
         var has_force:bool=false
         for intent in row["expected"]:
             if intent["kind"]=="force":
