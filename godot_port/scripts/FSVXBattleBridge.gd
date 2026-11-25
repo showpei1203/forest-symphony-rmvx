@@ -20,6 +20,10 @@ var _allow_lose: bool = false
 var approved_source_force_page_hashes: Dictionary = {}
 # Separate approval for random 339 targets, not implied by the basic page digest.
 var approved_source_random_force_page_hashes: Dictionary = {}
+# CommonEvents is not one of the existing 11 verified tables. Require a
+# separately reviewed list AND its exact digest; no default or auto-import.
+var source_common_event_lists: Dictionary = {}
+var approved_source_common_event_hashes: Dictionary = {}
 
 static func source_force_page_digest(pages: Array) -> String:
     return JSON.stringify(pages).sha256_text()
@@ -46,6 +50,8 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
     var pages: Array=pages_value
     var has_events: bool=false
     var allow_random: bool=false
+    var startup_mode: bool=false
+    var verified_common_lists: Dictionary={}
     for page in pages:
         if not page is Dictionary or not page.get("list",null) is Array:
             _fail("Troop %d 戰鬥事件頁格式錯誤" % troop_id)
@@ -63,8 +69,19 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
         allow_random=str(approved_source_random_force_page_hashes.get(troop_id,""))==source_force_page_digest(pages)
         var checker := FSTroopForcePages.new()
         if not checker.configure(pages,allow_random):
-            _fail("Troop %d 含超出候選戰鬥事件範圍的指令" % troop_id)
-            return
+            # Only compile supplied, separately reviewed common-event lists.
+            # Missing, changed or unsupported children fail before any effect.
+            for common_id in source_common_event_lists:
+                if not FSTroopForcePages._integer(common_id,1,999999):
+                    continue
+                var commands: Variant=source_common_event_lists[common_id]
+                if commands is Array and str(approved_source_common_event_hashes.get(common_id,""))==source_force_page_digest(commands):
+                    verified_common_lists[int(common_id)]=commands
+            var startup_checker:=FSTroopStartupPlan.new()
+            if not startup_checker.configure(pages,verified_common_lists):
+                _fail("Troop %d 含未驗證共通事件或超出候選戰鬥事件範圍的指令" % troop_id)
+                return
+            startup_mode=true
     if _world.party_actor_ids.is_empty():
         _fail("缺少可戰鬥的原始隊伍")
         return
@@ -99,11 +116,16 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
         _fail("Troop %d 或隊伍沒有有效成員" % troop_id)
         return
     if has_events:
-        combat.force_actions.enabled=true
-        combat.force_actions.random_targets_enabled=allow_random
-        if not combat.configure_source_force_pages(pages):
-            _fail("Troop %d 候選戰鬥事件配置失敗" % troop_id)
-            return
+        if startup_mode:
+            if not combat.configure_source_startup_pages(pages,verified_common_lists):
+                _fail("Troop %d 候選啟動事件配置失敗" % troop_id)
+                return
+        else:
+            combat.force_actions.enabled=true
+            combat.force_actions.random_targets_enabled=allow_random
+            if not combat.configure_source_force_pages(pages):
+                _fail("Troop %d 候選戰鬥事件配置失敗" % troop_id)
+                return
     if _combat!=null:
         if _combat.finished.is_connected(_on_combat_finished):
             _combat.finished.disconnect(_on_combat_finished)
@@ -148,7 +170,8 @@ func _on_combat_finished(victory: bool) -> void:
 func request_escape() -> bool:
     if _combat == null or not _combat.active or not _allow_escape or _runner == null:
         return false
-    if _combat.troop_force_pages.pending_page>=0 or not _combat.troop_force_pages.blocked_reason.is_empty():
+    if _combat.troop_force_pages.pending_page>=0 or not _combat.troop_force_pages.blocked_reason.is_empty() or (
+            _combat.troop_startup_plan.enabled and not _combat.troop_startup_plan.done):
         return false # Do not bypass an unacknowledged battle interpreter command.
     # Actual escape probability / ATB timing remain FS parity work.
     # This method is for a battle layer that already verified an escape succeeded.
