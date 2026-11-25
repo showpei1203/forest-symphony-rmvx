@@ -143,6 +143,26 @@ func preview(actors:Dictionary,party_ids:Array)->Dictionary:
         pc+=1
     return {"ok":true,"intents":intents}
 
+func required_actor_ids()->Array[int]:
+    var ids:Array[int]=[]
+    for node in program:
+        if int(node["code"])==111:
+            var id:int=int(node["params"][1])
+            if id not in ids:
+                ids.append(id)
+    return ids
+
+static func _parent_command(c:Variant,op:int)->bool:
+    return c is Dictionary and _int(c.get("code",null),op,op) and _int(c.get("indent",null),0,0) and c.get("parameters",null) is Array
+
+static func _parent_variable(c:Variant)->Dictionary:
+    if not _parent_command(c,122):
+        return {}
+    var a:Array=c["parameters"]
+    if a.size()!=5 or not _int(a[0],1,999999) or not _int(a[1],int(a[0]),int(a[0])) or not _int(a[2],0,0) or not _int(a[3],0,0) or not _int(a[4],-99999999,99999999):
+        return {}
+    return {"kind":"variable","id":int(a[0]),"value":int(a[4])}
+
 # One real source-shaped startup parent, explicit caller-owned snapshot.
 # Any force intent prevents ALL parent/child writes; no simulated success.
 # Not wired into production bridge; external signal rollback is not claimed.
@@ -158,8 +178,8 @@ func apply_startup_switch_only(world:FSGameState,parent:Dictionary,common_id:int
             return _error("not an exact turn-zero parent")
     if not _int(c.get("turn_a",null),0,0) or not _int(c.get("turn_b",null),0,0):
         return _error("not turn zero")
-    var w:Dictionary=FSTroopStartupPlan._write(cs[0])
-    if w.get("kind","")!="variable" or not FSTroopStartupPlan._command(cs[1],117) or not FSTroopStartupPlan._end(cs[2]):
+    var w:Dictionary=_parent_variable(cs[0])
+    if w.is_empty() or not _parent_command(cs[1],117) or not _parent_command(cs[2],0) or not cs[2]["parameters"].is_empty():
         return _error("unsupported parent commands")
     var args:Array=cs[1]["parameters"]
     if args.size()!=1 or not _int(args[0],common_id,common_id):

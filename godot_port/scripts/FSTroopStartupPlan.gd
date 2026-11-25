@@ -4,7 +4,8 @@ class_name FSTroopStartupPlan
 # Bounded turn-zero candidate for source #21 and command 122/117.
 # No Ruby, recursive common events, arbitrary expressions or battle effects.
 # A prevalidated child list is mandatory; the real common-event DB is
-# separate from the eleven-table boot-final contract and is still HOLD.
+# separate from the eleven-table boot-final contract. A source-shaped actor
+# conditional branch is a second explicit opt-in, not production approval.
 var enabled: bool=false
 var done: bool=false
 var busy: bool=false
@@ -12,6 +13,8 @@ var blocked_reason: String=""
 var plans: Array[Dictionary]=[]
 var receipts: Array[Dictionary]=[]
 var inert_pages: Array[int]=[] # explicit source #21 no-condition nonempty pages
+var actor_common_mode:bool=false
+var offparty_actor_snapshots:Dictionary={}
 
 static func _int(v:Variant,lo:int,hi:int)->bool:
     return FSTroopForcePages._integer(v,lo,hi)
@@ -37,7 +40,7 @@ static func _write(c:Variant)->Dictionary:
         return {"kind":"switch","id":int(a[0]),"value":int(a[2])==0}
     return {}
 
-func configure(raw:Array,verified_common_lists:Dictionary)->bool:
+func configure(raw:Array,verified_common_lists:Dictionary,allow_actor_common:bool=false,offparty_snapshots:Dictionary={})->bool:
     if enabled or raw.is_empty() or raw.size()>32:
         return false
     var staged:Array[Dictionary]=[]
@@ -72,21 +75,72 @@ func configure(raw:Array,verified_common_lists:Dictionary)->bool:
             inert.append(i)
             continue
         var child:Variant=verified_common_lists.get(common_id,null)
-        if not child is Array or child.is_empty() or child.size()>64 or not _end(child[-1]):
+        if not child is Array or child.is_empty() or not _end(child[-1]):
             return false
         var writes:Array[Dictionary]=[first]
-        for j in range(child.size()-1):
-            var write:Dictionary=_write(child[j])
-            if write.is_empty():
+        if allow_actor_common:
+            var actor_plan:=FSCommonEventPlan.new()
+            if not actor_plan.compile(child):
                 return false
-            writes.append(write)
-        staged.append({"page":i,"common_id":common_id,"writes":writes})
+            staged.append({"page":i,"common_id":common_id,"writes":writes,"actor_plan":actor_plan})
+        else:
+            if child.size()>64:
+                return false
+            for j in range(child.size()-1):
+                var write:Dictionary=_write(child[j])
+                if write.is_empty():
+                    return false
+                writes.append(write)
+            staged.append({"page":i,"common_id":common_id,"writes":writes})
     if staged.is_empty() and inert.is_empty():
         return false
+    if allow_actor_common and staged.size()!=1:
+        return false # only one actual turn-zero parent; no guessed sequencing
     plans=staged
     inert_pages=inert
+    actor_common_mode=allow_actor_common
+    offparty_actor_snapshots=offparty_snapshots.duplicate(true) if allow_actor_common else {}
     enabled=true
     return true
+
+# Snapshot from real live battle equipment, not cached actor data or weapon
+# IDs. An off-party actor requires a separately provided authoritative
+# snapshot; its absence is not treated as an empty equipment list.
+func _actor_context(battle,plan:FSCommonEventPlan)->Dictionary:
+    var live:Dictionary={}
+    var roster:Array[int]=[]
+    for actor in battle.party:
+        var id:Variant=actor.get("id",null)
+        if not _int(id,1,999999) or int(id) in roster or typeof(actor.get("actor",null))!=TYPE_BOOL or not actor["actor"]:
+            return {"ok":false}
+        roster.append(int(id))
+        live[str(int(id))]=actor
+    var snapshots:Dictionary={}
+    for id in plan.required_actor_ids():
+        var key:String=str(id)
+        if not live.has(key):
+            var absent:Variant=offparty_actor_snapshots.get(key,null)
+            if not absent is Dictionary:
+                return {"ok":false}
+            snapshots[key]=absent
+            continue
+        var battler:Dictionary=live[key]
+        var equipment:Variant=battler.get("equipment",null)
+        if not equipment is Array or equipment.size()!=5 or typeof(battler.get("two_swords_style",null))!=TYPE_BOOL:
+            return {"ok":false}
+        var armor_ids:Array[int]=[]
+        for slot in range(5):
+            if not _int(equipment[slot],0,999999):
+                return {"ok":false}
+            var item_id:int=int(equipment[slot])
+            if item_id==0 or battle.db.equip_kind(battler,slot)!="armors":
+                continue
+            var row:Dictionary=battle.db.record("armors",item_id)
+            if row.is_empty() or not _int(row.get("id",null),item_id,item_id):
+                return {"ok":false}
+            armor_ids.append(item_id)
+        snapshots[key]={"exists":true,"armors":armor_ids}
+    return {"ok":true,"actors":snapshots,"party":roster}
 
 func apply_before_first_frame(battle)->int:
     if not enabled or done:
@@ -99,10 +153,31 @@ func apply_before_first_frame(battle)->int:
             not battle.force_actions.completed.is_empty()):
         blocked_reason="Turn-zero common event missing world or startup already passed"
         return -1
+    # Resolve all conditional intents from the live battle before writing.
+    # Unknown effects HOLD the entire event and leave the ATB at frame zero.
+    var resolved:Array[Dictionary]=[]
+    for plan in plans:
+        var writes:Array=plan["writes"].duplicate(true)
+        if plan.has("actor_plan"):
+            var actor_plan:FSCommonEventPlan=plan["actor_plan"]
+            var context:Dictionary=_actor_context(battle,actor_plan)
+            if not context["ok"]:
+                blocked_reason="Common event actor/equipment snapshot authority missing"
+                return -1
+            var result:Dictionary=actor_plan.preview(context["actors"],context["party"])
+            if not result["ok"]:
+                blocked_reason="Common event actor condition: "+str(result["reason"])
+                return -1
+            for intent in result["intents"]:
+                if intent["kind"]!="switch":
+                    blocked_reason="Common event forced skill effect/suspension authority HOLD"
+                    return -1
+                writes.append(intent)
+        resolved.append({"page":plan["page"],"common_id":plan["common_id"],"writes":writes})
     # All parent and child commands have been preflighted before any write.
     # Keep reentrant battle dispatch locked while synchronous signals fire.
     busy=true
-    for plan in plans:
+    for plan in resolved:
         for w in plan["writes"]:
             if w["kind"]=="variable":
                 battle.world.set_variable(w["id"],w["value"])

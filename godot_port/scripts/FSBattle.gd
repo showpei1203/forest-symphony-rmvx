@@ -1065,13 +1065,13 @@ func configure_source_force_pages(pages: Array,allow_turn_window:bool=false) -> 
         return false
     return troop_force_pages.configure(pages,force_actions.random_targets_enabled,allow_turn_window)
 
-func configure_source_startup_pages(pages:Array,verified_common_lists:Dictionary)->bool:
+func configure_source_startup_pages(pages:Array,verified_common_lists:Dictionary,allow_actor_common:bool=false,offparty_snapshots:Dictionary={})->bool:
     if not active or not source_atb_initialized or troop_force_pages.enabled or source_atb_frame_count!=0 or (
             pending_actor>=0 or not action_queue.pending.is_empty() or not action_queue.enemy_pending.is_empty()) or (
             not action_queue.completed.is_empty()) or not force_actions.completed.is_empty() or (
             not force_actions.ready.is_empty() or not force_actions.staged.is_empty() or not force_actions.troop_slot.is_empty()):
         return false
-    return troop_startup_plan.configure(pages,verified_common_lists)
+    return troop_startup_plan.configure(pages,verified_common_lists,allow_actor_common,offparty_snapshots)
 
 func begin_source_command(index: int) -> bool:
     if not active or (troop_startup_plan.enabled and not troop_startup_plan.done) or index<0 or index>=party.size():

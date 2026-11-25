@@ -11,7 +11,7 @@ CASES=[
 ("VX230","exported_scripts/230__id55188000__ATB_Configurations.rb","3fe73b99012548f9f3e1d3ed3ec76a337be4713d",[(147,2),(158,63),(275,7)]),
 ("VX231","exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb","4065ea4be1bc6fa5c5154034c89d626bc30d29fa",[(175,50),(558,44),(678,42),(1843,16),(2117,42),(2226,19),(2273,8)]),
 ("VX377","exported_scripts/377__id65670378__FS_ATB_DynamicResistance_v1.0.0.rb","d14c274006d00f793017e9910d1e390ec5f9aeef",[(34,93),(326,11),(664,111),(816,41)]),
-("GD_BATTLE","godot_port/scripts/FSBattle.gd","b58930f32becd870b6c074d19b5377789586a7fa",[(976,115),(1125,44),(1230,12)]),
+("GD_BATTLE","godot_port/scripts/FSBattle.gd","18a1c6c0904e41f5a11b3ffc04578a2014a78e0d",[(976,115),(1125,44),(1230,12)]),
 ("GD_QUEUE","godot_port/scripts/FSActionQueue.gd","7b8dbc1f76f6482a2d82981ae614d9aa46400e65",[(0,44),(170,18),(280,72)]),
 ("GD_ATB","godot_port/scripts/FSTankentaiATBCore.gd","806bbe2aa5e5f8f3fabaa98935db7d2b833bec5a",[(128,95)]),
 ("VX406","exported_scripts/406__id23791037__FS_EnemyActionDistribution_FinalAuthority_v1.1.rb","06408e5ae0049fedc52289ff83f30ba091b0e1ef",[(165,90)]),
@@ -38,8 +38,8 @@ CASES=[
 ("GD_PRESENTER","godot_port/scripts/ui/FSBattleActor01Presenter.gd","4bc83b2fd61ae6ef0ea5c45f944ababe35cd0086",[(0,141)]),
 ("VX313","exported_scripts/313__id96846647__H87_SkillDelay_v1.1.rb","d29308d209e9058b886bb0eb0685f43c03d1998a",[(320,32)]),
 ("VX314","exported_scripts/314__id9275483__PopUp_Generale.rb","041b4e8917b2e6e2c2b55b8d49e1aec939932569",[(337,123)]),
-("GD_COMMON_PLAN","godot_port/scripts/FSCommonEventPlan.gd","c94c3feb2081dbe23dc14abfa70fa5048e30cb1d",[(0,179)]),
-("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","581fb38b66e6e2a33198f5e4e19b936f589a7f0c",[(0,114)]),
+("GD_COMMON_PLAN","godot_port/scripts/FSCommonEventPlan.gd","499dd93d6d347818a426ac97f48761752d1aaaca",[(0,199)]),
+("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","0a7d3f50b41a6de495c80cccf907d4d78feaf1c5",[(0,189)]),
 ]
 def sha(x): return hashlib.sha256(x).hexdigest()
 def check(ok,reason):
