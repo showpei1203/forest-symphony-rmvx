@@ -114,7 +114,22 @@ func _run()->void:
     _check(not PLAN.new().configure([turn_later],{2:child}),"nonzero turn HOLD")
     var no_condition:Dictionary=_page()
     no_condition["condition"]["turn_valid"]=false
-    _check(not PLAN.new().configure([no_condition],{2:child}),"no condition not executable")
+    var inert=PLAN.new()
+    _check(inert.configure([no_condition],{}) and inert.plans.is_empty() and inert.inert_pages==[0],
+        "original no-condition page explicitly inert, no missing child requirement")
+    var inert_fixture=_fixture([no_condition],true,BRIDGE.source_force_page_digest([no_condition]),[],"")
+    _check(inert_fixture["combats"].size()==1 and inert_fixture["runner"].waiting,"reviewed inert page starts without unused child")
+    if inert_fixture["combats"].size()==1:
+        var ib=inert_fixture["combats"][0]
+        ib.advance_atb(1.0/60.0)
+        _check(ib.troop_startup_plan.done and ib.troop_startup_plan.receipts.is_empty() and _unchanged(inert_fixture),
+            "inert page has no effect")
+    var inert_and_active:Array=[no_condition,_page()]
+    _rejected(_fixture(inert_and_active,true,BRIDGE.source_force_page_digest(inert_and_active),[],""),
+        "inert page cannot bypass active missing child")
+    var inert_unknown:Dictionary=no_condition.duplicate(true)
+    inert_unknown["list"]=[_cmd(355,["not evaluated"]),_cmd(0)]
+    _check(not PLAN.new().configure([inert_unknown],{}),"unknown inactive command still outside subset")
     var malformed:Dictionary=_page()
     malformed["list"][0]["parameters"][1]=12
     _check(not PLAN.new().configure([malformed],{2:child}),"range assignment not in subset")
