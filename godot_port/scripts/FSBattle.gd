@@ -964,6 +964,8 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
 func advance_atb(delta: float) -> void:
     if not active or not source_atb_initialized or delta <= 0.0 or force_actions.busy:
         return
+    if force_actions.enabled and troop_force_pages.enabled and not troop_force_pages.blocked_reason.is_empty():
+        return
     # Real Tankentai #231 gauge increments are PER SOURCE FRAME, not an
     # invented continuous float rate. Accumulate fractional 60fps frames.
     source_atb_frame_fraction += delta * float(FSTankentaiATBCore.FRAMES_PER_SECOND)
@@ -995,6 +997,9 @@ func advance_atb(delta: float) -> void:
         if not source_atb_wait:
             action_queue.cancel_interrupted(self)
             var forced_resolved: int = force_actions.resolve_one(self)
+            if force_actions.enabled and troop_force_pages.enabled and troop_force_pages.settle(self)<0:
+                changed.emit(troop_force_pages.blocked_reason)
+                return
             if forced_resolved==0 and force_actions.ready.is_empty():
                 action_queue.resolve_ready(self)
                 if active:
