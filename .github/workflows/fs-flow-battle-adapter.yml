@@ -33,6 +33,8 @@ jobs:
           test "$(git hash-object MotionBody.gd)" = "b674a035a91862a02314d6831b5a89c42f6f999f"
           test ! -e motions
           G=/tmp/godot/Godot_v4.7.2-stable_linux.x86_64
-          "$G" --headless --editor --quit
-          "$G" --headless --script res://test_adapter.gd | tee /tmp/flow-adapter.log
+          timeout 45s "$G" --headless --editor --quit 2>&1 | tee /tmp/flow-editor.log
+          ! grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-editor.log
+          timeout 45s "$G" --headless --script res://test_adapter.gd 2>&1 | tee /tmp/flow-adapter.log
+          ! grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-adapter.log
           grep 'FLOW_BATTLE_ADAPTER_PASS scope=SYNTHETIC actions=5 directions=4 host_unchanged=true' /tmp/flow-adapter.log

@@ -1,16 +1,16 @@
 extends Node2D
 # Presentation-only adapter to the official FSAnimationSprite API.
 # Install under the actor's visual hierarchy, never as a gameplay authority.
-const Animation = preload("res://scripts/animation/FSAnimationSprite.gd")
+const AnimationSprite = preload("res://scripts/animation/FSAnimationSprite.gd")
 const ACTIONS := ["attack","run","damage","dodge","cast"]
 const BACKSTEP := [0.0,0.0,4.0,14.0,24.0,24.0,24.0,24.0]
 signal visual_finished(action: String)
-var animation_player: Animation
+var animation_player: AnimationSprite
 var _away := Vector2.ZERO
 var _configured := false
 
 func _ready() -> void:
-    animation_player = Animation.new()
+    animation_player = AnimationSprite.new()
     animation_player.name = "BodyPresentation"
     add_child(animation_player)
     animation_player.frame_entered.connect(_frame_entered)
