@@ -1,0 +1,5 @@
+config_version=5
+[application]
+config/name="FS Flow battle presentation adapter QA"
+[rendering]
+renderer/rendering_method="gl_compatibility"
