@@ -23,6 +23,8 @@ var source_atb_wait: bool = false
 # ATB actor queue is active in BATTLE UI; final enemy AI/forced action/OD
 # aliases are still outside the verified P1 source implementation.
 var action_queue: FSActionQueue = FSActionQueue.new()
+# Opt-in candidate; normal production/event entry remains disabled.
+var force_actions: FSForceActionQueue = FSForceActionQueue.new()
 # Source #401 Runtime Provider. Automatically opt-in only after the real
 # boot-final DB witness gate; synthetic battle tests opt in intentionally.
 var boss_runtime: FSBossSummonRuntime = FSBossSummonRuntime.new()
@@ -959,7 +961,7 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     return true
 
 func advance_atb(delta: float) -> void:
-    if not active or not source_atb_initialized or delta <= 0.0:
+    if not active or not source_atb_initialized or delta <= 0.0 or force_actions.busy:
         return
     # Real Tankentai #231 gauge increments are PER SOURCE FRAME, not an
     # invented continuous float rate. Accumulate fractional 60fps frames.
@@ -981,19 +983,30 @@ func advance_atb(delta: float) -> void:
         boss_state_effects.on_atb_ready(self)
         if not active:
             break
+        if force_actions.enabled:
+            force_actions.drain_event(self)
+            force_actions.prepare_troop(self)
         if not source_atb_wait:
             action_queue.cancel_interrupted(self)
-            action_queue.resolve_ready(self)
-            if active:
-                # Enemy actions are chosen after ATB readiness, then must
-                # earn ACT charge on later source frames.
-                action_queue.schedule_enemy(self)
+            var forced_resolved: int = force_actions.resolve_one(self)
+            if forced_resolved==0 and force_actions.ready.is_empty():
+                action_queue.resolve_ready(self)
+                if active:
+                    # Enemy actions are chosen after ATB readiness, then must
+                    # earn ACT charge on later source frames.
+                    action_queue.schedule_enemy(self)
         # Original #401 Scene_Battle#update boss hook runs AFTER base update
         # even when #230 ATB_WAIT freezes gauges during target selection.
         # This is an encounter state update, NOT an ATB charge action.
         if active:
             boss_runtime.tick(self)
             boss_state_effects.sync(self)
+
+func queue_source_force_action(side: int,index: int,kind: String,target_index: int) -> bool:
+    return force_actions.request_event(self,side,index,kind,target_index)
+
+func queue_source_vx339(params: Array) -> bool:
+    return force_actions.request_vx339(self,params)
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
         object_id: int = 0) -> bool:
