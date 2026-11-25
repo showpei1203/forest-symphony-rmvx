@@ -1030,6 +1030,16 @@ func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
         enemy_valid_action_completed(battler)
     return true
 
+func _state_atb_negative_authority(state_id: int) -> bool:
+    # Explicit, typed State method result from a verified provider.
+    # Do not infer this from a skill note, a truthy string or an unknown ID.
+    if state_id <= 0 or db == null:
+        return false
+    var state: Dictionary = db.record("states",state_id)
+    return int(state.get("id",0)) == state_id and (
+        typeof(state.get("atb_minus_damage",null)) == TYPE_BOOL) and (
+        bool(state["atb_minus_damage"]))
+
 func apply_combo_atb_shift(enemy: Dictionary,delta: int,
         attacker: Dictionary = {},state_id: int = 0) -> Dictionary:
     # This adapter is ONLY the direct ComboCore ATB shift <atb_shift:-x>.
@@ -1037,7 +1047,7 @@ func apply_combo_atb_shift(enemy: Dictionary,delta: int,
     if not enemies.has(enemy):
         return {"ok":false,"reason":"目標不是戰鬥中的敵人"}
     var outcome: Dictionary = FSATBResistance.apply_direct_shift(
-        enemy,delta,state_id,attacker)
+        enemy,delta,state_id,attacker,_state_atb_negative_authority(state_id))
     if bool(outcome.get("ok",false)):
         # Cancel enemy ACT pending immediately after ComboCore negative shift,
         # rather than leaving it alive until a later rendered frame.
@@ -1054,7 +1064,7 @@ func apply_combo_atb_shift_to_actor(actor: Dictionary,delta: int,
     if not party.has(actor):
         return {"ok":false,"reason":"目標不是戰鬥中的我方角色"}
     var outcome: Dictionary = FSATBResistance.apply_direct_shift(
-        actor,delta,state_id,attacker)
+        actor,delta,state_id,attacker,_state_atb_negative_authority(state_id))
     if bool(outcome.get("ok",false)):
         action_queue.cancel_interrupted(self)
         changed.emit("%s ATB 受到直接位移 %d→%d" % [
