@@ -4,6 +4,7 @@ class_name FSBattle
 # Candidate baseline only. For exact FS parity, trace RGSS2 last-wins aliases and tags.
 signal changed(message: String)
 signal finished(victory: bool)
+signal source_force_page_blocked(reason: String)
 
 var db: FSDatabase
 var party: Array[Dictionary] = []
@@ -26,6 +27,7 @@ var action_queue: FSActionQueue = FSActionQueue.new()
 # Opt-in candidate; normal production/event entry remains disabled.
 var force_actions: FSForceActionQueue = FSForceActionQueue.new()
 var troop_force_pages: FSTroopForcePages = FSTroopForcePages.new()
+var _source_force_deferred_outcome: int = -1
 # Source #401 Runtime Provider. Automatically opt-in only after the real
 # boot-final DB witness gate; synthetic battle tests opt in intentionally.
 var boss_runtime: FSBossSummonRuntime = FSBossSummonRuntime.new()
@@ -991,14 +993,26 @@ func advance_atb(delta: float) -> void:
                 return
             if troop_force_pages.tick(self)<0:
                 changed.emit(troop_force_pages.blocked_reason)
+                source_force_page_blocked.emit(troop_force_pages.blocked_reason)
                 return
             force_actions.drain_event(self)
             force_actions.prepare_troop(self)
         if not source_atb_wait:
             action_queue.cancel_interrupted(self)
             var forced_resolved: int = force_actions.resolve_one(self)
-            if force_actions.enabled and troop_force_pages.enabled and troop_force_pages.settle(self)<0:
-                changed.emit(troop_force_pages.blocked_reason)
+            if force_actions.enabled and troop_force_pages.enabled:
+                var page_settlement: int = troop_force_pages.settle(self)
+                if page_settlement<0:
+                    _source_force_deferred_outcome=-1
+                    changed.emit(troop_force_pages.blocked_reason)
+                    source_force_page_blocked.emit(troop_force_pages.blocked_reason)
+                    return
+                if page_settlement==1 and _source_force_deferred_outcome>=0:
+                    var outcome: int=_source_force_deferred_outcome
+                    _source_force_deferred_outcome=-1
+                    finished.emit(outcome==1)
+                    return
+            if not active:
                 return
             if forced_resolved==0 and force_actions.ready.is_empty():
                 action_queue.resolve_ready(self)
@@ -1171,4 +1185,9 @@ func _check_end() -> void:
         if not enemies_alive and ivy_furnace.active:
             ivy_furnace.end_battle(self)
         active = false
-        finished.emit(enemies_alive == false)
+        # A lethal page-issued force action must acknowledge the action
+        # before the VX map interpreter receives a victory/defeat branch.
+        if force_actions.busy and troop_force_pages.pending_page>=0:
+            _source_force_deferred_outcome=1 if not enemies_alive else 0
+        else:
+            finished.emit(enemies_alive == false)
