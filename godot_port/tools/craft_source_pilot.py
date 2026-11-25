@@ -44,7 +44,7 @@ def install(root):
     # Native Authenticode trust check on the exact hash-pinned executable.
     for p in (cli,gui):
         env=os.environ.copy();env["CRAFT_FIXED_SIGNATURE_PATH"]=str(p)
-        ps="$ErrorActionPreference='Stop'; try { $s=Get-AuthenticodeSignature -LiteralPath $env:CRAFT_FIXED_SIGNATURE_PATH; $thumb='NONE'; if ($null -ne $s.SignerCertificate) { $thumb=$s.SignerCertificate.Thumbprint }; [Console]::WriteLine(([string]$s.Status)+'|'+$thumb) } catch { [Console]::WriteLine('SIGNATURE_QUERY_ERROR|'+$_.Exception.GetType().Name); exit 2 }"
+        ps="$ErrorActionPreference='Stop'; try { Import-Module (Join-Path $PSHOME 'Modules\\Microsoft.PowerShell.Security\\Microsoft.PowerShell.Security.psd1') -ErrorAction Stop; $s=Microsoft.PowerShell.Security\\Get-AuthenticodeSignature -LiteralPath $env:CRAFT_FIXED_SIGNATURE_PATH; $thumb='NONE'; if ($null -ne $s.SignerCertificate) { $thumb=$s.SignerCertificate.Thumbprint }; [Console]::WriteLine(([string]$s.Status)+'|'+$thumb) } catch { [Console]::WriteLine('SIGNATURE_QUERY_ERROR|'+$_.Exception.GetType().Name); exit 2 }"
         import base64
         encoded=base64.b64encode(ps.encode("utf-16-le")).decode("ascii")
         proc=subprocess.run(["powershell.exe","-NoProfile","-NonInteractive","-EncodedCommand",encoded],cwd=root,env=env,capture_output=True,timeout=30)
