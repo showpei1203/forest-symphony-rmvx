@@ -50,6 +50,7 @@ var tab_bar:HBoxContainer
 var developer_scroll:ScrollContainer
 var battle_command_art:Dictionary={}
 var battle_command_grid:GridContainer
+var _body_generation: int = 0
 
 func _ready() -> void:
     # Full-window Godot Control: without this the 45-degree actor and
@@ -254,6 +255,7 @@ func _change(tab: String) -> void:
         _show_menu()
 
 func _clear_body() -> void:
+    _body_generation+=1 # detached selection callbacks must become inert immediately
     # Source-compatible battle UI hides only the temporary debug chrome.
     # Any real target/skill/item submenu restores usable Godot controls.
     _restore_developer_shell()
@@ -282,7 +284,10 @@ func _add_button(text_value: String, callback: Callable) -> void:
     button.focus_mode = Control.FOCUS_ALL
     # Only semantic ID-linked icons; unknown source atlas indices stay blank.
     # This is a private, SHA-gated original VX IconSet (24px atlas).
-    button.pressed.connect(callback)
+    var generation: int=_body_generation
+    button.pressed.connect(func()->void:
+        if generation==_body_generation:
+            callback.call())
     body.add_child(button)
 
 func _battle_actor_ready() -> bool:
@@ -509,6 +514,8 @@ func _set_original_background(file_name: String) -> void:
     original_background.texture = ui_art.texture("system",file_name) if ui_art!=null else null
 
 func _show_menu() -> void:
+    if battle!=null and battle.pending_actor>=0:
+        battle.end_source_command()
     view_name = "MENU"
     status_label.visible=true
     if original_scape!=null:
@@ -951,7 +958,10 @@ func _show_battle() -> void:
     if enemy_stage!=null:
         enemy_stage.bind_real(battle)
     # Source #230 defaults to Wait during active command/target selection.
-    battle.source_atb_wait = false
+    battle.end_source_command()
+    battle.source_command_cleanup_enabled=true
+    if not battle.source_command_cancelled.is_connected(_on_source_command_cancelled):
+        battle.source_command_cancelled.connect(_on_source_command_cancelled)
     if ui_hud!=null:
         ui_hud.visible=true
         ui_hud.bind_party(battle.party)
@@ -1165,8 +1175,16 @@ func _preview_source_target(target:Dictionary,is_enemy:bool)->void:
     # Read-only #462 help is never allowed to enqueue an ACT action.
     source_target_help.select(target,is_enemy)
 
+func _on_source_command_cancelled(_index: int) -> void:
+    if view_name!="BATTLE" or battle==null or not battle.active:
+        return
+    # Rebuild controls now, before the forced action can settle; detach
+    # old target/skill/item callbacks and clear the selected target help.
+    _show_battle()
+
 func _select_enemy_target(callback: Callable,skill_id: int = 0) -> void:
-    battle.source_atb_wait = true
+    if not battle.begin_source_command(actor_index):
+        return
     _clear_body()
     title_label.text = "Forest Symphony / 選擇敵方目標"
     _install_source_target_help()
@@ -1193,7 +1211,8 @@ func _select_enemy_target(callback: Callable,skill_id: int = 0) -> void:
     _source_target_button_layout()
 
 func _select_ally_target(callback: Callable) -> void:
-    battle.source_atb_wait = true
+    if not battle.begin_source_command(actor_index):
+        return
     _clear_body()
     title_label.text = "Forest Symphony / 選擇我方目標"
     _install_source_target_help()
@@ -1237,8 +1256,8 @@ func _player_guard() -> void:
         _show_log("防禦指令未建立，未變更防禦姿態")
 
 func _skill_action() -> void:
-    if battle != null and battle.active:
-        battle.source_atb_wait = true
+    if battle != null and battle.active and not battle.begin_source_command(actor_index):
+        return
     _clear_body()
     title_label.text = "Forest Symphony / 戰鬥技能"
     if actor_index < 0 or actor_index >= battle.party.size():
@@ -1284,8 +1303,8 @@ func _use_skill(skill_id: int, target: Dictionary) -> void:
     _show_battle()
 
 func _item_action() -> void:
-    if battle != null and battle.active:
-        battle.source_atb_wait = true
+    if battle != null and battle.active and not battle.begin_source_command(actor_index):
+        return
     _clear_body()
     title_label.text = "Forest Symphony / 戰鬥物品"
     _add_text("僅可執行源碼基礎規則已驗證的單體 HP／MP 回復")
@@ -1299,8 +1318,8 @@ func _select_item_target(item_id: int, in_battle: bool) -> void:
     if in_battle and not battle.active:
         _show_log("戰鬥已結束，無法使用物品")
         return
-    if in_battle:
-        battle.source_atb_wait = true
+    if in_battle and not battle.begin_source_command(actor_index):
+        return
     _clear_body()
     title_label.text = "Forest Symphony / 物品指定目標"
     var item: Dictionary = db.record("items",item_id)
