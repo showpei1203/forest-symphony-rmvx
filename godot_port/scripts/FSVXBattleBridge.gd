@@ -18,6 +18,8 @@ var _allow_lose: bool = false
 # Empty by default. Boot-final DB authority is independently mandatory.
 # Never populate this automatically from raw exports or mere syntax support.
 var approved_source_force_page_hashes: Dictionary = {}
+# Separate approval for random 339 targets, not implied by the basic page digest.
+var approved_source_random_force_page_hashes: Dictionary = {}
 
 static func source_force_page_digest(pages: Array) -> String:
     return JSON.stringify(pages).sha256_text()
@@ -43,6 +45,7 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
         return
     var pages: Array=pages_value
     var has_events: bool=false
+    var allow_random: bool=false
     for page in pages:
         if not page is Dictionary or not page.get("list",null) is Array:
             _fail("Troop %d 戰鬥事件頁格式錯誤" % troop_id)
@@ -57,8 +60,9 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
         if not _database.boot_final_verified or str(approved_source_force_page_hashes.get(troop_id,""))!=source_force_page_digest(pages):
             _fail("Troop %d 事件尚未取得啟動後資料與逐頁核准" % troop_id)
             return
+        allow_random=str(approved_source_random_force_page_hashes.get(troop_id,""))==source_force_page_digest(pages)
         var checker := FSTroopForcePages.new()
-        if not checker.configure(pages):
+        if not checker.configure(pages,allow_random):
             _fail("Troop %d 含超出候選戰鬥事件範圍的指令" % troop_id)
             return
     if _world.party_actor_ids.is_empty():
@@ -96,6 +100,7 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
         return
     if has_events:
         combat.force_actions.enabled=true
+        combat.force_actions.random_targets_enabled=allow_random
         if not combat.configure_source_force_pages(pages):
             _fail("Troop %d 候選戰鬥事件配置失敗" % troop_id)
             return
