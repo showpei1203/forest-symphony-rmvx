@@ -1,0 +1,43 @@
+name: FS ASF offline public fixture
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/fs-asf-offline-pilot.yml'
+      - '.agents/skills/fs-agent-sprite-forge/**'
+permissions:
+  contents: read
+jobs:
+  public-fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Fetch exact public upstream and check pin
+        run: |
+          git init "$RUNNER_TEMP/asf"
+          git -C "$RUNNER_TEMP/asf" fetch --depth 1 https://github.com/0x0funky/agent-sprite-forge.git 25203d03900b46b444bdd72a75768c33d1895ad6
+          git -C "$RUNNER_TEMP/asf" checkout --detach FETCH_HEAD
+          test "$(git -C "$RUNNER_TEMP/asf" rev-parse HEAD)" = 25203d03900b46b444bdd72a75768c33d1895ad6
+      - name: Offline dependency setup
+        run: |
+          python3 -m venv "$RUNNER_TEMP/asf-venv"
+          "$RUNNER_TEMP/asf-venv/bin/python" -m pip install --only-binary=:all: --no-cache-dir 'numpy>=1.26,<3' 'Pillow>=10.1,<14' 'scipy>=1.11,<2'
+      - name: Real pinned grid and palette conversion on upstream public example
+        run: |
+          cd "$RUNNER_TEMP/asf"
+          test -f src/pixel-looks/kael-picture.png
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$RUNNER_TEMP/asf-venv/bin/python" -B skills/generate2dsprite/scripts/pixel_look.py master --image src/pixel-looks/kael-picture.png --colors 16 --name pilot --output-dir "$RUNNER_TEMP/asf-output"
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$RUNNER_TEMP/asf-venv/bin/python" -B - "$RUNNER_TEMP/asf-output/pilot.png" <<'PY'
+          import hashlib, sys
+          from pathlib import Path
+          from PIL import Image
+          p=Path(sys.argv[1])
+          im=Image.open(p).convert("RGBA")
+          colors={px[:3] for px in im.getdata() if px[3]}
+          alpha=set(im.getchannel("A").getdata())
+          assert alpha == {0,255}, alpha
+          assert 1 < len(colors) <= 16, len(colors)
+          assert 0 < im.width <= 64 and 0 < im.height <= 64, im.size
+          print("ASF_PUBLIC_FIXTURE_OFFLINE_PASS", im.size, len(colors), hashlib.sha256(p.read_bytes()).hexdigest())
+          print("PUBLIC_UPSTREAM_SAMPLE_ONLY; FS_ART_NOT_RUN; GODOT_NOT_RUN; PAID_CALLS=0")
+          PY
