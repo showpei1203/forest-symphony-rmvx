@@ -7,7 +7,7 @@
   "cloud_only": true,
   "no_codex": true,
   "desktop_remote_default": false,
-  "notes": "This governance package targets default branch main after PR #18 merge. Until merge, the feature branch is the staging authority, not an already-activated default.",
+  "notes": "Read from main; current workline Handoff and exact source evidence remain required. Snapshots in this manifest are historical, not live status.",
   "read_first": [
     {
       "kind": "drive",
@@ -85,8 +85,8 @@
     {
       "rank": 5,
       "tool": "Desktop Remote",
-      "use": "last resort, explicit user permission only",
-      "verification": "log reason and actions"
+      "use": "Authorized web/GUI or Runner/API inefficient/unreliable; ordinary fallback standing authorization 2026-11-26; explicit bans and high-risk confirmation remain",
+      "verification": "Check actual capability, scope and log reason/actions; no arbitrary GUI or shell"
     }
   ],
   "lanes": {
@@ -124,7 +124,7 @@
         "fs-godot-testing",
         "fs-handoff-qa"
       ],
-      "contract": "ACTOR01 approved 64x64 identity, 45-degree view; real independently poseable body/garment and true hidden underpaint; Body/Weapon/FX, 12 frames per action; do not infer hidden parts from 7 visible-only masks.",
+      "contract": "ACTOR01 approved 64x64 identity, 45-degree view; real independently poseable body/garment and true hidden underpaint; Body/Weapon/FX, 12 frames where current paperdoll contract explicitly requires; preserve approved source-pinned Flow/recovered frame counts and timing; do not infer hidden parts from 7 visible-only masks.",
       "current_snapshot": "2026-11-23 R23 visible-only seven-layer technical native pass; new boxing art and true underpaint ART HOLD; full battle NOT_RUN",
       "mandatory_gates": [
         "source_identity",
