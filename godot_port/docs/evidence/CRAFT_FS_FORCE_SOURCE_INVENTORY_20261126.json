@@ -1,0 +1,252 @@
+{
+  "schema": 1,
+  "scope": "public indexed source lexical inventory; selected noncomment log records only",
+  "commit": "1d57d248c4f350b021003146c1255e954982a380",
+  "run_id": 45705527139,
+  "job_id": 139526383298,
+  "verified_hashes": 505,
+  "lexical_records": 138,
+  "counts": {
+    "force_api_call": 7,
+    "force_native_command": 2,
+    "force_queue": 83,
+    "target_selection": 15,
+    "troop_table": 31
+  },
+  "selected_records": [
+    {
+      "category": "force_api_call",
+      "line": 203,
+      "name": "FS_ForceAction_Bridge",
+      "role": "definition",
+      "script": 462,
+      "text": "def force_action(side_type, subject_id, action_type, action_id, target_index = -1)"
+    },
+    {
+      "category": "force_native_command",
+      "line": 398,
+      "name": "Game_Interpreter",
+      "role": "reference",
+      "script": 28,
+      "text": "return command_339"
+    },
+    {
+      "category": "force_native_command",
+      "line": 1631,
+      "name": "Game_Interpreter",
+      "role": "definition",
+      "script": 28,
+      "text": "def command_339"
+    },
+    {
+      "category": "troop_table",
+      "line": 91,
+      "name": "Game_Troop",
+      "role": "reference",
+      "script": 21,
+      "text": "return $data_troops[@troop_id]"
+    },
+    {
+      "category": "troop_table",
+      "line": 190,
+      "name": "Game_Troop",
+      "role": "definition",
+      "script": 21,
+      "text": "def setup_battle_event"
+    },
+    {
+      "category": "troop_table",
+      "line": 1311,
+      "name": "Game_Interpreter",
+      "role": "reference",
+      "script": 28,
+      "text": "if $data_troops[troop_id] != nil"
+    },
+    {
+      "category": "troop_table",
+      "line": 107,
+      "name": "Scene_Title",
+      "role": "reference",
+      "script": 76,
+      "text": "$data_troops        = load_data(\"Data/Troops.rvdata\")"
+    },
+    {
+      "category": "troop_table",
+      "line": 125,
+      "name": "Scene_Title",
+      "role": "reference",
+      "script": 76,
+      "text": "$data_troops        = load_data(\"Data/BT_Troops.rvdata\")"
+    },
+    {
+      "category": "troop_table",
+      "line": 141,
+      "name": "Scene_Map",
+      "role": "reference",
+      "script": 77,
+      "text": "return if $data_troops[troop_id] == nil           # 敵人隊伍非法？"
+    },
+    {
+      "category": "troop_table",
+      "line": 194,
+      "name": "Scene_Battle",
+      "role": "reference",
+      "script": 88,
+      "text": "$game_troop.setup_battle_event"
+    },
+    {
+      "category": "troop_table",
+      "line": 177,
+      "name": "Neo Database Text",
+      "role": "reference",
+      "script": 113,
+      "text": "str.gsub!(/\\\\NT\\[([0-9]+)\\]/i) { $data_troops[$1.to_i].name }"
+    },
+    {
+      "category": "troop_table",
+      "line": 415,
+      "name": "Sideview 2 (3.4d)",
+      "role": "reference",
+      "script": 227,
+      "text": "$game_troop.setup_battle_event"
+    },
+    {
+      "category": "troop_table",
+      "line": 662,
+      "name": "ATB (1.2c)-0627",
+      "role": "reference",
+      "script": 231,
+      "text": "$game_troop.setup_battle_event"
+    },
+    {
+      "category": "troop_table",
+      "line": 60,
+      "name": "MITH_EncounterChance",
+      "role": "reference",
+      "script": 350,
+      "text": "chance = $data_troops[value].custom_encounter_chance"
+    },
+    {
+      "category": "troop_table",
+      "line": 70,
+      "name": "MITH_EncounterChance",
+      "role": "reference",
+      "script": 350,
+      "text": "class RPG::Troop"
+    },
+    {
+      "category": "troop_table",
+      "line": 90,
+      "name": "MITH_EncounterChance",
+      "role": "reference",
+      "script": 350,
+      "text": "for troop in $data_troops.compact"
+    },
+    {
+      "category": "troop_table",
+      "line": 4785,
+      "name": "FS_RandomDungeon_v0_9_8_FS",
+      "role": "reference",
+      "script": 467,
+      "text": "return false if $data_troops == nil"
+    },
+    {
+      "category": "troop_table",
+      "line": 4786,
+      "name": "FS_RandomDungeon_v0_9_8_FS",
+      "role": "reference",
+      "script": 467,
+      "text": "troop = $data_troops[troop_id]"
+    },
+    {
+      "category": "troop_table",
+      "line": 4824,
+      "name": "FS_RandomDungeon_v0_9_8_FS",
+      "role": "reference",
+      "script": 467,
+      "text": "troop = $data_troops[troop_id.to_i]"
+    },
+    {
+      "category": "troop_table",
+      "line": 4917,
+      "name": "FS_AutoRegression_Harness v0.4k5",
+      "role": "reference",
+      "script": 478,
+      "text": "return nil unless defined?($data_troops) && $data_troops != nil"
+    },
+    {
+      "category": "troop_table",
+      "line": 4919,
+      "name": "FS_AutoRegression_Harness v0.4k5",
+      "role": "reference",
+      "script": 478,
+      "text": "for id in 1...$data_troops.size"
+    },
+    {
+      "category": "troop_table",
+      "line": 4920,
+      "name": "FS_AutoRegression_Harness v0.4k5",
+      "role": "reference",
+      "script": 478,
+      "text": "troop = $data_troops[id]"
+    },
+    {
+      "category": "troop_table",
+      "line": 83,
+      "name": "FS_BattleRegression_CoreFixtures v0.1a",
+      "role": "reference",
+      "script": 479,
+      "text": "return nil unless defined?($data_troops) && $data_troops != nil"
+    },
+    {
+      "category": "troop_table",
+      "line": 85,
+      "name": "FS_BattleRegression_CoreFixtures v0.1a",
+      "role": "reference",
+      "script": 479,
+      "text": "for id in 1...$data_troops.size"
+    },
+    {
+      "category": "troop_table",
+      "line": 86,
+      "name": "FS_BattleRegression_CoreFixtures v0.1a",
+      "role": "reference",
+      "script": 479,
+      "text": "troop = $data_troops[id]"
+    },
+    {
+      "category": "troop_table",
+      "line": 18288,
+      "name": "FS_BattleRegression_AIEdgeI v1.0",
+      "role": "reference",
+      "script": 480,
+      "text": "if $data_troops != nil"
+    },
+    {
+      "category": "troop_table",
+      "line": 18289,
+      "name": "FS_BattleRegression_AIEdgeI v1.0",
+      "role": "reference",
+      "script": 480,
+      "text": "$data_troops.each_with_index do |troop, troop_id|"
+    },
+    {
+      "category": "troop_table",
+      "line": 18301,
+      "name": "FS_BattleRegression_AIEdgeI v1.0",
+      "role": "reference",
+      "script": 480,
+      "text": "assert(\"Phase47A current Troop database Boss wiring baseline enumerated\", $data_troops != nil,"
+    },
+    {
+      "category": "troop_table",
+      "line": 18304,
+      "name": "FS_BattleRegression_AIEdgeI v1.0",
+      "role": "reference",
+      "script": 480,
+      "text": "return $data_troops != nil"
+    }
+  ],
+  "actual_troop_pages_verified": false,
+  "original_runtime_executed": false
+}
