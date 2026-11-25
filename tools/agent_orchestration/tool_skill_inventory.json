@@ -92,10 +92,13 @@
     },
     {
       "name": "Agent Sprite Forge",
-      "status": "INSTALLED_CLI_HELP_PASS_ONLY",
+      "status": "INSTALLED_OFFLINE_REAL_SOURCE_DIAGNOSTIC_PUBLIC_NATIVE_PASS",
       "upstream_commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
-      "route": "Pinned Windows install and 3 CLI help checks PASS; no model calls; offline real FS art/native/gameplay NOT_RUN; route via FS-specific skill",
-      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/actions/runs/45525982184"
+      "route": "Approved source: preserve original bytes; 1x silent collapse and 16-color drift rejected. Public 2F Godot playback PASS, real FS motion native/art/gameplay NOT_RUN.",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/actions/runs/45525982184",
+      "functional_evidence": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45528461594",
+      "source_diagnostic_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/150",
+      "public_native_evidence": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45528621975"
     }
   ],
   "priority": "Task-specific actual user input > global Drive P0 > latest live lane handoff > current FS Godot protocol > verified tool inventory > old saved state"
