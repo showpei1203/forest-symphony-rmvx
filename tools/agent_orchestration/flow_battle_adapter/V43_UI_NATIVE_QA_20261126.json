@@ -1,0 +1,29 @@
+{
+  "tested_commit": "591a146efd6a2624d8551384a905e495f70872ed",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "ci": {
+    "id": 45712185904,
+    "conclusion": "success",
+    "suites": 5,
+    "ui_marker": "FLOW_V4_UI_PASS cases=15 scope=SYNTHETIC"
+  },
+  "real": {
+    "marker": "FLOW_V4_UI_PASS cases=15 scope=REAL_V3",
+    "exit": 0,
+    "import_exit": 0,
+    "source_zip_sha256": "1e4619deeee26601e4e70aef5274e3e00cf521cbdbe5f537f3e41ad327c24bef",
+    "log_sha256": "2f676f69642d389c4993f1aa70a0a75e5444aa7b28278dc08072c16f289cf052",
+    "import_sha256": "8bf53e94a4f0d0298e868db8fbe65e751231124675ae376ae7a3123871c3187c",
+    "raw_png_warnings": 45,
+    "root_warning": 1,
+    "raw_logs_persisted": false
+  },
+  "gates": {
+    "art": "HOLD",
+    "gpu": "NOT_RUN",
+    "export": "HOLD",
+    "run_movement": "NOT_RUN",
+    "full_regression": "NOT_RUN",
+    "merge": "HOLD"
+  }
+}

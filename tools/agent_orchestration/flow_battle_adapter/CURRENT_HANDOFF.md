@@ -1,5 +1,13 @@
-# Flow V4.2 CURRENT_HANDOFF — 2026-11-26
+# Flow V4.3 CURRENT_HANDOFF — 2026-11-26
 本節取代下方舊 gate 狀態；原始 V3 不變，禁止長劍，DODGE 向後跳且朝向不變。
+
+## V4.3 — FSScreen opt-in presentation integrated; native synthetic and REAL_V3 PASS
+- Integration branch feat/fs-flow-v4-outcomes-20261126, tested commit 591a146efd6a2624d8551384a905e495f70872ed. Changes: FSFlowOutcomePresenter, FSFlowBattlePresentation, FSFlowMotionBody, FSScreen opt-in, actual UI test.
+- Source ACTOR01 unique party slot; immutable settled outcome serial gate; ATTACK/CAST on source; DAMAGE on actual recipient positive HP/shield MP; DODGE only enemy EVADE with real enemy-view anchor; MISS no reaction; no stale result polling. Fixed left-facing mirrored parent, local inverse transform to world away vector; max 24px; cancel/reset on clip end, death, menu, battle end, actor identity/slot change. No source weapon/FX addition, no battle rule changes.
+- Default art unchanged; explicit --flow-v3-preview only, exact SHA pins for five V3 manifests transitively verify all files, no synthetic fallback. Private files res://motions/<action>/ staged only in isolated project. No automatic source installation. If preview enabled, it suppresses legacy A52; no true idle/death animation, lethal battle finish cancels visual immediately, overlapping action replaces prior animation. RUN loaded but not bound to a real movement event. Only ACTOR01 render, not all actors/enemies.
+- First CI 45711900942 failed on enemy damage fixture: no-critical enemy used extra CRIT RNG, causing rejected variance. Corrected test only, commit 9c01291caf57f58245601a312014e1731c64dc3d; REAL_V3 12-case replay passed. Latest test adds actual queued ACT and pinned private loader. CI 45712185904 SUCCESS, 5 suites (15 UI check marker, outcome 11, cover 3, existing accuracy and Ivy Cover). Real private replay on exact same commit, official engine 4.7.2.stable.official.ed1daf0bf, import + test exit 0, FLOW_V4_UI_PASS cases=15 scope=REAL_V3. Source archive SHA unchanged. Real test enemy art is synthetic texture and DB source-shaped fixture; no claim of original DB parity/GPU/complete real-game visual acceptance.
+- Evidence: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45712185904 ; transport artifact 15067981774 sha256 70f4e8985a9577eec660d01f47ed74df49a262139f9125869d00dee2113dd09c (tracked source only, 1 day); real log SHA 2f676f69642d389c4993f1aa70a0a75e5444aa7b28278dc08072c16f289cf052; import SHA 8bf53e94a4f0d0298e868db8fbe65e751231124675ae376ae7a3123871c3187c. Raw logs not persisted to Drive. 45 raw PNG export warnings plus root-run warning; export still HOLD.
+- Next: establish exact source export-safe resource path with actual pack/native replay; real movement lifecycle for RUN, accepted idle/death sources and battle finishing/overlap presentation policy; GPU visual review and user ART, full Phase1 regression and independent EGM before merge. V3 pose correction still HOLD. No generation, paid tools, owner PC access, Phase1 or original art modification.
 
 ## V4.2 戰鬥事件 producer：native PASS，UI 尚未接入
 - 獨立整合分支 feat/fs-flow-v4-outcomes-20261126，基底 Phase1 bc88b10d37d4e3a9816cdfa6932e7aaefaf33666，commit b0affe9f719c53d1a3da4c818a66787af5631037；正式主線未變更。
@@ -24,7 +32,8 @@
 | Back-hop body art | HOLD，原姿勢前傾 |
 | Export | HOLD，45 raw PNG loading export warnings |
 | Actual combat outcome producer | PASS，獨立分支 4 native tests |
-| Actual combat UI hookup / gameplay | NOT_RUN |
+| ACTOR01 opt-in FSScreen / queued ACT fixture | PASS synthetic + REAL_V3 |
+| Full original game / GPU / RUN / other actors | HOLD / NOT_RUN |
 | Independent EGM review / merge | NOT_RUN / HOLD |
 
 ## V4.1 歷史施工計畫（producer 已完成，下一步見上）
