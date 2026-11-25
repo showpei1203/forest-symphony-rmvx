@@ -11,6 +11,7 @@ var busy: bool=false
 var blocked_reason: String=""
 var plans: Array[Dictionary]=[]
 var receipts: Array[Dictionary]=[]
+var inert_pages: Array[int]=[] # explicit source #21 no-condition nonempty pages
 
 static func _int(v:Variant,lo:int,hi:int)->bool:
     return FSTroopForcePages._integer(v,lo,hi)
@@ -40,6 +41,7 @@ func configure(raw:Array,verified_common_lists:Dictionary)->bool:
     if enabled or raw.is_empty() or raw.size()>32:
         return false
     var staged:Array[Dictionary]=[]
+    var inert:Array[int]=[]
     for i in range(raw.size()):
         var p:Variant=raw[i]
         if not p is Dictionary or not _int(p.get("span",null),0,0) or not (
@@ -52,10 +54,12 @@ func configure(raw:Array,verified_common_lists:Dictionary)->bool:
         var commands:Array=p["list"]
         if commands.size()==1 and _end(commands[0]):
             continue
-        # Exact once-per-battle turn zero shape only. No claim of full
-        # turn-clock parity or inactive nonempty page handling.
-        if not c["turn_valid"] or c["turn_ending"] or c["enemy_valid"] or c["actor_valid"] or c["switch_valid"] or (
-                not _int(c.get("turn_a",null),0,0)) or not _int(c.get("turn_b",null),0,0):
+        # The actual #21 conditions_met? returns false when every flag
+        # is false. For this exact reviewed 122/117 shape, retain the
+        # page index as inert rather than inventing a common event call.
+        var is_inert:bool=not c["turn_valid"] and not c["turn_ending"] and not c["enemy_valid"] and not c["actor_valid"] and not c["switch_valid"]
+        if not is_inert and (not c["turn_valid"] or c["turn_ending"] or c["enemy_valid"] or c["actor_valid"] or c["switch_valid"] or (
+                not _int(c.get("turn_a",null),0,0)) or not _int(c.get("turn_b",null),0,0))):
             return false
         if commands.size()!=3 or not _command(commands[0],122) or not _command(commands[1],117) or not _end(commands[2]):
             return false
@@ -64,6 +68,9 @@ func configure(raw:Array,verified_common_lists:Dictionary)->bool:
         if first.is_empty() or args.size()!=1 or not _int(args[0],1,999999):
             return false
         var common_id:int=int(args[0])
+        if is_inert:
+            inert.append(i)
+            continue
         var child:Variant=verified_common_lists.get(common_id,null)
         if not child is Array or child.is_empty() or child.size()>64 or not _end(child[-1]):
             return false
@@ -74,9 +81,10 @@ func configure(raw:Array,verified_common_lists:Dictionary)->bool:
                 return false
             writes.append(write)
         staged.append({"page":i,"common_id":common_id,"writes":writes})
-    if staged.is_empty():
+    if staged.is_empty() and inert.is_empty():
         return false
     plans=staged
+    inert_pages=inert
     enabled=true
     return true
 
