@@ -11,7 +11,7 @@ CASES=[
 ("VX230","exported_scripts/230__id55188000__ATB_Configurations.rb","3fe73b99012548f9f3e1d3ed3ec76a337be4713d",[(158,63)]),
 ("VX231","exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb","4065ea4be1bc6fa5c5154034c89d626bc30d29fa",[(175,50),(678,42),(1843,16),(2117,42),(2226,19)]),
 ("VX377","exported_scripts/377__id65670378__FS_ATB_DynamicResistance_v1.0.0.rb","d14c274006d00f793017e9910d1e390ec5f9aeef",[(34,93),(326,11),(664,111),(816,41)]),
-("GD_BATTLE","godot_port/scripts/FSBattle.gd","42c4851dbba75636d319ba49fbb8c60d950433ba",[(965,78),(1075,80),(1174,19)]),
+("GD_BATTLE","godot_port/scripts/FSBattle.gd","84a09e118223df4c920c40dbd46d8c3a068e27c6",[(965,84),(1081,80),(1180,19)]),
 ("GD_QUEUE","godot_port/scripts/FSActionQueue.gd","876b46507f6f9daf5d88a56c405876cd5ae6438d",[(279,70)]),
 ("GD_ATB","godot_port/scripts/FSTankentaiATBCore.gd","806bbe2aa5e5f8f3fabaa98935db7d2b833bec5a",[(128,95)]),
 ("VX406","exported_scripts/406__id23791037__FS_EnemyActionDistribution_FinalAuthority_v1.1.rb","06408e5ae0049fedc52289ff83f30ba091b0e1ef",[(165,90)]),
@@ -22,13 +22,13 @@ CASES=[
 ("GD_STATE_ATB","godot_port/scripts/FSStateATBAuthority.gd","4240460e536e1b5e74f8731c24d948fd889eaf39",[(0,52)]),
 ("VX21","exported_scripts/021__id96014404__Game_Troop.rb","d576e3f55071ff875e74a8e0db30cb6dbbcd0e03",[(152,54)]),
 ("VX28","exported_scripts/028__id89128017__Game_Interpreter.rb","d508227e2e1fff1ab42db94f888f72ae687a5100",[(1630,23)]),
-("GD_FORCE","godot_port/scripts/FSForceActionQueue.gd","55dbb4677f9463e5ce5e5b8002ac507c9ad906b6",[(0,216)]),
+("GD_FORCE","godot_port/scripts/FSForceActionQueue.gd","00479a90fa415e104a09ed76d88e0913a274624f",[(0,220)]),
 ("GD_TROOP_PAGES","godot_port/scripts/FSTroopForcePages.gd","109da5cdc73df3ad037f2d6d1cd09ef62fda9a28",[(0,125)]),
 ("VX88","exported_scripts/088__id24767163__Scene_Battle.rb","89bc1a9348f60904d1bf5c7b23d34e3dd7a364f9",[(922,32)]),
 ("VX411","exported_scripts/411__id61621387__FS_SkillCost_Authority_v2.0.0.rb","05909bf9e154019507969dfc50ff0e5fd50b75ae",[(1816,137)]),
 ("GD_SKILL_COST","godot_port/scripts/FSSkillCostRules.gd","b315b665af37435d0405deb31d1e748205b0a5fb",[(0,145)]),
 ("GD_ITEM","godot_port/scripts/FSItemRules.gd","45e33528b1abdd0a7dfb5ded61c6c9efdc646cdf",[(0,69)]),
-("GD_EVENT_BRIDGE","godot_port/scripts/FSVXBattleBridge.gd","3cf26caad7cb110eb4e3516fcfb39972a4a0765e",[(0,156)]),
+("GD_EVENT_BRIDGE","godot_port/scripts/FSVXBattleBridge.gd","90e903baf34d6b5e87428490ef6f8cd8ec9117d4",[(0,158)]),
 ]
 def sha(x): return hashlib.sha256(x).hexdigest()
 def check(ok,reason):
