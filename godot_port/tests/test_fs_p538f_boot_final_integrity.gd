@@ -24,7 +24,7 @@ func fixture()->Dictionary:
             d[name]={"party_members":[1]}
         else:
             d[name]=[null,{"id":1}]
-    d["actors"][1]={"id":1,"name":"fixture","class_id":1,
+    d["actors"][1]={"id":1,"name":"fixture","class_id":1,"initial_level":1,
         "parameters":{"xsize":6,"ysize":100,"zsize":1,
             "data_int16":params}}
     d["classes"][1]={"id":1,

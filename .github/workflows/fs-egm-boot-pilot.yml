@@ -1,0 +1,45 @@
+name: FS EGM boot parity pilot
+on:
+  pull_request:
+    branches: [feature/fs-godot-phase1]
+    paths:
+      - 'godot_port/**'
+      - '.github/workflows/fs-egm-boot-pilot.yml'
+      - '.github/workflows/fs-godot-phase1.yml'
+  push:
+    branches: [feat/fs-godot-egm-p538f-audit-20261125]
+    paths:
+      - "godot_port/**"
+      - ".github/workflows/fs-egm-boot-pilot.yml"
+permissions:
+  contents: read
+jobs:
+  synthetic-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Generate shared synthetic bundles and enforce Python acceptance contract
+        run: python3 godot_port/tools/egm_boot_parity_probe.py "$RUNNER_TEMP/egm-fixtures" --enforce
+      - name: Download official pinned Godot 4.7.2
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/godot.zip "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          unzip -q /tmp/godot.zip -d /tmp/egm-engine
+          chmod +x /tmp/egm-engine/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/egm-engine/Godot_v4.7.2-stable_linux.x86_64 --version
+      - name: Import project
+        run: /tmp/egm-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --editor --quit
+      - name: Enforce actual JSON disk-load parity
+        run: |
+          set -euo pipefail
+          timeout --signal=TERM --kill-after=5s 60s /tmp/egm-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script res://tests/test_fs_egm_boot_parity_probe.gd -- "$RUNNER_TEMP/egm-fixtures" --enforce
+      - name: Preserve earlier P538F and boot authority tests
+        run: |
+          set -euo pipefail
+          python3 godot_port/tools/verify_boot_final_bundle.py --self-test
+          for f in test_fs_p538f_boot_final_integrity.gd test_fs_boot_authority_guard.gd; do
+            timeout --signal=TERM --kill-after=5s 60s /tmp/egm-engine/Godot_v4.7.2-stable_linux.x86_64 --headless --path godot_port --script "res://tests/$f"
+          done

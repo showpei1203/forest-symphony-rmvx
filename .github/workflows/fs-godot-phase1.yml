@@ -1,6 +1,12 @@
 name: FS Godot Phase 1 (candidate smoke)
 
 on:
+  pull_request:
+    branches: [feature/fs-godot-phase1]
+    paths:
+      - 'godot_port/**'
+      - '.github/workflows/fs-egm-boot-pilot.yml'
+      - '.github/workflows/fs-godot-phase1.yml'
   push:
     branches:
       - feature/fs-godot-phase1

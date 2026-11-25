@@ -8,12 +8,23 @@ Run in an authorized private workspace, never against public GitHub assets.
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 
 NAMES = ("actors", "classes", "skills", "items", "weapons", "armors",
          "enemies", "states", "troops", "system", "animations")
 ARRAY_NAMES = tuple(n for n in NAMES if n != "system")
 
+
+def integral_number(value):
+    # JSON numeric values are integer-valued, not strings or booleans.
+    return (type(value) is int and abs(value) <= 9007199254740991 or
+            type(value) is float and math.isfinite(value) and
+            abs(value) <= 9007199254740991 and value.is_integer())
+
+def valid_ref(rows, value):
+    return (isinstance(rows, list) and integral_number(value) and
+            0 < value < len(rows) and isinstance(rows[int(value)], dict))
 
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -23,30 +34,13 @@ def validate_bundle(folder):
     folder = Path(folder)
     errors = []
     tables = {}
-    hashes = {}
-    for name in NAMES:
-        path = folder / (name + ".json")
-        if not path.is_file():
-            errors.append("missing table: " + name)
-            continue
-        hashes[name] = sha256(path)
-        try:
-            tables[name] = json.loads(path.read_text(encoding="utf-8"))
-        except (ValueError, UnicodeError) as exc:
-            errors.append("invalid JSON " + name + ": " + str(exc))
     manifest_path = folder / "fs_boot_final_authority.json"
     witness_path = folder / "fs_boot_final_runtime_witness.json"
-    for path in (manifest_path, witness_path):
-        if not path.is_file():
-            errors.append("missing provenance file: " + path.name)
-    if errors:
-        return errors
     try:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        witness = json.loads(witness_path.read_text(encoding="utf-8"))
-    except (ValueError, UnicodeError) as exc:
+        manifest = json.loads(manifest_path.read_bytes().decode("utf-8"))
+    except (OSError, ValueError, UnicodeError) as exc:
         return ["invalid provenance JSON: " + str(exc)]
-    if not isinstance(manifest, dict) or not isinstance(witness, dict):
+    if not isinstance(manifest, dict):
         return ["provenance must be JSON objects"]
     for key, expected in (
         ("schema", "fs-boot-final-authority-v1"),
@@ -55,17 +49,34 @@ def validate_bundle(folder):
         ("master_setup_pages", 22),
         ("vx_runtime_trace_verified", True),
     ):
-        if manifest.get(key) != expected:
+        if (manifest.get(key) != expected or
+                (type(expected) is bool and type(manifest.get(key)) is not bool) or
+                (type(expected) is int and not integral_number(manifest.get(key)))):
             errors.append("manifest mismatch: " + key)
-    if manifest.get("vx_runtime_witness_sha256") != sha256(witness_path):
-        errors.append("witness bytes SHA256 mismatch")
     digest_map = manifest.get("database_sha256")
     if not isinstance(digest_map, dict):
-        digest_map = {}
-        errors.append("manifest database_sha256 must be object")
+        return errors + ["manifest database_sha256 must be object"]
+    # Hash and decode the same immutable bytes, never reopen a verified file.
+    try:
+        witness_bytes = witness_path.read_bytes()
+        if manifest.get("vx_runtime_witness_sha256") != hashlib.sha256(witness_bytes).hexdigest():
+            return errors + ["witness bytes SHA256 mismatch"]
+        witness = json.loads(witness_bytes.decode("utf-8"))
+    except (OSError, ValueError, UnicodeError) as exc:
+        return errors + ["invalid provenance JSON: " + str(exc)]
+    if not isinstance(witness, dict):
+        return errors + ["provenance must be JSON objects"]
     for name in NAMES:
-        if digest_map.get(name) != hashes[name]:
-            errors.append("table bytes SHA256 mismatch: " + name)
+        try:
+            raw = (folder / (name + ".json")).read_bytes()
+            if digest_map.get(name) != hashlib.sha256(raw).hexdigest():
+                errors.append("table bytes SHA256 mismatch: " + name)
+                continue
+            tables[name] = json.loads(raw.decode("utf-8"))
+        except (OSError, ValueError, UnicodeError) as exc:
+            errors.append("invalid JSON " + name + ": " + str(exc))
+    if errors:
+        return errors
     if witness.get("stage") != "post_FS_DB_AUTOSET.apply_all":
         errors.append("witness not post-Apply")
     if witness.get("engine") != "RPG Maker VX RGSS2":
@@ -82,11 +93,11 @@ def validate_bundle(folder):
         if not rows or rows[0] is not None:
             errors.append("VX source array index zero not null: " + name)
         actual = sum(row is not None for row in rows)
-        if counts.get(name) != actual:
+        if not integral_number(counts.get(name)) or counts.get(name) != actual or actual <= 0:
             errors.append("post-Apply record count mismatch: " + name)
         for index, row in enumerate(rows):
             if row is not None and (not isinstance(row, dict) or
-                                    row.get("id") != index):
+                                    not integral_number(row.get("id")) or row.get("id") != index):
                 # Animations and other RPG::BaseItem records carry id too.
                 errors.append("record index/id mismatch: %s[%d]" % (name, index))
                 break
@@ -94,26 +105,24 @@ def validate_bundle(folder):
     if not isinstance(system, dict):
         errors.append("system must be object")
     else:
-        if system.get("party_members") != witness.get("party_actor_ids"):
-            errors.append("initial party differs from runtime witness")
-        for actor_id in system.get("party_members", []):
+        party = system.get("party_members")
+        roster = witness.get("party_actor_ids")
+        if (not isinstance(party, list) or not party or
+                not isinstance(roster, list) or not roster or
+                not all(integral_number(v) for v in roster)):
+            errors.append("initial party and witness roster must be nonempty numeric arrays")
+        else:
+            if party != roster:
+                errors.append("initial party differs from runtime witness")
             actors = tables.get("actors", [])
-            if not isinstance(actor_id, int) or not isinstance(actors, list) or (
-                    actor_id <= 0 or actor_id >= len(actors) or
-                    actors[actor_id] is None):
-                errors.append("party actor reference missing")
-                break
-    # Source System party must resolve to unique actually loaded actors.
-    # Matching SHA and witness counts alone did not check duplicate IDs.
-    if isinstance(system, dict):
-        seen_party = set()
-        party = system.get("party_members", [])
-        if isinstance(party, list):
+            seen_party = set()
             for actor_id in party:
-                if isinstance(actor_id, int) and actor_id in seen_party:
+                if not valid_ref(actors, actor_id):
+                    errors.append("party actor reference missing")
+                elif int(actor_id) in seen_party:
                     errors.append("duplicate initial party actor: " + str(actor_id))
-                elif isinstance(actor_id, int):
-                    seen_party.add(actor_id)
+                else:
+                    seen_party.add(int(actor_id))
     actors = tables.get("actors", [])
     classes = tables.get("classes", [])
     if isinstance(actors, list) and isinstance(classes, list):
@@ -121,7 +130,7 @@ def validate_bundle(folder):
             if not isinstance(actor, dict):
                 continue
             cid = actor.get("class_id")
-            if not isinstance(cid, int) or cid <= 0 or cid >= len(classes) or classes[cid] is None:
+            if not valid_ref(classes, cid):
                 errors.append("actor %s has missing class" % actor.get("id"))
             table = actor.get("parameters")
             if not isinstance(table, dict):
@@ -130,14 +139,18 @@ def validate_bundle(folder):
             xsize, ysize, zsize = (table.get("xsize"), table.get("ysize"),
                                      table.get("zsize", 1))
             values = table.get("data_int16")
-            if (type(xsize) is not int or xsize != 6 or
-                    type(ysize) is not int or ysize < 1 or
-                    type(zsize) is not int or zsize < 1 or
+            if (not integral_number(xsize) or xsize != 6 or
+                    not integral_number(ysize) or ysize < 1 or
+                    not integral_number(zsize) or zsize != 1 or
                     not isinstance(values, list) or
                     len(values) != xsize * ysize * zsize or
-                    any(type(value) is not int or value < -32768 or value > 32767
+                    any(not integral_number(value) or value < -32768 or value > 32767
                         for value in values)):
                 errors.append("actor %s has invalid parameter Table" % actor.get("id"))
+                continue
+            level = actor.get("initial_level")
+            if not integral_number(level) or not 1 <= level < ysize:
+                errors.append("actor %s has invalid initial_level" % actor.get("id"))
     # The post-Apply class learnings must point to live Skills; a fabricated
     # witness with correct counts cannot authorize an absent skill.
     skills = tables.get("skills", [])
@@ -145,15 +158,13 @@ def validate_bundle(folder):
         for klass in classes:
             if not isinstance(klass, dict):
                 continue
-            learnings = klass.get("learnings", [])
+            learnings = klass.get("learnings")
             if not isinstance(learnings, list):
                 errors.append("class learnings not array: " + str(klass.get("id")))
                 continue
             for learning in learnings:
                 skill_id = learning.get("skill_id") if isinstance(learning, dict) else None
-                if (type(skill_id) is not int or skill_id <= 0 or
-                        skill_id >= len(skills) or
-                        not isinstance(skills[skill_id], dict)):
+                if not valid_ref(skills, skill_id):
                     errors.append("class %s learns missing skill %s" %
                                   (klass.get("id"), skill_id))
                     break
@@ -163,10 +174,13 @@ def validate_bundle(folder):
         for troop in troops:
             if not isinstance(troop, dict):
                 continue
-            for member in troop.get("members", []):
+            members = troop.get("members")
+            if not isinstance(members, list):
+                errors.append("troop members not array: " + str(troop.get("id")))
+                continue
+            for member in members:
                 enemy_id = member.get("enemy_id") if isinstance(member, dict) else None
-                if not isinstance(enemy_id, int) or enemy_id <= 0 or (
-                        enemy_id >= len(enemies) or enemies[enemy_id] is None):
+                if not valid_ref(enemies, enemy_id):
                     errors.append("troop %s references missing enemy" % troop.get("id"))
                     break
     return errors
@@ -180,9 +194,11 @@ def _self_test():
         for name in NAMES:
             data[name] = {"party_members": [1]} if name == "system" else [None, {"id": 1}]
         data["actors"][1].update({
-            "class_id": 1,
-            "parameters": {"xsize": 6, "ysize": 1, "zsize": 1, "data_int16": [1]*6}
+            "class_id": 1, "initial_level": 1,
+            "parameters": {"xsize": 6, "ysize": 2, "zsize": 1, "data_int16": [1]*12}
         })
+        data["classes"][1]["learnings"] = []
+        data["troops"][1]["members"] = []
         for name, value in data.items():
             (root / (name + ".json")).write_text(
                 json.dumps(value), encoding="utf-8")
