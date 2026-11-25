@@ -62,6 +62,14 @@ make_case(cases,'normal_enemy',500,-350,0,10,0,0,false,false,false)
 make_case(cases,'actor',500,-350,0,10,0,0,false,true,true)
 make_case(cases,'state_normal',50,-140,2,10,0,4)
 make_case(cases,'state_negative',50,-140,2,10,0,4,true)
+make_case(cases,'zero_negative_plain',-90,0,0,10,0,0,false,false,false)
+make_case(cases,'zero_negative_state',-90,0,2,10,0,4,true)
+make_case(cases,'positive_negative_state',-90,40,2,10,0,4,true)
+make_case(cases,'positive_negative_plain',-90,40,0,10,0,0,false,false,false)
+make_case(cases,'floor_blocked_negative',-90,-200,2)
+make_case(cases,'actor_state_negative',50,-140,0,10,0,4,true,true)
+make_case(cases,'state_upper_cap',990,80,2,10,0,4,true)
+
 
 # Exact event queue drain method with minimal environment. No game execution.
 class Scene_Battle
