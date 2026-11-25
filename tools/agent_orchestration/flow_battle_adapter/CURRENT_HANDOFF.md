@@ -1,3 +1,28 @@
+# Flow V4.1 CURRENT_HANDOFF — 2026-11-26
+本節取代下方舊 gate 狀態；原始 V3 不變，禁止長劍，DODGE 向後跳且朝向不變。
+
+## 最新實際增量
+- V4 原 CI 45709676853 取消：Godot 原生 Animation 類別名稱衝突，編譯錯誤後測試卡住。修正 AnimationSprite alias、45 秒 timeout、CI 錯誤掃描；commit 955a42ca48623d30e7bb993d304aacc8a5e16559，native synthetic 45710662960 SUCCESS。
+- 6f3d39c143f78ac4e2ee7d7f6e337b1201a3f118 再加強 shell fail-closed 判定。最新 synthetic 45710784540 SUCCESS，public-only engine/source transport 45710785860 SUCCESS。短期 artifact 僅原本公開 source 與官方引擎，無私有圖；1 天保留。環境不能直接連 github.com，故改用 connector transport，未使用使用者 PC。
+- 私有 V3 ZIP 重新由 Drive 取得，SHA/CRC/112 檔、5 atlas/source/frame SHA、40/40 RGBA parity 通過。隔離 cloud native Godot 4.7.2，public transport SHA256 符合，55 私有 motion files 暫存於隔離環境。editor import exit 0、real replay exit 0，實際 marker: FLOW_BATTLE_ADAPTER_PASS scope=REAL_V3 actions=5 directions=4 host_unchanged=true。
+- 公開倉庫只保存無圖測試 receipt 與 log SHA，raw logs 尚未上傳。未修改 Phase1、E:、原始 V3；未新增生成、未付費。
+
+## Gate（最新）
+| Gate | Status |
+|---|---|
+| Source/structure/40 RGBA frames | PASS |
+| V4 native synthetic | PASS |
+| V4 native private real replay (headless) | PASS |
+| GPU / visual playback capture | NOT_RUN |
+| Back-hop body art | HOLD，原姿勢前傾 |
+| Export | HOLD，45 raw PNG loading export warnings |
+| Actual combat hookup / gameplay | NOT_RUN |
+| Independent EGM review / merge | NOT_RUN / HOLD |
+
+## 下一施工單位
+以 Phase1 bc88b10d37d4e3a9816cdfa6932e7aaefaf33666 為基底隔離新增 authoritative target outcome producer：只在攻擊/技能已結算後發出一次，使用實際承傷目標（含 Ivy Cover 轉移）而非原指定目標；miss 與 evade 分開、拒絕動作不發出；序號及 battle membership 防重複；不改 damage/MP/ATB/ACT。再做 UI subscriber、返回站位與死亡/戰鬥結束、多目標和完整 source regression。不可用 fs_last_action_result 輪詢。匯出資源載入需另行解決，原美術 HOLD 不替換主線素材。
+
+## 舊交接（歷史）
 # Forest Symphony | Flow V4 combat presentation Handoff
 日期：2026-11-26 Asia/Taipei
 工作線：T-A / Flow ACTOR01 Body-only；獨立整合候選，不是 Phase1 主線定版。

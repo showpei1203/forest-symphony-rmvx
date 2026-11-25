@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-26 Asia/Taipei",
+  "tested_commit": "6f3d39c143f78ac4e2ee7d7f6e337b1201a3f118",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "synthetic": {
+    "run": 45710784540,
+    "conclusion": "success"
+  },
+  "transport": {
+    "run": 45710785860,
+    "conclusion": "success",
+    "artifact_id": 15067271988,
+    "sha256": "2902912020394b8f5ef5a7949712586646d586dd5ada350a459fd9bfc94af214",
+    "scope": "public engine/source only",
+    "retention_days": 1
+  },
+  "real": {
+    "scope": "isolated headless cloud, private V3",
+    "source_sha256": "1e4619deeee26601e4e70aef5274e3e00cf521cbdbe5f537f3e41ad327c24bef",
+    "archive_entries": 112,
+    "atlas_rgba_parity": "40/40",
+    "editor_exit": 0,
+    "replay_exit": 0,
+    "marker": "FLOW_BATTLE_ADAPTER_PASS scope=REAL_V3 actions=5 directions=4 host_unchanged=true",
+    "editor_log_sha256": "e18207d1fe3a5e934d7473345081bffff9c269f7b1ea8c800bcd2161b51d6230",
+    "replay_log_sha256": "08082ace032bf4f45c3e207c4066ab4066939404a9c2e665fc0eb2e085bb4c5f",
+    "raw_png_export_warnings": 45,
+    "raw_logs_persisted": false
+  },
+  "gates": {
+    "native_synthetic": "PASS",
+    "native_real": "PASS",
+    "gpu": "NOT_RUN",
+    "art": "HOLD",
+    "export": "HOLD",
+    "gameplay": "NOT_RUN",
+    "independent_review": "NOT_RUN"
+  }
+}
