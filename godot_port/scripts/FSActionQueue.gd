@@ -24,7 +24,7 @@ func has_pending(index: int) -> bool:
 
 func request(battle, index: int, kind: String, target_index: int = -1,
         object_id: int = 0) -> bool:
-    if not battle.active or not battle.source_atb_initialized:
+    if not battle.active or not battle.source_atb_initialized or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done):
         return false
     if index < 0 or index >= battle.party.size():
         return false
@@ -171,7 +171,7 @@ func _enemy_key(index: int) -> String:
     return "enemy:%d" % index
 
 func schedule_enemy(battle) -> bool:
-    if not battle.active or not battle.source_atb_initialized or battle.source_atb_wait:
+    if not battle.active or not battle.source_atb_initialized or battle.source_atb_wait or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done):
         return false
     for index in range(battle.enemies.size()):
         var key: String = _enemy_key(index)
