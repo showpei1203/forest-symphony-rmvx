@@ -153,12 +153,15 @@ func _run() -> void:
     f.source_atb_wait=true
     f.advance_atb(1.0/60.0)
     f.party[0]["mp"]=0
+    _check(f.queue_source_force_action(0,0,"guard",0),"unrelated action queued behind failing page")
     f.source_atb_wait=false
     f.advance_atb(1.0/60.0)
     _check(f.troop_force_pages.fired.is_empty() and not f.troop_force_pages.blocked_reason.is_empty() and
         int(f.enemies[0]["hp"])==40 and int(f.party[0]["mp"])==0,"late MP failure explicit hold")
     _check(f.force_actions.completed.size()==1 and not bool(f.force_actions.completed[0]["success"]) and
         f.force_actions.completed[0]["page_ticket"]==0,"failure retains correct ticket")
+    _check(not bool(f.enemies[0]["guarding"]) and f.force_actions.ready.size()==1,
+        "failed page stops before unrelated action")
     f.party[0]["source_atb_gain_per_frame"]=10
     var stopped_count:int=int(f.party[0]["source_atb_count"])
     f.advance_atb(1.0)
