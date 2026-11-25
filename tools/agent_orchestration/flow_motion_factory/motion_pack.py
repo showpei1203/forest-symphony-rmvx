@@ -8,11 +8,20 @@ MODES={'attack':False,'run':True,'damage':False,'dodge':False,'cast':False}
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def check(ok, code):
     if not ok: raise ValueError(code)
-def validate(action, source, frames, durations, expected_source=None, expected_frames=None, airborne=()):
+def playback(action, n, durations, order=None):
+    if order is None:
+        check(4<=n<=16, 'COUNT')
+        return list(range(n))
+    check(action=='run' and n==3 and type(order) is list and all(type(i) is int for i in order) and order==[0,1,0,2], 'PLAYBACK_ORDER')
+    check(200<=sum(durations[i] for i in order)<=4000,'PLAYBACK_TIMING')
+    return order
+
+def validate(action, source, frames, durations, expected_source=None, expected_frames=None, airborne=(), playback_order=None):
     check(action in MODES,'ACTION')
     n=len(frames)
-    check(4<=n<=16 and len(durations)==n,'COUNT')
+    check(len(durations)==n,'COUNT')
     check(all(type(x) is int and 20<=x<=500 for x in durations) and 200<=sum(durations)<=4000,'TIMING')
+    playback(action,n,durations,playback_order)
     check(source.is_file() and 0<source.stat().st_size<=25_000_000,'SOURCE')
     if expected_source is not None: check(sha(source)==expected_source,'SOURCE_HASH')
     if expected_frames is not None: check(len(expected_frames)==n,'FRAME_HASH_COUNT')
@@ -34,10 +43,10 @@ def validate(action, source, frames, durations, expected_source=None, expected_f
             records.append({'index':i,'sha256':h,'bbox':list(b),'duration_ms':durations[i],'airborne':i in airborne})
     return atlas,records
 
-def build(action,source,frames,durations,out,expected_source=None,expected_frames=None,airborne=(),source_class="OWNER_SUPPLIED_UNAUTHENTICATED"):
+def build(action,source,frames,durations,out,expected_source=None,expected_frames=None,airborne=(),source_class="OWNER_SUPPLIED_UNAUTHENTICATED",playback_order=None):
     check(source_class in ("OWNER_SUPPLIED_UNAUTHENTICATED","SYNTHETIC_TEST_ONLY"),"SOURCE_CLASS")
     check(not out.exists(),'OUTPUT_EXISTS')
-    atlas,records=validate(action,source,frames,durations,expected_source,expected_frames,airborne)
+    atlas,records=validate(action,source,frames,durations,expected_source,expected_frames,airborne,playback_order)
     out.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(dir=out.parent) as tmp:
         root=Path(tmp)/'bundle';root.mkdir()
@@ -49,10 +58,11 @@ def build(action,source,frames,durations,out,expected_source=None,expected_frame
             with Image.open(p) as im: check(atlas.crop((i%4*64,i//4*64,i%4*64+64,i//4*64+64)).tobytes()==im.tobytes(),'ATLAS_PARITY')
         check(sha(root/'source.bin')==sha(source),'STAGED_SOURCE')
         manifest={'schema':1,'action':action,'body_only':True,'source_class':source_class,'source_sha256':sha(source),'atlas_sha256':sha(root/'body.png'),'frame_count':len(frames),'cell':64,'columns':4,'atlas_size':list(atlas.size),'anchor':[32,50],'loop':MODES[action],'durations_ms':durations,'airborne_frames':list(airborne),'frames':records,'events':[],'art':'HOLD','gameplay':'NOT_RUN'}
+        if playback_order is not None: manifest['playback_order']=playback_order
         (root/'motion.json').write_text(json.dumps(manifest,indent=2)+'\n')
         root.rename(out)
     return manifest
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--action',required=True);p.add_argument('--source',type=Path,required=True);p.add_argument('--frames',type=Path,nargs='+',required=True);p.add_argument('--durations',type=int,nargs='+',required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--pins',type=Path,required=True);p.add_argument('--airborne',type=int,nargs='*',default=[]);a=p.parse_args();pins=json.loads(a.pins.read_text());print(json.dumps(build(a.action,a.source,a.frames,a.durations,a.out,pins['source_sha256'],pins['frame_sha256'],a.airborne),indent=2))
+    p=argparse.ArgumentParser();p.add_argument('--action',required=True);p.add_argument('--source',type=Path,required=True);p.add_argument('--frames',type=Path,nargs='+',required=True);p.add_argument('--durations',type=int,nargs='+',required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--pins',type=Path,required=True);p.add_argument('--airborne',type=int,nargs='*',default=[]);p.add_argument('--playback-order',type=int,nargs='+',default=None);a=p.parse_args();pins=json.loads(a.pins.read_text());print(json.dumps(build(a.action,a.source,a.frames,a.durations,a.out,pins['source_sha256'],pins['frame_sha256'],a.airborne,playback_order=a.playback_order),indent=2))
 if __name__=='__main__': main()

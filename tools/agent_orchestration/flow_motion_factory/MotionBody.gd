@@ -13,11 +13,21 @@ func _ready() -> void:
     offset = Vector2(-32,-50)
     animation_finished.connect(_finished)
 
-func register_motion(action: String, atlas: Image, ms: Array, airborne: Array = []) -> bool:
+func _valid_order(action: String, n: int, order: Array) -> bool:
+    if order.is_empty():
+        return n >= 4 and n <= 16
+    if action != "run" or n != 3 or order.size() != 4:
+        return false
+    for i in order:
+        if (typeof(i) != TYPE_INT and typeof(i) != TYPE_FLOAT) or float(i) != floorf(float(i)):
+            return false
+    return order == [0,1,0,2] or order == [0.0,1.0,0.0,2.0]
+
+func register_motion(action: String, atlas: Image, ms: Array, airborne: Array = [], order: Array = []) -> bool:
     if not MODES.has(action) or atlas == null or sprite_frames == null or sprite_frames.has_animation(action):
         return false
     var n := ms.size()
-    if n < 4 or n > 16 or atlas.get_size() != Vector2i(256,64 * ceili(n/4.0)):
+    if not _valid_order(action,n,order) or atlas.get_size() != Vector2i(256,64 * ceili(n/4.0)):
         return false
     var total := 0.0
     for d in ms:
@@ -26,6 +36,11 @@ func register_motion(action: String, atlas: Image, ms: Array, airborne: Array = 
         total += d
     if total < 200 or total > 4000 or (not airborne.is_empty() and action not in ["run","dodge"]):
         return false
+    if not order.is_empty():
+        var cycle_total := 0.0
+        for index in order:
+            cycle_total += float(ms[int(index)])
+        if cycle_total < 200 or cycle_total > 4000: return false
     var air: Array[int] = []
     for i in airborne:
         if (typeof(i) != TYPE_INT and typeof(i) != TYPE_FLOAT) or float(i) != floorf(float(i)) or i < 0 or i >= n or air.has(int(i)):
@@ -55,7 +70,9 @@ func register_motion(action: String, atlas: Image, ms: Array, airborne: Array = 
     sprite_frames.add_animation(action)
     sprite_frames.set_animation_speed(action,1.0)
     sprite_frames.set_animation_loop(action,MODES[action])
-    for i in range(n):
+    var sequence: Array = range(n) if order.is_empty() else order
+    for index in sequence:
+        var i := int(index)
         var slice := AtlasTexture.new()
         slice.atlas = tex
         slice.region = Rect2(i%4*64,floori(i/4.0)*64,64,64)
@@ -74,7 +91,8 @@ func load_motion(action: String, allow_fixture: bool = false) -> bool:
     if not m.get("durations_ms") is Array or not m.get("frames") is Array or not m.get("airborne_frames") is Array:
         return false
     var n: int = m.durations_ms.size()
-    if n < 4 or n > 16 or m.get("frame_count") != n or m.frames.size() != n or m.get("cell") != 64 or m.get("columns") != 4:
+    var order = m.get("playback_order", [])
+    if not order is Array or (m.has("playback_order") and order.is_empty()) or not _valid_order(action,n,order) or m.get("frame_count") != n or m.frames.size() != n or m.get("cell") != 64 or m.get("columns") != 4:
         return false
     var ap := base+"body.png"
     var sp := base+"source.bin"
@@ -92,7 +110,7 @@ func load_motion(action: String, allow_fixture: bool = false) -> bool:
         if cell == null or cell.get_size() != Vector2i(64,64): return false
         cell.convert(Image.FORMAT_RGBA8)
         if atlas.get_region(Rect2i(i%4*64,floori(i/4.0)*64,64,64)).get_data() != cell.get_data(): return false
-    return register_motion(action,atlas,m.durations_ms,m.airborne_frames)
+    return register_motion(action,atlas,m.durations_ms,m.airborne_frames,order)
 
 func start_motion(action: String) -> bool:
     if sprite_frames == null or not MODES.has(action) or not sprite_frames.has_animation(action): return false

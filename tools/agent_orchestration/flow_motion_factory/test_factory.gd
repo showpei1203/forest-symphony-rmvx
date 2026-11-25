@@ -46,7 +46,28 @@ func run() -> void:
     fractional.set_pixel(12,24,Color(1,1,1,0.5))
     if actor.register_motion("run",fractional,[100,100,100,100]):
         fail("ALPHA"); return
-    for a in ["run","damage","dodge","cast"]:
+    if actor.register_motion("run",fixture(3),[130,130,130]) or actor.register_motion("run",fixture(3),[130,130,130],[],[0,1,2,0]) or actor.register_motion("damage",fixture(3),[130,130,130],[],[0,1,0,2]):
+        fail("LEGACY_ORDER_NEGATIVE"); return
+    var disk_run := FileAccess.file_exists("res://motions/run/motion.json")
+    if disk_run:
+        if fixture_mode and actor.load_motion("run"):
+            fail("RUN_SYNTHETIC_PROVENANCE"); return
+        if not actor.load_motion("run",fixture_mode):
+            fail("RUN_DISK_LOAD"); return
+    elif not actor.register_motion("run",fixture(3),[130,130,130],[],[0,1,0,2]):
+        fail("LEGACY_RUN_REGISTER"); return
+    if actor.sprite_frames.get_frame_count("run") != 4 or not actor.sprite_frames.get_animation_loop("run"):
+        fail("RUN_PLAYBACK_COUNT"); return
+    var regions: Array = []
+    for i in range(4):
+        var tex := actor.sprite_frames.get_frame_texture("run",i) as AtlasTexture
+        regions.append(tex.region.position.x)
+        if absf(actor.sprite_frames.get_frame_duration("run",i)-0.13) > 0.00001:
+            fail("RUN_TIMING"); return
+    if regions != [0.0,64.0,0.0,128.0]:
+        fail("RUN_PLAYBACK_ORDER"); return
+    print("FLOW_RUN_EXPLICIT_ORDER_PASS unique=3 playback=4 scope="+("SYNTHETIC_DISK" if fixture_mode else ("PRIVATE_CANDIDATE" if disk_run else "SYNTHETIC_MEMORY")))
+    for a in ["damage","dodge","cast"]:
         if not actor.register_motion(a,fixture(6),[100,100,100,100,100,100]):
             fail("REGISTER "+a); return
     if actor.register_motion("attack",fixture(4),[100,100,100,100]) or actor.offset != Vector2(-32,-50):
