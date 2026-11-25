@@ -1,7 +1,7 @@
 name: Craft FS public source evidence pilot
 on:
-  push:
-    branches: [feat/fs-craft-source-pilot-20261126]
+  pull_request:
+    branches: [feature/fs-godot-phase1]
     paths:
       - 'godot_port/tools/craft_source_pilot.py'
       - '.github/workflows/craft-source-pilot.yml'
@@ -10,7 +10,7 @@ permissions:
   contents: read
 jobs:
   craft-public-source:
-    if: github.ref == 'refs/heads/feat/fs-craft-source-pilot-20261126'
+    if: github.event_name == 'pull_request' && github.head_ref == 'feat/fs-craft-source-pilot-20261126' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: windows-latest
     timeout-minutes: 10
     steps:
@@ -18,6 +18,7 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 1
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Run exact signed package and six pinned public source inputs
         shell: pwsh
         run: python -I -B godot_port/tools/craft_source_pilot.py
