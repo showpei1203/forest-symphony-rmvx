@@ -1,0 +1,736 @@
+{
+  "schema": 1,
+  "status": "PASS_SCOPED_STATIC_TEXT",
+  "engine": "Craft Anything v0.6.1",
+  "commit": "ba47873928bc732796ab5c5859139ec490be67f3",
+  "run_id": 45709309604,
+  "job_id": 139539309065,
+  "source_files": 30,
+  "source_pages": 49,
+  "source_lines": 3650,
+  "original_runtime_executed": false,
+  "godot_executed": false,
+  "records": [
+    {
+      "coverage": {
+        "examined": 63,
+        "next_offset": 221,
+        "status": "partial",
+        "total": 586
+      },
+      "id": "VX230",
+      "lines": 63,
+      "offset": 158,
+      "response_sha256": "9463e090947b57633bf57638250af02e22f50b78b0805df67fb4aabf8fc5f885",
+      "source_blob": "3fe73b99012548f9f3e1d3ed3ec76a337be4713d",
+      "source_sha256": "c3c77287b8973bf99ff31a8fe1423b60eb11a67dbe5521583adc844a3c2651ec",
+      "text_sha256": "e222b92584aef3ddf177918e84e53ca752c734895d56f94ca8033ab36d31a4a3"
+    },
+    {
+      "coverage": {
+        "examined": 50,
+        "next_offset": 225,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 50,
+      "offset": 175,
+      "response_sha256": "8e8689e412672f4fbd4311e315e8cbe3006503785cab9065661b931b6b169520",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "f8d754041b77fa471ef6ee70347a675988857612e15629ff297d3788921136b9"
+    },
+    {
+      "coverage": {
+        "examined": 44,
+        "next_offset": 602,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 44,
+      "offset": 558,
+      "response_sha256": "d83cde7d3c7c92c69b7182533c76f3ba5eac4ac1b8d8d2a03117a7d1e4b66caf",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "292861dcbfd5da2f83463469ccbe8e437fe9d2fe62e09fa32b77977e01684bb9"
+    },
+    {
+      "coverage": {
+        "examined": 42,
+        "next_offset": 720,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 42,
+      "offset": 678,
+      "response_sha256": "6885808bc4b2e31b7e2daa6196570b93753887938f2d729dc5c28985d515cd80",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "e16cd33f6a14e2d2795f6d4f005d2bb15f6cd1c2a84fd7b3f9ffae9bf963ed4f"
+    },
+    {
+      "coverage": {
+        "examined": 16,
+        "next_offset": 1859,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 16,
+      "offset": 1843,
+      "response_sha256": "e11bc731469f13e8dca922a28168a2251067d01a8df46704f33320168be696e5",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "bd78dcef9034fbe8e09597de5a1b678558b734a520cfa769e9efe58018ef0370"
+    },
+    {
+      "coverage": {
+        "examined": 42,
+        "next_offset": 2159,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 42,
+      "offset": 2117,
+      "response_sha256": "8d54fa5ae629035af7a662945967965f6ac6c5e6cd18c7ae8853bad2fd8af7c9",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "cfb459e6b9eb1b348a405b79c219d2fedfd045f9c040ff54a3cea532b9f97acf"
+    },
+    {
+      "coverage": {
+        "examined": 19,
+        "next_offset": 2245,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 19,
+      "offset": 2226,
+      "response_sha256": "7718ddb128d6a6eb9b6e75d6efe34429fea1a51a5d2a8ffd9125902c8f49ca76",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "3eb241ba71acaf960cdc3c358eacc8a3d2b816401ef92a353167e7100e40054c"
+    },
+    {
+      "coverage": {
+        "examined": 93,
+        "next_offset": 127,
+        "status": "partial",
+        "total": 1192
+      },
+      "id": "VX377",
+      "lines": 93,
+      "offset": 34,
+      "response_sha256": "43c7572ba46bba7e8e6eee05d2c29440d7682db2c51b6285fefbb9ccfad4333d",
+      "source_blob": "d14c274006d00f793017e9910d1e390ec5f9aeef",
+      "source_sha256": "562e3aa96b8c6791ebabd3ea8851bd3bdbb54d659071e4033f18afe1be8da520",
+      "text_sha256": "d0bcddc746b015226464a38a25db50c461a79225784e2a9895e05d92f5a7af5d"
+    },
+    {
+      "coverage": {
+        "examined": 11,
+        "next_offset": 337,
+        "status": "partial",
+        "total": 1192
+      },
+      "id": "VX377",
+      "lines": 11,
+      "offset": 326,
+      "response_sha256": "2b3d7a802cfdbd3b740169848514f64ec4582568d781a10989b0fa620c9ba04c",
+      "source_blob": "d14c274006d00f793017e9910d1e390ec5f9aeef",
+      "source_sha256": "562e3aa96b8c6791ebabd3ea8851bd3bdbb54d659071e4033f18afe1be8da520",
+      "text_sha256": "962ce43a4151326bdca6a859c2f676249bdce4ed50e12b907ce53402a9cbaf70"
+    },
+    {
+      "coverage": {
+        "examined": 111,
+        "next_offset": 775,
+        "status": "partial",
+        "total": 1192
+      },
+      "id": "VX377",
+      "lines": 111,
+      "offset": 664,
+      "response_sha256": "3bae480029347d521965a15f5b2a64aa8ae216833a85992df8155bf84eff9948",
+      "source_blob": "d14c274006d00f793017e9910d1e390ec5f9aeef",
+      "source_sha256": "562e3aa96b8c6791ebabd3ea8851bd3bdbb54d659071e4033f18afe1be8da520",
+      "text_sha256": "c7b9546145c1a2a540b2fd1b411ce84264a6de37be0154666e43137f111fbc3f"
+    },
+    {
+      "coverage": {
+        "examined": 41,
+        "next_offset": 857,
+        "status": "partial",
+        "total": 1192
+      },
+      "id": "VX377",
+      "lines": 41,
+      "offset": 816,
+      "response_sha256": "7e64845cdcb9c1b314ce986b1953585e7b3a4df6e9b781777ceede6254500ba7",
+      "source_blob": "d14c274006d00f793017e9910d1e390ec5f9aeef",
+      "source_sha256": "562e3aa96b8c6791ebabd3ea8851bd3bdbb54d659071e4033f18afe1be8da520",
+      "text_sha256": "a7647e6ed575f85b691c3c87fd499166c116dea80e7a379d4c82c67bcfe50bce"
+    },
+    {
+      "coverage": {
+        "examined": 110,
+        "next_offset": 1083,
+        "status": "partial",
+        "total": 1250
+      },
+      "id": "GD_BATTLE",
+      "lines": 110,
+      "offset": 973,
+      "response_sha256": "c18416b1bd682f52ae3c037a543fd4c7c77dd9f4efde278314d654f76f5e6680",
+      "source_blob": "cc99ca341ddd756a9560348167f3e1bb2418bdd5",
+      "source_sha256": "f1801b418f740fe68357a6e8e86e978d0f08c9be19de1e1fb91b1fa52b658b53",
+      "text_sha256": "0d6395988c2876c604bf0652851cc56a4f499b2e28f5a3d3c3411588cce8bb1a"
+    },
+    {
+      "coverage": {
+        "examined": 80,
+        "next_offset": 1212,
+        "status": "partial",
+        "total": 1250
+      },
+      "id": "GD_BATTLE",
+      "lines": 80,
+      "offset": 1132,
+      "response_sha256": "11e799e9b2f208f01f22c882d15c0db0af35c14c926000e4ba8f034614ef25e6",
+      "source_blob": "cc99ca341ddd756a9560348167f3e1bb2418bdd5",
+      "source_sha256": "f1801b418f740fe68357a6e8e86e978d0f08c9be19de1e1fb91b1fa52b658b53",
+      "text_sha256": "39ccd0a63623a3b99d4d137ee9fed613e5604cebcba815d1835d25a288b81a96"
+    },
+    {
+      "coverage": {
+        "examined": 19,
+        "status": "complete",
+        "total": 1250
+      },
+      "id": "GD_BATTLE",
+      "lines": 19,
+      "offset": 1231,
+      "response_sha256": "fe10d5af58ca816453639c1ee2c1ffa84006ad53b852d6e76fed10bd434a8e15",
+      "source_blob": "cc99ca341ddd756a9560348167f3e1bb2418bdd5",
+      "source_sha256": "f1801b418f740fe68357a6e8e86e978d0f08c9be19de1e1fb91b1fa52b658b53",
+      "text_sha256": "51a546c5d535d7bd2e5d8594d4cacd14a007efa67a03775e75a3879179f0c3eb"
+    },
+    {
+      "coverage": {
+        "examined": 44,
+        "next_offset": 44,
+        "status": "partial",
+        "total": 352
+      },
+      "id": "GD_QUEUE",
+      "lines": 44,
+      "offset": 0,
+      "response_sha256": "defbecc684b17ec5d5102a334345b100560e6b52f264d51101daef88069dff19",
+      "source_blob": "7b8dbc1f76f6482a2d82981ae614d9aa46400e65",
+      "source_sha256": "042e95fbb461ec93d83339018c264efb86ac4c11ec9de447a77f3fda29735626",
+      "text_sha256": "c79a6161f1dc5b5f315cf73b5982afe0cf3d6e7f5654bb1db8f7825c0a1e8405"
+    },
+    {
+      "coverage": {
+        "examined": 18,
+        "next_offset": 188,
+        "status": "partial",
+        "total": 352
+      },
+      "id": "GD_QUEUE",
+      "lines": 18,
+      "offset": 170,
+      "response_sha256": "2f534469964e12ba310177b971c3232865946bff0000613f98ca616994b97939",
+      "source_blob": "7b8dbc1f76f6482a2d82981ae614d9aa46400e65",
+      "source_sha256": "042e95fbb461ec93d83339018c264efb86ac4c11ec9de447a77f3fda29735626",
+      "text_sha256": "1505a981a4e234e2f82a3916a1a3b575958850b63536583b92a201438b205fde"
+    },
+    {
+      "coverage": {
+        "examined": 72,
+        "status": "complete",
+        "total": 352
+      },
+      "id": "GD_QUEUE",
+      "lines": 72,
+      "offset": 280,
+      "response_sha256": "4cccbe762cff2a4b4e529fe36e725fe3d793c56fbceef2a47648d622ea4d3664",
+      "source_blob": "7b8dbc1f76f6482a2d82981ae614d9aa46400e65",
+      "source_sha256": "042e95fbb461ec93d83339018c264efb86ac4c11ec9de447a77f3fda29735626",
+      "text_sha256": "3bed0a1813f6418fc4163502fc05e41e8571cd660eed55313606e55656b9e433"
+    },
+    {
+      "coverage": {
+        "examined": 95,
+        "next_offset": 223,
+        "status": "partial",
+        "total": 237
+      },
+      "id": "GD_ATB",
+      "lines": 95,
+      "offset": 128,
+      "response_sha256": "ff7cdcfd9a70fbb16b2914475c39807c8dd4dea7060354cf5612fdc381d289b5",
+      "source_blob": "806bbe2aa5e5f8f3fabaa98935db7d2b833bec5a",
+      "source_sha256": "1254e7839757fef160e4e01b56ae2e2c902083df7325b4ef2d5b9bd83491d044",
+      "text_sha256": "3e154abe9d28866f18c5bd7ec3bed06be1e6533c3dbc4710f005803bd52a3d04"
+    },
+    {
+      "coverage": {
+        "examined": 90,
+        "next_offset": 255,
+        "status": "partial",
+        "total": 279
+      },
+      "id": "VX406",
+      "lines": 90,
+      "offset": 165,
+      "response_sha256": "cd6a4a0b436247d1aa31abdb06b804b659871e220c5f233f5c7591a73f63b98c",
+      "source_blob": "06408e5ae0049fedc52289ff83f30ba091b0e1ef",
+      "source_sha256": "df83faf8c63d1beecd8009029571c0d7ab8e526a89c5ac11198e312f6dd7b570",
+      "text_sha256": "df0a318aa3987d68238868b73515691818e7b59eef2fc92ae679ac80f09f166d"
+    },
+    {
+      "coverage": {
+        "examined": 46,
+        "next_offset": 155,
+        "status": "partial",
+        "total": 220
+      },
+      "id": "VX462",
+      "lines": 46,
+      "offset": 109,
+      "response_sha256": "4589b16251badc481f1bdd5f26a2eaea2aaadcfce8d1b2f8dce8915d9a8e23a8",
+      "source_blob": "12659af67fa778134cb6b5d91e1519db126ad08d",
+      "source_sha256": "07600748f6dca6775c5c50fccefeb7c1dfa16accc98b98f42a25bbc668e56922",
+      "text_sha256": "cbfb0ff5bd52e4a100a91c09fc2d96e5cac3a17a0912129fd02a744342204937"
+    },
+    {
+      "coverage": {
+        "examined": 42,
+        "next_offset": 219,
+        "status": "partial",
+        "total": 220
+      },
+      "id": "VX462",
+      "lines": 42,
+      "offset": 177,
+      "response_sha256": "79e03df1644c225ef07f33b4d0cae7e4aad71a2859c392af90361c05cd010152",
+      "source_blob": "12659af67fa778134cb6b5d91e1519db126ad08d",
+      "source_sha256": "07600748f6dca6775c5c50fccefeb7c1dfa16accc98b98f42a25bbc668e56922",
+      "text_sha256": "55529cc7f93184a3dc6ccf8d069503a564e1c0844758cdf3957883656eb67124"
+    },
+    {
+      "coverage": {
+        "examined": 114,
+        "next_offset": 114,
+        "status": "partial",
+        "total": 115
+      },
+      "id": "GD_RESIST",
+      "lines": 114,
+      "offset": 0,
+      "response_sha256": "aa495c045d64fc8b209644bc0e78f3a3c9109046ebf0b67b172dd4d7a2c9cbbe",
+      "source_blob": "66203fa1898d139cfd2a4d9cc95ce11e7dc1b10d",
+      "source_sha256": "e67c7f7aa7f222956a3baf81424dd9b0126cefc64c3ac056f73faf38b91e9abf",
+      "text_sha256": "03e8885aae5f7409ff9b1d2915e9d0aec025229d34e58599ecc5c55d9ae30eaf"
+    },
+    {
+      "coverage": {
+        "examined": 26,
+        "next_offset": 236,
+        "status": "partial",
+        "total": 1035
+      },
+      "id": "VX234",
+      "lines": 26,
+      "offset": 210,
+      "response_sha256": "35feda5c40871afe348116a6dd1b4ef334d3041ccddadba70b59aba6bc8bf893",
+      "source_blob": "b5f8b92bcd5343948fc65061ab43af29b8aba819",
+      "source_sha256": "c6c74b971fb95476867554cf767b826292d2d6734a829ec3930f7c8f0001768c",
+      "text_sha256": "548b4198921f4ef2ed93e5983983131be75931458f5dd0891d6021d920f0933b"
+    },
+    {
+      "coverage": {
+        "examined": 26,
+        "next_offset": 1024,
+        "status": "partial",
+        "total": 1035
+      },
+      "id": "VX234",
+      "lines": 26,
+      "offset": 998,
+      "response_sha256": "fde7a49b1e607156ba5e6412784d5660872fb1e91595b0ccda83adcd292f0721",
+      "source_blob": "b5f8b92bcd5343948fc65061ab43af29b8aba819",
+      "source_sha256": "c6c74b971fb95476867554cf767b826292d2d6734a829ec3930f7c8f0001768c",
+      "text_sha256": "fd2afdcc9746248b9547208ac849117d3989d973dcb54d24e234b94abade3e02"
+    },
+    {
+      "coverage": {
+        "examined": 41,
+        "next_offset": 2311,
+        "status": "partial",
+        "total": 3037
+      },
+      "id": "VX374",
+      "lines": 41,
+      "offset": 2270,
+      "response_sha256": "91520352a12b7175267ffd677e5216ed9bbbf34e43e25e56f8b3e8280311324c",
+      "source_blob": "f48fb90e6fa2b6a98953d888f9a3a5115671f137",
+      "source_sha256": "35ce81110c8dcb8055ea43bd15bd648fec3e07c7de413c1e1bf453253b97002b",
+      "text_sha256": "70e1f88b53d0a5ff73e066d684da6e54b6c29d49ce55260cc1dd7c3416fa6470"
+    },
+    {
+      "coverage": {
+        "examined": 45,
+        "next_offset": 2647,
+        "status": "partial",
+        "total": 3037
+      },
+      "id": "VX374",
+      "lines": 45,
+      "offset": 2602,
+      "response_sha256": "bcafaaae91e98cfc210a555ce74581e43df3ce792a05e8b194be2a4135cbdde1",
+      "source_blob": "f48fb90e6fa2b6a98953d888f9a3a5115671f137",
+      "source_sha256": "35ce81110c8dcb8055ea43bd15bd648fec3e07c7de413c1e1bf453253b97002b",
+      "text_sha256": "d57625eaf3eeb1c7e9605afb083372bc7d7621bbe5f30a83914c03876d1a5fdd"
+    },
+    {
+      "coverage": {
+        "examined": 52,
+        "status": "complete",
+        "total": 52
+      },
+      "id": "GD_STATE_ATB",
+      "lines": 52,
+      "offset": 0,
+      "response_sha256": "19c2ba6d13594dd1ef97c1d6e690baef16c9585c0a30f13538810bb30af94c34",
+      "source_blob": "4240460e536e1b5e74f8731c24d948fd889eaf39",
+      "source_sha256": "b7d9a262ef9626c74a671c867f02e4956032c58b26ec86e91676e6a56e1f5811",
+      "text_sha256": "b7d9a262ef9626c74a671c867f02e4956032c58b26ec86e91676e6a56e1f5811"
+    },
+    {
+      "coverage": {
+        "examined": 54,
+        "next_offset": 206,
+        "status": "partial",
+        "total": 276
+      },
+      "id": "VX21",
+      "lines": 54,
+      "offset": 152,
+      "response_sha256": "8368228bec5a0fa1d8374e154234d3173b2912906ba3e61fdcf300177af45fb9",
+      "source_blob": "d576e3f55071ff875e74a8e0db30cb6dbbcd0e03",
+      "source_sha256": "21b83769be2eab5242177502f645fc20813c24f4db79be74bdbde174a8dd3adf",
+      "text_sha256": "bbce323e6a8aeb1a180fa346bebfe9f109f1bab194753111ff955cbed4c09c36"
+    },
+    {
+      "coverage": {
+        "examined": 8,
+        "next_offset": 726,
+        "status": "partial",
+        "total": 1710
+      },
+      "id": "VX28",
+      "lines": 8,
+      "offset": 718,
+      "response_sha256": "4064a0a0edd7d1004eaa6ac690b15a978a5e1484de419b3d441f57019bc17d6c",
+      "source_blob": "d508227e2e1fff1ab42db94f888f72ae687a5100",
+      "source_sha256": "8b15d220f58be037479db35bb860ea0b419baafac87b5a30c81e84c966ae7c1d",
+      "text_sha256": "a9a3600d25bc8bbfc205ad542503701938abf7e3e244ab9d560a4bface8842d9"
+    },
+    {
+      "coverage": {
+        "examined": 23,
+        "next_offset": 1653,
+        "status": "partial",
+        "total": 1710
+      },
+      "id": "VX28",
+      "lines": 23,
+      "offset": 1630,
+      "response_sha256": "87854784f88c17349565a14e1c87c1ca07ec345a3d23baef31cf0e0ca7af5a9b",
+      "source_blob": "d508227e2e1fff1ab42db94f888f72ae687a5100",
+      "source_sha256": "8b15d220f58be037479db35bb860ea0b419baafac87b5a30c81e84c966ae7c1d",
+      "text_sha256": "43002ccd519733493309aea9659e40d7db437624606b02ab0755c549d4b7be73"
+    },
+    {
+      "coverage": {
+        "examined": 245,
+        "status": "complete",
+        "total": 245
+      },
+      "id": "GD_FORCE",
+      "lines": 245,
+      "offset": 0,
+      "response_sha256": "1869ab657f1dfbd2c47c0f37c7f884480c03e5ca2f4c7fdd2802f8f3481907eb",
+      "source_blob": "3515a2460f1b93c932ea744a2bbe3b3d6b5c1d43",
+      "source_sha256": "2d24da528c4ccf8e98b6b620c15f90427760311a74fd1e2382b06e942abcc322",
+      "text_sha256": "2d24da528c4ccf8e98b6b620c15f90427760311a74fd1e2382b06e942abcc322"
+    },
+    {
+      "coverage": {
+        "examined": 127,
+        "status": "complete",
+        "total": 127
+      },
+      "id": "GD_TROOP_PAGES",
+      "lines": 127,
+      "offset": 0,
+      "response_sha256": "c15dee57aa88383bb23b5956a3ac09ec0d54410fcdcc7172eed2720d60d254c1",
+      "source_blob": "e25fe7785f7248d4ea886cfd104a726a9bdcaa6b",
+      "source_sha256": "45d14fbc1090b2d541decd63590dc3a79f2f237a8dbf9d8689078e72d8a5388f",
+      "text_sha256": "45d14fbc1090b2d541decd63590dc3a79f2f237a8dbf9d8689078e72d8a5388f"
+    },
+    {
+      "coverage": {
+        "examined": 32,
+        "next_offset": 954,
+        "status": "partial",
+        "total": 1224
+      },
+      "id": "VX88",
+      "lines": 32,
+      "offset": 922,
+      "response_sha256": "4165b1d2f0f514df5d5476940dfb499a215b33bea60d09c713eac05967f6f93c",
+      "source_blob": "89bc1a9348f60904d1bf5c7b23d34e3dd7a364f9",
+      "source_sha256": "7287e27e3e4e0355d69af830f1b1d23a21d246c21341c40f83133f91c27a8e52",
+      "text_sha256": "12aa3a93ee0a2943b78a6447e9dea2ed368c2840194c4e868722c73fe770b122"
+    },
+    {
+      "coverage": {
+        "examined": 137,
+        "next_offset": 1953,
+        "status": "partial",
+        "total": 2308
+      },
+      "id": "VX411",
+      "lines": 137,
+      "offset": 1816,
+      "response_sha256": "8ddf98abc484f67ae78f8e9c48be7556c55011d368b3ea9258886be0f5684223",
+      "source_blob": "05909bf9e154019507969dfc50ff0e5fd50b75ae",
+      "source_sha256": "0576bcc22565787b9a624197012829003ce6fa965dd8c064a96b494e25222d03",
+      "text_sha256": "1407af87457f912b4e6013b81c280eff55ca1c83e379ab3e151844323725d76b"
+    },
+    {
+      "coverage": {
+        "examined": 145,
+        "status": "complete",
+        "total": 145
+      },
+      "id": "GD_SKILL_COST",
+      "lines": 145,
+      "offset": 0,
+      "response_sha256": "7b8aff59885717ba1889261c2dcbf149ffb054d8429e97e59c34ef9c9759d720",
+      "source_blob": "b315b665af37435d0405deb31d1e748205b0a5fb",
+      "source_sha256": "7057208e9982ac6d3a3c701c444a66af857b54fdf5795315fc9ed6989c3c7516",
+      "text_sha256": "7057208e9982ac6d3a3c701c444a66af857b54fdf5795315fc9ed6989c3c7516"
+    },
+    {
+      "coverage": {
+        "examined": 69,
+        "status": "complete",
+        "total": 69
+      },
+      "id": "GD_ITEM",
+      "lines": 69,
+      "offset": 0,
+      "response_sha256": "68618b13bfb792219d817914b94d2f12b234d7433c1d85046eecd7b15fb9fdfb",
+      "source_blob": "45e33528b1abdd0a7dfb5ded61c6c9efdc646cdf",
+      "source_sha256": "c6047819b6edce6ea5becf899893545009054d54b3484f857dc7332145722e7b",
+      "text_sha256": "c6047819b6edce6ea5becf899893545009054d54b3484f857dc7332145722e7b"
+    },
+    {
+      "coverage": {
+        "examined": 186,
+        "status": "complete",
+        "total": 186
+      },
+      "id": "GD_EVENT_BRIDGE",
+      "lines": 186,
+      "offset": 0,
+      "response_sha256": "102d5f467f1f0825c99edd3f3d306a036061b9715064672f30d05f0a152764fb",
+      "source_blob": "96273788b976f11e7ac7643286acff1c507aaee2",
+      "source_sha256": "ab06fbab0ffbe8ef39c7f4d47310495cf96e4fc7b9958e541f03e6163b95bc25",
+      "text_sha256": "ab06fbab0ffbe8ef39c7f4d47310495cf96e4fc7b9958e541f03e6163b95bc25"
+    },
+    {
+      "coverage": {
+        "examined": 29,
+        "next_offset": 202,
+        "status": "partial",
+        "total": 388
+      },
+      "id": "VX14",
+      "lines": 29,
+      "offset": 173,
+      "response_sha256": "b5b68fa2024fea00ec85debd88f31ceead3f8372da72507bc78493659e327901",
+      "source_blob": "1a46c60c3aed1f527b108881a3eccc77645b9d33",
+      "source_sha256": "1e6ddce2c61555ac63c93ff05fc07f079f6e1a0db16a73de8a9cac3ce1d45c74",
+      "text_sha256": "cfa5de554d048e743a1d4b5a209ce7c0e2a4e6b34f89c9bdade360a45fa4526f"
+    },
+    {
+      "coverage": {
+        "examined": 140,
+        "status": "complete",
+        "total": 168
+      },
+      "id": "VX210",
+      "lines": 140,
+      "offset": 28,
+      "response_sha256": "bd561ab1f938ae6bf9bb68dc7123d4e9a359ec60a2da1c00167bff344d947cc2",
+      "source_blob": "81211c685361ec328968cd587d88539553d3b6bf",
+      "source_sha256": "97c021307908dc62ae62975bbb2664bad99285cc53632afd7c0770f8d8253e2c",
+      "text_sha256": "99708e403e3e8ab41f9f0768c32c8a89253a1755a3356848570265e6834bfee0"
+    },
+    {
+      "coverage": {
+        "examined": 201,
+        "status": "complete",
+        "total": 690
+      },
+      "id": "VX372",
+      "lines": 201,
+      "offset": 489,
+      "response_sha256": "2b484ffc8eff3de99b1788d1b48a3096e5d785de624f91ce1035e48185050a98",
+      "source_blob": "5115a1ab2d6ddb81cfa0beb38c61b1fffd3f8cd2",
+      "source_sha256": "8c0f019f67891723eacacbae45ef899826231d719c158c0583cc56d431b97bfd",
+      "text_sha256": "8ffabe958fb3a9e47ebffa1967be2a66a08af7d774f12c94e0367016edbeec0f"
+    },
+    {
+      "coverage": {
+        "examined": 144,
+        "status": "complete",
+        "total": 144
+      },
+      "id": "GD_TARGET",
+      "lines": 144,
+      "offset": 0,
+      "response_sha256": "1d5777f14c9556a06dd9012f45f96b2bca644c4c3dc6d406bec70670e3a08240",
+      "source_blob": "9ae06fb1a36012f16bafdadb7b9fd2213d3bd23d",
+      "source_sha256": "9e07711f275b106c1ead791ca9925e3fa5195f276624dbb699ec005082c5f0be",
+      "text_sha256": "9e07711f275b106c1ead791ca9925e3fa5195f276624dbb699ec005082c5f0be"
+    },
+    {
+      "coverage": {
+        "examined": 41,
+        "status": "complete",
+        "total": 41
+      },
+      "id": "GD_AI_RNG",
+      "lines": 41,
+      "offset": 0,
+      "response_sha256": "0772674f647313d52af0204870de2d51c8e8afdfcfeacabda153289af7ff715c",
+      "source_blob": "344866d5541433e7cbb79e9e599bdb9c373a8c48",
+      "source_sha256": "7d1caf115a4d6b662786b830d3ef0ff24122b749f2abd92089736e7451884daf",
+      "text_sha256": "7d1caf115a4d6b662786b830d3ef0ff24122b749f2abd92089736e7451884daf"
+    },
+    {
+      "coverage": {
+        "examined": 37,
+        "next_offset": 293,
+        "status": "partial",
+        "total": 1365
+      },
+      "id": "GD_SCREEN",
+      "lines": 37,
+      "offset": 256,
+      "response_sha256": "0339163e401c6f7e1624f6a4bbb479d59121a12ce656bc8734eeebf41cc63a07",
+      "source_blob": "12bb9d807651dcb1b2bb20a52c134fa60f9d2a3b",
+      "source_sha256": "8cbbaa5a75bd66694a0fb33b5d844d0cfadd52f701329c9b6a113eb4c7238bef",
+      "text_sha256": "ba6adef2f3863685f457d9ef2115d007a5f20860b77266c399e604d8f853f526"
+    },
+    {
+      "coverage": {
+        "examined": 78,
+        "next_offset": 996,
+        "status": "partial",
+        "total": 1365
+      },
+      "id": "GD_SCREEN",
+      "lines": 78,
+      "offset": 918,
+      "response_sha256": "947a10cf5fe817cf3843b415aa04dbf23c97e5b35b3e365cdc4eed8a7b4f6f10",
+      "source_blob": "12bb9d807651dcb1b2bb20a52c134fa60f9d2a3b",
+      "source_sha256": "8cbbaa5a75bd66694a0fb33b5d844d0cfadd52f701329c9b6a113eb4c7238bef",
+      "text_sha256": "5135c6265acea3c4e6a8e9f620bde55c118eccfa112bb7771336fe146f425828"
+    },
+    {
+      "coverage": {
+        "examined": 47,
+        "next_offset": 1224,
+        "status": "partial",
+        "total": 1365
+      },
+      "id": "GD_SCREEN",
+      "lines": 47,
+      "offset": 1177,
+      "response_sha256": "316433115b521370ec4326a38670146c530b039b9d1fb44b8b1d87808d3b867a",
+      "source_blob": "12bb9d807651dcb1b2bb20a52c134fa60f9d2a3b",
+      "source_sha256": "8cbbaa5a75bd66694a0fb33b5d844d0cfadd52f701329c9b6a113eb4c7238bef",
+      "text_sha256": "5758cc0fbfb91ddcf2ba87ed43216f2d4c4ca2a72d66bc4f94ac1757bb390e42"
+    },
+    {
+      "coverage": {
+        "examined": 77,
+        "next_offset": 1334,
+        "status": "partial",
+        "total": 1365
+      },
+      "id": "GD_SCREEN",
+      "lines": 77,
+      "offset": 1257,
+      "response_sha256": "93f74f5eb326c9cb6177bf8577ca023c57dbf52faa102bd2a65b4b80cc8bdbf7",
+      "source_blob": "12bb9d807651dcb1b2bb20a52c134fa60f9d2a3b",
+      "source_sha256": "8cbbaa5a75bd66694a0fb33b5d844d0cfadd52f701329c9b6a113eb4c7238bef",
+      "text_sha256": "b465d1b9c078f9df47992dcacee0e5d7e9543b53ffdd4de6d6177090c28acdb8"
+    },
+    {
+      "coverage": {
+        "examined": 141,
+        "status": "complete",
+        "total": 141
+      },
+      "id": "GD_PRESENTER",
+      "lines": 141,
+      "offset": 0,
+      "response_sha256": "87083377bb4e1c04b08e81ac3447bbe53524d34263291ca3f08965ce7e1075a1",
+      "source_blob": "4bc83b2fd61ae6ef0ea5c45f944ababe35cd0086",
+      "source_sha256": "f6a07644245ebdb030eec944cd2e158b7b2799e6aed8c7eaec3a2a1440515fd7",
+      "text_sha256": "f6a07644245ebdb030eec944cd2e158b7b2799e6aed8c7eaec3a2a1440515fd7"
+    },
+    {
+      "coverage": {
+        "examined": 123,
+        "next_offset": 460,
+        "status": "partial",
+        "total": 462
+      },
+      "id": "VX314",
+      "lines": 123,
+      "offset": 337,
+      "response_sha256": "a4d12e18d0a88bd61bb12d148f15dc74d4bf6594f198ccb18ebe227c90da7e0a",
+      "source_blob": "041b4e8917b2e6e2c2b55b8d49e1aec939932569",
+      "source_sha256": "b807cf0f00eebc41b05055cd40cf8aa6647c7298bd3eecc90d64f5e406719b12",
+      "text_sha256": "88d9cb6c2debdee5875e259141f6ebf696b421a84692c3cd884aa0df95e55881"
+    },
+    {
+      "coverage": {
+        "examined": 114,
+        "status": "complete",
+        "total": 114
+      },
+      "id": "GD_STARTUP",
+      "lines": 114,
+      "offset": 0,
+      "response_sha256": "7388433b5ad3d55333967d0b209191367779ae787f00447d830fab720ca3e397",
+      "source_blob": "26b1e43113091f50f8ad1ab609d1b019d664259e",
+      "source_sha256": "25bdc3a83b3104fbd30d72b3ceb97c5fcc182196ee223996b3e495287902aa15",
+      "text_sha256": "25bdc3a83b3104fbd30d72b3ceb97c5fcc182196ee223996b3e495287902aa15"
+    }
+  ]
+}
