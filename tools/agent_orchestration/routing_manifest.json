@@ -221,5 +221,14 @@
     "cloud_write_readback"
   ],
   "activation_warning": "Finding a SKILL.md, PC registry entry or tool install does not prove automatic selection or actual use in a ChatGPT conversation.",
-  "governance_branch": "main"
+  "governance_branch": "main",
+  "optional_toolchain": {
+    "agent_sprite_forge": {
+      "skill": ".agents/skills/fs-agent-sprite-forge/SKILL.md",
+      "handoff": "authority/FS_ASF_CURRENT_HANDOFF_20261125.md",
+      "mode": "offline_only",
+      "pin": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "selection": "When source media needs grid/palette/registration/finish, explicitly read and select; never auto-run provider; require verified actual invocation and keep all lane gates."
+    }
+  }
 }
