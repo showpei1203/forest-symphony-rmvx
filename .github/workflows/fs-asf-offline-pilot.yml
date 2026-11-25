@@ -125,3 +125,17 @@ jobs:
           GD
           "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64" --headless --path . --script test.gd 2>&1 | tee "$RUNNER_TEMP/asf-native.log"
           grep -F 'ASF_PUBLIC_GODOT472_NATIVE_PASS' "$RUNNER_TEMP/asf-native.log"
+
+      - name: Export pinned public runtime for isolated owner-private source QA
+        run: |
+          git -C "$RUNNER_TEMP/asf" archive --format=zip --output="$RUNNER_TEMP/asf-public-tools.zip" 25203d03900b46b444bdd72a75768c33d1895ad6 skills LICENSE requirements.txt
+          sha256sum "$RUNNER_TEMP/asf-public-tools.zip" "$RUNNER_TEMP/godot.zip" > "$RUNNER_TEMP/asf-runtime-sha256.txt"
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: asf-pinned-public-runtime
+          path: |
+            ${{ runner.temp }}/asf-public-tools.zip
+            ${{ runner.temp }}/godot.zip
+            ${{ runner.temp }}/asf-runtime-sha256.txt
+          retention-days: 1
+          if-no-files-found: error
