@@ -79,6 +79,11 @@ func _run()->void:
     if f["combats"].size()==1:
         var combat=f["combats"][0]
         _check(combat.force_actions.enabled and combat.troop_force_pages.enabled,"bridge configures force pages")
+        combat.source_atb_wait=true
+        combat.advance_atb(1.0/60.0)
+        _check(combat.troop_force_pages.pending_page==0 and not f["bridge"].request_escape() and
+            f["runner"].waiting and _no_story(f),"cannot escape pending event command")
+        combat.source_atb_wait=false
         combat.advance_atb(1.0/60.0)
         _check(combat.troop_force_pages.fired.has(0) and combat.force_actions.completed.size()==1 and
             bool(combat.party[0]["guarding"]),"native 301 -> troop -> 339 -> guard settlement")
