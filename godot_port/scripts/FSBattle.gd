@@ -5,6 +5,7 @@ class_name FSBattle
 signal changed(message: String)
 signal finished(victory: bool)
 signal source_force_page_blocked(reason: String)
+signal source_command_cancelled(actor_index: int)
 
 var db: FSDatabase
 var party: Array[Dictionary] = []
@@ -13,6 +14,11 @@ var inventory: Dictionary = {}  # keys "item:<id>" / "weapon:<id>" / "armor:<id>
 var world: FSGameState
 var active: bool = false
 var pending_actor: int = -1
+# Explicit UI registration; legacy headless callers without a registered
+# command owner keep the previous wait/HOLD behavior.
+var source_command_cleanup_enabled: bool = false
+var _source_command_owner: Dictionary = {}
+
 # Godot 60fps phase clock feeds original Tankentai 1.2c integer gauges.
 # The timing/action queue as a whole is NOT yet source-final; source damage
 # still needs effective 505 RGSS2 override witness.
@@ -1038,6 +1044,31 @@ func configure_source_force_pages(pages: Array) -> bool:
     if not active or not source_atb_initialized or not force_actions.enabled:
         return false
     return troop_force_pages.configure(pages)
+
+func begin_source_command(index: int) -> bool:
+    if not active or index<0 or index>=party.size():
+        return false
+    if pending_actor>=0 and not is_same(_source_command_owner,party[index]):
+        return false
+    pending_actor=index
+    _source_command_owner=party[index]
+    source_atb_wait=true
+    return true
+
+func end_source_command() -> void:
+    pending_actor=-1
+    _source_command_owner={}
+    source_atb_wait=false
+
+func cancel_source_command_for_troop(subject: Dictionary) -> bool:
+    # #231 force_action_cleanup only when @commander == member.
+    # Identity, not database ID or dictionary-value equality.
+    if not source_command_cleanup_enabled or pending_actor<0 or not is_same(_source_command_owner,subject):
+        return false
+    var old_index: int=pending_actor
+    end_source_command()
+    source_command_cancelled.emit(old_index)
+    return true
 
 func queue_source_force_action(side: int,index: int,kind: String,target_index: int,
         object_id: int = 0) -> bool:
