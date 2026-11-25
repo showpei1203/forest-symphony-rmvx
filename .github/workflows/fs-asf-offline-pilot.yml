@@ -6,6 +6,7 @@ on:
       - '.github/workflows/fs-asf-offline-pilot.yml'
       - '.agents/skills/fs-agent-sprite-forge/**'
       - 'tools/agent_orchestration/fs_asf_source_guard.py'
+      - 'tools/agent_orchestration/fs_asf_video_intake.py'
 permissions:
   contents: read
 jobs:
@@ -27,6 +28,8 @@ jobs:
         run: |
           python3 -m venv "$RUNNER_TEMP/asf-venv"
           "$RUNNER_TEMP/asf-venv/bin/python" -m pip install --only-binary=:all: --no-cache-dir 'numpy>=1.26,<3' 'Pillow>=10.1,<14' 'scipy>=1.11,<2'
+      - name: External video intake regression (synthetic metadata only)
+        run: python3 -B fs/tools/agent_orchestration/fs_asf_video_intake.py --self-test
       - name: Approved-source guard positive and negative cases
         run: '"$RUNNER_TEMP/asf-venv/bin/python" -B fs/tools/agent_orchestration/fs_asf_source_guard.py --self-test'
       - name: Reproduce undersized cell rejection and test enlarged public image
