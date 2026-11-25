@@ -196,6 +196,54 @@ page_steps=[[60,false],[50,false],[50,true],[10,true]].map do |hp,sw|
 end
 raise 'source troop pages mismatch' unless page_steps.map{|x|x[:selected]}==[-1,1,0,-1]
 puts "CRAFT_TROOP_PAGE_ORACLE_PASS; Steps=4; Selected=-1,1,0,-1"
-File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines,page_steps:page_steps}))
+# Original #210 exact deterministic RNG and #372 final weighted target
+# selection, with explicit targetability/weight stubs (not live aliases).
+s210=pinned('exported_scripts/210__id99918659__FS_AI_DeterministicRandom_v1.0.rb','81211c685361ec328968cd587d88539553d3b6bf')
+s372=pinned('exported_scripts/372__id96885223__FS_RandomTarget_Authority_v1.2｜TargetPriority___Provoke.rb','5115a1ab2d6ddb81cfa0beb38c61b1fffd3f8cd2')
+$TEST=true
+eval(s210.join,TOPLEVEL_BINDING,'#210 exact RNG',1)
+eval(excerpt(s372,490,635),TOPLEVEL_BINDING,'#372 random helpers',490)
+class Game_Unit
+  def initialize(members); @members=members; end
+  def existing_members; @members.select{|m|m.exist?}; end
+end
+Game_Unit.class_eval(excerpt(s372,641,689),'#372 final random_target',641)
+class OracleRandomMember
+  attr_reader :index
+  def initialize(index,row); @index=index; @row=row; end
+  def exist?; @row[:hp]>0 && !@row[:hidden]; end
+  def actor?; @row[:actor]; end
+  def enemy; Struct.new(:note).new(@row[:note]); end
+  def albert_provoke?; @row[:provoke]; end
+  def albert_targetable_unit?
+    exist? && !@row[:disappear] && !ALBERT_RANDOM_TARGET_INTEGRATION.hard_excluded?(self)
+  end
+  def albert_target_weight; @row[:odds]; end
+end
+def target_row(odds=1,overrides={})
+  {hp:100,hidden:false,actor:false,note:'',provoke:false,disappear:false,odds:odds}.merge(overrides)
+end
+random_specs=[
+  ['weighted_1',1,[target_row(1),target_row(4),target_row(2)]],
+  ['weighted_47',47,[target_row(1),target_row(4),target_row(2)]],
+  ['provoke_over_disappear',2,[target_row(10),target_row(1,{provoke:true,disappear:true})]],
+  ['hard_exclusion',3,[target_row(50,{note:'<no_random_target>',provoke:true}),target_row(1)]],
+  ['all_disappear_fallback',4,[target_row(2,{disappear:true}),target_row(1,{disappear:true})]],
+  ['all_hard_excluded',5,[target_row(1,{note:'対象不可',disappear:true}),target_row(1,{note:'<no_random_target>'})]],
+  ['zero_weights',6,[target_row(0),target_row(0),target_row(-1)]],
+  ['hidden_dead',7,[target_row(99,{hidden:true}),target_row(99,{hp:0}),target_row(1)]],
+  ['actor_provoke',8,[target_row(2,{actor:true}),target_row(1,{actor:true,provoke:true})]],
+  ['actor_weights',9,[target_row(1,{actor:true}),target_row(3,{actor:true})]]
+]
+random_cases=random_specs.map do |id,seed,rows|
+  FS_AI_RANDOM.enable(seed)
+  members=rows.each_with_index.map{|row,i|OracleRandomMember.new(i,row)}
+  selected=Game_Unit.new(members).random_target
+  trace=FS_AI_RANDOM.trace.map{|e|{count:e[0],tag:e[1].to_s,maximum:e[2],value:e[3]}}
+  {id:id,seed:seed,members:rows,selected:selected.nil? ? -1 : selected.index,trace:trace}
+end
+FS_AI_RANDOM.disable
+puts "CRAFT_RANDOM_ORACLE_PASS; Cases=#{random_cases.length}; SourceMethods=210,372; FullVXRuntime=False"
+File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines,page_steps:page_steps,random_cases:random_cases}))
 puts "CRAFT_NOTE_ORACLE_PASS; Notes=#{note_cases.length}; StatePipelines=#{pipelines.length}; FullVXRuntime=False"
 puts "CRAFT_ORACLE_PASS; Cases=#{cases.length}; Force=2; Urgent=#{urgent.length}; OriginalVXRuntime=False"
