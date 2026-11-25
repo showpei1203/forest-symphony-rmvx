@@ -8,9 +8,9 @@ The historical 2026-11-07 Master-first trial and its specific VX Map050/203 gate
 
 ---
 
-## 2026-11-07 FS 新版本強制優先（P0 + Master-first）
+## LEGACY 2026-11-07 Master-first（P0 繼續有效，製程僅歷史）
 開工前先讀 [P0 Cloud-only](docs/FS_CLOUD_ONLY_STORAGE_POLICY_20261107.md)：成果與證據存 Drive/GitHub，PC 僅必要安裝/最短實機臨時副本；不准把 E: 目錄/快取當輸出庫。
-**FS 新精靈村 ACTIVE 方法**：一張完整高品質 MASTER 作唯一 RGB/world-XY 權威，AI Ground-only 只作底下地表補繪候選，AI PAR 只作物件語意遮罩候選。作者層 `GroundOnly+CompletePAR`、Runtime 層 `FullGround+OcclusionPAR` 分開；每個可見前景像素從同一 MASTER XY 取樣。真實 RPG Maker VX Map050、203 開關、可走格進出遮擋／空地負例和 USER ART Gate 全部必須另驗證。合成零差是建構式技術指標，不等於完整語意或美術 PASS。
+**2026-11-07 歷史精靈村方法，非新 T-C 執行規則**：一張完整高品質 MASTER 作唯一 RGB/world-XY 權威，AI Ground-only 只作底下地表補繪候選，AI PAR 只作物件語意遮罩候選。作者層 `GroundOnly+CompletePAR`、Runtime 層 `FullGround+OcclusionPAR` 分開；每個可見前景像素從同一 MASTER XY 取樣。真實 RPG Maker VX Map050、203 開關、可走格進出遮擋／空地負例和 USER ART Gate 全部必須另驗證。合成零差是建構式技術指標，不等於完整語意或美術 PASS。
 **下方 v2.5 GROUND-FIRST 流程僅對其當年的既有 Ground-first 分支與其他未指定 Master-first 的使用情境保留。**兩種方法的最終 Source SHA／Manifest／Alpha／Scale／Collision／Passability／Art Gate 一樣嚴格。 [V3 Native 實驗](experiments/agent_skills_20261107/MASTER_FIRST_V3_NATIVE_203_COLLISION_HANDOFF.md) 只是局部 Canopy PASS，Formal Seal NO。
 
 **Mandatory before every image generation or image edit.**
@@ -20,7 +20,7 @@ The historical 2026-11-07 Master-first trial and its specific VX Map050/203 gate
 3. Apply the latest FS Style DNA / accepted benchmark / sealed visual authority.
 4. For any layered map/parallax/environment work, read `MAP_DUAL_OUTPUT_AUTHORITY_V2_5.md` before generation or extraction.
 
-## Legacy general layered-map mode — v2.5 (NOT current FS new-village Master-first)
+## Legacy general layered-map mode — v2.5 (not the current T-C contract; consult current override above)
 Use:
 `GROUND-FIRST + PLACEMENT ANCHORS + SOURCE-ASSET/EXTRACTION + DETERMINISTIC ASSEMBLY + PAR PURITY + PIXEL-CRISP`
 
