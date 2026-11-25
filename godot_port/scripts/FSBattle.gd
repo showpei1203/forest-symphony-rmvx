@@ -33,6 +33,7 @@ var action_queue: FSActionQueue = FSActionQueue.new()
 # Opt-in candidate; normal production/event entry remains disabled.
 var force_actions: FSForceActionQueue = FSForceActionQueue.new()
 var troop_force_pages: FSTroopForcePages = FSTroopForcePages.new()
+var troop_startup_plan: FSTroopStartupPlan = FSTroopStartupPlan.new()
 var _source_force_deferred_outcome: int = -1
 # Source #401 Runtime Provider. Automatically opt-in only after the real
 # boot-final DB witness gate; synthetic battle tests opt in intentionally.
@@ -970,10 +971,19 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     return true
 
 func advance_atb(delta: float) -> void:
-    if not active or not source_atb_initialized or delta <= 0.0 or force_actions.busy or action_queue.resolving:
+    if not active or not source_atb_initialized or delta <= 0.0 or force_actions.busy or action_queue.resolving or troop_startup_plan.busy:
         return
     if force_actions.enabled and troop_force_pages.enabled and not troop_force_pages.blocked_reason.is_empty():
         return
+    if troop_startup_plan.enabled and not troop_startup_plan.done:
+        if not troop_startup_plan.blocked_reason.is_empty():
+            return
+        if troop_startup_plan.apply_before_first_frame(self)<0:
+            changed.emit(troop_startup_plan.blocked_reason)
+            source_force_page_blocked.emit(troop_startup_plan.blocked_reason)
+            return
+        if not active:
+            return
     # Real Tankentai #231 gauge increments are PER SOURCE FRAME, not an
     # invented continuous float rate. Accumulate fractional 60fps frames.
     source_atb_frame_fraction += delta * float(FSTankentaiATBCore.FRAMES_PER_SECOND)
@@ -1041,9 +1051,15 @@ func advance_atb(delta: float) -> void:
 
 # Explicit candidate provider only; never automatically enable for unverified Troop DB.
 func configure_source_force_pages(pages: Array) -> bool:
-    if not active or not source_atb_initialized or not force_actions.enabled:
+    if not active or not source_atb_initialized or not force_actions.enabled or troop_startup_plan.enabled:
         return false
     return troop_force_pages.configure(pages,force_actions.random_targets_enabled)
+
+func configure_source_startup_pages(pages:Array,verified_common_lists:Dictionary)->bool:
+    if not active or not source_atb_initialized or troop_force_pages.enabled or (
+            not action_queue.completed.is_empty()) or not force_actions.completed.is_empty():
+        return false
+    return troop_startup_plan.configure(pages,verified_common_lists)
 
 func begin_source_command(index: int) -> bool:
     if not active or index<0 or index>=party.size():
