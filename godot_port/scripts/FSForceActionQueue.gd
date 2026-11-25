@@ -181,7 +181,7 @@ func prepare_troop(battle) -> bool:
     return true
 
 func resolve_one(battle,active_action_busy: bool = false) -> int:
-    if not enabled or busy or active_action_busy or battle.action_queue.resolving or not battle.active or (
+    if not enabled or busy or active_action_busy or battle.action_queue.resolving or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done) or not battle.active or (
             battle.source_atb_wait):
         return 0
     # Godot actions are synchronous here, not a full VX animation lifecycle.
