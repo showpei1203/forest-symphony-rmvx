@@ -92,14 +92,16 @@
     },
     {
       "name": "Agent Sprite Forge",
-      "status": "REAL_FS_LOSSLESS_36F_A52_NATIVE_DEMO_PASS",
+      "status": "REAL_FS_VIDEO_ROUNDTRIP_NATIVE_12F_PASS_GENERATION_BLOCKED",
       "upstream_commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
-      "route": "R26 palette already correct; reject chroma drift. Existing A52 3x12 PNG atlas RGBA exact; isolated original Godot 4.7.2 GPU/contact PASS. Owner ART HOLD; full FSBattle NOT_RUN. Candidate PR unmerged.",
+      "route": "Owner priority T-A image-to-video first. Fixed 12x 720p A62 crop. Existing A52 two codec fixture actual roundtrip + native one-shot PASS. Four video routes NO_ROUTE; new AI video NOT_RUN. Art HOLD; no paid fallback.",
       "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/actions/runs/45525982184",
       "functional_evidence": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45528461594",
       "source_diagnostic_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/150",
       "public_native_evidence": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45528621975",
-      "real_native_evidence": "https://drive.google.com/file/d/1WSjsYCc9ubN5_qWb3-UjogLbKA9LBQoG/view"
+      "real_native_evidence": "https://drive.google.com/file/d/1WSjsYCc9ubN5_qWb3-UjogLbKA9LBQoG/view",
+      "video_pilot_evidence": "https://drive.google.com/file/d/1Kh2Ll4BLjO51cT0RPcFRHBWV1jL4FUUX/view",
+      "video_route_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/153"
     }
   ],
   "priority": "Task-specific actual user input > global Drive P0 > latest live lane handoff > current FS Godot protocol > verified tool inventory > old saved state"
