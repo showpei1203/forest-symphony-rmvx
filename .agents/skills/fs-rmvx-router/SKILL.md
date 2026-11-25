@@ -11,16 +11,16 @@ description: Forest Symphony (FS), RPG Maker VX / RGSS2, A36F/A36G layered Groun
 
 T-C latest D11: separate complete true GROUND first; second an actual transparent PAR containing all non-ground items in one whole-scene generation. **Do not reconstitute a MASTER instead** merely because older sections call it current. Alpha=0 must genuinely exist. Authoring PAR includes ALL objects regardless of actor depth; derived runtime occlusion is a separate optional layer. Keep earlier master-first samples as their own historical experiment, not current T-C production.
 
-T-A latest R23: 64px true approved source, 45-degree combat view, 12 frames per requested animation, real articulated paperdoll with authored hidden underpaint; seven visible-only layers and retiming do not pass the art requirement.
+T-A latest R23: 64px true approved source, 45-degree combat view, 12 frames where current paperdoll contract explicitly requires, preserving source-specific approved clips, real articulated paperdoll with authored hidden underpaint; seven visible-only layers and retiming do not pass the art requirement.
 
 T-B latest R19: true 3-stage source-locked provider motions, independent native technical acceptance only; owner ART HOLD and full FSBattle/ATB/ACT NOT_RUN remain. Do not repeat previously charged jobs.
 
-P0: All durable output remains Drive/GitHub; no new clone/test workspace on owner's PC without explicit temporary-work authorization and verified cleanup. Codex disabled, PC Bridge strict allowlist; Desktop Remote by permission only. Formal acceptance must include sources, Godot native, owner art, gameplay, cloud readback and second-sample reuse separately.
+P0: All durable output remains Drive/GitHub; no new clone/test workspace on owner's PC without explicit temporary-work authorization and verified cleanup. Codex disabled, PC Bridge strict allowlist; Desktop Remote for authorized web/GUI or inefficient Runner work under the 2026-11-26 standing authorization; actual capability, explicit bans and high-risk approvals still govern. Formal acceptance must include sources, Godot native, owner art, gameplay, cloud readback and second-sample reuse separately.
 
 ---
 
 
-> **現行規則入口（2026-11-07）**：先讀 [FS Current Rules Index](../../../authority/FS_CURRENT_RULES_INDEX_20261107.md) → P0 Storage → 共用製作 Authority → FS Precheck；先別讓舊 Handoff 的本機路徑或獨立兩張 AI 地圖生成覆蓋最新決議。
+> **歷史規則入口（2026-11-07；新工程先讀上方 Godot override）**：先讀 [FS Current Rules Index](../../../authority/FS_CURRENT_RULES_INDEX_20261107.md) → P0 Storage → 共用製作 Authority → FS Precheck；先別讓舊 Handoff 的本機路徑或獨立兩張 AI 地圖生成覆蓋最新決議。
 
 ## P0 強制儲存規則（2026-11-07）
 **跨所有專案的真正最高儲存規則**：[Google Drive 00_GLOBAL_HARD_RULES](https://docs.google.com/document/d/1NftePmIsggrhnfPcZTZS2G6YBka2yBy_fdw-NBT5D8Y/edit)。若 FS 內部文件允許必要 PC 實機暫存，需以全球規則為準：**事前說明理由／檔案範圍／清理方法並取得使用者授權**；不得自動使用 PC。：使用者 PC 不存任何新成果
