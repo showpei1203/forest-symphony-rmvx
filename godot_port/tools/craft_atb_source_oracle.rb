@@ -291,6 +291,10 @@ class TurnScene
   end
 end
 TurnScene.class_eval(excerpt(turn_source,559,602),'#231 turn_end',559)
+turn_alias=pinned('exported_scripts/313__id96846647__H87_SkillDelay_v1.1.rb','d29308d209e9058b886bb0eb0685f43c03d1998a')
+eval(excerpt(turn_config,148,149),TOPLEVEL_BINDING,'#230 imported flag',148)
+TurnScene.class_eval(excerpt(turn_alias,321,325),'#313 turn_end wrapper',321)
+raise 'TankentaiATB import missing' unless $imported['TankentaiATB']
 turn_cases=[
   ['partial',350,0,false,false,true,true],
   ['negative',-90,0,false,false,true,true],
@@ -309,6 +313,56 @@ turn_cases=[
 end
 puts "CRAFT_TURN_END_ORACLE_PASS; Cases=#{turn_cases.size}; FullVXRuntime=False"
 
-File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines,page_steps:page_steps,random_cases:random_cases,turn_cases:turn_cases}))
+
+# Join actual #21 conditions/setup/increase_turn with #231 action-end
+# windows and #313 wrapper. Interpreter only records selected lists.
+TurnPageCondition=Struct.new(:turn_ending,:turn_valid,:enemy_valid,:actor_valid,:switch_valid,:turn_a,:turn_b,:enemy_index,:enemy_hp,:switch_id)
+OracleTroop.class_eval { attr_accessor :turn_count,:turn_ending }
+OracleTroop.class_eval(excerpt(s21,210,217),'#21 increase_turn',210)
+class TurnPageScene < TurnScene
+  attr_reader :window
+  def process_battle_event
+    super
+    $game_troop.interpreter.clear
+    $game_troop.setup_battle_event
+    if $game_troop.interpreter.selected && @window.nil?
+      @window={turn:$game_troop.turn_count,turn_ending:$game_troop.turn_ending,phase: @startup ? 'startup' : ($game_troop.turn_ending ? 'after_increment' : 'before_increment')}
+    end
+  end
+  def startup
+    @startup=true; process_battle_event; @startup=false
+  end
+end
+window_specs=[
+  ['exact_end_2',2,0,true,false,[false,false,false]],
+  ['periodic_2_3',2,3,true,false,[false,false,false]],
+  ['exact_start_0',0,0,false,false,[false]],
+  ['switch_before_increment',1,0,false,true,[false,false,true]],
+  ['period_never_zero',0,2,false,false,[false,false,false]],
+  ['switch_off_no_trigger',1,0,true,true,[false,false,false]]
+]
+window_cases=window_specs.map do |id,a,b,ending,sw,steps|
+  condition=TurnPageCondition.new(ending,true,false,false,sw,a,b,0,100,7)
+  page=OraclePage.new(condition,0,[339])
+  $game_troop=OracleTroop.new([page]);$game_troop.turn_count=0;$game_troop.turn_ending=false
+  member=TurnMember.new(0,1000,true,false,false,TurnAction.new(false,0))
+  $game_party=Struct.new(:members).new([member])
+  scene=TurnPageScene.new(member)
+  $game_switches[7]=steps.first
+  scene.startup
+  trigger_step=scene.window ? 0 : -1
+  steps.drop(1).each_with_index do |value,i|
+    break if scene.window
+    $game_switches[7]=value
+    member.act_active=true
+    scene.turn_end(member)
+    trigger_step=i+1 if scene.window
+  end
+  {id:id,a:a,b:b,ending:ending,switch:sw,steps:steps,selected:scene.window,trigger_step:trigger_step}
+end
+raise 'unexpected source windows' unless window_cases.map{|c|c[:trigger_step]}==[2,2,0,2,2,-1]
+puts "CRAFT_TURN_WINDOW_ORACLE_PASS; Cases=#{window_cases.size}; OriginalInterpreterCommandsExecuted=False"
+
+File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines,page_steps:page_steps,random_cases:random_cases,turn_cases:turn_cases,window_cases:window_cases}))
 puts "CRAFT_NOTE_ORACLE_PASS; Notes=#{note_cases.length}; StatePipelines=#{pipelines.length}; FullVXRuntime=False"
 puts "CRAFT_ORACLE_PASS; Cases=#{cases.length}; Force=2; Urgent=#{urgent.length}; OriginalVXRuntime=False"

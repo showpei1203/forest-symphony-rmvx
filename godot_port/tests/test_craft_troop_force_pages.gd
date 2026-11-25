@@ -195,5 +195,59 @@ func _run() -> void:
     _check(not lethal.active and int(lethal.party[0]["mp"])==75,"lethal skill pays exactly once")
     lethal.advance_atb(1.0)
     _check(outcomes.size()==1,"no repeated victory")
+
+    # Actual bounded 339 dispatch at source-selected turn windows.
+    # Compare exact #21 predicates executed by Ruby inside #231/#313 end.
+    for row in oracle["window_cases"]:
+        var turn_battle=_fixture()
+        turn_battle.force_actions.enabled=true
+        var turn_page=_page(false,0)
+        turn_page["condition"]={"turn_ending":row["ending"],"turn_valid":true,
+            "enemy_valid":false,"actor_valid":false,"switch_valid":row["switch"],
+            "turn_a":row["a"],"turn_b":row["b"],"switch_id":7}
+        _check(turn_battle.configure_source_force_pages([turn_page],true),"turn window config "+str(row["id"]))
+        var trigger_step:int=-1
+        var steps:Array=row["steps"]
+        for step in range(steps.size()):
+            turn_battle.world.set_switch(7,bool(steps[step]))
+            if step>0:
+                var turn_actor:Dictionary=turn_battle.party[0]
+                turn_actor["source_at_active"]=true
+                turn_actor["source_atb_count_up"]=false
+                turn_actor["source_atb_count"]=1000
+                turn_actor["atb"]=1.0
+                _check(turn_battle.queue_actor_action(0,"guard"),"ordinary action for turn window")
+            turn_battle.advance_atb(1.0/60.0)
+            if not turn_battle.troop_force_pages.selected_turn_window.is_empty():
+                trigger_step=step
+                break
+        _check(trigger_step==int(row["trigger_step"]),"source selection step "+str(row["id"]))
+        if row["selected"]==null:
+            _check(turn_battle.force_actions.completed.is_empty() and turn_battle.troop_force_pages.fired.is_empty(),"unmet turn page never dispatches")
+        else:
+            var expected:Dictionary=row["selected"]
+            var actual:Dictionary=turn_battle.troop_force_pages.selected_turn_window
+            _check(int(actual["turn"])==int(expected["turn"]) and actual["turn_ending"]==expected["turn_ending"] and actual["phase"]==expected["phase"],"exact source turn phase "+str(row["id"]))
+            # Once captured, a later switch change may not erase selection.
+            turn_battle.world.set_switch(7,false)
+            turn_battle.advance_atb(1.0/60.0)
+            _check(turn_battle.troop_force_pages.fired.has(0) and turn_battle.force_actions.completed.size()==1 and bool(turn_battle.enemies[0]["guarding"]),"actual force command settles once")
+            turn_battle.advance_atb(3.0/60.0)
+            _check(turn_battle.force_actions.completed.size()==1,"once-per-battle turn page cannot replay")
+    var bad_turn=_page(false,0)
+    bad_turn["condition"]["turn_valid"]=true
+    bad_turn["condition"]["turn_a"]=2
+    bad_turn["condition"]["turn_b"]=0
+    _check(not PAGES.new().configure([bad_turn]),"turn mode disabled by default")
+    _check(not PAGES.new().configure([bad_turn,bad_turn],false,true),"multi-page turn ordering not approved")
+    _check(not PAGES.new().configure([bad_turn],true,true),"random turn ordering not approved")
+    var malformed=bad_turn.duplicate(true)
+    malformed["condition"]["turn_b"]=-1
+    _check(not PAGES.new().configure([malformed],false,true),"invalid period rejected")
+    var late_turn=_fixture()
+    late_turn.force_actions.enabled=true
+    late_turn.advance_atb(1.0/60.0)
+    _check(not late_turn.configure_source_force_pages([bad_turn],true),"turn provider cannot be installed late")
+
     print("CRAFT_TROOP_PAGE_NATIVE_SUMMARY; Checks="+str(checks)+"; Failures="+str(failures)+"; ProductionBridgeWired=False; OriginalVXRuntime=False")
     quit(0 if failures==0 else 1)

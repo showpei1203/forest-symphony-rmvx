@@ -10,12 +10,18 @@ var fired: Dictionary = {}
 var blocked_reason: String = ""
 var pending_page: int = -1
 var pending_receipt_start: int = 0
+# Separate, opt-in source window selection for a single fixed 339 page.
+var turn_window_mode: bool = false
+var startup_window_checked: bool = false
+var selected_turn_window: Dictionary = {}
 
 static func _integer(v: Variant,low: int,high: int) -> bool:
     return typeof(v) in [TYPE_INT,TYPE_FLOAT] and is_finite(float(v)) and (
         float(v)>=low and float(v)<=high and float(v)==float(int(v)))
 
-func configure(raw: Array, allow_random: bool = false) -> bool:
+func configure(raw: Array, allow_random: bool = false, allow_turn_window: bool = false) -> bool:
+    if allow_turn_window and (raw.size()!=1 or allow_random):
+        return false # no multi-page / random sequencing claim
     if enabled:
         return false # Never silently reset once-per-battle flags.
     var parsed: Array[Dictionary] = []
@@ -29,8 +35,14 @@ func configure(raw: Array, allow_random: bool = false) -> bool:
         for key in ["turn_ending","turn_valid","enemy_valid","actor_valid","switch_valid"]:
             if typeof(c.get(key,null))!=TYPE_BOOL:
                 return false
-        if c["turn_ending"] or c["turn_valid"] or c["actor_valid"] or (
-                not c["enemy_valid"] and not c["switch_valid"]):
+        if c["actor_valid"]:
+            return false
+        if allow_turn_window:
+            if not c["turn_ending"] and not c["turn_valid"]:
+                return false
+            if c["turn_valid"] and (not _integer(c.get("turn_a",null),0,1000000) or not _integer(c.get("turn_b",null),0,1000000)):
+                return false
+        elif c["turn_ending"] or c["turn_valid"] or (not c["enemy_valid"] and not c["switch_valid"]):
             return false
         if c["enemy_valid"] and (not _integer(c.get("enemy_index",null),0,9999) or not _integer(c.get("enemy_hp",null),0,100)):
             return false
@@ -63,10 +75,21 @@ func configure(raw: Array, allow_random: bool = false) -> bool:
             return false
         parsed.append({"condition":c.duplicate(true),"params":params.duplicate()})
     pages=parsed
+    turn_window_mode=allow_turn_window
     enabled=true
     return true
 
-func _eligible(battle,c: Dictionary) -> bool:
+func _eligible(battle,c: Dictionary,turn: int = 0, ending: bool = false) -> bool:
+    # #21 L163-173. turn_ending is a required phase only when true.
+    if c["turn_ending"] and not ending:
+        return false
+    if c["turn_valid"]:
+        var a:int=int(c["turn_a"])
+        var period:int=int(c["turn_b"])
+        if period==0 and turn!=a:
+            return false
+        if period>0 and (turn<1 or turn<a or turn%period!=a%period):
+            return false
     if c["enemy_valid"]:
         var i: int = int(c["enemy_index"])
         if i>=battle.enemies.size():
@@ -81,14 +104,36 @@ func _eligible(battle,c: Dictionary) -> bool:
             return false
     return true
 
+# Capture at the actual action-end boundary, not the next frame's HP,
+# switch or turn value. Execution still uses the existing receipt gate.
+func capture_turn_window(battle,turn:int,ending:bool,phase:String)->void:
+    if not enabled or not turn_window_mode or not battle.active or pending_page>=0 or not fired.is_empty() or not selected_turn_window.is_empty() or not blocked_reason.is_empty():
+        return
+    if _eligible(battle,pages[0]["condition"],turn,ending):
+        selected_turn_window={"turn":turn,"turn_ending":ending,"phase":phase}
+
+func capture_startup_window(battle)->void:
+    if turn_window_mode and not startup_window_checked:
+        startup_window_checked=true
+        capture_turn_window(battle,0,false,"startup")
+
 func tick(battle) -> int:
+    if turn_window_mode and not selected_turn_window.is_empty() and fired.is_empty() and pending_page<0 and (
+            not battle.force_actions.ready.is_empty() or not battle.force_actions.staged.is_empty() or not battle.force_actions.troop_slot.is_empty()):
+        blocked_reason="Turn window overlaps another force queue; ordering HOLD"
+        return -1
     if not enabled or pending_page>=0 or not battle.active or not battle.force_actions.enabled or (
             not blocked_reason.is_empty()) or battle.force_actions.busy or (
             not battle.force_actions.troop_slot.is_empty()) or (
             not battle.force_actions.ready.is_empty()) or not battle.force_actions.staged.is_empty():
         return 0
     for i in range(pages.size()):
-        if fired.has(i) or not _eligible(battle,pages[i]["condition"]):
+        if fired.has(i):
+            continue
+        if turn_window_mode:
+            if selected_turn_window.is_empty():
+                continue
+        elif not _eligible(battle,pages[i]["condition"]):
             continue
         if not battle.queue_source_vx339(pages[i]["params"]):
             blocked_reason="Unverified or unavailable forced action on page %d" % i

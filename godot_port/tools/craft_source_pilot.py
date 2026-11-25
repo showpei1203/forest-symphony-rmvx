@@ -8,10 +8,10 @@ CLI_SHA="21e01ccd80e3cc3024101dd1f9df56180cdf269868f6024373763845a1b2e086"
 GUI_SHA="5937c281c36ddce51370684c3c01383508fc1e014597ace35bc6014a9d529656"
 THUMB="CD9016D1FE805AB0B9B35CEF48F21E3049670183"
 CASES=[
-("VX230","exported_scripts/230__id55188000__ATB_Configurations.rb","3fe73b99012548f9f3e1d3ed3ec76a337be4713d",[(158,63),(275,7)]),
+("VX230","exported_scripts/230__id55188000__ATB_Configurations.rb","3fe73b99012548f9f3e1d3ed3ec76a337be4713d",[(147,2),(158,63),(275,7)]),
 ("VX231","exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb","4065ea4be1bc6fa5c5154034c89d626bc30d29fa",[(175,50),(558,44),(678,42),(1843,16),(2117,42),(2226,19),(2273,8)]),
 ("VX377","exported_scripts/377__id65670378__FS_ATB_DynamicResistance_v1.0.0.rb","d14c274006d00f793017e9910d1e390ec5f9aeef",[(34,93),(326,11),(664,111),(816,41)]),
-("GD_BATTLE","godot_port/scripts/FSBattle.gd","aca184e96b2f1b6f8139de70770afd91f8b18f81",[(973,115),(1120,43),(1222,12)]),
+("GD_BATTLE","godot_port/scripts/FSBattle.gd","b58930f32becd870b6c074d19b5377789586a7fa",[(976,115),(1125,44),(1230,12)]),
 ("GD_QUEUE","godot_port/scripts/FSActionQueue.gd","7b8dbc1f76f6482a2d82981ae614d9aa46400e65",[(0,44),(170,18),(280,72)]),
 ("GD_ATB","godot_port/scripts/FSTankentaiATBCore.gd","806bbe2aa5e5f8f3fabaa98935db7d2b833bec5a",[(128,95)]),
 ("VX406","exported_scripts/406__id23791037__FS_EnemyActionDistribution_FinalAuthority_v1.1.rb","06408e5ae0049fedc52289ff83f30ba091b0e1ef",[(165,90)]),
@@ -20,10 +20,10 @@ CASES=[
 ("VX234","exported_scripts/234__id12422743__Tankentai_Notetags_Add-on_v1.1.rb","b5f8b92bcd5343948fc65061ab43af29b8aba819",[(210,26),(998,26)]),
 ("VX374","exported_scripts/374__id21601036__FS_ComboCore_v1.1.1_OD.rb","f48fb90e6fa2b6a98953d888f9a3a5115671f137",[(2270,41),(2602,45)]),
 ("GD_STATE_ATB","godot_port/scripts/FSStateATBAuthority.gd","4240460e536e1b5e74f8731c24d948fd889eaf39",[(0,52)]),
-("VX21","exported_scripts/021__id96014404__Game_Troop.rb","d576e3f55071ff875e74a8e0db30cb6dbbcd0e03",[(152,54)]),
+("VX21","exported_scripts/021__id96014404__Game_Troop.rb","d576e3f55071ff875e74a8e0db30cb6dbbcd0e03",[(152,65)]),
 ("VX28","exported_scripts/028__id89128017__Game_Interpreter.rb","d508227e2e1fff1ab42db94f888f72ae687a5100",[(718,8),(1630,23)]),
 ("GD_FORCE","godot_port/scripts/FSForceActionQueue.gd","558e525684cef34ec647194302fffd21b9ec10b2",[(0,255)]),
-("GD_TROOP_PAGES","godot_port/scripts/FSTroopForcePages.gd","e25fe7785f7248d4ea886cfd104a726a9bdcaa6b",[(0,127)]),
+("GD_TROOP_PAGES","godot_port/scripts/FSTroopForcePages.gd","e5cf8e6ddd226fbc10d9cdeabfc8df2e15e4be50",[(0,172)]),
 ("VX88","exported_scripts/088__id24767163__Scene_Battle.rb","89bc1a9348f60904d1bf5c7b23d34e3dd7a364f9",[(922,32)]),
 ("VX411","exported_scripts/411__id61621387__FS_SkillCost_Authority_v2.0.0.rb","05909bf9e154019507969dfc50ff0e5fd50b75ae",[(1816,137)]),
 ("GD_SKILL_COST","godot_port/scripts/FSSkillCostRules.gd","b315b665af37435d0405deb31d1e748205b0a5fb",[(0,145)]),
@@ -36,6 +36,7 @@ CASES=[
 ("GD_AI_RNG","godot_port/scripts/FSAIRandom.gd","344866d5541433e7cbb79e9e599bdb9c373a8c48",[(0,41)]),
 ("GD_SCREEN","godot_port/scripts/FSScreen.gd","12bb9d807651dcb1b2bb20a52c134fa60f9d2a3b",[(256,37),(918,78),(1177,47),(1257,77)]),
 ("GD_PRESENTER","godot_port/scripts/ui/FSBattleActor01Presenter.gd","4bc83b2fd61ae6ef0ea5c45f944ababe35cd0086",[(0,141)]),
+("VX313","exported_scripts/313__id96846647__H87_SkillDelay_v1.1.rb","d29308d209e9058b886bb0eb0685f43c03d1998a",[(320,32)]),
 ("VX314","exported_scripts/314__id9275483__PopUp_Generale.rb","041b4e8917b2e6e2c2b55b8d49e1aec939932569",[(337,123)]),
 ("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","581fb38b66e6e2a33198f5e4e19b936f589a7f0c",[(0,114)]),
 ]

@@ -988,6 +988,7 @@ func advance_atb(delta: float) -> void:
             return
         if not active:
             return
+    troop_force_pages.capture_startup_window(self)
     # Real Tankentai #231 gauge increments are PER SOURCE FRAME, not an
     # invented continuous float rate. Accumulate fractional 60fps frames.
     source_atb_frame_fraction += delta * float(FSTankentaiATBCore.FRAMES_PER_SECOND)
@@ -1055,10 +1056,14 @@ func advance_atb(delta: float) -> void:
             boss_state_effects.sync(self)
 
 # Explicit candidate provider only; never automatically enable for unverified Troop DB.
-func configure_source_force_pages(pages: Array) -> bool:
+func configure_source_force_pages(pages: Array,allow_turn_window:bool=false) -> bool:
     if not active or not source_atb_initialized or not force_actions.enabled or troop_startup_plan.enabled:
         return false
-    return troop_force_pages.configure(pages,force_actions.random_targets_enabled)
+    if allow_turn_window and (source_atb_frame_count!=0 or source_turn_count!=0 or pending_actor>=0 or
+            not action_queue.pending.is_empty() or not action_queue.enemy_pending.is_empty() or
+            not force_actions.ready.is_empty() or not force_actions.staged.is_empty() or not force_actions.troop_slot.is_empty()):
+        return false
+    return troop_force_pages.configure(pages,force_actions.random_targets_enabled,allow_turn_window)
 
 func configure_source_startup_pages(pages:Array,verified_common_lists:Dictionary)->bool:
     if not active or not source_atb_initialized or troop_force_pages.enabled or source_atb_frame_count!=0 or (
@@ -1145,11 +1150,14 @@ func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
     if enemies.has(battler):
         enemy_valid_action_completed(battler)
     # #231 L573-600: mode 2 passes even when the force action does not
-    # increment end_member. Record the source counter boundary; the existing
-    # frame-polled interpreter does not yet execute the two event windows.
+    # increment end_member. One separately opted-in 339 page may be
+    # selected at either actual counter boundary; execution waits for the
+    # scheduler receipt. General interpreter timing is still unverified.
+    troop_force_pages.capture_turn_window(self,source_turn_count,false,"before_increment")
     source_turn_end_observation={"before_turn":source_turn_count,"counted_action":not forced,
         "after_turn":source_turn_count+1,"end_member_after":0,"event_dispatch_verified":false}
     source_turn_count+=1
+    troop_force_pages.capture_turn_window(self,source_turn_count,true,"after_increment")
     return true
 
 func _state_atb_negative_authority(state_id: int) -> bool:
