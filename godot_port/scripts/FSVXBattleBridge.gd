@@ -143,6 +143,8 @@ func _on_combat_finished(victory: bool) -> void:
 func request_escape() -> bool:
     if _combat == null or not _combat.active or not _allow_escape or _runner == null:
         return false
+    if _combat.troop_force_pages.pending_page>=0 or not _combat.troop_force_pages.blocked_reason.is_empty():
+        return false # Do not bypass an unacknowledged battle interpreter command.
     # Actual escape probability / ATB timing remain FS parity work.
     # This method is for a battle layer that already verified an escape succeeded.
     _commit_actor_vitals()
