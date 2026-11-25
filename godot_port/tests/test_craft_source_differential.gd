@@ -5,6 +5,7 @@ const DB = preload("res://scripts/FSDatabase.gd")
 const BATTLE = preload("res://scripts/FSBattle.gd")
 const AI = preload("res://scripts/FSEnemyAIDecision.gd")
 const RNG = preload("res://scripts/FSAIRandom.gd")
+const ATB = preload("res://scripts/FSTankentaiATBCore.gd")
 var failures: int = 0
 func _initialize() -> void:
     call_deferred("_run")
@@ -18,11 +19,12 @@ func _run() -> void:
         quit(2)
         return
     var data = JSON.parse_string(FileAccess.get_file_as_string(args[0]))
-    if not data is Dictionary or data.get("cases",[]).size()!=31:
+    if not data is Dictionary or data.get("cases",[]).size()!=38:
         quit(2)
         return
     var matched: int = 0
-    var gaps: int = 0
+    var shift_db = DB.new()
+    var shift_battle = BATTLE.new(shift_db)
     for row: Dictionary in data["cases"]:
         var b: Dictionary = {"atb":float(row["before"])/1000.0,
             "source_atb_count":int(row["before"]),"source_act_count":73,
@@ -30,8 +32,19 @@ func _run() -> void:
             "actor":bool(row["actor"]),"atb_resist_enabled":bool(row["enabled"]),
             "atb_resist_level":int(row["level"]),"atb_resist_max":4,
             "atb_resist_floor":int(row["floor"]),"atb_resist_recover":1}
-        var out: Dictionary = RULE.apply_direct_shift(b,int(row["delta"]),int(row["state"]),
-            {"aizhuo_overload_pierce_percent":float(row["pierce"])})
+        b["hp"] = 100
+        shift_battle.party.clear()
+        shift_battle.enemies.clear()
+        shift_db.tables = {"states":[null,null,null,null,
+            {"id":4,"atb_minus_damage":bool(row["allow_negative"])}]}
+        var attacker: Dictionary = {"aizhuo_overload_pierce_percent":float(row["pierce"])}
+        var out: Dictionary
+        if bool(row["actor"]):
+            shift_battle.party.append(b)
+            out = shift_battle.apply_combo_atb_shift_to_actor(b,int(row["delta"]),attacker,int(row["state"]))
+        else:
+            shift_battle.enemies.append(b)
+            out = shift_battle.apply_combo_atb_shift(b,int(row["delta"]),attacker,int(row["state"]))
         var actual: Array = [b["source_atb_count"],b["atb_resist_level"],b["source_act_count"],
             b["source_act_active"],b["source_at_active"],b["source_atb_count_up"]]
         # JSON numbers deserialize as floats in Godot. Normalize only exact
@@ -42,18 +55,40 @@ func _run() -> void:
         var expected: Array = [int(raw_expected[0]),int(raw_expected[1]),int(raw_expected[2]),
             raw_expected[3],raw_expected[4],raw_expected[5]]
         var equal: bool = actual == expected and bool(out.get("ok",false))
-        if bool(row["allow_negative"]):
-            _check(int(expected[0]) == -90 and int(actual[0]) == 0 and actual.slice(1)==expected.slice(1),
-                "negative State gap must be specifically observed")
-            gaps += 1
-            print("CRAFT_DIFF_GAP; Case="+str(row["id"])+"; Ruby="+JSON.stringify(expected)+"; Godot="+JSON.stringify(actual))
-        else:
-            _check(equal,str(row["id"])+" expected="+JSON.stringify(expected)+" actual="+JSON.stringify(actual))
-            if equal:
-                matched += 1
+        _check(equal,str(row["id"])+" expected="+JSON.stringify(expected)+" actual="+JSON.stringify(actual))
+        if equal:
+            matched += 1
+        if str(row["id"]) in ["state_negative","actor_state_negative","zero_negative_plain","floor_blocked_negative"]:
+            print("CRAFT_DIFF_FIXED_CASE; Case="+str(row["id"])+"; Ruby="+JSON.stringify(expected)+"; Godot="+JSON.stringify(actual))
         var recovered: int = RULE.after_valid_enemy_action(b)
         _check(recovered==int(row["recovered"]) and int(b["atb_resist_level"])==int(row["level_after_recovery"]),
             str(row["id"])+" recovery")
+    # Additional guards on the actual battle adapter: no truthy string or
+    # missing State record may silently grant negative debt.
+    var guard_cases: int = 0
+    for row: Dictionary in [{"id":4,"atb_minus_damage":"true"},{"id":4},{"id":9,"atb_minus_damage":true},{"id":4,"atb_minus_damage":false}]:
+        var target: Dictionary = {"actor":false,"hp":100,"atb":0.05,
+            "source_atb_count":50,"atb_resist_enabled":false}
+        shift_battle.enemies.clear()
+        shift_battle.party.clear()
+        shift_battle.enemies.append(target)
+        shift_db.tables = {"states":[null,null,null,null,row]}
+        var guard_result: Dictionary = shift_battle.apply_combo_atb_shift(target,-140,{},4)
+        _check(bool(guard_result.get("ok",false)) and int(target["source_atb_count"])==0,
+            "invalid or false State authority must preserve zero floor")
+        guard_cases += 1
+    var debt: Dictionary = {"actor":true,"hp":100,"atb":-0.09,"source_atb_count":-90,
+        "source_atb_count_up":true,"source_atb_gain_per_frame":10,"source_at_active":false,
+        "source_act_active":false}
+    var party: Array[Dictionary] = [debt]
+    var enemies: Array[Dictionary] = []
+    ATB.advance_frames(party,enemies,108)
+    _check(int(debt["source_atb_count"])==990 and not bool(debt["source_at_active"]),
+        "signed gauge needs 109 frames rather than 100")
+    ATB.advance_frames(party,enemies,1)
+    _check(int(debt["source_atb_count"])==1000 and bool(debt["source_at_active"]),
+        "signed debt reaches READY on exact frame 109")
+    print("CRAFT_DEBT_PROGRESS; Frames=109; SourceStart=-90; TypedGuards="+str(guard_cases))
     # Compare actual Godot AI selection, not only a copied predicate.
     var db = DB.new()
     var battle = BATTLE.new(db)
@@ -85,5 +120,5 @@ func _run() -> void:
             _check(not bool(result.get("ok",false)), "AI unsupported "+id+" unexpectedly accepted")
             print("CRAFT_AI_SCOPE_HOLD; Case="+id+"; SourceUrgent="+str(row["urgent"])+"; Godot="+str(result.get("reason","")))
     print("CRAFT_FORCE_SOURCE_ONLY; OriginalDrainFixture="+JSON.stringify(data["force"])+"; GodotBehavior=NOT_TESTED")
-    print("CRAFT_DIFF_SUMMARY; Matches="+str(matched)+"; StateGap="+str(gaps)+"; RecoveryCases=31; AIComparable="+str(ai_checked)+"; AIScopeHold=3; Failures="+str(failures))
-    quit(0 if failures==0 and matched==30 and gaps==1 and ai_checked==2 else 1)
+    print("CRAFT_DIFF_SUMMARY; Matches="+str(matched)+"; StateGap=0; RecoveryCases=38; AIComparable="+str(ai_checked)+"; AIScopeHold=3; TypedGuards="+str(guard_cases)+"; Failures="+str(failures))
+    quit(0 if failures==0 and matched==38 and guard_cases==4 and ai_checked==2 else 1)
