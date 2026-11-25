@@ -22,12 +22,29 @@ jobs:
         run: |
           python3 -m venv "$RUNNER_TEMP/asf-venv"
           "$RUNNER_TEMP/asf-venv/bin/python" -m pip install --only-binary=:all: --no-cache-dir 'numpy>=1.26,<3' 'Pillow>=10.1,<14' 'scipy>=1.11,<2'
-      - name: Real pinned grid and palette conversion on upstream public example
+      - name: Reproduce undersized cell rejection and test enlarged public image
         run: |
           cd "$RUNNER_TEMP/asf"
-          test -f src/pixel-looks/kael-picture.png
-          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$RUNNER_TEMP/asf-venv/bin/python" -B skills/generate2dsprite/scripts/pixel_look.py master --image src/pixel-looks/kael-picture.png --colors 16 --name pilot --output-dir "$RUNNER_TEMP/asf-output"
-          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$RUNNER_TEMP/asf-venv/bin/python" -B - "$RUNNER_TEMP/asf-output/pilot.png" <<'PY'
+          export PYTHONUTF8=1
+          py="$RUNNER_TEMP/asf-venv/bin/python"
+          # Preserve first failure, rather than weakening the upstream gate.
+          set +e
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$py" -B skills/generate2dsprite/scripts/pixel_look.py master --image src/pixel-looks/kael-picture.png --colors 16 --name pilot --output-dir "$RUNNER_TEMP/asf-negative" > "$RUNNER_TEMP/asf-negative.log" 2>&1
+          rc=$?
+          set -e
+          cat "$RUNNER_TEMP/asf-negative.log"
+          test "$rc" = 1
+          grep -F 'cells this small' "$RUNNER_TEMP/asf-negative.log"
+          test ! -e "$RUNNER_TEMP/asf-negative/pilot.png"
+          # Exact nearest enlargement, no new art, no change to original.
+          "$py" - "$RUNNER_TEMP/asf-enlarged.png" <<'PY'
+          import sys
+          from PIL import Image
+          im=Image.open("src/pixel-looks/kael-picture.png").convert("RGB")
+          im.resize((im.width*2,im.height*2),Image.Resampling.NEAREST).save(sys.argv[1])
+          PY
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$py" -B skills/generate2dsprite/scripts/pixel_look.py master --image "$RUNNER_TEMP/asf-enlarged.png" --colors 16 --name pilot --output-dir "$RUNNER_TEMP/asf-output"
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$py" -B - "$RUNNER_TEMP/asf-output/pilot.png" <<'PY'
           import hashlib, sys
           from pathlib import Path
           from PIL import Image
