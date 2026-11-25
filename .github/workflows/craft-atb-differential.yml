@@ -4,6 +4,10 @@ on:
     branches: [feature/fs-godot-phase1]
     paths:
       - 'godot_port/tools/craft_atb_source_oracle.rb'
+      - 'godot_port/tools/craft_common_event_oracle.rb'
+      - 'godot_port/scripts/FSCommonEventPlan.gd'
+      - 'godot_port/tests/test_craft_common_event_plan.gd'
+      - 'godot_port/tests/fixtures/craft_common_event_synthetic.json'
       - 'godot_port/tools/craft_atb_authority_scan.py'
       - 'godot_port/tools/craft_force_source_inventory.py'
       - 'godot_port/scripts/FSATBResistance.gd'
@@ -115,6 +119,13 @@ jobs:
           bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
           timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_troop_startup.gd | tee "$RUNNER_TEMP/startup.log"
           grep -E 'CRAFT_TROOP_STARTUP_SUMMARY; Checks=[0-9]+; Failures=0; SyntheticCommonEvent=True; OriginalVXRuntime=False' "$RUNNER_TEMP/startup.log"
+      - name: Common event actor equipment branches and switch-only native execution
+        run: |
+          set -o pipefail
+          ruby godot_port/tools/craft_common_event_oracle.rb godot_port/tests/fixtures/craft_common_event_synthetic.json "$RUNNER_TEMP/common-event-oracle.json"
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_common_event_plan.gd -- "$RUNNER_TEMP/common-event-oracle.json" | tee "$RUNNER_TEMP/common-event.log"
+          grep -E 'CRAFT_COMMON_EVENT_NATIVE_SUMMARY; Checks=[0-9]+; Failures=0; Cases=4; SwitchOnly=3; ForcedHold=1; FullVXRuntime=False' "$RUNNER_TEMP/common-event.log"
       - name: Existing Godot combat regression suite
         run: |
           bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"

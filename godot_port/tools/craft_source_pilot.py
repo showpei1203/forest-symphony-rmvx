@@ -21,7 +21,7 @@ CASES=[
 ("VX374","exported_scripts/374__id21601036__FS_ComboCore_v1.1.1_OD.rb","f48fb90e6fa2b6a98953d888f9a3a5115671f137",[(2270,41),(2602,45)]),
 ("GD_STATE_ATB","godot_port/scripts/FSStateATBAuthority.gd","4240460e536e1b5e74f8731c24d948fd889eaf39",[(0,52)]),
 ("VX21","exported_scripts/021__id96014404__Game_Troop.rb","d576e3f55071ff875e74a8e0db30cb6dbbcd0e03",[(152,65)]),
-("VX28","exported_scripts/028__id89128017__Game_Interpreter.rb","d508227e2e1fff1ab42db94f888f72ae687a5100",[(718,8),(1630,23)]),
+("VX28","exported_scripts/028__id89128017__Game_Interpreter.rb","d508227e2e1fff1ab42db94f888f72ae687a5100",[(427,5),(565,103),(671,7),(718,8),(748,7),(1630,23)]),
 ("GD_FORCE","godot_port/scripts/FSForceActionQueue.gd","558e525684cef34ec647194302fffd21b9ec10b2",[(0,255)]),
 ("GD_TROOP_PAGES","godot_port/scripts/FSTroopForcePages.gd","e5cf8e6ddd226fbc10d9cdeabfc8df2e15e4be50",[(0,172)]),
 ("VX88","exported_scripts/088__id24767163__Scene_Battle.rb","89bc1a9348f60904d1bf5c7b23d34e3dd7a364f9",[(922,32)]),
@@ -38,6 +38,7 @@ CASES=[
 ("GD_PRESENTER","godot_port/scripts/ui/FSBattleActor01Presenter.gd","4bc83b2fd61ae6ef0ea5c45f944ababe35cd0086",[(0,141)]),
 ("VX313","exported_scripts/313__id96846647__H87_SkillDelay_v1.1.rb","d29308d209e9058b886bb0eb0685f43c03d1998a",[(320,32)]),
 ("VX314","exported_scripts/314__id9275483__PopUp_Generale.rb","041b4e8917b2e6e2c2b55b8d49e1aec939932569",[(337,123)]),
+("GD_COMMON_PLAN","godot_port/scripts/FSCommonEventPlan.gd","c94c3feb2081dbe23dc14abfa70fa5048e30cb1d",[(0,179)]),
 ("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","581fb38b66e6e2a33198f5e4e19b936f589a7f0c",[(0,114)]),
 ]
 def sha(x): return hashlib.sha256(x).hexdigest()
