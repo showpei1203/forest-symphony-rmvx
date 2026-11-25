@@ -3,11 +3,13 @@ class_name FSTroopForcePages
 
 # Opt-in static subset of #21 Game_Troop.conditions_met?/setup_battle_event.
 # Only span=0 (once per battle), HP / switch conditions and one typed
-# basic command 339. Unknown conditions/opcodes do not become no-ops.
+# basic/skill command 339. Unknown conditions/opcodes do not become no-ops.
 var enabled: bool = false
 var pages: Array[Dictionary] = []
 var fired: Dictionary = {}
 var blocked_reason: String = ""
+var pending_page: int = -1
+var pending_receipt_start: int = 0
 
 static func _integer(v: Variant,low: int,high: int) -> bool:
     return typeof(v) in [TYPE_INT,TYPE_FLOAT] and is_finite(float(v)) and (
@@ -48,8 +50,14 @@ func configure(raw: Array) -> bool:
             return false
         var params: Array = commands[0]["parameters"]
         if params.size()!=5 or not _integer(params[0],0,1) or (
-                not _integer(params[1],0,9999)) or not _integer(params[2],0,0) or (
-                not _integer(params[3],0,1)) or not _integer(params[4],0,9999):
+                not _integer(params[1],0,9999)) or not _integer(params[2],0,1) or (
+                not _integer(params[4],0,9999)):
+            return false
+        if int(params[2])==0 and not _integer(params[3],0,1):
+            return false
+        if int(params[2])==1 and not _integer(params[3],1,999999):
+            return false
+        if not commands[1].get("parameters",null) is Array or not commands[1]["parameters"].is_empty():
             return false
         parsed.append({"condition":c.duplicate(true),"params":params.duplicate()})
     pages=parsed
@@ -72,7 +80,7 @@ func _eligible(battle,c: Dictionary) -> bool:
     return true
 
 func tick(battle) -> int:
-    if not enabled or not battle.active or not battle.force_actions.enabled or (
+    if not enabled or pending_page>=0 or not battle.active or not battle.force_actions.enabled or (
             not blocked_reason.is_empty()) or battle.force_actions.busy or (
             not battle.force_actions.troop_slot.is_empty()) or (
             not battle.force_actions.ready.is_empty()) or not battle.force_actions.staged.is_empty():
@@ -83,6 +91,24 @@ func tick(battle) -> int:
         if not battle.queue_source_vx339(pages[i]["params"]):
             blocked_reason="Unverified or unavailable forced action on page %d" % i
             return -1
-        fired[i]=true
+        pending_page=i
+        pending_receipt_start=battle.force_actions.completed.size()
         return 1
     return 0
+
+# This candidate serializes page 339 until the actual synchronous forced
+# action is acknowledged. A missing/rejected receipt is visible HOLD,
+# rather than silently consuming the page. Not full VX interpreter timing.
+func settle(battle) -> int:
+    if pending_page<0:
+        return 0
+    var q = battle.force_actions
+    if q.busy or not q.troop_slot.is_empty() or not q.ready.is_empty() or not q.staged.is_empty():
+        return 0
+    var page_index: int = pending_page
+    pending_page=-1
+    if q.completed.size()!=pending_receipt_start+1 or not bool(q.completed[-1].get("success",false)):
+        blocked_reason="Force action did not settle successfully on page %d" % page_index
+        return -1
+    fired[page_index]=true
+    return 1
