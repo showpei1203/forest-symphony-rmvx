@@ -40,10 +40,12 @@ func _run()->void:
     q.enabled=true
     _check(b.queue_source_vx339([1,0,1,1,0]),"339 skill accepted")
     _check(int(a["mp"])==100 and int(e["hp"])==500,"no early payment")
+    var before_gauge:int=int(a["source_atb_count"])
+    var gain:int=int(a["source_atb_gain_per_frame"])
     b.advance_atb(1.0/60.0)
     _check(int(a["mp"])==75 and int(e["hp"])==490,"actual damage and exact custom MP payment")
     _check(q.completed.size()==1 and q.completed[0]["object_id"]==1,"one receipt")
-    _check(int(a["source_atb_count"])==300,"source skill recharge")
+    _check(int(a["source_atb_count"])==before_gauge+gain,"forced skill preserves live frame gauge, not skill recharge")
     b.advance_atb(1.0/60.0)
     _check(int(a["mp"])==75 and int(e["hp"])==490,"no replay")
     _check(b.queue_source_force_action(0,0,"skill",0,2),"enemy heal same side")

@@ -122,5 +122,46 @@ func _run() -> void:
     _check(q.resolve_one(b)==1,"force resumes once command released")
     b.active=false
     _check(not b.queue_source_force_action(1,0,"guard",0) and q.drain_event(b)==0,"outside battle no action")
+
+    # Direct real queue settlement isolates action-end from frame accumulation.
+    for row in oracle["turn_cases"]:
+        var tb = _fixture()
+        tb.force_actions.enabled=true
+        var subject:Dictionary=tb.party[0]
+        var v:Array=row["input"]
+        subject["source_atb_count"]=int(v[0])
+        subject["atb"]=float(v[0])/1000.0
+        subject["source_act_count"]=int(v[1])
+        subject["source_act_active"]=v[2]
+        subject["source_at_active"]=v[3]
+        subject["source_atb_count_up"]=v[4]
+        var ok:bool=false
+        if row["forced"]:
+            ok=tb.queue_source_force_action(1,0,"guard",0) and tb.force_actions.drain_event(tb)==1 and tb.force_actions.resolve_one(tb)==1
+        else:
+            ok=tb.finish_source_atb_action(subject,"guard",0)
+        var expected:Array=row["expected"]
+        _check(ok and int(subject["source_atb_count"])==int(expected[0]) and
+            int(subject["source_act_count"])==int(expected[1]) and subject["source_act_active"]==expected[2] and
+            subject["source_at_active"]==expected[3] and subject["source_atb_count_up"]==expected[4] and
+            is_equal_approx(float(subject["atb"]),float(expected[0])/1000.0),"original turn-end gauge "+str(row["id"]))
+        _check(tb.source_turn_count==int(row["turn"]) and tb.source_turn_end_observation["counted_action"]==not bool(row["forced"]) and
+            tb.source_turn_end_observation["before_turn"]==0 and tb.source_turn_end_observation["after_turn"]==1 and
+            not tb.source_turn_end_observation["event_dispatch_verified"],"mode-2 accounting "+str(row["id"]))
+    # Direct uncharged ordinary ACT overlap must not delete the only pending
+    # action and leave a battler stranded in ACT. Explicit candidate HOLD.
+    var hold = _fixture()
+    hold.force_actions.enabled=true
+    hold.party[0]["source_at_active"]=true
+    hold.party[0]["source_atb_count_up"]=false
+    _check(hold.queue_actor_action(0,"attack",0),"overlap ordinary queued")
+    _check(hold.queue_source_force_action(1,0,"guard",0) and hold.force_actions.drain_event(hold)==1,"overlap force queued")
+    _check(hold.force_actions.resolve_one(hold)==0 and hold.has_actor_pending_action(0) and
+        not bool(hold.party[0]["guarding"]) and hold.source_turn_count==0 and
+        not bool(hold.force_actions.completed[0]["success"]),"overlap HOLD preserves normal command")
+    hold.advance_atb(1.0/60.0)
+    _check(hold.action_queue.completed.size()==1 and bool(hold.action_queue.completed[0]["success"]) and
+        hold.source_turn_count==1,"ordinary action resumes after HOLD")
+
     print("CRAFT_FORCE_NATIVE_SUMMARY; Checks="+str(checks)+"; Failures="+str(failures)+"; RealTroopEventWired=False; OriginalVXRuntime=False")
     quit(0 if failures==0 else 1)

@@ -25,6 +25,9 @@ var _source_command_owner: Dictionary = {}
 var source_atb_initialized: bool = false
 var source_atb_frame_fraction: float = 0.0
 var source_atb_frame_count: int = 0
+# Scoped #231 turn-end accounting; event dispatch itself is not yet ported.
+var source_turn_count: int = 0
+var source_turn_end_observation: Dictionary = {}
 var source_atb_rolls_for_test: Dictionary = {}
 var source_atb_advantage: String = ""
 var source_atb_wait: bool = false
@@ -1116,9 +1119,9 @@ func source_action_charged(battler: Dictionary) -> bool:
     return source_atb_initialized and bool(battler.get("source_act_active",false))
 
 func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
-        object_id: int = 0) -> bool:
-    # Charge completion is distinct from battle result calculation.
-    if not source_action_charged(battler):
+        object_id: int = 0, forced: bool = false) -> bool:
+    # Forced actions do not require a charged ACT; never fabricate that flag.
+    if not source_atb_initialized or (not forced and not source_action_charged(battler)):
         return false
     if ivy_cover.active and party.has(battler):
         # Guard / Item actions have no attack()/use_skill() call to open
@@ -1127,9 +1130,26 @@ func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
             ivy_cover.begin_action()
         ivy_cover.owner_action_finished(battler)
         ivy_cover.end_action()
-    FSTankentaiATBCore.reset_after_action(battler,kind,object_id,db)
+    # #230 FORCE_ACTION_CONSUME_GAUGE=false; #231 L566-570, L2274-2281.
+    # Charged forced ACT refills to 1000, otherwise preserve the live gauge
+    # including signed debt and the ACT/ATB flags. Effects may have changed it.
+    if not forced:
+        FSTankentaiATBCore.reset_after_action(battler,kind,object_id,db)
+    elif bool(battler.get("source_act_active",false)):
+        battler["source_act_active"]=false
+        battler["source_at_active"]=false
+        battler["source_act_count"]=0
+        battler["source_atb_count"]=1000
+        battler["atb"]=1.0
+        battler["source_atb_count_up"]=true
     if enemies.has(battler):
         enemy_valid_action_completed(battler)
+    # #231 L573-600: mode 2 passes even when the force action does not
+    # increment end_member. Record the source counter boundary; the existing
+    # frame-polled interpreter does not yet execute the two event windows.
+    source_turn_end_observation={"before_turn":source_turn_count,"counted_action":not forced,
+        "after_turn":source_turn_count+1,"end_member_after":0,"event_dispatch_verified":false}
+    source_turn_count+=1
     return true
 
 func _state_atb_negative_authority(state_id: int) -> bool:

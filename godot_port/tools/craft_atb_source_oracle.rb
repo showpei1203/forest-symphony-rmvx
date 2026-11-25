@@ -244,6 +244,71 @@ random_cases=random_specs.map do |id,seed,rows|
 end
 FS_AI_RANDOM.disable
 puts "CRAFT_RANDOM_ORACLE_PASS; Cases=#{random_cases.length}; SourceMethods=210,372; FullVXRuntime=False"
-File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines,page_steps:page_steps,random_cases:random_cases}))
+
+# #230 mode-2 turn_end: exact selected method and Sprite_ATB#refill.
+# Recharge for normal guard is a deliberately bounded stub; existing Godot
+# ordinary recharge tests remain independent. No complete VX aliases executed.
+turn_config=pinned('exported_scripts/230__id55188000__ATB_Configurations.rb','3fe73b99012548f9f3e1d3ed3ec76a337be4713d')
+turn_source=pinned('exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb','4065ea4be1bc6fa5c5154034c89d626bc30d29fa')
+module N02; end
+[196,200,279,280].each { |n| N02.module_eval(excerpt(turn_config,n,n),'#230 exact',n) }
+module Cache
+  def self.system(_name); nil; end
+end
+TurnAction=Struct.new(:forcing,:target_index) do
+  def guard?; true; end
+  def clear; raise 'guard unexpectedly cleared'; end
+end
+TurnMember=Struct.new(:at_count,:act_count,:act_active,:at_active,:atb_count_up,:action) do
+  def actor?; true; end
+  def index; 0; end
+end
+class TurnGauge
+  def initialize(member); @battler=member; @gauge=Struct.new(:bitmap).new; end
+  def gauge_refill(*); refill; end
+end
+TurnGauge.class_eval(excerpt(turn_source,2274,2281),'#231 refill',2274)
+class TurnTroop
+  attr_accessor :turn_ending
+  attr_reader :turn_count,:members
+  def initialize; @turn_count=0; @turn_ending=false; @members=[]; end
+  def increase_turn; @turn_count+=1; end
+end
+class TurnScene
+  attr_reader :events,:end_member
+  def initialize(member)
+    @active_battler=member; @spriteset=TurnGauge.new(member)
+    @end_member=0; @events=[]; @slip_all_damage=false
+    @status_window=Object.new
+    def @status_window.refresh; end
+  end
+  def process_battle_event
+    @events << [$game_troop.turn_count,$game_troop.turn_ending,@end_member]
+  end
+  def recharge_action(member)
+    member.at_count=0; member.act_count=0; member.act_active=false
+    member.at_active=false; member.atb_count_up=true
+  end
+end
+TurnScene.class_eval(excerpt(turn_source,559,602),'#231 turn_end',559)
+turn_cases=[
+  ['partial',350,0,false,false,true,true],
+  ['negative',-90,0,false,false,true,true],
+  ['ready',1000,0,false,true,false,true],
+  ['charging',0,73,false,false,false,true],
+  ['charged',0,1000,true,false,false,true],
+  ['normal_guard',0,1000,true,false,false,false]
+].map do |id,at,act,ac,ready,up,forced|
+  member=TurnMember.new(at,act,ac,ready,up,TurnAction.new(forced,0))
+  $game_party=Struct.new(:members).new([member])
+  $game_troop=TurnTroop.new
+  scene=TurnScene.new(member)
+  scene.turn_end(member)
+  raise 'mode 2 turn passage lost' unless $game_troop.turn_count==1 && scene.events==[[0,false,0],[1,true,0]]
+  {id:id,input:[at,act,ac,ready,up],forced:forced,expected:[member.at_count,member.act_count,member.act_active,member.at_active,member.atb_count_up],events:scene.events,turn:$game_troop.turn_count,end_member:scene.end_member}
+end
+puts "CRAFT_TURN_END_ORACLE_PASS; Cases=#{turn_cases.size}; FullVXRuntime=False"
+
+File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines,page_steps:page_steps,random_cases:random_cases,turn_cases:turn_cases}))
 puts "CRAFT_NOTE_ORACLE_PASS; Notes=#{note_cases.length}; StatePipelines=#{pipelines.length}; FullVXRuntime=False"
 puts "CRAFT_ORACLE_PASS; Cases=#{cases.length}; Force=2; Urgent=#{urgent.length}; OriginalVXRuntime=False"

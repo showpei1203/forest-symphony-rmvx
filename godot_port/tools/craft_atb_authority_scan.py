@@ -10,7 +10,7 @@ index=json.loads((root/"authority/SCRIPT_INDEX.json").read_text(encoding="utf-8"
 rows=index["scripts"]
 assert len(rows)==index["scripts_count"]==505
 assert len({row["order"] for row in rows})==505
-pattern=re.compile(r"\batb_minus_damage\b|\batb_damage\b|\balbert_combo_apply_atb_delta\b|\bfs_drain_force_action_queue\b|\bfs_force_action_queue\b|\bprepare_forcing_atb\b")
+pattern=re.compile(r"\batb_minus_damage\b|\batb_damage\b|\balbert_combo_apply_atb_delta\b|\bfs_drain_force_action_queue\b|\bfs_force_action_queue\b|\bprepare_forcing_atb\b|\bturn_end\b|\bFORCE_ACTION_CONSUME_GAUGE\b|\bFORCE_ACTION_INCREASE_TURN\b|\bATB_TURN_COUNT\b")
 defs=[]
 matches=[]
 for row in rows:

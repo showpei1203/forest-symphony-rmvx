@@ -209,6 +209,17 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
             if entry.has("page_ticket"):
                 return 0
             continue
+        # Uncharged ACT with a pending ordinary command would become an
+        # orphan after deletion (the source owns a different action object).
+        # HOLD this exact overlap until replacement lifecycle is ported.
+        var pending_key: String = ("actor:" if entry["actor"] else "enemy:")+str(index)
+        var pending_normal: bool = battle.action_queue.pending.has(pending_key) if entry["actor"] else battle.action_queue.enemy_pending.has(pending_key)
+        if pending_normal and not bool(subject.get("source_act_active",false)) and not bool(subject.get("source_at_active",false)) and not bool(subject.get("source_atb_count_up",true)):
+            _record(entry,false,index,"uncharged ordinary ACT replacement HOLD")
+            busy=false
+            if entry.has("page_ticket"):
+                return 0
+            continue
         # Only remove the superseded ordinary command, never other members.
         if entry["actor"]:
             battle.action_queue.pending.erase("actor:%d" % index)
@@ -229,8 +240,7 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
             success = not battle.accuracy.active or str(
                 target.get("fs_last_action_result","blocked")) in ["hit","miss","evade"]
         if success:
-            subject["source_act_active"] = true
-            battle.finish_source_atb_action(subject,kind,object_id)
+            battle.finish_source_atb_action(subject,kind,object_id,true)
         _record(entry,success,index,"" if success else "execution refused")
         busy = false
         return 1
