@@ -15,7 +15,7 @@ static func _integer(v: Variant,low: int,high: int) -> bool:
     return typeof(v) in [TYPE_INT,TYPE_FLOAT] and is_finite(float(v)) and (
         float(v)>=low and float(v)<=high and float(v)==float(int(v)))
 
-func configure(raw: Array) -> bool:
+func configure(raw: Array, allow_random: bool = false) -> bool:
     if enabled:
         return false # Never silently reset once-per-battle flags.
     var parsed: Array[Dictionary] = []
@@ -51,8 +51,10 @@ func configure(raw: Array) -> bool:
         var params: Array = commands[0]["parameters"]
         if params.size()!=5 or not _integer(params[0],0,1) or (
                 not _integer(params[1],0,9999)) or not _integer(params[2],0,1) or (
-                not _integer(params[4],0,9999)):
+                not _integer(params[4],-1 if allow_random else 0,9999)):
             return false
+        if int(params[4])==-1 and int(params[2])==0 and int(params[3])!=0:
+            return false # random guard is not part of the bounded selection subset
         if int(params[2])==0 and not _integer(params[3],0,1):
             return false
         if int(params[2])==1 and not _integer(params[3],1,999999):
