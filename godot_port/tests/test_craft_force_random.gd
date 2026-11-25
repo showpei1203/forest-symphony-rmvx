@@ -126,5 +126,39 @@ func _run()->void:
     _check(not h.queue_source_vx339([1,0,1,1,-1]) and h.action_queue.ai_rng.count==0,"unpayable skill refuses before draw")
     h.party[0]["mp"]=100
     _check(not h.queue_source_vx339([1,0,1,1,-2]) and h.action_queue.ai_rng.count==0,"last target action-index authority remains HOLD")
+    # Complete event-page flow: structural opt-in, wait, one draw,
+    # matching receipt, and no replay.
+    var page:Dictionary={"span":0,"condition":{"turn_ending":false,"turn_valid":false,
+        "enemy_valid":true,"actor_valid":false,"switch_valid":false,"enemy_index":0,"enemy_hp":100},
+        "list":[{"code":339,"indent":0,"parameters":[1,0,1,1,-1]},
+        {"code":0,"indent":0,"parameters":[]}]}
+    var page_battle=_fixture(base,false)
+    _check(not page_battle.configure_source_force_pages([page]),"random page rejects without second opt-in")
+    page_battle.force_actions.random_targets_enabled=true
+    var last:Dictionary=page.duplicate(true)
+    last["list"][0]["parameters"][4]=-2
+    _check(not page_battle.configure_source_force_pages([last]),"last target page remains HOLD")
+    var random_guard:Dictionary=page.duplicate(true)
+    random_guard["list"][0]["parameters"]=[1,0,0,1,-1]
+    _check(not page_battle.configure_source_force_pages([random_guard]),"random guard outside scope")
+    _check(page_battle.configure_source_force_pages([page]),"explicit random page configuration")
+    page_battle.action_queue.ai_rng.enable_test(47)
+    page_battle.source_atb_wait=true
+    page_battle.advance_atb(1.0/60.0)
+    _check(page_battle.troop_force_pages.pending_page==0 and page_battle.action_queue.ai_rng.count==1 and
+        page_battle.force_actions.ready.size()==1,"random page draws once before wait")
+    var chosen:Dictionary=page_battle.force_actions.ready[0]["target"]
+    var chosen_hp:int=int(chosen["hp"])
+    page_battle.advance_atb(3.0/60.0)
+    _check(page_battle.action_queue.ai_rng.count==1 and page_battle.force_actions.completed.is_empty() and
+        int(chosen["hp"])==chosen_hp,"waiting page never redraws or damages")
+    page_battle.source_atb_wait=false
+    page_battle.advance_atb(1.0/60.0)
+    _check(page_battle.troop_force_pages.fired.has(0) and int(chosen["hp"])==chosen_hp-10 and
+        int(page_battle.party[0]["mp"])==90 and page_battle.force_actions.completed[0]["target_mode"]=="random",
+        "random page actual settlement")
+    page_battle.advance_atb(1.0/60.0)
+    _check(page_battle.force_actions.completed.size()==1 and page_battle.action_queue.ai_rng.count==1,
+        "random page exactly once")
     print("CRAFT_FORCE_RANDOM_SUMMARY; Checks="+str(checks)+"; OracleMatches="+str(matched)+"; Failures="+str(failures)+"; FullVXRuntime=False")
     quit(0 if failures==0 and matched==10 else 1)
