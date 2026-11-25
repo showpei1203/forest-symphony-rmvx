@@ -86,7 +86,7 @@ func _run() -> void:
     p["list"][0]["code"]=355
     invalid.append(p)
     p=_page(false,1)
-    p["list"][0]["parameters"][2]=1
+    p["list"][0]["parameters"][2]=2
     invalid.append(p)
     p=_page(false,1)
     p["list"][0]["parameters"][4]=-1
@@ -112,5 +112,67 @@ func _run() -> void:
     _check(not h.troop_force_pages.blocked_reason.is_empty() and h.troop_force_pages.fired.is_empty() and h.force_actions.completed.is_empty(),"unavailable actor produces explicit HOLD")
     h.advance_atb(1.0/60.0)
     _check(h.force_actions.completed.is_empty(),"HOLD does not silently resume")
+    # A real fixed-target skill page, with a pending receipt and a second
+    # unrelated queued action. The second action must not be mistaken for
+    # the page acknowledgment or be required to settle it.
+    var s=_fixture()
+    s.db.tables["skills"]=[null,{"id":1,"name":"Probe","scope":1,"occasion":0,
+        "mp_cost":10,"note":"<costo mp:25>","base_damage":10,"atk_f":0,"spi_f":0,
+        "plus_state_set":[],"minus_state_set":[],"damage_to_mp":false,"absorb_damage":false}]
+    s.party[0]["skills"]=[1]
+    s.force_actions.enabled=true
+    var skill_page=_page(false,1)
+    skill_page["list"][0]["parameters"]=[1,0,1,1,0]
+    _check(s.configure_source_force_pages([skill_page]),"339 fixed skill page accepted")
+    s.enemies[0]["hp"]=40
+    s.source_atb_wait=true
+    s.advance_atb(1.0/60.0)
+    _check(s.troop_force_pages.pending_page==0 and s.troop_force_pages.fired.is_empty() and
+        int(s.party[0]["mp"])==100 and s.force_actions.completed.is_empty(),"page pending not falsely completed")
+    _check(not s.queue_source_force_action(1,0,"guard",0),"pending page cannot be overwritten")
+    _check(s.queue_source_force_action(0,0,"guard",0),"unrelated event can queue")
+    s.source_atb_wait=false
+    s.advance_atb(1.0/60.0)
+    _check(s.troop_force_pages.fired.has(0) and s.troop_force_pages.pending_page==-1 and
+        int(s.party[0]["mp"])==75 and int(s.enemies[0]["hp"])==30,"actual page skill settles and pays")
+    _check(s.force_actions.completed.size()==1 and s.force_actions.completed[0]["page_ticket"]==0 and
+        s.force_actions.ready.size()==1,"ticket matches before unrelated queue drains")
+    s.advance_atb(1.0/60.0)
+    _check(s.force_actions.completed.size()==2 and not s.force_actions.completed[1].has("page_ticket") and
+        bool(s.enemies[0]["guarding"]),"unrelated event runs next frame")
+    s.advance_atb(1.0/60.0)
+    _check(int(s.party[0]["mp"])==75 and int(s.enemies[0]["hp"])==30,"page exactly once")
+    # Resource changes between staging and execution must not consume the
+    # page or resume normal battle as though its command succeeded.
+    var f=_fixture()
+    f.db.tables["skills"]=s.db.tables["skills"].duplicate(true)
+    f.party[0]["skills"]=[1]
+    f.force_actions.enabled=true
+    _check(f.configure_source_force_pages([skill_page]),"late-loss fixture config")
+    f.enemies[0]["hp"]=40
+    f.source_atb_wait=true
+    f.advance_atb(1.0/60.0)
+    f.party[0]["mp"]=0
+    f.source_atb_wait=false
+    f.advance_atb(1.0/60.0)
+    _check(f.troop_force_pages.fired.is_empty() and not f.troop_force_pages.blocked_reason.is_empty() and
+        int(f.enemies[0]["hp"])==40 and int(f.party[0]["mp"])==0,"late MP failure explicit hold")
+    _check(f.force_actions.completed.size()==1 and not bool(f.force_actions.completed[0]["success"]) and
+        f.force_actions.completed[0]["page_ticket"]==0,"failure retains correct ticket")
+    f.party[0]["source_atb_gain_per_frame"]=10
+    var stopped_count:int=int(f.party[0]["source_atb_count"])
+    f.advance_atb(1.0)
+    _check(int(f.party[0]["source_atb_count"])==stopped_count,"blocked event freezes further ATB")
+    # Structural skill support is not authorization to execute any effects.
+    var u=_fixture()
+    u.db.tables["skills"]=s.db.tables["skills"].duplicate(true)
+    u.db.tables["skills"][1]["plus_state_set"]=[4]
+    u.party[0]["skills"]=[1]
+    u.force_actions.enabled=true
+    _check(u.configure_source_force_pages([skill_page]),"structural skill page")
+    u.enemies[0]["hp"]=40
+    u.advance_atb(1.0/60.0)
+    _check(u.troop_force_pages.fired.is_empty() and not u.troop_force_pages.blocked_reason.is_empty() and
+        int(u.party[0]["mp"])==100 and int(u.enemies[0]["hp"])==40,"unported effect refuses without payment")
     print("CRAFT_TROOP_PAGE_NATIVE_SUMMARY; Checks="+str(checks)+"; Failures="+str(failures)+"; ProductionBridgeWired=False; OriginalVXRuntime=False")
     quit(0 if failures==0 else 1)
