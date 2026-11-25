@@ -39,7 +39,7 @@ CASES=[
 ("VX313","exported_scripts/313__id96846647__H87_SkillDelay_v1.1.rb","d29308d209e9058b886bb0eb0685f43c03d1998a",[(320,32)]),
 ("VX314","exported_scripts/314__id9275483__PopUp_Generale.rb","041b4e8917b2e6e2c2b55b8d49e1aec939932569",[(337,123)]),
 ("GD_COMMON_PLAN","godot_port/scripts/FSCommonEventPlan.gd","499dd93d6d347818a426ac97f48761752d1aaaca",[(0,199)]),
-("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","0a7d3f50b41a6de495c80cccf907d4d78feaf1c5",[(0,189)]),
+("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","1d40245e7e0099f770fbaf815cde83aac01eda07",[(0,208)]),
 ]
 def sha(x): return hashlib.sha256(x).hexdigest()
 def check(ok,reason):

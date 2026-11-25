@@ -66,7 +66,7 @@ func _battle_fixture(row:Dictionary):
             equipment[pos]=aid
             pos+=1
         b.party.append({"id":int(id),"actor":true,"name":"Probe","hp":100,"maxhp":100,"mp":100,"maxmp":100,
-            "agi":10,"atk":10,"def":5,"spi":5,"states":[],"guarding":false,"equipment":equipment,"two_swords_style":false})
+            "agi":10,"atk":10,"def":5,"spi":5,"states":[],"guarding":false,"equipment":equipment,"two_swords_style":false,"fs_source_extra_armor_slots":[null,null,null]})
         world.party_actor_ids.append(int(id))
     db.tables={"armors":armors,"weapons":[null],"states":[null]}
     b.enemies.append({"id":1,"actor":false,"name":"Probe enemy","hp":100,"maxhp":100,"mp":100,"maxmp":100,
@@ -179,6 +179,30 @@ func _run()->void:
     _check(invalid_armor.configure_source_startup_pages([_parent()],{1:actor_commands},true,{}),"invalid equipment config")
     invalid_armor.advance_atb(1.0/60.0)
     _check(invalid_armor.source_atb_frame_count==0 and invalid_armor.world.variables.is_empty(),"missing armor DB cannot masquerade as valid equipment")
+    # Actual #330 appends extra slots to stock #15 armor enumeration.
+    var ex=_battle_fixture({"party":[8],"actors":{"8":{"exists":true,"armors":[]}}})
+    ex.db.tables["armors"]=[null,null,{"id":2}]
+    ex.party[0]["fs_source_extra_armor_slots"]=[null,2,0]
+    _check(ex.configure_source_startup_pages([_parent()],{1:actor_commands},true,{}),"extra armor source config")
+    ex.advance_atb(1.0/60.0)
+    _check(ex.troop_startup_plan.done and ex.world.switch_on(7),"extra armor satisfies source actor predicate")
+    var missing_extra=_battle_fixture({"party":[8],"actors":{"8":{"exists":true,"armors":[]}}})
+    missing_extra.party[0].erase("fs_source_extra_armor_slots")
+    _check(missing_extra.configure_source_startup_pages([_parent()],{1:actor_commands},true,{}),"missing extra source config")
+    missing_extra.advance_atb(1.0/60.0)
+    _check(missing_extra.source_atb_frame_count==0 and missing_extra.world.variables.is_empty() and not missing_extra.troop_startup_plan.blocked_reason.is_empty(),"stock five slots alone not source-complete")
+    var bad_extra=_battle_fixture({"party":[8],"actors":{"8":{"exists":true,"armors":[]}}})
+    bad_extra.party[0]["fs_source_extra_armor_slots"]=[2]
+    _check(bad_extra.configure_source_startup_pages([_parent()],{1:actor_commands},true,{}),"invalid extra source config")
+    bad_extra.advance_atb(1.0/60.0)
+    _check(bad_extra.source_atb_frame_count==0 and bad_extra.world.variables.is_empty() and not bad_extra.troop_startup_plan.blocked_reason.is_empty(),"unresolved extra armor identity holds")
+    var force_extra=_battle_fixture({"party":[8],"actors":{"8":{"exists":true,"armors":[]}}})
+    force_extra.db.tables["armors"]=[null,null,{"id":2}]
+    force_extra.party[0]["fs_source_extra_armor_slots"]=[2]
+    var force_commands:Array=[_cmd(111,0,[4,8,4,2]),_cmd(339,1,[0,0,1,15,0]),_cmd(0,1),_cmd(412,0),_cmd(0,0)]
+    _check(force_extra.configure_source_startup_pages([_parent()],{1:force_commands},true,{}),"extra armor force config")
+    force_extra.advance_atb(1.0/60.0)
+    _check(force_extra.source_atb_frame_count==0 and force_extra.world.variables.is_empty() and "forced skill" in force_extra.troop_startup_plan.blocked_reason,"extra armor triggered force is held before writes")
     print("CRAFT_COMMON_EVENT_BATTLE_SUMMARY; Cases="+str(battle_cases)+"; SwitchOnly="+str(battle_switch)+"; ForcedHold="+str(battle_hold)+"; ProductionBridge=False")
     print("CRAFT_COMMON_EVENT_NATIVE_SUMMARY; Checks="+str(checks)+"; Failures="+str(failures)+"; Cases="+str(input["cases"].size())+"; SwitchOnly="+str(switch_only)+"; ForcedHold="+str(held)+"; FullVXRuntime=False")
     quit(0 if failures==0 else 1)

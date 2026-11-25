@@ -139,6 +139,25 @@ func _actor_context(battle,plan:FSCommonEventPlan)->Dictionary:
             if row.is_empty() or not _int(row.get("id",null),item_id,item_id):
                 return {"ok":false}
             armor_ids.append(item_id)
+        # #330 YEM adds extra armor slots to #15 Game_Actor#armors.
+        # A stock five-slot Godot actor alone is NOT source-complete.
+        # This explicitly supplied candidate snapshot represents all extra
+        # slots at this boundary (null/0 are empty); no implicit [] fallback.
+        var extra:Variant=battler.get("fs_source_extra_armor_slots",null)
+        if not extra is Array or extra.size()>32:
+            return {"ok":false}
+        for value in extra:
+            if value==null:
+                continue
+            if not _int(value,0,999999):
+                return {"ok":false}
+            var extra_id:int=int(value)
+            if extra_id==0:
+                continue
+            var extra_row:Dictionary=battle.db.record("armors",extra_id)
+            if extra_row.is_empty() or not _int(extra_row.get("id",null),extra_id,extra_id):
+                return {"ok":false}
+            armor_ids.append(extra_id)
         snapshots[key]={"exists":true,"armors":armor_ids}
     return {"ok":true,"actors":snapshots,"party":roster}
 
