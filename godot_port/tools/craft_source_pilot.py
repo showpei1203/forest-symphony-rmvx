@@ -11,7 +11,7 @@ CASES=[
 ("VX230","exported_scripts/230__id55188000__ATB_Configurations.rb","3fe73b99012548f9f3e1d3ed3ec76a337be4713d",[(158,63)]),
 ("VX231","exported_scripts/231__id21262629__ATB_(1.2c)-0627.rb","4065ea4be1bc6fa5c5154034c89d626bc30d29fa",[(175,50),(678,42),(1843,16),(2117,42),(2226,19)]),
 ("VX377","exported_scripts/377__id65670378__FS_ATB_DynamicResistance_v1.0.0.rb","d14c274006d00f793017e9910d1e390ec5f9aeef",[(34,93),(326,11),(664,111),(816,41)]),
-("GD_BATTLE","godot_port/scripts/FSBattle.gd","5e7660a51abffb0e08af400882718b66702d532e",[(960,70),(1032,82)]),
+("GD_BATTLE","godot_port/scripts/FSBattle.gd","5fb758274e10213ffb946f2218b66132ed33fedb",[(963,60),(1055,78)]),
 ("GD_QUEUE","godot_port/scripts/FSActionQueue.gd","876b46507f6f9daf5d88a56c405876cd5ae6438d",[(279,70)]),
 ("GD_ATB","godot_port/scripts/FSTankentaiATBCore.gd","806bbe2aa5e5f8f3fabaa98935db7d2b833bec5a",[(128,95)]),
 ("VX406","exported_scripts/406__id23791037__FS_EnemyActionDistribution_FinalAuthority_v1.1.rb","06408e5ae0049fedc52289ff83f30ba091b0e1ef",[(165,90)]),
@@ -20,6 +20,10 @@ CASES=[
 ("VX234","exported_scripts/234__id12422743__Tankentai_Notetags_Add-on_v1.1.rb","b5f8b92bcd5343948fc65061ab43af29b8aba819",[(210,26),(998,26)]),
 ("VX374","exported_scripts/374__id21601036__FS_ComboCore_v1.1.1_OD.rb","f48fb90e6fa2b6a98953d888f9a3a5115671f137",[(2270,41),(2602,45)]),
 ("GD_STATE_ATB","godot_port/scripts/FSStateATBAuthority.gd","4240460e536e1b5e74f8731c24d948fd889eaf39",[(0,52)]),
+("VX21","exported_scripts/021__id96014404__Game_Troop.rb","d576e3f55071ff875e74a8e0db30cb6dbbcd0e03",[(152,54)]),
+("VX28","exported_scripts/028__id89128017__Game_Interpreter.rb","d508227e2e1fff1ab42db94f888f72ae687a5100",[(1630,23)]),
+("GD_FORCE","godot_port/scripts/FSForceActionQueue.gd","7785e3c977faf20be7f22a5974095d898b2c4354",[(0,168)]),
+("GD_TROOP_PAGES","godot_port/scripts/FSTroopForcePages.gd","b5dd5f760b7a644224526d5a3a93c5966a480db8",[(0,88)]),
 ]
 def sha(x): return hashlib.sha256(x).hexdigest()
 def check(ok,reason):
