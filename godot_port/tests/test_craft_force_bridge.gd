@@ -21,7 +21,7 @@ func _page(subject:int=0)->Dictionary:
         "enemy_valid":true,"actor_valid":false,"switch_valid":false,
         "enemy_index":0,"enemy_hp":100},
         "list":[_cmd(339,0,[1,subject,0,1,0]),_cmd(0,0)]}
-func _fixture(pages:Array,synthetic_verified:bool,approval:String)->Dictionary:
+func _fixture(pages:Array,synthetic_verified:bool,approval:String,random_approval:String="")->Dictionary:
     var params:Array=[]
     params.resize(600)
     params.fill(0)
@@ -49,6 +49,8 @@ func _fixture(pages:Array,synthetic_verified:bool,approval:String)->Dictionary:
     bridge.bind(runner,db,state)
     if not approval.is_empty():
         bridge.approved_source_force_page_hashes[2]=approval
+    if not random_approval.is_empty():
+        bridge.approved_source_random_force_page_hashes[2]=random_approval
     var combats:Array=[]
     var rejects:Array=[]
     bridge.combat_ready.connect(func(combat,tid)->void: combats.append(combat))
@@ -99,5 +101,25 @@ func _run()->void:
         _check(not combat.active and not h["runner"].active and h["rejects"].size()==1 and _no_story(h),
             "runtime hold aborts map interpreter without success branch")
         _check(not h["bridge"].request_escape(),"cannot escape an aborted event")
+    var random_pages:Array=pages.duplicate(true)
+    random_pages[0]["list"][0]["parameters"]=[1,0,0,0,-1]
+    var rd:String=B.source_force_page_digest(random_pages)
+    _rejected(_fixture(random_pages,true,rd),"random needs separate approval")
+    _rejected(_fixture(random_pages,true,rd,"0".repeat(64)),"random digest mismatch")
+    _rejected(_fixture(random_pages,false,rd,rd),"both digests cannot bypass boot-final")
+    _rejected(_fixture(random_pages,true,"",rd),"random digest alone cannot bypass ordinary approval")
+    var random_fixture=_fixture(random_pages,true,rd,rd)
+    _check(random_fixture["combats"].size()==1 and random_fixture["runner"].waiting,"both approvals allow candidate")
+    if random_fixture["combats"].size()==1:
+        var combat=random_fixture["combats"][0]
+        _check(combat.force_actions.random_targets_enabled and combat.troop_force_pages.enabled,"bridge enables approved random page")
+        # Synthetic fixture exercises selection only; no claim of source
+        # accuracy or real original combat from the boot-final test flag.
+        combat.action_queue.ai_rng.enable_test(47)
+        combat.source_atb_wait=true
+        combat.advance_atb(1.0/60.0)
+        _check(combat.troop_force_pages.pending_page==0 and combat.action_queue.ai_rng.count==1 and
+            combat.force_actions.ready.size()==1 and not random_fixture["bridge"].request_escape(),
+            "approved random page selects once and blocks escape while pending")
     print("CRAFT_FORCE_BRIDGE_SUMMARY; Checks="+str(checks)+"; Failures="+str(failures)+"; SyntheticAuthority=True; OriginalVXRuntime=False")
     quit(0 if failures==0 else 1)
