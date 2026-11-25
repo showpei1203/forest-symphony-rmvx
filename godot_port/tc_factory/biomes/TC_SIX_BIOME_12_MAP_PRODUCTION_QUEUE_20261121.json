@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 12,
+    "Ground_PAR_pair_candidates_static_pass": 13,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -32,8 +32,8 @@
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
     "ground_source_candidates_FS_04_MAZE": 2,
-    "complete_PAR_candidates_FS_04_MAZE": 5,
-    "native_private_fs_04_maze_variants_pass": 3,
+    "complete_PAR_candidates_FS_04_MAZE": 6,
+    "native_private_fs_04_maze_variants_pass": 4,
     "native_private_fs_04_maze_variants_provisional_physics_smoke_pass": 2
   },
   "scenes": [
@@ -470,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D22_ART_FIRST_NEW_INDEPENDENT_ALL_NON_GROUND_PAR_REAL_GODOT472_NATIVE_PASS_HUMAN_ART_HOLD",
+      "stage": "D23_NEW_INDEPENDENT_RGB_ALL_NON_GROUND_WHITEPLATE_KEYED_RGBA_CANDIDATE_REAL_GODOT472_NATIVE_PASS_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -483,8 +483,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D22_TRUE_OWNER_PRIVATE_GROUND_AND_NEW_PAR_NATIVE_1X_PASS",
-      "formal_art_gate": "HOLD_ART_AUTHOR_WORLD_COHERENCE_BRIDGE_FOOTPOINT_AND_OWNER_ACCEPTANCE",
+      "native_Godot_4_7_2_for_current_stage": "D23_OWNER_PRIVATE_KEYED_RGBA_AND_LOCKED_D17_GROUND_NATIVE_1X_PASS",
+      "formal_art_gate": "HOLD_USER_ART_SCALE_BRIDGE_FOOTPOINT_SOURCE_RGB_ALPHA_FALLBACK",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -737,6 +737,45 @@
         "formal_art_pass": "0/12",
         "gameplay_integration": "NOT_RUN",
         "actor_bridge_physics": "NOT_D22_SCOPE"
+      },
+      "D23": {
+        "scene_id": "FS_04_MAZE",
+        "original_independent_non_ground_source_mode": "RGB_CHECKERBOARD_BACKGROUND_NOT_NATIVE_ALPHA",
+        "original_source_size": [
+          1474,
+          1067
+        ],
+        "original_source_SHA256": "cf13df206f06847f7b95815b25b571b16b01fa21ecdbb93794f85e3a13eb6301",
+        "converted_RGBA_source_SHA256": "627aaeb545123b56d256c11b2395516dfccedacb6c761604c48b4f95fb02e988",
+        "white_grey_key_technical_fallback": "RGB minimum>178 AND RGB range<15 mapped to alpha0; all source RGB preserved",
+        "locked_D17_Ground_SHA256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "native_scene_canvas": [
+          1280,
+          928
+        ],
+        "selected": "D23_C",
+        "completePAR_SHA256": "6d53adde4ed2bac8f5a5a030006f1e0d40098306d61c8b907042b76ca42296e7",
+        "final_PAR_true_alpha_zero": 710596,
+        "native_render_SHA256": "9ca2316fb9ab4b266335d6d3ac736b0bc6363941f77fb3e096687d0209663cc3",
+        "official_Godot_engine_version": "4.7.2.stable.official.ed1daf0bf",
+        "true_native_render": "PASS",
+        "native_PIL_pixel_difference": 0,
+        "full_object_groups": 10,
+        "source_to_final_method": "1X_COMPLETE_ALPHA_ISLAND_RELAYOUT_NOT_ORIGINAL_NATIVE",
+        "polygon_source_trim": 0,
+        "layout_overlap_A": 3489,
+        "layout_overlap_B": 5305,
+        "layout_overlap_C": 259,
+        "five_px_high_alpha_border": 0,
+        "human_ART_gate": "HOLD",
+        "formal_ART_PASS": "0/12",
+        "no_approved_change_to_D22": true,
+        "original_source_RGB_alpha_gate": "FAIL_RGB_KEYED_FALLBACK",
+        "rejected_mixed_Master_generation": "REJECTED_NEVER_USED_IN_PAR",
+        "original_source_drive": "https://drive.google.com/file/d/1i1BrkWAe3OK-U5do4BVKtsj2s1P-lI07/view",
+        "native_PNG_drive": "https://drive.google.com/file/d/1puTw6b_oTCApmAh_hSbJPPOnl5noaAu-/view",
+        "private_zip_drive": "https://drive.google.com/file/d/1k5q1KZsgOGmfwHGVOU7bBTdUNsy6g_Qx/view",
+        "previous_D22_native_AB_drive": "https://drive.google.com/file/d/14tZB-xXEMhg7jn5eTimrp3wyxeCgD4n0/view"
       }
     },
     {
