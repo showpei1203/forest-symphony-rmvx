@@ -1014,8 +1014,9 @@ func configure_source_force_pages(pages: Array) -> bool:
         return false
     return troop_force_pages.configure(pages)
 
-func queue_source_force_action(side: int,index: int,kind: String,target_index: int) -> bool:
-    return force_actions.request_event(self,side,index,kind,target_index)
+func queue_source_force_action(side: int,index: int,kind: String,target_index: int,
+        object_id: int = 0) -> bool:
+    return force_actions.request_event(self,side,index,kind,target_index,object_id)
 
 func queue_source_vx339(params: Array) -> bool:
     return force_actions.request_vx339(self,params)
