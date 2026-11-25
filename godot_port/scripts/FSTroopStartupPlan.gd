@@ -58,8 +58,8 @@ func configure(raw:Array,verified_common_lists:Dictionary)->bool:
         # is false. For this exact reviewed 122/117 shape, retain the
         # page index as inert rather than inventing a common event call.
         var is_inert:bool=not c["turn_valid"] and not c["turn_ending"] and not c["enemy_valid"] and not c["actor_valid"] and not c["switch_valid"]
-        if not is_inert and (not c["turn_valid"] or c["turn_ending"] or c["enemy_valid"] or c["actor_valid"] or c["switch_valid"] or (
-                not _int(c.get("turn_a",null),0,0)) or not _int(c.get("turn_b",null),0,0))):
+        if not is_inert and (not c["turn_valid"] or c["turn_ending"] or c["enemy_valid"] or c["actor_valid"] or c["switch_valid"] or
+                not _int(c.get("turn_a",null),0,0) or not _int(c.get("turn_b",null),0,0)):
             return false
         if commands.size()!=3 or not _command(commands[0],122) or not _command(commands[1],117) or not _end(commands[2]):
             return false
