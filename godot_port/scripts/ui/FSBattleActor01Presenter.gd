@@ -17,6 +17,12 @@ var private_source_ready:bool=false
 var last_attack_serial:int=-1
 var visual_attack_count:int=0
 var contact_count:int=0
+# Presentation identity is scoped to a battle instance and ACT serial.
+# Never use an animation as gameplay damage or force-execution authority.
+var _bound_battle:WeakRef
+var _visual_serial:int=-1
+var _visual_subject:Dictionary={}
+
 
 func _ready()->void:
     name="FSActor01A52BattlePresentation"
@@ -50,6 +56,8 @@ func _on_visual_contact(time_sec:float,frame:int)->void:
 func _on_visual_finished(_motion:String)->void:
     # An accepted original animation may finish; never leave F11 frozen.
     visible=false
+    _visual_serial=-1
+    _visual_subject={}
 
 func load_private_attack()->bool:
     var actual:Array[Texture2D]=[]
@@ -67,15 +75,38 @@ func load_private_attack()->bool:
         return false
     return true
 
+func _visual_still_authorized(battle:FSBattle)->bool:
+    if _visual_serial<0:
+        return true
+    var found:bool=false
+    for subject in battle.party:
+        if is_same(subject,_visual_subject) and int(subject.get("hp",0))>0:
+            found=true
+            break
+    if not found:
+        return false
+    for record in battle.action_queue.pending.values():
+        if record is Dictionary and int(record.get("serial",-1))==_visual_serial:
+            var index:int=int(record.get("actor_index",-1))
+            return index>=0 and index<battle.party.size() and (
+                is_same(battle.party[index],_visual_subject)) and str(record.get("kind",""))=="attack"
+    # A successful normal ACT may finish its presentation; an interrupted,
+    # refused or force-replaced ACT has no successful matching receipt.
+    for receipt in battle.action_queue.completed:
+        if int(receipt.get("serial",-1))==_visual_serial:
+            return str(receipt.get("kind",""))=="attack" and bool(receipt.get("success",false))
+    return false
+
 func sync_from_battle(battle:FSBattle)->void:
-    if battle==null or not battle.active:
-        visible=false
-        if rig!=null:
-            rig.cancel()
+    if _bound_battle==null or not is_same(_bound_battle.get_ref(),battle):
+        cancel_visual()
+        last_attack_serial=-1
+        _bound_battle=weakref(battle) if battle!=null else null
+    if battle==null or not battle.active or not private_source_ready:
+        cancel_visual()
         return
-    if not private_source_ready:
-        visible=false
-        return
+    if not _visual_still_authorized(battle):
+        cancel_visual()
     for record in battle.action_queue.pending.values():
         if not record is Dictionary or str(record.get("kind",""))!="attack":
             continue
@@ -91,13 +122,20 @@ func sync_from_battle(battle:FSBattle)->void:
             return
         if last_attack_serial==serial:
             return
+        cancel_visual()
         last_attack_serial=serial
+        _visual_serial=serial
+        _visual_subject=battle.party[index]
         visible=true
         if rig.start_motion("attack"):
             visual_attack_count+=1
+        else:
+            cancel_visual()
         return
 
 func cancel_visual()->void:
     if rig!=null:
         rig.cancel()
     visible=false
+    _visual_serial=-1
+    _visual_subject={}
