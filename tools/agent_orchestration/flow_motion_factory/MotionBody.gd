@@ -63,11 +63,13 @@ func register_motion(action: String, atlas: Image, ms: Array, airborne: Array = 
         sprite_frames.add_frame(action,slice,float(ms[i])/1000.0)
     return true
 
-func load_motion(action: String) -> bool:
+func load_motion(action: String, allow_fixture: bool = false) -> bool:
     if not MODES.has(action): return false
     var base := "res://motions/" + action + "/"
     var m = JSON.parse_string(FileAccess.get_file_as_string(base+"motion.json"))
     if not m is Dictionary or m.get("schema") != 1 or m.get("action") != action or m.get("body_only") != true or m.get("loop") != MODES[action] or m.get("anchor") != [32.0,50.0] or m.get("events") != [] or m.get("art") != "HOLD":
+        return false
+    if m.get("source_class") != "OWNER_SUPPLIED_UNAUTHENTICATED" and not (allow_fixture and m.get("source_class") == "SYNTHETIC_TEST_ONLY"):
         return false
     if not m.get("durations_ms") is Array or not m.get("frames") is Array or not m.get("airborne_frames") is Array:
         return false
