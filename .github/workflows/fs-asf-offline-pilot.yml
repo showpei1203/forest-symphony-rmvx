@@ -58,3 +58,63 @@ jobs:
           print("ASF_PUBLIC_FIXTURE_OFFLINE_PASS", im.size, len(colors), hashlib.sha256(p.read_bytes()).hexdigest())
           print("PUBLIC_UPSTREAM_SAMPLE_ONLY; FS_ART_NOT_RUN; GODOT_NOT_RUN; PAID_CALLS=0")
           PY
+
+      - name: Generate deterministic two-frame public sample motion
+        run: |
+          cd "$RUNNER_TEMP/asf"
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$RUNNER_TEMP/asf-venv/bin/python" -B skills/video2dsprite/scripts/pixel_motion.py breath --sprite "$RUNNER_TEMP/asf-output/pilot.png" --name pilot_idle --output-dir "$RUNNER_TEMP/asf-motion" --ms-list 300,400 --no-package
+      - name: Download official Godot 4.7.2
+        run: |
+          curl -fsSL --retry 2 -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/godot"
+          chmod +x "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64" --version | grep -F '4.7.2.stable.official'
+      - name: Native Godot import and real two-frame SpriteFrames playback
+        run: |
+          mkdir "$RUNNER_TEMP/asf-godot"
+          cd "$RUNNER_TEMP/asf-godot"
+          cp "$RUNNER_TEMP/asf-motion/motion.json" .
+          cp "$RUNNER_TEMP/asf-motion/clean/"frame_*.png .
+          printf 'config_version=5\n[application]\nconfig/name="ASF public test"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\n' > project.godot
+          cat > test.gd <<'GD'
+          extends SceneTree
+          func _initialize():
+              call_deferred("run")
+          func check(condition: bool, detail: String) -> bool:
+              if not condition:
+                  printerr("ASF_NATIVE_FAIL " + detail)
+                  quit(1)
+                  return false
+              return true
+          func run():
+              var m = JSON.parse_string(FileAccess.get_file_as_string("res://motion.json"))
+              if not check(m is Dictionary and m.durationsMs == [300.0, 400.0] and m.loopPolicy == "cycle", "motion metadata"): return
+              var frames := SpriteFrames.new()
+              frames.add_animation(&"idle")
+              frames.set_animation_speed(&"idle", 1.0)
+              frames.set_animation_loop(&"idle", true)
+              for i in range(2):
+                  var path := "res://frame_%03d.png" % i
+                  var im := Image.load_from_file(path)
+                  if not check(im != null and not im.is_empty(), "actual frame missing"): return
+                  if not check(im.get_size() == Vector2i(int(m.frameSize[0]), int(m.frameSize[1])), "frame geometry"): return
+                  frames.add_frame(&"idle", ImageTexture.create_from_image(im), float(m.durationsMs[i]) / 1000.0)
+              var sprite := AnimatedSprite2D.new()
+              sprite.sprite_frames = frames
+              sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+              sprite.centered = false
+              sprite.offset = -Vector2(float(m.anchor[0]), float(m.anchor[1]))
+              root.add_child(sprite)
+              if not check(frames.get_frame_count(&"idle") == 2 and frames.get_animation_loop(&"idle"), "loop/count"): return
+              if not check(is_equal_approx(frames.get_frame_duration(&"idle",0),0.3) and is_equal_approx(frames.get_frame_duration(&"idle",1),0.4), "duration"): return
+              sprite.play(&"idle")
+              await create_timer(0.45).timeout
+              if not check(sprite.is_playing() and sprite.frame == 1, "actual frame progression"): return
+              await create_timer(0.35).timeout
+              if not check(sprite.is_playing() and sprite.frame == 0, "actual loop"): return
+              print("ASF_PUBLIC_GODOT472_NATIVE_PASS frames=2 durations_ms=300,400 nearest=true loop=true; PUBLIC_ONLY FS_ART_NOT_RUN")
+              sprite.queue_free()
+              quit(0)
+          GD
+          "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64" --headless --path . --script test.gd 2>&1 | tee "$RUNNER_TEMP/asf-native.log"
+          grep -F 'ASF_PUBLIC_GODOT472_NATIVE_PASS' "$RUNNER_TEMP/asf-native.log"
