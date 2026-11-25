@@ -10,6 +10,14 @@ const UI_ART = preload("res://scripts/ui/FSUIArtLibrary.gd")
 const LIVE_HUD = preload("res://scripts/ui/FSUIBattleHUD.gd")
 const ACTOR01_PRESENTATION = preload("res://scripts/ui/FSBattleActor01Presenter.gd")
 const FLOW_PRESENTATION = preload("res://scripts/ui/FSFlowOutcomePresenter.gd")
+const FLOW_BODY = preload("res://scripts/animation/FSFlowMotionBody.gd")
+# Exact V3 manifests transitively pin source, atlas and every frame.
+const FLOW_V3_MANIFEST_SHA := {
+    "attack":"ec8b8d62fc1a93530c4c913a0d0ea742a761f1d1e16b28aa6fe595259b5bc881",
+    "run":"a76e094fa5cf1f9aece8e2bc432adb20bcca082f5cdc6a8de589faa5c04df2e6",
+    "damage":"11a8c71a8464d13eb65d45d73a78fb0ba96ac29bb6e5d0186a688432724fc37d",
+    "dodge":"0b1eec46546f4fd7950e2cbb8da04cbcb4be9e0e78d76bf66855781f0fd5b3fb",
+    "cast":"91a42ad4b366b96aa0d4b42a9fc2bbc5090a05172cecfe31061a6c2cbb345e2b"}
 const ENEMY_STAGE = preload("res://scripts/ui/FSBattleOriginalEnemyStage.gd")
 const SOURCE_SCAPES=preload("res://scripts/ui/FSOriginalBattleScapeStage.gd")
 const SOURCE_COMMANDS=preload("res://scripts/ui/FSOriginalBattleCommandLayer.gd")
@@ -40,6 +48,7 @@ var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
 var actor01_presentation: FSBattleActor01Presenter
 var flow_presentation: Node2D
+var _flow_preview_attempted: bool = false
 var enemy_stage: FSBattleOriginalEnemyStage
 var original_scape: FSOriginalBattleScapeStage
 var original_commands: FSOriginalBattleCommandLayer
@@ -234,6 +243,25 @@ func configure_flow_candidate(frames: SpriteFrames) -> bool:
     actor01_presentation.cancel_visual()
     _bind_flow_presentation()
     return true
+
+# Explicit development-only switch; absent or mismatched private source fails closed.
+# The normal game never loads or promotes HOLD art automatically.
+func configure_private_flow_v3_preview() -> bool:
+    if flow_presentation==null or battle==null: return false
+    for action in FLOW_V3_MANIFEST_SHA:
+        var path: String = "res://motions/"+action+"/motion.json"
+        if not FileAccess.file_exists(path) or FileAccess.get_sha256(path)!=FLOW_V3_MANIFEST_SHA[action]:
+            return false
+    var loader = FLOW_BODY.new()
+    add_child(loader)
+    loader.hide()
+    for action in FLOW_V3_MANIFEST_SHA:
+        if not loader.load_motion(action):
+            loader.free()
+            return false
+    var ok: bool = configure_flow_candidate(loader.sprite_frames)
+    loader.free()
+    return ok
 
 func _flow_enabled() -> bool:
     return flow_presentation!=null and flow_presentation.configured
@@ -992,6 +1020,10 @@ func _show_battle() -> void:
     if not battle.active:
         battle.start()
     _bind_flow_presentation()
+    if not _flow_preview_attempted and "--flow-v3-preview" in OS.get_cmdline_user_args():
+        _flow_preview_attempted=true
+        if not configure_private_flow_v3_preview():
+            _show_log("Flow V3 預覽素材缺少或 SHA 不符；保留原版演出")
     if enemy_stage!=null:
         enemy_stage.bind_real(battle)
     # Source #230 defaults to Wait during active command/target selection.

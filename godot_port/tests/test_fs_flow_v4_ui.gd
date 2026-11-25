@@ -6,9 +6,6 @@ func _frames() -> SpriteFrames:
     root.add_child(body)
     body.hide()
     for action in ["attack","run","damage","dodge","cast"]:
-        if "--real-v3" in OS.get_cmdline_user_args():
-            if not body.load_motion(action): return null
-            continue
         var img:=Image.create_empty(256,128,false,Image.FORMAT_RGBA8)
         for i in range(8):
             var y:int=19 if action=="dodge" and i==3 else 24
@@ -27,8 +24,12 @@ func _run() -> void:
     await process_frame
     var p=ui.flow_presentation
     if not _check(not p.configured and not p.visible,"default art untouched"): return
-    var frames: SpriteFrames=_frames()
-    if not _check(frames!=null and ui.configure_flow_candidate(frames),"explicit candidate"): return
+    if "--real-v3" in OS.get_cmdline_user_args():
+        if not _check(ui.configure_private_flow_v3_preview(),"pinned private preview loader"): return
+    else:
+        if not _check(not ui.configure_private_flow_v3_preview() and not p.configured,"missing private source fails closed"): return
+        var frames: SpriteFrames=_frames()
+        if not _check(frames!=null and ui.configure_flow_candidate(frames),"explicit candidate"): return
     p.adapter.animation_player.set_process(false)
     var actor: Dictionary=b.party[0]
     var enemy: Dictionary=b.enemies[0]
@@ -71,7 +72,12 @@ func _run() -> void:
     ui._show_battle()
     if not _check(p.played==4 and p.last_serial>0,"rebind no stale replay"): return
     b.accuracy.scripted_rolls=[95]
-    b.attack(actor,enemy)
+    actor["source_at_active"]=true
+    actor["source_atb_count_up"]=false
+    actor["source_atb_count"]=1000
+    if not _check(b.queue_actor_action(0,"attack",0) and p.played==4 and b.accuracy.scripted_rolls==[95],"ATB command does not play before ACT"): return
+    b.advance_atb(1.0/60.0)
+    if not _check(p.played==5 and p.last_action=="attack" and p.visible and not b.has_actor_pending_action(0),"actual queued ACT produces animation"): return
     actor["hp"]=0
     p.tick_context()
     if not _check(not p.visible,"death cleanup"): return
@@ -80,5 +86,5 @@ func _run() -> void:
     b.accuracy.scripted_rolls=[0,99,99,0,9]
     b.attack(actor,enemy)
     if not _check(not b.active and not p.visible and p.adapter.animation_player.position==Vector2.ZERO,"finish cleanup"): return
-    print("FLOW_V4_UI_PASS cases=12 scope=%s" % ("REAL_V3" if "--real-v3" in OS.get_cmdline_user_args() else "SYNTHETIC"))
+    print("FLOW_V4_UI_PASS cases=15 scope=%s" % ("REAL_V3" if "--real-v3" in OS.get_cmdline_user_args() else "SYNTHETIC"))
     quit(0)
