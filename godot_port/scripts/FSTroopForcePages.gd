@@ -92,6 +92,7 @@ func tick(battle) -> int:
             blocked_reason="Unverified or unavailable forced action on page %d" % i
             return -1
         pending_page=i
+        battle.force_actions.troop_slot["page_ticket"]=i
         pending_receipt_start=battle.force_actions.completed.size()
         return 1
     return 0
@@ -103,12 +104,22 @@ func settle(battle) -> int:
     if pending_page<0:
         return 0
     var q = battle.force_actions
-    if q.busy or not q.troop_slot.is_empty() or not q.ready.is_empty() or not q.staged.is_empty():
+    if q.busy:
         return 0
-    var page_index: int = pending_page
+    for i in range(pending_receipt_start,q.completed.size()):
+        var receipt: Dictionary=q.completed[i]
+        if int(receipt.get("page_ticket",-1))!=pending_page:
+            continue
+        var page_index: int=pending_page
+        pending_page=-1
+        if not bool(receipt.get("success",false)):
+            blocked_reason="Force action did not settle successfully on page %d: %s" % [
+                page_index,str(receipt.get("reason",""))]
+            return -1
+        fired[page_index]=true
+        return 1
+    if not q.troop_slot.is_empty() or not q.ready.is_empty() or not q.staged.is_empty():
+        return 0
+    blocked_reason="Missing force action settlement on page %d" % pending_page
     pending_page=-1
-    if q.completed.size()!=pending_receipt_start+1 or not bool(q.completed[-1].get("success",false)):
-        blocked_reason="Force action did not settle successfully on page %d" % page_index
-        return -1
-    fired[page_index]=true
-    return 1
+    return -1
