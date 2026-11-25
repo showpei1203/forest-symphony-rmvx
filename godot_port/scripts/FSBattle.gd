@@ -24,6 +24,7 @@ var _source_command_owner: Dictionary = {}
 # still needs effective 505 RGSS2 override witness.
 var source_atb_initialized: bool = false
 var source_atb_frame_fraction: float = 0.0
+var source_atb_frame_count: int = 0
 var source_atb_rolls_for_test: Dictionary = {}
 var source_atb_advantage: String = ""
 var source_atb_wait: bool = false
@@ -995,6 +996,7 @@ func advance_atb(delta: float) -> void:
     # EACH frame; processing a multi-frame delta in one lump lets enemies
     # skip their turn or delay the final attack until the next render frame.
     for frame in range(steps):
+        source_atb_frame_count+=1
         field_weather.update_source(db)
         FSTankentaiATBCore.advance_frames(party,enemies,1,source_atb_wait)
         # Tankentai calls remove_states_auto ON new ATB readiness, before
@@ -1056,13 +1058,13 @@ func configure_source_force_pages(pages: Array) -> bool:
     return troop_force_pages.configure(pages,force_actions.random_targets_enabled)
 
 func configure_source_startup_pages(pages:Array,verified_common_lists:Dictionary)->bool:
-    if not active or not source_atb_initialized or troop_force_pages.enabled or (
+    if not active or not source_atb_initialized or troop_force_pages.enabled or source_atb_frame_count!=0 or (
             not action_queue.completed.is_empty()) or not force_actions.completed.is_empty():
         return false
     return troop_startup_plan.configure(pages,verified_common_lists)
 
 func begin_source_command(index: int) -> bool:
-    if not active or index<0 or index>=party.size():
+    if not active or (troop_startup_plan.enabled and not troop_startup_plan.done) or index<0 or index>=party.size():
         return false
     if pending_actor>=0 and not is_same(_source_command_owner,party[index]):
         return false
