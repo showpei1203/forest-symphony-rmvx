@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-26",
+  "status": "TECH_PASS_ART_HOLD",
+  "actual_source_sha256": "f56855bcec4a2db5f7715859c42ba020d7b27cf00a131aedac59a07d77206f11",
+  "actual_atlas_sha256": "9569bc8beac9d928be39f482faaa8f5a2289549c7bb0b099fed8072c118d3ae5",
+  "reextract_png_byte_matches": 8,
+  "pack_negative_pass": 12,
+  "extract_negative_pass": 5,
+  "synthetic_second_sheet_exact_pixels": 4,
+  "other_actions_synthetic_schema_checks": 4,
+  "ci": {
+    "revision": "83c1da33353f39178f679f70254dc9f328cf9466",
+    "run": 45657633549,
+    "job": 139358496986,
+    "official_engine": "4.7.2.stable.official.ed1daf0bf",
+    "scope": [
+      "SYNTHETIC_ONLY",
+      "SYNTHETIC_DISK"
+    ],
+    "result": "PASS",
+    "actions": 5,
+    "oneshots": 4,
+    "loop": 1
+  },
+  "local_source_readback": [
+    {
+      "name": "MotionBody.gd",
+      "sha": "5068391f37c82d9a25cbc7e238f0c00131ff187b",
+      "match": true
+    },
+    {
+      "name": "FactoryPreview.gd",
+      "sha": "51da55a8dec31938c184ac1cd03d040cb3165b21",
+      "match": true
+    },
+    {
+      "name": "FactoryPreview.tscn",
+      "sha": "0f8c8f64fcf9fd9986027c5f6b3eff5abf8e6503",
+      "match": true
+    },
+    {
+      "name": "project.godot",
+      "sha": "68b309e70b848cb98b53fbbd0e255d818c486ea4",
+      "match": true
+    },
+    {
+      "name": "test_factory.gd",
+      "sha": "708877c4bfc9df6a0315644cb5f1ad0d948787f8",
+      "match": true
+    },
+    {
+      "name": "motion_pack.py",
+      "sha": "6ad2f199b6556f641571d040c276041fe08eb896",
+      "match": true
+    },
+    {
+      "name": "make_fixture.py",
+      "sha": "edfda0d533136929dd31fee13bb9713f9fbccc7d",
+      "match": true
+    },
+    {
+      "name": "sheet_extract.py",
+      "sha": "49be7aa84ce38ec060667a066cbbb956f7c47da6",
+      "match": true
+    },
+    {
+      "name": "attack8_calibration.json",
+      "sha": "64fd00f521e240093982c63e32c03758dc523d4e",
+      "match": true
+    },
+    {
+      "name": "FLOW_PROMPTS.md",
+      "sha": "80fb5b9a204731df72d645c00a80658040ef2090",
+      "match": true
+    }
+  ],
+  "archive_sha256": "a3cadcb6148bfffd89ae63d08ec30dc7547d192967dfcf980d4f3e83c483fc54",
+  "archive_bytes": 162213,
+  "archive_members": 26,
+  "archive_crc": "PASS",
+  "provider_new_art": 0,
+  "weapon": false,
+  "fx": false,
+  "private_native": "NOT_RUN",
+  "art": "HOLD",
+  "gameplay": "NOT_RUN",
+  "drive_upload": "NOT_VERIFIED"
+}
