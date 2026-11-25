@@ -150,6 +150,7 @@ end
 Scene_Battle.class_eval(excerpt(s231,679,689),'#231 prepare troop slot',679)
 Troop.class_eval { attr_accessor :forcing_battler }
 $game_temp.in_battle=true
+a=FakeBattler.new('A',true); b=FakeBattler.new('B',true)
 scene=Scene_Battle.new([a,b])
 scene.set_fixture([a,b])
 $game_troop.forcing_battler=a
