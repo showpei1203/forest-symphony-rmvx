@@ -34,7 +34,13 @@ func _run() -> void:
             {"aizhuo_overload_pierce_percent":float(row["pierce"])})
         var actual: Array = [b["source_atb_count"],b["atb_resist_level"],b["source_act_count"],
             b["source_act_active"],b["source_at_active"],b["source_atb_count_up"]]
-        var expected: Array = row["expected"]
+        # JSON numbers deserialize as floats in Godot. Normalize only exact
+        # integer-valued counters; preserve booleans and reject fractions.
+        var raw_expected: Array = row["expected"]
+        for i in range(3):
+            _check(float(raw_expected[i])==float(int(raw_expected[i])), "oracle counter not integral")
+        var expected: Array = [int(raw_expected[0]),int(raw_expected[1]),int(raw_expected[2]),
+            raw_expected[3],raw_expected[4],raw_expected[5]]
         var equal: bool = actual == expected and bool(out.get("ok",false))
         if bool(row["allow_negative"]):
             _check(int(expected[0]) == -90 and int(actual[0]) == 0 and actual.slice(1)==expected.slice(1),
