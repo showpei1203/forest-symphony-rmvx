@@ -2,9 +2,11 @@ extends RefCounted
 class_name FSForceActionQueue
 
 # Candidate #462 event FIFO + #231 single troop forcing slot.
-# Opt-in only. Resource-checked skill/item subset; full forced validity, random/last target,
+# Opt-in only. Resource-checked skill/item subset; optional bounded random target, full forced validity and last target,
 # animation-active and command-window cleanup remain outside scope.
 var enabled: bool = false
+# Explicit second opt-in until true source event inventory is available.
+var random_targets_enabled: bool = false
 var busy: bool = false
 var staged: Array[Dictionary] = []
 var ready: Array[Dictionary] = []
@@ -57,7 +59,9 @@ func _valid(battle,entry: Dictionary) -> bool:
 func _make(battle,side: int,index: int,kind: String,target_index: int,object_id: int = 0) -> Dictionary:
     if not enabled or not battle.active or not battle.source_atb_initialized or side not in [0,1]:
         return {}
-    if kind not in ["attack","guard","skill","item"] or index<0 or target_index<0 or (kind in ["skill","item"] and object_id<=0):
+    if kind not in ["attack","guard","skill","item"] or index<0 or (kind in ["skill","item"] and object_id<=0):
+        return {}
+    if target_index<0 and (target_index!=-1 or not random_targets_enabled or kind not in ["attack","skill"]):
         return {}
     var members: Array[Dictionary] = battle.party if side==1 else battle.enemies
     var target_actor: bool = side==0
@@ -73,9 +77,27 @@ func _make(battle,side: int,index: int,kind: String,target_index: int,object_id:
     var targets: Array[Dictionary] = battle.party if target_actor else battle.enemies
     if index>=members.size() or (kind!="guard" and target_index>=targets.size()):
         return {}
+    var selected: int=target_index
+    if target_index==-1:
+        if not _exists(members[index]) or not FSOriginalActionSeal.can_use(members[index],battle.db,kind):
+            return {}
+        if kind=="skill":
+            var obj: Dictionary=battle.db.record("skills",object_id)
+            var cost: Dictionary=FSSkillCostRules.preview(obj,members[index])
+            if not bool(cost.get("ok",false)) or int(members[index].get("mp",0))<int(cost.get("mp",0)) or (
+                    side==1 and object_id not in members[index].get("skills",[])):
+                return {}
+        # #372 selects relative to the action scope. Friendly monsters and
+        # unported target-authority overrides are deliberately not guessed.
+        for candidate in targets:
+            if _exists(candidate) and bool(candidate.get("friendly",false)):
+                return {}
+        selected=FSTargetPriority.random_target(battle,"actor" if target_actor else "enemy",battle.action_queue.ai_rng)
+        if selected<0 or selected>=targets.size():
+            return {}
     var entry: Dictionary = {"actor":side==1,"subject":members[index],"kind":kind,
         "target_actor":target_actor,"object_id":object_id,
-        "target":targets[target_index] if kind!="guard" else {}}
+        "target":targets[selected] if kind!="guard" else {},"target_mode":"random" if target_index==-1 else "fixed"}
     return entry if _valid(battle,entry) else {}
 
 func _find(entries: Array[Dictionary],subject: Dictionary) -> int:
@@ -106,7 +128,8 @@ func request_event(battle,side: int,index: int,kind: String,target_index: int,ob
 func request_vx339(battle,params: Array) -> bool:
     # #28 command_339: [side, member index, kind, action id, target].
     # The original iterator supports all-members; deliberately HOLD it,
-    # and random/last targeting, escape/wait. #28 supports skills, not items.
+    # last targeting, escape/wait. Random single-target is a second opt-in.
+    # #28 supports skills, not items.
     if params.size()!=5:
         return false
     for value in params:
@@ -216,6 +239,7 @@ func resolve_one(battle,active_action_busy: bool = false) -> int:
 func _record(entry: Dictionary,success: bool,index: int,reason: String) -> void:
     var receipt: Dictionary={"kind":entry["kind"],"actor":entry["actor"],"index":index,
         "object_id":entry["object_id"],"success":success,"reason":reason}
+    receipt["target_mode"]=str(entry.get("target_mode","fixed"))
     if entry.has("page_ticket"):
         receipt["page_ticket"]=int(entry["page_ticket"])
     completed.append(receipt)
