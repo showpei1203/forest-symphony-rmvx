@@ -20,8 +20,13 @@ func run() -> void:
     actor.motion_completed.connect(func(a): completed.append(a))
     actor.motion_cancelled.connect(func(a): cancelled.append(a))
     var private_input := FileAccess.file_exists("res://motions/attack/motion.json")
+    var fixture_mode := "--synthetic-disk" in OS.get_cmdline_user_args()
     if private_input:
-        if not actor.load_motion("attack"):
+        if fixture_mode and actor.load_motion("attack"):
+            fail("SYNTHETIC_PROVENANCE_GATE"); return
+        if not fixture_mode and FileAccess.get_sha256("res://motions/attack/body.png") != "9569bc8beac9d928be39f482faaa8f5a2289549c7bb0b099fed8072c118d3ae5":
+            fail("PRIVATE_ATTACK_PIN"); return
+        if not actor.load_motion("attack",fixture_mode):
             fail("PRIVATE_ATTACK_LOAD"); return
     elif not actor.register_motion("attack",fixture(8),[110,90,170,100,80,120,120,210]):
         fail("ATTACK_REGISTER"); return
@@ -69,5 +74,7 @@ func run() -> void:
     actor.cancel_motion()
     if actor.is_playing() or cancelled != ["run","attack"]:
         fail("CANCEL"); return
-    print("FLOW_FACTORY_NATIVE_PASS scope=%s actions=5 oneshots=4 loop=1 negative=8" % ("PRIVATE_ATTACK_OTHER_SYNTHETIC" if private_input else "SYNTHETIC_ONLY"))
+    var scope := "SYNTHETIC_ONLY"
+    if private_input: scope = "SYNTHETIC_DISK" if fixture_mode else "PRIVATE_ATTACK_OTHER_SYNTHETIC"
+    print("FLOW_FACTORY_NATIVE_PASS scope=%s actions=5 oneshots=4 loop=1" % scope)
     quit(0)
