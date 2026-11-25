@@ -37,7 +37,7 @@ CASES=[
 ("GD_SCREEN","godot_port/scripts/FSScreen.gd","12bb9d807651dcb1b2bb20a52c134fa60f9d2a3b",[(256,37),(918,78),(1177,47),(1257,77)]),
 ("GD_PRESENTER","godot_port/scripts/ui/FSBattleActor01Presenter.gd","4bc83b2fd61ae6ef0ea5c45f944ababe35cd0086",[(0,141)]),
 ("VX314","exported_scripts/314__id9275483__PopUp_Generale.rb","041b4e8917b2e6e2c2b55b8d49e1aec939932569",[(337,123)]),
-("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","26b1e43113091f50f8ad1ab609d1b019d664259e",[(0,114)]),
+("GD_STARTUP","godot_port/scripts/FSTroopStartupPlan.gd","581fb38b66e6e2a33198f5e4e19b936f589a7f0c",[(0,114)]),
 ]
 def sha(x): return hashlib.sha256(x).hexdigest()
 def check(ok,reason):
