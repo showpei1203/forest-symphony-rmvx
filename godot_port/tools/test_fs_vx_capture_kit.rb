@@ -96,5 +96,19 @@ RUBY
   assert.call(!system(env,RbConfig.ruby,script,chdir:root,out:File::NULL,err:File::NULL),'capture overwrite denied')
   File.write(File.join(capture,'COMPLETE.tsv'),"fake\n")
   assert.call(!system('python3','-I','-B',converter,capture,'--nonce',nonce,'--output',File.join(base,'bad'),out:File::NULL,err:File::NULL),'fake completion rejected')
+  # Python writer must be readable by independent actual Ruby Marshal,
+  # including UTF-8 name metadata, repeated symbols and binary payloads.
+  py_input=File.join(base,'encoded_original.rvdata')
+  py_rows=[[9,"測試名稱",Zlib::Deflate.deflate("binary\x00\x01")],[FSVXCaptureStage::MAIN_ID,"Main",Zlib::Deflate.deflate("main")],[10,"same name",Zlib::Deflate.deflate("after")]]
+  File.binwrite(py_input,Marshal.dump(py_rows))
+  py_out=File.join(base,'python_staged.rvdata')
+  py_code="import sys; sys.path.insert(0,sys.argv[1]); from stage_fs_vx_capture import build; from pathlib import Path; import hashlib; raw=Path(sys.argv[2]).read_bytes(); out,receipt=build(raw,Path(sys.argv[3]).read_bytes(),hashlib.sha256(raw).hexdigest(),3,1); Path(sys.argv[4]).write_bytes(out); assert receipt['encoded_original_fields']>=3"
+  assert.call(system('python3','-I','-B','-c',py_code,__dir__,py_input,PROBE,py_out),'Python binary writer executed')
+  py_staged=Marshal.load(File.binread(py_out))
+  assert.call(py_staged.size==4 && py_staged[1][0]==FSVXCaptureStage::PROBE_ID,'Ruby reads Python staged table')
+  originals=py_staged.reject{|row|row[0]==FSVXCaptureStage::PROBE_ID}
+  assert.call(originals==py_rows,'Ruby confirms exact original rows')
+  assert.call(originals.zip(py_rows).all?{|a,b|a[1].encoding==b[1].encoding && a[2].encoding==b[2].encoding},'encoding flags preserved')
+  assert.call(Zlib::Inflate.inflate(py_staged[1][2])==File.binread(PROBE),'probe bytes preserved')
   puts "FS_VX_CAPTURE_KIT_PASS; Checks=#{checks}; Synthetic=True; OriginalVXRuntime=False"
 end
