@@ -9,6 +9,7 @@ const A35_PRIVATE_GATE = preload("res://scripts/story/FSPrivateA35Gate.gd")
 const UI_ART = preload("res://scripts/ui/FSUIArtLibrary.gd")
 const LIVE_HUD = preload("res://scripts/ui/FSUIBattleHUD.gd")
 const ACTOR01_PRESENTATION = preload("res://scripts/ui/FSBattleActor01Presenter.gd")
+const FLOW_PRESENTATION = preload("res://scripts/ui/FSFlowOutcomePresenter.gd")
 const ENEMY_STAGE = preload("res://scripts/ui/FSBattleOriginalEnemyStage.gd")
 const SOURCE_SCAPES=preload("res://scripts/ui/FSOriginalBattleScapeStage.gd")
 const SOURCE_COMMANDS=preload("res://scripts/ui/FSOriginalBattleCommandLayer.gd")
@@ -38,6 +39,7 @@ var a35_preview: Control
 var ui_art: FSUIArtLibrary
 var ui_hud: FSUIBattleHUD
 var actor01_presentation: FSBattleActor01Presenter
+var flow_presentation: Node2D
 var enemy_stage: FSBattleOriginalEnemyStage
 var original_scape: FSOriginalBattleScapeStage
 var original_commands: FSOriginalBattleCommandLayer
@@ -165,6 +167,9 @@ func _build_shell() -> void:
     # Overlay only: never reduce legacy 544x416 2x2 command area.
     actor01_presentation=ACTOR01_PRESENTATION.new()
     add_child(actor01_presentation)
+    flow_presentation=FLOW_PRESENTATION.new()
+    flow_presentation.name="FlowV4OutcomeCandidate"
+    add_child(flow_presentation)
     enemy_stage=ENEMY_STAGE.new()
     enemy_stage.name="FSBattleStageOriginalEnemies"
     add_child(enemy_stage)
@@ -201,6 +206,8 @@ func _build_shell() -> void:
 func _process(delta: float) -> void:
     # The actual source Tankentai source-frame gauge now ticks in real gameplay
     # time. UI refresh does NOT execute actions or grant free player commands.
+    if flow_presentation!=null:
+        flow_presentation.tick_context()
     if battle == null or not battle.active or view_name != "BATTLE":
         return
     battle.advance_atb(delta)
@@ -209,7 +216,7 @@ func _process(delta: float) -> void:
         ui_hud.refresh(battle.party)
     if source_skin_hud!=null and source_skin_hud.visible:
         source_skin_hud.refresh(battle.party)
-    if actor01_presentation!=null:
+    if actor01_presentation!=null and not _flow_enabled():
         actor01_presentation.sync_from_battle(battle)
     if enemy_stage!=null:
         enemy_stage.refresh(battle.enemies)
@@ -219,6 +226,36 @@ func _process(delta: float) -> void:
             Engine.get_process_frames()%12==0):
         source_target_help.refresh_live()
     _update_battle_command_buttons()
+
+# Explicit opt-in with externally source-verified SpriteFrames; ordinary boot never enables HOLD art.
+func configure_flow_candidate(frames: SpriteFrames) -> bool:
+    if flow_presentation==null or battle==null: return false
+    if not flow_presentation.configure_candidate(frames): return false
+    actor01_presentation.cancel_visual()
+    _bind_flow_presentation()
+    return true
+
+func _flow_enabled() -> bool:
+    return flow_presentation!=null and flow_presentation.configured
+
+func _bind_flow_presentation() -> void:
+    if flow_presentation!=null:
+        flow_presentation.bind_battle(battle,_flow_actor_anchor,_flow_enemy_anchor,func()->bool: return view_name=="BATTLE")
+
+func _flow_actor_anchor() -> Variant:
+    if actor01_presentation==null or actor01_presentation.rig==null: return null
+    # A52 cell centre -> Flow native foot origin (32,50).
+    return actor01_presentation.rig.to_global(Vector2(0,18))
+
+func _flow_enemy_anchor(slot: int) -> Variant:
+    if enemy_stage==null: return null
+    for row in enemy_stage.enemy_views:
+        if int(row.get("index",-1))!=slot: continue
+        var image: Control = row.get("image")
+        var holder: Control = row.get("view")
+        if is_instance_valid(image) and is_instance_valid(holder) and holder.is_visible_in_tree() and image.size.x>0 and image.size.y>0:
+            return FSBattleSourceStateHUD381.enemy_anchor_from_rect(image.get_global_rect())
+    return null
 
 func _refresh_source_state_hud()->void:
     if source_state_hud==null or not source_state_hud.source_enabled or (
@@ -233,6 +270,10 @@ func _refresh_source_state_hud()->void:
             if int(battle.party[index].get("id",0))==1:
                 actors[index]=actor01_presentation.rig.global_position
     var enemies:Dictionary={}
+    if _flow_enabled() and flow_presentation.visible:
+        var slot: int = flow_presentation._actor01_slot()
+        if slot>=0:
+            actors[slot]=flow_presentation.adapter.animation_player.global_position
     if enemy_stage!=null:
         for row in enemy_stage.enemy_views:
             var i:int=int(row.get("index",-1))
@@ -510,6 +551,8 @@ func _set_original_background(file_name: String) -> void:
 
 func _show_menu() -> void:
     view_name = "MENU"
+    if flow_presentation!=null:
+        flow_presentation.cancel()
     status_label.visible=true
     if original_scape!=null:
         original_scape.clear_scape()
@@ -948,6 +991,7 @@ func _show_battle() -> void:
             return
     if not battle.active:
         battle.start()
+    _bind_flow_presentation()
     if enemy_stage!=null:
         enemy_stage.bind_real(battle)
     # Source #230 defaults to Wait during active command/target selection.
@@ -1224,7 +1268,7 @@ func _do_player_attack(target: Dictionary) -> void:
         if not battle.queue_actor_action(actor_index,"attack",index):
             _show_log("攻擊指令被拒絕：ATB 未就緒、已有指令或目標不合法")
     _show_battle()
-    if actor01_presentation!=null:
+    if actor01_presentation!=null and not _flow_enabled():
         actor01_presentation.sync_from_battle(battle)
 
 func _player_guard() -> void:
