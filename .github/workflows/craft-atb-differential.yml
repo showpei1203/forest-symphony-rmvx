@@ -5,6 +5,7 @@ on:
     paths:
       - 'godot_port/tools/craft_atb_source_oracle.rb'
       - 'godot_port/tools/craft_atb_authority_scan.py'
+      - 'godot_port/tools/craft_force_source_inventory.py'
       - 'godot_port/scripts/FSATBResistance.gd'
       - 'godot_port/scripts/FSStateATBAuthority.gd'
       - 'godot_port/scripts/FSForceActionQueue.gd'
@@ -31,6 +32,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Audit all 505 indexed original source files
         run: python3 -I -B godot_port/tools/craft_atb_authority_scan.py
+      - name: Inventory exact original force and Troop source call sites
+        run: python3 -I -B godot_port/tools/craft_force_source_inventory.py "$RUNNER_TEMP/craft-force-inventory.json"
       - name: Extract exact original source methods and compute oracle
         run: |
           ruby --version
