@@ -34,7 +34,7 @@ jobs:
           test ! -e motions
           G=/tmp/godot/Godot_v4.7.2-stable_linux.x86_64
           timeout 45s "$G" --headless --editor --quit 2>&1 | tee /tmp/flow-editor.log
-          ! grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-editor.log
+          if grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-editor.log; then exit 1; fi
           timeout 45s "$G" --headless --script res://test_adapter.gd 2>&1 | tee /tmp/flow-adapter.log
-          ! grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-adapter.log
+          if grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-adapter.log; then exit 1; fi
           grep 'FLOW_BATTLE_ADAPTER_PASS scope=SYNTHETIC actions=5 directions=4 host_unchanged=true' /tmp/flow-adapter.log
