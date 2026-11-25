@@ -6,6 +6,7 @@ on:
       - 'godot_port/tools/craft_atb_source_oracle.rb'
       - 'godot_port/tools/craft_atb_authority_scan.py'
       - 'godot_port/scripts/FSATBResistance.gd'
+      - 'godot_port/scripts/FSStateATBAuthority.gd'
       - 'godot_port/scripts/FSBattle.gd'
       - 'godot_port/tests/test_craft_source_differential.gd'
       - '.github/workflows/craft-atb-differential.yml'
@@ -45,6 +46,8 @@ jobs:
           timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_source_differential.gd -- "$RUNNER_TEMP/craft-oracle.json" | tee "$RUNNER_TEMP/diff.log"
           grep -F 'CRAFT_DIFF_SUMMARY; Matches=38; StateGap=0; RecoveryCases=38; AIComparable=2; AIScopeHold=3; TypedGuards=4; Failures=0' "$RUNNER_TEMP/diff.log"
 
+      - name: Verify expanded Note and State pipeline results
+        run: grep -F 'CRAFT_NOTE_PIPELINE_SUMMARY; Notes=12; StatePipelines=8; AuthorityGuards=4' "$RUNNER_TEMP/diff.log"
       - name: Existing Godot combat regression suite
         run: |
           bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
