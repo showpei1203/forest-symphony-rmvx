@@ -17,6 +17,9 @@ on:
       - 'godot_port/tests/test_craft_force_command_ui.gd'
       - 'godot_port/scripts/FSTargetPriority.gd'
       - 'godot_port/tests/test_craft_force_random.gd'
+      - 'godot_port/scripts/FSActionQueue.gd'
+      - 'godot_port/scripts/ui/FSBattleActor01Presenter.gd'
+      - 'godot_port/tests/test_craft_force_visual_lifecycle.gd'
       - 'godot_port/scripts/FSTroopForcePages.gd'
       - 'godot_port/tests/test_craft_troop_force_pages.gd'
       - 'godot_port/scripts/FSBattle.gd'
@@ -98,6 +101,12 @@ jobs:
           bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
           timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_random.gd -- "$RUNNER_TEMP/craft-oracle.json" | tee "$RUNNER_TEMP/random.log"
           grep -E 'CRAFT_FORCE_RANDOM_SUMMARY; Checks=[0-9]+; OracleMatches=10; Failures=0; FullVXRuntime=False' "$RUNNER_TEMP/random.log"
+      - name: Forced ACT transaction and visual cancellation lifecycle
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_visual_lifecycle.gd | tee "$RUNNER_TEMP/visual.log"
+          grep -E 'CRAFT_FORCE_VISUAL_SUMMARY; Checks=[0-9]+; Failures=0; SyntheticArt=True; GameplayTimingParity=False' "$RUNNER_TEMP/visual.log"
       - name: Existing Godot combat regression suite
         run: |
           bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
