@@ -1031,14 +1031,12 @@ func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
     return true
 
 func _state_atb_negative_authority(state_id: int) -> bool:
-    # Explicit, typed State method result from a verified provider.
-    # Do not infer this from a skill note, a truthy string or an unknown ID.
+    # Typed State provider or exact #230/#234 State Note fallback.
+    # Do not infer this from a skill note, truthy string or unknown ID.
     if state_id <= 0 or db == null:
         return false
-    var state: Dictionary = db.record("states",state_id)
-    return int(state.get("id",0)) == state_id and (
-        typeof(state.get("atb_minus_damage",null)) == TYPE_BOOL) and (
-        bool(state["atb_minus_damage"]))
+    var authority: Dictionary = FSStateATBAuthority.resolve(db.record("states",state_id),state_id)
+    return bool(authority.get("ok",false)) and bool(authority.get("allows_negative",false))
 
 func apply_combo_atb_shift(enemy: Dictionary,delta: int,
         attacker: Dictionary = {},state_id: int = 0) -> Dictionary:
