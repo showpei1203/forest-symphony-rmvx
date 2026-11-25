@@ -46,7 +46,8 @@ static func rate(enemy: Dictionary) -> int:
     return RATES[clampi(int(enemy.get("atb_resist_level",0)),0,4)]
 
 static func apply_direct_shift(enemy: Dictionary,delta: int,
-        state_id: int = 0, attacker: Dictionary = {}) -> Dictionary:
+        state_id: int = 0, attacker: Dictionary = {},
+        state_allows_negative: bool = false) -> Dictionary:
     # Call ONLY when a source action explicitly uses ComboCore ATB shifting.
     # state_id != 0 means native State ATB handling, bypass this interception.
     if not enemy.has("atb"):
@@ -66,7 +67,15 @@ static func apply_direct_shift(enemy: Dictionary,delta: int,
         var floor_value: int = int(MAX_ATB*int(enemy.get("atb_resist_floor",DEFAULT_FLOOR))/100.0)
         var max_reducible: int = maxi(0,before-floor_value)
         effective_delta = -mini(resisted_amount,max_reducible)
-    var after: int = clampi(before+effective_delta,0,MAX_ATB)
+    # #374 returns before any clamping for zero delta. #377 delegates
+    # to that method even when a floor prevents the entire shift.
+    # Negative debt is allowed ONLY for a real non-nil State with explicit
+    # typed authority; direct skill shifts must retain the original floor.
+    var after: int = before
+    if effective_delta != 0:
+        after = mini(before+effective_delta,MAX_ATB)
+        if state_id <= 0 or not state_allows_negative:
+            after = maxi(0,after)
     enemy["atb"] = float(after)/MAX_ATB
     if enemy.has("source_atb_count"):
         enemy["source_atb_count"] = after
