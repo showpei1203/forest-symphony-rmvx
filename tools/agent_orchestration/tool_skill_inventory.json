@@ -107,11 +107,12 @@
     },
     {
       "name": "Google Flow",
-      "status": "LIVE_READ_ONLY_NATIVE_PASS_ACTION_CANDIDATE_MOCK_PASS",
-      "route": "Existing Pro subscription, owner login, fixed native browser adapter. #175 real read-only 37 controls and unique project button. #177 actual installed host binary 7/7. Candidate DOM action 19 assertions mock only. No live click, video generation, budget balance or upload proven.",
-      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/175",
+      "status": "LIVE_BIDIRECTIONAL_READ_ONLY_PASS",
+      "route": "Owner logged-in existing Chrome Flow editor; v0.1.5 fixed native PROBE_ROUNDTRIP actual #187 PASS, 53 controls/5 editables/3 file inputs, no click. Mutation disabled; no upload, prompt, cost or video generation proven. Background visibility not in live receipt.",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/187",
       "native_binary_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/177",
-      "protocol": "https://github.com/showpei1203/chatgpt-pc-bridge/blob/main/docs/SCOPED_BROWSER_AUTOMATION_PROTOCOL.md"
+      "protocol": "https://github.com/showpei1203/chatgpt-pc-bridge/blob/main/docs/SCOPED_BROWSER_AUTOMATION_PROTOCOL.md",
+      "background_synthetic_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/186"
     }
   ],
   "priority": "Task-specific actual user input > global Drive P0 > latest live lane handoff > current FS Godot protocol > verified tool inventory > old saved state"
