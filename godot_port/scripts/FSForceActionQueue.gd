@@ -57,7 +57,7 @@ func _valid(battle,entry: Dictionary) -> bool:
     return true
 
 func _make(battle,side: int,index: int,kind: String,target_index: int,object_id: int = 0) -> Dictionary:
-    if not enabled or not battle.active or not battle.source_atb_initialized or side not in [0,1]:
+    if not enabled or not battle.active or not battle.source_atb_initialized or side not in [0,1] or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done):
         return {}
     if kind not in ["attack","guard","skill","item"] or index<0 or (kind in ["skill","item"] and object_id<=0):
         return {}
