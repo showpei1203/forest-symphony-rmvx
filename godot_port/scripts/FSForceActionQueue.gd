@@ -154,6 +154,7 @@ func prepare_troop(battle) -> bool:
     if pos>=0:
         ready.remove_at(pos)
     ready.append(entry) # #231 removes prior occurrence and appends.
+    battle.cancel_source_command_for_troop(entry["subject"])
     return true
 
 func resolve_one(battle,active_action_busy: bool = false) -> int:
