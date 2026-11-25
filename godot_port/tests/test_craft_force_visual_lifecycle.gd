@@ -81,6 +81,43 @@ func _run()->void:
     _check(not p.visible and not p.rig.playing,"ordinary interruption cancels rig")
     p.rig.advance_seconds(2.0)
     _check(p.contact_count==1,"interrupted visual cannot contact")
+    # Actual signal-driven reentry during a normal ACT. Another action
+    # may queue, but cannot resolve inside the active transaction.
+    var nested=_fixture()
+    _ready_actor(nested)
+    _check(nested.queue_actor_action(0,"attack",0),"nested normal action")
+    var reentry:Array=[]
+    nested.changed.connect(func(_message:String)->void:
+        if nested.action_queue.resolving and reentry.is_empty():
+            reentry.append("entered")
+            var accepted:bool=nested.queue_source_force_action(0,0,"guard",0)
+            nested.force_actions.drain_event(nested)
+            var direct:int=nested.force_actions.resolve_one(nested)
+            var ordinary:int=nested.action_queue.resolve_ready(nested)
+            nested.advance_atb(1.0/60.0)
+            reentry.append([accepted,direct,ordinary,nested.force_actions.completed.size()]))
+    nested.party[0]["source_act_count"]=1000
+    nested.party[0]["source_act_active"]=true
+    nested.party[0]["source_at_active"]=false
+    nested.party[0]["source_atb_count_up"]=false
+    nested.advance_atb(1.0/60.0)
+    _check(reentry==["entered",[true,0,0,0]] and nested.action_queue.completed.size()==1 and
+        nested.force_actions.completed.is_empty() and not nested.action_queue.resolving,"ordinary ACT prevents nested execution")
+    nested.advance_atb(1.0/60.0)
+    _check(nested.force_actions.completed.size()==1 and bool(nested.enemies[0]["guarding"]),"queued forced action runs after ordinary transaction")
+    # Conversely a forced attack must not resolve a queued ordinary guard
+    # recursively from its combat changed signal.
+    var reverse=_fixture()
+    _ready_actor(reverse)
+    _check(reverse.queue_actor_action(0,"guard"),"ordinary guard pending")
+    var nested_ordinary:Array[int]=[]
+    reverse.changed.connect(func(_message:String)->void:
+        if reverse.force_actions.busy and nested_ordinary.is_empty():
+            nested_ordinary.append(reverse.action_queue.resolve_ready(reverse)))
+    _check(reverse.queue_source_force_action(0,0,"attack",0),"forced attack pending")
+    reverse.advance_atb(1.0/60.0)
+    _check(nested_ordinary==[0] and reverse.action_queue.completed.is_empty() and
+        reverse.force_actions.completed.size()==1,"force transaction blocks nested ordinary execution")
     p.queue_free()
     print("CRAFT_FORCE_VISUAL_SUMMARY; Checks="+str(checks)+"; Failures="+str(failures)+"; SyntheticArt=True; GameplayTimingParity=False")
     quit(0 if failures==0 else 1)
