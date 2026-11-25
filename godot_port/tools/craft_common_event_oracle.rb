@@ -8,7 +8,10 @@ raise 'source blob mismatch' unless Digest::SHA1.hexdigest("blob #{raw.bytesize}
 lines=raw.force_encoding('UTF-8').lines
 class SourceEventProbe
   Cmd=Struct.new(:code,:indent,:parameters)
-  Actor=Struct.new(:armors)
+  class Actor
+    attr_reader :armors
+    def initialize(armors); @armors=armors; end
+  end
   Action=Struct.new(:kind,:basic,:skill_id,:target_index,:forcing)
   Battler=Struct.new(:action) do
     def exist?; true; end
