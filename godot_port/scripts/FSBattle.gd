@@ -1043,7 +1043,7 @@ func advance_atb(delta: float) -> void:
 func configure_source_force_pages(pages: Array) -> bool:
     if not active or not source_atb_initialized or not force_actions.enabled:
         return false
-    return troop_force_pages.configure(pages)
+    return troop_force_pages.configure(pages,force_actions.random_targets_enabled)
 
 func begin_source_command(index: int) -> bool:
     if not active or index<0 or index>=party.size():
