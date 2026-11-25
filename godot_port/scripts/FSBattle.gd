@@ -1070,6 +1070,34 @@ func apply_combo_atb_shift_to_actor(actor: Dictionary,delta: int,
             outcome.get("after",0)])
     return outcome
 
+# Source #231 L1844-1859 and #374 L2279-2311, bounded post-attach
+# ATB-only effect. Caller must supply a verified attachment event and the
+# ComboCore bonus calculated BEFORE attachment. This is not a generic
+# State attachment, and is not automatically invoked by sync/UI.
+func apply_source_state_atb_after_attach(battler: Dictionary,state_id: int,
+        bonus_percent: float = 0.0) -> Dictionary:
+    if not active or not source_atb_initialized or (
+            not party.has(battler) and not enemies.has(battler)) or (
+            not battler.has("source_atb_count")) or not battler.has("atb"):
+        return {"ok":false,"reason":"State ATB target/runtime unavailable"}
+    if not is_finite(bonus_percent) or absf(bonus_percent)>10000.0:
+        return {"ok":false,"reason":"State ATB bonus outside scoped range"}
+    var authority: Dictionary = FSStateATBAuthority.resolve(db.record("states",state_id),state_id)
+    if not bool(authority.get("ok",false)) or not bool(authority.get("damage_known",false)):
+        return {"ok":false,"reason":"State ATB source unavailable"}
+    var base_delta: int = int(authority["damage_percent"])*10
+    var extra_delta: int = int(float(base_delta)*bonus_percent/100.0)
+    var before: int = int(battler["source_atb_count"])
+    var allow_negative: bool = bool(authority["allows_negative"])
+    if base_delta != 0:
+        FSATBResistance.apply_direct_shift(battler,base_delta,state_id,{},allow_negative)
+        if extra_delta != 0:
+            FSATBResistance.apply_direct_shift(battler,extra_delta,state_id,{},allow_negative)
+        action_queue.cancel_interrupted(self)
+    return {"ok":true,"before":before,"after":int(battler["source_atb_count"]),
+        "base_delta":base_delta,"extra_delta":extra_delta,
+        "allows_negative":allow_negative,"source":"#231/#374 State ATB only"}
+
 func enemy_valid_action_completed(enemy: Dictionary) -> int:
     # Called after a VERIFIED valid enemy action, not from UI redraw or ATB tick.
     if not enemies.has(enemy):
