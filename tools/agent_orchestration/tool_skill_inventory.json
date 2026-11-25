@@ -64,7 +64,9 @@
       "name": "PixelLab",
       "status": "TRUE_PROVIDER_USED_IN_TB",
       "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/101",
-      "route": "true source locked T-B provider jobs, no default free rerun"
+      "route": "Existing actual provider use preserved; official MCP/API first, scoped browser fallback only for unavailable web-only capabilities. One paid job reservation, no blind retries.",
+      "browser_adapter_status": "REUSE_PROTOCOL_PUBLISHED_NOT_INSTALLED",
+      "browser_adapter_protocol": "https://github.com/showpei1203/chatgpt-pc-bridge/blob/main/docs/SCOPED_BROWSER_AUTOMATION_PROTOCOL.md"
     },
     {
       "name": "sprite-gen 4.3.0",
@@ -102,6 +104,14 @@
       "real_native_evidence": "https://drive.google.com/file/d/1WSjsYCc9ubN5_qWb3-UjogLbKA9LBQoG/view",
       "video_pilot_evidence": "https://drive.google.com/file/d/1Kh2Ll4BLjO51cT0RPcFRHBWV1jL4FUUX/view",
       "video_route_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/153"
+    },
+    {
+      "name": "Google Flow",
+      "status": "LIVE_READ_ONLY_NATIVE_PASS_ACTION_CANDIDATE_MOCK_PASS",
+      "route": "Existing Pro subscription, owner login, fixed native browser adapter. #175 real read-only 37 controls and unique project button. #177 actual installed host binary 7/7. Candidate DOM action 19 assertions mock only. No live click, video generation, budget balance or upload proven.",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/175",
+      "native_binary_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/177",
+      "protocol": "https://github.com/showpei1203/chatgpt-pc-bridge/blob/main/docs/SCOPED_BROWSER_AUTOMATION_PROTOCOL.md"
     }
   ],
   "priority": "Task-specific actual user input > global Drive P0 > latest live lane handoff > current FS Godot protocol > verified tool inventory > old saved state"
