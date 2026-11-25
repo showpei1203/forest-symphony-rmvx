@@ -15,3 +15,10 @@ Upstream says API key presence is consent; this is OVERRIDDEN by owner FS policy
 ## Verification
 Pinned install-only bridge task (software exception under P0) is distinct from downstream execution. Do not treat help output, imports or tool presence as actual art conversion. Required first functional sample: supplied authorized fixture, actual offline processing, compare identity/palette/alpha/anchor/timing, source and output SHA, then native Godot 4.7.2. Next distinct sample verifies repeatability. All production binary artifacts to owner-private Drive with readback; code/manifests to GitHub. No owner-PC project clone or temporary work without P0 prior approval.
 Report INSTALLED, LOADED, INVOKED, TECH_PASS, GODOT_NATIVE, OWNER_ART, GAMEPLAY, CLOUD_READBACK separately. See authority/FS_ASF_CURRENT_HANDOFF_20261125.md.
+
+## A62 actual source safety override — 2026-11-25
+Approved 64x64 A62 F00 has 35 opaque RGB colors, binary alpha, tight bbox 23x35. Windows ASF function diagnostic #150:
+- raw 1x input silently became 1x1 and exit-success: REJECT; CLI exit code alone is insufficient.
+- 16x nearest-neighbor keyed input, outline=drawn, proportions=blocks, colors=0: exact tight crop, alpha and opaque RGB changes 0.
+- same input with colors=16: 233 opaque RGB changes: REJECT for approved source.
+For already-approved source, DO NOT requantize or redraw. Prefer original bytes. If testing ASF regrid, require exact source SHA, integer enlargement, non-destructive crop comparison, original canvas and anchor restoration via tools/agent_orchestration/fs_asf_source_guard.py. If comparison fails, stop and retain original. New unapproved art may separately use a palette target only after visual/identity QA; never blindly apply the 16-color rule to an already-approved 35-color original. This rule does not authorize paid generation. Native public sample 2F playback success does NOT imply FS real-motion native or owner ART approval.
