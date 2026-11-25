@@ -35,7 +35,8 @@
     "sha256": "1e4619deeee26601e4e70aef5274e3e00cf521cbdbe5f537f3e41ad327c24bef",
     "crc": "PASS",
     "drive_file_id": "1N9lnZjCoLuVHXI0TPiM--RksUp_PyaY0",
-    "drive_shared": false
+    "drive_shared": false,
+    "windows_sha_verified": true
   },
   "offline": {
     "frame_count": 40,
@@ -107,8 +108,20 @@
     "source_code_location": "private archive"
   },
   "native": {
-    "status": "NOT_RUN",
-    "negative_issue": 265
+    "status": "PASS",
+    "scope": "HEADLESS_FIVE_REAL_ACTIONS",
+    "issue": 266,
+    "run": 45708478865,
+    "job": 139536450507,
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "frames": 40,
+    "pixel_parity": 40,
+    "run_loops": 3,
+    "oneshots": 4,
+    "synthetic_frames": 0,
+    "negative_issue": 265,
+    "negative_result": "REJECTED_EXPECTED",
+    "receipt_verified": true
   },
   "visual_gpu": "NOT_RUN",
   "art": "HOLD",
