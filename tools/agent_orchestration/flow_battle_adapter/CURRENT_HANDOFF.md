@@ -1,4 +1,7 @@
-# Flow V4.3 CURRENT_HANDOFF — 2026-11-26
+# Flow V4.4 ART-FIRST CURRENT_HANDOFF — 2026-11-26
+
+## Latest owner priority: qualified character art
+Stop extra runtime work. Complete ACTOR01 actual art, begin ACTOR02 plan. Current actual 40-frame review and correction attempt failures; DODGE F3/F4 and DAMAGE F2/F3 HOLD. ACTOR02 confirmed 米亞 (Mia), actor 5 is Ivy; original actor2 image not recovered. [Art closeout and ACTOR02 source plan](../flow_motion_factory/ART_FIRST_ACTOR01_ACTOR02_20261126.md) is current next unit. No new approved art, no engine change. Prior V4.3 test evidence unchanged. Do not treat infographic/AI-generated concept as source or completion.
 本節取代下方舊 gate 狀態；原始 V3 不變，禁止長劍，DODGE 向後跳且朝向不變。
 
 ## V4.3 — FSScreen opt-in presentation integrated; native synthetic and REAL_V3 PASS
