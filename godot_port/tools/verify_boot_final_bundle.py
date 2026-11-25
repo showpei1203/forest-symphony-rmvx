@@ -34,30 +34,13 @@ def validate_bundle(folder):
     folder = Path(folder)
     errors = []
     tables = {}
-    hashes = {}
-    for name in NAMES:
-        path = folder / (name + ".json")
-        if not path.is_file():
-            errors.append("missing table: " + name)
-            continue
-        hashes[name] = sha256(path)
-        try:
-            tables[name] = json.loads(path.read_text(encoding="utf-8"))
-        except (ValueError, UnicodeError) as exc:
-            errors.append("invalid JSON " + name + ": " + str(exc))
     manifest_path = folder / "fs_boot_final_authority.json"
     witness_path = folder / "fs_boot_final_runtime_witness.json"
-    for path in (manifest_path, witness_path):
-        if not path.is_file():
-            errors.append("missing provenance file: " + path.name)
-    if errors:
-        return errors
     try:
-        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        witness = json.loads(witness_path.read_text(encoding="utf-8"))
-    except (ValueError, UnicodeError) as exc:
+        manifest = json.loads(manifest_path.read_bytes().decode("utf-8"))
+    except (OSError, ValueError, UnicodeError) as exc:
         return ["invalid provenance JSON: " + str(exc)]
-    if not isinstance(manifest, dict) or not isinstance(witness, dict):
+    if not isinstance(manifest, dict):
         return ["provenance must be JSON objects"]
     for key, expected in (
         ("schema", "fs-boot-final-authority-v1"),
@@ -70,15 +53,30 @@ def validate_bundle(folder):
                 (type(expected) is bool and type(manifest.get(key)) is not bool) or
                 (type(expected) is int and not integral_number(manifest.get(key)))):
             errors.append("manifest mismatch: " + key)
-    if manifest.get("vx_runtime_witness_sha256") != sha256(witness_path):
-        errors.append("witness bytes SHA256 mismatch")
     digest_map = manifest.get("database_sha256")
     if not isinstance(digest_map, dict):
-        digest_map = {}
-        errors.append("manifest database_sha256 must be object")
+        return errors + ["manifest database_sha256 must be object"]
+    # Hash and decode the same immutable bytes, never reopen a verified file.
+    try:
+        witness_bytes = witness_path.read_bytes()
+        if manifest.get("vx_runtime_witness_sha256") != hashlib.sha256(witness_bytes).hexdigest():
+            return errors + ["witness bytes SHA256 mismatch"]
+        witness = json.loads(witness_bytes.decode("utf-8"))
+    except (OSError, ValueError, UnicodeError) as exc:
+        return errors + ["invalid provenance JSON: " + str(exc)]
+    if not isinstance(witness, dict):
+        return errors + ["provenance must be JSON objects"]
     for name in NAMES:
-        if digest_map.get(name) != hashes[name]:
-            errors.append("table bytes SHA256 mismatch: " + name)
+        try:
+            raw = (folder / (name + ".json")).read_bytes()
+            if digest_map.get(name) != hashlib.sha256(raw).hexdigest():
+                errors.append("table bytes SHA256 mismatch: " + name)
+                continue
+            tables[name] = json.loads(raw.decode("utf-8"))
+        except (OSError, ValueError, UnicodeError) as exc:
+            errors.append("invalid JSON " + name + ": " + str(exc))
+    if errors:
+        return errors
     if witness.get("stage") != "post_FS_DB_AUTOSET.apply_all":
         errors.append("witness not post-Apply")
     if witness.get("engine") != "RPG Maker VX RGSS2":
@@ -149,6 +147,10 @@ def validate_bundle(folder):
                     any(not integral_number(value) or value < -32768 or value > 32767
                         for value in values)):
                 errors.append("actor %s has invalid parameter Table" % actor.get("id"))
+                continue
+            level = actor.get("initial_level")
+            if not integral_number(level) or not 1 <= level < ysize:
+                errors.append("actor %s has invalid initial_level" % actor.get("id"))
     # The post-Apply class learnings must point to live Skills; a fabricated
     # witness with correct counts cannot authorize an absent skill.
     skills = tables.get("skills", [])
@@ -156,7 +158,7 @@ def validate_bundle(folder):
         for klass in classes:
             if not isinstance(klass, dict):
                 continue
-            learnings = klass.get("learnings", [])
+            learnings = klass.get("learnings")
             if not isinstance(learnings, list):
                 errors.append("class learnings not array: " + str(klass.get("id")))
                 continue
@@ -172,7 +174,7 @@ def validate_bundle(folder):
         for troop in troops:
             if not isinstance(troop, dict):
                 continue
-            members = troop.get("members", [])
+            members = troop.get("members")
             if not isinstance(members, list):
                 errors.append("troop members not array: " + str(troop.get("id")))
                 continue
@@ -192,9 +194,11 @@ def _self_test():
         for name in NAMES:
             data[name] = {"party_members": [1]} if name == "system" else [None, {"id": 1}]
         data["actors"][1].update({
-            "class_id": 1,
-            "parameters": {"xsize": 6, "ysize": 1, "zsize": 1, "data_int16": [1]*6}
+            "class_id": 1, "initial_level": 1,
+            "parameters": {"xsize": 6, "ysize": 2, "zsize": 1, "data_int16": [1]*12}
         })
+        data["classes"][1]["learnings"] = []
+        data["troops"][1]["members"] = []
         for name, value in data.items():
             (root / (name + ".json")).write_text(
                 json.dumps(value), encoding="utf-8")

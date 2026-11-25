@@ -9,68 +9,70 @@ var errors: Array[String] = []
 # In-memory synthetic unit-test tables must explicitly opt-in to Boss runtime.
 var boot_final_verified: bool = false
 
+# A manifest establishes expected byte digests, not issuer authenticity.
+# Read once, hash that exact snapshot, then decode only on digest match.
+func _read_bound_json(path:String, expected:Variant, require_hash:bool)->Dictionary:
+    var file:=FileAccess.open(path,FileAccess.READ)
+    if file==null:
+        errors.append("無法讀取："+path)
+        return {}
+    var length:int=file.get_length()
+    var raw:PackedByteArray=file.get_buffer(length)
+    file.close()
+    if raw.size()!=length or raw.is_empty():
+        errors.append("JSON 快照讀取不完整："+path)
+        return {}
+    var ctx:=HashingContext.new()
+    if ctx.start(HashingContext.HASH_SHA256)!=OK or ctx.update(raw)!=OK:
+        errors.append("SHA256 計算失敗："+path)
+        return {}
+    var actual:String=ctx.finish().hex_encode()
+    if require_hash and (not (expected is String) or actual!=expected):
+        errors.append("SHA256 不符合 manifest："+path)
+        return {}
+    var decoded:String=raw.get_string_from_utf8()
+    var value:Variant=JSON.parse_string(decoded)
+    if value==null:
+        errors.append("JSON 無法解碼："+path)
+        return {}
+    return {"value":value,"sha256":actual}
+
 func load_all(folder: String = "res://data") -> bool:
     tables.clear()
     errors.clear()
     boot_final_verified = false
-    for name in NAMES:
-        var file_path: String = folder.path_join(name + ".json")
-        if not FileAccess.file_exists(file_path):
-            errors.append("缺少資料：" + file_path)
-            continue
-        var file := FileAccess.open(file_path, FileAccess.READ)
-        if file == null:
-            errors.append("無法讀取：" + file_path)
-            continue
-        var result: Variant = JSON.parse_string(file.get_as_text())
-        if result == null:
-            errors.append("JSON 無法解碼：" + file_path)
-            continue
-        tables[name] = result
-    if errors.is_empty():
-        # Raw RVData dumps are NOT FS gameplay DB: FS_MasterSetup 18 replaces
-        # AutoSetup placeholders and FS_DB_AUTOSET.apply_all mutates $data_*.
-        # A real post-Apply VX witness and per-table SHA are mandatory.
-        var manifest_path: String = folder.path_join("fs_boot_final_authority.json")
-        if not FileAccess.file_exists(manifest_path):
-            errors.append("缺少 FS 啟動後權威資料證明 fs_boot_final_authority.json；只匯入原始 RVData 不可進入正式遊戲")
+    var manifest_snapshot:Dictionary=_read_bound_json(folder.path_join("fs_boot_final_authority.json"),null,false)
+    var manifest:Variant=manifest_snapshot.get("value",null)
+    if not (manifest is Dictionary):
+        errors.append("FS 啟動後權威資料證明 JSON 格式錯誤")
+    else:
+        var digests:Variant=manifest.get("database_sha256",null)
+        if not (digests is Dictionary):
+            errors.append("權威資料庫各表 SHA256 格式無效")
         else:
-            var manifest: Variant = JSON.parse_string(FileAccess.get_file_as_string(manifest_path))
-            if not manifest is Dictionary:
-                errors.append("FS 啟動後權威資料證明 JSON 格式錯誤")
-            else:
-                var hashes: Dictionary = {}
-                for name in NAMES:
-                    hashes[name] = FileAccess.get_sha256(folder.path_join(name + ".json")).to_lower()
-                for problem in validate_boot_manifest(manifest,hashes):
+            var hashes:Dictionary={}
+            for name in NAMES:
+                var snapshot:Dictionary=_read_bound_json(folder.path_join(name+".json"),digests.get(name,null),true)
+                if not snapshot.is_empty():
+                    tables[name]=snapshot["value"]
+                    hashes[name]=snapshot["sha256"]
+            for problem in validate_boot_manifest(manifest,hashes):
+                errors.append(problem)
+            var witness_snapshot:Dictionary=_read_bound_json(folder.path_join("fs_boot_final_runtime_witness.json"),manifest.get("vx_runtime_witness_sha256",null),true)
+            var witness_data:Variant=witness_snapshot.get("value",null)
+            if not (witness_data is Dictionary):
+                errors.append("VX 執行證據不是合法 JSON 物件")
+            elif errors.is_empty():
+                for problem in validate_runtime_witness(witness_data):
                     errors.append(problem)
-                # A SHA string in JSON is only a claim. Verify the actual
-                # retained VX post-Apply runtime witness bytes as well.
-                var witness_path: String = folder.path_join("fs_boot_final_runtime_witness.json")
-                if not FileAccess.file_exists(witness_path):
-                    errors.append("缺少實際 VX 啟動後執行證據：" + witness_path)
-                else:
-                    var witness_sha: String = FileAccess.get_sha256(witness_path).to_lower()
-                    if witness_sha != str(manifest.get("vx_runtime_witness_sha256","")):
-                        errors.append("VX 執行證據檔案 SHA256 不符合 manifest")
-                    var witness_data: Variant = JSON.parse_string(FileAccess.get_file_as_string(witness_path))
-                    if not (witness_data is Dictionary):
-                        errors.append("VX 執行證據不是合法 JSON 物件")
-                    else:
-                        for problem in validate_runtime_witness(witness_data):
-                            errors.append(problem)
-                        for problem in validate_witness_against_tables(witness_data,tables):
-                            errors.append(problem)
-                        # P538F: independent table semantics must pass even
-                        # when an attacker re-hashes altered JSON and edits
-                        # witness counts to match. Counts are not provenance.
-                        for problem in validate_runtime_table_integrity(tables):
-                            errors.append(problem)
+                for problem in validate_witness_against_tables(witness_data,tables):
+                    errors.append(problem)
+                for problem in validate_runtime_table_integrity(tables):
+                    errors.append(problem)
     if not errors.is_empty():
-        # Never accidentally allow partial raw data through load_all() after
-        # source-consistency failure. In-memory synthetic test tables bypass this.
         tables.clear()
-    boot_final_verified = errors.is_empty()
+    # Structural consistency only. Authentic source approval remains external.
+    boot_final_verified=errors.is_empty()
     return boot_final_verified
 
 # JSON.parse_string represents JSON numbers as floats. Accept only finite,
@@ -201,6 +203,9 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
         if y!=float(raw.size())/6.0:
             problems.append("FS Actor #%d 成長 Table 長度不符" % actor_id)
             continue
+        var initial_level:Variant=actor.get("initial_level",null)
+        if not _integral_number(initial_level) or initial_level<1 or initial_level>=y:
+            problems.append("FS Actor #%d initial_level 不在成長 Table 範圍" % actor_id)
         for n in raw:
             if not _integral_number(n) or n<-32768 or n>32767:
                 problems.append("FS Actor #%d 成長 Table 含非法 int16" % actor_id)
@@ -224,7 +229,7 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
         for troop in troops:
             if not (troop is Dictionary):
                 continue
-            var members:Variant=troop.get("members",[])
+            var members:Variant=troop.get("members",null)
             if not (members is Array):
                 problems.append("FS Troop #%d members 格式錯誤" %
                     _checked_id(troop.get("id",0)))
@@ -243,7 +248,7 @@ static func validate_runtime_table_integrity(loaded_tables:Dictionary)->PackedSt
         for klass in classes:
             if not (klass is Dictionary):
                 continue
-            var learnings:Variant=klass.get("learnings",[])
+            var learnings:Variant=klass.get("learnings",null)
             if not (learnings is Array):
                 problems.append("FS Class #%d learnings 格式錯誤" %
                     _checked_id(klass.get("id",0)))

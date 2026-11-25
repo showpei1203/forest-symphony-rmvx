@@ -20,7 +20,16 @@ func _run()->void:
         var accepted:bool=db.load_all(root.path_join(str(c["name"])))
         var expected:bool=c["expected"]
         print("EGM_GODOT ",c["name"]," ","ACCEPT" if accepted else "REJECT"," expected=","ACCEPT" if expected else "REJECT")
-        if accepted!=expected:
+        var reason_ok:bool=true
+        if bool(c.get("hash_before_parse",false)):
+            var saw_hash:bool=false
+            for line in db.errors:
+                if line.contains("SHA256 不符合 manifest"):
+                    saw_hash=true
+                if line.contains("JSON 無法解碼"):
+                    reason_ok=false
+            reason_ok=reason_ok and saw_hash
+        if accepted!=expected or not reason_ok:
             mismatches+=1
             print("EGM_GODOT_DETAIL ",str(db.errors))
     print("EGM_GODOT_DISAGREEMENTS ",mismatches)
