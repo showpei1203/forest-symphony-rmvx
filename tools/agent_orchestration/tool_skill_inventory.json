@@ -1,6 +1,6 @@
 {
   "schema": "fs-tool-inventory/v1",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-25",
   "warning": "Inventory is historical evidence, never proof that another ChatGPT conversation automatically loads/uses tools. Each task must confirm current connection and reload actual SKILL.md.",
   "skills": {
     "project_current": {
@@ -89,6 +89,13 @@
       "status": "MCP_SEARCH_SMOKE_ONLY",
       "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/36",
       "route": "do not claim it is the standard research pipeline"
+    },
+    {
+      "name": "Agent Sprite Forge",
+      "status": "PINNED_INSTALL_REQUESTED_UNVERIFIED",
+      "upstream_commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "route": "Offline supplied media only; FS-specific guards in .agents/skills/fs-agent-sprite-forge/SKILL.md; paid routes disabled by FS policy; native, art, gameplay NOT_RUN",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/147"
     }
   ],
   "priority": "Task-specific actual user input > global Drive P0 > latest live lane handoff > current FS Godot protocol > verified tool inventory > old saved state"
