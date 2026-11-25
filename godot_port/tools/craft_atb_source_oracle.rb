@@ -158,6 +158,44 @@ scene.prepare_forcing_atb
 raise 'troop promotion mismatch' unless scene.forcing.map(&:id)==['B','A'] && scene.ordinary.map(&:id)==['B'] && scene.cleanup==['A'] && $game_troop.forcing_battler.nil?
 force_schedule={event_order:['A','B'],troop_order:scene.forcing.map(&:id),ordinary:scene.ordinary.map(&:id),cleanup:scene.cleanup}
 puts "CRAFT_FORCE_TROOP_ORACLE_PASS; Order=B,A; Cleanup=A"
-File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines}))
+# Actual #21 conditions and page selection, with explicit source-shaped stubs.
+s21=pinned('exported_scripts/021__id96014404__Game_Troop.rb','d576e3f55071ff875e74a8e0db30cb6dbbcd0e03')
+OracleCondition=Struct.new(:turn_ending,:turn_valid,:enemy_valid,:actor_valid,:switch_valid,:enemy_index,:enemy_hp,:switch_id)
+OraclePage=Struct.new(:condition,:span,:list)
+OracleEnemy=Struct.new(:hp,:maxhp)
+class OracleInterpreter
+  attr_reader :selected
+  def running?; false; end
+  def setup(list); @selected=list; end
+  def clear; @selected=nil; end
+end
+class OracleTroop
+  attr_reader :members,:interpreter,:event_flags
+  def initialize(pages)
+    @members=[OracleEnemy.new(100,100)]
+    @troop=Struct.new(:pages).new(pages)
+    @interpreter=OracleInterpreter.new
+    @event_flags={}
+  end
+  def troop; @troop; end
+end
+OracleTroop.class_eval(excerpt(s21,153,186),'#21 conditions',153)
+OracleTroop.class_eval(excerpt(s21,190,206),'#21 page setup',190)
+$game_temp=Struct.new(:common_event_id).new(0)
+$game_switches=Hash.new(false)
+p0=OraclePage.new(OracleCondition.new(false,false,true,false,true,0,50,7),0,[0])
+p1=OraclePage.new(OracleCondition.new(false,false,true,false,false,0,50,7),0,[1])
+$game_troop=OracleTroop.new([p0,p1])
+page_steps=[[60,false],[50,false],[50,true],[10,true]].map do |hp,sw|
+  $game_troop.members[0].hp=hp
+  $game_switches[7]=sw
+  $game_troop.interpreter.clear
+  $game_troop.setup_battle_event
+  selected=$game_troop.interpreter.selected
+  {hp:hp,switch:sw,selected:selected.nil? ? -1 : selected.first}
+end
+raise 'source troop pages mismatch' unless page_steps.map{|x|x[:selected]}==[-1,1,0,-1]
+puts "CRAFT_TROOP_PAGE_ORACLE_PASS; Steps=4; Selected=-1,1,0,-1"
+File.write(ARGV.fetch(0),JSON.pretty_generate({cases:cases,force:{order:['A','B'],outside_battle_unchanged:true},force_schedule:force_schedule,urgent:urgent,notes:note_cases,pipelines:pipelines,page_steps:page_steps}))
 puts "CRAFT_NOTE_ORACLE_PASS; Notes=#{note_cases.length}; StatePipelines=#{pipelines.length}; FullVXRuntime=False"
 puts "CRAFT_ORACLE_PASS; Cases=#{cases.length}; Force=2; Urgent=#{urgent.length}; OriginalVXRuntime=False"
