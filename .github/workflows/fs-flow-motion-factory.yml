@@ -34,6 +34,7 @@ jobs:
           "$G" --headless --fixed-fps 240 --script res://test_factory.gd | tee /tmp/factory.log
           grep 'FLOW_FACTORY_NATIVE_PASS scope=SYNTHETIC_ONLY actions=5 oneshots=4 loop=1' /tmp/factory.log
           python3 -m pip install Pillow==12.3.0
+          python3 -m unittest -v test_pose_review.py
           python3 make_fixture.py
           "$G" --headless --fixed-fps 240 --script res://test_factory.gd -- --synthetic-disk | tee /tmp/disk.log
           grep 'FLOW_FACTORY_NATIVE_PASS scope=SYNTHETIC_DISK actions=5 oneshots=4 loop=1' /tmp/disk.log
