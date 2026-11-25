@@ -279,7 +279,7 @@ func _resolve_enemy_ready(battle) -> int:
     return 0
 
 func resolve_ready(battle) -> int:
-    if resolving or battle.force_actions.busy or not battle.active or battle.source_atb_wait:
+    if resolving or battle.force_actions.busy or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done) or not battle.active or battle.source_atb_wait:
         return 0
     resolving=true
     cancel_interrupted(battle)
