@@ -25,6 +25,7 @@ var source_atb_wait: bool = false
 var action_queue: FSActionQueue = FSActionQueue.new()
 # Opt-in candidate; normal production/event entry remains disabled.
 var force_actions: FSForceActionQueue = FSForceActionQueue.new()
+var troop_force_pages: FSTroopForcePages = FSTroopForcePages.new()
 # Source #401 Runtime Provider. Automatically opt-in only after the real
 # boot-final DB witness gate; synthetic battle tests opt in intentionally.
 var boss_runtime: FSBossSummonRuntime = FSBossSummonRuntime.new()
@@ -984,6 +985,7 @@ func advance_atb(delta: float) -> void:
         if not active:
             break
         if force_actions.enabled:
+            troop_force_pages.tick(self)
             force_actions.drain_event(self)
             force_actions.prepare_troop(self)
         if not source_atb_wait:
@@ -1001,6 +1003,12 @@ func advance_atb(delta: float) -> void:
         if active:
             boss_runtime.tick(self)
             boss_state_effects.sync(self)
+
+# Explicit candidate provider only; never automatically enable for unverified Troop DB.
+func configure_source_force_pages(pages: Array) -> bool:
+    if not active or not source_atb_initialized or not force_actions.enabled:
+        return false
+    return troop_force_pages.configure(pages)
 
 func queue_source_force_action(side: int,index: int,kind: String,target_index: int) -> bool:
     return force_actions.request_event(self,side,index,kind,target_index)
