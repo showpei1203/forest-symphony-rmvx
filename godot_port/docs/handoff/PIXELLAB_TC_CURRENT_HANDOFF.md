@@ -1,3 +1,17 @@
+# T-C CURRENT｜2026-11-26 D26｜真新 1× 短橋與工坊來源 Geometry PASS，畫風不一致 ART REJECT（最新）
+
+**最新且優先於以下 D25/D24 歷史：** 根據 D25 原始 Ground 的真地形比例，本輪**實際作者化**四個獨立 RGBA 新物件：完整短橋 **192×156px**、工坊 **282×356px**、吊車 **236×288px**、倉庫 **225×209px**，配 D24 真獨立 PAR 中保留完整輪廓且**沒有 resize**的其他七組燈、岩柱、旗。所有十一個非地表物件組成完整新 `1280×928 RGBA` PAR（SHA `f8096afedba93dd66211cfd92385596ffda061c0d6cb6688fc762d83887805fe`），沒有從 Ground+物件混合 Master 逆向切割。D17 Ground 完全不動，SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`。靜態 Composite SHA `3b7cbd819e2983c2548eb98e386bc2e15593912e93f0c30b41c2e43e31b94920`；`true alpha0=1,003,743`，不同物件重疊0，外框世界五像素高 Alpha=0，四個關鍵PNG**完全隔離冷重建 SHA 一致**。
+
+**實際美術判斷是 FAIL，不是 PASS：** 四張新物件來源是**程式作者化的 1× 像素圖**，不是同一畫風模型直接生成的完整獨立 PAR plate。整張 Composite 人眼直接比 D24：新屋瓦、木架、橋柱/陰影顯著平板，與 D24 的高細節、帶微妙色階的原生獨立物件及 D17 Ground **畫風不一致**。D24 工坊可見唯一 RGB 112457 色、D26 新工坊57色；D24橋42793色、D26橋38色（只是輔助質感診斷，**不是自動 ART 判定分數**）。因此 **D26 新來源比例 Gate PASS，整體 ART SOURCE GATE REJECT**；沒有 D26 新正式 PAR 可採納，不跑真 D26 Godot Native、不宣稱遊戲整合，十二地圖 **ART 0/12 HOLD**。本輪工具生成結果還曾是 RGB棋盤非透明的大橋／混地表的 full Master+UI，已明確拒收；不能把畫面上寫的PASS當真。
+
+**正式源與失敗實證：**
+- [**D26 19檔完整 owner-only 私人封包，17,973,255 bytes，ZIP CRC PASS**](https://drive.google.com/file/d/1AziDn0gHc01P5wdCBmlbOcv_Kvr1DM1v/view)；[D26 完整 PAR（ART REJECT）](https://drive.google.com/file/d/1xYoBb6hxN_MDuz5-HLrPO0i0Oir5aWKx/view)；[D26 真 Ground+PAR 靜態畫面](https://drive.google.com/file/d/1dpr1rXZZKpTLyFeJNaGAwz01hnA6MlyG/view)；[D24 vs D26 全景 A/B](https://drive.google.com/file/d/1nLwACbNfYJapHJUXzYw69urrunUPzdD3/view)。已 Google Drive metadata READBACK `shared=false`、僅 owner；私人圖片未放公開 Github。
+- [D26 完整累積經驗／Failure Log／ART Gate Handoff](TC_D26_ART_FIRST_COMPACT_ASSETS_STYLE_REJECT_20261126.md)；[新 1× 美術來源與單張 PAR 真重建實驗](../../tc_factory/biomes/fs_tc_d26_native_size_compact_art_experiment.py)；[色階密度診斷](../../tc_factory/biomes/fs_tc_d26_style_drift_diagnostic.py)。
+
+**真正吸收的 D26 新經驗：** 已有 D25 早期尺寸門檻，但現在必須新增「**與已核准 Style DNA 接近的作者化完整物件**」這道 ART Gate，不能為了 192px 橋犧牲整張畫質。下一完整藝術施工單位 D27：先核對現有已驗證 PixelLab/Map Workshop 的原生像素與有限 bbox 能力，再使用**同作者同材質／固定地貌位置**的方式創作整張真透明非地表物件，仍先 Ground、後 complete PAR、再1×QA和人工核准；如工具無法符合或涉及未授權付費行為，應明確阻斷而非假使用。不再用低細節手繪堆候選，不做碰撞、角色前後層/存讀；保留全部 D17～D26 原來源，不覆寫主 T-C/T-A/T-B、Windows E:。Draft PR #17 隔離未合併。
+
+---
+
 # T-C CURRENT｜2026-11-26 D25 ART-FIRST｜來源比例預先拒收＋經驗正式總結（沒有假造新 PAR）
 
 **這是本輪最高優先、覆蓋以下 D24/D23 歷史下一步的交接。** 本輪真實回讀 D24 源圖和 D17 不變 Ground，完成**真正 Ground 世界位置的短橋範圍 QA 圖**、原素材比例自動驗收、5 個 synthetic contract PASS、正式製圖經驗總結，保留不合格生成 output 的拒收紀錄。**未新增能過關的 D25 獨立 CompletePAR，更沒有 D25 真 Godot 4.7.2 Native 截圖；正式 ART PASS 0/12 HOLD。** 不將新生成但輸出成 RGB 棋盤背景或進度資訊圖的圖片當美術素材。
