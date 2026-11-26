@@ -1,0 +1,38 @@
+name: FS T-C D29 exact 1280x928 one-pass PAR (offline dry-run only)
+on:
+  push:
+    branches:
+      - feat/fs-tc-d12-chroma-par-20261122
+    paths:
+      - 'godot_port/tc_factory/biomes/fs_tc_d29_exact_canvas_image_api.py'
+      - 'godot_port/tc_factory/biomes/test_fs_tc_d29_exact_canvas_image_api.py'
+      - '.github/workflows/fs-tc-d29-exact-canvas-api-dryrun.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline_contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      FS_TC_D29_PAID_RUN: NEVER
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install only QA libraries; NEVER install/call the paid image API
+        run: python3 -m pip install --disable-pip-version-check Pillow==12.0.0 numpy==2.3.5
+      - name: D29 offline one-pass exact-canvas API request and fail-close contract
+        run: python3 -m unittest discover -v -s godot_port/tc_factory/biomes -p test_fs_tc_d29_exact_canvas_image_api.py
+      - name: Source contract must prohibit auto-spend and component editing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('godot_port/tc_factory/biomes/fs_tc_d29_exact_canvas_image_api.py')
+          s=p.read_text(encoding='utf-8')
+          assert 'EXPLICIT_D29_ONE_PASS_SINGLE_REQUEST' in s
+          assert "default=False" in s
+          assert "ONE unified, complete, original game-art image" in s
+          assert "gpt-image-2.5-sunburst" in s
+          assert "background':'transparent'" in s
+          assert "'size':'1280x928'" in s
+          print('D29 CI: OFFLINE ONLY. No provider call, no production PAR, no ART PASS. 0 paid jobs.')
+          PY
