@@ -1,4 +1,7 @@
 # FS T-B｜高解析角色同世界觀怪物製作規範｜2026-11-26
+
+> **最新使用者更正（2026-11-26 09:25）：地圖與戰鬥使用同一組 Sprite，不變更全局美術／解析度／比例。** 先前 128px 優先及 256/512px 擴張提案撤銷；高解析僅可作暫時生成參考，輸出必須符合既有素材契約。詳見 [地圖戰鬥共用 Sprite 相容性硬規則](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_SHARED_MAP_BATTLE_SPRITE_COMPATIBILITY_20261126.md)。後文衝突文字只保留歷史，非施工指令。
+
 狀態：最新使用者要求同步怪物規則；製程與畫風候選優先，128px 尚待實際雙角色/怪物美術試驗，不是既有素材或引擎已升版。
 ## 新優先規則
 - 新 ACTOR01 白髮深青披風、ACTOR02 米亞花飾森林法衣高解析角色母圖作為共同畫風候選。原圖存在本對話生成記錄，尚未證實 Drive 持久化或 owner ART 定稿，不假稱正式核准。角色新母圖尺寸約1248級生成，非 runtime 像素尺寸。

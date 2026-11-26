@@ -1,5 +1,10 @@
 # CURRENT TOP PRIORITY (2026-11-26)｜T-B 美術優先、角色同畫風、高解析母圖
 
+> **最新使用者更正（2026-11-26 09:25）：地圖與戰鬥使用同一組 Sprite，不變更全局美術／解析度／比例。** 先前 128px 優先及 256/512px 擴張提案撤銷；高解析僅可作暫時生成參考，輸出必須符合既有素材契約。詳見 [地圖戰鬥共用 Sprite 相容性硬規則](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_SHARED_MAP_BATTLE_SPRITE_COMPATIBILITY_20261126.md)。後文衝突文字只保留歷史，非施工指令。
+
+**NEXT：** 維持既有風格及輸出規格，PMD0001 原始來源鎖定→單一靜態候選→與原地圖／戰鬥角色同尺度美術對照→既有尺寸動作。禁止新規格帶動全部素材重製。
+
+
 > **2026-11-26 最新使用者追加：** 新怪物製程須與新版高解析 ACTOR01/Mia 母圖同畫風，優先高解析母圖→Flow 單動作 pilot→64/96/128px 同源試驗（128px 優先，未定稿）→美術驗收；大型怪物允許更大畫布，世界比例與像素密度獨立，禁止全體填同格。原 PMD 編號／骨架／相對體型硬條件不變。詳見 [高解析美術與尺寸新規範](../research/FS_TB_HIGH_RES_ART_STYLE_AND_SCALE_20261126.md)。舊 64px 尺寸為歷史參考，不是新製程限制。
 
 **NEXT：** PMD0001 原始 SE45 source 已有驗證；先產單一高解析靜態候選與 ACTOR01/Mia 同場比例對照，ART gate 再 Flow 單動作 pilot、尺寸選定，再下一編號。新圖/Flow/新尺寸/ART/native 均 NOT_RUN；未凍結新角色母圖、未宣稱 Drive 新圖已上傳。保留舊 R21/R22 和 PMD source checks。此次僅規範更新，沒有付費或 PC writes。
