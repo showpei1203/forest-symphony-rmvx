@@ -18,7 +18,7 @@
     "Ground_candidates_FS_02_MAZE": 1,
     "failed_PAR_generation_attempts_FS_02_MAZE": 2,
     "new_COMPLETE_PAR_candidates_FS_02_MAZE": 1,
-    "Ground_PAR_pair_candidates_static_pass": 13,
+    "Ground_PAR_pair_candidates_static_pass": 14,
     "ground_source_candidates_FS_03_VILLAGE": 1,
     "failed_PAR_generation_attempts_FS_03_VILLAGE": 2,
     "new_COMPLETE_PAR_candidates_FS_03_VILLAGE": 1,
@@ -32,7 +32,7 @@
     "new_complete_PAR_candidates_FS_04_VILLAGE": 2,
     "D15_FS_04_VILLAGE_alpha_repaired_candidates": 1,
     "ground_source_candidates_FS_04_MAZE": 2,
-    "complete_PAR_candidates_FS_04_MAZE": 6,
+    "complete_PAR_candidates_FS_04_MAZE": 7,
     "native_private_fs_04_maze_variants_pass": 4,
     "native_private_fs_04_maze_variants_provisional_physics_smoke_pass": 2
   },
@@ -470,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D23_NEW_INDEPENDENT_RGB_ALL_NON_GROUND_WHITEPLATE_KEYED_RGBA_CANDIDATE_REAL_GODOT472_NATIVE_PASS_ART_HOLD",
+      "stage": "D24_INDEPENDENT_TRUE_RGBA_11_COMPLETE_OBJECTS_1X_PAIR_COLD_REBUILD_PASS_NATIVE_NOT_RUN_VISUAL_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -483,8 +483,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D23_OWNER_PRIVATE_KEYED_RGBA_AND_LOCKED_D17_GROUND_NATIVE_1X_PASS",
-      "formal_art_gate": "HOLD_USER_ART_SCALE_BRIDGE_FOOTPOINT_SOURCE_RGB_ALPHA_FALLBACK",
+      "native_Godot_4_7_2_for_current_stage": "D24_PRIVATE_NATIVE_NOT_RUN_D23_PREVIOUS_NATIVE_PASS_ONLY",
+      "formal_art_gate": "HOLD_ART_BRIDGE_WIDTH_388PX_VS_WORLD_FISSURE_AND_REAL_NATIVE_NOT_RUN",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -776,6 +776,52 @@
         "native_PNG_drive": "https://drive.google.com/file/d/1puTw6b_oTCApmAh_hSbJPPOnl5noaAu-/view",
         "private_zip_drive": "https://drive.google.com/file/d/1k5q1KZsgOGmfwHGVOU7bBTdUNsy6g_Qx/view",
         "previous_D22_native_AB_drive": "https://drive.google.com/file/d/14tZB-xXEMhg7jn5eTimrp3wyxeCgD4n0/view"
+      },
+      "D24": {
+        "date": "2026-11-26",
+        "source_mode": "RGBA_TRUE_ALPHA_NO_CHECKER_KEY",
+        "source_size": [
+          1474,
+          1067
+        ],
+        "source_SHA256": "69fcdc6602394ddc7ece3e73515fe657ab74976c20aaa1548b58b712cfcca407",
+        "source_real_alpha_zero": 1149019,
+        "source_significant_gt32_pixels_preserved": 376213,
+        "source_significant_alpha_gt32_all_accounted": true,
+        "whole_nonground_groups": 11,
+        "locked_D17_Ground_SHA256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "output_size": [
+          1280,
+          928
+        ],
+        "source_direct_native_1280": false,
+        "all_groups_1x_relayout": true,
+        "polygon_trim_pixels": 0,
+        "chosen_plan": "B_BRIDGE_RIGHT_BANK",
+        "B_bridge_origin": [
+          853,
+          406
+        ],
+        "A_bridge_origin": [
+          778,
+          406
+        ],
+        "author_bridge_width_px": 388,
+        "B_PAR_SHA256": "a5c657c8e38150f5300874283124970ba0b089eed52c2dc763bd646d6330e51b",
+        "B_static_composite_SHA256": "604d9db4ec8926257831cf2839e4cfb1ef5a19319bea2771afb26f4f81a43fab",
+        "B_PAR_real_alpha_zero": 806922,
+        "B_object_overlap_pixels": 0,
+        "B_outer_border5_px_high_alpha": 0,
+        "isolated_cold_rebuild": "SHA_EXACT_PASS",
+        "real_D24_Godot472_native": "NOT_RUN",
+        "human_Art": "HOLD",
+        "formal_ART_PASS": "0/12",
+        "blocker": "GENERATED_BRIDGE_WIDTH_388PX_TOO_LONG_FOR_NARROW_LAVA_GAP; FORGE_495PX_TOO_WIDE; WORLD_NATIVE_GENERATION_UNPROVEN",
+        "private_zip": "https://drive.google.com/file/d/1lFPX6IV0lJ6dNmQte1ocRHFlyPBtmMoC/view",
+        "private_original": "https://drive.google.com/file/d/1Ao4UargsAT-mzPTds326aRifdctQOUuO/view",
+        "private_PAR_B": "https://drive.google.com/file/d/19gBWUYg0xckbJ6oC-dBVw1oMyu6VNvez/view",
+        "private_composite_B": "https://drive.google.com/file/d/1f2JY59NGr2n58qzu3Ddkt2vS4Xajor9p/view",
+        "private_art_A_B": "https://drive.google.com/file/d/12sc18GxFZRNcq4DUkJWvVL3HmRurAJEK/view"
       }
     },
     {
