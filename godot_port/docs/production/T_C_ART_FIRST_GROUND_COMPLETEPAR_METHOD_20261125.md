@@ -97,3 +97,16 @@ D25 尺寸門檻可量產地拒絕 388px 舊橋、495px 工坊；D26 隨即在�
 - **現有工具路線**：先確認既有 PixelLab／Map Workshop 是否在當前工具鏈實測支援**固定世界像素尺寸 + 同風格 source authoring**，不假設可用；禁止未核准付費 API 自動觸發。T-C 工廠追求一張已經一致的完整 PAR，不能再次轉為研究角色碰撞／事件。
 
 **D26 真來源/失敗樣本/風格 A/B 完整 owner-private 封存**：[19件 ZIP 17,973,255 bytes CRC PASS](https://drive.google.com/file/d/1AziDn0gHc01P5wdCBmlbOcv_Kvr1DM1v/view)｜[正式 D26 Failure Log 及累積經驗](../handoff/TC_D26_ART_FIRST_COMPACT_ASSETS_STYLE_REJECT_20261126.md)（實驗分支）｜[D24 vs D26 全景](https://drive.google.com/file/d/1nLwACbNfYJapHJUXzYw69urrunUPzdD3/view)。所有新原圖與 D17/D24 來源均私人，正式 ART 仍 0/12。
+
+## 2026-11-27 D29 生成能力修正（官方自訂原生畫布整張 PAR 產線）
+
+**最新工程結論：** D27～D29 聊天內圖片生成出現固定約 `1473×1068` 的來源，D29 四張一次生成真透明完整 PAR 的 native `1280×928` 4/4 FAIL（超畫布有效像素 `76661/97510/77181/86778`）。不再用同型文字提示、剪件修橋、整圖縮放或 master reverse-extract 冒充 native 產物。
+
+**一條官方規格上可行而未實際付費調用的上游路由：** OpenAI GPT Image **2.5 Sunburst/Flare** [Images edit API](https://developers.openai.com/api/reference/resources/images/methods/edit) 支援 `size=1280x928`（兩邊都是16倍數）、`background=transparent` + `output_format=png`，可將 D17 鎖定 Ground 作整幅世界參考，**一次 image edit n=1** 產生整個非地表 PAR；這不是由目前 ChatGPT 圖像工具已實測成功的輸出，也不能保證模型理解世界錨點。不要拿舊 `gpt-image-2` 的透明支援當成已驗證。官方 [Image Generation guide](https://developers.openai.com/api/docs/guides/image-generation) 是規格依據。
+
+**實際有產出的工程**：[`fs_tc_d29_exact_canvas_image_api.py`](../../tc_factory/biomes/fs_tc_d29_exact_canvas_image_api.py)、[11項 offline QA/安全測試](../../tc_factory/biomes/test_fs_tc_d29_exact_canvas_image_api.py)、[GitHub Actions #45883233641 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45883233641)。已用真 D17 Ground 執行 zero-paid dryrun，SHA/原生長寬/模型/背景/單次輸出合約 PASS，但 **paid image API=NOT_RUN / 真 PAR=NOT_GENERATED / Godot=NOT_RUN / ART 0/12**。
+
+**未來真實 provider 執行的防護**：使用者另行明確授權單次 API 付費 + `--execute --owner-approved-paid` + `FS_TC_D29_PAID_RUN=EXPLICIT_D29_ONE_PASS_SINGLE_REQUEST` + 合法 `OPENAI_API_KEY`，缺一無法啟動；不可將 ChatGPT 訂閱權益視為 OpenAI API 額度；無自動重試、無循環付費，永遠保留回傳原始 PNG。拒收全幅 Ground 污染、單件拆解、無透明度、尺寸錯誤；來源畫布技術 Gate 成功仍須與 Ground 景物/橋腳的人工審核，**正式 ART 必須使用者核准**。
+
+[**D29 原圖4件＋整張QA、source/paid安全 dryrun、完整程式和 FailureLog：私人13件10,435,871 bytes ZIP**](https://drive.google.com/file/d/1YFaSByD1GXjdpl07K4o9Z0cHagxuZ18n/view)（owner-only 已回讀）；[D29 完整 Handoff](../handoff/TC_D29_EXACT_CANVAS_IMAGE_API_DRYRUN_AND_SOURCE_FAILURE_20261127.md)。不得覆寫 D17-D28、T-A/T-B、E槽，不得將私人原圖提交公有 repo。
+
