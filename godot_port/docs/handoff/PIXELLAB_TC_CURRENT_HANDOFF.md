@@ -1,3 +1,15 @@
+# T-C CURRENT｜D27 真正一次性完整 PAR 生成施工與最終來源尺寸阻斷｜2026-11-26
+
+**最高優先使用者指示：完整 PAR 必須是一次生成的整張同風格作品，不能生成、改、拼接獨立橋、工坊或 Alpha 島。** 最新正式 [D27 ONE-PASS 製圖規格](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/production/T_C_D27_ONE_PASS_COMPLETE_PAR_AUTHORING_CONTRACT_20261126.md) 已同步本 T-C 分支、另一 T-C 分支及 Google Drive 兩份 SOP。舊 D18–D26 單件重排只作歷史紀錄，不再可登記正式產線候選。
+
+D27 真正實驗結果：一次生成有全工坊、短橋、吊車、棚屋、岩柱、旗燈等**整張原始獨立、真正透明 RGBA 非地表圖**，來源 `1474×1067`、SHA `5a089071cef9e0cb2315afee9f6af9075d913963a3e769e19f3fd5f331ada27d`、Alpha0 `1011280`，未從 Master 逆切、未從單件拼裝。**雖然源作者畫風整體統一，但來源不是正式 D17 Ground 的 1280×928，橋約559px、工坊約510px，世界座標未對齊；正式 SOURCE SIZE／WORLD ART FAIL，ART 0/12 HOLD。** 直接 1× 裁切會去掉45499個有效物件像素，禁止。另完整影像全幅縮放與 Ground 合成的檔案只有**QA-only 預覽**，絕非正式原生 1× PAR。D27 本輪**真 Godot Native NOT_RUN**。
+
+第二、三次 image generator 產出含「虛構 PASS / 1280×928」的資訊圖，實測不是 CompletePAR，直接拒收；第三張 Alpha0=0。**畫面上自稱 PASS 的文字沒有驗收效力。** 已存所有來源與拒收證據、11檔完整封包，ZIP 14026346 bytes SHA `4edba5a0bcc073fa6da7db5f661abed6ed209c5946221ddedc8545125462aed0`，Drive 已回讀 shared=false、only owner：[D27 完整私人 QA ZIP](https://drive.google.com/file/d/1wuzvKRIf1RGKfTH2w0cdHEA3Nh5lORSK/view)、[真單次作者源圖](https://drive.google.com/file/d/10WAlAHGuHZ189yS8khaAPG37qiCUSJ3m/view)、[整張視覺預覽](https://drive.google.com/file/d/1Du36K2v9MWqNuwdek-D2rgAJMf3sV636/view)。[D27 全部 Gate/Failure Log/Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/handoff/TC_D27_ONE_PASS_COMPLETEPAR_SOURCE_ART_HOLD_20261126.md)。
+
+**下一完整美術施工單位**：停止無效同型自由提示，優先驗證**可以可靠設定整張 1280×928、透明 Alpha 和 Ground 真正世界座標參考**的單次整體作者生成流程；保持此輪單次風格統一的成功經驗，但按全畫布 SOURCE FAIL 修改整張生成途徑，絕不回頭做單件橋／工坊再拼。保留 D17 Ground 所有舊來源、Draft PR17 未合併、不碰 T-A/T-B/Windows E:，正式十二圖 ART 仍 **0／12**。
+
+---
+
 # T-C CURRENT｜2026-11-26 D27：正式目標改為「一次性生成整張完整 PAR」，禁止分件拼裝
 
 使用者最新指令：**「目標放在一次性生成完整的par，根據這個目標做修正，而不是單獨部件的修正」／「修正規則並繼續施工」**。此條優先於以下 D26/D25 所有單件橋、工坊與後製重排工作。
