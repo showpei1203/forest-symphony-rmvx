@@ -1,3 +1,13 @@
+# T-C CURRENT｜2026-11-26 D27：正式目標改為「一次性生成整張完整 PAR」，禁止分件拼裝
+
+使用者最新指令：**「目標放在一次性生成完整的par，根據這個目標做修正，而不是單獨部件的修正」／「修正規則並繼續施工」**。此條優先於以下 D26/D25 所有單件橋、工坊與後製重排工作。
+- 新正式規格 [D27 ONE-PASS COMPLETE PAR CONTRACT](../production/T_C_D27_ONE_PASS_COMPLETE_PAR_AUTHORING_CONTRACT_20261126.md) 已存在於**本分支及 T-C 主分支**。這輪只接受**一次性、同作者、真透明、整張全非地表的 CompletePAR**；D17 鎖定 Ground 1280×928 SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 不更動。橋、工坊尺寸是**整張圖的內部生成約束**，不是獨立部件產出。
+- D18–D26 的 Alpha 物件分群／多張零件拼回 PAR／單橋修正／程序手繪／RGB 棋盤去背等只保留歷史失敗與來源參考，**不得充作 D27 合格候選**。不能因原生尺寸、透明、Godot 渲染或重疊為0就計 ART PASS。
+- 任一源圖若含 Ground、透明被畫成棋盤格、缺完整非地表物件、需切島重排、縮放/裁斷，立即標示 SOURCE FAIL 或 HOLD，**改整張生成方法再生完整一張**；不退回單件修正。無使用者核准前 `formally_art_sealed=0/12`。
+- 保留所有歷史分支及使用者正式資產，PRIVATE PNG 應 owner-only Drive，文檔及 SHA 進 GitHub；沒有 D27 原生圖/完整 ART 實測前絕不聲稱成功。
+
+---
+
 # T-C CURRENT｜2026-11-26 D26｜真新 1× 短橋與工坊來源 Geometry PASS，畫風不一致 ART REJECT（最新）
 
 **最新且優先於以下 D25/D24 歷史：** 根據 D25 原始 Ground 的真地形比例，本輪**實際作者化**四個獨立 RGBA 新物件：完整短橋 **192×156px**、工坊 **282×356px**、吊車 **236×288px**、倉庫 **225×209px**，配 D24 真獨立 PAR 中保留完整輪廓且**沒有 resize**的其他七組燈、岩柱、旗。所有十一個非地表物件組成完整新 `1280×928 RGBA` PAR（SHA `f8096afedba93dd66211cfd92385596ffda061c0d6cb6688fc762d83887805fe`），沒有從 Ground+物件混合 Master 逆向切割。D17 Ground 完全不動，SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`。靜態 Composite SHA `3b7cbd819e2983c2548eb98e386bc2e15593912e93f0c30b41c2e43e31b94920`；`true alpha0=1,003,743`，不同物件重疊0，外框世界五像素高 Alpha=0，四個關鍵PNG**完全隔離冷重建 SHA 一致**。
