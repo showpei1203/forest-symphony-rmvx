@@ -1,3 +1,10 @@
+# 2026-11-27｜OWNER TASK RESET／現行優先於下列歷史規格
+
+停止舊 PMD 逐物種編號改造及單純換色。PMD 僅作風格、骨架、相對尺寸、方向與動作參考；正式目標為山海經靈感原創異獸，自創三階進化鏈，先三階靜態再全動作和 Godot 展示。已核准 PMD0001 保留，不重做；新家族 ID 不覆寫舊素材。
+完整最新權威：[FS 統一施工協議](https://github.com/showpei1203/forest-symphony-rmvx/blob/main/authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md)。以下衝突內容僅為歷史。禁止反覆新增 QA gate；保留原安全與核准規則。
+
+---
+
 # Forest Symphony｜T-B｜PMD 編號順序改造規範（SOURCE-LOCKED）
 
 > **最新使用者更正（2026-11-26 09:25）：地圖與戰鬥使用同一組 Sprite，不變更全局美術／解析度／比例。** 先前 128px 優先及 256/512px 擴張提案撤銷；高解析僅可作暫時生成參考，輸出必須符合既有素材契約。詳見 [地圖戰鬥共用 Sprite 相容性硬規則](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_SHARED_MAP_BATTLE_SPRITE_COMPATIBILITY_20261126.md)。後文衝突文字只保留歷史，非施工指令。
