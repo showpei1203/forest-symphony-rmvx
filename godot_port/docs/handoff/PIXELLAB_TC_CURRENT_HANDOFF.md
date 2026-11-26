@@ -1,3 +1,26 @@
+# T-C CURRENT｜2026-11-26 D25 ART-FIRST｜來源比例預先拒收＋經驗正式總結（沒有假造新 PAR）
+
+**這是本輪最高優先、覆蓋以下 D24/D23 歷史下一步的交接。** 本輪真實回讀 D24 源圖和 D17 不變 Ground，完成**真正 Ground 世界位置的短橋範圍 QA 圖**、原素材比例自動驗收、5 個 synthetic contract PASS、正式製圖經驗總結，保留不合格生成 output 的拒收紀錄。**未新增能過關的 D25 獨立 CompletePAR，更沒有 D25 真 Godot 4.7.2 Native 截圖；正式 ART PASS 0/12 HOLD。** 不將新生成但輸出成 RGB 棋盤背景或進度資訊圖的圖片當美術素材。
+
+**尺寸根因首次在原始圖片生成階段數據鎖定，而不再事後重排裝飾：**
+- D17 **GROUND 原件保持不動** SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`，1280×928、32px 網格。
+- D24 **原生真透明獨立非地表 Source 原件不動** SHA `69fcdc6602394ddc7ece3e73515fe657ab74976c20aaa1548b58b712cfcca407`，原始 1474×1067 RGBA。
+- D24 原 Source 11 個主要連通物件像素實測：橋 bbox **388×215px＝12.125格寬**，鍛造主工坊 **495×501px＝15.46875格寬**。但正式下一張作者化比例目標為橋 **160～192px（5～6格）**、工坊寬 **<=288px（9格）**、高 <=360px。
+- 新 `fs_tc_d25_art_geometry_gate.py` 直接檢查**原始物件尺寸**，在重排／合成／Godot 前 fail-closed：`BRIDGE_WIDTH_EXCEEDS_6_TILES`／`FORGE_MORE_THAN_9_TILES_WIDE`／`FORGE_HEIGHT_TOO_LARGE`。對舊 D24 來源實際輸出 `REJECTED_BY_GEOMETRY_GATE`；這是**正確阻止舊錯誤進新量產**，不是多完成了一張地圖。
+- 新**僅供 QA 的** D17 Ground 標註圖：橋目標 bbox `[944,420,1136,626]`（192px）、**暫定**雙岸接點 `(970,603),(1110,603)`；大工坊參考框寬<=288px、吊車/倉庫及中央道路留白。這些數值是 **D25 作者化候選 Blueprint／顏色啟發式**，**不是**人工核准的真橋腳位置或遊戲碰撞圖。
+
+**本輪正式持久成果：**
+- [D25 9檔完整私人 QA／目標地圖標註／失敗紀錄／5項測試／量產經驗 ZIP (6,067,406 bytes, CRC PASS)](https://drive.google.com/file/d/1VsNJQcEFhM0-Se4sYvXWsSjrXFXKop34/view)，SHA `48f48feea845527e895c5dc382b7da00a5fb33211ca6ea437fe12bc5519d2006`、Drive metadata 已 READBACK `shared=false owner-only`。
+- [D25 原 D17 Ground 的正確橋長 QA 範圍圖](https://drive.google.com/file/d/1Ca9xs3wGfO2CtFUjgQuzA3pwoRrwZj0-/view)；[D24 舊長橋 vs D25 世界比例規範 A/B QA](https://drive.google.com/file/d/1v7cPIUIxAfo_UPb3DiOSlUIjR-17fHg6/view)（兩圖**僅標註 QA，不是新生成的 Ground/PAR 美術**）。
+- [D25 完整實際經驗／Failure Log／ART-first Handoff](TC_D25_ART_GEOMETRY_GATES_LESSONS_HANDOFF_20261126.md)；[D25 geometry code](../../tc_factory/biomes/fs_tc_d25_art_geometry_gate.py)；[5項測試](../../tc_factory/biomes/test_fs_tc_d25_art_geometry_gate.py)；[D26 作者化尺寸 Blueprint](../../tc_factory/biomes/FS_04_MAZE_D25_ART_AUTHORING_BLUEPRINT_20261126.json)。
+- [D25 專屬 Github Actions synthetic contract](https://github.com/showpei1203/forest-symphony-rmvx/actions/workflows/fs-tc-d25-art-source-proportion.yml) 不應被當成美術 ART PASS。
+
+**重要經驗結論**：**透明、1×、零重疊、Godot 能載入，都不能修正源橋本身 12格對3～4格裂谷的比例錯誤**。從此把「源物件尺寸／腳點／相同世界光向」放在**PAR 排版之前**。若模型連續產出 RGB 棋盤圖或施工資訊圖，必須拒收並切換固定 bbox 的現有 PixelLab/Map Workshop 等已驗證工具路徑（不可假稱已使用）；不再拿無效結果強行報成 D25。
+
+**下一完整美術施工單位：**先依已鎖短橋、工坊、道路參考框**重新作者化整張完整獨立真透明 all-non-ground PAR**；若既有圖像生成連續兩次無法控制比例，就轉已核准可用的圖像作者工具或重新做**完整 Ground FIRST**（保留 D17），不得把 D24 長橋縮放、做物件遮蔽或角色碰撞。拿到真 D26 Candidate 後才做 Godot／使用者整張 ART。**本輪原 GROUND/PAR 來源沒有改一個像素，正式 ART PASS 0/12**。
+
+---
+
 # T-C CURRENT｜2026-11-26 D24｜FS_04_MAZE 新獨立真 RGBA 全非地表來源／原生像素雙圖候選｜美術 0/12 HOLD
 
 **最新美術施工，優先於以下 D23/D22/D21 歷史**：保留鎖定 **D17 Ground** `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`，再次獨立生成原始**真正 RGBA 透明**的全非地表 `1474×1067` PNG，SHA `69fcdc6602394ddc7ece3e73515fe657ab74976c20aaa1548b58b712cfcca407`、真正 `alpha=0` **1,149,019**。D23 的 RGB 棋盤去背備援這輪**不需要**；完整 11 物件來源的 alpha>32 **376,213 像素全都保留**，無混合 Master／角色遮蔽篩選、無 polygon 硬切或單一物件縮放。因模型輸出尺寸仍非原生 1280×928，按完整物件世界位置 **1× 重排**到 `1280×928 RGBA PAR`，**不能聲稱整張原生世界座標一次生成成功**。
