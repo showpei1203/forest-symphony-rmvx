@@ -1,3 +1,10 @@
+# 2026-11-27｜OWNER TASK RESET／現行優先於下列歷史規格
+
+實際讀取 Drive 成品地圖範本，分析 Ground/PAR 道路、橋兩岸、門口、建物底座、透視與原點，建立與凍結 Ground 同座標的整張可視化佈局輸入；一次生成全非地表透明 PAR，不再事後修橋、拆件或重複自由提示。失敗改上游空間約束或生成方式，先完成一張可用圖。
+完整最新權威：[FS 統一施工協議](https://github.com/showpei1203/forest-symphony-rmvx/blob/main/authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md)。以下衝突內容僅為歷史。禁止反覆新增 QA gate；保留原安全與核准規則。
+
+---
+
 # T-C｜FS 地圖美術工廠｜新對話啟動 Prompt
 
 > **2026-11-21 使用者最新最高優先修正：先生 GROUND，再生 PAR；PAR 收納除了 Ground 之外的全部物件，不論是否遮角色。** 不再以 Master-first 逆切、僅樹冠／屋簷語意遮罩、Runtime_OcclusionPAR 代替完整 PAR 當產線目標。主交付兩個同尺寸同原點實體圖檔：GROUND.png（地表）和 PAR.png（非地表全部透明 RGBA）。合成圖片僅用於預覽。人物遮蔽與 collision 是可選後續遊戲系統，不准再拖延圖層生成。本修正對 T-C 路線優先於本檔下方歷史表述及舊的 A11 Master-first M-A 路線，其他雲端安全／資產來源權限規則仍有效。
