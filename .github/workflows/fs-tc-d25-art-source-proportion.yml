@@ -1,0 +1,36 @@
+name: FS T-C D25 ART-FIRST geometry preflight (synthetic only)
+on:
+  push:
+    branches:
+      - feat/fs-tc-d12-chroma-par-20261122
+    paths:
+      - "godot_port/tc_factory/biomes/fs_tc_d25_art_geometry_gate.py"
+      - "godot_port/tc_factory/biomes/test_fs_tc_d25_art_geometry_gate.py"
+      - "godot_port/tc_factory/biomes/FS_04_MAZE_D25_ART_AUTHORING_BLUEPRINT_20261126.json"
+      - ".github/workflows/fs-tc-d25-art-source-proportion.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preflight-shape-policy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install temporary image QA dependencies
+        run: python3 -m pip install --disable-pip-version-check Pillow==12.0.0 numpy==2.3.5 scipy==1.17.0
+      - name: Prove D24 dimensions fail and valid 5-6 tile bridge passes contract
+        run: python3 godot_port/tc_factory/biomes/test_fs_tc_d25_art_geometry_gate.py
+      - name: Confirm new blueprint is provisional and never fake ART PASS
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('godot_port/tc_factory/biomes/FS_04_MAZE_D25_ART_AUTHORING_BLUEPRINT_20261126.json')
+          x=json.loads(p.read_text(encoding='utf-8'))
+          assert x['actual_artifact_generation']=='NO_ACCEPTED_D25_NEW_PAR'
+          assert x['human_ART']=='HOLD' and x['formal_ART']=='0/12'
+          assert x['bridge']['max_width']==192 and x['forge']['max_width']==288
+          assert x['early_rejection']['D24_current_bridge_px']==388
+          print('D25 CI validates source authoring policy only. Actual D25 artwork is NOT accepted. Native art NOT_RUN.')
+          PY
