@@ -1,3 +1,9 @@
+# CURRENT (2026-11-26)｜PMD0001 R22 靜態生成 ART HOLD / G11 既有三動作離線相容 QA PASS
+
+[本輪完整 Handoff + Failure Log](./PIXELLAB_TB_PMD0001_R22_STATIC_AND_G11_REUSE_HANDOFF_20261126.md)。原始 G11 742-entry SHA/CRC PASS。新 ImageGen PMD0001 32x40 candidate（18x19 bbox，原 20x19，腳點相同，mask IoU 0.7645）**ART HOLD**；後續兩次生成錯誤輸出海報，不列入成果。G11 既有 production 同原生 8-direction Idle 3F / Walk 6F / Attack 11F，160 格／variant，XML timing/event 相同，source/legacy geometry PASS；舊版重用候選，不是新生成。私有 [new candidate ZIP](https://drive.google.com/file/d/18v2JtJPi7RrsLxDRkQPo2JDNDUamsdAB/view) / [G11 reuse QA ZIP](https://drive.google.com/file/d/1PMKasA3foHf_rlMcxhLkCPz8Lis1Cm0R/view) full re-download SHA/CRC + owner-only PASS。地圖戰鬥共用規則不變。PixelLab 0 jobs，Godot native/actual map battle NOT_RUN、owner ART PENDING、獨立 EGM NOT_RUN、授權 HOLD。NEXT: PMD0001 source-locked static through verified provider route or owner art disposition for G11 reuse; no PMD0002/0003 completion claim, no jump to 0004. Prior R21 immutable.
+
+---
+
 # CURRENT TOP PRIORITY (2026-11-26)｜T-B 美術優先、角色同畫風、高解析母圖
 
 > **最新使用者更正（2026-11-26 09:25）：地圖與戰鬥使用同一組 Sprite，不變更全局美術／解析度／比例。** 先前 128px 優先及 256/512px 擴張提案撤銷；高解析僅可作暫時生成參考，輸出必須符合既有素材契約。詳見 [地圖戰鬥共用 Sprite 相容性硬規則](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_SHARED_MAP_BATTLE_SPRITE_COMPATIBILITY_20261126.md)。後文衝突文字只保留歷史，非施工指令。
