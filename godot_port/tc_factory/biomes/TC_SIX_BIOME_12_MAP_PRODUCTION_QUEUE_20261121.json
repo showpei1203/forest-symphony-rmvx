@@ -470,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D24_INDEPENDENT_TRUE_RGBA_11_COMPLETE_OBJECTS_1X_PAIR_COLD_REBUILD_PASS_NATIVE_NOT_RUN_VISUAL_ART_HOLD",
+      "stage": "D25_ART_FIRST_SOURCE_PROPORTION_FAIL_CLOSED_AND_AUTHORING_BLUEPRINT_ONLY_PREVIOUS_D24_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -484,7 +484,7 @@
         "工坊屋"
       ],
       "native_Godot_4_7_2_for_current_stage": "D24_PRIVATE_NATIVE_NOT_RUN_D23_PREVIOUS_NATIVE_PASS_ONLY",
-      "formal_art_gate": "HOLD_ART_BRIDGE_WIDTH_388PX_VS_WORLD_FISSURE_AND_REAL_NATIVE_NOT_RUN",
+      "formal_art_gate": "HOLD_NO_ACCEPTED_D25_PAR_ART0_12_PREVIOUS_D24_GEOMETRY_REJECT",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -822,6 +822,53 @@
         "private_PAR_B": "https://drive.google.com/file/d/19gBWUYg0xckbJ6oC-dBVw1oMyu6VNvez/view",
         "private_composite_B": "https://drive.google.com/file/d/1f2JY59NGr2n58qzu3Ddkt2vS4Xajor9p/view",
         "private_art_A_B": "https://drive.google.com/file/d/12sc18GxFZRNcq4DUkJWvVL3HmRurAJEK/view"
+      },
+      "D25": {
+        "date_Taipei": "2026-11-26",
+        "scene_id": "FS_04_MAZE",
+        "artwork_source_generation": "NOT_ACCEPTED",
+        "previous_D24_Ground_SHA256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "previous_D24_source_RGBA_SHA256": "69fcdc6602394ddc7ece3e73515fe657ab74976c20aaa1548b58b712cfcca407",
+        "D24_source_bridge_width_px": 388,
+        "D24_source_bridge_height_px": 215,
+        "D24_source_forge_width_px": 495,
+        "D24_source_forge_height_px": 501,
+        "next_authoring_bridge_width_px": [
+          160,
+          192
+        ],
+        "next_authoring_forge_max_width_px": 288,
+        "D24_early_source_art_gate": "REJECTED_BY_GEOMETRY_GATE",
+        "source_art_rejection_reasons": [
+          "BRIDGE_WIDTH_EXCEEDS_6_TILES",
+          "FORGE_MORE_THAN_9_TILES_WIDE",
+          "FORGE_HEIGHT_TOO_LARGE"
+        ],
+        "next_bridge_candidate_world_bbox_xyxy": [
+          944,
+          420,
+          1136,
+          626
+        ],
+        "bridge_tentative_ground_bank_footpoints_xy": [
+          [
+            970,
+            603
+          ],
+          [
+            1110,
+            603
+          ]
+        ],
+        "native_private_Godot472_D25": "NOT_RUN",
+        "art_gate": "HOLD",
+        "formal_ART_PASS": "0/12",
+        "new_D25_owner_art_candidate": "NONE",
+        "QA_only_owner_private_drive_zip": "https://drive.google.com/file/d/1VsNJQcEFhM0-Se4sYvXWsSjrXFXKop34/view",
+        "QA_only_ground_footprint_png": "https://drive.google.com/file/d/1Ca9xs3wGfO2CtFUjgQuzA3pwoRrwZj0-/view",
+        "D25_handoff_path": "godot_port/docs/handoff/TC_D25_ART_GEOMETRY_GATES_LESSONS_HANDOFF_20261126.md",
+        "D25_new_production_image_count": 0,
+        "art_originals_modified": false
       }
     },
     {
