@@ -1,3 +1,24 @@
+# T-C CURRENT｜D29｜2026-11-27：新可執行「一次性整張1280×928透明PAR」API流程已驗證DRY-RUN，實際圖仍 ART HOLD
+
+**最新使用者任務**「繼續修正施工」：正式 T-C 目標仍是一次性完整 PAR，絕不切島、局部重畫單橋/工坊、Master 逆抽或後製縮放作為正式美術。D17 固定 Ground `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 不變。
+
+**實際新試驗：**內建 ChatGPT image generation 本輪四張原始**完整透明** PAR 圖皆被固定輸出 `1473×1068`，分別有 `76661/97510/77181/86778` 個有效像素超出 `1280×928`，**4/4 SOURCE NATIVE FAIL，絕不拆件、縮放或裁掉當正式圖**。正式尺寸/像素對位仍 HOLD。沒有新成品 Godot native。
+
+**重大上游技術突破（與美術產出獨立）：**核查 [最新 OpenAI GPT Image 2.5 官方 image edit API](https://developers.openai.com/api/reference/resources/images/methods/edit) 與 [image size/透明選項](https://developers.openai.com/api/docs/guides/image-generation)，正式支援 `gpt-image-2.5-sunburst` / `gpt-image-2.5-flare` 的自訂尺寸 `1280x928`（長寬為16倍數）與 `background=transparent` + PNG。因此新增真正可執行[**D29 完整整張 PAR 官方 Images edits API**](../../tc_factory/biomes/fs_tc_d29_exact_canvas_image_api.py)，使用凍結 Ground 作**整圖像素位置/風格參考**，固定 `n=1`、完整非地表一次畫完；絕不對來源作多物件抽取/合成或 resample。**注意：官方參數支援≠已實際生成，也不保證能遵守世界腳點**。
+
+**真測試：**已在隔離雲端讀真 D17 Ground SHA 完成**零費 dry-run**，回報 `DRY_RUN_OFFLINE_VALIDATED / paid_api_calls=0`；另 [11項 offline source/auth/alpha/anti-patchwork 測試](../../tc_factory/biomes/test_fs_tc_d29_exact_canvas_image_api.py) PASS；[**D29 GitHub-hosted CI #45883233641 SUCCESS**](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45883233641)。所有 CI 不持有 API KEY、不執行外部付費生圖。付費 route 須使用者對**單張 API 消費另有明確授權**，程式 `--execute --owner-approved-paid` + `FS_TC_D29_PAID_RUN=EXPLICIT_D29_ONE_PASS_SINGLE_REQUEST` 和授權 API key 缺一不可。**沒有使用者授權的 API 生圖在本輪未執行；ChatGPT 會員不等於付費 API 帳戶**。 DesktopRemote 額度 0%、PCBridge 既有 allowlist 沒有 T-C 生圖作業，沒有碰 Windows E:。
+
+**PRIVATE Drive 真實封存（WRITE→READBACK owner-only）**：
+- [**D29 13檔完整 D17 Ground / 四張原始整張透明 source / 1×美術 QA-only 對照 / Source SHA/Alpha JSON / exact canvas dryrun / 11 tests / API程式 / Handoff ZIP 10,435,871 bytes CRC PASS**](https://drive.google.com/file/d/1YFaSByD1GXjdpl07K4o9Z0cHagxuZ18n/view)，SHA `2a8323a550dd1725e60ca071851052dc1f1ecd9fe0c6211d47e11d2bfb58b49e`。
+- [四個全畫面 source 只供 QA 的並排圖](https://drive.google.com/file/d/1j6uGjGxlVKscMJSfnjrhq-fseggpT4-L/view)；[來源檢查 JSON](https://drive.google.com/file/d/1Mr_MEsM_Hk_Vm3jTMH45xtqXi3mONAOQ/view)；[真 D17 Ground 零費 dryrun manifest](https://drive.google.com/file/d/1wV_UbsyF0XdCvkqSVhSaCyuE5h-fpEu-/view)。
+- [D29 完整 Handoff / failure evidence](TC_D29_EXACT_CANVAS_IMAGE_API_DRYRUN_AND_SOURCE_FAILURE_20261127.md)，保留 D17～D28 私人源圖，不放公開 GitHub。
+
+**Gate**：D29 Full-Source ImageGen 本輪 4/4 Native FAIL；可直接輸出 native 1280×928 的 GPT Image 2.5 API **官方規格支援、實機付費模型 NOT_RUN**；offline DRY-RUN/11tests/CI **PASS**；真 D29 Godot 4.7.2 Native NOT_RUN；人工 ART 仍 **0／12 HOLD**，GitHub Draft PR#17 隔離不合併。
+
+**下一完整工作單位 D30：**在可用且經使用者明確授權的 API 帳戶中，**限一次**以 Ground 圖作參考生成全幅真 RGBA 1280×928 的完整 PAR，原位元組及扣費收據存私人 Drive，進源 SHA／Alpha／場景污染和世界錨點 human ART gate，成功才進 Godot Native。未滿足授權時，只能保持真生成 NOT_RUN，不能再改成分件修橋或假裝 CLI dryrun 已出圖片。
+
+---
+
 # T-C CURRENT｜D28｜2026-11-27｜三張單次整幅真透明來源仍不符合 native 1280×928；原因是生成器畫布能力而非橋梁補件
 
 **本輪正式施工（優先於下面 D27 等歷史）**：根據使用者要求，始終**一次生成一張包含全部非地表物件的真透明 CompletePAR**，沒有生成/修單獨橋、工坊，沒有拆 Alpha 島、位移拼件或將 Ground Master 逆切。D17 Ground `1280×928` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 保持不變。
