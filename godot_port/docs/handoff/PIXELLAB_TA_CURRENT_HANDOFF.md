@@ -1,5 +1,9 @@
 # PIXELLAB T-A｜CURRENT HANDOFF
 
+## 2026-11-26 20:01｜人物戰鬥動作範本＝角色 Sprite 原始權威（最新使用者指示）
+每位角色新生成前必須實際讀取 Drive「人物戰鬥動作範本」，確認資料庫 ID 和原始素材檔名的對應，下載原始走路及戰鬥圖、視覺檢查眼睛、髮型、服裝、比例、原生格尺寸，記錄 SHA。先重用原始合格動作，缺少的才生成。米亞 ACTOR02 原始素材為使用者確認的 $Actor5 系列，實際十張已核實，96×128 3×4 32px 格，綠短髮、藍眼、尖耳、藍灰衣，紅色 ex 另列；不可用棕髮花飾新版，全部 owner ART FAIL。舊 64px A62 是不同既有契約，不可強制將米亞原圖拉伸。保留地圖戰鬥共用規格。來源和十張 SHA 見 [Flow source lock](https://github.com/showpei1203/forest-symphony-rmvx/blob/67fee641c62e0b4e9f98d29f9c18a0f9dbff1642/tools/agent_orchestration/flow_motion_factory/ACTOR02_MIA_ORIGINAL_SOURCE_LOCK_20261126.json)。原版動作行與方向映射、其他角色檔名尚待原始來源查驗；不猜測、不盲生。無新生成、無程式或 PC 修改。
+
+
 ## 2026-11-26 09:25｜最新使用者更正：地圖／戰鬥共用 Sprite 不變
 [現行相容性硬規則](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_SHARED_MAP_BATTLE_SPRITE_COMPATIBILITY_20261126.md)：禁止自行提高全局素材解析度、像素密度、角色尺寸或切換成新版高細節畫風；撤銷 128px 級優先提案。高解析母圖只能是暫時姿勢參考，若無法回到原角色/地圖美術基準則淘汰。保留已核准 A62 原圖、V3 64px 戰鬥素材契約（不是所有地圖圖格尺寸）、既有地圖及戰鬥共用 Sprite，原有足點/遮擋/站位與紙娃娃分層不變。ACTOR01 先修不合格圖；ACTOR02 米亞用原角色風格和尺度建立母圖，不要求整套資產重製。新增動作可使用既有可變幀契約，不分裂成兩組角色素材。先原地圖+戰鬥實際尺度美術驗收再整合。全局規格變更必須事先得到使用者明確核准。這次只更新規範，無新圖、付費、引擎或 PC 改動。先前高解析新母圖均概念候選，不能當核准素材。
 
