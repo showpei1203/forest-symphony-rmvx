@@ -470,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D25_ART_FIRST_SOURCE_PROPORTION_FAIL_CLOSED_AND_AUTHORING_BLUEPRINT_ONLY_PREVIOUS_D24_ART_HOLD",
+      "stage": "D26_SOURCE_GEOMETRY_PASS_TRUE_RGBA_COMPLETENONGROUND_PAR_VISUAL_STYLE_REJECT_FORMAL_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -483,8 +483,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D24_PRIVATE_NATIVE_NOT_RUN_D23_PREVIOUS_NATIVE_PASS_ONLY",
-      "formal_art_gate": "HOLD_NO_ACCEPTED_D25_PAR_ART0_12_PREVIOUS_D24_GEOMETRY_REJECT",
+      "native_Godot_4_7_2_for_current_stage": "D26_NOT_RUN_ART_SOURCE_REJECTED",
+      "formal_art_gate": "HOLD_NO_ACCEPTED_D26_VISUAL_ART_A_D24_STYLE_MISMATCH",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -869,6 +869,57 @@
         "D25_handoff_path": "godot_port/docs/handoff/TC_D25_ART_GEOMETRY_GATES_LESSONS_HANDOFF_20261126.md",
         "D25_new_production_image_count": 0,
         "art_originals_modified": false
+      },
+      "D26": {
+        "phase": "D26_COMPACT_WORLD_SOURCE_ASSETS_STYLE_EXPERIMENT_REJECT",
+        "real_new_artifact_created": true,
+        "image_source_authoring": "FOUR_NEW_PROGRAMMATIC_1X_RGBA_OBJECTS_PLUS_SEVEN_D24_EXISTING_INDEPENDENT_PAR_ISLANDS",
+        "actual_D26_model_generated_correct_complete_plate": false,
+        "new_forge_px": [
+          282,
+          356
+        ],
+        "new_bridge_px": [
+          192,
+          156
+        ],
+        "new_crane_px": [
+          236,
+          288
+        ],
+        "new_shed_px": [
+          225,
+          209
+        ],
+        "original_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "previous_independent_source_SHA256": "69fcdc6602394ddc7ece3e73515fe657ab74976c20aaa1548b58b712cfcca407",
+        "strict_original_D24_asset_no_resizing": true,
+        "native_pixel_scale_for_all_layers": 1,
+        "native_PAR_size": [
+          1280,
+          928
+        ],
+        "experimental_PAR_sha256": "f8096afedba93dd66211cfd92385596ffda061c0d6cb6688fc762d83887805fe",
+        "actual_static_composite_sha256": "3b7cbd819e2983c2548eb98e386bc2e15593912e93f0c30b41c2e43e31b94920",
+        "experimental_PAR_true_alpha0": 1003743,
+        "experimental_object_intersection_px": 0,
+        "outer_world_five_px_high_alpha": 0,
+        "isolated_cold_rebuild": "SHA_EXACT_PASS",
+        "source_geometry_gate": "PASS_FOR_NEW_MANUAL_OBJECTS_ONLY",
+        "source_visual_style_gate": "FAIL_NEW_OBJECTS_TOO_FLAT_ILLUSTRATIVE_VERSUS_D24_PIXEL_TEXTURE",
+        "human_ART_gate": "REJECT_NOT_A_PASS",
+        "actual_D26_Godot472_native": "NOT_RUN_ART_REJECT_BEFORE_ENGINE",
+        "game_integration": "NOT_RUN",
+        "formal_ART_PASS": "0/12",
+        "original_generation_attempts_rejected": [
+          "RGB_CHECKER_ISOLATED_OVERSIZE_BRIDGE",
+          "MIXED_GROUND_MASTER_WITH_INFO_UI",
+          "MIXED_GROUND_MASTER"
+        ],
+        "provenance_private_zip": "https://drive.google.com/file/d/1AziDn0gHc01P5wdCBmlbOcv_Kvr1DM1v/view",
+        "provenance_private_AB": "https://drive.google.com/file/d/1nLwACbNfYJapHJUXzYw69urrunUPzdD3/view",
+        "provenance_private_QA": "https://drive.google.com/file/d/1N9G4_j9jpYedSHln1XNL85dU2lBj9cL-/view",
+        "source_artwork_public_GitHub": false
       }
     },
     {
