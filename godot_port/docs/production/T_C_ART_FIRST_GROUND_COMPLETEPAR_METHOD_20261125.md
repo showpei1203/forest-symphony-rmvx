@@ -1,3 +1,12 @@
+# 最新正式更正｜2026-11-26 D27「整張完整 PAR 一次生成」優先於以下歷史 SOP
+
+**最新使用者指令：目標是一次性生成整張完整的 PAR，而不是生成與修正單獨部件。**
+正式規格全文：[`T_C_D27_ONE_PASS_COMPLETE_PAR_AUTHORING_CONTRACT_20261126.md`](T_C_D27_ONE_PASS_COMPLETE_PAR_AUTHORING_CONTRACT_20261126.md)。下文過去 D18-D26 所有「從來源切 Alpha 島、白/灰去背、分群重排、單獨生成橋與工坊再拼圖」只作技術歷史，**自 D27 不得作為 T-C 量產合格來源**。
+以鎖定 D17 Ground 作地貌及 32px 世界比例參考，同一次作者生成**整張全非地表、真透明 RGBA PAR**，在同一個原生世界畫布完成全部房屋、橋、吊車、屋棚、燈、旗、岩柱等的材質／光向／透視／對位。不生成 Master、不對單件重畫或調位置，也不把失敗 RGB/錯尺寸 plate 用重排硬修成正式候選。整張 SOURCE Gate → 只做 1× 整張 Composite → 必要的真 Godot 原生 → 使用者 ART Gate；失敗就換整張出圖方法。**正式 ART 仍0/12**。
+此新規則覆蓋舊文中「連通物件群重新配置也可做正式產出」的例外，但不修改或刪除歷史成果。
+
+---
+
 # Forest Symphony｜T-C「Ground FIRST → 完整 PAR」美術量產方法（ART-FIRST RESET）
 版本：v1.0｜2026-11-25｜適用：T-C 六地形×村莊／迷宮（12 張）｜唯一新引擎：Godot 4.7.2
 
