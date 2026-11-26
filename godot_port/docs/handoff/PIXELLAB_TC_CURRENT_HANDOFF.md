@@ -1,3 +1,18 @@
+# T-C 主線最新交接｜2026-11-26 D25：美術比例硬門檻與經驗整理（仍無 D25 合格新圖）
+
+**最新使用者指令**：「繼續，要記得總結經驗」。以 ART-FIRST 為最高優先，不再反覆把 technical PASS 冒充視覺美術。隔離分支 `feat/fs-tc-d12-chroma-par-20261122` 已對 D24 **真獨立 RGBA 原作者圖**量出橋寬 **388px=12.125格**、主工坊 **495px=15.47格**，均遠大於 D17 真 Ground 的裂谷及 32px 地圖物件比例。D25 **没有新的合格 Ground / PAR**，更未做 D25 私有真 Godot native；正式 ART **0/12 HOLD**，**不覆蓋** D17/D22/D23/D24。
+
+**方法修正**：下次生成前先在已鎖 Ground 上定位**短橋目標 160～192px（5～6格）**、主工坊寬 <=288px（9格），生成來源進 PAR 排版前做 `alpha>32` 連通區實際尺寸 fail-closed；D24 在新 Gate 被**正確 REJECT**，五項源尺寸 synthetic 測試與 [CI #45780762391](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45780762391) SUCCESS 僅代表防錯能力。新 Ground 上候選橋框 `[944,420,1136,626]`、暫定岸點 (970,603)/(1110,603) 是**ART 參考，不是正式可走橋、碰撞或美術封版**。
+
+- [**D25 9檔完整私有經驗、Blueprint、Ground尺寸標註、source QA、code/test、拒收紀錄 ZIP**](https://drive.google.com/file/d/1VsNJQcEFhM0-Se4sYvXWsSjrXFXKop34/view) （6,067,406 bytes，ZIP CRC PASS，Drive owner-only READBACK）。
+- [D25 完整實際經驗／Failure Log/Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/handoff/TC_D25_ART_GEOMETRY_GATES_LESSONS_HANDOFF_20261126.md)；[源尺寸驗收 code](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/tc_factory/biomes/fs_tc_d25_art_geometry_gate.py)。
+- [Ground 同世界短橋 bbox QA 圖（非新美術）](https://drive.google.com/file/d/1Ca9xs3wGfO2CtFUjgQuzA3pwoRrwZj0-/view)；[舊 D24 vs D25 新作者化比例 A/B QA](https://drive.google.com/file/d/1v7cPIUIxAfo_UPb3DiOSlUIjR-17fHg6/view)。
+- 本 T-C 主分支只同步**方法與索引**，不合併隔離程式、私有圖；T-A/T-B、正式 Godot 和使用者 Windows E: 均未修改。
+
+**重要經驗**：Alpha 真透明／source 物件完整／1× 重排／零重疊／Godot 原生能載入都是必要工程條件，**但不能修正橋 12格跨 3～4格裂谷的世界語意**。失敗先查原作者物件 bbox；連兩次輸出錯媒介或尺寸就換已驗證的 PixelLab／Map Workshop 作者工具或重新作 Ground FIRST 版本，不重複同自由提示。下一個完整單位仍是一張**與鎖 Ground 比例相符的完整真正透明 PAR**；先審 ART 再推進村莊和其餘地形。
+
+---
+
 # T-C 主線最新指標｜2026-11-26 D24 美術候選（只同步索引，不合併實驗來源）
 
 D24 的 T-C 隔離分支 `feat/fs-tc-d12-chroma-par-20261122` 已有真正獨立 `1474×1067 RGBA` 原始非地表 plate，**Alpha0 1,149,019**，不再需要 D23 RGB 棋盤去背。按 D17 Ground 1280×928、11 組完整物件 1× 重排為雙圖，D24-B CompletePAR 1280×928，零物件重疊、沒有外框高透明截斷，冷重建 SHA 一致。**仍有真美術 blocker**：生成器畫的橋長 388px，對原地圖的熔岩缺口太長，鍛造廠比例也需縮小；模型沒有直接生成 native 1280×928 世界對位，**D24 真實 Godot native 未執行**。正式 ART PASS 依舊 **0/12**，不覆蓋 D22/D23。
