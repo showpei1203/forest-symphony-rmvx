@@ -1,3 +1,12 @@
+## D28 真私人證據 WRITE→READBACK（2026-11-27）
+
+- [**D28 十四檔全原始來源／三版完整 PAR／整張 QA／五項程式測試／失敗 Handoff 私人 ZIP**](https://drive.google.com/file/d/1okgdbVIN6FHq4-iGa34M62uWg9CJfrI_/view)，**15,536,143 bytes，ZIP CRC PASS，SHA256 `5fb6bc2b372ba147ad9e1b2bdeb630b5cbba757f1026cfa0a1c15269a6dd17c6`**。
+- [A 真透明整張來源](https://drive.google.com/file/d/1DgASyFvIyqGSSuPTlihGiGJNzjBVI-du/view)／[B 整張來源](https://drive.google.com/file/d/1WF3yuh7dbGa6xFPXvWMphiYNkgJgJr_h/view)／[C 整張來源](https://drive.google.com/file/d/1zJIQf0Ya55Aaltnxaa-S1jMbri8nRD6Z/view)（三張均**不符合原生畫布**）。
+- [整張 Ground+PAR QA-only 三版對照](https://drive.google.com/file/d/1gl9Eks--UiIhwox7qzXvvo8ljYlveLYn/view)、[完整實測來源數據](https://drive.google.com/file/d/1enflNxTEVkZeVVhJPDIurgM8K-k2DebQ/view)及[SHA Manifest](https://drive.google.com/file/d/1XYOcAFPoH2nAlsjntYJ-hdtiLNXq4Shm/view)。
+- 已逐項 Drive metadata 回讀，`shared=false`、權限只有 `owner`。私人 PNG 未進公開 GitHub，正式 ART 仍 **0/12**。
+
+---
+
 # Forest Symphony｜T-C D28｜整張一次生成 CompletePAR：來源尺寸再三拒收、能力限制查證及正式經驗｜2026-11-27
 
 ## 最新使用者目標／不可退讓規則
