@@ -1,3 +1,13 @@
+# T-C 主線最新指標｜2026-11-26 D24 美術候選（只同步索引，不合併實驗來源）
+
+D24 的 T-C 隔離分支 `feat/fs-tc-d12-chroma-par-20261122` 已有真正獨立 `1474×1067 RGBA` 原始非地表 plate，**Alpha0 1,149,019**，不再需要 D23 RGB 棋盤去背。按 D17 Ground 1280×928、11 組完整物件 1× 重排為雙圖，D24-B CompletePAR 1280×928，零物件重疊、沒有外框高透明截斷，冷重建 SHA 一致。**仍有真美術 blocker**：生成器畫的橋長 388px，對原地圖的熔岩缺口太長，鍛造廠比例也需縮小；模型沒有直接生成 native 1280×928 世界對位，**D24 真實 Godot native 未執行**。正式 ART PASS 依舊 **0/12**，不覆蓋 D22/D23。
+
+- [D24 私有十五檔 ZIP 全來源/雙圖/美術 QA/冷重建/Failure Log](https://drive.google.com/file/d/1lFPX6IV0lJ6dNmQte1ocRHFlyPBtmMoC/view)｜[新完整透明 PAR](https://drive.google.com/file/d/19gBWUYg0xckbJ6oC-dBVw1oMyu6VNvez/view)｜[D24 靜態真雙圖](https://drive.google.com/file/d/1f2JY59NGr2n58qzu3Ddkt2vS4Xajor9p/view)。
+- [隔離分支 D24 正式 Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/handoff/TC_D24_ART_FIRST_FS_04_MAZE_TRUE_RGBA_BRIDGE_ALIGNMENT_QA_20261126.md)。
+- 本主分支只記錄產物方向，不合併實驗程式／私人圖像、不改 T-A/T-B、A35、使用者 Windows E:。下一完整單位是與真世界地形契合的 **5–6 格橋、合理尺寸工坊，整張獨立 PAR**，不進 D21 角色物理。
+
+---
+
 # T-C 主分支進度提醒｜2026-11-26 D23 ART-FIRST 候選（僅交接不合併隔離美術）
 
 最新隔離實驗分支 `feat/fs-tc-d12-chroma-par-20261122` 已完成 **D23 新獨立全非地表物件來源（RGB，帶棋盤格）→ 灰白底去除 RGBA → 10 組完整物件原生 1× PAR 1280×928 → 私有真 Godot 4.7.2 原生渲染**。D17 Ground 完全不動。因模型來源**不是直接真透明**，只是受控 White/Gray-key 備援工法；D23-C 新配置前景像素 overlap **259**，但仍有工坊比例、去背邊緣、橋腳地表對位等人眼美術問題。正式十二圖 ART **0/12 HOLD**，舊 D22 來源原封不動。
