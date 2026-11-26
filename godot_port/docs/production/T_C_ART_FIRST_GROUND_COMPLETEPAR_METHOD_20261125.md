@@ -62,3 +62,16 @@
 [**D22 新私人來源＋PAR＋真 Godot 4.7.2 原生 QA 十七檔完整 ZIP**](https://drive.google.com/file/d/1LJtjHRHl5f8F5FtGBK5uep_f6f243mGQ/view)｜[新 PAR 1280×928](https://drive.google.com/file/d/1cFR_YREdTCd82uNWyI3RxYbfIoo8FRha/view)｜[實際 Godot 4.7.2 原生圖](https://drive.google.com/file/d/1R7KnV8-1cgChPaOMnFoblvU97j6X3v8X/view)｜[D18／D22 真原生 A/B](https://drive.google.com/file/d/1nIMAztQ5SEJ4g1upb6vVTsQkT3F470w4/view)｜[完整 D22 實證與 Failure Log](../handoff/TC_D22_ART_FIRST_FS_04_MAZE_NEW_COMPLETEPAR_NATIVE_QA_20261125.md)（後者在隔離實驗分支，主分支尚未合併）。
 
 **補足「成功」語意：** ART-FIRST 流程在 D22 再次實際產生雙圖可重現且 Native PASS；但是新 PAR 原模型仍是 1473×1068 再依世界座標 1× 重佈局、橋兩側實地接合/物件光向細節/既有 A35 美術比對尚未 USER ART 核准，正式封版仍 **0/12 HOLD**。下一輪優先原生 1× 真視覺的整張美術評審與新完整 PAR 作者化，不能把橋梁碰撞、遮蔽演算法當成 T-C 必備製圖工作。
+
+
+## 七、2026-11-26 D25：把比例驗收移到生成來源前段（正式經驗增量）
+
+**新經驗不是又成功一張圖，而是確立新圖為何一直不合格。** D24 已有真原生透明 RGBA（Alpha0 1149019）和 11 個完整物件，1× 合成、0 相互重疊、0 外框剪斷，但源橋 **388px=12.125格**、鍛造工坊 **495px=15.47格**，相對 D17 的窄熔岩裂谷與 32px 畫面**語意比例完全不合理**。過往先做全圖重排／Godot 渲染、後面才發現橋頭不著地，造成多輪「程式成功、藝術仍 HOLD」。
+
+**D25 產線硬改：** 生成前使用 Ground 的 1280×928 世界 Blueprint 鎖主物件**尺寸與預定足點**，橋限 **160～192px（5～6格）**，主工坊寬 **<=288px（9格）**、高 <=360px，通路清晰保留；從**獨立原始**非地表 PNG 的 alpha>32 連通物件量實際 bounding box，**先執行 ART geometry gate**。任一超標即 SOURCE REJECT，不得送 PAR 排版、Godot、角色物理或假稱已可量產。若連續兩次生成來源輸出 RGB 假透明／無關報告式圖片／物件超標，停止相同自由提示，切換既有且已驗證可按固定 bbox 作者化的工具，或重新整張 Ground-first 世界構圖；不要把舊長橋縮放壓扁當新原生圖。
+
+**D25 真驗證**：使用未修改的 D17 Ground SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`、D24 新獨立原 Source SHA `69fcdc6602394ddc7ece3e73515fe657ab74976c20aaa1548b58b712cfcca407`，直接量出橋 388x215、工坊 495x501；新 Gate 正確回 `REJECTED_BY_GEOMETRY_GATE`，五項源尺寸負面／正面自測 PASS，[CI #45780762391 SUCCESS](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45780762391) 為 synthetic 程式證據。另生成**只有 QA 標註**的 Ground 世界橋長方框 `[944,420,1136,626]` 和**暫定**岸邊參考點 (970,603)/(1110,603)，不是新增 Bridge PAR 或碰撞資料，來源 ART 仍 **0/12**。
+
+[**D25 私人九件完整經驗、圖像 QA、作者 Blueprint、測試／拒收記錄 ZIP**](https://drive.google.com/file/d/1VsNJQcEFhM0-Se4sYvXWsSjrXFXKop34/view)｜[D25 完整正反實證與 Failure Log](../handoff/TC_D25_ART_GEOMETRY_GATES_LESSONS_HANDOFF_20261126.md)（隔離實驗分支）｜[完整 QA-only Ground 尺寸導引圖](https://drive.google.com/file/d/1Ca9xs3wGfO2CtFUjgQuzA3pwoRrwZj0-/view)。
+
+**切記**：D25 **沒有**通過的新獨立 PAR、正式 Ground 新版本或真 D25 Godot native 截圖；不能因 source gate 程式 PASS 就更新任何一張正式 ART PASS。畫面漂亮 ≠ 世界尺度和腳點合格，下一完整單位仍是 Ground-first 世界一致、真透明完整 PAR 的美術創作。
