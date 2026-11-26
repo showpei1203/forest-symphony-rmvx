@@ -1,3 +1,9 @@
+# CURRENT (2026-11-26)｜PMD0001 R26 OWNER ART PASS／共用定位基準候選／native HOLD
+
+[R26 實際成果](./PIXELLAB_TB_PMD0001_R26_SOURCE_ANCHOR_PREVIEW_20261126.md)：181 clips/1123 frames 逐幀讀出 1123 white shadow markers + 4492 raw offset markers；Idle/Walk/Attack 八方向共24起始點皆(0,4)，SE45 Attack HitFrame5 保留(10,10)相對位移、frame6 (18,18)。兩個 preview sprite 固定 offset(0,-4)，不逐幀置中；原103素材及 SpriteFrames 位元完全相同，2 negative tests PASS。白色 marker 是候選預覽基準，非已驗證 FS 足點語意。 [R26 私人118-entry ZIP](https://drive.google.com/file/d/1tln4j_hPVGNtMiqqosPOFK3Ia9NX1XFS/view) SHA e02cfe30ce619c61079c5dc969e74aed657f103f6f5136bb6eca24e2e4d25238 owner-only raw SHA/CRC PASS；含3 GIF、原生素材與工程。Godot binary absent, no approved exact native Bridge task; Godot/FS integration/EGM NOT_RUN、license HOLD。NEXT 實際 Godot4.7.2 執行並核對 FS runtime anchor，之後 PMD0002；不重審 PMD0001、不重做 R25/R26、無自動付費或本機寫入。
+
+---
+
 # CURRENT (2026-11-26)｜PMD0001 R25 OWNER ART PASS / Godot shared resource candidate built / native pending
 
 [R25 implementation + evidence](./PIXELLAB_TB_PMD0001_R25_SHARED_GODOT_CANDIDATE_20261126.md)：已核准 G11 原圖不重製。實際建立 isolated shared SpriteFrames（34 physical motions /181 directional clips /1123 frame slots），103 原生檔案逐位元相同，offline resource PASS。[Private 110-entry Godot ZIP](https://drive.google.com/file/d/1oAG16P5j82sJDTjKmPMLpvSzay-EnlP6/view) SHA 9b33076561b3b000d92db6ac6df75b692c71a417c8cebaea250e67826c75b6df owner-only full raw SHA/CRC PASS。Godot binary absent / DNS fail / historical CI artifacts unavailable；native test prepared NOT_RUN；cell-center preview、offset/shadow semantics/full map+battle/EGM NOT_RUN、license HOLD。NEXT 真正執行 Godot 4.7.2 native test + existing runtime anchor integration，再依序 PMD0002。原圖不再審美、不重跑付費。使用者要求自動續工，已建立每小時 bounded cloud continuation task；不自動扣費、PC 寫入、白名單修改、主線合併，僅新成果/首次必要決策通知。
