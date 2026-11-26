@@ -1,5 +1,9 @@
 # T-A Flow｜ART-FIRST ACTOR01 closeout and ACTOR02 intake (2026-11-26)
 
+## 2026-11-26 09:25｜最新使用者更正：地圖／戰鬥共用 Sprite 不變
+[現行相容性硬規則](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_SHARED_MAP_BATTLE_SPRITE_COMPATIBILITY_20261126.md)：禁止自行提高全局素材解析度、像素密度、角色尺寸或切換成新版高細節畫風；撤銷 128px 級優先提案。高解析母圖只能是暫時姿勢參考，若無法回到原角色/地圖美術基準則淘汰。保留已核准 A62 原圖、V3 64px 戰鬥素材契約（不是所有地圖圖格尺寸）、既有地圖及戰鬥共用 Sprite，原有足點/遮擋/站位與紙娃娃分層不變。ACTOR01 先修不合格圖；ACTOR02 米亞用原角色風格和尺度建立母圖，不要求整套資產重製。新增動作可使用既有可變幀契約，不分裂成兩組角色素材。先原地圖+戰鬥實際尺度美術驗收再整合。全局規格變更必須事先得到使用者明確核准。這次只更新規範，無新圖、付費、引擎或 PC 改動。先前高解析新母圖均概念候選，不能當核准素材。
+
+
 ## Owner priority (supersedes prior next unit)
 Complete qualified ACTOR01 actual character imagery first; begin planning ACTOR02 in parallel. Stop further runtime expansion/export/ACT/ATB tests until art is qualified. Body-only Flow lane: no sword/weapon/FX baked into body, source 45-degree southeast, 64px cells, variable true frame counts. Owner art verdict is independent; no false seal.
 
