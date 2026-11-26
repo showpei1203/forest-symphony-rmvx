@@ -1,3 +1,9 @@
+# CURRENT (2026-11-26 18:12)｜PMD0001 OWNER ART PASS｜停止重製，進入原生整合
+
+使用者於 R24 全動作審圖後明確表示「美術我給過」。[正式核准紀錄](./PIXELLAB_TB_PMD0001_OWNER_ART_APPROVAL_20261126.md)：核准範圍為 [R24 G11 PMD0001 既有 production 美術](https://drive.google.com/file/d/17aJyhSzRfoz7sWuzSvpuxJQkhRRw23Zw/view) SHA cbe71f533c0e94b4027078b5c99329e12c6db049a90b90baa321ec604ee0b19c（34 motions+2 aliases），OWNER_ART_PASS。原圖與核准素材不變；R22 失敗圖維持淘汰。**不再重複要求同一份美術審核，不為 PMD0001 重跑付費生成。** R23/R24 static executor 退至未核准後續物種的工具 backlog，不再阻擋本隻。NEXT：核准素材精確 Godot 4.7.2 native / map+battle 共用相容驗證，依序推進 PMD0002；Godot/full gameplay/EGM NOT_RUN，license HOLD，PMD0002 未核准。此次僅記錄使用者核准，沒有新生成或整合測試。後文舊 ART_PENDING 已覆寫為歷史。
+
+---
+
 # CURRENT (2026-11-26)｜PMD0001 R24 既有全動作審圖可用／單次生成執行器候選／新美術 HOLD
 
 [R24 Handoff + Failure Log](./PIXELLAB_TB_PMD0001_R24_FULL_REVIEW_AND_STATIC_EXECUTOR_20261126.md)。G11 原始封包 742 entries SHA/CRC PASS，PMD0001 34 physical motions+2 aliases, 21 eight-dir/13 single-row, 1123 slots/variant（2246 比對），mean alpha IoU .920987；XML/offset/shadow exact。真正 Chromium HTML 動作審圖執行 PASS；[213-entry private review ZIP](https://drive.google.com/file/d/17aJyhSzRfoz7sWuzSvpuxJQkhRRw23Zw/view) SHA cbe71f533c0e94b4027078b5c99329e12c6db049a90b90baa321ec604ee0b19c。既有素材，不是新生成或 Godot。另 [private single-request executor candidate](https://drive.google.com/file/d/1iwp0m8OlBuquoJVPAZkPvjg174VuzYSb/view) SHA b23fef48b7004e17fd43704840e100e7f985c64f964d476981dc4d69f59b8aef，8 mock checks PASS，未接 Runner，未核實費用；兩包 owner-only raw SHA/CRC PASS。Desktop Remote 0%，sandbox DNS fail，v2 schema timeout，no approved PMD static task。新 art/paid/Godot/EGM NOT_RUN。PMD0001 owner ART pending；下一步一筆受核准 source-conditioned 靜態作業或 owner disposition existing G11，未跳號。R21/R22/R23 不變。
