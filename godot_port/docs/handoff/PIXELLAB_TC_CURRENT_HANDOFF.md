@@ -1,3 +1,12 @@
+# T-C 主分支進度提醒｜2026-11-26 D23 ART-FIRST 候選（僅交接不合併隔離美術）
+
+最新隔離實驗分支 `feat/fs-tc-d12-chroma-par-20261122` 已完成 **D23 新獨立全非地表物件來源（RGB，帶棋盤格）→ 灰白底去除 RGBA → 10 組完整物件原生 1× PAR 1280×928 → 私有真 Godot 4.7.2 原生渲染**。D17 Ground 完全不動。因模型來源**不是直接真透明**，只是受控 White/Gray-key 備援工法；D23-C 新配置前景像素 overlap **259**，但仍有工坊比例、去背邊緣、橋腳地表對位等人眼美術問題。正式十二圖 ART **0/12 HOLD**，舊 D22 來源原封不動。
+
+- [D23 私有 20 檔完整來源／3候選／Native QA ZIP](https://drive.google.com/file/d/1k5q1KZsgOGmfwHGVOU7bBTdUNsy6g_Qx/view)；[D22/D23 兩張真 Godot 1× A/B](https://drive.google.com/file/d/14tZB-xXEMhg7jn5eTimrp3wyxeCgD4n0/view)；[隔離 D23 Handoff](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/handoff/TC_D23_ART_FIRST_FS_04_MAZE_NEW_WHITEPLATE_TRUE_NATIVE_QA_20261126.md)。
+- 本主工作分支**僅同步候選索引**，不合併 D23 實驗程式或私人來源，不更動 A35/R12、T-A/T-B。下一輪依正式 ART-FIRST SOP 比較整張畫面，禁止跳去碰撞/遮擋和事件。
+
+---
+
 # T-C 主工作線快訊｜2026-11-25 D22 ART-FIRST 全圖美術候選（不合併實驗程式）
 
 - **正式製圖方法依 2026-11-25 ART-FIRST SOP，最新實物證據在獨立隔離 T-C 分支 `feat/fs-tc-d12-chroma-par-20261122`，尚未合併**。D17 Ground 已鎖且未修改；D22 新生成**完整獨立非地表透明 RGBA 原圖**，十個完整物件群以 1× 原像素重佈局成 1280×928 真 PAR，未從 Master 逆切，也沒有重做角色碰撞。
