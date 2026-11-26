@@ -1,8 +1,8 @@
 {
   "actor_id": 2,
   "identity": "米亞 Mia",
-  "status": "NEW_STYLE_COMPATIBLE_CANDIDATE_OWNER_ART_HOLD",
-  "original_mia_visual": "NOT_RECOVERED; new design authorized by owner",
+  "status": "OWNER_ART_FAIL_SUPERSEDED_DO_NOT_USE",
+  "original_mia_visual": "RECOVERED: $Actor5 family; see original source lock receipt",
   "source_generator": "ChatGPT image generation",
   "source_sha256": "27266679734b3ffe2bbac0b17591ac01efa3f4f398c9f20161744062af2c4add",
   "actor01_reference_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
@@ -51,12 +51,13 @@
     "scale": "8x nearest 512x512",
     "cold_readback": "PASS"
   },
-  "owner_art": "HOLD",
+  "owner_art": "FAIL: eyes unreadable and identity not based on actual source folder",
   "actual_scene": "NOT_RUN",
-  "flow": "NOT_RUN; bridge scoped to exact ACTOR01 ATTACK draft, no generic new-source generation",
+  "flow": "PROHIBITED_FOR_THIS_REJECTED_CANDIDATE",
   "actor01_dodge": "HOLD; second generation returned wrong character Mia with different clothes, reject; V3 untouched",
   "actor01_damage": "HOLD unchanged",
   "new_paid_provider_jobs": 0,
   "pc_writes": 0,
-  "engine_changes": 0
+  "engine_changes": 0,
+  "superseded_by": "tools/agent_orchestration/flow_motion_factory/ACTOR02_MIA_ORIGINAL_SOURCE_LOCK_20261126.json"
 }
