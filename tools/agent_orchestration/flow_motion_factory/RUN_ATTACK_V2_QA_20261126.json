@@ -1,0 +1,180 @@
+{
+  "date": "2026-11-26",
+  "status": "TECH_PASS_CROSS_ACTION_ART_HOLD",
+  "scope": "REAL_ATTACK8_REAL_RUN8_BODY_ONLY",
+  "archive": {
+    "name": "FS_Flow_Motion_Factory_v2_RUN_ATTACK.zip",
+    "members": 41,
+    "bytes": 442743,
+    "sha256": "b5216374f2d8fb0fd6dc8561de8ffc3aaea9a7f1806f8cf87333242cacfa70ab",
+    "crc": "PASS",
+    "v1_members_unchanged": 26,
+    "private_drive_file": "1rx_5eHZuaUCAjkll44aUixdB3yLK2z9J",
+    "private_drive_shared": false,
+    "windows_sha_verified": true
+  },
+  "attack": {
+    "atlas_sha256": "9569bc8beac9d928be39f482faaa8f5a2289549c7bb0b099fed8072c118d3ae5",
+    "frames": 8,
+    "unchanged": true,
+    "height_px": [
+      35,
+      35,
+      37,
+      37,
+      35,
+      36,
+      37,
+      35
+    ],
+    "duration_ms": 1000,
+    "loop": false
+  },
+  "run": {
+    "source_sha256": "af455e893c33b8db4afd1a860e2ca59e91f4f59a854ada6be6e7135313a2f801",
+    "source_size": [
+      2048,
+      1143
+    ],
+    "atlas_sha256": "5b3d48b21e01deb6a33d6e01d2f8451f727ba6850dcdbe6d9a7acd9769f94bab",
+    "frames": 8,
+    "unique_rgba": 8,
+    "unique_silhouettes": 8,
+    "connected_bodies": 8,
+    "opaque_pixels": [
+      703,
+      666,
+      727,
+      765,
+      687,
+      706,
+      722,
+      688
+    ],
+    "height_px": [
+      43,
+      39,
+      44,
+      46,
+      43,
+      39,
+      43,
+      43
+    ],
+    "bbox": [
+      [
+        20,
+        7,
+        45,
+        50
+      ],
+      [
+        20,
+        11,
+        45,
+        50
+      ],
+      [
+        20,
+        6,
+        45,
+        50
+      ],
+      [
+        20,
+        1,
+        44,
+        47
+      ],
+      [
+        20,
+        7,
+        44,
+        50
+      ],
+      [
+        20,
+        11,
+        45,
+        50
+      ],
+      [
+        20,
+        7,
+        44,
+        50
+      ],
+      [
+        21,
+        5,
+        45,
+        48
+      ]
+    ],
+    "pitch_x": [
+      9.576,
+      9.555,
+      9.523,
+      9.565,
+      9.555,
+      9.587,
+      9.663,
+      9.608
+    ],
+    "pitch_y": 9.598,
+    "airborne_frames_zero_based": [
+      3,
+      7
+    ],
+    "foot_clearance_px": [
+      0,
+      0,
+      0,
+      3,
+      0,
+      0,
+      0,
+      2
+    ],
+    "loop": true,
+    "duration_ms": 640,
+    "extract_repeat_png_exact": 8,
+    "repack_atlas_exact": true,
+    "repack_manifest_exact": true,
+    "prior_v1_run_rejected": "top-edge clipping on frames 4/8 and grounded bbox end y51; replaced with true lattice extraction"
+  },
+  "native": {
+    "engine": "4.7.2.stable.official.ed1daf0bf",
+    "status": "PASS",
+    "scope": "HEADLESS_REAL_PAIR",
+    "issue": 260,
+    "run": 45706037697,
+    "job": 139528129170,
+    "loops": 3,
+    "run_transitions": 24,
+    "frame_texture_pixel_parity": 8,
+    "attack_one_shot": "PASS",
+    "switch_restart_cancel": "PASS",
+    "missing_motion_no_substitute": "PASS",
+    "exit_code": 0,
+    "synthetic_frames": 0,
+    "negative_parameter_issue": 259,
+    "negative_parameter_result": "REJECTED_EXPECTED"
+  },
+  "source_blobs": {
+    "calibration": "84969244e470e946e3c3e5871df5fd8dfe3d06c3",
+    "native_test": "281d8fb60db48a1d32bd15ebf87830846bfec243",
+    "runtime_motion_body": "5068391f37c82d9a25cbc7e238f0c00131ff187b"
+  },
+  "art": "HOLD: run body proportions visibly taller than attack; no automatic distortion; foot alternation visual review pending",
+  "visual_gpu": "NOT_RUN",
+  "gameplay": "NOT_RUN",
+  "new_provider_calls": 0,
+  "weapon": false,
+  "fx": false,
+  "remaining_real_actions": [
+    "damage",
+    "dodge",
+    "cast"
+  ]
+}

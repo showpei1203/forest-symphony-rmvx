@@ -1,0 +1,131 @@
+{
+  "date": "2026-11-26",
+  "scope": "FIVE_REAL_ACTIONS_CANDIDATE",
+  "source": {
+    "sha256": "9b8ba1201e4f51482b50d69a4773a43c6004e508a00109a21548e885dd65db4a",
+    "size": [
+      2048,
+      1143
+    ],
+    "row_counts": [
+      9,
+      8,
+      8,
+      8
+    ],
+    "inferred_row_actions": [
+      "damage",
+      "dodge",
+      "cast",
+      "run"
+    ],
+    "omitted_damage_pose": 6,
+    "omission_reason": "source touches top edge",
+    "removed_shadow_bbox": [
+      842,
+      553,
+      966,
+      571
+    ]
+  },
+  "archive": {
+    "name": "FS_Flow_Motion_Factory_v3_Five_Actions.zip",
+    "bytes": 2439862,
+    "members": 112,
+    "sha256": "1e4619deeee26601e4e70aef5274e3e00cf521cbdbe5f537f3e41ad327c24bef",
+    "crc": "PASS",
+    "drive_file_id": "1N9lnZjCoLuVHXI0TPiM--RksUp_PyaY0",
+    "drive_shared": false,
+    "windows_sha_verified": true
+  },
+  "offline": {
+    "frame_count": 40,
+    "atlas_parity": 40,
+    "reextract_byte_exact": 32,
+    "raw_reconstructed_frames_retained": 32,
+    "normalized_frames": 5,
+    "gif_frames": 40,
+    "gif_duration_ms": 4240
+  },
+  "actions": {
+    "attack": {
+      "frames": 8,
+      "silhouettes": 6,
+      "height": [
+        35,
+        37
+      ],
+      "ms": 1000,
+      "atlas_sha256": "9569bc8beac9d928be39f482faaa8f5a2289549c7bb0b099fed8072c118d3ae5"
+    },
+    "run": {
+      "frames": 8,
+      "silhouettes": 8,
+      "height": [
+        34,
+        38
+      ],
+      "ms": 640,
+      "atlas_sha256": "3720fa3d7bd99c725b537b85a0543a0d990de1dadb0d449b7ae736071f5c7132"
+    },
+    "damage": {
+      "frames": 8,
+      "silhouettes": 5,
+      "height": [
+        34,
+        36
+      ],
+      "ms": 800,
+      "atlas_sha256": "1591a497cf631dd58dd44591229f4c4372bf8e807a1dcc4c7cd52a54ba9ad5dc"
+    },
+    "dodge": {
+      "frames": 8,
+      "silhouettes": 7,
+      "height": [
+        33,
+        36
+      ],
+      "ms": 800,
+      "atlas_sha256": "645ac1c90295a2ea3b9be0897b465d9296bc69007b6aee0f527c1579286df454"
+    },
+    "cast": {
+      "frames": 8,
+      "silhouettes": 8,
+      "height": [
+        35,
+        37
+      ],
+      "ms": 1000,
+      "atlas_sha256": "bf445fd4e8c771ef505cbcc0fb7d6430d4fd6777ec6606be131a31190f1d1b1b"
+    }
+  },
+  "runtime": {
+    "snapshot_blob": "5068391f37c82d9a25cbc7e238f0c00131ff187b",
+    "current_branch_runtime_blob": "b674a035a91862a02314d6831b5a89c42f6f999f",
+    "current_branch_runtime_untouched": true,
+    "extract_blob": "327d1ae820039bfaf480449fa1ed3c9a403611b7",
+    "test_blob": "688c82dd2b2317208b1591b9bade1982269b0f40",
+    "source_code_location": "private archive"
+  },
+  "native": {
+    "status": "PASS",
+    "scope": "HEADLESS_FIVE_REAL_ACTIONS",
+    "issue": 266,
+    "run": 45708478865,
+    "job": 139536450507,
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "frames": 40,
+    "pixel_parity": 40,
+    "run_loops": 3,
+    "oneshots": 4,
+    "synthetic_frames": 0,
+    "negative_issue": 265,
+    "negative_result": "REJECTED_EXPECTED",
+    "receipt_verified": true
+  },
+  "visual_gpu": "NOT_RUN",
+  "art": "HOLD",
+  "gameplay": "NOT_RUN",
+  "weapon": false,
+  "fx": false
+}

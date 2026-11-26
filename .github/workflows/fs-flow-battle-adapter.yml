@@ -1,0 +1,40 @@
+name: FS Flow battle adapter native QA
+on:
+  push:
+    branches: [feat/fs-flow-attack8-body-20261126]
+    paths:
+      - 'tools/agent_orchestration/flow_battle_adapter/**'
+      - '.github/workflows/fs-flow-battle-adapter.yml'
+  pull_request:
+    branches: [feat/fs-agent-sprite-forge-20261125]
+    paths:
+      - 'tools/agent_orchestration/flow_battle_adapter/**'
+      - '.github/workflows/fs-flow-battle-adapter.yml'
+permissions:
+  contents: read
+jobs:
+  adapter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Godot 4.7.2 official
+        run: |
+          curl -fsSL --retry 2 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          chmod +x /tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+          test "$(/tmp/godot/Godot_v4.7.2-stable_linux.x86_64 --version)" = "4.7.2.stable.official.ed1daf0bf"
+      - name: Pinned real FS animation API and synthetic textures
+        run: |
+          set -euo pipefail
+          cd tools/agent_orchestration/flow_battle_adapter
+          test "$(git hash-object scripts/animation/FSAnimationSprite.gd)" = "f938e8916a86195a00d3f7cf7b9dc1934487c857"
+          test "$(git hash-object scripts/animation/FSAnimationProfile.gd)" = "765c5d49b2ab18e99dd6641e3a5083aff6c80bd2"
+          test "$(git hash-object MotionBody.gd)" = "b674a035a91862a02314d6831b5a89c42f6f999f"
+          test ! -e motions
+          G=/tmp/godot/Godot_v4.7.2-stable_linux.x86_64
+          timeout 45s "$G" --headless --editor --quit 2>&1 | tee /tmp/flow-editor.log
+          if grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-editor.log; then exit 1; fi
+          timeout 45s "$G" --headless --script res://test_adapter.gd 2>&1 | tee /tmp/flow-adapter.log
+          if grep -E "SCRIPT ERROR|Parse Error|^ERROR:" /tmp/flow-adapter.log; then exit 1; fi
+          grep 'FLOW_BATTLE_ADAPTER_PASS scope=SYNTHETIC actions=5 directions=4 host_unchanged=true' /tmp/flow-adapter.log

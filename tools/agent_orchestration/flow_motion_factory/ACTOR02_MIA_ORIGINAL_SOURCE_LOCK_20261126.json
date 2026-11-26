@@ -1,0 +1,126 @@
+{
+  "status": "SOURCE_LOCK_RECOVERED_OWNER_REJECTED_PREVIOUS_MIA",
+  "actor_db_id": 2,
+  "graphic_basename": "$Actor5",
+  "mapping_authority": "owner explicitly identifies uploaded walk sheet as Mia; postApply DB mapping not independently verified",
+  "source_folder_name": "人物戰鬥動作範本",
+  "source_folder_id": "1vhcZhifp-9NWN2zwN3jPGOwzg9vPupTe",
+  "canvas": [
+    96,
+    128
+  ],
+  "grid": [
+    3,
+    4
+  ],
+  "cell": [
+    32,
+    32
+  ],
+  "alpha_values": [
+    0,
+    255
+  ],
+  "source_review": "actual ten sheets downloaded and inspected",
+  "identity": {
+    "hair": "green short",
+    "ears": "pointed",
+    "eyes": "blue visible",
+    "base_outfit": "blue gray",
+    "ex_outfit": "red recolor separate"
+  },
+  "walk_native_body_bbox_dimensions": {
+    "front": [
+      25,
+      31
+    ],
+    "front_middle": [
+      25,
+      32
+    ],
+    "side": [
+      22,
+      31
+    ],
+    "side_middle": [
+      22,
+      32
+    ]
+  },
+  "sources": [
+    {
+      "name": "$Actor5.png",
+      "drive_id": "1A-DdOwy9nUR1-NURusOhA5vyG9QlhMxS",
+      "bytes": 6979,
+      "sha256": "337364bda6681acf2f29de47a52436caedd0b75767e2038c6e994f4535882c32",
+      "nonempty_cells": 12
+    },
+    {
+      "name": "$Actor5_1.png",
+      "drive_id": "1eQWkonx0TLPD1miCAYuDzIhmtIqh1ews",
+      "bytes": 5975,
+      "sha256": "dd31dc996c31a65e7650ac551e7b046232b8d278756861feccaee8d2445af2ac",
+      "nonempty_cells": 12
+    },
+    {
+      "name": "$Actor5_2.png",
+      "drive_id": "1G5t6uSQIaMPmBqimPsRabwG-rv3MyT2X",
+      "bytes": 4227,
+      "sha256": "80d658116a25965260c71861b2149662fb7f7a0930604dd292bb22d8ddf62441",
+      "nonempty_cells": 9
+    },
+    {
+      "name": "$Actor5_3.png",
+      "drive_id": "1r0ADCWyVUVLKUPP0-gOGUPe0-MxvOfZJ",
+      "bytes": 6268,
+      "sha256": "7301f7be7b638ebbf61cdd2d2fa5a52be0c922748f70602cb0650457927f4c93",
+      "nonempty_cells": 12
+    },
+    {
+      "name": "$Actor5_5.png",
+      "drive_id": "1lLZeaREtzDSkq8C1CIYk2FPJryrpCDRR",
+      "bytes": 9121,
+      "sha256": "5600008ec83e472842507a312622402e60b40341c5cc818c662c60c704a4497c",
+      "nonempty_cells": 12
+    },
+    {
+      "name": "$Actor5_ex.png",
+      "drive_id": "1y-prj5jdMs0fnj6HeN6yFBoY4csH4pJg",
+      "bytes": 3352,
+      "sha256": "db10c6e3ae986b7b1723d4cf2f26d0fcbf231853fa00ad4a5451572d2dc68178",
+      "nonempty_cells": 12
+    },
+    {
+      "name": "$Actor5_ex1.png",
+      "drive_id": "1ziDUluO3YbXp13DKdci-qjvTxgRjowFx",
+      "bytes": 3090,
+      "sha256": "34f22b4ef2235bfbe48ec48319002efb449f3b54d314b1087901d19ef755cf1b",
+      "nonempty_cells": 12
+    },
+    {
+      "name": "$Actor5_ex2.png",
+      "drive_id": "1DlEqiSIXfc3_w8nvu2oHKEGU49jPyotk",
+      "bytes": 2363,
+      "sha256": "7533078dfd5f9d7bc84492a934489d82fb843531cd02f4c55fb2f052efa3a846",
+      "nonempty_cells": 9
+    },
+    {
+      "name": "$Actor5_ex3.png",
+      "drive_id": "1auH11_I7diSqNdktgRkJ5Bq-KUNGM9RJ",
+      "bytes": 3511,
+      "sha256": "1d8b22754a2aa4040247cdf3ee8a39298db59a22b011416a533c56ad17dbe27c",
+      "nonempty_cells": 12
+    },
+    {
+      "name": "$Actor5_ex5.png",
+      "drive_id": "1iC8PTIdsWOVO1s6fS5wQM3czEjbiu2UN",
+      "bytes": 3431,
+      "sha256": "04718406c8a809a6bbc9dfc61035bdd3900de4c730b8ad739bd9d127334ccc00",
+      "nonempty_cells": 12
+    }
+  ],
+  "previous_candidate": "OWNER_ART_FAIL; NEVER FEED TO FLOW",
+  "new_art": "NOT_RUN",
+  "flow": "NOT_RUN",
+  "engine": "UNCHANGED"
+}

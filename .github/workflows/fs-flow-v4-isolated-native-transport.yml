@@ -1,0 +1,39 @@
+name: FS Flow V4 isolated native runtime transport
+on:
+  push:
+    branches: [feat/fs-flow-attack8-body-20261126]
+    paths: ['.github/workflows/fs-flow-v4-isolated-native-transport.yml']
+permissions:
+  contents: read
+jobs:
+  transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Stage public engine and source only
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fs-flow-transport/project/scripts/animation
+          P=tools/agent_orchestration/flow_battle_adapter
+          test ! -e "$P/motions"
+          for f in project.godot FlowBattlePresentation.gd MotionBody.gd test_adapter.gd scripts/animation/FSAnimationSprite.gd scripts/animation/FSAnimationProfile.gd; do
+            cp "$P/$f" "/tmp/fs-flow-transport/project/$f"
+          done
+          curl -fsSL --retry 2 -o /tmp/fs-flow-transport/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/fs-flow-transport/godot.zip -d /tmp/fs-flow-engine
+          G=/tmp/fs-flow-engine/Godot_v4.7.2-stable_linux.x86_64
+          chmod +x "$G"
+          test "$("$G" --version)" = "4.7.2.stable.official.ed1daf0bf"
+          cd /tmp/fs-flow-transport
+          sha256sum godot.zip project/project.godot project/*.gd project/scripts/animation/*.gd > SHA256SUMS
+          git -C "$GITHUB_WORKSPACE" rev-parse HEAD > SOURCE_COMMIT
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: fs-flow-v4-public-engine-source-only
+          path: /tmp/fs-flow-transport/
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error

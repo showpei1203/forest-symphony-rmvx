@@ -1,0 +1,111 @@
+# Flow V4.4 ART-FIRST CURRENT_HANDOFF — 2026-11-26
+
+## V4.7 | Owner correction: regenerate character from source series THEN animate in Flow
+Owner explicitly rejects merely extracting existing cells as deliverable; original series is visual basis for NEW character master, then Google Flow motion generation. Preserve old source/32px native size and identity; not a global art/scale change. Actual new ImageGen single Mia master (green hair, blue eyes, pointed ears, blue-gray outfit) after reopening original Drive folder, $Actor5_1 and actual source pose review. New generated master 1254x1254, normalized alpha threshold 128, nearest tight 22x31 bbox placed (5,1) on 32x32, bottom y32. Original bbox 24x31. Native visual comparison: eyes visible, but skirt/leg silhouette differs; ART pending, not production replacement. Source palette trial 21/22 colors reduced eye contrast, not selected for Flow. 16x nearest candidate supplied as prepared Flow reference. 
+Private Drive: [generated master](https://drive.google.com/file/d/1W24Ee_ChFHTh8Tx0EfFfRTmKCjwNiPEZ/view), SHA a673b7af002e934c77aba6c3d23c58e66dace8897f48257b463af30ecbf00406; [native32](https://drive.google.com/file/d/19Jat3kHv8SGAN8YOUt3DfX6Ylzx1EYym/view), SHA 2330e5654aa40be9a6e8398645b7850adfec6315f4018a1c8e5bb016086de4af; [comparison](https://drive.google.com/file/d/1NePh29IzjCXc81VXtq_aId1awgiklCR1/view), SHA 225410a0cd7848031743e9a43bae51449533f8117efe055eee4404dd04f15c85; [Flow 16x input](https://drive.google.com/file/d/127VYdwnBx4gA3RgmpiZmL0pSDo5KXJJj/view), SHA 6b6d80a337419f03ec0d26f8e2c2889d1a102f1b5821d434346ea00bdddacd7c; all four raw cold readback hashes match. [RUN prompt](https://drive.google.com/file/d/1wdCmCTOGS_JdUgxXysR67mxknDKt848z/view) uploaded; prompt hash local 66a29efca9aa950eeccc406b991f96e20a6ad3491a7df03b8e01f7d0842786ea.
+Flow live attachment/generation NOT_RUN: Desktop Commander online but actual usage 0% remaining; installed bridge v017 exact ACTOR01 ATTACK-only draft, no generic Mia media route; no matching Flow connector found. Do not claim Drive upload equals Flow input. Existing assets unchanged, no paid provider job or PC writes. Next actual Flow import and one RUN pilot (subject to cost/authorization), art first, no engine expansion.
+
+
+## 2026-11-27｜V4.6 米亞原生戰鬥素材重用包，57/57 actual RGBA PASS
+- 實際讀取原始 Mia 專屬 SBS v1.3（檔名 v1.0，內部版本1.3，blob 414735c...）、Battler Configuration b10c055...、General Settings 0a5d453...、Sideview1 2e77bdd...。Mia character_name 明確 $Actor5。WALK_ANIME=false、3×4 grid；原 battle source _1/_2/_3，不強迫改成 A62 64px 或新45°畫風。0-based 行列：待機 _1 r0、移動 _1 r3、受傷 _1 r1 c1、異常 _1 r2、迴避及護幕 _2 r1、胸前收光 _2 r0、倒地 _2 r3 c0、拉弓 _3 r1 c0→1→2、放箭 _3 r2 c2、祈禱 _3 r3、低位復活祈禱 _1 r1。FSM_HAND_* 註解 _3 r0、實際陣列 _3 r3，衝突保留，不改戰鬥機制。原祈禱含現有發光像素，不可冒稱獨立 Body/FX。
+- 已從5張實際來源切割57個有效32px cells（52種不同RGBA），全原像素、透明、未重置原點、不重繪、不鏡像；F00=$Actor5_1 r0 c1，bbox 24×31，SHA 1438ec8...。另17 GIF 預覽（僅視覺時序，非原遊戲 clock）、1x/4x原圖對照、Flow F00 8x nearest 與原後跳關鍵姿勢參考、8F後跳 prompt。未新增真實中間幀，不冒稱全新動作。
+- [私人80-entry來源重用包](https://drive.google.com/file/d/1sZUcNcg9yQBA1bNxpO-OlmAACulpIk-r/view) 280098B SHA 78bb49920bbea553d92fdd996be4061aa6fc8a6aaeffa5b393d81119c75ca04b；[F00 Flow reference](https://drive.google.com/file/d/1I6g8lpnvPqQgwJh3dk1Anq605Dyh6MLS/view)；[原迴避 key poses](https://drive.google.com/file/d/1nr1lARaMgfZDvqBs04ww_6UWl9ePzw7O/view)。三檔回下載 SHA 比對、ZIP CRC、57/57 RGBA parity PASS。原始來源鎖定十張 SHA 重核一致，ex紅版不混入。
+- NEXT：原始米亞圖作唯一母圖，優先一組新連續後跳（朝原來源方向、遠離敵人，不重畫整人）；已有原生動作當 fallback，只增加真正需要的幀。Flow 實際提交 NOT_RUN；目前可用已核准 bridge 路線非通用新圖生成，未驗證本次媒體匯入/費用。ART 待 owner 審查，原地圖與實戰 NOT_RUN。ACTOR01 DODGE/DAMAGE HOLD 未改。本輪無付費、無PC寫入、無engine修改。之前棕髮米亞仍 ART FAIL。
+
+
+## 2026-11-26 20:01｜SOURCE LOCK correction — owner ART FAIL; original Mia recovered
+- Owner explicitly instructed 「人物戰鬥動作範本」 Drive folder as sprite basis and supplied $Actor5.png walking reference identifying Mia. Previous generation failed to inspect this folder, incorrectly interpreted permission to generate as permission to redesign. ALL previous brown-hair/flower/green-robe Mia outputs are OWNER_ART_FAIL / DO NOT USE OR SEND TO FLOW. Preserve archive only as historical failure; V4.5 technical checks do not qualify art. Do not delete source or prior evidence.
+- Actual named folder found and enumerated (Drive folder 1vhcZhifp-9NWN2zwN3jPGOwzg9vPupTe). Downloaded and visually inspected ten exact $Actor5 base and _ex sheets; all 96x128 RGBA binary alpha, 3x4 native 32px cells. Nonempty slots 12/12 except _2 and _ex2 9/12; native blanks intentional. Actual base appearance green short hair, pointed ears, blue eyes, blue/gray clothing; _ex red recolor separate. Source DB actor ID 2 ≠ graphic file number 5, mapping established by owner (not post-Apply database verification). Exact manifest: ACTOR02_MIA_ORIGINAL_SOURCE_LOCK_20261126.json. Asset folder source images remain Drive; no raster in public GitHub.
+- New hard gate for all actor generation: open named source folder, identify exact character file by owner/database mapping (never infer DB ID from filename), fetch actual bytes, view full original walk and battle poses at 1x and nearest enlargement, record SHA/native cell bounds/eye and costume colors, select correct genuine frame as generation reference. Reuse available original poses before creating new art. 32px native source cells and existing runtime adapters preserved; never force a 35px A62 bbox on Mia. Additional transparent padding only if existing contract calls for it, no resizing or color changes. Keep eyes readable at actual native size, preserve identity and body geometry, art gate before motion/engine. The correct battle pose/direction and exact action-row mapping must be verified from source scripts, not guessed from visual appearance. Existing shared map/battle compatibility applies.
+- NEXT: use actual $Actor5 original cells, verified battle-action mapping, identity and 1x review; prepare exact source reference for Flow from the selected original pose (only lossless nearest enlargement for input), generate only missing needed motion. No blind free generation, no original change, no paid calls, no PC writes, no new gameplay/engine work. This correction overrides all stale V4.5 NEXT and candidate status. No new sprite generation in this turn.
+
+
+## 2026-11-26 12:46｜V4.5 ACTOR02 米亞新母圖原生尺寸候選已產出／雲端回讀 PASS
+- Owner authorized generation of new Mia (not original source recovery prerequisite). Current original Mia visual still unavailable; new chestnut ponytail, cream flower, green/ivory robe, gold trim candidate, no weapon. Actual generated 1254px source normalized to 64x64, opaque 21x35 bbox (22,15,43,50), same baseline as immutable A62 23x35 bbox (21,15,44,50), 35 opaque colors, binary alpha. Original A62 SHA 70a8e6... unchanged. Source-aware visual comparison only; exact map and battle gameplay scene NOT_RUN. No new global resolution/style migration.
+- [Private six-member complete source/64px/8x/side-by-side/prompt/manifest ZIP](https://drive.google.com/file/d/1FcjiCXq-G5LCazEq7tCAnIRWmVbkjCCu/view) 334848B, SHA256 dededed461d01ab08a14bec01c5da40728dfa358cf61dea8067a5a82c0f0c9f1, actual cold Drive download SHA and CRC PASS. [Exact 8x Flow reference](https://drive.google.com/file/d/120vyMiorNG_TLTKhuh-4kmigI7HAJCo5/view), 4268B SHA256 9cba5ddddc330bb818edf8b648ad855698d6c5f7f44459c92727eec377c134a8, cold readback PASS. [Machine receipt](../flow_motion_factory/ACTOR02_MIA_F00_CANDIDATE_20261126.json). New F00 ART HOLD pending owner; no original source claim.
+- ACTOR01 DODGE targeted correction attempted with native image generation; returned different Mia design/16-pose sheet instead of requested ACTOR01 two poses. REJECT, no replacement, no retry. DAMAGE and DODGE still HOLD. Original V3 and historical accepted RUN preserved. No Flow job submitted; installed scoped browser v0.1.7 current authority only exact ATTACK draft, not arbitrary new reference/job. Existing costs/credits not checked, no new paid provider, no Windows writes. No extra engine work.
+- NEXT: inspect Mia F00 at native/actual shared map & battle scale, if acceptable use exact 8x reference + included RUN prompt for one authorized Flow image job; then check frames, IDLE. ACTOR01 fix DODGE F3/F4 and DAMAGE F2/F3 with exact A62 reference, no whole art redesign. If current Flow route cannot transfer new source, use owner-mediated upload rather than reengineering browser automation or repeating blind paid jobs. Owner visual gate and actual scene separate.
+
+
+## 2026-11-26 09:25｜最新使用者更正：地圖／戰鬥共用 Sprite 不變
+[現行相容性硬規則](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-pixellab-tb-monster-20261121/godot_port/docs/research/FS_SHARED_MAP_BATTLE_SPRITE_COMPATIBILITY_20261126.md)：禁止自行提高全局素材解析度、像素密度、角色尺寸或切換成新版高細節畫風；撤銷 128px 級優先提案。高解析母圖只能是暫時姿勢參考，若無法回到原角色/地圖美術基準則淘汰。保留已核准 A62 原圖、V3 64px 戰鬥素材契約（不是所有地圖圖格尺寸）、既有地圖及戰鬥共用 Sprite，原有足點/遮擋/站位與紙娃娃分層不變。ACTOR01 先修不合格圖；ACTOR02 米亞用原角色風格和尺度建立母圖，不要求整套資產重製。新增動作可使用既有可變幀契約，不分裂成兩組角色素材。先原地圖+戰鬥實際尺度美術驗收再整合。全局規格變更必須事先得到使用者明確核准。這次只更新規範，無新圖、付費、引擎或 PC 改動。先前高解析新母圖均概念候選，不能當核准素材。
+
+
+## Latest owner priority: qualified character art
+Stop extra runtime work. Complete ACTOR01 actual art, begin ACTOR02 plan. Current actual 40-frame review and correction attempt failures; DODGE F3/F4 and DAMAGE F2/F3 HOLD. ACTOR02 confirmed 米亞 (Mia), actor 5 is Ivy; original actor2 image not recovered. [Art closeout and ACTOR02 source plan](../flow_motion_factory/ART_FIRST_ACTOR01_ACTOR02_20261126.md) is current next unit. No new approved art, no engine change. Prior V4.3 test evidence unchanged. Do not treat infographic/AI-generated concept as source or completion.
+本節取代下方舊 gate 狀態；原始 V3 不變，禁止長劍，DODGE 向後跳且朝向不變。
+
+## V4.3 — FSScreen opt-in presentation integrated; native synthetic and REAL_V3 PASS
+- Integration branch feat/fs-flow-v4-outcomes-20261126, tested commit 591a146efd6a2624d8551384a905e495f70872ed. Changes: FSFlowOutcomePresenter, FSFlowBattlePresentation, FSFlowMotionBody, FSScreen opt-in, actual UI test.
+- Source ACTOR01 unique party slot; immutable settled outcome serial gate; ATTACK/CAST on source; DAMAGE on actual recipient positive HP/shield MP; DODGE only enemy EVADE with real enemy-view anchor; MISS no reaction; no stale result polling. Fixed left-facing mirrored parent, local inverse transform to world away vector; max 24px; cancel/reset on clip end, death, menu, battle end, actor identity/slot change. No source weapon/FX addition, no battle rule changes.
+- Default art unchanged; explicit --flow-v3-preview only, exact SHA pins for five V3 manifests transitively verify all files, no synthetic fallback. Private files res://motions/<action>/ staged only in isolated project. No automatic source installation. If preview enabled, it suppresses legacy A52; no true idle/death animation, lethal battle finish cancels visual immediately, overlapping action replaces prior animation. RUN loaded but not bound to a real movement event. Only ACTOR01 render, not all actors/enemies.
+- First CI 45711900942 failed on enemy damage fixture: no-critical enemy used extra CRIT RNG, causing rejected variance. Corrected test only, commit 9c01291caf57f58245601a312014e1731c64dc3d; REAL_V3 12-case replay passed. Latest test adds actual queued ACT and pinned private loader. CI 45712185904 SUCCESS, 5 suites (15 UI check marker, outcome 11, cover 3, existing accuracy and Ivy Cover). Real private replay on exact same commit, official engine 4.7.2.stable.official.ed1daf0bf, import + test exit 0, FLOW_V4_UI_PASS cases=15 scope=REAL_V3. Source archive SHA unchanged. Real test enemy art is synthetic texture and DB source-shaped fixture; no claim of original DB parity/GPU/complete real-game visual acceptance.
+- Evidence: https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45712185904 ; transport artifact 15067981774 sha256 70f4e8985a9577eec660d01f47ed74df49a262139f9125869d00dee2113dd09c (tracked source only, 1 day); real log SHA 2f676f69642d389c4993f1aa70a0a75e5444aa7b28278dc08072c16f289cf052; import SHA 8bf53e94a4f0d0298e868db8fbe65e751231124675ae376ae7a3123871c3187c. Raw logs not persisted to Drive. 45 raw PNG export warnings plus root-run warning; export still HOLD.
+- Next: establish exact source export-safe resource path with actual pack/native replay; real movement lifecycle for RUN, accepted idle/death sources and battle finishing/overlap presentation policy; GPU visual review and user ART, full Phase1 regression and independent EGM before merge. V3 pose correction still HOLD. No generation, paid tools, owner PC access, Phase1 or original art modification.
+
+## V4.2 戰鬥事件 producer：native PASS，UI 尚未接入
+- 獨立整合分支 feat/fs-flow-v4-outcomes-20261126，基底 Phase1 bc88b10d37d4e3a9816cdfa6932e7aaefaf33666，commit b0affe9f719c53d1a3da4c818a66787af5631037；正式主線未變更。
+- FSBattle 新增 target_outcome_resolved；只在既有 attack/use_skill 成功結算路徑發出，命中/落空/迴避明確區分，包含特殊 141/145 已結算分支；選定與實際承傷者分開，Ivy Cover 用 transferred.guard；Dictionary identity/陣營/slot 不依 DB ID；serial 單調、事件唯讀純 scalar snapshot，不暴露戰鬥 Dictionary，不改傷害/MP/ATB/ACT。
+- Official Godot 4.7.2 CI 45711247503 SUCCESS：https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45711247503 。兩個新測試 marker FLOW_V4_OUTCOME_PASS cases=11 events=7；FLOW_V4_COVER_OUTCOME_PASS cases=3。既有 test_fs_battle_accuracy_205 與 test_fs_ivy_cover_native_522 同時 PASS。測試含重複 DB ID 的兩個目標、UI changed refresh 無重發、invalid RNG/拒絕技能無事件、已付 MP miss/evade、HP hit、死亡事件先於 finished、護衛真實承傷與 miss 不轉移。不是 AOE 新機制，未做完整 Phase1 全套回歸；技能護衛/141/145 事件自身的獨立新測試尚缺。
+- 下一步優先完成 FSScreen/renderer subscriber：一次性 serial gate、真實 slot 綁定、HIT/EVADE/MISS 映射、取消/死亡/finished cleanup、收尾復位；不得讀舊 fs_last_action_result 判定新動作，不以動畫驅動戰鬥數值。之後 native 真圖戰鬥 replay、GPU/ART、export 與完整 source regression；無 merge 授權。
+- 整體 gameplay / UI hookup 仍 HOLD，producer subset PASS；不可把新事件當成實際整合完成。
+
+## V4.1 動畫引擎實際增量
+- V4 原 CI 45709676853 取消：Godot 原生 Animation 類別名稱衝突，編譯錯誤後測試卡住。修正 AnimationSprite alias、45 秒 timeout、CI 錯誤掃描；commit 955a42ca48623d30e7bb993d304aacc8a5e16559，native synthetic 45710662960 SUCCESS。
+- 6f3d39c143f78ac4e2ee7d7f6e337b1201a3f118 再加強 shell fail-closed 判定。最新 synthetic 45710784540 SUCCESS，public-only engine/source transport 45710785860 SUCCESS。短期 artifact 僅原本公開 source 與官方引擎，無私有圖；1 天保留。環境不能直接連 github.com，故改用 connector transport，未使用使用者 PC。
+- 私有 V3 ZIP 重新由 Drive 取得，SHA/CRC/112 檔、5 atlas/source/frame SHA、40/40 RGBA parity 通過。隔離 cloud native Godot 4.7.2，public transport SHA256 符合，55 私有 motion files 暫存於隔離環境。editor import exit 0、real replay exit 0，實際 marker: FLOW_BATTLE_ADAPTER_PASS scope=REAL_V3 actions=5 directions=4 host_unchanged=true。
+- 公開倉庫只保存無圖測試 receipt 與 log SHA，raw logs 尚未上傳。未修改 Phase1、E:、原始 V3；未新增生成、未付費。
+
+## Gate（最新）
+| Gate | Status |
+|---|---|
+| Source/structure/40 RGBA frames | PASS |
+| V4 native synthetic | PASS |
+| V4 native private real replay (headless) | PASS |
+| GPU / visual playback capture | NOT_RUN |
+| Back-hop body art | HOLD，原姿勢前傾 |
+| Export | HOLD，45 raw PNG loading export warnings |
+| Actual combat outcome producer | PASS，獨立分支 4 native tests |
+| ACTOR01 opt-in FSScreen / queued ACT fixture | PASS synthetic + REAL_V3 |
+| Full original game / GPU / RUN / other actors | HOLD / NOT_RUN |
+| Independent EGM review / merge | NOT_RUN / HOLD |
+
+## V4.1 歷史施工計畫（producer 已完成，下一步見上）
+以 Phase1 bc88b10d37d4e3a9816cdfa6932e7aaefaf33666 為基底隔離新增 authoritative target outcome producer：只在攻擊/技能已結算後發出一次，使用實際承傷目標（含 Ivy Cover 轉移）而非原指定目標；miss 與 evade 分開、拒絕動作不發出；序號及 battle membership 防重複；不改 damage/MP/ATB/ACT。再做 UI subscriber、返回站位與死亡/戰鬥結束、多目標和完整 source regression。不可用 fs_last_action_result 輪詢。匯出資源載入需另行解決，原美術 HOLD 不替換主線素材。
+
+## 舊交接（歷史）
+# Forest Symphony | Flow V4 combat presentation Handoff
+日期：2026-11-26 Asia/Taipei
+工作線：T-A / Flow ACTOR01 Body-only；獨立整合候選，不是 Phase1 主線定版。
+
+## 最新權威
+- 使用者：不製作長劍；DODGE 必須向後跳，保持面向敵人。原圖 V3 不可覆寫。
+- FS 正式 Godot 4.7.2 主線 feature/fs-godot-phase1：讀取 commit bc88b10d37d4e3a9816cdfa6932e7aaefaf33666 的 animation API；FSAnimationSprite blob f938e8916a86195a00d3f7cf7b9dc1934487c857，FSAnimationProfile blob 765c5d49b2ab18e99dd6641e3a5083aff6c80bd2。
+- 目前 Flow 分支 feat/fs-flow-attack8-body-20261126，Draft PR #21。新增 adapter commit ec692ddefe0d6282d8cbdca970f4fe304a3ca75e。MotionBody 最新 snapshot b674a035a91862a02314d6831b5a89c42f6f999f，保留另一線的 3-pose RUN 支援，沒有覆寫原 runtime。
+- V3 真實素材：112 檔 2439862 bytes，SHA256 1e4619deeee26601e4e70aef5274e3e00cf521cbdbe5f537f3e41ad327c24bef，私人 Drive https://drive.google.com/file/d/1N9lnZjCoLuVHXI0TPiM--RksUp_PyaY0/view 。既有 Windows #266 原生播放 PASS，並非 V4 轉接層的測試。
+- 讀取正式共用 fs-handoff-qa SKILL.md blob b1bb934d2dfe01bd07ecb38709ea356f11ab3dc7、Godot roadmap、主線/T-A Handoff、PC route v1.1、EGM review gate。FS_CONTROL_TOWER_PROTOCOL 在 phase1 預期路徑查詢 404，尚未找到正確分支，不假裝讀取。
+
+## 本輪實際增量
+1. 新增 FlowBattlePresentation.gd blob 052667959f31fd02b9feefc20bc2a635ce47d12d；從已通過來源驗證的 SpriteFrames 轉成 fs-animation-v1 profile，五種動作保留 AtlasTexture 底層圖集、區域與逐幀時序。64×64 原點 (32,50) 轉為 centered Sprite2D offset (0,-18)。
+2. 後跳：輸入 actor 到 enemy 的同一個本地座標系方向；反向正規化乘上 0/0/4/14/24/24/24/24 native px。僅改 BodyPresentation 子節點 local position，不改 host、戰鬥格或朝向。F4 已有 5px 離地，不重複加跳高。收尾保持最後演出位置直到 caller reset 或新動作；這是待審的演出政策，非永久戰鬥站位。原 DODGE 身體偏前傾，美術 HOLD。
+3. present_resolved_evade 只接受明確 evade；miss/hit/未知/零方向拒絕，不中斷目前 RUN。沒有 damage marker 或 ATB/ACT 判定權。
+4. test_adapter.gd blob 9bc93960fe9e9a98ba123ab0357cfc25427e650b：五種 clips、區域/offset/duration、四個方向、host 不變、循環、完成、取消、拒絕 miss、reset；預設合成輸入；-- --real-v3 需私有 V3 motions/，不允許以合成替代真圖。
+5. 實際重新讀 V3 ZIP，SHA、CRC、五套原始來源/manifest/atlas/frame SHA、40/40 atlas RGBA parity、地面基準、時序均通過 offline 核查。DODGE F4 離地 5px，其餘 grounded。ATTACK 1000、RUN 640、DAMAGE 800、DODGE 800、CAST 1000 ms。
+6. GitHub Actions V4 https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45709676853 job 139540537474；最後查詢 in_progress，尚未取得結束碼或 PASS marker。不可把前一版 #266 結果當成 V4 CI 成功。
+
+## 主線接入缺口（源碼實查）
+FSBattle.gd blob 60e42f4455c86bdee9d34d030632b88593fc8e1f: 只有 changed(message) / finished(victory) 信號；attack L348–369、use_skill L638/708–728 在確定未命中/迴避後寫入 target.fs_last_action_result。FSScreen.gd blob ec44f1b7ef0bd5c8a1350482674a61d71fed431c: L66/67、91/92 接 changed/finished；_combat_result_text L1106–1115 只是顯示上次結果，不能輪詢它來重複觸發動畫。不得從文字 log 或畫面刷新推測新事件。
+下一個完整施工單位：以當下最新版 phase1 為基底開隔離整合候選，先設計一次性、已結算的 target outcome 事件（攻擊與技能、每 target、唯一序號、明確 miss/evade/hit、無已拒絕動作），由 UI/renderer 訂閱，映射正確演出，不改數值/成本/ATB；加入多目標、重複刷新、取消、死亡、戰鬥結束/返回站位及 source-authority 回歸測試。先完成 V4 native 測試與真實 V3 private replay，再做主線接入，ART 未通過不替換正式素材。
+
+## QA / Failure / Gates
+| Gate | 狀態 |
+|---|---|
+| V3 SOURCE / STRUCTURE | PASS，實際 ZIP 40/40 |
+| V4 code / repo readback | PASS |
+| V4 official native synthetic | IN_PROGRESS / HOLD |
+| V4 real private native / GPU | NOT_RUN |
+| Correct backward-hop body pose / ART | HOLD |
+| Actual battle event hookup / gameplay | NOT_RUN |
+| Independent EGM review | NOT_RUN，未宣稱獨立審查或允許 merge |
+| V3 PERSISTENCE | 既有私人 Drive verified |
+無新增生成、無武器/FX、無 Codex、無 Desktop Remote、無新增 Bridge 工作。未更動 main、Phase1、T-A/B/C、E: 原始遊戲。V4 是候選，非完整移植。
