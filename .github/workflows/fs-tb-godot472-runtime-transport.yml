@@ -1,6 +1,6 @@
 name: FS T-B public Godot runtime transport
 on:
-  push:
+  pull_request:
     branches: [feat/fs-pixellab-tb-monster-20261121]
     paths: [".github/workflows/fs-tb-godot472-runtime-transport.yml"]
 permissions:
