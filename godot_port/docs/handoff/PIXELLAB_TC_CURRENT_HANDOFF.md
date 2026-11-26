@@ -1,3 +1,13 @@
+# T-C 主工作線最新 ART 優先狀態｜2026-11-26 D26 真來源短橋比例成功、全圖美術風格拒收
+
+**僅同步權威實證與經驗，不從隔離分支合併程式或圖片：**隔離 `feat/fs-tc-d12-chroma-par-20261122` 已實際作者化新 `192×156` 1× 完整短橋、`282×356` 1× 主鍛造工坊、`236×288` 吊車、`225×209` 供應倉庫，併 D24 七個完整原始非地表 1× 物件形成真正獨立 `1280×928 RGBA PAR` 技術樣本。D17 Ground SHA 完全不變，Source／Alpha／尺寸／重疊／靜態冷重建 TECH PASS。**但手繪新物件與原本高細節 AI 美術色階與材質不同：ART SOURCE REJECT**。正式 12張地圖 ART `0/12`，D26 真 Godot native NOT RUN，沒有正式可交付新 PAR。
+
+- [D26 完整 19 檔 owner-only 私人 Source＋新橋＋合成／全景AB＋重建程式及 FAIL Evidence](https://drive.google.com/file/d/1AziDn0gHc01P5wdCBmlbOcv_Kvr1DM1v/view)；[D24 vs D26 1× 靜態藝術 A/B](https://drive.google.com/file/d/1nLwACbNfYJapHJUXzYw69urrunUPzdD3/view)；[隔離分支 D26 Handoff + Failure Log](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/handoff/TC_D26_ART_FIRST_COMPACT_ASSETS_STYLE_REJECT_20261126.md)。
+- 本主分支 [ART-FIRST 正式 SOP](../production/T_C_ART_FIRST_GROUND_COMPLETEPAR_METHOD_20261125.md) 已同步 D26「尺寸 PASS 不保證 Style DNA」新實證。
+- **新完整施工單位 D27：**優先選擇能同時保有 D24 風格細節和 D25 原生短橋比例的已證實影像作者工具，基於已鎖 Ground 直接作者化完整獨立非地表 RGBA 源圖。不能假裝 PixelLab/Map Workshop 已接受這份輸入或已做付費任務；若未驗證工具能力就先實際核驗，禁止把不合格手繪拼圖當正式模板。主 T-C/T-A/T-B/正式 Godot/Windows E: 不修改。
+
+---
+
 # T-C 主線最新交接｜2026-11-26 D25：美術比例硬門檻與經驗整理（仍無 D25 合格新圖）
 
 **最新使用者指令**：「繼續，要記得總結經驗」。以 ART-FIRST 為最高優先，不再反覆把 technical PASS 冒充視覺美術。隔離分支 `feat/fs-tc-d12-chroma-par-20261122` 已對 D24 **真獨立 RGBA 原作者圖**量出橋寬 **388px=12.125格**、主工坊 **495px=15.47格**，均遠大於 D17 真 Ground 的裂谷及 32px 地圖物件比例。D25 **没有新的合格 Ground / PAR**，更未做 D25 私有真 Godot native；正式 ART **0/12 HOLD**，**不覆蓋** D17/D22/D23/D24。
