@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-26",
+  "scope": "draft PR22 candidate, not production",
+  "phase27": {
+    "kit_commit": "8d7ae366ec4c6016798543610a45a0cabec70b7a",
+    "kit_run": 45725152727,
+    "kit_job": 139593017852,
+    "kit_checks": 21,
+    "synthetic_boot_tables": 12,
+    "source_dry_run": {
+      "stage": "EXACT_ORIGINAL_RAW_IN_MEMORY_STAGE_NOT_RUNTIME",
+      "raw_sha": "d398178135c5b41622b0e6da763d58af1fbf770c9d24a360a23508800015809a",
+      "staged_sha": "776da2d9ae7184d1aeb43210b61dafebe0e2a63fe221764b65fc66bb7eb27781",
+      "probe_sha": "bf4c3876e54a0f51eafab25ea9a14b9b02165fdfee1678cb979aabe67d6074c6",
+      "original_rows": 505,
+      "staged_rows": 506,
+      "preserved_rows": 505,
+      "encoding_fields": 416,
+      "main_index": 482,
+      "initial_failure": "unsupported Marshal I encoding wrapper; fixed preserving encoding flags and names; independent Ruby synthetic load verified",
+      "pc_writes": 0
+    },
+    "adapter_checks": 92,
+    "raw_skills": 27,
+    "actor_armor_predicates": 33,
+    "class_permitted": 17,
+    "force_class_permitted": 12,
+    "balance_overrides": 6,
+    "actual_original_VX_runtime": "NOT_RUN",
+    "selected_source_adapter": "PASS_WITH_CONTROLLED_RPG_OBJECTS",
+    "capture_authentication": "HOLD"
+  },
+  "phase28": {
+    "tested_commit": "936870062aaa89a2a834277441bc68a211a0c939",
+    "native_run": 45724890153,
+    "native_job": 139592117362,
+    "craft_run": 45724890091,
+    "craft_job": 139592116470,
+    "public_focused_checks": 382,
+    "common_event_checks": 52,
+    "previous_checks": 374,
+    "private_raw_native_assertions": 339,
+    "private_raw_cases": 41,
+    "private_switch_only": 12,
+    "private_force_hold": 29,
+    "craft_files": 32,
+    "craft_slices": 58,
+    "craft_lines": 4142,
+    "source_extra_slots": "explicit live array; unknown/missing or invalid armor identity HOLD; candidate only",
+    "resource_exit_warnings": [
+      25,
+      24,
+      25
+    ]
+  },
+  "holds": [
+    "original licensed RGSS2 process not run, no authentic post-Apply database witness",
+    "raw source verified, scoped original adapters with stubs not full boot",
+    "actual save/inventory/equip slot availability and complete later aliases not established",
+    "no real forced skill effect or interpreter suspension settlement",
+    "no production common-event bridge approval; approved real troops zero",
+    "independent EGM and merge HOLD"
+  ],
+  "pc": {
+    "readonly_commands": 4,
+    "source_files_written": 0,
+    "persistent_files_written": 0,
+    "codex_used": false,
+    "requires_separate_temp_authorization": true
+  }
+}

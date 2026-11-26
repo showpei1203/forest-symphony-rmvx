@@ -1,0 +1,205 @@
+{
+  "commands": [
+    {
+      "code": 108,
+      "indent": 0,
+      "parameters": [
+        "synthetic"
+      ]
+    },
+    {
+      "code": 408,
+      "indent": 0,
+      "parameters": [
+        "comment"
+      ]
+    },
+    {
+      "code": 111,
+      "indent": 0,
+      "parameters": [
+        4,
+        9,
+        4,
+        42
+      ]
+    },
+    {
+      "code": 0,
+      "indent": 1,
+      "parameters": []
+    },
+    {
+      "code": 412,
+      "indent": 0,
+      "parameters": []
+    },
+    {
+      "code": 121,
+      "indent": 0,
+      "parameters": [
+        7,
+        7,
+        0
+      ]
+    },
+    {
+      "code": 121,
+      "indent": 0,
+      "parameters": [
+        8,
+        8,
+        1
+      ]
+    },
+    {
+      "code": 111,
+      "indent": 0,
+      "parameters": [
+        4,
+        8,
+        0
+      ]
+    },
+    {
+      "code": 111,
+      "indent": 1,
+      "parameters": [
+        4,
+        8,
+        4,
+        44
+      ]
+    },
+    {
+      "code": 339,
+      "indent": 2,
+      "parameters": [
+        0,
+        0,
+        1,
+        15,
+        0
+      ]
+    },
+    {
+      "code": 121,
+      "indent": 2,
+      "parameters": [
+        8,
+        8,
+        0
+      ]
+    },
+    {
+      "code": 0,
+      "indent": 2,
+      "parameters": []
+    },
+    {
+      "code": 412,
+      "indent": 1,
+      "parameters": []
+    },
+    {
+      "code": 0,
+      "indent": 1,
+      "parameters": []
+    },
+    {
+      "code": 411,
+      "indent": 0,
+      "parameters": []
+    },
+    {
+      "code": 121,
+      "indent": 1,
+      "parameters": [
+        9,
+        9,
+        1
+      ]
+    },
+    {
+      "code": 0,
+      "indent": 1,
+      "parameters": []
+    },
+    {
+      "code": 412,
+      "indent": 0,
+      "parameters": []
+    },
+    {
+      "code": 0,
+      "indent": 0,
+      "parameters": []
+    }
+  ],
+  "cases": [
+    {
+      "actors": {
+        "8": {
+          "exists": true,
+          "armors": []
+        },
+        "9": {
+          "exists": true,
+          "armors": []
+        }
+      },
+      "party": [
+        8
+      ]
+    },
+    {
+      "actors": {
+        "8": {
+          "exists": true,
+          "armors": [
+            44
+          ]
+        },
+        "9": {
+          "exists": true,
+          "armors": [
+            42
+          ]
+        }
+      },
+      "party": [
+        8
+      ]
+    },
+    {
+      "actors": {
+        "8": {
+          "exists": true,
+          "armors": [
+            44
+          ]
+        },
+        "9": {
+          "exists": true,
+          "armors": [
+            42
+          ]
+        }
+      },
+      "party": []
+    },
+    {
+      "actors": {
+        "8": {
+          "exists": false,
+          "armors": []
+        },
+        "9": {
+          "exists": false,
+          "armors": []
+        }
+      },
+      "party": []
+    }
+  ]
+}

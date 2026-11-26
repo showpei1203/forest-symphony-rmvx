@@ -11,6 +11,7 @@ class_name FSActionQueue
 var pending: Dictionary = {}
 var completed: Array[Dictionary] = []
 var next_serial: int = 1
+var resolving: bool = false # synchronous ACT transaction, not visual playback
 var enemy_pending: Dictionary = {}
 var enemy_refusals: Dictionary = {}
 var ai_rng: FSAIRandom = FSAIRandom.new()
@@ -23,7 +24,7 @@ func has_pending(index: int) -> bool:
 
 func request(battle, index: int, kind: String, target_index: int = -1,
         object_id: int = 0) -> bool:
-    if not battle.active or not battle.source_atb_initialized:
+    if not battle.active or not battle.source_atb_initialized or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done):
         return false
     if index < 0 or index >= battle.party.size():
         return false
@@ -170,7 +171,7 @@ func _enemy_key(index: int) -> String:
     return "enemy:%d" % index
 
 func schedule_enemy(battle) -> bool:
-    if not battle.active or not battle.source_atb_initialized or battle.source_atb_wait:
+    if not battle.active or not battle.source_atb_initialized or battle.source_atb_wait or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done):
         return false
     for index in range(battle.enemies.size()):
         var key: String = _enemy_key(index)
@@ -278,8 +279,9 @@ func _resolve_enemy_ready(battle) -> int:
     return 0
 
 func resolve_ready(battle) -> int:
-    if not battle.active or battle.source_atb_wait:
+    if resolving or battle.force_actions.busy or (battle.troop_startup_plan.enabled and not battle.troop_startup_plan.done) or not battle.active or battle.source_atb_wait:
         return 0
+    resolving=true
     cancel_interrupted(battle)
     var resolved: int = 0
     # Original #231 scans party array before troop array, one action
@@ -345,5 +347,6 @@ func resolve_ready(battle) -> int:
         resolved += 1
         break
     if resolved == 0:
-        return _resolve_enemy_ready(battle)
+        resolved=_resolve_enemy_ready(battle)
+    resolving=false
     return resolved

@@ -4,6 +4,8 @@ class_name FSBattle
 # Candidate baseline only. For exact FS parity, trace RGSS2 last-wins aliases and tags.
 signal changed(message: String)
 signal finished(victory: bool)
+signal source_force_page_blocked(reason: String)
+signal source_command_cancelled(actor_index: int)
 
 var db: FSDatabase
 var party: Array[Dictionary] = []
@@ -12,17 +14,31 @@ var inventory: Dictionary = {}  # keys "item:<id>" / "weapon:<id>" / "armor:<id>
 var world: FSGameState
 var active: bool = false
 var pending_actor: int = -1
+# Explicit UI registration; legacy headless callers without a registered
+# command owner keep the previous wait/HOLD behavior.
+var source_command_cleanup_enabled: bool = false
+var _source_command_owner: Dictionary = {}
+
 # Godot 60fps phase clock feeds original Tankentai 1.2c integer gauges.
 # The timing/action queue as a whole is NOT yet source-final; source damage
 # still needs effective 505 RGSS2 override witness.
 var source_atb_initialized: bool = false
 var source_atb_frame_fraction: float = 0.0
+var source_atb_frame_count: int = 0
+# Scoped #231 turn-end accounting; event dispatch itself is not yet ported.
+var source_turn_count: int = 0
+var source_turn_end_observation: Dictionary = {}
 var source_atb_rolls_for_test: Dictionary = {}
 var source_atb_advantage: String = ""
 var source_atb_wait: bool = false
 # ATB actor queue is active in BATTLE UI; final enemy AI/forced action/OD
 # aliases are still outside the verified P1 source implementation.
 var action_queue: FSActionQueue = FSActionQueue.new()
+# Opt-in candidate; normal production/event entry remains disabled.
+var force_actions: FSForceActionQueue = FSForceActionQueue.new()
+var troop_force_pages: FSTroopForcePages = FSTroopForcePages.new()
+var troop_startup_plan: FSTroopStartupPlan = FSTroopStartupPlan.new()
+var _source_force_deferred_outcome: int = -1
 # Source #401 Runtime Provider. Automatically opt-in only after the real
 # boot-final DB witness gate; synthetic battle tests opt in intentionally.
 var boss_runtime: FSBossSummonRuntime = FSBossSummonRuntime.new()
@@ -959,8 +975,20 @@ func equip(actor_index: int, slot: int, item_id: int) -> bool:
     return true
 
 func advance_atb(delta: float) -> void:
-    if not active or not source_atb_initialized or delta <= 0.0:
+    if not active or not source_atb_initialized or delta <= 0.0 or force_actions.busy or action_queue.resolving or troop_startup_plan.busy:
         return
+    if force_actions.enabled and troop_force_pages.enabled and not troop_force_pages.blocked_reason.is_empty():
+        return
+    if troop_startup_plan.enabled and not troop_startup_plan.done:
+        if not troop_startup_plan.blocked_reason.is_empty():
+            return
+        if troop_startup_plan.apply_before_first_frame(self)<0:
+            changed.emit(troop_startup_plan.blocked_reason)
+            source_force_page_blocked.emit(troop_startup_plan.blocked_reason)
+            return
+        if not active:
+            return
+    troop_force_pages.capture_startup_window(self)
     # Real Tankentai #231 gauge increments are PER SOURCE FRAME, not an
     # invented continuous float rate. Accumulate fractional 60fps frames.
     source_atb_frame_fraction += delta * float(FSTankentaiATBCore.FRAMES_PER_SECOND)
@@ -972,6 +1000,7 @@ func advance_atb(delta: float) -> void:
     # EACH frame; processing a multi-frame delta in one lump lets enemies
     # skip their turn or delay the final attack until the next render frame.
     for frame in range(steps):
+        source_atb_frame_count+=1
         field_weather.update_source(db)
         FSTankentaiATBCore.advance_frames(party,enemies,1,source_atb_wait)
         # Tankentai calls remove_states_auto ON new ATB readiness, before
@@ -981,19 +1010,100 @@ func advance_atb(delta: float) -> void:
         boss_state_effects.on_atb_ready(self)
         if not active:
             break
+        if force_actions.enabled:
+            if troop_force_pages.enabled and not troop_force_pages.blocked_reason.is_empty():
+                return
+            if troop_force_pages.tick(self)<0:
+                changed.emit(troop_force_pages.blocked_reason)
+                source_force_page_blocked.emit(troop_force_pages.blocked_reason)
+                return
+            force_actions.drain_event(self)
+            force_actions.prepare_troop(self)
+            # Slot promotion can fail before resolve_one (e.g. MP changed).
+            # A page failure must halt before other queued or normal actions.
+            if troop_force_pages.enabled and troop_force_pages.settle(self)<0:
+                changed.emit(troop_force_pages.blocked_reason)
+                source_force_page_blocked.emit(troop_force_pages.blocked_reason)
+                return
         if not source_atb_wait:
             action_queue.cancel_interrupted(self)
-            action_queue.resolve_ready(self)
-            if active:
-                # Enemy actions are chosen after ATB readiness, then must
-                # earn ACT charge on later source frames.
-                action_queue.schedule_enemy(self)
+            var forced_resolved: int = force_actions.resolve_one(self)
+            if force_actions.enabled and troop_force_pages.enabled:
+                var page_settlement: int = troop_force_pages.settle(self)
+                if page_settlement<0:
+                    _source_force_deferred_outcome=-1
+                    changed.emit(troop_force_pages.blocked_reason)
+                    source_force_page_blocked.emit(troop_force_pages.blocked_reason)
+                    return
+                if page_settlement==1 and _source_force_deferred_outcome>=0:
+                    var outcome: int=_source_force_deferred_outcome
+                    _source_force_deferred_outcome=-1
+                    finished.emit(outcome==1)
+                    return
+            if not active:
+                return
+            if forced_resolved==0 and force_actions.ready.is_empty():
+                action_queue.resolve_ready(self)
+                if active:
+                    # Enemy actions are chosen after ATB readiness, then must
+                    # earn ACT charge on later source frames.
+                    action_queue.schedule_enemy(self)
         # Original #401 Scene_Battle#update boss hook runs AFTER base update
         # even when #230 ATB_WAIT freezes gauges during target selection.
         # This is an encounter state update, NOT an ATB charge action.
         if active:
             boss_runtime.tick(self)
             boss_state_effects.sync(self)
+
+# Explicit candidate provider only; never automatically enable for unverified Troop DB.
+func configure_source_force_pages(pages: Array,allow_turn_window:bool=false) -> bool:
+    if not active or not source_atb_initialized or not force_actions.enabled or troop_startup_plan.enabled:
+        return false
+    if allow_turn_window and (source_atb_frame_count!=0 or source_turn_count!=0 or pending_actor>=0 or
+            not action_queue.pending.is_empty() or not action_queue.enemy_pending.is_empty() or
+            not force_actions.ready.is_empty() or not force_actions.staged.is_empty() or not force_actions.troop_slot.is_empty()):
+        return false
+    return troop_force_pages.configure(pages,force_actions.random_targets_enabled,allow_turn_window)
+
+func configure_source_startup_pages(pages:Array,verified_common_lists:Dictionary,allow_actor_common:bool=false,offparty_snapshots:Dictionary={})->bool:
+    if not active or not source_atb_initialized or troop_force_pages.enabled or source_atb_frame_count!=0 or (
+            pending_actor>=0 or not action_queue.pending.is_empty() or not action_queue.enemy_pending.is_empty()) or (
+            not action_queue.completed.is_empty()) or not force_actions.completed.is_empty() or (
+            not force_actions.ready.is_empty() or not force_actions.staged.is_empty() or not force_actions.troop_slot.is_empty()):
+        return false
+    return troop_startup_plan.configure(pages,verified_common_lists,allow_actor_common,offparty_snapshots)
+
+func begin_source_command(index: int) -> bool:
+    if not active or (troop_startup_plan.enabled and not troop_startup_plan.done) or index<0 or index>=party.size():
+        return false
+    if pending_actor>=0 and not is_same(_source_command_owner,party[index]):
+        return false
+    pending_actor=index
+    _source_command_owner=party[index]
+    source_atb_wait=true
+    return true
+
+func end_source_command() -> void:
+    pending_actor=-1
+    _source_command_owner={}
+    source_atb_wait=false
+
+func cancel_source_command_for_troop(subject: Dictionary) -> bool:
+    # #231 force_action_cleanup only when @commander == member.
+    # Identity, not database ID or dictionary-value equality.
+    if not source_command_cleanup_enabled or pending_actor<0 or not is_same(_source_command_owner,subject):
+        return false
+    var old_index: int=pending_actor
+    end_source_command()
+    source_command_cancelled.emit(old_index)
+    return true
+
+func queue_source_force_action(side: int,index: int,kind: String,target_index: int,
+        object_id: int = 0) -> bool:
+    return force_actions.request_event(self,side,index,kind,target_index,object_id)
+
+func queue_source_vx339(params: Array) -> bool:
+    return force_actions.request_vx339(self,params)
 
 func queue_actor_action(index: int,kind: String,target_index: int = -1,
         object_id: int = 0) -> bool:
@@ -1014,9 +1124,9 @@ func source_action_charged(battler: Dictionary) -> bool:
     return source_atb_initialized and bool(battler.get("source_act_active",false))
 
 func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
-        object_id: int = 0) -> bool:
-    # Charge completion is distinct from battle result calculation.
-    if not source_action_charged(battler):
+        object_id: int = 0, forced: bool = false) -> bool:
+    # Forced actions do not require a charged ACT; never fabricate that flag.
+    if not source_atb_initialized or (not forced and not source_action_charged(battler)):
         return false
     if ivy_cover.active and party.has(battler):
         # Guard / Item actions have no attack()/use_skill() call to open
@@ -1025,10 +1135,38 @@ func finish_source_atb_action(battler: Dictionary,kind: String = "attack",
             ivy_cover.begin_action()
         ivy_cover.owner_action_finished(battler)
         ivy_cover.end_action()
-    FSTankentaiATBCore.reset_after_action(battler,kind,object_id,db)
+    # #230 FORCE_ACTION_CONSUME_GAUGE=false; #231 L566-570, L2274-2281.
+    # Charged forced ACT refills to 1000, otherwise preserve the live gauge
+    # including signed debt and the ACT/ATB flags. Effects may have changed it.
+    if not forced:
+        FSTankentaiATBCore.reset_after_action(battler,kind,object_id,db)
+    elif bool(battler.get("source_act_active",false)):
+        battler["source_act_active"]=false
+        battler["source_at_active"]=false
+        battler["source_act_count"]=0
+        battler["source_atb_count"]=1000
+        battler["atb"]=1.0
+        battler["source_atb_count_up"]=true
     if enemies.has(battler):
         enemy_valid_action_completed(battler)
+    # #231 L573-600: mode 2 passes even when the force action does not
+    # increment end_member. One separately opted-in 339 page may be
+    # selected at either actual counter boundary; execution waits for the
+    # scheduler receipt. General interpreter timing is still unverified.
+    troop_force_pages.capture_turn_window(self,source_turn_count,false,"before_increment")
+    source_turn_end_observation={"before_turn":source_turn_count,"counted_action":not forced,
+        "after_turn":source_turn_count+1,"end_member_after":0,"event_dispatch_verified":false}
+    source_turn_count+=1
+    troop_force_pages.capture_turn_window(self,source_turn_count,true,"after_increment")
     return true
+
+func _state_atb_negative_authority(state_id: int) -> bool:
+    # Typed State provider or exact #230/#234 State Note fallback.
+    # Do not infer this from a skill note, truthy string or unknown ID.
+    if state_id <= 0 or db == null:
+        return false
+    var authority: Dictionary = FSStateATBAuthority.resolve(db.record("states",state_id),state_id)
+    return bool(authority.get("ok",false)) and bool(authority.get("allows_negative",false))
 
 func apply_combo_atb_shift(enemy: Dictionary,delta: int,
         attacker: Dictionary = {},state_id: int = 0) -> Dictionary:
@@ -1037,7 +1175,7 @@ func apply_combo_atb_shift(enemy: Dictionary,delta: int,
     if not enemies.has(enemy):
         return {"ok":false,"reason":"目標不是戰鬥中的敵人"}
     var outcome: Dictionary = FSATBResistance.apply_direct_shift(
-        enemy,delta,state_id,attacker)
+        enemy,delta,state_id,attacker,_state_atb_negative_authority(state_id))
     if bool(outcome.get("ok",false)):
         # Cancel enemy ACT pending immediately after ComboCore negative shift,
         # rather than leaving it alive until a later rendered frame.
@@ -1054,13 +1192,41 @@ func apply_combo_atb_shift_to_actor(actor: Dictionary,delta: int,
     if not party.has(actor):
         return {"ok":false,"reason":"目標不是戰鬥中的我方角色"}
     var outcome: Dictionary = FSATBResistance.apply_direct_shift(
-        actor,delta,state_id,attacker)
+        actor,delta,state_id,attacker,_state_atb_negative_authority(state_id))
     if bool(outcome.get("ok",false)):
         action_queue.cancel_interrupted(self)
         changed.emit("%s ATB 受到直接位移 %d→%d" % [
             actor.get("name","我方"),outcome.get("before",0),
             outcome.get("after",0)])
     return outcome
+
+# Source #231 L1844-1859 and #374 L2279-2311, bounded post-attach
+# ATB-only effect. Caller must supply a verified attachment event and the
+# ComboCore bonus calculated BEFORE attachment. This is not a generic
+# State attachment, and is not automatically invoked by sync/UI.
+func apply_source_state_atb_after_attach(battler: Dictionary,state_id: int,
+        bonus_percent: float = 0.0) -> Dictionary:
+    if not active or not source_atb_initialized or (
+            not party.has(battler) and not enemies.has(battler)) or (
+            not battler.has("source_atb_count")) or not battler.has("atb"):
+        return {"ok":false,"reason":"State ATB target/runtime unavailable"}
+    if not is_finite(bonus_percent) or absf(bonus_percent)>10000.0:
+        return {"ok":false,"reason":"State ATB bonus outside scoped range"}
+    var authority: Dictionary = FSStateATBAuthority.resolve(db.record("states",state_id),state_id)
+    if not bool(authority.get("ok",false)) or not bool(authority.get("damage_known",false)):
+        return {"ok":false,"reason":"State ATB source unavailable"}
+    var base_delta: int = int(authority["damage_percent"])*10
+    var extra_delta: int = int(float(base_delta)*bonus_percent/100.0)
+    var before: int = int(battler["source_atb_count"])
+    var allow_negative: bool = bool(authority["allows_negative"])
+    if base_delta != 0:
+        FSATBResistance.apply_direct_shift(battler,base_delta,state_id,{},allow_negative)
+        if extra_delta != 0:
+            FSATBResistance.apply_direct_shift(battler,extra_delta,state_id,{},allow_negative)
+        action_queue.cancel_interrupted(self)
+    return {"ok":true,"before":before,"after":int(battler["source_atb_count"]),
+        "base_delta":base_delta,"extra_delta":extra_delta,
+        "allows_negative":allow_negative,"source":"#231/#374 State ATB only"}
 
 func enemy_valid_action_completed(enemy: Dictionary) -> int:
     # Called after a VERIFIED valid enemy action, not from UI redraw or ATB tick.
@@ -1104,4 +1270,9 @@ func _check_end() -> void:
         if not enemies_alive and ivy_furnace.active:
             ivy_furnace.end_battle(self)
         active = false
-        finished.emit(enemies_alive == false)
+        # A lethal page-issued force action must acknowledge the action
+        # before the VX map interpreter receives a victory/defeat branch.
+        if force_actions.busy and troop_force_pages.pending_page>=0:
+            _source_force_deferred_outcome=1 if not enemies_alive else 0
+        else:
+            finished.emit(enemies_alive == false)

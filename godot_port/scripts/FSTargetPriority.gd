@@ -94,7 +94,7 @@ static func random_target(battle,side: String,rng: FSAIRandom) -> int:
     var fallback: Array[int] = []
     for i in range(battlers.size()):
         var target: Dictionary = battlers[i]
-        if int(target.get("hp",0)) <= 0:
+        if int(target.get("hp",0)) <= 0 or bool(target.get("hidden",false)):
             continue
         if bool(target.get("fs_target_unverified",false)):
             return -1

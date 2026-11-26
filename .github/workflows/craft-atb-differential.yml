@@ -1,0 +1,136 @@
+name: Craft source to Godot differential
+on:
+  pull_request:
+    branches: [feature/fs-godot-phase1]
+    paths:
+      - 'godot_port/tools/craft_atb_source_oracle.rb'
+      - 'godot_port/tools/craft_common_event_oracle.rb'
+      - 'godot_port/scripts/FSCommonEventPlan.gd'
+      - 'godot_port/tests/test_craft_common_event_plan.gd'
+      - 'godot_port/tests/fixtures/craft_common_event_synthetic.json'
+      - 'godot_port/tools/craft_atb_authority_scan.py'
+      - 'godot_port/tools/craft_force_source_inventory.py'
+      - 'godot_port/scripts/FSATBResistance.gd'
+      - 'godot_port/scripts/FSStateATBAuthority.gd'
+      - 'godot_port/scripts/FSForceActionQueue.gd'
+      - 'godot_port/tests/test_craft_force_action.gd'
+      - 'godot_port/tests/test_craft_force_resources.gd'
+      - 'godot_port/scripts/FSVXBattleBridge.gd'
+      - 'godot_port/tests/test_craft_force_bridge.gd'
+      - 'godot_port/scripts/FSScreen.gd'
+      - 'godot_port/tests/test_craft_force_command_ui.gd'
+      - 'godot_port/scripts/FSTargetPriority.gd'
+      - 'godot_port/tests/test_craft_force_random.gd'
+      - 'godot_port/scripts/FSActionQueue.gd'
+      - 'godot_port/scripts/ui/FSBattleActor01Presenter.gd'
+      - 'godot_port/tests/test_craft_force_visual_lifecycle.gd'
+      - 'godot_port/scripts/FSTroopStartupPlan.gd'
+      - 'godot_port/tests/test_craft_troop_startup.gd'
+      - 'godot_port/scripts/FSTroopForcePages.gd'
+      - 'godot_port/tests/test_craft_troop_force_pages.gd'
+      - 'godot_port/scripts/FSBattle.gd'
+      - 'godot_port/tests/test_craft_source_differential.gd'
+      - '.github/workflows/craft-atb-differential.yml'
+permissions:
+  contents: read
+jobs:
+  source-differential:
+    if: github.head_ref == 'feat/fs-craft-source-pilot-20261126' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Audit all 505 indexed original source files
+        run: python3 -I -B godot_port/tools/craft_atb_authority_scan.py
+      - name: Inventory exact original force and Troop source call sites
+        run: python3 -I -B godot_port/tools/craft_force_source_inventory.py "$RUNNER_TEMP/craft-force-inventory.json"
+      - name: Extract exact original source methods and compute oracle
+        run: |
+          ruby --version
+          ruby godot_port/tools/craft_atb_source_oracle.rb "$RUNNER_TEMP/craft-oracle.json"
+          sha256sum "$RUNNER_TEMP/craft-oracle.json"
+      - name: Obtain official Godot 4.7.2 as prior FS CI
+        run: |
+          curl -fsSL --retry 2 -o "$RUNNER_TEMP/godot.zip" "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip"
+          sha256sum "$RUNNER_TEMP/godot.zip"
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/engine"
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          chmod +x "$bin"
+          "$bin" --version | tee "$RUNNER_TEMP/godot-version.txt"
+          grep -Fx '4.7.2.stable.official.ed1daf0bf' "$RUNNER_TEMP/godot-version.txt"
+          timeout 90s "$bin" --headless --path godot_port --editor --quit
+      - name: Actual Godot differential versus source oracle
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_source_differential.gd -- "$RUNNER_TEMP/craft-oracle.json" | tee "$RUNNER_TEMP/diff.log"
+          grep -F 'CRAFT_DIFF_SUMMARY; Matches=38; StateGap=0; RecoveryCases=38; AIComparable=2; AIScopeHold=3; TypedGuards=4; Failures=0' "$RUNNER_TEMP/diff.log"
+
+      - name: Verify expanded Note and State pipeline results
+        run: grep -F 'CRAFT_NOTE_PIPELINE_SUMMARY; Notes=12; StatePipelines=8; AuthorityGuards=4' "$RUNNER_TEMP/diff.log"
+      - name: Forced action native scheduling and original queue comparison
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_action.gd -- "$RUNNER_TEMP/craft-oracle.json" | tee "$RUNNER_TEMP/force.log"
+          grep -E 'CRAFT_FORCE_NATIVE_SUMMARY; Checks=[0-9]+; Failures=0; RealTroopEventWired=False; OriginalVXRuntime=False' "$RUNNER_TEMP/force.log"
+      - name: Original Troop page selection and native bounded dispatch
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_troop_force_pages.gd -- "$RUNNER_TEMP/craft-oracle.json" | tee "$RUNNER_TEMP/pages.log"
+          grep -E 'CRAFT_TROOP_PAGE_NATIVE_SUMMARY; Checks=[0-9]+; Failures=0; ProductionBridgeWired=False; OriginalVXRuntime=False' "$RUNNER_TEMP/pages.log"
+      - name: Forced skills and item resource transactions
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_resources.gd | tee "$RUNNER_TEMP/resources.log"
+          grep -E 'CRAFT_FORCE_RESOURCE_SUMMARY; Checks=[0-9]+; Failures=0; ForcedBypass=False; OriginalVXRuntime=False' "$RUNNER_TEMP/resources.log"
+      - name: Explicit force page bridge and story outcome guards
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_bridge.gd | tee "$RUNNER_TEMP/bridge.log"
+          grep -E 'CRAFT_FORCE_BRIDGE_SUMMARY; Checks=[0-9]+; Failures=0; SyntheticAuthority=True; OriginalVXRuntime=False' "$RUNNER_TEMP/bridge.log"
+      - name: Actual FSScreen forced commander cleanup
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_command_ui.gd | tee "$RUNNER_TEMP/command-ui.log"
+          grep -E 'CRAFT_COMMAND_UI_SUMMARY; Checks=[0-9]+; Failures=0; ActualScreen=True; FullVXRuntime=False' "$RUNNER_TEMP/command-ui.log"
+      - name: Original random target oracle and native forced target selection
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_random.gd -- "$RUNNER_TEMP/craft-oracle.json" | tee "$RUNNER_TEMP/random.log"
+          grep -E 'CRAFT_FORCE_RANDOM_SUMMARY; Checks=[0-9]+; OracleMatches=10; Failures=0; FullVXRuntime=False' "$RUNNER_TEMP/random.log"
+      - name: Forced ACT transaction and visual cancellation lifecycle
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_force_visual_lifecycle.gd | tee "$RUNNER_TEMP/visual.log"
+          grep -E 'CRAFT_FORCE_VISUAL_SUMMARY; Checks=[0-9]+; Failures=0; SyntheticArt=True; GameplayTimingParity=False' "$RUNNER_TEMP/visual.log"
+      - name: Bounded startup parent and separately verified common event
+        run: |
+          set -o pipefail
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_troop_startup.gd | tee "$RUNNER_TEMP/startup.log"
+          grep -E 'CRAFT_TROOP_STARTUP_SUMMARY; Checks=[0-9]+; Failures=0; SyntheticCommonEvent=True; OriginalVXRuntime=False' "$RUNNER_TEMP/startup.log"
+      - name: Common event actor equipment branches and switch-only native execution
+        run: |
+          set -o pipefail
+          ruby godot_port/tools/craft_common_event_oracle.rb godot_port/tests/fixtures/craft_common_event_synthetic.json "$RUNNER_TEMP/common-event-oracle.json"
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          timeout 60s "$bin" --headless --path godot_port --script res://tests/test_craft_common_event_plan.gd -- "$RUNNER_TEMP/common-event-oracle.json" | tee "$RUNNER_TEMP/common-event.log"
+          grep -E 'CRAFT_COMMON_EVENT_NATIVE_SUMMARY; Checks=[0-9]+; Failures=0; Cases=4; SwitchOnly=3; ForcedHold=1; FullVXRuntime=False' "$RUNNER_TEMP/common-event.log"
+          grep -F 'CRAFT_COMMON_EVENT_BATTLE_SUMMARY; Cases=2; SwitchOnly=1; ForcedHold=1; ProductionBridge=False' "$RUNNER_TEMP/common-event.log"
+      - name: Existing Godot combat regression suite
+        run: |
+          bin="$RUNNER_TEMP/engine/Godot_v4.7.2-stable_linux.x86_64"
+          for test in test_fs_atb_dynamic_resistance test_fs_tankentai_atb_core test_fs_atb_action_queue test_fs_enemy_ai_source test_fs_enemy_atb_queue test_vx_event_interpreter test_vx_battle_bridge; do
+            timeout 60s "$bin" --headless --path godot_port --script "res://tests/$test.gd"
+            echo "CRAFT_EXISTING_REGRESSION_PASS; $test"
+          done

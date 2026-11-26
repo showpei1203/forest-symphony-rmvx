@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "status": "PASS_SCOPED_STATIC_TEXT",
+  "engine": "Craft Anything v0.6.1",
+  "commit": "d83f98a269b7fbfda3499bdba00eb4c1a7123cdf",
+  "run_id": 45658167930,
+  "job_id": 139360414432,
+  "source_files": 6,
+  "source_pages": 8,
+  "source_lines": 502,
+  "original_runtime_executed": false,
+  "godot_executed": false,
+  "records": [
+    {
+      "coverage": {
+        "examined": 63,
+        "next_offset": 221,
+        "status": "partial",
+        "total": 586
+      },
+      "id": "VX230",
+      "lines": 63,
+      "offset": 158,
+      "response_sha256": "c0d0192abbf7d82788c3d611f0229f67b29121b2775cd67701ed53a56ce0b651",
+      "source_blob": "3fe73b99012548f9f3e1d3ed3ec76a337be4713d",
+      "source_sha256": "c3c77287b8973bf99ff31a8fe1423b60eb11a67dbe5521583adc844a3c2651ec",
+      "text_sha256": "e222b92584aef3ddf177918e84e53ca752c734895d56f94ca8033ab36d31a4a3"
+    },
+    {
+      "coverage": {
+        "examined": 50,
+        "next_offset": 225,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 50,
+      "offset": 175,
+      "response_sha256": "a7fb5f044ec0dfc86e087a0534a74f2c762ace2e949bb3229c96a0c7880f6bd1",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "f8d754041b77fa471ef6ee70347a675988857612e15629ff297d3788921136b9"
+    },
+    {
+      "coverage": {
+        "examined": 42,
+        "next_offset": 2159,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 42,
+      "offset": 2117,
+      "response_sha256": "13c61a526e657338870f2dffb424d74223124a8d5a0abe9b413e46736103174c",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "cfb459e6b9eb1b348a405b79c219d2fedfd045f9c040ff54a3cea532b9f97acf"
+    },
+    {
+      "coverage": {
+        "examined": 19,
+        "next_offset": 2245,
+        "status": "partial",
+        "total": 2952
+      },
+      "id": "VX231",
+      "lines": 19,
+      "offset": 2226,
+      "response_sha256": "650cea6867f1863ddf1c758e2bf48b4ca446e08ce11a7cef581894e1bf967ee6",
+      "source_blob": "4065ea4be1bc6fa5c5154034c89d626bc30d29fa",
+      "source_sha256": "58def5b2a288e9e10b51a9dcaa5adeab19e1b9efd6b3034c8dd18a89fb5397c6",
+      "text_sha256": "3eb241ba71acaf960cdc3c358eacc8a3d2b816401ef92a353167e7100e40054c"
+    },
+    {
+      "coverage": {
+        "examined": 93,
+        "next_offset": 127,
+        "status": "partial",
+        "total": 1192
+      },
+      "id": "VX377",
+      "lines": 93,
+      "offset": 34,
+      "response_sha256": "d08df79dc6f2436005da52740fbf92f801e1e20bd8fabfeddad0fab823244981",
+      "source_blob": "d14c274006d00f793017e9910d1e390ec5f9aeef",
+      "source_sha256": "562e3aa96b8c6791ebabd3ea8851bd3bdbb54d659071e4033f18afe1be8da520",
+      "text_sha256": "d0bcddc746b015226464a38a25db50c461a79225784e2a9895e05d92f5a7af5d"
+    },
+    {
+      "coverage": {
+        "examined": 70,
+        "next_offset": 1030,
+        "status": "partial",
+        "total": 1107
+      },
+      "id": "GD_BATTLE",
+      "lines": 70,
+      "offset": 960,
+      "response_sha256": "a52c78c1a8805b10c60c5abaeb512a7fe56e80f73a4ae515208bad164b855237",
+      "source_blob": "60e42f4455c86bdee9d34d030632b88593fc8e1f",
+      "source_sha256": "06aa8511360d45262c2179f6710654a7a4be27ff3525c17ff36eea32f8c39652",
+      "text_sha256": "befa99f8e87db3b7f1721612eebe69a837175eefd102fa9ab609aa64a030cf30"
+    },
+    {
+      "coverage": {
+        "examined": 70,
+        "status": "complete",
+        "total": 349
+      },
+      "id": "GD_QUEUE",
+      "lines": 70,
+      "offset": 279,
+      "response_sha256": "d967320d79af87e83a5e0e2409be8d212047c59907b1d3a22caffbf1333c6daa",
+      "source_blob": "876b46507f6f9daf5d88a56c405876cd5ae6438d",
+      "source_sha256": "ecc33af66f607eb2aba1d534777030ca61b7efb552dded66e33098440bfe3ae3",
+      "text_sha256": "75b4a9097a835aa68581ad7cb603e44c4689223fc400889078de2278089c7db6"
+    },
+    {
+      "coverage": {
+        "examined": 95,
+        "next_offset": 223,
+        "status": "partial",
+        "total": 237
+      },
+      "id": "GD_ATB",
+      "lines": 95,
+      "offset": 128,
+      "response_sha256": "a17c94690effc0dee6e7019cdebbd440b40ffca659ade4d46a3dff2d387381b8",
+      "source_blob": "806bbe2aa5e5f8f3fabaa98935db7d2b833bec5a",
+      "source_sha256": "1254e7839757fef160e4e01b56ae2e2c902083df7325b4ef2d5b9bd83491d044",
+      "text_sha256": "3e154abe9d28866f18c5bd7ec3bed06be1e6533c3dbc4710f005803bd52a3d04"
+    }
+  ]
+}

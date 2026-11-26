@@ -14,6 +14,20 @@ var _combat: FSBattle
 var _allow_escape: bool = false
 var _allow_lose: bool = false
 
+# Candidate-only approval map: troop ID -> exact canonical pages digest.
+# Empty by default. Boot-final DB authority is independently mandatory.
+# Never populate this automatically from raw exports or mere syntax support.
+var approved_source_force_page_hashes: Dictionary = {}
+# Separate approval for random 339 targets, not implied by the basic page digest.
+var approved_source_random_force_page_hashes: Dictionary = {}
+# CommonEvents is not one of the existing 11 verified tables. Require a
+# separately reviewed list AND its exact digest; no default or auto-import.
+var source_common_event_lists: Dictionary = {}
+var approved_source_common_event_hashes: Dictionary = {}
+
+static func source_force_page_digest(pages: Array) -> String:
+    return JSON.stringify(pages).sha256_text()
+
 func bind(event_runner: FSVXEventInterpreter, db: FSDatabase, state: FSGameState) -> void:
     if _runner != null and _runner.battle_requested.is_connected(_on_battle_event):
         _runner.battle_requested.disconnect(_on_battle_event)
@@ -27,15 +41,47 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
     if troop.is_empty():
         _fail("原始 Troop ID %d 不存在" % troop_id)
         return
-    # Full battle event pages must be interpreted by the final battle engine.
-    # Do not make them silently disappear in the migration.
-    for page in troop.get("pages", []):
-        if not page is Dictionary:
-            continue
-        for command in page.get("list", []):
-            if command is Dictionary and int(command.get("code",0)) != 0:
-                _fail("Troop %d 含尚未移植的戰鬥事件頁，已阻擋" % troop_id)
+    # No production auto-activation. Require exact reviewed page identity
+    # and verified boot-final source before using the narrow candidate.
+    var pages_value: Variant=troop.get("pages",[])
+    if not pages_value is Array:
+        _fail("Troop %d 戰鬥事件頁格式錯誤" % troop_id)
+        return
+    var pages: Array=pages_value
+    var has_events: bool=false
+    var allow_random: bool=false
+    var startup_mode: bool=false
+    var verified_common_lists: Dictionary={}
+    for page in pages:
+        if not page is Dictionary or not page.get("list",null) is Array:
+            _fail("Troop %d 戰鬥事件頁格式錯誤" % troop_id)
+            return
+        for command in page["list"]:
+            if not command is Dictionary or not FSTroopForcePages._integer(command.get("code",null),0,9999):
+                _fail("Troop %d 戰鬥事件指令格式錯誤" % troop_id)
                 return
+            if int(command["code"])!=0:
+                has_events=true
+    if has_events:
+        if not _database.boot_final_verified or str(approved_source_force_page_hashes.get(troop_id,""))!=source_force_page_digest(pages):
+            _fail("Troop %d 事件尚未取得啟動後資料與逐頁核准" % troop_id)
+            return
+        allow_random=str(approved_source_random_force_page_hashes.get(troop_id,""))==source_force_page_digest(pages)
+        var checker := FSTroopForcePages.new()
+        if not checker.configure(pages,allow_random):
+            # Only compile supplied, separately reviewed common-event lists.
+            # Missing, changed or unsupported children fail before any effect.
+            for common_id in source_common_event_lists:
+                if not FSTroopForcePages._integer(common_id,1,999999):
+                    continue
+                var commands: Variant=source_common_event_lists[common_id]
+                if commands is Array and str(approved_source_common_event_hashes.get(common_id,""))==source_force_page_digest(commands):
+                    verified_common_lists[int(common_id)]=commands
+            var startup_checker:=FSTroopStartupPlan.new()
+            if not startup_checker.configure(pages,verified_common_lists):
+                _fail("Troop %d 含未驗證共通事件或超出候選戰鬥事件範圍的指令" % troop_id)
+                return
+            startup_mode=true
     if _world.party_actor_ids.is_empty():
         _fail("缺少可戰鬥的原始隊伍")
         return
@@ -69,11 +115,33 @@ func _on_battle_event(troop_id: int, can_escape: bool, can_lose: bool) -> void:
     if not combat.start():
         _fail("Troop %d 或隊伍沒有有效成員" % troop_id)
         return
+    if has_events:
+        if startup_mode:
+            if not combat.configure_source_startup_pages(pages,verified_common_lists):
+                _fail("Troop %d 候選啟動事件配置失敗" % troop_id)
+                return
+        else:
+            combat.force_actions.enabled=true
+            combat.force_actions.random_targets_enabled=allow_random
+            if not combat.configure_source_force_pages(pages):
+                _fail("Troop %d 候選戰鬥事件配置失敗" % troop_id)
+                return
+    if _combat!=null:
+        if _combat.finished.is_connected(_on_combat_finished):
+            _combat.finished.disconnect(_on_combat_finished)
+        if _combat.source_force_page_blocked.is_connected(_on_force_page_blocked):
+            _combat.source_force_page_blocked.disconnect(_on_force_page_blocked)
     _combat = combat
     _allow_escape = can_escape
     _allow_lose = can_lose
     _combat.finished.connect(_on_combat_finished)
+    _combat.source_force_page_blocked.connect(_on_force_page_blocked)
     combat_ready.emit(_combat, troop_id)
+
+func _on_force_page_blocked(reason: String) -> void:
+    if _combat!=null:
+        _combat.active=false
+    _fail(reason) # Never resolve a victory/escape/defeat branch for a HOLD.
 
 func _commit_actor_vitals()->void:
     if _combat==null or _world==null:
@@ -102,6 +170,9 @@ func _on_combat_finished(victory: bool) -> void:
 func request_escape() -> bool:
     if _combat == null or not _combat.active or not _allow_escape or _runner == null:
         return false
+    if _combat.troop_force_pages.pending_page>=0 or not _combat.troop_force_pages.blocked_reason.is_empty() or (
+            _combat.troop_startup_plan.enabled and not _combat.troop_startup_plan.done):
+        return false # Do not bypass an unacknowledged battle interpreter command.
     # Actual escape probability / ATB timing remain FS parity work.
     # This method is for a battle layer that already verified an escape succeeded.
     _commit_actor_vitals()
