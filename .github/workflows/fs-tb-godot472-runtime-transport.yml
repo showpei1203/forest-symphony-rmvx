@@ -1,0 +1,30 @@
+name: FS T-B public Godot runtime transport
+on:
+  push:
+    branches: [feat/fs-pixellab-tb-monster-20261121]
+    paths: [".github/workflows/fs-tb-godot472-runtime-transport.yml"]
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Download official public engine only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fs-tb-runtime
+          curl --fail --show-error --location --retry 2 --connect-timeout 15 --max-time 120 -o /tmp/fs-tb-runtime/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -t /tmp/fs-tb-runtime/godot.zip
+          unzip -q /tmp/fs-tb-runtime/godot.zip -d /tmp/fs-tb-engine
+          chmod +x /tmp/fs-tb-engine/Godot_v4.7.2-stable_linux.x86_64
+          /tmp/fs-tb-engine/Godot_v4.7.2-stable_linux.x86_64 --version | grep -Fx 4.7.2.stable.official.ed1daf0bf
+          (cd /tmp/fs-tb-runtime && sha256sum godot.zip > SHA256.txt)
+          cat /tmp/fs-tb-runtime/SHA256.txt
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: fs-tb-official-godot472-linux-runtime
+          path: /tmp/fs-tb-runtime/
+          retention-days: 1
+          if-no-files-found: error
