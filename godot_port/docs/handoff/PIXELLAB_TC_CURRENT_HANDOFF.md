@@ -1,3 +1,19 @@
+# T-C CURRENT｜2026-11-26 D23 ART-FIRST 真新獨立物件來源／Whiteplate 備援／Godot 4.7.2 Native PASS／美術 HOLD
+
+**最新施工結果（優先於下方 D22/D21 歷史）：**以 D17 **不變**的 `1280×928` Ground 為世界基準（SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`），**真正重新生成**一張 `1474×1067 RGB` 火山工坊、吊車、完整橋樑、路燈與岩柱等**全非地表**物件來源（SHA `cf13df206f06847f7b95815b25b571b16b01fa21ecdbb93794f85e3a13eb6301`）。模型原圖實際是 **RGB 有棋盤格背景，不是真透明**；僅因它是獨立純非地表 plate，才依正式白底備援改採受控 neutral-white/grey-key 轉成 RGBA（SHA `627aaeb545123b56d256c11b2395516dfccedacb6c761604c48b4f95fb02e988`）。另一次生成結果是 **Ground＋房屋混合 Master，明確拒收**，未逆向切成 PAR。這輪不修改任何原 D22 PNG。
+
+經完整物件連通群 **1×** 重排十組物件，D23 A/B/C 三套完整畫面實測：source 前景 overlap **A 3489／B 5305／C 259px**，因此保存 **D23-C** 技術候選；1280×928 真 RGBA `COMPLETEPAR` SHA `6d53adde4ed2bac8f5a5a030006f1e0d40098306d61c8b907042b76ca42296e7`、真 Alpha0 **710596**，最外 5px 高不透明物件 0；PIL 靜態合成 SHA `d58afa632e6b66d684043eaca2cfe61224e7dc3a933dd98c9270c8e08f87c0d4`。從完全空的新資料夾冷建全程三份 SHA 一致。**不是模型直接原生 1280×928 PAR**，只是在 1× 世界作完整物件重佈局。
+
+以已核准來源的官方 **Godot 4.7.2** Linux binary 對真正 D17 Ground＋D23-C 私有 PNG 雙 SHA 驗證、兩張獨立 Sprite2D 同原點、原生 1280×928 開啟 Native screenshot **PASS**；截圖 SHA `9ca2316fb9ab4b266335d6d3ac736b0bc6363941f77fb3e096687d0209663cc3`，和 PIL 靜態合成**逐像素完全一致（diff 0）**。Source original RGB/棋盤格 matte 是下游 fallback，有 1× 邊緣硬度風險；新工坊偏大、短橋世界腳點與原風格尚未通過人眼；**正式 ART PASS 0/12，VISUAL ART HOLD，不覆蓋 D22**。不要再做橋梁碰撞、角色遮擋或存讀與美術無關的工程。
+
+- [**D23 新真獨立原來源／keyed RGBA／全完整 PAR／A/B/C／真 Godot Native／QA／可重建程式與拒收 Master 20 檔私人 ZIP，30,087,017 bytes，CRC PASS**](https://drive.google.com/file/d/1k5q1KZsgOGmfwHGVOU7bBTdUNsy6g_Qx/view)，owner-only readback。
+- [D23-C Godot 真原生 PNG](https://drive.google.com/file/d/1puTw6b_oTCApmAh_hSbJPPOnl5noaAu-/view)、[D22／D23 真原生整張 1× A/B](https://drive.google.com/file/d/14tZB-xXEMhg7jn5eTimrp3wyxeCgD4n0/view)、[來源 QA JSON](https://drive.google.com/file/d/10VqzdSwbE9GLR4T1CI7slE_Ldv-UuOoC/view)。
+- [D23 完整真來源／Gate／Failure Log Handoff](TC_D23_ART_FIRST_FS_04_MAZE_NEW_WHITEPLATE_TRUE_NATIVE_QA_20261126.md)、[D23 source-locked 1× 生成工廠](../../tc_factory/biomes/fs_tc_d23_art_first_independent_whiteplate.py)。保留原 T-C 主分支與 T-A/T-B，隔離 Draft PR #17 未合併；使用者 Windows E: 未修改、Desktop Remote／Codex／PC Bridge 0。
+
+**下一施工單位仍是整張地圖美術**：比較 D22／D23 兩張原生 1× 是否達 Style DNA；不能僅因 D23 overlap 較少就當成 ART PASS；若新 RGB 去底的煙霧／建築白邊或主工坊比例不合格，應改成**一張真正原生透明、與 D17 Ground 世界座標契合的完整 PAR 新生成**，最多兩輪非致命小修，禁止回去做玩家遮擋和碰撞研究。
+
+---
+
 # T-C CURRENT｜D22 ART-FIRST 新獨立非地表 PAR 候選已實際生成＋原生 Godot PASS｜2026-11-25
 
 **本輪回到美術產出，最新優先於下面 D21 碰撞／遮擋／D20 舊圖的歷史段落**。以凍結 D17 火山迷宮 Ground 1280×928 RGB SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 為地圖基礎，**新獨立生成 Ground 不含其中的全非地表透明 PAR 原始圖** `1473×1068 RGBA` SHA `7ab52f35107f468439436ff23e43ae879df6a90d9d55039e0fb761273fe32828`。這不是混合 Ground Master，也不是角色遮擋遮罩。原圖10組主要完整連通物件以**1× 無縮放、無 polygon 截斷**重新配進 `1280×928 RGBA` 完整 PAR：D22-B SHA `a7cf732989afe88be6860a2cc1d27092ee9c2e94e696f315aa5bc4ce62033b95`、真 Alpha0 **847,920**；新真靜態合成 SHA `54acc8aa0ce8197ea8a7e1e68d9fc1b9ea4f4c157fb4736a574c8d4fa780be80`。
