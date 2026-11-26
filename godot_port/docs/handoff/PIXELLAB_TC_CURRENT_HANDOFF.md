@@ -1,3 +1,17 @@
+# T-C CURRENT｜D28｜2026-11-27｜三張單次整幅真透明來源仍不符合 native 1280×928；原因是生成器畫布能力而非橋梁補件
+
+**本輪正式施工（優先於下面 D27 等歷史）**：根據使用者要求，始終**一次生成一張包含全部非地表物件的真透明 CompletePAR**，沒有生成/修單獨橋、工坊，沒有拆 Alpha 島、位移拼件或將 Ground Master 逆切。D17 Ground `1280×928` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e` 保持不變。
+
+實際生成 D28-A `1473×1068 RGBA` 原始 SHA `917861e62a5e407f5b05be4bbdd89a8d89892180ab7bfbbcae233f80ebdd78a0`、D28-B `1474×1067 RGBA` SHA `55aba3a2c39584aa7faa774a15a46aaf1dcbdb1abc55c4a4ae3357fc9e5965d9`、D28-C `1474×1067 RGBA` SHA `3ae6fbe3078db2fcfd9396350b075d4c9f6cbee3a1b00bbc6fd893c766aeb34b`。**三張都是真 Alpha 的全非地表整張來源，但目標 1280×928 範圍外分別有 77,882／70,867／66,627 個 alpha>32 有效物件像素**；不允許裁切破圖或重採樣冒充原生。三張官方 `SOURCE_NATIVE_CANVAS FAIL`、整張 Ground 參考對位`NOT_PROVEN`、D28 真 Godot 4.7.2 `NOT_RUN`、人工 `ART HOLD`、正式 12 地圖 **0/12**。
+
+**真正的工法進展不是美術封版**：新增 [整張 CompletePAR 專用來源驗收程式](../../tc_factory/biomes/fs_tc_d28_whole_plate_source_gate.py)、[5項 synthetic 正反測試](../../tc_factory/biomes/test_fs_tc_d28_whole_plate_source_gate.py)和 [GitHub Actions Workflow](https://github.com/showpei1203/forest-symphony-rmvx/actions/workflows/fs-tc-d28-onepass-source-qa.yml)。程式只讀完整原圖／驗來源精確尺寸、Alpha、越界像素、Ground SHA，**不做分件或任何正式圖片後製**，合成預覽標 `QA_ONLY`。本地5項 PASS 是程式驗證，**不代表來源或 ART PASS**。公開官方 PixelLab v2 API 文件 `https://api.pixellab.ai/v2/docs` 及 `https://www.pixellab.ai/docs/options/general` 表明現有圖像模型單張畫布/真透明能力不足以直接可靠完成 1280×928 一次生成，**未發起新的付費 PixelLab 工作**。
+
+**已 PRIVATE Drive 封存與回讀 owner-only**：[D28 14檔完整來源/三版整畫面 QA/程式測試/Failure Log ZIP 15,536,143 bytes CRC PASS](https://drive.google.com/file/d/1okgdbVIN6FHq4-iGa34M62uWg9CJfrI_/view)；[三整畫面 QA-only 對照](https://drive.google.com/file/d/1gl9Eks--UiIhwox7qzXvvo8ljYlveLYn/view)；[D28 完整實測 QA JSON](https://drive.google.com/file/d/1enflNxTEVkZeVVhJPDIurgM8K-k2DebQ/view)；[完整正式 D28 Failure Log/來源工具能力限制](TC_D28_ONE_PASS_WHOLE_PAR_SOURCE_LIMITS_AND_FAILURE_20261127.md)。**原 PNG 完全保留**，未上公有 GitHub。隔離 Draft PR #17 未合併，T-A/T-B、主線及 Windows E: 未更動。
+
+**下一個完整 D29 單位**：先驗證一個能以 Ground 像素座標為條件、實際控制**整張 1280×928 和原生真透明**的一次性作者工具／流程。這是生成上游能力驗證，不再使用不支援固定 native canvas 的原工具重複三次相同出圖；絕不退回個別橋、工坊、剪貼或角色遮擋。未有合格整張原圖前不得改 ART 0/12。
+
+---
+
 # T-C CURRENT｜D27 真正一次性完整 PAR 生成施工與最終來源尺寸阻斷｜2026-11-26
 
 **最高優先使用者指示：完整 PAR 必須是一次生成的整張同風格作品，不能生成、改、拼接獨立橋、工坊或 Alpha 島。** 最新正式 [D27 ONE-PASS 製圖規格](https://github.com/showpei1203/forest-symphony-rmvx/blob/feat/fs-tc-d12-chroma-par-20261122/godot_port/docs/production/T_C_D27_ONE_PASS_COMPLETE_PAR_AUTHORING_CONTRACT_20261126.md) 已同步本 T-C 分支、另一 T-C 分支及 Google Drive 兩份 SOP。舊 D18–D26 單件重排只作歷史紀錄，不再可登記正式產線候選。
