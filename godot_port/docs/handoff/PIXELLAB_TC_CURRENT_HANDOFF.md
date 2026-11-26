@@ -1,3 +1,20 @@
+# T-C CURRENT｜2026-11-26 D24｜FS_04_MAZE 新獨立真 RGBA 全非地表來源／原生像素雙圖候選｜美術 0/12 HOLD
+
+**最新美術施工，優先於以下 D23/D22/D21 歷史**：保留鎖定 **D17 Ground** `1280×928 RGB` SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`，再次獨立生成原始**真正 RGBA 透明**的全非地表 `1474×1067` PNG，SHA `69fcdc6602394ddc7ece3e73515fe657ab74976c20aaa1548b58b712cfcca407`、真正 `alpha=0` **1,149,019**。D23 的 RGB 棋盤去背備援這輪**不需要**；完整 11 物件來源的 alpha>32 **376,213 像素全都保留**，無混合 Master／角色遮蔽篩選、無 polygon 硬切或單一物件縮放。因模型輸出尺寸仍非原生 1280×928，按完整物件世界位置 **1× 重排**到 `1280×928 RGBA PAR`，**不能聲稱整張原生世界座標一次生成成功**。
+
+**選 D24-B**：新獨立 PAR SHA `a5c657c8e38150f5300874283124970ba0b089eed52c2dc763bd646d6330e51b`、實際 `alpha=0` **806,922**，11群相互重疊 **0px**，外框5px高Alpha貼邊 **0px**；真靜態 Ground+PAR 合成 SHA `604d9db4ec8926257831cf2839e4cfb1ef5a19319bea2771afb26f4f81a43fab`，A/B 及完全獨立 cold rebuild **全部 SHA 一致**。D24 B 橋樑定位 `(853,406)`，相較 A `(778,406)` 右塔較接近右側岩岸。
+
+**重要真 ART 阻斷：**生成器仍將橋畫成 **388px ≈12格**，而原 Ground 熔岩缺口更窄，設計要求 5–6 格未達到；主工坊約495px，房舍比例及全地圖風格 DNA／橋頭落腳也尚未人工核准。**正式 ART 0/12 HOLD，不能以 0 overlapping / RGBA / Source SHA 當美術核准**。本輪沒有拿 D24 真 PNG 在 Godot 4.7.2 原生跑；`D24 actual native NOT_RUN`，請勿拿 D23 native 舊圖借用。未做碰撞、角色 Z-order、事件、存讀。
+
+**PRIVATE source-of-truth，Drive owner-only 回讀**：
+- [**D24 完整 15 檔 source / Ground / A+B CompletePAR / Composite / 1x QA / script / Failure Log ZIP 19,400,566 bytes CRC PASS**](https://drive.google.com/file/d/1lFPX6IV0lJ6dNmQte1ocRHFlyPBtmMoC/view)
+- [D24 original independent true RGBA](https://drive.google.com/file/d/1Ao4UargsAT-mzPTds326aRifdctQOUuO/view)｜[完整 D24-B PAR](https://drive.google.com/file/d/19gBWUYg0xckbJ6oC-dBVw1oMyu6VNvez/view)｜[真靜態全圖](https://drive.google.com/file/d/1f2JY59NGr2n58qzu3Ddkt2vS4Xajor9p/view)｜[橋頭 A/B QA](https://drive.google.com/file/d/1N9Y83pNaj4duak5omG6_rq_-V6dWODyT/view)｜[原生D23 vs 靜態D24 標註對照](https://drive.google.com/file/d/1NXsxnmhk2pAK3lr0LLnip9c3ENior8e1/view)。
+- [D24 GitHub source-locked 1x factory](../../tc_factory/biomes/fs_tc_d24_true_rgba_completepar_factory.py)｜[D24 正式 Handoff+Failure Log](TC_D24_ART_FIRST_FS_04_MAZE_TRUE_RGBA_BRIDGE_ALIGNMENT_QA_20261126.md)。
+
+**下一個完整美術施工單位：**不再逐一修燈柱或擴大數據測試，而是從原生視覺 Blueprint 直接生成**橋長5–6格、鍛造廠縮到合宜尺度、與此 Ground 世界岩岸相符的整張 ALL-NON-GROUND 透明 PAR**；若整體都難在同畫布達成，先作者化能配對橋的整張 **Ground FIRST**，然後新 PAR。既有 D17/D18/D22/D23/D24 原圖不覆寫；主 T-C、T-A/T-B 不碰；Draft PR #17 保持隔離。美術 ART **0/12**。
+
+---
+
 # T-C CURRENT｜2026-11-26 D23 ART-FIRST 真新獨立物件來源／Whiteplate 備援／Godot 4.7.2 Native PASS／美術 HOLD
 
 **最新施工結果（優先於下方 D22/D21 歷史）：**以 D17 **不變**的 `1280×928` Ground 為世界基準（SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`），**真正重新生成**一張 `1474×1067 RGB` 火山工坊、吊車、完整橋樑、路燈與岩柱等**全非地表**物件來源（SHA `cf13df206f06847f7b95815b25b571b16b01fa21ecdbb93794f85e3a13eb6301`）。模型原圖實際是 **RGB 有棋盤格背景，不是真透明**；僅因它是獨立純非地表 plate，才依正式白底備援改採受控 neutral-white/grey-key 轉成 RGBA（SHA `627aaeb545123b56d256c11b2395516dfccedacb6c761604c48b4f95fb02e988`）。另一次生成結果是 **Ground＋房屋混合 Master，明確拒收**，未逆向切成 PAR。這輪不修改任何原 D22 PNG。
