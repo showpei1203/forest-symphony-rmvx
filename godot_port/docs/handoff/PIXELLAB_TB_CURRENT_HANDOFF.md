@@ -1,3 +1,9 @@
+# CURRENT (2026-11-26)｜PMD0001 R25 OWNER ART PASS / Godot shared resource candidate built / native pending
+
+[R25 implementation + evidence](./PIXELLAB_TB_PMD0001_R25_SHARED_GODOT_CANDIDATE_20261126.md)：已核准 G11 原圖不重製。實際建立 isolated shared SpriteFrames（34 physical motions /181 directional clips /1123 frame slots），103 原生檔案逐位元相同，offline resource PASS。[Private 110-entry Godot ZIP](https://drive.google.com/file/d/1oAG16P5j82sJDTjKmPMLpvSzay-EnlP6/view) SHA 9b33076561b3b000d92db6ac6df75b692c71a417c8cebaea250e67826c75b6df owner-only full raw SHA/CRC PASS。Godot binary absent / DNS fail / historical CI artifacts unavailable；native test prepared NOT_RUN；cell-center preview、offset/shadow semantics/full map+battle/EGM NOT_RUN、license HOLD。NEXT 真正執行 Godot 4.7.2 native test + existing runtime anchor integration，再依序 PMD0002。原圖不再審美、不重跑付費。使用者要求自動續工，已建立每小時 bounded cloud continuation task；不自動扣費、PC 寫入、白名單修改、主線合併，僅新成果/首次必要決策通知。
+
+---
+
 # CURRENT (2026-11-26 18:12)｜PMD0001 OWNER ART PASS｜停止重製，進入原生整合
 
 使用者於 R24 全動作審圖後明確表示「美術我給過」。[正式核准紀錄](./PIXELLAB_TB_PMD0001_OWNER_ART_APPROVAL_20261126.md)：核准範圍為 [R24 G11 PMD0001 既有 production 美術](https://drive.google.com/file/d/17aJyhSzRfoz7sWuzSvpuxJQkhRRw23Zw/view) SHA cbe71f533c0e94b4027078b5c99329e12c6db049a90b90baa321ec604ee0b19c（34 motions+2 aliases），OWNER_ART_PASS。原圖與核准素材不變；R22 失敗圖維持淘汰。**不再重複要求同一份美術審核，不為 PMD0001 重跑付費生成。** R23/R24 static executor 退至未核准後續物種的工具 backlog，不再阻擋本隻。NEXT：核准素材精確 Godot 4.7.2 native / map+battle 共用相容驗證，依序推進 PMD0002；Godot/full gameplay/EGM NOT_RUN，license HOLD，PMD0002 未核准。此次僅記錄使用者核准，沒有新生成或整合測試。後文舊 ART_PENDING 已覆寫為歷史。
