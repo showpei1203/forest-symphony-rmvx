@@ -1,0 +1,62 @@
+{
+  "actor_id": 2,
+  "identity": "米亞 Mia",
+  "status": "NEW_STYLE_COMPATIBLE_CANDIDATE_OWNER_ART_HOLD",
+  "original_mia_visual": "NOT_RECOVERED; new design authorized by owner",
+  "source_generator": "ChatGPT image generation",
+  "source_sha256": "27266679734b3ffe2bbac0b17591ac01efa3f4f398c9f20161744062af2c4add",
+  "actor01_reference_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "source_canvas": [
+    1254,
+    1254
+  ],
+  "source_alpha_threshold_bbox": [
+    340,
+    213,
+    832,
+    1043
+  ],
+  "canvas": [
+    64,
+    64
+  ],
+  "candidate_bbox": [
+    22,
+    15,
+    43,
+    50
+  ],
+  "actor01_bbox": [
+    21,
+    15,
+    44,
+    50
+  ],
+  "candidate_opaque_palette": 35,
+  "alpha": "binary",
+  "candidate_sha256": "a2a7f71aad4e253cffd4f2f9cd1320226e300d62b45c273a3de1f1af7bd4f5a8",
+  "normalized_method": "nearest 21x35, 35-color opaque median-cut no dither, common ground y=50; only new candidate modified",
+  "archive": {
+    "drive_id": "1FcjiCXq-G5LCazEq7tCAnIRWmVbkjCCu",
+    "sha256": "dededed461d01ab08a14bec01c5da40728dfa358cf61dea8067a5a82c0f0c9f1",
+    "bytes": 334848,
+    "entries": 6,
+    "crc": "PASS",
+    "cold_readback": "PASS"
+  },
+  "flow_reference": {
+    "drive_id": "120vyMiorNG_TLTKhuh-4kmigI7HAJCo5",
+    "sha256": "9cba5ddddc330bb818edf8b648ad855698d6c5f7f44459c92727eec377c134a8",
+    "bytes": 4268,
+    "scale": "8x nearest 512x512",
+    "cold_readback": "PASS"
+  },
+  "owner_art": "HOLD",
+  "actual_scene": "NOT_RUN",
+  "flow": "NOT_RUN; bridge scoped to exact ACTOR01 ATTACK draft, no generic new-source generation",
+  "actor01_dodge": "HOLD; second generation returned wrong character Mia with different clothes, reject; V3 untouched",
+  "actor01_damage": "HOLD unchanged",
+  "new_paid_provider_jobs": 0,
+  "pc_writes": 0,
+  "engine_changes": 0
+}
