@@ -1,3 +1,9 @@
+# 2026-11-27｜使用者要求實質進展：PMD0002 原骨架完整動作改造候選
+
+保留已核准 PMD0001，不重做。R28 真原始 0002 12 套 atlas 使用統一熔岩橘/玄武岩灰配色改造：所有 alpha、影格格子、原動作及時間、Offset/Shadow/XML 原樣，89 clips/682 slots，原版第二階比例保留，沒有舊 G11 的縮身問題。實際 [完整 Godot 資源候選 ZIP＋12 個 GIF](https://drive.google.com/file/d/1kyIdhM_JM3HJAAI1Kjqbs1MrDrAqQKGL/view) SHA a9b09046be025048de8ae7a1e58cabab4eb38d6f62917b40fc752a6cbcdcec55；[12 動作來源/舊版/新候選對比](https://drive.google.com/file/d/1mneEL_kJZJ4c83S_p9MsiSYjsEceHBE5/view)。owner-only、raw SHA 回讀、ZIP CRC PASS。此為原圖統一配色的暫行候選，未聲稱完成全新造型、PixelLab job 或 ART PASS，新的 Godot native 未執行，license HOLD。下一步優先在原始 PMD002 32px 級參考上使用已核實的 PixelLab 路徑做有特色的靜態改造（需確認適用的現行作業授權、費用與輸入），避免重製既有全套動作；整套動作只作必要的外觀一致化，不重建 QA 系統、不反覆檢查已知比例、不跳號。既有可用完整動作作保底候選，真正可用素材才計產出。
+
+---
+
 # CURRENT (2026-11-27)｜PMD0001 原生+實際 FS 程式測試切片 PASS／PMD0002 R29 ART HOLD
 
 [本輪 R27–R29 完整工程、測試及失敗紀錄](./PIXELLAB_TB_R27_R29_NATIVE_INTEGRATION_AND_PMD0002_20261127.md)。**原生環境阻斷已解除**：[Godot4.7.2 私人可重用執行檔](https://drive.google.com/file/d/1cK_WshG_OnCn42Rt4Wx8ZjwL160KvURU/view) SHA e8156713e6c7005226102451daf39610ee0e5fbc1cfa1b7bc8d104eecc66d5b8，官方版本/CI/Drive raw SHA/CRC PASS；不要重抓或再建 transport。Public-only [CI 45880633219](https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45880633219) / draft PR23 unmerged. R27 [完整原生整合工程](https://drive.google.com/file/d/1V6vi777q0ihK7qXy8P3EnX950n3Z7pJT/view) SHA 06d222a6ae5e52aa03731410469d2e7792c5d093c7b0c818207ec50838b2e0b6：PMD0001 native 181 clips/1123 frames PASS，actual FS synthetic-source-shaped map/VX301/battle/ACT/601 return with approved real shared sprite 20 checks PASS，seven existing suites PASS，3 actual OpenGL screenshots。254 FS base files/103 source assets unchanged, private ZIP readback PASS. Real original map/DB/production anchor/export/EGM not certified，license HOLD；PMD0001 owner ART PASS 永不重審。
