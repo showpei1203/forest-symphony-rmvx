@@ -1,0 +1,121 @@
+{
+  "status": "SOURCE_REUSE_PACKAGE_PASS_OWNER_ART_PENDING",
+  "actor_id": 2,
+  "graphic": "$Actor5",
+  "source_folder": "1vhcZhifp-9NWN2zwN3jPGOwzg9vPupTe",
+  "original_cells": [
+    32,
+    32
+  ],
+  "base_sheets": 5,
+  "nonempty_cells": 57,
+  "unique_rgba_cells": 52,
+  "exact_rgba_parity": "57/57 cold readback",
+  "f00": {
+    "file": "$Actor5_1.png",
+    "row": 0,
+    "column": 1,
+    "bbox": [
+      4,
+      1,
+      28,
+      32
+    ],
+    "sha256": "1438ec8dff80c88dd519916026a898cf86ad86c527666f143f2ac7569072510b"
+  },
+  "source_scripts": {
+    "Mia": "414735ca5ff4cb537f78b2d72ae372d48f72d6e3",
+    "SBS": "b10c055179165a9bbb02544a29cb1ea58456f146",
+    "settings": "0a5d453909546b86574f31a5f158fa8333a19105",
+    "sideview": "2e77bdd48a0e9684c3aea6681fdace77156363d4"
+  },
+  "mapping_zero_based": {
+    "standby": [
+      1,
+      0
+    ],
+    "move": [
+      1,
+      3
+    ],
+    "hurt": [
+      1,
+      1,
+      1
+    ],
+    "bad_status": [
+      1,
+      2
+    ],
+    "chest": [
+      2,
+      0
+    ],
+    "evade_barrier": [
+      2,
+      1
+    ],
+    "ko": [
+      2,
+      3,
+      0
+    ],
+    "bow_draw": [
+      3,
+      1
+    ],
+    "bow_release": [
+      3,
+      2,
+      2
+    ],
+    "pray": [
+      3,
+      3
+    ],
+    "low_pray": [
+      1,
+      1
+    ],
+    "hand_comment": [
+      3,
+      0
+    ],
+    "hand_executable": [
+      3,
+      3
+    ]
+  },
+  "discrepancies": [
+    "Mia FSM_HAND_* comments row0, executable row3. Keep source both; do not silently fix gameplay.",
+    "HURT and LOW_PRAY share row; EVADE and BARRIER share row.",
+    "Original pray includes baked glow, not a clean body-only newly authored layer. Preserve only as legacy source; do not claim separated FX."
+  ],
+  "archive": {
+    "drive_id": "1sZUcNcg9yQBA1bNxpO-OlmAACulpIk-r",
+    "bytes": 280098,
+    "entries": 80,
+    "sha256": "78bb49920bbea553d92fdd996be4061aa6fc8a6aaeffa5b393d81119c75ca04b",
+    "crc": "PASS",
+    "cold_readback": "PASS"
+  },
+  "flow_f00": {
+    "drive_id": "1I6g8lpnvPqQgwJh3dk1Anq605Dyh6MLS",
+    "bytes": 2514,
+    "sha256": "7bec2614d2ab1b86fb7cc83cf82e781c534c930b5cac0851b5337eb7a3d16152"
+  },
+  "flow_dodge_reference": {
+    "drive_id": "1nr1lARaMgfZDvqBs04ww_6UWl9ePzw7O",
+    "bytes": 4962,
+    "sha256": "123570fcaa09beebf2a9923c0d7432a6f3728e351409d508b6b1c651a1ca05dd"
+  },
+  "preview_gifs": 17,
+  "preview_timing": "illustrative only; not gameplay clock",
+  "new_art": "NOT_RUN",
+  "flow_generation": "NOT_RUN; existing scoped bridge is not generic media generation",
+  "owner_art": "PENDING",
+  "native_gameplay": "NOT_RUN",
+  "paid_jobs": 0,
+  "pc_writes": 0,
+  "engine_changes": 0
+}
