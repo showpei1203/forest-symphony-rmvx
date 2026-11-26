@@ -1,0 +1,92 @@
+{
+  "scene": "FS_04_MAZE",
+  "phase": "D25_ART_EARLY_REJECTION_AND_D26_AUTHORING_SPEC",
+  "datetime_Taipei": "2026-11-26",
+  "locked_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+  "canvas": [
+    1280,
+    928
+  ],
+  "grid": [
+    32,
+    32
+  ],
+  "strict_layers": [
+    "GROUND_FIRST_RGB",
+    "COMPLETE_PAR_SECOND_RGBA_ALPHA"
+  ],
+  "candidate_bbox_units": "x0,y0,x1,y1 inclusive-exclusive",
+  "bridge": {
+    "bbox_xyxy": [
+      944,
+      420,
+      1136,
+      626
+    ],
+    "max_width": 192,
+    "min_width": 160,
+    "expected_footpoints_xy": [
+      [
+        970,
+        603
+      ],
+      [
+        1110,
+        603
+      ]
+    ],
+    "desired_style": "one continuous source-authored arched bridge, intact piers, no resizing"
+  },
+  "forge": {
+    "bbox_xyxy": [
+      64,
+      96,
+      352,
+      456
+    ],
+    "max_width": 288,
+    "max_height": 360,
+    "desired_style": "compact intact forge 32px game-world scale"
+  },
+  "crane": {
+    "bbox_xyxy": [
+      605,
+      65,
+      842,
+      382
+    ],
+    "max_width": 237,
+    "desired_style": "one family at consistent 3/4 top-down perspective"
+  },
+  "shed": {
+    "bbox_xyxy": [
+      95,
+      648,
+      332,
+      860
+    ],
+    "max_width": 237
+  },
+  "road_keep_clear": [
+    [
+      390,
+      460,
+      880,
+      650
+    ]
+  ],
+  "early_rejection": {
+    "D24_current_bridge_px": 388,
+    "D24_current_forge_width_px": 495,
+    "D24_current_forge_height_px": 501,
+    "D24_gate_errors": [
+      "BRIDGE_WIDTH_EXCEEDS_6_TILES",
+      "FORGE_MORE_THAN_9_TILES_WIDE",
+      "FORGE_HEIGHT_TOO_LARGE"
+    ]
+  },
+  "actual_artifact_generation": "NO_ACCEPTED_D25_NEW_PAR",
+  "human_ART": "HOLD",
+  "formal_ART": "0/12",
+  "provisional_world_xy_warning": "Footpoints and Ground lava color heuristics are proposed and require artist review, NOT authored collision geometry."
+}
