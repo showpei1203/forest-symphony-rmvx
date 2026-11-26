@@ -1,3 +1,10 @@
+# 2026-11-27｜OWNER TASK RESET／現行優先於下列歷史規格
+
+實際讀取 Drive 成品地圖範本，分析 Ground/PAR 道路、橋兩岸、門口、建物底座、透視與原點，建立與凍結 Ground 同座標的整張可視化佈局輸入；一次生成全非地表透明 PAR，不再事後修橋、拆件或重複自由提示。失敗改上游空間約束或生成方式，先完成一張可用圖。
+完整最新權威：[FS 統一施工協議](https://github.com/showpei1203/forest-symphony-rmvx/blob/main/authority/FS_UNIFIED_CONTROL_PROTOCOL_20261124.md)。以下衝突內容僅為歷史。禁止反覆新增 QA gate；保留原安全與核准規則。
+
+---
+
 # Forest Symphony｜T-C D27 最高優先：ONE-PASS COMPLETE PAR ONLY｜2026-11-26
 
 **授權來源：使用者 2026-11-26 最新指令「目標放在一次性生成完整的 par，而不是單獨部件修正」、「修正規則並繼續施工」。本規格覆蓋 D18–D26 的分群擺位／局部橋梁／單獨工坊修補型主線，但不刪除歷史實驗和可追溯證據。**
