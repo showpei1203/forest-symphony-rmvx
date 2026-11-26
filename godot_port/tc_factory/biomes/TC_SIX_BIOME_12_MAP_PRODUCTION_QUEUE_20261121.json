@@ -470,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D26_SOURCE_GEOMETRY_PASS_TRUE_RGBA_COMPLETENONGROUND_PAR_VISUAL_STYLE_REJECT_FORMAL_ART_HOLD",
+      "stage": "D27_ONE_PASS_FULL_PAR_SOURCE_TRUE_ALPHA_PASS_ORIGINAL_NATIVE_SIZE_AND_WORLD_ART_FAIL",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -483,8 +483,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D26_NOT_RUN_ART_SOURCE_REJECTED",
-      "formal_art_gate": "HOLD_NO_ACCEPTED_D26_VISUAL_ART_A_D24_STYLE_MISMATCH",
+      "native_Godot_4_7_2_for_current_stage": "D27_NOT_RUN_SOURCE_WHOLE_CANVAS_FAILED",
+      "formal_art_gate": "HOLD_D27_ONE_PASS_ORIGINAL_1474x1067_NOT_NATIVE_1280x928",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -920,6 +920,40 @@
         "provenance_private_AB": "https://drive.google.com/file/d/1nLwACbNfYJapHJUXzYw69urrunUPzdD3/view",
         "provenance_private_QA": "https://drive.google.com/file/d/1N9G4_j9jpYedSHln1XNL85dU2lBj9cL-/view",
         "source_artwork_public_GitHub": false
+      },
+      "D27": {
+        "source_generation_method": "ONE_GENERATION_WHOLE_INDEPENDENT_NON_GROUND_RGBA_NO_COMPONENT_PATCHWORK",
+        "source_sha256": "5a089071cef9e0cb2315afee9f6af9075d913963a3e769e19f3fd5f331ada27d",
+        "source_size": [
+          1474,
+          1067
+        ],
+        "source_mode": "RGBA",
+        "source_alpha_zero": 1011280,
+        "source_visible_alpha_gt32": 464739,
+        "whole_canvas_native_required": [
+          1280,
+          928
+        ],
+        "native_whole_canvas_gate": "FAIL",
+        "frozen_ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "bridge_large_group_width_px_approx": 559,
+        "forge_large_group_width_px_approx": 510,
+        "world_coordinate_alignment": "NOT_PROVEN",
+        "source_crop_1280x928_would_lose_visible_pixels": 45499,
+        "generation_B": "REJECT_WRONG_MEDIUM_INFOGRAPHIC",
+        "generation_C": "REJECT_WRONG_MEDIUM_INFOGRAPHIC_ALPHA_ZERO_ZERO",
+        "onepass_source_form": "PASS_TRUE_RGBA_ALL_NONGROUND",
+        "registered_complete_native_par_candidate": false,
+        "uniform_whole_frame_resize": "QA_PREVIEW_ONLY_NOT_NATIVE",
+        "private_original_source": "https://drive.google.com/file/d/10WAlAHGuHZ189yS8khaAPG37qiCUSJ3m/view",
+        "private_composite_QA": "https://drive.google.com/file/d/1Du36K2v9MWqNuwdek-D2rgAJMf3sV636/view",
+        "private_11_file_zip": "https://drive.google.com/file/d/1wuzvKRIf1RGKfTH2w0cdHEA3Nh5lORSK/view",
+        "handoff": "godot_port/docs/handoff/TC_D27_ONE_PASS_COMPLETEPAR_SOURCE_ART_HOLD_20261126.md",
+        "art_gate": "HOLD_0_OF_12",
+        "native_godot": "NOT_RUN",
+        "new_art_accepted_in_D27": 0,
+        "source_original_ground_modified": false
       }
     },
     {
