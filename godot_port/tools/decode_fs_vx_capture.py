@@ -11,10 +11,12 @@ LIMIT = 128*1024*1024
 def sha(data):
     return hashlib.sha256(data).hexdigest()
 
-def read_capture(folder, nonce):
+def read_capture(folder, nonce, expected_autoset_version):
     folder = Path(folder)
     if not re.fullmatch(r"[0-9a-f]{32}",nonce):
         raise ValueError("bad nonce")
+    if not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", expected_autoset_version):
+        raise ValueError("expected AutoSetup version must be source-pinned")
     expected = {"SCOPE.txt","COMPLETE.tsv"} | {n+".rvdata" for n in NAMES}
     if folder.is_symlink() or not folder.is_dir() or {p.name for p in folder.iterdir()} != expected:
         raise ValueError("capture incomplete or unexpected files")
@@ -31,7 +33,7 @@ def read_capture(folder, nonce):
         raise ValueError("bad completion marker")
     mark=dict(pairs)
     pins={"schema":"fs-vx-capture-v1","stage":"post_Scene_Title.load_database",
-          "apply_completed":"1","authority_source":"FS_MASTER_SETUP","autoset_version":"1.5.0","nonce":nonce}
+          "apply_completed":"1","authority_source":"FS_MASTER_SETUP","autoset_version":expected_autoset_version,"nonce":nonce}
     if any(mark.get(k)!=v for k,v in pins.items()):
         raise ValueError("completion marker mismatch")
     if set(mark)!=set(pins)|{"ruby_version","party"}|{"count_"+n for n in NAMES}:
@@ -62,13 +64,14 @@ def read_capture(folder, nonce):
         raise ValueError("party mismatch")
     return tables,{"schema":"fs-vx-capture-structural-receipt-v1",
        "reported_stage":mark["stage"],"reported_ruby_version":mark["ruby_version"],
+       "reported_autoset_version":mark["autoset_version"],
        "reported_apply_count":1,"table_counts":counts,"party_actor_ids":party,
        "raw_capture_sha256":raw_hashes,"completion_sha256":sha((folder/"COMPLETE.tsv").read_bytes()),
        "actual_original_vx_authenticated":False,"vx_runtime_trace_verified":False,
        "production_approval":False}
 
-def convert(folder,nonce,output):
-    tables,receipt=read_capture(folder,nonce)
+def convert(folder,nonce,output,expected_autoset_version):
+    tables,receipt=read_capture(folder,nonce,expected_autoset_version)
     out=Path(output)
     out.mkdir(exist_ok=False)
     digests={}
@@ -85,6 +88,7 @@ def convert(folder,nonce,output):
 if __name__=="__main__":
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("capture");p.add_argument("--nonce",required=True);p.add_argument("--output",required=True)
+    p.add_argument("--expected-autoset-version",required=True,help="Exact version verified against original source; never infer from capture alone")
     a=p.parse_args()
-    r=convert(a.capture,a.nonce,a.output)
+    r=convert(a.capture,a.nonce,a.output,a.expected_autoset_version)
     print("FS_VX_CAPTURE_STRUCTURE_PASS; Tables=%d; OriginalVXAuthenticated=False; ProductionApproval=False"%len(r["table_counts"]))

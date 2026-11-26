@@ -90,12 +90,14 @@ RUBY
   assert.call(Dir.children(capture).size==14,'12 tables and markers')
   output=File.join(base,'converted')
   converter=File.join(__dir__,'decode_fs_vx_capture.py')
-  assert.call(system('python3','-I','-B',converter,capture,'--nonce',nonce,'--output',output),'decode accepted')
+  assert.call(system('python3','-I','-B',converter,capture,'--nonce',nonce,'--expected-autoset-version','1.5.0','--output',output),'decode accepted')
+  assert.call(!system('python3','-I','-B',converter,capture,'--nonce',nonce,'--expected-autoset-version','1.5.1','--output',File.join(base,'wrong_version'),out:File::NULL,err:File::NULL),'wrong source pin rejected')
+  assert.call(!system('python3','-I','-B',converter,capture,'--nonce',nonce,'--output',File.join(base,'unpinned'),out:File::NULL,err:File::NULL),'missing source pin rejected')
   assert.call(File.read(File.join(output,'skills.json')).include?('"mp_cost":18'),'post apply data captured')
   assert.call(!File.exist?(File.join(output,'fs_boot_final_authority.json')),'cannot self authorize')
   assert.call(!system(env,RbConfig.ruby,script,chdir:root,out:File::NULL,err:File::NULL),'capture overwrite denied')
   File.write(File.join(capture,'COMPLETE.tsv'),"fake\n")
-  assert.call(!system('python3','-I','-B',converter,capture,'--nonce',nonce,'--output',File.join(base,'bad'),out:File::NULL,err:File::NULL),'fake completion rejected')
+  assert.call(!system('python3','-I','-B',converter,capture,'--nonce',nonce,'--expected-autoset-version','1.5.0','--output',File.join(base,'bad'),out:File::NULL,err:File::NULL),'fake completion rejected')
   # Python writer must be readable by independent actual Ruby Marshal,
   # including UTF-8 name metadata, repeated symbols and binary payloads.
   py_input=File.join(base,'encoded_original.rvdata')
