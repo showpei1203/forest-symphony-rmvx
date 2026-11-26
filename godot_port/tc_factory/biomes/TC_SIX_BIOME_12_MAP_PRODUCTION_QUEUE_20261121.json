@@ -470,7 +470,7 @@
       "biome_id": "CRIMSON_VOLCANO",
       "biome_name": "赤焰火山",
       "role": "MAZE",
-      "stage": "D28_THREE_ONEPASS_TRUE_RGBA_WHOLE_PAR_SOURCES_ALL_NATIVE_SIZE_FAIL_SOURCE_ONLY_ART_HOLD",
+      "stage": "D29_OFFICIAL_EXACT_1280X928_TRANSPARENT_SINGLE_WHOLE_PAR_API_DRYRUN_AND_11_TESTS_CI_PASS_REAL_GENERATION_NOT_RUN_ART_HOLD",
       "ground_material_family": [
         "玄武岩",
         "火山灰",
@@ -483,8 +483,8 @@
         "鐵橋",
         "工坊屋"
       ],
-      "native_Godot_4_7_2_for_current_stage": "D28_NOT_RUN_SOURCE_FAIL_3_OF_3",
-      "formal_art_gate": "HOLD_D28_NEITHER_NATIVE_1280X928_NOR_WORLD_ALIGNED",
+      "native_Godot_4_7_2_for_current_stage": "D29_NOT_RUN_NO_ACCEPTED_NATIVE_ART",
+      "formal_art_gate": "HOLD_D29_NO_REAL_NATIVE_SIZE_IMAGE_SOURCE_AND_NO_OWNER_ART_APPROVAL",
       "Ground_source": {
         "status": "D16_GROUND_FIRST_RECOMPOSED_FROM_D11_OWNER_GROUND_ONLY_SOURCE",
         "source_locked_sha256": "ebc6b0f5ad5e5a853e4a470c77c7a2e080609add78d44eb705bc7b51d021fc8d",
@@ -1015,6 +1015,84 @@
         "pixellab_direct_generation_native_1280x928": "UNSUPPORTED_BY_OFFICIAL_V2_DOCUMENTED_SINGLE_IMAGE_LIMITS",
         "payment_required_jobs_triggered": 0,
         "original_D17_or_D27_artwork_overwritten": false
+      },
+      "D29": {
+        "local_date": "2026-11-27",
+        "authoring_goal": "ONE_PASS_SINGLE_COMPLETE_ALL_NONGROUND_TRANSPARENT_PAR_NO_COMPONENT_PATCHWORK",
+        "ground_sha256": "2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e",
+        "target_native_canvas": [
+          1280,
+          928
+        ],
+        "onepass_browser_sources": [
+          {
+            "filename": "A",
+            "native_size": [
+              1473,
+              1068
+            ],
+            "valid_visible_outside_canvas": 76661,
+            "native_source": "FAIL"
+          },
+          {
+            "filename": "B",
+            "native_size": [
+              1473,
+              1068
+            ],
+            "valid_visible_outside_canvas": 97510,
+            "native_source": "FAIL"
+          },
+          {
+            "filename": "C",
+            "native_size": [
+              1473,
+              1068
+            ],
+            "valid_visible_outside_canvas": 77181,
+            "native_source": "FAIL"
+          },
+          {
+            "filename": "D",
+            "native_size": [
+              1473,
+              1068
+            ],
+            "valid_visible_outside_canvas": 86778,
+            "native_source": "FAIL"
+          }
+        ],
+        "new_official_image_provider_route": {
+          "api": "/v1/images/edits",
+          "model": "gpt-image-2.5-sunburst",
+          "fallback_model": "gpt-image-2.5-flare",
+          "model_parameters": {
+            "size": "1280x928",
+            "background": "transparent",
+            "output_format": "png",
+            "quality": "high",
+            "n": 1
+          },
+          "official_model_support": "PUBLIC_SPEC_CONFIRMED_NOT_ACCOUNT_EXECUTION",
+          "source_ground_reference": "sha_locked_d17_reference",
+          "payable_execution": "NOT_RUN",
+          "owner_paid_authorization": "NOT_GIVEN",
+          "paid_calls": 0,
+          "request_manifest": "https://drive.google.com/file/d/1wV_UbsyF0XdCvkqSVhSaCyuE5h-fpEu-/view",
+          "CI": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45883233641",
+          "offline_unit_test_count": 11,
+          "offline_unit_tests_passed": 11,
+          "provider_account_auth": "NOT_TESTED"
+        },
+        "private_zip": "https://drive.google.com/file/d/1YFaSByD1GXjdpl07K4o9Z0cHagxuZ18n/view",
+        "private_contact_QA": "https://drive.google.com/file/d/1j6uGjGxlVKscMJSfnjrhq-fseggpT4-L/view",
+        "private_source_QA": "https://drive.google.com/file/d/1Mr_MEsM_Hk_Vm3jTMH45xtqXi3mONAOQ/view",
+        "new_formal_par_count": 0,
+        "actual_native_godot": "NOT_RUN",
+        "human_visual_ART": "HOLD",
+        "formal_ART_PASS": "0/12",
+        "no_component_patchwork": true,
+        "original_art_untouched": true
       }
     },
     {
