@@ -75,3 +75,16 @@
 [**D25 私人九件完整經驗、圖像 QA、作者 Blueprint、測試／拒收記錄 ZIP**](https://drive.google.com/file/d/1VsNJQcEFhM0-Se4sYvXWsSjrXFXKop34/view)｜[D25 完整正反實證與 Failure Log](../handoff/TC_D25_ART_GEOMETRY_GATES_LESSONS_HANDOFF_20261126.md)（隔離實驗分支）｜[完整 QA-only Ground 尺寸導引圖](https://drive.google.com/file/d/1Ca9xs3wGfO2CtFUjgQuzA3pwoRrwZj0-/view)。
 
 **切記**：D25 **沒有**通過的新獨立 PAR、正式 Ground 新版本或真 D25 Godot native 截圖；不能因 source gate 程式 PASS 就更新任何一張正式 ART PASS。畫面漂亮 ≠ 世界尺度和腳點合格，下一完整單位仍是 Ground-first 世界一致、真透明完整 PAR 的美術創作。
+
+
+## 八、2026-11-26 D26｜短橋尺寸 Gate 成功，但完整地圖畫風 Gate 拒收（新真實反例）
+
+D25 尺寸門檻可量產地拒絕 388px 舊橋、495px 工坊；D26 隨即在真 D17 Ground 上以 1× **完全新作者化** 192×156px 短橋、282×356px 小工坊、236×288px 吊車、225×209px 倉庫，配 D24 獨立 PAR 來源剩餘七個完整、無縮放物件，成功重建一張同世界 `1280×928 RGBA CompletePAR`，但**整張畫風未達標，已正式 ART REJECT**。因此後續不得把「先過尺寸再進 Godot」誤讀成只需尺寸/Alpha/零重疊就能宣告新美術合格。
+
+- **工程證據**：不變 D17 Ground SHA `2f9ad1d596171327fbc92f797495ea12d0e231c551da8eda3437035af2d6d94e`，獨立新 1× PAR SHA `f8096afedba93dd66211cfd92385596ffda061c0d6cb6688fc762d83887805fe`，靜態合成 SHA `3b7cbd819e2983c2548eb98e386bc2e15593912e93f0c30b41c2e43e31b94920`，真正 alpha0=1003743，物件相交=0，世界畫布外框高 Alpha=0；四項冷重建 SHA 完全一致。
+- **美術拒收**：新小物件是**程式手繪像素風、非同一模型的一次全 PAR 作者圖**；屋頂、架構與橋的平板色塊，與 D24 來源及 D17 Ground 的豐富石材、屋瓦、微光細節有**肉眼可辨的風格斷層**。可見唯一 RGB 的差異 D24 forge 112457 vs D26 forge 57、D24 bridge 42793 vs D26 bridge 38，只作風格變化診斷，**不是人工 ART 分數或可取代視覺審核的規則**。D26 省去 Godot 正式跑圖是合理 fail-fast；**正式 ART 0/12，D26 PRIVATE native NOT RUN**。
+- **圖像生成失敗三例**：孤立橋源仍是 RGB 棋盤、且尺寸大；另外兩次拿到混入 Ground 的 Master（一次還是資訊式圖片），即刻拒收，不得從圖像上的文字認領「技術／美術 PASS」，更不得拿混合 Master 逆切 PAR。
+- **製程新增順序**：Ground 已鎖 → **同一 Style DNA／物件作者一致性**與橋腳位置設計 → 取得真正完整獨立非地表來源 → 先 Source geometry + alpha + style 類比整張肉眼驗收 → 才做完整 PAR 1×對位、合成和有限 Godot native → 使用者 HUMAN ART Gate。兩次產生混地表/錯媒介/比例錯/風格跳動就改作者工具或重新 Ground-first 構圖，不再用手工少色階替換 AI 高細節物件。
+- **現有工具路線**：先確認既有 PixelLab／Map Workshop 是否在當前工具鏈實測支援**固定世界像素尺寸 + 同風格 source authoring**，不假設可用；禁止未核准付費 API 自動觸發。T-C 工廠追求一張已經一致的完整 PAR，不能再次轉為研究角色碰撞／事件。
+
+**D26 真來源/失敗樣本/風格 A/B 完整 owner-private 封存**：[19件 ZIP 17,973,255 bytes CRC PASS](https://drive.google.com/file/d/1AziDn0gHc01P5wdCBmlbOcv_Kvr1DM1v/view)｜[正式 D26 Failure Log 及累積經驗](../handoff/TC_D26_ART_FIRST_COMPACT_ASSETS_STYLE_REJECT_20261126.md)（實驗分支）｜[D24 vs D26 全景](https://drive.google.com/file/d/1nLwACbNfYJapHJUXzYw69urrunUPzdD3/view)。所有新原圖與 D17/D24 來源均私人，正式 ART 仍 0/12。
