@@ -1,0 +1,27 @@
+name: FS T-C D28 one-pass whole PAR source contract (synthetic only)
+on:
+  push:
+    branches:
+      - feat/fs-tc-d12-chroma-par-20261122
+    paths:
+      - 'godot_port/tc_factory/biomes/fs_tc_d28_whole_plate_source_gate.py'
+      - 'godot_port/tc_factory/biomes/test_fs_tc_d28_whole_plate_source_gate.py'
+      - '.github/workflows/fs-tc-d28-onepass-source-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-source-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install isolated test dependencies
+        run: python3 -m pip install --disable-pip-version-check Pillow==12.0.0 numpy==2.3.5
+      - name: Verify genuine RGBA source and zero-tolerance on native canvas / clipping
+        run: python3 godot_port/tc_factory/biomes/test_fs_tc_d28_whole_plate_source_gate.py
+      - name: Explicitly distinguish synthetic tests from private scene, Godot and ART
+        run: |
+          echo 'Only SYNTHETIC source-check tests have been run in this public workflow.'
+          echo 'Private D28 art and Ground are not uploaded to public GitHub or CI.'
+          echo 'Official 12-map ART PASS is still 0/12.'
