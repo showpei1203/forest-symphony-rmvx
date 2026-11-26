@@ -1,3 +1,14 @@
+# D26 真實來源／美術拒收／私有成果索引（2026-11-26）
+
+**Gate 首先說明**：新完整 1280×928 PAR 工程可合成，但 D26 新手繪物件與 D24 細緻火山場景畫風不一致，**人眼 ART FAIL/HOLD，正式 0/12**；此為**刻意保留的失敗證據，不是可交付正式地圖**。D26 新圖片 Godot 4.7.2 原生 **NOT RUN**。
+
+- [**D26 19 檔完整 PRIVATE Source／四張新原生1×小尺寸物件／Ground／完整 PAR／全圖比較／三張拒收生成源／QA／程式／Failure Log ZIP，17,973,255 bytes，CRC PASS**](https://drive.google.com/file/d/1AziDn0gHc01P5wdCBmlbOcv_Kvr1DM1v/view)，SHA256 `ea185a382765cc77564aa9f5c2364fd848dc7e3ec2dce4b49062c49ea8b20b63`。
+- [獨立新 D26 COMPLETE PAR](https://drive.google.com/file/d/1xYoBb6hxN_MDuz5-HLrPO0i0Oir5aWKx/view)、[D26 靜態真 Ground+PAR（ART REJECT）](https://drive.google.com/file/d/1dpr1rXZZKpTLyFeJNaGAwz01hnA6MlyG/view)、[D24 vs D26 全景 A/B](https://drive.google.com/file/d/1nLwACbNfYJapHJUXzYw69urrunUPzdD3/view)。
+- [四個新手繪 1× 全透明來源（不取代正式美術）](https://drive.google.com/file/d/195siMlwXrtA9CLbAnFlwGyo0dvCjuIlJ/view)、[新 192px 短橋原圖](https://drive.google.com/file/d/1roGiiaHzqqJJYvD3KXH9r4RFE0ccc_qp/view)、[D26 ART QA JSON](https://drive.google.com/file/d/1N9G4_j9jpYedSHln1XNL85dU2lBj9cL-/view)。
+- 全部圖片及ZIP已 Google Drive metadata `shared=false` owner-only READBACK；GitHub 只有生成實驗程式、樣式診斷、文字/來源 SHA，不放公開私人 PNG。
+
+---
+
 # Forest Symphony｜T-C D26｜FS_04_MAZE「熔脈裂橋」｜比例達標但美術不達標
 
 日期：2026-11-26（Asia/Taipei）｜隔離工作線：`feat/fs-tc-d12-chroma-par-20261122`｜**正式 ART PASS 0/12，D26 VISUAL SOURCE REJECT**
