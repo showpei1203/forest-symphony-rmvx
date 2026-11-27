@@ -1,6 +1,6 @@
 {
   "schema": "fs-tool-inventory/v1",
-  "checked_at": "2026-11-24",
+  "checked_at": "2026-11-25",
   "warning": "Inventory is historical evidence, never proof that another ChatGPT conversation automatically loads/uses tools. Each task must confirm current connection and reload actual SKILL.md.",
   "skills": {
     "project_current": {
@@ -64,7 +64,9 @@
       "name": "PixelLab",
       "status": "TRUE_PROVIDER_USED_IN_TB",
       "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/101",
-      "route": "true source locked T-B provider jobs, no default free rerun"
+      "route": "Existing actual provider use preserved; official MCP/API first, scoped browser fallback only for unavailable web-only capabilities. One paid job reservation, no blind retries.",
+      "browser_adapter_status": "REUSE_PROTOCOL_PUBLISHED_NOT_INSTALLED",
+      "browser_adapter_protocol": "https://github.com/showpei1203/chatgpt-pc-bridge/blob/main/docs/SCOPED_BROWSER_AUTOMATION_PROTOCOL.md"
     },
     {
       "name": "sprite-gen 4.3.0",
@@ -89,6 +91,28 @@
       "status": "MCP_SEARCH_SMOKE_ONLY",
       "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/36",
       "route": "do not claim it is the standard research pipeline"
+    },
+    {
+      "name": "Agent Sprite Forge",
+      "status": "REAL_FS_VIDEO_ROUNDTRIP_NATIVE_12F_PASS_GENERATION_BLOCKED",
+      "upstream_commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "route": "Owner priority T-A image-to-video first. Fixed 12x 720p A62 crop. Existing A52 two codec fixture actual roundtrip + native one-shot PASS. Four video routes NO_ROUTE; new AI video NOT_RUN. Art HOLD; no paid fallback.",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/actions/runs/45525982184",
+      "functional_evidence": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45528461594",
+      "source_diagnostic_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/150",
+      "public_native_evidence": "https://github.com/showpei1203/forest-symphony-rmvx/actions/runs/45528621975",
+      "real_native_evidence": "https://drive.google.com/file/d/1WSjsYCc9ubN5_qWb3-UjogLbKA9LBQoG/view",
+      "video_pilot_evidence": "https://drive.google.com/file/d/1Kh2Ll4BLjO51cT0RPcFRHBWV1jL4FUUX/view",
+      "video_route_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/153"
+    },
+    {
+      "name": "Google Flow",
+      "status": "LIVE_BIDIRECTIONAL_READ_ONLY_PASS",
+      "route": "Owner logged-in existing Chrome Flow editor; v0.1.5 fixed native PROBE_ROUNDTRIP actual #187 PASS, 53 controls/5 editables/3 file inputs, no click. Mutation disabled; no upload, prompt, cost or video generation proven. Background visibility not in live receipt.",
+      "evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/187",
+      "native_binary_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/177",
+      "protocol": "https://github.com/showpei1203/chatgpt-pc-bridge/blob/main/docs/SCOPED_BROWSER_AUTOMATION_PROTOCOL.md",
+      "background_synthetic_evidence": "https://github.com/showpei1203/chatgpt-pc-bridge/issues/186"
     }
   ],
   "priority": "Task-specific actual user input > global Drive P0 > latest live lane handoff > current FS Godot protocol > verified tool inventory > old saved state"

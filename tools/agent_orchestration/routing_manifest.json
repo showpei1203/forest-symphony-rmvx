@@ -221,5 +221,14 @@
     "cloud_write_readback"
   ],
   "activation_warning": "Finding a SKILL.md, PC registry entry or tool install does not prove automatic selection or actual use in a ChatGPT conversation.",
-  "governance_branch": "main"
+  "governance_branch": "main",
+  "optional_toolchain": {
+    "agent_sprite_forge": {
+      "skill": ".agents/skills/fs-agent-sprite-forge/SKILL.md",
+      "handoff": "authority/FS_ASF_CURRENT_HANDOFF_20261125.md",
+      "mode": "offline_processing_external_video_input",
+      "pin": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "selection": "Owner priority: T-A ACTOR01 actual image-to-video ATTACK first, then RUN and IDLE. T-B/T-C ASF pilots deferred. Always select pinned ASF for registration and extraction of supplied video; do not auto-run a paid provider. New video unavailable until a configured or owner-supplied route is verified. Preserve original source and owner art gate."
+    }
+  }
 }

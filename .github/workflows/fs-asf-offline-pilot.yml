@@ -1,0 +1,144 @@
+name: FS ASF offline public fixture
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/fs-asf-offline-pilot.yml'
+      - '.agents/skills/fs-agent-sprite-forge/**'
+      - 'tools/agent_orchestration/fs_asf_source_guard.py'
+      - 'tools/agent_orchestration/fs_asf_video_intake.py'
+permissions:
+  contents: read
+jobs:
+  public-fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          path: fs
+          persist-credentials: false
+      - name: Fetch exact public upstream and check pin
+        run: |
+          git init "$RUNNER_TEMP/asf"
+          git -C "$RUNNER_TEMP/asf" fetch --depth 1 https://github.com/0x0funky/agent-sprite-forge.git 25203d03900b46b444bdd72a75768c33d1895ad6
+          git -C "$RUNNER_TEMP/asf" checkout --detach FETCH_HEAD
+          test "$(git -C "$RUNNER_TEMP/asf" rev-parse HEAD)" = 25203d03900b46b444bdd72a75768c33d1895ad6
+      - name: Offline dependency setup
+        run: |
+          python3 -m venv "$RUNNER_TEMP/asf-venv"
+          "$RUNNER_TEMP/asf-venv/bin/python" -m pip install --only-binary=:all: --no-cache-dir 'numpy>=1.26,<3' 'Pillow>=10.1,<14' 'scipy>=1.11,<2'
+      - name: External video intake regression (synthetic metadata only)
+        run: python3 -B fs/tools/agent_orchestration/fs_asf_video_intake.py --self-test
+      - name: Approved-source guard positive and negative cases
+        run: '"$RUNNER_TEMP/asf-venv/bin/python" -B fs/tools/agent_orchestration/fs_asf_source_guard.py --self-test'
+      - name: Reproduce undersized cell rejection and test enlarged public image
+        run: |
+          cd "$RUNNER_TEMP/asf"
+          export PYTHONUTF8=1
+          py="$RUNNER_TEMP/asf-venv/bin/python"
+          # Preserve first failure, rather than weakening the upstream gate.
+          set +e
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$py" -B skills/generate2dsprite/scripts/pixel_look.py master --image src/pixel-looks/kael-picture.png --colors 16 --name pilot --output-dir "$RUNNER_TEMP/asf-negative" > "$RUNNER_TEMP/asf-negative.log" 2>&1
+          rc=$?
+          set -e
+          cat "$RUNNER_TEMP/asf-negative.log"
+          test "$rc" = 1
+          grep -F 'cells this small' "$RUNNER_TEMP/asf-negative.log"
+          test ! -e "$RUNNER_TEMP/asf-negative/pilot.png"
+          # Exact nearest enlargement, no new art, no change to original.
+          "$py" - "$RUNNER_TEMP/asf-enlarged.png" <<'PY'
+          import sys
+          from PIL import Image
+          im=Image.open("src/pixel-looks/kael-picture.png").convert("RGB")
+          im.resize((im.width*2,im.height*2),Image.Resampling.NEAREST).save(sys.argv[1])
+          PY
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$py" -B skills/generate2dsprite/scripts/pixel_look.py master --image "$RUNNER_TEMP/asf-enlarged.png" --colors 16 --name pilot --output-dir "$RUNNER_TEMP/asf-output"
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$py" -B - "$RUNNER_TEMP/asf-output/pilot.png" <<'PY'
+          import hashlib, sys
+          from pathlib import Path
+          from PIL import Image
+          p=Path(sys.argv[1])
+          im=Image.open(p).convert("RGBA")
+          colors={px[:3] for px in im.getdata() if px[3]}
+          alpha=set(im.getchannel("A").getdata())
+          assert alpha == {0,255}, alpha
+          assert 1 < len(colors) <= 16, len(colors)
+          assert 0 < im.width <= 64 and 0 < im.height <= 64, im.size
+          print("ASF_PUBLIC_FIXTURE_OFFLINE_PASS", im.size, len(colors), hashlib.sha256(p.read_bytes()).hexdigest())
+          print("PUBLIC_UPSTREAM_SAMPLE_ONLY; FS_ART_NOT_RUN; GODOT_NOT_RUN; PAID_CALLS=0")
+          PY
+
+      - name: Generate deterministic two-frame public sample motion
+        run: |
+          cd "$RUNNER_TEMP/asf"
+          env -i PATH=/usr/bin:/bin HOME="$RUNNER_TEMP" PYTHONUTF8=1 "$RUNNER_TEMP/asf-venv/bin/python" -B skills/video2dsprite/scripts/pixel_motion.py breath --sprite "$RUNNER_TEMP/asf-output/pilot.png" --name pilot_idle --output-dir "$RUNNER_TEMP/asf-motion" --ms-list 300,400 --no-package
+      - name: Download official Godot 4.7.2
+        run: |
+          curl -fsSL --retry 2 -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/godot"
+          chmod +x "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64" --version | grep -F '4.7.2.stable.official'
+      - name: Native Godot import and real two-frame SpriteFrames playback
+        run: |
+          mkdir "$RUNNER_TEMP/asf-godot"
+          cd "$RUNNER_TEMP/asf-godot"
+          cp "$RUNNER_TEMP/asf-motion/motion.json" .
+          cp "$RUNNER_TEMP/asf-motion/clean/"frame_*.png .
+          printf 'config_version=5\n[application]\nconfig/name="ASF public test"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\n' > project.godot
+          cat > test.gd <<'GD'
+          extends SceneTree
+          func _initialize():
+              call_deferred("run")
+          func check(condition: bool, detail: String) -> bool:
+              if not condition:
+                  printerr("ASF_NATIVE_FAIL " + detail)
+                  quit(1)
+                  return false
+              return true
+          func run():
+              var m = JSON.parse_string(FileAccess.get_file_as_string("res://motion.json"))
+              if not check(m is Dictionary and m.durationsMs == [300.0, 400.0] and m.loopPolicy == "cycle", "motion metadata"): return
+              var frames := SpriteFrames.new()
+              frames.add_animation(&"idle")
+              frames.set_animation_speed(&"idle", 1.0)
+              frames.set_animation_loop(&"idle", true)
+              for i in range(2):
+                  var path := "res://frame_%03d.png" % i
+                  var im := Image.load_from_file(path)
+                  if not check(im != null and not im.is_empty(), "actual frame missing"): return
+                  if not check(im.get_size() == Vector2i(int(m.frameSize[0]), int(m.frameSize[1])), "frame geometry"): return
+                  frames.add_frame(&"idle", ImageTexture.create_from_image(im), float(m.durationsMs[i]) / 1000.0)
+              var sprite := AnimatedSprite2D.new()
+              sprite.sprite_frames = frames
+              sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+              sprite.centered = false
+              sprite.offset = -Vector2(float(m.anchor[0]), float(m.anchor[1]))
+              root.add_child(sprite)
+              if not check(frames.get_frame_count(&"idle") == 2 and frames.get_animation_loop(&"idle"), "loop/count"): return
+              if not check(is_equal_approx(frames.get_frame_duration(&"idle",0),0.3) and is_equal_approx(frames.get_frame_duration(&"idle",1),0.4), "duration"): return
+              sprite.play(&"idle")
+              await create_timer(0.45).timeout
+              if not check(sprite.is_playing() and sprite.frame == 1, "actual frame progression"): return
+              await create_timer(0.35).timeout
+              if not check(sprite.is_playing() and sprite.frame == 0, "actual loop"): return
+              print("ASF_PUBLIC_GODOT472_NATIVE_PASS frames=2 durations_ms=300,400 nearest=true loop=true; PUBLIC_ONLY FS_ART_NOT_RUN")
+              sprite.queue_free()
+              quit(0)
+          GD
+          "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64" --headless --path . --script test.gd 2>&1 | tee "$RUNNER_TEMP/asf-native.log"
+          grep -F 'ASF_PUBLIC_GODOT472_NATIVE_PASS' "$RUNNER_TEMP/asf-native.log"
+
+      - name: Export pinned public runtime for isolated owner-private source QA
+        run: |
+          git -C "$RUNNER_TEMP/asf" archive --format=zip --output="$RUNNER_TEMP/asf-public-tools.zip" 25203d03900b46b444bdd72a75768c33d1895ad6 skills LICENSE requirements.txt
+          sha256sum "$RUNNER_TEMP/asf-public-tools.zip" "$RUNNER_TEMP/godot.zip" > "$RUNNER_TEMP/asf-runtime-sha256.txt"
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+        with:
+          name: asf-pinned-public-runtime
+          path: |
+            ${{ runner.temp }}/asf-public-tools.zip
+            ${{ runner.temp }}/godot.zip
+            ${{ runner.temp }}/asf-runtime-sha256.txt
+          retention-days: 1
+          if-no-files-found: error

@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-25",
+  "status": "TECH_PASS_OWNER_ART_HOLD",
+  "pipeline_blob": "494e8cd901823c9f6f613cc4974644f90caa048a",
+  "native_blob": "ac1a5699dac04b7f173c72bd9609c5e83bbce2d0",
+  "runtime": "4.7.2.stable.official.ed1daf0bf",
+  "source_sha256": "70a8e6aaddbad052e3ea12fe8def8be90fe8932f89154da3c93da98edfddea1e",
+  "fixture_only": true,
+  "outputs": [
+    {
+      "case": "A52 delivery",
+      "clip_sha256": "913c5a5043ea6f4baa3c96a1221da30183cf811558e43baeef2e8ca471ce2009",
+      "decode_receipt_sha256": "df1d46896a3563f025af8a57fac15cf8b76c38d99abed0044e124d08a5059e8d",
+      "selection_sha256": "cc451ee6cf0addbf5188df7d7c99277e673397a8bb261bd1b04c2918788713d5",
+      "atlas_sha256": "6f8f554877006fa880b5a47d09ece06a3e48ddbfe8f022743931116f8af65a94",
+      "matches_prior": true,
+      "native": "PASS"
+    },
+    {
+      "case": "A52 lossless",
+      "clip_sha256": "69d499bc7a396dd309ac76d04264004e5100993d7a100124a123ad4fca9f1796",
+      "decode_receipt_sha256": "2969b45996f01f32fbdd84d22b857b3930fa19205270fcee462c0de5a50074d3",
+      "selection_sha256": "27110aa4b94a6ca3d634a7710e681da5ebc4a3b55739725c5f1b1542d033a6cd",
+      "atlas_sha256": "7cf9e977276813f00e3a3fd7c4d0388c04658edfe3d30d0da0a670a81b9254e4",
+      "matches_prior": true,
+      "native": "PASS"
+    }
+  ],
+  "frames": 12,
+  "anchor": [
+    32,
+    50
+  ],
+  "durations_ms": [
+    100,
+    90,
+    85,
+    75,
+    105,
+    105,
+    60,
+    115,
+    95,
+    80,
+    70,
+    20
+  ],
+  "negative_cases": [
+    "duplicate_indices",
+    "invalid_timing",
+    "auto_hit",
+    "stale_review",
+    "wrong_review",
+    "fixture_as_external",
+    "tampered_frame"
+  ],
+  "negative_pass": 7,
+  "gameplay": "NOT_RUN",
+  "provider_generation": false,
+  "owner_art": "HOLD"
+}
