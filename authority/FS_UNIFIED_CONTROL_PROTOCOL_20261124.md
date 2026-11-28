@@ -1,3 +1,8 @@
+# 2026-11-28｜OWNER PRODUCTION SIZE AND MASS-PRODUCTION UPDATE (active)
+Owner: use PixelLab's supported native map dimensions rather than forcing current large sizes. Match actual SAMPLE MAPS style; transparent layering must pass. Ground first, then one complete all-non-ground RGBA PAR, matching native size and origin; no reverse extraction or patchwork. First complete smaller map then a distinct repeat, with actual reference and native Godot/ART evidence. D34 fixed-size failure is historical, not a prerequisite for new maps; no overwrite of D33. T-B accelerate repeatable original three-stage families, shared map/battle sprites, static identity then Idle/Walk/Attack, optional eight-direction stills, same pipeline across two independent families. T-A remains stopped. Source Skills: https://github.com/showpei1203/tankentai-sbs-godot/blob/feat/ai-agent-skill-library-20261123/ai_agent_skills/.agents/skills/fs-map-ground-par/SKILL.md and https://github.com/showpei1203/tankentai-sbs-godot/blob/feat/ai-agent-skill-library-20261123/ai_agent_skills/.agents/skills/fs-monster-evolution/SKILL.md. These are production specifications, not new asset PASS. Existing cost/rights/P0 gates unchanged.
+
+---
+
 # 2026-11-27｜OWNER TASK RESET／現行優先於下列歷史規格
 
 2026-11-27 使用者最新決策：T-A 停止新角色與動作生成（含 Flow／PixelLab），Godot 直接沿用原 FS 素材、共用地圖／戰鬥 Sprite 及原紙娃娃規格；保留所有歷史成果。T-B 改為 PMD 像素風格與骨架／尺度／動作語法參考，製作山海經靈感的原創異獸及自創三階進化鏈，不再按 PMD 物種編號逐隻改色或照抄。T-C 必須先實際讀取 Drive 已完成地圖範本，分析位置失準原因，再以凍結 Ground 和範本建立可視化座標約束，一次生成整張透明全非地表 PAR。舊任務、NEXT、逐號規則及事後局部修補法如有衝突均降為歷史；已核准素材不得重做。成果優先，沿用已提供素材與 Skills，不為微小細節反覆開發驗收工具；同法兩次失敗即改變生成方法。原有授權、成本、私有儲存及真實驗收規則不變。
