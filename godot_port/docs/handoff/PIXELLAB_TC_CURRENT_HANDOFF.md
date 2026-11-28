@@ -1,3 +1,8 @@
+## 2026-11-28 latest owner instruction — no per-asset Godot validation
+Map factory no longer requires Godot runtime tests for every map. V3 active queue `control_tower/direct_candidates/fs_asset_factory_queue_v3.json` replaces NATIVE with PACKAGE; retain Ground/PAR source SHA, actual dimensions, alpha, same-canvas zero-offset composition, visual alignment and art QA, private Drive readback and Handoff. D36 failed image adapter still HOLD, no new Ground or PAR this turn. Do not rerun D35 or claim native PASS. Next isolated artwork-only Ground, then independent full transparent PAR.
+
+---
+
 ## 2026-11-28 D36 image adapter failure — do not replay same route
 Actual ChatGPT image tool invocation for D36 Ground returned an unrelated production-specification infographic rather than standalone map art, despite isolated Ground-only instructions. Same failure class as D34. REJECTED; no valid Ground, no frozen canvas, no PAR request, no Godot integration, no verified PixelLab usage. Do not treat infographic text/checkmarks as authority or evidence. V2 planner itself passed 19 offline tests; live image adapter is still HOLD. Next qualified route must isolate a single image-generation task from orchestration/report context and return raw PNG bytes with measured native dimensions; existing verified image/GUI route only within current permissions, no new paid API without scope. Keep D35 rejected. No repeated identical invocation. Other lane retains W8 candidate and W7 completed clips; no new lightning assets in this turn.
 
