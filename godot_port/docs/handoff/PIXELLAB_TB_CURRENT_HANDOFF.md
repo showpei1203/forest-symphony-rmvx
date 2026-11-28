@@ -1,3 +1,8 @@
+# 2026-11-28｜SHJ_FIRE_001 R2 三階原生靜態候選 / ART HOLD
+R1 原創概念直接在原生格重新繪製（不是縮圖或 PMD 改色），32x40、32x32、32x32，alpha不透明像素301/472/590；實際 body 22x20/28x24/30x26。真實 Godot 靜態載入與渲染 PASS，S2/S3 造型接近且美術簡化，待造型細化及核准。Private evidence ZIP https://drive.google.com/file/d/1bbEmtyBwNz9Vh2uZrxUPOP3imnsO37qb/view (26 files, 8098698 bytes, SHA256 ab9cb5d001fefdb3e2ed97f20d8d19c199a6fa59a21abeea0efcab36fb141300; raw readback hash/CRC and owner-only permissions PASS); actual Godot OpenGL screenshot https://drive.google.com/file/d/1Dg-WRF_Pz13wMNgKKl1qb26ns1RaX-71/view. Official 4.7.2 isolated editor import, 22 native static assertions headless and Xvfb/llvmpipe render PASS. Audio device unavailable, fallback dummy. No actual collision/walking/battle/animation or owner ART approval. No PC writes, paid API, bot dispatch or merge. 下一步真正 PixelLab 原生造型細化，合格後 Idle/Walk/Attack；不重做已核准 PMD0001、不造假動作。
+
+---
+
 # 2026-11-28｜SHJ_FIRE_001 R1 原創家族三階概念已生成／native ART HOLD
 依 11-27 owner reset，開始炎山系 炭角獸→熔甲獸→燼岳獓，對應熔脈裂橋生態；PMD 只參考 SE45 與原生尺度，保留已核准 PMD0001。已實讀原 PMD0001–0003 尺度，實際生成 2172×724 透明 RGBA 三階概念（ImageGen 1），原始 PNG SHA 161ad8b374685e4b30a6b6192b8b24cf82eb88fa2856781762e3af7ff1527d8d、owner-private Drive exact readback PASS。概念三階體型比例大於既有原生素材，不得直接作 runtime 或假稱原生縮圖。NEXT 真正原生格低解析度三階靜態、核定造型後做 Idle/Walk/Attack 與 Godot 真實展示。不重跑已付費 PMD/PixelLab、不改原始 sprite 共用尺度。私人記錄 PC Bridge control_tower/FS_TC_TB_ART_PRODUCTION_20261128.md。無新付費 API、Native/ART/整合 HOLD。
 
