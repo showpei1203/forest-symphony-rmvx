@@ -4,6 +4,9 @@ class_name FSBattle
 # Candidate baseline only. For exact FS parity, trace RGSS2 last-wins aliases and tags.
 signal changed(message: String)
 signal finished(victory: bool)
+# Presentation-only snapshot; never use to determine gameplay or spend resources.
+signal target_outcome_resolved(outcome: Dictionary)
+var _target_outcome_serial: int = 0
 
 var db: FSDatabase
 var party: Array[Dictionary] = []
@@ -345,6 +348,43 @@ func attack_preflight(attacker: Dictionary,target: Dictionary) -> bool:
         return false
     return true
 
+# Identity, not database ID or dictionary value equality: duplicate enemy IDs are legal.
+func _outcome_member(battler: Dictionary) -> Array:
+    for i in range(party.size()):
+        if is_same(party[i], battler):
+            return ["party",i]
+    for i in range(enemies.size()):
+        if is_same(enemies[i], battler):
+            return ["enemy",i]
+    return []
+
+# Only post-commit sites call this. Snapshot scalars, not mutable combat objects.
+# hp_effect is the resolved HP amount (positive damage, negative healing),
+# not an assertion that unclamped overkill HP was physically lost.
+func _emit_target_outcome(source: Dictionary, selected: Dictionary, recipient: Dictionary,
+        action: String, skill_id: int, result: String, hp_effect: int=0,
+        shield_mp: int=0) -> void:
+    if not active or not result in ["hit","miss","evade"]:
+        return
+    var a: Array = _outcome_member(source)
+    var b: Array = _outcome_member(selected)
+    var c: Array = _outcome_member(recipient)
+    if a.is_empty() or b.is_empty() or c.is_empty():
+        return
+    _target_outcome_serial += 1
+    var event: Dictionary = {
+        "serial":_target_outcome_serial,"action":action,"skill_id":skill_id,
+        "result":result,"source_side":a[0],"source_slot":a[1],
+        "source_id":int(source.get("id",0)),
+        "selected_side":b[0],"selected_slot":b[1],
+        "recipient_side":c[0],"recipient_slot":c[1],
+        "recipient_id":int(recipient.get("id",0)),
+        "redirected":not is_same(selected,recipient),
+        "hp_effect":hp_effect,"shield_mp":shield_mp,
+        "recipient_alive":int(recipient.get("hp",0))>0}
+    event.make_read_only()
+    target_outcome_resolved.emit(event)
+
 func attack(attacker: Dictionary, target: Dictionary) -> int:
     # Damage power still uses the early port's stock formula: the final
     # FS_BATTLE_BALANCE smooth core, affinity and 505 alias chain are NOT
@@ -363,6 +403,7 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
         return 0
     if str(landed.get("kind","hit")) != "hit":
         target["fs_last_action_result"] = str(landed["kind"])
+        _emit_target_outcome(attacker,target,target,"attack",0,str(landed["kind"]))
         changed.emit("%s 攻擊 %s：%s" % [
             attacker.get("name","?"),target.get("name","?"),
             "落空" if landed["kind"]=="miss" else "被迴避"])
@@ -438,6 +479,7 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
                 target.get("name","隊友"),int(transferred["hp"]),
                 int(transferred["mp"])])
             ivy_cover.end_action()
+            _emit_target_outcome(attacker,target,transferred["guard"],"attack",0,"hit",int(transferred["hp"]),int(transferred["mp"]))
             _check_end()
             return int(transferred["hp"])
     var hit: Dictionary = boss_state_effects.preview_hit(target,damage)
@@ -461,6 +503,7 @@ func attack(attacker: Dictionary, target: Dictionary) -> int:
         int(hit["hp"]),int(hit["mp"])])
     if ivy_cover.active:
         ivy_cover.end_action()
+    _emit_target_outcome(attacker,target,target,"attack",0,"hit",int(hit["hp"]),int(hit["mp"]))
     _check_end()
     return int(hit["hp"])
 
@@ -652,6 +695,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             return false
         user["fs_last_action_result"]="hit"
         changed.emit("艾薇145 ACT 完成：已扣 MP16，State85 4次 ATB READY 後待解除；State100 來源限定")
+        _emit_target_outcome(user,target,target,"skill",skill_id,"hit")
         return true
     var revenge_plan: Dictionary=ivy_revenge.preview(user,skill)
     if not bool(revenge_plan.get("ok",false)):
@@ -681,6 +725,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
             str(user.get("name","Ivy")),int(activated["charges"]),
             int(activated["actions"]),int(ivy_cost["mp"])])
         ivy_cover.end_action()
+        _emit_target_outcome(user,target,target,"skill",skill_id,"hit")
         return true
     if ivy_cover.active:
         ivy_cover.begin_action()
@@ -722,6 +767,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         # original effect returns, including an ordinary miss.
         if str(planned.get("kind","none")) != "none":
             field_weather.apply_source_object(db,user,skill,enemies)
+        _emit_target_outcome(user,target,target,"skill",skill_id,str(landed["kind"]))
         changed.emit("%s 使用 %s：%s／支付 MP %d" % [
             user.get("name","?"),skill.get("name","?"),
             "落空" if landed["kind"]=="miss" else "被迴避",mp_cost])
@@ -804,6 +850,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
                 user.get("name","敵人"),skill.get("name","技能"),
                 int(transferred["hp"]),int(transferred["mp"])])
             ivy_cover.end_action()
+            _emit_target_outcome(user,target,transferred["guard"],"skill",skill_id,"hit",int(transferred["hp"]),int(transferred["mp"]))
             _check_end()
             return true
     # Preflight the confirmed ComboCore shield before any MP is spent.
@@ -840,6 +887,7 @@ func use_skill(user: Dictionary, target: Dictionary, skill_id: int) -> bool:
         -int(hit["hp"]),int(hit["mp"])])
     if ivy_cover.active:
         ivy_cover.end_action()
+    _emit_target_outcome(user,target,target,"skill",skill_id,"hit",int(hit["hp"]),int(hit["mp"]))
     _check_end()
     return true
 

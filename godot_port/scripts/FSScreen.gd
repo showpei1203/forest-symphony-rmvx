@@ -220,6 +220,40 @@ func _process(delta: float) -> void:
         source_target_help.refresh_live()
     _update_battle_command_buttons()
 
+# R8: Explicit private synthetic preview. Normal boot uses original enemy stage.
+# Install only after the candidate proves it can bind. Never select by a real DB ID.
+func configure_shj_fixture_candidate(frames: SpriteFrames) -> bool:
+    if frames==null or db==null or db.boot_final_verified or battle==null or not battle.active or view_name!="BATTLE" or enemy_stage==null:
+        return false
+    if not battle.has_signal(&"target_outcome_resolved"):
+        return false
+    for clip in [&"idle",&"walk",&"attack"]:
+        if not frames.has_animation(clip) or frames.get_frame_count(clip)<1:
+            return false
+    if frames.get_animation_loop(&"attack"):
+        return false
+    var candidate_script=load("res://scripts/ui/FSShjSharedFixtureEnemyStage.gd")
+    if candidate_script==null:
+        return false
+    if enemy_stage.get_script()==candidate_script:
+        return enemy_stage.approved_frames==frames and enemy_stage.fixture_battle==battle
+    var previous:FSBattleOriginalEnemyStage=enemy_stage
+    var candidate:FSBattleOriginalEnemyStage=candidate_script.new()
+    add_child(candidate)
+    if not candidate.configure_fixture(frames,battle):
+        remove_child(candidate)
+        candidate.queue_free()
+        return false
+    var index:int=previous.get_index()
+    previous.name="RetiredPrivateFixtureStage"
+    remove_child(previous)
+    previous.queue_free()
+    candidate.name="FSBattleStageOriginalEnemies"
+    move_child(candidate,index)
+    enemy_stage=candidate
+    _refresh_source_state_hud()
+    return true
+
 func _refresh_source_state_hud()->void:
     if source_state_hud==null or not source_state_hud.source_enabled or (
             battle==null):
