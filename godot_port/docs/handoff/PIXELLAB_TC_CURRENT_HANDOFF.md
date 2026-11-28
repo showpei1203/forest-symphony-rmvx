@@ -1,3 +1,8 @@
+# 2026-11-28｜D31 整張原生座標 PAR 候選 / 美術 HOLD
+實際全幅1280x928透明 RGBA 原生畫布直接繪製（非 PixelLab、生圖 API、無拼接既有素材或事後移動）。D30 Ground SHA 原樣；七個世界物件全部畫入，兩橋各三點橋面 alpha=255；不是碰撞驗證。PAR SHA c3b3ce185bc69808f500b33ecd8784f04d471515136b58c5923c9a6198dbb33a；實際合成可見橋跨河位置正確，建物與岩柱畫風過於簡化，ART HOLD。Private evidence ZIP https://drive.google.com/file/d/1bbEmtyBwNz9Vh2uZrxUPOP3imnsO37qb/view (26 files, 8098698 bytes, SHA256 ab9cb5d001fefdb3e2ed97f20d8d19c199a6fa59a21abeea0efcab36fb141300; raw readback hash/CRC and owner-only permissions PASS); actual Godot OpenGL screenshot https://drive.google.com/file/d/1Dg-WRF_Pz13wMNgKKl1qb26ns1RaX-71/view. Official 4.7.2 isolated editor import, 22 native static assertions headless and Xvfb/llvmpipe render PASS. Audio device unavailable, fallback dummy. No actual collision/walking/battle/animation or owner ART approval. No PC writes, paid API, bot dispatch or merge. 下一步維持整張 PAR，D31 作上游空間參考，使用已驗證且有適用費用授權的高美術品質生圖路徑，不移橋、不拆件。
+
+---
+
 # 2026-11-28｜D30 視覺錨點輸入完成／真 PAR HOLD
 已實讀 A35 R8 R3 原生村落與 Ground、D22 真合成與 D29 失敗原圖。D17 1280×928 Ground SHA 不變；依實際地形新增兩處橋面落點（918,319→1018,319；1019,608→1104,608）、建物足點及同原點 32px 可視化引導。新 owner-private ZIP SHA 95fab40e76b97b70e58abf34dfd51490400c0c365fd734f52219b8be2e2ddc4e，exact readback/CRC PASS。當輪一次視覺生成誤回規劃看板，拒絕；不是 PAR。新美術/Native NOT_RUN，ART 0/12 HOLD。下一步依 D29 既有 exact-canvas API（須明確付費單次授權與可用帳戶）以 frozen Ground＋新引導圖生成整張透明 PAR，禁止拼件/移橋，先看真合成才進 Godot。私人證據與調度記錄在 PC Bridge 私人 repo control_tower/FS_TC_TB_ART_PRODUCTION_20261128.md。無 PC 寫入、無新付費 API、無合併。
 
