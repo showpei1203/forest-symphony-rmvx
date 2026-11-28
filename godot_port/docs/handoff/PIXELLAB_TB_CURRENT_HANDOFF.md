@@ -1,3 +1,8 @@
+# 2026-11-28｜SHJ_FIRE_001 R1 原創家族三階概念已生成／native ART HOLD
+依 11-27 owner reset，開始炎山系 炭角獸→熔甲獸→燼岳獓，對應熔脈裂橋生態；PMD 只參考 SE45 與原生尺度，保留已核准 PMD0001。已實讀原 PMD0001–0003 尺度，實際生成 2172×724 透明 RGBA 三階概念（ImageGen 1），原始 PNG SHA 161ad8b374685e4b30a6b6192b8b24cf82eb88fa2856781762e3af7ff1527d8d、owner-private Drive exact readback PASS。概念三階體型比例大於既有原生素材，不得直接作 runtime 或假稱原生縮圖。NEXT 真正原生格低解析度三階靜態、核定造型後做 Idle/Walk/Attack 與 Godot 真實展示。不重跑已付費 PMD/PixelLab、不改原始 sprite 共用尺度。私人記錄 PC Bridge control_tower/FS_TC_TB_ART_PRODUCTION_20261128.md。無新付費 API、Native/ART/整合 HOLD。
+
+---
+
 # 2026-11-27｜OWNER TASK RESET／現行優先於下列歷史規格
 
 2026-11-27 使用者最新決策：T-A 停止新角色與動作生成（含 Flow／PixelLab），Godot 直接沿用原 FS 素材、共用地圖／戰鬥 Sprite 及原紙娃娃規格；保留所有歷史成果。T-B 改為 PMD 像素風格與骨架／尺度／動作語法參考，製作山海經靈感的原創異獸及自創三階進化鏈，不再按 PMD 物種編號逐隻改色或照抄。T-C 必須先實際讀取 Drive 已完成地圖範本，分析位置失準原因，再以凍結 Ground 和範本建立可視化座標約束，一次生成整張透明全非地表 PAR。舊任務、NEXT、逐號規則及事後局部修補法如有衝突均降為歷史；已核准素材不得重做。成果優先，沿用已提供素材與 Skills，不為微小細節反覆開發驗收工具；同法兩次失敗即改變生成方法。原有授權、成本、私有儲存及真實驗收規則不變。
