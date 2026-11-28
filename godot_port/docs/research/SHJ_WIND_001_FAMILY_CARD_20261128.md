@@ -1,0 +1,7 @@
+# SHJ_WIND_001 | 風翼系 A1
+Original Shanhai-inspired cave flying beast, not another feathered bird. Candidate design, not owner art approval.
+- S1 霧耳獸 / Mist Ear Pup: two small folded scalloped membrane wings, large pointed ears, two feet, compact silhouette. Native 32x32.
+- S2 逐風蝠 / Gale Membrane Bat: larger semi-open membrane wings and athletic torso; 48x48.
+- S3 裂雲翼 / Cloud Rift Wing Beast: powerful chest and broad layered membrane wings; 64x64.
+Shared DNA: dusty indigo fur, pale cool grey membranes, dark navy wing ribs, amber eyes, twin ears and two clawed feet, no feathers, horns, extra wings, baked FX or ground. Right/southeast three-quarter, safe margin. Relative display size target .44/.70/1.0, same map/battle identity. Actual visual review determines source selection. Flight motion convention: idle gentle wing flex, walk/move low hovering wingbeat (not a grounded walk), attack recoil then forward wing/body thrust; no effects. Preserve native frame and anchor; no new Godot test per owner. 
+A1 uses exact E1-derived scoped producer c32c5b28fae7afda4b0a9f6492379d813734dfff, wrapper 0a88f494c858eacbbea08664dc16503589796719, dispatch 96c5dfb5474b10146d52e86599f21b01f1608c80, one POST per stage, seeds 2026113201–03, existing subscription balance guard and no USD credits, stop on first failure, exclusive reservation. #460 negative scope test submitted; no claim of generation until receipt. ChatGPT design; BOT not invoked.
