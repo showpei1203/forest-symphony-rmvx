@@ -1,3 +1,8 @@
+# 2026-11-28｜D30 視覺錨點輸入完成／真 PAR HOLD
+已實讀 A35 R8 R3 原生村落與 Ground、D22 真合成與 D29 失敗原圖。D17 1280×928 Ground SHA 不變；依實際地形新增兩處橋面落點（918,319→1018,319；1019,608→1104,608）、建物足點及同原點 32px 可視化引導。新 owner-private ZIP SHA 95fab40e76b97b70e58abf34dfd51490400c0c365fd734f52219b8be2e2ddc4e，exact readback/CRC PASS。當輪一次視覺生成誤回規劃看板，拒絕；不是 PAR。新美術/Native NOT_RUN，ART 0/12 HOLD。下一步依 D29 既有 exact-canvas API（須明確付費單次授權與可用帳戶）以 frozen Ground＋新引導圖生成整張透明 PAR，禁止拼件/移橋，先看真合成才進 Godot。私人證據與調度記錄在 PC Bridge 私人 repo control_tower/FS_TC_TB_ART_PRODUCTION_20261128.md。無 PC 寫入、無新付費 API、無合併。
+
+---
+
 # 2026-11-27｜OWNER TASK RESET／現行優先於下列歷史規格
 
 2026-11-27 使用者最新決策：T-A 停止新角色與動作生成（含 Flow／PixelLab），Godot 直接沿用原 FS 素材、共用地圖／戰鬥 Sprite 及原紙娃娃規格；保留所有歷史成果。T-B 改為 PMD 像素風格與骨架／尺度／動作語法參考，製作山海經靈感的原創異獸及自創三階進化鏈，不再按 PMD 物種編號逐隻改色或照抄。T-C 必須先實際讀取 Drive 已完成地圖範本，分析位置失準原因，再以凍結 Ground 和範本建立可視化座標約束，一次生成整張透明全非地表 PAR。舊任務、NEXT、逐號規則及事後局部修補法如有衝突均降為歷史；已核准素材不得重做。成果優先，沿用已提供素材與 Skills，不為微小細節反覆開發驗收工具；同法兩次失敗即改變生成方法。原有授權、成本、私有儲存及真實驗收規則不變。
